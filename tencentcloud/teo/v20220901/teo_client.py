@@ -1505,35 +1505,6 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeHostCertificates(self, request):
-        """查询域名证书列表，支持搜索、分页、排序、过滤。
-
-        :param request: Request instance for DescribeHostCertificates.
-        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeHostCertificatesRequest`
-        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeHostCertificatesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeHostCertificates", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeHostCertificatesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeHostsSetting(self, request):
         """用于查询域名配置信息
 

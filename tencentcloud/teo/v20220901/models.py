@@ -341,6 +341,43 @@ class AdvancedFilter(AbstractModel):
         
 
 
+class AdvancedOriginGroup(AbstractModel):
+    """高级回源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginGroupConditions: 高级回源配置的匹配条件。其中相同的Target只能出现一次。
+        :type OriginGroupConditions: list of OriginGroupCondition
+        :param OriginGroupId: 主源站组ID。
+        :type OriginGroupId: str
+        :param BackupOriginGroupId: 备用源站组ID。
+        :type BackupOriginGroupId: str
+        """
+        self.OriginGroupConditions = None
+        self.OriginGroupId = None
+        self.BackupOriginGroupId = None
+
+
+    def _deserialize(self, params):
+        if params.get("OriginGroupConditions") is not None:
+            self.OriginGroupConditions = []
+            for item in params.get("OriginGroupConditions"):
+                obj = OriginGroupCondition()
+                obj._deserialize(item)
+                self.OriginGroupConditions.append(obj)
+        self.OriginGroupId = params.get("OriginGroupId")
+        self.BackupOriginGroupId = params.get("BackupOriginGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiRule(AbstractModel):
     """AI规则引擎防护
 
@@ -1182,6 +1219,37 @@ class CheckCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ClientIpCountry(AbstractModel):
+    """回源时携带客户端IP所属地域信息，值的格式为ISO-3166-1两位字母代码。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param HeaderName: 存放客户端IP所属地域信息的请求头名称，当Switch=on时有效。
+为空则使用默认值：EO-Client-IPCountry。
+        :type HeaderName: str
+        """
+        self.Switch = None
+        self.HeaderName = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.HeaderName = params.get("HeaderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientIpHeader(AbstractModel):
     """存储客户端请求IP的头部信息配置
 
@@ -1305,6 +1373,10 @@ class ClsLogTopicInfo(AbstractModel):
 <li>mainland：中国大陆境内;</li>
 <li>overseas：全球（不含中国大陆）。</li>
         :type Area: str
+        :param LogSetType: 推送任务类型，取值有：
+<li>cls：推送到cls；</li>
+<li>custom_endpoint：推送到自定义接口。</li>
+        :type LogSetType: str
         """
         self.TaskName = None
         self.ZoneName = None
@@ -1319,6 +1391,7 @@ class ClsLogTopicInfo(AbstractModel):
         self.LogSetRegion = None
         self.ZoneId = None
         self.Area = None
+        self.LogSetType = None
 
 
     def _deserialize(self, params):
@@ -1335,6 +1408,7 @@ class ClsLogTopicInfo(AbstractModel):
         self.LogSetRegion = params.get("LogSetRegion")
         self.ZoneId = params.get("ZoneId")
         self.Area = params.get("Area")
+        self.LogSetType = params.get("LogSetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1831,6 +1905,12 @@ class CreateLoadBalancingRequest(AbstractModel):
         :param TTL: 当Type=dns_only时，指解析记录在DNS服务器缓存的生存时间。
 取值范围60-86400，单位：秒，不填写使用默认值：600。
         :type TTL: int
+        :param OriginType: 回源类型，取值有：
+<li>normal：主备回源；</li>
+<li>advanced：高级回源配置（仅当Type=proxied时可以使用）。</li>为空表示使用主备回源。
+        :type OriginType: str
+        :param AdvancedOriginGroups: 高级回源配置，当OriginType=advanced时有效。
+        :type AdvancedOriginGroups: list of AdvancedOriginGroup
         """
         self.ZoneId = None
         self.Host = None
@@ -1838,6 +1918,8 @@ class CreateLoadBalancingRequest(AbstractModel):
         self.OriginGroupId = None
         self.BackupOriginGroupId = None
         self.TTL = None
+        self.OriginType = None
+        self.AdvancedOriginGroups = None
 
 
     def _deserialize(self, params):
@@ -1847,6 +1929,13 @@ class CreateLoadBalancingRequest(AbstractModel):
         self.OriginGroupId = params.get("OriginGroupId")
         self.BackupOriginGroupId = params.get("BackupOriginGroupId")
         self.TTL = params.get("TTL")
+        self.OriginType = params.get("OriginType")
+        if params.get("AdvancedOriginGroups") is not None:
+            self.AdvancedOriginGroups = []
+            for item in params.get("AdvancedOriginGroups"):
+                obj = AdvancedOriginGroup()
+                obj._deserialize(item)
+                self.AdvancedOriginGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2038,12 +2127,15 @@ class CreateOriginGroupRequest(AbstractModel):
         :type ConfigurationType: str
         :param OriginRecords: 源站记录信息。
         :type OriginRecords: list of OriginRecord
+        :param HostHeader: 回源Host，仅当OriginType=self时可以设置。
+        :type HostHeader: str
         """
         self.ZoneId = None
         self.OriginType = None
         self.OriginGroupName = None
         self.ConfigurationType = None
         self.OriginRecords = None
+        self.HostHeader = None
 
 
     def _deserialize(self, params):
@@ -2057,6 +2149,7 @@ class CreateOriginGroupRequest(AbstractModel):
                 obj = OriginRecord()
                 obj._deserialize(item)
                 self.OriginRecords.append(obj)
+        self.HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3476,13 +3569,17 @@ class DefaultServerCertInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubjectAltName: list of str
         :param Status: 部署状态，取值有：
-<li>processing: 部署中;</li>
-<li>deployed: 已部署。</li>
+<li>processing: 部署中；</li>
+<li>deployed: 已部署；</li>
+<li>failed: 部署失败。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param Message: Status为失败时,此字段返回失败原因。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
+        :param SignAlgo: 证书算法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignAlgo: str
         """
         self.CertId = None
         self.Alias = None
@@ -3493,6 +3590,7 @@ class DefaultServerCertInfo(AbstractModel):
         self.SubjectAltName = None
         self.Status = None
         self.Message = None
+        self.SignAlgo = None
 
 
     def _deserialize(self, params):
@@ -3505,6 +3603,7 @@ class DefaultServerCertInfo(AbstractModel):
         self.SubjectAltName = params.get("SubjectAltName")
         self.Status = params.get("Status")
         self.Message = params.get("Message")
+        self.SignAlgo = params.get("SignAlgo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3707,7 +3806,7 @@ class DeleteLogTopicTaskRequest(AbstractModel):
         r"""
         :param TopicId: 待删除的推送任务ID。
         :type TopicId: str
-        :param LogSetRegion: 推送任务所属日志集地域。
+        :param LogSetRegion: 推送任务所属日志集地域，此字段仅用于CLS推送任务。
         :type LogSetRegion: str
         """
         self.TopicId = None
@@ -3945,7 +4044,7 @@ class DescribeApplicationProxiesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页查询限制数目。默认值：20，最大值：1000。
         :type Limit: int
-        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否<li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否
+        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li>
         :type Filters: list of Filter
         """
         self.Offset = None
@@ -5819,84 +5918,6 @@ class DescribeDnssecResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeHostCertificatesRequest(AbstractModel):
-    """DescribeHostCertificates请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：是<li>host<br>   按照【<strong>域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>cert-id<br>   按照【<strong>证书ID</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>cert-alias<br>   按照【<strong>证书名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>cert-type<br>   按照【<strong>证书类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
-        :type Filters: list of AdvancedFilter
-        :param Offset: 分页查询偏移量，默认为 0。
-        :type Offset: int
-        :param Limit: 分页查询限制数目，默认为 100，最大可设置为 1000。
-        :type Limit: int
-        :param Sort: 排序方式。详细排序条件如下：
-<li>create-time：域名创建时间；</li>
-<li>cert-expire-time：证书过期时间；</li>
-<li>cert-deploy-time：证书部署时间。</li>
-        :type Sort: :class:`tencentcloud.teo.v20220901.models.Sort`
-        """
-        self.Filters = None
-        self.Offset = None
-        self.Limit = None
-        self.Sort = None
-
-
-    def _deserialize(self, params):
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = AdvancedFilter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        if params.get("Sort") is not None:
-            self.Sort = Sort()
-            self.Sort._deserialize(params.get("Sort"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeHostCertificatesResponse(AbstractModel):
-    """DescribeHostCertificates返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: 总数，用于分页查询。
-        :type TotalCount: int
-        :param HostCertificates: 域名证书配置列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HostCertificates: list of HostsCertificate
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.HostCertificates = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("HostCertificates") is not None:
-            self.HostCertificates = []
-            for item in params.get("HostCertificates"):
-                obj = HostsCertificate()
-                obj._deserialize(item)
-                self.HostCertificates.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeHostsSettingRequest(AbstractModel):
     """DescribeHostsSetting请求参数结构体
 
@@ -5911,7 +5932,7 @@ class DescribeHostsSettingRequest(AbstractModel):
         :param Limit: 分页查询限制数目。默认值： 100，最大值：1000。
         :type Limit: int
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>host<br>   按照【<strong>域名</strong>】进行过滤。<br>   类型：string<br>   必选：否
+<li>host<br>   按照【<strong>域名</strong>】进行过滤。<br>   类型：string<br>   必选：否</li>
         :type Filters: list of Filter
         """
         self.ZoneId = None
@@ -5977,7 +5998,7 @@ class DescribeIdentificationsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：是
+<li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：是</li>
         :type Filters: list of Filter
         :param Offset: 分页查询偏移量。默认值：0。
         :type Offset: int
@@ -6477,7 +6498,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
         :param Limit: 分页查询限制数目，默认值：20，上限：1000。
         :type Limit: int
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时
+<li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
         :type Filters: list of AdvancedFilter
         """
         self.StartTime = None
@@ -6555,7 +6576,7 @@ class DescribePurgeTasksRequest(AbstractModel):
         :param Limit: 分页查限制数目，默认值：20，最大值：1000。
         :type Limit: int
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时<li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname
+<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname</li>
         :type Filters: list of AdvancedFilter
         """
         self.ZoneId = None
@@ -8780,7 +8801,7 @@ class DescribeZonesRequest(AbstractModel):
         :param Limit: 分页查询限制数目。默认值：20，最大值：1000。
         :type Limit: int
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否<li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为zone-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false
+<li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为zone-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
         :type Filters: list of AdvancedFilter
         """
         self.Offset = None
@@ -8905,6 +8926,9 @@ class DetailHost(AbstractModel):
         :param Ipv6: Ipv6访问配置项。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
+        :param ClientIpCountry: 回源时是否携带客户端IP所属地域信息的配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIpCountry: :class:`tencentcloud.teo.v20220901.models.ClientIpCountry`
         """
         self.ZoneId = None
         self.Status = None
@@ -8928,6 +8952,7 @@ class DetailHost(AbstractModel):
         self.DDoS = None
         self.SmartRouting = None
         self.Ipv6 = None
+        self.ClientIpCountry = None
 
 
     def _deserialize(self, params):
@@ -8977,6 +9002,9 @@ class DetailHost(AbstractModel):
         if params.get("Ipv6") is not None:
             self.Ipv6 = Ipv6()
             self.Ipv6._deserialize(params.get("Ipv6"))
+        if params.get("ClientIpCountry") is not None:
+            self.ClientIpCountry = ClientIpCountry()
+            self.ClientIpCountry._deserialize(params.get("ClientIpCountry"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9460,27 +9488,23 @@ class ExceptConfig(AbstractModel):
 
 
 class ExceptUserRule(AbstractModel):
-    """例外规则的配置，包含生效的条件，生效的范围
+    """例外规则的配置，包含生效的条件，生效的范围。
 
     """
 
     def __init__(self):
         r"""
-        :param RuleName: 规则名称。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param RuleName: 规则名称，不可使用中文。
         :type RuleName: str
         :param Action: 规则的处置方式，当前仅支持skip：跳过全部托管规则。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         :param RuleStatus: 规则生效状态，取值有：
 <li>on：生效；</li>
 <li>off：失效。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleStatus: str
-        :param RuleID: 规则ID。仅出参使用。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param RuleID: 规则ID。仅出参使用。默认由底层生成。
         :type RuleID: int
-        :param UpdateTime: 更新时间。仅出参使用
+        :param UpdateTime: 更新时间，如果为null，默认由底层按当前时间生成。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param ExceptUserRuleConditions: 匹配条件。
@@ -9489,8 +9513,7 @@ class ExceptUserRule(AbstractModel):
         :param ExceptUserRuleScope: 规则生效的范围。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptUserRuleScope: :class:`tencentcloud.teo.v20220901.models.ExceptUserRuleScope`
-        :param RulePriority: 优先级，取值范围0-100。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param RulePriority: 优先级，取值范围0-100。如果为null，默认由底层设置为0。
         :type RulePriority: int
         """
         self.RuleName = None
@@ -9529,7 +9552,7 @@ class ExceptUserRule(AbstractModel):
 
 
 class ExceptUserRuleCondition(AbstractModel):
-    """例外规则生效的具体条件
+    """例外规则生效的具体条件。
 
     """
 
@@ -9547,9 +9570,8 @@ class ExceptUserRuleCondition(AbstractModel):
 <li>method：请求方式；</li>
 <li>header：请求头部；</li>
 <li>sip_proto：网络层协议。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchFrom: str
-        :param MatchParam: 匹配项的参数。当 MatchFrom 为 header 时，可以填入 header 的 key 作为参数。
+        :param MatchParam: 匹配项的参数。仅当 MatchFrom 为 header 时，可以使用本参数，值可填入 header 的 key 作为参数。
         :type MatchParam: str
         :param Operator: 匹配操作符，取值有：
 <li>equal：字符串等于；</li>
@@ -9568,10 +9590,8 @@ class ExceptUserRuleCondition(AbstractModel):
 <li>match_prefix：前缀匹配；</li>
 <li>match_suffix：后缀匹配；</li>
 <li>wildcard：通配符。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
         :param MatchContent: 匹配值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchContent: str
         """
         self.MatchFrom = None
@@ -9595,21 +9615,50 @@ class ExceptUserRuleCondition(AbstractModel):
 
 
 class ExceptUserRuleScope(AbstractModel):
-    """例外规则的生效范围
+    """例外规则的生效范围。
 
     """
 
     def __init__(self):
         r"""
-        :param Modules: 生效的模块。当前仅支持waf：托管规则。
+        :param Type: 例外规则类型。其中complete模式代表全量数据进行例外，partial模式代表可选择指定模块指定字段进行例外，该字段取值有：
+<li>complete：完全跳过模式；</li>
+<li>partial：部分跳过模式。</li>
+        :type Type: str
+        :param Modules: 生效的模块，该字段取值有：
+<li>waf：托管规则；</li>
+<li>cc：速率限制规则；</li>
+<li>bot：Bot防护。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Modules: list of str
+        :param PartialModules: 跳过部分规则ID的例外规则详情。如果为null，默认使用历史配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartialModules: list of PartialModule
+        :param SkipConditions: 跳过具体字段不去扫描的例外规则详情。如果为null，默认使用历史配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkipConditions: list of SkipCondition
         """
+        self.Type = None
         self.Modules = None
+        self.PartialModules = None
+        self.SkipConditions = None
 
 
     def _deserialize(self, params):
+        self.Type = params.get("Type")
         self.Modules = params.get("Modules")
+        if params.get("PartialModules") is not None:
+            self.PartialModules = []
+            for item in params.get("PartialModules"):
+                obj = PartialModule()
+                obj._deserialize(item)
+                self.PartialModules.append(obj)
+        if params.get("SkipConditions") is not None:
+            self.SkipConditions = []
+            for item in params.get("SkipConditions"):
+                obj = SkipCondition()
+                obj._deserialize(item)
+                self.SkipConditions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9638,6 +9687,34 @@ class FailReason(AbstractModel):
     def _deserialize(self, params):
         self.Reason = params.get("Reason")
         self.Targets = params.get("Targets")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileAscriptionInfo(AbstractModel):
+    """站点归属权校验——文件校验信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentifyPath: 文件校验目录。
+        :type IdentifyPath: str
+        :param IdentifyContent: 文件校验内容。
+        :type IdentifyContent: str
+        """
+        self.IdentifyPath = None
+        self.IdentifyContent = None
+
+
+    def _deserialize(self, params):
+        self.IdentifyPath = params.get("IdentifyPath")
+        self.IdentifyContent = params.get("IdentifyContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9779,7 +9856,7 @@ class Header(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: HTTP头部。
+        :param Name: HTTP头部名称。
         :type Name: str
         :param Value: HTTP头部值。
         :type Value: str
@@ -9791,98 +9868,6 @@ class Header(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class HostCertInfo(AbstractModel):
-    """https 服务端证书配置
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CertId: 服务器证书 ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CertId: str
-        :param Alias: 证书备注名。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Alias: str
-        :param Type: 证书类型，取值有：
-<li>default：默认证书；</lil>
-<li>upload：用户上传；</li>
-<li>managed:腾讯云托管。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Type: str
-        :param ExpireTime: 证书过期时间。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExpireTime: str
-        :param DeployTime: 证书部署时间。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeployTime: str
-        :param SignAlgo: 签名算法。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SignAlgo: str
-        :param Status: 证书状态，取值有：
-<li>deployed：已部署;</li>
-<li>process：部署中。</li>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
-        """
-        self.CertId = None
-        self.Alias = None
-        self.Type = None
-        self.ExpireTime = None
-        self.DeployTime = None
-        self.SignAlgo = None
-        self.Status = None
-
-
-    def _deserialize(self, params):
-        self.CertId = params.get("CertId")
-        self.Alias = params.get("Alias")
-        self.Type = params.get("Type")
-        self.ExpireTime = params.get("ExpireTime")
-        self.DeployTime = params.get("DeployTime")
-        self.SignAlgo = params.get("SignAlgo")
-        self.Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class HostsCertificate(AbstractModel):
-    """域名证书配置
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Host: 域名。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Host: str
-        :param HostCertInfo: 服务端证书配置。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HostCertInfo: :class:`tencentcloud.teo.v20220901.models.HostCertInfo`
-        """
-        self.Host = None
-        self.HostCertInfo = None
-
-
-    def _deserialize(self, params):
-        self.Host = params.get("Host")
-        if params.get("HostCertInfo") is not None:
-            self.HostCertInfo = HostCertInfo()
-            self.HostCertInfo._deserialize(params.get("HostCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10010,16 +9995,19 @@ class Identification(AbstractModel):
 <li> pending：验证中；</li>
 <li> finished：验证完成。</li>
         :type Status: str
-        :param Ascription: 站点归属信息。
+        :param Ascription: 站点归属权校验：Dns校验信息。
         :type Ascription: :class:`tencentcloud.teo.v20220901.models.AscriptionInfo`
         :param OriginalNameServers: 域名当前的 NS 记录。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalNameServers: list of str
+        :param FileAscription: 站点归属权校验：文件校验信息。
+        :type FileAscription: :class:`tencentcloud.teo.v20220901.models.FileAscriptionInfo`
         """
         self.ZoneName = None
         self.Status = None
         self.Ascription = None
         self.OriginalNameServers = None
+        self.FileAscription = None
 
 
     def _deserialize(self, params):
@@ -10029,6 +10017,9 @@ class Identification(AbstractModel):
             self.Ascription = AscriptionInfo()
             self.Ascription._deserialize(params.get("Ascription"))
         self.OriginalNameServers = params.get("OriginalNameServers")
+        if params.get("FileAscription") is not None:
+            self.FileAscription = FileAscriptionInfo()
+            self.FileAscription._deserialize(params.get("FileAscription"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10069,12 +10060,15 @@ class IdentifyZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ascription: 站点归属信息。
+        :param Ascription: 站点归属校验：Dns校验信息。
         :type Ascription: :class:`tencentcloud.teo.v20220901.models.AscriptionInfo`
+        :param FileAscription: 站点归属权校验：文件校验信息。
+        :type FileAscription: :class:`tencentcloud.teo.v20220901.models.FileAscriptionInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Ascription = None
+        self.FileAscription = None
         self.RequestId = None
 
 
@@ -10082,6 +10076,9 @@ class IdentifyZoneResponse(AbstractModel):
         if params.get("Ascription") is not None:
             self.Ascription = AscriptionInfo()
             self.Ascription._deserialize(params.get("Ascription"))
+        if params.get("FileAscription") is not None:
+            self.FileAscription = FileAscriptionInfo()
+            self.FileAscription._deserialize(params.get("FileAscription"))
         self.RequestId = params.get("RequestId")
 
 
@@ -10391,6 +10388,13 @@ class LoadBalancing(AbstractModel):
         :type BackupOriginGroupId: str
         :param UpdateTime: 更新时间。
         :type UpdateTime: str
+        :param OriginType: 回源类型，取值有：
+<li>normal：主备回源；</li>
+<li>advanced：高级回源配置。</li>
+        :type OriginType: str
+        :param AdvancedOriginGroups: 高级回源配置，当OriginType=advanced时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedOriginGroups: list of AdvancedOriginGroup
         """
         self.LoadBalancingId = None
         self.ZoneId = None
@@ -10402,6 +10406,8 @@ class LoadBalancing(AbstractModel):
         self.OriginGroupId = None
         self.BackupOriginGroupId = None
         self.UpdateTime = None
+        self.OriginType = None
+        self.AdvancedOriginGroups = None
 
 
     def _deserialize(self, params):
@@ -10415,6 +10421,13 @@ class LoadBalancing(AbstractModel):
         self.OriginGroupId = params.get("OriginGroupId")
         self.BackupOriginGroupId = params.get("BackupOriginGroupId")
         self.UpdateTime = params.get("UpdateTime")
+        self.OriginType = params.get("OriginType")
+        if params.get("AdvancedOriginGroups") is not None:
+            self.AdvancedOriginGroups = []
+            for item in params.get("AdvancedOriginGroups"):
+                obj = AdvancedOriginGroup()
+                obj._deserialize(item)
+                self.AdvancedOriginGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11320,6 +11333,13 @@ class ModifyLoadBalancingRequest(AbstractModel):
         :param TTL: 当Type=dns_only时，指解析记录在DNS服务器缓存的生存时间。
 取值范围60-86400，单位：秒，不填写使用默认值：600。
         :type TTL: int
+        :param OriginType: 回源类型，取值有：
+<li>normal：主备回源；</li>
+<li>advanced：高级回源配置（仅当Type=proxied时可以使用）。</li>不填写表示使用主备回源。
+        :type OriginType: str
+        :param AdvancedOriginGroups: 高级回源配置，当OriginType=advanced时有效。
+不填写表示不使用高级回源配置。
+        :type AdvancedOriginGroups: list of AdvancedOriginGroup
         """
         self.ZoneId = None
         self.LoadBalancingId = None
@@ -11327,6 +11347,8 @@ class ModifyLoadBalancingRequest(AbstractModel):
         self.OriginGroupId = None
         self.BackupOriginGroupId = None
         self.TTL = None
+        self.OriginType = None
+        self.AdvancedOriginGroups = None
 
 
     def _deserialize(self, params):
@@ -11336,6 +11358,13 @@ class ModifyLoadBalancingRequest(AbstractModel):
         self.OriginGroupId = params.get("OriginGroupId")
         self.BackupOriginGroupId = params.get("BackupOriginGroupId")
         self.TTL = params.get("TTL")
+        self.OriginType = params.get("OriginType")
+        if params.get("AdvancedOriginGroups") is not None:
+            self.AdvancedOriginGroups = []
+            for item in params.get("AdvancedOriginGroups"):
+                obj = AdvancedOriginGroup()
+                obj._deserialize(item)
+                self.AdvancedOriginGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11525,6 +11554,9 @@ class ModifyOriginGroupRequest(AbstractModel):
         :type ConfigurationType: str
         :param OriginRecords: 源站记录信息。
         :type OriginRecords: list of OriginRecord
+        :param HostHeader: 回源Host，仅当OriginType=self时可以设置。
+不填写，表示使用已有配置。
+        :type HostHeader: str
         """
         self.ZoneId = None
         self.OriginGroupId = None
@@ -11532,6 +11564,7 @@ class ModifyOriginGroupRequest(AbstractModel):
         self.OriginGroupName = None
         self.ConfigurationType = None
         self.OriginRecords = None
+        self.HostHeader = None
 
 
     def _deserialize(self, params):
@@ -11546,6 +11579,7 @@ class ModifyOriginGroupRequest(AbstractModel):
                 obj = OriginRecord()
                 obj._deserialize(item)
                 self.OriginRecords.append(obj)
+        self.HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11980,6 +12014,9 @@ class ModifyZoneSettingRequest(AbstractModel):
         :param Ipv6: Ipv6访问配置。
 不填写表示保持原有配置。
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
+        :param ClientIpCountry: 回源时是否携带客户端IP所属地域信息的配置。
+不填写表示保持原有配置。
+        :type ClientIpCountry: :class:`tencentcloud.teo.v20220901.models.ClientIpCountry`
         """
         self.ZoneId = None
         self.CacheConfig = None
@@ -11998,6 +12035,7 @@ class ModifyZoneSettingRequest(AbstractModel):
         self.ClientIpHeader = None
         self.CachePrefresh = None
         self.Ipv6 = None
+        self.ClientIpCountry = None
 
 
     def _deserialize(self, params):
@@ -12050,6 +12088,9 @@ class ModifyZoneSettingRequest(AbstractModel):
         if params.get("Ipv6") is not None:
             self.Ipv6 = Ipv6()
             self.Ipv6._deserialize(params.get("Ipv6"))
+        if params.get("ClientIpCountry") is not None:
+            self.ClientIpCountry = ClientIpCountry()
+            self.ClientIpCountry._deserialize(params.get("ClientIpCountry"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12319,6 +12360,9 @@ class OriginGroup(AbstractModel):
         :type OriginRecords: list of OriginRecord
         :param UpdateTime: 源站组更新时间。
         :type UpdateTime: str
+        :param HostHeader: 当OriginType=self时，表示回源Host。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostHeader: str
         """
         self.ZoneId = None
         self.ZoneName = None
@@ -12328,6 +12372,7 @@ class OriginGroup(AbstractModel):
         self.ConfigurationType = None
         self.OriginRecords = None
         self.UpdateTime = None
+        self.HostHeader = None
 
 
     def _deserialize(self, params):
@@ -12344,6 +12389,42 @@ class OriginGroup(AbstractModel):
                 obj._deserialize(item)
                 self.OriginRecords.append(obj)
         self.UpdateTime = params.get("UpdateTime")
+        self.HostHeader = params.get("HostHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginGroupCondition(AbstractModel):
+    """回源配置的条件参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Target: 匹配类型，取值有：
+<li>url：当前站点下匹配URL路径的请求，例如：/example 或 /example/foo.jpg。支持*表示通配符，支持?表示匹配一个字符。
+</li>
+        :type Target: str
+        :param Operator: 运算符，取值有：
+<li>equal：等于。</li>
+        :type Operator: str
+        :param Values: 对应匹配类型的取值。
+        :type Values: list of str
+        """
+        self.Target = None
+        self.Operator = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Target = params.get("Target")
+        self.Operator = params.get("Operator")
+        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12416,6 +12497,36 @@ class OriginRecord(AbstractModel):
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self.PrivateParameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PartialModule(AbstractModel):
+    """例外规则的详细模块配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Module: 模块名称，取值为：
+<li>waf：托管规则。</li>
+        :type Module: str
+        :param Include: 模块下的需要例外的具体规则ID列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Include: list of int
+        """
+        self.Module = None
+        self.Include = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Include = params.get("Include")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12614,10 +12725,10 @@ class QueryCondition(AbstractModel):
 <li>notEquals: 不等于；</li>
 <li>include: 包含；</li>
 <li>notInclude: 不包含; </li>
-<li>startWith: 开始于；</li>
-<li>notStartWith: 不开始于；</li>
-<li>endWith: 结尾是；</li>
-<li>notEndWith: 不结尾是。</li>
+<li>startWith: 开始的值是value；</li>
+<li>notStartWith: 不以value的值开始；</li>
+<li>endWith: 结尾是value值；</li>
+<li>notEndWith: 不以value的值结尾。</li>
         :type Operator: str
         :param Value: 筛选条件的值。
         :type Value: list of str
@@ -14211,6 +14322,69 @@ class SingleTypeValue(AbstractModel):
         
 
 
+class SkipCondition(AbstractModel):
+    """例外规则的跳过匹配条件，即在例外时根据本匹配条件，略过指定字段及内容。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 例外跳过类型，取值为：
+<li>header_fields：HTTP请求Header；</li>
+<li>cookie：HTTP请求Cookie；</li>
+<li>query_string：HTTP请求URL中的Query参数；</li>
+<li>uri：HTTP请求URI；</li>
+<li>body_raw：HTTP请求Body；</li>
+<li>body_json： JSON格式的HTTP Body。</li>
+        :type Type: str
+        :param Selector: 选择跳过的字段，取值为：
+<li>args：uri 下选择 query 参数: ?name1=jack&age=12；</li>
+<li>path：uri 下选择部分路径：/path/to/resource.jpg；</li>
+<li>full：uri 下选择完整路径：example.com/path/to/resource.jpg?name1=jack&age=12；</li>
+<li>upload_filename：分段文件名，即分段传输文件时；</li>
+<li>keys：所有的Key；</li>
+<li>values：匹配Key对应的值；</li>
+<li>key_value：匹配Key及匹配Value。</li>
+        :type Selector: str
+        :param MatchFromType: 匹配Key所使用的匹配方式，取值为：
+<li>equal：精准匹配，等于；</li>
+<li>wildcard：通配符匹配，支持 * 通配。</li>
+        :type MatchFromType: str
+        :param MatchFrom: 匹配Key的值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchFrom: list of str
+        :param MatchContentType: 匹配Content所使用的匹配方式，取值为：
+<li>equal：精准匹配，等于；</li>
+<li>wildcard：通配符匹配，支持 * 通配。</li>
+        :type MatchContentType: str
+        :param MatchContent: 匹配Value的值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchContent: list of str
+        """
+        self.Type = None
+        self.Selector = None
+        self.MatchFromType = None
+        self.MatchFrom = None
+        self.MatchContentType = None
+        self.MatchContent = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Selector = params.get("Selector")
+        self.MatchFromType = params.get("MatchFromType")
+        self.MatchFrom = params.get("MatchFrom")
+        self.MatchContentType = params.get("MatchContentType")
+        self.MatchContent = params.get("MatchContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmartRouting(AbstractModel):
     """智能加速配置
 
@@ -14228,37 +14402,6 @@ class SmartRouting(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class Sort(AbstractModel):
-    """查询结果排序条件。
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Key: 排序字段，当前支持：
-createTime，域名创建时间
-certExpireTime，证书过期时间
-certDeployTime,  证书部署时间
-        :type Key: str
-        :param Sequence: asc/desc，默认desc。
-        :type Sequence: str
-        """
-        self.Key = None
-        self.Sequence = None
-
-
-    def _deserialize(self, params):
-        self.Key = params.get("Key")
-        self.Sequence = params.get("Sequence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15553,11 +15696,11 @@ class Zone(AbstractModel):
         :type Type: str
         :param Paused: 站点是否关闭。
         :type Paused: bool
-        :param CnameSpeedUp: 是否开启cname加速，取值有：
+        :param CnameSpeedUp: 是否开启 CNAME 加速，取值有：
 <li> enabled：开启；</li>
 <li> disabled：关闭。</li>
         :type CnameSpeedUp: str
-        :param CnameStatus: cname 接入状态，取值有：
+        :param CnameStatus: CNAME 接入状态，取值有：
 <li> finished：站点已验证；</li>
 <li> pending：站点验证中。</li>
         :type CnameStatus: str
@@ -15703,6 +15846,9 @@ class ZoneSetting(AbstractModel):
         :param Https: Https 加速配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Https: :class:`tencentcloud.teo.v20220901.models.Https`
+        :param ClientIpCountry: 回源时是否携带客户端IP所属地域信息的配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientIpCountry: :class:`tencentcloud.teo.v20220901.models.ClientIpCountry`
         """
         self.ZoneName = None
         self.Area = None
@@ -15722,6 +15868,7 @@ class ZoneSetting(AbstractModel):
         self.CachePrefresh = None
         self.Ipv6 = None
         self.Https = None
+        self.ClientIpCountry = None
 
 
     def _deserialize(self, params):
@@ -15775,6 +15922,9 @@ class ZoneSetting(AbstractModel):
         if params.get("Https") is not None:
             self.Https = Https()
             self.Https._deserialize(params.get("Https"))
+        if params.get("ClientIpCountry") is not None:
+            self.ClientIpCountry = ClientIpCountry()
+            self.ClientIpCountry._deserialize(params.get("ClientIpCountry"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
