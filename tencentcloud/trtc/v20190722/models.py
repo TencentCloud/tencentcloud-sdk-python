@@ -2827,9 +2827,9 @@ class StorageParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CloudStorage: 第三方云存储的账号信息（暂不支持）。
+        :param CloudStorage: 第三方云存储的账号信息（CloudStorage参数暂不可用，请使用CloudVod参数存储至云点播）。
         :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
-        :param CloudVod: 腾讯云云点播的账号信息（必填，目前仅支持存储至腾讯云云点播）。
+        :param CloudVod: 【必填】腾讯云云点播的账号信息，目前仅支持存储至腾讯云点播VOD。
         :type CloudVod: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
         """
         self.CloudStorage = None

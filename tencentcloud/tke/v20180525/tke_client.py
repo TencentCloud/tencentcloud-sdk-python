@@ -1651,7 +1651,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeAvailableTKEEdgeVersion(self, request):
-        """边缘计算支持的k8s版本
+        """边缘计算支持版本和k8s版本
 
         :param request: Request instance for DescribeAvailableTKEEdgeVersion.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAvailableTKEEdgeVersionRequest`

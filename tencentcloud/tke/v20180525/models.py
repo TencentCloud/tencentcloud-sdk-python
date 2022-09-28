@@ -3498,6 +3498,10 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         :type AutoUpgradeClusterLevel: bool
         :param ChargeType: 集群计费方式
         :type ChargeType: str
+        :param EdgeVersion: 边缘集群版本，此版本区别于k8s版本，是整个集群各组件版本集合
+        :type EdgeVersion: str
+        :param RegistryPrefix: 边缘组件镜像仓库前缀
+        :type RegistryPrefix: str
         """
         self.K8SVersion = None
         self.VpcId = None
@@ -3511,6 +3515,8 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self.ClusterLevel = None
         self.AutoUpgradeClusterLevel = None
         self.ChargeType = None
+        self.EdgeVersion = None
+        self.RegistryPrefix = None
 
 
     def _deserialize(self, params):
@@ -3530,6 +3536,8 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self.ClusterLevel = params.get("ClusterLevel")
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         self.ChargeType = params.get("ChargeType")
+        self.EdgeVersion = params.get("EdgeVersion")
+        self.RegistryPrefix = params.get("RegistryPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4901,6 +4909,24 @@ class DescribeAvailableTKEEdgeVersionRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param ClusterId: 填写ClusterId获取当前集群各个组件版本和最新版本
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAvailableTKEEdgeVersionResponse(AbstractModel):
     """DescribeAvailableTKEEdgeVersion返回参数结构体
@@ -4911,15 +4937,25 @@ class DescribeAvailableTKEEdgeVersionResponse(AbstractModel):
         r"""
         :param Versions: 版本列表
         :type Versions: list of str
+        :param EdgeVersionLatest: 边缘集群最新版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EdgeVersionLatest: str
+        :param EdgeVersionCurrent: 边缘集群当前版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EdgeVersionCurrent: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Versions = None
+        self.EdgeVersionLatest = None
+        self.EdgeVersionCurrent = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Versions = params.get("Versions")
+        self.EdgeVersionLatest = params.get("EdgeVersionLatest")
+        self.EdgeVersionCurrent = params.get("EdgeVersionCurrent")
         self.RequestId = params.get("RequestId")
 
 

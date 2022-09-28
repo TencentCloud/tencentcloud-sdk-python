@@ -174,7 +174,7 @@ class CwpClient(AbstractClient):
     def CreateLicenseOrder(self, request):
         """CreateLicenseOrder 该接口可以创建专业版/旗舰版订单
         支持预付费后付费创建
-        后付费订单直接闯将成功
+        后付费订单直接创建成功
         预付费订单仅下单不支付,需要调用计费支付接口进行支付
 
         :param request: Request instance for CreateLicenseOrder.
@@ -2451,35 +2451,6 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeESAggregationsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeESHits(self, request):
-        """获取ES查询文档列表
-
-        :param request: Request instance for DescribeESHits.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeESHitsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeESHitsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeESHits", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeESHitsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

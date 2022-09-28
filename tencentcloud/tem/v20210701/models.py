@@ -4203,11 +4203,15 @@ class NamespacePage(AbstractModel):
         :type Size: int
         :param Pages: 页数
         :type Pages: int
+        :param Current: 当前条目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Current: int
         """
         self.Records = None
         self.Total = None
         self.Size = None
         self.Pages = None
+        self.Current = None
 
 
     def _deserialize(self, params):
@@ -4220,6 +4224,7 @@ class NamespacePage(AbstractModel):
         self.Total = params.get("Total")
         self.Size = params.get("Size")
         self.Pages = params.get("Pages")
+        self.Current = params.get("Current")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5121,6 +5126,36 @@ class StorageMountConf(AbstractModel):
         
 
 
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TemDeployApplicationDetailInfo(AbstractModel):
     """分批发布详情
 
@@ -5324,6 +5359,21 @@ class TemNamespaceInfo(AbstractModel):
         :type EnableTswTraceService: bool
         :param Locked: 环境锁，1为上锁，0则为上锁
         :type Locked: int
+        :param AppId: 用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param Uin: 用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param SubAccountUin: 用户SubAccountUin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.EnvironmentId = None
         self.Channel = None
@@ -5342,6 +5392,11 @@ class TemNamespaceInfo(AbstractModel):
         self.ClusterStatus = None
         self.EnableTswTraceService = None
         self.Locked = None
+        self.AppId = None
+        self.Uin = None
+        self.SubAccountUin = None
+        self.ClusterId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -5362,6 +5417,16 @@ class TemNamespaceInfo(AbstractModel):
         self.ClusterStatus = params.get("ClusterStatus")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
         self.Locked = params.get("Locked")
+        self.AppId = params.get("AppId")
+        self.Uin = params.get("Uin")
+        self.SubAccountUin = params.get("SubAccountUin")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

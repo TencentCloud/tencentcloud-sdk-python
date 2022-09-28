@@ -344,6 +344,12 @@ class CreateCRBlockRequest(AbstractModel):
         :type CommValidEndDate: str
         :param IsProducer: x
         :type IsProducer: str
+        :param EvidenceFileUrl: x
+        :type EvidenceFileUrl: str
+        :param EvidenceValidStartDate: x
+        :type EvidenceValidStartDate: str
+        :param EvidenceValidEndDate: x
+        :type EvidenceValidEndDate: str
         """
         self.WorkId = None
         self.TortUrl = None
@@ -358,6 +364,9 @@ class CreateCRBlockRequest(AbstractModel):
         self.CommValidStartDate = None
         self.CommValidEndDate = None
         self.IsProducer = None
+        self.EvidenceFileUrl = None
+        self.EvidenceValidStartDate = None
+        self.EvidenceValidEndDate = None
 
 
     def _deserialize(self, params):
@@ -374,6 +383,9 @@ class CreateCRBlockRequest(AbstractModel):
         self.CommValidStartDate = params.get("CommValidStartDate")
         self.CommValidEndDate = params.get("CommValidEndDate")
         self.IsProducer = params.get("IsProducer")
+        self.EvidenceFileUrl = params.get("EvidenceFileUrl")
+        self.EvidenceValidStartDate = params.get("EvidenceValidStartDate")
+        self.EvidenceValidEndDate = params.get("EvidenceValidEndDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -576,6 +588,12 @@ class CreateCRRightRequest(AbstractModel):
         :type HomeValidEndDate: str
         :param IsProducer: x
         :type IsProducer: str
+        :param EvidenceFileUrl: x
+        :type EvidenceFileUrl: str
+        :param EvidenceValidStartDate: x
+        :type EvidenceValidStartDate: str
+        :param EvidenceValidEndDate: x
+        :type EvidenceValidEndDate: str
         """
         self.WorkId = None
         self.TortUrl = None
@@ -592,6 +610,9 @@ class CreateCRRightRequest(AbstractModel):
         self.HomeValidStartDate = None
         self.HomeValidEndDate = None
         self.IsProducer = None
+        self.EvidenceFileUrl = None
+        self.EvidenceValidStartDate = None
+        self.EvidenceValidEndDate = None
 
 
     def _deserialize(self, params):
@@ -610,6 +631,9 @@ class CreateCRRightRequest(AbstractModel):
         self.HomeValidStartDate = params.get("HomeValidStartDate")
         self.HomeValidEndDate = params.get("HomeValidEndDate")
         self.IsProducer = params.get("IsProducer")
+        self.EvidenceFileUrl = params.get("EvidenceFileUrl")
+        self.EvidenceValidStartDate = params.get("EvidenceValidStartDate")
+        self.EvidenceValidEndDate = params.get("EvidenceValidEndDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -855,6 +879,10 @@ class CreateCRWorkRequest(AbstractModel):
         :type Content: str
         :param MonitorEndTime: 监测结束时间
         :type MonitorEndTime: str
+        :param ApplierId: 申请人ID
+        :type ApplierId: str
+        :param ApplierName: 申请人姓名
+        :type ApplierName: str
         """
         self.WorkName = None
         self.WorkCategory = None
@@ -885,6 +913,8 @@ class CreateCRWorkRequest(AbstractModel):
         self.ContentType = None
         self.Content = None
         self.MonitorEndTime = None
+        self.ApplierId = None
+        self.ApplierName = None
 
 
     def _deserialize(self, params):
@@ -917,6 +947,8 @@ class CreateCRWorkRequest(AbstractModel):
         self.ContentType = params.get("ContentType")
         self.Content = params.get("Content")
         self.MonitorEndTime = params.get("MonitorEndTime")
+        self.ApplierId = params.get("ApplierId")
+        self.ApplierName = params.get("ApplierName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2019,6 +2051,30 @@ class MonitorTort(AbstractModel):
         :type ObtainNote: str
         :param WorkTitle: 1
         :type WorkTitle: str
+        :param TortSite: 1
+        :type TortSite: str
+        :param ICP: 1
+        :type ICP: str
+        :param RightNote: 1
+        :type RightNote: str
+        :param ObtainType: 1
+        :type ObtainType: int
+        :param BlockNote: 1
+        :type BlockNote: str
+        :param WorkId: 1
+        :type WorkId: int
+        :param WorkName: 1
+        :type WorkName: str
+        :param AuthStatus: 1
+        :type AuthStatus: int
+        :param CommStatus: 1
+        :type CommStatus: int
+        :param EvidenceStatus: 1
+        :type EvidenceStatus: int
+        :param IsProducer: 1
+        :type IsProducer: int
+        :param IsOverseas: 1
+        :type IsOverseas: int
         """
         self.TortId = None
         self.TortTitle = None
@@ -2033,6 +2089,18 @@ class MonitorTort(AbstractModel):
         self.TortNum = None
         self.ObtainNote = None
         self.WorkTitle = None
+        self.TortSite = None
+        self.ICP = None
+        self.RightNote = None
+        self.ObtainType = None
+        self.BlockNote = None
+        self.WorkId = None
+        self.WorkName = None
+        self.AuthStatus = None
+        self.CommStatus = None
+        self.EvidenceStatus = None
+        self.IsProducer = None
+        self.IsOverseas = None
 
 
     def _deserialize(self, params):
@@ -2049,6 +2117,18 @@ class MonitorTort(AbstractModel):
         self.TortNum = params.get("TortNum")
         self.ObtainNote = params.get("ObtainNote")
         self.WorkTitle = params.get("WorkTitle")
+        self.TortSite = params.get("TortSite")
+        self.ICP = params.get("ICP")
+        self.RightNote = params.get("RightNote")
+        self.ObtainType = params.get("ObtainType")
+        self.BlockNote = params.get("BlockNote")
+        self.WorkId = params.get("WorkId")
+        self.WorkName = params.get("WorkName")
+        self.AuthStatus = params.get("AuthStatus")
+        self.CommStatus = params.get("CommStatus")
+        self.EvidenceStatus = params.get("EvidenceStatus")
+        self.IsProducer = params.get("IsProducer")
+        self.IsOverseas = params.get("IsOverseas")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

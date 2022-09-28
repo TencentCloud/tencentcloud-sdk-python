@@ -4168,6 +4168,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
         :param OperationDuration: 可维护时间段
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
+        :param KibanaAlteringPublicAccess: 是否开启Altering 外网告警输出
+        :type KibanaAlteringPublicAccess: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -4200,6 +4202,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.CerebroPrivateAccess = None
         self.EsConfigSet = None
         self.OperationDuration = None
+        self.KibanaAlteringPublicAccess = None
 
 
     def _deserialize(self, params):
@@ -4256,6 +4259,7 @@ class UpdateInstanceRequest(AbstractModel):
         if params.get("OperationDuration") is not None:
             self.OperationDuration = OperationDurationUpdated()
             self.OperationDuration._deserialize(params.get("OperationDuration"))
+        self.KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4598,6 +4602,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type UpgradeMode: str
         :param CosBackup: 升级版本前是否对集群进行备份，默认不备份
         :type CosBackup: bool
+        :param SkipCheckForceRestart: 滚动模式时，是否跳过检查，进行强制重启。默认值为false
+        :type SkipCheckForceRestart: bool
         """
         self.InstanceId = None
         self.EsVersion = None
@@ -4606,6 +4612,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.BasicSecurityType = None
         self.UpgradeMode = None
         self.CosBackup = None
+        self.SkipCheckForceRestart = None
 
 
     def _deserialize(self, params):
@@ -4616,6 +4623,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.UpgradeMode = params.get("UpgradeMode")
         self.CosBackup = params.get("CosBackup")
+        self.SkipCheckForceRestart = params.get("SkipCheckForceRestart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
