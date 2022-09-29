@@ -20383,6 +20383,56 @@ class SetCcnRegionBandwidthLimitsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SetVpnGatewaysRenewFlagRequest(AbstractModel):
+    """SetVpnGatewaysRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpnGatewayIds: VPNGW字符型ID列表
+        :type VpnGatewayIds: list of str
+        :param AutoRenewFlag: 自动续费标记[0, 1, 2]
+0表示默认状态(初始状态)， 1表示自动续费，2表示明确不自动续费
+        :type AutoRenewFlag: int
+        :param Type: VPNGW类型['IPSEC', 'SSL']
+        :type Type: str
+        """
+        self.VpnGatewayIds = None
+        self.AutoRenewFlag = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayIds = params.get("VpnGatewayIds")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetVpnGatewaysRenewFlagResponse(AbstractModel):
+    """SetVpnGatewaysRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SourceIpTranslationNatRule(AbstractModel):
     """NAT的SNAT规则
 

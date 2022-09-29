@@ -9116,11 +9116,17 @@ class ModifyInstanceParamRequest(AbstractModel):
         :type TemplateId: int
         :param WaitSwitch: 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行；当该值为 1 时，每次只能传一个实例（InstanceIds数量为1）
         :type WaitSwitch: int
+        :param NotSyncRo: 参数是否同步到主实例下的只读实例。true 为不同步，false 为同步。默认为 false。
+        :type NotSyncRo: bool
+        :param NotSyncDr: 参数是否同步到主实例下的灾备实例。true 为不同步，false 为同步。默认为 false。
+        :type NotSyncDr: bool
         """
         self.InstanceIds = None
         self.ParamList = None
         self.TemplateId = None
         self.WaitSwitch = None
+        self.NotSyncRo = None
+        self.NotSyncDr = None
 
 
     def _deserialize(self, params):
@@ -9133,6 +9139,8 @@ class ModifyInstanceParamRequest(AbstractModel):
                 self.ParamList.append(obj)
         self.TemplateId = params.get("TemplateId")
         self.WaitSwitch = params.get("WaitSwitch")
+        self.NotSyncRo = params.get("NotSyncRo")
+        self.NotSyncDr = params.get("NotSyncDr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

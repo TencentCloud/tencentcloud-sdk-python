@@ -1013,7 +1013,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeLogHistogram(self, request):
-        """本接口用于构建直方图
+        """本接口用于构建日志数量直方图
 
         :param request: Request instance for DescribeLogHistogram.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramRequest`

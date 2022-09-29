@@ -259,7 +259,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterEndpoint(self, request):
-        """创建集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+        """创建集群访问端口
 
         :param request: Request instance for CreateClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointRequest`
@@ -984,7 +984,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterEndpoint(self, request):
-        """删除集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+        """删除集群访问端口
 
         :param request: Request instance for DeleteClusterEndpoint.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterEndpointRequest`

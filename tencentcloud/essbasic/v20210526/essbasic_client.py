@@ -269,6 +269,35 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelDescribeEmployees(self, request):
+        """查询企业员工
+
+        :param request: Request instance for ChannelDescribeEmployees.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeEmployeesRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeEmployeesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelDescribeEmployees", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChannelDescribeEmployeesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelGetTaskResultApi(self, request):
         """渠道版查询转换任务状态
 
@@ -328,8 +357,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateChannelFlowEvidenceReport(self, request):
-        """【描述】：创建出证报告，返回报告 URL
-        【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
+        """创建出证报告，返回报告 URL。此接口暂为开放，有问题请联系运营人员。
 
         :param request: Request instance for CreateChannelFlowEvidenceReport.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateChannelFlowEvidenceReportRequest`

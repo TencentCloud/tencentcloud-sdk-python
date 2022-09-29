@@ -1789,7 +1789,7 @@ class CreateTopicRequest(AbstractModel):
         :type MaxSplitPartitions: int
         :param StorageType: 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
         :type StorageType: str
-        :param Period: 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
+        :param Period: 生命周期，单位天，标准存储取值范围1~3600，低频存储取值范围7~3600天。取值为3640时代表永久保存
         :type Period: int
         """
         self.LogsetId = None
@@ -3068,7 +3068,7 @@ class DescribeLogHistogramRequest(AbstractModel):
         :type To: int
         :param Query: 查询语句
         :type Query: str
-        :param Interval: 时间间隔: 单位ms
+        :param Interval: 时间间隔: 单位ms  限制性条件：(To-From) / interval <= 200
         :type Interval: int
         """
         self.TopicId = None

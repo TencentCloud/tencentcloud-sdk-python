@@ -1914,7 +1914,7 @@ class CreateClusterEndpointRequest(AbstractModel):
         :type IsExtranet: bool
         :param Domain: 设置域名
         :type Domain: str
-        :param SecurityGroup: 使用的安全组，只有外网访问需要传递
+        :param SecurityGroup: 使用的安全组，只有外网访问需要传递（开启外网访问时必传）
         :type SecurityGroup: str
         :param ExtensiveParameters: 创建lb参数，只有外网访问需要设置
         :type ExtensiveParameters: str

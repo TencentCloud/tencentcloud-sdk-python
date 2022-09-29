@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 数据上报失败。
+FAILEDOPERATION_SENDTOCKAFKA = 'FailedOperation.SendToCkafka'
+
 # 鉴权失败。
 INTERNALERROR_CAUTHERROR = 'InternalError.CauthError'
 

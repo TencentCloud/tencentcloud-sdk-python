@@ -288,7 +288,7 @@ class CpdpClient(AbstractClient):
 
 
     def ApplyOpenBankSettleOrder(self, request):
-        """云企付结算申请接口
+        """云企付-结算申请接口
 
         :param request: Request instance for ApplyOpenBankSettleOrder.
         :type request: :class:`tencentcloud.cpdp.v20190820.models.ApplyOpenBankSettleOrderRequest`
@@ -4475,7 +4475,7 @@ class CpdpClient(AbstractClient):
 
 
     def QueryOpenBankSettleOrder(self, request):
-        """云企付结算单查询结果
+        """云企付-结算单查询结果
 
         :param request: Request instance for QueryOpenBankSettleOrder.
         :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSettleOrderRequest`

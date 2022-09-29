@@ -711,10 +711,13 @@ class MatchKBPURLListResponse(AbstractModel):
         r"""
         :param PURLList: 组件列表。
         :type PURLList: list of PURL
+        :param Hit: 是否命中数据库。
+        :type Hit: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PURLList = None
+        self.Hit = None
         self.RequestId = None
 
 
@@ -725,6 +728,7 @@ class MatchKBPURLListResponse(AbstractModel):
                 obj = PURL()
                 obj._deserialize(item)
                 self.PURLList.append(obj)
+        self.Hit = params.get("Hit")
         self.RequestId = params.get("RequestId")
 
 

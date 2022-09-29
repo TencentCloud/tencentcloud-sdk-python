@@ -730,6 +730,95 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelDescribeEmployeesRequest(AbstractModel):
+    """ChannelDescribeEmployees请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 返回最大数量，最大为20
+        :type Limit: int
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Filters: 查询过滤实名用户，key为Status，Values为["IsVerified"]
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0，最大为20000
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Agent = None
+        self.Operator = None
+        self.Filters = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDescribeEmployeesResponse(AbstractModel):
+    """ChannelDescribeEmployees返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Employees: 员工数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Employees: list of Staff
+        :param Offset: 偏移量，默认为0，最大为20000
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param Limit: 返回最大数量，最大为20
+        :type Limit: int
+        :param TotalCount: 符合条件的员工数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Employees = None
+        self.Offset = None
+        self.Limit = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Employees") is not None:
+            self.Employees = []
+            for item in params.get("Employees"):
+                obj = Staff()
+                obj._deserialize(item)
+                self.Employees.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelGetTaskResultApiRequest(AbstractModel):
     """ChannelGetTaskResultApi请求参数结构体
 
@@ -1422,6 +1511,36 @@ class CreateSignUrlsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Department(AbstractModel):
+    """渠道版员工部门信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DepartmentId: 部门id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DepartmentId: str
+        :param DepartmentName: 部门名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DepartmentName: str
+        """
+        self.DepartmentId = None
+        self.DepartmentName = None
+
+
+    def _deserialize(self, params):
+        self.DepartmentId = params.get("DepartmentId")
+        self.DepartmentName = params.get("DepartmentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeFlowDetailInfoRequest(AbstractModel):
     """DescribeFlowDetailInfo请求参数结构体
 
@@ -1775,6 +1894,34 @@ class DownloadFlowInfo(AbstractModel):
     def _deserialize(self, params):
         self.FileName = params.get("FileName")
         self.FlowIdList = params.get("FlowIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filter(AbstractModel):
+    """此结构体 (Filter) 用于描述查询过滤条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 查询过滤条件的Key
+        :type Key: str
+        :param Values: 查询过滤条件的Value列表
+        :type Values: list of str
+        """
+        self.Key = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2921,6 +3068,107 @@ PERSON 自然人
         self.FlowId = params.get("FlowId")
         self.OpenId = params.get("OpenId")
         self.FlowGroupId = params.get("FlowGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Staff(AbstractModel):
+    """企业员工信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 员工在电子签平台的id
+        :type UserId: str
+        :param DisplayName: 显示的员工名
+        :type DisplayName: str
+        :param Mobile: 员工手机号
+        :type Mobile: str
+        :param Email: 员工邮箱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param OpenId: 员工在第三方平台id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenId: str
+        :param Roles: 员工角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Roles: list of StaffRole
+        :param Department: 员工部门
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Department: :class:`tencentcloud.essbasic.v20210526.models.Department`
+        :param Verified: 员工是否实名
+        :type Verified: bool
+        :param CreatedOn: 员工创建时间戳
+        :type CreatedOn: int
+        :param VerifiedOn: 员工实名时间戳
+        :type VerifiedOn: int
+        """
+        self.UserId = None
+        self.DisplayName = None
+        self.Mobile = None
+        self.Email = None
+        self.OpenId = None
+        self.Roles = None
+        self.Department = None
+        self.Verified = None
+        self.CreatedOn = None
+        self.VerifiedOn = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.DisplayName = params.get("DisplayName")
+        self.Mobile = params.get("Mobile")
+        self.Email = params.get("Email")
+        self.OpenId = params.get("OpenId")
+        if params.get("Roles") is not None:
+            self.Roles = []
+            for item in params.get("Roles"):
+                obj = StaffRole()
+                obj._deserialize(item)
+                self.Roles.append(obj)
+        if params.get("Department") is not None:
+            self.Department = Department()
+            self.Department._deserialize(params.get("Department"))
+        self.Verified = params.get("Verified")
+        self.CreatedOn = params.get("CreatedOn")
+        self.VerifiedOn = params.get("VerifiedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaffRole(AbstractModel):
+    """渠道版员工角色信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleId: 角色id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleId: str
+        :param RoleName: 角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        """
+        self.RoleId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
