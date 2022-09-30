@@ -99,11 +99,15 @@ class ApproveUser(AbstractModel):
         :param Nick: 用户昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
+        :param Scf: 动态获取Scf
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scf: :class:`tencentcloud.bpaas.v20181217.models.Scf`
         """
         self.Uin = None
         self.Type = None
         self.Desc = None
         self.Nick = None
+        self.Scf = None
 
 
     def _deserialize(self, params):
@@ -111,6 +115,9 @@ class ApproveUser(AbstractModel):
         self.Type = params.get("Type")
         self.Desc = params.get("Desc")
         self.Nick = params.get("Nick")
+        if params.get("Scf") is not None:
+            self.Scf = Scf()
+            self.Scf._deserialize(params.get("Scf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -269,6 +276,86 @@ class OutApproveBpaasApplicationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Scf(AbstractModel):
+    """云函数SCF
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScfRegion: Scf函数地域id
+        :type ScfRegion: str
+        :param ScfRegionName: Scf函数地域
+        :type ScfRegionName: str
+        :param ScfName: Scf函数名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScfName: str
+        :param Params: Scf函数入参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: list of ScfParam
+        """
+        self.ScfRegion = None
+        self.ScfRegionName = None
+        self.ScfName = None
+        self.Params = None
+
+
+    def _deserialize(self, params):
+        self.ScfRegion = params.get("ScfRegion")
+        self.ScfRegionName = params.get("ScfRegionName")
+        self.ScfName = params.get("ScfName")
+        if params.get("Params") is not None:
+            self.Params = []
+            for item in params.get("Params"):
+                obj = ScfParam()
+                obj._deserialize(item)
+                self.Params.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScfParam(AbstractModel):
+    """Scf函数入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 参数Key
+        :type Key: str
+        :param Type: 参数类型 1用户输入 2预设参数 3表单参数
+        :type Type: int
+        :param Values: 参数值
+        :type Values: list of str
+        :param Name: 参数描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self.Key = None
+        self.Type = None
+        self.Values = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Type = params.get("Type")
+        self.Values = params.get("Values")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StatusNode(AbstractModel):

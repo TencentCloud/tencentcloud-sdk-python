@@ -3283,18 +3283,20 @@ class DescribeSlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例Id。
         :type InstanceId: str
-        :param BeginTime: 开始时间
+        :param BeginTime: 开始时间。
         :type BeginTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param MinQueryTime: 慢查询阈值（单位：微秒）
+        :param MinQueryTime: 慢查询平均执行时间阈值（单位：微秒）。
         :type MinQueryTime: int
-        :param Limit: 页面大小
+        :param Limit: 每个页面展示的慢查询条数，默认值为20。
         :type Limit: int
-        :param Offset: 偏移量，取Limit整数倍
+        :param Offset: 慢查询条数的偏移量，取Limit整数倍。
         :type Offset: int
+        :param Role: 节点所属角色。<ul><li>master：主节点。</li><li>slave：从节点。</li></ul>
+        :type Role: str
         """
         self.InstanceId = None
         self.BeginTime = None
@@ -3302,6 +3304,7 @@ class DescribeSlowLogRequest(AbstractModel):
         self.MinQueryTime = None
         self.Limit = None
         self.Offset = None
+        self.Role = None
 
 
     def _deserialize(self, params):
@@ -3311,6 +3314,7 @@ class DescribeSlowLogRequest(AbstractModel):
         self.MinQueryTime = params.get("MinQueryTime")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Role = params.get("Role")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3327,9 +3331,9 @@ class DescribeSlowLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 慢查询总数
+        :param TotalCount: 慢查询总数。
         :type TotalCount: int
-        :param InstanceSlowlogDetail: 慢查询详情
+        :param InstanceSlowlogDetail: 慢查询详情。
         :type InstanceSlowlogDetail: list of InstanceSlowlogDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

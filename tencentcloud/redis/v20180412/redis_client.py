@@ -1390,7 +1390,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeSlowLog(self, request):
-        """查询实例慢查询记录
+        """本接口（DescribeSlowLog）查询实例慢查询记录。
 
         :param request: Request instance for DescribeSlowLog.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSlowLogRequest`

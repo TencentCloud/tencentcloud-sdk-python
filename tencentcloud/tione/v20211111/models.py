@@ -612,6 +612,8 @@ ANNOTATION_FORMAT_FILE，文件目录结构
         :type SchemaInfos: list of SchemaInfo
         :param IsSchemaExisted: 数据是否存在表头
         :type IsSchemaExisted: bool
+        :param ContentType: 导入文件粒度，按行或者按文件
+        :type ContentType: str
         """
         self.DatasetName = None
         self.DatasetType = None
@@ -623,6 +625,7 @@ ANNOTATION_FORMAT_FILE，文件目录结构
         self.AnnotationFormat = None
         self.SchemaInfos = None
         self.IsSchemaExisted = None
+        self.ContentType = None
 
 
     def _deserialize(self, params):
@@ -650,6 +653,7 @@ ANNOTATION_FORMAT_FILE，文件目录结构
                 obj._deserialize(item)
                 self.SchemaInfos.append(obj)
         self.IsSchemaExisted = params.get("IsSchemaExisted")
+        self.ContentType = params.get("ContentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2237,6 +2241,8 @@ STATUS_ALL，全部
         :type AnnotationStatus: str
         :param DatasetIds: 数据集ID列表
         :type DatasetIds: list of str
+        :param TextClassificationLabels: 要筛选的文本分类场景标签信息
+        :type TextClassificationLabels: list of TextLabelDistributionInfo
         """
         self.DatasetId = None
         self.Offset = None
@@ -2244,6 +2250,7 @@ STATUS_ALL，全部
         self.LabelList = None
         self.AnnotationStatus = None
         self.DatasetIds = None
+        self.TextClassificationLabels = None
 
 
     def _deserialize(self, params):
@@ -2253,6 +2260,12 @@ STATUS_ALL，全部
         self.LabelList = params.get("LabelList")
         self.AnnotationStatus = params.get("AnnotationStatus")
         self.DatasetIds = params.get("DatasetIds")
+        if params.get("TextClassificationLabels") is not None:
+            self.TextClassificationLabels = []
+            for item in params.get("TextClassificationLabels"):
+                obj = TextLabelDistributionInfo()
+                obj._deserialize(item)
+                self.TextClassificationLabels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2281,6 +2294,9 @@ class DescribeDatasetDetailUnstructuredResponse(AbstractModel):
         :param FilterLabelList: 过滤数据详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterLabelList: list of FilterLabelInfo
+        :param RowTexts: 数据文本行，默认返回前1000行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowTexts: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2288,6 +2304,7 @@ class DescribeDatasetDetailUnstructuredResponse(AbstractModel):
         self.NonAnnotatedTotalCount = None
         self.FilterTotalCount = None
         self.FilterLabelList = None
+        self.RowTexts = None
         self.RequestId = None
 
 
@@ -2301,6 +2318,7 @@ class DescribeDatasetDetailUnstructuredResponse(AbstractModel):
                 obj = FilterLabelInfo()
                 obj._deserialize(item)
                 self.FilterLabelList.append(obj)
+        self.RowTexts = params.get("RowTexts")
         self.RequestId = params.get("RequestId")
 
 
@@ -3192,6 +3210,18 @@ STRUCTURE：智能结构化
         :param OcrLabels: OCR场景标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrLabels: list of OcrLabelInfo
+        :param OcrLabelInfo: OCR场景标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrLabelInfo: str
+        :param TextClassificationLabelList: 文本分类场景标签结果，内容是json结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextClassificationLabelList: str
+        :param RowText: 文本内容，返回50字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowText: str
+        :param ContentOmit: 文本内容是否完全返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentOmit: bool
         """
         self.DatasetId = None
         self.FileId = None
@@ -3206,6 +3236,10 @@ STRUCTURE：智能结构化
         self.DownloadRGBUrl = None
         self.OcrScene = None
         self.OcrLabels = None
+        self.OcrLabelInfo = None
+        self.TextClassificationLabelList = None
+        self.RowText = None
+        self.ContentOmit = None
 
 
     def _deserialize(self, params):
@@ -3237,6 +3271,10 @@ STRUCTURE：智能结构化
                 obj = OcrLabelInfo()
                 obj._deserialize(item)
                 self.OcrLabels.append(obj)
+        self.OcrLabelInfo = params.get("OcrLabelInfo")
+        self.TextClassificationLabelList = params.get("TextClassificationLabelList")
+        self.RowText = params.get("RowText")
+        self.ContentOmit = params.get("ContentOmit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4565,6 +4603,256 @@ class TagFilter(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValues = params.get("TagValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextLabelDistributionDetailInfoFifthClass(AbstractModel):
+    """五级标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LabelValue: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        :param LabelCount: 标签个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelCount: int
+        :param LabelPercentage: 标签占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelPercentage: float
+        """
+        self.LabelValue = None
+        self.LabelCount = None
+        self.LabelPercentage = None
+
+
+    def _deserialize(self, params):
+        self.LabelValue = params.get("LabelValue")
+        self.LabelCount = params.get("LabelCount")
+        self.LabelPercentage = params.get("LabelPercentage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextLabelDistributionDetailInfoFirstClass(AbstractModel):
+    """一级标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LabelValue: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        :param LabelCount: 标签个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelCount: int
+        :param LabelPercentage: 标签占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelPercentage: float
+        :param ChildLabelList: 子标签分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildLabelList: list of TextLabelDistributionDetailInfoSecondClass
+        """
+        self.LabelValue = None
+        self.LabelCount = None
+        self.LabelPercentage = None
+        self.ChildLabelList = None
+
+
+    def _deserialize(self, params):
+        self.LabelValue = params.get("LabelValue")
+        self.LabelCount = params.get("LabelCount")
+        self.LabelPercentage = params.get("LabelPercentage")
+        if params.get("ChildLabelList") is not None:
+            self.ChildLabelList = []
+            for item in params.get("ChildLabelList"):
+                obj = TextLabelDistributionDetailInfoSecondClass()
+                obj._deserialize(item)
+                self.ChildLabelList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextLabelDistributionDetailInfoFourthClass(AbstractModel):
+    """四级标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LabelValue: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        :param LabelCount: 标签个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelCount: int
+        :param LabelPercentage: 标签占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelPercentage: float
+        :param ChildLabelList: 子标签分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildLabelList: list of TextLabelDistributionDetailInfoFifthClass
+        """
+        self.LabelValue = None
+        self.LabelCount = None
+        self.LabelPercentage = None
+        self.ChildLabelList = None
+
+
+    def _deserialize(self, params):
+        self.LabelValue = params.get("LabelValue")
+        self.LabelCount = params.get("LabelCount")
+        self.LabelPercentage = params.get("LabelPercentage")
+        if params.get("ChildLabelList") is not None:
+            self.ChildLabelList = []
+            for item in params.get("ChildLabelList"):
+                obj = TextLabelDistributionDetailInfoFifthClass()
+                obj._deserialize(item)
+                self.ChildLabelList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextLabelDistributionDetailInfoSecondClass(AbstractModel):
+    """二级标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LabelValue: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        :param LabelCount: 标签个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelCount: int
+        :param LabelPercentage: 标签占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelPercentage: float
+        :param ChildLabelList: 子标签分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildLabelList: list of TextLabelDistributionDetailInfoThirdClass
+        """
+        self.LabelValue = None
+        self.LabelCount = None
+        self.LabelPercentage = None
+        self.ChildLabelList = None
+
+
+    def _deserialize(self, params):
+        self.LabelValue = params.get("LabelValue")
+        self.LabelCount = params.get("LabelCount")
+        self.LabelPercentage = params.get("LabelPercentage")
+        if params.get("ChildLabelList") is not None:
+            self.ChildLabelList = []
+            for item in params.get("ChildLabelList"):
+                obj = TextLabelDistributionDetailInfoThirdClass()
+                obj._deserialize(item)
+                self.ChildLabelList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextLabelDistributionDetailInfoThirdClass(AbstractModel):
+    """三级标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LabelValue: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        :param LabelCount: 标签个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelCount: int
+        :param LabelPercentage: 标签占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelPercentage: float
+        :param ChildLabelList: 子标签分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildLabelList: list of TextLabelDistributionDetailInfoFourthClass
+        """
+        self.LabelValue = None
+        self.LabelCount = None
+        self.LabelPercentage = None
+        self.ChildLabelList = None
+
+
+    def _deserialize(self, params):
+        self.LabelValue = params.get("LabelValue")
+        self.LabelCount = params.get("LabelCount")
+        self.LabelPercentage = params.get("LabelPercentage")
+        if params.get("ChildLabelList") is not None:
+            self.ChildLabelList = []
+            for item in params.get("ChildLabelList"):
+                obj = TextLabelDistributionDetailInfoFourthClass()
+                obj._deserialize(item)
+                self.ChildLabelList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextLabelDistributionInfo(AbstractModel):
+    """文本标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Theme: 文本分类题目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Theme: str
+        :param ClassLabelList: 一级标签分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassLabelList: list of TextLabelDistributionDetailInfoFirstClass
+        """
+        self.Theme = None
+        self.ClassLabelList = None
+
+
+    def _deserialize(self, params):
+        self.Theme = params.get("Theme")
+        if params.get("ClassLabelList") is not None:
+            self.ClassLabelList = []
+            for item in params.get("ClassLabelList"):
+                obj = TextLabelDistributionDetailInfoFirstClass()
+                obj._deserialize(item)
+                self.ClassLabelList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

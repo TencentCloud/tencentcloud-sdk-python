@@ -357,7 +357,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateChannelFlowEvidenceReport(self, request):
-        """创建出证报告，返回报告 URL。此接口暂为开放，有问题请联系运营人员。
+        """创建出证报告，返回报告 URL。此接口暂未开放，有问题请联系运营人员。
 
         :param request: Request instance for CreateChannelFlowEvidenceReport.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateChannelFlowEvidenceReportRequest`
