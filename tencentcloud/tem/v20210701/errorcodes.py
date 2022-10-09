@@ -125,6 +125,9 @@ INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = 'InvalidParameterValue.CronHpaRep
 # 弹性伸缩启用中，请停用后再删除。
 INVALIDPARAMETERVALUE_DISABLESCALERBEFOREDELETE = 'InvalidParameterValue.DisableScalerBeforeDelete'
 
+# 环境名称不可变。
+INVALIDPARAMETERVALUE_ENVIRONMENTNAMEIMMUTABLE = 'InvalidParameterValue.EnvironmentNameImmutable'
+
 # 弹性伸缩指标不合法。
 INVALIDPARAMETERVALUE_HPAMETRICSINVALID = 'InvalidParameterValue.HpaMetricsInvalid'
 

@@ -10256,6 +10256,9 @@ class PrometheusInstancesItem(AbstractModel):
         :param RecordingRuleLimit: 预聚合规则限制
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordingRuleLimit: int
+        :param MigrationType: 迁移状态，0-不在迁移中，1-迁移中、原实例，2-迁移中、目标实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrationType: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -10286,6 +10289,7 @@ class PrometheusInstancesItem(AbstractModel):
         self.GrafanaInstanceId = None
         self.AlertRuleLimit = None
         self.RecordingRuleLimit = None
+        self.MigrationType = None
 
 
     def _deserialize(self, params):
@@ -10325,6 +10329,7 @@ class PrometheusInstancesItem(AbstractModel):
         self.GrafanaInstanceId = params.get("GrafanaInstanceId")
         self.AlertRuleLimit = params.get("AlertRuleLimit")
         self.RecordingRuleLimit = params.get("RecordingRuleLimit")
+        self.MigrationType = params.get("MigrationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

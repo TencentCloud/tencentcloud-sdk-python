@@ -6768,6 +6768,76 @@ class DescribeEdgeClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEdgeClusterUpgradeInfoRequest(AbstractModel):
+    """DescribeEdgeClusterUpgradeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param EdgeVersion: 要升级到的TKEEdge版本
+        :type EdgeVersion: str
+        """
+        self.ClusterId = None
+        self.EdgeVersion = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.EdgeVersion = params.get("EdgeVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgeClusterUpgradeInfoResponse(AbstractModel):
+    """DescribeEdgeClusterUpgradeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ComponentVersion: 可升级的集群组件和
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentVersion: str
+        :param EdgeVersionCurrent: 边缘集群当前版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EdgeVersionCurrent: str
+        :param RegistryPrefix: 边缘组件镜像仓库地址前缀，包含域名和命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryPrefix: str
+        :param ClusterUpgradeStatus: 集群升级状态，可能值：running、updating、failed
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterUpgradeStatus: str
+        :param ClusterUpgradeStatusReason: 集群升级中状态或者失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterUpgradeStatusReason: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ComponentVersion = None
+        self.EdgeVersionCurrent = None
+        self.RegistryPrefix = None
+        self.ClusterUpgradeStatus = None
+        self.ClusterUpgradeStatusReason = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ComponentVersion = params.get("ComponentVersion")
+        self.EdgeVersionCurrent = params.get("EdgeVersionCurrent")
+        self.RegistryPrefix = params.get("RegistryPrefix")
+        self.ClusterUpgradeStatus = params.get("ClusterUpgradeStatus")
+        self.ClusterUpgradeStatusReason = params.get("ClusterUpgradeStatusReason")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEdgeLogSwitchesRequest(AbstractModel):
     """DescribeEdgeLogSwitches请求参数结构体
 
@@ -16015,6 +16085,59 @@ class UpdateEKSContainerInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.EksCiId = params.get("EksCiId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateEdgeClusterVersionRequest(AbstractModel):
+    """UpdateEdgeClusterVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群 Id
+        :type ClusterId: str
+        :param EdgeVersion: 需要升级到的版本
+        :type EdgeVersion: str
+        :param RegistryPrefix: 自定义边缘组件镜像仓库前缀
+        :type RegistryPrefix: str
+        :param SkipPreCheck: 是否跳过预检查阶段
+        :type SkipPreCheck: bool
+        """
+        self.ClusterId = None
+        self.EdgeVersion = None
+        self.RegistryPrefix = None
+        self.SkipPreCheck = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.EdgeVersion = params.get("EdgeVersion")
+        self.RegistryPrefix = params.get("RegistryPrefix")
+        self.SkipPreCheck = params.get("SkipPreCheck")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateEdgeClusterVersionResponse(AbstractModel):
+    """UpdateEdgeClusterVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

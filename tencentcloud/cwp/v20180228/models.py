@@ -5577,6 +5577,75 @@ class DescribeAssetEnvListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAssetHostTotalCountRequest(AbstractModel):
+    """DescribeAssetHostTotalCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uuid: 主机Uuid
+        :type Uuid: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        """
+        self.Uuid = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetHostTotalCountResponse(AbstractModel):
+    """DescribeAssetHostTotalCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Types: 各项资源数量
+system : 资源监控
+account: 账号
+port: 端口
+process: 进程
+app: 应用软件
+database:数据库
+webapp: Web应用
+webframe: Web框架
+webservice: Web服务
+weblocation: Web站点
+systempackage: 系统安装包
+jar: jar包
+initservice:启动服务
+env: 环境变量
+coremodule: 内核模块
+        :type Types: list of AssetKeyVal
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Types = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Types") is not None:
+            self.Types = []
+            for item in params.get("Types"):
+                obj = AssetKeyVal()
+                obj._deserialize(item)
+                self.Types.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAssetInfoRequest(AbstractModel):
     """DescribeAssetInfo请求参数结构体
 

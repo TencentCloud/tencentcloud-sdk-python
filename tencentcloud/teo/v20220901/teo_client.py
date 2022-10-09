@@ -55,6 +55,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAliasDomain(self, request):
+        """创建别称域名。
+
+        :param request: Request instance for CreateAliasDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateAliasDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateAliasDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAliasDomain", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAliasDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateApplicationProxy(self, request):
         """创建应用代理
 
@@ -577,6 +606,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAliasDomain(self, request):
+        """删除别称域名。
+
+        :param request: Request instance for DeleteAliasDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteAliasDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteAliasDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAliasDomain", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAliasDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteApplicationProxy(self, request):
         """删除应用代理
 
@@ -824,6 +882,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAddableEntityListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAliasDomains(self, request):
+        """查询别称域名信息列表。
+
+        :param request: Request instance for DescribeAliasDomains.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAliasDomainsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeAliasDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAliasDomains", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAliasDomainsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2781,6 +2868,64 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAliasDomain(self, request):
+        """修改别称域名。
+
+        :param request: Request instance for ModifyAliasDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAliasDomain", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAliasDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAliasDomainStatus(self, request):
+        """修改别称域名状态。
+
+        :param request: Request instance for ModifyAliasDomainStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAliasDomainStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAliasDomainStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyApplicationProxy(self, request):
         """修改应用代理
 
@@ -3405,6 +3550,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyZoneStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReclaimAliasDomain(self, request):
+        """当客户取回站定的同时会取回此站点下关联的别称域名，此时入参为ZoneId；当客户接入站点发现已被别称域名接入时通过验证之后可取回域名，此时入参为ZoneName。
+
+        :param request: Request instance for ReclaimAliasDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ReclaimAliasDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ReclaimAliasDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReclaimAliasDomain", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReclaimAliasDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

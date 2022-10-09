@@ -1426,6 +1426,8 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         :type Status: str
         :param Ret: retcode
         :type Ret: str
+        :param NetStatus: 网络状态
+        :type NetStatus: str
         """
         self.StartTime = None
         self.Type = None
@@ -1452,6 +1454,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         self.Env = None
         self.Status = None
         self.Ret = None
+        self.NetStatus = None
 
 
     def _deserialize(self, params):
@@ -1480,6 +1483,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         self.Env = params.get("Env")
         self.Status = params.get("Status")
         self.Ret = params.get("Ret")
+        self.NetStatus = params.get("NetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1739,6 +1743,8 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         :type CostType: str
         :param Env: 环境变量
         :type Env: str
+        :param NetStatus: 网络状态
+        :type NetStatus: str
         """
         self.ID = None
         self.StartTime = None
@@ -1762,6 +1768,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         self.From = None
         self.CostType = None
         self.Env = None
+        self.NetStatus = None
 
 
     def _deserialize(self, params):
@@ -1787,6 +1794,7 @@ class DescribeDataPerformancePageRequest(AbstractModel):
         self.From = params.get("From")
         self.CostType = params.get("CostType")
         self.Env = params.get("Env")
+        self.NetStatus = params.get("NetStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3081,21 +3089,21 @@ class DescribeLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Sort: 排序方式  desc  asc
+        :param Sort: 排序方式  desc  asc（必填）
         :type Sort: str
-        :param ActionType: searchlog  histogram
+        :param ActionType: searchlog  histogram（必填）
         :type ActionType: str
-        :param ID: 项目ID
+        :param ID: 项目ID（必填）
         :type ID: int
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间（必填）
         :type StartTime: str
-        :param Limit: 单次查询返回的原始日志条数，最大值为100
+        :param Limit: 单次查询返回的原始日志条数，最大值为100（必填）
         :type Limit: int
         :param Context: 上下文，加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容，总计最多可获取1万条原始日志。过期时间1小时
         :type Context: str
-        :param Query: 查询语句，参考控制台请求参数，语句长度最大为4096
+        :param Query: 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
         :type Query: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间（必填）
         :type EndTime: str
         """
         self.Sort = None

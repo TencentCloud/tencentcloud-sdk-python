@@ -75,11 +75,11 @@ class AddReplicationInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 复制组ID
+        :param GroupId: 复制组ID。
         :type GroupId: str
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param InstanceRole: 实例角色，rw可读写，r只读
+        :param InstanceRole: 给复制组添加的实例分配角色。<ul><li>rw：可读写。</li><li>r：只读。</li></ul>
         :type InstanceRole: str
         """
         self.GroupId = None
@@ -107,7 +107,7 @@ class AddReplicationInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步流程ID
+        :param TaskId: 异步流程ID。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -625,6 +625,51 @@ class ClearInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloseSSLRequest(AbstractModel):
+    """CloseSSL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseSSLResponse(AbstractModel):
+    """CloseSSL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CommandTake(AbstractModel):
     """命令耗时
 
@@ -955,11 +1000,11 @@ class CreateReplicationGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 指定复制组中的主实例ID。
         :type InstanceId: str
-        :param GroupName: 复制组名称
+        :param GroupName: 复制组名称。
         :type GroupName: str
-        :param Remark: 备注信息
+        :param Remark: 备注信息。
         :type Remark: str
         """
         self.InstanceId = None
@@ -987,7 +1032,7 @@ class CreateReplicationGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步流程ID
+        :param TaskId: 异步流程ID。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5877,6 +5922,51 @@ class ModifyParamTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OpenSSLRequest(AbstractModel):
+    """OpenSSL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenSSLResponse(AbstractModel):
+    """OpenSSL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class Outbound(AbstractModel):
     """安全组出站规则
 
@@ -7494,9 +7584,10 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param UpgradeProxyAndRedisServer: 是否升级proxy和redis内核版本，升级后可支持就近接入
+        :param UpgradeProxyAndRedisServer: 升级多可用区之后是否支持就近访问功能。
+<ul><li>true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。</li><li>false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。</li></ul>
         :type UpgradeProxyAndRedisServer: bool
         """
         self.InstanceId = None

@@ -544,8 +544,12 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
         :type CaptchaMsg: str
         :param CaptchaCode: 成功返回0  其它失败
         :type CaptchaCode: int
-        :param CheckTicketSum: 票据校验量
+        :param CheckTicketSum: 票据校验总量
         :type CheckTicketSum: int
+        :param TicketThroughputSum: 票据验证通过量
+        :type TicketThroughputSum: int
+        :param TicketInterceptSum: 票据验证拦截量
+        :type TicketInterceptSum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -556,6 +560,8 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
         self.CaptchaMsg = None
         self.CaptchaCode = None
         self.CheckTicketSum = None
+        self.TicketThroughputSum = None
+        self.TicketInterceptSum = None
         self.RequestId = None
 
 
@@ -567,6 +573,8 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.CaptchaCode = params.get("CaptchaCode")
         self.CheckTicketSum = params.get("CheckTicketSum")
+        self.TicketThroughputSum = params.get("TicketThroughputSum")
+        self.TicketInterceptSum = params.get("TicketInterceptSum")
         self.RequestId = params.get("RequestId")
 
 

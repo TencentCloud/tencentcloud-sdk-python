@@ -2520,6 +2520,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEdgeClusterUpgradeInfo(self, request):
+        """可以查询边缘集群升级信息，包含可以升级的组件，当前升级状态和升级错误信息
+
+        :param request: Request instance for DescribeEdgeClusterUpgradeInfo.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterUpgradeInfoRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeClusterUpgradeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeClusterUpgradeInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEdgeClusterUpgradeInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEdgeLogSwitches(self, request):
         """获取事件、审计和日志的状态接口
 
@@ -4855,6 +4884,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateEKSContainerInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateEdgeClusterVersion(self, request):
+        """升级边缘集群组件到指定版本，此版本为TKEEdge专用版本。
+
+        :param request: Request instance for UpdateEdgeClusterVersion.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpdateEdgeClusterVersionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpdateEdgeClusterVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateEdgeClusterVersion", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateEdgeClusterVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

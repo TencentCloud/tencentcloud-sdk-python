@@ -239,6 +239,9 @@ FAILEDOPERATION_MISSINGPARAMETER = 'FailedOperation.MissingParameter'
 # 商户修改失败。
 FAILEDOPERATION_MODIFYMERCHANTFAILED = 'FailedOperation.ModifyMerchantFailed'
 
+# 记录不存在。
+FAILEDOPERATION_MOUNTNOTFOUND = 'FailedOperation.MountNotFound'
+
 # 商户信息不合法。
 FAILEDOPERATION_NOAUTH = 'FailedOperation.NoAuth'
 

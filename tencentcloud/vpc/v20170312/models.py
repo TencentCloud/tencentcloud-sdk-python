@@ -7760,7 +7760,7 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
         :type CcnId: str
         :param OrderField: 排序字段。支持：`CcnId` `InstanceType` `InstanceId` `InstanceName` `InstanceRegion` `AttachedTime` `State`。
         :type OrderField: str
-        :param OrderDirection: 排序方法。顺序：`ASC`，倒序：`DESC`。
+        :param OrderDirection: 排序方法。升序：`ASC`，倒序：`DESC`。
         :type OrderDirection: str
         """
         self.Offset = None
@@ -7976,7 +7976,7 @@ class DescribeCcnsRequest(AbstractModel):
         :type Limit: int
         :param OrderField: 排序字段。支持：`CcnId` `CcnName` `CreateTime` `State` `QosLevel`
         :type OrderField: str
-        :param OrderDirection: 排序方法。顺序：`ASC`，倒序：`DESC`。
+        :param OrderDirection: 排序方法。升序：`ASC`，倒序：`DESC`。
         :type OrderDirection: str
         """
         self.CcnIds = None

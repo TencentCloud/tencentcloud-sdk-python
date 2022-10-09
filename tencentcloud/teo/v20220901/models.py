@@ -405,6 +405,60 @@ class AiRule(AbstractModel):
         
 
 
+class AliasDomain(AbstractModel):
+    """别称域名信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AliasId: 别称域名 ID。
+        :type AliasId: str
+        :param AliasName: 别称域名名称。
+        :type AliasName: str
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param TargetName: 目标域名名称。
+        :type TargetName: str
+        :param Status: 别称域名状态，取值有：
+<li> active：已生效； </li>
+<li> pending：未生效；</li>
+<li> not_filed：未备案；</li>
+<li> conflict：被找回。 </li>
+<li> stop：已停用；</li>
+<li> deleted：已删除。 </li>
+        :type Status: str
+        :param CreatedOn: 别称域名创建时间。
+        :type CreatedOn: str
+        :param ModifiedOn: 别称域名修改时间。
+        :type ModifiedOn: str
+        """
+        self.AliasId = None
+        self.AliasName = None
+        self.ZoneId = None
+        self.TargetName = None
+        self.Status = None
+        self.CreatedOn = None
+        self.ModifiedOn = None
+
+
+    def _deserialize(self, params):
+        self.AliasId = params.get("AliasId")
+        self.AliasName = params.get("AliasName")
+        self.ZoneId = params.get("ZoneId")
+        self.TargetName = params.get("TargetName")
+        self.Status = params.get("Status")
+        self.CreatedOn = params.get("CreatedOn")
+        self.ModifiedOn = params.get("ModifiedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplicationProxy(AbstractModel):
     """应用代理实例
 
@@ -1482,6 +1536,70 @@ class Compression(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAliasDomainRequest(AbstractModel):
+    """CreateAliasDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param AliasName: 别称域名名称。
+        :type AliasName: str
+        :param TargetName: 目标域名名称。
+        :type TargetName: str
+        :param CertType: 证书配置，取值有：
+<li> none：不配置；</li>
+<li> hosting：SSL托管证书；</li>
+<li> apply：申请免费证书。</li>
+        :type CertType: str
+        :param CertId: 选择托管证书时需填入相应证书 ID。
+        :type CertId: list of str
+        """
+        self.ZoneId = None
+        self.AliasName = None
+        self.TargetName = None
+        self.CertType = None
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.AliasName = params.get("AliasName")
+        self.TargetName = params.get("TargetName")
+        self.CertType = params.get("CertType")
+        self.CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAliasDomainResponse(AbstractModel):
+    """CreateAliasDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AliasId: 别称域名 ID。
+        :type AliasId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AliasId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AliasId = params.get("AliasId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateApplicationProxyRequest(AbstractModel):
@@ -3619,6 +3737,57 @@ class DefaultServerCertInfo(AbstractModel):
         
 
 
+class DeleteAliasDomainRequest(AbstractModel):
+    """DeleteAliasDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+<li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>alias-id<br>   按照【<strong>别称域名ID</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+        :type Filters: list of Filter
+        """
+        self.ZoneId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAliasDomainResponse(AbstractModel):
+    """DeleteAliasDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteApplicationProxyRequest(AbstractModel):
     """DeleteApplicationProxy请求参数结构体
 
@@ -4036,6 +4205,78 @@ class DescribeAddableEntityListResponse(AbstractModel):
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
         self.EntityList = params.get("EntityList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAliasDomainsRequest(AbstractModel):
+    """DescribeAliasDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。不填时返回该AppID下所有别称域名信息列表。
+        :type ZoneId: str
+        :param Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :type Limit: int
+        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+<li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-id<br>   按照【<strong>别称域名ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为alias-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
+        :type Filters: list of AdvancedFilter
+        """
+        self.ZoneId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAliasDomainsResponse(AbstractModel):
+    """DescribeAliasDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的别称域名个数。
+        :type TotalCount: int
+        :param AliasDomains: 别称域名详细信息列表。
+        :type AliasDomains: list of AliasDomain
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AliasDomains = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AliasDomains") is not None:
+            self.AliasDomains = []
+            for item in params.get("AliasDomains"):
+                obj = AliasDomain()
+                obj._deserialize(item)
+                self.AliasDomains.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -10710,6 +10951,123 @@ class ModifyAlarmDefaultThresholdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAliasDomainRequest(AbstractModel):
+    """ModifyAliasDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param AliasId: 别称域名 ID。
+        :type AliasId: str
+        :param TargetName: 目标域名名称。
+        :type TargetName: str
+        :param CertType: 证书配置，取值有：
+<li> none：不配置；</li>
+<li> hosting：SSL托管证书；</li>
+<li> apply：申请免费证书。</li>
+        :type CertType: str
+        :param CertId: 选择托管证书时填入相应证书 ID。
+        :type CertId: list of str
+        """
+        self.ZoneId = None
+        self.AliasId = None
+        self.TargetName = None
+        self.CertType = None
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.AliasId = params.get("AliasId")
+        self.TargetName = params.get("TargetName")
+        self.CertType = params.get("CertType")
+        self.CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAliasDomainResponse(AbstractModel):
+    """ModifyAliasDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAliasDomainStatusRequest(AbstractModel):
+    """ModifyAliasDomainStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param Paused: 别称域名状态，取值有：
+<li> false：开启别称域名；</li>
+<li> true：关闭别称域名。</li>
+        :type Paused: bool
+        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+<li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>alias-id<br>   按照【<strong>别称域名ID</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+        :type Filters: list of Filter
+        """
+        self.ZoneId = None
+        self.Paused = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Paused = params.get("Paused")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAliasDomainStatusResponse(AbstractModel):
+    """ModifyAliasDomainStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyApplicationProxyRequest(AbstractModel):
     """ModifyApplicationProxy请求参数结构体
 
@@ -13007,17 +13365,23 @@ class RateLimitTemplate(AbstractModel):
 <li>emergency：紧急；</li>
 <li>normal：适中；</li>
 <li>strict：严格；</li>
-<li>close：关闭 - 仅精准速率限制生效。</li>
+<li>close：关闭，仅精准速率限制生效。</li>
         :type Mode: str
+        :param Action: 模板处置方式，取值有：
+<li>alg：JavaScript挑战；</li>
+<li>monitor：观察。</li>不填写默认取alg。
+        :type Action: str
         :param RateLimitTemplateDetail: 模板值详情。仅出参返回。
         :type RateLimitTemplateDetail: :class:`tencentcloud.teo.v20220901.models.RateLimitTemplateDetail`
         """
         self.Mode = None
+        self.Action = None
         self.RateLimitTemplateDetail = None
 
 
     def _deserialize(self, params):
         self.Mode = params.get("Mode")
+        self.Action = params.get("Action")
         if params.get("RateLimitTemplateDetail") is not None:
             self.RateLimitTemplateDetail = RateLimitTemplateDetail()
             self.RateLimitTemplateDetail._deserialize(params.get("RateLimitTemplateDetail"))
@@ -13037,21 +13401,23 @@ class RateLimitTemplateDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: 模板名称，取值有：
+        :param Mode: 模板等级名称，取值有：
 <li>sup_loose：超级宽松；</li>
 <li>loose：宽松；</li>
 <li>emergency：紧急；</li>
 <li>normal：适中；</li>
 <li>strict：严格；</li>
-<li>close：关闭 - 仅精准速率限制生效。</li>
+<li>close：关闭，仅精准速率限制生效。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         :param ID: 唯一id。
         :type ID: int
-        :param Action: 处置动作。模板阀值触发后的处罚行为。
+        :param Action: 模板处置方式，取值有：
+<li>alg：JavaScript挑战；</li>
+<li>monitor：观察。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
-        :param PunishTime: 惩罚时间，0-2天，单位是秒。
+        :param PunishTime: 惩罚时间，取值范围0-2天，单位秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PunishTime: int
         :param Threshold: 统计阈值，单位是次，取值范围0-4294967294。
@@ -13168,6 +13534,51 @@ class RateLimitUserRule(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReclaimAliasDomainRequest(AbstractModel):
+    """ReclaimAliasDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param ZoneName: 站点名称。
+        :type ZoneName: str
+        """
+        self.ZoneId = None
+        self.ZoneName = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneName = params.get("ZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReclaimAliasDomainResponse(AbstractModel):
+    """ReclaimAliasDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ReclaimZoneRequest(AbstractModel):
