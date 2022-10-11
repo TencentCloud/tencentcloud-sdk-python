@@ -4911,6 +4911,56 @@ class CloudSubRefundItem(AbstractModel):
         
 
 
+class CompanyTitleResult(AbstractModel):
+    """公司抬头结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CompanyBankAccount: 公司银行账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyBankAccount: str
+        :param CompanyAddress: 公司地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyAddress: str
+        :param CompanyTaxpayerNum: 公司税号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyTaxpayerNum: str
+        :param CompanyName: 公司名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyName: str
+        :param CompanyBankName: 公司银行名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyBankName: str
+        :param CompanyPhone: 公司电话
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyPhone: str
+        """
+        self.CompanyBankAccount = None
+        self.CompanyAddress = None
+        self.CompanyTaxpayerNum = None
+        self.CompanyName = None
+        self.CompanyBankName = None
+        self.CompanyPhone = None
+
+
+    def _deserialize(self, params):
+        self.CompanyBankAccount = params.get("CompanyBankAccount")
+        self.CompanyAddress = params.get("CompanyAddress")
+        self.CompanyTaxpayerNum = params.get("CompanyTaxpayerNum")
+        self.CompanyName = params.get("CompanyName")
+        self.CompanyBankName = params.get("CompanyBankName")
+        self.CompanyPhone = params.get("CompanyPhone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfirmOrderRequest(AbstractModel):
     """ConfirmOrder请求参数结构体
 
@@ -16860,6 +16910,77 @@ class QueryCommonTransferRechargeResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TranItemArray.append(obj)
         self.ReservedMsg = params.get("ReservedMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryCompanyTitleRequest(AbstractModel):
+    """QueryCompanyTitle请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CompanyTitleKeyword: 公司抬头关键字
+        :type CompanyTitleKeyword: str
+        :param InvoicePlatformId: 开票平台ID。0：高灯，1：票易通
+        :type InvoicePlatformId: int
+        :param SellerTaxpayerNum: 销方纳税人识别号
+        :type SellerTaxpayerNum: str
+        :param Profile: 接入环境。沙箱环境填sandbox。
+        :type Profile: str
+        """
+        self.CompanyTitleKeyword = None
+        self.InvoicePlatformId = None
+        self.SellerTaxpayerNum = None
+        self.Profile = None
+
+
+    def _deserialize(self, params):
+        self.CompanyTitleKeyword = params.get("CompanyTitleKeyword")
+        self.InvoicePlatformId = params.get("InvoicePlatformId")
+        self.SellerTaxpayerNum = params.get("SellerTaxpayerNum")
+        self.Profile = params.get("Profile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryCompanyTitleResponse(AbstractModel):
+    """QueryCompanyTitle返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 公司抬头结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of CompanyTitleResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = CompanyTitleResult()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 

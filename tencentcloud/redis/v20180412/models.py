@@ -226,7 +226,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+        :param Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
         :param SecurityGroupId: 要绑定的安全组ID，类似sg-efil73jd。
         :type SecurityGroupId: str
@@ -1493,11 +1493,11 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Groups: 安全组规则
+        :param Groups: 安全组规则。
         :type Groups: list of SecurityGroup
-        :param VIP: 安全组生效内网地址
+        :param VIP: 安全组生效内网地址。
         :type VIP: str
-        :param VPort: 安全组生效内网端口
+        :param VPort: 安全组生效内网端口。
         :type VPort: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3775,11 +3775,11 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+        :param Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
-        :param SecurityGroupId: 安全组Id。
+        :param SecurityGroupId: 安全组 ID。
         :type SecurityGroupId: str
-        :param InstanceIds: 实例ID列表，一个或者多个实例Id组成的数组。
+        :param InstanceIds: 实例ID列表，一个或者多个实例 ID 组成的数组。
         :type InstanceIds: list of str
         """
         self.Product = None
@@ -5447,11 +5447,11 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+        :param Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
-        :param SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
+        :param SecurityGroupIds: 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
         :type SecurityGroupIds: list of str
-        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
         """
         self.Product = None

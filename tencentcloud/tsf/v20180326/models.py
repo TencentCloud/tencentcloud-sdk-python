@@ -250,6 +250,34 @@ class AdvanceSettings(AbstractModel):
         
 
 
+class AgentProfile(AbstractModel):
+    """部署javaagent的类型、版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AgentType: Agent类型
+        :type AgentType: str
+        :param AgentVersion: Agent版本号
+        :type AgentVersion: str
+        """
+        self.AgentType = None
+        self.AgentVersion = None
+
+
+    def _deserialize(self, params):
+        self.AgentType = params.get("AgentType")
+        self.AgentVersion = params.get("AgentVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApiDefinitionDescr(AbstractModel):
     """API 对象类型描述
 
@@ -5296,6 +5324,10 @@ class DeployContainerGroupRequest(AbstractModel):
         :type VolumeMountInfoList: list of VolumeMountInfo
         :param VolumeClean: 是否清除数据卷信息，默认false
         :type VolumeClean: bool
+        :param AgentProfileList: javaagent信息: SERVICE_AGENT/OT_AGENT
+        :type AgentProfileList: list of AgentProfile
+        :param WarmupSetting: 预热配置信息
+        :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
         """
         self.GroupId = None
         self.TagName = None
@@ -5333,6 +5365,8 @@ class DeployContainerGroupRequest(AbstractModel):
         self.VolumeInfoList = None
         self.VolumeMountInfoList = None
         self.VolumeClean = None
+        self.AgentProfileList = None
+        self.WarmupSetting = None
 
 
     def _deserialize(self, params):
@@ -5397,6 +5431,15 @@ class DeployContainerGroupRequest(AbstractModel):
                 obj._deserialize(item)
                 self.VolumeMountInfoList.append(obj)
         self.VolumeClean = params.get("VolumeClean")
+        if params.get("AgentProfileList") is not None:
+            self.AgentProfileList = []
+            for item in params.get("AgentProfileList"):
+                obj = AgentProfile()
+                obj._deserialize(item)
+                self.AgentProfileList.append(obj)
+        if params.get("WarmupSetting") is not None:
+            self.WarmupSetting = WarmupSetting()
+            self.WarmupSetting._deserialize(params.get("WarmupSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5416,6 +5459,7 @@ class DeployContainerGroupResponse(AbstractModel):
         :param Result: 部署容器应用是否成功。
 true：成功。
 false：失败。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5470,6 +5514,10 @@ class DeployGroupRequest(AbstractModel):
         :type JdkName: str
         :param JdkVersion: JDK版本: 8或11 (openJDK只支持8)
         :type JdkVersion: str
+        :param AgentProfileList: 部署agent的类型、版本
+        :type AgentProfileList: list of AgentProfile
+        :param WarmupSetting: 预热参数配置
+        :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
         """
         self.GroupId = None
         self.PkgId = None
@@ -5488,6 +5536,8 @@ class DeployGroupRequest(AbstractModel):
         self.IncrementalDeployment = None
         self.JdkName = None
         self.JdkVersion = None
+        self.AgentProfileList = None
+        self.WarmupSetting = None
 
 
     def _deserialize(self, params):
@@ -5510,6 +5560,15 @@ class DeployGroupRequest(AbstractModel):
         self.IncrementalDeployment = params.get("IncrementalDeployment")
         self.JdkName = params.get("JdkName")
         self.JdkVersion = params.get("JdkVersion")
+        if params.get("AgentProfileList") is not None:
+            self.AgentProfileList = []
+            for item in params.get("AgentProfileList"):
+                obj = AgentProfile()
+                obj._deserialize(item)
+                self.AgentProfileList.append(obj)
+        if params.get("WarmupSetting") is not None:
+            self.WarmupSetting = WarmupSetting()
+            self.WarmupSetting._deserialize(params.get("WarmupSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20518,6 +20577,12 @@ class VmGroup(AbstractModel):
         :param Alias: 部署组备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
+        :param AgentProfileList: javaagent信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentProfileList: list of AgentProfile
+        :param WarmupSetting: 预热属性配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
         """
         self.GroupId = None
         self.GroupName = None
@@ -20554,6 +20619,8 @@ class VmGroup(AbstractModel):
         self.StartScript = None
         self.StopScript = None
         self.Alias = None
+        self.AgentProfileList = None
+        self.WarmupSetting = None
 
 
     def _deserialize(self, params):
@@ -20594,6 +20661,15 @@ class VmGroup(AbstractModel):
         self.StartScript = params.get("StartScript")
         self.StopScript = params.get("StopScript")
         self.Alias = params.get("Alias")
+        if params.get("AgentProfileList") is not None:
+            self.AgentProfileList = []
+            for item in params.get("AgentProfileList"):
+                obj = AgentProfile()
+                obj._deserialize(item)
+                self.AgentProfileList.append(obj)
+        if params.get("WarmupSetting") is not None:
+            self.WarmupSetting = WarmupSetting()
+            self.WarmupSetting._deserialize(params.get("WarmupSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20837,6 +20913,42 @@ class VolumeMountInfo(AbstractModel):
         self.VolumeMountPath = params.get("VolumeMountPath")
         self.VolumeMountSubPath = params.get("VolumeMountSubPath")
         self.ReadOrWrite = params.get("ReadOrWrite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WarmupSetting(AbstractModel):
+    """预热配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enabled: 是否开启预热
+        :type Enabled: bool
+        :param WarmupTime: 预热时间
+        :type WarmupTime: int
+        :param Curvature: 预热曲率，取值 1~5
+        :type Curvature: int
+        :param EnabledProtection: 是否开启预热保护，在开启保护的情况下，超过 50% 的节点处于预热中，则会中止预热
+        :type EnabledProtection: bool
+        """
+        self.Enabled = None
+        self.WarmupTime = None
+        self.Curvature = None
+        self.EnabledProtection = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        self.WarmupTime = params.get("WarmupTime")
+        self.Curvature = params.get("Curvature")
+        self.EnabledProtection = params.get("EnabledProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

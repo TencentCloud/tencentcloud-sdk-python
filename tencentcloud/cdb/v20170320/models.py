@@ -679,6 +679,14 @@ class BackupInfo(AbstractModel):
         :type ManualBackupName: str
         :param SaveMode: 备份保留类型，save_mode_regular - 常规保存备份，save_mode_period - 定期保存备份
         :type SaveMode: str
+        :param Region: 本地备份所在地域
+        :type Region: str
+        :param RemoteInfo: 异地备份详细信息
+        :type RemoteInfo: list of RemoteBackupInfo
+        :param CosStorageType: 存储方式，0-常规存储，1-归档存储，默认为0
+        :type CosStorageType: int
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
         """
         self.Name = None
         self.Size = None
@@ -695,6 +703,10 @@ class BackupInfo(AbstractModel):
         self.Way = None
         self.ManualBackupName = None
         self.SaveMode = None
+        self.Region = None
+        self.RemoteInfo = None
+        self.CosStorageType = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -713,6 +725,15 @@ class BackupInfo(AbstractModel):
         self.Way = params.get("Way")
         self.ManualBackupName = params.get("ManualBackupName")
         self.SaveMode = params.get("SaveMode")
+        self.Region = params.get("Region")
+        if params.get("RemoteInfo") is not None:
+            self.RemoteInfo = []
+            for item in params.get("RemoteInfo"):
+                obj = RemoteBackupInfo()
+                obj._deserialize(item)
+                self.RemoteInfo.append(obj)
+        self.CosStorageType = params.get("CosStorageType")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -962,6 +983,16 @@ class BinlogInfo(AbstractModel):
         :type BinlogStartTime: str
         :param BinlogFinishTime: binlog 文件截止时间
         :type BinlogFinishTime: str
+        :param Region: 本地binlog文件所在地域
+        :type Region: str
+        :param Status: 备份任务状态。可能的值有 "SUCCESS": 备份成功， "FAILED": 备份失败， "RUNNING": 备份进行中。
+        :type Status: str
+        :param RemoteInfo: binlog异地备份详细信息
+        :type RemoteInfo: list of RemoteBackupInfo
+        :param CosStorageType: 存储方式，0-常规存储，1-归档存储，默认为0
+        :type CosStorageType: int
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
         """
         self.Name = None
         self.Size = None
@@ -971,6 +1002,11 @@ class BinlogInfo(AbstractModel):
         self.Type = None
         self.BinlogStartTime = None
         self.BinlogFinishTime = None
+        self.Region = None
+        self.Status = None
+        self.RemoteInfo = None
+        self.CosStorageType = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -982,6 +1018,16 @@ class BinlogInfo(AbstractModel):
         self.Type = params.get("Type")
         self.BinlogStartTime = params.get("BinlogStartTime")
         self.BinlogFinishTime = params.get("BinlogFinishTime")
+        self.Region = params.get("Region")
+        self.Status = params.get("Status")
+        if params.get("RemoteInfo") is not None:
+            self.RemoteInfo = []
+            for item in params.get("RemoteInfo"):
+                obj = RemoteBackupInfo()
+                obj._deserialize(item)
+                self.RemoteInfo.append(obj)
+        self.CosStorageType = params.get("CosStorageType")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3774,6 +3820,14 @@ class DescribeBackupConfigResponse(AbstractModel):
         :type BackupPeriodSaveCount: int
         :param StartBackupPeriodSaveDate: 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
         :type StartBackupPeriodSaveDate: str
+        :param EnableBackupArchive: 是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+        :type EnableBackupArchive: str
+        :param BackupArchiveDays: 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
+        :type BackupArchiveDays: int
+        :param EnableBinlogArchive: 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+        :type EnableBinlogArchive: str
+        :param BinlogArchiveDays: 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
+        :type BinlogArchiveDays: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3788,6 +3842,10 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupPeriodSaveInterval = None
         self.BackupPeriodSaveCount = None
         self.StartBackupPeriodSaveDate = None
+        self.EnableBackupArchive = None
+        self.BackupArchiveDays = None
+        self.EnableBinlogArchive = None
+        self.BinlogArchiveDays = None
         self.RequestId = None
 
 
@@ -3805,6 +3863,10 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupPeriodSaveInterval = params.get("BackupPeriodSaveInterval")
         self.BackupPeriodSaveCount = params.get("BackupPeriodSaveCount")
         self.StartBackupPeriodSaveDate = params.get("StartBackupPeriodSaveDate")
+        self.EnableBackupArchive = params.get("EnableBackupArchive")
+        self.BackupArchiveDays = params.get("BackupArchiveDays")
+        self.EnableBinlogArchive = params.get("EnableBinlogArchive")
+        self.BinlogArchiveDays = params.get("BinlogArchiveDays")
         self.RequestId = params.get("RequestId")
 
 
@@ -3965,6 +4027,12 @@ class DescribeBackupOverviewResponse(AbstractModel):
         :type BillingVolume: int
         :param FreeVolume: 用户在当前地域获得的赠送备份容量。
         :type FreeVolume: int
+        :param RemoteBackupVolume: 用户在当前地域的异地备份总容量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteBackupVolume: int
+        :param BackupArchiveVolume: 归档备份容量，包含数据备份以及日志备份。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupArchiveVolume: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3972,6 +4040,8 @@ class DescribeBackupOverviewResponse(AbstractModel):
         self.BackupVolume = None
         self.BillingVolume = None
         self.FreeVolume = None
+        self.RemoteBackupVolume = None
+        self.BackupArchiveVolume = None
         self.RequestId = None
 
 
@@ -3980,6 +4050,8 @@ class DescribeBackupOverviewResponse(AbstractModel):
         self.BackupVolume = params.get("BackupVolume")
         self.BillingVolume = params.get("BillingVolume")
         self.FreeVolume = params.get("FreeVolume")
+        self.RemoteBackupVolume = params.get("RemoteBackupVolume")
+        self.BackupArchiveVolume = params.get("BackupArchiveVolume")
         self.RequestId = params.get("RequestId")
 
 
@@ -4228,6 +4300,10 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         :type RemoteBinlogVolume: int
         :param RemoteBinlogCount: 异地日志备份个数。
         :type RemoteBinlogCount: int
+        :param BinlogArchiveVolume: 归档日志备份容量（单位为字节）。
+        :type BinlogArchiveVolume: int
+        :param BinlogArchiveCount: 归档日志备份个数。
+        :type BinlogArchiveCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4235,6 +4311,8 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         self.BinlogBackupCount = None
         self.RemoteBinlogVolume = None
         self.RemoteBinlogCount = None
+        self.BinlogArchiveVolume = None
+        self.BinlogArchiveCount = None
         self.RequestId = None
 
 
@@ -4243,6 +4321,8 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         self.BinlogBackupCount = params.get("BinlogBackupCount")
         self.RemoteBinlogVolume = params.get("RemoteBinlogVolume")
         self.RemoteBinlogCount = params.get("RemoteBinlogCount")
+        self.BinlogArchiveVolume = params.get("BinlogArchiveVolume")
+        self.BinlogArchiveCount = params.get("BinlogArchiveCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5290,10 +5370,14 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         :type ManualBackupVolume: int
         :param ManualBackupCount: 当前地域的手动备份总个数。
         :type ManualBackupCount: int
-        :param RemoteBackupVolume: 当前地域异地备份总容量。
+        :param RemoteBackupVolume: 异地备份总容量。
         :type RemoteBackupVolume: int
-        :param RemoteBackupCount: 当前地域异地备份总个数。
+        :param RemoteBackupCount: 异地备份总个数。
         :type RemoteBackupCount: int
+        :param DataBackupArchiveVolume: 当前地域归档备份总容量。
+        :type DataBackupArchiveVolume: int
+        :param DataBackupArchiveCount: 当前地域归档备份总个数。
+        :type DataBackupArchiveCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5305,6 +5389,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.ManualBackupCount = None
         self.RemoteBackupVolume = None
         self.RemoteBackupCount = None
+        self.DataBackupArchiveVolume = None
+        self.DataBackupArchiveCount = None
         self.RequestId = None
 
 
@@ -5317,6 +5403,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.ManualBackupCount = params.get("ManualBackupCount")
         self.RemoteBackupVolume = params.get("RemoteBackupVolume")
         self.RemoteBackupCount = params.get("RemoteBackupCount")
+        self.DataBackupArchiveVolume = params.get("DataBackupArchiveVolume")
+        self.DataBackupArchiveCount = params.get("DataBackupArchiveCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -8537,6 +8625,14 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BackupPeriodSaveCount: int
         :param StartBackupPeriodSaveDate: 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
         :type StartBackupPeriodSaveDate: str
+        :param EnableBackupArchive: 是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+        :type EnableBackupArchive: str
+        :param BackupArchiveDays: 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
+        :type BackupArchiveDays: int
+        :param BinlogArchiveDays: 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
+        :type BinlogArchiveDays: int
+        :param EnableBinlogArchive: 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+        :type EnableBinlogArchive: str
         """
         self.InstanceId = None
         self.ExpireDays = None
@@ -8550,6 +8646,10 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupPeriodSaveInterval = None
         self.BackupPeriodSaveCount = None
         self.StartBackupPeriodSaveDate = None
+        self.EnableBackupArchive = None
+        self.BackupArchiveDays = None
+        self.BinlogArchiveDays = None
+        self.EnableBinlogArchive = None
 
 
     def _deserialize(self, params):
@@ -8567,6 +8667,10 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupPeriodSaveInterval = params.get("BackupPeriodSaveInterval")
         self.BackupPeriodSaveCount = params.get("BackupPeriodSaveCount")
         self.StartBackupPeriodSaveDate = params.get("StartBackupPeriodSaveDate")
+        self.EnableBackupArchive = params.get("EnableBackupArchive")
+        self.BackupArchiveDays = params.get("BackupArchiveDays")
+        self.BinlogArchiveDays = params.get("BinlogArchiveDays")
+        self.EnableBinlogArchive = params.get("EnableBinlogArchive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10526,6 +10630,50 @@ class ReloadBalanceProxyNodeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class RemoteBackupInfo(AbstractModel):
+    """异地备份信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubBackupId: 异地备份子任务的ID
+        :type SubBackupId: list of int
+        :param Region: 异地备份所在地域
+        :type Region: str
+        :param Status: 备份任务状态。可能的值有 "SUCCESS": 备份成功， "FAILED": 备份失败， "RUNNING": 备份进行中。
+        :type Status: str
+        :param StartTime: 异地备份任务的开始时间
+        :type StartTime: str
+        :param FinishTime: 异地备份任务的结束时间
+        :type FinishTime: str
+        :param Url: 下载地址
+        :type Url: str
+        """
+        self.SubBackupId = None
+        self.Region = None
+        self.Status = None
+        self.StartTime = None
+        self.FinishTime = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.SubBackupId = params.get("SubBackupId")
+        self.Region = params.get("Region")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.FinishTime = params.get("FinishTime")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RenewDBInstanceRequest(AbstractModel):

@@ -383,6 +383,84 @@ class ClusterStatus(AbstractModel):
         
 
 
+class CreateMeshRequest(AbstractModel):
+    """CreateMesh请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DisplayName: Mesh名称
+        :type DisplayName: str
+        :param MeshVersion: Mesh版本
+        :type MeshVersion: str
+        :param Type: Mesh类型，取值范围：
+- HOSTED：托管网格
+        :type Type: str
+        :param Config: Mesh配置
+        :type Config: :class:`tencentcloud.tcm.v20210413.models.MeshConfig`
+        :param ClusterList: 关联集群
+        :type ClusterList: list of Cluster
+        :param TagList: 标签列表
+        :type TagList: list of Tag
+        """
+        self.DisplayName = None
+        self.MeshVersion = None
+        self.Type = None
+        self.Config = None
+        self.ClusterList = None
+        self.TagList = None
+
+
+    def _deserialize(self, params):
+        self.DisplayName = params.get("DisplayName")
+        self.MeshVersion = params.get("MeshVersion")
+        self.Type = params.get("Type")
+        if params.get("Config") is not None:
+            self.Config = MeshConfig()
+            self.Config._deserialize(params.get("Config"))
+        if params.get("ClusterList") is not None:
+            self.ClusterList = []
+            for item in params.get("ClusterList"):
+                obj = Cluster()
+                obj._deserialize(item)
+                self.ClusterList.append(obj)
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMeshResponse(AbstractModel):
+    """CreateMesh返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshId: 创建的Mesh的Id
+        :type MeshId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MeshId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MeshId = params.get("MeshId")
+        self.RequestId = params.get("RequestId")
+
+
 class CrossRegionConfig(AbstractModel):
     """负载均衡跨域设置
 
@@ -431,6 +509,63 @@ class CustomPromConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteMeshRequest(AbstractModel):
+    """DeleteMesh请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshId: 需要删除的MeshId
+        :type MeshId: str
+        :param NeedDeleteCLS: CLS组件是否被删除
+        :type NeedDeleteCLS: bool
+        :param NeedDeleteTMP: TMP组件是否被删除
+        :type NeedDeleteTMP: bool
+        :param NeedDeleteAPM: APM组件是否被删除
+        :type NeedDeleteAPM: bool
+        :param NeedDeleteGrafana: Grafana组件是否被删除
+        :type NeedDeleteGrafana: bool
+        """
+        self.MeshId = None
+        self.NeedDeleteCLS = None
+        self.NeedDeleteTMP = None
+        self.NeedDeleteAPM = None
+        self.NeedDeleteGrafana = None
+
+
+    def _deserialize(self, params):
+        self.MeshId = params.get("MeshId")
+        self.NeedDeleteCLS = params.get("NeedDeleteCLS")
+        self.NeedDeleteTMP = params.get("NeedDeleteTMP")
+        self.NeedDeleteAPM = params.get("NeedDeleteAPM")
+        self.NeedDeleteGrafana = params.get("NeedDeleteGrafana")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMeshResponse(AbstractModel):
+    """DeleteMesh返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class DeployConfig(AbstractModel):
@@ -1346,6 +1481,66 @@ class MetricSpec(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyMeshRequest(AbstractModel):
+    """ModifyMesh请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshId: 需要修改的网格Id
+        :type MeshId: str
+        :param DisplayName: 修改的网格名称
+        :type DisplayName: str
+        :param Config: 修改的网格配置
+        :type Config: :class:`tencentcloud.tcm.v20210413.models.MeshConfig`
+        :param ClusterList: 修改的集群配置
+        :type ClusterList: list of Cluster
+        """
+        self.MeshId = None
+        self.DisplayName = None
+        self.Config = None
+        self.ClusterList = None
+
+
+    def _deserialize(self, params):
+        self.MeshId = params.get("MeshId")
+        self.DisplayName = params.get("DisplayName")
+        if params.get("Config") is not None:
+            self.Config = MeshConfig()
+            self.Config._deserialize(params.get("Config"))
+        if params.get("ClusterList") is not None:
+            self.ClusterList = []
+            for item in params.get("ClusterList"):
+                obj = Cluster()
+                obj._deserialize(item)
+                self.ClusterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMeshResponse(AbstractModel):
+    """ModifyMesh返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class PodsMetricSource(AbstractModel):

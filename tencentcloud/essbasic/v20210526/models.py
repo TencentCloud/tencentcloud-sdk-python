@@ -415,7 +415,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type Deadline: int
         :param CallbackUrl: 签署流程回调地址，长度不超过255个字符
         :type CallbackUrl: str
-        :param Unordered: 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+        :param Unordered: 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署。有序签署时以传入FlowApprovers数组的顺序作为签署顺序
         :type Unordered: bool
         :param FlowType: 签署流程的类型，长度不超过255个字符
         :type FlowType: str

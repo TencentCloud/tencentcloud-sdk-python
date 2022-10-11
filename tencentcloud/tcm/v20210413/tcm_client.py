@@ -26,6 +26,64 @@ class TcmClient(AbstractClient):
     _service = 'tcm'
 
 
+    def CreateMesh(self, request):
+        """创建网格
+
+        :param request: Request instance for CreateMesh.
+        :type request: :class:`tencentcloud.tcm.v20210413.models.CreateMeshRequest`
+        :rtype: :class:`tencentcloud.tcm.v20210413.models.CreateMeshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMesh", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMeshResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMesh(self, request):
+        """删除网格
+
+        :param request: Request instance for DeleteMesh.
+        :type request: :class:`tencentcloud.tcm.v20210413.models.DeleteMeshRequest`
+        :rtype: :class:`tencentcloud.tcm.v20210413.models.DeleteMeshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMesh", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMeshResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMesh(self, request):
         """查询网格详情
 
@@ -70,6 +128,35 @@ class TcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMeshListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMesh(self, request):
+        """修改网格
+
+        :param request: Request instance for ModifyMesh.
+        :type request: :class:`tencentcloud.tcm.v20210413.models.ModifyMeshRequest`
+        :rtype: :class:`tencentcloud.tcm.v20210413.models.ModifyMeshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMesh", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMeshResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

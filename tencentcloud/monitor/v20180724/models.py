@@ -7893,6 +7893,8 @@ class GetMonitorDataResponse(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间
         :type EndTime: str
+        :param Msg: 返回信息
+        :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7901,6 +7903,7 @@ class GetMonitorDataResponse(AbstractModel):
         self.DataPoints = None
         self.StartTime = None
         self.EndTime = None
+        self.Msg = None
         self.RequestId = None
 
 
@@ -7915,6 +7918,7 @@ class GetMonitorDataResponse(AbstractModel):
                 self.DataPoints.append(obj)
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Msg = params.get("Msg")
         self.RequestId = params.get("RequestId")
 
 
