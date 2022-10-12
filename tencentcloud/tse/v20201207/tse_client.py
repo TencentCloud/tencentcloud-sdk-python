@@ -285,3 +285,32 @@ class TseClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateEngineInternetAccess(self, request):
+        """修改引擎公网访问配置
+
+        :param request: Request instance for UpdateEngineInternetAccess.
+        :type request: :class:`tencentcloud.tse.v20201207.models.UpdateEngineInternetAccessRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.UpdateEngineInternetAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateEngineInternetAccess", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateEngineInternetAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

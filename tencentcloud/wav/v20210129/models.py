@@ -412,6 +412,9 @@ class ClueInfoDetail(AbstractModel):
         :type Remark: str
         :param TagList: 标签
         :type TagList: list of str
+        :param UserName: 客户姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
         """
         self.ClueId = None
         self.DealerId = None
@@ -427,6 +430,7 @@ class ClueInfoDetail(AbstractModel):
         self.SalesPhone = None
         self.Remark = None
         self.TagList = None
+        self.UserName = None
 
 
     def _deserialize(self, params):
@@ -444,6 +448,7 @@ class ClueInfoDetail(AbstractModel):
         self.SalesPhone = params.get("SalesPhone")
         self.Remark = params.get("Remark")
         self.TagList = params.get("TagList")
+        self.UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

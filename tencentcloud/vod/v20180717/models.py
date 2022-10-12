@@ -24617,6 +24617,11 @@ class VideoTemplateInfo(AbstractModel):
 <li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>
 默认值：OFF。
         :type PreserveHDRSwitch: str
+        :param CodecTag: 编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：
+<li>hvc1 表示 hvc1 标签；</li>
+<li>hev1 表示 hev1 标签。 </li>
+默认值：hvc1。
+        :type CodecTag: str
         """
         self.Codec = None
         self.Fps = None
@@ -24628,6 +24633,7 @@ class VideoTemplateInfo(AbstractModel):
         self.Vcrf = None
         self.Gop = None
         self.PreserveHDRSwitch = None
+        self.CodecTag = None
 
 
     def _deserialize(self, params):
@@ -24641,6 +24647,7 @@ class VideoTemplateInfo(AbstractModel):
         self.Vcrf = params.get("Vcrf")
         self.Gop = params.get("Gop")
         self.PreserveHDRSwitch = params.get("PreserveHDRSwitch")
+        self.CodecTag = params.get("CodecTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -24704,6 +24711,11 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>ON: 如果原始文件是 HDR，则转码输出保持 HDR；否则转码输出为 SDR （Standard Dynamic Range）。</li>
 <li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>
         :type PreserveHDRSwitch: str
+        :param CodecTag: 编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：
+<li>hvc1 表示 hvc1 标签；</li>
+<li>hev1 表示 hev1 标签。 </li>
+默认值：hvc1。
+        :type CodecTag: str
         """
         self.Codec = None
         self.Fps = None
@@ -24715,6 +24727,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.Vcrf = None
         self.Gop = None
         self.PreserveHDRSwitch = None
+        self.CodecTag = None
 
 
     def _deserialize(self, params):
@@ -24728,6 +24741,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self.Vcrf = params.get("Vcrf")
         self.Gop = params.get("Gop")
         self.PreserveHDRSwitch = params.get("PreserveHDRSwitch")
+        self.CodecTag = params.get("CodecTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

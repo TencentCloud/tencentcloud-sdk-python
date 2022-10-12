@@ -435,6 +435,77 @@ class CommonId(AbstractModel):
         
 
 
+class CreateCustomFunctionRequest(AbstractModel):
+    """CreateCustomFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 类型：HIVE、SPARK
+        :type Type: str
+        :param Kind: 分类：窗口函数、聚合函数、日期函数......
+        :type Kind: str
+        :param Name: 函数名称
+        :type Name: str
+        :param ClusterIdentifier: 集群实例引擎 ID
+        :type ClusterIdentifier: str
+        :param DbName: 数据库名称
+        :type DbName: str
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.Type = None
+        self.Kind = None
+        self.Name = None
+        self.ClusterIdentifier = None
+        self.DbName = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Kind = params.get("Kind")
+        self.Name = params.get("Name")
+        self.ClusterIdentifier = params.get("ClusterIdentifier")
+        self.DbName = params.get("DbName")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomFunctionResponse(AbstractModel):
+    """CreateCustomFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FunctionId: 函数唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FunctionId: str
+        :param ErrorMessage: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FunctionId = None
+        self.ErrorMessage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FunctionId = params.get("FunctionId")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDataSourceRequest(AbstractModel):
     """CreateDataSource请求参数结构体
 

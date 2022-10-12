@@ -2849,9 +2849,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 地域数量
+        :param TotalCount: 地域数量。
         :type TotalCount: int
-        :param RegionSet: 地域列表信息
+        :param RegionSet: 地域列表信息。
         :type RegionSet: list of RegionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
