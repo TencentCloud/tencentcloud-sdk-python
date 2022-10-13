@@ -16260,12 +16260,15 @@ class MediaVideoStreamItem(AbstractModel):
         :type Codec: str
         :param Fps: 帧率，单位：hz。
         :type Fps: int
+        :param CodecTag: 编码标签，仅当 Codec 为 hevc 时有效。
+        :type CodecTag: str
         """
         self.Bitrate = None
         self.Height = None
         self.Width = None
         self.Codec = None
         self.Fps = None
+        self.CodecTag = None
 
 
     def _deserialize(self, params):
@@ -16274,6 +16277,7 @@ class MediaVideoStreamItem(AbstractModel):
         self.Width = params.get("Width")
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
+        self.CodecTag = params.get("CodecTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

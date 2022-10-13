@@ -56,7 +56,7 @@ class TrpClient(AbstractClient):
 
 
     def CreateCodePack(self, request):
-        """生成码包
+        """生成普通码包
 
         :param request: Request instance for CreateCodePack.
         :type request: :class:`tencentcloud.trp.v20210515.models.CreateCodePackRequest`

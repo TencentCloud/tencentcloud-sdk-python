@@ -5870,6 +5870,12 @@ class HTTPListener(AbstractModel):
 3表示源站调整中；
 4表示配置变更中。
         :type ListenerStatus: int
+        :param ProxyId: 监听器的通道ID，如果监听器属于通道组，则为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyId: str
+        :param GroupId: 监听器的通道组ID，如果监听器属于通道，则为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -5877,6 +5883,8 @@ class HTTPListener(AbstractModel):
         self.CreateTime = None
         self.Protocol = None
         self.ListenerStatus = None
+        self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -5886,6 +5894,8 @@ class HTTPListener(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Protocol = params.get("Protocol")
         self.ListenerStatus = params.get("ListenerStatus")
+        self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5946,6 +5956,12 @@ class HTTPSListener(AbstractModel):
 注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Http3Supported: int
+        :param ProxyId: 监听器的通道ID，如果监听器属于通道组，则为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyId: str
+        :param GroupId: 监听器的通道组ID，如果监听器属于通道，则为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -5961,6 +5977,8 @@ class HTTPSListener(AbstractModel):
         self.ClientCertificateAlias = None
         self.PolyClientCertificateAliasInfo = None
         self.Http3Supported = None
+        self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -5983,6 +6001,8 @@ class HTTPSListener(AbstractModel):
                 obj._deserialize(item)
                 self.PolyClientCertificateAliasInfo.append(obj)
         self.Http3Supported = params.get("Http3Supported")
+        self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8788,6 +8808,12 @@ class TCPListener(AbstractModel):
         :param SessionPersist: 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionPersist: int
+        :param ProxyId: 监听器的通道ID，如果监听器属于通道组，则为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyId: str
+        :param GroupId: 监听器的通道组ID，如果监听器属于通道，则为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -8808,6 +8834,8 @@ class TCPListener(AbstractModel):
         self.UnhealthyThreshold = None
         self.FailoverSwitch = None
         self.SessionPersist = None
+        self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -8835,6 +8863,8 @@ class TCPListener(AbstractModel):
         self.UnhealthyThreshold = params.get("UnhealthyThreshold")
         self.FailoverSwitch = params.get("FailoverSwitch")
         self.SessionPersist = params.get("SessionPersist")
+        self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8974,6 +9004,12 @@ class UDPListener(AbstractModel):
         :param RecvContext: UDP源站健康检查端口探测接收报文。仅在健康检查类型为PORT时使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecvContext: str
+        :param ProxyId: 监听器的通道ID，如果监听器属于通道组，则为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyId: str
+        :param GroupId: 监听器的通道组ID，如果监听器属于通道，则为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -8998,6 +9034,8 @@ class UDPListener(AbstractModel):
         self.ContextType = None
         self.SendContext = None
         self.RecvContext = None
+        self.ProxyId = None
+        self.GroupId = None
 
 
     def _deserialize(self, params):
@@ -9029,6 +9067,8 @@ class UDPListener(AbstractModel):
         self.ContextType = params.get("ContextType")
         self.SendContext = params.get("SendContext")
         self.RecvContext = params.get("RecvContext")
+        self.ProxyId = params.get("ProxyId")
+        self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

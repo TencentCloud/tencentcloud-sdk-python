@@ -108,6 +108,9 @@ class CodeBatch(AbstractModel):
         :param TplName: 模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TplName: str
+        :param Job: 调度任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Job: :class:`tencentcloud.trp.v20210515.models.Job`
         """
         self.BatchId = None
         self.CorpId = None
@@ -125,6 +128,7 @@ class CodeBatch(AbstractModel):
         self.ProductName = None
         self.Ext = None
         self.TplName = None
+        self.Job = None
 
 
     def _deserialize(self, params):
@@ -146,6 +150,9 @@ class CodeBatch(AbstractModel):
             self.Ext = Ext()
             self.Ext._deserialize(params.get("Ext"))
         self.TplName = params.get("TplName")
+        if params.get("Job") is not None:
+            self.Job = Job()
+            self.Job._deserialize(params.get("Job"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -343,16 +350,24 @@ class CreateMerchantRequest(AbstractModel):
         :type Remark: str
         :param CorpId: 企业ID
         :type CorpId: int
+        :param CodeType: 码包来源 0:自建, 1:第三发
+        :type CodeType: int
+        :param CodeUrl: 码包前缀地址 第三方码包时必填
+        :type CodeUrl: str
         """
         self.Name = None
         self.Remark = None
         self.CorpId = None
+        self.CodeType = None
+        self.CodeUrl = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Remark = params.get("Remark")
         self.CorpId = params.get("CorpId")
+        self.CodeType = params.get("CodeType")
+        self.CodeUrl = params.get("CodeUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1172,11 +1187,14 @@ class DescribeMerchantsRequest(AbstractModel):
         :type PageNumber: int
         :param CorpId: 企业ID
         :type CorpId: int
+        :param CodeType: 码来源类型 0:自建, 1:第三方
+        :type CodeType: int
         """
         self.Name = None
         self.PageSize = None
         self.PageNumber = None
         self.CorpId = None
+        self.CodeType = None
 
 
     def _deserialize(self, params):
@@ -1184,6 +1202,7 @@ class DescribeMerchantsRequest(AbstractModel):
         self.PageSize = params.get("PageSize")
         self.PageNumber = params.get("PageNumber")
         self.CorpId = params.get("CorpId")
+        self.CodeType = params.get("CodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1556,6 +1575,34 @@ class Ext(AbstractModel):
     """
 
 
+class Job(AbstractModel):
+    """通用调度任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 调度ID
+        :type JobId: int
+        :param Status: 执行状态 init:初始化, pending: 执行中, done: 执行成功, error: 执行失败
+        :type Status: str
+        """
+        self.JobId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Merchant(AbstractModel):
     """商户信息
 
@@ -1578,6 +1625,11 @@ class Merchant(AbstractModel):
         :type UpdateTime: str
         :param CodeRule: 商户码规则
         :type CodeRule: str
+        :param CodeType: 码来源类型 0: 安心平台 1: 第三方码
+        :type CodeType: int
+        :param CodeUrl: 第三方码域名前缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeUrl: str
         """
         self.MerchantId = None
         self.CorpId = None
@@ -1586,6 +1638,8 @@ class Merchant(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.CodeRule = None
+        self.CodeType = None
+        self.CodeUrl = None
 
 
     def _deserialize(self, params):
@@ -1596,6 +1650,8 @@ class Merchant(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.CodeRule = params.get("CodeRule")
+        self.CodeType = params.get("CodeType")
+        self.CodeUrl = params.get("CodeUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1689,11 +1745,17 @@ class ModifyMerchantRequest(AbstractModel):
         :type Remark: str
         :param CorpId: 企业ID
         :type CorpId: int
+        :param CodeType: 码包来源 0:自建, 1:第三码包，暂不支持修改
+        :type CodeType: int
+        :param CodeUrl: 码包前缀地址 第三方码包时必填
+        :type CodeUrl: str
         """
         self.Name = None
         self.MerchantId = None
         self.Remark = None
         self.CorpId = None
+        self.CodeType = None
+        self.CodeUrl = None
 
 
     def _deserialize(self, params):
@@ -1701,6 +1763,8 @@ class ModifyMerchantRequest(AbstractModel):
         self.MerchantId = params.get("MerchantId")
         self.Remark = params.get("Remark")
         self.CorpId = params.get("CorpId")
+        self.CodeType = params.get("CodeType")
+        self.CodeUrl = params.get("CodeUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2030,7 +2094,7 @@ class ModifyTraceDataResponse(AbstractModel):
 
 
 class PackSpec(AbstractModel):
-    """数组
+    """层级码配置
 
     """
 
@@ -2042,16 +2106,21 @@ class PackSpec(AbstractModel):
         :type Rate: int
         :param Amount: 数量
         :type Amount: int
+        :param CustomId: 码规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomId: str
         """
         self.Level = None
         self.Rate = None
         self.Amount = None
+        self.CustomId = None
 
 
     def _deserialize(self, params):
         self.Level = params.get("Level")
         self.Rate = params.get("Rate")
         self.Amount = params.get("Amount")
+        self.CustomId = params.get("CustomId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2363,6 +2432,9 @@ class TraceItem(AbstractModel):
         :param Key: 类型标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
+        :param Ext: 扩展字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ext: str
         """
         self.Name = None
         self.Value = None
@@ -2371,6 +2443,7 @@ class TraceItem(AbstractModel):
         self.Hidden = None
         self.Values = None
         self.Key = None
+        self.Ext = None
 
 
     def _deserialize(self, params):
@@ -2381,6 +2454,7 @@ class TraceItem(AbstractModel):
         self.Hidden = params.get("Hidden")
         self.Values = params.get("Values")
         self.Key = params.get("Key")
+        self.Ext = params.get("Ext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

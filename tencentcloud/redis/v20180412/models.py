@@ -3118,15 +3118,15 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb
+        :param Product: 数据库引擎名称，本接口取值：redis。
         :type Product: str
-        :param ProjectId: 项目Id。
+        :param ProjectId: 项目 ID。
         :type ProjectId: int
-        :param Offset: 偏移量。
+        :param Offset: 偏移量，取值为Limit的整数倍。
         :type Offset: int
-        :param Limit: 拉取数量限制，默认20
+        :param Limit: 拉取数量限制，默认 20。
         :type Limit: int
-        :param SearchKey: 搜索条件，支持安全组id或者安全组名称。
+        :param SearchKey: 搜索条件，支持安全组 ID 或者安全组名称。
         :type SearchKey: str
         """
         self.Product = None

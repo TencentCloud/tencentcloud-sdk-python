@@ -104,9 +104,6 @@ INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 # 查询独享集群信息失败。
 INTERNALERROR_FENCEERROR = 'InternalError.FenceError'
 
-# 获取监控数据失败。
-INTERNALERROR_FETCHMETRICDATAFAILED = 'InternalError.FetchMetricDataFailed'
-
 # 获取数据库实例参数失败。
 INTERNALERROR_GETDBCONFIGFAILED = 'InternalError.GetDbConfigFailed'
 
@@ -301,9 +298,6 @@ INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = 'InvalidParameterValue.InstanceNameI
 
 # 参数验证错误。
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
-
-# 分片不存在。
-INVALIDPARAMETERVALUE_SHARDNOTEXIST = 'InvalidParameterValue.ShardNotExist'
 
 # 找不到数据库实例对应的规格信息。
 INVALIDPARAMETERVALUE_SPECIDILLEGAL = 'InvalidParameterValue.SpecIdIllegal'
