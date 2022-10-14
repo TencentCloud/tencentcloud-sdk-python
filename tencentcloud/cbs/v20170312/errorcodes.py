@@ -14,11 +14,17 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
 # 云盘退还数量已达上限，不能再退还。
 INSUFFICIENTREFUNDQUOTA = 'InsufficientRefundQuota'
 
 # 快照配额不足。
 INSUFFICIENTSNAPSHOTQUOTA = 'InsufficientSnapshotQuota'
+
+# 内部错误。
+INTERNALERROR = 'InternalError'
 
 # 依赖组件请求失败，请联系客服人员解决。
 INTERNALERROR_COMPONENTERROR = 'InternalError.ComponentError'

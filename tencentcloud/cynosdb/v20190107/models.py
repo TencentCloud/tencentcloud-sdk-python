@@ -4858,11 +4858,14 @@ class QueryFilter(AbstractModel):
         :type ExactMatch: bool
         :param Name: 搜索字段
         :type Name: str
+        :param Operator: 操作符
+        :type Operator: str
         """
         self.Names = None
         self.Values = None
         self.ExactMatch = None
         self.Name = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
@@ -4870,6 +4873,7 @@ class QueryFilter(AbstractModel):
         self.Values = params.get("Values")
         self.ExactMatch = params.get("ExactMatch")
         self.Name = params.get("Name")
+        self.Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

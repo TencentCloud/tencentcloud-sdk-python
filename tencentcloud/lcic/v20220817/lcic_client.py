@@ -26,6 +26,35 @@ class LcicClient(AbstractClient):
     _service = 'lcic'
 
 
+    def CreateDocument(self, request):
+        """创建房间内可以使用的文档。
+
+        :param request: Request instance for CreateDocument.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.CreateDocumentRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.CreateDocumentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDocument", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDocumentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRoom(self, request):
         """创建房间
 
@@ -215,6 +244,35 @@ class LcicClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetAppCustomContent(self, request):
+        """设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
+
+        :param request: Request instance for SetAppCustomContent.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.SetAppCustomContentRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.SetAppCustomContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetAppCustomContent", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetAppCustomContentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

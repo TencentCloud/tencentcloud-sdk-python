@@ -49,6 +49,8 @@ class ApplyCertificateRequest(AbstractModel):
         :type Alias: str
         :param OldCertificateId: 原证书 ID，用于重新申请。
         :type OldCertificateId: str
+        :param PackageId: 权益包ID，用于免费证书扩容包使用
+        :type PackageId: str
         """
         self.DvAuthMethod = None
         self.DomainName = None
@@ -62,6 +64,7 @@ class ApplyCertificateRequest(AbstractModel):
         self.CsrKeyPassword = None
         self.Alias = None
         self.OldCertificateId = None
+        self.PackageId = None
 
 
     def _deserialize(self, params):
@@ -77,6 +80,7 @@ class ApplyCertificateRequest(AbstractModel):
         self.CsrKeyPassword = params.get("CsrKeyPassword")
         self.Alias = params.get("Alias")
         self.OldCertificateId = params.get("OldCertificateId")
+        self.PackageId = params.get("PackageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

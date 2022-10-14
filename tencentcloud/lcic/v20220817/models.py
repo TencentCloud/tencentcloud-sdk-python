@@ -18,6 +18,125 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AppCustomContent(AbstractModel):
+    """应用自定义内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Scene: 场景参数，一个应用下可以设置多个不同场景。
+        :type Scene: str
+        :param LogoUrl: logo地址。
+        :type LogoUrl: str
+        :param HomeUrl: 主页地址，可设置用于跳转。
+        :type HomeUrl: str
+        :param JsUrl: 自定义的js。
+        :type JsUrl: str
+        :param CssUrl: 自定义的css。
+        :type CssUrl: str
+        """
+        self.Scene = None
+        self.LogoUrl = None
+        self.HomeUrl = None
+        self.JsUrl = None
+        self.CssUrl = None
+
+
+    def _deserialize(self, params):
+        self.Scene = params.get("Scene")
+        self.LogoUrl = params.get("LogoUrl")
+        self.HomeUrl = params.get("HomeUrl")
+        self.JsUrl = params.get("JsUrl")
+        self.CssUrl = params.get("CssUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDocumentRequest(AbstractModel):
+    """CreateDocument请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 低代码互动课堂的SdkAppId。
+        :type SdkAppId: int
+        :param DocumentUrl: 文档地址。
+        :type DocumentUrl: str
+        :param DocumentName: 文档名称。
+        :type DocumentName: str
+        :param Owner: 文档所有者的Id
+        :type Owner: str
+        :param TranscodeType: 转码类型，可以有如下取值：
+0 无需转码（默认）
+1 需要转码的文档，ppt，pptx，pdf，doc，docx
+2 需要转码的视频，mp4，3pg，mpeg，avi，flv，wmv，rm，h264等
+2 需要转码的音频，mp3，wav，wma，aac，flac，opus
+        :type TranscodeType: int
+        :param Permission: 权限，可以有如下取值：
+0 私有文档（默认）
+1 公共文档
+        :type Permission: int
+        :param DocumentType: 文档后缀名。
+        :type DocumentType: str
+        :param DocumentSize: 文档大小，单位 字节
+        :type DocumentSize: int
+        """
+        self.SdkAppId = None
+        self.DocumentUrl = None
+        self.DocumentName = None
+        self.Owner = None
+        self.TranscodeType = None
+        self.Permission = None
+        self.DocumentType = None
+        self.DocumentSize = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.DocumentUrl = params.get("DocumentUrl")
+        self.DocumentName = params.get("DocumentName")
+        self.Owner = params.get("Owner")
+        self.TranscodeType = params.get("TranscodeType")
+        self.Permission = params.get("Permission")
+        self.DocumentType = params.get("DocumentType")
+        self.DocumentSize = params.get("DocumentSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDocumentResponse(AbstractModel):
+    """CreateDocument返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DocumentId: 文档ID。
+        :type DocumentId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DocumentId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DocumentId = params.get("DocumentId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRoomRequest(AbstractModel):
     """CreateRoom请求参数结构体
 
@@ -465,4 +584,54 @@ class RegisterUserResponse(AbstractModel):
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
         self.Token = params.get("Token")
+        self.RequestId = params.get("RequestId")
+
+
+class SetAppCustomContentRequest(AbstractModel):
+    """SetAppCustomContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomContent: 自定义内容。
+        :type CustomContent: list of AppCustomContent
+        :param SdkAppId: 应用ID。
+        :type SdkAppId: int
+        """
+        self.CustomContent = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomContent") is not None:
+            self.CustomContent = []
+            for item in params.get("CustomContent"):
+                obj = AppCustomContent()
+                obj._deserialize(item)
+                self.CustomContent.append(obj)
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetAppCustomContentResponse(AbstractModel):
+    """SetAppCustomContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")

@@ -13660,7 +13660,7 @@ class LicenseUsageDataItem(AbstractModel):
 
 
 class LiveRealTimeClipMediaSegmentInfo(AbstractModel):
-    """即时剪辑后媒资的片段信息。
+    """即时剪辑后媒体的片段信息。
 
     """
 
@@ -15927,7 +15927,7 @@ class MediaSubtitleInput(AbstractModel):
         :type Format: str
         :param Content: 字幕内容，进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串。
         :type Content: str
-        :param Id: 字幕的唯一标识。长度不能超过16个字符，可以使用大小写字母、数字、下划线（_）或横杠（-）。不能与媒资文件中现有字幕的唯一标识重复。
+        :param Id: 字幕的唯一标识。长度不能超过16个字符，可以使用大小写字母、数字、下划线（_）或横杠（-）。不能与媒体文件中现有字幕的唯一标识重复。
         :type Id: str
         """
         self.Name = None

@@ -25,19 +25,19 @@ class BrandData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandName: xxx
+        :param BrandName: 商标名称
         :type BrandName: str
-        :param BrandCertificateName: xxx
+        :param BrandCertificateName: 商标证明
         :type BrandCertificateName: str
-        :param BrandStatus: xxx
+        :param BrandStatus: 商标审核状态 1-审核中 2-审核未通过 3-审核通过
         :type BrandStatus: int
-        :param BrandNote: xxx
+        :param BrandNote: 审核说明
         :type BrandNote: str
-        :param TransferName: xxx
+        :param TransferName: 商标转让证明
         :type TransferName: str
-        :param TransferStatus: xxx
+        :param TransferStatus: 商标转让证明审核状态
         :type TransferStatus: int
-        :param TransferNote: xxx
+        :param TransferNote: 审核说明 1-审核中 2-审核未通过 3-审核通过
         :type TransferNote: str
         """
         self.BrandName = None
@@ -73,13 +73,13 @@ class CreateBPFakeURLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProtectURLId: xxx
+        :param ProtectURLId: 保护网址ID
         :type ProtectURLId: int
-        :param FakeURL: xxx
+        :param FakeURL: 仿冒网址
         :type FakeURL: str
-        :param SnapshotNames: xxx
+        :param SnapshotNames: 截图
         :type SnapshotNames: list of str
-        :param Note: xxx
+        :param Note: 举报说明
         :type Note: str
         """
         self.ProtectURLId = None
@@ -126,7 +126,7 @@ class CreateBPFalseTicketRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeURL: xxx
+        :param FakeURL: 仿冒网址
         :type FakeURL: str
         """
         self.FakeURL = None
@@ -167,13 +167,13 @@ class CreateBPOfflineAttachmentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BrandName: xxx
+        :param BrandName: 品牌名字
         :type BrandName: str
-        :param BrandCertificateName: xx
+        :param BrandCertificateName: 商标证明
         :type BrandCertificateName: str
-        :param TransferName: xx
+        :param TransferName: 商标转让证明
         :type TransferName: str
-        :param AuthorizationName: xx
+        :param AuthorizationName: 授权书
         :type AuthorizationName: str
         """
         self.BrandName = None
@@ -220,7 +220,7 @@ class CreateBPOfflineTicketRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeURLId: xxx
+        :param FakeURLId: 仿冒网址ID
         :type FakeURLId: int
         """
         self.FakeURLId = None
@@ -261,15 +261,15 @@ class CreateBPProtectURLsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompanyName: xxx
+        :param CompanyName: 企业名称
         :type CompanyName: str
-        :param Phone: xxx
+        :param Phone: 电话号码
         :type Phone: str
-        :param LicenseName: xxx
+        :param LicenseName: 营业执照
         :type LicenseName: str
-        :param ProtectURLs: xxx
+        :param ProtectURLs: 保护网站
         :type ProtectURLs: list of str
-        :param ProtectWebs: xxx
+        :param ProtectWebs: 网站名称
         :type ProtectWebs: list of str
         """
         self.CompanyName = None
@@ -996,25 +996,25 @@ class DescribeBPCompanyInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CompanyName: xx
+        :param CompanyName: 企业名称
         :type CompanyName: str
-        :param Phone: xx
+        :param Phone: 电话号码
         :type Phone: str
-        :param LicenseName: xx
+        :param LicenseName: 营业执照
         :type LicenseName: str
-        :param LicenseStatus: xx
+        :param LicenseStatus: 营业执照审核状态 1-审核中 2-审核未通过，3、审核通过
         :type LicenseStatus: int
-        :param LicenseNote: xx
+        :param LicenseNote: 营业执照备注
         :type LicenseNote: str
-        :param AuthorizationName: xx
+        :param AuthorizationName: 授权书
         :type AuthorizationName: str
-        :param AuthorizationStatus: xx
+        :param AuthorizationStatus: 授权书审核状态
         :type AuthorizationStatus: int
-        :param AuthorizationNote: xx
+        :param AuthorizationNote: 授权书备注
         :type AuthorizationNote: str
-        :param BrandDatas: xx
+        :param BrandDatas: 品牌信息
         :type BrandDatas: list of BrandData
-        :param CompanyId: xx
+        :param CompanyId: 企业ID
         :type CompanyId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1058,11 +1058,11 @@ class DescribeBPFakeURLsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: xxx
+        :param Filters: 过滤条件
         :type Filters: list of Filter
-        :param PageSize: xxx
+        :param PageSize: 页数
         :type PageSize: int
-        :param PageNumber: xxx
+        :param PageNumber: 页码
         :type PageNumber: int
         """
         self.Filters = None
@@ -1129,9 +1129,9 @@ class DescribeBPProtectURLsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PageSize: xxx
+        :param PageSize: 页数
         :type PageSize: int
-        :param PageNumber: xxx
+        :param PageNumber: 页码
         :type PageNumber: int
         """
         self.PageSize = None
@@ -1187,11 +1187,11 @@ class DescribeBPReportFakeURLsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: xxx
+        :param Filters: 过滤条件
         :type Filters: list of Filter
-        :param PageSize: xxx
+        :param PageSize: 页数
         :type PageSize: int
-        :param PageNumber: xxx
+        :param PageNumber: 页码
         :type PageNumber: int
         """
         self.Filters = None
@@ -1525,37 +1525,37 @@ class FakeURLInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeURLId: xxx
+        :param FakeURLId: 仿冒网址ID
         :type FakeURLId: int
-        :param ProtectWeb: xxx
+        :param ProtectWeb: 保护网站
         :type ProtectWeb: str
-        :param DetectTime: xxx
+        :param DetectTime: 检测时间
         :type DetectTime: str
-        :param FakeURL: xxx
+        :param FakeURL: 仿冒网址
         :type FakeURL: str
-        :param Snapshot: xxx
+        :param Snapshot: 截图
         :type Snapshot: str
-        :param IP: xxx
+        :param IP: IP地址
         :type IP: str
-        :param IPLoc: xxx
+        :param IPLoc: IP地理位置
         :type IPLoc: str
-        :param Heat: xxx
+        :param Heat: 热度
         :type Heat: int
-        :param Status: xxx
+        :param Status: 网址状态
         :type Status: int
-        :param Note: xxx
+        :param Note: 备注
         :type Note: str
-        :param FakeURLCompany: xxx
+        :param FakeURLCompany: 仿冒网站所属单位
         :type FakeURLCompany: str
-        :param FakeURLAttr: xxx
+        :param FakeURLAttr: 仿冒网站性质
         :type FakeURLAttr: str
-        :param FakeURLName: xxx
+        :param FakeURLName: 仿冒网站名称
         :type FakeURLName: str
-        :param FakeURLICP: xxx
+        :param FakeURLICP: 仿冒网站备案号
         :type FakeURLICP: str
-        :param FakeURLCreateTime: xxx
+        :param FakeURLCreateTime: 仿冒网站创建时间
         :type FakeURLCreateTime: str
-        :param FakeURLExpireTime: xxx
+        :param FakeURLExpireTime: 仿冒网站过期时间
         :type FakeURLExpireTime: str
         """
         self.FakeURLId = None
@@ -1609,13 +1609,13 @@ class File(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileUrl: xxx
+        :param FileUrl: 文件下载地址
         :type FileUrl: str
-        :param FileType: xxx
+        :param FileType: 文件类型 1-委托书 2-授权书 5-存证证书 11-营业执照
         :type FileType: int
-        :param ValidStartDate: xxx
+        :param ValidStartDate: 文件有效开始日期
         :type ValidStartDate: str
-        :param ValidEndDate: xxx
+        :param ValidEndDate: 文件有效截止日期
         :type ValidEndDate: str
         """
         self.FileUrl = None
@@ -1651,15 +1651,15 @@ class ModifyBPOfflineAttachmentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LicenseName: xx
+        :param LicenseName: 营业执照
         :type LicenseName: str
-        :param AuthorizationName: xx
+        :param AuthorizationName: 授权书
         :type AuthorizationName: str
-        :param BrandName: xx
+        :param BrandName: 商标名称
         :type BrandName: str
-        :param BrandCertificateName: xx
+        :param BrandCertificateName: 商标证明
         :type BrandCertificateName: str
-        :param TransferName: xx
+        :param TransferName: 商标转让证明
         :type TransferName: str
         """
         self.LicenseName = None
@@ -1808,7 +1808,7 @@ class ModifyCRObtainStatusRequest(AbstractModel):
         :type ObtainType: int
         :param ObtainDuration: 过程取证的取证时长，单位分钟，范围0-120
         :type ObtainDuration: int
-        :param ObtainUrl: 结果回调地址
+        :param ObtainUrl: 取证结果回调地址
         :type ObtainUrl: str
         """
         self.TortId = None
@@ -2073,7 +2073,7 @@ class MonitorTort(AbstractModel):
         :type EvidenceStatus: int
         :param IsProducer: 是否著作权人
         :type IsProducer: int
-        :param IsOverseas: 是否海外网址
+        :param IsOverseas: 是否境外网址
         :type IsOverseas: int
         """
         self.TortId = None
@@ -2145,17 +2145,17 @@ class ProtectURLInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProtectURLId: xxx
+        :param ProtectURLId: 保护网站ID
         :type ProtectURLId: int
-        :param ProtectURL: xxx
+        :param ProtectURL: 保护网站
         :type ProtectURL: str
-        :param ProtectWeb: xxx
+        :param ProtectWeb: 保护网站名称
         :type ProtectWeb: str
-        :param ProtectURLStatus: xxx
+        :param ProtectURLStatus: 保护网站审核状态 1-审核中 2-审核不通过 3-审核通过
         :type ProtectURLStatus: int
-        :param ProtectURLNote: xxx
+        :param ProtectURLNote: 网站审核不通过原因
         :type ProtectURLNote: str
-        :param CreateTime: xxx
+        :param CreateTime: 创建时间
         :type CreateTime: str
         """
         self.ProtectURLId = None
@@ -2189,41 +2189,41 @@ class ReportFakeURLInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeURLId: xxx
+        :param FakeURLId: 仿冒网址ID
         :type FakeURLId: int
-        :param DetectTime: xxx
+        :param DetectTime: 检测时间
         :type DetectTime: str
-        :param ProtectURL: xxx
+        :param ProtectURL: 保护网站
         :type ProtectURL: str
-        :param ProtectWeb: xxx
+        :param ProtectWeb: 保护网站名称
         :type ProtectWeb: str
-        :param FakeURL: xxx
+        :param FakeURL: 仿冒网址
         :type FakeURL: str
-        :param Snapshot: xxx
+        :param Snapshot: 截图
         :type Snapshot: str
-        :param IP: xxx
+        :param IP: IP地址
         :type IP: str
-        :param IPLoc: xxx
+        :param IPLoc: IP地理位置
         :type IPLoc: str
-        :param Heat: xxx
+        :param Heat: 热度
         :type Heat: int
-        :param Status: xxx
+        :param Status: 网站状态
         :type Status: int
-        :param Note: xxx
+        :param Note: 网站不处理原因
         :type Note: str
-        :param FakeURLCompany: xxx
+        :param FakeURLCompany: 仿冒网站的企业名称
         :type FakeURLCompany: str
-        :param FakeURLAttr: xxx
+        :param FakeURLAttr: 仿冒网站的网站性质
         :type FakeURLAttr: str
-        :param FakeURLName: xxx
+        :param FakeURLName: 仿冒网站的网站名称
         :type FakeURLName: str
-        :param FakeURLICP: xxx
+        :param FakeURLICP: 仿冒网站的备案
         :type FakeURLICP: str
-        :param FakeURLCreateTime: xxx
+        :param FakeURLCreateTime: 仿冒网站创建时间
         :type FakeURLCreateTime: str
-        :param FakeURLExpireTime: xxx
+        :param FakeURLExpireTime: 仿冒网站过期时间
         :type FakeURLExpireTime: str
-        :param BlockTime: xxx
+        :param BlockTime: 协查处置时间
         :type BlockTime: str
         """
         self.FakeURLId = None
@@ -2283,7 +2283,7 @@ class UpdateCRWorkRequest(AbstractModel):
         r"""
         :param WorkId: 作品ID
         :type WorkId: int
-        :param ContentType: 文件的扩展名，比如txt，docx
+        :param ContentType: 文件的扩展名，例如txt，docx
         :type ContentType: str
         :param Content: 内容的base64编码
         :type Content: str

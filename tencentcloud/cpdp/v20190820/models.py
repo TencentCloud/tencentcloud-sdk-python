@@ -7936,11 +7936,23 @@ class CreateOpenBankOrderRechargeResult(AbstractModel):
         :type RedirectInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankRechargeRedirectInfo`
         :param OutOrderId: 外部商户订单号，只能是数字、大小写字母，且在同一个接入平台下唯一。
         :type OutOrderId: str
+        :param DealStatus: 充值状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealStatus: str
+        :param DealMessage: 充值返回描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealMessage: str
+        :param PcWebUrl: PC web端跳转链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PcWebUrl: str
         """
         self.ChannelOrderId = None
         self.ThirdPayOrderId = None
         self.RedirectInfo = None
         self.OutOrderId = None
+        self.DealStatus = None
+        self.DealMessage = None
+        self.PcWebUrl = None
 
 
     def _deserialize(self, params):
@@ -7950,6 +7962,9 @@ class CreateOpenBankOrderRechargeResult(AbstractModel):
             self.RedirectInfo = OpenBankRechargeRedirectInfo()
             self.RedirectInfo._deserialize(params.get("RedirectInfo"))
         self.OutOrderId = params.get("OutOrderId")
+        self.DealStatus = params.get("DealStatus")
+        self.DealMessage = params.get("DealMessage")
+        self.PcWebUrl = params.get("PcWebUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9427,12 +9442,22 @@ class CreateSinglePaymentData(AbstractModel):
         r"""
         :param TradeSerialNo: 平台交易流水号，唯一
         :type TradeSerialNo: str
+        :param AgentId: 代理商ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param AgentName: 代理商名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentName: str
         """
         self.TradeSerialNo = None
+        self.AgentId = None
+        self.AgentName = None
 
 
     def _deserialize(self, params):
         self.TradeSerialNo = params.get("TradeSerialNo")
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

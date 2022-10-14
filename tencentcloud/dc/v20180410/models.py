@@ -1581,6 +1581,9 @@ REJECTED:拒绝
         :param JumboEnable: 专用通道是否支持巨帧。1 支持，0 不支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type JumboEnable: int
+        :param HighPrecisionBFDEnable: 专用通道是否支持高精度BFD。1支持，0不支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighPrecisionBFDEnable: int
         """
         self.DirectConnectTunnelId = None
         self.DirectConnectId = None
@@ -1621,6 +1624,7 @@ REJECTED:拒绝
         self.BgpIPv6Status = None
         self.CustomerIPv6Address = None
         self.JumboEnable = None
+        self.HighPrecisionBFDEnable = None
 
 
     def _deserialize(self, params):
@@ -1683,6 +1687,7 @@ REJECTED:拒绝
             self.BgpIPv6Status._deserialize(params.get("BgpIPv6Status"))
         self.CustomerIPv6Address = params.get("CustomerIPv6Address")
         self.JumboEnable = params.get("JumboEnable")
+        self.HighPrecisionBFDEnable = params.get("HighPrecisionBFDEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
