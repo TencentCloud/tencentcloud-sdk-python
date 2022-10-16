@@ -497,6 +497,87 @@ class CreateCRCompanyVerifyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCRObtainRequest(AbstractModel):
+    """CreateCRObtain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkId: 已存证的作品ID
+        :type WorkId: int
+        :param TortUrl: 侵权链接
+        :type TortUrl: str
+        :param ObtainType: 取证类型 1-网页取证 2-过程取证
+        :type ObtainType: int
+        :param WorkTitle: 侵权标题
+        :type WorkTitle: str
+        :param TortPlat: 侵权平台
+        :type TortPlat: str
+        :param ObtainDuration: 过程取证的取证时长 6-300分钟
+        :type ObtainDuration: int
+        :param ObtainUrl: 取证回调地址
+        :type ObtainUrl: str
+        :param WorkCategory: xxx
+        :type WorkCategory: str
+        :param WorkType: xxx
+        :type WorkType: str
+        """
+        self.WorkId = None
+        self.TortUrl = None
+        self.ObtainType = None
+        self.WorkTitle = None
+        self.TortPlat = None
+        self.ObtainDuration = None
+        self.ObtainUrl = None
+        self.WorkCategory = None
+        self.WorkType = None
+
+
+    def _deserialize(self, params):
+        self.WorkId = params.get("WorkId")
+        self.TortUrl = params.get("TortUrl")
+        self.ObtainType = params.get("ObtainType")
+        self.WorkTitle = params.get("WorkTitle")
+        self.TortPlat = params.get("TortPlat")
+        self.ObtainDuration = params.get("ObtainDuration")
+        self.ObtainUrl = params.get("ObtainUrl")
+        self.WorkCategory = params.get("WorkCategory")
+        self.WorkType = params.get("WorkType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCRObtainResponse(AbstractModel):
+    """CreateCRObtain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TortId: 侵权ID
+        :type TortId: int
+        :param TortNum: xxx
+        :type TortNum: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TortId = None
+        self.TortNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TortId = params.get("TortId")
+        self.TortNum = params.get("TortNum")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCRRightFileRequest(AbstractModel):
     """CreateCRRightFile请求参数结构体
 
@@ -1095,11 +1176,11 @@ class DescribeBPFakeURLsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeURLInfos: xxx
+        :param FakeURLInfos: 仿冒网址列表
         :type FakeURLInfos: list of FakeURLInfo
-        :param TotalCount: xxx
+        :param TotalCount: 总量
         :type TotalCount: int
-        :param ExportURL: xxx
+        :param ExportURL: 导出量
         :type ExportURL: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1157,9 +1238,9 @@ class DescribeBPProtectURLsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProtectURLInfos: xxx
+        :param ProtectURLInfos: 保护网址列表
         :type ProtectURLInfos: list of ProtectURLInfo
-        :param TotalCount: xxx
+        :param TotalCount: 总量
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1224,9 +1305,9 @@ class DescribeBPReportFakeURLsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReportFakeURLInfos: xxx
+        :param ReportFakeURLInfos: 举报网站列表
         :type ReportFakeURLInfos: list of ReportFakeURLInfo
-        :param TotalCount: xxx
+        :param TotalCount: 总量
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

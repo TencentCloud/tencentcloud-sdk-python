@@ -229,6 +229,35 @@ class BmaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCRObtain(self, request):
+        """版权保护-新建取证接口
+
+        :param request: Request instance for CreateCRObtain.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRObtainRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateCRObtainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCRObtain", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCRObtainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCRRight(self, request):
         """版权保护-新建发函接口
 

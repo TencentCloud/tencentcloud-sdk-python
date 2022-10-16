@@ -18,6 +18,176 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplyLivenessTokenRequest(AbstractModel):
+    """ApplyLivenessToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecureLevel: 枚举值，取值范围：1、2、3、4
+各个含义如下
+1-静默
+2-眨眼
+3-光线
+4-眨眼+光线 （默认）
+        :type SecureLevel: str
+        """
+        self.SecureLevel = None
+
+
+    def _deserialize(self, params):
+        self.SecureLevel = params.get("SecureLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyLivenessTokenResponse(AbstractModel):
+    """ApplyLivenessToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: 标识一次SDK核验流程的令牌，有效时间为10分钟。流程结束后可用该令牌获取核验结果信息。
+        :type SdkToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SdkToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
+        self.RequestId = params.get("RequestId")
+
+
+class ApplySdkVerificationTokenRequest(AbstractModel):
+    """ApplySdkVerificationToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NeedVerifyIdCard: 是否需要身份证鉴伪，如果不需要，则仅做证件OCR。当前仅IdCardType为HK支持鉴伪。
+        :type NeedVerifyIdCard: bool
+        :param IdCardType: 卡证类型，当前仅支持HK（香港身份证），ML（马来西亚身份证），PhilippinesVoteID（菲律宾选民卡），PhilippinesDrivingLicense（菲律宾驾驶证）。默认为HK。
+        :type IdCardType: str
+        :param DisableChangeOcrResult: 是否允许用户修改ocr结果，默认false，允许。
+        :type DisableChangeOcrResult: bool
+        :param DisableCheckOcrWarnings: 是否关闭OCR告警，默认false，不关闭。如果为false开启OCR告警，我们会根据Ocr的告警信息进行拦截，当NeedVerifyIdCard为true时该字段将为true。
+        :type DisableCheckOcrWarnings: bool
+        :param Extra: 透传字段，在获取验证结果时返回，最长1024位。
+        :type Extra: str
+        """
+        self.NeedVerifyIdCard = None
+        self.IdCardType = None
+        self.DisableChangeOcrResult = None
+        self.DisableCheckOcrWarnings = None
+        self.Extra = None
+
+
+    def _deserialize(self, params):
+        self.NeedVerifyIdCard = params.get("NeedVerifyIdCard")
+        self.IdCardType = params.get("IdCardType")
+        self.DisableChangeOcrResult = params.get("DisableChangeOcrResult")
+        self.DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
+        self.Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplySdkVerificationTokenResponse(AbstractModel):
+    """ApplySdkVerificationToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: 标识一次SDK核验流程的令牌，有效时间为7,200秒。流程结束后可用该令牌获取核验结果信息。
+        :type SdkToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SdkToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyWebVerificationTokenRequest(AbstractModel):
+    """ApplyWebVerificationToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RedirectUrl: 核验结束后重定向的Web回跳地址。
+        :type RedirectUrl: str
+        :param CompareImageUrl: 人脸比对照片的腾讯云对象存储地址，可以使用以下两种方式：
+1. 调用CreateUploadUrl接口生成，确保成功上传照片后再调用此接口。
+2. 使用已有的腾讯云对象存储地址，如果是私有读写桶，请使用预签名URL授予下载权限，对象存储地域需要和入参Region保持一致。
+        :type CompareImageUrl: str
+        :param CompareImageMd5: 人脸比对照片（CompareImageUrl）内容的MD5散列值。
+        :type CompareImageMd5: str
+        """
+        self.RedirectUrl = None
+        self.CompareImageUrl = None
+        self.CompareImageMd5 = None
+
+
+    def _deserialize(self, params):
+        self.RedirectUrl = params.get("RedirectUrl")
+        self.CompareImageUrl = params.get("CompareImageUrl")
+        self.CompareImageMd5 = params.get("CompareImageMd5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyWebVerificationTokenResponse(AbstractModel):
+    """ApplyWebVerificationToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VerificationUrl: 用户浏览器需要打开此地址开始核验流程。
+        :type VerificationUrl: str
+        :param BizToken: 标识一次Web核验流程的令牌，有效时间为7,200秒。流程结束后可用该令牌获取核验结果信息。
+        :type BizToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VerificationUrl = None
+        self.BizToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VerificationUrl = params.get("VerificationUrl")
+        self.BizToken = params.get("BizToken")
+        self.RequestId = params.get("RequestId")
+
+
 class BankCard2EVerificationRequest(AbstractModel):
     """BankCard2EVerification请求参数结构体
 
@@ -275,6 +445,97 @@ class BankCardVerificationResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
+
+
+class CardVerifyResult(AbstractModel):
+    """核身过程中，鉴伪或OCR单次结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsPass: 鉴伪或OCR是否成功
+        :type IsPass: bool
+        :param CardVideo: 身份证鉴伪视频，仅开启证件视频鉴伪功能时返回，url链接有效期10分钟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CardVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param CardImage: 证件照图片，url链接有效期10分钟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CardImage: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param CardInfoOcrJson: 证件照的文字识别结果，如果鉴伪失败或者ocr失败则该参数为空。url链接有效期10分钟。格式为json文本信息。
+IdCardType为HK时：
+- CnName string 中文姓名
+- EnName string 英文姓名
+- TelexCode string 中文姓名对应电码
+- Sex string 性别 ：“男M”或“女F”
+- Birthday string 出生日期
+- Permanent int 永久性居民身份证。0：非永久； 1：永久； -1：未知。
+- IdNum string 身份证号码
+- Symbol string 证件符号，出生日期下的符号，例如"***AZ"
+- FirstIssueDate string 首次签发日期
+- CurrentIssueDate string 最近领用日期
+
+IdCardType为ML时：
+- Sex string 男：LELAKI 女：PEREMPUAN
+- Birthday  string 生日
+- ID string 证号
+- Name string 名字
+- Address string 地址
+- Type string 证件类型
+
+IdCardType为PhilippinesVoteID时：
+- Birthday  string 生日
+- Address string 地址
+- LastName string 姓氏
+- FirstName string 姓名
+- VIN string VIN号
+- CivilStatus string 婚姻状况
+- Citizenship string 国籍
+- PrecinctNo string 地区
+
+IdCardType为PhilippinesDrivingLicense时：
+- Sex string 性别
+- Birthday  string 生日
+- Name string 姓名
+- Address string 地址
+- LastName string 姓氏
+- FirstName string 首姓名
+- MiddleName string 中间姓名
+- Nationality string 国籍
+- LicenseNo string 证号
+- ExpiresDate string 有效期
+- AgencyCode string 机构代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CardInfoOcrJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param RequestId: 单次流程请求标示。
+        :type RequestId: str
+        """
+        self.IsPass = None
+        self.CardVideo = None
+        self.CardImage = None
+        self.CardInfoOcrJson = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsPass = params.get("IsPass")
+        if params.get("CardVideo") is not None:
+            self.CardVideo = FileInfo()
+            self.CardVideo._deserialize(params.get("CardVideo"))
+        if params.get("CardImage") is not None:
+            self.CardImage = FileInfo()
+            self.CardImage._deserialize(params.get("CardImage"))
+        if params.get("CardInfoOcrJson") is not None:
+            self.CardInfoOcrJson = FileInfo()
+            self.CardInfoOcrJson._deserialize(params.get("CardInfoOcrJson"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ChargeDetail(AbstractModel):
@@ -728,6 +989,169 @@ class CheckPhoneAndNameResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
+class CompareResult(AbstractModel):
+    """单次比对结果描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 最终比对结果
+        :type ErrorCode: str
+        :param ErrorMsg: 最终比对结果描述
+        :type ErrorMsg: str
+        :param LiveData: 本次活体SDK生成的活体算法数据包
+        :type LiveData: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param LiveVideo: 本次用户活体验证过程的视频，url链接有效期10分钟。
+        :type LiveVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param LiveErrorCode: 活体认证结果码
+        :type LiveErrorCode: str
+        :param LiveErrorMsg: 活体认证结果描述
+        :type LiveErrorMsg: str
+        :param BestFrame: 本次活体的最佳人像截图，url链接有效期10分钟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param ProfileImage: 证件照头像截图，url链接有效期10分钟。
+        :type ProfileImage: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param CompareErrorCode: 人脸比对结果码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareErrorCode: str
+        :param CompareErrorMsg: 人脸比对结果描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareErrorMsg: str
+        :param Sim: 相似度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sim: float
+        :param IsNeedCharge: 该字段废弃
+        :type IsNeedCharge: bool
+        :param CardInfoInputJson: 用户编辑后的证件照信息，如果DisableChangeOcrResult为true禁用编辑无该值。url链接有效期10分钟。格式为json文本信息。
+IdCardType为HK时：
+- CnName string 中文姓名
+- EnName string 英文姓名
+- TelexCode string 中文姓名对应电码
+- Sex string 性别 ：“男M”或“女F”
+- Birthday string 出生日期
+- Permanent int 永久性居民身份证。0：非永久； 1：永久； -1：未知。
+- IdNum string 身份证号码
+- Symbol string 证件符号，出生日期下的符号，例如"***AZ"
+- FirstIssueDate string 首次签发日期
+- CurrentIssueDate string 最近领用日期
+
+IdCardType为ML时：
+- Sex string 男：LELAKI 女：PEREMPUAN
+- Birthday  string
+- ID string
+- Name string
+- Address string
+- Type string 证件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CardInfoInputJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param RequestId: 本次认证的请求标识。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.ErrorMsg = None
+        self.LiveData = None
+        self.LiveVideo = None
+        self.LiveErrorCode = None
+        self.LiveErrorMsg = None
+        self.BestFrame = None
+        self.ProfileImage = None
+        self.CompareErrorCode = None
+        self.CompareErrorMsg = None
+        self.Sim = None
+        self.IsNeedCharge = None
+        self.CardInfoInputJson = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMsg = params.get("ErrorMsg")
+        if params.get("LiveData") is not None:
+            self.LiveData = FileInfo()
+            self.LiveData._deserialize(params.get("LiveData"))
+        if params.get("LiveVideo") is not None:
+            self.LiveVideo = FileInfo()
+            self.LiveVideo._deserialize(params.get("LiveVideo"))
+        self.LiveErrorCode = params.get("LiveErrorCode")
+        self.LiveErrorMsg = params.get("LiveErrorMsg")
+        if params.get("BestFrame") is not None:
+            self.BestFrame = FileInfo()
+            self.BestFrame._deserialize(params.get("BestFrame"))
+        if params.get("ProfileImage") is not None:
+            self.ProfileImage = FileInfo()
+            self.ProfileImage._deserialize(params.get("ProfileImage"))
+        self.CompareErrorCode = params.get("CompareErrorCode")
+        self.CompareErrorMsg = params.get("CompareErrorMsg")
+        self.Sim = params.get("Sim")
+        self.IsNeedCharge = params.get("IsNeedCharge")
+        if params.get("CardInfoInputJson") is not None:
+            self.CardInfoInputJson = FileInfo()
+            self.CardInfoInputJson._deserialize(params.get("CardInfoInputJson"))
+        self.RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUploadUrlRequest(AbstractModel):
+    """CreateUploadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TargetAction: 用于的接口
+        :type TargetAction: str
+        """
+        self.TargetAction = None
+
+
+    def _deserialize(self, params):
+        self.TargetAction = params.get("TargetAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUploadUrlResponse(AbstractModel):
+    """CreateUploadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UploadUrl: 用于上传内容的链接，使用HTTP PUT方法上传。
+        :type UploadUrl: str
+        :param ResourceUrl: 完成上传后将该链接用于后续需要传入资源URL的地方。
+        :type ResourceUrl: str
+        :param ExpiredTimestamp: 上传和下载链接过期时间点，10位unix时间戳。
+        :type ExpiredTimestamp: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UploadUrl = None
+        self.ResourceUrl = None
+        self.ExpiredTimestamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UploadUrl = params.get("UploadUrl")
+        self.ResourceUrl = params.get("ResourceUrl")
+        self.ExpiredTimestamp = params.get("ExpiredTimestamp")
         self.RequestId = params.get("RequestId")
 
 
@@ -1200,6 +1624,79 @@ class DetectInfoVideoData(AbstractModel):
         
 
 
+class DetectReflectLivenessAndCompareRequest(AbstractModel):
+    """DetectReflectLivenessAndCompare请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LiveDataUrl: SDK生成的活体检测数据包的资源地址。
+        :type LiveDataUrl: str
+        :param LiveDataMd5: SDK生成的活体检测数据包的资源内容MD5（32位，用于校验LiveData的一致性）。
+        :type LiveDataMd5: str
+        :param ImageUrl: 用于比对的目标图片的资源地址。
+        :type ImageUrl: str
+        :param ImageMd5: 用于比对的目标图片的资源MD5（32位，用于校验Image的一致性）。
+        :type ImageMd5: str
+        """
+        self.LiveDataUrl = None
+        self.LiveDataMd5 = None
+        self.ImageUrl = None
+        self.ImageMd5 = None
+
+
+    def _deserialize(self, params):
+        self.LiveDataUrl = params.get("LiveDataUrl")
+        self.LiveDataMd5 = params.get("LiveDataMd5")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageMd5 = params.get("ImageMd5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectReflectLivenessAndCompareResponse(AbstractModel):
+    """DetectReflectLivenessAndCompare返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BestFrameUrl: 验证通过后的视频最佳截图资源临时地址，jpg格式，资源和链接有效期2小时，务必在有效期内下载。
+        :type BestFrameUrl: str
+        :param BestFrameMd5: 验证通过后的视频最佳截图资源MD5（32位，用于校验BestFrame的一致性）。
+        :type BestFrameMd5: str
+        :param Result: 业务错误码，成功情况返回Success，错误情况请参考下方错误码 列表中FailedOperation部分。
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
+        :type Sim: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BestFrameUrl = None
+        self.BestFrameMd5 = None
+        self.Result = None
+        self.Description = None
+        self.Sim = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BestFrameUrl = params.get("BestFrameUrl")
+        self.BestFrameMd5 = params.get("BestFrameMd5")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.Sim = params.get("Sim")
+        self.RequestId = params.get("RequestId")
+
+
 class EidInfo(AbstractModel):
     """Eid出参，包括商户方用户的标识和加密的用户姓名身份证信息。
 
@@ -1348,6 +1845,98 @@ class Encryption(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class FileInfo(AbstractModel):
+    """用于描述一个文件内容，包括一个下载链接和与文件内容对应的MD5和大小。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 用于下载文件的URL
+        :type Url: str
+        :param MD5: 文件的32位MD5
+        :type MD5: str
+        :param Size: 文件字节数
+        :type Size: int
+        """
+        self.Url = None
+        self.MD5 = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.MD5 = params.get("MD5")
+        self.Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateReflectSequenceRequest(AbstractModel):
+    """GenerateReflectSequence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceDataUrl: SDK生成的打包数据的资源链接。
+        :type DeviceDataUrl: str
+        :param DeviceDataMd5: SDK生成的打包数据的MD5值。
+        :type DeviceDataMd5: str
+        :param SecurityLevel: 1-静默
+2-眨眼
+3-光线
+4-眨眼+光线 （默认）
+        :type SecurityLevel: str
+        """
+        self.DeviceDataUrl = None
+        self.DeviceDataMd5 = None
+        self.SecurityLevel = None
+
+
+    def _deserialize(self, params):
+        self.DeviceDataUrl = params.get("DeviceDataUrl")
+        self.DeviceDataMd5 = params.get("DeviceDataMd5")
+        self.SecurityLevel = params.get("SecurityLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateReflectSequenceResponse(AbstractModel):
+    """GenerateReflectSequence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReflectSequenceUrl: 光线序列的资源链接，下载后透传给SDK即可开始核身。
+        :type ReflectSequenceUrl: str
+        :param ReflectSequenceMd5: 光线序列的资源MD5值，用于校验改序列是否被篡改。
+        :type ReflectSequenceMd5: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReflectSequenceUrl = None
+        self.ReflectSequenceMd5 = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReflectSequenceUrl = params.get("ReflectSequenceUrl")
+        self.ReflectSequenceMd5 = params.get("ReflectSequenceMd5")
+        self.RequestId = params.get("RequestId")
 
 
 class GetActionSequenceRequest(AbstractModel):
@@ -2046,6 +2635,67 @@ class GetLiveCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetLivenessResultRequest(AbstractModel):
+    """GetLivenessResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: 标识一次Sdk核验流程的令牌。
+        :type SdkToken: str
+        """
+        self.SdkToken = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLivenessResultResponse(AbstractModel):
+    """GetLivenessResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 流程的最终结果
+        :type Result: str
+        :param Description: 流程的最终结果描述
+        :type Description: str
+        :param BestFrame: 人像截图
+        :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param Video: 检测过程视频
+        :type Video: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.BestFrame = None
+        self.Video = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        if params.get("BestFrame") is not None:
+            self.BestFrame = FileInfo()
+            self.BestFrame._deserialize(params.get("BestFrame"))
+        if params.get("Video") is not None:
+            self.Video = FileInfo()
+            self.Video._deserialize(params.get("Video"))
+        self.RequestId = params.get("RequestId")
+
+
 class GetRealNameAuthResultRequest(AbstractModel):
     """GetRealNameAuthResult请求参数结构体
 
@@ -2156,6 +2806,81 @@ class GetRealNameAuthTokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetSdkVerificationResultRequest(AbstractModel):
+    """GetSdkVerificationResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkToken: 标识一次Sdk核验流程的令牌。
+        :type SdkToken: str
+        """
+        self.SdkToken = None
+
+
+    def _deserialize(self, params):
+        self.SdkToken = params.get("SdkToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSdkVerificationResultResponse(AbstractModel):
+    """GetSdkVerificationResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 整个核验结果
+        :type Result: str
+        :param Description: 结果描述
+        :type Description: str
+        :param ChargeCount: 计费次数
+        :type ChargeCount: int
+        :param CardVerifyResults: 多次证照识别的结果（有序），取最终一次结果为有效结果
+        :type CardVerifyResults: list of CardVerifyResult
+        :param CompareResults: 多次活体认证的结果信息（有序），取最终一次结果为有效结果
+        :type CompareResults: list of CompareResult
+        :param Extra: 获取token时传入的
+        :type Extra: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Description = None
+        self.ChargeCount = None
+        self.CardVerifyResults = None
+        self.CompareResults = None
+        self.Extra = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        self.ChargeCount = params.get("ChargeCount")
+        if params.get("CardVerifyResults") is not None:
+            self.CardVerifyResults = []
+            for item in params.get("CardVerifyResults"):
+                obj = CardVerifyResult()
+                obj._deserialize(item)
+                self.CardVerifyResults.append(obj)
+        if params.get("CompareResults") is not None:
+            self.CompareResults = []
+            for item in params.get("CompareResults"):
+                obj = CompareResult()
+                obj._deserialize(item)
+                self.CompareResults.append(obj)
+        self.Extra = params.get("Extra")
+        self.RequestId = params.get("RequestId")
+
+
 class GetWeChatBillDetailsRequest(AbstractModel):
     """GetWeChatBillDetails请求参数结构体
 
@@ -2219,6 +2944,87 @@ class GetWeChatBillDetailsResponse(AbstractModel):
                 obj = WeChatBillDetail()
                 obj._deserialize(item)
                 self.WeChatBillDetails.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetWebVerificationResultRequest(AbstractModel):
+    """GetWebVerificationResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizToken: Web核验令牌，由ApplyWebVerificationToken接口生成。
+        :type BizToken: str
+        """
+        self.BizToken = None
+
+
+    def _deserialize(self, params):
+        self.BizToken = params.get("BizToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetWebVerificationResultResponse(AbstractModel):
+    """GetWebVerificationResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 本次核验最终结果。0为核验通过，是同一人。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: int
+        :param ErrorMsg: 本次核验最终结果描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param VideoBestFrameUrl: 视频流中采集的最佳人脸照片临时地址，下载有效时间10分钟，如果需要存储请及时下载。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoBestFrameUrl: str
+        :param VideoBestFrameMd5: 视频流中采集的最佳人脸照片内容MD5散列值，可以使用此值校验文件内容是否一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoBestFrameMd5: str
+        :param VerificationDetailList: 本次核验流程的详细信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerificationDetailList: list of VerificationDetail
+        :param VideoUrl: 视频流中采集的视频临时地址，下载有效时间10分钟，如果需要存储请及时下载。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoUrl: str
+        :param VideoMd5: 视频流中采集的视频内容MD5散列值，可以使用此值校验文件内容是否一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoMd5: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.ErrorMsg = None
+        self.VideoBestFrameUrl = None
+        self.VideoBestFrameMd5 = None
+        self.VerificationDetailList = None
+        self.VideoUrl = None
+        self.VideoMd5 = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.VideoBestFrameUrl = params.get("VideoBestFrameUrl")
+        self.VideoBestFrameMd5 = params.get("VideoBestFrameMd5")
+        if params.get("VerificationDetailList") is not None:
+            self.VerificationDetailList = []
+            for item in params.get("VerificationDetailList"):
+                obj = VerificationDetail()
+                obj._deserialize(item)
+                self.VerificationDetailList.append(obj)
+        self.VideoUrl = params.get("VideoUrl")
+        self.VideoMd5 = params.get("VideoMd5")
         self.RequestId = params.get("RequestId")
 
 
@@ -3583,6 +4389,158 @@ class PhoneVerificationResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.Isp = params.get("Isp")
+        self.RequestId = params.get("RequestId")
+
+
+class VerificationDetail(AbstractModel):
+    """核验流程详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 本次核验最终结果。0为核验通过，是同一人。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: int
+        :param ErrorMsg: 本次核验最终结果描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param LivenessErrorCode: 本次核验活体结果。0为成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessErrorCode: int
+        :param LivenessErrorMsg: 本次核验活体结果描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessErrorMsg: str
+        :param CompareErrorCode: 本次核验比对结果。0为视频流中采集的最佳人脸照片和上传的比对照片是同一人。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareErrorCode: int
+        :param CompareErrorMsg: 本次核验比对结果描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareErrorMsg: str
+        :param ReqTimestamp: 本次核验时间戳(毫秒)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReqTimestamp: int
+        :param Similarity: 本次核验视频流中采集的最佳人脸照片和上传的比对照片的相似度， 范围[0.00, 100.00]，默认大于等于70时判断为同一人。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Similarity: float
+        :param Seq: 本次核验的唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Seq: str
+        """
+        self.ErrorCode = None
+        self.ErrorMsg = None
+        self.LivenessErrorCode = None
+        self.LivenessErrorMsg = None
+        self.CompareErrorCode = None
+        self.CompareErrorMsg = None
+        self.ReqTimestamp = None
+        self.Similarity = None
+        self.Seq = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.LivenessErrorCode = params.get("LivenessErrorCode")
+        self.LivenessErrorMsg = params.get("LivenessErrorMsg")
+        self.CompareErrorCode = params.get("CompareErrorCode")
+        self.CompareErrorMsg = params.get("CompareErrorMsg")
+        self.ReqTimestamp = params.get("ReqTimestamp")
+        self.Similarity = params.get("Similarity")
+        self.Seq = params.get("Seq")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoLivenessCompareRequest(AbstractModel):
+    """VideoLivenessCompare请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageUrl: 用于人脸比对照片的URL地址；图片下载后经Base64编码后的数据大小不超过3M，仅支持jpg、png格式。
+
+图片仅支持腾讯云同region的Cos地址，可保障更高的下载速度和稳定性，可使用CreateUploadUrl生成或自行购买Cos。
+        :type ImageUrl: str
+        :param ImageMd5: 比对图片的32位Md5值。
+        :type ImageMd5: str
+        :param VideoUrl: 用于活体检测的视频Url 地址。视频下载后经Base64编码后不超过 8M，视频下载耗时不超过4S，支持mp4、avi、flv格式。
+
+视频仅支持腾讯云同region的Cos地址，可保障更高的下载速度和稳定性，可使用CreateUploadUrl生成或自行购买Cos。
+        :type VideoUrl: str
+        :param VideoMd5: 视频的32位Md5值。
+        :type VideoMd5: str
+        :param LivenessType: 活体检测类型，取值：LIP/ACTION/SILENT。
+LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
+        :type LivenessType: str
+        :param ValidateData: 数字模式传参：传数字验证码，需自定义四位数字验证码；
+动作模式传参：传动作顺序，需自定义动作顺序(2,1 or 1,2)；
+静默模式传参：空。
+        :type ValidateData: str
+        """
+        self.ImageUrl = None
+        self.ImageMd5 = None
+        self.VideoUrl = None
+        self.VideoMd5 = None
+        self.LivenessType = None
+        self.ValidateData = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageMd5 = params.get("ImageMd5")
+        self.VideoUrl = params.get("VideoUrl")
+        self.VideoMd5 = params.get("VideoMd5")
+        self.LivenessType = params.get("LivenessType")
+        self.ValidateData = params.get("ValidateData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoLivenessCompareResponse(AbstractModel):
+    """VideoLivenessCompare返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
+        :type Sim: float
+        :param Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :type Result: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param BestFrame: 验证通过后的视频最佳截图照片。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BestFrame: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Sim = None
+        self.Result = None
+        self.Description = None
+        self.BestFrame = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Sim = params.get("Sim")
+        self.Result = params.get("Result")
+        self.Description = params.get("Description")
+        if params.get("BestFrame") is not None:
+            self.BestFrame = FileInfo()
+            self.BestFrame._deserialize(params.get("BestFrame"))
         self.RequestId = params.get("RequestId")
 
 

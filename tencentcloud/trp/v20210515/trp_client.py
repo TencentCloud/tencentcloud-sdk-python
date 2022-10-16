@@ -84,6 +84,64 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCustomPack(self, request):
+        """生成自定义码包
+
+        :param request: Request instance for CreateCustomPack.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateCustomPackRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateCustomPackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomPack", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCustomPackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCustomRule(self, request):
+        """新建自定义码规则
+
+        :param request: Request instance for CreateCustomRule.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateCustomRuleRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateCustomRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCustomRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMerchant(self, request):
         """新建商户
 
@@ -186,6 +244,35 @@ class TrpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTraceCodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTraceCodesAsync(self, request):
+        """异步导入激活码包，如果是第三方码包，需要域名跟配置的匹配
+
+        :param request: Request instance for CreateTraceCodesAsync.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateTraceCodesAsyncRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateTraceCodesAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTraceCodesAsync", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTraceCodesAsyncResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -403,6 +490,64 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCodePackStatus(self, request):
+        """查询码包状态
+
+        :param request: Request instance for DescribeCodePackStatus.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodePackStatusRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCodePackStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCodePackStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCodePackStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCodePackUrl(self, request):
+        """查询码包地址
+
+        :param request: Request instance for DescribeCodePackUrl.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodePackUrlRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCodePackUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCodePackUrl", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCodePackUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCodePacks(self, request):
         """查询码包列表
 
@@ -447,6 +592,93 @@ class TrpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCodesByPackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomRuleById(self, request):
+        """查自定义码规则
+
+        :param request: Request instance for DescribeCustomRuleById.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCustomRuleByIdRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCustomRuleByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomRuleById", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomRuleByIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCustomRules(self, request):
+        """查自定义码规则列表
+
+        :param request: Request instance for DescribeCustomRules.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCustomRulesRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCustomRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCustomRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeJobFileUrl(self, request):
+        """获取异步任务的输出地址
+
+        :param request: Request instance for DescribeJobFileUrl.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeJobFileUrlRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeJobFileUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobFileUrl", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeJobFileUrlResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -679,6 +911,64 @@ class TrpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCodeBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCustomRule(self, request):
+        """修改自定义码规则
+
+        :param request: Request instance for ModifyCustomRule.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ModifyCustomRuleRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ModifyCustomRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCustomRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCustomRuleStatus(self, request):
+        """更新自定义码规则状态
+
+        :param request: Request instance for ModifyCustomRuleStatus.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ModifyCustomRuleStatusRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ModifyCustomRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCustomRuleStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

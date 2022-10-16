@@ -186,6 +186,50 @@ class CodeItem(AbstractModel):
         
 
 
+class CodePart(AbstractModel):
+    """码段配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 码段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Type: 码段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Value: 码段内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param Length: 码段长度
+        :type Length: int
+        :param Ext: 扩展字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ext: str
+        """
+        self.Name = None
+        self.Type = None
+        self.Value = None
+        self.Length = None
+        self.Ext = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Value = params.get("Value")
+        self.Length = params.get("Length")
+        self.Ext = params.get("Ext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCodeBatchRequest(AbstractModel):
     """CreateCodeBatch请求参数结构体
 
@@ -334,6 +378,147 @@ class CreateCodePackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.PackId = params.get("PackId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCustomPackRequest(AbstractModel):
+    """CreateCustomPack请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MerchantId: 商户ID
+        :type MerchantId: str
+        :param Amount: 生码数量, 普通码包时必填
+        :type Amount: int
+        :param CorpId: 企业ID
+        :type CorpId: int
+        :param PackType: 码包类型 0: 普通码包 1: 层级码包
+        :type PackType: int
+        :param PackLevel: 码包层级
+        :type PackLevel: int
+        :param PackSpec: 层级码包规则 [{ Level, Rate, Amount, CustomId }]
+        :type PackSpec: list of PackSpec
+        :param CustomId: 码规则ID,  普通码包时必填
+        :type CustomId: str
+        """
+        self.MerchantId = None
+        self.Amount = None
+        self.CorpId = None
+        self.PackType = None
+        self.PackLevel = None
+        self.PackSpec = None
+        self.CustomId = None
+
+
+    def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.Amount = params.get("Amount")
+        self.CorpId = params.get("CorpId")
+        self.PackType = params.get("PackType")
+        self.PackLevel = params.get("PackLevel")
+        if params.get("PackSpec") is not None:
+            self.PackSpec = []
+            for item in params.get("PackSpec"):
+                obj = PackSpec()
+                obj._deserialize(item)
+                self.PackSpec.append(obj)
+        self.CustomId = params.get("CustomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomPackResponse(AbstractModel):
+    """CreateCustomPack返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackId: 码包ID
+        :type PackId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PackId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PackId = params.get("PackId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCustomRuleRequest(AbstractModel):
+    """CreateCustomRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 规则名称
+        :type Name: str
+        :param MerchantId: 商户ID
+        :type MerchantId: str
+        :param CodeLength: 码长度
+        :type CodeLength: int
+        :param CodeParts: 码段配置
+        :type CodeParts: list of CodePart
+        :param CorpId: 企业ID
+        :type CorpId: int
+        """
+        self.Name = None
+        self.MerchantId = None
+        self.CodeLength = None
+        self.CodeParts = None
+        self.CorpId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.MerchantId = params.get("MerchantId")
+        self.CodeLength = params.get("CodeLength")
+        if params.get("CodeParts") is not None:
+            self.CodeParts = []
+            for item in params.get("CodeParts"):
+                obj = CodePart()
+                obj._deserialize(item)
+                self.CodeParts.append(obj)
+        self.CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomRuleResponse(AbstractModel):
+    """CreateCustomRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomId: 码规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CustomId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CustomId = params.get("CustomId")
         self.RequestId = params.get("RequestId")
 
 
@@ -524,6 +709,60 @@ class CreateTraceChainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTraceCodesAsyncRequest(AbstractModel):
+    """CreateTraceCodesAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CorpId: 企业ID
+        :type CorpId: int
+        :param BatchId: 批次ID
+        :type BatchId: str
+        :param FileKey: 上传文件Key，仅支持 csv 或者 zip 类型
+        :type FileKey: str
+        """
+        self.CorpId = None
+        self.BatchId = None
+        self.FileKey = None
+
+
+    def _deserialize(self, params):
+        self.CorpId = params.get("CorpId")
+        self.BatchId = params.get("BatchId")
+        self.FileKey = params.get("FileKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTraceCodesAsyncResponse(AbstractModel):
+    """CreateTraceCodesAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: 批次ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTraceCodesRequest(AbstractModel):
     """CreateTraceCodes请求参数结构体
 
@@ -680,6 +919,70 @@ class CreateTraceDataResponse(AbstractModel):
     def _deserialize(self, params):
         self.TraceId = params.get("TraceId")
         self.RequestId = params.get("RequestId")
+
+
+class CustomRule(AbstractModel):
+    """码规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomId: 码规则ID
+        :type CustomId: str
+        :param Name: 码规则名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param CorpId: 企业ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpId: int
+        :param MerchantId: 商户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MerchantId: str
+        :param CodeLength: 码ID长度
+        :type CodeLength: int
+        :param Status: 规则状态
+        :type Status: int
+        :param CodeParts: 码段配置
+        :type CodeParts: list of CodePart
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self.CustomId = None
+        self.Name = None
+        self.CorpId = None
+        self.MerchantId = None
+        self.CodeLength = None
+        self.Status = None
+        self.CodeParts = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.CustomId = params.get("CustomId")
+        self.Name = params.get("Name")
+        self.CorpId = params.get("CorpId")
+        self.MerchantId = params.get("MerchantId")
+        self.CodeLength = params.get("CodeLength")
+        self.Status = params.get("Status")
+        if params.get("CodeParts") is not None:
+            self.CodeParts = []
+            for item in params.get("CodeParts"):
+                obj = CodePart()
+                obj._deserialize(item)
+                self.CodeParts.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteCodeBatchRequest(AbstractModel):
@@ -1012,6 +1315,101 @@ class DescribeCodeBatchsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCodePackStatusRequest(AbstractModel):
+    """DescribeCodePackStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackId: 码包ID
+        :type PackId: str
+        :param CorpId: 企业ID
+        :type CorpId: int
+        """
+        self.PackId = None
+        self.CorpId = None
+
+
+    def _deserialize(self, params):
+        self.PackId = params.get("PackId")
+        self.CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCodePackStatusResponse(AbstractModel):
+    """DescribeCodePackStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCodePackUrlRequest(AbstractModel):
+    """DescribeCodePackUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackId: 码包ID
+        :type PackId: str
+        :param CorpId: 企业ID
+        :type CorpId: int
+        """
+        self.PackId = None
+        self.CorpId = None
+
+
+    def _deserialize(self, params):
+        self.PackId = params.get("PackId")
+        self.CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCodePackUrlResponse(AbstractModel):
+    """DescribeCodePackUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 文字码包地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCodePacksRequest(AbstractModel):
     """DescribeCodePacks请求参数结构体
 
@@ -1117,6 +1515,179 @@ class DescribeCodesByPackResponse(AbstractModel):
                 obj = CodeItem()
                 obj._deserialize(item)
                 self.Codes.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomRuleByIdRequest(AbstractModel):
+    """DescribeCustomRuleById请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomId: 码规则ID
+        :type CustomId: str
+        :param CorpId: 企业ID
+        :type CorpId: int
+        """
+        self.CustomId = None
+        self.CorpId = None
+
+
+    def _deserialize(self, params):
+        self.CustomId = params.get("CustomId")
+        self.CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomRuleByIdResponse(AbstractModel):
+    """DescribeCustomRuleById返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomRule: 码规则信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRule: :class:`tencentcloud.trp.v20210515.models.CustomRule`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CustomRule = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomRule") is not None:
+            self.CustomRule = CustomRule()
+            self.CustomRule._deserialize(params.get("CustomRule"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomRulesRequest(AbstractModel):
+    """DescribeCustomRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Keyword: 搜索关键字
+        :type Keyword: str
+        :param PageSize: 条数
+        :type PageSize: int
+        :param PageNumber: 页数
+        :type PageNumber: int
+        :param CorpId: 企业ID
+        :type CorpId: int
+        :param Status: 码规则状态 0:未生效 1:已生效 -1:已失效
+        :type Status: int
+        :param MerchantId: 商户ID
+        :type MerchantId: str
+        """
+        self.Keyword = None
+        self.PageSize = None
+        self.PageNumber = None
+        self.CorpId = None
+        self.Status = None
+        self.MerchantId = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        self.CorpId = params.get("CorpId")
+        self.Status = params.get("Status")
+        self.MerchantId = params.get("MerchantId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomRulesResponse(AbstractModel):
+    """DescribeCustomRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomRules: 码规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRules: list of CustomRule
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CustomRules = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomRules") is not None:
+            self.CustomRules = []
+            for item in params.get("CustomRules"):
+                obj = CustomRule()
+                obj._deserialize(item)
+                self.CustomRules.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeJobFileUrlRequest(AbstractModel):
+    """DescribeJobFileUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 调度ID
+        :type JobId: int
+        :param CorpId: 企业ID
+        :type CorpId: int
+        """
+        self.JobId = None
+        self.CorpId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobFileUrlResponse(AbstractModel):
+    """DescribeJobFileUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1727,6 +2298,123 @@ class ModifyCodeBatchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.BatchId = params.get("BatchId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCustomRuleRequest(AbstractModel):
+    """ModifyCustomRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomId: 码规则ID
+        :type CustomId: str
+        :param Name: 规则名称
+        :type Name: str
+        :param CodeLength: 码长度
+        :type CodeLength: int
+        :param CodeParts: 码段配置
+        :type CodeParts: list of CodePart
+        :param CorpId: 企业ID
+        :type CorpId: int
+        """
+        self.CustomId = None
+        self.Name = None
+        self.CodeLength = None
+        self.CodeParts = None
+        self.CorpId = None
+
+
+    def _deserialize(self, params):
+        self.CustomId = params.get("CustomId")
+        self.Name = params.get("Name")
+        self.CodeLength = params.get("CodeLength")
+        if params.get("CodeParts") is not None:
+            self.CodeParts = []
+            for item in params.get("CodeParts"):
+                obj = CodePart()
+                obj._deserialize(item)
+                self.CodeParts.append(obj)
+        self.CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomRuleResponse(AbstractModel):
+    """ModifyCustomRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomId: 码规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CustomId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CustomId = params.get("CustomId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCustomRuleStatusRequest(AbstractModel):
+    """ModifyCustomRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomId: 码规则ID
+        :type CustomId: str
+        :param Status: 码规则状态 0:未生效 1:已生效 -1:已失效
+        :type Status: int
+        """
+        self.CustomId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CustomId = params.get("CustomId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomRuleStatusResponse(AbstractModel):
+    """ModifyCustomRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomId: 码规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CustomId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CustomId = params.get("CustomId")
         self.RequestId = params.get("RequestId")
 
 

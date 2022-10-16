@@ -371,6 +371,196 @@ class AssociateSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AuditLog(AbstractModel):
+    """审计日志详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AffectRows: 影响行数。
+        :type AffectRows: int
+        :param ErrCode: 错误码。
+        :type ErrCode: int
+        :param SqlType: SQL类型。
+        :type SqlType: str
+        :param TableName: 表名称。
+        :type TableName: str
+        :param InstanceName: 实例名称。
+        :type InstanceName: str
+        :param PolicyName: 审计策略名称。
+        :type PolicyName: str
+        :param DBName: 数据库名称。
+        :type DBName: str
+        :param Sql: SQL语句。
+        :type Sql: str
+        :param Host: 客户端地址。
+        :type Host: str
+        :param User: 用户名。
+        :type User: str
+        :param ExecTime: 执行时间。
+        :type ExecTime: int
+        :param Timestamp: 时间戳。
+        :type Timestamp: str
+        :param SentRows: 发送行数。
+        :type SentRows: int
+        :param ThreadId: 执行线程ID。
+        :type ThreadId: int
+        """
+        self.AffectRows = None
+        self.ErrCode = None
+        self.SqlType = None
+        self.TableName = None
+        self.InstanceName = None
+        self.PolicyName = None
+        self.DBName = None
+        self.Sql = None
+        self.Host = None
+        self.User = None
+        self.ExecTime = None
+        self.Timestamp = None
+        self.SentRows = None
+        self.ThreadId = None
+
+
+    def _deserialize(self, params):
+        self.AffectRows = params.get("AffectRows")
+        self.ErrCode = params.get("ErrCode")
+        self.SqlType = params.get("SqlType")
+        self.TableName = params.get("TableName")
+        self.InstanceName = params.get("InstanceName")
+        self.PolicyName = params.get("PolicyName")
+        self.DBName = params.get("DBName")
+        self.Sql = params.get("Sql")
+        self.Host = params.get("Host")
+        self.User = params.get("User")
+        self.ExecTime = params.get("ExecTime")
+        self.Timestamp = params.get("Timestamp")
+        self.SentRows = params.get("SentRows")
+        self.ThreadId = params.get("ThreadId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFile(AbstractModel):
+    """审计日志文件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileName: 审计日志文件名称
+        :type FileName: str
+        :param CreateTime: 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
+        :type CreateTime: str
+        :param Status: 文件状态值。可能返回的值为：
+"creating" - 生成中;
+"failed" - 创建失败;
+"success" - 已生成;
+        :type Status: str
+        :param FileSize: 文件大小，单位为 KB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param DownloadUrl: 审计日志下载地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadUrl: str
+        :param ErrMsg: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        """
+        self.FileName = None
+        self.CreateTime = None
+        self.Status = None
+        self.FileSize = None
+        self.DownloadUrl = None
+        self.ErrMsg = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.FileSize = params.get("FileSize")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFilter(AbstractModel):
+    """审计日志过滤条件。查询审计日志时，用户过滤返回的审计日志。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Host: 客户端地址。
+        :type Host: list of str
+        :param User: 用户名。
+        :type User: list of str
+        :param DBName: 数据库名称。
+        :type DBName: list of str
+        :param TableName: 表名称。
+        :type TableName: list of str
+        :param PolicyName: 审计策略名称。
+        :type PolicyName: list of str
+        :param Sql: SQL 语句。支持模糊匹配。
+        :type Sql: str
+        :param SqlType: SQL 类型。目前支持："SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE"。
+        :type SqlType: str
+        :param ExecTime: 执行时间。单位为：ms。表示筛选执行时间大于该值的审计日志。
+        :type ExecTime: int
+        :param AffectRows: 影响行数。表示筛选影响行数大于该值的审计日志。
+        :type AffectRows: int
+        :param SqlTypes: SQL 类型。支持多个类型同时查询。目前支持："SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "SET", "REPLACE", "EXECUTE"。
+        :type SqlTypes: list of str
+        :param Sqls: SQL 语句。支持传递多个sql语句。
+        :type Sqls: list of str
+        """
+        self.Host = None
+        self.User = None
+        self.DBName = None
+        self.TableName = None
+        self.PolicyName = None
+        self.Sql = None
+        self.SqlType = None
+        self.ExecTime = None
+        self.AffectRows = None
+        self.SqlTypes = None
+        self.Sqls = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        self.User = params.get("User")
+        self.DBName = params.get("DBName")
+        self.TableName = params.get("TableName")
+        self.PolicyName = params.get("PolicyName")
+        self.Sql = params.get("Sql")
+        self.SqlType = params.get("SqlType")
+        self.ExecTime = params.get("ExecTime")
+        self.AffectRows = params.get("AffectRows")
+        self.SqlTypes = params.get("SqlTypes")
+        self.Sqls = params.get("Sqls")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupFileInfo(AbstractModel):
     """备份文件信息
 
@@ -657,6 +847,76 @@ class CreateAccountsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAuditLogFileRequest(AbstractModel):
+    """CreateAuditLogFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param StartTime: 开始时间，格式为："2017-07-12 10:29:20"。
+        :type StartTime: str
+        :param EndTime: 结束时间，格式为："2017-07-12 10:29:20"。
+        :type EndTime: str
+        :param Order: 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+        :type Order: str
+        :param OrderBy: 排序字段。支持值包括：
+"timestamp" - 时间戳；
+"affectRows" - 影响行数；
+"execTime" - 执行时间。
+        :type OrderBy: str
+        :param Filter: 过滤条件。可按设置的过滤条件过滤日志。
+        :type Filter: :class:`tencentcloud.cynosdb.v20190107.models.AuditLogFilter`
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Order = None
+        self.OrderBy = None
+        self.Filter = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Order = params.get("Order")
+        self.OrderBy = params.get("OrderBy")
+        if params.get("Filter") is not None:
+            self.Filter = AuditLogFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditLogFileResponse(AbstractModel):
+    """CreateAuditLogFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileName: 审计日志文件名称。
+        :type FileName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
         self.RequestId = params.get("RequestId")
 
 
@@ -1816,6 +2076,51 @@ class DbTable(AbstractModel):
         
 
 
+class DeleteAuditLogFileRequest(AbstractModel):
+    """DeleteAuditLogFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param FileName: 审计日志文件名称。
+        :type FileName: str
+        """
+        self.InstanceId = None
+        self.FileName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditLogFileResponse(AbstractModel):
+    """DeleteAuditLogFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAccountAllGrantPrivilegesRequest(AbstractModel):
     """DescribeAccountAllGrantPrivileges请求参数结构体
 
@@ -1949,6 +2254,160 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = Account()
                 obj._deserialize(item)
                 self.AccountSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogFilesRequest(AbstractModel):
+    """DescribeAuditLogFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Limit: 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
+        :type Limit: int
+        :param Offset: 分页偏移量。
+        :type Offset: int
+        :param FileName: 审计日志文件名。
+        :type FileName: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+        self.FileName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogFilesResponse(AbstractModel):
+    """DescribeAuditLogFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的审计日志文件个数。
+        :type TotalCount: int
+        :param Items: 审计日志文件详情。
+        :type Items: list of AuditLogFile
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditLogFile()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogsRequest(AbstractModel):
+    """DescribeAuditLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param StartTime: 开始时间，格式为："2017-07-12 10:29:20"。
+        :type StartTime: str
+        :param EndTime: 结束时间，格式为："2017-07-12 10:29:20"。
+        :type EndTime: str
+        :param Order: 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+        :type Order: str
+        :param OrderBy: 排序字段。支持值包括：
+"timestamp" - 时间戳；
+"affectRows" - 影响行数；
+"execTime" - 执行时间。
+        :type OrderBy: str
+        :param Filter: 过滤条件。可按设置的过滤条件过滤日志。
+        :type Filter: :class:`tencentcloud.cynosdb.v20190107.models.AuditLogFilter`
+        :param Limit: 分页参数，单次返回的数据条数。默认值为100，最大值为100。
+        :type Limit: int
+        :param Offset: 分页偏移量。
+        :type Offset: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Order = None
+        self.OrderBy = None
+        self.Filter = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Order = params.get("Order")
+        self.OrderBy = params.get("OrderBy")
+        if params.get("Filter") is not None:
+            self.Filter = AuditLogFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogsResponse(AbstractModel):
+    """DescribeAuditLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的审计日志条数。
+        :type TotalCount: int
+        :param Items: 审计日志详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditLog()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 

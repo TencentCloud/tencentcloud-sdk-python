@@ -171,6 +171,35 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAuditLogFile(self, request):
+        """本接口(CreateAuditLogFile)用于创建云数据库实例的审计日志文件。
+
+        :param request: Request instance for CreateAuditLogFile.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAuditLogFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBackup(self, request):
         """为集群创建手动备份
 
@@ -229,6 +258,35 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAuditLogFile(self, request):
+        """本接口(DeleteAuditLogFile)用于删除云数据库实例的审计日志文件。
+
+        :param request: Request instance for DeleteAuditLogFile.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAuditLogFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAccountAllGrantPrivileges(self, request):
         """账号所有权限
 
@@ -273,6 +331,64 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditLogFiles(self, request):
+        """本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
+
+        :param request: Request instance for DescribeAuditLogFiles.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditLogFilesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditLogFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogFiles", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditLogFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditLogs(self, request):
+        """本接口(DescribeAuditLogs)用于查询数据库审计日志。
+
+        :param request: Request instance for DescribeAuditLogs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditLogsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

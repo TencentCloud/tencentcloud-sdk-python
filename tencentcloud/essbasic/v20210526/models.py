@@ -1110,63 +1110,6 @@ DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo�
         
 
 
-class CreateChannelFlowEvidenceReportRequest(AbstractModel):
-    """CreateChannelFlowEvidenceReport请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FlowId: 签署流程编号
-        :type FlowId: str
-        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
-        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param Operator: 操作者的信息
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        """
-        self.FlowId = None
-        self.Agent = None
-        self.Operator = None
-
-
-    def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
-        if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateChannelFlowEvidenceReportResponse(AbstractModel):
-    """CreateChannelFlowEvidenceReport返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ReportUrl: 出证报告 URL（有效五分钟）
-        :type ReportUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.ReportUrl = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ReportUrl = params.get("ReportUrl")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateConsoleLoginUrlRequest(AbstractModel):
     """CreateConsoleLoginUrl请求参数结构体
 

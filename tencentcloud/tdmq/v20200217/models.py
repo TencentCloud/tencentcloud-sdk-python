@@ -2401,7 +2401,7 @@ class CreateSubscriptionRequest(AbstractModel):
         :type EnvironmentId: str
         :param TopicName: 主题名称。
         :type TopicName: str
-        :param SubscriptionName: 订阅者名称，不支持中字以及除了短线和下划线外的特殊字符且不超过150个字符。
+        :param SubscriptionName: 订阅者名称，不超过128个字符。
         :type SubscriptionName: str
         :param IsIdempotent: 是否幂等创建，若否不允许创建同名的订阅关系。
         :type IsIdempotent: bool
