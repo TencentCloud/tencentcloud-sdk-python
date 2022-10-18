@@ -1142,6 +1142,12 @@ ye1y7d ：事件7天存储年套餐。
 ye1y30d ：事件30天存储年套餐。
 yc1w7d : 全时7天存储周套餐。
 ye1w7d : 事件7天存储周套餐。
+lye1m3d：低功耗事件3天月套餐。
+lye1m7d：低功耗事件7天月套餐。
+lye1m30d：低功耗事件30天月套餐。
+lye1y3d：低功耗事件3天年套餐。
+lye1y7d：低功耗事件7天年套餐。
+lye1y30d：低功耗事件30天年套餐。
         :type PackageId: str
         :param Override: 如果当前设备已开启云存套餐，Override=1会使用新套餐覆盖原有套餐。不传此参数则默认为0。
         :type Override: int

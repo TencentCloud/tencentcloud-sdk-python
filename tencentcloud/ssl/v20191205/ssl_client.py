@@ -461,6 +461,35 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePackages(self, request):
+        """获得权益包列表
+
+        :param request: Request instance for DescribePackages.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribePackagesRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribePackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePackages", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePackagesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DownloadCertificate(self, request):
         """本接口（DownloadCertificate）用于下载证书。
 

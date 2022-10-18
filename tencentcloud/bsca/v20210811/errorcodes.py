@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 账户流量余额不足。
+FAILEDOPERATION_ACCOUNTNOTENOUGH = 'FailedOperation.AccountNotEnough'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

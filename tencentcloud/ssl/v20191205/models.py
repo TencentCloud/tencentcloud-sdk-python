@@ -1714,6 +1714,88 @@ class DescribeManagersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePackagesRequest(AbstractModel):
+    """DescribePackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认0。
+        :type Offset: int
+        :param Limit: 限制数目，默认20。
+        :type Limit: int
+        :param Status: 按状态筛选。
+        :type Status: str
+        :param ExpireTime: 按过期时间升序或降序排列。
+        :type ExpireTime: str
+        :param PackageId: 按权益包ID搜索。
+        :type PackageId: str
+        :param Type: 按权益包类型搜索。
+        :type Type: str
+        :param Pid: 子产品编号
+        :type Pid: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Status = None
+        self.ExpireTime = None
+        self.PackageId = None
+        self.Type = None
+        self.Pid = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Status = params.get("Status")
+        self.ExpireTime = params.get("ExpireTime")
+        self.PackageId = params.get("PackageId")
+        self.Type = params.get("Type")
+        self.Pid = params.get("Pid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePackagesResponse(AbstractModel):
+    """DescribePackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Packages: 权益包列表。
+        :type Packages: list of PackageInfo
+        :param TotalCount: 总条数。
+        :type TotalCount: int
+        :param TotalBalance: 权益点总余额。
+        :type TotalBalance: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Packages = None
+        self.TotalCount = None
+        self.TotalBalance = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Packages") is not None:
+            self.Packages = []
+            for item in params.get("Packages"):
+                obj = PackageInfo()
+                obj._deserialize(item)
+                self.Packages.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.TotalBalance = params.get("TotalBalance")
+        self.RequestId = params.get("RequestId")
+
+
 class DownloadCertificateRequest(AbstractModel):
     """DownloadCertificate请求参数结构体
 
@@ -2140,6 +2222,140 @@ class OperationLog(AbstractModel):
     def _deserialize(self, params):
         self.Action = params.get("Action")
         self.CreatedOn = params.get("CreatedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PackageInfo(AbstractModel):
+    """权益包基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageId: 权益包ID。
+        :type PackageId: str
+        :param Total: 权益包内权益点总量。
+        :type Total: int
+        :param Balance: 权益包内权益点余量。
+        :type Balance: int
+        :param Type: 权益包名称。
+        :type Type: str
+        :param SourceUin: 权益点是转入时，来源信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceUin: int
+        :param Status: 权益点状态。
+        :type Status: str
+        :param ExpireTime: 过期时间。
+        :type ExpireTime: str
+        :param UpdateTime: 更新时间。
+        :type UpdateTime: str
+        :param CreateTime: 生成时间。
+        :type CreateTime: str
+        :param SourceType: 来源类型。
+        :type SourceType: str
+        :param TransferOutInfos: 转移信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferOutInfos: list of PackageTransferOutInfo
+        """
+        self.PackageId = None
+        self.Total = None
+        self.Balance = None
+        self.Type = None
+        self.SourceUin = None
+        self.Status = None
+        self.ExpireTime = None
+        self.UpdateTime = None
+        self.CreateTime = None
+        self.SourceType = None
+        self.TransferOutInfos = None
+
+
+    def _deserialize(self, params):
+        self.PackageId = params.get("PackageId")
+        self.Total = params.get("Total")
+        self.Balance = params.get("Balance")
+        self.Type = params.get("Type")
+        self.SourceUin = params.get("SourceUin")
+        self.Status = params.get("Status")
+        self.ExpireTime = params.get("ExpireTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CreateTime = params.get("CreateTime")
+        self.SourceType = params.get("SourceType")
+        if params.get("TransferOutInfos") is not None:
+            self.TransferOutInfos = []
+            for item in params.get("TransferOutInfos"):
+                obj = PackageTransferOutInfo()
+                obj._deserialize(item)
+                self.TransferOutInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PackageTransferOutInfo(AbstractModel):
+    """权益包转出详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageId: 权益包ID。
+        :type PackageId: str
+        :param TransferCode: 转移码。
+        :type TransferCode: str
+        :param TransferCount: 本次转移点数。
+        :type TransferCount: int
+        :param ReceivePackageId: 转入的PackageID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceivePackageId: str
+        :param ExpireTime: 本次转移过期时间。
+        :type ExpireTime: str
+        :param CreateTime: 本次转移生成时间。
+        :type CreateTime: str
+        :param UpdateTime: 本次转移更新时间。
+        :type UpdateTime: str
+        :param TransferStatus: 转移状态。
+        :type TransferStatus: str
+        :param ReceiverUin: 接收者uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverUin: int
+        :param ReceiveTime: 接收时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveTime: str
+        """
+        self.PackageId = None
+        self.TransferCode = None
+        self.TransferCount = None
+        self.ReceivePackageId = None
+        self.ExpireTime = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.TransferStatus = None
+        self.ReceiverUin = None
+        self.ReceiveTime = None
+
+
+    def _deserialize(self, params):
+        self.PackageId = params.get("PackageId")
+        self.TransferCode = params.get("TransferCode")
+        self.TransferCount = params.get("TransferCount")
+        self.ReceivePackageId = params.get("ReceivePackageId")
+        self.ExpireTime = params.get("ExpireTime")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.TransferStatus = params.get("TransferStatus")
+        self.ReceiverUin = params.get("ReceiverUin")
+        self.ReceiveTime = params.get("ReceiveTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -5110,11 +5110,15 @@ class DescribeClusterAuthenticationOptionsResponse(AbstractModel):
         :param LatestOperationState: 最近一次修改操作结果，返回值可能为：Updating，Success，Failed，TimeOut
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationState: str
+        :param OIDCConfig: OIDC认证配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OIDCConfig: :class:`tencentcloud.tke.v20180525.models.OIDCConfigAuthenticationOptions`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ServiceAccounts = None
         self.LatestOperationState = None
+        self.OIDCConfig = None
         self.RequestId = None
 
 
@@ -5123,6 +5127,9 @@ class DescribeClusterAuthenticationOptionsResponse(AbstractModel):
             self.ServiceAccounts = ServiceAccountAuthenticationOptions()
             self.ServiceAccounts._deserialize(params.get("ServiceAccounts"))
         self.LatestOperationState = params.get("LatestOperationState")
+        if params.get("OIDCConfig") is not None:
+            self.OIDCConfig = OIDCConfigAuthenticationOptions()
+            self.OIDCConfig._deserialize(params.get("OIDCConfig"))
         self.RequestId = params.get("RequestId")
 
 
@@ -12166,9 +12173,12 @@ class ModifyClusterAuthenticationOptionsRequest(AbstractModel):
         :type ClusterId: str
         :param ServiceAccounts: ServiceAccount认证配置
         :type ServiceAccounts: :class:`tencentcloud.tke.v20180525.models.ServiceAccountAuthenticationOptions`
+        :param OIDCConfig: OIDC认证配置
+        :type OIDCConfig: :class:`tencentcloud.tke.v20180525.models.OIDCConfigAuthenticationOptions`
         """
         self.ClusterId = None
         self.ServiceAccounts = None
+        self.OIDCConfig = None
 
 
     def _deserialize(self, params):
@@ -12176,6 +12186,9 @@ class ModifyClusterAuthenticationOptionsRequest(AbstractModel):
         if params.get("ServiceAccounts") is not None:
             self.ServiceAccounts = ServiceAccountAuthenticationOptions()
             self.ServiceAccounts._deserialize(params.get("ServiceAccounts"))
+        if params.get("OIDCConfig") is not None:
+            self.OIDCConfig = OIDCConfigAuthenticationOptions()
+            self.OIDCConfig._deserialize(params.get("OIDCConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13094,6 +13107,41 @@ class NodePoolOption(AbstractModel):
         self.AddToNodePool = params.get("AddToNodePool")
         self.NodePoolId = params.get("NodePoolId")
         self.InheritConfigurationFromNodePool = params.get("InheritConfigurationFromNodePool")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OIDCConfigAuthenticationOptions(AbstractModel):
+    """OIDC认证相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoCreateOIDCConfig: 创建身份提供商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoCreateOIDCConfig: bool
+        :param AutoCreateClientId: 创建身份提供商的ClientId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoCreateClientId: list of str
+        :param AutoInstallPodIdentityWebhookAddon: 创建PodIdentityWebhook组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoInstallPodIdentityWebhookAddon: bool
+        """
+        self.AutoCreateOIDCConfig = None
+        self.AutoCreateClientId = None
+        self.AutoInstallPodIdentityWebhookAddon = None
+
+
+    def _deserialize(self, params):
+        self.AutoCreateOIDCConfig = params.get("AutoCreateOIDCConfig")
+        self.AutoCreateClientId = params.get("AutoCreateClientId")
+        self.AutoInstallPodIdentityWebhookAddon = params.get("AutoInstallPodIdentityWebhookAddon")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

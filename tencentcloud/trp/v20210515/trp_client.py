@@ -809,6 +809,35 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTmpToken(self, request):
+        """查询临时Token，主要用于上传接口
+
+        :param request: Request instance for DescribeTmpToken.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTmpTokenRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeTmpTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTmpToken", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTmpTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTraceCodeById(self, request):
         """查询二维码信息
 

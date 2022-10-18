@@ -95,6 +95,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # 实例不存在。
 RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 
+# 资源不存在。
+RESOURCENOTFOUND_RESOURCENOTFOUND = 'ResourceNotFound.ResourceNotFound'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 

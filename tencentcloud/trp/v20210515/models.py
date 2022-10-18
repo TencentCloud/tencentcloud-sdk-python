@@ -66,7 +66,7 @@ class CodeBatch(AbstractModel):
         :param CorpId: 企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param BatchCode: 码
+        :param BatchCode: 批次编码(未使用)
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchCode: str
         :param CodeCnt: 码数量
@@ -87,7 +87,7 @@ class CodeBatch(AbstractModel):
         :param MpTpl: 微信模板
 注意：此字段可能返回 null，表示取不到有效值。
         :type MpTpl: str
-        :param Status: 状态
+        :param Status: 批次状态 0: 未激活 1: 已激活 -1: 已冻结
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param CreateTime: 创建时间
@@ -177,6 +177,131 @@ class CodeItem(AbstractModel):
 
     def _deserialize(self, params):
         self.Code = params.get("Code")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CodePack(AbstractModel):
+    """码包类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackId: 码id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackId: str
+        :param CorpId: 企业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpId: int
+        :param MerchantId: 商户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MerchantId: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Log: 记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Log: str
+        :param CreateUser: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUser: str
+        :param Amount: 码数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Amount: int
+        :param CodeLength: 码长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeLength: int
+        :param CodeType: 码类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeType: str
+        :param Cipher: 是否暗码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cipher: int
+        :param TextUrl: 文字码地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextUrl: str
+        :param PackUrl: 二维码地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackUrl: str
+        :param MerchantName: 商户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MerchantName: str
+        :param RuleType: 码规则类型 0: 默认, 1: 自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: int
+        :param CustomId: 自定义码规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomId: str
+        :param PackType: 码包类型 0: 普通码包 1: 层级码包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackType: int
+        :param PackLevel: 生码层级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackLevel: int
+        :param PackSpec: 层级码配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackSpec: list of PackSpec
+        """
+        self.PackId = None
+        self.CorpId = None
+        self.MerchantId = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Status = None
+        self.Log = None
+        self.CreateUser = None
+        self.Amount = None
+        self.CodeLength = None
+        self.CodeType = None
+        self.Cipher = None
+        self.TextUrl = None
+        self.PackUrl = None
+        self.MerchantName = None
+        self.RuleType = None
+        self.CustomId = None
+        self.PackType = None
+        self.PackLevel = None
+        self.PackSpec = None
+
+
+    def _deserialize(self, params):
+        self.PackId = params.get("PackId")
+        self.CorpId = params.get("CorpId")
+        self.MerchantId = params.get("MerchantId")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Status = params.get("Status")
+        self.Log = params.get("Log")
+        self.CreateUser = params.get("CreateUser")
+        self.Amount = params.get("Amount")
+        self.CodeLength = params.get("CodeLength")
+        self.CodeType = params.get("CodeType")
+        self.Cipher = params.get("Cipher")
+        self.TextUrl = params.get("TextUrl")
+        self.PackUrl = params.get("PackUrl")
+        self.MerchantName = params.get("MerchantName")
+        self.RuleType = params.get("RuleType")
+        self.CustomId = params.get("CustomId")
+        self.PackType = params.get("PackType")
+        self.PackLevel = params.get("PackLevel")
+        if params.get("PackSpec") is not None:
+            self.PackSpec = []
+            for item in params.get("PackSpec"):
+                obj = PackSpec()
+                obj._deserialize(item)
+                self.PackSpec.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -398,10 +523,12 @@ class CreateCustomPackRequest(AbstractModel):
         :type PackType: int
         :param PackLevel: 码包层级
         :type PackLevel: int
-        :param PackSpec: 层级码包规则 [{ Level, Rate, Amount, CustomId }]
+        :param PackSpec: 层级码包规则
         :type PackSpec: list of PackSpec
-        :param CustomId: 码规则ID,  普通码包时必填
+        :param CustomId: 码规则ID,  和CodeParts二选一必填
         :type CustomId: str
+        :param CodeParts: 码段配置，和CustomId二选一必填
+        :type CodeParts: list of CodePart
         """
         self.MerchantId = None
         self.Amount = None
@@ -410,6 +537,7 @@ class CreateCustomPackRequest(AbstractModel):
         self.PackLevel = None
         self.PackSpec = None
         self.CustomId = None
+        self.CodeParts = None
 
 
     def _deserialize(self, params):
@@ -425,6 +553,12 @@ class CreateCustomPackRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PackSpec.append(obj)
         self.CustomId = params.get("CustomId")
+        if params.get("CodeParts") is not None:
+            self.CodeParts = []
+            for item in params.get("CodeParts"):
+                obj = CodePart()
+                obj._deserialize(item)
+                self.CodeParts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1350,13 +1484,18 @@ class DescribeCodePackStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Status: 码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Status = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -1398,15 +1537,25 @@ class DescribeCodePackUrlResponse(AbstractModel):
         :param Url: 文字码包地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
+        :param ImgUrl: 图片码包地址，可能为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImgUrl: str
+        :param FileKey: 文字码包Key，用于上传导入
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileKey: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Url = None
+        self.ImgUrl = None
+        self.FileKey = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
+        self.ImgUrl = params.get("ImgUrl")
+        self.FileKey = params.get("FileKey")
         self.RequestId = params.get("RequestId")
 
 
@@ -1453,13 +1602,28 @@ class DescribeCodePacksResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param CodePacks: 码列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodePacks: list of CodePack
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.CodePacks = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("CodePacks") is not None:
+            self.CodePacks = []
+            for item in params.get("CodePacks"):
+                obj = CodePack()
+                obj._deserialize(item)
+                self.CodePacks.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1681,13 +1845,18 @@ class DescribeJobFileUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Url: 码包地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Url = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Url = params.get("Url")
         self.RequestId = params.get("RequestId")
 
 
@@ -1936,6 +2105,52 @@ class DescribeProductsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Products.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTmpTokenRequest(AbstractModel):
+    """DescribeTmpToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CorpId: 企业ID
+        :type CorpId: int
+        """
+        self.CorpId = None
+
+
+    def _deserialize(self, params):
+        self.CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTmpTokenResponse(AbstractModel):
+    """DescribeTmpToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Token: 临时token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Token: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Token = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Token = params.get("Token")
         self.RequestId = params.get("RequestId")
 
 
@@ -2797,11 +3012,15 @@ class PackSpec(AbstractModel):
         :param CustomId: 码规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
+        :param CodeParts: 码段配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeParts: list of CodePart
         """
         self.Level = None
         self.Rate = None
         self.Amount = None
         self.CustomId = None
+        self.CodeParts = None
 
 
     def _deserialize(self, params):
@@ -2809,6 +3028,12 @@ class PackSpec(AbstractModel):
         self.Rate = params.get("Rate")
         self.Amount = params.get("Amount")
         self.CustomId = params.get("CustomId")
+        if params.get("CodeParts") is not None:
+            self.CodeParts = []
+            for item in params.get("CodeParts"):
+                obj = CodePart()
+                obj._deserialize(item)
+                self.CodeParts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3013,13 +3238,13 @@ class TraceData(AbstractModel):
         :param CorpId: 企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param Type: 0
+        :param Type: 码类型 0: 批次, 1: 码, 2: 生产任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
-        :param Code: 码
+        :param Code: 码值，跟码类型一一对应
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param Rank: 排序
+        :param Rank: 排序，在Phase相同情况下，值越小排名靠前
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rank: int
         :param Phase: 溯源阶段 0:商品 1:通用 2:物流
@@ -3043,9 +3268,15 @@ class TraceData(AbstractModel):
         :param ChainTime: 上链时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChainTime: str
-        :param ChainData: 无
+        :param ChainData: 上链数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChainData: :class:`tencentcloud.trp.v20210515.models.ChainData`
+        :param PhaseData: 溯源阶段配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
+        :param Status: 溯源阶段状态 0: 无效, 1: 有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.TraceId = None
         self.CorpId = None
@@ -3060,6 +3291,8 @@ class TraceData(AbstractModel):
         self.ChainStatus = None
         self.ChainTime = None
         self.ChainData = None
+        self.PhaseData = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -3083,6 +3316,10 @@ class TraceData(AbstractModel):
         if params.get("ChainData") is not None:
             self.ChainData = ChainData()
             self.ChainData._deserialize(params.get("ChainData"))
+        if params.get("PhaseData") is not None:
+            self.PhaseData = PhaseData()
+            self.PhaseData._deserialize(params.get("PhaseData"))
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
