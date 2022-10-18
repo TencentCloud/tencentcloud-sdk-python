@@ -179,6 +179,9 @@ INVALIDPARAMETERVALUE_TEMPLATECONTENTISWRONG = 'InvalidParameterValue.TemplateCo
 # 模板参数必须为json格式。
 INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = 'InvalidParameterValue.TemplateDataError'
 
+# 模板参数变量名与之前不一致。
+INVALIDPARAMETERVALUE_TEMPLATEDATAINCONSISTENT = 'InvalidParameterValue.TemplateDataInconsistent'
+
 # 单条收件人地址附带的模板参数(整个 JSON 结构)， 长度超过限制 800 bytes
 INVALIDPARAMETERVALUE_TEMPLATEDATALENLIMIT = 'InvalidParameterValue.TemplateDataLenLimit'
 
@@ -200,11 +203,14 @@ INVALIDPARAMETERVALUE_WRONGDATE = 'InvalidParameterValue.WrongDate'
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
-# 收件人个数限制20000个以内。
-LIMITEXCEEDED_EXCEEDRECEIVERDETAILLIMIT = 'LimitExceeded.ExceedReceiverDetailLimit'
-
 # 收件人列表数量超过限制。
 LIMITEXCEEDED_EXCEEDRECEIVERLIMIT = 'LimitExceeded.ExceedReceiverLimit'
+
+# 该收件人列表包含的收件人地址总量超过限制。
+LIMITEXCEEDED_RECEIVERDETAILCOUNTLIMIT = 'LimitExceeded.ReceiverDetailCountLimit'
+
+# 请求的收件人地址数量超过限制。
+LIMITEXCEEDED_RECEIVERDETAILREQUESTLIMIT = 'LimitExceeded.ReceiverDetailRequestLimit'
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'

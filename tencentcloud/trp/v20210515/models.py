@@ -208,10 +208,10 @@ class CodePack(AbstractModel):
         :param UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param Status: 状态
+        :param Status: 制码状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Log: 记录
+        :param Log: 执行日志
 注意：此字段可能返回 null，表示取不到有效值。
         :type Log: str
         :param CreateUser: 创建人
@@ -229,10 +229,10 @@ class CodePack(AbstractModel):
         :param Cipher: 是否暗码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cipher: int
-        :param TextUrl: 文字码地址
+        :param TextUrl: [弃用] 文字码地址，通过另一个接口查
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextUrl: str
-        :param PackUrl: 二维码地址
+        :param PackUrl: [弃用] 二维码地址，通过另一个接口查
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackUrl: str
         :param MerchantName: 商户名
@@ -3168,11 +3168,11 @@ class TraceCode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 码
+        :param Code: 二维码
         :type Code: str
         :param CorpId: 企业ID
         :type CorpId: int
-        :param PackId: 包ID
+        :param PackId: 码包ID
         :type PackId: str
         :param BatchId: 批次ID
         :type BatchId: str
@@ -3180,7 +3180,7 @@ class TraceCode(AbstractModel):
         :type MerchantId: str
         :param ProductId: 产品ID
         :type ProductId: str
-        :param Status: 状态
+        :param Status: 码状态 0: 冻结 1: 激活
         :type Status: int
         :param CreateTime: 创建时间
         :type CreateTime: str

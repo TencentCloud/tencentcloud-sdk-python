@@ -741,18 +741,18 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
         :type Limit: int
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param Operator: 操作者的信息
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param Filters: 查询过滤实名用户，key为Status，Values为["IsVerified"]
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0，最大为20000
         :type Offset: int
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self.Limit = None
         self.Agent = None
-        self.Operator = None
         self.Filters = None
         self.Offset = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
@@ -760,9 +760,6 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
-        if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
@@ -770,6 +767,9 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1017,6 +1017,8 @@ SIGN_PERSONAL_SEAL - 个人签署印章控件（使用文件发起暂不支持�
         :type ComponentName: str
         :param ComponentRequired: 定义控件是否为必填项，默认为false
         :type ComponentRequired: bool
+        :param ComponentRecipientId: 控件关联的签署方id
+        :type ComponentRecipientId: str
         :param FileIndex: 控件所属文件的序号 (文档中文件的排列序号，从0开始)
         :type FileIndex: int
         :param GenerateMode: 控件生成的方式：
@@ -1066,6 +1068,7 @@ DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo�
         self.ComponentType = None
         self.ComponentName = None
         self.ComponentRequired = None
+        self.ComponentRecipientId = None
         self.FileIndex = None
         self.GenerateMode = None
         self.ComponentWidth = None
@@ -1087,6 +1090,7 @@ DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo�
         self.ComponentType = params.get("ComponentType")
         self.ComponentName = params.get("ComponentName")
         self.ComponentRequired = params.get("ComponentRequired")
+        self.ComponentRecipientId = params.get("ComponentRecipientId")
         self.FileIndex = params.get("FileIndex")
         self.GenerateMode = params.get("GenerateMode")
         self.ComponentWidth = params.get("ComponentWidth")
@@ -1647,7 +1651,7 @@ class DescribeTemplatesRequest(AbstractModel):
         r"""
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param TemplateId: 模板唯一标识
+        :param TemplateId: 模板唯一标识，查询单个模版时使用
         :type TemplateId: str
         :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
         :type ContentType: int
@@ -1655,21 +1659,21 @@ class DescribeTemplatesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 查询偏移位置，默认0；在查询列表的时候有效
         :type Offset: int
-        :param Operator: 操作者的信息
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param QueryAllComponents: 是否返回所有组件信息。默认false，只返回发起方控件；true，返回所有签署方控件
         :type QueryAllComponents: bool
         :param TemplateName: 模糊搜索模板名称，最大长度200
         :type TemplateName: str
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self.Agent = None
         self.TemplateId = None
         self.ContentType = None
         self.Limit = None
         self.Offset = None
-        self.Operator = None
         self.QueryAllComponents = None
         self.TemplateName = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
@@ -1680,11 +1684,11 @@ class DescribeTemplatesRequest(AbstractModel):
         self.ContentType = params.get("ContentType")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.QueryAllComponents = params.get("QueryAllComponents")
+        self.TemplateName = params.get("TemplateName")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
-        self.QueryAllComponents = params.get("QueryAllComponents")
-        self.TemplateName = params.get("TemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3343,7 +3347,7 @@ class TemplateInfo(AbstractModel):
         :type Recipients: list of Recipient
         :param TemplateType: 模板类型：1-静默签；3-普通模板
         :type TemplateType: int
-        :param IsPromoter: 是否是发起人
+        :param IsPromoter: 是否是发起人 ,已弃用
         :type IsPromoter: bool
         :param Creator: 模板的创建者信息
         :type Creator: str
@@ -3479,7 +3483,7 @@ class UploadFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileIds: 文件id数组，有效期一个小时
+        :param FileIds: 文件id数组，有效期一个小时；有效期内此文件id可以反复使用
         :type FileIds: list of str
         :param TotalCount: 上传成功文件数量
         :type TotalCount: int

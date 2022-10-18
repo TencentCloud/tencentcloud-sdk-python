@@ -58,6 +58,55 @@ class AppCustomContent(AbstractModel):
         
 
 
+class BindDocumentToRoomRequest(AbstractModel):
+    """BindDocumentToRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 房间ID。
+        :type RoomId: int
+        :param DocumentId: 文档ID。
+        :type DocumentId: str
+        :param BindType: 绑定类型。后台可透传到客户端，默认为0。客户端可以根据这个字段实现业务逻辑。
+        :type BindType: int
+        """
+        self.RoomId = None
+        self.DocumentId = None
+        self.BindType = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.DocumentId = params.get("DocumentId")
+        self.BindType = params.get("BindType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindDocumentToRoomResponse(AbstractModel):
+    """BindDocumentToRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDocumentRequest(AbstractModel):
     """CreateDocument请求参数结构体
 
@@ -374,6 +423,9 @@ coteaching 双师
         :param Assistants: 助教Id列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Assistants: list of str
+        :param RecordUrl: 录制地址。仅在房间结束后存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -389,6 +441,7 @@ coteaching 双师
         self.SubType = None
         self.DisableRecord = None
         self.Assistants = None
+        self.RecordUrl = None
         self.RequestId = None
 
 
@@ -405,6 +458,77 @@ coteaching 双师
         self.SubType = params.get("SubType")
         self.DisableRecord = params.get("DisableRecord")
         self.Assistants = params.get("Assistants")
+        self.RecordUrl = params.get("RecordUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRoomStatisticsRequest(AbstractModel):
+    """DescribeRoomStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 房间Id。
+        :type RoomId: int
+        :param Page: 分页查询当前页数，从1开始递增。
+        :type Page: int
+        :param Limit: 每页数据量，最大1000。
+        :type Limit: int
+        """
+        self.RoomId = None
+        self.Page = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoomStatisticsResponse(AbstractModel):
+    """DescribeRoomStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PeakMemberNumber: 峰值在线成员人数。
+        :type PeakMemberNumber: int
+        :param MemberNumber: 累计在线人数。
+        :type MemberNumber: int
+        :param Total: 记录总数。包含进入房间或者应到未到的。
+        :type Total: int
+        :param MemberRecords: 成员记录列表。
+        :type MemberRecords: list of MemberRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PeakMemberNumber = None
+        self.MemberNumber = None
+        self.Total = None
+        self.MemberRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PeakMemberNumber = params.get("PeakMemberNumber")
+        self.MemberNumber = params.get("MemberNumber")
+        self.Total = params.get("Total")
+        if params.get("MemberRecords") is not None:
+            self.MemberRecords = []
+            for item in params.get("MemberRecords"):
+                obj = MemberRecord()
+                obj._deserialize(item)
+                self.MemberRecords.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -567,6 +691,115 @@ class LoginUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MemberRecord(AbstractModel):
+    """成员记录信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户ID。
+        :type UserId: str
+        :param UserName: 用户名称。
+        :type UserName: str
+        :param PresentTime: 在线时长，单位秒。
+        :type PresentTime: int
+        :param Camera: 是否开启摄像头。
+        :type Camera: int
+        :param Mic: 是否开启麦克风。
+        :type Mic: int
+        :param Silence: 是否禁言。
+        :type Silence: int
+        :param AnswerQuestions: 回答问题数量。
+        :type AnswerQuestions: int
+        :param HandUps: 举手数量。
+        :type HandUps: int
+        :param FirstJoinTimestamp: 首次进入房间的unix时间戳。
+        :type FirstJoinTimestamp: int
+        :param LastQuitTimestamp: 最后一次退出房间的unix时间戳。
+        :type LastQuitTimestamp: int
+        :param Rewords: 奖励次数。
+        :type Rewords: int
+        """
+        self.UserId = None
+        self.UserName = None
+        self.PresentTime = None
+        self.Camera = None
+        self.Mic = None
+        self.Silence = None
+        self.AnswerQuestions = None
+        self.HandUps = None
+        self.FirstJoinTimestamp = None
+        self.LastQuitTimestamp = None
+        self.Rewords = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserName = params.get("UserName")
+        self.PresentTime = params.get("PresentTime")
+        self.Camera = params.get("Camera")
+        self.Mic = params.get("Mic")
+        self.Silence = params.get("Silence")
+        self.AnswerQuestions = params.get("AnswerQuestions")
+        self.HandUps = params.get("HandUps")
+        self.FirstJoinTimestamp = params.get("FirstJoinTimestamp")
+        self.LastQuitTimestamp = params.get("LastQuitTimestamp")
+        self.Rewords = params.get("Rewords")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAppRequest(AbstractModel):
+    """ModifyApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 低代码互动课堂的SdkAppId。
+        :type SdkAppId: int
+        :param Callback: 回调地址。
+        :type Callback: str
+        """
+        self.SdkAppId = None
+        self.Callback = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Callback = params.get("Callback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAppResponse(AbstractModel):
+    """ModifyApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RegisterUserRequest(AbstractModel):
     """RegisterUser请求参数结构体
 
@@ -663,6 +896,51 @@ class SetAppCustomContentRequest(AbstractModel):
 
 class SetAppCustomContentResponse(AbstractModel):
     """SetAppCustomContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnbindDocumentFromRoomRequest(AbstractModel):
+    """UnbindDocumentFromRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 房间ID。
+        :type RoomId: int
+        :param DocumentId: 文档ID。
+        :type DocumentId: str
+        """
+        self.RoomId = None
+        self.DocumentId = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.DocumentId = params.get("DocumentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindDocumentFromRoomResponse(AbstractModel):
+    """UnbindDocumentFromRoom返回参数结构体
 
     """
 

@@ -50,6 +50,41 @@ class AlarmEvent(AbstractModel):
         
 
 
+class AlarmHierarchicalValue(AbstractModel):
+    """告警分级阈值配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Remind: 提醒等级阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remind: str
+        :param Warn: 警告等级阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Warn: str
+        :param Serious: 严重等级阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Serious: str
+        """
+        self.Remind = None
+        self.Warn = None
+        self.Serious = None
+
+
+    def _deserialize(self, params):
+        self.Remind = params.get("Remind")
+        self.Warn = params.get("Warn")
+        self.Serious = params.get("Serious")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmHistory(AbstractModel):
     """告警历史数据
 
@@ -715,6 +750,9 @@ re=正则匹配
         :param ValueMin: 最小值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValueMin: float
+        :param HierarchicalValue: 告警分级阈值配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HierarchicalValue: :class:`tencentcloud.monitor.v20180724.models.AlarmHierarchicalValue`
         """
         self.MetricName = None
         self.Period = None
@@ -732,6 +770,7 @@ re=正则匹配
         self.ProductId = None
         self.ValueMax = None
         self.ValueMin = None
+        self.HierarchicalValue = None
 
 
     def _deserialize(self, params):
@@ -753,6 +792,9 @@ re=正则匹配
         self.ProductId = params.get("ProductId")
         self.ValueMax = params.get("ValueMax")
         self.ValueMin = params.get("ValueMin")
+        if params.get("HierarchicalValue") is not None:
+            self.HierarchicalValue = AlarmHierarchicalValue()
+            self.HierarchicalValue._deserialize(params.get("HierarchicalValue"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

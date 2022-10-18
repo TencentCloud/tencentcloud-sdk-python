@@ -1310,6 +1310,35 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateOpenBankGlobalPaymentOrder(self, request):
+        """云企付-跨境支付下单
+
+        :param request: Request instance for CreateOpenBankGlobalPaymentOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankGlobalPaymentOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankGlobalPaymentOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOpenBankGlobalPaymentOrder", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOpenBankGlobalPaymentOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateOpenBankMerchant(self, request):
         """云企付-创建商户
 

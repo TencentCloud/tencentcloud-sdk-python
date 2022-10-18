@@ -172,7 +172,7 @@ class BmaClient(AbstractClient):
 
 
     def CreateCRBlock(self, request):
-        """新建拦截
+        """新建协查处置
 
         :param request: Request instance for CreateCRBlock.
         :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRBlockRequest`
@@ -577,6 +577,35 @@ class BmaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCRObtainDetail(self, request):
+        """查询取证详情
+
+        :param request: Request instance for DescribeCRObtainDetail.
+        :type request: :class:`tencentcloud.bma.v20210624.models.DescribeCRObtainDetailRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.DescribeCRObtainDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCRObtainDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCRObtainDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCRWorkInfo(self, request):
         """查询作品基本信息
 
@@ -636,7 +665,7 @@ class BmaClient(AbstractClient):
 
 
     def ModifyCRBlockStatus(self, request):
-        """拦截申请
+        """协查处置申请
 
         :param request: Request instance for ModifyCRBlockStatus.
         :type request: :class:`tencentcloud.bma.v20210624.models.ModifyCRBlockStatusRequest`

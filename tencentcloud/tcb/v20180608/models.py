@@ -7144,6 +7144,51 @@ class ModifyCloudBaseRunServerVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClsTopicRequest(AbstractModel):
+    """ModifyClsTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param Period: 日志生命周期，单位天，可取值范围1~3600，取值为3640时代表永久保存
+        :type Period: int
+        """
+        self.EnvId = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClsTopicResponse(AbstractModel):
+    """ModifyClsTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDatabaseACLRequest(AbstractModel):
     """ModifyDatabaseACL请求参数结构体
 

@@ -1470,6 +1470,107 @@ class DescribeCRMonitorsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCRObtainDetailRequest(AbstractModel):
+    """DescribeCRObtainDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TortId: 侵权ID
+        :type TortId: int
+        """
+        self.TortId = None
+
+
+    def _deserialize(self, params):
+        self.TortId = params.get("TortId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCRObtainDetailResponse(AbstractModel):
+    """DescribeCRObtainDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkName: 作品名称
+        :type WorkName: str
+        :param TortURL: 侵权链接
+        :type TortURL: str
+        :param ObtainTime: 取证时间
+        :type ObtainTime: str
+        :param ObtainType: 取证类型
+        :type ObtainType: str
+        :param ObtainNum: 取证号
+        :type ObtainNum: str
+        :param DepositFile: 证据地址
+        :type DepositFile: str
+        :param DepositCert: 公证信息地址
+        :type DepositCert: str
+        :param WorkType: 内容类型
+        :type WorkType: str
+        :param WorkCategory: 作品类型
+        :type WorkCategory: str
+        :param TortId: 侵权ID
+        :type TortId: int
+        :param TortNum: 侵权编号
+        :type TortNum: str
+        :param ObtainStatus: 取证状态
+        :type ObtainStatus: int
+        :param ObtainNote: 取证状态说明
+        :type ObtainNote: str
+        :param ObtainDuration: 取证时长
+        :type ObtainDuration: str
+        :param ObtainName: 取证名称
+        :type ObtainName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WorkName = None
+        self.TortURL = None
+        self.ObtainTime = None
+        self.ObtainType = None
+        self.ObtainNum = None
+        self.DepositFile = None
+        self.DepositCert = None
+        self.WorkType = None
+        self.WorkCategory = None
+        self.TortId = None
+        self.TortNum = None
+        self.ObtainStatus = None
+        self.ObtainNote = None
+        self.ObtainDuration = None
+        self.ObtainName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WorkName = params.get("WorkName")
+        self.TortURL = params.get("TortURL")
+        self.ObtainTime = params.get("ObtainTime")
+        self.ObtainType = params.get("ObtainType")
+        self.ObtainNum = params.get("ObtainNum")
+        self.DepositFile = params.get("DepositFile")
+        self.DepositCert = params.get("DepositCert")
+        self.WorkType = params.get("WorkType")
+        self.WorkCategory = params.get("WorkCategory")
+        self.TortId = params.get("TortId")
+        self.TortNum = params.get("TortNum")
+        self.ObtainStatus = params.get("ObtainStatus")
+        self.ObtainNote = params.get("ObtainNote")
+        self.ObtainDuration = params.get("ObtainDuration")
+        self.ObtainName = params.get("ObtainName")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCRWorkInfoRequest(AbstractModel):
     """DescribeCRWorkInfo请求参数结构体
 
@@ -1885,7 +1986,7 @@ class ModifyCRObtainStatusRequest(AbstractModel):
         r"""
         :param TortId: 侵权ID
         :type TortId: int
-        :param ObtainType: 取证类型：1-网页取证 2-过程取证
+        :param ObtainType: 取证类型：1-网页取证 2-过程取证(暂不提供)
         :type ObtainType: int
         :param ObtainDuration: 过程取证的取证时长，单位分钟，范围0-120
         :type ObtainDuration: int

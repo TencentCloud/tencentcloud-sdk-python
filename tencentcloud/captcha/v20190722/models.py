@@ -234,6 +234,84 @@ class CaptchaQueryData(AbstractModel):
         
 
 
+class CaptchaStatisticObj(AbstractModel):
+    """验证码统计图Obj
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActionTotal: 请求总量
+        :type ActionTotal: int
+        :param VerifyTotal: 验证总量
+        :type VerifyTotal: int
+        :param VerifyThroughTotal: 验证通过总量
+        :type VerifyThroughTotal: int
+        :param VerifyInterceptTotal: 验证拦截总量
+        :type VerifyInterceptTotal: int
+        :param TicketTotal: 票据校验总量
+        :type TicketTotal: int
+        :param TicketThroughTotal: 票据通过总量
+        :type TicketThroughTotal: int
+        :param TicketInterceptTotal: 票据拦截总量
+        :type TicketInterceptTotal: int
+        :param RequestTrend: 请求趋势图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestTrend: list of RequestTrendObj
+        :param InterceptPerTrend: 拦截率趋势图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InterceptPerTrend: list of InterceptPerTrendObj
+        :param TicketCheckTrend: 票据校验趋势图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TicketCheckTrend: list of TicketCheckTrendObj
+        """
+        self.ActionTotal = None
+        self.VerifyTotal = None
+        self.VerifyThroughTotal = None
+        self.VerifyInterceptTotal = None
+        self.TicketTotal = None
+        self.TicketThroughTotal = None
+        self.TicketInterceptTotal = None
+        self.RequestTrend = None
+        self.InterceptPerTrend = None
+        self.TicketCheckTrend = None
+
+
+    def _deserialize(self, params):
+        self.ActionTotal = params.get("ActionTotal")
+        self.VerifyTotal = params.get("VerifyTotal")
+        self.VerifyThroughTotal = params.get("VerifyThroughTotal")
+        self.VerifyInterceptTotal = params.get("VerifyInterceptTotal")
+        self.TicketTotal = params.get("TicketTotal")
+        self.TicketThroughTotal = params.get("TicketThroughTotal")
+        self.TicketInterceptTotal = params.get("TicketInterceptTotal")
+        if params.get("RequestTrend") is not None:
+            self.RequestTrend = []
+            for item in params.get("RequestTrend"):
+                obj = RequestTrendObj()
+                obj._deserialize(item)
+                self.RequestTrend.append(obj)
+        if params.get("InterceptPerTrend") is not None:
+            self.InterceptPerTrend = []
+            for item in params.get("InterceptPerTrend"):
+                obj = InterceptPerTrendObj()
+                obj._deserialize(item)
+                self.InterceptPerTrend.append(obj)
+        if params.get("TicketCheckTrend") is not None:
+            self.TicketCheckTrend = []
+            for item in params.get("TicketCheckTrend"):
+                obj = TicketCheckTrendObj()
+                obj._deserialize(item)
+                self.TicketCheckTrend.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CaptchaTicketDataRes(AbstractModel):
     """DescribeCaptchaTicketData 接口 返回数据类型集合
 
@@ -1302,6 +1380,35 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param StartTimeStr: 开始时间
+        :type StartTimeStr: str
+        :param EndTimeStr: 结束时间
+        :type EndTimeStr: str
+        :param Dimension: 查询粒度
+分钟：“1”
+小时：“2”
+天：“3”
+        :type Dimension: str
+        """
+        self.StartTimeStr = None
+        self.EndTimeStr = None
+        self.Dimension = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeStr = params.get("StartTimeStr")
+        self.EndTimeStr = params.get("EndTimeStr")
+        self.Dimension = params.get("Dimension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class GetTotalTicketStatisticsResponse(AbstractModel):
     """GetTotalTicketStatistics返回参数结构体
@@ -1310,14 +1417,65 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Data: 返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
+        :param CaptchaCode: 返回码
+        :type CaptchaCode: int
+        :param CaptchaMsg: 返回信息
+        :type CaptchaMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Data = None
+        self.CaptchaCode = None
+        self.CaptchaMsg = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = CaptchaStatisticObj()
+            self.Data._deserialize(params.get("Data"))
+        self.CaptchaCode = params.get("CaptchaCode")
+        self.CaptchaMsg = params.get("CaptchaMsg")
         self.RequestId = params.get("RequestId")
+
+
+class InterceptPerTrendObj(AbstractModel):
+    """拦截率趋势obj
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ftime: 时间参数
+        :type Ftime: str
+        :param RequestInterceptPer: 拦截率
+        :type RequestInterceptPer: float
+        :param AnswerInterceptPer: 答案拦截率
+        :type AnswerInterceptPer: float
+        :param PolicyInterceptPer: 策略拦截率
+        :type PolicyInterceptPer: float
+        """
+        self.Ftime = None
+        self.RequestInterceptPer = None
+        self.AnswerInterceptPer = None
+        self.PolicyInterceptPer = None
+
+
+    def _deserialize(self, params):
+        self.Ftime = params.get("Ftime")
+        self.RequestInterceptPer = params.get("RequestInterceptPer")
+        self.AnswerInterceptPer = params.get("AnswerInterceptPer")
+        self.PolicyInterceptPer = params.get("PolicyInterceptPer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OutputManageMarketingRiskValue(AbstractModel):
@@ -1401,6 +1559,46 @@ reject：拒绝，高风险恶意
         
 
 
+class RequestTrendObj(AbstractModel):
+    """验证码请求趋势图obj
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ftime: 时间参数
+        :type Ftime: str
+        :param RequestAction: 请求量
+        :type RequestAction: int
+        :param RequestVerify: 验证量
+        :type RequestVerify: int
+        :param RequestThroughput: 通过量
+        :type RequestThroughput: int
+        :param RequestIntercept: 拦截量
+        :type RequestIntercept: int
+        """
+        self.Ftime = None
+        self.RequestAction = None
+        self.RequestVerify = None
+        self.RequestThroughput = None
+        self.RequestIntercept = None
+
+
+    def _deserialize(self, params):
+        self.Ftime = params.get("Ftime")
+        self.RequestAction = params.get("RequestAction")
+        self.RequestVerify = params.get("RequestVerify")
+        self.RequestThroughput = params.get("RequestThroughput")
+        self.RequestIntercept = params.get("RequestIntercept")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TicketAmountUnit(AbstractModel):
     """DescribeCaptchaTicketData 返回的数据结构
 
@@ -1420,6 +1618,42 @@ class TicketAmountUnit(AbstractModel):
     def _deserialize(self, params):
         self.DateKey = params.get("DateKey")
         self.Amount = params.get("Amount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TicketCheckTrendObj(AbstractModel):
+    """验证码票据校验趋势obj
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ftime: 时间参数
+        :type Ftime: str
+        :param TicketCount: 票据校验量
+        :type TicketCount: int
+        :param TicketThroughput: 票据通过量
+        :type TicketThroughput: int
+        :param TicketIntercept: 票据拦截量
+        :type TicketIntercept: int
+        """
+        self.Ftime = None
+        self.TicketCount = None
+        self.TicketThroughput = None
+        self.TicketIntercept = None
+
+
+    def _deserialize(self, params):
+        self.Ftime = params.get("Ftime")
+        self.TicketCount = params.get("TicketCount")
+        self.TicketThroughput = params.get("TicketThroughput")
+        self.TicketIntercept = params.get("TicketIntercept")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
