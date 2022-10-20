@@ -379,6 +379,7 @@ CHECK_BOX - true/false
 FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
 SELECTOR - 选项值
 DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
+SIGN_SEAL - 印章Id，于控制台查询获取
         :type ComponentValue: str
         :param IsFormType: 是否是表单域类型，默认不存在
         :type IsFormType: bool
@@ -1144,18 +1145,12 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Operator: 用户信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param TemplateId: 模板ID
         :type TemplateId: str
         :param FlowName: 签署流程名称，最大长度不超过200字符
         :type FlowName: str
-        :param Operator: 用户信息
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param CallbackUrl: 回调地址,最大长度1000字符串
-回调时机：
-用户通过签署二维码发起签署流程时，企业额度不足导致失败
-        :type CallbackUrl: str
         :param MaxFlowNum: 最大可发起签署流程份数，默认5份 
 发起流程数量超过此上限后二维码自动失效
         :type MaxFlowNum: int
@@ -1163,33 +1158,48 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type FlowEffectiveDay: int
         :param QrEffectiveDay: 二维码有效天数 默认7天 最高设置不超过90天
         :type QrEffectiveDay: int
-        :param ApproverRestrictions: 限制二维码用户条件
+        :param Restrictions: 限制二维码用户条件
+        :type Restrictions: list of ApproverRestriction
+        :param CallbackUrl: 回调地址,最大长度1000字符串
+回调时机：
+用户通过签署二维码发起签署流程时，企业额度不足导致失败
+        :type CallbackUrl: str
+        :param Agent: 应用信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param ApproverRestrictions: 限制二维码用户条件（已弃用）
         :type ApproverRestrictions: :class:`tencentcloud.ess.v20201111.models.ApproverRestriction`
         """
+        self.Operator = None
         self.TemplateId = None
         self.FlowName = None
-        self.Operator = None
-        self.Agent = None
-        self.CallbackUrl = None
         self.MaxFlowNum = None
         self.FlowEffectiveDay = None
         self.QrEffectiveDay = None
+        self.Restrictions = None
+        self.CallbackUrl = None
+        self.Agent = None
         self.ApproverRestrictions = None
 
 
     def _deserialize(self, params):
-        self.TemplateId = params.get("TemplateId")
-        self.FlowName = params.get("FlowName")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
-        if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
-        self.CallbackUrl = params.get("CallbackUrl")
+        self.TemplateId = params.get("TemplateId")
+        self.FlowName = params.get("FlowName")
         self.MaxFlowNum = params.get("MaxFlowNum")
         self.FlowEffectiveDay = params.get("FlowEffectiveDay")
         self.QrEffectiveDay = params.get("QrEffectiveDay")
+        if params.get("Restrictions") is not None:
+            self.Restrictions = []
+            for item in params.get("Restrictions"):
+                obj = ApproverRestriction()
+                obj._deserialize(item)
+                self.Restrictions.append(obj)
+        self.CallbackUrl = params.get("CallbackUrl")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         if params.get("ApproverRestrictions") is not None:
             self.ApproverRestrictions = ApproverRestriction()
             self.ApproverRestrictions._deserialize(params.get("ApproverRestrictions"))

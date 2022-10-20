@@ -26,6 +26,64 @@ class TcssClient(AbstractClient):
     _service = 'tcss'
 
 
+    def AddAndPublishNetworkFirewallPolicyDetail(self, request):
+        """容器网络创建网络策略添加并发布任务
+
+        :param request: Request instance for AddAndPublishNetworkFirewallPolicyDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddAndPublishNetworkFirewallPolicyDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddAndPublishNetworkFirewallPolicyDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddAndPublishNetworkFirewallPolicyYamlDetail(self, request):
+        """容器网络创建Yaml网络策略并发布任务
+
+        :param request: Request instance for AddAndPublishNetworkFirewallPolicyYamlDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyYamlDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddAndPublishNetworkFirewallPolicyYamlDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddAndPublishNetworkFirewallPolicyYamlDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddAndPublishNetworkFirewallPolicyYamlDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddAssetImageRegistryRegistryDetail(self, request):
         """新增单个镜像仓库详细信息
 
@@ -142,6 +200,35 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddEditImageAutoAuthorizedRule(self, request):
+        """新增或编辑本地镜像自动授权规则
+
+        :param request: Request instance for AddEditImageAutoAuthorizedRule.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddEditImageAutoAuthorizedRuleRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddEditImageAutoAuthorizedRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddEditImageAutoAuthorizedRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddEditImageAutoAuthorizedRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddEditReverseShellWhiteList(self, request):
         """添加编辑运行时反弹shell白名单
 
@@ -229,6 +316,151 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddEscapeWhiteList(self, request):
+        """新增逃逸白名单
+
+        :param request: Request instance for AddEscapeWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddEscapeWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddEscapeWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddEscapeWhiteList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddEscapeWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddIgnoreVul(self, request):
+        """新增漏洞扫描忽略漏洞
+
+        :param request: Request instance for AddIgnoreVul.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddIgnoreVulRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddIgnoreVulResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddIgnoreVul", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddIgnoreVulResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddNetworkFirewallPolicyDetail(self, request):
+        """容器网络创建网络策略添加任务
+
+        :param request: Request instance for AddNetworkFirewallPolicyDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddNetworkFirewallPolicyDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddNetworkFirewallPolicyDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddNetworkFirewallPolicyYamlDetail(self, request):
+        """容器网络创建Yaml网络策略添加任务
+
+        :param request: Request instance for AddNetworkFirewallPolicyYamlDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyYamlDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddNetworkFirewallPolicyYamlDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddNetworkFirewallPolicyYamlDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddNetworkFirewallPolicyYamlDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CheckNetworkFirewallPolicyYaml(self, request):
+        """容器网络创建检查Yaml网络策略任务
+
+        :param request: Request instance for CheckNetworkFirewallPolicyYaml.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CheckNetworkFirewallPolicyYamlRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CheckNetworkFirewallPolicyYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckNetworkFirewallPolicyYaml", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckNetworkFirewallPolicyYamlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckRepeatAssetImageRegistry(self, request):
         """检查单个镜像仓库名是否重复
 
@@ -244,6 +476,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckRepeatAssetImageRegistryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ConfirmNetworkFirewallPolicy(self, request):
+        """容器网络创建网络策略确认任务
+
+        :param request: Request instance for ConfirmNetworkFirewallPolicy.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ConfirmNetworkFirewallPolicyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ConfirmNetworkFirewallPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConfirmNetworkFirewallPolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ConfirmNetworkFirewallPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -374,6 +635,35 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAssetImageVirusExportJob(self, request):
+        """创建本地镜像木马列表导出任务
+
+        :param request: Request instance for CreateAssetImageVirusExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageVirusExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateAssetImageVirusExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAssetImageVirusExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAssetImageVirusExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCheckComponent(self, request):
         """安装检查组件，创建防护容器
 
@@ -461,6 +751,151 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateComponentExportJob(self, request):
+        """查询本地镜像组件列表导出
+
+        :param request: Request instance for CreateComponentExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateComponentExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateComponentExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateComponentExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateComponentExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDefenceVulExportJob(self, request):
+        """创建支持防御的漏洞导出任务
+
+        :param request: Request instance for CreateDefenceVulExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateDefenceVulExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateDefenceVulExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDefenceVulExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDefenceVulExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateEmergencyVulExportJob(self, request):
+        """创建应急漏洞导出任务
+
+        :param request: Request instance for CreateEmergencyVulExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateEmergencyVulExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateEmergencyVulExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEmergencyVulExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEmergencyVulExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateEscapeEventsExportJob(self, request):
+        """创建逃逸事件导出异步任务
+
+        :param request: Request instance for CreateEscapeEventsExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateEscapeEventsExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateEscapeEventsExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEscapeEventsExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEscapeEventsExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateEscapeWhiteListExportJob(self, request):
+        """创建逃逸白名单导出任务
+
+        :param request: Request instance for CreateEscapeWhiteListExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateEscapeWhiteListExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateEscapeWhiteListExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEscapeWhiteListExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEscapeWhiteListExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateExportComplianceStatusListJob(self, request):
         """创建一个导出安全合规信息的任务
 
@@ -476,6 +911,180 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateExportComplianceStatusListJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateHostExportJob(self, request):
+        """创建主机列表导出任务
+
+        :param request: Request instance for CreateHostExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateHostExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateHostExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHostExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateHostExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateImageExportJob(self, request):
+        """创建镜像导出任务
+
+        :param request: Request instance for CreateImageExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateImageExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateImageExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateImageExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImageExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNetworkFirewallClusterRefresh(self, request):
+        """容器网络集群下发刷新任务
+
+        :param request: Request instance for CreateNetworkFirewallClusterRefresh.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallClusterRefreshRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallClusterRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNetworkFirewallClusterRefresh", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNetworkFirewallClusterRefreshResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNetworkFirewallPolicyDiscover(self, request):
+        """容器网络集群网络策略创建自动发现任务
+
+        :param request: Request instance for CreateNetworkFirewallPolicyDiscover.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPolicyDiscoverRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPolicyDiscoverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNetworkFirewallPolicyDiscover", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNetworkFirewallPolicyDiscoverResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNetworkFirewallPublish(self, request):
+        """容器网络创建网络策略发布任务
+
+        :param request: Request instance for CreateNetworkFirewallPublish.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPublishRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallPublishResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNetworkFirewallPublish", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNetworkFirewallPublishResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNetworkFirewallUndoPublish(self, request):
+        """容器网络创建网络策略撤销任务
+
+        :param request: Request instance for CreateNetworkFirewallUndoPublish.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallUndoPublishRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateNetworkFirewallUndoPublishResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNetworkFirewallUndoPublish", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateNetworkFirewallUndoPublishResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -519,6 +1128,35 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateProcessEventsExportJob(self, request):
+        """创建异常进程事件导出异步任务
+
+        :param request: Request instance for CreateProcessEventsExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateProcessEventsExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateProcessEventsExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProcessEventsExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateProcessEventsExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRefreshTask(self, request):
         """下发刷新任务，会刷新资产信息
 
@@ -534,6 +1172,64 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRefreshTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSearchTemplate(self, request):
+        """添加检索模板
+
+        :param request: Request instance for CreateSearchTemplate.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateSearchTemplateRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateSearchTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSearchTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSearchTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSystemVulExportJob(self, request):
+        """创建系统漏洞导出任务
+
+        :param request: Request instance for CreateSystemVulExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateSystemVulExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateSystemVulExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSystemVulExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSystemVulExportJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -592,6 +1288,209 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVirusScanTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVulContainerExportJob(self, request):
+        """创建受漏洞影响的容器导出任务
+
+        :param request: Request instance for CreateVulContainerExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulContainerExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateVulContainerExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulContainerExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVulContainerExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVulDefenceEventExportJob(self, request):
+        """创建漏洞防御导出任务
+
+        :param request: Request instance for CreateVulDefenceEventExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulDefenceEventExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateVulDefenceEventExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulDefenceEventExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVulDefenceEventExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVulDefenceHostExportJob(self, request):
+        """创建漏洞防御主机导出任务
+
+        :param request: Request instance for CreateVulDefenceHostExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulDefenceHostExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateVulDefenceHostExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulDefenceHostExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVulDefenceHostExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVulExportJob(self, request):
+        """查询本地镜像漏洞列表导出
+
+        :param request: Request instance for CreateVulExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateVulExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVulExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVulImageExportJob(self, request):
+        """创建受漏洞影响的镜像导出任务
+
+        :param request: Request instance for CreateVulImageExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulImageExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateVulImageExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulImageExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVulImageExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVulScanTask(self, request):
+        """创建漏洞扫描任务
+
+        :param request: Request instance for CreateVulScanTask.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateVulScanTaskRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateVulScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVulScanTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVulScanTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateWebVulExportJob(self, request):
+        """创建web漏洞导出任务
+
+        :param request: Request instance for CreateWebVulExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateWebVulExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateWebVulExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWebVulExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWebVulExportJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -693,6 +1592,151 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteEscapeWhiteList(self, request):
+        """删除逃逸白名单
+
+        :param request: Request instance for DeleteEscapeWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteEscapeWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteEscapeWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEscapeWhiteList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteEscapeWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteIgnoreVul(self, request):
+        """取消漏洞扫描忽略漏洞
+
+        :param request: Request instance for DeleteIgnoreVul.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteIgnoreVulRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteIgnoreVulResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteIgnoreVul", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteIgnoreVulResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMachine(self, request):
+        """卸载Agent客户端
+
+        :param request: Request instance for DeleteMachine.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteMachineRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteMachineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMachine", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMachineResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteNetworkFirewallPolicyDetail(self, request):
+        """容器网络创建网络策略删除任务
+
+        :param request: Request instance for DeleteNetworkFirewallPolicyDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteNetworkFirewallPolicyDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteNetworkFirewallPolicyDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNetworkFirewallPolicyDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteNetworkFirewallPolicyDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteReverseShellEvents(self, request):
+        """删除运行时反弹shell事件
+
+        :param request: Request instance for DeleteReverseShellEvents.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteReverseShellEventsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteReverseShellEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteReverseShellEvents", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReverseShellEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteReverseShellWhiteLists(self, request):
         """删除运行时反弹shell白名单
 
@@ -708,6 +1752,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReverseShellWhiteListsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRiskSyscallEvents(self, request):
+        """删除运行时高危系统调用事件
+
+        :param request: Request instance for DeleteRiskSyscallEvents.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteRiskSyscallEventsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteRiskSyscallEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRiskSyscallEvents", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRiskSyscallEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -751,6 +1824,64 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteSearchTemplate(self, request):
+        """删除检索模板
+
+        :param request: Request instance for DeleteSearchTemplate.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteSearchTemplateRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteSearchTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSearchTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSearchTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeABTestConfig(self, request):
+        """获取用户当前灰度配置
+
+        :param request: Request instance for DescribeABTestConfig.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeABTestConfigRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeABTestConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeABTestConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeABTestConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAbnormalProcessDetail(self, request):
         """查询运行时异常进程事件详细信息
 
@@ -766,6 +1897,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAbnormalProcessDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAbnormalProcessEventTendency(self, request):
+        """查询待处理异常进程事件趋势
+
+        :param request: Request instance for DescribeAbnormalProcessEventTendency.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventTendencyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventTendencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAbnormalProcessEventTendency", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAbnormalProcessEventTendencyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -824,6 +1984,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAbnormalProcessEventsExportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAbnormalProcessLevelSummary(self, request):
+        """统计异常进程各威胁等级待处理事件数
+
+        :param request: Request instance for DescribeAbnormalProcessLevelSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessLevelSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessLevelSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAbnormalProcessLevelSummary", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAbnormalProcessLevelSummaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1172,6 +2361,64 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAffectedWorkloadListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAgentDaemonSetCmd(self, request):
+        """查询平行容器安装命令
+
+        :param request: Request instance for DescribeAgentDaemonSetCmd.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAgentDaemonSetCmdRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAgentDaemonSetCmdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentDaemonSetCmd", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentDaemonSetCmdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAgentInstallCommand(self, request):
+        """查询agent安装命令
+
+        :param request: Request instance for DescribeAgentInstallCommand.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAgentInstallCommandRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAgentInstallCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentInstallCommand", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAgentInstallCommandResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2317,6 +3564,35 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAssetSyncLastTime(self, request):
+        """查询资产同步最近时间
+
+        :param request: Request instance for DescribeAssetSyncLastTime.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSyncLastTimeRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSyncLastTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAssetSyncLastTime", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetSyncLastTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAssetWebServiceList(self, request):
         """容器安全查询web服务列表
 
@@ -2332,6 +3608,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetWebServiceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAutoAuthorizedRuleHost(self, request):
+        """查询自动授权规则授权范围主机信息
+
+        :param request: Request instance for DescribeAutoAuthorizedRuleHost.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAutoAuthorizedRuleHostRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAutoAuthorizedRuleHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoAuthorizedRuleHost", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAutoAuthorizedRuleHostResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2781,6 +4086,93 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeESAggregations(self, request):
+        """获取ES字段聚合结果
+
+        :param request: Request instance for DescribeESAggregations.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeESAggregationsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeESAggregationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeESAggregations", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeESAggregationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeESHits(self, request):
+        """获取ES查询文档列表
+
+        :param request: Request instance for DescribeESHits.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeESHitsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeESHitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeESHits", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeESHitsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEmergencyVulList(self, request):
+        """查询应急漏洞列表
+
+        :param request: Request instance for DescribeEmergencyVulList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEmergencyVulListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeEmergencyVulListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEmergencyVulList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEmergencyVulListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEscapeEventDetail(self, request):
         """DescribeEscapeEventDetail  查询容器逃逸事件详情
 
@@ -2825,6 +4217,64 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEscapeEventInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEscapeEventTendency(self, request):
+        """查询待处理逃逸事件趋势
+
+        :param request: Request instance for DescribeEscapeEventTendency.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventTendencyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventTendencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEscapeEventTendency", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEscapeEventTendencyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEscapeEventTypeSummary(self, request):
+        """统计容器逃逸各事件类型和待处理事件数
+
+        :param request: Request instance for DescribeEscapeEventTypeSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventTypeSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventTypeSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEscapeEventTypeSummary", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEscapeEventTypeSummaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2926,6 +4376,35 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEscapeWhiteList(self, request):
+        """查询逃逸白名单
+
+        :param request: Request instance for DescribeEscapeWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEscapeWhiteList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEscapeWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExportJobResult(self, request):
         """查询导出任务的结果
 
@@ -2970,6 +4449,122 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageAuthorizedInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageAutoAuthorizedLogList(self, request):
+        """查询镜像自动授权结果列表
+
+        :param request: Request instance for DescribeImageAutoAuthorizedLogList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedLogListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageAutoAuthorizedLogList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageAutoAuthorizedLogListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageAutoAuthorizedRule(self, request):
+        """查询本地镜像自动授权规则
+
+        :param request: Request instance for DescribeImageAutoAuthorizedRule.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedRuleRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageAutoAuthorizedRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageAutoAuthorizedRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageAutoAuthorizedTaskList(self, request):
+        """查询镜像自动授权任务列表
+
+        :param request: Request instance for DescribeImageAutoAuthorizedTaskList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedTaskListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageAutoAuthorizedTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageAutoAuthorizedTaskList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageAutoAuthorizedTaskListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageComponentList(self, request):
+        """查询本地镜像组件列表
+
+        :param request: Request instance for DescribeImageComponentList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageComponentListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageComponentListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageComponentList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageComponentListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3100,6 +4695,441 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIndexList(self, request):
+        """获取索引列表
+
+        :param request: Request instance for DescribeIndexList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeIndexListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeIndexListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIndexList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIndexListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInspectionReport(self, request):
+        """查询检查报告
+
+        :param request: Request instance for DescribeInspectionReport.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeInspectionReportRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeInspectionReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInspectionReport", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInspectionReportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLogStorageStatistic(self, request):
+        """获取日志检索容量使用统计
+
+        :param request: Request instance for DescribeLogStorageStatistic.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeLogStorageStatisticRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeLogStorageStatisticResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogStorageStatistic", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogStorageStatisticResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallAuditRecord(self, request):
+        """查询集群策略审计列表
+
+        :param request: Request instance for DescribeNetworkFirewallAuditRecord.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallAuditRecordRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallAuditRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallAuditRecord", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallAuditRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallClusterList(self, request):
+        """查询集群策略列表
+
+        :param request: Request instance for DescribeNetworkFirewallClusterList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallClusterList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallClusterListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallClusterRefreshStatus(self, request):
+        """容器网络查询资产任务进度
+
+        :param request: Request instance for DescribeNetworkFirewallClusterRefreshStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterRefreshStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallClusterRefreshStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallClusterRefreshStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallClusterRefreshStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallNamespaceLabelList(self, request):
+        """查询集群网络空间标签列表
+
+        :param request: Request instance for DescribeNetworkFirewallNamespaceLabelList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceLabelListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceLabelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallNamespaceLabelList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallNamespaceLabelListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallNamespaceList(self, request):
+        """查询集群网络空间列表
+
+        :param request: Request instance for DescribeNetworkFirewallNamespaceList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallNamespaceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallNamespaceList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallNamespaceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallPodLabelsList(self, request):
+        """查询集群网络pod标签
+
+        :param request: Request instance for DescribeNetworkFirewallPodLabelsList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPodLabelsListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPodLabelsListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallPodLabelsList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallPodLabelsListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallPolicyDetail(self, request):
+        """容器网络集群查看策略详情
+
+        :param request: Request instance for DescribeNetworkFirewallPolicyDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallPolicyDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallPolicyDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallPolicyDiscover(self, request):
+        """容器网络查询网络策略自动发现任务进度
+
+        :param request: Request instance for DescribeNetworkFirewallPolicyDiscover.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDiscoverRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyDiscoverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallPolicyDiscover", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallPolicyDiscoverResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallPolicyList(self, request):
+        """查询集群网络策略列表
+
+        :param request: Request instance for DescribeNetworkFirewallPolicyList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallPolicyList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallPolicyListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallPolicyStatus(self, request):
+        """容器网络查询网络策略策略执行状态
+
+        :param request: Request instance for DescribeNetworkFirewallPolicyStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallPolicyStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallPolicyStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNetworkFirewallPolicyYamlDetail(self, request):
+        """容器网络集群查看Yaml网络策略详情
+
+        :param request: Request instance for DescribeNetworkFirewallPolicyYamlDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyYamlDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNetworkFirewallPolicyYamlDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkFirewallPolicyYamlDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNetworkFirewallPolicyYamlDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNewestVul(self, request):
+        """查询最新披露漏洞列表
+
+        :param request: Request instance for DescribeNewestVul.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeNewestVulRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeNewestVulResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNewestVul", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNewestVulResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePostPayDetail(self, request):
         """DescribePostPayDetail  查询后付费详情
 
@@ -3144,6 +5174,64 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProVersionInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePromotionActivity(self, request):
+        """查询促销活动
+
+        :param request: Request instance for DescribePromotionActivity.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePromotionActivityRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribePromotionActivityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePromotionActivity", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePromotionActivityResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePublicKey(self, request):
+        """获取公钥
+
+        :param request: Request instance for DescribePublicKey.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribePublicKeyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribePublicKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePublicKey", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePublicKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3564,6 +5652,122 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeScanIgnoreVulList(self, request):
+        """查询扫描忽略的漏洞列表
+
+        :param request: Request instance for DescribeScanIgnoreVulList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeScanIgnoreVulListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeScanIgnoreVulListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScanIgnoreVulList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScanIgnoreVulListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSearchExportList(self, request):
+        """导出ES查询文档列表
+
+        :param request: Request instance for DescribeSearchExportList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchExportListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchExportListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSearchExportList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSearchExportListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSearchLogs(self, request):
+        """获取历史搜索记录
+
+        :param request: Request instance for DescribeSearchLogs.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchLogsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSearchLogs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSearchLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSearchTemplates(self, request):
+        """获取快速检索列表
+
+        :param request: Request instance for DescribeSearchTemplates.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchTemplatesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSearchTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSearchTemplates", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSearchTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSecEventsTendency(self, request):
         """查询容器运行时安全事件趋势
 
@@ -3593,6 +5797,354 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSecLogAlertMsg(self, request):
+        """查询安全日志告警信息
+
+        :param request: Request instance for DescribeSecLogAlertMsg.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogAlertMsgRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogAlertMsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogAlertMsg", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogAlertMsgResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecLogCleanSettingInfo(self, request):
+        """查询安全日志清理设置详情
+
+        :param request: Request instance for DescribeSecLogCleanSettingInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogCleanSettingInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogCleanSettingInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogCleanSettingInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogCleanSettingInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecLogDeliveryClsOptions(self, request):
+        """查询安全日志投递cls可选项
+
+        :param request: Request instance for DescribeSecLogDeliveryClsOptions.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryClsOptionsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryClsOptionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogDeliveryClsOptions", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogDeliveryClsOptionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecLogDeliveryClsSetting(self, request):
+        """查询安全日志投递Cls配置
+
+        :param request: Request instance for DescribeSecLogDeliveryClsSetting.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryClsSettingRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryClsSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogDeliveryClsSetting", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogDeliveryClsSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecLogDeliveryKafkaOptions(self, request):
+        """查询安全日志投递kafka可选项
+
+        :param request: Request instance for DescribeSecLogDeliveryKafkaOptions.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryKafkaOptionsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryKafkaOptionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogDeliveryKafkaOptions", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogDeliveryKafkaOptionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecLogDeliveryKafkaSetting(self, request):
+        """查询安全日志投递kafka配置
+
+        :param request: Request instance for DescribeSecLogDeliveryKafkaSetting.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryKafkaSettingRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogDeliveryKafkaSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogDeliveryKafkaSetting", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogDeliveryKafkaSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecLogJoinObjectList(self, request):
+        """查询安全日志接入对象列表
+
+        :param request: Request instance for DescribeSecLogJoinObjectList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogJoinObjectListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogJoinObjectListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogJoinObjectList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogJoinObjectListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecLogJoinTypeList(self, request):
+        """查询安全日志接入列表
+
+        :param request: Request instance for DescribeSecLogJoinTypeList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogJoinTypeListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogJoinTypeListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogJoinTypeList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogJoinTypeListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecLogKafkaUIN(self, request):
+        """查询安全日志KafkaUIN
+
+        :param request: Request instance for DescribeSecLogKafkaUIN.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogKafkaUINRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogKafkaUINResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogKafkaUIN", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogKafkaUINResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecLogVasInfo(self, request):
+        """查询安全日志商品信息
+
+        :param request: Request instance for DescribeSecLogVasInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogVasInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSecLogVasInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecLogVasInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecLogVasInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSupportDefenceVul(self, request):
+        """查询支持防御的漏洞列表
+
+        :param request: Request instance for DescribeSupportDefenceVul.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSupportDefenceVulRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSupportDefenceVulResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSupportDefenceVul", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSupportDefenceVulResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSystemVulList(self, request):
+        """查询系统漏洞列表
+
+        :param request: Request instance for DescribeSystemVulList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSystemVulListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSystemVulListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSystemVulList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSystemVulListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTaskResultSummary(self, request):
         """查询检查结果总览，返回受影响的节点数量，返回7天的数据，总共7个
 
@@ -3608,6 +6160,64 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResultSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTcssSummary(self, request):
+        """查询容器安全概览信息
+
+        :param request: Request instance for DescribeTcssSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeTcssSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeTcssSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTcssSummary", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTcssSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUnauthorizedCoresTendency(self, request):
+        """查询当天未授权核数趋势
+
+        :param request: Request instance for DescribeUnauthorizedCoresTendency.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeUnauthorizedCoresTendencyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeUnauthorizedCoresTendencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUnauthorizedCoresTendency", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUnauthorizedCoresTendencyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3709,6 +6319,122 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVirusAutoIsolateSampleDetail(self, request):
+        """查询木马自动隔离样本详情
+
+        :param request: Request instance for DescribeVirusAutoIsolateSampleDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusAutoIsolateSampleDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVirusAutoIsolateSampleDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVirusAutoIsolateSampleDownloadURL(self, request):
+        """查询木马自动隔离样本下载链接
+
+        :param request: Request instance for DescribeVirusAutoIsolateSampleDownloadURL.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleDownloadURLRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleDownloadURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusAutoIsolateSampleDownloadURL", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVirusAutoIsolateSampleDownloadURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVirusAutoIsolateSampleList(self, request):
+        """查询木马自动隔离样本列表
+
+        :param request: Request instance for DescribeVirusAutoIsolateSampleList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSampleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusAutoIsolateSampleList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVirusAutoIsolateSampleListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVirusAutoIsolateSetting(self, request):
+        """查询木马自动隔离设置
+
+        :param request: Request instance for DescribeVirusAutoIsolateSetting.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSettingRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusAutoIsolateSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusAutoIsolateSetting", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVirusAutoIsolateSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVirusDetail(self, request):
         """运行时查询木马文件信息
 
@@ -3724,6 +6450,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVirusEventTendency(self, request):
+        """查询木马事件趋势
+
+        :param request: Request instance for DescribeVirusEventTendency.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusEventTendencyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusEventTendencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusEventTendency", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVirusEventTendencyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3767,6 +6522,35 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVirusManualScanEstimateTimeout(self, request):
+        """查询木马一键检测预估超时时间
+
+        :param request: Request instance for DescribeVirusManualScanEstimateTimeout.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusManualScanEstimateTimeoutRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusManualScanEstimateTimeoutResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusManualScanEstimateTimeout", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVirusManualScanEstimateTimeoutResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVirusMonitorSetting(self, request):
         """运行时查询文件查杀实时监控设置
 
@@ -3782,6 +6566,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusMonitorSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVirusSampleDownloadUrl(self, request):
+        """查询木马样本下载url
+
+        :param request: Request instance for DescribeVirusSampleDownloadUrl.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusSampleDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusSampleDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusSampleDownloadUrl", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVirusSampleDownloadUrlResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3941,6 +6754,586 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVulContainerList(self, request):
+        """查询受漏洞的容器列表
+
+        :param request: Request instance for DescribeVulContainerList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulContainerListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulContainerListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulContainerList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulContainerListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulDefenceEvent(self, request):
+        """查询漏洞防御事件列表
+
+        :param request: Request instance for DescribeVulDefenceEvent.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulDefenceEvent", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulDefenceEventResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulDefenceEventDetail(self, request):
+        """查询漏洞防御事件详情
+
+        :param request: Request instance for DescribeVulDefenceEventDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulDefenceEventDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulDefenceEventDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulDefenceEventTendency(self, request):
+        """查询漏洞防御攻击事件趋势
+
+        :param request: Request instance for DescribeVulDefenceEventTendency.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventTendencyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceEventTendencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulDefenceEventTendency", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulDefenceEventTendencyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulDefenceHost(self, request):
+        """查询漏洞防御的主机列表
+
+        :param request: Request instance for DescribeVulDefenceHost.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceHostRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulDefenceHost", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulDefenceHostResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulDefencePlugin(self, request):
+        """查询漏洞防御插件列表
+
+        :param request: Request instance for DescribeVulDefencePlugin.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefencePluginRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefencePluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulDefencePlugin", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulDefencePluginResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulDefenceSetting(self, request):
+        """查询漏洞防御设置信息
+
+        :param request: Request instance for DescribeVulDefenceSetting.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceSettingRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDefenceSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulDefenceSetting", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulDefenceSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulDetail(self, request):
+        """查询漏洞详情
+
+        :param request: Request instance for DescribeVulDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulIgnoreLocalImageList(self, request):
+        """查询漏洞扫描忽略的本地镜像列表
+
+        :param request: Request instance for DescribeVulIgnoreLocalImageList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulIgnoreLocalImageListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulIgnoreLocalImageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulIgnoreLocalImageList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulIgnoreLocalImageListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulIgnoreRegistryImageList(self, request):
+        """查询漏洞扫描忽略的仓库镜像列表
+
+        :param request: Request instance for DescribeVulIgnoreRegistryImageList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulIgnoreRegistryImageListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulIgnoreRegistryImageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulIgnoreRegistryImageList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulIgnoreRegistryImageListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulImageList(self, request):
+        """查询漏洞影响的镜像列表
+
+        :param request: Request instance for DescribeVulImageList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulImageListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulImageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulImageList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulImageListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulImageSummary(self, request):
+        """查询漏洞镜像统计
+
+        :param request: Request instance for DescribeVulImageSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulImageSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulImageSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulImageSummary", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulImageSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulLevelImageSummary(self, request):
+        """查询应急漏洞各威胁等级统计镜像数
+
+        :param request: Request instance for DescribeVulLevelImageSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulLevelImageSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulLevelImageSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulLevelImageSummary", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulLevelImageSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulLevelSummary(self, request):
+        """查询漏洞各威胁等级统计数
+
+        :param request: Request instance for DescribeVulLevelSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulLevelSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulLevelSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulLevelSummary", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulLevelSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulScanAuthorizedImageSummary(self, request):
+        """统计漏洞扫描页已授权和未扫描镜像数
+
+        :param request: Request instance for DescribeVulScanAuthorizedImageSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanAuthorizedImageSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanAuthorizedImageSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulScanAuthorizedImageSummary", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulScanAuthorizedImageSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulScanInfo(self, request):
+        """查询漏洞扫描任务信息
+
+        :param request: Request instance for DescribeVulScanInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulScanInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulScanInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulScanLocalImageList(self, request):
+        """查询漏洞扫描任务的本地镜像列表
+
+        :param request: Request instance for DescribeVulScanLocalImageList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanLocalImageListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulScanLocalImageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulScanLocalImageList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulScanLocalImageListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulSummary(self, request):
+        """查询漏洞风险统计概览
+
+        :param request: Request instance for DescribeVulSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulSummary", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulTendency(self, request):
+        """查询本地镜像、仓库镜像中严重&高危的漏洞趋势
+
+        :param request: Request instance for DescribeVulTendency.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulTendencyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulTendencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulTendency", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulTendencyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulTopRanking(self, request):
+        """查询漏洞Top排名列表
+
+        :param request: Request instance for DescribeVulTopRanking.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulTopRankingRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulTopRankingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulTopRanking", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVulTopRankingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeWarningRules(self, request):
         """获取告警策略列表
 
@@ -3956,6 +7349,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWarningRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWebVulList(self, request):
+        """查询web应用漏洞列表
+
+        :param request: Request instance for DescribeWebVulList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeWebVulListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeWebVulListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWebVulList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWebVulListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4289,6 +7711,35 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyContainerNetStatus(self, request):
+        """隔离容器网络状态
+
+        :param request: Request instance for ModifyContainerNetStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyContainerNetStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyContainerNetStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyContainerNetStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyContainerNetStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyEscapeEventStatus(self, request):
         """ModifyEscapeEventStatus  修改容器逃逸扫描事件状态
 
@@ -4347,6 +7798,64 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyEscapeWhiteList(self, request):
+        """修改逃逸白名单
+
+        :param request: Request instance for ModifyEscapeWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyEscapeWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyEscapeWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEscapeWhiteList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyEscapeWhiteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyImageAuthorized(self, request):
+        """批量授权镜像扫描V2.0
+
+        :param request: Request instance for ModifyImageAuthorized.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyImageAuthorizedRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyImageAuthorizedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyImageAuthorized", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyImageAuthorizedResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyReverseShellStatus(self, request):
         """修改反弹shell事件的状态信息
 
@@ -4391,6 +7900,238 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRiskSyscallStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecLogCleanSettingInfo(self, request):
+        """修改安全日志清理设置信息
+
+        :param request: Request instance for ModifySecLogCleanSettingInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogCleanSettingInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogCleanSettingInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecLogCleanSettingInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecLogCleanSettingInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecLogDeliveryClsSetting(self, request):
+        """更新安全日志-日志投递cls配置
+
+        :param request: Request instance for ModifySecLogDeliveryClsSetting.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogDeliveryClsSettingRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogDeliveryClsSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecLogDeliveryClsSetting", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecLogDeliveryClsSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecLogDeliveryKafkaSetting(self, request):
+        """更新安全日志投递kafka设置
+
+        :param request: Request instance for ModifySecLogDeliveryKafkaSetting.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogDeliveryKafkaSettingRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogDeliveryKafkaSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecLogDeliveryKafkaSetting", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecLogDeliveryKafkaSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecLogJoinObjects(self, request):
+        """修改安全日志接入对象
+
+        :param request: Request instance for ModifySecLogJoinObjects.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogJoinObjectsRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogJoinObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecLogJoinObjects", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecLogJoinObjectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecLogJoinState(self, request):
+        """修改安全日志接入状态
+
+        :param request: Request instance for ModifySecLogJoinState.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogJoinStateRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogJoinStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecLogJoinState", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecLogJoinStateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecLogKafkaUIN(self, request):
+        """修改安全日志kafkaUIN
+
+        :param request: Request instance for ModifySecLogKafkaUIN.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogKafkaUINRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifySecLogKafkaUINResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecLogKafkaUIN", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecLogKafkaUINResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyVirusAutoIsolateExampleSwitch(self, request):
+        """修改木马自动隔离样本开关
+
+        :param request: Request instance for ModifyVirusAutoIsolateExampleSwitch.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusAutoIsolateExampleSwitchRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusAutoIsolateExampleSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVirusAutoIsolateExampleSwitch", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVirusAutoIsolateExampleSwitchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyVirusAutoIsolateSetting(self, request):
+        """修改木马自动隔离设置
+
+        :param request: Request instance for ModifyVirusAutoIsolateSetting.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusAutoIsolateSettingRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyVirusAutoIsolateSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVirusAutoIsolateSetting", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVirusAutoIsolateSettingResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4521,6 +8262,93 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyVulDefenceEventStatus(self, request):
+        """修改漏洞防御事件状态
+
+        :param request: Request instance for ModifyVulDefenceEventStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVulDefenceEventStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyVulDefenceEventStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVulDefenceEventStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVulDefenceEventStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyVulDefenceSetting(self, request):
+        """编辑漏洞防御设置
+
+        :param request: Request instance for ModifyVulDefenceSetting.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyVulDefenceSettingRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyVulDefenceSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVulDefenceSetting", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyVulDefenceSettingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenTcssTrial(self, request):
+        """开通容器安全服务试用
+
+        :param request: Request instance for OpenTcssTrial.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.OpenTcssTrialRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.OpenTcssTrialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenTcssTrial", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenTcssTrialResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RemoveAssetImageRegistryRegistryDetail(self, request):
         """删除单个镜像仓库详细信息
 
@@ -4565,6 +8393,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewImageAuthorizeStateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetSecLogTopicConfig(self, request):
+        """重置安全日志主题设置
+
+        :param request: Request instance for ResetSecLogTopicConfig.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ResetSecLogTopicConfigRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ResetSecLogTopicConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetSecLogTopicConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetSecLogTopicConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4753,6 +8610,64 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StopVulScanTask(self, request):
+        """停止漏洞扫描任务
+
+        :param request: Request instance for StopVulScanTask.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.StopVulScanTaskRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.StopVulScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopVulScanTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopVulScanTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchImageAutoAuthorizedRule(self, request):
+        """编辑本地镜像自动授权开关
+
+        :param request: Request instance for SwitchImageAutoAuthorizedRule.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.SwitchImageAutoAuthorizedRuleRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.SwitchImageAutoAuthorizedRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchImageAutoAuthorizedRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchImageAutoAuthorizedRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SyncAssetImageRegistryAsset(self, request):
         """镜像仓库资产刷新
 
@@ -4768,6 +8683,64 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncAssetImageRegistryAssetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAndPublishNetworkFirewallPolicyDetail(self, request):
+        """容器网络创建网络策略更新并发布任务
+
+        :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAndPublishNetworkFirewallPolicyDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAndPublishNetworkFirewallPolicyDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAndPublishNetworkFirewallPolicyYamlDetail(self, request):
+        """容器网络更新Yaml网络策略并发布任务
+
+        :param request: Request instance for UpdateAndPublishNetworkFirewallPolicyYamlDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.UpdateAndPublishNetworkFirewallPolicyYamlDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAndPublishNetworkFirewallPolicyYamlDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAndPublishNetworkFirewallPolicyYamlDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4826,6 +8799,64 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateImageRegistryTimingScanTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateNetworkFirewallPolicyDetail(self, request):
+        """容器网络创建网络策略更新任务
+
+        :param request: Request instance for UpdateNetworkFirewallPolicyDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateNetworkFirewallPolicyDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateNetworkFirewallPolicyDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateNetworkFirewallPolicyYamlDetail(self, request):
+        """容器网络更新Yaml网络策略任务
+
+        :param request: Request instance for UpdateNetworkFirewallPolicyYamlDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyYamlDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.UpdateNetworkFirewallPolicyYamlDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateNetworkFirewallPolicyYamlDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateNetworkFirewallPolicyYamlDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -7881,6 +7881,24 @@ class DescribePrometheusInstanceInitStatusRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribePrometheusInstanceInitStatusResponse(AbstractModel):
     """DescribePrometheusInstanceInitStatus返回参数结构体
@@ -7889,13 +7907,36 @@ class DescribePrometheusInstanceInitStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Status: 实例初始化状态，取值：
+uninitialized 未初始化 
+initializing 初始化中
+running 初始化完成，运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Steps: 初始化任务步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Steps: list of TaskStepInfo
+        :param EksClusterId: 实例eks集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EksClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Status = None
+        self.Steps = None
+        self.EksClusterId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Status = params.get("Status")
+        if params.get("Steps") is not None:
+            self.Steps = []
+            for item in params.get("Steps"):
+                obj = TaskStepInfo()
+                obj._deserialize(item)
+                self.Steps.append(obj)
+        self.EksClusterId = params.get("EksClusterId")
         self.RequestId = params.get("RequestId")
 
 
@@ -15162,6 +15203,28 @@ class RunPrometheusInstanceRequest(AbstractModel):
     """RunPrometheusInstance请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param SubnetId: 子网ID，默认使用实例所用子网初始化，也可通过该参数传递新的子网ID初始化
+        :type SubnetId: str
+        """
+        self.InstanceId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RunPrometheusInstanceResponse(AbstractModel):

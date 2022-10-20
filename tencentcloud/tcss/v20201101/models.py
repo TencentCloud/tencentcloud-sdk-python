@@ -18,6 +18,34 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ABTestConfig(AbstractModel):
+    """灰度项目配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectName: 灰度项目名称
+        :type ProjectName: str
+        :param Status: true：正在灰度，false：不在灰度
+        :type Status: bool
+        """
+        self.ProjectName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ProjectName = params.get("ProjectName")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AbnormalProcessChildRuleInfo(AbstractModel):
     """容器运行时安全，子策略信息
 
@@ -262,6 +290,62 @@ RULE_MODE_HOLDUP 拦截
         self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         self.ContainerStatus = params.get("ContainerStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AbnormalProcessEventTendencyInfo(AbstractModel):
+    """待处理异常进程事件趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Date: 日期
+        :type Date: str
+        :param ProxyToolEventCount: 待处理代理软件事件数
+        :type ProxyToolEventCount: int
+        :param TransferControlEventCount: 待处理横向参透事件数
+        :type TransferControlEventCount: int
+        :param AttackCmdEventCount: 待处理恶意命令事件数
+        :type AttackCmdEventCount: int
+        :param ReverseShellEventCount: 待处理反弹shell事件数
+        :type ReverseShellEventCount: int
+        :param FilelessEventCount: 待处理无文件程序执行事件数
+        :type FilelessEventCount: int
+        :param RiskCmdEventCount: 待处理高危命令事件数
+        :type RiskCmdEventCount: int
+        :param AbnormalChildProcessEventCount: 待处理敏感服务异常子进程启动事件数
+        :type AbnormalChildProcessEventCount: int
+        :param UserDefinedRuleEventCount: 待处理自定义规则事件数
+        :type UserDefinedRuleEventCount: int
+        """
+        self.Date = None
+        self.ProxyToolEventCount = None
+        self.TransferControlEventCount = None
+        self.AttackCmdEventCount = None
+        self.ReverseShellEventCount = None
+        self.FilelessEventCount = None
+        self.RiskCmdEventCount = None
+        self.AbnormalChildProcessEventCount = None
+        self.UserDefinedRuleEventCount = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.ProxyToolEventCount = params.get("ProxyToolEventCount")
+        self.TransferControlEventCount = params.get("TransferControlEventCount")
+        self.AttackCmdEventCount = params.get("AttackCmdEventCount")
+        self.ReverseShellEventCount = params.get("ReverseShellEventCount")
+        self.FilelessEventCount = params.get("FilelessEventCount")
+        self.RiskCmdEventCount = params.get("RiskCmdEventCount")
+        self.AbnormalChildProcessEventCount = params.get("AbnormalChildProcessEventCount")
+        self.UserDefinedRuleEventCount = params.get("UserDefinedRuleEventCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -728,6 +812,161 @@ CHANGE_USRCFG：篡改用户配置
         
 
 
+class AddAndPublishNetworkFirewallPolicyDetailRequest(AbstractModel):
+    """AddAndPublishNetworkFirewallPolicyDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param PolicyName: 策略名
+        :type PolicyName: str
+        :param FromPolicyRule: 入站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type FromPolicyRule: int
+        :param ToPolicyRule: 出站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type ToPolicyRule: int
+        :param PodSelector: pod选择器
+        :type PodSelector: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param Description: 策略描述
+        :type Description: str
+        :param CustomPolicy: 自定义规则
+        :type CustomPolicy: list of NetworkCustomPolicy
+        """
+        self.ClusterId = None
+        self.PolicyName = None
+        self.FromPolicyRule = None
+        self.ToPolicyRule = None
+        self.PodSelector = None
+        self.Namespace = None
+        self.Description = None
+        self.CustomPolicy = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.PolicyName = params.get("PolicyName")
+        self.FromPolicyRule = params.get("FromPolicyRule")
+        self.ToPolicyRule = params.get("ToPolicyRule")
+        self.PodSelector = params.get("PodSelector")
+        self.Namespace = params.get("Namespace")
+        self.Description = params.get("Description")
+        if params.get("CustomPolicy") is not None:
+            self.CustomPolicy = []
+            for item in params.get("CustomPolicy"):
+                obj = NetworkCustomPolicy()
+                obj._deserialize(item)
+                self.CustomPolicy.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddAndPublishNetworkFirewallPolicyDetailResponse(AbstractModel):
+    """AddAndPublishNetworkFirewallPolicyDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class AddAndPublishNetworkFirewallPolicyYamlDetailRequest(AbstractModel):
+    """AddAndPublishNetworkFirewallPolicyYamlDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param PolicyName: 策略名
+        :type PolicyName: str
+        :param Yaml: base64编码的networkpolicy yaml字符串
+        :type Yaml: str
+        :param Description: 策略描述
+        :type Description: str
+        """
+        self.ClusterId = None
+        self.PolicyName = None
+        self.Yaml = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.PolicyName = params.get("PolicyName")
+        self.Yaml = params.get("Yaml")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddAndPublishNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
+    """AddAndPublishNetworkFirewallPolicyYamlDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
     """AddAssetImageRegistryRegistryDetail请求参数结构体
 
@@ -955,6 +1194,76 @@ class AddEditAccessControlRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddEditImageAutoAuthorizedRuleRequest(AbstractModel):
+    """AddEditImageAutoAuthorizedRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RangeType: 授权范围类别，MANUAL:自选主机节点，ALL:全部镜像
+        :type RangeType: str
+        :param MaxDailyCount: 每天最大的镜像授权数限制, 0表示无限制
+        :type MaxDailyCount: int
+        :param IsEnabled: 规则是否生效，0:不生效，1:已生效
+        :type IsEnabled: int
+        :param HostIdSet: 自选主机id，当授权范围为MANUAL:自选主机时且HostIdFilters为空时，必填
+        :type HostIdSet: list of str
+        :param RuleId: 规则id，在编辑时，必填
+        :type RuleId: int
+        :param HostIdFilters: 根据条件过滤，当授权范围为MANUAL:自选主机时且HostIdSet为空时，必填
+        :type HostIdFilters: list of AssetFilters
+        :param ExcludeHostIdSet: 根据条件过滤而且排除指定主机id
+        :type ExcludeHostIdSet: list of str
+        """
+        self.RangeType = None
+        self.MaxDailyCount = None
+        self.IsEnabled = None
+        self.HostIdSet = None
+        self.RuleId = None
+        self.HostIdFilters = None
+        self.ExcludeHostIdSet = None
+
+
+    def _deserialize(self, params):
+        self.RangeType = params.get("RangeType")
+        self.MaxDailyCount = params.get("MaxDailyCount")
+        self.IsEnabled = params.get("IsEnabled")
+        self.HostIdSet = params.get("HostIdSet")
+        self.RuleId = params.get("RuleId")
+        if params.get("HostIdFilters") is not None:
+            self.HostIdFilters = []
+            for item in params.get("HostIdFilters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.HostIdFilters.append(obj)
+        self.ExcludeHostIdSet = params.get("ExcludeHostIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddEditImageAutoAuthorizedRuleResponse(AbstractModel):
+    """AddEditImageAutoAuthorizedRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AddEditReverseShellWhiteListRequest(AbstractModel):
     """AddEditReverseShellWhiteList请求参数结构体
 
@@ -1092,6 +1401,259 @@ class AddEditWarningRulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AddEscapeWhiteListRequest(AbstractModel):
+    """AddEscapeWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventType: 加白名单事件类型
+   ESCAPE_CGROUPS：利用cgroup机制逃逸
+   ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+   ESCAPE_DOCKER_API：访问Docker API接口逃逸
+   ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+   MOUNT_SENSITIVE_PTAH：敏感路径挂载
+   PRIVILEGE_CONTAINER_START：特权容器
+   PRIVILEGE：程序提权逃逸
+        :type EventType: list of str
+        :param ImageIDs: 加白名单镜像ID数组
+        :type ImageIDs: list of str
+        """
+        self.EventType = None
+        self.ImageIDs = None
+
+
+    def _deserialize(self, params):
+        self.EventType = params.get("EventType")
+        self.ImageIDs = params.get("ImageIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddEscapeWhiteListResponse(AbstractModel):
+    """AddEscapeWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AddIgnoreVulRequest(AbstractModel):
+    """AddIgnoreVul请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 漏洞PocID信息列表
+        :type List: list of ModifyIgnoreVul
+        """
+        self.List = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ModifyIgnoreVul()
+                obj._deserialize(item)
+                self.List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddIgnoreVulResponse(AbstractModel):
+    """AddIgnoreVul返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AddNetworkFirewallPolicyDetailRequest(AbstractModel):
+    """AddNetworkFirewallPolicyDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param PolicyName: 策略名
+        :type PolicyName: str
+        :param FromPolicyRule: 入站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type FromPolicyRule: int
+        :param ToPolicyRule: 出站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type ToPolicyRule: int
+        :param PodSelector: pod选择器
+        :type PodSelector: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param Description: 策略描述
+        :type Description: str
+        :param CustomPolicy: 自定义规则
+        :type CustomPolicy: list of NetworkCustomPolicy
+        """
+        self.ClusterId = None
+        self.PolicyName = None
+        self.FromPolicyRule = None
+        self.ToPolicyRule = None
+        self.PodSelector = None
+        self.Namespace = None
+        self.Description = None
+        self.CustomPolicy = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.PolicyName = params.get("PolicyName")
+        self.FromPolicyRule = params.get("FromPolicyRule")
+        self.ToPolicyRule = params.get("ToPolicyRule")
+        self.PodSelector = params.get("PodSelector")
+        self.Namespace = params.get("Namespace")
+        self.Description = params.get("Description")
+        if params.get("CustomPolicy") is not None:
+            self.CustomPolicy = []
+            for item in params.get("CustomPolicy"):
+                obj = NetworkCustomPolicy()
+                obj._deserialize(item)
+                self.CustomPolicy.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddNetworkFirewallPolicyDetailResponse(AbstractModel):
+    """AddNetworkFirewallPolicyDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class AddNetworkFirewallPolicyYamlDetailRequest(AbstractModel):
+    """AddNetworkFirewallPolicyYamlDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param PolicyName: 策略名
+        :type PolicyName: str
+        :param Yaml: base64编码的networkpolicy yaml字符串
+        :type Yaml: str
+        :param Description: 策略描述
+        :type Description: str
+        """
+        self.ClusterId = None
+        self.PolicyName = None
+        self.Yaml = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.PolicyName = params.get("PolicyName")
+        self.Yaml = params.get("Yaml")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
+    """AddNetworkFirewallPolicyYamlDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -1270,6 +1832,250 @@ class AssetSimpleImageInfo(AbstractModel):
         
 
 
+class AutoAuthorizedImageInfo(AbstractModel):
+    """镜像自动授权结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageId: 镜像id
+        :type ImageId: str
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param AuthorizedTime: 授权时间
+        :type AuthorizedTime: str
+        :param Status: 授权结果，SUCCESS:成功，REACH_LIMIT:达到授权上限，LICENSE_INSUFFICIENT:授权数不足'
+        :type Status: str
+        :param IsAuthorized: 是否授权，1：是，0：否
+        :type IsAuthorized: int
+        """
+        self.ImageId = None
+        self.ImageName = None
+        self.AuthorizedTime = None
+        self.Status = None
+        self.IsAuthorized = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.ImageName = params.get("ImageName")
+        self.AuthorizedTime = params.get("AuthorizedTime")
+        self.Status = params.get("Status")
+        self.IsAuthorized = params.get("IsAuthorized")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutoAuthorizedRuleHostInfo(AbstractModel):
+    """自动授权镜像规则授权范围主机列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostID: 主机id
+        :type HostID: str
+        :param HostIP: 主机ip即内网ip
+        :type HostIP: str
+        :param HostName: 主机名称
+        :type HostName: str
+        :param ImageCnt: 镜像个数
+        :type ImageCnt: int
+        :param ContainerCnt: 容器个数
+        :type ContainerCnt: int
+        :param PublicIp: 外网ip
+        :type PublicIp: str
+        :param InstanceID: 主机实例ID
+        :type InstanceID: str
+        :param MachineType: 主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
+        :type MachineType: str
+        :param DockerVersion: docker 版本
+        :type DockerVersion: str
+        :param Status: agent运行状态
+        :type Status: str
+        """
+        self.HostID = None
+        self.HostIP = None
+        self.HostName = None
+        self.ImageCnt = None
+        self.ContainerCnt = None
+        self.PublicIp = None
+        self.InstanceID = None
+        self.MachineType = None
+        self.DockerVersion = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.HostID = params.get("HostID")
+        self.HostIP = params.get("HostIP")
+        self.HostName = params.get("HostName")
+        self.ImageCnt = params.get("ImageCnt")
+        self.ContainerCnt = params.get("ContainerCnt")
+        self.PublicIp = params.get("PublicIp")
+        self.InstanceID = params.get("InstanceID")
+        self.MachineType = params.get("MachineType")
+        self.DockerVersion = params.get("DockerVersion")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CKafkaInstanceInfo(AbstractModel):
+    """安全日志kafka可选信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceID: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param TopicList: 主题列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicList: list of CKafkaTopicInfo
+        :param RouteList: 路由列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteList: list of CkafkaRouteInfo
+        :param KafkaVersion: kafka版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaVersion: str
+        """
+        self.InstanceID = None
+        self.InstanceName = None
+        self.TopicList = None
+        self.RouteList = None
+        self.KafkaVersion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceID = params.get("InstanceID")
+        self.InstanceName = params.get("InstanceName")
+        if params.get("TopicList") is not None:
+            self.TopicList = []
+            for item in params.get("TopicList"):
+                obj = CKafkaTopicInfo()
+                obj._deserialize(item)
+                self.TopicList.append(obj)
+        if params.get("RouteList") is not None:
+            self.RouteList = []
+            for item in params.get("RouteList"):
+                obj = CkafkaRouteInfo()
+                obj._deserialize(item)
+                self.RouteList.append(obj)
+        self.KafkaVersion = params.get("KafkaVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CKafkaTopicInfo(AbstractModel):
+    """Ckafka topic信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicID: 主题ID
+        :type TopicID: str
+        :param TopicName: 主题名称
+        :type TopicName: str
+        """
+        self.TopicID = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.TopicID = params.get("TopicID")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckNetworkFirewallPolicyYamlRequest(AbstractModel):
+    """CheckNetworkFirewallPolicyYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param PolicyName: 策略名
+        :type PolicyName: str
+        :param Yaml: base64编码的networkpolicy yaml字符串
+        :type Yaml: str
+        :param Description: 策略描述
+        :type Description: str
+        """
+        self.ClusterId = None
+        self.PolicyName = None
+        self.Yaml = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.PolicyName = params.get("PolicyName")
+        self.Yaml = params.get("Yaml")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckNetworkFirewallPolicyYamlResponse(AbstractModel):
+    """CheckNetworkFirewallPolicyYaml返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CheckRepeatAssetImageRegistryRequest(AbstractModel):
     """CheckRepeatAssetImageRegistry请求参数结构体
 
@@ -1314,6 +2120,127 @@ class CheckRepeatAssetImageRegistryResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsRepeat = params.get("IsRepeat")
         self.RequestId = params.get("RequestId")
+
+
+class CkafkaRouteInfo(AbstractModel):
+    """ckafkal路由详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteID: 路由ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteID: int
+        :param Domain: 域名名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param DomainPort: 域名端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainPort: int
+        :param Vip: 虚拟ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param VipType: 虚拟ip类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipType: int
+        :param AccessType: 接入类型
+// 0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)
+	// 1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+	// 2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
+	// 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessType: int
+        """
+        self.RouteID = None
+        self.Domain = None
+        self.DomainPort = None
+        self.Vip = None
+        self.VipType = None
+        self.AccessType = None
+
+
+    def _deserialize(self, params):
+        self.RouteID = params.get("RouteID")
+        self.Domain = params.get("Domain")
+        self.DomainPort = params.get("DomainPort")
+        self.Vip = params.get("Vip")
+        self.VipType = params.get("VipType")
+        self.AccessType = params.get("AccessType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClsLogsetInfo(AbstractModel):
+    """cls日志集信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogsetID: 日志集ID
+        :type LogsetID: str
+        :param LogsetName: 日志集名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogsetName: str
+        :param TopicList: cls主题列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicList: list of ClsTopicInfo
+        """
+        self.LogsetID = None
+        self.LogsetName = None
+        self.TopicList = None
+
+
+    def _deserialize(self, params):
+        self.LogsetID = params.get("LogsetID")
+        self.LogsetName = params.get("LogsetName")
+        if params.get("TopicList") is not None:
+            self.TopicList = []
+            for item in params.get("TopicList"):
+                obj = ClsTopicInfo()
+                obj._deserialize(item)
+                self.TopicList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClsTopicInfo(AbstractModel):
+    """cls主题信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicID: 主题ID
+        :type TopicID: str
+        :param TopicName: 主题名称
+        :type TopicName: str
+        """
+        self.TopicID = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.TopicID = params.get("TopicID")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ClusterCheckItem(AbstractModel):
@@ -2647,6 +3574,59 @@ class ComponentsInfo(AbstractModel):
         
 
 
+class ConfirmNetworkFirewallPolicyRequest(AbstractModel):
+    """ConfirmNetworkFirewallPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param Id: 策略Id数组
+        :type Id: list of int non-negative
+        """
+        self.ClusterId = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfirmNetworkFirewallPolicyResponse(AbstractModel):
+    """ConfirmNetworkFirewallPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建确认任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ContainerInfo(AbstractModel):
     """容器列表集合
 
@@ -3135,6 +4115,80 @@ class CreateAssetImageScanTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAssetImageVirusExportJobRequest(AbstractModel):
+    """CreateAssetImageVirusExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExportField: 导出字段
+        :type ExportField: list of str
+        :param ImageID: 镜像id
+        :type ImageID: str
+        :param Filters: 需要返回的数量，默认为10，最大值为10000
+        :type Filters: list of AssetFilters
+        :param Limit: 偏移量，默认为0。
+        :type Limit: int
+        :param Offset: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+        :type Offset: int
+        :param By: 排序字段
+        :type By: str
+        :param Order: 升序降序,asc desc
+        :type Order: str
+        """
+        self.ExportField = None
+        self.ImageID = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ExportField = params.get("ExportField")
+        self.ImageID = params.get("ImageID")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAssetImageVirusExportJobResponse(AbstractModel):
+    """CreateAssetImageVirusExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCheckComponentRequest(AbstractModel):
     """CreateCheckComponent请求参数结构体
 
@@ -3297,6 +4351,366 @@ class CreateComplianceTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateComponentExportJobRequest(AbstractModel):
+    """CreateComponentExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param ExportField: 导出字段
+        :type ExportField: list of str
+        :param Limit: 需要返回的数量，默认为10000，最大值为10000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>ComponentName- String - 是否必填：否 - 镜像组件名称</li><li>ComponentVersion- String - 是否必填：否 - 镜像组件版本</li><li>ComponentType- String - 是否必填：否 - 镜像组件类型</li><li>VulLevel- String - 是否必填：否 - 漏洞威胁等级</li><li>HasVul- String - 是否必填：否 -是否有漏洞；true：是，false，否；不传或ALL ：全部</li>
+        :type Filters: list of AssetFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式desc ，asc
+        :type Order: str
+        """
+        self.ImageID = None
+        self.ExportField = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ImageID = params.get("ImageID")
+        self.ExportField = params.get("ExportField")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateComponentExportJobResponse(AbstractModel):
+    """CreateComponentExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDefenceVulExportJobRequest(AbstractModel):
+    """CreateDefenceVulExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10000，最大值为10000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDefenceVulExportJobResponse(AbstractModel):
+    """CreateDefenceVulExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateEmergencyVulExportJobRequest(AbstractModel):
+    """CreateEmergencyVulExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为50000，最大值为50000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>Tags- string - 是否必填：否 - 漏洞标签，POC，EXP。</li>
+<li>CanBeFixed- string - 是否必填：否 - 是否可修复true,false。</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String -是否必填: 否 - 镜像名称</li>
+<li>ContainerID- string -是否必填: 否 - 容器ID</li>
+<li>ContainerName- string -是否必填: 否 - 容器名称</li>
+<li>ComponentName- string -是否必填: 否 - 组件名称</li>
+<li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEmergencyVulExportJobResponse(AbstractModel):
+    """CreateEmergencyVulExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateEscapeEventsExportJobRequest(AbstractModel):
+    """CreateEscapeEventsExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，最大值为10000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
+        :type Filters: list of RunTimeFilters
+        :param Order: 升序降序,asc desc
+        :type Order: str
+        :param By: 排序字段：latest_found_time
+        :type By: str
+        :param ExportField: 导出字段
+        :type ExportField: list of str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.ExportField = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.ExportField = params.get("ExportField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEscapeEventsExportJobResponse(AbstractModel):
+    """CreateEscapeEventsExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateEscapeWhiteListExportJobRequest(AbstractModel):
+    """CreateEscapeWhiteListExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>EventType- String - 是否必填：否 - 加白事件类型，ESCAPE_CGROUPS：利用cgroup机制逃逸，ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸， ESCAPE_DOCKER_API：访问Docker API接口逃逸，ESCAPE_VUL_OCCURRED：逃逸漏洞利用，MOUNT_SENSITIVE_PTAH：敏感路径挂载，PRIVILEGE_CONTAINER_START：特权容器， PRIVILEGE：程序提权逃逸</li>
+<li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+        :type Filters: list of RunTimeFilters
+        :param Limit: 需要返回的数量，默认为10000，最大值为10000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式：asc/desc
+        :type Order: str
+        :param By: 排序字段：主机数量：HostCount，容器数量：ContainerCount，更新时间：UpdateTime
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEscapeWhiteListExportJobResponse(AbstractModel):
+    """CreateEscapeWhiteListExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateExportComplianceStatusListJobRequest(AbstractModel):
     """CreateExportComplianceStatusListJob请求参数结构体
 
@@ -3355,6 +4769,340 @@ class CreateExportComplianceStatusListJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateHostExportJobRequest(AbstractModel):
+    """CreateHostExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExportField: 导出字段
+        :type ExportField: list of str
+        :param Filters: 需要返回的数量，默认为10，最大值为10000
+        :type Filters: list of AssetFilters
+        :param Limit: 偏移量，默认为0。
+        :type Limit: int
+        :param Offset: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+        :type Offset: int
+        :param By: 排序字段
+        :type By: str
+        :param Order: 升序降序,asc desc
+        :type Order: str
+        """
+        self.ExportField = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ExportField = params.get("ExportField")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHostExportJobResponse(AbstractModel):
+    """CreateHostExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateImageExportJobRequest(AbstractModel):
+    """CreateImageExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExportField: 导出字段
+        :type ExportField: list of str
+        :param Filters: 过滤条件。
+<li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
+<li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
+<li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
+<li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
+        :type Filters: list of RunTimeFilters
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self.ExportField = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ExportField = params.get("ExportField")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateImageExportJobResponse(AbstractModel):
+    """CreateImageExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param DownloadUrl: excel文件下载地址
+        :type DownloadUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.DownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNetworkFirewallClusterRefreshRequest(AbstractModel):
+    """CreateNetworkFirewallClusterRefresh请求参数结构体
+
+    """
+
+
+class CreateNetworkFirewallClusterRefreshResponse(AbstractModel):
+    """CreateNetworkFirewallClusterRefresh返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的集群检查任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建检查任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNetworkFirewallPolicyDiscoverRequest(AbstractModel):
+    """CreateNetworkFirewallPolicyDiscover请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNetworkFirewallPolicyDiscoverResponse(AbstractModel):
+    """CreateNetworkFirewallPolicyDiscover返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的集群检查任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建检查任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNetworkFirewallPublishRequest(AbstractModel):
+    """CreateNetworkFirewallPublish请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param Id: 策略Id数组
+        :type Id: list of int non-negative
+        """
+        self.ClusterId = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNetworkFirewallPublishResponse(AbstractModel):
+    """CreateNetworkFirewallPublish返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNetworkFirewallUndoPublishRequest(AbstractModel):
+    """CreateNetworkFirewallUndoPublish请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param Id: 策略Id数组
+        :type Id: list of int non-negative
+        """
+        self.ClusterId = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNetworkFirewallUndoPublishResponse(AbstractModel):
+    """CreateNetworkFirewallUndoPublish返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateOrModifyPostPayCoresRequest(AbstractModel):
     """CreateOrModifyPostPayCores请求参数结构体
 
@@ -3396,6 +5144,76 @@ class CreateOrModifyPostPayCoresResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateProcessEventsExportJobRequest(AbstractModel):
+    """CreateProcessEventsExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，最大值为10000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
+        :type Filters: list of AssetFilters
+        :param Order: 升序降序,asc desc
+        :type Order: str
+        :param By: 排序字段：latest_found_time
+        :type By: str
+        :param ExportField: 导出字段
+        :type ExportField: list of str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.ExportField = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.ExportField = params.get("ExportField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProcessEventsExportJobResponse(AbstractModel):
+    """CreateProcessEventsExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRefreshTaskRequest(AbstractModel):
     """CreateRefreshTask请求参数结构体
 
@@ -3424,6 +5242,130 @@ class CreateRefreshTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.CreateResult = params.get("CreateResult")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSearchTemplateRequest(AbstractModel):
+    """CreateSearchTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SearchTemplate: 搜索模板
+        :type SearchTemplate: :class:`tencentcloud.tcss.v20201101.models.SearchTemplate`
+        """
+        self.SearchTemplate = None
+
+
+    def _deserialize(self, params):
+        if params.get("SearchTemplate") is not None:
+            self.SearchTemplate = SearchTemplate()
+            self.SearchTemplate._deserialize(params.get("SearchTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSearchTemplateResponse(AbstractModel):
+    """CreateSearchTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSystemVulExportJobRequest(AbstractModel):
+    """CreateSystemVulExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为50000，最大值为50000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
+<li>OnlyAffectedNewestImage-string - 是否必填：否 - 仅展示影响最新版本镜像的漏洞true,false</li>
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>Tags- string - 是否必填：否 - 漏洞标签，POC，EXP。</li>
+<li>CanBeFixed- string - 是否必填：否 - 是否可修复true,false。</li>
+<li>CategoryType- string - 是否必填：否 - 漏洞子类型</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String -是否必填: 否 - 镜像名称</li>
+<li>ContainerID- string -是否必填: 否 - 容器ID</li>
+<li>ContainerName- string -是否必填: 否 - 容器名称</li>
+<li>ComponentName- string -是否必填: 否 - 组件名称</li>
+<li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+<li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSystemVulExportJobResponse(AbstractModel):
+    """CreateSystemVulExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3546,6 +5488,522 @@ class CreateVirusScanTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskID = params.get("TaskID")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVulContainerExportJobRequest(AbstractModel):
+    """CreateVulContainerExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param Limit: 需要返回的数量，默认为50000，最大值为50000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
+<li>ContainerID- string - 是否必填：否 - 容器ID</li>
+<li>ContainerName- String -是否必填: 否 - 容器名称</li>
+        :type Filters: list of RunTimeFilters
+        """
+        self.PocID = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulContainerExportJobResponse(AbstractModel):
+    """CreateVulContainerExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVulDefenceEventExportJobRequest(AbstractModel):
+    """CreateVulDefenceEventExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>Status- String - 是否必填：否 - 插件状态，待处理：EVENT_UNDEAL，EVENT_DEALED：已处理，已忽略：EVENT_IGNORE， EVENT_DEFENDED：已防御</li>
+<li>ContainerStatus- String - 是否必填：否 - 容器运行状态筛选，已创建：CREATED,正常运行：RUNNING, 暂定运行：PAUSED, 停止运行：	STOPPED，重启中：RESTARTING, 迁移中：REMOVING, 销毁：DESTROYED </li>
+<li>ContainerNetStatus- String -是否必填: 否 -  容器网络状态筛选 未隔离：NORMAL，已隔离：ISOLATED，隔离失败：ISOLATE_FAILED，解除隔离失败：RESTORE_FAILED，解除隔离中：RESTORING，隔离中：ISOLATING</li>
+<li>EventType - String -是否必填: 否 -  入侵状态，防御成功：EVENT_DEFENDED，尝试攻击：EVENT_ATTACK </li>
+<li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+<li>VulName- string - 是否必填：否 - 漏洞名称。</li>
+<li>CVEID- string - 是否必填：否 - CVE编号。</li>
+<li>SourceIP- string - 是否必填：否 - 攻击源IP。</li>
+<li>ContainerName- string - 是否必填：否 - 容器名称。</li>
+<li>ContainerID- string - 是否必填：否 - 容器ID。</li>
+<li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+<li>HostName- string - 是否必填：否 - 主机名称。</li>
+<li>HostIP- string - 是否必填：否 - 内网IP。</li>
+        :type Filters: list of RunTimeFilters
+        :param Limit: 需要返回的数量，最大值为100000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式：asc/desc
+        :type Order: str
+        :param By: 排序字段：事件数量：EventCount
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulDefenceEventExportJobResponse(AbstractModel):
+    """CreateVulDefenceEventExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVulDefenceHostExportJobRequest(AbstractModel):
+    """CreateVulDefenceHostExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>Status- String - 是否必填：否 - 插件状态，正常：SUCCESS，异常：FAIL， NO_DEFENCE:未防御</li>
+<li>KeyWords- string - 是否必填：否 - 主机名称/IP。</li>
+        :type Filters: list of RunTimeFilters
+        :param Limit: 需要返回的数量，最大值为100000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式：asc/desc
+        :type Order: str
+        :param By: 排序字段：更新时间：ModifyTime/首次开启时间：CreateTime
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulDefenceHostExportJobResponse(AbstractModel):
+    """CreateVulDefenceHostExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVulExportJobRequest(AbstractModel):
+    """CreateVulExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param ExportField: 导出字段
+        :type ExportField: list of str
+        :param Limit: 需要返回的数量，默认为10000，最大值为10000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>ComponentName- String - 是否必填：否 - 镜像组件名称</li><li>ComponentVersion- String - 是否必填：否 - 镜像组件版本</li><li>ComponentType- String - 是否必填：否 - 镜像组件类型</li><li>VulLevel- String - 是否必填：否 - 漏洞威胁等级</li><li>HasVul- String - 是否必填：否 -是否有漏洞；true：是，false，否；不传或ALL ：全部</li>
+        :type Filters: list of AssetFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式desc ，asc
+        :type Order: str
+        """
+        self.ImageID = None
+        self.ExportField = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ImageID = params.get("ImageID")
+        self.ExportField = params.get("ExportField")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulExportJobResponse(AbstractModel):
+    """CreateVulExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVulImageExportJobRequest(AbstractModel):
+    """CreateVulImageExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param Limit: 需要返回的数量，默认为50000，最大值为50000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String -是否必填: 否 - 镜像名称</li>
+<li>ClientIP- string -是否必填: 否 - 内网IP</li>
+<li>PublicIP- string -是否必填: 否 - 外网IP</li>
+<li>ComponentName- string -是否必填: 否 - 组件名称</li>
+<li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
+<li>HostName- string -是否必填: 否 - 主机名称</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.PocID = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulImageExportJobResponse(AbstractModel):
+    """CreateVulImageExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVulScanTaskRequest(AbstractModel):
+    """CreateVulScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalImageScanType: 本地镜像扫描范围类型。ALL:全部本地镜像，NOT_SCAN：全部已授权未扫描本地镜像，IMAGEIDS:自选本地镜像ID
+        :type LocalImageScanType: str
+        :param LocalImageIDs: 根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。
+        :type LocalImageIDs: list of str
+        :param RegistryImageScanType: 仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID
+        :type RegistryImageScanType: str
+        :param RegistryImageIDs: 根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。
+        :type RegistryImageIDs: list of int non-negative
+        :param LocalTaskID: 本地镜像重新漏洞扫描时的任务ID
+        :type LocalTaskID: int
+        :param RegistryTaskID: 仓库镜像重新漏洞扫描时的任务ID
+        :type RegistryTaskID: int
+        """
+        self.LocalImageScanType = None
+        self.LocalImageIDs = None
+        self.RegistryImageScanType = None
+        self.RegistryImageIDs = None
+        self.LocalTaskID = None
+        self.RegistryTaskID = None
+
+
+    def _deserialize(self, params):
+        self.LocalImageScanType = params.get("LocalImageScanType")
+        self.LocalImageIDs = params.get("LocalImageIDs")
+        self.RegistryImageScanType = params.get("RegistryImageScanType")
+        self.RegistryImageIDs = params.get("RegistryImageIDs")
+        self.LocalTaskID = params.get("LocalTaskID")
+        self.RegistryTaskID = params.get("RegistryTaskID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulScanTaskResponse(AbstractModel):
+    """CreateVulScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalTaskID: 本地镜像重新漏洞扫描时的任务ID
+        :type LocalTaskID: int
+        :param RegistryTaskID: 仓库镜像重新漏洞扫描时的任务ID
+        :type RegistryTaskID: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LocalTaskID = None
+        self.RegistryTaskID = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LocalTaskID = params.get("LocalTaskID")
+        self.RegistryTaskID = params.get("RegistryTaskID")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateWebVulExportJobRequest(AbstractModel):
+    """CreateWebVulExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为50000，最大值为50000
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
+<li>OnlyAffectedNewestImage-string - 是否必填：否 - 仅展示影响最新版本镜像的漏洞true,false</li>
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>Tags- string - 是否必填：否 - 漏洞标签，POC，EXP。</li>
+<li>CanBeFixed- string - 是否必填：否 - 是否可修复true,false。</li>
+<li>CategoryType- string - 是否必填：否 - 漏洞子类型</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String -是否必填: 否 - 镜像名称</li>
+<li>ContainerID- string -是否必填: 否 - 容器ID</li>
+<li>ContainerName- string -是否必填: 否 - 容器名称</li>
+<li>ComponentName- string -是否必填: 否 - 组件名称</li>
+<li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+<li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWebVulExportJobResponse(AbstractModel):
+    """CreateWebVulExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3672,6 +6130,228 @@ class DeleteCompliancePolicyItemFromWhitelistResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteEscapeWhiteListRequest(AbstractModel):
+    """DeleteEscapeWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IDSet: 白名单记录ID数组
+        :type IDSet: list of int
+        """
+        self.IDSet = None
+
+
+    def _deserialize(self, params):
+        self.IDSet = params.get("IDSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEscapeWhiteListResponse(AbstractModel):
+    """DeleteEscapeWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteIgnoreVulRequest(AbstractModel):
+    """DeleteIgnoreVul请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 漏洞PocID 信息列表
+        :type List: list of ModifyIgnoreVul
+        """
+        self.List = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ModifyIgnoreVul()
+                obj._deserialize(item)
+                self.List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIgnoreVulResponse(AbstractModel):
+    """DeleteIgnoreVul返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteMachineRequest(AbstractModel):
+    """DeleteMachine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uuid: 客户端Uuid
+        :type Uuid: str
+        """
+        self.Uuid = None
+
+
+    def _deserialize(self, params):
+        self.Uuid = params.get("Uuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMachineResponse(AbstractModel):
+    """DeleteMachine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNetworkFirewallPolicyDetailRequest(AbstractModel):
+    """DeleteNetworkFirewallPolicyDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param Id: 策略Id数组
+        :type Id: list of int non-negative
+        """
+        self.ClusterId = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNetworkFirewallPolicyDetailResponse(AbstractModel):
+    """DeleteNetworkFirewallPolicyDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建删除任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReverseShellEventsRequest(AbstractModel):
+    """DeleteReverseShellEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventIdSet: 事件ids
+        :type EventIdSet: list of str
+        """
+        self.EventIdSet = None
+
+
+    def _deserialize(self, params):
+        self.EventIdSet = params.get("EventIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReverseShellEventsResponse(AbstractModel):
+    """DeleteReverseShellEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteReverseShellWhiteListsRequest(AbstractModel):
     """DeleteReverseShellWhiteLists请求参数结构体
 
@@ -3698,6 +6378,47 @@ class DeleteReverseShellWhiteListsRequest(AbstractModel):
 
 class DeleteReverseShellWhiteListsResponse(AbstractModel):
     """DeleteReverseShellWhiteLists返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRiskSyscallEventsRequest(AbstractModel):
+    """DeleteRiskSyscallEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventIdSet: 事件ids
+        :type EventIdSet: list of str
+        """
+        self.EventIdSet = None
+
+
+    def _deserialize(self, params):
+        self.EventIdSet = params.get("EventIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRiskSyscallEventsResponse(AbstractModel):
+    """DeleteRiskSyscallEvents返回参数结构体
 
     """
 
@@ -3751,6 +6472,97 @@ class DeleteRiskSyscallWhiteListsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSearchTemplateRequest(AbstractModel):
+    """DeleteSearchTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 模板ID
+        :type Id: int
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSearchTemplateResponse(AbstractModel):
+    """DeleteSearchTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeABTestConfigRequest(AbstractModel):
+    """DescribeABTestConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectName: 灰度项目名称
+        :type ProjectName: str
+        """
+        self.ProjectName = None
+
+
+    def _deserialize(self, params):
+        self.ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeABTestConfigResponse(AbstractModel):
+    """DescribeABTestConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Config: 灰度项目配置
+        :type Config: list of ABTestConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Config = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Config") is not None:
+            self.Config = []
+            for item in params.get("Config"):
+                obj = ABTestConfig()
+                obj._deserialize(item)
+                self.Config.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3823,6 +6635,60 @@ class DescribeAbnormalProcessDetailResponse(AbstractModel):
         if params.get("AncestorProcessInfo") is not None:
             self.AncestorProcessInfo = ProcessBaseInfo()
             self.AncestorProcessInfo._deserialize(params.get("AncestorProcessInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAbnormalProcessEventTendencyRequest(AbstractModel):
+    """DescribeAbnormalProcessEventTendency请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAbnormalProcessEventTendencyResponse(AbstractModel):
+    """DescribeAbnormalProcessEventTendency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 待处理异常进程事件趋势
+        :type List: list of AbnormalProcessEventTendencyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = AbnormalProcessEventTendencyInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3969,6 +6835,41 @@ class DescribeAbnormalProcessEventsResponse(AbstractModel):
                 obj = AbnormalProcessEventInfo()
                 obj._deserialize(item)
                 self.EventSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAbnormalProcessLevelSummaryRequest(AbstractModel):
+    """DescribeAbnormalProcessLevelSummary请求参数结构体
+
+    """
+
+
+class DescribeAbnormalProcessLevelSummaryResponse(AbstractModel):
+    """DescribeAbnormalProcessLevelSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HighLevelEventCount: 异常进程高危待处理事件数
+        :type HighLevelEventCount: int
+        :param MediumLevelEventCount: 异常进程中危待处理事件数
+        :type MediumLevelEventCount: int
+        :param LowLevelEventCount: 异常进程低危待处理事件数
+        :type LowLevelEventCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HighLevelEventCount = None
+        self.MediumLevelEventCount = None
+        self.LowLevelEventCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.HighLevelEventCount = params.get("HighLevelEventCount")
+        self.MediumLevelEventCount = params.get("MediumLevelEventCount")
+        self.LowLevelEventCount = params.get("LowLevelEventCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4807,6 +7708,148 @@ class DescribeAffectedWorkloadListResponse(AbstractModel):
                 obj = AffectedWorkloadItem()
                 obj._deserialize(item)
                 self.AffectedWorkloadList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAgentDaemonSetCmdRequest(AbstractModel):
+    """DescribeAgentDaemonSetCmd请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsCloud: 是否是腾讯云
+        :type IsCloud: bool
+        :param NetType: 网络类型：basic-基础网络，private-VPC, public-公网，direct-专线
+        :type NetType: str
+        :param RegionCode: 地域标示, NetType=direct时必填
+        :type RegionCode: str
+        :param VpcId: VpcId, NetType=direct时必填
+        :type VpcId: str
+        :param ExpireDate: 命令有效期，非腾讯云时必填
+        :type ExpireDate: str
+        """
+        self.IsCloud = None
+        self.NetType = None
+        self.RegionCode = None
+        self.VpcId = None
+        self.ExpireDate = None
+
+
+    def _deserialize(self, params):
+        self.IsCloud = params.get("IsCloud")
+        self.NetType = params.get("NetType")
+        self.RegionCode = params.get("RegionCode")
+        self.VpcId = params.get("VpcId")
+        self.ExpireDate = params.get("ExpireDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentDaemonSetCmdResponse(AbstractModel):
+    """DescribeAgentDaemonSetCmd返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Command: 安装命令
+        :type Command: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Command = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Command = params.get("Command")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAgentInstallCommandRequest(AbstractModel):
+    """DescribeAgentInstallCommand请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsCloud: 是否是腾讯云
+        :type IsCloud: bool
+        :param NetType: 网络类型：basic-基础网络，private-VPC, public-公网，direct-专线
+        :type NetType: str
+        :param RegionCode: 地域标示, NetType=direct时必填
+        :type RegionCode: str
+        :param VpcId: VpcId, NetType=direct时必填
+        :type VpcId: str
+        :param ExpireDate: 命令有效期，非腾讯云时必填
+        :type ExpireDate: str
+        :param TagIds: 标签ID列表，IsCloud=false时才会生效
+        :type TagIds: list of int non-negative
+        """
+        self.IsCloud = None
+        self.NetType = None
+        self.RegionCode = None
+        self.VpcId = None
+        self.ExpireDate = None
+        self.TagIds = None
+
+
+    def _deserialize(self, params):
+        self.IsCloud = params.get("IsCloud")
+        self.NetType = params.get("NetType")
+        self.RegionCode = params.get("RegionCode")
+        self.VpcId = params.get("VpcId")
+        self.ExpireDate = params.get("ExpireDate")
+        self.TagIds = params.get("TagIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentInstallCommandResponse(AbstractModel):
+    """DescribeAgentInstallCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LinuxCommand: linux系统安装命令
+        :type LinuxCommand: str
+        :param WindowsCommand: windows系统安装命令（windows2008及以上）
+        :type WindowsCommand: str
+        :param WindowsStepOne: windows系统安装命令第一步（windows2003）
+        :type WindowsStepOne: str
+        :param WindowsStepTwo: windows系统安装命令第二步（windows2003）
+        :type WindowsStepTwo: str
+        :param WindowsDownloadUrl: windows版agent下载链接
+        :type WindowsDownloadUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LinuxCommand = None
+        self.WindowsCommand = None
+        self.WindowsStepOne = None
+        self.WindowsStepTwo = None
+        self.WindowsDownloadUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LinuxCommand = params.get("LinuxCommand")
+        self.WindowsCommand = params.get("WindowsCommand")
+        self.WindowsStepOne = params.get("WindowsStepOne")
+        self.WindowsStepTwo = params.get("WindowsStepTwo")
+        self.WindowsDownloadUrl = params.get("WindowsDownloadUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -7963,6 +11006,33 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAssetSyncLastTimeRequest(AbstractModel):
+    """DescribeAssetSyncLastTime请求参数结构体
+
+    """
+
+
+class DescribeAssetSyncLastTimeResponse(AbstractModel):
+    """DescribeAssetSyncLastTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AssetSyncLastTime: 资产最近同步时间
+        :type AssetSyncLastTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AssetSyncLastTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AssetSyncLastTime = params.get("AssetSyncLastTime")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAssetWebServiceListRequest(AbstractModel):
     """DescribeAssetWebServiceList请求参数结构体
 
@@ -8030,6 +11100,76 @@ class DescribeAssetWebServiceListResponse(AbstractModel):
             self.List = []
             for item in params.get("List"):
                 obj = ServiceInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAutoAuthorizedRuleHostRequest(AbstractModel):
+    """DescribeAutoAuthorizedRuleHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则id
+        :type RuleId: int
+        :param Limit: 需要返回的数量，默认为全部；
+        :type Limit: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Order: 排序字段
+        :type Order: str
+        :param By: 排序方式，asc，desc
+        :type By: str
+        """
+        self.RuleId = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoAuthorizedRuleHostResponse(AbstractModel):
+    """DescribeAutoAuthorizedRuleHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 镜像自动授权规则授权范围主机列表
+        :type List: list of AutoAuthorizedRuleHostInfo
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = AutoAuthorizedRuleHostInfo()
                 obj._deserialize(item)
                 self.List.append(obj)
         self.TotalCount = params.get("TotalCount")
@@ -9126,6 +12266,190 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeESAggregationsRequest(AbstractModel):
+    """DescribeESAggregations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Query: ES聚合条件JSON
+        :type Query: str
+        """
+        self.Query = None
+
+
+    def _deserialize(self, params):
+        self.Query = params.get("Query")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeESAggregationsResponse(AbstractModel):
+    """DescribeESAggregations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: ES聚合结果JSON
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeESHitsRequest(AbstractModel):
+    """DescribeESHits请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Query: ES查询条件JSON
+        :type Query: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，最大值为100。
+        :type Limit: int
+        """
+        self.Query = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Query = params.get("Query")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeESHitsResponse(AbstractModel):
+    """DescribeESHits返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: ES查询结果JSON
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEmergencyVulListRequest(AbstractModel):
+    """DescribeEmergencyVulList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>Tags- string - 是否必填：否 - 漏洞标签，POC，EXP。</li>
+<li>CanBeFixed- string - 是否必填：否 - 是否可修复true,false。</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String -是否必填: 否 - 镜像名称</li>
+<li>ContainerID- string -是否必填: 否 - 容器ID</li>
+<li>ContainerName- string -是否必填: 否 - 容器名称</li>
+<li>ComponentName- string -是否必填: 否 - 组件名称</li>
+<li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEmergencyVulListResponse(AbstractModel):
+    """DescribeEmergencyVulList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 漏洞总数
+        :type TotalCount: int
+        :param List: 漏洞列表
+        :type List: list of EmergencyVulInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = EmergencyVulInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEscapeEventDetailRequest(AbstractModel):
     """DescribeEscapeEventDetail请求参数结构体
 
@@ -9273,6 +12597,99 @@ class DescribeEscapeEventInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEscapeEventTendencyRequest(AbstractModel):
+    """DescribeEscapeEventTendency请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        """
+        self.EndTime = None
+        self.StartTime = None
+
+
+    def _deserialize(self, params):
+        self.EndTime = params.get("EndTime")
+        self.StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEscapeEventTendencyResponse(AbstractModel):
+    """DescribeEscapeEventTendency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 待处理逃逸事件趋势
+        :type List: list of EscapeEventTendencyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = EscapeEventTendencyInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEscapeEventTypeSummaryRequest(AbstractModel):
+    """DescribeEscapeEventTypeSummary请求参数结构体
+
+    """
+
+
+class DescribeEscapeEventTypeSummaryResponse(AbstractModel):
+    """DescribeEscapeEventTypeSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContainerEscapeEventCount: 容器逃逸事件数
+        :type ContainerEscapeEventCount: int
+        :param ProcessPrivilegeEventCount: 程序提权事件数
+        :type ProcessPrivilegeEventCount: int
+        :param RiskContainerEventCount: 风险容器事件数
+        :type RiskContainerEventCount: int
+        :param PendingEscapeEventCount: 逃逸事件待处理数
+        :type PendingEscapeEventCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ContainerEscapeEventCount = None
+        self.ProcessPrivilegeEventCount = None
+        self.RiskContainerEventCount = None
+        self.PendingEscapeEventCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ContainerEscapeEventCount = params.get("ContainerEscapeEventCount")
+        self.ProcessPrivilegeEventCount = params.get("ProcessPrivilegeEventCount")
+        self.RiskContainerEventCount = params.get("RiskContainerEventCount")
+        self.PendingEscapeEventCount = params.get("PendingEscapeEventCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEscapeEventsExportRequest(AbstractModel):
     """DescribeEscapeEventsExport请求参数结构体
 
@@ -9403,6 +12820,84 @@ class DescribeEscapeSafeStateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEscapeWhiteListRequest(AbstractModel):
+    """DescribeEscapeWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>EventType- String - 是否必填：否 - 加白事件类型，ESCAPE_CGROUPS：利用cgroup机制逃逸，ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸， ESCAPE_DOCKER_API：访问Docker API接口逃逸，ESCAPE_VUL_OCCURRED：逃逸漏洞利用，MOUNT_SENSITIVE_PTAH：敏感路径挂载，PRIVILEGE_CONTAINER_START：特权容器， PRIVILEGE：程序提权逃逸</li>
+<li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+        :type Filters: list of RunTimeFilters
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式：asc/desc
+        :type Order: str
+        :param By: 排序字段：主机数量：HostCount，容器数量：ContainerCount，更新时间：UpdateTime
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEscapeWhiteListResponse(AbstractModel):
+    """DescribeEscapeWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param List: 逃逸白名单列表
+        :type List: list of EscapeWhiteListInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = EscapeWhiteListInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExportJobResultRequest(AbstractModel):
     """DescribeExportJobResult请求参数结构体
 
@@ -9503,6 +12998,290 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         self.ScannedImageCnt = params.get("ScannedImageCnt")
         self.NotScannedImageCnt = params.get("NotScannedImageCnt")
         self.NotScannedLocalImageCnt = params.get("NotScannedLocalImageCnt")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageAutoAuthorizedLogListRequest(AbstractModel):
+    """DescribeImageAutoAuthorizedLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 自动授权任务Id
+        :type TaskId: int
+        :param Filters: Status授权结果，SUCCESS:成功，REACH_LIMIT:达到授权上限，LICENSE_INSUFFICIENT:授权数不足
+        :type Filters: list of AssetFilters
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param By: 排序字段：AuthorizedTime
+        :type By: str
+        :param Order: 排序方式，asc，desc
+        :type Order: str
+        """
+        self.TaskId = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageAutoAuthorizedLogListResponse(AbstractModel):
+    """DescribeImageAutoAuthorizedLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param List: 自动授权结果镜像列表
+        :type List: list of AutoAuthorizedImageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = AutoAuthorizedImageInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageAutoAuthorizedRuleRequest(AbstractModel):
+    """DescribeImageAutoAuthorizedRule请求参数结构体
+
+    """
+
+
+class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
+    """DescribeImageAutoAuthorizedRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsEnabled: 规则是否生效，0:不生效，1:已生效
+        :type IsEnabled: int
+        :param RangeType: 授权范围类别，MANUAL:自选主机节点，ALL:全部镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RangeType: str
+        :param HostCount: 授权范围是自选主机时的主机数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostCount: int
+        :param MaxDailyCount: 每天最大的镜像授权数限制, 0表示无限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDailyCount: int
+        :param RuleId: 规则id，用未设置时为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsEnabled = None
+        self.RangeType = None
+        self.HostCount = None
+        self.MaxDailyCount = None
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsEnabled = params.get("IsEnabled")
+        self.RangeType = params.get("RangeType")
+        self.HostCount = params.get("HostCount")
+        self.MaxDailyCount = params.get("MaxDailyCount")
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageAutoAuthorizedTaskListRequest(AbstractModel):
+    """DescribeImageAutoAuthorizedTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Filters: 过滤字段
+Status授权结果，全部授权成功：ALLSUCCSESS，部分授权失败：PARTIALFAIL,全部授权失败：ALLFAIL
+Type授权方式，AUTO:自动授权，MANUAL:手动授权
+Source 镜像来源，LOCAL:本地镜像，REGISTRY:仓库镜像
+        :type Filters: list of AssetFilters
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageAutoAuthorizedTaskListResponse(AbstractModel):
+    """DescribeImageAutoAuthorizedTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 自动授权任务列表
+        :type List: list of ImageAutoAuthorizedTask
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ImageAutoAuthorizedTask()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageComponentListRequest(AbstractModel):
+    """DescribeImageComponentList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>ComponentName- String - 是否必填：否 - 镜像组件名称</li><li>ComponentVersion- String - 是否必填：否 - 镜像组件版本</li><li>ComponentType- String - 是否必填：否 - 镜像组件类型</li><li>VulLevel- String - 是否必填：否 - 漏洞威胁等级</li><li>HasVul- String - 是否必填：否 -是否有漏洞；true：是，false，否；不传或ALL ：全部</li>
+        :type Filters: list of AssetFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式desc ，asc
+        :type Order: str
+        """
+        self.ImageID = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ImageID = params.get("ImageID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageComponentListResponse(AbstractModel):
+    """DescribeImageComponentList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param List: 镜像组件列表
+        :type List: list of ImageComponent
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ImageComponent()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9745,6 +13524,935 @@ class DescribeImageSimpleListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIndexListRequest(AbstractModel):
+    """DescribeIndexList请求参数结构体
+
+    """
+
+
+class DescribeIndexListResponse(AbstractModel):
+    """DescribeIndexList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: ES 索引信息
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInspectionReportRequest(AbstractModel):
+    """DescribeInspectionReport请求参数结构体
+
+    """
+
+
+class DescribeInspectionReportResponse(AbstractModel):
+    """DescribeInspectionReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportName: 报告名称
+        :type ReportName: str
+        :param ReportUrl: 下载链接
+        :type ReportUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReportName = None
+        self.ReportUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReportName = params.get("ReportName")
+        self.ReportUrl = params.get("ReportUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogStorageStatisticRequest(AbstractModel):
+    """DescribeLogStorageStatistic请求参数结构体
+
+    """
+
+
+class DescribeLogStorageStatisticResponse(AbstractModel):
+    """DescribeLogStorageStatistic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalSize: 总容量（单位：B）
+        :type TotalSize: int
+        :param UsedSize: 已使用容量（单位：B）
+        :type UsedSize: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalSize = None
+        self.UsedSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalSize = params.get("TotalSize")
+        self.UsedSize = params.get("UsedSize")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallAuditRecordRequest(AbstractModel):
+    """DescribeNetworkFirewallAuditRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每次查询的最大记录数量
+        :type Limit: int
+        :param Filters: Name - Action
+Name 可取值：publish，unpublish，confirm，add，update，delete
+        :type Filters: list of ComplianceFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = ComplianceFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallAuditRecordResponse(AbstractModel):
+    """DescribeNetworkFirewallAuditRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 集群审计总数
+        :type TotalCount: int
+        :param AuditList: 集群的审计详细信息
+        :type AuditList: list of NetworkAuditRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AuditList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AuditList") is not None:
+            self.AuditList = []
+            for item in params.get("AuditList"):
+                obj = NetworkAuditRecord()
+                obj._deserialize(item)
+                self.AuditList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallClusterListRequest(AbstractModel):
+    """DescribeNetworkFirewallClusterList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每次查询的最大记录数量
+        :type Limit: int
+        :param Filters: Name - String
+Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
+        :type Filters: list of ComplianceFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = ComplianceFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallClusterListResponse(AbstractModel):
+    """DescribeNetworkFirewallClusterList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 集群总数
+        :type TotalCount: int
+        :param ClusterInfoList: 集群的详细信息
+        :type ClusterInfoList: list of NetworkClusterInfoItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterInfoList") is not None:
+            self.ClusterInfoList = []
+            for item in params.get("ClusterInfoList"):
+                obj = NetworkClusterInfoItem()
+                obj._deserialize(item)
+                self.ClusterInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallClusterRefreshStatusRequest(AbstractModel):
+    """DescribeNetworkFirewallClusterRefreshStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: int
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallClusterRefreshStatusResponse(AbstractModel):
+    """DescribeNetworkFirewallClusterRefreshStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskStatus: 任务状态，可能为：Task_Running,Task_Succ,Task_Error,Task_NoExist
+        :type TaskStatus: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskStatus = params.get("TaskStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallNamespaceLabelListRequest(AbstractModel):
+    """DescribeNetworkFirewallNamespaceLabelList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每次查询的最大记录数量
+        :type Limit: int
+        :param Filters: Name - String
+Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
+        :type Filters: list of ComplianceFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = ComplianceFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallNamespaceLabelListResponse(AbstractModel):
+    """DescribeNetworkFirewallNamespaceLabelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 集群总数
+        :type TotalCount: int
+        :param ClusterNamespaceLabelList: 集群空间标签详细信息
+        :type ClusterNamespaceLabelList: list of NetworkClusterNamespaceLabelInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterNamespaceLabelList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterNamespaceLabelList") is not None:
+            self.ClusterNamespaceLabelList = []
+            for item in params.get("ClusterNamespaceLabelList"):
+                obj = NetworkClusterNamespaceLabelInfo()
+                obj._deserialize(item)
+                self.ClusterNamespaceLabelList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallNamespaceListRequest(AbstractModel):
+    """DescribeNetworkFirewallNamespaceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每次查询的最大记录数量
+        :type Limit: int
+        :param Filters: Name - String
+Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
+        :type Filters: list of ComplianceFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = ComplianceFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallNamespaceListResponse(AbstractModel):
+    """DescribeNetworkFirewallNamespaceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 集群总数
+        :type TotalCount: int
+        :param ClusterNamespaceList: 集群的详细信息
+        :type ClusterNamespaceList: list of NetworkClusterNamespaceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterNamespaceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterNamespaceList") is not None:
+            self.ClusterNamespaceList = []
+            for item in params.get("ClusterNamespaceList"):
+                obj = NetworkClusterNamespaceInfo()
+                obj._deserialize(item)
+                self.ClusterNamespaceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallPodLabelsListRequest(AbstractModel):
+    """DescribeNetworkFirewallPodLabelsList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每次查询的最大记录数量
+        :type Limit: int
+        :param Filters: Name - String
+Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
+        :type Filters: list of ComplianceFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = ComplianceFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallPodLabelsListResponse(AbstractModel):
+    """DescribeNetworkFirewallPodLabelsList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 集群pod总数
+        :type TotalCount: int
+        :param PodList: 集群pod详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodList: list of NetworkClusterPodInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PodList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PodList") is not None:
+            self.PodList = []
+            for item in params.get("PodList"):
+                obj = NetworkClusterPodInfo()
+                obj._deserialize(item)
+                self.PodList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallPolicyDetailRequest(AbstractModel):
+    """DescribeNetworkFirewallPolicyDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 策略Id
+        :type Id: int
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallPolicyDetailResponse(AbstractModel):
+    """DescribeNetworkFirewallPolicyDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param PolicyName: 策略名
+        :type PolicyName: str
+        :param Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param FromPolicyRule: 入站类型
+        :type FromPolicyRule: int
+        :param ToPolicyRule: 出站类型
+        :type ToPolicyRule: int
+        :param CustomPolicy: 自定义规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomPolicy: list of NetworkCustomPolicy
+        :param PodSelector: pod选择器
+        :type PodSelector: str
+        :param Description: 策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param PolicyCreateTime: 策略创建时间
+        :type PolicyCreateTime: str
+        :param PolicySourceType: 策略源类型，分为System和Manual，分别代表手动和系统添加
+        :type PolicySourceType: str
+        :param NetworkPolicyPlugin: 网络策略对应的网络插件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkPolicyPlugin: str
+        :param PublishStatus: 网络策略状态
+        :type PublishStatus: str
+        :param PublishResult: 网络发布结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishResult: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.PolicyName = None
+        self.Namespace = None
+        self.FromPolicyRule = None
+        self.ToPolicyRule = None
+        self.CustomPolicy = None
+        self.PodSelector = None
+        self.Description = None
+        self.PolicyCreateTime = None
+        self.PolicySourceType = None
+        self.NetworkPolicyPlugin = None
+        self.PublishStatus = None
+        self.PublishResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.PolicyName = params.get("PolicyName")
+        self.Namespace = params.get("Namespace")
+        self.FromPolicyRule = params.get("FromPolicyRule")
+        self.ToPolicyRule = params.get("ToPolicyRule")
+        if params.get("CustomPolicy") is not None:
+            self.CustomPolicy = []
+            for item in params.get("CustomPolicy"):
+                obj = NetworkCustomPolicy()
+                obj._deserialize(item)
+                self.CustomPolicy.append(obj)
+        self.PodSelector = params.get("PodSelector")
+        self.Description = params.get("Description")
+        self.PolicyCreateTime = params.get("PolicyCreateTime")
+        self.PolicySourceType = params.get("PolicySourceType")
+        self.NetworkPolicyPlugin = params.get("NetworkPolicyPlugin")
+        self.PublishStatus = params.get("PublishStatus")
+        self.PublishResult = params.get("PublishResult")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallPolicyDiscoverRequest(AbstractModel):
+    """DescribeNetworkFirewallPolicyDiscover请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: int
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallPolicyDiscoverResponse(AbstractModel):
+    """DescribeNetworkFirewallPolicyDiscover返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskStatus: 任务状态，可能为：Task_Running,Task_Succ,Task_Error,Task_NoExist
+        :type TaskStatus: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskStatus = params.get("TaskStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallPolicyListRequest(AbstractModel):
+    """DescribeNetworkFirewallPolicyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 每次查询的最大记录数量
+        :type Limit: int
+        :param Filters: Name - String
+Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
+        :type Filters: list of ComplianceFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = ComplianceFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallPolicyListResponse(AbstractModel):
+    """DescribeNetworkFirewallPolicyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 集群总数
+        :type TotalCount: int
+        :param NetPolicy: 集群的详细信息
+        :type NetPolicy: list of NetworkPolicyInfoItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NetPolicy = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NetPolicy") is not None:
+            self.NetPolicy = []
+            for item in params.get("NetPolicy"):
+                obj = NetworkPolicyInfoItem()
+                obj._deserialize(item)
+                self.NetPolicy.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallPolicyStatusRequest(AbstractModel):
+    """DescribeNetworkFirewallPolicyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: int
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallPolicyStatusResponse(AbstractModel):
+    """DescribeNetworkFirewallPolicyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskStatus: 任务状态，可能为：Task_Running,Task_Succ,Task_Error,Task_NoExist
+        :type TaskStatus: str
+        :param TaskResult: NameRepeat,K8sRuleIngressPortError等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskResult: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskStatus = None
+        self.TaskResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskStatus = params.get("TaskStatus")
+        self.TaskResult = params.get("TaskResult")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNetworkFirewallPolicyYamlDetailRequest(AbstractModel):
+    """DescribeNetworkFirewallPolicyYamlDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 策略Id
+        :type Id: int
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
+    """DescribeNetworkFirewallPolicyYamlDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param PolicyName: 策略名
+        :type PolicyName: str
+        :param Yaml: base64编码的yaml字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Yaml: str
+        :param Description: 策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param PolicyCreateTime: 策略创建时间
+        :type PolicyCreateTime: str
+        :param PolicySourceType: 策略源类型，分为System和Manual，分别代表手动和系统添加
+        :type PolicySourceType: str
+        :param NetworkPolicyPlugin: 网络策略对应的网络插件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkPolicyPlugin: str
+        :param PublishStatus: 网络策略状态
+        :type PublishStatus: str
+        :param PublishResult: 网络发布结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishResult: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.PolicyName = None
+        self.Yaml = None
+        self.Description = None
+        self.PolicyCreateTime = None
+        self.PolicySourceType = None
+        self.NetworkPolicyPlugin = None
+        self.PublishStatus = None
+        self.PublishResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.PolicyName = params.get("PolicyName")
+        self.Yaml = params.get("Yaml")
+        self.Description = params.get("Description")
+        self.PolicyCreateTime = params.get("PolicyCreateTime")
+        self.PolicySourceType = params.get("PolicySourceType")
+        self.NetworkPolicyPlugin = params.get("NetworkPolicyPlugin")
+        self.PublishStatus = params.get("PublishStatus")
+        self.PublishResult = params.get("PublishResult")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNewestVulRequest(AbstractModel):
+    """DescribeNewestVul请求参数结构体
+
+    """
+
+
+class DescribeNewestVulResponse(AbstractModel):
+    """DescribeNewestVul返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param VulName: 漏洞名称
+        :type VulName: str
+        :param SubmitTime: 披露时间
+        :type SubmitTime: str
+        :param Status: 应急漏洞风险情况：NOT_SCAN：未扫描，SCANNING：扫描中，SCANNED：已扫描
+        :type Status: str
+        :param CVEID: 漏洞CVEID
+        :type CVEID: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PocID = None
+        self.VulName = None
+        self.SubmitTime = None
+        self.Status = None
+        self.CVEID = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        self.VulName = params.get("VulName")
+        self.SubmitTime = params.get("SubmitTime")
+        self.Status = params.get("Status")
+        self.CVEID = params.get("CVEID")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePostPayDetailRequest(AbstractModel):
     """DescribePostPayDetail请求参数结构体
 
@@ -9854,6 +14562,83 @@ class DescribeProVersionInfoResponse(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.BuyStatus = params.get("BuyStatus")
         self.IsPurchased = params.get("IsPurchased")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePromotionActivityRequest(AbstractModel):
+    """DescribePromotionActivity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActiveID: 活动ID
+        :type ActiveID: int
+        """
+        self.ActiveID = None
+
+
+    def _deserialize(self, params):
+        self.ActiveID = params.get("ActiveID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePromotionActivityResponse(AbstractModel):
+    """DescribePromotionActivity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 促销活动内容
+        :type List: list of PromotionActivityContent
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = PromotionActivityContent()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePublicKeyRequest(AbstractModel):
+    """DescribePublicKey请求参数结构体
+
+    """
+
+
+class DescribePublicKeyResponse(AbstractModel):
+    """DescribePublicKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PublicKey: 公钥
+        :type PublicKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PublicKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PublicKey = params.get("PublicKey")
         self.RequestId = params.get("RequestId")
 
 
@@ -10781,6 +15566,213 @@ class DescribeRiskSyscallWhiteListsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeScanIgnoreVulListRequest(AbstractModel):
+    """DescribeScanIgnoreVulList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>VulName- string - 是否必填：否 - 漏洞名称</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式:DESC,ACS
+        :type Order: str
+        :param By: 排序字段 UpdateTime
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScanIgnoreVulListResponse(AbstractModel):
+    """DescribeScanIgnoreVulList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总是
+        :type TotalCount: int
+        :param List: 漏洞列表
+        :type List: list of ScanIgnoreVul
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ScanIgnoreVul()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSearchExportListRequest(AbstractModel):
+    """DescribeSearchExportList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Query: ES查询条件JSON
+        :type Query: str
+        """
+        self.Query = None
+
+
+    def _deserialize(self, params):
+        self.Query = params.get("Query")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSearchExportListResponse(AbstractModel):
+    """DescribeSearchExportList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSearchLogsRequest(AbstractModel):
+    """DescribeSearchLogs请求参数结构体
+
+    """
+
+
+class DescribeSearchLogsResponse(AbstractModel):
+    """DescribeSearchLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 历史搜索记录 保留最新的10条
+        :type Data: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSearchTemplatesRequest(AbstractModel):
+    """DescribeSearchTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSearchTemplatesResponse(AbstractModel):
+    """DescribeSearchTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param List: 模板列表
+        :type List: list of SearchTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SearchTemplate()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecEventsTendencyRequest(AbstractModel):
     """DescribeSecEventsTendency请求参数结构体
 
@@ -10835,6 +15827,648 @@ class DescribeSecEventsTendencyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecLogAlertMsgRequest(AbstractModel):
+    """DescribeSecLogAlertMsg请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 告警类型
+日志储量告警: log_reserve_full
+日志存储时间告警: log_save_day_limit
+kafka实例/公网域名不可用: kafka_instance_domain_unavailable
+kafka 用户名密码错误: kafka_user_passwd_wrong
+kafka后台报错字段: kafka_field_wrong
+        :type Type: list of str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecLogAlertMsgResponse(AbstractModel):
+    """DescribeSecLogAlertMsg返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 告警消息队列
+        :type List: list of SecLogAlertMsgInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SecLogAlertMsgInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecLogCleanSettingInfoRequest(AbstractModel):
+    """DescribeSecLogCleanSettingInfo请求参数结构体
+
+    """
+
+
+class DescribeSecLogCleanSettingInfoResponse(AbstractModel):
+    """DescribeSecLogCleanSettingInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReservesLimit: 触发清理的储量底线
+        :type ReservesLimit: int
+        :param ReservesDeadline: 清理停止时的储量截至线
+        :type ReservesDeadline: int
+        :param DayLimit: 触发清理的存储天数
+        :type DayLimit: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReservesLimit = None
+        self.ReservesDeadline = None
+        self.DayLimit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReservesLimit = params.get("ReservesLimit")
+        self.ReservesDeadline = params.get("ReservesDeadline")
+        self.DayLimit = params.get("DayLimit")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecLogDeliveryClsOptionsRequest(AbstractModel):
+    """DescribeSecLogDeliveryClsOptions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClsRegion: 地域
+        :type ClsRegion: str
+        """
+        self.ClsRegion = None
+
+
+    def _deserialize(self, params):
+        self.ClsRegion = params.get("ClsRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecLogDeliveryClsOptionsResponse(AbstractModel):
+    """DescribeSecLogDeliveryClsOptions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogSetList: cls可选日志集合列表(仅当入参ClsRegion不为空时返回)
+        :type LogSetList: list of ClsLogsetInfo
+        :param RegionList: 可选地域列表(仅当入参ClsRegion为空时返回)
+        :type RegionList: list of RegionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogSetList = None
+        self.RegionList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LogSetList") is not None:
+            self.LogSetList = []
+            for item in params.get("LogSetList"):
+                obj = ClsLogsetInfo()
+                obj._deserialize(item)
+                self.LogSetList.append(obj)
+        if params.get("RegionList") is not None:
+            self.RegionList = []
+            for item in params.get("RegionList"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.RegionList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecLogDeliveryClsSettingRequest(AbstractModel):
+    """DescribeSecLogDeliveryClsSetting请求参数结构体
+
+    """
+
+
+class DescribeSecLogDeliveryClsSettingResponse(AbstractModel):
+    """DescribeSecLogDeliveryClsSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogTypeList: 日志类型列表
+        :type LogTypeList: list of SecLogDeliveryClsSettingInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogTypeList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LogTypeList") is not None:
+            self.LogTypeList = []
+            for item in params.get("LogTypeList"):
+                obj = SecLogDeliveryClsSettingInfo()
+                obj._deserialize(item)
+                self.LogTypeList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecLogDeliveryKafkaOptionsRequest(AbstractModel):
+    """DescribeSecLogDeliveryKafkaOptions请求参数结构体
+
+    """
+
+
+class DescribeSecLogDeliveryKafkaOptionsResponse(AbstractModel):
+    """DescribeSecLogDeliveryKafkaOptions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: 实例列表
+        :type InstanceList: list of CKafkaInstanceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = CKafkaInstanceInfo()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecLogDeliveryKafkaSettingRequest(AbstractModel):
+    """DescribeSecLogDeliveryKafkaSetting请求参数结构体
+
+    """
+
+
+class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
+    """DescribeSecLogDeliveryKafkaSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceID: 消息队列实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
+        :param InstanceName: 消息队列实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param LogTypeList: 日志类型队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTypeList: list of SecLogDeliveryKafkaSettingInfo
+        :param User: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceID = None
+        self.InstanceName = None
+        self.Domain = None
+        self.LogTypeList = None
+        self.User = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceID = params.get("InstanceID")
+        self.InstanceName = params.get("InstanceName")
+        self.Domain = params.get("Domain")
+        if params.get("LogTypeList") is not None:
+            self.LogTypeList = []
+            for item in params.get("LogTypeList"):
+                obj = SecLogDeliveryKafkaSettingInfo()
+                obj._deserialize(item)
+                self.LogTypeList.append(obj)
+        self.User = params.get("User")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecLogJoinObjectListRequest(AbstractModel):
+    """DescribeSecLogJoinObjectList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogType: 日志类型
+bash: "container_bash",
+启动: "container_launch",
+"k8s": "k8s_api"
+        :type LogType: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>Status- String - 是否必填：否 - 主机状态 /li>
+<li>HostIP- String - 是否必填：否 - 主机内网IP /li>
+<li>PublicIP- String - 是否必填：否 - 主机外网IP /li>
+<li>HostName- String - 是否必填：否 - 主机名称 /li>
+        :type Filters: list of RunTimeFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式
+        :type Order: str
+        """
+        self.LogType = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.LogType = params.get("LogType")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecLogJoinObjectListResponse(AbstractModel):
+    """DescribeSecLogJoinObjectList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param List: 接入对象列表
+        :type List: list of SecLogJoinObjectInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SecLogJoinObjectInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecLogJoinTypeListRequest(AbstractModel):
+    """DescribeSecLogJoinTypeList请求参数结构体
+
+    """
+
+
+class DescribeSecLogJoinTypeListResponse(AbstractModel):
+    """DescribeSecLogJoinTypeList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 接入日志列表
+        :type List: list of SecLogJoinInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SecLogJoinInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecLogKafkaUINRequest(AbstractModel):
+    """DescribeSecLogKafkaUIN请求参数结构体
+
+    """
+
+
+class DescribeSecLogKafkaUINResponse(AbstractModel):
+    """DescribeSecLogKafkaUIN返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DstUIN: 目标UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstUIN: str
+        :param Status: 授权状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DstUIN = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DstUIN = params.get("DstUIN")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSecLogVasInfoRequest(AbstractModel):
+    """DescribeSecLogVasInfo请求参数结构体
+
+    """
+
+
+class DescribeSecLogVasInfoResponse(AbstractModel):
+    """DescribeSecLogVasInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BuyStatus: 购买状态
+待购: Pending
+已购: Normal
+隔离: Isolate
+        :type BuyStatus: str
+        :param LogSaveMonth: 存储时长(月)
+        :type LogSaveMonth: int
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 截止时间
+        :type EndTime: str
+        :param LogCapacity: 存储容量(GB)
+        :type LogCapacity: int
+        :param ResourceID: 资源ID
+        :type ResourceID: str
+        :param IsPurchased: 是否曾经购买过(false:未曾 true:曾经购买过)
+        :type IsPurchased: bool
+        :param TrialCapacity: 试用存储容量(GB)
+        :type TrialCapacity: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BuyStatus = None
+        self.LogSaveMonth = None
+        self.StartTime = None
+        self.EndTime = None
+        self.LogCapacity = None
+        self.ResourceID = None
+        self.IsPurchased = None
+        self.TrialCapacity = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BuyStatus = params.get("BuyStatus")
+        self.LogSaveMonth = params.get("LogSaveMonth")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.LogCapacity = params.get("LogCapacity")
+        self.ResourceID = params.get("ResourceID")
+        self.IsPurchased = params.get("IsPurchased")
+        self.TrialCapacity = params.get("TrialCapacity")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSupportDefenceVulRequest(AbstractModel):
+    """DescribeSupportDefenceVul请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+        :type Filters: list of RunTimeFilters
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式：asc/desc
+        :type Order: str
+        :param By: 排序字段：披露时间：SubmitTime
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSupportDefenceVulResponse(AbstractModel):
+    """DescribeSupportDefenceVul返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 支持防御的漏洞列表
+        :type List: list of SupportDefenceVul
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SupportDefenceVul()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSystemVulListRequest(AbstractModel):
+    """DescribeSystemVulList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
+<li>OnlyAffectedNewestImage-string - 是否必填：否 - 仅展示影响最新版本镜像的漏洞true,false</li>
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>Tags- string - 是否必填：否 - 漏洞标签，POC，EXP。</li>
+<li>CanBeFixed- string - 是否必填：否 - 是否可修复true,false。</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String -是否必填: 否 - 镜像名称</li>
+<li>ContainerID- string -是否必填: 否 - 容器ID</li>
+<li>ContainerName- string -是否必填: 否 - 容器名称</li>
+<li>ComponentName- string -是否必填: 否 - 组件名称</li>
+<li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+<li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSystemVulListResponse(AbstractModel):
+    """DescribeSystemVulList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 漏洞总数
+        :type TotalCount: int
+        :param List: 漏洞列表
+        :type List: list of VulInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTaskResultSummaryRequest(AbstractModel):
     """DescribeTaskResultSummary请求参数结构体
 
@@ -10871,6 +16505,149 @@ class DescribeTaskResultSummaryResponse(AbstractModel):
         self.HighRiskNodeCount = params.get("HighRiskNodeCount")
         self.MiddleRiskNodeCount = params.get("MiddleRiskNodeCount")
         self.HintRiskNodeCount = params.get("HintRiskNodeCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTcssSummaryRequest(AbstractModel):
+    """DescribeTcssSummary请求参数结构体
+
+    """
+
+
+class DescribeTcssSummaryResponse(AbstractModel):
+    """DescribeTcssSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageCnt: 镜像总数
+        :type ImageCnt: int
+        :param ScannedImageCnt: 已扫描镜像数
+        :type ScannedImageCnt: int
+        :param UnScannedImageCnt: 待扫描镜像个数
+        :type UnScannedImageCnt: int
+        :param LocalImageCnt: 本地镜像个数
+        :type LocalImageCnt: int
+        :param RepositoryImageCnt: 仓库镜像个数
+        :type RepositoryImageCnt: int
+        :param RiskLocalImageCnt: 风险本地镜像个数
+        :type RiskLocalImageCnt: int
+        :param RiskRepositoryImageCnt: 风险仓库镜像个数
+        :type RiskRepositoryImageCnt: int
+        :param ContainerCnt: 容器个数
+        :type ContainerCnt: int
+        :param RiskContainerCnt: 风险容器个数
+        :type RiskContainerCnt: int
+        :param ClusterCnt: 集群个数
+        :type ClusterCnt: int
+        :param RiskClusterCnt: 风险集群个数
+        :type RiskClusterCnt: int
+        :param UnScannedVulCnt: 待扫描漏洞个数
+        :type UnScannedVulCnt: int
+        :param RiskVulCnt: 风险漏洞个数
+        :type RiskVulCnt: int
+        :param UnScannedBaseLineCnt: 安全基线待扫描项个数
+        :type UnScannedBaseLineCnt: int
+        :param RiskBaseLineCnt: 安全基线风险个数
+        :type RiskBaseLineCnt: int
+        :param RuntimeUnhandleEventCnt: 运行时(高危)待处理事件个数
+        :type RuntimeUnhandleEventCnt: int
+        :param UnScannedClusterCnt: 待扫描集群个数
+        :type UnScannedClusterCnt: int
+        :param ScanImageStatus: 是否已扫描镜像
+        :type ScanImageStatus: bool
+        :param ScanClusterStatus: 是否已扫描集群
+        :type ScanClusterStatus: bool
+        :param ScanBaseLineStatus: 是否已扫描基线
+        :type ScanBaseLineStatus: bool
+        :param ScanVulStatus: 是否已扫描漏洞
+        :type ScanVulStatus: bool
+        :param VulRiskImageCnt: 漏洞影响镜像数
+        :type VulRiskImageCnt: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageCnt = None
+        self.ScannedImageCnt = None
+        self.UnScannedImageCnt = None
+        self.LocalImageCnt = None
+        self.RepositoryImageCnt = None
+        self.RiskLocalImageCnt = None
+        self.RiskRepositoryImageCnt = None
+        self.ContainerCnt = None
+        self.RiskContainerCnt = None
+        self.ClusterCnt = None
+        self.RiskClusterCnt = None
+        self.UnScannedVulCnt = None
+        self.RiskVulCnt = None
+        self.UnScannedBaseLineCnt = None
+        self.RiskBaseLineCnt = None
+        self.RuntimeUnhandleEventCnt = None
+        self.UnScannedClusterCnt = None
+        self.ScanImageStatus = None
+        self.ScanClusterStatus = None
+        self.ScanBaseLineStatus = None
+        self.ScanVulStatus = None
+        self.VulRiskImageCnt = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ImageCnt = params.get("ImageCnt")
+        self.ScannedImageCnt = params.get("ScannedImageCnt")
+        self.UnScannedImageCnt = params.get("UnScannedImageCnt")
+        self.LocalImageCnt = params.get("LocalImageCnt")
+        self.RepositoryImageCnt = params.get("RepositoryImageCnt")
+        self.RiskLocalImageCnt = params.get("RiskLocalImageCnt")
+        self.RiskRepositoryImageCnt = params.get("RiskRepositoryImageCnt")
+        self.ContainerCnt = params.get("ContainerCnt")
+        self.RiskContainerCnt = params.get("RiskContainerCnt")
+        self.ClusterCnt = params.get("ClusterCnt")
+        self.RiskClusterCnt = params.get("RiskClusterCnt")
+        self.UnScannedVulCnt = params.get("UnScannedVulCnt")
+        self.RiskVulCnt = params.get("RiskVulCnt")
+        self.UnScannedBaseLineCnt = params.get("UnScannedBaseLineCnt")
+        self.RiskBaseLineCnt = params.get("RiskBaseLineCnt")
+        self.RuntimeUnhandleEventCnt = params.get("RuntimeUnhandleEventCnt")
+        self.UnScannedClusterCnt = params.get("UnScannedClusterCnt")
+        self.ScanImageStatus = params.get("ScanImageStatus")
+        self.ScanClusterStatus = params.get("ScanClusterStatus")
+        self.ScanBaseLineStatus = params.get("ScanBaseLineStatus")
+        self.ScanVulStatus = params.get("ScanVulStatus")
+        self.VulRiskImageCnt = params.get("VulRiskImageCnt")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUnauthorizedCoresTendencyRequest(AbstractModel):
+    """DescribeUnauthorizedCoresTendency请求参数结构体
+
+    """
+
+
+class DescribeUnauthorizedCoresTendencyResponse(AbstractModel):
+    """DescribeUnauthorizedCoresTendency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 未授权核数趋势
+        :type List: list of UnauthorizedCoresTendency
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = UnauthorizedCoresTendency()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -11013,6 +16790,245 @@ class DescribeValueAddedSrvInfoResponse(AbstractModel):
         self.RegistryImageCnt = params.get("RegistryImageCnt")
         self.LocalImageCnt = params.get("LocalImageCnt")
         self.UnusedAuthorizedCnt = params.get("UnusedAuthorizedCnt")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVirusAutoIsolateSampleDetailRequest(AbstractModel):
+    """DescribeVirusAutoIsolateSampleDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MD5: 文件MD5值
+        :type MD5: str
+        """
+        self.MD5 = None
+
+
+    def _deserialize(self, params):
+        self.MD5 = params.get("MD5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirusAutoIsolateSampleDetailResponse(AbstractModel):
+    """DescribeVirusAutoIsolateSampleDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MD5: 文件Md5值
+        :type MD5: str
+        :param Size: 文件大小(B)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param VirusName: 病毒名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirusName: str
+        :param RiskLevel: 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: str
+        :param KillEngine: 查杀引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KillEngine: list of str
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param HarmDescribe: 事件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HarmDescribe: str
+        :param SuggestScheme: 建议方案
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuggestScheme: str
+        :param ReferenceLink: 参考链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReferenceLink: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MD5 = None
+        self.Size = None
+        self.VirusName = None
+        self.RiskLevel = None
+        self.KillEngine = None
+        self.Tags = None
+        self.HarmDescribe = None
+        self.SuggestScheme = None
+        self.ReferenceLink = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MD5 = params.get("MD5")
+        self.Size = params.get("Size")
+        self.VirusName = params.get("VirusName")
+        self.RiskLevel = params.get("RiskLevel")
+        self.KillEngine = params.get("KillEngine")
+        self.Tags = params.get("Tags")
+        self.HarmDescribe = params.get("HarmDescribe")
+        self.SuggestScheme = params.get("SuggestScheme")
+        self.ReferenceLink = params.get("ReferenceLink")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVirusAutoIsolateSampleDownloadURLRequest(AbstractModel):
+    """DescribeVirusAutoIsolateSampleDownloadURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MD5: 样本Md5值
+        :type MD5: str
+        """
+        self.MD5 = None
+
+
+    def _deserialize(self, params):
+        self.MD5 = params.get("MD5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirusAutoIsolateSampleDownloadURLResponse(AbstractModel):
+    """DescribeVirusAutoIsolateSampleDownloadURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileUrl: 样本下载链接
+        :type FileUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileUrl = params.get("FileUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVirusAutoIsolateSampleListRequest(AbstractModel):
+    """DescribeVirusAutoIsolateSampleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>MD5- String - 是否必填：否 - md5 /li>
+<li>AutoIsolateSwitch- String - 是否必填：否 - 自动隔离开关 /li>
+<li>VirusName- String - 是否必填：否 - 病毒名 /li>
+        :type Filters: list of RunTimeFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式
+        :type Order: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirusAutoIsolateSampleListResponse(AbstractModel):
+    """DescribeVirusAutoIsolateSampleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param List: 木马自动隔离样本列表
+        :type List: list of VirusAutoIsolateSampleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VirusAutoIsolateSampleInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVirusAutoIsolateSettingRequest(AbstractModel):
+    """DescribeVirusAutoIsolateSetting请求参数结构体
+
+    """
+
+
+class DescribeVirusAutoIsolateSettingResponse(AbstractModel):
+    """DescribeVirusAutoIsolateSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoIsolateSwitch: 自动隔离开关(true:开 false:关)
+        :type AutoIsolateSwitch: bool
+        :param IsKillProgress: 是否中断隔离文件关联的进程(true:是 false:否)
+        :type IsKillProgress: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AutoIsolateSwitch = None
+        self.IsKillProgress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AutoIsolateSwitch = params.get("AutoIsolateSwitch")
+        self.IsKillProgress = params.get("IsKillProgress")
         self.RequestId = params.get("RequestId")
 
 
@@ -11311,6 +17327,56 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVirusEventTendencyRequest(AbstractModel):
+    """DescribeVirusEventTendency请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TendencyPeriod: 趋势周期(默认为7天)
+        :type TendencyPeriod: int
+        """
+        self.TendencyPeriod = None
+
+
+    def _deserialize(self, params):
+        self.TendencyPeriod = params.get("TendencyPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirusEventTendencyResponse(AbstractModel):
+    """DescribeVirusEventTendency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 趋势列表
+        :type List: list of VirusTendencyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VirusTendencyInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVirusListRequest(AbstractModel):
     """DescribeVirusList请求参数结构体
 
@@ -11400,6 +17466,63 @@ class DescribeVirusListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVirusManualScanEstimateTimeoutRequest(AbstractModel):
+    """DescribeVirusManualScanEstimateTimeout请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScanRangeType: 扫描范围0容器1主机节点
+        :type ScanRangeType: int
+        :param ScanRangeAll: true 全选，false 自选
+        :type ScanRangeAll: bool
+        :param ScanIds: 自选扫描范围的容器id或者主机id 根据ScanRangeType决定
+        :type ScanIds: list of str
+        """
+        self.ScanRangeType = None
+        self.ScanRangeAll = None
+        self.ScanIds = None
+
+
+    def _deserialize(self, params):
+        self.ScanRangeType = params.get("ScanRangeType")
+        self.ScanRangeAll = params.get("ScanRangeAll")
+        self.ScanIds = params.get("ScanIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirusManualScanEstimateTimeoutResponse(AbstractModel):
+    """DescribeVirusManualScanEstimateTimeout返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timeout: 预估超时时间(h)
+        :type Timeout: float
+        :param ContainerScanConcurrencyCount: 单台主机并行扫描容器数
+        :type ContainerScanConcurrencyCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Timeout = None
+        self.ContainerScanConcurrencyCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Timeout = params.get("Timeout")
+        self.ContainerScanConcurrencyCount = params.get("ContainerScanConcurrencyCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVirusMonitorSettingRequest(AbstractModel):
     """DescribeVirusMonitorSetting请求参数结构体
 
@@ -11439,6 +17562,51 @@ class DescribeVirusMonitorSettingResponse(AbstractModel):
         self.ScanPathAll = params.get("ScanPathAll")
         self.ScanPathType = params.get("ScanPathType")
         self.ScanPath = params.get("ScanPath")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVirusSampleDownloadUrlRequest(AbstractModel):
+    """DescribeVirusSampleDownloadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: 木马id
+        :type ID: str
+        """
+        self.ID = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirusSampleDownloadUrlResponse(AbstractModel):
+    """DescribeVirusSampleDownloadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileUrl: 样本下载地址
+        :type FileUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileUrl = params.get("FileUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -11791,6 +17959,1321 @@ class DescribeVirusTaskListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVulContainerListRequest(AbstractModel):
+    """DescribeVulContainerList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
+<li>ContainerID- string - 是否必填：否 - 容器ID</li>
+<li>ContainerName- String -是否必填: 否 - 容器名称</li>
+        :type Filters: list of RunTimeFilters
+        """
+        self.PocID = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulContainerListResponse(AbstractModel):
+    """DescribeVulContainerList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 容器列表
+        :type List: list of VulAffectedContainerInfo
+        :param TotalCount: 容器总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulAffectedContainerInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulDefenceEventDetailRequest(AbstractModel):
+    """DescribeVulDefenceEventDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventID: 事件ID
+        :type EventID: int
+        """
+        self.EventID = None
+
+
+    def _deserialize(self, params):
+        self.EventID = params.get("EventID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulDefenceEventDetailResponse(AbstractModel):
+    """DescribeVulDefenceEventDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventDetail: 漏洞防御事件详细
+        :type EventDetail: :class:`tencentcloud.tcss.v20201101.models.VulDefenceEventDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EventDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EventDetail") is not None:
+            self.EventDetail = VulDefenceEventDetail()
+            self.EventDetail._deserialize(params.get("EventDetail"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulDefenceEventRequest(AbstractModel):
+    """DescribeVulDefenceEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>Status- String - 是否必填：否 - 插件状态，待处理：EVENT_UNDEAL，EVENT_DEALED：已处理，已忽略：EVENT_IGNORE， EVENT_DEFENDED：已防御</li>
+<li>ContainerStatus- String - 是否必填：否 - 容器运行状态筛选，已创建：CREATED,正常运行：RUNNING, 暂定运行：PAUSED, 停止运行：	STOPPED，重启中：RESTARTING, 迁移中：REMOVING, 销毁：DESTROYED </li>
+<li>ContainerNetStatus- String -是否必填: 否 -  容器网络状态筛选 未隔离：NORMAL，已隔离：ISOLATED，隔离失败：ISOLATE_FAILED，解除隔离失败：RESTORE_FAILED，解除隔离中：RESTORING，隔离中：ISOLATING</li>
+<li>EventType - String -是否必填: 否 -  入侵状态，防御成功：EVENT_DEFENDED，尝试攻击：EVENT_ATTACK </li>
+<li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+<li>VulName- string - 是否必填：否 - 漏洞名称。</li>
+<li>CVEID- string - 是否必填：否 - CVE编号。</li>
+<li>SourceIP- string - 是否必填：否 - 攻击源IP。</li>
+<li>ContainerName- string - 是否必填：否 - 容器名称。</li>
+<li>ContainerID- string - 是否必填：否 - 容器ID。</li>
+<li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+<li>HostName- string - 是否必填：否 - 主机名称。</li>
+<li>HostIP- string - 是否必填：否 - 内网IP。</li>
+        :type Filters: list of RunTimeFilters
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式：asc/desc
+        :type Order: str
+        :param By: 排序字段：事件数量：EventCount
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulDefenceEventResponse(AbstractModel):
+    """DescribeVulDefenceEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 漏洞防御事件列表
+        :type List: list of VulDefenceEvent
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulDefenceEvent()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulDefenceEventTendencyRequest(AbstractModel):
+    """DescribeVulDefenceEventTendency请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulDefenceEventTendencyResponse(AbstractModel):
+    """DescribeVulDefenceEventTendency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DefendedList: 漏洞防御事件趋势
+        :type DefendedList: list of VulDefenceEventTendency
+        :param AttackList: 漏洞攻击事件趋势
+        :type AttackList: list of VulDefenceEventTendency
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DefendedList = None
+        self.AttackList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DefendedList") is not None:
+            self.DefendedList = []
+            for item in params.get("DefendedList"):
+                obj = VulDefenceEventTendency()
+                obj._deserialize(item)
+                self.DefendedList.append(obj)
+        if params.get("AttackList") is not None:
+            self.AttackList = []
+            for item in params.get("AttackList"):
+                obj = VulDefenceEventTendency()
+                obj._deserialize(item)
+                self.AttackList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulDefenceHostRequest(AbstractModel):
+    """DescribeVulDefenceHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>Status- String - 是否必填：否 - 插件状态，正常：SUCCESS，异常：FAIL， NO_DEFENCE:未防御</li>
+<li>KeyWords- string - 是否必填：否 - 主机名称/IP。</li>
+        :type Filters: list of RunTimeFilters
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式：asc/desc
+        :type Order: str
+        :param By: 排序字段：更新时间：ModifyTime/首次开启时间：CreateTime
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulDefenceHostResponse(AbstractModel):
+    """DescribeVulDefenceHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param List: 漏洞防御的主机列表
+        :type List: list of VulDefenceHost
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulDefenceHost()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulDefencePluginRequest(AbstractModel):
+    """DescribeVulDefencePlugin请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostID: 主机HostID即quuid
+        :type HostID: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>Status- String - 是否必填：否 -插件运行状态：注入中:INJECTING，注入成功：SUCCESS，注入失败：FAIL，插件超时：TIMEOUT，插件退出：QUIT</li>
+        :type Filters: list of RunTimeFilters
+        """
+        self.HostID = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.HostID = params.get("HostID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulDefencePluginResponse(AbstractModel):
+    """DescribeVulDefencePlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param List: 漏洞防御插件列表
+        :type List: list of VulDefencePlugin
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulDefencePlugin()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulDefenceSettingRequest(AbstractModel):
+    """DescribeVulDefenceSetting请求参数结构体
+
+    """
+
+
+class DescribeVulDefenceSettingResponse(AbstractModel):
+    """DescribeVulDefenceSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsEnabled: 是否开启:0: 关闭 1:开启
+        :type IsEnabled: int
+        :param Scope: 漏洞防御主机范围: 0:自选主机节点，1:全部
+        :type Scope: int
+        :param HostCount: 漏洞防御主机数量
+        :type HostCount: int
+        :param ExceptionHostCount: 开启漏洞防御异常主机数量
+        :type ExceptionHostCount: int
+        :param HostIDs: 自选漏洞防御主机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostIDs: list of str
+        :param HostTotalCount: 开通容器安全的主机总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostTotalCount: int
+        :param SupportDefenseVulCount: 支持防御的漏洞数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportDefenseVulCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsEnabled = None
+        self.Scope = None
+        self.HostCount = None
+        self.ExceptionHostCount = None
+        self.HostIDs = None
+        self.HostTotalCount = None
+        self.SupportDefenseVulCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsEnabled = params.get("IsEnabled")
+        self.Scope = params.get("Scope")
+        self.HostCount = params.get("HostCount")
+        self.ExceptionHostCount = params.get("ExceptionHostCount")
+        self.HostIDs = params.get("HostIDs")
+        self.HostTotalCount = params.get("HostTotalCount")
+        self.SupportDefenseVulCount = params.get("SupportDefenseVulCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulDetailRequest(AbstractModel):
+    """DescribeVulDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        """
+        self.PocID = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulDetailResponse(AbstractModel):
+    """DescribeVulDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VulInfo: 漏洞详情信息
+        :type VulInfo: :class:`tencentcloud.tcss.v20201101.models.VulDetailInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VulInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VulInfo") is not None:
+            self.VulInfo = VulDetailInfo()
+            self.VulInfo._deserialize(params.get("VulInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulIgnoreLocalImageListRequest(AbstractModel):
+    """DescribeVulIgnoreLocalImageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式:DESC,ACS
+        :type Order: str
+        :param By: 排序字段 ImageSize
+        :type By: str
+        """
+        self.PocID = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulIgnoreLocalImageListResponse(AbstractModel):
+    """DescribeVulIgnoreLocalImageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param List: 镜像列表
+        :type List: list of VulIgnoreLocalImage
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulIgnoreLocalImage()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulIgnoreRegistryImageListRequest(AbstractModel):
+    """DescribeVulIgnoreRegistryImageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self.PocID = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulIgnoreRegistryImageListResponse(AbstractModel):
+    """DescribeVulIgnoreRegistryImageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param List: 镜像列表
+        :type List: list of VulIgnoreRegistryImage
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulIgnoreRegistryImage()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulImageListRequest(AbstractModel):
+    """DescribeVulImageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String -是否必填: 否 - 镜像名称</li>
+<li>HostIP- string -是否必填: 否 - 内网IP</li>
+<li>PublicIP- string -是否必填: 否 - 外网IP</li>
+<li>ComponentName- string -是否必填: 否 - 组件名称</li>
+<li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
+<li>HostName- string -是否必填: 否 - 主机名称</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.PocID = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulImageListResponse(AbstractModel):
+    """DescribeVulImageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 受影响的镜像列表
+        :type List: list of VulAffectedImageInfo
+        :param TotalCount: 镜像总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulAffectedImageInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulImageSummaryRequest(AbstractModel):
+    """DescribeVulImageSummary请求参数结构体
+
+    """
+
+
+class DescribeVulImageSummaryResponse(AbstractModel):
+    """DescribeVulImageSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SeriousVulImageCount: 受严重或高危漏洞影响的镜像数
+        :type SeriousVulImageCount: int
+        :param ScannedImageCount: 已扫描的镜像数
+        :type ScannedImageCount: int
+        :param VulTotalCount: 漏洞总数量
+        :type VulTotalCount: int
+        :param SysTemVulCount: 系统漏洞数
+        :type SysTemVulCount: int
+        :param WebVulCount: web应用漏洞数
+        :type WebVulCount: int
+        :param AllAuthorizedImageCount: 已授权镜像数
+        :type AllAuthorizedImageCount: int
+        :param EmergencyVulCount: 应急漏洞数
+        :type EmergencyVulCount: int
+        :param SupportVulTotalCount: 支持扫描的漏洞总数量
+        :type SupportVulTotalCount: int
+        :param VulLibraryUpdateTime: 漏洞库更新时间
+        :type VulLibraryUpdateTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SeriousVulImageCount = None
+        self.ScannedImageCount = None
+        self.VulTotalCount = None
+        self.SysTemVulCount = None
+        self.WebVulCount = None
+        self.AllAuthorizedImageCount = None
+        self.EmergencyVulCount = None
+        self.SupportVulTotalCount = None
+        self.VulLibraryUpdateTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SeriousVulImageCount = params.get("SeriousVulImageCount")
+        self.ScannedImageCount = params.get("ScannedImageCount")
+        self.VulTotalCount = params.get("VulTotalCount")
+        self.SysTemVulCount = params.get("SysTemVulCount")
+        self.WebVulCount = params.get("WebVulCount")
+        self.AllAuthorizedImageCount = params.get("AllAuthorizedImageCount")
+        self.EmergencyVulCount = params.get("EmergencyVulCount")
+        self.SupportVulTotalCount = params.get("SupportVulTotalCount")
+        self.VulLibraryUpdateTime = params.get("VulLibraryUpdateTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulLevelImageSummaryRequest(AbstractModel):
+    """DescribeVulLevelImageSummary请求参数结构体
+
+    """
+
+
+class DescribeVulLevelImageSummaryResponse(AbstractModel):
+    """DescribeVulLevelImageSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HighLevelVulLocalImagePercent: 高危漏洞最新本地镜像占比
+        :type HighLevelVulLocalImagePercent: float
+        :param MediumLevelVulLocalImagePercent: 中危漏洞最新本地镜像占比
+        :type MediumLevelVulLocalImagePercent: float
+        :param LowLevelVulLocalImagePercent: 低危漏洞最新本地镜像占比
+        :type LowLevelVulLocalImagePercent: float
+        :param CriticalLevelVulLocalImagePercent: 严重漏洞最新本地镜像占比
+        :type CriticalLevelVulLocalImagePercent: float
+        :param LocalNewestImageCount: 影响的最新版本本地镜像数
+        :type LocalNewestImageCount: int
+        :param RegistryNewestImageCount: 影响的最新版本仓库镜像数
+        :type RegistryNewestImageCount: int
+        :param HighLevelVulRegistryImagePercent: 高危漏洞最新仓库镜像占比
+        :type HighLevelVulRegistryImagePercent: float
+        :param MediumLevelVulRegistryImagePercent: 中危漏洞最新仓库镜像占比
+        :type MediumLevelVulRegistryImagePercent: float
+        :param LowLevelVulRegistryImagePercent: 低危漏洞最新仓库镜像占比
+        :type LowLevelVulRegistryImagePercent: float
+        :param CriticalLevelVulRegistryImagePercent: 严重漏洞最新仓库镜像占比
+        :type CriticalLevelVulRegistryImagePercent: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HighLevelVulLocalImagePercent = None
+        self.MediumLevelVulLocalImagePercent = None
+        self.LowLevelVulLocalImagePercent = None
+        self.CriticalLevelVulLocalImagePercent = None
+        self.LocalNewestImageCount = None
+        self.RegistryNewestImageCount = None
+        self.HighLevelVulRegistryImagePercent = None
+        self.MediumLevelVulRegistryImagePercent = None
+        self.LowLevelVulRegistryImagePercent = None
+        self.CriticalLevelVulRegistryImagePercent = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.HighLevelVulLocalImagePercent = params.get("HighLevelVulLocalImagePercent")
+        self.MediumLevelVulLocalImagePercent = params.get("MediumLevelVulLocalImagePercent")
+        self.LowLevelVulLocalImagePercent = params.get("LowLevelVulLocalImagePercent")
+        self.CriticalLevelVulLocalImagePercent = params.get("CriticalLevelVulLocalImagePercent")
+        self.LocalNewestImageCount = params.get("LocalNewestImageCount")
+        self.RegistryNewestImageCount = params.get("RegistryNewestImageCount")
+        self.HighLevelVulRegistryImagePercent = params.get("HighLevelVulRegistryImagePercent")
+        self.MediumLevelVulRegistryImagePercent = params.get("MediumLevelVulRegistryImagePercent")
+        self.LowLevelVulRegistryImagePercent = params.get("LowLevelVulRegistryImagePercent")
+        self.CriticalLevelVulRegistryImagePercent = params.get("CriticalLevelVulRegistryImagePercent")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulLevelSummaryRequest(AbstractModel):
+    """DescribeVulLevelSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CategoryType: 漏洞分类: SYSTEM:系统漏洞 WEB:web应用漏洞 EMERGENCY:应急漏洞
+        :type CategoryType: str
+        """
+        self.CategoryType = None
+
+
+    def _deserialize(self, params):
+        self.CategoryType = params.get("CategoryType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulLevelSummaryResponse(AbstractModel):
+    """DescribeVulLevelSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HighLevelVulCount: 高危漏洞数
+        :type HighLevelVulCount: int
+        :param MediumLevelVulCount: 中危漏洞数
+        :type MediumLevelVulCount: int
+        :param LowLevelVulCount: 低危漏洞数
+        :type LowLevelVulCount: int
+        :param CriticalLevelVulCount: 严重漏洞数
+        :type CriticalLevelVulCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HighLevelVulCount = None
+        self.MediumLevelVulCount = None
+        self.LowLevelVulCount = None
+        self.CriticalLevelVulCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.HighLevelVulCount = params.get("HighLevelVulCount")
+        self.MediumLevelVulCount = params.get("MediumLevelVulCount")
+        self.LowLevelVulCount = params.get("LowLevelVulCount")
+        self.CriticalLevelVulCount = params.get("CriticalLevelVulCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulScanAuthorizedImageSummaryRequest(AbstractModel):
+    """DescribeVulScanAuthorizedImageSummary请求参数结构体
+
+    """
+
+
+class DescribeVulScanAuthorizedImageSummaryResponse(AbstractModel):
+    """DescribeVulScanAuthorizedImageSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AllAuthorizedImageCount: 全部已授权的本地镜像数
+        :type AllAuthorizedImageCount: int
+        :param UnScanAuthorizedImageCount: 已授权未扫描的本地镜像数
+        :type UnScanAuthorizedImageCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AllAuthorizedImageCount = None
+        self.UnScanAuthorizedImageCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AllAuthorizedImageCount = params.get("AllAuthorizedImageCount")
+        self.UnScanAuthorizedImageCount = params.get("UnScanAuthorizedImageCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulScanInfoRequest(AbstractModel):
+    """DescribeVulScanInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalTaskID: 本地镜像漏洞扫描任务ID，无则返回最近一次的漏洞任务扫描
+        :type LocalTaskID: int
+        :param RegistryTaskID: 仓库镜像漏洞扫描任务ID，无则返回最近一次的漏洞任务扫描
+        :type RegistryTaskID: int
+        """
+        self.LocalTaskID = None
+        self.RegistryTaskID = None
+
+
+    def _deserialize(self, params):
+        self.LocalTaskID = params.get("LocalTaskID")
+        self.RegistryTaskID = params.get("RegistryTaskID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulScanInfoResponse(AbstractModel):
+    """DescribeVulScanInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalImageScanCount: 本次扫描的本地镜像总数
+        :type LocalImageScanCount: int
+        :param IgnoreVulCount: 忽略的漏洞数量
+        :type IgnoreVulCount: int
+        :param ScanStartTime: 漏洞扫描的开始时间
+        :type ScanStartTime: str
+        :param ScanEndTime: 漏洞扫描的结束时间
+        :type ScanEndTime: str
+        :param FoundRiskImageCount: 发现风险镜像数量
+        :type FoundRiskImageCount: int
+        :param FoundVulCount: 本地发现漏洞数量
+        :type FoundVulCount: int
+        :param ScanProgress: 扫描进度
+        :type ScanProgress: float
+        :param RegistryImageScanCount: 本次扫描的仓库镜像总数
+        :type RegistryImageScanCount: int
+        :param LocalTaskID: 本地镜像最近一次的漏洞任务扫描ID
+        :type LocalTaskID: int
+        :param Status: 扫描状态:NOT_SCAN:未扫描，SCANNING:扫描中,SCANNED:完成，CANCELED：扫描停止
+        :type Status: str
+        :param RemainingTime: 剩余时间，秒
+        :type RemainingTime: float
+        :param RegistryTaskID: 仓库镜像最近一次的漏洞任务扫描ID
+        :type RegistryTaskID: int
+        :param RegistryFoundVulCount: 仓库发现漏洞数量
+        :type RegistryFoundVulCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LocalImageScanCount = None
+        self.IgnoreVulCount = None
+        self.ScanStartTime = None
+        self.ScanEndTime = None
+        self.FoundRiskImageCount = None
+        self.FoundVulCount = None
+        self.ScanProgress = None
+        self.RegistryImageScanCount = None
+        self.LocalTaskID = None
+        self.Status = None
+        self.RemainingTime = None
+        self.RegistryTaskID = None
+        self.RegistryFoundVulCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LocalImageScanCount = params.get("LocalImageScanCount")
+        self.IgnoreVulCount = params.get("IgnoreVulCount")
+        self.ScanStartTime = params.get("ScanStartTime")
+        self.ScanEndTime = params.get("ScanEndTime")
+        self.FoundRiskImageCount = params.get("FoundRiskImageCount")
+        self.FoundVulCount = params.get("FoundVulCount")
+        self.ScanProgress = params.get("ScanProgress")
+        self.RegistryImageScanCount = params.get("RegistryImageScanCount")
+        self.LocalTaskID = params.get("LocalTaskID")
+        self.Status = params.get("Status")
+        self.RemainingTime = params.get("RemainingTime")
+        self.RegistryTaskID = params.get("RegistryTaskID")
+        self.RegistryFoundVulCount = params.get("RegistryFoundVulCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulScanLocalImageListRequest(AbstractModel):
+    """DescribeVulScanLocalImageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskID: 漏洞扫描任务ID
+        :type TaskID: int
+        :param Filters: 过滤条件。
+<li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String -是否必填: 否 - 镜像名称</li>
+<li>ScanStatus- string -是否必填: 否 - 检测状态。WAIT_SCAN：待检测，SCANNING：检查中，SCANNED：检查完成，SCAN_ERR：检查失败，CANCELED：检测停止</li>
+        :type Filters: list of RunTimeFilters
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.TaskID = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulScanLocalImageListResponse(AbstractModel):
+    """DescribeVulScanLocalImageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 镜像总数
+        :type TotalCount: int
+        :param List: 镜像列表
+        :type List: list of VulScanImageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulScanImageInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulSummaryRequest(AbstractModel):
+    """DescribeVulSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>OnlyAffectedNewestImage- string- 是否必填：否 - 仅展示影响最新版本镜像的漏洞true,false</li>
+<li>OnlyAffectedContainer-string- 是否必填：否 - 仅展示影响容器的漏洞,true,false</li>
+<li>CategoryType- string - 是否必填：否 - 漏洞分类: SYSTEM:系统漏洞 WEB:web应用漏洞 ALL:全部漏洞</li>
+        :type Filters: list of RunTimeFilters
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulSummaryResponse(AbstractModel):
+    """DescribeVulSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VulTotalCount: 漏洞总数量
+        :type VulTotalCount: int
+        :param SeriousVulCount: 严重及高危漏洞数量
+        :type SeriousVulCount: int
+        :param SuggestVulCount: 重点关注漏洞数量
+        :type SuggestVulCount: int
+        :param PocExpLevelVulCount: 有Poc或者Exp的漏洞数量
+        :type PocExpLevelVulCount: int
+        :param RemoteExpLevelVulCount: 有远程Exp的漏洞数量
+        :type RemoteExpLevelVulCount: int
+        :param SeriousVulNewestImageCount: 受严重或高危漏洞影响的最新版本镜像数
+        :type SeriousVulNewestImageCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VulTotalCount = None
+        self.SeriousVulCount = None
+        self.SuggestVulCount = None
+        self.PocExpLevelVulCount = None
+        self.RemoteExpLevelVulCount = None
+        self.SeriousVulNewestImageCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VulTotalCount = params.get("VulTotalCount")
+        self.SeriousVulCount = params.get("SeriousVulCount")
+        self.SuggestVulCount = params.get("SuggestVulCount")
+        self.PocExpLevelVulCount = params.get("PocExpLevelVulCount")
+        self.RemoteExpLevelVulCount = params.get("RemoteExpLevelVulCount")
+        self.SeriousVulNewestImageCount = params.get("SeriousVulNewestImageCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulTendencyRequest(AbstractModel):
+    """DescribeVulTendency请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param SphereOfInfluence: 枚举类型：
+LATEST：最新版本
+CONTAINER: 运行容器
+        :type SphereOfInfluence: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SphereOfInfluence = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SphereOfInfluence = params.get("SphereOfInfluence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulTendencyResponse(AbstractModel):
+    """DescribeVulTendency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VulTendencySet: 漏洞趋势列表
+        :type VulTendencySet: list of VulTendencyInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VulTendencySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VulTendencySet") is not None:
+            self.VulTendencySet = []
+            for item in params.get("VulTendencySet"):
+                obj = VulTendencyInfo()
+                obj._deserialize(item)
+                self.VulTendencySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulTopRankingRequest(AbstractModel):
+    """DescribeVulTopRanking请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CategoryType: 漏洞分类: SYSTEM:系统漏洞 WEB:web应用漏洞 EMERGENCY:应急漏洞
+        :type CategoryType: str
+        """
+        self.CategoryType = None
+
+
+    def _deserialize(self, params):
+        self.CategoryType = params.get("CategoryType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulTopRankingResponse(AbstractModel):
+    """DescribeVulTopRanking返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 漏洞Top排名信息列表
+        :type List: list of VulTopRankingInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulTopRankingInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWarningRulesRequest(AbstractModel):
     """DescribeWarningRules请求参数结构体
 
@@ -11821,6 +19304,185 @@ class DescribeWarningRulesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.WarningRules.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribeWebVulListRequest(AbstractModel):
+    """DescribeWebVulList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤条件。
+<li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
+<li>OnlyAffectedNewestImage-string - 是否必填：否 - 仅展示影响最新版本镜像的漏洞true,false</li>
+<li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+<li>Tags- string - 是否必填：否 - 漏洞标签，POC，EXP。</li>
+<li>CanBeFixed- string - 是否必填：否 - 是否可修复true,false。</li>
+<li>CVEID- string - 是否必填：否 - CVE编号</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String -是否必填: 否 - 镜像名称</li>
+<li>ContainerID- string -是否必填: 否 - 容器ID</li>
+<li>ContainerName- string -是否必填: 否 - 容器名称</li>
+<li>ComponentName- string -是否必填: 否 - 组件名称</li>
+<li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
+<li>Name- string -是否必填: 否 - 漏洞名称</li>
+<li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWebVulListResponse(AbstractModel):
+    """DescribeWebVulList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 漏洞总数
+        :type TotalCount: int
+        :param List: 漏洞列表
+        :type List: list of VulInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class EmergencyVulInfo(AbstractModel):
+    """应急漏洞列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 漏洞名称
+        :type Name: str
+        :param Tags: 漏洞标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param CVSSV3Score: CVSS V3分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVSSV3Score: float
+        :param Level: 风险等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
+        :param CVEID: CVE编号
+        :type CVEID: str
+        :param Category: 漏洞类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
+        :param SubmitTime: 漏洞披露时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubmitTime: str
+        :param LatestFoundTime: 最近发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestFoundTime: str
+        :param Status: 应急漏洞风险情况：NOT_SCAN：未扫描，SCANNING：扫描中，SCANNED_NOT_RISK：已扫描，暂未风险 ，SCANNED_RISK：已扫描存在风险
+        :type Status: str
+        :param ID: 漏洞ID
+        :type ID: int
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param DefenceStatus: 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenceStatus: str
+        :param DefenceScope: 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenceScope: str
+        :param DefenceHostCount: 漏洞防御主机数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenceHostCount: int
+        :param DefendedCount: 已防御攻击次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefendedCount: int
+        """
+        self.Name = None
+        self.Tags = None
+        self.CVSSV3Score = None
+        self.Level = None
+        self.CVEID = None
+        self.Category = None
+        self.SubmitTime = None
+        self.LatestFoundTime = None
+        self.Status = None
+        self.ID = None
+        self.PocID = None
+        self.DefenceStatus = None
+        self.DefenceScope = None
+        self.DefenceHostCount = None
+        self.DefendedCount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Tags = params.get("Tags")
+        self.CVSSV3Score = params.get("CVSSV3Score")
+        self.Level = params.get("Level")
+        self.CVEID = params.get("CVEID")
+        self.Category = params.get("Category")
+        self.SubmitTime = params.get("SubmitTime")
+        self.LatestFoundTime = params.get("LatestFoundTime")
+        self.Status = params.get("Status")
+        self.ID = params.get("ID")
+        self.PocID = params.get("PocID")
+        self.DefenceStatus = params.get("DefenceStatus")
+        self.DefenceScope = params.get("DefenceScope")
+        self.DefenceHostCount = params.get("DefenceHostCount")
+        self.DefendedCount = params.get("DefendedCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EscapeEventDescription(AbstractModel):
@@ -12002,6 +19664,42 @@ MountNamespace逃逸、
         
 
 
+class EscapeEventTendencyInfo(AbstractModel):
+    """待处理逃逸事件趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RiskContainerEventCount: 待处理风险容器事件总数
+        :type RiskContainerEventCount: int
+        :param ProcessPrivilegeEventCount: 待处理程序特权事件总数
+        :type ProcessPrivilegeEventCount: int
+        :param ContainerEscapeEventCount: 待处理容器逃逸事件总数
+        :type ContainerEscapeEventCount: int
+        :param Date: 日期
+        :type Date: str
+        """
+        self.RiskContainerEventCount = None
+        self.ProcessPrivilegeEventCount = None
+        self.ContainerEscapeEventCount = None
+        self.Date = None
+
+
+    def _deserialize(self, params):
+        self.RiskContainerEventCount = params.get("RiskContainerEventCount")
+        self.ProcessPrivilegeEventCount = params.get("ProcessPrivilegeEventCount")
+        self.ContainerEscapeEventCount = params.get("ContainerEscapeEventCount")
+        self.Date = params.get("Date")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EscapeRule(AbstractModel):
     """容器逃逸扫描策略开关信息
 
@@ -12075,6 +19773,62 @@ class EscapeRuleEnabled(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.IsEnable = params.get("IsEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EscapeWhiteListInfo(AbstractModel):
+    """逃逸白名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param ID: 白名单记录ID
+        :type ID: int
+        :param HostCount: 关联主机数量
+        :type HostCount: int
+        :param ContainerCount: 关联容器数量
+        :type ContainerCount: int
+        :param EventType: 加白事件类型
+        :type EventType: list of str
+        :param InsertTime: 创建时间
+        :type InsertTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param ImageSize: 镜像大小
+        :type ImageSize: int
+        """
+        self.ImageID = None
+        self.ImageName = None
+        self.ID = None
+        self.HostCount = None
+        self.ContainerCount = None
+        self.EventType = None
+        self.InsertTime = None
+        self.UpdateTime = None
+        self.ImageSize = None
+
+
+    def _deserialize(self, params):
+        self.ImageID = params.get("ImageID")
+        self.ImageName = params.get("ImageName")
+        self.ID = params.get("ID")
+        self.HostCount = params.get("HostCount")
+        self.ContainerCount = params.get("ContainerCount")
+        self.EventType = params.get("EventType")
+        self.InsertTime = params.get("InsertTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ImageSize = params.get("ImageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12275,6 +20029,104 @@ class HostInfo(AbstractModel):
         self.Uuid = params.get("Uuid")
         self.InstanceID = params.get("InstanceID")
         self.RegionID = params.get("RegionID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageAutoAuthorizedTask(AbstractModel):
+    """镜像自动授权任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: int
+        :param Type: 授权方式，AUTO:自动授权，MANUAL:手动授权
+        :type Type: str
+        :param AuthorizedDate: 任务日期
+        :type AuthorizedDate: str
+        :param Source: 镜像来源，LOCAL:本地镜像，REGISTRY:仓库镜像
+        :type Source: str
+        :param LastAuthorizedTime: 最近授权时间
+        :type LastAuthorizedTime: str
+        :param SuccessCount: 自动授权成功数
+        :type SuccessCount: int
+        :param FailCount: 自动授权失败数
+        :type FailCount: int
+        :param LatestFailCode: 最近任务失败码，REACH_LIMIT:达到授权上限，LICENSE_INSUFFICIENT:授权数不足
+        :type LatestFailCode: str
+        """
+        self.TaskId = None
+        self.Type = None
+        self.AuthorizedDate = None
+        self.Source = None
+        self.LastAuthorizedTime = None
+        self.SuccessCount = None
+        self.FailCount = None
+        self.LatestFailCode = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Type = params.get("Type")
+        self.AuthorizedDate = params.get("AuthorizedDate")
+        self.Source = params.get("Source")
+        self.LastAuthorizedTime = params.get("LastAuthorizedTime")
+        self.SuccessCount = params.get("SuccessCount")
+        self.FailCount = params.get("FailCount")
+        self.LatestFailCode = params.get("LatestFailCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageComponent(AbstractModel):
+    """容器安全镜像组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 组件名称
+        :type Name: str
+        :param Version: 组件版本
+        :type Version: str
+        :param Path: 组件路径
+        :type Path: str
+        :param Type: 组件类型
+        :type Type: str
+        :param VulCount: 组件漏洞数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulCount: int
+        :param ImageID: 镜像ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageID: str
+        """
+        self.Name = None
+        self.Version = None
+        self.Path = None
+        self.Type = None
+        self.VulCount = None
+        self.ImageID = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.Path = params.get("Path")
+        self.Type = params.get("Type")
+        self.VulCount = params.get("VulCount")
+        self.ImageID = params.get("ImageID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13826,6 +21678,54 @@ class ModifyCompliancePeriodTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyContainerNetStatusRequest(AbstractModel):
+    """ModifyContainerNetStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContainerID: 容器ID
+        :type ContainerID: str
+        :param Status: 状态(
+隔离容器: EVENT_ISOLATE_CONTAINER
+恢复容器: EVENT_RESOTRE_CONTAINER
+)
+        :type Status: str
+        """
+        self.ContainerID = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ContainerID = params.get("ContainerID")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyContainerNetStatusResponse(AbstractModel):
+    """ModifyContainerNetStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyEscapeEventStatusRequest(AbstractModel):
     """ModifyEscapeEventStatus请求参数结构体
 
@@ -13941,6 +21841,186 @@ class ModifyEscapeRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyEscapeWhiteListRequest(AbstractModel):
+    """ModifyEscapeWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventType: 加白名单事件类型
+   ESCAPE_CGROUPS：利用cgroup机制逃逸
+   ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+   ESCAPE_DOCKER_API：访问Docker API接口逃逸
+   ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+   MOUNT_SENSITIVE_PTAH：敏感路径挂载
+   PRIVILEGE_CONTAINER_START：特权容器
+   PRIVILEGE：程序提权逃逸
+        :type EventType: list of str
+        :param IDSet: 白名单记录ID
+        :type IDSet: list of int
+        """
+        self.EventType = None
+        self.IDSet = None
+
+
+    def _deserialize(self, params):
+        self.EventType = params.get("EventType")
+        self.IDSet = params.get("IDSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEscapeWhiteListResponse(AbstractModel):
+    """ModifyEscapeWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyIgnoreVul(AbstractModel):
+    """漏洞扫描新增和取消忽略漏洞入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param ImageIDs: 忽略的镜像ID，空表示全部
+        :type ImageIDs: list of str
+        :param ImageType: 当有镜像时
+镜像类型: LOCAL 本地镜像 REGISTRY 仓库镜像
+        :type ImageType: str
+        """
+        self.PocID = None
+        self.ImageIDs = None
+        self.ImageType = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        self.ImageIDs = params.get("ImageIDs")
+        self.ImageType = params.get("ImageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyImageAuthorizedRequest(AbstractModel):
+    """ModifyImageAuthorized请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AllLocalImages: 本地镜像是否全部授权的标识，优先权高于根据本地镜像ids授权。等于true时需UpdatedLocalImageCnt大于0。
+        :type AllLocalImages: bool
+        :param AllRegistryImages: 仓库镜像是否全部授权的标识，优先权高于根据镜像ids授权。等于true时需UpdatedRegistryImageCnt大于0。
+        :type AllRegistryImages: bool
+        :param UpdatedLocalImageCnt: 指定操作授权的本地镜像数量，判断优先权最高，实际多出的镜像随机忽略，实际不足的部分也忽略。
+        :type UpdatedLocalImageCnt: int
+        :param UpdatedRegistryImageCnt: 指定操作授权的仓库镜像数量，判断优先权最高，实际多出的镜像随机忽略，实际不足的部分也忽略；
+        :type UpdatedRegistryImageCnt: int
+        :param ImageSourceType: 根据满足条件的本地镜像授权,本地镜像来源；ASSETIMAGE:本地镜像列表；IMAGEALL:同步本地镜像；AllLocalImages为false且LocalImageIds为空和UpdatedLocalImageCnt大于0时，需要
+        :type ImageSourceType: str
+        :param LocalImageFilter: 根据满足条件的本地镜像授权，AllLocalImages为false且LocalImageIds为空和UpdatedLocalImageCnt大于0时，需要。
+        :type LocalImageFilter: list of AssetFilters
+        :param RegistryImageFilter: 根据满足条件的仓库镜像授权，AllRegistryImages为false且RegistryImageIds为空和UpdatedRegistryImageCnt大于0时，需要。
+        :type RegistryImageFilter: list of AssetFilters
+        :param ExcludeLocalImageIds: 根据满足条件的镜像授权,同时排除的本地镜像。
+        :type ExcludeLocalImageIds: list of str
+        :param ExcludeRegistryImageIds: 根据满足条件的镜像授权,同时排除的仓库镜像。
+        :type ExcludeRegistryImageIds: list of str
+        :param LocalImageIds: 根据本地镜像ids授权，优先权高于根据满足条件的镜像授权。AllLocalImages为false且LocalImageFilter为空和UpdatedLocalImageCnt大于0时，需要。
+        :type LocalImageIds: list of str
+        :param RegistryImageIds: 根据仓库镜像Ids授权，优先权高于根据满足条件的镜像授。AllRegistryImages为false且RegistryImageFilter为空和UpdatedRegistryImageCnt大于0时，需要。
+        :type RegistryImageIds: list of str
+        :param OnlyShowLatest: 是否仅最新的镜像；RegistryImageFilter不为空且UpdatedRegistryImageCnt大于0时仓库镜像需要。
+        :type OnlyShowLatest: bool
+        """
+        self.AllLocalImages = None
+        self.AllRegistryImages = None
+        self.UpdatedLocalImageCnt = None
+        self.UpdatedRegistryImageCnt = None
+        self.ImageSourceType = None
+        self.LocalImageFilter = None
+        self.RegistryImageFilter = None
+        self.ExcludeLocalImageIds = None
+        self.ExcludeRegistryImageIds = None
+        self.LocalImageIds = None
+        self.RegistryImageIds = None
+        self.OnlyShowLatest = None
+
+
+    def _deserialize(self, params):
+        self.AllLocalImages = params.get("AllLocalImages")
+        self.AllRegistryImages = params.get("AllRegistryImages")
+        self.UpdatedLocalImageCnt = params.get("UpdatedLocalImageCnt")
+        self.UpdatedRegistryImageCnt = params.get("UpdatedRegistryImageCnt")
+        self.ImageSourceType = params.get("ImageSourceType")
+        if params.get("LocalImageFilter") is not None:
+            self.LocalImageFilter = []
+            for item in params.get("LocalImageFilter"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.LocalImageFilter.append(obj)
+        if params.get("RegistryImageFilter") is not None:
+            self.RegistryImageFilter = []
+            for item in params.get("RegistryImageFilter"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.RegistryImageFilter.append(obj)
+        self.ExcludeLocalImageIds = params.get("ExcludeLocalImageIds")
+        self.ExcludeRegistryImageIds = params.get("ExcludeRegistryImageIds")
+        self.LocalImageIds = params.get("LocalImageIds")
+        self.RegistryImageIds = params.get("RegistryImageIds")
+        self.OnlyShowLatest = params.get("OnlyShowLatest")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyImageAuthorizedResponse(AbstractModel):
+    """ModifyImageAuthorized返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyReverseShellStatusRequest(AbstractModel):
     """ModifyReverseShellStatus请求参数结构体
 
@@ -14032,6 +22112,406 @@ class ModifyRiskSyscallStatusRequest(AbstractModel):
 
 class ModifyRiskSyscallStatusResponse(AbstractModel):
     """ModifyRiskSyscallStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecLogCleanSettingInfoRequest(AbstractModel):
+    """ModifySecLogCleanSettingInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReservesLimit: 触发清理的储量底线(50-99)
+        :type ReservesLimit: int
+        :param ReservesDeadline: 清理停止时的储量截至线(>0,小于ReservesLimit)
+        :type ReservesDeadline: int
+        :param DayLimit: 触发清理的存储天数(>=1)
+        :type DayLimit: int
+        """
+        self.ReservesLimit = None
+        self.ReservesDeadline = None
+        self.DayLimit = None
+
+
+    def _deserialize(self, params):
+        self.ReservesLimit = params.get("ReservesLimit")
+        self.ReservesDeadline = params.get("ReservesDeadline")
+        self.DayLimit = params.get("DayLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecLogCleanSettingInfoResponse(AbstractModel):
+    """ModifySecLogCleanSettingInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecLogDeliveryClsSettingRequest(AbstractModel):
+    """ModifySecLogDeliveryClsSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 日志信息
+        :type List: list of SecLogDeliveryClsSettingInfo
+        """
+        self.List = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SecLogDeliveryClsSettingInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecLogDeliveryClsSettingResponse(AbstractModel):
+    """ModifySecLogDeliveryClsSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecLogDeliveryKafkaSettingRequest(AbstractModel):
+    """ModifySecLogDeliveryKafkaSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceID: 实例ID
+        :type InstanceID: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param Domain: 域名
+        :type Domain: str
+        :param User: 用户名
+        :type User: str
+        :param Password: 密码
+        :type Password: str
+        :param LogTypeList: 日志类型队列
+        :type LogTypeList: list of SecLogDeliveryKafkaSettingInfo
+        :param AccessType: 接入类型
+        :type AccessType: int
+        :param KafkaVersion: kafka版本号
+        :type KafkaVersion: str
+        """
+        self.InstanceID = None
+        self.InstanceName = None
+        self.Domain = None
+        self.User = None
+        self.Password = None
+        self.LogTypeList = None
+        self.AccessType = None
+        self.KafkaVersion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceID = params.get("InstanceID")
+        self.InstanceName = params.get("InstanceName")
+        self.Domain = params.get("Domain")
+        self.User = params.get("User")
+        self.Password = params.get("Password")
+        if params.get("LogTypeList") is not None:
+            self.LogTypeList = []
+            for item in params.get("LogTypeList"):
+                obj = SecLogDeliveryKafkaSettingInfo()
+                obj._deserialize(item)
+                self.LogTypeList.append(obj)
+        self.AccessType = params.get("AccessType")
+        self.KafkaVersion = params.get("KafkaVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecLogDeliveryKafkaSettingResponse(AbstractModel):
+    """ModifySecLogDeliveryKafkaSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecLogJoinObjectsRequest(AbstractModel):
+    """ModifySecLogJoinObjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogType: 日志类型
+bash日志: container_bash
+容器启动: container_launch
+k8sApi: k8s_api
+        :type LogType: str
+        :param BindList: 绑定主机quuid列表
+        :type BindList: list of str
+        :param UnBindList: 待解绑主机quuid列表
+        :type UnBindList: list of str
+        """
+        self.LogType = None
+        self.BindList = None
+        self.UnBindList = None
+
+
+    def _deserialize(self, params):
+        self.LogType = params.get("LogType")
+        self.BindList = params.get("BindList")
+        self.UnBindList = params.get("UnBindList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecLogJoinObjectsResponse(AbstractModel):
+    """ModifySecLogJoinObjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecLogJoinStateRequest(AbstractModel):
+    """ModifySecLogJoinState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogType: 日志类型
+bash日志: container_bash
+容器启动: container_launch
+k8sApi: k8s_api
+        :type LogType: str
+        :param State: 状态(true:开 false:关)
+        :type State: bool
+        """
+        self.LogType = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.LogType = params.get("LogType")
+        self.State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecLogJoinStateResponse(AbstractModel):
+    """ModifySecLogJoinState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySecLogKafkaUINRequest(AbstractModel):
+    """ModifySecLogKafkaUIN请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DstUIN: 目标UIN
+        :type DstUIN: str
+        """
+        self.DstUIN = None
+
+
+    def _deserialize(self, params):
+        self.DstUIN = params.get("DstUIN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecLogKafkaUINResponse(AbstractModel):
+    """ModifySecLogKafkaUIN返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVirusAutoIsolateExampleSwitchRequest(AbstractModel):
+    """ModifyVirusAutoIsolateExampleSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MD5: 文件Md5值
+        :type MD5: str
+        :param Status: 开关(开:true 关: false)
+        :type Status: bool
+        """
+        self.MD5 = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.MD5 = params.get("MD5")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVirusAutoIsolateExampleSwitchResponse(AbstractModel):
+    """ModifyVirusAutoIsolateExampleSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVirusAutoIsolateSettingRequest(AbstractModel):
+    """ModifyVirusAutoIsolateSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoIsolateSwitch: 自动隔离开关(true:开 false:关)
+        :type AutoIsolateSwitch: bool
+        :param IsKillProgress: 是否中断隔离文件关联的进程(true:是 false:否)
+        :type IsKillProgress: bool
+        """
+        self.AutoIsolateSwitch = None
+        self.IsKillProgress = None
+
+
+    def _deserialize(self, params):
+        self.AutoIsolateSwitch = params.get("AutoIsolateSwitch")
+        self.IsKillProgress = params.get("IsKillProgress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVirusAutoIsolateSettingResponse(AbstractModel):
+    """ModifyVirusAutoIsolateSetting返回参数结构体
 
     """
 
@@ -14279,6 +22759,587 @@ class ModifyVirusScanTimeoutSettingResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVulDefenceEventStatusRequest(AbstractModel):
+    """ModifyVulDefenceEventStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventIDs: 事件IDs数组
+        :type EventIDs: list of int
+        :param Status: 操作状态：
+EVENT_DEALED：已处理，EVENT_IGNORE：忽略，EVENT_ISOLATE_CONTAINER：隔离容器，EVENT_DEL：删除
+        :type Status: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.EventIDs = None
+        self.Status = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.EventIDs = params.get("EventIDs")
+        self.Status = params.get("Status")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVulDefenceEventStatusResponse(AbstractModel):
+    """ModifyVulDefenceEventStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyVulDefenceSettingRequest(AbstractModel):
+    """ModifyVulDefenceSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsEnabled: 是否开启:0: 关闭 1:开启
+        :type IsEnabled: int
+        :param Scope: 漏洞防御主机范围:0：自选 1: 全部主机。IsEnabled为1时必填
+        :type Scope: int
+        :param HostIDs: 自选漏洞防御主机,Scope为0时必填
+        :type HostIDs: list of str
+        """
+        self.IsEnabled = None
+        self.Scope = None
+        self.HostIDs = None
+
+
+    def _deserialize(self, params):
+        self.IsEnabled = params.get("IsEnabled")
+        self.Scope = params.get("Scope")
+        self.HostIDs = params.get("HostIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVulDefenceSettingResponse(AbstractModel):
+    """ModifyVulDefenceSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class NetworkAuditRecord(AbstractModel):
+    """网络集群资产审计返回结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param ClusterName: 集群名字
+        :type ClusterName: str
+        :param Region: 集群区域
+        :type Region: str
+        :param Action: 动作
+        :type Action: str
+        :param Operation: 操作人
+        :type Operation: str
+        :param NetworkPolicyName: 策略名
+        :type NetworkPolicyName: str
+        :param OperationTime: 操作时间
+        :type OperationTime: str
+        :param AppId: 操作人appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param Uin: 操作人uin
+        :type Uin: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Region = None
+        self.Action = None
+        self.Operation = None
+        self.NetworkPolicyName = None
+        self.OperationTime = None
+        self.AppId = None
+        self.Uin = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Region = params.get("Region")
+        self.Action = params.get("Action")
+        self.Operation = params.get("Operation")
+        self.NetworkPolicyName = params.get("NetworkPolicyName")
+        self.OperationTime = params.get("OperationTime")
+        self.AppId = params.get("AppId")
+        self.Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkClusterInfoItem(AbstractModel):
+    """网络集群资产返回的结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param ClusterName: 集群名字
+        :type ClusterName: str
+        :param ClusterVersion: 集群版本
+        :type ClusterVersion: str
+        :param ClusterOs: 集群操作系统
+        :type ClusterOs: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param Region: 集群区域
+        :type Region: str
+        :param NetworkPolicyPlugin: 集群网络插件
+        :type NetworkPolicyPlugin: str
+        :param ClusterStatus: 集群状态
+        :type ClusterStatus: str
+        :param TotalRuleCount: 总策略数量
+        :type TotalRuleCount: int
+        :param EnableRuleCount: 已开启策略数量
+        :type EnableRuleCount: int
+        :param NetworkPolicyPluginStatus: 集群网络插件状态，正常：Running 不正常：Error
+        :type NetworkPolicyPluginStatus: str
+        :param NetworkPolicyPluginError: 集群网络插件错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkPolicyPluginError: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.ClusterVersion = None
+        self.ClusterOs = None
+        self.ClusterType = None
+        self.Region = None
+        self.NetworkPolicyPlugin = None
+        self.ClusterStatus = None
+        self.TotalRuleCount = None
+        self.EnableRuleCount = None
+        self.NetworkPolicyPluginStatus = None
+        self.NetworkPolicyPluginError = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterVersion = params.get("ClusterVersion")
+        self.ClusterOs = params.get("ClusterOs")
+        self.ClusterType = params.get("ClusterType")
+        self.Region = params.get("Region")
+        self.NetworkPolicyPlugin = params.get("NetworkPolicyPlugin")
+        self.ClusterStatus = params.get("ClusterStatus")
+        self.TotalRuleCount = params.get("TotalRuleCount")
+        self.EnableRuleCount = params.get("EnableRuleCount")
+        self.NetworkPolicyPluginStatus = params.get("NetworkPolicyPluginStatus")
+        self.NetworkPolicyPluginError = params.get("NetworkPolicyPluginError")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkClusterNamespaceInfo(AbstractModel):
+    """网络集群网络空间返回的结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Labels: 网络空间标签
+        :type Labels: str
+        :param Name: 网络空间名字
+        :type Name: str
+        """
+        self.Labels = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Labels = params.get("Labels")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkClusterNamespaceLabelInfo(AbstractModel):
+    """网络集群网络空间标签返回的结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Labels: 网络空间标签
+        :type Labels: str
+        :param Name: 网络空间名字
+        :type Name: str
+        """
+        self.Labels = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Labels = params.get("Labels")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkClusterPodInfo(AbstractModel):
+    """网络集群pod返回的结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PodName: pod名字
+        :type PodName: str
+        :param Namespace: pod空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param Labels: pod标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: str
+        :param WorkloadKind: pod类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkloadKind: str
+        """
+        self.PodName = None
+        self.Namespace = None
+        self.Labels = None
+        self.WorkloadKind = None
+
+
+    def _deserialize(self, params):
+        self.PodName = params.get("PodName")
+        self.Namespace = params.get("Namespace")
+        self.Labels = params.get("Labels")
+        self.WorkloadKind = params.get("WorkloadKind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkCustomPolicy(AbstractModel):
+    """网络集群策略自定义规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Direction: 网络策略方向，分为FROM和TO
+        :type Direction: str
+        :param Ports: 网络策略策略端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ports: list of NetworkPorts
+        :param Peer: 网络策略策略对象
+
+开启待确认：PublishedNoConfirm
+
+开启已确认：PublishedConfirmed
+
+关闭中：unPublishing
+
+开启中：Publishing
+
+待开启：unPublishEdit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Peer: list of NetworkPeer
+        """
+        self.Direction = None
+        self.Ports = None
+        self.Peer = None
+
+
+    def _deserialize(self, params):
+        self.Direction = params.get("Direction")
+        if params.get("Ports") is not None:
+            self.Ports = []
+            for item in params.get("Ports"):
+                obj = NetworkPorts()
+                obj._deserialize(item)
+                self.Ports.append(obj)
+        if params.get("Peer") is not None:
+            self.Peer = []
+            for item in params.get("Peer"):
+                obj = NetworkPeer()
+                obj._deserialize(item)
+                self.Peer.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkPeer(AbstractModel):
+    """网络集群策略自定义规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PeerType: 对象类型：
+
+命名空间：NamespaceSelector，代表NamespaceSelector有值
+
+pod类型：PodSelector，代表NamespaceSelector和PodSelector都有值
+
+ip类型：IPBlock，代表只有IPBlock有值
+        :type PeerType: str
+        :param NamespaceSelector: 空间选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceSelector: str
+        :param PodSelector: pod选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodSelector: str
+        :param IPBlock: Ip选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPBlock: str
+        """
+        self.PeerType = None
+        self.NamespaceSelector = None
+        self.PodSelector = None
+        self.IPBlock = None
+
+
+    def _deserialize(self, params):
+        self.PeerType = params.get("PeerType")
+        self.NamespaceSelector = params.get("NamespaceSelector")
+        self.PodSelector = params.get("PodSelector")
+        self.IPBlock = params.get("IPBlock")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkPolicyInfoItem(AbstractModel):
+    """网络集群策略返回的结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 网络策略名
+        :type Name: str
+        :param Description: 网络策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param PublishStatus: 发布状态：
+
+开启待确认：PublishedNoConfirm
+
+开启已确认：PublishedConfirmed
+
+关闭中：unPublishing
+
+开启中：Publishing
+
+待开启：unPublishEdit
+        :type PublishStatus: str
+        :param PolicySourceType: 策略类型：
+
+自动发现：System
+
+手动添加：Manual
+        :type PolicySourceType: str
+        :param Namespace: 策略空间
+        :type Namespace: str
+        :param PolicyCreateTime: 策略创建日期
+        :type PolicyCreateTime: str
+        :param NetworkPolicyPlugin: 策略类型
+
+kube-router：KubeRouter
+
+cilium：Cilium
+        :type NetworkPolicyPlugin: str
+        :param PublishResult: 策略发布结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishResult: str
+        :param FromPolicyRule: 入站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type FromPolicyRule: int
+        :param ToPolicyRule: 入站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type ToPolicyRule: int
+        :param PodSelector: 作用对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodSelector: str
+        :param Id: 网络策略Id
+        :type Id: int
+        """
+        self.Name = None
+        self.Description = None
+        self.PublishStatus = None
+        self.PolicySourceType = None
+        self.Namespace = None
+        self.PolicyCreateTime = None
+        self.NetworkPolicyPlugin = None
+        self.PublishResult = None
+        self.FromPolicyRule = None
+        self.ToPolicyRule = None
+        self.PodSelector = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.PublishStatus = params.get("PublishStatus")
+        self.PolicySourceType = params.get("PolicySourceType")
+        self.Namespace = params.get("Namespace")
+        self.PolicyCreateTime = params.get("PolicyCreateTime")
+        self.NetworkPolicyPlugin = params.get("NetworkPolicyPlugin")
+        self.PublishResult = params.get("PublishResult")
+        self.FromPolicyRule = params.get("FromPolicyRule")
+        self.ToPolicyRule = params.get("ToPolicyRule")
+        self.PodSelector = params.get("PodSelector")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkPorts(AbstractModel):
+    """网络集群策略自定义规则端口
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Protocol: 网络策略协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Port: 网络策略策略端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
+        """
+        self.Protocol = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenTcssTrialRequest(AbstractModel):
+    """OpenTcssTrial请求参数结构体
+
+    """
+
+
+class OpenTcssTrialResponse(AbstractModel):
+    """OpenTcssTrial返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EndTime: 试用开通结束时间
+        :type EndTime: str
+        :param StartTime: 试用开通开始时间
+        :type StartTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EndTime = None
+        self.StartTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EndTime = params.get("EndTime")
+        self.StartTime = params.get("StartTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -14566,6 +23627,70 @@ class ProcessInfo(AbstractModel):
         
 
 
+class PromotionActivityContent(AbstractModel):
+    """促销活动内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonthNum: 月数
+        :type MonthNum: int
+        :param CoresCountLimit: 核数最低限量
+        :type CoresCountLimit: int
+        :param ProfessionalDiscount: 专业版折扣
+        :type ProfessionalDiscount: int
+        :param ImageAuthorizationNum: 附赠镜像数
+        :type ImageAuthorizationNum: int
+        """
+        self.MonthNum = None
+        self.CoresCountLimit = None
+        self.ProfessionalDiscount = None
+        self.ImageAuthorizationNum = None
+
+
+    def _deserialize(self, params):
+        self.MonthNum = params.get("MonthNum")
+        self.CoresCountLimit = params.get("CoresCountLimit")
+        self.ProfessionalDiscount = params.get("ProfessionalDiscount")
+        self.ImageAuthorizationNum = params.get("ImageAuthorizationNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegionInfo(AbstractModel):
+    """地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 地域标识
+        :type Region: str
+        :param RegionName: 地域名称
+        :type RegionName: str
+        """
+        self.Region = None
+        self.RegionName = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RemoveAssetImageRegistryRegistryDetailRequest(AbstractModel):
     """RemoveAssetImageRegistryRegistryDetail请求参数结构体
 
@@ -14637,6 +23762,51 @@ class RenewImageAuthorizeStateRequest(AbstractModel):
 
 class RenewImageAuthorizeStateResponse(AbstractModel):
     """RenewImageAuthorizeState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetSecLogTopicConfigRequest(AbstractModel):
+    """ResetSecLogTopicConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigType: 配置类型(ckafka/cls)
+        :type ConfigType: str
+        :param LogType: 日志类型
+        :type LogType: str
+        """
+        self.ConfigType = None
+        self.LogType = None
+
+
+    def _deserialize(self, params):
+        self.ConfigType = params.get("ConfigType")
+        self.LogType = params.get("LogType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetSecLogTopicConfigResponse(AbstractModel):
+    """ResetSecLogTopicConfig返回参数结构体
 
     """
 
@@ -15628,6 +24798,327 @@ class ScanComplianceScanFailedAssetsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ScanIgnoreVul(AbstractModel):
+    """扫描忽略的漏洞
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VulName: 漏洞名称
+        :type VulName: str
+        :param CVEID: 漏洞CVEID
+        :type CVEID: str
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param RegistryImageCount: 忽略的仓库镜像数
+        :type RegistryImageCount: int
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param IsIgnoreAll: 是否忽略所有镜像：0：否/1：是
+        :type IsIgnoreAll: int
+        :param LocalImageCount: 忽略的本地镜像数
+        :type LocalImageCount: int
+        """
+        self.VulName = None
+        self.CVEID = None
+        self.PocID = None
+        self.RegistryImageCount = None
+        self.UpdateTime = None
+        self.IsIgnoreAll = None
+        self.LocalImageCount = None
+
+
+    def _deserialize(self, params):
+        self.VulName = params.get("VulName")
+        self.CVEID = params.get("CVEID")
+        self.PocID = params.get("PocID")
+        self.RegistryImageCount = params.get("RegistryImageCount")
+        self.UpdateTime = params.get("UpdateTime")
+        self.IsIgnoreAll = params.get("IsIgnoreAll")
+        self.LocalImageCount = params.get("LocalImageCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchTemplate(AbstractModel):
+    """快速搜索模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 检索名称
+        :type Name: str
+        :param LogType: 检索索引类型
+        :type LogType: str
+        :param Condition: 检索语句
+        :type Condition: str
+        :param TimeRange: 时间范围
+        :type TimeRange: str
+        :param Query: 转换的检索语句内容
+        :type Query: str
+        :param Flag: 检索方式。输入框检索：standard,过滤，检索：simple
+        :type Flag: str
+        :param DisplayData: 展示数据
+        :type DisplayData: str
+        :param Id: 规则ID
+        :type Id: int
+        """
+        self.Name = None
+        self.LogType = None
+        self.Condition = None
+        self.TimeRange = None
+        self.Query = None
+        self.Flag = None
+        self.DisplayData = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.LogType = params.get("LogType")
+        self.Condition = params.get("Condition")
+        self.TimeRange = params.get("TimeRange")
+        self.Query = params.get("Query")
+        self.Flag = params.get("Flag")
+        self.DisplayData = params.get("DisplayData")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecLogAlertMsgInfo(AbstractModel):
+    """安全日志告警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MsgType: 告警类型
+        :type MsgType: str
+        :param MsgValue: 告警值
+        :type MsgValue: str
+        :param State: 状态(0:关闭 1:开启)
+        :type State: bool
+        """
+        self.MsgType = None
+        self.MsgValue = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.MsgType = params.get("MsgType")
+        self.MsgValue = params.get("MsgValue")
+        self.State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecLogDeliveryClsSettingInfo(AbstractModel):
+    """安全日志-日志投递cls设置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogType: 日志类型
+        :type LogType: str
+        :param State: 投递状态(true:开启 false:关闭)
+        :type State: bool
+        :param Region: 区域
+        :type Region: str
+        :param LogSet: 日志集
+        :type LogSet: str
+        :param TopicID: 主题ID
+        :type TopicID: str
+        :param LogSetName: 日志集名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSetName: str
+        :param TopicName: 主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        """
+        self.LogType = None
+        self.State = None
+        self.Region = None
+        self.LogSet = None
+        self.TopicID = None
+        self.LogSetName = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.LogType = params.get("LogType")
+        self.State = params.get("State")
+        self.Region = params.get("Region")
+        self.LogSet = params.get("LogSet")
+        self.TopicID = params.get("TopicID")
+        self.LogSetName = params.get("LogSetName")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecLogDeliveryKafkaSettingInfo(AbstractModel):
+    """安全日志日志投递kafka设置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogType: 日志类型
+        :type LogType: str
+        :param TopicID: 主题ID
+        :type TopicID: str
+        :param TopicName: 主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param State: 投递状态(false:关 true:开)
+        :type State: bool
+        """
+        self.LogType = None
+        self.TopicID = None
+        self.TopicName = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.LogType = params.get("LogType")
+        self.TopicID = params.get("TopicID")
+        self.TopicName = params.get("TopicName")
+        self.State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecLogJoinInfo(AbstractModel):
+    """安全日志接入详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 已接入数量
+        :type Count: int
+        :param IsJoined: 是否已接入(true:已接入 false:未接入)
+        :type IsJoined: bool
+        :param LogType: 日志类型(
+容器bash:  "container_bash"
+容器启动: "container_launch"
+k8sApi: "k8s_api"
+)
+        :type LogType: str
+        """
+        self.Count = None
+        self.IsJoined = None
+        self.LogType = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.IsJoined = params.get("IsJoined")
+        self.LogType = params.get("LogType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecLogJoinObjectInfo(AbstractModel):
+    """安全日志接入对象详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostID: 主机ID
+        :type HostID: str
+        :param HostName: 主机名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: str
+        :param HostIP: 主机IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostIP: str
+        :param HostStatus: 主机状态
+        :type HostStatus: str
+        :param ClusterID: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterID: str
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param PublicIP: 外网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIP: str
+        :param JoinState: 接入状态(true:已接入  false:未接入)
+        :type JoinState: bool
+        :param ClusterVersion: 集群版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterVersion: str
+        :param ClusterMainAddress: 集群主节点地址
+        :type ClusterMainAddress: str
+        """
+        self.HostID = None
+        self.HostName = None
+        self.HostIP = None
+        self.HostStatus = None
+        self.ClusterID = None
+        self.ClusterName = None
+        self.PublicIP = None
+        self.JoinState = None
+        self.ClusterVersion = None
+        self.ClusterMainAddress = None
+
+
+    def _deserialize(self, params):
+        self.HostID = params.get("HostID")
+        self.HostName = params.get("HostName")
+        self.HostIP = params.get("HostIP")
+        self.HostStatus = params.get("HostStatus")
+        self.ClusterID = params.get("ClusterID")
+        self.ClusterName = params.get("ClusterName")
+        self.PublicIP = params.get("PublicIP")
+        self.JoinState = params.get("JoinState")
+        self.ClusterVersion = params.get("ClusterVersion")
+        self.ClusterMainAddress = params.get("ClusterMainAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecTendencyEventInfo(AbstractModel):
     """运行时安全事件趋势信息
 
@@ -15896,6 +25387,152 @@ class StopVirusScanTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StopVulScanTaskRequest(AbstractModel):
+    """StopVulScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalTaskID: 本地镜像漏洞扫描任务ID
+        :type LocalTaskID: int
+        :param LocalImageIDs: 本地镜像ID，无则全部
+        :type LocalImageIDs: list of str
+        :param RegistryImageIDs: 仓库镜像ID，无则全部
+        :type RegistryImageIDs: list of int non-negative
+        :param RegistryTaskID: 仓库镜像漏洞扫描任务ID
+        :type RegistryTaskID: int
+        """
+        self.LocalTaskID = None
+        self.LocalImageIDs = None
+        self.RegistryImageIDs = None
+        self.RegistryTaskID = None
+
+
+    def _deserialize(self, params):
+        self.LocalTaskID = params.get("LocalTaskID")
+        self.LocalImageIDs = params.get("LocalImageIDs")
+        self.RegistryImageIDs = params.get("RegistryImageIDs")
+        self.RegistryTaskID = params.get("RegistryTaskID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopVulScanTaskResponse(AbstractModel):
+    """StopVulScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SupportDefenceVul(AbstractModel):
+    """支持防御的漏洞
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param Name: 漏洞名称
+        :type Name: str
+        :param Tags: 漏洞标签
+        :type Tags: list of str
+        :param CVSSV3Score: 漏洞CVSS
+        :type CVSSV3Score: float
+        :param Level: 漏洞威胁等级
+        :type Level: str
+        :param CVEID: 漏洞CVEID
+        :type CVEID: str
+        :param SubmitTime: 漏洞披露时间
+        :type SubmitTime: str
+        """
+        self.PocID = None
+        self.Name = None
+        self.Tags = None
+        self.CVSSV3Score = None
+        self.Level = None
+        self.CVEID = None
+        self.SubmitTime = None
+
+
+    def _deserialize(self, params):
+        self.PocID = params.get("PocID")
+        self.Name = params.get("Name")
+        self.Tags = params.get("Tags")
+        self.CVSSV3Score = params.get("CVSSV3Score")
+        self.Level = params.get("Level")
+        self.CVEID = params.get("CVEID")
+        self.SubmitTime = params.get("SubmitTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchImageAutoAuthorizedRuleRequest(AbstractModel):
+    """SwitchImageAutoAuthorizedRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsEnabled: 规则是否生效，0:不生效，1:已生效
+        :type IsEnabled: int
+        :param RuleId: 规则id
+        :type RuleId: int
+        """
+        self.IsEnabled = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.IsEnabled = params.get("IsEnabled")
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchImageAutoAuthorizedRuleResponse(AbstractModel):
+    """SwitchImageAutoAuthorizedRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SyncAssetImageRegistryAssetRequest(AbstractModel):
     """SyncAssetImageRegistryAsset请求参数结构体
 
@@ -15916,6 +25553,189 @@ class SyncAssetImageRegistryAssetResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnauthorizedCoresTendency(AbstractModel):
+    """未授权核数趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DateTime: 日期
+        :type DateTime: str
+        :param CoresCount: 未授权的核数
+        :type CoresCount: int
+        """
+        self.DateTime = None
+        self.CoresCount = None
+
+
+    def _deserialize(self, params):
+        self.DateTime = params.get("DateTime")
+        self.CoresCount = params.get("CoresCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAndPublishNetworkFirewallPolicyDetailRequest(AbstractModel):
+    """UpdateAndPublishNetworkFirewallPolicyDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param Id: 策略Id
+        :type Id: int
+        :param FromPolicyRule: 入站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type FromPolicyRule: int
+        :param ToPolicyRule: 出站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type ToPolicyRule: int
+        :param PodSelector: pod选择器
+        :type PodSelector: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param Description: 策略描述
+        :type Description: str
+        :param CustomPolicy: 自定义规则
+        :type CustomPolicy: list of NetworkCustomPolicy
+        """
+        self.ClusterId = None
+        self.Id = None
+        self.FromPolicyRule = None
+        self.ToPolicyRule = None
+        self.PodSelector = None
+        self.Namespace = None
+        self.Description = None
+        self.CustomPolicy = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Id = params.get("Id")
+        self.FromPolicyRule = params.get("FromPolicyRule")
+        self.ToPolicyRule = params.get("ToPolicyRule")
+        self.PodSelector = params.get("PodSelector")
+        self.Namespace = params.get("Namespace")
+        self.Description = params.get("Description")
+        if params.get("CustomPolicy") is not None:
+            self.CustomPolicy = []
+            for item in params.get("CustomPolicy"):
+                obj = NetworkCustomPolicy()
+                obj._deserialize(item)
+                self.CustomPolicy.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAndPublishNetworkFirewallPolicyDetailResponse(AbstractModel):
+    """UpdateAndPublishNetworkFirewallPolicyDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest(AbstractModel):
+    """UpdateAndPublishNetworkFirewallPolicyYamlDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param Id: 策略id
+        :type Id: int
+        :param Yaml: base64编码的networkpolicy yaml字符串
+        :type Yaml: str
+        :param Description: 策略描述
+        :type Description: str
+        """
+        self.ClusterId = None
+        self.Id = None
+        self.Yaml = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Id = params.get("Id")
+        self.Yaml = params.get("Yaml")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAndPublishNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
+    """UpdateAndPublishNetworkFirewallPolicyYamlDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -16079,6 +25899,197 @@ class UpdateImageRegistryTimingScanTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class UpdateNetworkFirewallPolicyDetailRequest(AbstractModel):
+    """UpdateNetworkFirewallPolicyDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param Id: 策略Id
+        :type Id: int
+        :param FromPolicyRule: 入站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type FromPolicyRule: int
+        :param ToPolicyRule: 出站规则
+
+全部允许：1
+
+全部拒绝 ：2
+
+自定义：3
+        :type ToPolicyRule: int
+        :param PodSelector: pod选择器
+        :type PodSelector: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param Description: 策略描述
+        :type Description: str
+        :param CustomPolicy: 自定义规则
+        :type CustomPolicy: list of NetworkCustomPolicy
+        """
+        self.ClusterId = None
+        self.Id = None
+        self.FromPolicyRule = None
+        self.ToPolicyRule = None
+        self.PodSelector = None
+        self.Namespace = None
+        self.Description = None
+        self.CustomPolicy = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Id = params.get("Id")
+        self.FromPolicyRule = params.get("FromPolicyRule")
+        self.ToPolicyRule = params.get("ToPolicyRule")
+        self.PodSelector = params.get("PodSelector")
+        self.Namespace = params.get("Namespace")
+        self.Description = params.get("Description")
+        if params.get("CustomPolicy") is not None:
+            self.CustomPolicy = []
+            for item in params.get("CustomPolicy"):
+                obj = NetworkCustomPolicy()
+                obj._deserialize(item)
+                self.CustomPolicy.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateNetworkFirewallPolicyDetailResponse(AbstractModel):
+    """UpdateNetworkFirewallPolicyDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateNetworkFirewallPolicyYamlDetailRequest(AbstractModel):
+    """UpdateNetworkFirewallPolicyYamlDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param Id: 策略id
+        :type Id: int
+        :param Yaml: base64编码的networkpolicy yaml字符串
+        :type Yaml: str
+        :param Description: 策略描述
+        :type Description: str
+        """
+        self.ClusterId = None
+        self.Id = None
+        self.Yaml = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Id = params.get("Id")
+        self.Yaml = params.get("Yaml")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
+    """UpdateNetworkFirewallPolicyYamlDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 返回创建的任务的ID，为0表示创建失败。
+        :type TaskId: int
+        :param Result: 创建任务的结果，"Succ"为成功，"Failed"为失败
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class VirusAutoIsolateSampleInfo(AbstractModel):
+    """木马自动隔离样本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MD5: 文件MD5值
+        :type MD5: str
+        :param VirusName: 病毒名
+        :type VirusName: str
+        :param ModifyTime: 最近编辑时间
+        :type ModifyTime: str
+        :param AutoIsolateSwitch: 自动隔离开关(true:开 false:关)
+        :type AutoIsolateSwitch: bool
+        """
+        self.MD5 = None
+        self.VirusName = None
+        self.ModifyTime = None
+        self.AutoIsolateSwitch = None
+
+
+    def _deserialize(self, params):
+        self.MD5 = params.get("MD5")
+        self.VirusName = params.get("VirusName")
+        self.ModifyTime = params.get("ModifyTime")
+        self.AutoIsolateSwitch = params.get("AutoIsolateSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VirusInfo(AbstractModel):
@@ -16311,6 +26322,1126 @@ SEND_CANCEL_SUCCESSED:下发成功
         self.RiskCnt = params.get("RiskCnt")
         self.Id = params.get("Id")
         self.ErrorMsg = params.get("ErrorMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirusTendencyInfo(AbstractModel):
+    """木马趋势详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Date: 日期
+        :type Date: str
+        :param PendingEventCount: 待处理事件总数
+        :type PendingEventCount: int
+        :param RiskContainerCount: 风险容器总数
+        :type RiskContainerCount: int
+        :param EventCount: 事件总数
+        :type EventCount: int
+        :param IsolateEventCount: 隔离事件总数
+        :type IsolateEventCount: int
+        """
+        self.Date = None
+        self.PendingEventCount = None
+        self.RiskContainerCount = None
+        self.EventCount = None
+        self.IsolateEventCount = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.PendingEventCount = params.get("PendingEventCount")
+        self.RiskContainerCount = params.get("RiskContainerCount")
+        self.EventCount = params.get("EventCount")
+        self.IsolateEventCount = params.get("IsolateEventCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulAffectedComponentInfo(AbstractModel):
+    """受漏洞影响的组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 组件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Version: 组件版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: list of str
+        :param FixedVersion: 组件修复版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixedVersion: list of str
+        """
+        self.Name = None
+        self.Version = None
+        self.FixedVersion = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.FixedVersion = params.get("FixedVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulAffectedContainerInfo(AbstractModel):
+    """受漏洞影响的容器信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostIP: 内网IP
+        :type HostIP: str
+        :param ContainerID: 容器ID
+        :type ContainerID: str
+        :param ContainerName: 容器名称
+        :type ContainerName: str
+        :param PodName: Pod名称
+        :type PodName: str
+        :param PodIP: PodIP值
+        :type PodIP: str
+        :param HostName: 主机名称
+        :type HostName: str
+        :param HostID: 主机ID
+        :type HostID: str
+        :param PublicIP: 外网IP
+        :type PublicIP: str
+        """
+        self.HostIP = None
+        self.ContainerID = None
+        self.ContainerName = None
+        self.PodName = None
+        self.PodIP = None
+        self.HostName = None
+        self.HostID = None
+        self.PublicIP = None
+
+
+    def _deserialize(self, params):
+        self.HostIP = params.get("HostIP")
+        self.ContainerID = params.get("ContainerID")
+        self.ContainerName = params.get("ContainerName")
+        self.PodName = params.get("PodName")
+        self.PodIP = params.get("PodIP")
+        self.HostName = params.get("HostName")
+        self.HostID = params.get("HostID")
+        self.PublicIP = params.get("PublicIP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulAffectedImageComponentInfo(AbstractModel):
+    """受漏洞影响的组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 组件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Version: 组件版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param FixedVersion: 组件修复版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixedVersion: str
+        :param Path: 组件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        """
+        self.Name = None
+        self.Version = None
+        self.FixedVersion = None
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.FixedVersion = params.get("FixedVersion")
+        self.Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulAffectedImageInfo(AbstractModel):
+    """受漏洞影响的镜像信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param HostCount: 关联的主机数
+        :type HostCount: int
+        :param ContainerCount: 关联的容器数
+        :type ContainerCount: int
+        :param ComponentList: 组件列表
+        :type ComponentList: list of VulAffectedImageComponentInfo
+        """
+        self.ImageID = None
+        self.ImageName = None
+        self.HostCount = None
+        self.ContainerCount = None
+        self.ComponentList = None
+
+
+    def _deserialize(self, params):
+        self.ImageID = params.get("ImageID")
+        self.ImageName = params.get("ImageName")
+        self.HostCount = params.get("HostCount")
+        self.ContainerCount = params.get("ContainerCount")
+        if params.get("ComponentList") is not None:
+            self.ComponentList = []
+            for item in params.get("ComponentList"):
+                obj = VulAffectedImageComponentInfo()
+                obj._deserialize(item)
+                self.ComponentList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulDefenceEvent(AbstractModel):
+    """漏洞防御事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CVEID: 漏洞CVEID
+        :type CVEID: str
+        :param VulName: 漏洞名称
+        :type VulName: str
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param EventType: 入侵状态
+        :type EventType: str
+        :param SourceIP: 攻击源IP
+        :type SourceIP: str
+        :param City: 攻击源ip地址所在城市
+        :type City: str
+        :param EventCount: 事件数量
+        :type EventCount: int
+        :param ContainerID: 容器ID
+        :type ContainerID: str
+        :param ContainerName: 容器名称
+        :type ContainerName: str
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param Status: 处理状态
+        :type Status: str
+        :param EventID: 事件ID
+        :type EventID: int
+        :param CreateTime: 首次发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param ContainerNetStatus: 隔离状态
+未隔离  	NORMAL
+已隔离		ISOLATED
+隔离中		ISOLATING
+隔离失败	ISOLATE_FAILED
+解除隔离中  RESTORING
+解除隔离失败 RESTORE_FAILED
+        :type ContainerNetStatus: str
+        :param MergeTime: 最近发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MergeTime: str
+        :param ContainerStatus: 容器状态
+正在运行: RUNNING
+暂停: PAUSED
+停止: STOPPED
+已经创建: CREATED
+已经销毁: DESTROYED
+正在重启中: RESTARTING
+迁移中: REMOVING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerStatus: str
+        :param ContainerNetSubStatus: 容器子状态
+"AGENT_OFFLINE"       //Agent离线
+	"NODE_DESTROYED"      //节点已销毁
+	"CONTAINER_EXITED"    //容器已退出
+	"CONTAINER_DESTROYED" //容器已销毁
+	"SHARED_HOST"         // 容器与主机共享网络
+	"RESOURCE_LIMIT"      //隔离操作资源超限
+	"UNKNOW"              // 原因未知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerNetSubStatus: str
+        :param ContainerIsolateOperationSrc: 容器隔离操作来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerIsolateOperationSrc: str
+        :param QUUID: 主机QUUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QUUID: str
+        :param HostIP: 主机内网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostIP: str
+        :param HostName: 主机名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: str
+        """
+        self.CVEID = None
+        self.VulName = None
+        self.PocID = None
+        self.EventType = None
+        self.SourceIP = None
+        self.City = None
+        self.EventCount = None
+        self.ContainerID = None
+        self.ContainerName = None
+        self.ImageID = None
+        self.ImageName = None
+        self.Status = None
+        self.EventID = None
+        self.CreateTime = None
+        self.ContainerNetStatus = None
+        self.MergeTime = None
+        self.ContainerStatus = None
+        self.ContainerNetSubStatus = None
+        self.ContainerIsolateOperationSrc = None
+        self.QUUID = None
+        self.HostIP = None
+        self.HostName = None
+
+
+    def _deserialize(self, params):
+        self.CVEID = params.get("CVEID")
+        self.VulName = params.get("VulName")
+        self.PocID = params.get("PocID")
+        self.EventType = params.get("EventType")
+        self.SourceIP = params.get("SourceIP")
+        self.City = params.get("City")
+        self.EventCount = params.get("EventCount")
+        self.ContainerID = params.get("ContainerID")
+        self.ContainerName = params.get("ContainerName")
+        self.ImageID = params.get("ImageID")
+        self.ImageName = params.get("ImageName")
+        self.Status = params.get("Status")
+        self.EventID = params.get("EventID")
+        self.CreateTime = params.get("CreateTime")
+        self.ContainerNetStatus = params.get("ContainerNetStatus")
+        self.MergeTime = params.get("MergeTime")
+        self.ContainerStatus = params.get("ContainerStatus")
+        self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
+        self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
+        self.QUUID = params.get("QUUID")
+        self.HostIP = params.get("HostIP")
+        self.HostName = params.get("HostName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulDefenceEventDetail(AbstractModel):
+    """漏洞防御事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CVEID: 漏洞CVEID
+        :type CVEID: str
+        :param VulName: 漏洞名称
+        :type VulName: str
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param EventType: 入侵状态
+        :type EventType: str
+        :param SourceIP: 攻击源IP
+        :type SourceIP: str
+        :param City: 攻击源ip地址所在城市
+        :type City: str
+        :param EventCount: 事件数量
+        :type EventCount: int
+        :param ContainerID: 容器ID
+        :type ContainerID: str
+        :param ContainerName: 容器名称
+        :type ContainerName: str
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param Status: 处理状态
+        :type Status: str
+        :param SourcePort: 攻击源端口
+        :type SourcePort: list of str
+        :param EventID: 事件ID
+        :type EventID: int
+        :param HostName: 主机名称
+        :type HostName: str
+        :param HostIP: 主机内网IP
+        :type HostIP: str
+        :param PublicIP: 主机外网IP
+        :type PublicIP: str
+        :param PodName: Pod名称
+        :type PodName: str
+        :param Description: 危害描述
+        :type Description: str
+        :param OfficialSolution: 修复建议
+        :type OfficialSolution: str
+        :param NetworkPayload: 攻击包
+        :type NetworkPayload: str
+        :param PID: 进程PID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PID: int
+        :param MainClass: 进程主类名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainClass: str
+        :param StackTrace: 堆栈信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StackTrace: str
+        :param ServerAccount: 监听账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerAccount: str
+        :param ServerPort: 监听端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerPort: str
+        :param ServerExe: 进程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerExe: str
+        :param ServerArg: 进程命令行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerArg: str
+        :param QUUID: 主机QUUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QUUID: str
+        :param ContainerNetStatus: 隔离状态
+未隔离  	NORMAL
+已隔离		ISOLATED
+隔离中		ISOLATING
+隔离失败	ISOLATE_FAILED
+解除隔离中  RESTORING
+解除隔离失败 RESTORE_FAILED
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerNetStatus: str
+        :param ContainerNetSubStatus: 容器子状态
+"AGENT_OFFLINE"       //Agent离线
+	"NODE_DESTROYED"      //节点已销毁
+	"CONTAINER_EXITED"    //容器已退出
+	"CONTAINER_DESTROYED" //容器已销毁
+	"SHARED_HOST"         // 容器与主机共享网络
+	"RESOURCE_LIMIT"      //隔离操作资源超限
+	"UNKNOW"              // 原因未知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerNetSubStatus: str
+        :param ContainerIsolateOperationSrc: 容器隔离操作来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerIsolateOperationSrc: str
+        :param ContainerStatus: 容器状态
+正在运行: RUNNING
+暂停: PAUSED
+停止: STOPPED
+已经创建: CREATED
+已经销毁: DESTROYED
+正在重启中: RESTARTING
+迁移中: REMOVING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerStatus: str
+        :param JNDIUrl: 接口Url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JNDIUrl: str
+        """
+        self.CVEID = None
+        self.VulName = None
+        self.PocID = None
+        self.EventType = None
+        self.SourceIP = None
+        self.City = None
+        self.EventCount = None
+        self.ContainerID = None
+        self.ContainerName = None
+        self.ImageID = None
+        self.ImageName = None
+        self.Status = None
+        self.SourcePort = None
+        self.EventID = None
+        self.HostName = None
+        self.HostIP = None
+        self.PublicIP = None
+        self.PodName = None
+        self.Description = None
+        self.OfficialSolution = None
+        self.NetworkPayload = None
+        self.PID = None
+        self.MainClass = None
+        self.StackTrace = None
+        self.ServerAccount = None
+        self.ServerPort = None
+        self.ServerExe = None
+        self.ServerArg = None
+        self.QUUID = None
+        self.ContainerNetStatus = None
+        self.ContainerNetSubStatus = None
+        self.ContainerIsolateOperationSrc = None
+        self.ContainerStatus = None
+        self.JNDIUrl = None
+
+
+    def _deserialize(self, params):
+        self.CVEID = params.get("CVEID")
+        self.VulName = params.get("VulName")
+        self.PocID = params.get("PocID")
+        self.EventType = params.get("EventType")
+        self.SourceIP = params.get("SourceIP")
+        self.City = params.get("City")
+        self.EventCount = params.get("EventCount")
+        self.ContainerID = params.get("ContainerID")
+        self.ContainerName = params.get("ContainerName")
+        self.ImageID = params.get("ImageID")
+        self.ImageName = params.get("ImageName")
+        self.Status = params.get("Status")
+        self.SourcePort = params.get("SourcePort")
+        self.EventID = params.get("EventID")
+        self.HostName = params.get("HostName")
+        self.HostIP = params.get("HostIP")
+        self.PublicIP = params.get("PublicIP")
+        self.PodName = params.get("PodName")
+        self.Description = params.get("Description")
+        self.OfficialSolution = params.get("OfficialSolution")
+        self.NetworkPayload = params.get("NetworkPayload")
+        self.PID = params.get("PID")
+        self.MainClass = params.get("MainClass")
+        self.StackTrace = params.get("StackTrace")
+        self.ServerAccount = params.get("ServerAccount")
+        self.ServerPort = params.get("ServerPort")
+        self.ServerExe = params.get("ServerExe")
+        self.ServerArg = params.get("ServerArg")
+        self.QUUID = params.get("QUUID")
+        self.ContainerNetStatus = params.get("ContainerNetStatus")
+        self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
+        self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
+        self.ContainerStatus = params.get("ContainerStatus")
+        self.JNDIUrl = params.get("JNDIUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulDefenceEventTendency(AbstractModel):
+    """漏洞防御攻击事件趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Date: 日期
+        :type Date: str
+        :param EventCount: 事件数量
+        :type EventCount: int
+        """
+        self.Date = None
+        self.EventCount = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.EventCount = params.get("EventCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulDefenceHost(AbstractModel):
+    """漏洞防御的主机信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostName: 主机名称
+        :type HostName: str
+        :param HostIP: 主机ip即内网ip
+        :type HostIP: str
+        :param HostID: 主机QUUID
+        :type HostID: str
+        :param Status: 插件状态，正常：SUCCESS，异常：FAIL， NO_DEFENDED:未防御
+        :type Status: str
+        :param PublicIP: 外网ip
+        :type PublicIP: str
+        :param CreateTime: 首次开启时间
+        :type CreateTime: str
+        :param ModifyTime: 更新时间
+        :type ModifyTime: str
+        """
+        self.HostName = None
+        self.HostIP = None
+        self.HostID = None
+        self.Status = None
+        self.PublicIP = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.HostName = params.get("HostName")
+        self.HostIP = params.get("HostIP")
+        self.HostID = params.get("HostID")
+        self.Status = params.get("Status")
+        self.PublicIP = params.get("PublicIP")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulDefencePlugin(AbstractModel):
+    """漏洞防护的插件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PID: java进程pid
+        :type PID: int
+        :param MainClass: 进程主类名
+        :type MainClass: str
+        :param Status: 插件运行状态：注入中:INJECTING，注入成功：SUCCESS，注入失败：FAIL，插件超时：TIMEOUT，插件退出：QUIT
+        :type Status: str
+        :param ErrorLog: 错误日志
+        :type ErrorLog: str
+        """
+        self.PID = None
+        self.MainClass = None
+        self.Status = None
+        self.ErrorLog = None
+
+
+    def _deserialize(self, params):
+        self.PID = params.get("PID")
+        self.MainClass = params.get("MainClass")
+        self.Status = params.get("Status")
+        self.ErrorLog = params.get("ErrorLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulDetailInfo(AbstractModel):
+    """漏洞详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CVEID: CVE编号
+        :type CVEID: str
+        :param Name: 漏洞名称
+        :type Name: str
+        :param Tags: 漏洞标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param CategoryType: 漏洞类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryType: str
+        :param Level: 漏洞威胁等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
+        :param SubmitTime: 漏洞披露时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubmitTime: str
+        :param Description: 漏洞描述
+        :type Description: str
+        :param CVSSV3Desc: CVSS V3描述
+        :type CVSSV3Desc: str
+        :param OfficialSolution: 漏洞修复建议
+        :type OfficialSolution: str
+        :param DefenseSolution: 缓解措施
+        :type DefenseSolution: str
+        :param Reference: 参考链接
+        :type Reference: list of str
+        :param CVSSV3Score: CVSS V3分数
+        :type CVSSV3Score: float
+        :param ComponentList: 受漏洞影响的组件列表
+        :type ComponentList: list of VulAffectedComponentInfo
+        :param LocalImageCount: 影响本地镜像数
+        :type LocalImageCount: int
+        :param ContainerCount: 影响容器数
+        :type ContainerCount: int
+        :param RegistryImageCount: 影响仓库镜像数
+        :type RegistryImageCount: int
+        :param Category: 漏洞子类型
+        :type Category: str
+        :param LocalNewestImageCount: 影响最新本地镜像数
+        :type LocalNewestImageCount: int
+        :param RegistryNewestImageCount: 影响最新仓库镜像数
+        :type RegistryNewestImageCount: int
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        :param DefenceStatus: 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenceStatus: str
+        :param DefenceScope: 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenceScope: str
+        :param DefenceHostCount: 漏洞防御主机数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenceHostCount: int
+        :param DefendedCount: 已防御攻击次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefendedCount: int
+        :param ScanStatus: 是否已扫描，NOT_SCAN:未扫描,SCANNED:已扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanStatus: str
+        """
+        self.CVEID = None
+        self.Name = None
+        self.Tags = None
+        self.CategoryType = None
+        self.Level = None
+        self.SubmitTime = None
+        self.Description = None
+        self.CVSSV3Desc = None
+        self.OfficialSolution = None
+        self.DefenseSolution = None
+        self.Reference = None
+        self.CVSSV3Score = None
+        self.ComponentList = None
+        self.LocalImageCount = None
+        self.ContainerCount = None
+        self.RegistryImageCount = None
+        self.Category = None
+        self.LocalNewestImageCount = None
+        self.RegistryNewestImageCount = None
+        self.PocID = None
+        self.DefenceStatus = None
+        self.DefenceScope = None
+        self.DefenceHostCount = None
+        self.DefendedCount = None
+        self.ScanStatus = None
+
+
+    def _deserialize(self, params):
+        self.CVEID = params.get("CVEID")
+        self.Name = params.get("Name")
+        self.Tags = params.get("Tags")
+        self.CategoryType = params.get("CategoryType")
+        self.Level = params.get("Level")
+        self.SubmitTime = params.get("SubmitTime")
+        self.Description = params.get("Description")
+        self.CVSSV3Desc = params.get("CVSSV3Desc")
+        self.OfficialSolution = params.get("OfficialSolution")
+        self.DefenseSolution = params.get("DefenseSolution")
+        self.Reference = params.get("Reference")
+        self.CVSSV3Score = params.get("CVSSV3Score")
+        if params.get("ComponentList") is not None:
+            self.ComponentList = []
+            for item in params.get("ComponentList"):
+                obj = VulAffectedComponentInfo()
+                obj._deserialize(item)
+                self.ComponentList.append(obj)
+        self.LocalImageCount = params.get("LocalImageCount")
+        self.ContainerCount = params.get("ContainerCount")
+        self.RegistryImageCount = params.get("RegistryImageCount")
+        self.Category = params.get("Category")
+        self.LocalNewestImageCount = params.get("LocalNewestImageCount")
+        self.RegistryNewestImageCount = params.get("RegistryNewestImageCount")
+        self.PocID = params.get("PocID")
+        self.DefenceStatus = params.get("DefenceStatus")
+        self.DefenceScope = params.get("DefenceScope")
+        self.DefenceHostCount = params.get("DefenceHostCount")
+        self.DefendedCount = params.get("DefendedCount")
+        self.ScanStatus = params.get("ScanStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulIgnoreLocalImage(AbstractModel):
+    """漏洞扫描忽略的本地镜像
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: 记录ID
+        :type ID: int
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param ImageSize: 镜像大小
+        :type ImageSize: int
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        """
+        self.ID = None
+        self.ImageID = None
+        self.ImageName = None
+        self.ImageSize = None
+        self.PocID = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.ImageID = params.get("ImageID")
+        self.ImageName = params.get("ImageName")
+        self.ImageSize = params.get("ImageSize")
+        self.PocID = params.get("PocID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulIgnoreRegistryImage(AbstractModel):
+    """漏洞扫描忽略的仓库镜像
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: 记录ID
+        :type ID: int
+        :param RegistryName: 仓库名称
+        :type RegistryName: str
+        :param ImageVersion: 镜像版本
+        :type ImageVersion: str
+        :param RegistryPath: 仓库地址
+        :type RegistryPath: str
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        """
+        self.ID = None
+        self.RegistryName = None
+        self.ImageVersion = None
+        self.RegistryPath = None
+        self.ImageID = None
+        self.PocID = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.RegistryName = params.get("RegistryName")
+        self.ImageVersion = params.get("ImageVersion")
+        self.RegistryPath = params.get("RegistryPath")
+        self.ImageID = params.get("ImageID")
+        self.PocID = params.get("PocID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulInfo(AbstractModel):
+    """漏洞列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 漏洞名称
+        :type Name: str
+        :param Tags: 漏洞标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param CVSSV3Score: CVSS V3分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVSSV3Score: float
+        :param Level: 风险等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
+        :param CVEID: CVE编号
+        :type CVEID: str
+        :param Category: 漏洞子类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
+        :param FoundTime: 首次发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FoundTime: str
+        :param LatestFoundTime: 最近发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestFoundTime: str
+        :param ID: 漏洞ID
+        :type ID: int
+        :param LocalImageCount: 影响本地镜像数
+        :type LocalImageCount: int
+        :param ContainerCount: 影响容器数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerCount: int
+        :param RegistryImageCount: 影响仓库镜像数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryImageCount: int
+        :param PocID: 漏洞PocID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PocID: str
+        :param DefenceStatus: 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenceStatus: str
+        :param DefenceScope: 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenceScope: str
+        :param DefenceHostCount: 漏洞防御主机数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenceHostCount: int
+        :param DefendedCount: 已防御攻击次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefendedCount: int
+        """
+        self.Name = None
+        self.Tags = None
+        self.CVSSV3Score = None
+        self.Level = None
+        self.CVEID = None
+        self.Category = None
+        self.FoundTime = None
+        self.LatestFoundTime = None
+        self.ID = None
+        self.LocalImageCount = None
+        self.ContainerCount = None
+        self.RegistryImageCount = None
+        self.PocID = None
+        self.DefenceStatus = None
+        self.DefenceScope = None
+        self.DefenceHostCount = None
+        self.DefendedCount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Tags = params.get("Tags")
+        self.CVSSV3Score = params.get("CVSSV3Score")
+        self.Level = params.get("Level")
+        self.CVEID = params.get("CVEID")
+        self.Category = params.get("Category")
+        self.FoundTime = params.get("FoundTime")
+        self.LatestFoundTime = params.get("LatestFoundTime")
+        self.ID = params.get("ID")
+        self.LocalImageCount = params.get("LocalImageCount")
+        self.ContainerCount = params.get("ContainerCount")
+        self.RegistryImageCount = params.get("RegistryImageCount")
+        self.PocID = params.get("PocID")
+        self.DefenceStatus = params.get("DefenceStatus")
+        self.DefenceScope = params.get("DefenceScope")
+        self.DefenceHostCount = params.get("DefenceHostCount")
+        self.DefendedCount = params.get("DefendedCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulScanImageInfo(AbstractModel):
+    """漏洞扫描的镜像信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageID: 镜像ID
+        :type ImageID: str
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param Size: 镜像大小
+        :type Size: float
+        :param ScanStatus: 任务状态:SCANNING:扫描中 FAILED:失败 FINISHED:完成 CANCELED:取消
+        :type ScanStatus: str
+        :param ScanDuration: 扫描时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanDuration: float
+        :param HighLevelVulCount: 高危漏洞数
+        :type HighLevelVulCount: int
+        :param MediumLevelVulCount: 中危漏洞数
+        :type MediumLevelVulCount: int
+        :param LowLevelVulCount: 低危漏洞数
+        :type LowLevelVulCount: int
+        :param CriticalLevelVulCount: 严重漏洞数
+        :type CriticalLevelVulCount: int
+        :param TaskID: 本地镜像漏洞扫描任务ID
+        :type TaskID: int
+        :param ScanStartTime: 漏洞扫描的开始时间
+        :type ScanStartTime: str
+        :param ScanEndTime: 漏洞扫描的结束时间
+        :type ScanEndTime: str
+        :param ErrorStatus: 失败原因:TIMEOUT:超时 TOO_MANY:任务过多 OFFLINE:离线
+        :type ErrorStatus: str
+        """
+        self.ImageID = None
+        self.ImageName = None
+        self.Size = None
+        self.ScanStatus = None
+        self.ScanDuration = None
+        self.HighLevelVulCount = None
+        self.MediumLevelVulCount = None
+        self.LowLevelVulCount = None
+        self.CriticalLevelVulCount = None
+        self.TaskID = None
+        self.ScanStartTime = None
+        self.ScanEndTime = None
+        self.ErrorStatus = None
+
+
+    def _deserialize(self, params):
+        self.ImageID = params.get("ImageID")
+        self.ImageName = params.get("ImageName")
+        self.Size = params.get("Size")
+        self.ScanStatus = params.get("ScanStatus")
+        self.ScanDuration = params.get("ScanDuration")
+        self.HighLevelVulCount = params.get("HighLevelVulCount")
+        self.MediumLevelVulCount = params.get("MediumLevelVulCount")
+        self.LowLevelVulCount = params.get("LowLevelVulCount")
+        self.CriticalLevelVulCount = params.get("CriticalLevelVulCount")
+        self.TaskID = params.get("TaskID")
+        self.ScanStartTime = params.get("ScanStartTime")
+        self.ScanEndTime = params.get("ScanEndTime")
+        self.ErrorStatus = params.get("ErrorStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulTendencyInfo(AbstractModel):
+    """漏洞趋势信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VulSet: 漏洞趋势列表
+        :type VulSet: list of RunTimeTendencyInfo
+        :param ImageType: 漏洞影响的镜像类型：
+LOCAL：本地镜像
+REGISTRY: 仓库镜像
+        :type ImageType: str
+        """
+        self.VulSet = None
+        self.ImageType = None
+
+
+    def _deserialize(self, params):
+        if params.get("VulSet") is not None:
+            self.VulSet = []
+            for item in params.get("VulSet"):
+                obj = RunTimeTendencyInfo()
+                obj._deserialize(item)
+                self.VulSet.append(obj)
+        self.ImageType = params.get("ImageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulTopRankingInfo(AbstractModel):
+    """漏洞Top排名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VulName: 漏洞名称
+        :type VulName: str
+        :param Level: 威胁等级,CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低
+        :type Level: str
+        :param AffectedImageCount: 影响的镜像数
+        :type AffectedImageCount: int
+        :param AffectedContainerCount: 影响的容器数
+        :type AffectedContainerCount: int
+        :param ID: 漏洞ID
+        :type ID: int
+        :param PocID: 漏洞PocID
+        :type PocID: str
+        """
+        self.VulName = None
+        self.Level = None
+        self.AffectedImageCount = None
+        self.AffectedContainerCount = None
+        self.ID = None
+        self.PocID = None
+
+
+    def _deserialize(self, params):
+        self.VulName = params.get("VulName")
+        self.Level = params.get("Level")
+        self.AffectedImageCount = params.get("AffectedImageCount")
+        self.AffectedContainerCount = params.get("AffectedContainerCount")
+        self.ID = params.get("ID")
+        self.PocID = params.get("PocID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

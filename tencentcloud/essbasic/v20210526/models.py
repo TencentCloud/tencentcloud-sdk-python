@@ -656,14 +656,16 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type FlowEffectiveDay: int
         :param QrEffectiveDay: 二维码有效天数 默认7天 最高设置不超过90天
         :type QrEffectiveDay: int
+        :param Restrictions: 限制二维码用户条件
+        :type Restrictions: list of ApproverRestriction
         :param CallbackUrl: 回调地址，最大长度1000个字符
 不传默认使用渠道应用号配置的回调地址
 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
         :type CallbackUrl: str
-        :param ApproverRestrictions: 限制二维码用户条件
-        :type ApproverRestrictions: :class:`tencentcloud.essbasic.v20210526.models.ApproverRestriction`
         :param Operator: 用户信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param ApproverRestrictions: 限制二维码用户条件（已弃用）
+        :type ApproverRestrictions: :class:`tencentcloud.essbasic.v20210526.models.ApproverRestriction`
         """
         self.Agent = None
         self.TemplateId = None
@@ -671,9 +673,10 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self.MaxFlowNum = None
         self.FlowEffectiveDay = None
         self.QrEffectiveDay = None
+        self.Restrictions = None
         self.CallbackUrl = None
-        self.ApproverRestrictions = None
         self.Operator = None
+        self.ApproverRestrictions = None
 
 
     def _deserialize(self, params):
@@ -685,13 +688,19 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self.MaxFlowNum = params.get("MaxFlowNum")
         self.FlowEffectiveDay = params.get("FlowEffectiveDay")
         self.QrEffectiveDay = params.get("QrEffectiveDay")
+        if params.get("Restrictions") is not None:
+            self.Restrictions = []
+            for item in params.get("Restrictions"):
+                obj = ApproverRestriction()
+                obj._deserialize(item)
+                self.Restrictions.append(obj)
         self.CallbackUrl = params.get("CallbackUrl")
-        if params.get("ApproverRestrictions") is not None:
-            self.ApproverRestrictions = ApproverRestriction()
-            self.ApproverRestrictions._deserialize(params.get("ApproverRestrictions"))
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        if params.get("ApproverRestrictions") is not None:
+            self.ApproverRestrictions = ApproverRestriction()
+            self.ApproverRestrictions._deserialize(params.get("ApproverRestrictions"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -981,6 +990,13 @@ class ChannelVerifyPdfResponse(AbstractModel):
 class Component(AbstractModel):
     """此结构体 (Component) 用于描述控件属性。
 
+    在通过文件发起合同时，对应的component有三种定位方式
+    1. 绝对定位方式
+    2. 表单域(FIELD)定位方式
+    3. 关键字(KEYWORD)定位方式
+    可以参考官网说明
+    https://cloud.tencent.com/document/product/1323/78346#component-.E4.B8.89.E7.A7.8D.E5.AE.9A.E4.BD.8D.E6.96.B9.E5.BC.8F.E8.AF.B4.E6.98.8E
+
     """
 
     def __init__(self):
@@ -1040,7 +1056,10 @@ KEYWORD - 关键字
         :type ComponentPosY: float
         :param ComponentExtra: 参数控件样式，json格式表述
 不同类型的控件会有部分非通用参数
-TEXT控件可以指定字体
+TEXT/MULTI_LINE_TEXT控件可以指定
+1 Font：目前只支持黑体、宋体
+2 FontSize： 范围12-72
+3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
 例如：{"FontSize":12}
         :type ComponentExtra: str
         :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
@@ -1178,9 +1197,11 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConsoleUrl: 子客Web控制台url，此链接5分钟内有效，且只能访问一次
+        :param ConsoleUrl: 子客Web控制台url，此链接5分钟内有效，且只能访问一次。同时需要注意：
+1. 此链接仅单次有效，使用后需要再次创建新的链接（部分聊天软件，如企业微信默认会对链接进行解析，此时需要使用类似“代码片段”的方式或者放到txt文件里发送链接）；
+2. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
         :type ConsoleUrl: str
-        :param IsActivated: 渠道子客企业是否已开通腾讯电子签。
+        :param IsActivated: 渠道子客企业是否已开通腾讯电子签
         :type IsActivated: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1207,7 +1228,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowInfos: 多个合同（签署流程）信息，最多支持20个
         :type FlowInfos: list of FlowInfo
-        :param NeedPreview: 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，则返回PreviewUrls；
+        :param NeedPreview: 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls（此Url返回的是PDF文件流 ）；
 预览链接有效期300秒；
         :type NeedPreview: bool
         :param Operator: 操作者的信息
@@ -1362,7 +1383,7 @@ class CreateSignUrlsRequest(AbstractModel):
         :param Endpoint: 签署链接类型：“WEIXINAPP”-短链直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；"LONGURL2WEIXINAPP"-长链接跳转小程序；默认“WEIXINAPP”类型，即跳转至小程序；
         :type Endpoint: str
         :param GenerateType: 签署链接生成类型，默认是 "ALL"；
-"ALL"：全部签署方签署链接；
+"ALL"：全部签署方签署链接，此时不会给自动签署的签署方创建签署链接；
 "CHANNEL"：渠道合作企业；
 "NOT_CHANNEL"：非渠道合作企业；
 "PERSON"：个人；
@@ -1584,7 +1605,7 @@ class DescribeResourceUrlsByFlowsRequest(AbstractModel):
         :param Agent: 渠道应用相关信息。
 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param FlowIds: 查询资源所对应的签署流程Id，最多支持50个。
+        :param FlowIds: 查询资源所对应的签署流程Id，最多支持50个
         :type FlowIds: list of str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -1948,7 +1969,17 @@ class FlowApproverDetail(AbstractModel):
 
 
 class FlowApproverInfo(AbstractModel):
-    """创建签署流程签署人入参
+    """创建签署流程签署人入参。
+
+    其中签署方FlowApproverInfo需要传递的参数
+    非单C、单B、B2C合同，ApproverType、RecipientId（模版发起合同时）必传，建议都传。其他身份标识
+    1-个人：Name、Mobile必传
+    2-渠道子客企业指定经办人：OpenId必传，OrgName必传、OrgOpenId必传；
+    3-渠道合作企业不指定经办人：（暂不支持）
+    4-非渠道合作企业：Name、Mobile必传，OrgName必传，且NotChannelOrganization=True。
+
+    RecipientId参数：
+    从DescribeTemplates接口中，可以得到模版下的签署方Recipient列表，根据模版自定义的Rolename在此结构体中确定其RecipientId
 
     """
 

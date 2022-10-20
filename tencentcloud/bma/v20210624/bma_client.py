@@ -229,6 +229,35 @@ class BmaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCRDesktopCode(self, request):
+        """新建过程取证码
+
+        :param request: Request instance for CreateCRDesktopCode.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRDesktopCodeRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateCRDesktopCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCRDesktopCode", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCRDesktopCodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCRObtain(self, request):
         """版权保护-新建取证接口
 

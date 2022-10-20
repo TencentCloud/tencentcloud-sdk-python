@@ -4580,7 +4580,7 @@ class TkeClient(AbstractClient):
 
 
     def RunPrometheusInstance(self, request):
-        """初始化与云监控融合的2.0版本实例，开启集成中心时调用
+        """初始化TMP实例，开启集成中心时调用
 
         :param request: Request instance for RunPrometheusInstance.
         :type request: :class:`tencentcloud.tke.v20180525.models.RunPrometheusInstanceRequest`

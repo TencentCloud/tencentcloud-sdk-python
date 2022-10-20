@@ -7794,6 +7794,11 @@ class CreateOpenBankGlobalPaymentOrderRequest(AbstractModel):
         :type ShippingInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankShippingInfo`
         :param BillingInfo: 账单信息
         :type BillingInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankBillingInfo`
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.ChannelMerchantId = None
         self.ChannelName = None
@@ -7810,6 +7815,7 @@ class CreateOpenBankGlobalPaymentOrderRequest(AbstractModel):
         self.GoodsInfos = None
         self.ShippingInfo = None
         self.BillingInfo = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -7837,6 +7843,7 @@ class CreateOpenBankGlobalPaymentOrderRequest(AbstractModel):
         if params.get("BillingInfo") is not None:
             self.BillingInfo = OpenBankBillingInfo()
             self.BillingInfo._deserialize(params.get("BillingInfo"))
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

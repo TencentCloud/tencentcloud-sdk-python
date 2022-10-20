@@ -8738,6 +8738,8 @@ class MySQLParam(AbstractModel):
         :type IncludeQuery: bool
         :param RecordWithSchema: 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
         :type RecordWithSchema: bool
+        :param SignalDatabase: 存放信令表的数据库名称
+        :type SignalDatabase: str
         """
         self.Database = None
         self.Table = None
@@ -8762,6 +8764,7 @@ class MySQLParam(AbstractModel):
         self.IncludeContentChanges = None
         self.IncludeQuery = None
         self.RecordWithSchema = None
+        self.SignalDatabase = None
 
 
     def _deserialize(self, params):
@@ -8795,6 +8798,7 @@ class MySQLParam(AbstractModel):
         self.IncludeContentChanges = params.get("IncludeContentChanges")
         self.IncludeQuery = params.get("IncludeQuery")
         self.RecordWithSchema = params.get("RecordWithSchema")
+        self.SignalDatabase = params.get("SignalDatabase")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

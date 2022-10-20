@@ -511,10 +511,14 @@ class Concurrency(AbstractModel):
         :param MaxRequestsPerSecond: 最大RPS
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRequestsPerSecond: int
+        :param GracefulStopSeconds: 优雅终止任务的等待时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GracefulStopSeconds: int
         """
         self.Stages = None
         self.IterationCount = None
         self.MaxRequestsPerSecond = None
+        self.GracefulStopSeconds = None
 
 
     def _deserialize(self, params):
@@ -526,6 +530,7 @@ class Concurrency(AbstractModel):
                 self.Stages.append(obj)
         self.IterationCount = params.get("IterationCount")
         self.MaxRequestsPerSecond = params.get("MaxRequestsPerSecond")
+        self.GracefulStopSeconds = params.get("GracefulStopSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1165,6 +1170,9 @@ class CustomSample(AbstractModel):
         :type Timestamp: int
         :param Unit: 指标对应的单位，当前单位有：s,bytes,bytes/s,reqs,reqs/s,checks,checks/s,iters,iters/s,VUs, %
         :type Unit: str
+        :param Name: 指标序列名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
         """
         self.Metric = None
         self.Aggregation = None
@@ -1172,6 +1180,7 @@ class CustomSample(AbstractModel):
         self.Value = None
         self.Timestamp = None
         self.Unit = None
+        self.Name = None
 
 
     def _deserialize(self, params):
@@ -1186,6 +1195,7 @@ class CustomSample(AbstractModel):
         self.Value = params.get("Value")
         self.Timestamp = params.get("Timestamp")
         self.Unit = params.get("Unit")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3122,6 +3132,15 @@ class File(AbstractModel):
         :param ProjectId: 项目 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
+        :param AppID: 用户账号的 App ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppID: int
+        :param Uin: 用户主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param SubAccountUin: 用户子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
         """
         self.FileId = None
         self.Kind = None
@@ -3139,6 +3158,9 @@ class File(AbstractModel):
         self.Status = None
         self.CreatedAt = None
         self.ProjectId = None
+        self.AppID = None
+        self.Uin = None
+        self.SubAccountUin = None
 
 
     def _deserialize(self, params):
@@ -3168,6 +3190,9 @@ class File(AbstractModel):
         self.Status = params.get("Status")
         self.CreatedAt = params.get("CreatedAt")
         self.ProjectId = params.get("ProjectId")
+        self.AppID = params.get("AppID")
+        self.Uin = params.get("Uin")
+        self.SubAccountUin = params.get("SubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4319,6 +4344,9 @@ class RequestsPerSecond(AbstractModel):
         :param TargetRequestsPerSecond: 目标RPS，入参无效
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetRequestsPerSecond: int
+        :param GracefulStopSeconds: 优雅关停的等待时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GracefulStopSeconds: int
         """
         self.MaxRequestsPerSecond = None
         self.DurationSeconds = None
@@ -4326,6 +4354,7 @@ class RequestsPerSecond(AbstractModel):
         self.Resources = None
         self.StartRequestsPerSecond = None
         self.TargetRequestsPerSecond = None
+        self.GracefulStopSeconds = None
 
 
     def _deserialize(self, params):
@@ -4335,6 +4364,7 @@ class RequestsPerSecond(AbstractModel):
         self.Resources = params.get("Resources")
         self.StartRequestsPerSecond = params.get("StartRequestsPerSecond")
         self.TargetRequestsPerSecond = params.get("TargetRequestsPerSecond")
+        self.GracefulStopSeconds = params.get("GracefulStopSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

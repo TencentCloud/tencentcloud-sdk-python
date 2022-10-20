@@ -1125,6 +1125,56 @@ class IstiodConfig(AbstractModel):
         
 
 
+class LinkClusterListRequest(AbstractModel):
+    """LinkClusterList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshId: 网格Id
+        :type MeshId: str
+        :param ClusterList: 关联集群
+        :type ClusterList: list of Cluster
+        """
+        self.MeshId = None
+        self.ClusterList = None
+
+
+    def _deserialize(self, params):
+        self.MeshId = params.get("MeshId")
+        if params.get("ClusterList") is not None:
+            self.ClusterList = []
+            for item in params.get("ClusterList"):
+                obj = Cluster()
+                obj._deserialize(item)
+                self.ClusterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LinkClusterListResponse(AbstractModel):
+    """LinkClusterList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class LoadBalancer(AbstractModel):
     """负载均衡配置
 
@@ -1993,6 +2043,51 @@ class TracingZipkin(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnlinkClusterRequest(AbstractModel):
+    """UnlinkCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshId: 网格Id
+        :type MeshId: str
+        :param ClusterId: 取消关联的集群Id
+        :type ClusterId: str
+        """
+        self.MeshId = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.MeshId = params.get("MeshId")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnlinkClusterResponse(AbstractModel):
+    """UnlinkCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class WorkloadConfig(AbstractModel):

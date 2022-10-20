@@ -62,7 +62,7 @@ INTERNALERROR_QUOTASYSTEM = 'InternalError.QuotaSystem'
 # 后端服务路由地址错误。
 INTERNALERROR_ROUTEERROR = 'InternalError.RouteError'
 
-# 系统错误。
+# 内部错误-系统错误。
 INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 
 # 参数错误。
@@ -143,7 +143,7 @@ INVALIDPARAMETER_PARAMETERERROR = 'InvalidParameter.ParameterError'
 # 参数错误
 INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
 
-# 域名配置错误。
+# 参数错误-setting非法参数。
 INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
 
 # 资源存在错误。

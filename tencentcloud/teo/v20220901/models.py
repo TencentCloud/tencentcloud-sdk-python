@@ -268,8 +268,9 @@ class Action(AbstractModel):
 <li> Hsts；</li>
 <li> ClientIpHeader；</li>
 <li> TlsVersion；</li>
-<li> OcspStapling。</li>
-<li> HTTP/2 访问（Http2）。</li>
+<li> OcspStapling；</li>
+<li> HTTP/2 访问（Http2）；</li>
+<li> 回源跟随重定向(UpstreamFollowRedirect)。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NormalAction: :class:`tencentcloud.teo.v20220901.models.NormalAction`
         :param RewriteAction: 带有请求头/响应头的功能操作，选择该类型的功能项有：
@@ -2583,11 +2584,14 @@ class CreateRuleRequest(AbstractModel):
         :type Status: str
         :param Rules: 规则内容。
         :type Rules: list of Rule
+        :param Tags: 规则标签。
+        :type Tags: list of str
         """
         self.ZoneId = None
         self.RuleName = None
         self.Status = None
         self.Rules = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2600,6 +2604,7 @@ class CreateRuleRequest(AbstractModel):
                 obj = Rule()
                 obj._deserialize(item)
                 self.Rules.append(obj)
+        self.Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10012,12 +10017,22 @@ class FollowOrigin(AbstractModel):
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
+        :param DefaultCacheTime: 源站未返回 Cache-Control 头时, 设置默认的缓存时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultCacheTime: int
+        :param DefaultCache: 源站未返回 Cache-Control 头时, 设置缓存/不缓存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultCache: str
         """
         self.Switch = None
+        self.DefaultCacheTime = None
+        self.DefaultCache = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        self.DefaultCacheTime = params.get("DefaultCacheTime")
+        self.DefaultCache = params.get("DefaultCache")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12040,12 +12055,15 @@ class ModifyRuleRequest(AbstractModel):
 <li> enable: 启用； </li>
 <li> disable: 未启用。</li>
         :type Status: str
+        :param Tags: 规则标签。
+        :type Tags: list of str
         """
         self.ZoneId = None
         self.RuleName = None
         self.Rules = None
         self.RuleId = None
         self.Status = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -12059,6 +12077,7 @@ class ModifyRuleRequest(AbstractModel):
                 self.Rules.append(obj)
         self.RuleId = params.get("RuleId")
         self.Status = params.get("Status")
+        self.Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13736,29 +13755,38 @@ class Rule(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Actions: 执行的功能。
+        :type Actions: list of Action
         :param Conditions: 执行功能判断条件。
 注意：满足该数组内任意一项条件，功能即可执行。
         :type Conditions: list of RuleAndConditions
-        :param Actions: 执行的功能。
-        :type Actions: list of Action
+        :param SubRules: 嵌套规则。
+        :type SubRules: list of SubRuleItem
         """
-        self.Conditions = None
         self.Actions = None
+        self.Conditions = None
+        self.SubRules = None
 
 
     def _deserialize(self, params):
-        if params.get("Conditions") is not None:
-            self.Conditions = []
-            for item in params.get("Conditions"):
-                obj = RuleAndConditions()
-                obj._deserialize(item)
-                self.Conditions.append(obj)
         if params.get("Actions") is not None:
             self.Actions = []
             for item in params.get("Actions"):
                 obj = Action()
                 obj._deserialize(item)
                 self.Actions.append(obj)
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = RuleAndConditions()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        if params.get("SubRules") is not None:
+            self.SubRules = []
+            for item in params.get("SubRules"):
+                obj = SubRuleItem()
+                obj._deserialize(item)
+                self.SubRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14010,12 +14038,15 @@ class RuleItem(AbstractModel):
         :type Rules: list of Rule
         :param RulePriority: 规则优先级, 值越大优先级越高，最小为 1。
         :type RulePriority: int
+        :param Tags: 规则标签。
+        :type Tags: list of str
         """
         self.RuleId = None
         self.RuleName = None
         self.Status = None
         self.Rules = None
         self.RulePriority = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -14029,6 +14060,7 @@ class RuleItem(AbstractModel):
                 obj._deserialize(item)
                 self.Rules.append(obj)
         self.RulePriority = params.get("RulePriority")
+        self.Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15194,6 +15226,78 @@ class SpeedTestingStatus(AbstractModel):
         self.Connectivity = params.get("Connectivity")
         self.Reachable = params.get("Reachable")
         self.TimedOut = params.get("TimedOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubRule(AbstractModel):
+    """嵌套规则信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Conditions: 执行功能判断条件。
+注意：满足该数组内任意一项条件，功能即可执行。
+        :type Conditions: list of RuleAndConditions
+        :param Actions: 执行的功能。
+        :type Actions: list of Action
+        """
+        self.Conditions = None
+        self.Actions = None
+
+
+    def _deserialize(self, params):
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = RuleAndConditions()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        if params.get("Actions") is not None:
+            self.Actions = []
+            for item in params.get("Actions"):
+                obj = Action()
+                obj._deserialize(item)
+                self.Actions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubRuleItem(AbstractModel):
+    """规则引擎嵌套规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: 嵌套规则信息。
+        :type Rules: list of SubRule
+        :param Tags: 规则标签。
+        :type Tags: list of str
+        """
+        self.Rules = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = SubRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
