@@ -755,6 +755,53 @@ class DescribeClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ExpansionNodeConfig(AbstractModel):
+    """弹性扩容节点配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Placement: 扩容实例所在的位置。
+        :type Placement: :class:`tencentcloud.thpc.v20220401.models.Placement`
+        :param InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20220401.models.InstanceChargePrepaid`
+        :param InstanceType: 节点机型。不同实例机型指定了不同的资源规格。
+<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        :type InstanceType: str
+        :param VirtualPrivateCloud: 私有网络相关信息配置。
+        :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20220401.models.VirtualPrivateCloud`
+        """
+        self.Placement = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+        self.InstanceType = None
+        self.VirtualPrivateCloud = None
+
+
+    def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.InstanceType = params.get("InstanceType")
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GooseFSOption(AbstractModel):
     """描述GooseFS挂载信息
 
@@ -1080,6 +1127,146 @@ class Placement(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueueConfig(AbstractModel):
+    """扩容队列配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueueName: 队列名称。
+        :type QueueName: str
+        :param MinSize: 队列中弹性节点数量最小值。取值范围0～200。
+        :type MinSize: int
+        :param MaxSize: 队列中弹性节点数量最大值。取值范围0～200。
+        :type MaxSize: int
+        :param EnableAutoExpansion: 是否开启自动扩容。
+        :type EnableAutoExpansion: bool
+        :param EnableAutoShrink: 是否开启自动缩容。
+        :type EnableAutoShrink: bool
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜和特定自定义镜像。
+        :type ImageId: str
+        :param SystemDisk: 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :type SystemDisk: :class:`tencentcloud.thpc.v20220401.models.SystemDisk`
+        :param DataDisks: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :type DataDisks: list of DataDisk
+        :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :type InternetAccessible: :class:`tencentcloud.thpc.v20220401.models.InternetAccessible`
+        :param ExpansionNodeConfigs: 扩容节点配置信息。
+        :type ExpansionNodeConfigs: list of ExpansionNodeConfig
+        """
+        self.QueueName = None
+        self.MinSize = None
+        self.MaxSize = None
+        self.EnableAutoExpansion = None
+        self.EnableAutoShrink = None
+        self.ImageId = None
+        self.SystemDisk = None
+        self.DataDisks = None
+        self.InternetAccessible = None
+        self.ExpansionNodeConfigs = None
+
+
+    def _deserialize(self, params):
+        self.QueueName = params.get("QueueName")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
+        self.EnableAutoExpansion = params.get("EnableAutoExpansion")
+        self.EnableAutoShrink = params.get("EnableAutoShrink")
+        self.ImageId = params.get("ImageId")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        if params.get("ExpansionNodeConfigs") is not None:
+            self.ExpansionNodeConfigs = []
+            for item in params.get("ExpansionNodeConfigs"):
+                obj = ExpansionNodeConfig()
+                obj._deserialize(item)
+                self.ExpansionNodeConfigs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetAutoScalingConfigurationRequest(AbstractModel):
+    """SetAutoScalingConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param ExpansionBusyTime: 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
+        :type ExpansionBusyTime: int
+        :param ShrinkIdleTime: 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。单位秒。默认值300。
+        :type ShrinkIdleTime: int
+        :param QueueConfigs: 扩容队列配置列表。
+        :type QueueConfigs: list of QueueConfig
+        :param DryRun: 是否只预检此次请求。
+true：发送检查请求，不会绑定弹性伸缩组。检查项包括是否填写了必需参数，请求格式，业务限制。
+如果检查不通过，则返回对应错误码；
+如果检查通过，则返回RequestId。
+false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩组。
+        :type DryRun: bool
+        """
+        self.ClusterId = None
+        self.ExpansionBusyTime = None
+        self.ShrinkIdleTime = None
+        self.QueueConfigs = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ExpansionBusyTime = params.get("ExpansionBusyTime")
+        self.ShrinkIdleTime = params.get("ShrinkIdleTime")
+        if params.get("QueueConfigs") is not None:
+            self.QueueConfigs = []
+            for item in params.get("QueueConfigs"):
+                obj = QueueConfig()
+                obj._deserialize(item)
+                self.QueueConfigs.append(obj)
+        self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetAutoScalingConfigurationResponse(AbstractModel):
+    """SetAutoScalingConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class StorageOption(AbstractModel):

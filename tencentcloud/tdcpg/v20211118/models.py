@@ -178,6 +178,13 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
         :type Period: int
         :param AutoRenewFlag: 是否自动续费，0-不 1-是。默认为0，只有当PayMode为PREPAID时生效。
         :type AutoRenewFlag: int
+        :param StoragePayMode: 存储付费模式
+ - PREPAID：预付费，即包年包月
+ - POSTPAID_BY_HOUR：按小时后付费
+默认为POSTPAID_BY_HOUR，实例付费模式为按小时付费时，存储付费模式不支持包年包月
+        :type StoragePayMode: str
+        :param Storage: 存储最大使用量，单位GB。取值参考文档【购买指南】。存储使用预付费模式时必须设置，存储使用按小时后付费时不可设置
+        :type Storage: int
         """
         self.Zone = None
         self.DBVersion = None
@@ -194,6 +201,8 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
         self.InstanceCount = None
         self.Period = None
         self.AutoRenewFlag = None
+        self.StoragePayMode = None
+        self.Storage = None
 
 
     def _deserialize(self, params):
@@ -212,6 +221,8 @@ class CloneClusterToPointInTimeRequest(AbstractModel):
         self.InstanceCount = params.get("InstanceCount")
         self.Period = params.get("Period")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.Storage = params.get("Storage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

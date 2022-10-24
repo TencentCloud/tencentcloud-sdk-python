@@ -348,6 +348,35 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteBaselinePolicy(self, request):
+        """删除基线策略配置
+
+        :param request: Request instance for DeleteBaselinePolicy.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteBaselinePolicyRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteBaselinePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBaselinePolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteBaselinePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteBaselineStrategy(self, request):
         """根据基线策略id删除策略
 
@@ -827,6 +856,35 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReverseShellRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteScanTask(self, request):
+        """DeleteScanTask 该接口可以对指定类型的扫描任务进行停止扫描;
+
+        :param request: Request instance for DeleteScanTask.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteScanTaskRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DeleteScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteScanTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteScanTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2117,6 +2175,35 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBaselineHostDetectList(self, request):
+        """获取基线检测主机列表
+
+        :param request: Request instance for DescribeBaselineHostDetectList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostDetectListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselineHostDetectListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBaselineHostDetectList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBaselineHostDetectListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBaselineHostTop(self, request):
         """接口返回TopN的风险服务器
 
@@ -2219,6 +2306,35 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBaselinePolicyList(self, request):
+        """获取基线策略列表
+
+        :param request: Request instance for DescribeBaselinePolicyList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselinePolicyListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBaselinePolicyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBaselinePolicyList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBaselinePolicyListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2915,6 +3031,35 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIndexListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeJavaMemShellList(self, request):
+        """查询java内存马事件列表
+
+        :param request: Request instance for DescribeJavaMemShellList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeJavaMemShellListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJavaMemShellList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeJavaMemShellListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5771,6 +5916,35 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyBaselinePolicy(self, request):
+        """更改基线策略设置
+
+        :param request: Request instance for ModifyBaselinePolicy.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyBaselinePolicyRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyBaselinePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBaselinePolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBaselinePolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyBruteAttackRules(self, request):
         """修改暴力破解规则
 
@@ -6250,6 +6424,35 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartBaselineDetectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopBaselineDetect(self, request):
+        """停止基线检测
+
+        :param request: Request instance for StopBaselineDetect.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.StopBaselineDetectRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.StopBaselineDetectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopBaselineDetect", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopBaselineDetectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

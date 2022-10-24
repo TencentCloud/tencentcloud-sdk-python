@@ -9604,6 +9604,9 @@ class EdgeCluster(AbstractModel):
         :param ClusterAdvancedSettings: 集群高级设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.EdgeClusterAdvancedSettings`
+        :param Level: 边缘容器集群级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -9617,6 +9620,7 @@ class EdgeCluster(AbstractModel):
         self.EdgeClusterVersion = None
         self.MaxNodePodNum = None
         self.ClusterAdvancedSettings = None
+        self.Level = None
 
 
     def _deserialize(self, params):
@@ -9634,6 +9638,7 @@ class EdgeCluster(AbstractModel):
         if params.get("ClusterAdvancedSettings") is not None:
             self.ClusterAdvancedSettings = EdgeClusterAdvancedSettings()
             self.ClusterAdvancedSettings._deserialize(params.get("ClusterAdvancedSettings"))
+        self.Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13368,12 +13373,24 @@ abnormal = 异常
 本集群的所有指标都会带上这几个label
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalLabels: list of Label
+        :param Region: 集群所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param VpcId: 集群所在VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param FailedReason: 记录关联等操作的失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedReason: str
         """
         self.ClusterType = None
         self.ClusterId = None
         self.Status = None
         self.ClusterName = None
         self.ExternalLabels = None
+        self.Region = None
+        self.VpcId = None
+        self.FailedReason = None
 
 
     def _deserialize(self, params):
@@ -13387,6 +13404,9 @@ abnormal = 异常
                 obj = Label()
                 obj._deserialize(item)
                 self.ExternalLabels.append(obj)
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.FailedReason = params.get("FailedReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

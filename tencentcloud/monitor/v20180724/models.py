@@ -50,6 +50,36 @@ class AlarmEvent(AbstractModel):
         
 
 
+class AlarmHierarchicalNotice(AbstractModel):
+    """通知模版ID及通知等级列表，["Remind","Serious"]表示该通知模板仅接收提醒和严重类别的告警
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NoticeId: 通知模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeId: str
+        :param Classification: 通知等级列表，["Remind","Serious"]表示该通知模板仅接收提醒和严重类别的告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Classification: list of str
+        """
+        self.NoticeId = None
+        self.Classification = None
+
+
+    def _deserialize(self, params):
+        self.NoticeId = params.get("NoticeId")
+        self.Classification = params.get("Classification")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmHierarchicalValue(AbstractModel):
     """告警分级阈值配置
 
@@ -1468,6 +1498,10 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type Tags: list of Tag
         :param LogAlarmReqInfo: 日志告警信息
         :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
+        :param HierarchicalNotices: 告警分级通知规则配置
+        :type HierarchicalNotices: list of AlarmHierarchicalNotice
+        :param MigrateFlag: 迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
+        :type MigrateFlag: int
         """
         self.Module = None
         self.PolicyName = None
@@ -1485,6 +1519,8 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.GroupBy = None
         self.Tags = None
         self.LogAlarmReqInfo = None
+        self.HierarchicalNotices = None
+        self.MigrateFlag = None
 
 
     def _deserialize(self, params):
@@ -1522,6 +1558,13 @@ class CreateAlarmPolicyRequest(AbstractModel):
         if params.get("LogAlarmReqInfo") is not None:
             self.LogAlarmReqInfo = LogAlarmReq()
             self.LogAlarmReqInfo._deserialize(params.get("LogAlarmReqInfo"))
+        if params.get("HierarchicalNotices") is not None:
+            self.HierarchicalNotices = []
+            for item in params.get("HierarchicalNotices"):
+                obj = AlarmHierarchicalNotice()
+                obj._deserialize(item)
+                self.HierarchicalNotices.append(obj)
+        self.MigrateFlag = params.get("MigrateFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

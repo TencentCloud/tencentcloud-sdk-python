@@ -2874,6 +2874,71 @@ class BaselineEventLevelInfo(AbstractModel):
         
 
 
+class BaselineHostDetect(AbstractModel):
+    """基线主机检测
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostId: 主机Id
+        :type HostId: str
+        :param HostIp: 内网Ip
+        :type HostIp: str
+        :param HostName: 主机名称
+        :type HostName: str
+        :param WanIp: 外网Ip
+        :type WanIp: str
+        :param DetectStatus: 0:未通过 1:忽略 3:通过 5:检测中
+        :type DetectStatus: int
+        :param PassedItemCount: 检测通过数
+        :type PassedItemCount: int
+        :param ItemCount: 关联检测项数
+        :type ItemCount: int
+        :param NotPassedItemCount: 检测未通过数
+        :type NotPassedItemCount: int
+        :param FirstTime: 首次检测时间
+        :type FirstTime: str
+        :param LastTime: 最后检测时间
+        :type LastTime: str
+        :param Uuid: 主机安全UUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
+        """
+        self.HostId = None
+        self.HostIp = None
+        self.HostName = None
+        self.WanIp = None
+        self.DetectStatus = None
+        self.PassedItemCount = None
+        self.ItemCount = None
+        self.NotPassedItemCount = None
+        self.FirstTime = None
+        self.LastTime = None
+        self.Uuid = None
+
+
+    def _deserialize(self, params):
+        self.HostId = params.get("HostId")
+        self.HostIp = params.get("HostIp")
+        self.HostName = params.get("HostName")
+        self.WanIp = params.get("WanIp")
+        self.DetectStatus = params.get("DetectStatus")
+        self.PassedItemCount = params.get("PassedItemCount")
+        self.ItemCount = params.get("ItemCount")
+        self.NotPassedItemCount = params.get("NotPassedItemCount")
+        self.FirstTime = params.get("FirstTime")
+        self.LastTime = params.get("LastTime")
+        self.Uuid = params.get("Uuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BaselineHostTopList(AbstractModel):
     """基线影响服务器列表数据
 
@@ -3164,6 +3229,78 @@ class BaselineItemDetect(AbstractModel):
         self.RuleId = params.get("RuleId")
         self.PassedHostCount = params.get("PassedHostCount")
         self.NotPassedHostCount = params.get("NotPassedHostCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BaselinePolicy(AbstractModel):
+    """基线策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyName: 策略名称,长度不超过128英文字符
+        :type PolicyName: str
+        :param DetectInterval: 检测间隔[1:1天|3:3天|5:5天|7:7天]
+        :type DetectInterval: int
+        :param DetectTime: 检测时间
+        :type DetectTime: str
+        :param IsEnabled: 是否开启[0:未开启|1:开启]
+        :type IsEnabled: int
+        :param AssetType: 资产类型[0:所有专业版旗舰版|1:id|2:ip]
+        :type AssetType: int
+        :param PolicyId: 策略Id
+        :type PolicyId: int
+        :param RuleCount: 关联基线项数目
+        :type RuleCount: int
+        :param ItemCount: 关联基线项数目
+        :type ItemCount: int
+        :param HostCount: 关联基线主机数目
+        :type HostCount: int
+        :param RuleIds: 规则Id
+        :type RuleIds: list of int
+        :param HostIds: 主机Id
+        :type HostIds: list of str
+        :param HostIps: 主机Ip
+        :type HostIps: list of str
+        :param IsDefault: 是否是系统默认
+        :type IsDefault: int
+        """
+        self.PolicyName = None
+        self.DetectInterval = None
+        self.DetectTime = None
+        self.IsEnabled = None
+        self.AssetType = None
+        self.PolicyId = None
+        self.RuleCount = None
+        self.ItemCount = None
+        self.HostCount = None
+        self.RuleIds = None
+        self.HostIds = None
+        self.HostIps = None
+        self.IsDefault = None
+
+
+    def _deserialize(self, params):
+        self.PolicyName = params.get("PolicyName")
+        self.DetectInterval = params.get("DetectInterval")
+        self.DetectTime = params.get("DetectTime")
+        self.IsEnabled = params.get("IsEnabled")
+        self.AssetType = params.get("AssetType")
+        self.PolicyId = params.get("PolicyId")
+        self.RuleCount = params.get("RuleCount")
+        self.ItemCount = params.get("ItemCount")
+        self.HostCount = params.get("HostCount")
+        self.RuleIds = params.get("RuleIds")
+        self.HostIds = params.get("HostIds")
+        self.HostIps = params.get("HostIps")
+        self.IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4374,6 +4511,47 @@ class DeleteAttackLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBaselinePolicyRequest(AbstractModel):
+    """DeleteBaselinePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyIds: 策略Id
+        :type PolicyIds: list of int
+        """
+        self.PolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.PolicyIds = params.get("PolicyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBaselinePolicyResponse(AbstractModel):
+    """DeleteBaselinePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteBaselineStrategyRequest(AbstractModel):
     """DeleteBaselineStrategy请求参数结构体
 
@@ -5058,6 +5236,55 @@ class DeleteReverseShellRulesRequest(AbstractModel):
 
 class DeleteReverseShellRulesResponse(AbstractModel):
     """DeleteReverseShellRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteScanTaskRequest(AbstractModel):
+    """DeleteScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务Id
+        :type TaskId: int
+        :param ModuleType: 模块类型 当前提供 Malware 木马 , Vul 漏洞 , Baseline 基线
+        :type ModuleType: str
+        :param QuuidList: 自选服务器时生效，主机quuid的string数组
+        :type QuuidList: list of str
+        """
+        self.TaskId = None
+        self.ModuleType = None
+        self.QuuidList = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.ModuleType = params.get("ModuleType")
+        self.QuuidList = params.get("QuuidList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteScanTaskResponse(AbstractModel):
+    """DeleteScanTask返回参数结构体
 
     """
 
@@ -8256,6 +8483,89 @@ class DescribeBaselineEffectHostListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBaselineHostDetectListRequest(AbstractModel):
+    """DescribeBaselineHostDetectList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: <li>PolicyId - int64 - 是否必填：否 - 策略Id</li>
+<li>HostName - string - 是否必填：否 - 主机名称</i>
+<li>HostIp - string - 是否必填：否 - 主机Ip</i>
+<li>ItemId - int64 - 是否必填：否 - 项Id</i>
+<li>RuleId - int64 - 是否必填：否 - 规则Id</li>
+<li>DetectStatus - int - 是否必填：否 - 检测状态</li>
+<li>Level - int - 是否必填：否 - 风险等级</li>
+<li>StartTime - string - 是否必填：否 - 开时时间</li>
+<li>EndTime - string - 是否必填：否 - 结束时间</li>
+        :type Filters: list of Filter
+        :param Limit: 限制条数,默认10,最大100
+        :type Limit: int
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Order: 排序方式: [ASC:升序|DESC:降序]
+        :type Order: str
+        :param By: 可选排序列: [LastTime|ItemCount|PassedItemCount|NotPassedItemCount|FirstTime]
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBaselineHostDetectListResponse(AbstractModel):
+    """DescribeBaselineHostDetectList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 无
+        :type List: list of BaselineHostDetect
+        :param Total: 总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = BaselineHostDetect()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBaselineHostTopRequest(AbstractModel):
     """DescribeBaselineHostTop请求参数结构体
 
@@ -8550,6 +8860,81 @@ class DescribeBaselineListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BaselineList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBaselinePolicyListRequest(AbstractModel):
+    """DescribeBaselinePolicyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: <li>PolicyName - String - 是否必填：否 - 策略名称</li>
+        :type Filters: list of Filter
+        :param Limit: 限制条数,默认10,最大100
+        :type Limit: int
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Order: 排序方式: [ASC:升序|DESC:降序]
+        :type Order: str
+        :param By: 可选排序列: [RuleCount|ItemCount|HostCount]
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBaselinePolicyListResponse(AbstractModel):
+    """DescribeBaselinePolicyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 无
+        :type List: list of BaselinePolicy
+        :param Total: 总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = BaselinePolicy()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -10219,6 +10604,74 @@ class DescribeIndexListResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeJavaMemShellListRequest(AbstractModel):
+    """DescribeJavaMemShellList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件：Keywords: ip或者主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
+        :type Filters: list of Filters
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJavaMemShellListResponse(AbstractModel):
+    """DescribeJavaMemShellList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of JavaMemShellInfo
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = JavaMemShellInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -17050,6 +17503,64 @@ class IgnoreRuleEffectHostInfo(AbstractModel):
         
 
 
+class JavaMemShellInfo(AbstractModel):
+    """java内存马事件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 事件ID
+        :type Id: int
+        :param Alias: 服务器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
+        :param HostIp: 服务器IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostIp: str
+        :param Type: 内存马类型  0:Filter型 1:Listener型 2:Servlet型 3:Interceptors型 4:Agent型 5:其他
+        :type Type: int
+        :param Description: 说明
+        :type Description: str
+        :param CreateTime: 首次发现时间
+        :type CreateTime: str
+        :param RecentFoundTime: 最近检测时间
+        :type RecentFoundTime: str
+        :param Status: 处理状态  0 -- 待处理 1 -- 已加白 2 -- 已删除 3 - 已忽略  4 - 已手动处理
+        :type Status: int
+        :param Quuid: 服务器quuid
+        :type Quuid: str
+        """
+        self.Id = None
+        self.Alias = None
+        self.HostIp = None
+        self.Type = None
+        self.Description = None
+        self.CreateTime = None
+        self.RecentFoundTime = None
+        self.Status = None
+        self.Quuid = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Alias = params.get("Alias")
+        self.HostIp = params.get("HostIp")
+        self.Type = params.get("Type")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.RecentFoundTime = params.get("RecentFoundTime")
+        self.Status = params.get("Status")
+        self.Quuid = params.get("Quuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LicenseBindDetail(AbstractModel):
     """授权绑定详情信息
 
@@ -18062,6 +18573,64 @@ class ModifyBanStatusRequest(AbstractModel):
 
 class ModifyBanStatusResponse(AbstractModel):
     """ModifyBanStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBaselinePolicyRequest(AbstractModel):
+    """ModifyBaselinePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 无
+        :type Data: :class:`tencentcloud.cwp.v20180228.models.BaselinePolicy`
+        :param Filters: <li>RuleName - String - 是否必填：否 - 规则名称</li>
+<li>CategoryId - int64 - 是否必填：否 自定义筛选为-1 - 规则分类</li>
+<li>RuleType - int - 是否必填：否 0:系统 1:自定义 - 规则类型</li>
+        :type Filters: list of Filter
+        :param SelectAll: 是否按照过滤的全选
+        :type SelectAll: int
+        """
+        self.Data = None
+        self.Filters = None
+        self.SelectAll = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = BaselinePolicy()
+            self.Data._deserialize(params.get("Data"))
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.SelectAll = params.get("SelectAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBaselinePolicyResponse(AbstractModel):
+    """ModifyBaselinePolicy返回参数结构体
 
     """
 
@@ -20329,6 +20898,47 @@ class StartBaselineDetectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class StopBaselineDetectRequest(AbstractModel):
+    """StopBaselineDetect请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskIds: 取消任务ID集合
+        :type TaskIds: list of int
+        """
+        self.TaskIds = None
+
+
+    def _deserialize(self, params):
+        self.TaskIds = params.get("TaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopBaselineDetectResponse(AbstractModel):
+    """StopBaselineDetect返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

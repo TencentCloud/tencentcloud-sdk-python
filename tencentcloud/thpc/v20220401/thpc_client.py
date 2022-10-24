@@ -198,3 +198,32 @@ class ThpcClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetAutoScalingConfiguration(self, request):
+        """本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
+
+        :param request: Request instance for SetAutoScalingConfiguration.
+        :type request: :class:`tencentcloud.thpc.v20220401.models.SetAutoScalingConfigurationRequest`
+        :rtype: :class:`tencentcloud.thpc.v20220401.models.SetAutoScalingConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetAutoScalingConfiguration", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetAutoScalingConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

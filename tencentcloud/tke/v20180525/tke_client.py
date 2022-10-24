@@ -2898,7 +2898,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribePrometheusClusterAgents(self, request):
-        """获取2.0实例关联集群列表
+        """获取TMP实例关联集群列表
 
         :param request: Request instance for DescribePrometheusClusterAgents.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusClusterAgentsRequest`

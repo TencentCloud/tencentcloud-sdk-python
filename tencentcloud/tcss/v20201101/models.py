@@ -1059,6 +1059,97 @@ class AddAssetImageRegistryRegistryDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddComplianceAssetPolicySetToWhitelistRequest(AbstractModel):
+    """AddComplianceAssetPolicySetToWhitelist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AssetPolicySetList: 资产ID+检查项IDs. 列表
+        :type AssetPolicySetList: list of ComplianceAssetPolicySetItem
+        """
+        self.AssetPolicySetList = None
+
+
+    def _deserialize(self, params):
+        if params.get("AssetPolicySetList") is not None:
+            self.AssetPolicySetList = []
+            for item in params.get("AssetPolicySetList"):
+                obj = ComplianceAssetPolicySetItem()
+                obj._deserialize(item)
+                self.AssetPolicySetList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddComplianceAssetPolicySetToWhitelistResponse(AbstractModel):
+    """AddComplianceAssetPolicySetToWhitelist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AddCompliancePolicyAssetSetToWhitelistRequest(AbstractModel):
+    """AddCompliancePolicyAssetSetToWhitelist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomerPolicyItemId: 检查项ID
+        :type CustomerPolicyItemId: int
+        :param CustomerAssetItemIdSet: 需要忽略指定检查项内的资产ID列表
+        :type CustomerAssetItemIdSet: list of int non-negative
+        """
+        self.CustomerPolicyItemId = None
+        self.CustomerAssetItemIdSet = None
+
+
+    def _deserialize(self, params):
+        self.CustomerPolicyItemId = params.get("CustomerPolicyItemId")
+        self.CustomerAssetItemIdSet = params.get("CustomerAssetItemIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCompliancePolicyAssetSetToWhitelistResponse(AbstractModel):
+    """AddCompliancePolicyAssetSetToWhitelist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AddCompliancePolicyItemToWhitelistRequest(AbstractModel):
     """AddCompliancePolicyItemToWhitelist请求参数结构体
 
@@ -2885,6 +2976,34 @@ RESULT_FAILED: 未通过
         
 
 
+class ComplianceAssetPolicySetItem(AbstractModel):
+    """资产+检查项ids 集合单元
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomerAssetItemId: 资产ID
+        :type CustomerAssetItemId: int
+        :param CustomerPolicyItemIdSet: 需要忽略指定资产内的检查项ID列表，为空表示所有
+        :type CustomerPolicyItemIdSet: list of int non-negative
+        """
+        self.CustomerAssetItemId = None
+        self.CustomerPolicyItemIdSet = None
+
+
+    def _deserialize(self, params):
+        self.CustomerAssetItemId = params.get("CustomerAssetItemId")
+        self.CustomerPolicyItemIdSet = params.get("CustomerPolicyItemIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComplianceAssetSummary(AbstractModel):
     """表示一类资产的总览信息。
 
@@ -3308,6 +3427,34 @@ class CompliancePeriodTaskRule(AbstractModel):
         self.Frequency = params.get("Frequency")
         self.ExecutionTime = params.get("ExecutionTime")
         self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompliancePolicyAssetSetItem(AbstractModel):
+    """检查项+资产ids 的集合单元
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomerPolicyItemId: 检查项ID
+        :type CustomerPolicyItemId: int
+        :param CustomerAssetItemIdSet: 需要忽略指定检查项内的资产ID列表，为空表示所有
+        :type CustomerAssetItemIdSet: list of int non-negative
+        """
+        self.CustomerPolicyItemId = None
+        self.CustomerAssetItemIdSet = None
+
+
+    def _deserialize(self, params):
+        self.CustomerPolicyItemId = params.get("CustomerPolicyItemId")
+        self.CustomerAssetItemIdSet = params.get("CustomerAssetItemIdSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6074,6 +6221,97 @@ class DeleteAccessControlRulesRequest(AbstractModel):
 
 class DeleteAccessControlRulesResponse(AbstractModel):
     """DeleteAccessControlRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteComplianceAssetPolicySetFromWhitelistRequest(AbstractModel):
+    """DeleteComplianceAssetPolicySetFromWhitelist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AssetItemId: 资产ID
+        :type AssetItemId: int
+        :param CustomerPolicyItemIdSet: 需要忽略指定资产内的检查项ID列表
+        :type CustomerPolicyItemIdSet: list of int non-negative
+        """
+        self.AssetItemId = None
+        self.CustomerPolicyItemIdSet = None
+
+
+    def _deserialize(self, params):
+        self.AssetItemId = params.get("AssetItemId")
+        self.CustomerPolicyItemIdSet = params.get("CustomerPolicyItemIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteComplianceAssetPolicySetFromWhitelistResponse(AbstractModel):
+    """DeleteComplianceAssetPolicySetFromWhitelist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCompliancePolicyAssetSetFromWhitelistRequest(AbstractModel):
+    """DeleteCompliancePolicyAssetSetFromWhitelist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyAssetSetList: （检查项ID+资产ID列表）的列表
+        :type PolicyAssetSetList: list of CompliancePolicyAssetSetItem
+        """
+        self.PolicyAssetSetList = None
+
+
+    def _deserialize(self, params):
+        if params.get("PolicyAssetSetList") is not None:
+            self.PolicyAssetSetList = []
+            for item in params.get("PolicyAssetSetList"):
+                obj = CompliancePolicyAssetSetItem()
+                obj._deserialize(item)
+                self.PolicyAssetSetList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCompliancePolicyAssetSetFromWhitelistResponse(AbstractModel):
+    """DeleteCompliancePolicyAssetSetFromWhitelist返回参数结构体
 
     """
 
@@ -13282,6 +13520,68 @@ class DescribeImageComponentListResponse(AbstractModel):
                 obj = ImageComponent()
                 obj._deserialize(item)
                 self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageRegistryNamespaceListRequest(AbstractModel):
+    """DescribeImageRegistryNamespaceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 本次查询的起始偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 本次查询的数据量，默认为10，最大值为100。
+        :type Limit: int
+        :param Filters: 查询的过滤条件。Name字段可取值"Namespace"。
+        :type Filters: list of AssetFilters
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageRegistryNamespaceListResponse(AbstractModel):
+    """DescribeImageRegistryNamespaceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 可返回的项目空间的总量。
+        :type TotalCount: int
+        :param NamespaceList: 返回的项目空间列表
+        :type NamespaceList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NamespaceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.NamespaceList = params.get("NamespaceList")
         self.RequestId = params.get("RequestId")
 
 

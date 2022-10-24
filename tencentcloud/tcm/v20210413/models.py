@@ -726,10 +726,13 @@ class EgressGateway(AbstractModel):
         :type Namespace: str
         :param Workload: 工作负载配置
         :type Workload: :class:`tencentcloud.tcm.v20210413.models.WorkloadConfig`
+        :param Status: 工作负载的状态
+        :type Status: :class:`tencentcloud.tcm.v20210413.models.EgressGatewayStatus`
         """
         self.Name = None
         self.Namespace = None
         self.Workload = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -738,6 +741,41 @@ class EgressGateway(AbstractModel):
         if params.get("Workload") is not None:
             self.Workload = WorkloadConfig()
             self.Workload._deserialize(params.get("Workload"))
+        if params.get("Status") is not None:
+            self.Status = EgressGatewayStatus()
+            self.Status._deserialize(params.get("Status"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EgressGatewayStatus(AbstractModel):
+    """egress gateway 的状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentVersion: egress gateway的当前版本
+        :type CurrentVersion: str
+        :param DesiredVersion: egress gateway的目标版本
+        :type DesiredVersion: str
+        :param State: egress gateway的状态，取值：running，upgrading，rollbacking
+        :type State: str
+        """
+        self.CurrentVersion = None
+        self.DesiredVersion = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.CurrentVersion = params.get("CurrentVersion")
+        self.DesiredVersion = params.get("DesiredVersion")
+        self.State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -995,14 +1033,26 @@ class IngressGatewayStatus(AbstractModel):
         r"""
         :param LoadBalancer: 负载均衡实例状态
         :type LoadBalancer: :class:`tencentcloud.tcm.v20210413.models.LoadBalancerStatus`
+        :param CurrentVersion: ingress gateway 当前的版本
+        :type CurrentVersion: str
+        :param DesiredVersion: ingress gateway 目标的版本
+        :type DesiredVersion: str
+        :param State: ingress gateway的状态，取值running, upgrading, rollbacking
+        :type State: str
         """
         self.LoadBalancer = None
+        self.CurrentVersion = None
+        self.DesiredVersion = None
+        self.State = None
 
 
     def _deserialize(self, params):
         if params.get("LoadBalancer") is not None:
             self.LoadBalancer = LoadBalancerStatus()
             self.LoadBalancer._deserialize(params.get("LoadBalancer"))
+        self.CurrentVersion = params.get("CurrentVersion")
+        self.DesiredVersion = params.get("DesiredVersion")
+        self.State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1333,6 +1383,8 @@ class Mesh(AbstractModel):
         :type Config: :class:`tencentcloud.tcm.v20210413.models.MeshConfig`
         :param Status: Mesh详细状态
         :type Status: :class:`tencentcloud.tcm.v20210413.models.MeshStatus`
+        :param TagList: 标签列表
+        :type TagList: list of Tag
         """
         self.MeshId = None
         self.DisplayName = None
@@ -1345,6 +1397,7 @@ class Mesh(AbstractModel):
         self.ClusterList = None
         self.Config = None
         self.Status = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -1368,6 +1421,12 @@ class Mesh(AbstractModel):
         if params.get("Status") is not None:
             self.Status = MeshStatus()
             self.Status._deserialize(params.get("Status"))
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

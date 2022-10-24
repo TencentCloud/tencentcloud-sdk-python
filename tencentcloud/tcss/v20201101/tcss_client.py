@@ -113,6 +113,66 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddComplianceAssetPolicySetToWhitelist(self, request):
+        """新增安全合规忽略(资产+检测项列表)列表，不显示指定的检查项包含的资产内容
+        参考的AddCompliancePolicyItemToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
+
+        :param request: Request instance for AddComplianceAssetPolicySetToWhitelist.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddComplianceAssetPolicySetToWhitelistRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddComplianceAssetPolicySetToWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddComplianceAssetPolicySetToWhitelist", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddComplianceAssetPolicySetToWhitelistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddCompliancePolicyAssetSetToWhitelist(self, request):
+        """新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
+        参考的AddCompliancePolicyItemToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
+
+        :param request: Request instance for AddCompliancePolicyAssetSetToWhitelist.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddCompliancePolicyAssetSetToWhitelistRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddCompliancePolicyAssetSetToWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCompliancePolicyAssetSetToWhitelist", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddCompliancePolicyAssetSetToWhitelistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddCompliancePolicyItemToWhitelist(self, request):
         """将指定的检测项添加到白名单中，不显示未通过结果。
 
@@ -1549,6 +1609,65 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccessControlRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteComplianceAssetPolicySetFromWhitelist(self, request):
+        """移除安全合规忽略(资产+检测项)列表，不显示指定的检查项包含的资产内容
+        参考的AddCompliancePolicyAssetSetToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
+
+        :param request: Request instance for DeleteComplianceAssetPolicySetFromWhitelist.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteComplianceAssetPolicySetFromWhitelistRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteComplianceAssetPolicySetFromWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteComplianceAssetPolicySetFromWhitelist", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteComplianceAssetPolicySetFromWhitelistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCompliancePolicyAssetSetFromWhitelist(self, request):
+        """新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
+
+        :param request: Request instance for DeleteCompliancePolicyAssetSetFromWhitelist.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteCompliancePolicyAssetSetFromWhitelistRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteCompliancePolicyAssetSetFromWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCompliancePolicyAssetSetFromWhitelist", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCompliancePolicyAssetSetFromWhitelistResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4565,6 +4684,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageComponentListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageRegistryNamespaceList(self, request):
+        """查询用户镜像仓库下的项目名称列表
+
+        :param request: Request instance for DescribeImageRegistryNamespaceList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRegistryNamespaceListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRegistryNamespaceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageRegistryNamespaceList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageRegistryNamespaceListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

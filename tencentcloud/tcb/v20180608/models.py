@@ -2490,11 +2490,16 @@ class CreateWxCloudBaseRunServerDBClusterRequest(AbstractModel):
         :type WxAppId: str
         :param DbVersion: mysql内核版本，支持5.7,8.0
         :type DbVersion: str
+        :param LowerCaseTableName: 0: 非大小写敏感
+1: 大小写敏感
+默认 0
+        :type LowerCaseTableName: str
         """
         self.AccountPassword = None
         self.EnvId = None
         self.WxAppId = None
         self.DbVersion = None
+        self.LowerCaseTableName = None
 
 
     def _deserialize(self, params):
@@ -2502,6 +2507,7 @@ class CreateWxCloudBaseRunServerDBClusterRequest(AbstractModel):
         self.EnvId = params.get("EnvId")
         self.WxAppId = params.get("WxAppId")
         self.DbVersion = params.get("DbVersion")
+        self.LowerCaseTableName = params.get("LowerCaseTableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
