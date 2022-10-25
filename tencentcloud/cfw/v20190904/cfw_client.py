@@ -85,7 +85,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateAcRules(self, request):
-        """创建规则
+        """创建访问控制规则
 
         :param request: Request instance for CreateAcRules.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAcRulesRequest`

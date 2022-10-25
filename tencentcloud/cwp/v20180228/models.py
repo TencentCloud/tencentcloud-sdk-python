@@ -17311,6 +17311,11 @@ class HostLoginList(AbstractModel):
         :param Quuid: 主机quuid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Quuid: str
+        :param Desc: 高危信息说明：
+ABROAD - 海外IP；
+XTI - 威胁情报
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
         """
         self.Id = None
         self.Uuid = None
@@ -17331,6 +17336,7 @@ class HostLoginList(AbstractModel):
         self.RiskLevel = None
         self.Location = None
         self.Quuid = None
+        self.Desc = None
 
 
     def _deserialize(self, params):
@@ -17353,6 +17359,7 @@ class HostLoginList(AbstractModel):
         self.RiskLevel = params.get("RiskLevel")
         self.Location = params.get("Location")
         self.Quuid = params.get("Quuid")
+        self.Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

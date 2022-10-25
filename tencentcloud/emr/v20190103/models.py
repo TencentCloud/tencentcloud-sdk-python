@@ -3505,7 +3505,7 @@ class NodeHardwareInfo(AbstractModel):
         :param CurrentTime: 系统当前时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentTime: str
-        :param IsFederation: 是否用于联邦
+        :param IsFederation: 是否用于联邦 ,1是，0否
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsFederation: int
         :param DeviceName: 设备名称

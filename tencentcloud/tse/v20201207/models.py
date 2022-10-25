@@ -609,7 +609,7 @@ class DescribeSREInstanceAccessAddressRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 子网ID
         :type SubnetId: str
-        :param Workload: 引擎其他组件名称（pushgateway）
+        :param Workload: 引擎其他组件名称（pushgateway、polaris-limiter）
         :type Workload: str
         :param EngineRegion: 部署地域
         :type EngineRegion: str
@@ -661,6 +661,9 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         :param ConsoleInternetBandWidth: 控制台公网带宽
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsoleInternetBandWidth: int
+        :param LimiterAddressInfos: 北极星限流server节点接入IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimiterAddressInfos: list of PolarisLimiterAddress
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -671,6 +674,7 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         self.ConsoleIntranetAddress = None
         self.InternetBandWidth = None
         self.ConsoleInternetBandWidth = None
+        self.LimiterAddressInfos = None
         self.RequestId = None
 
 
@@ -687,6 +691,12 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         self.ConsoleIntranetAddress = params.get("ConsoleIntranetAddress")
         self.InternetBandWidth = params.get("InternetBandWidth")
         self.ConsoleInternetBandWidth = params.get("ConsoleInternetBandWidth")
+        if params.get("LimiterAddressInfos") is not None:
+            self.LimiterAddressInfos = []
+            for item in params.get("LimiterAddressInfos"):
+                obj = PolarisLimiterAddress()
+                obj._deserialize(item)
+                self.LimiterAddressInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1196,6 +1206,31 @@ class NacosServerInterface(AbstractModel):
         
 
 
+class PolarisLimiterAddress(AbstractModel):
+    """查询Limiter的接入地址
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntranetAddress: VPC接入IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntranetAddress: str
+        """
+        self.IntranetAddress = None
+
+
+    def _deserialize(self, params):
+        self.IntranetAddress = params.get("IntranetAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SREInstance(AbstractModel):
     """微服务注册引擎实例
 
@@ -1404,6 +1439,8 @@ class ServiceGovernanceInfo(AbstractModel):
         :type MainPassword: str
         :param PgwVpcInfos: 服务治理pushgateway引擎绑定的网络信息
         :type PgwVpcInfos: list of VpcInfo
+        :param LimiterVpcInfos: 服务治理限流server引擎绑定的网络信息
+        :type LimiterVpcInfos: list of VpcInfo
         """
         self.EngineRegion = None
         self.BoundK8SInfos = None
@@ -1412,6 +1449,7 @@ class ServiceGovernanceInfo(AbstractModel):
         self.Features = None
         self.MainPassword = None
         self.PgwVpcInfos = None
+        self.LimiterVpcInfos = None
 
 
     def _deserialize(self, params):
@@ -1437,6 +1475,12 @@ class ServiceGovernanceInfo(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.PgwVpcInfos.append(obj)
+        if params.get("LimiterVpcInfos") is not None:
+            self.LimiterVpcInfos = []
+            for item in params.get("LimiterVpcInfos"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self.LimiterVpcInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

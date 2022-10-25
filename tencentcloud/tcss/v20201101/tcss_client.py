@@ -4524,6 +4524,64 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeExportJobDownloadURL(self, request):
+        """查询导出任务下载URL
+
+        :param request: Request instance for DescribeExportJobDownloadURL.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobDownloadURLRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobDownloadURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExportJobDownloadURL", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExportJobDownloadURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeExportJobManageList(self, request):
+        """查询导出任务管理列表
+
+        :param request: Request instance for DescribeExportJobManageList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobManageListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeExportJobManageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExportJobManageList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExportJobManageListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExportJobResult(self, request):
         """查询导出任务的结果
 

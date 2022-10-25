@@ -341,6 +341,8 @@ class CreateInstanceRequest(AbstractModel):
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         :param EnableHybridStorage: 是否开启存算分离
         :type EnableHybridStorage: bool
+        :param DiskEnhance: 是否开启essd 增强型云盘
+        :type DiskEnhance: int
         """
         self.Zone = None
         self.EsVersion = None
@@ -374,6 +376,7 @@ class CreateInstanceRequest(AbstractModel):
         self.Protocol = None
         self.OperationDuration = None
         self.EnableHybridStorage = None
+        self.DiskEnhance = None
 
 
     def _deserialize(self, params):
@@ -428,6 +431,7 @@ class CreateInstanceRequest(AbstractModel):
             self.OperationDuration = OperationDuration()
             self.OperationDuration._deserialize(params.get("OperationDuration"))
         self.EnableHybridStorage = params.get("EnableHybridStorage")
+        self.DiskEnhance = params.get("DiskEnhance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2078,7 +2082,7 @@ class InstanceInfo(AbstractModel):
         :type VpcUid: str
         :param SubnetUid: 实例所属子网的UID
         :type SubnetUid: str
-        :param Status: 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁
+        :param Status: 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁, 2:创建集群时初始化中
         :type Status: int
         :param RenewFlag: 自动续费标识。取值范围：
 RENEW_FLAG_AUTO：自动续费  
@@ -2268,6 +2272,12 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param EnableHybridStorage: 是否支持存储计算分离
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableHybridStorage: bool
+        :param ProcessPercent: 流程进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessPercent: float
+        :param KibanaAlteringPublicAccess: Kibana的altering外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaAlteringPublicAccess: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2348,6 +2358,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         self.OptionalWebServiceInfos = None
         self.AutoIndexEnabled = None
         self.EnableHybridStorage = None
+        self.ProcessPercent = None
+        self.KibanaAlteringPublicAccess = None
 
 
     def _deserialize(self, params):
@@ -2471,6 +2483,8 @@ RENEW_FLAG_DEFAULT：不自动续费
                 self.OptionalWebServiceInfos.append(obj)
         self.AutoIndexEnabled = params.get("AutoIndexEnabled")
         self.EnableHybridStorage = params.get("EnableHybridStorage")
+        self.ProcessPercent = params.get("ProcessPercent")
+        self.KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3115,6 +3129,9 @@ class NodeInfo(AbstractModel):
         :param MemSize: 内存大小，单位GB
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemSize: int
+        :param DiskEnhance: /
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskEnhance: int
         """
         self.NodeNum = None
         self.NodeType = None
@@ -3126,6 +3143,7 @@ class NodeInfo(AbstractModel):
         self.DiskEncrypt = None
         self.CpuNum = None
         self.MemSize = None
+        self.DiskEnhance = None
 
 
     def _deserialize(self, params):
@@ -3141,6 +3159,7 @@ class NodeInfo(AbstractModel):
         self.DiskEncrypt = params.get("DiskEncrypt")
         self.CpuNum = params.get("CpuNum")
         self.MemSize = params.get("MemSize")
+        self.DiskEnhance = params.get("DiskEnhance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

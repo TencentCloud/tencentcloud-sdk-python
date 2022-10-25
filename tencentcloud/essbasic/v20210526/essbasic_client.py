@@ -58,6 +58,37 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCancelFlow(self, request):
+        """渠道版撤销签署流程接口
+        注意:
+        能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+
+        :param request: Request instance for ChannelCancelFlow.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCancelFlowRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCancelFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCancelFlow", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChannelCancelFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelCancelMultiFlowSignQRCode(self, request):
         """此接口（ChannelCancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
 
@@ -553,7 +584,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeTemplates(self, request):
-        """通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的的有效模板，不包括渠道模版
+        """通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的有效模板，不包括渠道模板
 
         :param request: Request instance for DescribeTemplates.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeTemplatesRequest`

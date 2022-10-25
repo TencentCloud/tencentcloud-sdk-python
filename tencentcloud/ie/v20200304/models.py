@@ -686,11 +686,14 @@ class CreateMediaQualityRestorationTaskRequest(AbstractModel):
         :type SaveInfo: :class:`tencentcloud.ie.v20200304.models.SaveInfo`
         :param CallbackInfo: 任务结果回调地址信息。
         :type CallbackInfo: :class:`tencentcloud.ie.v20200304.models.CallbackInfo`
+        :param TopSpeedCodecChannel: 极速高清体验馆渠道标志。
+        :type TopSpeedCodecChannel: int
         """
         self.DownInfo = None
         self.TransInfo = None
         self.SaveInfo = None
         self.CallbackInfo = None
+        self.TopSpeedCodecChannel = None
 
 
     def _deserialize(self, params):
@@ -709,6 +712,7 @@ class CreateMediaQualityRestorationTaskRequest(AbstractModel):
         if params.get("CallbackInfo") is not None:
             self.CallbackInfo = CallbackInfo()
             self.CallbackInfo._deserialize(params.get("CallbackInfo"))
+        self.TopSpeedCodecChannel = params.get("TopSpeedCodecChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

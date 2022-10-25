@@ -228,6 +228,9 @@ class BindProductInfo(AbstractModel):
         :param DevStatus: 状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type DevStatus: str
+        :param ProductOwnerName: 产品拥有者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductOwnerName: str
         """
         self.ProductId = None
         self.ProductName = None
@@ -237,6 +240,7 @@ class BindProductInfo(AbstractModel):
         self.ProductType = None
         self.NetType = None
         self.DevStatus = None
+        self.ProductOwnerName = None
 
 
     def _deserialize(self, params):
@@ -248,6 +252,7 @@ class BindProductInfo(AbstractModel):
         self.ProductType = params.get("ProductType")
         self.NetType = params.get("NetType")
         self.DevStatus = params.get("DevStatus")
+        self.ProductOwnerName = params.get("ProductOwnerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1783,16 +1788,20 @@ class DescribeBindedProductsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小
         :type Limit: int
+        :param ProductSource: 是否跨账号绑定产品
+        :type ProductSource: int
         """
         self.GatewayProductId = None
         self.Offset = None
         self.Limit = None
+        self.ProductSource = None
 
 
     def _deserialize(self, params):
         self.GatewayProductId = params.get("GatewayProductId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ProductSource = params.get("ProductSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1876,12 +1885,20 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
         :param GatewayName: 网关产品名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayName: str
+        :param GatewayProductOwnerName: 设备对应产品所属的主账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayProductOwnerName: str
+        :param GatewayProductOwnerUin: 设备对应产品所属的主账号 UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayProductOwnerUin: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.GatewayProductId = None
         self.GatewayDeviceName = None
         self.GatewayName = None
+        self.GatewayProductOwnerName = None
+        self.GatewayProductOwnerUin = None
         self.RequestId = None
 
 
@@ -1889,6 +1906,8 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
         self.GatewayProductId = params.get("GatewayProductId")
         self.GatewayDeviceName = params.get("GatewayDeviceName")
         self.GatewayName = params.get("GatewayName")
+        self.GatewayProductOwnerName = params.get("GatewayProductOwnerName")
+        self.GatewayProductOwnerUin = params.get("GatewayProductOwnerUin")
         self.RequestId = params.get("RequestId")
 
 
@@ -2542,11 +2561,14 @@ class DescribeGatewaySubProductsRequest(AbstractModel):
         :type Limit: int
         :param ProjectId: 项目Id
         :type ProjectId: str
+        :param ProductSource: 是否跨账号产品
+        :type ProductSource: int
         """
         self.GatewayProductId = None
         self.Offset = None
         self.Limit = None
         self.ProjectId = None
+        self.ProductSource = None
 
 
     def _deserialize(self, params):
@@ -2554,6 +2576,7 @@ class DescribeGatewaySubProductsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ProjectId = params.get("ProjectId")
+        self.ProductSource = params.get("ProductSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

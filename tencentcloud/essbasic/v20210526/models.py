@@ -159,11 +159,21 @@ class ChannelBatchCancelFlowsRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowIds: 签署流程Id数组，最多100个，超过100不处理
         :type FlowIds: list of str
+        :param CancelMessage: 撤销理由
+        :type CancelMessage: str
+        :param CancelMessageFormat: 撤销理由自定义格式；选项：
+0 默认格式
+1 只保留身份信息：展示为【发起方】
+2 保留身份信息+企业名称：展示为【发起方xxx公司】
+3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+        :type CancelMessageFormat: int
         :param Operator: 操作人信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self.Agent = None
         self.FlowIds = None
+        self.CancelMessage = None
+        self.CancelMessageFormat = None
         self.Operator = None
 
 
@@ -172,6 +182,8 @@ class ChannelBatchCancelFlowsRequest(AbstractModel):
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
         self.FlowIds = params.get("FlowIds")
+        self.CancelMessage = params.get("CancelMessage")
+        self.CancelMessageFormat = params.get("CancelMessageFormat")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
@@ -202,6 +214,71 @@ class ChannelBatchCancelFlowsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FailMessages = params.get("FailMessages")
+        self.RequestId = params.get("RequestId")
+
+
+class ChannelCancelFlowRequest(AbstractModel):
+    """ChannelCancelFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 签署流程编号
+        :type FlowId: str
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param CancelMessage: 撤回原因，最大不超过200字符
+        :type CancelMessage: str
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param CancelMessageFormat: 撤销理由自定义格式；选项：
+0 默认格式
+1 只保留身份信息：展示为【发起方】
+2 保留身份信息+企业名称：展示为【发起方xxx公司】
+3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+        :type CancelMessageFormat: int
+        """
+        self.FlowId = None
+        self.Agent = None
+        self.CancelMessage = None
+        self.Operator = None
+        self.CancelMessageFormat = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.CancelMessage = params.get("CancelMessage")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.CancelMessageFormat = params.get("CancelMessageFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCancelFlowResponse(AbstractModel):
+    """ChannelCancelFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1672,7 +1749,7 @@ class DescribeTemplatesRequest(AbstractModel):
         r"""
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param TemplateId: 模板唯一标识，查询单个模版时使用
+        :param TemplateId: 模板唯一标识，查询单个模板时使用
         :type TemplateId: str
         :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
         :type ContentType: int

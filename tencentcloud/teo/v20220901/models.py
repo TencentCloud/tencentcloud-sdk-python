@@ -423,12 +423,18 @@ class AliasDomain(AbstractModel):
         :type TargetName: str
         :param Status: 别称域名状态，取值有：
 <li> active：已生效； </li>
-<li> pending：未生效；</li>
-<li> not_filed：未备案；</li>
+<li> pending：部署中；</li>
 <li> conflict：被找回。 </li>
 <li> stop：已停用；</li>
 <li> deleted：已删除。 </li>
         :type Status: str
+        :param ForbidMode: 封禁模式，取值有：
+<li> 0：未封禁； </li>
+<li> 11：合规封禁；</li>
+<li> 14：未备案封禁。</li>
+        :type ForbidMode: int
+        :param TargetForbid: 目标域名是否被封禁。
+        :type TargetForbid: bool
         :param CreatedOn: 别称域名创建时间。
         :type CreatedOn: str
         :param ModifiedOn: 别称域名修改时间。
@@ -439,6 +445,8 @@ class AliasDomain(AbstractModel):
         self.ZoneId = None
         self.TargetName = None
         self.Status = None
+        self.ForbidMode = None
+        self.TargetForbid = None
         self.CreatedOn = None
         self.ModifiedOn = None
 
@@ -449,6 +457,8 @@ class AliasDomain(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.TargetName = params.get("TargetName")
         self.Status = params.get("Status")
+        self.ForbidMode = params.get("ForbidMode")
+        self.TargetForbid = params.get("TargetForbid")
         self.CreatedOn = params.get("CreatedOn")
         self.ModifiedOn = params.get("ModifiedOn")
         memeber_set = set(params.keys())
@@ -4224,10 +4234,10 @@ class DescribeAliasDomainsRequest(AbstractModel):
         :type ZoneId: str
         :param Offset: 分页查询偏移量。默认值：0。
         :type Offset: int
-        :param Limit: 分页查询限制数目。默认值：20，最大值：100。
+        :param Limit: 分页查询限制数目。默认值：20，最大值：1000。
         :type Limit: int
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-id<br>   按照【<strong>别称域名ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为alias-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
+<li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-id<br>   按照【<strong>别称域名ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为alias-name。
         :type Filters: list of AdvancedFilter
         """
         self.ZoneId = None
@@ -9053,7 +9063,7 @@ class DescribeZonesRequest(AbstractModel):
         :param Limit: 分页查询限制数目。默认值：20，最大值：1000。
         :type Limit: int
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为zone-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
+<li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为zone-name。
         :type Filters: list of AdvancedFilter
         """
         self.Offset = None
@@ -10214,12 +10224,18 @@ class Https(AbstractModel):
         :param CertInfo: 证书配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertInfo: list of ServerCertInfo
+        :param ApplyType: 申请类型，取值有：
+<li>apply：托管EdgeOne；</li>
+<li>none：不托管EdgeOne。</li>不填，默认取值为none。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyType: str
         """
         self.Http2 = None
         self.OcspStapling = None
         self.TlsVersion = None
         self.Hsts = None
         self.CertInfo = None
+        self.ApplyType = None
 
 
     def _deserialize(self, params):
@@ -10235,6 +10251,7 @@ class Https(AbstractModel):
                 obj = ServerCertInfo()
                 obj._deserialize(item)
                 self.CertInfo.append(obj)
+        self.ApplyType = params.get("ApplyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14649,6 +14666,9 @@ class ServerCertInfo(AbstractModel):
         :param SignAlgo: 签名算法。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignAlgo: str
+        :param CommonName: 证书归属域名名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommonName: str
         """
         self.CertId = None
         self.Alias = None
@@ -14656,6 +14676,7 @@ class ServerCertInfo(AbstractModel):
         self.ExpireTime = None
         self.DeployTime = None
         self.SignAlgo = None
+        self.CommonName = None
 
 
     def _deserialize(self, params):
@@ -14665,6 +14686,7 @@ class ServerCertInfo(AbstractModel):
         self.ExpireTime = params.get("ExpireTime")
         self.DeployTime = params.get("DeployTime")
         self.SignAlgo = params.get("SignAlgo")
+        self.CommonName = params.get("CommonName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

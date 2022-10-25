@@ -1641,6 +1641,31 @@ hex：十六进制
         
 
 
+class AvifAdapter(AbstractModel):
+    """图片优化-AvifAdapter配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关，"on/off"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AwsPrivateAccess(AbstractModel):
     """s3源站回源鉴权。
 
@@ -4265,8 +4290,8 @@ overseas：获取境外加速日志包下载链接
 global：同时获取境内、境外加速日志包下载链接（分开打包）
 不指定时默认为 mainland
         :type Area: str
-        :param LogType: 指定下载日志的类型。
-access：获取访问日志
+        :param LogType: 指定下载日志的类型，目前仅支持访问日志（access）。
+access：访问日志
         :type LogType: str
         """
         self.Domain = None
@@ -4302,7 +4327,8 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DomainLogs: 日志包下载链接
+        :param DomainLogs: 日志包下载链接。
+下载内容是gz后缀的压缩包，解压后是无扩展名的文本文件。
         :type DomainLogs: list of DomainLog
         :param TotalCount: 查询到的总条数
         :type TotalCount: int
@@ -5010,12 +5036,16 @@ class DescribeImageConfigResponse(AbstractModel):
         :param GuetzliAdapter: GuetzliAdapter配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
+        :param AvifAdapter: AvifAdapter配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvifAdapter: :class:`tencentcloud.cdn.v20180606.models.AvifAdapter`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.WebpAdapter = None
         self.TpgAdapter = None
         self.GuetzliAdapter = None
+        self.AvifAdapter = None
         self.RequestId = None
 
 
@@ -5029,6 +5059,9 @@ class DescribeImageConfigResponse(AbstractModel):
         if params.get("GuetzliAdapter") is not None:
             self.GuetzliAdapter = GuetzliAdapter()
             self.GuetzliAdapter._deserialize(params.get("GuetzliAdapter"))
+        if params.get("AvifAdapter") is not None:
+            self.AvifAdapter = AvifAdapter()
+            self.AvifAdapter._deserialize(params.get("AvifAdapter"))
         self.RequestId = params.get("RequestId")
 
 
@@ -8531,10 +8564,14 @@ class ImageOptimization(AbstractModel):
         :param GuetzliAdapter: GuetzliAdapter配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
+        :param AvifAdapter: AvifAdapter配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvifAdapter: :class:`tencentcloud.cdn.v20180606.models.AvifAdapter`
         """
         self.WebpAdapter = None
         self.TpgAdapter = None
         self.GuetzliAdapter = None
+        self.AvifAdapter = None
 
 
     def _deserialize(self, params):
@@ -8547,6 +8584,9 @@ class ImageOptimization(AbstractModel):
         if params.get("GuetzliAdapter") is not None:
             self.GuetzliAdapter = GuetzliAdapter()
             self.GuetzliAdapter._deserialize(params.get("GuetzliAdapter"))
+        if params.get("AvifAdapter") is not None:
+            self.AvifAdapter = AvifAdapter()
+            self.AvifAdapter._deserialize(params.get("AvifAdapter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10223,9 +10263,13 @@ off：关闭
         :param MaxAgeRules: MaxAge 规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxAgeRules: list of MaxAgeRule
+        :param MaxAgeCodeRule: MaxAge 状态码相关规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAgeCodeRule: :class:`tencentcloud.cdn.v20180606.models.MaxAgeCodeRule`
         """
         self.Switch = None
         self.MaxAgeRules = None
+        self.MaxAgeCodeRule = None
 
 
     def _deserialize(self, params):
@@ -10236,6 +10280,38 @@ off：关闭
                 obj = MaxAgeRule()
                 obj._deserialize(item)
                 self.MaxAgeRules.append(obj)
+        if params.get("MaxAgeCodeRule") is not None:
+            self.MaxAgeCodeRule = MaxAgeCodeRule()
+            self.MaxAgeCodeRule._deserialize(params.get("MaxAgeCodeRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaxAgeCodeRule(AbstractModel):
+    """MaxAge 状态码相关规则配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 处理动作
+clear：清除 cache-control 头部
+        :type Action: str
+        :param StatusCodes: 指定HTTP状态码生效，当前仅支持填写"400-599"
+        :type StatusCodes: list of str
+        """
+        self.Action = None
+        self.StatusCodes = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.StatusCodes = params.get("StatusCodes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14717,11 +14793,14 @@ class UpdateImageConfigRequest(AbstractModel):
         :type TpgAdapter: :class:`tencentcloud.cdn.v20180606.models.TpgAdapter`
         :param GuetzliAdapter: GuetzliAdapter配置项
         :type GuetzliAdapter: :class:`tencentcloud.cdn.v20180606.models.GuetzliAdapter`
+        :param AvifAdapter: AvifAdapter配置项
+        :type AvifAdapter: :class:`tencentcloud.cdn.v20180606.models.AvifAdapter`
         """
         self.Domain = None
         self.WebpAdapter = None
         self.TpgAdapter = None
         self.GuetzliAdapter = None
+        self.AvifAdapter = None
 
 
     def _deserialize(self, params):
@@ -14735,6 +14814,9 @@ class UpdateImageConfigRequest(AbstractModel):
         if params.get("GuetzliAdapter") is not None:
             self.GuetzliAdapter = GuetzliAdapter()
             self.GuetzliAdapter._deserialize(params.get("GuetzliAdapter"))
+        if params.get("AvifAdapter") is not None:
+            self.AvifAdapter = AvifAdapter()
+            self.AvifAdapter._deserialize(params.get("AvifAdapter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

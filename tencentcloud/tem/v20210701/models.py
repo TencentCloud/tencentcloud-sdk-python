@@ -301,6 +301,8 @@ class CreateApplicationRequest(AbstractModel):
         :type EnableTracing: int
         :param UseDefaultImageServiceParameters: 使用默认镜像服务额外参数
         :type UseDefaultImageServiceParameters: :class:`tencentcloud.tem.v20210701.models.UseDefaultRepoParameters`
+        :param Tags: 标签
+        :type Tags: list of Tag
         """
         self.ApplicationName = None
         self.Description = None
@@ -315,6 +317,7 @@ class CreateApplicationRequest(AbstractModel):
         self.DeployMode = None
         self.EnableTracing = None
         self.UseDefaultImageServiceParameters = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -333,6 +336,12 @@ class CreateApplicationRequest(AbstractModel):
         if params.get("UseDefaultImageServiceParameters") is not None:
             self.UseDefaultImageServiceParameters = UseDefaultRepoParameters()
             self.UseDefaultImageServiceParameters._deserialize(params.get("UseDefaultImageServiceParameters"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -570,6 +579,8 @@ class CreateEnvironmentRequest(AbstractModel):
         :type SourceChannel: int
         :param EnableTswTraceService: 是否开启tsw服务
         :type EnableTswTraceService: bool
+        :param Tags: 标签
+        :type Tags: list of Tag
         """
         self.EnvironmentName = None
         self.Vpc = None
@@ -578,6 +589,7 @@ class CreateEnvironmentRequest(AbstractModel):
         self.K8sVersion = None
         self.SourceChannel = None
         self.EnableTswTraceService = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -588,6 +600,12 @@ class CreateEnvironmentRequest(AbstractModel):
         self.K8sVersion = params.get("K8sVersion")
         self.SourceChannel = params.get("SourceChannel")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1459,6 +1477,9 @@ class DeployServicePodDetail(AbstractModel):
         :param Webshell: webshell地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Webshell: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self.PodId = None
         self.PodStatus = None
@@ -1466,6 +1487,7 @@ class DeployServicePodDetail(AbstractModel):
         self.CreateTime = None
         self.Zone = None
         self.Webshell = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -1475,6 +1497,7 @@ class DeployServicePodDetail(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Zone = params.get("Zone")
         self.Webshell = params.get("Webshell")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1790,6 +1813,8 @@ class DescribeApplicationsRequest(AbstractModel):
         :type ApplicationId: str
         :param Keyword: 搜索关键字
         :type Keyword: str
+        :param Filters: 查询过滤器
+        :type Filters: list of QueryFilter
         """
         self.EnvironmentId = None
         self.Limit = None
@@ -1797,6 +1822,7 @@ class DescribeApplicationsRequest(AbstractModel):
         self.SourceChannel = None
         self.ApplicationId = None
         self.Keyword = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -1806,6 +1832,12 @@ class DescribeApplicationsRequest(AbstractModel):
         self.SourceChannel = params.get("SourceChannel")
         self.ApplicationId = params.get("ApplicationId")
         self.Keyword = params.get("Keyword")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2218,16 +2250,25 @@ class DescribeEnvironmentsRequest(AbstractModel):
         :type Offset: int
         :param SourceChannel: 来源source
         :type SourceChannel: int
+        :param Filters: 查询过滤器
+        :type Filters: list of QueryFilter
         """
         self.Limit = None
         self.Offset = None
         self.SourceChannel = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.SourceChannel = params.get("SourceChannel")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3769,13 +3810,18 @@ class ModifyApplicationReplicasResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -4155,6 +4201,9 @@ class NamespaceInfo(AbstractModel):
         :param Locked: 环境是否上锁，1为上锁，0则未上锁
 注意：此字段可能返回 null，表示取不到有效值。
         :type Locked: int
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.EnvironmentId = None
         self.NamespaceName = None
@@ -4166,6 +4215,7 @@ class NamespaceInfo(AbstractModel):
         self.EnvironmentName = None
         self.ApmInstanceId = None
         self.Locked = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -4179,6 +4229,12 @@ class NamespaceInfo(AbstractModel):
         self.EnvironmentName = params.get("EnvironmentName")
         self.ApmInstanceId = params.get("ApmInstanceId")
         self.Locked = params.get("Locked")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4398,6 +4454,34 @@ class PortMapping(AbstractModel):
         self.TargetPort = params.get("TargetPort")
         self.Protocol = params.get("Protocol")
         self.ServiceName = params.get("ServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFilter(AbstractModel):
+    """查询过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 查询字段名称
+        :type Name: str
+        :param Value: 查询字段值
+        :type Value: list of str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4741,6 +4825,24 @@ class RunVersionPod(AbstractModel):
         :param ContainerState: 容器状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerState: str
+        :param NodeInfo: 实例所在节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeInfo: :class:`tencentcloud.tem.v20210701.models.NodeInfo`
+        :param StartTime: 启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param Unhealthy: 是否健康
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unhealthy: bool
+        :param UnhealthyWarningMsg: 不健康时的提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnhealthyWarningMsg: str
+        :param VersionId: 版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: str
+        :param ApplicationName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
         """
         self.Webshell = None
         self.PodId = None
@@ -4752,6 +4854,12 @@ class RunVersionPod(AbstractModel):
         self.RestartCount = None
         self.Ready = None
         self.ContainerState = None
+        self.NodeInfo = None
+        self.StartTime = None
+        self.Unhealthy = None
+        self.UnhealthyWarningMsg = None
+        self.VersionId = None
+        self.ApplicationName = None
 
 
     def _deserialize(self, params):
@@ -4765,6 +4873,14 @@ class RunVersionPod(AbstractModel):
         self.RestartCount = params.get("RestartCount")
         self.Ready = params.get("Ready")
         self.ContainerState = params.get("ContainerState")
+        if params.get("NodeInfo") is not None:
+            self.NodeInfo = NodeInfo()
+            self.NodeInfo._deserialize(params.get("NodeInfo"))
+        self.StartTime = params.get("StartTime")
+        self.Unhealthy = params.get("Unhealthy")
+        self.UnhealthyWarningMsg = params.get("UnhealthyWarningMsg")
+        self.VersionId = params.get("VersionId")
+        self.ApplicationName = params.get("ApplicationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4789,11 +4905,15 @@ class ServicePage(AbstractModel):
         :type Size: int
         :param Pages: 页数
         :type Pages: int
+        :param Current: 当前条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Current: int
         """
         self.Records = None
         self.Total = None
         self.Size = None
         self.Pages = None
+        self.Current = None
 
 
     def _deserialize(self, params):
@@ -4806,6 +4926,7 @@ class ServicePage(AbstractModel):
         self.Total = params.get("Total")
         self.Size = params.get("Size")
         self.Pages = params.get("Pages")
+        self.Current = params.get("Current")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4969,6 +5090,24 @@ class ServiceVersionBrief(AbstractModel):
         :param UnderDeploying: 是否正在发布中
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnderDeploying: bool
+        :param BatchDeployStatus: 分批次部署状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchDeployStatus: str
+        :param Zones: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zones: list of str
+        :param NodeInfos: 节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeInfos: list of NodeInfo
+        :param PodList: 实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodList: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`
+        :param WorkloadInfo: 工作负载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkloadInfo: :class:`tencentcloud.tem.v20210701.models.WorkloadInfo`
+        :param CreateDate: 创建日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateDate: str
         """
         self.VersionName = None
         self.Status = None
@@ -4984,6 +5123,12 @@ class ServiceVersionBrief(AbstractModel):
         self.ApplicationId = None
         self.ApplicationName = None
         self.UnderDeploying = None
+        self.BatchDeployStatus = None
+        self.Zones = None
+        self.NodeInfos = None
+        self.PodList = None
+        self.WorkloadInfo = None
+        self.CreateDate = None
 
 
     def _deserialize(self, params):
@@ -5003,6 +5148,21 @@ class ServiceVersionBrief(AbstractModel):
         self.ApplicationId = params.get("ApplicationId")
         self.ApplicationName = params.get("ApplicationName")
         self.UnderDeploying = params.get("UnderDeploying")
+        self.BatchDeployStatus = params.get("BatchDeployStatus")
+        self.Zones = params.get("Zones")
+        if params.get("NodeInfos") is not None:
+            self.NodeInfos = []
+            for item in params.get("NodeInfos"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodeInfos.append(obj)
+        if params.get("PodList") is not None:
+            self.PodList = DescribeRunPodPage()
+            self.PodList._deserialize(params.get("PodList"))
+        if params.get("WorkloadInfo") is not None:
+            self.WorkloadInfo = WorkloadInfo()
+            self.WorkloadInfo._deserialize(params.get("WorkloadInfo"))
+        self.CreateDate = params.get("CreateDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5491,6 +5651,9 @@ class TemService(AbstractModel):
         :param EnableTracing: 是否启用链路追踪
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableTracing: int
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.ApplicationId = None
         self.ApplicationName = None
@@ -5508,6 +5671,7 @@ class TemService(AbstractModel):
         self.EnvironmentName = None
         self.ActiveVersions = None
         self.EnableTracing = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -5532,6 +5696,12 @@ class TemService(AbstractModel):
                 obj._deserialize(item)
                 self.ActiveVersions.append(obj)
         self.EnableTracing = params.get("EnableTracing")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5749,6 +5919,45 @@ class TemServiceVersionInfo(AbstractModel):
 0：关闭metrics采集；
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableMetrics: int
+        :param AppId: 用户AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param SubAccountUin: 用户SubAccountUin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
+        :param Uin: 用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param GroupId: 应用分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param EnableRegistry: 是否启用注册中心
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableRegistry: int
+        :param AutoscalerList: 弹性伸缩数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoscalerList: list of Autoscaler
+        :param Modifier: 修改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Modifier: str
+        :param Creator: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param DeployStrategyConf: 部署策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployStrategyConf: :class:`tencentcloud.tem.v20210701.models.DeployStrategyConf`
+        :param PodList: 实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodList: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`
+        :param ConfEdited: 发布时配置是否有修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfEdited: bool
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.VersionId = None
         self.ApplicationId = None
@@ -5823,6 +6032,19 @@ class TemServiceVersionInfo(AbstractModel):
         self.StoppedManually = None
         self.TcrInstanceId = None
         self.EnableMetrics = None
+        self.AppId = None
+        self.SubAccountUin = None
+        self.Uin = None
+        self.Region = None
+        self.GroupId = None
+        self.EnableRegistry = None
+        self.AutoscalerList = None
+        self.Modifier = None
+        self.Creator = None
+        self.DeployStrategyConf = None
+        self.PodList = None
+        self.ConfEdited = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -5950,6 +6172,33 @@ class TemServiceVersionInfo(AbstractModel):
         self.StoppedManually = params.get("StoppedManually")
         self.TcrInstanceId = params.get("TcrInstanceId")
         self.EnableMetrics = params.get("EnableMetrics")
+        self.AppId = params.get("AppId")
+        self.SubAccountUin = params.get("SubAccountUin")
+        self.Uin = params.get("Uin")
+        self.Region = params.get("Region")
+        self.GroupId = params.get("GroupId")
+        self.EnableRegistry = params.get("EnableRegistry")
+        if params.get("AutoscalerList") is not None:
+            self.AutoscalerList = []
+            for item in params.get("AutoscalerList"):
+                obj = Autoscaler()
+                obj._deserialize(item)
+                self.AutoscalerList.append(obj)
+        self.Modifier = params.get("Modifier")
+        self.Creator = params.get("Creator")
+        if params.get("DeployStrategyConf") is not None:
+            self.DeployStrategyConf = DeployStrategyConf()
+            self.DeployStrategyConf._deserialize(params.get("DeployStrategyConf"))
+        if params.get("PodList") is not None:
+            self.PodList = DescribeRunPodPage()
+            self.PodList._deserialize(params.get("PodList"))
+        self.ConfEdited = params.get("ConfEdited")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6007,14 +6256,49 @@ class WorkloadInfo(AbstractModel):
         :param ApplicationName: 应用名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
+        :param VersionName: 版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param ReadyReplicas: Ready实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadyReplicas: int
+        :param Replicas: 实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replicas: int
+        :param UpdatedReplicas: Updated实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedReplicas: int
+        :param UpdatedReadyReplicas: UpdatedReady实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedReadyReplicas: int
+        :param UpdateRevision: 更新版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateRevision: str
+        :param CurrentRevision: 当前版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentRevision: str
         """
         self.ClusterId = None
         self.ApplicationName = None
+        self.VersionName = None
+        self.ReadyReplicas = None
+        self.Replicas = None
+        self.UpdatedReplicas = None
+        self.UpdatedReadyReplicas = None
+        self.UpdateRevision = None
+        self.CurrentRevision = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.ApplicationName = params.get("ApplicationName")
+        self.VersionName = params.get("VersionName")
+        self.ReadyReplicas = params.get("ReadyReplicas")
+        self.Replicas = params.get("Replicas")
+        self.UpdatedReplicas = params.get("UpdatedReplicas")
+        self.UpdatedReadyReplicas = params.get("UpdatedReadyReplicas")
+        self.UpdateRevision = params.get("UpdateRevision")
+        self.CurrentRevision = params.get("CurrentRevision")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

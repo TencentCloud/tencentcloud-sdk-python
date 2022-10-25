@@ -766,7 +766,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeImageConfig(self, request):
-        """DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG 和 Guetzli。
+        """DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。
 
         :param request: Request instance for DescribeImageConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeImageConfigRequest`
@@ -2227,7 +2227,7 @@ class CdnClient(AbstractClient):
 
 
     def UpdateImageConfig(self, request):
-        """UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG 和 Guetzli。
+        """UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG、 Guetzli 和 Avif。
 
         :param request: Request instance for UpdateImageConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateImageConfigRequest`

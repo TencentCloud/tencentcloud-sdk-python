@@ -7520,6 +7520,12 @@ class KafkaParam(AbstractModel):
         :param UseTableMapping: 「分发到多个topic」开关，默认为false
 注意：此字段可能返回 null，表示取不到有效值。
         :type UseTableMapping: bool
+        :param UseAutoCreateTopic: 使用的Topic是否需要自动创建（目前只支持SOURCE流入任务，如果不使用分发到多个topic，需要在Topic字段填写需要自动创建的topic名）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseAutoCreateTopic: bool
+        :param CompressionType: 写入Topic时是否进行压缩，不开启填"none"，开启的话，可选择"gzip", "snappy", "lz4"中的一个进行填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompressionType: str
         """
         self.SelfBuilt = None
         self.Resource = None
@@ -7534,6 +7540,8 @@ class KafkaParam(AbstractModel):
         self.QpsLimit = None
         self.TableMappings = None
         self.UseTableMapping = None
+        self.UseAutoCreateTopic = None
+        self.CompressionType = None
 
 
     def _deserialize(self, params):
@@ -7555,6 +7563,8 @@ class KafkaParam(AbstractModel):
                 obj._deserialize(item)
                 self.TableMappings.append(obj)
         self.UseTableMapping = params.get("UseTableMapping")
+        self.UseAutoCreateTopic = params.get("UseAutoCreateTopic")
+        self.CompressionType = params.get("CompressionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8694,7 +8704,7 @@ class MySQLParam(AbstractModel):
         r"""
         :param Database: MySQL的数据库名称，"*"为全数据库
         :type Database: str
-        :param Table: MySQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+        :param Table: MySQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写，需要填入正则表达式时，格式为"数据库名\\.数据表名"
         :type Table: str
         :param Resource: 该MySQL在连接管理内的Id
         :type Resource: str
@@ -8740,6 +8750,8 @@ class MySQLParam(AbstractModel):
         :type RecordWithSchema: bool
         :param SignalDatabase: 存放信令表的数据库名称
         :type SignalDatabase: str
+        :param IsTableRegular: 输入的table是否为正则表达式，如果该选项以及IsTablePrefix同时为true，该选项的判断优先级高于IsTablePrefix
+        :type IsTableRegular: bool
         """
         self.Database = None
         self.Table = None
@@ -8765,6 +8777,7 @@ class MySQLParam(AbstractModel):
         self.IncludeQuery = None
         self.RecordWithSchema = None
         self.SignalDatabase = None
+        self.IsTableRegular = None
 
 
     def _deserialize(self, params):
@@ -8799,6 +8812,7 @@ class MySQLParam(AbstractModel):
         self.IncludeQuery = params.get("IncludeQuery")
         self.RecordWithSchema = params.get("RecordWithSchema")
         self.SignalDatabase = params.get("SignalDatabase")
+        self.IsTableRegular = params.get("IsTableRegular")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9054,7 +9068,7 @@ class PostgreSQLParam(AbstractModel):
         r"""
         :param Database: PostgreSQL的数据库名称
         :type Database: str
-        :param Table: PostgreSQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+        :param Table: PostgreSQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"Schema名.数据表名"的格式进行填写，需要填入正则表达式时，格式为"Schema名\\.数据表名"
         :type Table: str
         :param Resource: 该PostgreSQL在连接管理内的Id
         :type Resource: str
@@ -10335,11 +10349,19 @@ class TopicParam(AbstractModel):
         :param TopicId: Topic的TopicId【出参】
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
+        :param CompressionType: 写入Topic时是否进行压缩，不开启填"none"，开启的话，可选择"gzip", "snappy", "lz4"中的一个进行填写。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompressionType: str
+        :param UseAutoCreateTopic: 使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseAutoCreateTopic: bool
         """
         self.Resource = None
         self.OffsetType = None
         self.StartTime = None
         self.TopicId = None
+        self.CompressionType = None
+        self.UseAutoCreateTopic = None
 
 
     def _deserialize(self, params):
@@ -10347,6 +10369,8 @@ class TopicParam(AbstractModel):
         self.OffsetType = params.get("OffsetType")
         self.StartTime = params.get("StartTime")
         self.TopicId = params.get("TopicId")
+        self.CompressionType = params.get("CompressionType")
+        self.UseAutoCreateTopic = params.get("UseAutoCreateTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

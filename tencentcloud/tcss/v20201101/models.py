@@ -3516,6 +3516,9 @@ RESULT_FAILED: 未通过
         :type FixSuggestion: str
         :param BenchmarkStandardId: 所属的合规标准的ID
         :type BenchmarkStandardId: int
+        :param ApplicableVersion: 检测项适用的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicableVersion: str
         """
         self.CustomerPolicyItemId = None
         self.BasePolicyItemId = None
@@ -3532,6 +3535,7 @@ RESULT_FAILED: 未通过
         self.WhitelistId = None
         self.FixSuggestion = None
         self.BenchmarkStandardId = None
+        self.ApplicableVersion = None
 
 
     def _deserialize(self, params):
@@ -3550,6 +3554,7 @@ RESULT_FAILED: 未通过
         self.WhitelistId = params.get("WhitelistId")
         self.FixSuggestion = params.get("FixSuggestion")
         self.BenchmarkStandardId = params.get("BenchmarkStandardId")
+        self.ApplicableVersion = params.get("ApplicableVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4993,8 +4998,6 @@ class CreateImageExportJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ExportField: 导出字段
-        :type ExportField: list of str
         :param Filters: 过滤条件。
 <li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
 <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
@@ -5009,17 +5012,18 @@ class CreateImageExportJobRequest(AbstractModel):
         :type By: str
         :param Order: 排序方式 asc,desc
         :type Order: str
+        :param ExportField: 导出字段
+        :type ExportField: list of str
         """
-        self.ExportField = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
         self.By = None
         self.Order = None
+        self.ExportField = None
 
 
     def _deserialize(self, params):
-        self.ExportField = params.get("ExportField")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
@@ -5030,6 +5034,7 @@ class CreateImageExportJobRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.By = params.get("By")
         self.Order = params.get("Order")
+        self.ExportField = params.get("ExportField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13136,6 +13141,130 @@ class DescribeEscapeWhiteListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeExportJobDownloadURLRequest(AbstractModel):
+    """DescribeExportJobDownloadURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobID: 任务ID
+        :type JobID: str
+        """
+        self.JobID = None
+
+
+    def _deserialize(self, params):
+        self.JobID = params.get("JobID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExportJobDownloadURLResponse(AbstractModel):
+    """DescribeExportJobDownloadURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadURL: 下载链接
+        :type DownloadURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadURL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadURL = params.get("DownloadURL")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExportJobManageListRequest(AbstractModel):
+    """DescribeExportJobManageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>ExportStatus- string -是否必填: 否 - 导出状态 RUNNING: 导出中 SUCCESS:导出完成 FAILURE:失败
+<li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像
+</li>
+        :type Filters: list of RunTimeFilters
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+InsertTime: 创建时间
+        :type By: str
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExportJobManageListResponse(AbstractModel):
+    """DescribeExportJobManageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param List: 任务列表
+        :type List: list of ExportJobInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ExportJobInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExportJobResultRequest(AbstractModel):
     """DescribeExportJobResult请求参数结构体
 
@@ -16313,6 +16442,24 @@ class DescribeSecLogDeliveryKafkaOptionsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param RegionID: 地域，若为空则返回所有可选地域
+        :type RegionID: str
+        """
+        self.RegionID = None
+
+
+    def _deserialize(self, params):
+        self.RegionID = params.get("RegionID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeSecLogDeliveryKafkaOptionsResponse(AbstractModel):
     """DescribeSecLogDeliveryKafkaOptions返回参数结构体
@@ -16323,10 +16470,13 @@ class DescribeSecLogDeliveryKafkaOptionsResponse(AbstractModel):
         r"""
         :param InstanceList: 实例列表
         :type InstanceList: list of CKafkaInstanceInfo
+        :param RegionList: 地域列表
+        :type RegionList: list of RegionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceList = None
+        self.RegionList = None
         self.RequestId = None
 
 
@@ -16337,6 +16487,12 @@ class DescribeSecLogDeliveryKafkaOptionsResponse(AbstractModel):
                 obj = CKafkaInstanceInfo()
                 obj._deserialize(item)
                 self.InstanceList.append(obj)
+        if params.get("RegionList") is not None:
+            self.RegionList = []
+            for item in params.get("RegionList"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.RegionList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -16368,6 +16524,9 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
         :param User: 用户名
 注意：此字段可能返回 null，表示取不到有效值。
         :type User: str
+        :param RegionID: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionID: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16376,6 +16535,7 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
         self.Domain = None
         self.LogTypeList = None
         self.User = None
+        self.RegionID = None
         self.RequestId = None
 
 
@@ -16390,6 +16550,7 @@ class DescribeSecLogDeliveryKafkaSettingResponse(AbstractModel):
                 obj._deserialize(item)
                 self.LogTypeList.append(obj)
         self.User = params.get("User")
+        self.RegionID = params.get("RegionID")
         self.RequestId = params.get("RequestId")
 
 
@@ -20138,6 +20299,58 @@ class EscapeWhiteListInfo(AbstractModel):
         
 
 
+class ExportJobInfo(AbstractModel):
+    """导出任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobID: 任务ID
+        :type JobID: str
+        :param JobName: 任务名称
+        :type JobName: str
+        :param Source: 来源
+        :type Source: str
+        :param ExportStatus: 导出状态
+        :type ExportStatus: str
+        :param ExportProgress: 导出进度
+        :type ExportProgress: int
+        :param FailureMsg: 失败原因
+        :type FailureMsg: str
+        :param Timeout: 超时时间
+        :type Timeout: str
+        :param InsertTime: 插入时间
+        :type InsertTime: str
+        """
+        self.JobID = None
+        self.JobName = None
+        self.Source = None
+        self.ExportStatus = None
+        self.ExportProgress = None
+        self.FailureMsg = None
+        self.Timeout = None
+        self.InsertTime = None
+
+
+    def _deserialize(self, params):
+        self.JobID = params.get("JobID")
+        self.JobName = params.get("JobName")
+        self.Source = params.get("Source")
+        self.ExportStatus = params.get("ExportStatus")
+        self.ExportProgress = params.get("ExportProgress")
+        self.FailureMsg = params.get("FailureMsg")
+        self.Timeout = params.get("Timeout")
+        self.InsertTime = params.get("InsertTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExportVirusListRequest(AbstractModel):
     """ExportVirusList请求参数结构体
 
@@ -20233,6 +20446,10 @@ class FileAttributeInfo(AbstractModel):
         :type FileCreateTime: str
         :param LatestTamperedFileMTime: 最近被篡改文件创建时间
         :type LatestTamperedFileMTime: str
+        :param NewFile: 新文件内容
+        :type NewFile: str
+        :param FileDiff: 新旧文件的差异
+        :type FileDiff: str
         """
         self.FileName = None
         self.FileType = None
@@ -20240,6 +20457,8 @@ class FileAttributeInfo(AbstractModel):
         self.FilePath = None
         self.FileCreateTime = None
         self.LatestTamperedFileMTime = None
+        self.NewFile = None
+        self.FileDiff = None
 
 
     def _deserialize(self, params):
@@ -20249,6 +20468,8 @@ class FileAttributeInfo(AbstractModel):
         self.FilePath = params.get("FilePath")
         self.FileCreateTime = params.get("FileCreateTime")
         self.LatestTamperedFileMTime = params.get("LatestTamperedFileMTime")
+        self.NewFile = params.get("NewFile")
+        self.FileDiff = params.get("FileDiff")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22545,6 +22766,8 @@ class ModifySecLogDeliveryKafkaSettingRequest(AbstractModel):
         :type AccessType: int
         :param KafkaVersion: kafka版本号
         :type KafkaVersion: str
+        :param RegionID: 地域ID
+        :type RegionID: str
         """
         self.InstanceID = None
         self.InstanceName = None
@@ -22554,6 +22777,7 @@ class ModifySecLogDeliveryKafkaSettingRequest(AbstractModel):
         self.LogTypeList = None
         self.AccessType = None
         self.KafkaVersion = None
+        self.RegionID = None
 
 
     def _deserialize(self, params):
@@ -22570,6 +22794,7 @@ class ModifySecLogDeliveryKafkaSettingRequest(AbstractModel):
                 self.LogTypeList.append(obj)
         self.AccessType = params.get("AccessType")
         self.KafkaVersion = params.get("KafkaVersion")
+        self.RegionID = params.get("RegionID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
