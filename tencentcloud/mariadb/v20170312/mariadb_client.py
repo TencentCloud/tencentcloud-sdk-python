@@ -1515,6 +1515,93 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstanceNetwork(self, request):
+        """本接口（ModifyInstanceNetwork）用于修改实例所属网络
+
+        :param request: Request instance for ModifyInstanceNetwork.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyInstanceNetworkRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyInstanceNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceNetwork", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceNetworkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstanceVip(self, request):
+        """本接口（ModifyInstanceVip）用于修改实例VIP
+
+        :param request: Request instance for ModifyInstanceVip.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyInstanceVipRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyInstanceVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceVip", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceVipResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstanceVport(self, request):
+        """本接口（ModifyInstanceVport）用于修改实例VPORT
+
+        :param request: Request instance for ModifyInstanceVport.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyInstanceVportRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyInstanceVportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceVport", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceVportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyLogFileRetentionPeriod(self, request):
         """本接口(ModifyLogFileRetentionPeriod)用于修改数据库备份日志保存天数。
 

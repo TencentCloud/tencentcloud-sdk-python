@@ -4775,6 +4775,10 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterInstanceIdList: list of str
         :param FilterEnterpriseFlag: 企业版搜索
         :type FilterEnterpriseFlag: int
+        :param FilterLightFlag: 轻量版搜索
+        :type FilterLightFlag: int
+        :param FilterChannelFlag: 定制版搜索
+        :type FilterChannelFlag: int
         :param FilterTag: 标签搜索
         :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
         """
@@ -4789,6 +4793,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterBoundStatus = None
         self.FilterInstanceIdList = None
         self.FilterEnterpriseFlag = None
+        self.FilterLightFlag = None
+        self.FilterChannelFlag = None
         self.FilterTag = None
 
 
@@ -4804,6 +4810,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterBoundStatus = params.get("FilterBoundStatus")
         self.FilterInstanceIdList = params.get("FilterInstanceIdList")
         self.FilterEnterpriseFlag = params.get("FilterEnterpriseFlag")
+        self.FilterLightFlag = params.get("FilterLightFlag")
+        self.FilterChannelFlag = params.get("FilterChannelFlag")
         if params.get("FilterTag") is not None:
             self.FilterTag = TagFilter()
             self.FilterTag._deserialize(params.get("FilterTag"))

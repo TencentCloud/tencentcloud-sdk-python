@@ -374,9 +374,9 @@ class CreateCodeBatchRequest(AbstractModel):
         :type BatchId: str
         :param Remark: 备注
         :type Remark: str
-        :param MpTpl: 活动ID
+        :param MpTpl: 模版ID，或者活动ID
         :type MpTpl: str
-        :param CloneId: 克隆批次ID
+        :param CloneId: 克隆批次ID，同时会复制溯源信息
         :type CloneId: str
         """
         self.CorpId = None
@@ -2460,7 +2460,7 @@ class ModifyCodeBatchRequest(AbstractModel):
         :type CorpId: int
         :param Status: 状态 0: 未激活 1: 已激活 -1: 已冻结
         :type Status: int
-        :param MpTpl: 模板ID
+        :param MpTpl: 模版ID，或者活动ID
         :type MpTpl: str
         :param MerchantId: 商户ID
         :type MerchantId: str

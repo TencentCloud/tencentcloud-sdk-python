@@ -314,6 +314,8 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type NotAfter: int
         :param Tries: 最大尝试次数
         :type Tries: int
+        :param Variables: 自定义变量（仅高级版支持）
+        :type Variables: list of Variable
         """
         self.SdkAppId = None
         self.NotBefore = None
@@ -324,6 +326,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self.Description = None
         self.NotAfter = None
         self.Tries = None
+        self.Variables = None
 
 
     def _deserialize(self, params):
@@ -336,6 +339,12 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self.Description = params.get("Description")
         self.NotAfter = params.get("NotAfter")
         self.Tries = params.get("Tries")
+        if params.get("Variables") is not None:
+            self.Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self.Variables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3055,3 +3064,31 @@ class UnbindStaffSkillGroupListResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Variable(AbstractModel):
+    """变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 变量名
+        :type Key: str
+        :param Value: 变量值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

@@ -112,6 +112,34 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         
 
 
+class ApproverOption(AbstractModel):
+    """签署人个性化能力信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NoRefuse: 是否可以拒签 false-可以拒签,默认 true-不可以拒签
+        :type NoRefuse: bool
+        :param NoTransfer: 是否可以转发 false-可以转发,默认 true-不可以转发
+        :type NoTransfer: bool
+        """
+        self.NoRefuse = None
+        self.NoTransfer = None
+
+
+    def _deserialize(self, params):
+        self.NoRefuse = params.get("NoRefuse")
+        self.NoTransfer = params.get("NoTransfer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApproverRestriction(AbstractModel):
     """指定签署人限制项
 
@@ -2317,6 +2345,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type CustomApproverTag: str
         :param RegisterInfo: 快速注册相关信息，目前暂未开放！
         :type RegisterInfo: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
+        :param ApproverOption: 签署人个性化能力值
+        :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
         """
         self.ApproverType = None
         self.OrganizationName = None
@@ -2334,6 +2364,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.ApproverSource = None
         self.CustomApproverTag = None
         self.RegisterInfo = None
+        self.ApproverOption = None
 
 
     def _deserialize(self, params):
@@ -2355,6 +2386,9 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         if params.get("RegisterInfo") is not None:
             self.RegisterInfo = RegisterInfo()
             self.RegisterInfo._deserialize(params.get("RegisterInfo"))
+        if params.get("ApproverOption") is not None:
+            self.ApproverOption = ApproverOption()
+            self.ApproverOption._deserialize(params.get("ApproverOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

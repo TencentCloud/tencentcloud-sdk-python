@@ -3611,9 +3611,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type Domain: str
         :param LoadBalancerVips: 负载均衡实例的 VIP 地址，支持多个。
         :type LoadBalancerVips: list of str
-        :param BackendPublicIps: 负载均衡绑定的后端服务的外网 IP。
+        :param BackendPublicIps: 负载均衡绑定的后端服务的外网 IP，只支持查询云服务器的公网 IP。
         :type BackendPublicIps: list of str
-        :param BackendPrivateIps: 负载均衡绑定的后端服务的内网 IP。
+        :param BackendPrivateIps: 负载均衡绑定的后端服务的内网 IP，只支持查询云服务器的内网 IP。
         :type BackendPrivateIps: list of str
         :param Offset: 数据偏移量，默认为0。
         :type Offset: int

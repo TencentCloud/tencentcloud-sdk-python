@@ -487,14 +487,18 @@ class CycleEmailParam(AbstractModel):
         :type BeginTime: str
         :param IntervalTime: 任务周期 小时维度
         :type IntervalTime: int
+        :param TermCycle: 是否终止周期，用于任务更新 0否1是
+        :type TermCycle: int
         """
         self.BeginTime = None
         self.IntervalTime = None
+        self.TermCycle = None
 
 
     def _deserialize(self, params):
         self.BeginTime = params.get("BeginTime")
         self.IntervalTime = params.get("IntervalTime")
+        self.TermCycle = params.get("TermCycle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -4378,6 +4378,34 @@ CLIENT_TYPE_H5 H5场景;
         
 
 
+class CloudExternalAttachmentData(AbstractModel):
+    """渠道透传字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelName: 渠道名
+        :type ChannelName: str
+        :param AttachmentData: 渠道透传字段，由各个渠道自行定义
+        :type AttachmentData: str
+        """
+        self.ChannelName = None
+        self.AttachmentData = None
+
+
+    def _deserialize(self, params):
+        self.ChannelName = params.get("ChannelName")
+        self.AttachmentData = params.get("AttachmentData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudExternalChannelData(AbstractModel):
     """第三方渠道数据信息
 
@@ -4831,6 +4859,8 @@ class CloudSubOrder(AbstractModel):
 例如溢价信息、抵扣信息、积分信息、补贴信息
 通过该字段可以实现渠道方的优惠抵扣补贴等营销功能。
         :type AttachmentInfoList: list of CloudAttachmentInfo
+        :param ExternalAttachmentDataList: 渠道透传数据列表。
+        :type ExternalAttachmentDataList: list of CloudExternalAttachmentData
         """
         self.SubOutTradeNo = None
         self.SubAppId = None
@@ -4844,6 +4874,7 @@ class CloudSubOrder(AbstractModel):
         self.WxSubMchId = None
         self.SettleInfo = None
         self.AttachmentInfoList = None
+        self.ExternalAttachmentDataList = None
 
 
     def _deserialize(self, params):
@@ -4866,6 +4897,12 @@ class CloudSubOrder(AbstractModel):
                 obj = CloudAttachmentInfo()
                 obj._deserialize(item)
                 self.AttachmentInfoList.append(obj)
+        if params.get("ExternalAttachmentDataList") is not None:
+            self.ExternalAttachmentDataList = []
+            for item in params.get("ExternalAttachmentDataList"):
+                obj = CloudExternalAttachmentData()
+                obj._deserialize(item)
+                self.ExternalAttachmentDataList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -29392,6 +29429,8 @@ ORDER_RECEIVE_MODE_V_COMBINE - 虚拟合单支付
         :type OrderReceiveMode: str
         :param ExternalUserInfoList: 渠道方用户信息列表
         :type ExternalUserInfoList: list of CloudExternalUserInfo
+        :param ExternalAttachmentDataList: 渠道透传数据列表
+        :type ExternalAttachmentDataList: list of CloudExternalAttachmentData
         """
         self.MidasAppId = None
         self.UserId = None
@@ -29432,6 +29471,7 @@ ORDER_RECEIVE_MODE_V_COMBINE - 虚拟合单支付
         self.ExternalPromptGroupList = None
         self.OrderReceiveMode = None
         self.ExternalUserInfoList = None
+        self.ExternalAttachmentDataList = None
 
 
     def _deserialize(self, params):
@@ -29502,6 +29542,12 @@ ORDER_RECEIVE_MODE_V_COMBINE - 虚拟合单支付
                 obj = CloudExternalUserInfo()
                 obj._deserialize(item)
                 self.ExternalUserInfoList.append(obj)
+        if params.get("ExternalAttachmentDataList") is not None:
+            self.ExternalAttachmentDataList = []
+            for item in params.get("ExternalAttachmentDataList"):
+                obj = CloudExternalAttachmentData()
+                obj._deserialize(item)
+                self.ExternalAttachmentDataList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

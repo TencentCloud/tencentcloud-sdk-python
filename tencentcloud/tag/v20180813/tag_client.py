@@ -26,6 +26,35 @@ class TagClient(AbstractClient):
     _service = 'tag'
 
 
+    def AddProject(self, request):
+        """创建项目
+
+        :param request: Request instance for AddProject.
+        :type request: :class:`tencentcloud.tag.v20180813.models.AddProjectRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.AddProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddProject", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddResourceTag(self, request):
         """本接口用于给标签关联资源
 
@@ -824,6 +853,35 @@ class TagClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnTagResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateProject(self, request):
+        """修改项目
+
+        :param request: Request instance for UpdateProject.
+        :type request: :class:`tencentcloud.tag.v20180813.models.UpdateProjectRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.UpdateProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateProject", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateProjectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

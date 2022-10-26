@@ -1438,6 +1438,67 @@ class ModifyPrivateZoneVpcResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRecordsStatusRequest(AbstractModel):
+    """ModifyRecordsStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 私有域ID
+        :type ZoneId: str
+        :param RecordIds: 解析记录ID列表
+        :type RecordIds: list of int
+        :param Status: enabled：生效，disabled：失效
+        :type Status: str
+        """
+        self.ZoneId = None
+        self.RecordIds = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.RecordIds = params.get("RecordIds")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordsStatusResponse(AbstractModel):
+    """ModifyRecordsStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 私有域ID
+        :type ZoneId: str
+        :param RecordIds: 解析记录ID列表
+        :type RecordIds: list of int
+        :param Status: enabled：生效，disabled：失效
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ZoneId = None
+        self.RecordIds = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.RecordIds = params.get("RecordIds")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class PrivateDNSAccount(AbstractModel):
     """私有域解析账号
 

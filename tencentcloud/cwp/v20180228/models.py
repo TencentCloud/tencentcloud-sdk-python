@@ -11920,6 +11920,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type KillProcess: int
         :param EngineType: 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
         :type EngineType: int
+        :param EnableInspiredEngine: 启发引擎 0 关闭 1开启
+        :type EnableInspiredEngine: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11937,6 +11939,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self.ClickTimeout = None
         self.KillProcess = None
         self.EngineType = None
+        self.EnableInspiredEngine = None
         self.RequestId = None
 
 
@@ -11955,6 +11958,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self.ClickTimeout = params.get("ClickTimeout")
         self.KillProcess = params.get("KillProcess")
         self.EngineType = params.get("EngineType")
+        self.EnableInspiredEngine = params.get("EnableInspiredEngine")
         self.RequestId = params.get("RequestId")
 
 
@@ -18851,6 +18855,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type KillProcess: int
         :param EngineType: 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
         :type EngineType: int
+        :param EnableInspiredEngine: 启发引擎开关 0 关闭 1开启
+        :type EnableInspiredEngine: int
         """
         self.CheckPattern = None
         self.StartTime = None
@@ -18864,6 +18870,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self.AutoIsolation = None
         self.KillProcess = None
         self.EngineType = None
+        self.EnableInspiredEngine = None
 
 
     def _deserialize(self, params):
@@ -18879,6 +18886,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self.AutoIsolation = params.get("AutoIsolation")
         self.KillProcess = params.get("KillProcess")
         self.EngineType = params.get("EngineType")
+        self.EnableInspiredEngine = params.get("EnableInspiredEngine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
