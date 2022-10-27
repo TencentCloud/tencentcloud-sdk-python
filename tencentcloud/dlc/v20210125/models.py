@@ -1201,6 +1201,59 @@ class CreateImportTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateResultDownloadRequest(AbstractModel):
+    """CreateResultDownload请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 查询结果任务Id
+        :type TaskId: str
+        :param Format: 下载格式
+        :type Format: str
+        :param Force: 是否重新生成下载文件，仅当之前任务为 Timout | Error 时有效
+        :type Force: bool
+        """
+        self.TaskId = None
+        self.Format = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Format = params.get("Format")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateResultDownloadResponse(AbstractModel):
+    """CreateResultDownload返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadId: 下载任务Id
+        :type DownloadId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadId = params.get("DownloadId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScriptRequest(AbstractModel):
     """CreateScript请求参数结构体
 
@@ -3177,6 +3230,76 @@ class DescribeDatabasesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DatabaseList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResultDownloadRequest(AbstractModel):
+    """DescribeResultDownload请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadId: 查询任务Id
+        :type DownloadId: str
+        """
+        self.DownloadId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadId = params.get("DownloadId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResultDownloadResponse(AbstractModel):
+    """DescribeResultDownload返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Path: 下载文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Status: 任务状态 init | queue | format | compress | success|  timeout | error
+        :type Status: str
+        :param Reason: 任务异常原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param SecretId: 临时AK
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretId: str
+        :param SecretKey: 临时SK
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param Token: 临时Token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Token: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Path = None
+        self.Status = None
+        self.Reason = None
+        self.SecretId = None
+        self.SecretKey = None
+        self.Token = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Status = params.get("Status")
+        self.Reason = params.get("Reason")
+        self.SecretId = params.get("SecretId")
+        self.SecretKey = params.get("SecretKey")
+        self.Token = params.get("Token")
         self.RequestId = params.get("RequestId")
 
 

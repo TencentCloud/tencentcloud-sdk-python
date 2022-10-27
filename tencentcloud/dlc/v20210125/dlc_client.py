@@ -461,6 +461,35 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateResultDownload(self, request):
+        """创建查询结果下载任务
+
+        :param request: Request instance for CreateResultDownload.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateResultDownloadRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateResultDownloadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateResultDownload", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateResultDownloadResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateScript(self, request):
         """该接口（CreateScript）用于创建sql脚本。
 
@@ -1027,6 +1056,35 @@ class DlcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDatabasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResultDownload(self, request):
+        """查询结果下载任务
+
+        :param request: Request instance for DescribeResultDownload.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeResultDownloadRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeResultDownloadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResultDownload", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResultDownloadResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
