@@ -60,7 +60,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type VerifyChannel: list of str
         :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
-        :param UserId: 签署人userId，非企微场景不使用此字段
+        :param UserId: 签署人userId，传此字段则不用传姓名、手机号
         :type UserId: str
         :param ApproverSource: 签署人用户来源,企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
@@ -1838,7 +1838,8 @@ class DescribeIntegrationEmployeesRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param Limit: 返回最大数量，最大为20
         :type Limit: int
-        :param Filters: 查询过滤实名用户，key为Status，Values为["IsVerified"]
+        :param Filters: 查询过滤实名用户，Key为Status，Values为["IsVerified"]
+根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0，最大为20000
         :type Offset: int
@@ -2335,7 +2336,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type IsFullText: bool
         :param PreReadTime: 签署前置条件：阅读时长限制，单位秒，默认为不需要
         :type PreReadTime: int
-        :param UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。非企微场景不使用此字段
+        :param UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
         :type UserId: str
         :param Required: 当前只支持true，默认为true
         :type Required: bool

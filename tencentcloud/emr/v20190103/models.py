@@ -1917,6 +1917,9 @@ class EmrListInstance(AbstractModel):
         :param IsMultiZoneCluster: 是否为跨AZ集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsMultiZoneCluster: bool
+        :param IsHandsCluster: 是否手戳集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsHandsCluster: bool
         """
         self.ClusterId = None
         self.StatusDesc = None
@@ -1945,6 +1948,7 @@ class EmrListInstance(AbstractModel):
         self.UniqSubnetId = None
         self.ClusterClass = None
         self.IsMultiZoneCluster = None
+        self.IsHandsCluster = None
 
 
     def _deserialize(self, params):
@@ -1980,6 +1984,7 @@ class EmrListInstance(AbstractModel):
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.ClusterClass = params.get("ClusterClass")
         self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
+        self.IsHandsCluster = params.get("IsHandsCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4655,6 +4660,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type SubnetId: str
         :param ScaleOutServiceConfAssign: 预设配置组
         :type ScaleOutServiceConfAssign: str
+        :param AutoRenew: 0表示关闭自动续费，1表示开启自动续费
+        :type AutoRenew: int
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -4681,6 +4688,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ZoneId = None
         self.SubnetId = None
         self.ScaleOutServiceConfAssign = None
+        self.AutoRenew = None
 
 
     def _deserialize(self, params):
@@ -4723,6 +4731,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.SubnetId = params.get("SubnetId")
         self.ScaleOutServiceConfAssign = params.get("ScaleOutServiceConfAssign")
+        self.AutoRenew = params.get("AutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

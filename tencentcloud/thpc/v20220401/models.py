@@ -300,6 +300,8 @@ class ClusterOverview(AbstractModel):
         :type LoginNodeSet: list of LoginNodeOverview
         :param LoginNodeCount: 登录节点数量。
         :type LoginNodeCount: int
+        :param VpcId: 集群所属私有网络ID。
+        :type VpcId: str
         """
         self.ClusterId = None
         self.ClusterStatus = None
@@ -313,6 +315,7 @@ class ClusterOverview(AbstractModel):
         self.ManagerNodeSet = None
         self.LoginNodeSet = None
         self.LoginNodeCount = None
+        self.VpcId = None
 
 
     def _deserialize(self, params):
@@ -345,6 +348,7 @@ class ClusterOverview(AbstractModel):
                 obj._deserialize(item)
                 self.LoginNodeSet.append(obj)
         self.LoginNodeCount = params.get("LoginNodeCount")
+        self.VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

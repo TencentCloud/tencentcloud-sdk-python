@@ -1194,11 +1194,11 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
         r"""
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param Limit: 限制数目 最大200
         :type Limit: int
-        :param CreatTimeRangeStart: 下单时间范围起始点
+        :param CreatTimeRangeStart: 下单时间范围起始点【请保持时间范围最大90天】
         :type CreatTimeRangeStart: str
-        :param CreatTimeRangeEnd: 下单时间范围终止点
+        :param CreatTimeRangeEnd: 下单时间范围终止点【请保持时间范围最大90天】
         :type CreatTimeRangeEnd: str
         :param Order: 0:下单时间降序；其他：下单时间升序
         :type Order: int
@@ -1284,11 +1284,11 @@ class DescribeAgentDealsCacheRequest(AbstractModel):
         r"""
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param Limit: 限制数目 最大200
         :type Limit: int
-        :param CreatTimeRangeStart: 下单时间范围起始点
+        :param CreatTimeRangeStart: 下单时间范围起始点【请保持时间范围最大90天】
         :type CreatTimeRangeStart: str
-        :param CreatTimeRangeEnd: 下单时间范围终止点
+        :param CreatTimeRangeEnd: 下单时间范围终止点【请保持时间范围最大90天】
         :type CreatTimeRangeEnd: str
         :param Order: 0:下单时间降序；其他：下单时间升序
         :type Order: int
@@ -1370,7 +1370,7 @@ class DescribeAgentPayDealsRequest(AbstractModel):
         r"""
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param Limit: 限制数目 最大100
         :type Limit: int
         :param CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
         :type CreatTimeRangeStart: str
@@ -1452,7 +1452,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
         r"""
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param Limit: 限制数目 最大100
         :type Limit: int
         :param CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
         :type CreatTimeRangeStart: str
@@ -1540,7 +1540,7 @@ class DescribeAgentSelfPayDealsRequest(AbstractModel):
         :type OwnerUin: str
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param Limit: 限制数目 最大100
         :type Limit: int
         :param CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
         :type CreatTimeRangeStart: str
@@ -1622,7 +1622,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
         :type OwnerUin: str
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制数目
+        :param Limit: 限制数目 最大100
         :type Limit: int
         :param CreatTimeRangeStart: 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
         :type CreatTimeRangeStart: str

@@ -18261,6 +18261,9 @@ class NetworkInterface(AbstractModel):
         :param AttachType: 弹性网卡类型：0:标准型/1:扩展型。默认值为0。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachType: int
+        :param ResourceId: 用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -18281,6 +18284,7 @@ class NetworkInterface(AbstractModel):
         self.Business = None
         self.CdcId = None
         self.AttachType = None
+        self.ResourceId = None
 
 
     def _deserialize(self, params):
@@ -18320,6 +18324,7 @@ class NetworkInterface(AbstractModel):
         self.Business = params.get("Business")
         self.CdcId = params.get("CdcId")
         self.AttachType = params.get("AttachType")
+        self.ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

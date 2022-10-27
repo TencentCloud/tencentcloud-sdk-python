@@ -851,7 +851,8 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
         :type Limit: int
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param Filters: 查询过滤实名用户，key为Status，Values为["IsVerified"]
+        :param Filters: 查询过滤实名用户，Key为Status，Values为["IsVerified"]
+根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0，最大为20000
         :type Offset: int

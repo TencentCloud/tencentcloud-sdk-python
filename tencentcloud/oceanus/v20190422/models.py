@@ -2875,6 +2875,11 @@ class WorkSpaceClusterItem(AbstractModel):
         :type WorkSpaceName: str
         :param Status: 绑定状态  2 绑定 1  解除绑定
         :type Status: int
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param ProjectIdStr: 项目ID string类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectIdStr: str
         """
         self.ClusterGroupId = None
         self.ClusterGroupSerialId = None
@@ -2882,6 +2887,8 @@ class WorkSpaceClusterItem(AbstractModel):
         self.WorkSpaceId = None
         self.WorkSpaceName = None
         self.Status = None
+        self.ProjectId = None
+        self.ProjectIdStr = None
 
 
     def _deserialize(self, params):
@@ -2891,6 +2898,8 @@ class WorkSpaceClusterItem(AbstractModel):
         self.WorkSpaceId = params.get("WorkSpaceId")
         self.WorkSpaceName = params.get("WorkSpaceName")
         self.Status = params.get("Status")
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectIdStr = params.get("ProjectIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

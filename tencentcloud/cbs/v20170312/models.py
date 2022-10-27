@@ -3196,18 +3196,18 @@ class ResizeDiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-        :type DiskId: str
         :param DiskSize: 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :type DiskSize: int
+        :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :type DiskId: str
         """
-        self.DiskId = None
         self.DiskSize = None
+        self.DiskId = None
 
 
     def _deserialize(self, params):
-        self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
+        self.DiskId = params.get("DiskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
