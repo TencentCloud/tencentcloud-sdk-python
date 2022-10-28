@@ -417,7 +417,7 @@ class DescribeProjectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AllList: 传1拉取所有项目（包括隐藏项目），不传或传0拉取显示项目
+        :param AllList: 传1拉取所有项目（包括隐藏项目），传0拉取显示项目
         :type AllList: int
         :param Limit: 分页条数，固定值1000。
         :type Limit: int

@@ -1795,6 +1795,68 @@ class DescribeClientBalanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRebateInfosNewRequest(AbstractModel):
+    """DescribeRebateInfosNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RebateMonth: 返佣月份，如2018-02
+        :type RebateMonth: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        """
+        self.RebateMonth = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RebateMonth = params.get("RebateMonth")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRebateInfosNewResponse(AbstractModel):
+    """DescribeRebateInfosNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RebateInfoSet: 返佣信息列表
+        :type RebateInfoSet: list of RebateInfoElemNew
+        :param TotalCount: 符合查询条件返佣信息数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RebateInfoSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RebateInfoSet") is not None:
+            self.RebateInfoSet = []
+            for item in params.get("RebateInfoSet"):
+                obj = RebateInfoElemNew()
+                obj._deserialize(item)
+                self.RebateInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRebateInfosRequest(AbstractModel):
     """DescribeRebateInfos请求参数结构体
 
@@ -2079,6 +2141,50 @@ class ProductInfoElem(AbstractModel):
 
 
 class RebateInfoElem(AbstractModel):
+    """返佣信息定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 代理商账号ID
+        :type Uin: str
+        :param RebateMonth: 返佣月份，如2018-02
+        :type RebateMonth: str
+        :param Amt: 返佣金额，单位分
+        :type Amt: int
+        :param MonthSales: 月度业绩，单位分
+        :type MonthSales: int
+        :param QuarterSales: 季度业绩，单位分
+        :type QuarterSales: int
+        :param ExceptionFlag: NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+        :type ExceptionFlag: str
+        """
+        self.Uin = None
+        self.RebateMonth = None
+        self.Amt = None
+        self.MonthSales = None
+        self.QuarterSales = None
+        self.ExceptionFlag = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.RebateMonth = params.get("RebateMonth")
+        self.Amt = params.get("Amt")
+        self.MonthSales = params.get("MonthSales")
+        self.QuarterSales = params.get("QuarterSales")
+        self.ExceptionFlag = params.get("ExceptionFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebateInfoElemNew(AbstractModel):
     """返佣信息定义
 
     """

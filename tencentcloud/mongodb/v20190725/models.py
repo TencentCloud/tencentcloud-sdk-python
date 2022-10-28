@@ -1272,6 +1272,97 @@ class DescribeDBInstanceDealResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceNodePropertyRequest(AbstractModel):
+    """DescribeDBInstanceNodeProperty请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :type InstanceId: str
+        :param NodeIds: 节点ID。
+        :type NodeIds: list of str
+        :param Roles: 节点角色。可选值包括：
+<ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
+        :type Roles: list of str
+        :param OnlyHidden: 该参数指定节点是否为Hidden节点，默认为false。
+        :type OnlyHidden: bool
+        :param Priority: 该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。
+        :type Priority: int
+        :param Votes: 该参数指定节点投票权。
+<ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
+        :type Votes: int
+        :param Tags: 节点标签。
+        :type Tags: list of NodeTag
+        """
+        self.InstanceId = None
+        self.NodeIds = None
+        self.Roles = None
+        self.OnlyHidden = None
+        self.Priority = None
+        self.Votes = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NodeIds = params.get("NodeIds")
+        self.Roles = params.get("Roles")
+        self.OnlyHidden = params.get("OnlyHidden")
+        self.Priority = params.get("Priority")
+        self.Votes = params.get("Votes")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = NodeTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceNodePropertyResponse(AbstractModel):
+    """DescribeDBInstanceNodeProperty返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Mongos: Mongos节点属性。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mongos: list of NodeProperty
+        :param ReplicateSets: 副本集节点信息。
+        :type ReplicateSets: list of ReplicateSetInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Mongos = None
+        self.ReplicateSets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Mongos") is not None:
+            self.Mongos = []
+            for item in params.get("Mongos"):
+                obj = NodeProperty()
+                obj._deserialize(item)
+                self.Mongos.append(obj)
+        if params.get("ReplicateSets") is not None:
+            self.ReplicateSets = []
+            for item in params.get("ReplicateSets"):
+                obj = ReplicateSetInfo()
+                obj._deserialize(item)
+                self.ReplicateSets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances请求参数结构体
 
@@ -2730,6 +2821,116 @@ class ModifyNetworkAddress(AbstractModel):
         
 
 
+class NodeProperty(AbstractModel):
+    """节点属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 节点所在的可用区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param NodeName: 节点名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        :param Address: 节点访问地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param Role: 角色。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Role: str
+        :param Hidden: 是否为Hidden节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hidden: bool
+        :param Status: 节点状态，包括：ORMAL/STARTUP/RECOVERING/STARTUP2/UNKNOWN/DOWN/ROLLBACK/REMOVED等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param SlaveDelay: 主从延迟，单位秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveDelay: int
+        :param Priority: 节点优先级。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param Votes: 节点投票权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Votes: int
+        :param Tags: 节点标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of NodeTag
+        :param ReplicateSetId: 副本集Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicateSetId: str
+        """
+        self.Zone = None
+        self.NodeName = None
+        self.Address = None
+        self.Role = None
+        self.Hidden = None
+        self.Status = None
+        self.SlaveDelay = None
+        self.Priority = None
+        self.Votes = None
+        self.Tags = None
+        self.ReplicateSetId = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.NodeName = params.get("NodeName")
+        self.Address = params.get("Address")
+        self.Role = params.get("Role")
+        self.Hidden = params.get("Hidden")
+        self.Status = params.get("Status")
+        self.SlaveDelay = params.get("SlaveDelay")
+        self.Priority = params.get("Priority")
+        self.Votes = params.get("Votes")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = NodeTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.ReplicateSetId = params.get("ReplicateSetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeTag(AbstractModel):
+    """节点Tag
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 节点Tag key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param TagValue: 节点Tag Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OfflineIsolatedDBInstanceRequest(AbstractModel):
     """OfflineIsolatedDBInstance请求参数结构体
 
@@ -2914,6 +3115,36 @@ class ReplicaSetInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.ReplicaSetId = params.get("ReplicaSetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplicateSetInfo(AbstractModel):
+    """副本集信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Nodes: 节点属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nodes: list of NodeProperty
+        """
+        self.Nodes = None
+
+
+    def _deserialize(self, params):
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = NodeProperty()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

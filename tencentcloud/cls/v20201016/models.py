@@ -683,6 +683,9 @@ class ConfigInfo(AbstractModel):
         r"""
         :param ConfigId: 采集规则配置ID
         :type ConfigId: str
+        :param Name: 采集规则配置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
         :param LogFormat: 日志格式化方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogFormat: str
@@ -710,6 +713,7 @@ class ConfigInfo(AbstractModel):
         :type UserDefineRule: str
         """
         self.ConfigId = None
+        self.Name = None
         self.LogFormat = None
         self.Path = None
         self.LogType = None
@@ -723,6 +727,7 @@ class ConfigInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.ConfigId = params.get("ConfigId")
+        self.Name = params.get("Name")
         self.LogFormat = params.get("LogFormat")
         self.Path = params.get("Path")
         self.LogType = params.get("LogType")
@@ -3853,17 +3858,17 @@ class ExtractRuleInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type JsonStandard: int
         :param Protocol: syslog传输协议，取值为tcp或者udp。
-该接口适用于：创建采集规则配置、修改采集规则配置
+该字段适用于：创建采集规则配置、修改采集规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param Address: syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]。举例：127.0.0.1:9000
-该接口适用于：创建采集规则配置、修改采集规则配置
+该字段适用于：创建采集规则配置、修改采集规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
         :param ParseProtocol: rfc3164：指定系统日志采集使用RFC3164协议解析日志。
 rfc5424：指定系统日志采集使用RFC5424协议解析日志。
 auto：自动匹配rfc3164或者rfc5424其中一种协议
-该接口适用于：创建采集规则配置、修改采集规则配置
+该字段适用于：创建采集规则配置、修改采集规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParseProtocol: str
         """

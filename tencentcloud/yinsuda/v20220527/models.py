@@ -415,17 +415,26 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
         :param Types: 类型列表，取值有：
 <li>OfficialRec：官方推荐；</li>
 <li>Customize：自定义。</li>
+默认值为 OfficialRec。
         :type Types: list of str
+        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Offset: int
+        :param Limit: 分页返回的记录条数，默认值：20，最大值：50。
+        :type Limit: int
         """
         self.AppName = None
         self.UserId = None
         self.Types = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.AppName = params.get("AppName")
         self.UserId = params.get("UserId")
         self.Types = params.get("Types")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -444,10 +453,13 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
         r"""
         :param PlaylistBaseInfoSet: 歌单基础信息。
         :type PlaylistBaseInfoSet: list of KTVPlaylistBaseInfo
+        :param TotalCount: 歌单总数。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PlaylistBaseInfoSet = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -458,6 +470,7 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
                 obj = KTVPlaylistBaseInfo()
                 obj._deserialize(item)
                 self.PlaylistBaseInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

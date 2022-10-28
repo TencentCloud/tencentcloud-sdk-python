@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 实例安全组信息添加失败。
 FAILEDOPERATION_ADDINSTANCEINFOFAILED = 'FailedOperation.AddInstanceInfoFailed'
 
+# 申请VIP失败。
+FAILEDOPERATION_APPLYVIPFAILED = 'FailedOperation.ApplyVipFailed'
+
 # 绑定安全组失败。
 FAILEDOPERATION_ASSOCIATESECURITYGROUPSFAILED = 'FailedOperation.AssociateSecurityGroupsFailed'
 
@@ -62,6 +65,9 @@ FAILEDOPERATION_PAYFAILED = 'FailedOperation.PayFailed'
 # 重置账号密码失败。
 FAILEDOPERATION_RESETPASSWORDFAILED = 'FailedOperation.ResetPasswordFailed'
 
+# 更新安全组失败。
+FAILEDOPERATION_SGCHANGEVIP = 'FailedOperation.SGChangeVip'
+
 # 设置规则失败。
 FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 
@@ -74,8 +80,17 @@ FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = 'FailedOperation.UpdateInstanceInfoFa
 # 用户未实名认证。
 FAILEDOPERATION_USERNOTAUTHED = 'FailedOperation.UserNotAuthed'
 
+# VIP不能与之前一样。
+FAILEDOPERATION_VIPNOTCHANGE = 'FailedOperation.VipNotChange'
+
+# VPC添加服务失败。
+FAILEDOPERATION_VPCADDSERVICEFAILED = 'FailedOperation.VpcAddServiceFailed'
+
 # VPC更新路由失败。
 FAILEDOPERATION_VPCUPDATEROUTEFAILED = 'FailedOperation.VpcUpdateRouteFailed'
+
+# 外网状态异常。
+FAILEDOPERATION_WANSTATUSABNORMAL = 'FailedOperation.WanStatusAbnormal'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -185,6 +200,9 @@ INTERNALERROR_SETSVCLOCATIONFAILED = 'InternalError.SetSvcLocationFailed'
 # 数据库更新失败。
 INTERNALERROR_UPDATEDATABASEFAILED = 'InternalError.UpdateDatabaseFailed'
 
+# VPC操作失败。
+INTERNALERROR_VPCOPERATIONFAILED = 'InternalError.VpcOperationFailed'
+
 # 外网操作失败。
 INTERNALERROR_WANSERVICEFAILED = 'InternalError.WanServiceFailed'
 
@@ -233,8 +251,17 @@ INVALIDPARAMETER_SUBNETNOTFOUND = 'InvalidParameter.SubnetNotFound'
 # snat子网不支持申请IP。
 INVALIDPARAMETER_SUBNETUNAVAILABLE = 'InvalidParameter.SubnetUnavailable'
 
+# Vip不在子网内。
+INVALIDPARAMETER_VIPNOTINSUBNET = 'InvalidParameter.VipNotInSubnet'
+
+# Vip被占用。
+INVALIDPARAMETER_VIPUSED = 'InvalidParameter.VipUsed'
+
 # 找不到指定的虚拟私有网络。
 INVALIDPARAMETER_VPCNOTFOUND = 'InvalidParameter.VpcNotFound'
+
+# Vport被占用。
+INVALIDPARAMETER_VPORTUSED = 'InvalidParameter.VportUsed'
 
 # 可用区信息错误。
 INVALIDPARAMETER_ZONEIDILLEGAL = 'InvalidParameter.ZoneIdIllegal'

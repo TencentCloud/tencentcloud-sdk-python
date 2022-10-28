@@ -1098,14 +1098,18 @@ class DeleteCustomFunctionRequest(AbstractModel):
         :type ClusterIdentifier: str
         :param FunctionId: 函数 ID
         :type FunctionId: str
+        :param ProjectId: 项目ID，必须填
+        :type ProjectId: str
         """
         self.ClusterIdentifier = None
         self.FunctionId = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
         self.ClusterIdentifier = params.get("ClusterIdentifier")
         self.FunctionId = params.get("FunctionId")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4910,16 +4914,20 @@ class SubmitCustomFunctionRequest(AbstractModel):
         :type ClusterIdentifier: str
         :param Comment: 备注信息
         :type Comment: str
+        :param ProjectId: 项目ID
+        :type ProjectId: str
         """
         self.FunctionId = None
         self.ClusterIdentifier = None
         self.Comment = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
         self.FunctionId = params.get("FunctionId")
         self.ClusterIdentifier = params.get("ClusterIdentifier")
         self.Comment = params.get("Comment")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

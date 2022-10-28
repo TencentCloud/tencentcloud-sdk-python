@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 内核响应超时。
+FAILEDOPERATION_KERNELRESPONSETIMEOUT = 'FailedOperation.KernelResponseTimeout'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

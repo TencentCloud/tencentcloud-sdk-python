@@ -11116,12 +11116,16 @@ topspeed_H265：极速高清-H265。
         :type ModuleCodec: str
         :param Bitrate: 码率。
         :type Bitrate: int
-        :param Type: 类型，包含：转码（Transcode），混流（MixStream），水印（WaterMark）。
+        :param Type: 类型，包含：转码（Transcode），混流（MixStream），水印（WaterMark），快直播（Webrtc）。
         :type Type: str
         :param PushDomain: 推流域名。
         :type PushDomain: str
         :param Resolution: 分辨率。
         :type Resolution: str
+        :param MainlandOrOversea: 地域：
+Mainland：国内。
+Overseas：海外。
+        :type MainlandOrOversea: str
         """
         self.StreamName = None
         self.StartTime = None
@@ -11132,6 +11136,7 @@ topspeed_H265：极速高清-H265。
         self.Type = None
         self.PushDomain = None
         self.Resolution = None
+        self.MainlandOrOversea = None
 
 
     def _deserialize(self, params):
@@ -11144,6 +11149,7 @@ topspeed_H265：极速高清-H265。
         self.Type = params.get("Type")
         self.PushDomain = params.get("PushDomain")
         self.Resolution = params.get("Resolution")
+        self.MainlandOrOversea = params.get("MainlandOrOversea")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

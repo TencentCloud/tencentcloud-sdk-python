@@ -4073,6 +4073,173 @@ class ModifyDBSyncModeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceNetworkRequest(AbstractModel):
+    """ModifyInstanceNetwork请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param VpcId: 希望转到的VPC网络的VpcId
+        :type VpcId: str
+        :param SubnetId: 希望转到的VPC网络的子网ID
+        :type SubnetId: str
+        :param Vip: 如果需要指定VIP，填上该字段
+        :type Vip: str
+        :param Vipv6: 如果需要指定VIPv6，填上该字段
+        :type Vipv6: str
+        :param VipReleaseDelay: VIP保留时长，单位小时，取值范围（0~168），0表示立即释放，有一分钟释放延迟。不传此参数，默认24小时释放VIP。
+        :type VipReleaseDelay: int
+        """
+        self.InstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+        self.Vipv6 = None
+        self.VipReleaseDelay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        self.Vipv6 = params.get("Vipv6")
+        self.VipReleaseDelay = params.get("VipReleaseDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceNetworkResponse(AbstractModel):
+    """ModifyInstanceNetwork返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步任务ID，根据此FlowId通过DescribeFlow接口查询任务进行状态
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstanceVipRequest(AbstractModel):
+    """ModifyInstanceVip请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Vip: 实例VIP
+        :type Vip: str
+        :param Ipv6Flag: IPv6标志
+        :type Ipv6Flag: int
+        :param VipReleaseDelay: VIP保留时长，单位小时，取值范围（0~168），0表示立即释放，有一分钟释放延迟。不传此参数，默认24小时释放VIP。
+        :type VipReleaseDelay: int
+        """
+        self.InstanceId = None
+        self.Vip = None
+        self.Ipv6Flag = None
+        self.VipReleaseDelay = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Vip = params.get("Vip")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        self.VipReleaseDelay = params.get("VipReleaseDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceVipResponse(AbstractModel):
+    """ModifyInstanceVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步任务流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstanceVportRequest(AbstractModel):
+    """ModifyInstanceVport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Vport: 实例VPORT
+        :type Vport: int
+        """
+        self.InstanceId = None
+        self.Vport = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Vport = params.get("Vport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceVportResponse(AbstractModel):
+    """ModifyInstanceVport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRealServerAccessStrategyRequest(AbstractModel):
     """ModifyRealServerAccessStrategy请求参数结构体
 

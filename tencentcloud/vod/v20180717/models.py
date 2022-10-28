@@ -365,6 +365,8 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type UpdateTime: str
+        :param SegmentType: 切片类型，仅当 Format 为 HLS 时有效。
+        :type SegmentType: str
         """
         self.Definition = None
         self.Type = None
@@ -378,6 +380,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self.DisableHigherVideoResolution = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -398,6 +401,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6117,6 +6121,11 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type DisableHigherVideoResolution: int
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param SegmentType: 切片类型，当 Format 为 HLS 时有效，可选值：
+<li>ts：ts 切片；</li>
+<li>fmp4：fmp4 切片。</li>
+默认值：ts。
+        :type SegmentType: str
         """
         self.Format = None
         self.StreamInfos = None
@@ -6127,6 +6136,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.Comment = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -6144,6 +6154,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.Comment = params.get("Comment")
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7293,6 +7304,11 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
         :param TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
+        :param SegmentType: 切片类型，当 Container 为 hls 时有效，可选值：
+<li>ts：ts 切片；</li>
+<li>fmp4：fmp4 切片。</li>
+默认值：ts。
+        :type SegmentType: str
         """
         self.Container = None
         self.SubAppId = None
@@ -7303,6 +7319,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -7321,6 +7338,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfig()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16505,6 +16523,10 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param SegmentType: 切片类型，当 Format 为 HLS 时有效，可选值：
+<li>ts：ts 切片；</li>
+<li>fmp4：fmp4 切片。</li>
+        :type SegmentType: str
         """
         self.Definition = None
         self.SubAppId = None
@@ -16514,6 +16536,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self.DisableHigherVideoResolution = None
         self.StreamInfos = None
         self.Comment = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -16530,6 +16553,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self.StreamInfos.append(obj)
         self.Comment = params.get("Comment")
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17763,6 +17787,10 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
         :param TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
+        :param SegmentType: 切片类型，当 Container 为 hls 时有效，可选值：
+<li>ts：ts 切片；</li>
+<li>fmp4：fmp4 切片。</li>
+        :type SegmentType: str
         """
         self.Definition = None
         self.SubAppId = None
@@ -17774,6 +17802,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -17793,6 +17822,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfigForUpdate()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22698,6 +22728,7 @@ class StatDataItem(AbstractModel):
 <li>转码时长的数据，单位是秒。</li>
 <li>流量数据，单位是字节。</li>
 <li>带宽数据，单位是比特每秒。</li>
+<li>直播剪辑数据，单位是秒。</li>
         :type Value: int
         """
         self.Time = None
@@ -24063,6 +24094,8 @@ class TranscodeTemplate(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type UpdateTime: str
+        :param SegmentType: 切片类型，仅当 Container 为 hls 时有效。
+        :type SegmentType: str
         """
         self.Definition = None
         self.Container = None
@@ -24077,6 +24110,7 @@ class TranscodeTemplate(AbstractModel):
         self.ContainerType = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.SegmentType = None
 
 
     def _deserialize(self, params):
@@ -24099,6 +24133,7 @@ class TranscodeTemplate(AbstractModel):
         self.ContainerType = params.get("ContainerType")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
