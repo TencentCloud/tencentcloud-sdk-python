@@ -599,8 +599,8 @@ class ApplicationProxyRule(AbstractModel):
 <li>UDP：UDP协议。</li>
         :type Proto: str
         :param Port: 端口，支持格式：
-单个端口，如：80。
-端口段，如：81-82。表示81，82两个端口。
+<li>单个端口，如：80。</li>
+<li>端口段，如：81-82。表示81，82两个端口。</li>
 注意：一条规则最多可填写20个端口。
         :type Port: list of str
         :param OriginType: 源站类型，取值有：
@@ -608,11 +608,8 @@ class ApplicationProxyRule(AbstractModel):
 <li>origins：源站组。</li>
         :type OriginType: str
         :param OriginValue: 源站信息：
-当OriginType=custom时，表示一个或多个源站，如：
-OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-OriginValue=["test.com:80"]；
-当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
-OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+<li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+<li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
         :type OriginValue: list of str
         :param RuleId: 规则ID。
         :type RuleId: str
@@ -633,6 +630,10 @@ OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
 <li>true：开启；</li>
 <li>false：关闭。</li>默认值：false。
         :type SessionPersist: bool
+        :param OriginPort: 源站端口，支持格式：
+<li>单端口，如：80。</li>
+<li>端口段：81-82，表示81，82两个端口。</li>
+        :type OriginPort: str
         """
         self.Proto = None
         self.Port = None
@@ -642,6 +643,7 @@ OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
         self.Status = None
         self.ForwardClientIp = None
         self.SessionPersist = None
+        self.OriginPort = None
 
 
     def _deserialize(self, params):
@@ -653,6 +655,7 @@ OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
         self.Status = params.get("Status")
         self.ForwardClientIp = params.get("ForwardClientIp")
         self.SessionPersist = params.get("SessionPersist")
+        self.OriginPort = params.get("OriginPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1724,20 +1727,17 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
 <li>TCP：TCP协议；</li>
 <li>UDP：UDP协议。</li>
         :type Proto: str
-        :param Port: 源站类型，取值有：
+        :param Port: 端口，支持格式：
+<li>80：80端口；</li>
+<li>81-90：81至90端口。</li>
+        :type Port: list of str
+        :param OriginType: 源站类型，取值有：
 <li>custom：手动添加；</li>
 <li>origins：源站组。</li>
-        :type Port: list of str
-        :param OriginType: 源站类型，取值：
-custom：手动添加
-origins：源站组
         :type OriginType: str
         :param OriginValue: 源站信息：
-当OriginType=custom时，表示一个或多个源站，如：
-OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-OriginValue=["test.com:80"]；
-当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
-OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+<li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+<li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
         :type OriginValue: list of str
         :param ForwardClientIp: 传递客户端IP，取值有：
 <li>TOA：TOA（仅Proto=TCP时可选）；</li>
@@ -1749,6 +1749,10 @@ OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
 <li>true：开启；</li>
 <li>false：关闭。</li>默认值：false。
         :type SessionPersist: bool
+        :param OriginPort: 源站端口，支持格式：
+<li>单端口：80；</li>
+<li>端口段：81-90，81至90端口。</li>
+        :type OriginPort: str
         """
         self.ZoneId = None
         self.ProxyId = None
@@ -1758,6 +1762,7 @@ OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
         self.OriginValue = None
         self.ForwardClientIp = None
         self.SessionPersist = None
+        self.OriginPort = None
 
 
     def _deserialize(self, params):
@@ -1769,6 +1774,7 @@ OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
         self.OriginValue = params.get("OriginValue")
         self.ForwardClientIp = params.get("ForwardClientIp")
         self.SessionPersist = params.get("SessionPersist")
+        self.OriginPort = params.get("OriginPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11185,19 +11191,17 @@ class ModifyApplicationProxyRuleRequest(AbstractModel):
 <li>origins：源站组。</li>不填保持原有值。
         :type OriginType: str
         :param Port: 端口，支持格式：
-80：80端口
-81-90：81至90端口。不填保持原有值。
+<li>80：80端口；</li>
+<li>81-90：81至90端口。</li>
         :type Port: list of str
         :param Proto: 协议，取值有：
 <li>TCP：TCP协议；</li>
 <li>UDP：UDP协议。</li>不填保持原有值。
         :type Proto: str
         :param OriginValue: 源站信息：
-当OriginType=custom时，表示一个或多个源站，如：
-OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-OriginValue=["test.com:80"]；
-当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
-OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+<li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+<li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
+
 不填保持原有值。
         :type OriginValue: list of str
         :param ForwardClientIp: 传递客户端IP，取值有：
@@ -11208,8 +11212,12 @@ OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
         :type ForwardClientIp: str
         :param SessionPersist: 是否开启会话保持，取值有：
 <li>true：开启；</li>
-<li>false：关闭。</li>不填保持原有值。
+<li>false：关闭。</li>不填为false。
         :type SessionPersist: bool
+        :param OriginPort: 源站端口，支持格式：
+<li>单端口：80；</li>
+<li>端口段：81-90，81至90端口。</li>
+        :type OriginPort: str
         """
         self.ZoneId = None
         self.ProxyId = None
@@ -11220,6 +11228,7 @@ OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
         self.OriginValue = None
         self.ForwardClientIp = None
         self.SessionPersist = None
+        self.OriginPort = None
 
 
     def _deserialize(self, params):
@@ -11232,6 +11241,7 @@ OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
         self.OriginValue = params.get("OriginValue")
         self.ForwardClientIp = params.get("ForwardClientIp")
         self.SessionPersist = params.get("SessionPersist")
+        self.OriginPort = params.get("OriginPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

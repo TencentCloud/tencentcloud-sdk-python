@@ -498,6 +498,55 @@ class CreateCallOutSessionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateExtensionRequest(AbstractModel):
+    """CreateExtension请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TCCC 实例应用 ID
+        :type SdkAppId: int
+        :param ExtensionId: 分机号
+        :type ExtensionId: str
+        :param ExtensionName: 分机名称
+        :type ExtensionName: str
+        """
+        self.SdkAppId = None
+        self.ExtensionId = None
+        self.ExtensionName = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.ExtensionId = params.get("ExtensionId")
+        self.ExtensionName = params.get("ExtensionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExtensionResponse(AbstractModel):
+    """CreateExtension返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSDKLoginTokenRequest(AbstractModel):
     """CreateSDKLoginToken请求参数结构体
 
@@ -669,6 +718,51 @@ class CreateUserSigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.UserSig = params.get("UserSig")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteExtensionRequest(AbstractModel):
+    """DeleteExtension请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TCCC 实例应用 ID
+        :type SdkAppId: int
+        :param ExtensionId: 分机号
+        :type ExtensionId: str
+        """
+        self.SdkAppId = None
+        self.ExtensionId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.ExtensionId = params.get("ExtensionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteExtensionResponse(AbstractModel):
+    """DeleteExtension返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1085,6 +1179,145 @@ class DescribeChatMessagesResponse(AbstractModel):
                 obj = MessageBody()
                 obj._deserialize(item)
                 self.Messages.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExtensionRequest(AbstractModel):
+    """DescribeExtension请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TCCC 实例应用 ID
+        :type SdkAppId: int
+        :param ExtensionId: 分机号
+        :type ExtensionId: str
+        """
+        self.SdkAppId = None
+        self.ExtensionId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.ExtensionId = params.get("ExtensionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExtensionResponse(AbstractModel):
+    """DescribeExtension返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExtensionId: 分机号
+        :type ExtensionId: str
+        :param ExtensionDomain: 域名
+        :type ExtensionDomain: str
+        :param Password: 注册密码
+        :type Password: str
+        :param OutboundProxy: 代理服务器地址
+        :type OutboundProxy: str
+        :param Transport: 传输协议
+        :type Transport: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ExtensionId = None
+        self.ExtensionDomain = None
+        self.Password = None
+        self.OutboundProxy = None
+        self.Transport = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ExtensionId = params.get("ExtensionId")
+        self.ExtensionDomain = params.get("ExtensionDomain")
+        self.Password = params.get("Password")
+        self.OutboundProxy = params.get("OutboundProxy")
+        self.Transport = params.get("Transport")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExtensionsRequest(AbstractModel):
+    """DescribeExtensions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TCCC 实例应用 ID
+        :type SdkAppId: int
+        :param PageNumber: 分页页号（从0开始）
+        :type PageNumber: int
+        :param ExtensionIds: 筛选分机号列表
+        :type ExtensionIds: list of str
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param FuzzingKeyWord: 模糊查询字段（模糊查询分机号、分机名称、坐席邮箱、坐席名称）
+        :type FuzzingKeyWord: str
+        :param IsNeedStatus: 是否需要返回话机当前状态
+        :type IsNeedStatus: bool
+        """
+        self.SdkAppId = None
+        self.PageNumber = None
+        self.ExtensionIds = None
+        self.PageSize = None
+        self.FuzzingKeyWord = None
+        self.IsNeedStatus = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.PageNumber = params.get("PageNumber")
+        self.ExtensionIds = params.get("ExtensionIds")
+        self.PageSize = params.get("PageSize")
+        self.FuzzingKeyWord = params.get("FuzzingKeyWord")
+        self.IsNeedStatus = params.get("IsNeedStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExtensionsResponse(AbstractModel):
+    """DescribeExtensions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 查询总数
+        :type Total: int
+        :param ExtensionList: 话机信息列表
+        :type ExtensionList: list of ExtensionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.ExtensionList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("ExtensionList") is not None:
+            self.ExtensionList = []
+            for item in params.get("ExtensionList"):
+                obj = ExtensionInfo()
+                obj._deserialize(item)
+                self.ExtensionList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1783,6 +2016,70 @@ class ErrStaffItem(AbstractModel):
         
 
 
+class ExtensionInfo(AbstractModel):
+    """话机信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 实例ID
+        :type SdkAppId: int
+        :param FullExtensionId: 分机全名
+        :type FullExtensionId: str
+        :param ExtensionId: 分机号
+        :type ExtensionId: str
+        :param SkillGroupId: 所属技能组列表
+        :type SkillGroupId: str
+        :param ExtensionName: 分机名称
+        :type ExtensionName: str
+        :param CreateTime: 创建时间
+        :type CreateTime: int
+        :param ModifyTime: 最后修改时间
+        :type ModifyTime: int
+        :param Status: 话机状态(0 离线、100 空闲、200忙碌）
+        :type Status: int
+        :param Register: 是否注册
+        :type Register: bool
+        :param Relation: 绑定坐席邮箱
+        :type Relation: str
+        :param RelationName: 绑定坐席名称
+        :type RelationName: str
+        """
+        self.SdkAppId = None
+        self.FullExtensionId = None
+        self.ExtensionId = None
+        self.SkillGroupId = None
+        self.ExtensionName = None
+        self.CreateTime = None
+        self.ModifyTime = None
+        self.Status = None
+        self.Register = None
+        self.Relation = None
+        self.RelationName = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.FullExtensionId = params.get("FullExtensionId")
+        self.ExtensionId = params.get("ExtensionId")
+        self.SkillGroupId = params.get("SkillGroupId")
+        self.ExtensionName = params.get("ExtensionName")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        self.Status = params.get("Status")
+        self.Register = params.get("Register")
+        self.Relation = params.get("Relation")
+        self.RelationName = params.get("RelationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IMCdrInfo(AbstractModel):
     """文本会话服务记录信息
 
@@ -1947,6 +2244,63 @@ class MessageBody(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyExtensionRequest(AbstractModel):
+    """ModifyExtension请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TCCC 实例应用 ID
+        :type SdkAppId: int
+        :param ExtensionId: 分机号
+        :type ExtensionId: str
+        :param ExtensionName: 分机名称
+        :type ExtensionName: str
+        :param SkillGroupIds: 所属技能组列表
+        :type SkillGroupIds: list of int
+        :param Relation: 绑定坐席邮箱账号
+        :type Relation: str
+        """
+        self.SdkAppId = None
+        self.ExtensionId = None
+        self.ExtensionName = None
+        self.SkillGroupIds = None
+        self.Relation = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.ExtensionId = params.get("ExtensionId")
+        self.ExtensionName = params.get("ExtensionName")
+        self.SkillGroupIds = params.get("SkillGroupIds")
+        self.Relation = params.get("Relation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyExtensionResponse(AbstractModel):
+    """ModifyExtension返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyStaffRequest(AbstractModel):
@@ -2260,6 +2614,55 @@ class PhoneNumBuyInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResetExtensionPasswordRequest(AbstractModel):
+    """ResetExtensionPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TCCC 实例应用 ID
+        :type SdkAppId: int
+        :param ExtensionId: 分机号
+        :type ExtensionId: str
+        """
+        self.SdkAppId = None
+        self.ExtensionId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.ExtensionId = params.get("ExtensionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetExtensionPasswordResponse(AbstractModel):
+    """ResetExtensionPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Password: 重置后密码
+        :type Password: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Password = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Password = params.get("Password")
+        self.RequestId = params.get("RequestId")
 
 
 class SdkAppIdBuyInfo(AbstractModel):

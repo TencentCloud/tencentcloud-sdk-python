@@ -10690,6 +10690,31 @@ class TransformsParam(AbstractModel):
         
 
 
+class UrlDecodeParam(AbstractModel):
+    """Url解析
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CharsetName: 编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CharsetName: str
+        """
+        self.CharsetName = None
+
+
+    def _deserialize(self, params):
+        self.CharsetName = params.get("CharsetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class User(AbstractModel):
     """用户实体
 
@@ -10793,6 +10818,9 @@ class ValueParam(AbstractModel):
         :param JsonPathReplace: JsonPath替换，TYPE=JSON_PATH_REPLACE时必传
 注意：此字段可能返回 null，表示取不到有效值。
         :type JsonPathReplace: :class:`tencentcloud.ckafka.v20190819.models.JsonPathReplaceParam`
+        :param UrlDecode: Url解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrlDecode: :class:`tencentcloud.ckafka.v20190819.models.UrlDecodeParam`
         """
         self.Type = None
         self.Replace = None
@@ -10803,6 +10831,7 @@ class ValueParam(AbstractModel):
         self.KV = None
         self.Result = None
         self.JsonPathReplace = None
+        self.UrlDecode = None
 
 
     def _deserialize(self, params):
@@ -10829,6 +10858,9 @@ class ValueParam(AbstractModel):
         if params.get("JsonPathReplace") is not None:
             self.JsonPathReplace = JsonPathReplaceParam()
             self.JsonPathReplace._deserialize(params.get("JsonPathReplace"))
+        if params.get("UrlDecode") is not None:
+            self.UrlDecode = UrlDecodeParam()
+            self.UrlDecode._deserialize(params.get("UrlDecode"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

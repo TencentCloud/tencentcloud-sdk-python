@@ -439,6 +439,11 @@ def test_import_dts():
     from tencentcloud.dts.v20180330 import models
 
 
+def test_import_dts():
+    from tencentcloud.dts.v20211206 import dts_client
+    from tencentcloud.dts.v20211206 import models
+
+
 def test_import_eb():
     from tencentcloud.eb.v20210416 import eb_client
     from tencentcloud.eb.v20210416 import models

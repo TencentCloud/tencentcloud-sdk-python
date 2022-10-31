@@ -80,6 +80,8 @@ ServerType不填默认为0
 1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本
 2：音素注册模式（提工单注册需要使用音素的单词）。
         :type TextMode: int
+        :param Keyword: 主题词和关键词
+        :type Keyword: str
         """
         self.SessionId = None
         self.RefText = None
@@ -93,6 +95,7 @@ ServerType不填默认为0
         self.ServerType = None
         self.IsAsync = None
         self.TextMode = None
+        self.Keyword = None
 
 
     def _deserialize(self, params):
@@ -108,6 +111,7 @@ ServerType不填默认为0
         self.ServerType = params.get("ServerType")
         self.IsAsync = params.get("IsAsync")
         self.TextMode = params.get("TextMode")
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -402,6 +406,15 @@ class SentenceInfo(AbstractModel):
         :type PronCompletion: float
         :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
         :type SuggestedScore: float
+        :param RefTextId: 匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefTextId: int
+        :param KeyWordHits: 主题词命中标志，0表示没命中，1表示命中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordHits: list of float
+        :param UnKeyWordHits: 负向主题词命中标志，0表示没命中，1表示命中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnKeyWordHits: list of float
         """
         self.SentenceId = None
         self.Words = None
@@ -409,6 +422,9 @@ class SentenceInfo(AbstractModel):
         self.PronFluency = None
         self.PronCompletion = None
         self.SuggestedScore = None
+        self.RefTextId = None
+        self.KeyWordHits = None
+        self.UnKeyWordHits = None
 
 
     def _deserialize(self, params):
@@ -423,6 +439,9 @@ class SentenceInfo(AbstractModel):
         self.PronFluency = params.get("PronFluency")
         self.PronCompletion = params.get("PronCompletion")
         self.SuggestedScore = params.get("SuggestedScore")
+        self.RefTextId = params.get("RefTextId")
+        self.KeyWordHits = params.get("KeyWordHits")
+        self.UnKeyWordHits = params.get("UnKeyWordHits")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -520,6 +539,15 @@ class TransmitOralProcessResponse(AbstractModel):
         :type Status: str
         :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
         :type SuggestedScore: float
+        :param RefTextId: 匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefTextId: int
+        :param KeyWordHits: 主题词命中标志，0表示没命中，1表示命中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordHits: list of float
+        :param UnKeyWordHits: 负向主题词命中标志，0表示没命中，1表示命中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnKeyWordHits: list of float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -532,6 +560,9 @@ class TransmitOralProcessResponse(AbstractModel):
         self.SentenceInfoSet = None
         self.Status = None
         self.SuggestedScore = None
+        self.RefTextId = None
+        self.KeyWordHits = None
+        self.UnKeyWordHits = None
         self.RequestId = None
 
 
@@ -555,6 +586,9 @@ class TransmitOralProcessResponse(AbstractModel):
                 self.SentenceInfoSet.append(obj)
         self.Status = params.get("Status")
         self.SuggestedScore = params.get("SuggestedScore")
+        self.RefTextId = params.get("RefTextId")
+        self.KeyWordHits = params.get("KeyWordHits")
+        self.UnKeyWordHits = params.get("UnKeyWordHits")
         self.RequestId = params.get("RequestId")
 
 
@@ -637,6 +671,8 @@ ServerType不填默认为0
 1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本
 2：音素注册模式（提工单注册需要使用音素的单词）。
         :type TextMode: int
+        :param Keyword: 主题词和关键词
+        :type Keyword: str
         """
         self.SeqId = None
         self.IsEnd = None
@@ -655,6 +691,7 @@ ServerType不填默认为0
         self.IsAsync = None
         self.IsQuery = None
         self.TextMode = None
+        self.Keyword = None
 
 
     def _deserialize(self, params):
@@ -675,6 +712,7 @@ ServerType不填默认为0
         self.IsAsync = params.get("IsAsync")
         self.IsQuery = params.get("IsQuery")
         self.TextMode = params.get("TextMode")
+        self.Keyword = params.get("Keyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -709,6 +747,15 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
         :type Status: str
         :param SuggestedScore: 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
         :type SuggestedScore: float
+        :param RefTextId: 匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefTextId: int
+        :param KeyWordHits: 主题词命中标志，0表示没命中，1表示命中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyWordHits: list of float
+        :param UnKeyWordHits: 负向主题词命中标志，0表示没命中，1表示命中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnKeyWordHits: list of float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -721,6 +768,9 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
         self.SentenceInfoSet = None
         self.Status = None
         self.SuggestedScore = None
+        self.RefTextId = None
+        self.KeyWordHits = None
+        self.UnKeyWordHits = None
         self.RequestId = None
 
 
@@ -744,6 +794,9 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
                 self.SentenceInfoSet.append(obj)
         self.Status = params.get("Status")
         self.SuggestedScore = params.get("SuggestedScore")
+        self.RefTextId = params.get("RefTextId")
+        self.KeyWordHits = params.get("KeyWordHits")
+        self.UnKeyWordHits = params.get("UnKeyWordHits")
         self.RequestId = params.get("RequestId")
 
 
@@ -770,6 +823,9 @@ class WordRsp(AbstractModel):
         :type PhoneInfos: list of PhoneInfo
         :param ReferenceWord: 参考词，目前为保留字段。
         :type ReferenceWord: str
+        :param KeywordTag: 主题词命中标志，0表示没命中，1表示命中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeywordTag: int
         """
         self.MemBeginTime = None
         self.MemEndTime = None
@@ -779,6 +835,7 @@ class WordRsp(AbstractModel):
         self.MatchTag = None
         self.PhoneInfos = None
         self.ReferenceWord = None
+        self.KeywordTag = None
 
 
     def _deserialize(self, params):
@@ -795,6 +852,7 @@ class WordRsp(AbstractModel):
                 obj._deserialize(item)
                 self.PhoneInfos.append(obj)
         self.ReferenceWord = params.get("ReferenceWord")
+        self.KeywordTag = params.get("KeywordTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

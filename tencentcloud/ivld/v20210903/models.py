@@ -1885,12 +1885,13 @@ class MediaInfo(AbstractModel):
     | MEDIA_STATUS_WAITING| 1 | 等待中 |
     | MEDIA_STATUS_DOWNLOADING | 2 | 下载中 |
     | MEDIA_STATUS_DOWNLOADED | 3 | 下载完成 |
-    | MEDIA_STATUS_DOWNLOAD_FAILED | 4 | 下载失败 |
+    | MEDIA_STATUS_DOWNLOAD_FAILED | 4 | 下载失败(已废弃) |
     | MEDIA_STATUS_TRANSCODING | 5 | 转码中 |
     | MEDIA_STATUS_TRANSCODED | 6 | 转码完成 |
-    | MEDIA_STATUS_TRANCODE_FAILED | 7 | 转码失败 |
+    | MEDIA_STATUS_TRANCODE_FAILED | 7 | 转码失败(已废弃) |
     | MEDIA_STATUS_SUCCESS | 8 | 媒资文件状态就绪，可发起任务 |
     | MEDIA_STATUS_EXPIRED | 9 | 媒资文件已过期 |
+    | MEDIA_STATUS_FAILED | 10 | 媒资导入失败 |
 
     """
 
