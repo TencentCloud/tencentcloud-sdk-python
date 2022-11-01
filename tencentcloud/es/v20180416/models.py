@@ -1999,6 +1999,9 @@ class IndexPolicyField(AbstractModel):
         :param FrozenMinAge: frozen阶段转入时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrozenMinAge: str
+        :param ColdAction: /
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColdAction: str
         """
         self.WarmEnable = None
         self.WarmMinAge = None
@@ -2006,6 +2009,7 @@ class IndexPolicyField(AbstractModel):
         self.ColdMinAge = None
         self.FrozenEnable = None
         self.FrozenMinAge = None
+        self.ColdAction = None
 
 
     def _deserialize(self, params):
@@ -2015,6 +2019,7 @@ class IndexPolicyField(AbstractModel):
         self.ColdMinAge = params.get("ColdMinAge")
         self.FrozenEnable = params.get("FrozenEnable")
         self.FrozenMinAge = params.get("FrozenMinAge")
+        self.ColdAction = params.get("ColdAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

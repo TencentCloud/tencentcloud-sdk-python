@@ -374,6 +374,35 @@ class CaptchaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetTicketStatistics(self, request):
+        """查询单个验证的统计数据，包括：票据校验量、票据校验通过量、票据校验拦截量。
+
+        :param request: Request instance for GetTicketStatistics.
+        :type request: :class:`tencentcloud.captcha.v20190722.models.GetTicketStatisticsRequest`
+        :rtype: :class:`tencentcloud.captcha.v20190722.models.GetTicketStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTicketStatistics", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTicketStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetTotalTicketStatistics(self, request):
         """查询所有验证的统计数据，包括：总票据校验量、总票据校验通过量、总票据校验拦截量。
 

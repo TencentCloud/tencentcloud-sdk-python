@@ -664,6 +664,8 @@ class CreateLogConfigRequest(AbstractModel):
         :type LogPath: str
         :param FilePattern: 收集文件名模式，当 InputType=container_file 时生效
         :type FilePattern: str
+        :param ExtractRule: 导出规则
+        :type ExtractRule: :class:`tencentcloud.tem.v20210701.models.LogConfigExtractRule`
         """
         self.EnvironmentId = None
         self.Name = None
@@ -675,6 +677,7 @@ class CreateLogConfigRequest(AbstractModel):
         self.BeginningRegex = None
         self.LogPath = None
         self.FilePattern = None
+        self.ExtractRule = None
 
 
     def _deserialize(self, params):
@@ -688,6 +691,9 @@ class CreateLogConfigRequest(AbstractModel):
         self.BeginningRegex = params.get("BeginningRegex")
         self.LogPath = params.get("LogPath")
         self.FilePattern = params.get("FilePattern")
+        if params.get("ExtractRule") is not None:
+            self.ExtractRule = LogConfigExtractRule()
+            self.ExtractRule._deserialize(params.get("ExtractRule"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3510,9 +3516,9 @@ class LogConfig(AbstractModel):
         :param TopicId: 日志主题 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
-        :param LogType: 日志提取模式，minimalist_log 为单行全文；multiline_log 为多行全文；
+        :param LogType: 日志提取模式，minimalist_log 为单行全文；multiline_log 为多行全文；  fullregex_log 为单行正则； multiline_fullregex_log 为多行正则； json_log 为 json；
         :type LogType: str
-        :param BeginningRegex: 首行正则表达式，当LogType=multiline_log 时生效
+        :param BeginningRegex: 首行正则表达式，当 LogType 为多行全文、多行正则时生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginningRegex: str
         :param LogPath: 收集文件目录，当 InputType=container_file 时生效
@@ -3533,6 +3539,9 @@ class LogConfig(AbstractModel):
         :param ApplicationName: 应用名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
+        :param ExtractRule: 导出规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractRule: :class:`tencentcloud.tem.v20210701.models.LogConfigExtractRule`
         """
         self.Name = None
         self.InputType = None
@@ -3546,6 +3555,7 @@ class LogConfig(AbstractModel):
         self.ModifyDate = None
         self.ApplicationId = None
         self.ApplicationName = None
+        self.ExtractRule = None
 
 
     def _deserialize(self, params):
@@ -3561,6 +3571,74 @@ class LogConfig(AbstractModel):
         self.ModifyDate = params.get("ModifyDate")
         self.ApplicationId = params.get("ApplicationId")
         self.ApplicationName = params.get("ApplicationName")
+        if params.get("ExtractRule") is not None:
+            self.ExtractRule = LogConfigExtractRule()
+            self.ExtractRule._deserialize(params.get("ExtractRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogConfigExtractRule(AbstractModel):
+    """日志采集的导出规则配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginningRegex: 首行正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginningRegex: str
+        :param Keys: 提取结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of str
+        :param FilterKeys: 过滤键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterKeys: list of str
+        :param FilterRegex: 过滤值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterRegex: list of str
+        :param LogRegex: 日志正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogRegex: str
+        :param TimeKey: 时间字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeKey: str
+        :param TimeFormat: 时间格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeFormat: str
+        :param UnMatchUpload: 是否上传解析失败日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnMatchUpload: str
+        :param UnMatchedKey: 解析失败日志的键名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnMatchedKey: str
+        """
+        self.BeginningRegex = None
+        self.Keys = None
+        self.FilterKeys = None
+        self.FilterRegex = None
+        self.LogRegex = None
+        self.TimeKey = None
+        self.TimeFormat = None
+        self.UnMatchUpload = None
+        self.UnMatchedKey = None
+
+
+    def _deserialize(self, params):
+        self.BeginningRegex = params.get("BeginningRegex")
+        self.Keys = params.get("Keys")
+        self.FilterKeys = params.get("FilterKeys")
+        self.FilterRegex = params.get("FilterRegex")
+        self.LogRegex = params.get("LogRegex")
+        self.TimeKey = params.get("TimeKey")
+        self.TimeFormat = params.get("TimeFormat")
+        self.UnMatchUpload = params.get("UnMatchUpload")
+        self.UnMatchedKey = params.get("UnMatchedKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

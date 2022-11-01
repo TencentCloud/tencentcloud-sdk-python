@@ -18,6 +18,86 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class APIConfigDetail(AbstractModel):
+    """接口描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 接口id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param ServiceGroupId: 接口所属服务组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGroupId: str
+        :param Description: 接口描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param RelativeUrl: 相对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelativeUrl: str
+        :param ServiceType: 服务类型 HTTP HTTPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
+        :param HttpMethod: GET POST
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpMethod: str
+        :param HttpInputExample: 请求示例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpInputExample: str
+        :param HttpOutputExample: 回包示例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpOutputExample: str
+        :param UpdatedBy: 更新成员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedBy: str
+        :param UpdatedAt: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        :param Uin: 主账号uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param SubUin: 子账号subuin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubUin: str
+        """
+        self.Id = None
+        self.ServiceGroupId = None
+        self.Description = None
+        self.RelativeUrl = None
+        self.ServiceType = None
+        self.HttpMethod = None
+        self.HttpInputExample = None
+        self.HttpOutputExample = None
+        self.UpdatedBy = None
+        self.UpdatedAt = None
+        self.Uin = None
+        self.SubUin = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.ServiceGroupId = params.get("ServiceGroupId")
+        self.Description = params.get("Description")
+        self.RelativeUrl = params.get("RelativeUrl")
+        self.ServiceType = params.get("ServiceType")
+        self.HttpMethod = params.get("HttpMethod")
+        self.HttpInputExample = params.get("HttpInputExample")
+        self.HttpOutputExample = params.get("HttpOutputExample")
+        self.UpdatedBy = params.get("UpdatedBy")
+        self.UpdatedAt = params.get("UpdatedAt")
+        self.Uin = params.get("Uin")
+        self.SubUin = params.get("SubUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchTaskDetail(AbstractModel):
     """跑批任务详情
 
@@ -685,6 +765,208 @@ class CreateDatasetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateModelServiceRequest(AbstractModel):
+    """CreateModelService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageInfo: 镜像信息，配置服务运行所需的镜像地址等信息
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param ServiceGroupId: 新增版本时需要填写
+        :type ServiceGroupId: str
+        :param ServiceGroupName: 不超过60个字，仅支持英文、数字、下划线"_"、短横"-"，只能以英文、数字开头
+        :type ServiceGroupName: str
+        :param ServiceDescription: 模型服务的描述
+        :type ServiceDescription: str
+        :param ChargeType: 付费模式,有 PREPAID 、 POSTPAID_BY_HOUR 和 HYBRID_PAID 三种
+        :type ChargeType: str
+        :param ResourceGroupId: 预付费模式下所属的资源组id，同服务组下唯一
+        :type ResourceGroupId: str
+        :param ModelInfo: 模型信息，需要挂载模型时填写
+        :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        :param Env: 环境变量，可选参数，用于配置容器中的环境变量
+        :type Env: list of EnvVar
+        :param Resources: 资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写
+        :type Resources: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        :param InstanceType: 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
+TI.S.MEDIUM.POST	2C4G
+TI.S.LARGE.POST	4C8G
+TI.S.2XLARGE16.POST	8C16G
+TI.S.2XLARGE32.POST	8C32G
+TI.S.4XLARGE32.POST	16C32G
+TI.S.4XLARGE64.POST	16C64G
+TI.S.6XLARGE48.POST	24C48G
+TI.S.6XLARGE96.POST	24C96G
+TI.S.8XLARGE64.POST	32C64G
+TI.S.8XLARGE128.POST 32C128G
+TI.GN7.LARGE20.POST	4C20G T4*1/4
+TI.GN7.2XLARGE40.POST	10C40G T4*1/2
+TI.GN7.2XLARGE32.POST	8C32G T4*1
+TI.GN7.5XLARGE80.POST	20C80G T4*1
+TI.GN7.8XLARGE128.POST	32C128G T4*1
+TI.GN7.10XLARGE160.POST	40C160G T4*2
+TI.GN7.20XLARGE320.POST	80C320G T4*4
+        :type InstanceType: str
+        :param ScaleMode: 扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL",默认为MANUAL
+        :type ScaleMode: str
+        :param Replicas: 实例数量, 不同计费模式和调节模式下对应关系如下
+PREPAID 和 POSTPAID_BY_HOUR:
+手动调节模式下对应 实例数量
+自动调节模式下对应 基于时间的默认策略的实例数量
+HYBRID_PAID:
+后付费实例手动调节模式下对应 实例数量
+后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+        :type Replicas: int
+        :param HorizontalPodAutoscaler: 自动伸缩信息
+        :type HorizontalPodAutoscaler: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
+        :param LogEnable: 是否开启日志投递，开启后需填写配置投递到指定cls
+        :type LogEnable: bool
+        :param LogConfig: 日志配置，需要投递服务日志到指定cls时填写
+        :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param AuthorizationEnable: 是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权
+        :type AuthorizationEnable: bool
+        :param Tags: 腾讯云标签
+        :type Tags: list of Tag
+        :param NewVersion: 是否新增版本
+        :type NewVersion: bool
+        :param CronScaleJobs: 定时任务配置，使用定时策略时填写
+        :type CronScaleJobs: list of CronScaleJob
+        :param ScaleStrategy: 自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+        :type ScaleStrategy: str
+        :param HybridBillingPrepaidReplicas: 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数
+        :type HybridBillingPrepaidReplicas: int
+        :param CreateSource: [AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]
+        :type CreateSource: str
+        :param ModelHotUpdateEnable: 是否开启模型的热更新。默认不开启
+        :type ModelHotUpdateEnable: bool
+        :param ScheduledAction: 定时停止配置
+        :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
+        :param VolumeMount: 挂载配置，目前只支持CFS
+        :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
+        :param ServiceLimit: 服务限速限流相关配置
+        :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        """
+        self.ImageInfo = None
+        self.ServiceGroupId = None
+        self.ServiceGroupName = None
+        self.ServiceDescription = None
+        self.ChargeType = None
+        self.ResourceGroupId = None
+        self.ModelInfo = None
+        self.Env = None
+        self.Resources = None
+        self.InstanceType = None
+        self.ScaleMode = None
+        self.Replicas = None
+        self.HorizontalPodAutoscaler = None
+        self.LogEnable = None
+        self.LogConfig = None
+        self.AuthorizationEnable = None
+        self.Tags = None
+        self.NewVersion = None
+        self.CronScaleJobs = None
+        self.ScaleStrategy = None
+        self.HybridBillingPrepaidReplicas = None
+        self.CreateSource = None
+        self.ModelHotUpdateEnable = None
+        self.ScheduledAction = None
+        self.VolumeMount = None
+        self.ServiceLimit = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = ImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        self.ServiceGroupId = params.get("ServiceGroupId")
+        self.ServiceGroupName = params.get("ServiceGroupName")
+        self.ServiceDescription = params.get("ServiceDescription")
+        self.ChargeType = params.get("ChargeType")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        if params.get("ModelInfo") is not None:
+            self.ModelInfo = ModelInfo()
+            self.ModelInfo._deserialize(params.get("ModelInfo"))
+        if params.get("Env") is not None:
+            self.Env = []
+            for item in params.get("Env"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self.Env.append(obj)
+        if params.get("Resources") is not None:
+            self.Resources = ResourceInfo()
+            self.Resources._deserialize(params.get("Resources"))
+        self.InstanceType = params.get("InstanceType")
+        self.ScaleMode = params.get("ScaleMode")
+        self.Replicas = params.get("Replicas")
+        if params.get("HorizontalPodAutoscaler") is not None:
+            self.HorizontalPodAutoscaler = HorizontalPodAutoscaler()
+            self.HorizontalPodAutoscaler._deserialize(params.get("HorizontalPodAutoscaler"))
+        self.LogEnable = params.get("LogEnable")
+        if params.get("LogConfig") is not None:
+            self.LogConfig = LogConfig()
+            self.LogConfig._deserialize(params.get("LogConfig"))
+        self.AuthorizationEnable = params.get("AuthorizationEnable")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.NewVersion = params.get("NewVersion")
+        if params.get("CronScaleJobs") is not None:
+            self.CronScaleJobs = []
+            for item in params.get("CronScaleJobs"):
+                obj = CronScaleJob()
+                obj._deserialize(item)
+                self.CronScaleJobs.append(obj)
+        self.ScaleStrategy = params.get("ScaleStrategy")
+        self.HybridBillingPrepaidReplicas = params.get("HybridBillingPrepaidReplicas")
+        self.CreateSource = params.get("CreateSource")
+        self.ModelHotUpdateEnable = params.get("ModelHotUpdateEnable")
+        if params.get("ScheduledAction") is not None:
+            self.ScheduledAction = ScheduledAction()
+            self.ScheduledAction._deserialize(params.get("ScheduledAction"))
+        if params.get("VolumeMount") is not None:
+            self.VolumeMount = VolumeMount()
+            self.VolumeMount._deserialize(params.get("VolumeMount"))
+        if params.get("ServiceLimit") is not None:
+            self.ServiceLimit = ServiceLimit()
+            self.ServiceLimit._deserialize(params.get("ServiceLimit"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModelServiceResponse(AbstractModel):
+    """CreateModelService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Service: 生成的模型服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: :class:`tencentcloud.tione.v20211111.models.Service`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Service = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Service") is not None:
+            self.Service = Service()
+            self.Service._deserialize(params.get("Service"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTrainingModelRequest(AbstractModel):
     """CreateTrainingModel请求参数结构体
 
@@ -855,22 +1137,24 @@ class CreateTrainingTaskRequest(AbstractModel):
         r"""
         :param Name: 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
         :type Name: str
-        :param TrainingMode: 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
-        :type TrainingMode: str
         :param ChargeType: 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
         :type ChargeType: str
         :param ResourceConfigInfos: 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
         :type ResourceConfigInfos: list of ResourceConfigInfo
         :param CodePackagePath: COS代码包路径
         :type CodePackagePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param TrainingMode: 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+        :type TrainingMode: str
         :param Output: COS训练输出路径
         :type Output: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param LogEnable: 是否上报日志
         :type LogEnable: bool
         :param FrameworkName: 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
         :type FrameworkName: str
-        :param FrameworkVersion: 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+        :param FrameworkVersion: 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
         :type FrameworkVersion: str
+        :param FrameworkEnvironment: 训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+        :type FrameworkEnvironment: str
         :param ResourceGroupId: 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
         :type ResourceGroupId: str
         :param Tags: 标签配置
@@ -879,8 +1163,6 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         :param StartCmdInfo: 启动命令信息，默认为sh start.sh
         :type StartCmdInfo: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
-        :param DataSource: 数据来源，eg：DATASET、COS、CFS、HDFS
-        :type DataSource: str
         :param DataConfigs: 数据配置
         :type DataConfigs: list of DataConfig
         :param VpcId: VPC Id
@@ -893,32 +1175,34 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type TuningParameters: str
         :param Remark: 备注，最多500个字
         :type Remark: str
+        :param DataSource: 数据来源，eg：DATASET、COS、CFS、HDFS
+        :type DataSource: str
         """
         self.Name = None
-        self.TrainingMode = None
         self.ChargeType = None
         self.ResourceConfigInfos = None
         self.CodePackagePath = None
+        self.TrainingMode = None
         self.Output = None
         self.LogEnable = None
         self.FrameworkName = None
         self.FrameworkVersion = None
+        self.FrameworkEnvironment = None
         self.ResourceGroupId = None
         self.Tags = None
         self.ImageInfo = None
         self.StartCmdInfo = None
-        self.DataSource = None
         self.DataConfigs = None
         self.VpcId = None
         self.SubnetId = None
         self.LogConfig = None
         self.TuningParameters = None
         self.Remark = None
+        self.DataSource = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
-        self.TrainingMode = params.get("TrainingMode")
         self.ChargeType = params.get("ChargeType")
         if params.get("ResourceConfigInfos") is not None:
             self.ResourceConfigInfos = []
@@ -929,12 +1213,14 @@ class CreateTrainingTaskRequest(AbstractModel):
         if params.get("CodePackagePath") is not None:
             self.CodePackagePath = CosPathInfo()
             self.CodePackagePath._deserialize(params.get("CodePackagePath"))
+        self.TrainingMode = params.get("TrainingMode")
         if params.get("Output") is not None:
             self.Output = CosPathInfo()
             self.Output._deserialize(params.get("Output"))
         self.LogEnable = params.get("LogEnable")
         self.FrameworkName = params.get("FrameworkName")
         self.FrameworkVersion = params.get("FrameworkVersion")
+        self.FrameworkEnvironment = params.get("FrameworkEnvironment")
         self.ResourceGroupId = params.get("ResourceGroupId")
         if params.get("Tags") is not None:
             self.Tags = []
@@ -948,7 +1234,6 @@ class CreateTrainingTaskRequest(AbstractModel):
         if params.get("StartCmdInfo") is not None:
             self.StartCmdInfo = StartCmdInfo()
             self.StartCmdInfo._deserialize(params.get("StartCmdInfo"))
-        self.DataSource = params.get("DataSource")
         if params.get("DataConfigs") is not None:
             self.DataConfigs = []
             for item in params.get("DataConfigs"):
@@ -962,6 +1247,7 @@ class CreateTrainingTaskRequest(AbstractModel):
             self.LogConfig._deserialize(params.get("LogConfig"))
         self.TuningParameters = params.get("TuningParameters")
         self.Remark = params.get("Remark")
+        self.DataSource = params.get("DataSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1017,6 +1303,55 @@ class CronInfo(AbstractModel):
         self.CronConfig = params.get("CronConfig")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CronScaleJob(AbstractModel):
+    """定时扩缩任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Schedule: Cron表达式，标识任务的执行时间，精确到分钟级
+        :type Schedule: str
+        :param Name: 定时任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param TargetReplicas: 目标实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetReplicas: int
+        :param MinReplicas: 目标min
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinReplicas: int
+        :param MaxReplicas: 目标max
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReplicas: int
+        :param ExcludeDates: 例外时间，Cron表达式，在对应时间内不执行任务。最多支持3条。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludeDates: list of str
+        """
+        self.Schedule = None
+        self.Name = None
+        self.TargetReplicas = None
+        self.MinReplicas = None
+        self.MaxReplicas = None
+        self.ExcludeDates = None
+
+
+    def _deserialize(self, params):
+        self.Schedule = params.get("Schedule")
+        self.Name = params.get("Name")
+        self.TargetReplicas = params.get("TargetReplicas")
+        self.MinReplicas = params.get("MinReplicas")
+        self.MaxReplicas = params.get("MaxReplicas")
+        self.ExcludeDates = params.get("ExcludeDates")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1610,6 +1945,88 @@ class DeleteDatasetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteModelServiceGroupRequest(AbstractModel):
+    """DeleteModelServiceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceGroupId: 服务id
+        :type ServiceGroupId: str
+        """
+        self.ServiceGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceGroupId = params.get("ServiceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteModelServiceGroupResponse(AbstractModel):
+    """DeleteModelServiceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteModelServiceRequest(AbstractModel):
+    """DeleteModelService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: 服务id
+        :type ServiceId: str
+        """
+        self.ServiceId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteModelServiceResponse(AbstractModel):
+    """DeleteModelService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTrainingModelRequest(AbstractModel):
     """DeleteTrainingModel请求参数结构体
 
@@ -1742,6 +2159,84 @@ class DeleteTrainingTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAPIConfigsRequest(AbstractModel):
+    """DescribeAPIConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100
+        :type Limit: int
+        :param Order: 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+        :type Order: str
+        :param OrderField: 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+        :type OrderField: str
+        :param Filters: 分页参数，支持的分页过滤Name包括：
+["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId"]
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.OrderField = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAPIConfigsResponse(AbstractModel):
+    """DescribeAPIConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 接口数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Details: 接口详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: list of APIConfigDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Details = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Details") is not None:
+            self.Details = []
+            for item in params.get("Details"):
+                obj = APIConfigDetail()
+                obj._deserialize(item)
+                self.Details.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2605,6 +3100,441 @@ class DescribeLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeModelServiceCallInfoRequest(AbstractModel):
+    """DescribeModelServiceCallInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceGroupId: 服务组id
+        :type ServiceGroupId: str
+        """
+        self.ServiceGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceGroupId = params.get("ServiceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelServiceCallInfoResponse(AbstractModel):
+    """DescribeModelServiceCallInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceCallInfo: 服务调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceCallInfo: :class:`tencentcloud.tione.v20211111.models.ServiceCallInfo`
+        :param InferGatewayCallInfo: 升级网关调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InferGatewayCallInfo: :class:`tencentcloud.tione.v20211111.models.InferGatewayCallInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceCallInfo = None
+        self.InferGatewayCallInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceCallInfo") is not None:
+            self.ServiceCallInfo = ServiceCallInfo()
+            self.ServiceCallInfo._deserialize(params.get("ServiceCallInfo"))
+        if params.get("InferGatewayCallInfo") is not None:
+            self.InferGatewayCallInfo = InferGatewayCallInfo()
+            self.InferGatewayCallInfo._deserialize(params.get("InferGatewayCallInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeModelServiceGroupRequest(AbstractModel):
+    """DescribeModelServiceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceGroupId: 无
+        :type ServiceGroupId: str
+        """
+        self.ServiceGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceGroupId = params.get("ServiceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelServiceGroupResponse(AbstractModel):
+    """DescribeModelServiceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceGroup: 服务组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGroup: :class:`tencentcloud.tione.v20211111.models.ServiceGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceGroup") is not None:
+            self.ServiceGroup = ServiceGroup()
+            self.ServiceGroup._deserialize(params.get("ServiceGroup"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeModelServiceGroupsRequest(AbstractModel):
+    """DescribeModelServiceGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100
+        :type Limit: int
+        :param Order: 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+        :type Order: str
+        :param OrderField: 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+        :type OrderField: str
+        :param Filters: 分页参数，支持的分页过滤Name包括：
+["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId","Status","CreatedBy","ModelVersionId"]
+        :type Filters: list of Filter
+        :param TagFilters: 标签过滤参数
+        :type TagFilters: list of TagFilter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.OrderField = None
+        self.Filters = None
+        self.TagFilters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelServiceGroupsResponse(AbstractModel):
+    """DescribeModelServiceGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 推理服务组数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ServiceGroups: 服务组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGroups: list of ServiceGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ServiceGroups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ServiceGroups") is not None:
+            self.ServiceGroups = []
+            for item in params.get("ServiceGroups"):
+                obj = ServiceGroup()
+                obj._deserialize(item)
+                self.ServiceGroups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeModelServiceHistoryRequest(AbstractModel):
+    """DescribeModelServiceHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: 服务Id
+        :type ServiceId: str
+        """
+        self.ServiceId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelServiceHistoryResponse(AbstractModel):
+    """DescribeModelServiceHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 历史版本总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ServiceHistory: 服务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceHistory: list of ServiceHistory
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ServiceHistory = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ServiceHistory") is not None:
+            self.ServiceHistory = []
+            for item in params.get("ServiceHistory"):
+                obj = ServiceHistory()
+                obj._deserialize(item)
+                self.ServiceHistory.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeModelServiceHotUpdatedRequest(AbstractModel):
+    """DescribeModelServiceHotUpdated请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageInfo: 镜像信息，配置服务运行所需的镜像地址等信息
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param ModelInfo: 模型信息，需要挂载模型时填写
+        :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        :param VolumeMount: 挂载信息
+        :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
+        """
+        self.ImageInfo = None
+        self.ModelInfo = None
+        self.VolumeMount = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = ImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("ModelInfo") is not None:
+            self.ModelInfo = ModelInfo()
+            self.ModelInfo._deserialize(params.get("ModelInfo"))
+        if params.get("VolumeMount") is not None:
+            self.VolumeMount = VolumeMount()
+            self.VolumeMount._deserialize(params.get("VolumeMount"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelServiceHotUpdatedResponse(AbstractModel):
+    """DescribeModelServiceHotUpdated返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeModelServiceRequest(AbstractModel):
+    """DescribeModelService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: 服务id
+        :type ServiceId: str
+        """
+        self.ServiceId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelServiceResponse(AbstractModel):
+    """DescribeModelService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Service: 服务信息
+        :type Service: :class:`tencentcloud.tione.v20211111.models.Service`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Service = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Service") is not None:
+            self.Service = Service()
+            self.Service._deserialize(params.get("Service"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeModelServicesRequest(AbstractModel):
+    """DescribeModelServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为20
+        :type Limit: int
+        :param Order: 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+        :type Order: str
+        :param OrderField: 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+        :type OrderField: str
+        :param Filters: 分页参数，支持的分页过滤Name包括：
+["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId","Status","CreatedBy","ModelId"]
+        :type Filters: list of Filter
+        :param TagFilters: 标签过滤参数
+        :type TagFilters: list of TagFilter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.OrderField = None
+        self.Filters = None
+        self.TagFilters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelServicesResponse(AbstractModel):
+    """DescribeModelServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 服务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Services: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Services: list of Service
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Services = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Services") is not None:
+            self.Services = []
+            for item in params.get("Services"):
+                obj = Service()
+                obj._deserialize(item)
+                self.Services.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTrainingFrameworksRequest(AbstractModel):
     """DescribeTrainingFrameworks请求参数结构体
 
@@ -3129,6 +4059,36 @@ class DetectionLabelInfo(AbstractModel):
         
 
 
+class EnvVar(AbstractModel):
+    """环境变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 环境变量key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 环境变量value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """过滤器
 
@@ -3328,14 +4288,18 @@ class FrameworkVersion(AbstractModel):
         :type Version: str
         :param TrainingModes: 训练模式
         :type TrainingModes: list of str
+        :param Environment: 框架运行环境
+        :type Environment: str
         """
         self.Version = None
         self.TrainingModes = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
         self.Version = params.get("Version")
         self.TrainingModes = params.get("TrainingModes")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3446,6 +4410,46 @@ class HDFSConfig(AbstractModel):
         
 
 
+class HorizontalPodAutoscaler(AbstractModel):
+    """hpa的描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinReplicas: 最小实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinReplicas: int
+        :param MaxReplicas: 最大实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReplicas: int
+        :param HpaMetrics: 扩缩容指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HpaMetrics: list of Option
+        """
+        self.MinReplicas = None
+        self.MaxReplicas = None
+        self.HpaMetrics = None
+
+
+    def _deserialize(self, params):
+        self.MinReplicas = params.get("MinReplicas")
+        self.MaxReplicas = params.get("MaxReplicas")
+        if params.get("HpaMetrics") is not None:
+            self.HpaMetrics = []
+            for item in params.get("HpaMetrics"):
+                obj = Option()
+                obj._deserialize(item)
+                self.HpaMetrics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageInfo(AbstractModel):
     """镜像描述信息
 
@@ -3475,6 +4479,51 @@ class ImageInfo(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.RegistryRegion = params.get("RegistryRegion")
         self.RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferGatewayCallInfo(AbstractModel):
+    """服务的调用信息，服务组下唯一
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcHttpAddr: 内网http调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcHttpAddr: str
+        :param VpcHttpsAddr: 内网https调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcHttpsAddr: str
+        :param VpcGrpcTlsAddr: 内网grpc调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcGrpcTlsAddr: str
+        :param VpcId: 可访问的vpcid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 后端ip对应的子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        """
+        self.VpcHttpAddr = None
+        self.VpcHttpsAddr = None
+        self.VpcGrpcTlsAddr = None
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.VpcHttpAddr = params.get("VpcHttpAddr")
+        self.VpcHttpsAddr = params.get("VpcHttpsAddr")
+        self.VpcGrpcTlsAddr = params.get("VpcGrpcTlsAddr")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3828,6 +4877,63 @@ class ModelInfo(AbstractModel):
         
 
 
+class ModifyServiceGroupWeightsRequest(AbstractModel):
+    """ModifyServiceGroupWeights请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceGroupId: 服务组id
+        :type ServiceGroupId: str
+        :param Weights: 权重设置
+        :type Weights: list of WeightEntry
+        """
+        self.ServiceGroupId = None
+        self.Weights = None
+
+
+    def _deserialize(self, params):
+        self.ServiceGroupId = params.get("ServiceGroupId")
+        if params.get("Weights") is not None:
+            self.Weights = []
+            for item in params.get("Weights"):
+                obj = WeightEntry()
+                obj._deserialize(item)
+                self.Weights.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyServiceGroupWeightsResponse(AbstractModel):
+    """ModifyServiceGroupWeights返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceGroup: 更新权重后的服务组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGroup: :class:`tencentcloud.tione.v20211111.models.ServiceGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ServiceGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceGroup") is not None:
+            self.ServiceGroup = ServiceGroup()
+            self.ServiceGroup._deserialize(params.get("ServiceGroup"))
+        self.RequestId = params.get("RequestId")
+
+
 class OcrLabelInfo(AbstractModel):
     """OCR场景标签列表
 
@@ -3884,6 +4990,34 @@ DIRECTION_HORIZONTAL
         self.Value = params.get("Value")
         self.KeyIdsForValue = params.get("KeyIdsForValue")
         self.Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Option(AbstractModel):
+    """键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 指标名
+        :type Name: str
+        :param Value: 指标值
+        :type Value: int
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4144,7 +5278,7 @@ Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能�
 例2 实例的机型带有4张gpu整卡, 每张卡对应1张实际T4卡, 则 此时 GpuType=T4, Gpu=400, RealGpu=400.
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gpu: int
-        :param GpuType: Gpu卡型号 T4或者V100
+        :param GpuType: Gpu卡型号 T4或者V100。仅展示当前 GPU 卡型号，若存在多类型同时使用，则参考 RealGpuDetailSet 的值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuType: str
         :param RealGpu: 创建或更新时无需填写，仅展示需要关注
@@ -4152,12 +5286,16 @@ Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能�
 RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealGpu: int
+        :param RealGpuDetailSet: 创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealGpuDetailSet: list of GpuDetail
         """
         self.Cpu = None
         self.Memory = None
         self.Gpu = None
         self.GpuType = None
         self.RealGpu = None
+        self.RealGpuDetailSet = None
 
 
     def _deserialize(self, params):
@@ -4166,6 +5304,12 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
         self.Gpu = params.get("Gpu")
         self.GpuType = params.get("GpuType")
         self.RealGpu = params.get("RealGpu")
+        if params.get("RealGpuDetailSet") is not None:
+            self.RealGpuDetailSet = []
+            for item in params.get("RealGpuDetailSet"):
+                obj = GpuDetail()
+                obj._deserialize(item)
+                self.RealGpuDetailSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4225,6 +5369,34 @@ class RowValue(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduledAction(AbstractModel):
+    """定时的事务和行为
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleStop: 是否要定时停止服务，true or false。true 则 ScheduleStopTime 必填， false 则 ScheduleStopTime 不生效
+        :type ScheduleStop: bool
+        :param ScheduleStopTime: 要执行定时停止的时间，格式：“2022-01-26 19:46:22”
+        :type ScheduleStopTime: str
+        """
+        self.ScheduleStop = None
+        self.ScheduleStopTime = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleStop = params.get("ScheduleStop")
+        self.ScheduleStopTime = params.get("ScheduleStopTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4298,6 +5470,544 @@ class SegmentationInfo(AbstractModel):
         self.Label = params.get("Label")
         self.Gray = params.get("Gray")
         self.Color = params.get("Color")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Service(AbstractModel):
+    """描述在线服务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceGroupId: 服务组id
+        :type ServiceGroupId: str
+        :param ServiceId: 服务id
+        :type ServiceId: str
+        :param ServiceGroupName: 服务组名
+        :type ServiceGroupName: str
+        :param ServiceDescription: 服务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceDescription: str
+        :param ClusterId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param ChargeType: 付费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: str
+        :param ResourceGroupId: 后付费资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupId: str
+        :param CreatedBy: 创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedBy: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Uin: 主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param SubUin: 子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubUin: str
+        :param AppId: app_id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param Version: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param LatestVersion: 服务组下服务的最高版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestVersion: str
+        :param ServiceInfo: 服务的详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceInfo: :class:`tencentcloud.tione.v20211111.models.ServiceInfo`
+        :param BusinessStatus: 服务的业务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessStatus: str
+        :param CreateSource: 服务的创建来源 AUTO_ML,DEFAULT
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateSource: str
+        :param BillingInfo: 费用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingInfo: str
+        :param Status: 服务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Weight: 模型权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param IngressName: 服务所在的 ingress 的 name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IngressName: str
+        :param ServiceLimit: 服务限速限流相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        :param ScheduledAction: 定时停止的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
+        """
+        self.ServiceGroupId = None
+        self.ServiceId = None
+        self.ServiceGroupName = None
+        self.ServiceDescription = None
+        self.ClusterId = None
+        self.Region = None
+        self.Namespace = None
+        self.ChargeType = None
+        self.ResourceGroupId = None
+        self.CreatedBy = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Uin = None
+        self.SubUin = None
+        self.AppId = None
+        self.Version = None
+        self.LatestVersion = None
+        self.ServiceInfo = None
+        self.BusinessStatus = None
+        self.CreateSource = None
+        self.BillingInfo = None
+        self.Status = None
+        self.Weight = None
+        self.IngressName = None
+        self.ServiceLimit = None
+        self.ScheduledAction = None
+
+
+    def _deserialize(self, params):
+        self.ServiceGroupId = params.get("ServiceGroupId")
+        self.ServiceId = params.get("ServiceId")
+        self.ServiceGroupName = params.get("ServiceGroupName")
+        self.ServiceDescription = params.get("ServiceDescription")
+        self.ClusterId = params.get("ClusterId")
+        self.Region = params.get("Region")
+        self.Namespace = params.get("Namespace")
+        self.ChargeType = params.get("ChargeType")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        self.CreatedBy = params.get("CreatedBy")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Uin = params.get("Uin")
+        self.SubUin = params.get("SubUin")
+        self.AppId = params.get("AppId")
+        self.Version = params.get("Version")
+        self.LatestVersion = params.get("LatestVersion")
+        if params.get("ServiceInfo") is not None:
+            self.ServiceInfo = ServiceInfo()
+            self.ServiceInfo._deserialize(params.get("ServiceInfo"))
+        self.BusinessStatus = params.get("BusinessStatus")
+        self.CreateSource = params.get("CreateSource")
+        self.BillingInfo = params.get("BillingInfo")
+        self.Status = params.get("Status")
+        self.Weight = params.get("Weight")
+        self.IngressName = params.get("IngressName")
+        if params.get("ServiceLimit") is not None:
+            self.ServiceLimit = ServiceLimit()
+            self.ServiceLimit._deserialize(params.get("ServiceLimit"))
+        if params.get("ScheduledAction") is not None:
+            self.ScheduledAction = ScheduledAction()
+            self.ScheduledAction._deserialize(params.get("ScheduledAction"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceCallInfo(AbstractModel):
+    """服务的调用信息，服务组下唯一
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceGroupId: 服务组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGroupId: str
+        :param InnerHttpAddr: 内网http调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerHttpAddr: str
+        :param InnerHttpsAddr: 内网https调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerHttpsAddr: str
+        :param OuterHttpAddr: 内网http调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OuterHttpAddr: str
+        :param OuterHttpsAddr: 内网https调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OuterHttpsAddr: str
+        :param AppKey: 调用key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppKey: str
+        :param AppSecret: 调用secret
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppSecret: str
+        """
+        self.ServiceGroupId = None
+        self.InnerHttpAddr = None
+        self.InnerHttpsAddr = None
+        self.OuterHttpAddr = None
+        self.OuterHttpsAddr = None
+        self.AppKey = None
+        self.AppSecret = None
+
+
+    def _deserialize(self, params):
+        self.ServiceGroupId = params.get("ServiceGroupId")
+        self.InnerHttpAddr = params.get("InnerHttpAddr")
+        self.InnerHttpsAddr = params.get("InnerHttpsAddr")
+        self.OuterHttpAddr = params.get("OuterHttpAddr")
+        self.OuterHttpsAddr = params.get("OuterHttpsAddr")
+        self.AppKey = params.get("AppKey")
+        self.AppSecret = params.get("AppSecret")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceGroup(AbstractModel):
+    """在线服务一个服务组的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceGroupId: 服务组id
+        :type ServiceGroupId: str
+        :param ServiceGroupName: 服务组名
+        :type ServiceGroupName: str
+        :param CreatedBy: 创建者
+        :type CreatedBy: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param Uin: 主账号
+        :type Uin: str
+        :param ServiceCount: 服务组下服务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceCount: int
+        :param RunningServiceCount: 服务组下在运行的服务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningServiceCount: int
+        :param Services: 服务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Services: list of Service
+        :param Status: 服务组状态，与服务一致
+ CREATING 创建中
+     CREATE_FAILED 创建失败
+     Normal	正常运行中
+     Stopped  已停止
+     Stopping 停止中
+     Abnormal 异常
+     Pending 启动中
+     Waiting 就绪中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Tags: 服务组标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param LatestVersion: 服务组下最高版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestVersion: str
+        :param BusinessStatus: 服务的业务状态
+CREATING 创建中
+     CREATE_FAILED 创建失败
+     ARREARS_STOP 因欠费被强制停止
+     BILLING 计费中
+     WHITELIST_USING 白名单试用中
+     WHITELIST_STOP 白名单额度不足
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessStatus: str
+        :param BillingInfo: 服务的计费信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingInfo: str
+        :param CreateSource: 服务的创建来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateSource: str
+        :param WeightUpdateStatus: 服务组的权重更新状态 
+UPDATING 更新中
+     UPDATED 更新成功
+     UPDATE_FAILED 更新失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeightUpdateStatus: str
+        """
+        self.ServiceGroupId = None
+        self.ServiceGroupName = None
+        self.CreatedBy = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Uin = None
+        self.ServiceCount = None
+        self.RunningServiceCount = None
+        self.Services = None
+        self.Status = None
+        self.Tags = None
+        self.LatestVersion = None
+        self.BusinessStatus = None
+        self.BillingInfo = None
+        self.CreateSource = None
+        self.WeightUpdateStatus = None
+
+
+    def _deserialize(self, params):
+        self.ServiceGroupId = params.get("ServiceGroupId")
+        self.ServiceGroupName = params.get("ServiceGroupName")
+        self.CreatedBy = params.get("CreatedBy")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Uin = params.get("Uin")
+        self.ServiceCount = params.get("ServiceCount")
+        self.RunningServiceCount = params.get("RunningServiceCount")
+        if params.get("Services") is not None:
+            self.Services = []
+            for item in params.get("Services"):
+                obj = Service()
+                obj._deserialize(item)
+                self.Services.append(obj)
+        self.Status = params.get("Status")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.LatestVersion = params.get("LatestVersion")
+        self.BusinessStatus = params.get("BusinessStatus")
+        self.BillingInfo = params.get("BillingInfo")
+        self.CreateSource = params.get("CreateSource")
+        self.WeightUpdateStatus = params.get("WeightUpdateStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceHistory(AbstractModel):
+    """服务历史版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Revision: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Image: 镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Image: str
+        :param ModelFile: 模型文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelFile: str
+        :param RawData: 原始数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawData: str
+        """
+        self.Revision = None
+        self.UpdateTime = None
+        self.Image = None
+        self.ModelFile = None
+        self.RawData = None
+
+
+    def _deserialize(self, params):
+        self.Revision = params.get("Revision")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Image = params.get("Image")
+        self.ModelFile = params.get("ModelFile")
+        self.RawData = params.get("RawData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceInfo(AbstractModel):
+    """推理服务在集群中的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Replicas: 期望运行的Pod数量，停止状态是0
+不同计费模式和调节模式下对应关系如下
+PREPAID 和 POSTPAID_BY_HOUR:
+手动调节模式下对应 实例数量
+自动调节模式下对应 基于时间的默认策略的实例数量
+HYBRID_PAID:
+后付费实例手动调节模式下对应 实例数量
+后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replicas: int
+        :param ImageInfo: 镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param Env: 环境变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Env: list of EnvVar
+        :param Resources: 资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        :param InstanceType: 后付费实例对应的机型规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param ModelInfo: 模型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        :param LogEnable: 是否启用日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogEnable: bool
+        :param LogConfig: 日志配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param AuthorizationEnable: 是否开启鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizationEnable: bool
+        :param HorizontalPodAutoscaler: hpa配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HorizontalPodAutoscaler: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
+        :param Status: 服务的状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: :class:`tencentcloud.tione.v20211111.models.WorkloadStatus`
+        :param Weight: 权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param PodList: 实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodList: list of str
+        :param ResourceTotal: 资源总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTotal: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        :param OldReplicas: 历史实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldReplicas: int
+        :param HybridBillingPrepaidReplicas: 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HybridBillingPrepaidReplicas: int
+        :param OldHybridBillingPrepaidReplicas: 历史 HYBRID_PAID 时的实例数，用户恢复服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldHybridBillingPrepaidReplicas: int
+        :param ModelHotUpdateEnable: 是否开启模型的热更新。默认不开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelHotUpdateEnable: bool
+        """
+        self.Replicas = None
+        self.ImageInfo = None
+        self.Env = None
+        self.Resources = None
+        self.InstanceType = None
+        self.ModelInfo = None
+        self.LogEnable = None
+        self.LogConfig = None
+        self.AuthorizationEnable = None
+        self.HorizontalPodAutoscaler = None
+        self.Status = None
+        self.Weight = None
+        self.PodList = None
+        self.ResourceTotal = None
+        self.OldReplicas = None
+        self.HybridBillingPrepaidReplicas = None
+        self.OldHybridBillingPrepaidReplicas = None
+        self.ModelHotUpdateEnable = None
+
+
+    def _deserialize(self, params):
+        self.Replicas = params.get("Replicas")
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = ImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("Env") is not None:
+            self.Env = []
+            for item in params.get("Env"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self.Env.append(obj)
+        if params.get("Resources") is not None:
+            self.Resources = ResourceInfo()
+            self.Resources._deserialize(params.get("Resources"))
+        self.InstanceType = params.get("InstanceType")
+        if params.get("ModelInfo") is not None:
+            self.ModelInfo = ModelInfo()
+            self.ModelInfo._deserialize(params.get("ModelInfo"))
+        self.LogEnable = params.get("LogEnable")
+        if params.get("LogConfig") is not None:
+            self.LogConfig = LogConfig()
+            self.LogConfig._deserialize(params.get("LogConfig"))
+        self.AuthorizationEnable = params.get("AuthorizationEnable")
+        if params.get("HorizontalPodAutoscaler") is not None:
+            self.HorizontalPodAutoscaler = HorizontalPodAutoscaler()
+            self.HorizontalPodAutoscaler._deserialize(params.get("HorizontalPodAutoscaler"))
+        if params.get("Status") is not None:
+            self.Status = WorkloadStatus()
+            self.Status._deserialize(params.get("Status"))
+        self.Weight = params.get("Weight")
+        self.PodList = params.get("PodList")
+        if params.get("ResourceTotal") is not None:
+            self.ResourceTotal = ResourceInfo()
+            self.ResourceTotal._deserialize(params.get("ResourceTotal"))
+        self.OldReplicas = params.get("OldReplicas")
+        self.HybridBillingPrepaidReplicas = params.get("HybridBillingPrepaidReplicas")
+        self.OldHybridBillingPrepaidReplicas = params.get("OldHybridBillingPrepaidReplicas")
+        self.ModelHotUpdateEnable = params.get("ModelHotUpdateEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceLimit(AbstractModel):
+    """服务的限流限速等配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnableInstanceRpsLimit: 是否开启实例层面限流限速，true or false。true 则 InstanceRpsLimit 必填， false 则 InstanceRpsLimit 不生效
+        :type EnableInstanceRpsLimit: bool
+        :param InstanceRpsLimit: 每个服务实例的 request per second 限速, 0 为不限流
+        :type InstanceRpsLimit: int
+        """
+        self.EnableInstanceRpsLimit = None
+        self.InstanceRpsLimit = None
+
+
+    def _deserialize(self, params):
+        self.EnableInstanceRpsLimit = params.get("EnableInstanceRpsLimit")
+        self.InstanceRpsLimit = params.get("InstanceRpsLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4470,6 +6180,51 @@ class StartTrainingTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class StatefulSetCondition(AbstractModel):
+    """实例状况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Message: 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Reason: 原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param Status: Status of the condition, one of True, False, Unknown.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param LastTransitionTime: 上次更新的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTransitionTime: str
+        """
+        self.Message = None
+        self.Reason = None
+        self.Status = None
+        self.Type = None
+        self.LastTransitionTime = None
+
+
+    def _deserialize(self, params):
+        self.Message = params.get("Message")
+        self.Reason = params.get("Reason")
+        self.Status = params.get("Status")
+        self.Type = params.get("Type")
+        self.LastTransitionTime = params.get("LastTransitionTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StopBatchTaskRequest(AbstractModel):
@@ -5138,9 +6893,9 @@ class TrainingTaskDetail(AbstractModel):
         :param FrameworkVersion: 训练框架版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameworkVersion: str
-        :param TrainingMode: 训练模式，eg：PS_WORKER、DDP、MPI、HOROVOD
+        :param FrameworkEnvironment: 框架运行环境
 注意：此字段可能返回 null，表示取不到有效值。
-        :type TrainingMode: str
+        :type FrameworkEnvironment: str
         :param ChargeType: 计费模式
         :type ChargeType: str
         :param ResourceGroupId: 预付费专用资源组
@@ -5151,9 +6906,9 @@ class TrainingTaskDetail(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param ImageInfo: 自定义镜像信息
+        :param TrainingMode: 训练模式，eg：PS_WORKER、DDP、MPI、HOROVOD
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :type TrainingMode: str
         :param CodePackagePath: 代码包
         :type CodePackagePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param StartCmdInfo: 启动命令信息
@@ -5180,8 +6935,9 @@ class TrainingTaskDetail(AbstractModel):
         :param SubnetId: 子网ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param Status: 任务状态
-        :type Status: str
+        :param ImageInfo: 自定义镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         :param RuntimeInSeconds: 运行时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeInSeconds: int
@@ -5218,6 +6974,8 @@ class TrainingTaskDetail(AbstractModel):
         :param Message: 任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
+        :param Status: 任务状态
+        :type Status: str
         """
         self.Id = None
         self.Name = None
@@ -5226,12 +6984,12 @@ class TrainingTaskDetail(AbstractModel):
         self.Region = None
         self.FrameworkName = None
         self.FrameworkVersion = None
-        self.TrainingMode = None
+        self.FrameworkEnvironment = None
         self.ChargeType = None
         self.ResourceGroupId = None
         self.ResourceConfigInfos = None
         self.Tags = None
-        self.ImageInfo = None
+        self.TrainingMode = None
         self.CodePackagePath = None
         self.StartCmdInfo = None
         self.DataSource = None
@@ -5242,7 +7000,7 @@ class TrainingTaskDetail(AbstractModel):
         self.LogConfig = None
         self.VpcId = None
         self.SubnetId = None
-        self.Status = None
+        self.ImageInfo = None
         self.RuntimeInSeconds = None
         self.CreateTime = None
         self.StartTime = None
@@ -5256,6 +7014,7 @@ class TrainingTaskDetail(AbstractModel):
         self.BillingInfo = None
         self.ResourceGroupName = None
         self.Message = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -5266,7 +7025,7 @@ class TrainingTaskDetail(AbstractModel):
         self.Region = params.get("Region")
         self.FrameworkName = params.get("FrameworkName")
         self.FrameworkVersion = params.get("FrameworkVersion")
-        self.TrainingMode = params.get("TrainingMode")
+        self.FrameworkEnvironment = params.get("FrameworkEnvironment")
         self.ChargeType = params.get("ChargeType")
         self.ResourceGroupId = params.get("ResourceGroupId")
         if params.get("ResourceConfigInfos") is not None:
@@ -5281,9 +7040,7 @@ class TrainingTaskDetail(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
-        if params.get("ImageInfo") is not None:
-            self.ImageInfo = ImageInfo()
-            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        self.TrainingMode = params.get("TrainingMode")
         if params.get("CodePackagePath") is not None:
             self.CodePackagePath = CosPathInfo()
             self.CodePackagePath._deserialize(params.get("CodePackagePath"))
@@ -5307,7 +7064,9 @@ class TrainingTaskDetail(AbstractModel):
             self.LogConfig._deserialize(params.get("LogConfig"))
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
-        self.Status = params.get("Status")
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = ImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
         self.RuntimeInSeconds = params.get("RuntimeInSeconds")
         self.CreateTime = params.get("CreateTime")
         self.StartTime = params.get("StartTime")
@@ -5321,6 +7080,7 @@ class TrainingTaskDetail(AbstractModel):
         self.BillingInfo = params.get("BillingInfo")
         self.ResourceGroupName = params.get("ResourceGroupName")
         self.Message = params.get("Message")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5347,9 +7107,9 @@ class TrainingTaskSetItem(AbstractModel):
         :param FrameworkVersion: 训练框架版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameworkVersion: str
-        :param TrainingMode: 训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
+        :param FrameworkEnvironment: 框架运行环境
 注意：此字段可能返回 null，表示取不到有效值。
-        :type TrainingMode: str
+        :type FrameworkEnvironment: str
         :param ChargeType: 计费模式
         :type ChargeType: str
         :param ChargeStatus: 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
@@ -5359,9 +7119,9 @@ class TrainingTaskSetItem(AbstractModel):
         :type ResourceGroupId: str
         :param ResourceConfigInfos: 资源配置
         :type ResourceConfigInfos: list of ResourceConfigInfo
-        :param Tags: 标签配置
+        :param TrainingMode: 训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
+        :type TrainingMode: str
         :param Status: 任务状态
         :type Status: str
         :param RuntimeInSeconds: 运行时长
@@ -5392,17 +7152,20 @@ class TrainingTaskSetItem(AbstractModel):
         :param Message: 任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
+        :param Tags: 标签配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.Id = None
         self.Name = None
         self.FrameworkName = None
         self.FrameworkVersion = None
-        self.TrainingMode = None
+        self.FrameworkEnvironment = None
         self.ChargeType = None
         self.ChargeStatus = None
         self.ResourceGroupId = None
         self.ResourceConfigInfos = None
-        self.Tags = None
+        self.TrainingMode = None
         self.Status = None
         self.RuntimeInSeconds = None
         self.CreateTime = None
@@ -5415,6 +7178,7 @@ class TrainingTaskSetItem(AbstractModel):
         self.ResourceGroupName = None
         self.ImageInfo = None
         self.Message = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -5422,7 +7186,7 @@ class TrainingTaskSetItem(AbstractModel):
         self.Name = params.get("Name")
         self.FrameworkName = params.get("FrameworkName")
         self.FrameworkVersion = params.get("FrameworkVersion")
-        self.TrainingMode = params.get("TrainingMode")
+        self.FrameworkEnvironment = params.get("FrameworkEnvironment")
         self.ChargeType = params.get("ChargeType")
         self.ChargeStatus = params.get("ChargeStatus")
         self.ResourceGroupId = params.get("ResourceGroupId")
@@ -5432,12 +7196,7 @@ class TrainingTaskSetItem(AbstractModel):
                 obj = ResourceConfigInfo()
                 obj._deserialize(item)
                 self.ResourceConfigInfos.append(obj)
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
+        self.TrainingMode = params.get("TrainingMode")
         self.Status = params.get("Status")
         self.RuntimeInSeconds = params.get("RuntimeInSeconds")
         self.CreateTime = params.get("CreateTime")
@@ -5454,6 +7213,128 @@ class TrainingTaskSetItem(AbstractModel):
             self.ImageInfo = ImageInfo()
             self.ImageInfo._deserialize(params.get("ImageInfo"))
         self.Message = params.get("Message")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeMount(AbstractModel):
+    """外部挂载信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CFSConfig: cfs的配置信息
+        :type CFSConfig: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
+        :param VolumeSourceType: 挂载源类型
+        :type VolumeSourceType: str
+        """
+        self.CFSConfig = None
+        self.VolumeSourceType = None
+
+
+    def _deserialize(self, params):
+        if params.get("CFSConfig") is not None:
+            self.CFSConfig = CFSConfig()
+            self.CFSConfig._deserialize(params.get("CFSConfig"))
+        self.VolumeSourceType = params.get("VolumeSourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WeightEntry(AbstractModel):
+    """服务的权重
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: 服务id
+        :type ServiceId: str
+        :param Weight: 流量权重值，同 ServiceGroup 下 总和应为 100
+        :type Weight: int
+        """
+        self.ServiceId = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkloadStatus(AbstractModel):
+    """工作负载的状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Replicas: 当前实例数
+        :type Replicas: int
+        :param UpdatedReplicas: 更新的实例数
+        :type UpdatedReplicas: int
+        :param ReadyReplicas: 就绪的实例数
+        :type ReadyReplicas: int
+        :param AvailableReplicas: 可用的实例数
+        :type AvailableReplicas: int
+        :param UnavailableReplicas: 不可用的实例数
+        :type UnavailableReplicas: int
+        :param Status: Normal	正常运行中
+Abnormal	服务异常，例如容器启动失败等
+Waiting	服务等待中，例如容器下载镜像过程等
+Stopped   已停止 
+Pending 启动中
+Stopping 停止中
+        :type Status: str
+        :param StatefulSetCondition: 工作负载的状况信息
+        :type StatefulSetCondition: list of StatefulSetCondition
+        """
+        self.Replicas = None
+        self.UpdatedReplicas = None
+        self.ReadyReplicas = None
+        self.AvailableReplicas = None
+        self.UnavailableReplicas = None
+        self.Status = None
+        self.StatefulSetCondition = None
+
+
+    def _deserialize(self, params):
+        self.Replicas = params.get("Replicas")
+        self.UpdatedReplicas = params.get("UpdatedReplicas")
+        self.ReadyReplicas = params.get("ReadyReplicas")
+        self.AvailableReplicas = params.get("AvailableReplicas")
+        self.UnavailableReplicas = params.get("UnavailableReplicas")
+        self.Status = params.get("Status")
+        if params.get("StatefulSetCondition") is not None:
+            self.StatefulSetCondition = []
+            for item in params.get("StatefulSetCondition"):
+                obj = StatefulSetCondition()
+                obj._deserialize(item)
+                self.StatefulSetCondition.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

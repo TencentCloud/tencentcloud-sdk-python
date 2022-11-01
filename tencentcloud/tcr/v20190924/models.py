@@ -3439,6 +3439,28 @@ class DescribeInstanceAllNamespacesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Limit: 每页个数
+        :type Limit: int
+        :param Offset: 起始偏移位置
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeInstanceAllNamespacesResponse(AbstractModel):
     """DescribeInstanceAllNamespaces返回参数结构体

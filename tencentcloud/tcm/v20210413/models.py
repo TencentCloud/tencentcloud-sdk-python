@@ -1699,6 +1699,67 @@ class ModifyMeshResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyTracingConfigRequest(AbstractModel):
+    """ModifyTracingConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshId: mesh名字
+        :type MeshId: str
+        :param Enable: 是否启用调用跟踪
+        :type Enable: bool
+        :param APM: 腾讯云 APM 服务相关参数
+        :type APM: :class:`tencentcloud.tcm.v20210413.models.APM`
+        :param Sampling: 调用跟踪采样值
+        :type Sampling: float
+        :param Zipkin: 调用追踪Zipkin相关配置
+        :type Zipkin: :class:`tencentcloud.tcm.v20210413.models.TracingZipkin`
+        """
+        self.MeshId = None
+        self.Enable = None
+        self.APM = None
+        self.Sampling = None
+        self.Zipkin = None
+
+
+    def _deserialize(self, params):
+        self.MeshId = params.get("MeshId")
+        self.Enable = params.get("Enable")
+        if params.get("APM") is not None:
+            self.APM = APM()
+            self.APM._deserialize(params.get("APM"))
+        self.Sampling = params.get("Sampling")
+        if params.get("Zipkin") is not None:
+            self.Zipkin = TracingZipkin()
+            self.Zipkin._deserialize(params.get("Zipkin"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTracingConfigResponse(AbstractModel):
+    """ModifyTracingConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class PodsMetricSource(AbstractModel):
     """PodsMetricSource 定义了如何根据特定指标进行扩缩容
 

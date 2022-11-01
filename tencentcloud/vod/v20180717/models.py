@@ -14666,8 +14666,9 @@ class MediaDeleteItem(AbstractModel):
     def __init__(self):
         r"""
         :param Type: 所指定的删除部分。如果未填写该字段则参数无效。可选值有：
-<li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）。</li>
-<li>TranscodeFiles（删除转码文件）。</li>
+<li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）；</li>
+<li>TranscodeFiles（删除转码文件）；</li>
+<li>AdaptiveDynamicStreamingFiles（删除转自适应码流文件）；</li>
 <li>WechatPublishFiles（删除微信发布文件）。</li>
         :type Type: str
         :param Definition: 删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
@@ -21760,9 +21761,6 @@ class SearchMediaRequest(AbstractModel):
         :param StreamIds: 推流直播码集合。匹配集合中的任意元素。
 <li>数组长度限制：10。</li>
         :type StreamIds: list of str
-        :param Vids: 直播录制文件的唯一标识。匹配集合中的任意元素。
-<li>数组长度限制：10。</li>
-        :type Vids: list of str
         :param CreateTime: 匹配创建时间在此时间段内的文件。
 <li>包含所指定的头尾时间点。</li>
         :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
@@ -21817,9 +21815,6 @@ class SearchMediaRequest(AbstractModel):
         :param StreamId: （不推荐：应使用 StreamIds 替代）
 推流直播码。
         :type StreamId: str
-        :param Vid: （不推荐：应使用 Vids 替代）
-直播录制文件的唯一标识。
-        :type Vid: str
         :param StartTime: （不推荐：应使用 CreateTime 替代）
 创建时间的开始时间。
 <li>大于等于开始时间。</li>
@@ -21832,6 +21827,10 @@ class SearchMediaRequest(AbstractModel):
 <li>当 CreateTime.Before 也存在时，将优先使用 CreateTime.Before。</li>
 <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
         :type EndTime: str
+        :param Vids: 该字段已无效。
+        :type Vids: list of str
+        :param Vid: 该字段已无效。
+        :type Vid: str
         """
         self.SubAppId = None
         self.FileIds = None
@@ -21843,7 +21842,6 @@ class SearchMediaRequest(AbstractModel):
         self.Categories = None
         self.SourceTypes = None
         self.StreamIds = None
-        self.Vids = None
         self.CreateTime = None
         self.ExpireTime = None
         self.Sort = None
@@ -21857,9 +21855,10 @@ class SearchMediaRequest(AbstractModel):
         self.Text = None
         self.SourceType = None
         self.StreamId = None
-        self.Vid = None
         self.StartTime = None
         self.EndTime = None
+        self.Vids = None
+        self.Vid = None
 
 
     def _deserialize(self, params):
@@ -21873,7 +21872,6 @@ class SearchMediaRequest(AbstractModel):
         self.Categories = params.get("Categories")
         self.SourceTypes = params.get("SourceTypes")
         self.StreamIds = params.get("StreamIds")
-        self.Vids = params.get("Vids")
         if params.get("CreateTime") is not None:
             self.CreateTime = TimeRange()
             self.CreateTime._deserialize(params.get("CreateTime"))
@@ -21893,9 +21891,10 @@ class SearchMediaRequest(AbstractModel):
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")
         self.StreamId = params.get("StreamId")
-        self.Vid = params.get("Vid")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Vids = params.get("Vids")
+        self.Vid = params.get("Vid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

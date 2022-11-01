@@ -66,6 +66,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type ApproverSource: str
         :param CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
         :type CustomApproverTag: str
+        :param ApproverOption: 签署人个性化能力值
+        :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
         """
         self.ApproverType = None
         self.ApproverName = None
@@ -81,6 +83,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.UserId = None
         self.ApproverSource = None
         self.CustomApproverTag = None
+        self.ApproverOption = None
 
 
     def _deserialize(self, params):
@@ -103,6 +106,9 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.UserId = params.get("UserId")
         self.ApproverSource = params.get("ApproverSource")
         self.CustomApproverTag = params.get("CustomApproverTag")
+        if params.get("ApproverOption") is not None:
+            self.ApproverOption = ApproverOption()
+            self.ApproverOption._deserialize(params.get("ApproverOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -541,7 +547,7 @@ class CreateConvertTaskApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 资源类型 取值范围doc,docx,html之一
+        :param ResourceType: 资源类型 取值范围doc,docx,html,excel之一
         :type ResourceType: str
         :param ResourceName: 资源名称，长度限制为256字符
         :type ResourceName: str
@@ -793,6 +799,8 @@ false：有序签
 
 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
         :type NeedSignReview: bool
+        :param UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+        :type UserData: str
         :param Agent: 应用号信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
@@ -809,6 +817,7 @@ false：有序签
         self.Unordered = None
         self.CustomShowMap = None
         self.NeedSignReview = None
+        self.UserData = None
         self.Agent = None
 
 
@@ -843,6 +852,7 @@ false：有序签
         self.Unordered = params.get("Unordered")
         self.CustomShowMap = params.get("CustomShowMap")
         self.NeedSignReview = params.get("NeedSignReview")
+        self.UserData = params.get("UserData")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
@@ -958,7 +968,7 @@ class CreateFlowRequest(AbstractModel):
         :param DeadLine: 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
         :type DeadLine: int
-        :param UserData: 用户自定义字段(需进行base64 encode),回调的时候会进行透传, 长度需要小于20480
+        :param UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
         :type UserData: str
         :param FlowDescription: 签署流程描述,最大长度1000个字符
         :type FlowDescription: str
@@ -3231,9 +3241,9 @@ class UploadFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BusinessType: 文件对应业务类型，用于区分文件存储路径：
-1. TEMPLATE - 模板； 文件类型：.pdf .doc .docx .html
-2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
+        :param BusinessType: 文件对应业务类型
+1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
+2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
         :type BusinessType: str
         :param Caller: 调用方信息

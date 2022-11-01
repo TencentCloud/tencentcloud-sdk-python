@@ -229,6 +229,35 @@ class TcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyTracingConfig(self, request):
+        """修改 Tracing 配置
+
+        :param request: Request instance for ModifyTracingConfig.
+        :type request: :class:`tencentcloud.tcm.v20210413.models.ModifyTracingConfigRequest`
+        :rtype: :class:`tencentcloud.tcm.v20210413.models.ModifyTracingConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTracingConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTracingConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnlinkCluster(self, request):
         """解关联集群
 

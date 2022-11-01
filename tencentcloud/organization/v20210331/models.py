@@ -150,6 +150,8 @@ class CreateOrganizationMemberRequest(AbstractModel):
         :type PayUin: str
         :param IdentityRoleID: 管理身份
         :type IdentityRoleID: list of int non-negative
+        :param AuthRelationId: 主体关系ID
+        :type AuthRelationId: int
         """
         self.Name = None
         self.PolicyType = None
@@ -160,6 +162,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
         self.RecordId = None
         self.PayUin = None
         self.IdentityRoleID = None
+        self.AuthRelationId = None
 
 
     def _deserialize(self, params):
@@ -172,6 +175,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
         self.RecordId = params.get("RecordId")
         self.PayUin = params.get("PayUin")
         self.IdentityRoleID = params.get("IdentityRoleID")
+        self.AuthRelationId = params.get("AuthRelationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

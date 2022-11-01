@@ -92,6 +92,9 @@ FAILEDOPERATION_DCUNMARSHALDATAERR = 'FailedOperation.DCUnmarshalDataErr'
 # 数据集操作不支持。
 FAILEDOPERATION_DCUNSUPPORTEDOPERATION = 'FailedOperation.DCUnsupportedOperation'
 
+# 名称重复。
+FAILEDOPERATION_DUPLICATENAME = 'FailedOperation.DuplicateName'
+
 # 数据库执行错误。
 FAILEDOPERATION_EXECDATABASEFAIL = 'FailedOperation.ExecDatabaseFail'
 
@@ -101,8 +104,26 @@ FAILEDOPERATION_EXECTAGFAIL = 'FailedOperation.ExecTagFail'
 # 白名单免费配额不足。
 FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = 'FailedOperation.InsufficientWhitelistQuota'
 
+# 操作失败，用户类型异常。
+FAILEDOPERATION_INVALIDUSERTYPE = 'FailedOperation.InvalidUserType'
+
+# 密钥管理系统服务未开通，请先开通腾讯云密钥管理系统服务。
+FAILEDOPERATION_KMSKEYNOTOPEN = 'FailedOperation.KmsKeyNotOpen'
+
 # 移动模型目录失败。
 FAILEDOPERATION_MOVEMODELDIRFAILED = 'FailedOperation.MoveModelDirFailed'
+
+# 没有空闲免费桶。
+FAILEDOPERATION_NOFREEBUCKET = 'FailedOperation.NoFreeBucket'
+
+# 没有权限。
+FAILEDOPERATION_NOPERMISSION = 'FailedOperation.NoPermission'
+
+# 操作不允许。
+FAILEDOPERATION_NOTALLOW = 'FailedOperation.NotAllow'
+
+# 请求正在处理中，请稍候再试。
+FAILEDOPERATION_PROCESSING = 'FailedOperation.Processing'
 
 # 查询资源标签失败。
 FAILEDOPERATION_QUERYBINDINGTAGSFAILED = 'FailedOperation.QueryBindingTagsFailed'
@@ -122,8 +143,14 @@ FAILEDOPERATION_QUERYSPECSFAILED = 'FailedOperation.QuerySpecsFailed'
 # 查询标签服务失败。
 FAILEDOPERATION_QUERYTAGFAIL = 'FailedOperation.QueryTagFail'
 
+# 存储库有绑定的实例，请先删除绑定的实例。
+FAILEDOPERATION_REPOBINDBYINSTANCE = 'FailedOperation.RepoBindByInstance'
+
 # 密钥服务访问失败，请重试。
 FAILEDOPERATION_STSQUERYFAILED = 'FailedOperation.StsQueryFailed'
+
+# 实例启动失败。
+FAILEDOPERATION_TIMEDOUT = 'FailedOperation.Timedout'
 
 # 未知的实例规格。
 FAILEDOPERATION_UNKNOWNINSTANCETYPE = 'FailedOperation.UnknownInstanceType'
@@ -157,6 +184,15 @@ INVALIDPARAMETER_VALIDATEERROR = 'InvalidParameter.ValidateError'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 名称不合法。
+INVALIDPARAMETERVALUE_BADNAME = 'InvalidParameterValue.BadName'
+
+# 请设置日志集、日志主题ID。
+INVALIDPARAMETERVALUE_CLSCONFIGREQUIRED = 'InvalidParameterValue.ClsConfigRequired'
+
+# 存储库不存在。
+INVALIDPARAMETERVALUE_CODEREPONOTFOUND = 'InvalidParameterValue.CodeRepoNotFound'
 
 # 不支持的标注类型。
 INVALIDPARAMETERVALUE_DCANNOTATIONTYPE = 'InvalidParameterValue.DCAnnotationType'
@@ -215,11 +251,23 @@ OPERATIONDENIED_NETWORKCIDRILLEGAL = 'OperationDenied.NetworkCidrIllegal'
 # 白名单免费配额不足。
 OPERATIONDENIED_WHITELISTQUOTAEXCEED = 'OperationDenied.WhitelistQuotaExceed'
 
+# 资源被占用。
+RESOURCEINUSE = 'ResourceInUse'
+
+# 资源不足。
+RESOURCEINSUFFICIENT = 'ResourceInsufficient'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
 # 没有该模型。
 RESOURCENOTFOUND_NOMODEL = 'ResourceNotFound.NoModel'
+
+# 资源不可用。
+RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# 资源售罄。
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

@@ -8134,7 +8134,8 @@ class VatInvoice(AbstractModel):
 11：增值税普通发票（卷式），
 14：增值税电子（通行费）发票，
 15：二手车销售统一发票，
-32：深圳区块链发票
+32：深圳区块链发票，
+102：通用机打电子发票
         :type Type: str
         :param CheckCode: 检验码
         :type CheckCode: str
@@ -8483,6 +8484,13 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         :type CheckCode: str
         :param Amount: 不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票时必填; 全电发票为价税合计(含税金额)
         :type Amount: str
+        :param RegionCode: 地区编码，通用机打电子发票时必填。
+广东:4400，浙江:3300
+        :type RegionCode: str
+        :param SellerTaxCode: 销方税号，通用机打电子发票必填
+        :type SellerTaxCode: str
+        :param EnableCommonElectronic: 是否开启通用机打电子发票，默认为关闭。
+        :type EnableCommonElectronic: bool
         """
         self.InvoiceNo = None
         self.InvoiceDate = None
@@ -8490,6 +8498,9 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         self.InvoiceKind = None
         self.CheckCode = None
         self.Amount = None
+        self.RegionCode = None
+        self.SellerTaxCode = None
+        self.EnableCommonElectronic = None
 
 
     def _deserialize(self, params):
@@ -8499,6 +8510,9 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         self.InvoiceKind = params.get("InvoiceKind")
         self.CheckCode = params.get("CheckCode")
         self.Amount = params.get("Amount")
+        self.RegionCode = params.get("RegionCode")
+        self.SellerTaxCode = params.get("SellerTaxCode")
+        self.EnableCommonElectronic = params.get("EnableCommonElectronic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

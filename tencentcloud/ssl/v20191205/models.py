@@ -2203,6 +2203,55 @@ class ModifyCertificateProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCertificatesExpiringNotificationSwitchRequest(AbstractModel):
+    """ModifyCertificatesExpiringNotificationSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateIds: 证书ID列表。最多50个
+        :type CertificateIds: list of str
+        :param SwitchStatus: 0:不忽略通知。1:忽略通知
+        :type SwitchStatus: int
+        """
+        self.CertificateIds = None
+        self.SwitchStatus = None
+
+
+    def _deserialize(self, params):
+        self.CertificateIds = params.get("CertificateIds")
+        self.SwitchStatus = params.get("SwitchStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCertificatesExpiringNotificationSwitchResponse(AbstractModel):
+    """ModifyCertificatesExpiringNotificationSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateIds: 证书ID列表
+        :type CertificateIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertificateIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateIds = params.get("CertificateIds")
+        self.RequestId = params.get("RequestId")
+
+
 class OperationLog(AbstractModel):
     """证书操作日志。
 

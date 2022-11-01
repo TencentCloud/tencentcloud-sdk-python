@@ -38,6 +38,9 @@ FAILEDOPERATION_CREATERECORDNOTEXIST = 'FailedOperation.CreateRecordNotExist'
 # 创建角色异常。
 FAILEDOPERATION_CREATEROLE = 'FailedOperation.CreateRole'
 
+# 查询实名信息出错。
+FAILEDOPERATION_GETAUTHINFO = 'FailedOperation.GetAuthInfo'
+
 # 名字已经被使用。
 FAILEDOPERATION_MEMBERNAMEUSED = 'FailedOperation.MemberNameUsed'
 

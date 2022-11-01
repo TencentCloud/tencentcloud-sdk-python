@@ -433,7 +433,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
         r"""
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param ResourceType: 资源类型 取值范围doc,docx,html之一
+        :param ResourceType: 资源类型 取值范围doc,docx,html,excel之一
         :type ResourceType: str
         :param ResourceName: 资源名称，长度限制为256字符
         :type ResourceName: str
@@ -693,6 +693,7 @@ class ChannelCreateFlowSignReviewRequest(AbstractModel):
         :param ReviewType: 企业内部审核结果
 PASS: 通过
 REJECT: 拒绝
+SIGN_REJECT:拒签(流程结束)
         :type ReviewType: str
         :param ReviewMessage: 审核原因 
 当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
@@ -1104,6 +1105,8 @@ class Component(AbstractModel):
     def __init__(self):
         r"""
         :param ComponentId: 控件编号
+
+CreateFlowByTemplates发起合同时优先以ComponentId（不为空）填充；否则以ComponentName填充
 
 注：
 当GenerateMode=3时，通过"^"来决定是否使用关键字整词匹配能力。
@@ -3586,9 +3589,9 @@ class UploadFilesRequest(AbstractModel):
         r"""
         :param Agent: 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param BusinessType: 文件对应业务类型，用于区分文件存储路径：
-1. TEMPLATE - 模板； 文件类型：.pdf .doc .docx .html
-2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
+        :param BusinessType: 文件对应业务类型
+1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
+2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
         :type BusinessType: str
         :param FileInfos: 上传文件内容数组，最多支持20个文件
         :type FileInfos: list of UploadFile

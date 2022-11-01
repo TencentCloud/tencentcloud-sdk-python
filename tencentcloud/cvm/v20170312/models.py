@@ -7593,6 +7593,8 @@ class ResetInstanceRequest(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.cvm.v20170312.models.EnhancedService`
         :param HostName: 重装系统时，可以指定修改实例的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
         :type HostName: str
+        :param UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :type UserData: str
         """
         self.InstanceId = None
         self.ImageId = None
@@ -7600,6 +7602,7 @@ class ResetInstanceRequest(AbstractModel):
         self.LoginSettings = None
         self.EnhancedService = None
         self.HostName = None
+        self.UserData = None
 
 
     def _deserialize(self, params):
@@ -7615,6 +7618,7 @@ class ResetInstanceRequest(AbstractModel):
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
         self.HostName = params.get("HostName")
+        self.UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

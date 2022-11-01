@@ -1376,6 +1376,74 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetTicketStatisticsRequest(AbstractModel):
+    """GetTicketStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CaptchaAppId: 验证码appid
+        :type CaptchaAppId: str
+        :param StartTimeStr: 开始时间字符串
+        :type StartTimeStr: str
+        :param EndTimeStr: 结束时间字符串
+        :type EndTimeStr: str
+        :param Dimension: 查询粒度
+        :type Dimension: str
+        """
+        self.CaptchaAppId = None
+        self.StartTimeStr = None
+        self.EndTimeStr = None
+        self.Dimension = None
+
+
+    def _deserialize(self, params):
+        self.CaptchaAppId = params.get("CaptchaAppId")
+        self.StartTimeStr = params.get("StartTimeStr")
+        self.EndTimeStr = params.get("EndTimeStr")
+        self.Dimension = params.get("Dimension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTicketStatisticsResponse(AbstractModel):
+    """GetTicketStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 查询后数据块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
+        :param CaptchaCode: 验证码返回码
+        :type CaptchaCode: int
+        :param CaptchaMsg: 验证码返回信息
+        :type CaptchaMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.CaptchaCode = None
+        self.CaptchaMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = CaptchaStatisticObj()
+            self.Data._deserialize(params.get("Data"))
+        self.CaptchaCode = params.get("CaptchaCode")
+        self.CaptchaMsg = params.get("CaptchaMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class GetTotalTicketStatisticsRequest(AbstractModel):
     """GetTotalTicketStatistics请求参数结构体
 
