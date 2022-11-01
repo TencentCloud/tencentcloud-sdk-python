@@ -12487,6 +12487,11 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         :type UnhandledFileCnt: int
         :param UnhandledVirusEventCnt: 未处理木马事件
         :type UnhandledVirusEventCnt: int
+        :param UnhandledMaliciousConnectionEventCnt: 未处理恶意外连事件
+        :type UnhandledMaliciousConnectionEventCnt: int
+        :param UnhandledK8sApiEventCnt: 未处理k8sApi事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnhandledK8sApiEventCnt: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12496,6 +12501,8 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         self.UnhandledAbnormalProcessCnt = None
         self.UnhandledFileCnt = None
         self.UnhandledVirusEventCnt = None
+        self.UnhandledMaliciousConnectionEventCnt = None
+        self.UnhandledK8sApiEventCnt = None
         self.RequestId = None
 
 
@@ -12506,6 +12513,8 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         self.UnhandledAbnormalProcessCnt = params.get("UnhandledAbnormalProcessCnt")
         self.UnhandledFileCnt = params.get("UnhandledFileCnt")
         self.UnhandledVirusEventCnt = params.get("UnhandledVirusEventCnt")
+        self.UnhandledMaliciousConnectionEventCnt = params.get("UnhandledMaliciousConnectionEventCnt")
+        self.UnhandledK8sApiEventCnt = params.get("UnhandledK8sApiEventCnt")
         self.RequestId = params.get("RequestId")
 
 
@@ -24188,6 +24197,34 @@ class PromotionActivityContent(AbstractModel):
         
 
 
+class RaspInfo(AbstractModel):
+    """漏洞防御插件 rasp信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: rasp名称
+        :type Name: str
+        :param Value: rasp  描述
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegionInfo(AbstractModel):
     """地域信息
 
@@ -25659,6 +25696,8 @@ ET_REVERSE_SHELL: 反弹shell
 ET_RISK_SYSCALL:高危系统调用
 ET_ABNORMAL_PROCESS: 异常进程
 ET_ACCESS_CONTROL 文件篡改
+ET_VIRUS 木马事件
+ET_MALICIOUS_CONNECTION 恶意外连事件
         :type EventType: str
         """
         self.EventSet = None
@@ -27312,6 +27351,9 @@ class VulDefenceEventDetail(AbstractModel):
         :param JNDIUrl: 接口Url
 注意：此字段可能返回 null，表示取不到有效值。
         :type JNDIUrl: str
+        :param RaspDetail: rasp detail
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RaspDetail: list of RaspInfo
         """
         self.CVEID = None
         self.VulName = None
@@ -27347,6 +27389,7 @@ class VulDefenceEventDetail(AbstractModel):
         self.ContainerIsolateOperationSrc = None
         self.ContainerStatus = None
         self.JNDIUrl = None
+        self.RaspDetail = None
 
 
     def _deserialize(self, params):
@@ -27384,6 +27427,12 @@ class VulDefenceEventDetail(AbstractModel):
         self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         self.ContainerStatus = params.get("ContainerStatus")
         self.JNDIUrl = params.get("JNDIUrl")
+        if params.get("RaspDetail") is not None:
+            self.RaspDetail = []
+            for item in params.get("RaspDetail"):
+                obj = RaspInfo()
+                obj._deserialize(item)
+                self.RaspDetail.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

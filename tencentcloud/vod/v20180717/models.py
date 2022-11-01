@@ -4787,12 +4787,17 @@ class AudioTrackItem(AbstractModel):
         :type SourceMediaStartTime: float
         :param Duration: 音频片段的时长，单位为秒。默认和素材本身长度一致，表示截取全部素材。
         :type Duration: float
+        :param TargetDuration: 音频片段目标时长，单位为秒。
+<li>当 TargetDuration 不填或填0时，表示目标时长和 Duration 一致；</li>
+<li>当 TargetDuration 取大于0的值时，将对音频片段做快进或慢放等处理，使得输出片段的时长等于 TargetDuration。</li>
+        :type TargetDuration: float
         :param AudioOperations: 对音频片段进行的操作，如音量调节等。
         :type AudioOperations: list of AudioTransform
         """
         self.SourceMedia = None
         self.SourceMediaStartTime = None
         self.Duration = None
+        self.TargetDuration = None
         self.AudioOperations = None
 
 
@@ -4800,6 +4805,7 @@ class AudioTrackItem(AbstractModel):
         self.SourceMedia = params.get("SourceMedia")
         self.SourceMediaStartTime = params.get("SourceMediaStartTime")
         self.Duration = params.get("Duration")
+        self.TargetDuration = params.get("TargetDuration")
         if params.get("AudioOperations") is not None:
             self.AudioOperations = []
             for item in params.get("AudioOperations"):
@@ -24806,6 +24812,10 @@ class VideoTrackItem(AbstractModel):
         :type SourceMediaStartTime: float
         :param Duration: 视频片段时长，单位为秒。默认取视频素材本身长度，表示截取全部素材。如果源文件是图片，Duration需要大于0。
         :type Duration: float
+        :param TargetDuration: 视频片段目标时长，单位为秒。
+<li>当 TargetDuration 不填或填0时，表示目标时长和 Duration 一致；</li>
+<li>当 TargetDuration 取大于0的值时，将对视频片段做快进或慢放等处理，使得输出片段的时长等于 TargetDuration。</li>
+        :type TargetDuration: float
         :param CoordinateOrigin: 视频原点位置，取值有：
 <li>Center：坐标原点为中心位置，如画布中心。</li>
 默认值 ：Center。
@@ -24834,44 +24844,46 @@ class VideoTrackItem(AbstractModel):
 <li>当 Width 为空，Height 非空，则 Width 按比例缩放</li>
 <li>当 Width 非空，Height 为空，则 Height 按比例缩放。</li>
         :type Height: str
-        :param ImageOperations: 对图像进行的操作，如图像旋转等。
-        :type ImageOperations: list of ImageTransform
         :param AudioOperations: 对音频进行操作，如静音等。
         :type AudioOperations: list of AudioTransform
+        :param ImageOperations: 对图像进行的操作，如图像旋转等。
+        :type ImageOperations: list of ImageTransform
         """
         self.SourceMedia = None
         self.SourceMediaStartTime = None
         self.Duration = None
+        self.TargetDuration = None
         self.CoordinateOrigin = None
         self.XPos = None
         self.YPos = None
         self.Width = None
         self.Height = None
-        self.ImageOperations = None
         self.AudioOperations = None
+        self.ImageOperations = None
 
 
     def _deserialize(self, params):
         self.SourceMedia = params.get("SourceMedia")
         self.SourceMediaStartTime = params.get("SourceMediaStartTime")
         self.Duration = params.get("Duration")
+        self.TargetDuration = params.get("TargetDuration")
         self.CoordinateOrigin = params.get("CoordinateOrigin")
         self.XPos = params.get("XPos")
         self.YPos = params.get("YPos")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
-        if params.get("ImageOperations") is not None:
-            self.ImageOperations = []
-            for item in params.get("ImageOperations"):
-                obj = ImageTransform()
-                obj._deserialize(item)
-                self.ImageOperations.append(obj)
         if params.get("AudioOperations") is not None:
             self.AudioOperations = []
             for item in params.get("AudioOperations"):
                 obj = AudioTransform()
                 obj._deserialize(item)
                 self.AudioOperations.append(obj)
+        if params.get("ImageOperations") is not None:
+            self.ImageOperations = []
+            for item in params.get("ImageOperations"):
+                obj = ImageTransform()
+                obj._deserialize(item)
+                self.ImageOperations.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

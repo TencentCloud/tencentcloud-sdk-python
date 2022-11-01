@@ -2201,6 +2201,35 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePendingRiskInfo(self, request):
+        """查询账号维度待处理风险信息，包括是否为付费用户，查询攻击中、封堵中、过期资源数量等
+
+        :param request: Request instance for DescribePendingRiskInfo.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribePendingRiskInfoRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribePendingRiskInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePendingRiskInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePendingRiskInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisassociateDDoSEipAddress(self, request):
         """本接口 (DisassociateDDoSEipAddress) 用于解绑高防弹性公网IP。
 

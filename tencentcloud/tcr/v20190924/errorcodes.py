@@ -220,3 +220,6 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 修改vpc与私有域关联关系失败。
+UNSUPPORTEDOPERATION_MODIFYPRIVATEZONEVPC = 'UnsupportedOperation.ModifyPrivateZoneVpc'

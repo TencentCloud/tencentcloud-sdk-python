@@ -6167,6 +6167,49 @@ class DescribeOverviewIndexResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePendingRiskInfoRequest(AbstractModel):
+    """DescribePendingRiskInfo请求参数结构体
+
+    """
+
+
+class DescribePendingRiskInfoResponse(AbstractModel):
+    """DescribePendingRiskInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsPaidUsr: 是否为付费用户
+        :type IsPaidUsr: bool
+        :param AttackingCount: 攻击中的资源数量
+        :type AttackingCount: int
+        :param BlockingCount: 封堵中的资源数量
+        :type BlockingCount: int
+        :param ExpiredCount: 已过期的资源数量
+        :type ExpiredCount: int
+        :param Total: 所有待处理风险事件总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsPaidUsr = None
+        self.AttackingCount = None
+        self.BlockingCount = None
+        self.ExpiredCount = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsPaidUsr = params.get("IsPaidUsr")
+        self.AttackingCount = params.get("AttackingCount")
+        self.BlockingCount = params.get("BlockingCount")
+        self.ExpiredCount = params.get("ExpiredCount")
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateDDoSEipAddressRequest(AbstractModel):
     """DisassociateDDoSEipAddress请求参数结构体
 

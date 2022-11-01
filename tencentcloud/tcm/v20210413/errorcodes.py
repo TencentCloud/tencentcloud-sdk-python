@@ -14,8 +14,14 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
+
+# 集群资源不足。
+FAILEDOPERATION_CLUSTERNOENOUGHRESOURCE = 'FailedOperation.ClusterNoEnoughResource'
 
 # Cluster RBAC权限限制。
 FAILEDOPERATION_RBACFORBIDDEN = 'FailedOperation.RBACForbidden'
@@ -34,3 +40,6 @@ LIMITEXCEEDED = 'LimitExceeded'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

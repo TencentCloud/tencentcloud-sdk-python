@@ -171,6 +171,35 @@ class TcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def LinkPrometheus(self, request):
+        """关联Prometheus
+
+        :param request: Request instance for LinkPrometheus.
+        :type request: :class:`tencentcloud.tcm.v20210413.models.LinkPrometheusRequest`
+        :rtype: :class:`tencentcloud.tcm.v20210413.models.LinkPrometheusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("LinkPrometheus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.LinkPrometheusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyMesh(self, request):
         """修改网格
 
@@ -215,6 +244,35 @@ class TcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnlinkClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnlinkPrometheus(self, request):
+        """解除关联Prometheus
+
+        :param request: Request instance for UnlinkPrometheus.
+        :type request: :class:`tencentcloud.tcm.v20210413.models.UnlinkPrometheusRequest`
+        :rtype: :class:`tencentcloud.tcm.v20210413.models.UnlinkPrometheusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnlinkPrometheus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnlinkPrometheusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

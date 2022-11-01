@@ -123,9 +123,9 @@ class DescribeSubnetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 返回数量。
+        :param Limit: 返回数量。Limit需要在[1, 100]之间。
         :type Limit: int
-        :param Offset: 偏移量。
+        :param Offset: 偏移量。偏移量最小为0。
         :type Offset: int
         :param VpcId: 查询指定VpcId下的子网信息。
         :type VpcId: str
@@ -360,9 +360,9 @@ class DescribeVpcRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 返回偏移量。
+        :param Offset: 返回偏移量。Offset最小为0。
         :type Offset: int
-        :param Limit: 返回数量。
+        :param Limit: 返回数量。Limit需要在[1, 100]之间。
         :type Limit: int
         :param SearchWord: 搜索关键字
         :type SearchWord: str
@@ -467,7 +467,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
         :type RegionId: int
         :param ZoneId: 区域Id，返回腾讯云每个地域的可用区代码
         :type ZoneId: int
-        :param ExpireTime: 过期时间
+        :param ExpireTime: 资源过期时间，以时间戳形式展示。
         :type ExpireTime: int
         :param SgList: 安全组详情信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -908,7 +908,7 @@ class ResourceInfo(AbstractModel):
         :param ZoneId: 区域Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
-        :param ExpireTime: 过期时间
+        :param ExpireTime: 过期时间（Epoch Unix Timestamp）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
         :param RegionName: 地域名

@@ -506,6 +506,9 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = 'InvalidParameterValue.Contain
 # 部署组名不能大于60个字符。
 INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPNAMELEGNTH = 'InvalidParameterValue.ContainergroupGroupnameLegnth'
 
+# 部署组名不能为空。
+INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPNAMENULL = 'InvalidParameterValue.ContainergroupGroupnameNull'
+
 # 部署组名称格式不正确,只能包含小写字母、数字及分隔符("-"),且必须以小写字母开头，数字或小写字母结尾。
 INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPNAMEREGEXMATCHFALSE = 'InvalidParameterValue.ContainergroupGroupnameRegexMatchFalse'
 
@@ -763,6 +766,9 @@ INVALIDPARAMETERVALUE_SERVICENOTEXISTSORPERMISSIONDENIED = 'InvalidParameterValu
 
 # 无效请求参数。
 INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = 'InvalidParameterValue.TaskParameterInvalid'
+
+# 仅有停止状态下的部署组才可以不启动。
+INVALIDPARAMETERVALUE_WRONGDONTSTARTVALUE = 'InvalidParameterValue.WrongDontStartValue'
 
 # 命名空间数达到上限。
 LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = 'LimitExceeded.ErrNamespaceMaxLimit'

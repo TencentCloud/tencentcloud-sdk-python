@@ -4456,17 +4456,21 @@ class LogsetInfo(AbstractModel):
         :type LogsetName: str
         :param CreateTime: 创建时间
         :type CreateTime: str
+        :param AssumerName: 云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssumerName: str
         :param Tags: 日志集绑定的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param TopicCount: 日志集下日志主题的数目
         :type TopicCount: int
-        :param RoleName: 若AssumerUin非空，则表示创建该日志集的服务方角色
+        :param RoleName: 若AssumerName非空，则表示创建该日志集的服务方角色
         :type RoleName: str
         """
         self.LogsetId = None
         self.LogsetName = None
         self.CreateTime = None
+        self.AssumerName = None
         self.Tags = None
         self.TopicCount = None
         self.RoleName = None
@@ -4476,6 +4480,7 @@ class LogsetInfo(AbstractModel):
         self.LogsetId = params.get("LogsetId")
         self.LogsetName = params.get("LogsetName")
         self.CreateTime = params.get("CreateTime")
+        self.AssumerName = params.get("AssumerName")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
@@ -6264,6 +6269,9 @@ class TopicInfo(AbstractModel):
         :type PartitionCount: int
         :param Index: 是否开启索引
         :type Index: bool
+        :param AssumerName: 云产品标识，日志主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssumerName: str
         :param CreateTime: 创建时间
         :type CreateTime: str
         :param Status: 日主主题是否开启采集
@@ -6283,12 +6291,19 @@ class TopicInfo(AbstractModel):
         :param Period: 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
 注意：此字段可能返回 null，表示取不到有效值。
         :type Period: int
+        :param SubAssumerName: 云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAssumerName: str
+        :param Describes: 日志主题描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Describes: str
         """
         self.LogsetId = None
         self.TopicId = None
         self.TopicName = None
         self.PartitionCount = None
         self.Index = None
+        self.AssumerName = None
         self.CreateTime = None
         self.Status = None
         self.Tags = None
@@ -6296,6 +6311,8 @@ class TopicInfo(AbstractModel):
         self.MaxSplitPartitions = None
         self.StorageType = None
         self.Period = None
+        self.SubAssumerName = None
+        self.Describes = None
 
 
     def _deserialize(self, params):
@@ -6304,6 +6321,7 @@ class TopicInfo(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.PartitionCount = params.get("PartitionCount")
         self.Index = params.get("Index")
+        self.AssumerName = params.get("AssumerName")
         self.CreateTime = params.get("CreateTime")
         self.Status = params.get("Status")
         if params.get("Tags") is not None:
@@ -6316,6 +6334,8 @@ class TopicInfo(AbstractModel):
         self.MaxSplitPartitions = params.get("MaxSplitPartitions")
         self.StorageType = params.get("StorageType")
         self.Period = params.get("Period")
+        self.SubAssumerName = params.get("SubAssumerName")
+        self.Describes = params.get("Describes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

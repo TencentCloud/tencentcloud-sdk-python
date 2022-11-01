@@ -131,6 +131,9 @@ INVALIDPARAMETER_DATANOTFOUND = 'InvalidParameter.DataNotFound'
 # 参数错误，不合法的日期，请检查后重试。
 INVALIDPARAMETER_DATE = 'InvalidParameter.Date'
 
+# 重复提交任务。
+INVALIDPARAMETER_DUPTASK = 'InvalidParameter.DupTask'
+
 # 参数为空。
 INVALIDPARAMETER_EMPTYPARAMS = 'InvalidParameter.EmptyParams'
 

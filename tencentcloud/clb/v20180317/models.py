@@ -603,6 +603,42 @@ class CertIdRelatedWithLoadBalancers(AbstractModel):
         
 
 
+class CertInfo(AbstractModel):
+    """证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertId: 证书 ID，如果不填写此项则必须上传证书内容，包括CertName, CertContent，若为服务端证书必须包含CertKey。
+        :type CertId: str
+        :param CertName: 上传证书的名称，如果没有 CertId，则此项必传。
+        :type CertName: str
+        :param CertContent: 上传证书的公钥，如果没有 CertId，则此项必传。
+        :type CertContent: str
+        :param CertKey: 上传服务端证书的私钥，如果没有 CertId，则此项必传。
+        :type CertKey: str
+        """
+        self.CertId = None
+        self.CertName = None
+        self.CertContent = None
+        self.CertKey = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.CertName = params.get("CertName")
+        self.CertContent = params.get("CertContent")
+        self.CertKey = params.get("CertKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CertificateInput(AbstractModel):
     """证书信息
 
@@ -1412,7 +1448,7 @@ class CreateListenerRequest(AbstractModel):
         :type ListenerNames: list of str
         :param HealthCheck: 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器。
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Certificate: 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
+        :param Certificate: 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。此参数和MultiCertInfo不能同时传入。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
         :type SessionExpireTime: int
@@ -1431,6 +1467,8 @@ class CreateListenerRequest(AbstractModel):
         :type EndPort: int
         :param DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
         :type DeregisterTargetRst: bool
+        :param MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+        :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -1446,6 +1484,7 @@ class CreateListenerRequest(AbstractModel):
         self.KeepaliveEnable = None
         self.EndPort = None
         self.DeregisterTargetRst = None
+        self.MultiCertInfo = None
 
 
     def _deserialize(self, params):
@@ -1467,6 +1506,9 @@ class CreateListenerRequest(AbstractModel):
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.EndPort = params.get("EndPort")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
+        if params.get("MultiCertInfo") is not None:
+            self.MultiCertInfo = MultiCertInfo()
+            self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5821,7 +5863,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type Domain: str
         :param NewDomain: 要修改的新域名。NewDomain和NewDomains只能传一个。
         :type NewDomain: str
-        :param Certificate: 域名相关的证书信息，注意，仅对启用SNI的监听器适用。
+        :param Certificate: 域名相关的证书信息，注意，仅对启用SNI的监听器适用，不可和MultiCertInfo 同时传入。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param Http2: 是否开启Http2，注意，只有HTTPS域名才能开启Http2。
         :type Http2: bool
@@ -5831,6 +5873,8 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type NewDefaultServerDomain: str
         :param NewDomains: 要修改的新域名列表。NewDomain和NewDomains只能传一个。
         :type NewDomains: list of str
+        :param MultiCertInfo: 域名相关的证书信息，注意，仅对启用SNI的监听器适用；支持同时传入多本算法类型不同的服务器证书，不可和MultiCertInfo 同时传入。
+        :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -5841,6 +5885,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.DefaultServer = None
         self.NewDefaultServerDomain = None
         self.NewDomains = None
+        self.MultiCertInfo = None
 
 
     def _deserialize(self, params):
@@ -5855,6 +5900,9 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.DefaultServer = params.get("DefaultServer")
         self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
         self.NewDomains = params.get("NewDomains")
+        if params.get("MultiCertInfo") is not None:
+            self.MultiCertInfo = MultiCertInfo()
+            self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5951,7 +5999,7 @@ class ModifyListenerRequest(AbstractModel):
         :type SessionExpireTime: int
         :param HealthCheck: 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器。
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Certificate: 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器。
+        :param Certificate: 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器；此参数和MultiCertInfo不能同时传入。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param Scheduler: 监听器转发的方式。可选值：WRR、LEAST_CONN
 分别表示按权重轮询、最小连接数， 默认为 WRR。
@@ -5966,6 +6014,8 @@ class ModifyListenerRequest(AbstractModel):
         :type DeregisterTargetRst: bool
         :param SessionType: 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
         :type SessionType: str
+        :param MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+        :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -5979,6 +6029,7 @@ class ModifyListenerRequest(AbstractModel):
         self.KeepaliveEnable = None
         self.DeregisterTargetRst = None
         self.SessionType = None
+        self.MultiCertInfo = None
 
 
     def _deserialize(self, params):
@@ -5998,6 +6049,9 @@ class ModifyListenerRequest(AbstractModel):
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
         self.SessionType = params.get("SessionType")
+        if params.get("MultiCertInfo") is not None:
+            self.MultiCertInfo = MultiCertInfo()
+            self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6558,6 +6612,39 @@ class ModifyTargetWeightResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MultiCertInfo(AbstractModel):
+    """CLB监听器或规则绑定的多证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
+        :type SSLMode: str
+        :param CertList: 监听器或规则证书列表，单双向认证，多本服务端证书算法类型不能重复;若SSLMode为双向认证，证书列表必须包含一本ca证书。
+        :type CertList: list of CertInfo
+        """
+        self.SSLMode = None
+        self.CertList = None
+
+
+    def _deserialize(self, params):
+        self.SSLMode = params.get("SSLMode")
+        if params.get("CertList") is not None:
+            self.CertList = []
+            for item in params.get("CertList"):
+                obj = CertInfo()
+                obj._deserialize(item)
+                self.CertList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Quota(AbstractModel):
     """描述配额信息，所有配额均指当前地域下的配额。
 
@@ -7034,7 +7121,7 @@ class RuleInput(AbstractModel):
         :type SessionExpireTime: int
         :param HealthCheck: 健康检查信息。详情请参见：[健康检查](https://cloud.tencent.com/document/product/214/6097)
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param Certificate: 证书信息
+        :param Certificate: 证书信息；此参数和MultiCertInfo不能同时传入。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param Scheduler: 规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH
 分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
@@ -7055,6 +7142,8 @@ class RuleInput(AbstractModel):
         :type Quic: bool
         :param Domains: 转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
         :type Domains: list of str
+        :param MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。
+        :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         self.Url = None
         self.Domain = None
@@ -7070,6 +7159,7 @@ class RuleInput(AbstractModel):
         self.TrpcFunc = None
         self.Quic = None
         self.Domains = None
+        self.MultiCertInfo = None
 
 
     def _deserialize(self, params):
@@ -7091,6 +7181,9 @@ class RuleInput(AbstractModel):
         self.TrpcFunc = params.get("TrpcFunc")
         self.Quic = params.get("Quic")
         self.Domains = params.get("Domains")
+        if params.get("MultiCertInfo") is not None:
+            self.MultiCertInfo = MultiCertInfo()
+            self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

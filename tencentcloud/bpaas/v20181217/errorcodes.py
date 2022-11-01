@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 数据上报失败。
 FAILEDOPERATION_SENDTOCKAFKA = 'FailedOperation.SendToCkafka'
 
@@ -25,6 +28,9 @@ INTERNALERROR_DBERROR = 'InternalError.DbError'
 
 # 已经审批。
 INVALIDPARAMETER_HASBEENAPPROVED = 'InvalidParameter.HasBeenApproved'
+
+# id不存在。
+INVALIDPARAMETER_IDNOTEXIST = 'InvalidParameter.IdNotExist'
 
 # 非法流程节点。
 INVALIDPARAMETER_ILLEGALNODE = 'InvalidParameter.IllegalNode'

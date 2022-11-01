@@ -904,9 +904,9 @@ class DescribeWhiteBoxKeyDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KeyInfos: 白盒密钥信息列表
+        :param KeyInfos: 白盒密钥信息列表。
         :type KeyInfos: list of WhiteboxKeyInfo
-        :param TotalCount: key总数量
+        :param TotalCount: 白盒密钥总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1885,7 +1885,7 @@ class GetServiceStatusResponse(AbstractModel):
         :type InvalidType: int
         :param UserLevel: 0-普通版，1-旗舰版
         :type UserLevel: int
-        :param ProExpireTime: 旗舰版到期时间
+        :param ProExpireTime: 旗舰版到期时间（Epoch Unix Timestamp）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProExpireTime: int
         :param ProRenewFlag: 旗舰版是否自动续费：0-不自动续费，1-自动续费

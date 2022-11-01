@@ -2121,6 +2121,51 @@ class DeleteAuditLogFileResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBackupRequest(AbstractModel):
+    """DeleteBackup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param SnapshotIdList: 备份文件ID
+        :type SnapshotIdList: list of int
+        """
+        self.ClusterId = None
+        self.SnapshotIdList = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SnapshotIdList = params.get("SnapshotIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupResponse(AbstractModel):
+    """DeleteBackup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAccountAllGrantPrivilegesRequest(AbstractModel):
     """DescribeAccountAllGrantPrivileges请求参数结构体
 

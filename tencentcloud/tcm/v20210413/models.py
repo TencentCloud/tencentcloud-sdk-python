@@ -1225,6 +1225,53 @@ class LinkClusterListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LinkPrometheusRequest(AbstractModel):
+    """LinkPrometheus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshID: 网格ID
+        :type MeshID: str
+        :param Prometheus: 配置
+        :type Prometheus: :class:`tencentcloud.tcm.v20210413.models.PrometheusConfig`
+        """
+        self.MeshID = None
+        self.Prometheus = None
+
+
+    def _deserialize(self, params):
+        self.MeshID = params.get("MeshID")
+        if params.get("Prometheus") is not None:
+            self.Prometheus = PrometheusConfig()
+            self.Prometheus._deserialize(params.get("Prometheus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LinkPrometheusResponse(AbstractModel):
+    """LinkPrometheus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class LoadBalancer(AbstractModel):
     """负载均衡配置
 
@@ -2134,6 +2181,47 @@ class UnlinkClusterRequest(AbstractModel):
 
 class UnlinkClusterResponse(AbstractModel):
     """UnlinkCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnlinkPrometheusRequest(AbstractModel):
+    """UnlinkPrometheus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshID: 网格ID
+        :type MeshID: str
+        """
+        self.MeshID = None
+
+
+    def _deserialize(self, params):
+        self.MeshID = params.get("MeshID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnlinkPrometheusResponse(AbstractModel):
+    """UnlinkPrometheus返回参数结构体
 
     """
 
