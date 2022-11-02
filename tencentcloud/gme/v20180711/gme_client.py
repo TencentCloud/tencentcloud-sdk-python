@@ -559,35 +559,6 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyRoomInfo(self, request):
-        """修改房间信息
-
-        :param request: Request instance for ModifyRoomInfo.
-        :type request: :class:`tencentcloud.gme.v20180711.models.ModifyRoomInfoRequest`
-        :rtype: :class:`tencentcloud.gme.v20180711.models.ModifyRoomInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyRoomInfo", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyRoomInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyUserMicStatus(self, request):
         """修改用户麦克风状态。
 

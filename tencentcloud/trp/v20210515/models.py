@@ -506,6 +506,84 @@ class CreateCodePackResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCorporationOrderRequest(AbstractModel):
+    """CreateCorporationOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CorpName: 企业名称
+        :type CorpName: str
+        :param Owner: 所有者ID
+        :type Owner: str
+        :param CodeQuota: 溯源码额度
+        :type CodeQuota: int
+        :param ExpireTime: 额度过期时间
+        :type ExpireTime: str
+        :param Amount: 金额
+        :type Amount: int
+        :param CorpId: 企业ID
+        :type CorpId: int
+        :param ContactPerson: 联系人
+        :type ContactPerson: str
+        :param ContactNumber: 联系电话
+        :type ContactNumber: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.CorpName = None
+        self.Owner = None
+        self.CodeQuota = None
+        self.ExpireTime = None
+        self.Amount = None
+        self.CorpId = None
+        self.ContactPerson = None
+        self.ContactNumber = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.CorpName = params.get("CorpName")
+        self.Owner = params.get("Owner")
+        self.CodeQuota = params.get("CodeQuota")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Amount = params.get("Amount")
+        self.CorpId = params.get("CorpId")
+        self.ContactPerson = params.get("ContactPerson")
+        self.ContactNumber = params.get("ContactNumber")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCorporationOrderResponse(AbstractModel):
+    """CreateCorporationOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CorpId: 企业ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CorpId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CorpId = params.get("CorpId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCustomPackRequest(AbstractModel):
     """CreateCustomPack请求参数结构体
 

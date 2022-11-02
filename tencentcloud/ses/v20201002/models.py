@@ -920,11 +920,14 @@ class GetEmailTemplateResponse(AbstractModel):
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         :param TemplateStatus: 模板状态 0-审核通过 1-待审核 2-审核拒绝
         :type TemplateStatus: int
+        :param TemplateName: 模板名称
+        :type TemplateName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TemplateContent = None
         self.TemplateStatus = None
+        self.TemplateName = None
         self.RequestId = None
 
 
@@ -933,6 +936,7 @@ class GetEmailTemplateResponse(AbstractModel):
             self.TemplateContent = TemplateContent()
             self.TemplateContent._deserialize(params.get("TemplateContent"))
         self.TemplateStatus = params.get("TemplateStatus")
+        self.TemplateName = params.get("TemplateName")
         self.RequestId = params.get("RequestId")
 
 

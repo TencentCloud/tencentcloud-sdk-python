@@ -317,6 +317,9 @@ OPERATIONDENIED_ERRNORESOURCEACCESS = 'OperationDenied.ErrNoResourceAccess'
 # 文件已删除。
 OPERATIONDENIED_FILEDELETED = 'OperationDenied.FileDeleted'
 
+# 流程已终止。
+OPERATIONDENIED_FLOWHASTERMINATED = 'OperationDenied.FlowHasTerminated'
+
 # 禁止操作。
 OPERATIONDENIED_FORBID = 'OperationDenied.Forbid'
 

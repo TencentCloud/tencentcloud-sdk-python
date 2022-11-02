@@ -1169,6 +1169,7 @@ class AiRecognitionResult(AbstractModel):
 <li>OcrWordsRecognition：文本关键词识别，</li>
 <li>AsrFullTextRecognition：语音全文识别，</li>
 <li>OcrFullTextRecognition：文本全文识别。</li>
+<li>TransTextRecognition：语音翻译。</li>
         :type Type: str
         :param FaceTask: 人脸识别结果，当 Type 为 
  FaceRecognition 时有效。
@@ -1190,6 +1191,10 @@ class AiRecognitionResult(AbstractModel):
  OcrFullTextRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrFullTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResult`
+        :param TransTextTask: 翻译结果，当 Type 为
+ TransTextRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResult`
         """
         self.Type = None
         self.FaceTask = None
@@ -1197,6 +1202,7 @@ class AiRecognitionResult(AbstractModel):
         self.AsrFullTextTask = None
         self.OcrWordsTask = None
         self.OcrFullTextTask = None
+        self.TransTextTask = None
 
 
     def _deserialize(self, params):
@@ -1216,6 +1222,9 @@ class AiRecognitionResult(AbstractModel):
         if params.get("OcrFullTextTask") is not None:
             self.OcrFullTextTask = AiRecognitionTaskOcrFullTextResult()
             self.OcrFullTextTask._deserialize(params.get("OcrFullTextTask"))
+        if params.get("TransTextTask") is not None:
+            self.TransTextTask = AiRecognitionTaskTransTextResult()
+            self.TransTextTask._deserialize(params.get("TransTextTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2129,6 +2138,158 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
         self.EndTimeOffset = params.get("EndTimeOffset")
         self.Confidence = params.get("Confidence")
         self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskTransTextResult(AbstractModel):
+    """翻译结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 翻译任务输入信息。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultInput`
+        :param Output: 翻译任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultOutput`
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskTransTextResultInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AiRecognitionTaskTransTextResultOutput()
+            self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskTransTextResultInput(AbstractModel):
+    """翻译的输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 翻译模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskTransTextResultOutput(AbstractModel):
+    """翻译结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SegmentSet: 翻译片段列表。
+        :type SegmentSet: list of AiRecognitionTaskTransTextSegmentItem
+        :param SubtitlePath: 字幕文件地址。
+        :type SubtitlePath: str
+        :param OutputStorage: 字幕文件存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self.SegmentSet = None
+        self.SubtitlePath = None
+        self.OutputStorage = None
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskTransTextSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+        self.SubtitlePath = params.get("SubtitlePath")
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
+    """翻译片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Text: 识别文本。
+        :type Text: str
+        :param Trans: 翻译文本。
+        :type Trans: str
+        """
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Text = None
+        self.Trans = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Text = params.get("Text")
+        self.Trans = params.get("Trans")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4719,6 +4880,8 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :type FillType: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param Format: 图片格式，取值为 jpg、png、webp。默认为 jpg。
+        :type Format: str
         """
         self.SampleType = None
         self.SampleInterval = None
@@ -4730,6 +4893,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         self.ResolutionAdaptive = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -4743,6 +4907,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4887,7 +5052,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 默认值：open。
         :type ResolutionAdaptive: str
-        :param Format: 图片格式，取值为 jpg 和 png。默认为 jpg。
+        :param Format: 图片格式，取值为 jpg、png、webp。默认为 jpg。
         :type Format: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
@@ -4978,7 +5143,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 默认值：open。
         :type ResolutionAdaptive: str
-        :param Format: 图片格式，取值可以为 jpg 和 png。默认为 jpg。
+        :param Format: 图片格式，取值可以为 jpg、png、webp。默认为 jpg。
         :type Format: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
@@ -7949,6 +8114,8 @@ class ImageSpriteTemplate(AbstractModel):
         :type FillType: str
         :param Comment: 模板描述信息。
         :type Comment: str
+        :param Format: 图片格式。
+        :type Format: str
         """
         self.Definition = None
         self.Type = None
@@ -7964,6 +8131,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.UpdateTime = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -7981,6 +8149,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8165,6 +8334,7 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 <li>OcrWordsRecognition：文本关键词识别，</li>
 <li>AsrFullTextRecognition：语音全文识别，</li>
 <li>OcrFullTextRecognition：文本全文识别。</li>
+<li>TransTextRecognition：语音翻译。</li>
         :type Type: str
         :param FaceRecognitionResultSet: 人脸识别结果，当 Type 为
 FaceRecognition 时有效。
@@ -8181,6 +8351,8 @@ AsrFullTextRecognition 时有效。
         :param OcrFullTextRecognitionResultSet: 文本全文识别结果，当 Type 为
 OcrFullTextRecognition 时有效。
         :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult
+        :param TransTextRecognitionResultSet: 翻译结果，当Type 为 TransTextRecognition 时有效。
+        :type TransTextRecognitionResultSet: list of LiveStreamTransTextRecognitionResult
         """
         self.Type = None
         self.FaceRecognitionResultSet = None
@@ -8188,6 +8360,7 @@ OcrFullTextRecognition 时有效。
         self.OcrWordsRecognitionResultSet = None
         self.AsrFullTextRecognitionResultSet = None
         self.OcrFullTextRecognitionResultSet = None
+        self.TransTextRecognitionResultSet = None
 
 
     def _deserialize(self, params):
@@ -8222,6 +8395,12 @@ OcrFullTextRecognition 时有效。
                 obj = LiveStreamOcrFullTextRecognitionResult()
                 obj._deserialize(item)
                 self.OcrFullTextRecognitionResultSet.append(obj)
+        if params.get("TransTextRecognitionResultSet") is not None:
+            self.TransTextRecognitionResultSet = []
+            for item in params.get("TransTextRecognitionResultSet"):
+                obj = LiveStreamTransTextRecognitionResult()
+                obj._deserialize(item)
+                self.TransTextRecognitionResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8854,6 +9033,46 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.NotifyType = params.get("NotifyType")
         self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamTransTextRecognitionResult(AbstractModel):
+    """直播实时翻译结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 识别文本。
+        :type Text: str
+        :param StartPtsTime: 翻译片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param EndPtsTime: 翻译片段终止的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param Confidence: 翻译片段置信度。取值：0~100。
+        :type Confidence: float
+        :param Trans: 翻译文本。
+        :type Trans: str
+        """
+        self.Text = None
+        self.StartPtsTime = None
+        self.EndPtsTime = None
+        self.Confidence = None
+        self.Trans = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.StartPtsTime = params.get("StartPtsTime")
+        self.EndPtsTime = params.get("EndPtsTime")
+        self.Confidence = params.get("Confidence")
+        self.Trans = params.get("Trans")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10752,6 +10971,8 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         :type FillType: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param Format: 图片格式，取值可以为 jpg、png、webp。
+        :type Format: str
         """
         self.Definition = None
         self.Name = None
@@ -10764,6 +10985,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.ColumnCount = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -10778,6 +11000,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.ColumnCount = params.get("ColumnCount")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10926,7 +11149,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
 <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
         :type SampleInterval: int
-        :param Format: 图片格式，取值为 jpg 和 png。
+        :param Format: 图片格式，取值为 jpg、png、webp。
         :type Format: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
@@ -11017,7 +11240,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 默认值：open。
         :type ResolutionAdaptive: str
-        :param Format: 图片格式，取值可以为 jpg 和 png。
+        :param Format: 图片格式，取值可以为 jpg、png、webp。
         :type Format: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
@@ -11554,6 +11777,8 @@ class OverrideTranscodeParameter(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
         :param TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        :param SubtitleTemplate: 字幕流配置参数。
+        :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         self.Container = None
         self.RemoveVideo = None
@@ -11561,6 +11786,7 @@ class OverrideTranscodeParameter(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.SubtitleTemplate = None
 
 
     def _deserialize(self, params):
@@ -11576,6 +11802,9 @@ class OverrideTranscodeParameter(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfigForUpdate()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("SubtitleTemplate") is not None:
+            self.SubtitleTemplate = SubtitleTemplate()
+            self.SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12454,8 +12683,11 @@ class ProcessMediaRequest(AbstractModel):
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
         :param ScheduleId: 编排ID。
-注意1：对于OutputStorage、OutputDir，如果编排任务里没有配置，将采用请求里对应参数。
-注意2：对于TaskNotifyConfig，如果编排任务里没有配置，将采用请求里对应的参数。
+注意1：对于OutputStorage、OutputDir参数：
+<li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+<li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
+注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
+
 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
         :type ScheduleId: int
         """
@@ -13602,6 +13834,12 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SubtitleTemplate(AbstractModel):
+    """字幕流配置参数。
+
+    """
 
 
 class SuperResolutionConfig(AbstractModel):

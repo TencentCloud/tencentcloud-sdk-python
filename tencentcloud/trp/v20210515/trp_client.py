@@ -84,6 +84,35 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCorporationOrder(self, request):
+        """以订单方式新建企业信息/配额信息
+
+        :param request: Request instance for CreateCorporationOrder.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateCorporationOrderRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateCorporationOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCorporationOrder", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCorporationOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCustomPack(self, request):
         """生成自定义码包
 

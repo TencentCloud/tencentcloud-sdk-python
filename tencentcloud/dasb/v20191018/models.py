@@ -1092,6 +1092,8 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         :type Kind: int
         :param DepartmentId: 所属部门ID
         :type DepartmentId: str
+        :param TagFilters: 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+        :type TagFilters: list of TagFilter
         """
         self.Id = None
         self.Bound = None
@@ -1100,6 +1102,7 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self.Limit = None
         self.Kind = None
         self.DepartmentId = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
@@ -1110,6 +1113,12 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Kind = params.get("Kind")
         self.DepartmentId = params.get("DepartmentId")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1248,6 +1257,8 @@ class DescribeDevicesRequest(AbstractModel):
         :type KindSet: list of int non-negative
         :param DepartmentId: 过滤条件，可按照部门ID进行过滤
         :type DepartmentId: str
+        :param TagFilters: 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+        :type TagFilters: list of TagFilter
         """
         self.IdSet = None
         self.Name = None
@@ -1260,6 +1271,7 @@ class DescribeDevicesRequest(AbstractModel):
         self.ResourceIdSet = None
         self.KindSet = None
         self.DepartmentId = None
+        self.TagFilters = None
 
 
     def _deserialize(self, params):
@@ -1274,6 +1286,12 @@ class DescribeDevicesRequest(AbstractModel):
         self.ResourceIdSet = params.get("ResourceIdSet")
         self.KindSet = params.get("KindSet")
         self.DepartmentId = params.get("DepartmentId")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2073,6 +2091,34 @@ class Resource(AbstractModel):
         self.ExtendPoints = params.get("ExtendPoints")
         self.PackageBandwidth = params.get("PackageBandwidth")
         self.PackageNode = params.get("PackageNode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagFilter(AbstractModel):
+    """资产标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

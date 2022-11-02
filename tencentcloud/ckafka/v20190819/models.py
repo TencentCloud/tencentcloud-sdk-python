@@ -7523,7 +7523,7 @@ class KafkaParam(AbstractModel):
         :param UseAutoCreateTopic: 使用的Topic是否需要自动创建（目前只支持SOURCE流入任务，如果不使用分发到多个topic，需要在Topic字段填写需要自动创建的topic名）
 注意：此字段可能返回 null，表示取不到有效值。
         :type UseAutoCreateTopic: bool
-        :param CompressionType: 写入Topic时是否进行压缩，不开启填"none"，开启的话，可选择"gzip", "snappy", "lz4"中的一个进行填写。
+        :param CompressionType: 写入Topic时是否进行压缩，不开启填"none"，开启的话，填写"open"。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompressionType: str
         """

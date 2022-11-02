@@ -2710,7 +2710,7 @@ class EnableAutoScalingGroupResponse(AbstractModel):
 
 
 class EnhancedService(AbstractModel):
-    """描述了实例的增强服务启用情况与其设置，如云安全，云监控等实例 Agent。
+    """描述了实例的增强服务启用情况与其设置，如云安全，云监控，自动化助手等实例 Agent。
 
     """
 
@@ -2720,9 +2720,12 @@ class EnhancedService(AbstractModel):
         :type SecurityService: :class:`tencentcloud.autoscaling.v20180419.models.RunSecurityServiceEnabled`
         :param MonitorService: 开启云监控服务。若不指定该参数，则默认开启云监控服务。
         :type MonitorService: :class:`tencentcloud.autoscaling.v20180419.models.RunMonitorServiceEnabled`
+        :param AutomationService: 开启自动化助手服务。若不指定该参数，则默认逻辑与CVM保持一致。注意：此字段可能返回 null，表示取不到有效值。
+        :type AutomationService: list of RunAutomationServiceEnabled
         """
         self.SecurityService = None
         self.MonitorService = None
+        self.AutomationService = None
 
 
     def _deserialize(self, params):
@@ -2732,6 +2735,12 @@ class EnhancedService(AbstractModel):
         if params.get("MonitorService") is not None:
             self.MonitorService = RunMonitorServiceEnabled()
             self.MonitorService._deserialize(params.get("MonitorService"))
+        if params.get("AutomationService") is not None:
+            self.AutomationService = []
+            for item in params.get("AutomationService"):
+                obj = RunAutomationServiceEnabled()
+                obj._deserialize(item)
+                self.AutomationService.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4532,6 +4541,31 @@ class RemoveInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
+
+
+class RunAutomationServiceEnabled(AbstractModel):
+    """描述了 “自动化助手” 服务相关的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enabled: 是否开启[自动化助手](https://cloud.tencent.com/document/product/1340)服务。取值范围：<br><li>TRUE：表示开启自动化助手服务<br><li>FALSE：表示不开启自动化助手服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        """
+        self.Enabled = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RunMonitorServiceEnabled(AbstractModel):
