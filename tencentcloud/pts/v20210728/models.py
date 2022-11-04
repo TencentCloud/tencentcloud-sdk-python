@@ -3141,6 +3141,9 @@ class File(AbstractModel):
         :param SubAccountUin: 用户子账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
+        :param AppId: 用户账号的 App ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
         """
         self.FileId = None
         self.Kind = None
@@ -3161,6 +3164,7 @@ class File(AbstractModel):
         self.AppID = None
         self.Uin = None
         self.SubAccountUin = None
+        self.AppId = None
 
 
     def _deserialize(self, params):
@@ -3193,6 +3197,7 @@ class File(AbstractModel):
         self.AppID = params.get("AppID")
         self.Uin = params.get("Uin")
         self.SubAccountUin = params.get("SubAccountUin")
+        self.AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4933,6 +4938,9 @@ class ScriptInfo(AbstractModel):
         :param LoadWeight: 脚本权重，范围 1-100
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadWeight: int
+        :param FileId: 文件 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileId: str
         """
         self.Name = None
         self.Size = None
@@ -4941,6 +4949,7 @@ class ScriptInfo(AbstractModel):
         self.EncodedContent = None
         self.EncodedHttpArchive = None
         self.LoadWeight = None
+        self.FileId = None
 
 
     def _deserialize(self, params):
@@ -4951,6 +4960,7 @@ class ScriptInfo(AbstractModel):
         self.EncodedContent = params.get("EncodedContent")
         self.EncodedHttpArchive = params.get("EncodedHttpArchive")
         self.LoadWeight = params.get("LoadWeight")
+        self.FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

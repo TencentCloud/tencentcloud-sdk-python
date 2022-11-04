@@ -1163,6 +1163,250 @@ class DescribeScaleInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTRTCMarketQualityMetricDataRequest(AbstractModel):
+    """DescribeTRTCMarketQualityMetricData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
+        :type SdkAppId: str
+        :param StartTime: 查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+        :type StartTime: str
+        :param EndTime: 查询结束时间，格式为YYYY-MM-DD。
+        :type EndTime: str
+        :param Period: 返回数据的粒度，支持设为以下值：
+d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+        :type Period: str
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCMarketQualityMetricDataResponse(AbstractModel):
+    """DescribeTRTCMarketQualityMetricData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TRTCDataResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTRTCMarketScaleMetricDataRequest(AbstractModel):
+    """DescribeTRTCMarketScaleMetricData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 用户SdkAppId
+        :type SdkAppId: str
+        :param StartTime: 查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+        :type StartTime: str
+        :param EndTime: 查询结束时间，格式为YYYY-MM-DD。
+        :type EndTime: str
+        :param Period: 返回数据的粒度，支持设为以下值：
+d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+        :type Period: str
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCMarketScaleMetricDataResponse(AbstractModel):
+    """DescribeTRTCMarketScaleMetricData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TRTCDataResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTRTCRealTimeQualityMetricDataRequest(AbstractModel):
+    """DescribeTRTCRealTimeQualityMetricData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
+        :type SdkAppId: str
+        :param StartTime: 开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+        :type StartTime: int
+        :param EndTime: 结束时间，unix时间戳，单位：秒
+        :type EndTime: int
+        :param RoomId: 房间ID
+        :type RoomId: str
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCRealTimeQualityMetricDataResponse(AbstractModel):
+    """DescribeTRTCRealTimeQualityMetricData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TRTCDataResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTRTCRealTimeScaleMetricDataRequest(AbstractModel):
+    """DescribeTRTCRealTimeScaleMetricData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
+        :type SdkAppId: str
+        :param StartTime: 开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+        :type StartTime: int
+        :param EndTime: 结束时间，unix时间戳，单位：秒
+        :type EndTime: int
+        :param RoomId: 房间ID
+        :type RoomId: str
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCRealTimeScaleMetricDataResponse(AbstractModel):
+    """DescribeTRTCRealTimeScaleMetricData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: TRTC监控数据出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TRTCDataResp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTrtcMcuTranscodeTimeRequest(AbstractModel):
     """DescribeTrtcMcuTranscodeTime请求参数结构体
 
@@ -2767,6 +3011,36 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
         
 
 
+class SeriesInfo(AbstractModel):
+    """SeriesInfo类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Columns: 数据列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of str
+        :param Values: 数据值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of int
+        """
+        self.Columns = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Columns = params.get("Columns")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmallVideoLayoutParams(AbstractModel):
     """画中画模板中有效，代表小画面的布局参数
 
@@ -3139,6 +3413,46 @@ class SubscribeStreamUserIds(AbstractModel):
         self.UnSubscribeAudioUserIds = params.get("UnSubscribeAudioUserIds")
         self.SubscribeVideoUserIds = params.get("SubscribeVideoUserIds")
         self.UnSubscribeVideoUserIds = params.get("UnSubscribeVideoUserIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TRTCDataResp(AbstractModel):
+    """TRTC数据大盘/实时监控 API接口数据出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatementID: StatementID值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatementID: int
+        :param Series: Series数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Series: list of SeriesInfo
+        :param Total: Total值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        """
+        self.StatementID = None
+        self.Series = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.StatementID = params.get("StatementID")
+        if params.get("Series") is not None:
+            self.Series = []
+            for item in params.get("Series"):
+                obj = SeriesInfo()
+                obj._deserialize(item)
+                self.Series.append(obj)
+        self.Total = params.get("Total")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

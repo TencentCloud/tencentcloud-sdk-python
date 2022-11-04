@@ -230,7 +230,7 @@ class TagClient(AbstractClient):
 
 
     def DeleteTags(self, request):
-        """本接口用于删除一对标签键和标签值
+        """本接口用于批量删除标签键和标签值。
 
         :param request: Request instance for DeleteTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagsRequest`

@@ -493,6 +493,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type LoginNodeCount: int
         :param Tags: 创建集群时同时绑定的标签对说明。
         :type Tags: list of Tag
+        :param AutoScalingType: 弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。
+        :type AutoScalingType: str
         """
         self.Placement = None
         self.ManagerNode = None
@@ -512,6 +514,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.LoginNode = None
         self.LoginNodeCount = None
         self.Tags = None
+        self.AutoScalingType = None
 
 
     def _deserialize(self, params):
@@ -552,6 +555,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AutoScalingType = params.get("AutoScalingType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

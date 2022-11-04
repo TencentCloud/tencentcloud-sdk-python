@@ -50,6 +50,42 @@ class AccessKey(AbstractModel):
         
 
 
+class AccessKeyDetail(AbstractModel):
+    """访问密钥
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccessKeyId: 访问密钥标识
+        :type AccessKeyId: str
+        :param SecretAccessKey: 访问密钥（密钥仅创建时可见，请妥善保存）
+        :type SecretAccessKey: str
+        :param Status: 密钥状态，激活（Active）或未激活（Inactive）
+        :type Status: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.AccessKeyId = None
+        self.SecretAccessKey = None
+        self.Status = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.AccessKeyId = params.get("AccessKeyId")
+        self.SecretAccessKey = params.get("SecretAccessKey")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddUserRequest(AbstractModel):
     """AddUser请求参数结构体
 
@@ -642,6 +678,54 @@ class ConsumeCustomMFATokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAccessKeyRequest(AbstractModel):
+    """CreateAccessKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TargetUin: 指定用户Uin，不填默认为当前用户创建访问密钥
+        :type TargetUin: int
+        """
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccessKeyResponse(AbstractModel):
+    """CreateAccessKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccessKey: 访问密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: :class:`tencentcloud.cam.v20190116.models.AccessKeyDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccessKey") is not None:
+            self.AccessKey = AccessKeyDetail()
+            self.AccessKey._deserialize(params.get("AccessKey"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateGroupRequest(AbstractModel):
     """CreateGroup请求参数结构体
 
@@ -1141,6 +1225,51 @@ class CreateUserSAMLConfigRequest(AbstractModel):
 
 class CreateUserSAMLConfigResponse(AbstractModel):
     """CreateUserSAMLConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAccessKeyRequest(AbstractModel):
+    """DeleteAccessKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccessKeyId: 指定需要删除的AccessKeyId
+        :type AccessKeyId: str
+        :param TargetUin: 指定用户Uin，不填默认为当前用户删除访问密钥
+        :type TargetUin: int
+        """
+        self.AccessKeyId = None
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.AccessKeyId = params.get("AccessKeyId")
+        self.TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccessKeyResponse(AbstractModel):
+    """DeleteAccessKey返回参数结构体
 
     """
 
@@ -5098,6 +5227,55 @@ class UntagRoleRequest(AbstractModel):
 
 class UntagRoleResponse(AbstractModel):
     """UntagRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateAccessKeyRequest(AbstractModel):
+    """UpdateAccessKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccessKeyId: 指定需要更新的AccessKeyId
+        :type AccessKeyId: str
+        :param Status: 密钥状态，激活（Active）或未激活（Inactive）
+        :type Status: str
+        :param TargetUin: 指定用户Uin，不填默认为当前用户更新访问密钥
+        :type TargetUin: int
+        """
+        self.AccessKeyId = None
+        self.Status = None
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.AccessKeyId = params.get("AccessKeyId")
+        self.Status = params.get("Status")
+        self.TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAccessKeyResponse(AbstractModel):
+    """UpdateAccessKey返回参数结构体
 
     """
 

@@ -530,6 +530,11 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type NeedSignReview: bool
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param ApproverVerifyType: 签署人校验方式
+VerifyCheck: 人脸识别（默认）
+MobileCheck：手机号验证
+参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+        :type ApproverVerifyType: str
         """
         self.Agent = None
         self.FlowName = None
@@ -545,6 +550,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         self.CustomerData = None
         self.NeedSignReview = None
         self.Operator = None
+        self.ApproverVerifyType = None
 
 
     def _deserialize(self, params):
@@ -576,6 +582,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.ApproverVerifyType = params.get("ApproverVerifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

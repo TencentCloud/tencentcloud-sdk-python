@@ -1427,12 +1427,15 @@ class DescribeCRMonitorDetailResponse(AbstractModel):
         :type TotalCount: int
         :param MonitorStatus: 监测状态
         :type MonitorStatus: int
+        :param ExportURL: 导出地址
+        :type ExportURL: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Torts = None
         self.TotalCount = None
         self.MonitorStatus = None
+        self.ExportURL = None
         self.RequestId = None
 
 
@@ -1445,6 +1448,7 @@ class DescribeCRMonitorDetailResponse(AbstractModel):
                 self.Torts.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.MonitorStatus = params.get("MonitorStatus")
+        self.ExportURL = params.get("ExportURL")
         self.RequestId = params.get("RequestId")
 
 
@@ -1496,11 +1500,14 @@ class DescribeCRMonitorsResponse(AbstractModel):
         :type Monitors: list of Monitor
         :param TotalCount: 记录总条数
         :type TotalCount: int
+        :param ExportURL: 导出地址
+        :type ExportURL: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Monitors = None
         self.TotalCount = None
+        self.ExportURL = None
         self.RequestId = None
 
 
@@ -1512,6 +1519,7 @@ class DescribeCRMonitorsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Monitors.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.ExportURL = params.get("ExportURL")
         self.RequestId = params.get("RequestId")
 
 
@@ -1576,6 +1584,8 @@ class DescribeCRObtainDetailResponse(AbstractModel):
         :type ObtainDuration: str
         :param ObtainName: 取证名称
         :type ObtainName: str
+        :param DepositPdfCert: 取证公证信息
+        :type DepositPdfCert: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1594,6 +1604,7 @@ class DescribeCRObtainDetailResponse(AbstractModel):
         self.ObtainNote = None
         self.ObtainDuration = None
         self.ObtainName = None
+        self.DepositPdfCert = None
         self.RequestId = None
 
 
@@ -1613,6 +1624,7 @@ class DescribeCRObtainDetailResponse(AbstractModel):
         self.ObtainNote = params.get("ObtainNote")
         self.ObtainDuration = params.get("ObtainDuration")
         self.ObtainName = params.get("ObtainName")
+        self.DepositPdfCert = params.get("DepositPdfCert")
         self.RequestId = params.get("RequestId")
 
 
@@ -2212,6 +2224,14 @@ class Monitor(AbstractModel):
         :type InsertTime: str
         :param MonitorNote: 监测状态说明
         :type MonitorNote: str
+        :param WorkCategoryAll: 作品类型全部展示
+        :type WorkCategoryAll: str
+        :param EvidenceStatus: 存证状态
+        :type EvidenceStatus: int
+        :param EvidenceNote: 存证状态说明
+        :type EvidenceNote: str
+        :param TortSiteNum: 侵权站点数量
+        :type TortSiteNum: int
         """
         self.WorkId = None
         self.WorkName = None
@@ -2223,6 +2243,10 @@ class Monitor(AbstractModel):
         self.WorkCategory = None
         self.InsertTime = None
         self.MonitorNote = None
+        self.WorkCategoryAll = None
+        self.EvidenceStatus = None
+        self.EvidenceNote = None
+        self.TortSiteNum = None
 
 
     def _deserialize(self, params):
@@ -2236,6 +2260,10 @@ class Monitor(AbstractModel):
         self.WorkCategory = params.get("WorkCategory")
         self.InsertTime = params.get("InsertTime")
         self.MonitorNote = params.get("MonitorNote")
+        self.WorkCategoryAll = params.get("WorkCategoryAll")
+        self.EvidenceStatus = params.get("EvidenceStatus")
+        self.EvidenceNote = params.get("EvidenceNote")
+        self.TortSiteNum = params.get("TortSiteNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2302,6 +2330,8 @@ class MonitorTort(AbstractModel):
         :type IsProducer: int
         :param IsOverseas: 是否境外网址
         :type IsOverseas: int
+        :param IPLoc: ip地理位置
+        :type IPLoc: str
         """
         self.TortId = None
         self.TortTitle = None
@@ -2328,6 +2358,7 @@ class MonitorTort(AbstractModel):
         self.EvidenceStatus = None
         self.IsProducer = None
         self.IsOverseas = None
+        self.IPLoc = None
 
 
     def _deserialize(self, params):
@@ -2356,6 +2387,7 @@ class MonitorTort(AbstractModel):
         self.EvidenceStatus = params.get("EvidenceStatus")
         self.IsProducer = params.get("IsProducer")
         self.IsOverseas = params.get("IsOverseas")
+        self.IPLoc = params.get("IPLoc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -965,7 +965,7 @@ class DescribeAclsRequest(AbstractModel):
         :type IdSet: list of int non-negative
         :param Name: 访问权限名称，模糊查询，最长64字符
         :type Name: str
-        :param Offset: 分页偏移位置
+        :param Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param Limit: 每页条目数量，默认20，最大500
         :type Limit: int
@@ -1084,7 +1084,7 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         :type Bound: bool
         :param Name: 资产名或资产IP，模糊查询
         :type Name: str
-        :param Offset: 分页偏移位置
+        :param Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param Limit: 每页条目数，默认20, 最大500
         :type Limit: int
@@ -1169,7 +1169,7 @@ class DescribeDeviceGroupsRequest(AbstractModel):
         :type IdSet: list of int non-negative
         :param Name: 资产组名，最长64个字符，模糊查询
         :type Name: str
-        :param Offset: 分页偏移位置
+        :param Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param Limit: 每页条目数量，缺省20，最大500
         :type Limit: int
@@ -1245,7 +1245,7 @@ class DescribeDevicesRequest(AbstractModel):
         :type ApCodeSet: list of str
         :param Kind: 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
         :type Kind: int
-        :param Offset: 分页，偏移位置
+        :param Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param Limit: 每页条目数量，默认20
         :type Limit: int
@@ -1402,7 +1402,7 @@ class DescribeUserGroupMembersRequest(AbstractModel):
         :type Bound: bool
         :param Name: 用户名或用户姓名，最长64个字符，模糊查询
         :type Name: str
-        :param Offset: 分页偏移位置
+        :param Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param Limit: 每页条目数量，默认20, 最大500
         :type Limit: int
@@ -1474,7 +1474,7 @@ class DescribeUserGroupsRequest(AbstractModel):
         :type IdSet: list of int non-negative
         :param Name: 用户组名，模糊查询,长度：0-64字符
         :type Name: str
-        :param Offset: 分页偏移位置
+        :param Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param Limit: 每页条目数量，缺省20，最大500
         :type Limit: int
@@ -1544,7 +1544,7 @@ class DescribeUsersRequest(AbstractModel):
         :type IdSet: list of int non-negative
         :param Name: 模糊查询，IdSet、UserName、Phone为空时才生效，对用户名和姓名进行模糊查询
         :type Name: str
-        :param Offset: 分页，偏移位置
+        :param Offset: 分页偏移位置，默认值为0
         :type Offset: int
         :param Limit: 每页条目数量，默认20, 最大500
         :type Limit: int

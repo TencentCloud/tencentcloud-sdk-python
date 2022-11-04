@@ -329,6 +329,9 @@ OPERATIONDENIED_INVALIDAPPROVERAGE = 'OperationDenied.InvalidApproverAge'
 # 没有API权限。
 OPERATIONDENIED_NOAPIAUTH = 'OperationDenied.NoApiAuth'
 
+# 无权操作合同。
+OPERATIONDENIED_NOFLOWPERMISSION = 'OperationDenied.NoFlowPermission'
+
 # 未通过个人实名。
 OPERATIONDENIED_NOIDENTITYVERIFY = 'OperationDenied.NoIdentityVerify'
 

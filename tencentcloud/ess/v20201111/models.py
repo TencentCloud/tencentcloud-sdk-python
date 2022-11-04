@@ -803,6 +803,11 @@ false：有序签
         :type UserData: str
         :param Agent: 应用号信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param ApproverVerifyType: 签署人校验方式
+VerifyCheck: 人脸识别（默认）
+MobileCheck：手机号验证
+参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+        :type ApproverVerifyType: str
         """
         self.Operator = None
         self.FlowName = None
@@ -819,6 +824,7 @@ false：有序签
         self.NeedSignReview = None
         self.UserData = None
         self.Agent = None
+        self.ApproverVerifyType = None
 
 
     def _deserialize(self, params):
@@ -856,6 +862,7 @@ false：有序签
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
+        self.ApproverVerifyType = params.get("ApproverVerifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1541,20 +1548,18 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Operator: 调用方用户信息，UserId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param BusinessType: 文件对应的业务类型，目前支持：
+- 流程 "FLOW"，如需下载合同文件请选择此项
 - 模板 "TEMPLATE"
 - 文档 "DOCUMENT"
 - 印章  “SEAL”
-- 流程 "FLOW"
         :type BusinessType: str
-        :param BusinessIds: 业务编号的数组，如模板编号、文档编号、印章编号
+        :param BusinessIds: 业务编号的数组，如流程编号、模板编号、文档编号、印章编号。如需下载合同文件请传入FlowId
 最大支持20个资源
         :type BusinessIds: list of str
-        :param Operator: 操作者信息
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用相关信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param FileName: 下载后的文件命名，只有fileType为zip的时候生效
+        :param FileName: 下载后的文件命名，只有FileType为zip的时候生效
         :type FileName: str
         :param FileType: 文件类型，"JPG", "PDF","ZIP"等
         :type FileType: str
@@ -1564,40 +1569,42 @@ class DescribeFileUrlsRequest(AbstractModel):
         :type Limit: int
         :param UrlTtl: 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)
         :type UrlTtl: int
-        :param Scene: 暂不开放
-        :type Scene: str
         :param CcToken: 暂不开放
         :type CcToken: str
+        :param Scene: 暂不开放
+        :type Scene: str
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
+        self.Operator = None
         self.BusinessType = None
         self.BusinessIds = None
-        self.Operator = None
-        self.Agent = None
         self.FileName = None
         self.FileType = None
         self.Offset = None
         self.Limit = None
         self.UrlTtl = None
-        self.Scene = None
         self.CcToken = None
+        self.Scene = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
-        self.BusinessType = params.get("BusinessType")
-        self.BusinessIds = params.get("BusinessIds")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
-        if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+        self.BusinessType = params.get("BusinessType")
+        self.BusinessIds = params.get("BusinessIds")
         self.FileName = params.get("FileName")
         self.FileType = params.get("FileType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.UrlTtl = params.get("UrlTtl")
-        self.Scene = params.get("Scene")
         self.CcToken = params.get("CcToken")
+        self.Scene = params.get("Scene")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

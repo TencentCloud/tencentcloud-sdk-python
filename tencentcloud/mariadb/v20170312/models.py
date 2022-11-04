@@ -3528,6 +3528,47 @@ class InstanceSpec(AbstractModel):
         
 
 
+class IsolateDedicatedDBInstanceRequest(AbstractModel):
+    """IsolateDedicatedDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 Id，形如：tdsql-ow728lmc。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateDedicatedDBInstanceResponse(AbstractModel):
+    """IsolateDedicatedDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class IsolateHourDBInstanceRequest(AbstractModel):
     """IsolateHourDBInstance请求参数结构体
 
@@ -5418,16 +5459,20 @@ class ZonesInfo(AbstractModel):
         :type ZoneId: int
         :param ZoneName: 可用区中文名
         :type ZoneName: str
+        :param OnSale: 是否在售
+        :type OnSale: bool
         """
         self.Zone = None
         self.ZoneId = None
         self.ZoneName = None
+        self.OnSale = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.ZoneId = params.get("ZoneId")
         self.ZoneName = params.get("ZoneName")
+        self.OnSale = params.get("OnSale")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3042,7 +3042,9 @@ class ModifyResourcePoolsRequest(AbstractModel):
         r"""
         :param InstanceId: emr集群id
         :type InstanceId: str
-        :param Key: 标识是fair还是capacity
+        :param Key: 取值范围：
+<li>fair:代表公平调度标识</li>
+<li>capacity:代表容量调度标识</li>
         :type Key: str
         """
         self.InstanceId = None

@@ -200,6 +200,35 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAccessKey(self, request):
+        """为CAM用户创建访问密钥
+
+        :param request: Request instance for CreateAccessKey.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateAccessKeyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateAccessKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccessKey", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAccessKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateGroup(self, request):
         """创建用户组
 
@@ -447,6 +476,36 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserSAMLConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteAccessKey(self, request):
+        """为CAM用户删除访问密钥。
+        此接口属于高风险操作，删除密钥后不可恢复，腾讯云将永久拒绝此密钥的所有请求，请谨慎使用。
+
+        :param request: Request instance for DeleteAccessKey.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteAccessKeyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteAccessKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccessKey", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAccessKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2129,6 +2188,35 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UntagRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateAccessKey(self, request):
+        """为CAM用户更新访问密钥
+
+        :param request: Request instance for UpdateAccessKey.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateAccessKeyRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateAccessKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAccessKey", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateAccessKeyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
