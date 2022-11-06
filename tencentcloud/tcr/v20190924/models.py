@@ -758,12 +758,15 @@ false: 使用vpc域名
         :type UsePublicDomain: bool
         :param RegionName: 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
         :type RegionName: str
+        :param RegionId: 请求的地域ID，用于实例复制地域
+        :type RegionId: int
         """
         self.InstanceId = None
         self.VpcId = None
         self.EniLBIp = None
         self.UsePublicDomain = None
         self.RegionName = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
@@ -772,6 +775,7 @@ false: 使用vpc域名
         self.EniLBIp = params.get("EniLBIp")
         self.UsePublicDomain = params.get("UsePublicDomain")
         self.RegionName = params.get("RegionName")
+        self.RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -14404,6 +14404,13 @@ class SecHitRuleInfo(AbstractModel):
         :type Description: str
         :param Domain: 子域名。
         :type Domain: str
+        :param BotLabel: Bot标签，取值有:
+<li>evil_bot：恶意Bot；</li>
+<li>suspect_bot：疑似Bot；</li>
+<li>good_bot：正常Bot；</li>
+<li>normal：正常请求；</li>
+<li>none：未分类。</li>
+        :type BotLabel: str
         """
         self.RuleId = None
         self.RuleTypeName = None
@@ -14412,6 +14419,7 @@ class SecHitRuleInfo(AbstractModel):
         self.RequestNum = None
         self.Description = None
         self.Domain = None
+        self.BotLabel = None
 
 
     def _deserialize(self, params):
@@ -14422,6 +14430,7 @@ class SecHitRuleInfo(AbstractModel):
         self.RequestNum = params.get("RequestNum")
         self.Description = params.get("Description")
         self.Domain = params.get("Domain")
+        self.BotLabel = params.get("BotLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14438,7 +14447,7 @@ class SecRuleRelatedInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleId: 规则ID列表（99999为无效id）。
+        :param RuleId: 规则ID。
         :type RuleId: int
         :param Action: 执行动作（处置方式），取值有：
 <li>trans ：通过 ；</li>
@@ -14462,6 +14471,9 @@ class SecRuleRelatedInfo(AbstractModel):
         :type Description: str
         :param RuleTypeName: 规则类型名称。
         :type RuleTypeName: str
+        :param AttackContent: 攻击内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackContent: str
         """
         self.RuleId = None
         self.Action = None
@@ -14469,6 +14481,7 @@ class SecRuleRelatedInfo(AbstractModel):
         self.RuleLevel = None
         self.Description = None
         self.RuleTypeName = None
+        self.AttackContent = None
 
 
     def _deserialize(self, params):
@@ -14478,6 +14491,7 @@ class SecRuleRelatedInfo(AbstractModel):
         self.RuleLevel = params.get("RuleLevel")
         self.Description = params.get("Description")
         self.RuleTypeName = params.get("RuleTypeName")
+        self.AttackContent = params.get("AttackContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

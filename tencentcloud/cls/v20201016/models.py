@@ -18,6 +18,54 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddMachineGroupInfoRequest(AbstractModel):
+    """AddMachineGroupInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 机器组ID
+        :type GroupId: str
+        :param MachineGroupType: 机器组类型
+目前type支持 ip 和 label
+        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        """
+        self.GroupId = None
+        self.MachineGroupType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        if params.get("MachineGroupType") is not None:
+            self.MachineGroupType = MachineGroupTypeInfo()
+            self.MachineGroupType._deserialize(params.get("MachineGroupType"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddMachineGroupInfoResponse(AbstractModel):
+    """AddMachineGroupInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AlarmAnalysisConfig(AbstractModel):
     """告警多维分析一些配置信息
 
@@ -2250,6 +2298,54 @@ class DeleteLogsetRequest(AbstractModel):
 
 class DeleteLogsetResponse(AbstractModel):
     """DeleteLogset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteMachineGroupInfoRequest(AbstractModel):
+    """DeleteMachineGroupInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 机器组ID
+        :type GroupId: str
+        :param MachineGroupType: 机器组类型
+目前type支持 ip 和 label
+        :type MachineGroupType: :class:`tencentcloud.cls.v20201016.models.MachineGroupTypeInfo`
+        """
+        self.GroupId = None
+        self.MachineGroupType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        if params.get("MachineGroupType") is not None:
+            self.MachineGroupType = MachineGroupTypeInfo()
+            self.MachineGroupType._deserialize(params.get("MachineGroupType"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMachineGroupInfoResponse(AbstractModel):
+    """DeleteMachineGroupInfo返回参数结构体
 
     """
 

@@ -1219,6 +1219,35 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def IsolateDBInstance(self, request):
+        """本接口(IsolateDBInstance)用于隔离云数据库实例（包年包月），隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
+
+        :param request: Request instance for IsolateDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.IsolateDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.IsolateDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateDBInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IsolateDedicatedDBInstance(self, request):
         """本接口（IsolateDedicatedDBInstance）用于隔离独享云数据库实例。
 

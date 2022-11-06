@@ -6221,21 +6221,26 @@ class ProductConf(AbstractModel):
 
 
 class ProxyNodes(AbstractModel):
-    """Proxy节点信息
+    """Proxy节点信息。
 
     """
 
     def __init__(self):
         r"""
-        :param NodeId: 节点ID
+        :param NodeId: 节点 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: str
+        :param ZoneId: 可用区 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
         """
         self.NodeId = None
+        self.ZoneId = None
 
 
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
+        self.ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

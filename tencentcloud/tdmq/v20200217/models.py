@@ -1180,6 +1180,9 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         :param Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param BrokerType: 0表示pulsar，1表示rocketmq
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerType: int
         """
         self.TopicId = None
         self.TopicName = None
@@ -1196,6 +1199,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         self.TenantId = None
         self.NamespaceName = None
         self.Status = None
+        self.BrokerType = None
 
 
     def _deserialize(self, params):
@@ -1219,6 +1223,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         self.TenantId = params.get("TenantId")
         self.NamespaceName = params.get("NamespaceName")
         self.Status = params.get("Status")
+        self.BrokerType = params.get("BrokerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

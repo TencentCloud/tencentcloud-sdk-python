@@ -4938,6 +4938,491 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInput(AbstractModel):
+    """创建输入的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputName: 输入名称，可填大小写、数字和下划线，长度为[1, 32]。
+        :type InputName: str
+        :param Protocol: 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+        :type Protocol: str
+        :param Description: 输入描述，长度为[0, 255]。
+        :type Description: str
+        :param AllowIpList: 输入的IP白名单，格式为CIDR。
+        :type AllowIpList: list of str
+        :param SRTSettings: 输入的SRT配置信息。
+        :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputSRTSettings`
+        :param RTPSettings: 输入的RTP配置信息。
+        :type RTPSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTPSettings`
+        :param FailOver: 输入的主备开关，可选[OPEN|CLOSE]，默认为CLOSE。
+        :type FailOver: str
+        :param RTMPPullSettings: 输入的RTMP_PULL配置信息。
+        :type RTMPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTMPPullSettings`
+        :param RTSPPullSettings: 输入的RTSP_PULL配置信息。
+        :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTSPPullSettings`
+        """
+        self.InputName = None
+        self.Protocol = None
+        self.Description = None
+        self.AllowIpList = None
+        self.SRTSettings = None
+        self.RTPSettings = None
+        self.FailOver = None
+        self.RTMPPullSettings = None
+        self.RTSPPullSettings = None
+
+
+    def _deserialize(self, params):
+        self.InputName = params.get("InputName")
+        self.Protocol = params.get("Protocol")
+        self.Description = params.get("Description")
+        self.AllowIpList = params.get("AllowIpList")
+        if params.get("SRTSettings") is not None:
+            self.SRTSettings = CreateInputSRTSettings()
+            self.SRTSettings._deserialize(params.get("SRTSettings"))
+        if params.get("RTPSettings") is not None:
+            self.RTPSettings = CreateInputRTPSettings()
+            self.RTPSettings._deserialize(params.get("RTPSettings"))
+        self.FailOver = params.get("FailOver")
+        if params.get("RTMPPullSettings") is not None:
+            self.RTMPPullSettings = CreateInputRTMPPullSettings()
+            self.RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
+        if params.get("RTSPPullSettings") is not None:
+            self.RTSPPullSettings = CreateInputRTSPPullSettings()
+            self.RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputRTMPPullSettings(AbstractModel):
+    """创建的输入RTMP拉流的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceAddresses: RTMP源站的源站地址，有且只能有一个。
+        :type SourceAddresses: list of RTMPPullSourceAddress
+        """
+        self.SourceAddresses = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self.SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = RTMPPullSourceAddress()
+                obj._deserialize(item)
+                self.SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputRTPSettings(AbstractModel):
+    """创建输入的RTP配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FEC: 默认为“none”，可选值['none']。
+        :type FEC: str
+        :param IdleTimeout: 空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。
+        :type IdleTimeout: int
+        """
+        self.FEC = None
+        self.IdleTimeout = None
+
+
+    def _deserialize(self, params):
+        self.FEC = params.get("FEC")
+        self.IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputRTSPPullSettings(AbstractModel):
+    """创建的输入RTSP拉流的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceAddresses: RTSP源站的源站地址，有且只能有一个。
+        :type SourceAddresses: list of RTSPPullSourceAddress
+        """
+        self.SourceAddresses = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self.SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = RTSPPullSourceAddress()
+                obj._deserialize(item)
+                self.SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputSRTSettings(AbstractModel):
+    """创建的输入SRT的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Mode: SRT模式，可选[LISTENER|CALLER]，默认为LISTENER。
+        :type Mode: str
+        :param StreamId: 流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。
+        :type StreamId: str
+        :param Latency: 延迟，默认0，单位ms，范围为[0, 3000]。
+        :type Latency: int
+        :param RecvLatency: 接收延迟，默认120，单位ms，范围为[0, 3000]。
+        :type RecvLatency: int
+        :param PeerLatency: 对端延迟，默认0，单位ms，范围为[0, 3000]。
+        :type PeerLatency: int
+        :param PeerIdleTimeout: 对端超时时间，默认5000，单位ms，范围为[1000, 10000]。
+        :type PeerIdleTimeout: int
+        :param Passphrase: 解密密钥，默认为空，表示不加密。只可填ascii码值，长度为[10, 79]。
+        :type Passphrase: str
+        :param PbKeyLen: 密钥长度，默认为0，可选[0|16|24|32]。
+        :type PbKeyLen: int
+        :param SourceAddresses: SRT对端地址，当Mode为CALLER时必填，且只能填1组。
+        :type SourceAddresses: list of SRTSourceAddressReq
+        """
+        self.Mode = None
+        self.StreamId = None
+        self.Latency = None
+        self.RecvLatency = None
+        self.PeerLatency = None
+        self.PeerIdleTimeout = None
+        self.Passphrase = None
+        self.PbKeyLen = None
+        self.SourceAddresses = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.StreamId = params.get("StreamId")
+        self.Latency = params.get("Latency")
+        self.RecvLatency = params.get("RecvLatency")
+        self.PeerLatency = params.get("PeerLatency")
+        self.PeerIdleTimeout = params.get("PeerIdleTimeout")
+        self.Passphrase = params.get("Passphrase")
+        self.PbKeyLen = params.get("PbKeyLen")
+        if params.get("SourceAddresses") is not None:
+            self.SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = SRTSourceAddressReq()
+                obj._deserialize(item)
+                self.SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOutputInfo(AbstractModel):
+    """创建输出的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutputName: 输出的名称。
+        :type OutputName: str
+        :param Description: 输出描述。
+        :type Description: str
+        :param Protocol: 输出协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+        :type Protocol: str
+        :param OutputRegion: 输出地区。
+        :type OutputRegion: str
+        :param SRTSettings: 输出的SRT的配置。
+        :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputSRTSettings`
+        :param RTMPSettings: 输出的RTMP的配置。
+        :type RTMPSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRTMPSettings`
+        :param RTPSettings: 输出的RTP的配置。
+        :type RTPSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputInfoRTPSettings`
+        :param AllowIpList: IP白名单列表，格式为CIDR，如0.0.0.0/0。
+当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+        :type AllowIpList: list of str
+        """
+        self.OutputName = None
+        self.Description = None
+        self.Protocol = None
+        self.OutputRegion = None
+        self.SRTSettings = None
+        self.RTMPSettings = None
+        self.RTPSettings = None
+        self.AllowIpList = None
+
+
+    def _deserialize(self, params):
+        self.OutputName = params.get("OutputName")
+        self.Description = params.get("Description")
+        self.Protocol = params.get("Protocol")
+        self.OutputRegion = params.get("OutputRegion")
+        if params.get("SRTSettings") is not None:
+            self.SRTSettings = CreateOutputSRTSettings()
+            self.SRTSettings._deserialize(params.get("SRTSettings"))
+        if params.get("RTMPSettings") is not None:
+            self.RTMPSettings = CreateOutputRTMPSettings()
+            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+        if params.get("RTPSettings") is not None:
+            self.RTPSettings = CreateOutputInfoRTPSettings()
+            self.RTPSettings._deserialize(params.get("RTPSettings"))
+        self.AllowIpList = params.get("AllowIpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOutputInfoRTPSettings(AbstractModel):
+    """创建媒体传输流的输出的RTP配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Destinations: 转推的目标地址，可填1~2个。
+        :type Destinations: list of CreateOutputRTPSettingsDestinations
+        :param FEC: 只能填none。
+        :type FEC: str
+        :param IdleTimeout: 空闲超时时间，单位ms。
+        :type IdleTimeout: int
+        """
+        self.Destinations = None
+        self.FEC = None
+        self.IdleTimeout = None
+
+
+    def _deserialize(self, params):
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = CreateOutputRTPSettingsDestinations()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
+        self.FEC = params.get("FEC")
+        self.IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOutputRTMPSettings(AbstractModel):
+    """创建媒体传输流的输出的RTMP配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Destinations: 转推的目标地址，可填1~2个。
+        :type Destinations: list of CreateOutputRtmpSettingsDestinations
+        :param ChunkSize: RTMP的Chunk大小，范围为[4096, 40960]。
+        :type ChunkSize: int
+        """
+        self.Destinations = None
+        self.ChunkSize = None
+
+
+    def _deserialize(self, params):
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = CreateOutputRtmpSettingsDestinations()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
+        self.ChunkSize = params.get("ChunkSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOutputRTPSettingsDestinations(AbstractModel):
+    """创建媒体传输流的输出的RTP的目标地址。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 转推的目标IP。
+        :type Ip: str
+        :param Port: 转推的目标端口。
+        :type Port: int
+        """
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOutputRtmpSettingsDestinations(AbstractModel):
+    """创建媒体传输流的输出的RTMP的目标地址。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 转推的URL，格式如：rtmp://domain/live。
+        :type Url: str
+        :param StreamKey: 转推的StreamKey，格式如：stream?key=value。
+        :type StreamKey: str
+        """
+        self.Url = None
+        self.StreamKey = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOutputSRTSettings(AbstractModel):
+    """创建媒体传输流的输出的SRT配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Destinations: 转推的目标地址，当Mode为CALLER时必填，且只能填1组。
+        :type Destinations: list of CreateOutputSRTSettingsDestinations
+        :param StreamId: 转推SRT的流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。
+        :type StreamId: str
+        :param Latency: 转推SRT的总延迟，默认0，单位ms，范围为[0, 3000]。
+        :type Latency: int
+        :param RecvLatency: 转推SRT的接收延迟，默认120，单位ms，范围为[0, 3000]。
+        :type RecvLatency: int
+        :param PeerLatency: 转推SRT的对端延迟，默认0，单位ms，范围为[0, 3000]。
+        :type PeerLatency: int
+        :param PeerIdleTimeout: 转推SRT的对端空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。
+        :type PeerIdleTimeout: int
+        :param Passphrase: 转推SRT的加密密钥，默认为空，表示不加密。只可填ascii码值，长度为[10, 79]。
+        :type Passphrase: str
+        :param PbKeyLen: 转推SRT的密钥长度，默认为0，可选[0|16|24|32]。
+        :type PbKeyLen: int
+        :param Mode: SRT模式，可选[LISTENER|CALLER]，默认为CALLER。
+        :type Mode: str
+        """
+        self.Destinations = None
+        self.StreamId = None
+        self.Latency = None
+        self.RecvLatency = None
+        self.PeerLatency = None
+        self.PeerIdleTimeout = None
+        self.Passphrase = None
+        self.PbKeyLen = None
+        self.Mode = None
+
+
+    def _deserialize(self, params):
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = CreateOutputSRTSettingsDestinations()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
+        self.StreamId = params.get("StreamId")
+        self.Latency = params.get("Latency")
+        self.RecvLatency = params.get("RecvLatency")
+        self.PeerLatency = params.get("PeerLatency")
+        self.PeerIdleTimeout = params.get("PeerIdleTimeout")
+        self.Passphrase = params.get("Passphrase")
+        self.PbKeyLen = params.get("PbKeyLen")
+        self.Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOutputSRTSettingsDestinations(AbstractModel):
+    """创建媒体传输流的输出SRT的目标地址。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 输出的IP。
+        :type Ip: str
+        :param Port: 输出的端口。
+        :type Port: int
+        """
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreatePersonSampleRequest(AbstractModel):
     """CreatePersonSample请求参数结构体
 
@@ -5199,6 +5684,119 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateStreamLinkFlowRequest(AbstractModel):
+    """CreateStreamLinkFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowName: 流名称。
+        :type FlowName: str
+        :param MaxBandwidth: 最大带宽，单位bps，可选[10000000, 20000000, 50000000]。
+        :type MaxBandwidth: int
+        :param InputGroup: 流的输入组。
+        :type InputGroup: list of CreateInput
+        """
+        self.FlowName = None
+        self.MaxBandwidth = None
+        self.InputGroup = None
+
+
+    def _deserialize(self, params):
+        self.FlowName = params.get("FlowName")
+        self.MaxBandwidth = params.get("MaxBandwidth")
+        if params.get("InputGroup") is not None:
+            self.InputGroup = []
+            for item in params.get("InputGroup"):
+                obj = CreateInput()
+                obj._deserialize(item)
+                self.InputGroup.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamLinkFlowResponse(AbstractModel):
+    """CreateStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 创建的Flow信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeFlow`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeFlow()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateStreamLinkOutputInfoRequest(AbstractModel):
+    """CreateStreamLinkOutputInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 传输流Id。
+        :type FlowId: str
+        :param Output: 传输流的Output配置。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.CreateOutputInfo`
+        """
+        self.FlowId = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("Output") is not None:
+            self.Output = CreateOutputInfo()
+            self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamLinkOutputInfoResponse(AbstractModel):
+    """CreateStreamLinkOutputInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 创建后的Output信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeOutput`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeOutput()
+            self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5916,6 +6514,92 @@ class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteStreamLinkFlowRequest(AbstractModel):
+    """DeleteStreamLinkFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 传输流Id。
+        :type FlowId: str
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamLinkFlowResponse(AbstractModel):
+    """DeleteStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteStreamLinkOutputRequest(AbstractModel):
+    """DeleteStreamLinkOutput请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流Id。
+        :type FlowId: str
+        :param OutputId: 输出Id。
+        :type OutputId: str
+        """
+        self.FlowId = None
+        self.OutputId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.OutputId = params.get("OutputId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamLinkOutputResponse(AbstractModel):
+    """DeleteStreamLinkOutput返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTranscodeTemplateRequest(AbstractModel):
     """DeleteTranscodeTemplate请求参数结构体
 
@@ -6420,6 +7104,61 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFlow(AbstractModel):
+    """查询Flow的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流Id。
+        :type FlowId: str
+        :param FlowName: 流名称。
+        :type FlowName: str
+        :param State: 流状态，目前有IDLE/RUNNING。
+        :type State: str
+        :param MaxBandwidth: 最大带宽值。
+        :type MaxBandwidth: int
+        :param InputGroup: 输入组。
+        :type InputGroup: list of DescribeInput
+        :param OutputGroup: 输出组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputGroup: list of DescribeOutput
+        """
+        self.FlowId = None
+        self.FlowName = None
+        self.State = None
+        self.MaxBandwidth = None
+        self.InputGroup = None
+        self.OutputGroup = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.FlowName = params.get("FlowName")
+        self.State = params.get("State")
+        self.MaxBandwidth = params.get("MaxBandwidth")
+        if params.get("InputGroup") is not None:
+            self.InputGroup = []
+            for item in params.get("InputGroup"):
+                obj = DescribeInput()
+                obj._deserialize(item)
+                self.InputGroup.append(obj)
+        if params.get("OutputGroup") is not None:
+            self.OutputGroup = []
+            for item in params.get("OutputGroup"):
+                obj = DescribeOutput()
+                obj._deserialize(item)
+                self.OutputGroup.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeImageSpriteTemplatesRequest(AbstractModel):
     """DescribeImageSpriteTemplates请求参数结构体
 
@@ -6488,6 +7227,278 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInput(AbstractModel):
+    """查询输入配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputId: 输入Id。
+        :type InputId: str
+        :param InputName: 输入名称。
+        :type InputName: str
+        :param Description: 输入描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Protocol: 输入协议。
+        :type Protocol: str
+        :param InputAddressList: 输入地址列表。
+        :type InputAddressList: list of InputAddress
+        :param AllowIpList: 输入IP白名单列表。
+        :type AllowIpList: list of str
+        :param SRTSettings: 输入的SRT配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputSRTSettings`
+        :param RTPSettings: 输入的RTP配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTPSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputRTPSettings`
+        :param InputRegion: 输入的地区。
+        :type InputRegion: str
+        :param RTMPSettings: 输入的RTMP配置信息。
+        :type RTMPSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputRTMPSettings`
+        :param FailOver: 输入的主备开关。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailOver: str
+        :param RTMPPullSettings: 输入的RTMP_PULL配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTMPPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputRTMPPullSettings`
+        :param RTSPPullSettings: 输入的RTSP_PULL配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputRTSPPullSettings`
+        """
+        self.InputId = None
+        self.InputName = None
+        self.Description = None
+        self.Protocol = None
+        self.InputAddressList = None
+        self.AllowIpList = None
+        self.SRTSettings = None
+        self.RTPSettings = None
+        self.InputRegion = None
+        self.RTMPSettings = None
+        self.FailOver = None
+        self.RTMPPullSettings = None
+        self.RTSPPullSettings = None
+
+
+    def _deserialize(self, params):
+        self.InputId = params.get("InputId")
+        self.InputName = params.get("InputName")
+        self.Description = params.get("Description")
+        self.Protocol = params.get("Protocol")
+        if params.get("InputAddressList") is not None:
+            self.InputAddressList = []
+            for item in params.get("InputAddressList"):
+                obj = InputAddress()
+                obj._deserialize(item)
+                self.InputAddressList.append(obj)
+        self.AllowIpList = params.get("AllowIpList")
+        if params.get("SRTSettings") is not None:
+            self.SRTSettings = DescribeInputSRTSettings()
+            self.SRTSettings._deserialize(params.get("SRTSettings"))
+        if params.get("RTPSettings") is not None:
+            self.RTPSettings = DescribeInputRTPSettings()
+            self.RTPSettings._deserialize(params.get("RTPSettings"))
+        self.InputRegion = params.get("InputRegion")
+        if params.get("RTMPSettings") is not None:
+            self.RTMPSettings = DescribeInputRTMPSettings()
+            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+        self.FailOver = params.get("FailOver")
+        if params.get("RTMPPullSettings") is not None:
+            self.RTMPPullSettings = DescribeInputRTMPPullSettings()
+            self.RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
+        if params.get("RTSPPullSettings") is not None:
+            self.RTSPPullSettings = DescribeInputRTSPPullSettings()
+            self.RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputRTMPPullSettings(AbstractModel):
+    """查询输入的RTMP配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceAddresses: RTMP源站地址信息。
+        :type SourceAddresses: list of DescribeRTMPPullSourceAddress
+        """
+        self.SourceAddresses = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self.SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = DescribeRTMPPullSourceAddress()
+                obj._deserialize(item)
+                self.SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputRTMPSettings(AbstractModel):
+    """查询输入的RTMP配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: RTMP的推流路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppName: str
+        :param StreamKey: RTMP的推流StreamKey。
+RTMP的推流地址拼接规则为：rtmp://Ip:1935/AppName/StreamKey
+        :type StreamKey: str
+        """
+        self.AppName = None
+        self.StreamKey = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputRTPSettings(AbstractModel):
+    """查询输入的RTP配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FEC: 是否FEC。
+        :type FEC: str
+        :param IdleTimeout: 空闲超时时间。
+        :type IdleTimeout: int
+        """
+        self.FEC = None
+        self.IdleTimeout = None
+
+
+    def _deserialize(self, params):
+        self.FEC = params.get("FEC")
+        self.IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputRTSPPullSettings(AbstractModel):
+    """查询输入的RTSP配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceAddresses: RTSP源站地址信息。
+        :type SourceAddresses: list of DescribeRTSPPullSourceAddress
+        """
+        self.SourceAddresses = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self.SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = DescribeRTSPPullSourceAddress()
+                obj._deserialize(item)
+                self.SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputSRTSettings(AbstractModel):
+    """查询输入的SRT配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Mode: SRT模式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param StreamId: 流Id。
+        :type StreamId: str
+        :param Latency: 延迟。
+        :type Latency: int
+        :param RecvLatency: 接收延迟。
+        :type RecvLatency: int
+        :param PeerLatency: 对端延迟。
+        :type PeerLatency: int
+        :param PeerIdleTimeout: 对端空闲超时时间。
+        :type PeerIdleTimeout: int
+        :param Passphrase: 解密密钥。
+        :type Passphrase: str
+        :param PbKeyLen: 密钥长度。
+        :type PbKeyLen: int
+        :param SourceAddresses: SRT对端地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceAddresses: list of SRTSourceAddressResp
+        """
+        self.Mode = None
+        self.StreamId = None
+        self.Latency = None
+        self.RecvLatency = None
+        self.PeerLatency = None
+        self.PeerIdleTimeout = None
+        self.Passphrase = None
+        self.PbKeyLen = None
+        self.SourceAddresses = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        self.StreamId = params.get("StreamId")
+        self.Latency = params.get("Latency")
+        self.RecvLatency = params.get("RecvLatency")
+        self.PeerLatency = params.get("PeerLatency")
+        self.PeerIdleTimeout = params.get("PeerIdleTimeout")
+        self.Passphrase = params.get("Passphrase")
+        self.PbKeyLen = params.get("PbKeyLen")
+        if params.get("SourceAddresses") is not None:
+            self.SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = SRTSourceAddressResp()
+                obj._deserialize(item)
+                self.SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeMediaMetaDataRequest(AbstractModel):
     """DescribeMediaMetaData请求参数结构体
 
@@ -6535,6 +7546,374 @@ class DescribeMediaMetaDataResponse(AbstractModel):
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
         self.RequestId = params.get("RequestId")
+
+
+class DescribeOutput(AbstractModel):
+    """查询输出的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutputId: 输出Id。
+        :type OutputId: str
+        :param OutputName: 输出名称。
+        :type OutputName: str
+        :param OutputType: 输出类型。
+        :type OutputType: str
+        :param Description: 输出描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Protocol: 输出协议。
+        :type Protocol: str
+        :param OutputAddressList: 输出的出口地址信息列表。
+        :type OutputAddressList: list of OutputAddress
+        :param OutputRegion: 输出的地区。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputRegion: str
+        :param SRTSettings: 输出的SRT配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputSRTSettings`
+        :param RTPSettings: 输出的RTP配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTPSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTPSettings`
+        :param RTMPSettings: 输出的RTMP配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTMPSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTMPSettings`
+        :param RTMPPullSettings: 输出的RTMP拉流配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTMPPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTMPPullSettings`
+        :param AllowIpList: CIDR白名单列表。
+当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowIpList: list of str
+        :param RTSPPullSettings: 输出的RTSP拉流配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTSPPullSettings`
+        """
+        self.OutputId = None
+        self.OutputName = None
+        self.OutputType = None
+        self.Description = None
+        self.Protocol = None
+        self.OutputAddressList = None
+        self.OutputRegion = None
+        self.SRTSettings = None
+        self.RTPSettings = None
+        self.RTMPSettings = None
+        self.RTMPPullSettings = None
+        self.AllowIpList = None
+        self.RTSPPullSettings = None
+
+
+    def _deserialize(self, params):
+        self.OutputId = params.get("OutputId")
+        self.OutputName = params.get("OutputName")
+        self.OutputType = params.get("OutputType")
+        self.Description = params.get("Description")
+        self.Protocol = params.get("Protocol")
+        if params.get("OutputAddressList") is not None:
+            self.OutputAddressList = []
+            for item in params.get("OutputAddressList"):
+                obj = OutputAddress()
+                obj._deserialize(item)
+                self.OutputAddressList.append(obj)
+        self.OutputRegion = params.get("OutputRegion")
+        if params.get("SRTSettings") is not None:
+            self.SRTSettings = DescribeOutputSRTSettings()
+            self.SRTSettings._deserialize(params.get("SRTSettings"))
+        if params.get("RTPSettings") is not None:
+            self.RTPSettings = DescribeOutputRTPSettings()
+            self.RTPSettings._deserialize(params.get("RTPSettings"))
+        if params.get("RTMPSettings") is not None:
+            self.RTMPSettings = DescribeOutputRTMPSettings()
+            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+        if params.get("RTMPPullSettings") is not None:
+            self.RTMPPullSettings = DescribeOutputRTMPPullSettings()
+            self.RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
+        self.AllowIpList = params.get("AllowIpList")
+        if params.get("RTSPPullSettings") is not None:
+            self.RTSPPullSettings = DescribeOutputRTSPPullSettings()
+            self.RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRTMPPullServerUrl(AbstractModel):
+    """查询输出的RTMP拉流URL信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TcUrl: RTMP拉流地址的tcUrl。
+        :type TcUrl: str
+        :param StreamKey: RTMP拉流地址的流key。
+        :type StreamKey: str
+        """
+        self.TcUrl = None
+        self.StreamKey = None
+
+
+    def _deserialize(self, params):
+        self.TcUrl = params.get("TcUrl")
+        self.StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRTMPPullSettings(AbstractModel):
+    """查询输出的RTMP拉流配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServerUrls: 拉流地址列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerUrls: list of DescribeOutputRTMPPullServerUrl
+        """
+        self.ServerUrls = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServerUrls") is not None:
+            self.ServerUrls = []
+            for item in params.get("ServerUrls"):
+                obj = DescribeOutputRTMPPullServerUrl()
+                obj._deserialize(item)
+                self.ServerUrls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRTMPSettings(AbstractModel):
+    """查询输出的RTMP配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdleTimeout: 空闲超时时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdleTimeout: int
+        :param ChunkSize: Chunk大小。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChunkSize: int
+        :param Destinations: 转推RTMP的目标地址信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destinations: list of RTMPAddressDestination
+        """
+        self.IdleTimeout = None
+        self.ChunkSize = None
+        self.Destinations = None
+
+
+    def _deserialize(self, params):
+        self.IdleTimeout = params.get("IdleTimeout")
+        self.ChunkSize = params.get("ChunkSize")
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = RTMPAddressDestination()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRTPSettings(AbstractModel):
+    """查询输出的RTP配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Destinations: 转推RTP的目标地址信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destinations: list of RTPAddressDestination
+        :param FEC: 是否FEC。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FEC: str
+        :param IdleTimeout: 空闲超时时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdleTimeout: int
+        """
+        self.Destinations = None
+        self.FEC = None
+        self.IdleTimeout = None
+
+
+    def _deserialize(self, params):
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = RTPAddressDestination()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
+        self.FEC = params.get("FEC")
+        self.IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRTSPPullServerUrl(AbstractModel):
+    """查询输出的RTSP拉流URL信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: RTSP拉流地址的Url。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRTSPPullSettings(AbstractModel):
+    """查询输出的RTSP拉流配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServerUrls: RTSP拉流地址列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerUrls: list of DescribeOutputRTSPPullServerUrl
+        """
+        self.ServerUrls = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServerUrls") is not None:
+            self.ServerUrls = []
+            for item in params.get("ServerUrls"):
+                obj = DescribeOutputRTSPPullServerUrl()
+                obj._deserialize(item)
+                self.ServerUrls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputSRTSettings(AbstractModel):
+    """查询输出的SRT配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Destinations: 转推的目标的地址信息列表，SRT模式为CALLER时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destinations: list of SRTAddressDestination
+        :param StreamId: 流Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamId: str
+        :param Latency: 延迟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Latency: int
+        :param RecvLatency: 接收延迟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecvLatency: int
+        :param PeerLatency: 对端延迟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeerLatency: int
+        :param PeerIdleTimeout: 对端空闲超时时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeerIdleTimeout: int
+        :param Passphrase: 加密密钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Passphrase: str
+        :param PbKeyLen: 加密密钥长度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PbKeyLen: int
+        :param Mode: SRT模式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param SourceAddresses: 服务器监听地址，SRT模式为LISTENER时使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceAddresses: list of OutputSRTSourceAddressResp
+        """
+        self.Destinations = None
+        self.StreamId = None
+        self.Latency = None
+        self.RecvLatency = None
+        self.PeerLatency = None
+        self.PeerIdleTimeout = None
+        self.Passphrase = None
+        self.PbKeyLen = None
+        self.Mode = None
+        self.SourceAddresses = None
+
+
+    def _deserialize(self, params):
+        if params.get("Destinations") is not None:
+            self.Destinations = []
+            for item in params.get("Destinations"):
+                obj = SRTAddressDestination()
+                obj._deserialize(item)
+                self.Destinations.append(obj)
+        self.StreamId = params.get("StreamId")
+        self.Latency = params.get("Latency")
+        self.RecvLatency = params.get("RecvLatency")
+        self.PeerLatency = params.get("PeerLatency")
+        self.PeerIdleTimeout = params.get("PeerIdleTimeout")
+        self.Passphrase = params.get("Passphrase")
+        self.PbKeyLen = params.get("PbKeyLen")
+        self.Mode = params.get("Mode")
+        if params.get("SourceAddresses") is not None:
+            self.SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = OutputSRTSourceAddressResp()
+                obj._deserialize(item)
+                self.SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribePersonSamplesRequest(AbstractModel):
@@ -6614,6 +7993,61 @@ class DescribePersonSamplesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.PersonSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribeRTMPPullSourceAddress(AbstractModel):
+    """查询输入的RTMP配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TcUrl: RTMP源站的TcUrl地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcUrl: str
+        :param StreamKey: RTMP源站的StreamKey。
+RTMP源站地址拼接规则为：$TcUrl/$StreamKey。
+        :type StreamKey: str
+        """
+        self.TcUrl = None
+        self.StreamKey = None
+
+
+    def _deserialize(self, params):
+        self.TcUrl = params.get("TcUrl")
+        self.StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRTSPPullSourceAddress(AbstractModel):
+    """查询输入的RTSP配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: RTSP源站的Url地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
@@ -6749,6 +8183,565 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
                 obj = SnapshotByTimeOffsetTemplate()
                 obj._deserialize(item)
                 self.SnapshotByTimeOffsetTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkActivateStateRequest(AbstractModel):
+    """DescribeStreamLinkActivateState请求参数结构体
+
+    """
+
+
+class DescribeStreamLinkActivateStateResponse(AbstractModel):
+    """DescribeStreamLinkActivateState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 用户已激活为0，否则为非0。
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkFlowLogsRequest(AbstractModel):
+    """DescribeStreamLinkFlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 传输流Id。
+        :type FlowId: str
+        :param StartTime: 统计的开始时间，默认为前一小时，最多支持查询近7天。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :type StartTime: str
+        :param EndTime: 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :type EndTime: str
+        :param Type: 输入或输出类型，可选[input|output]。
+        :type Type: list of str
+        :param Pipeline: 主通道或备通道，可选[0|1]。
+        :type Pipeline: list of str
+        :param PageSize: 每页大小，默认100，范围为[1, 1000]。
+        :type PageSize: int
+        :param SortType: 按Timestamp升序或降序排序，默认降序，可选[desc|asc]。
+        :type SortType: str
+        :param PageNum: 页码，默认1，范围为[1, 1000]。
+        :type PageNum: int
+        """
+        self.FlowId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Type = None
+        self.Pipeline = None
+        self.PageSize = None
+        self.SortType = None
+        self.PageNum = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Type = params.get("Type")
+        self.Pipeline = params.get("Pipeline")
+        self.PageSize = params.get("PageSize")
+        self.SortType = params.get("SortType")
+        self.PageNum = params.get("PageNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkFlowLogsResponse(AbstractModel):
+    """DescribeStreamLinkFlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: 日志信息列表。
+        :type Infos: list of FlowLogInfo
+        :param PageNum: 当前页码。
+        :type PageNum: int
+        :param PageSize: 每页大小。
+        :type PageSize: int
+        :param TotalNum: 总数量。
+        :type TotalNum: int
+        :param TotalPage: 总页数。
+        :type TotalPage: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = FlowLogInfo()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkFlowMediaStatisticsRequest(AbstractModel):
+    """DescribeStreamLinkFlowMediaStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 传输流ID。
+        :type FlowId: str
+        :param Type: 输入或输出类型，可选[input|output]。
+        :type Type: str
+        :param InputOutputId: 输入或输出Id。
+        :type InputOutputId: str
+        :param Pipeline: 主通道或备通道，可选[0|1]。
+        :type Pipeline: str
+        :param Period: 查询间隔，可选[5s|1min|5min|15min]。
+        :type Period: str
+        :param StartTime: 统计的开始时间，默认为前一小时，最多支持查询近7天。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :type StartTime: str
+        :param EndTime: 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :type EndTime: str
+        """
+        self.FlowId = None
+        self.Type = None
+        self.InputOutputId = None
+        self.Pipeline = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.Type = params.get("Type")
+        self.InputOutputId = params.get("InputOutputId")
+        self.Pipeline = params.get("Pipeline")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkFlowMediaStatisticsResponse(AbstractModel):
+    """DescribeStreamLinkFlowMediaStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: 传输流的媒体数据列表。
+        :type Infos: list of FlowMediaInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = FlowMediaInfo()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkFlowRealtimeStatusRequest(AbstractModel):
+    """DescribeStreamLinkFlowRealtimeStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流ID。
+        :type FlowId: str
+        :param InputIds: 输入id数组，如果输入输出数组都为空，则代表全量查询。
+        :type InputIds: list of str
+        :param OutputIds: 输出id数组，如果输入输出数组都为空，则代表全量查询。
+        :type OutputIds: list of str
+        """
+        self.FlowId = None
+        self.InputIds = None
+        self.OutputIds = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.InputIds = params.get("InputIds")
+        self.OutputIds = params.get("OutputIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkFlowRealtimeStatusResponse(AbstractModel):
+    """DescribeStreamLinkFlowRealtimeStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 查询时间，单位s。
+        :type Timestamp: int
+        :param Datas: 实时数据信息列表。
+        :type Datas: list of FlowRealtimeStatusItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Timestamp = None
+        self.Datas = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        if params.get("Datas") is not None:
+            self.Datas = []
+            for item in params.get("Datas"):
+                obj = FlowRealtimeStatusItem()
+                obj._deserialize(item)
+                self.Datas.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkFlowRequest(AbstractModel):
+    """DescribeStreamLinkFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流Id。
+        :type FlowId: str
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkFlowResponse(AbstractModel):
+    """DescribeStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 流的配置信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeFlow`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeFlow()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkFlowSRTStatisticsRequest(AbstractModel):
+    """DescribeStreamLinkFlowSRTStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 传输流ID。
+        :type FlowId: str
+        :param Type: 输入或输出类型，可选[input|output]。
+        :type Type: str
+        :param InputOutputId: 输入或输出Id。
+        :type InputOutputId: str
+        :param Pipeline: 主通道或备通道，可选[0|1]。
+        :type Pipeline: str
+        :param StartTime: 统计的开始时间，默认为前一小时，最多支持查询近7天。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :type StartTime: str
+        :param EndTime: 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :type EndTime: str
+        :param Period: 查询间隔，可选[5s|1min|5min|15min]。
+        :type Period: str
+        """
+        self.FlowId = None
+        self.Type = None
+        self.InputOutputId = None
+        self.Pipeline = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.Type = params.get("Type")
+        self.InputOutputId = params.get("InputOutputId")
+        self.Pipeline = params.get("Pipeline")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkFlowSRTStatisticsResponse(AbstractModel):
+    """DescribeStreamLinkFlowSRTStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: 传输流的SRT质量数据列表。
+        :type Infos: list of FlowSRTInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = FlowSRTInfo()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkFlowStatisticsRequest(AbstractModel):
+    """DescribeStreamLinkFlowStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 传输流ID。
+        :type FlowId: str
+        :param Type: 输入或输出类型，可选[input|output]。
+        :type Type: str
+        :param InputOutputId: 输入或输出Id。
+        :type InputOutputId: str
+        :param Pipeline: 主通道或备通道，可选[0|1]。
+        :type Pipeline: str
+        :param Period: 查询间隔，可选[5s|1min|5min|15min]。
+        :type Period: str
+        :param StartTime: 统计的开始时间，默认为前一小时，最多支持查询近7天。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :type StartTime: str
+        :param EndTime: 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+UTC时间，如'2020-01-01T12:00:00Z'。
+        :type EndTime: str
+        """
+        self.FlowId = None
+        self.Type = None
+        self.InputOutputId = None
+        self.Pipeline = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.Type = params.get("Type")
+        self.InputOutputId = params.get("InputOutputId")
+        self.Pipeline = params.get("Pipeline")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkFlowStatisticsResponse(AbstractModel):
+    """DescribeStreamLinkFlowStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: 传输流的媒体数据列表。
+        :type Infos: list of FlowStatisticsArray
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = FlowStatisticsArray()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkFlowsRequest(AbstractModel):
+    """DescribeStreamLinkFlows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNum: 当前页数，默认1。
+        :type PageNum: int
+        :param PageSize: 每页大小，默认10。
+        :type PageSize: int
+        """
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkFlowsResponse(AbstractModel):
+    """DescribeStreamLinkFlows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: 流的配置信息列表。
+        :type Infos: list of DescribeFlow
+        :param PageNum: 当前页数。
+        :type PageNum: int
+        :param PageSize: 每页大小。
+        :type PageSize: int
+        :param TotalNum: 总数量。
+        :type TotalNum: int
+        :param TotalPage: 总页数。
+        :type TotalPage: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = DescribeFlow()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkRegionsRequest(AbstractModel):
+    """DescribeStreamLinkRegions请求参数结构体
+
+    """
+
+
+class DescribeStreamLinkRegionsResponse(AbstractModel):
+    """DescribeStreamLinkRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 媒体传输地区信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.StreamLinkRegionInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = StreamLinkRegionInfo()
+            self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
 
 
@@ -7818,6 +9811,606 @@ class FaceEnhanceConfig(AbstractModel):
         
 
 
+class FlowAudio(AbstractModel):
+    """流的音频数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Fps: 帧率。
+        :type Fps: int
+        :param Rate: 码率，单位是bps。
+        :type Rate: int
+        :param Pid: 音频Pid。
+        :type Pid: int
+        """
+        self.Fps = None
+        self.Rate = None
+        self.Pid = None
+
+
+    def _deserialize(self, params):
+        self.Fps = params.get("Fps")
+        self.Rate = params.get("Rate")
+        self.Pid = params.get("Pid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowLogInfo(AbstractModel):
+    """传输流日志信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 时间戳，单位为秒。
+        :type Timestamp: int
+        :param Type: 输入输出类型（input/output）。
+        :type Type: str
+        :param InputOutputId: 输入或输出Id。
+        :type InputOutputId: str
+        :param Protocol: 协议。
+        :type Protocol: str
+        :param EventCode: 事件代码。
+        :type EventCode: str
+        :param EventMessage: 事件信息。
+        :type EventMessage: str
+        :param RemoteIp: 对端IP。
+        :type RemoteIp: str
+        :param RemotePort: 对端端口。
+        :type RemotePort: str
+        :param Pipeline: 主备通道，0为主通道，1为备通道。
+        :type Pipeline: str
+        :param InputOutputName: 输入或输出的名称。
+        :type InputOutputName: str
+        """
+        self.Timestamp = None
+        self.Type = None
+        self.InputOutputId = None
+        self.Protocol = None
+        self.EventCode = None
+        self.EventMessage = None
+        self.RemoteIp = None
+        self.RemotePort = None
+        self.Pipeline = None
+        self.InputOutputName = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.Type = params.get("Type")
+        self.InputOutputId = params.get("InputOutputId")
+        self.Protocol = params.get("Protocol")
+        self.EventCode = params.get("EventCode")
+        self.EventMessage = params.get("EventMessage")
+        self.RemoteIp = params.get("RemoteIp")
+        self.RemotePort = params.get("RemotePort")
+        self.Pipeline = params.get("Pipeline")
+        self.InputOutputName = params.get("InputOutputName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowMediaAudio(AbstractModel):
+    """传输流媒体的音频数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Fps: 帧率。
+        :type Fps: int
+        :param Rate: 码率，单位是bps。
+        :type Rate: int
+        :param Pid: 音频Pid。
+        :type Pid: int
+        :param SessionId: 标志同一次推流。
+        :type SessionId: str
+        """
+        self.Fps = None
+        self.Rate = None
+        self.Pid = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.Fps = params.get("Fps")
+        self.Rate = params.get("Rate")
+        self.Pid = params.get("Pid")
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowMediaInfo(AbstractModel):
+    """传输流的媒体数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 时间戳，单位是秒。
+        :type Timestamp: int
+        :param Network: 总带宽。
+        :type Network: int
+        :param Video: 传输流的视频数据。
+        :type Video: list of FlowMediaVideo
+        :param Audio: 传输流的音频数据。
+        :type Audio: list of FlowMediaAudio
+        :param SessionId: 标志同一次推流。
+        :type SessionId: str
+        :param ClientIp: 客户端IP。
+        :type ClientIp: str
+        """
+        self.Timestamp = None
+        self.Network = None
+        self.Video = None
+        self.Audio = None
+        self.SessionId = None
+        self.ClientIp = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.Network = params.get("Network")
+        if params.get("Video") is not None:
+            self.Video = []
+            for item in params.get("Video"):
+                obj = FlowMediaVideo()
+                obj._deserialize(item)
+                self.Video.append(obj)
+        if params.get("Audio") is not None:
+            self.Audio = []
+            for item in params.get("Audio"):
+                obj = FlowMediaAudio()
+                obj._deserialize(item)
+                self.Audio.append(obj)
+        self.SessionId = params.get("SessionId")
+        self.ClientIp = params.get("ClientIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowMediaVideo(AbstractModel):
+    """传输流媒体的视频数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Fps: 帧率。
+        :type Fps: int
+        :param Rate: 码率，单位是bps。
+        :type Rate: int
+        :param Pid: 视频Pid。
+        :type Pid: int
+        :param SessionId: 标志同一次推流。
+        :type SessionId: str
+        """
+        self.Fps = None
+        self.Rate = None
+        self.Pid = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.Fps = params.get("Fps")
+        self.Rate = params.get("Rate")
+        self.Pid = params.get("Pid")
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowRealtimeStatusCommon(AbstractModel):
+    """实时流状态查询的通用状态信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param State: 当前连接状态，Connected|Waiting|Idle。
+        :type State: str
+        :param Mode: 连接模式，Listener|Caller。
+        :type Mode: str
+        :param ConnectedTime: 已连接时长，单位为ms。
+        :type ConnectedTime: int
+        :param Bitrate: 实时码率，单位为bps。
+        :type Bitrate: int
+        :param Reconnections: 重试次数。
+        :type Reconnections: int
+        """
+        self.State = None
+        self.Mode = None
+        self.ConnectedTime = None
+        self.Bitrate = None
+        self.Reconnections = None
+
+
+    def _deserialize(self, params):
+        self.State = params.get("State")
+        self.Mode = params.get("Mode")
+        self.ConnectedTime = params.get("ConnectedTime")
+        self.Bitrate = params.get("Bitrate")
+        self.Reconnections = params.get("Reconnections")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowRealtimeStatusItem(AbstractModel):
+    """流状态实时查询接口的流状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 类型，Input|Output。
+        :type Type: str
+        :param InputId: 输入Id，如果Type为Input，此字段不为空。
+        :type InputId: str
+        :param OutputId: 输出Id，如果Type为Output，此字段不为空。
+        :type OutputId: str
+        :param FlowId: 流Id。
+        :type FlowId: str
+        :param Protocol: 协议， SRT | RTMP。
+        :type Protocol: str
+        :param CommonStatus: 共同状态信息。
+        :type CommonStatus: :class:`tencentcloud.mps.v20190612.models.FlowRealtimeStatusCommon`
+        :param SRTStatus: 如果是SRT协议则有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SRTStatus: :class:`tencentcloud.mps.v20190612.models.FlowRealtimeStatusSRT`
+        :param RTMPStatus: 如果是RTMP协议则有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTMPStatus: :class:`tencentcloud.mps.v20190612.models.FlowRealtimeStatusRTMP`
+        :param ConnectServerIP: 服务器IP。
+        :type ConnectServerIP: str
+        :param RTPStatus: 如果是RTP协议则有此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RTPStatus: :class:`tencentcloud.mps.v20190612.models.FlowRealtimeStatusRTP`
+        """
+        self.Type = None
+        self.InputId = None
+        self.OutputId = None
+        self.FlowId = None
+        self.Protocol = None
+        self.CommonStatus = None
+        self.SRTStatus = None
+        self.RTMPStatus = None
+        self.ConnectServerIP = None
+        self.RTPStatus = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.InputId = params.get("InputId")
+        self.OutputId = params.get("OutputId")
+        self.FlowId = params.get("FlowId")
+        self.Protocol = params.get("Protocol")
+        if params.get("CommonStatus") is not None:
+            self.CommonStatus = FlowRealtimeStatusCommon()
+            self.CommonStatus._deserialize(params.get("CommonStatus"))
+        if params.get("SRTStatus") is not None:
+            self.SRTStatus = FlowRealtimeStatusSRT()
+            self.SRTStatus._deserialize(params.get("SRTStatus"))
+        if params.get("RTMPStatus") is not None:
+            self.RTMPStatus = FlowRealtimeStatusRTMP()
+            self.RTMPStatus._deserialize(params.get("RTMPStatus"))
+        self.ConnectServerIP = params.get("ConnectServerIP")
+        if params.get("RTPStatus") is not None:
+            self.RTPStatus = FlowRealtimeStatusRTP()
+            self.RTPStatus._deserialize(params.get("RTPStatus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowRealtimeStatusRTMP(AbstractModel):
+    """流状态实时查询接口的RTMP信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoFPS: 视频帧率。
+        :type VideoFPS: int
+        :param AudioFPS: 音频帧率。
+        :type AudioFPS: int
+        """
+        self.VideoFPS = None
+        self.AudioFPS = None
+
+
+    def _deserialize(self, params):
+        self.VideoFPS = params.get("VideoFPS")
+        self.AudioFPS = params.get("AudioFPS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowRealtimeStatusRTP(AbstractModel):
+    """流状态实时查询接口的RTP流状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Packets: 传输的包个数
+        :type Packets: int
+        """
+        self.Packets = None
+
+
+    def _deserialize(self, params):
+        self.Packets = params.get("Packets")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowRealtimeStatusSRT(AbstractModel):
+    """流状态实时查询接口的SRT信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Latency: 延迟，单位为ms。
+        :type Latency: int
+        :param RTT: RTT，单位为ms。
+        :type RTT: int
+        :param Packets: 实时发包数或者收包数。
+        :type Packets: int
+        :param PacketLossRate: 丢包率。
+        :type PacketLossRate: float
+        :param RetransmitRate: 重传率。
+        :type RetransmitRate: float
+        :param DroppedPackets: 实时丢包数。
+        :type DroppedPackets: int
+        :param Encryption: 是否加密，On|Off。
+        :type Encryption: str
+        """
+        self.Latency = None
+        self.RTT = None
+        self.Packets = None
+        self.PacketLossRate = None
+        self.RetransmitRate = None
+        self.DroppedPackets = None
+        self.Encryption = None
+
+
+    def _deserialize(self, params):
+        self.Latency = params.get("Latency")
+        self.RTT = params.get("RTT")
+        self.Packets = params.get("Packets")
+        self.PacketLossRate = params.get("PacketLossRate")
+        self.RetransmitRate = params.get("RetransmitRate")
+        self.DroppedPackets = params.get("DroppedPackets")
+        self.Encryption = params.get("Encryption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowSRTInfo(AbstractModel):
+    """传输流的SRT质量数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 时间戳，单位是秒。
+        :type Timestamp: int
+        :param SendPacketLossRate: 发送丢包率。
+        :type SendPacketLossRate: int
+        :param SendRetransmissionRate: 发送重传率。
+        :type SendRetransmissionRate: int
+        :param RecvPacketLossRate: 接收丢包率。
+        :type RecvPacketLossRate: int
+        :param RecvRetransmissionRate: 接收重传率。
+        :type RecvRetransmissionRate: int
+        :param RTT: 与对端的RTT时延。
+        :type RTT: int
+        :param SessionId: 标志同一次推流。
+        :type SessionId: str
+        :param SendPacketDropNumber: 发送弃包数。
+        :type SendPacketDropNumber: int
+        :param RecvPacketDropNumber: 接收弃包数。
+        :type RecvPacketDropNumber: int
+        """
+        self.Timestamp = None
+        self.SendPacketLossRate = None
+        self.SendRetransmissionRate = None
+        self.RecvPacketLossRate = None
+        self.RecvRetransmissionRate = None
+        self.RTT = None
+        self.SessionId = None
+        self.SendPacketDropNumber = None
+        self.RecvPacketDropNumber = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.SendPacketLossRate = params.get("SendPacketLossRate")
+        self.SendRetransmissionRate = params.get("SendRetransmissionRate")
+        self.RecvPacketLossRate = params.get("RecvPacketLossRate")
+        self.RecvRetransmissionRate = params.get("RecvRetransmissionRate")
+        self.RTT = params.get("RTT")
+        self.SessionId = params.get("SessionId")
+        self.SendPacketDropNumber = params.get("SendPacketDropNumber")
+        self.RecvPacketDropNumber = params.get("RecvPacketDropNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowStatistics(AbstractModel):
+    """流的统计数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: 会话Id。
+        :type SessionId: str
+        :param ClientIp: 对端IP。
+        :type ClientIp: str
+        :param Network: 总带宽。
+        :type Network: int
+        :param Video: 视频数据。
+        :type Video: list of FlowVideo
+        :param Audio: 音频数据。
+        :type Audio: list of FlowAudio
+        """
+        self.SessionId = None
+        self.ClientIp = None
+        self.Network = None
+        self.Video = None
+        self.Audio = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.ClientIp = params.get("ClientIp")
+        self.Network = params.get("Network")
+        if params.get("Video") is not None:
+            self.Video = []
+            for item in params.get("Video"):
+                obj = FlowVideo()
+                obj._deserialize(item)
+                self.Video.append(obj)
+        if params.get("Audio") is not None:
+            self.Audio = []
+            for item in params.get("Audio"):
+                obj = FlowAudio()
+                obj._deserialize(item)
+                self.Audio.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowStatisticsArray(AbstractModel):
+    """流的统计数据列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 时间戳。
+        :type Timestamp: int
+        :param FlowStatistics: 每个会话的统计数据。
+        :type FlowStatistics: list of FlowStatistics
+        """
+        self.Timestamp = None
+        self.FlowStatistics = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        if params.get("FlowStatistics") is not None:
+            self.FlowStatistics = []
+            for item in params.get("FlowStatistics"):
+                obj = FlowStatistics()
+                obj._deserialize(item)
+                self.FlowStatistics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowVideo(AbstractModel):
+    """流的视频数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Fps: 帧率。
+        :type Fps: int
+        :param Rate: 码率，单位是bps。
+        :type Rate: int
+        :param Pid: 音频Pid。
+        :type Pid: int
+        """
+        self.Fps = None
+        self.Rate = None
+        self.Pid = None
+
+
+    def _deserialize(self, params):
+        self.Fps = params.get("Fps")
+        self.Rate = params.get("Rate")
+        self.Pid = params.get("Pid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FrameRateConfig(AbstractModel):
     """插帧帧率配置
 
@@ -8283,6 +10876,34 @@ class ImageWatermarkTemplate(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.RepeatType = params.get("RepeatType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputAddress(AbstractModel):
+    """输入地址信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 输入地址的IP。
+        :type Ip: str
+        :param Port: 输入地址的端口。
+        :type Port: int
+        """
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11027,6 +13648,136 @@ class ModifyImageSpriteTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInput(AbstractModel):
+    """修改输入信息的参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputId: 输入Id。
+        :type InputId: str
+        :param InputName: 输入名称。
+        :type InputName: str
+        :param Description: 输入描述。
+        :type Description: str
+        :param AllowIpList: 允许的推流的IP，CIDR格式。
+        :type AllowIpList: list of str
+        :param SRTSettings: SRT的配置信息。
+        :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputSRTSettings`
+        :param RTPSettings: RTP的配置信息。
+        :type RTPSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTPSettings`
+        :param Protocol: 输入的协议，可选[SRT|RTP|RTMP]。
+当输出包含RTP时，输入只能是RTP。
+当输出包含RTMP时，输入可以是SRT/RTMP。
+当输出包含SRT时，输入只能是SRT。
+        :type Protocol: str
+        :param FailOver: 输入的主备开关，可选[OPEN|CLOSE]。
+        :type FailOver: str
+        :param RTMPPullSettings: RTMP_PULL的配置信息。
+        :type RTMPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTMPPullSettings`
+        :param RTSPPullSettings: RTSP_PULL的配置信息。
+        :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTSPPullSettings`
+        """
+        self.InputId = None
+        self.InputName = None
+        self.Description = None
+        self.AllowIpList = None
+        self.SRTSettings = None
+        self.RTPSettings = None
+        self.Protocol = None
+        self.FailOver = None
+        self.RTMPPullSettings = None
+        self.RTSPPullSettings = None
+
+
+    def _deserialize(self, params):
+        self.InputId = params.get("InputId")
+        self.InputName = params.get("InputName")
+        self.Description = params.get("Description")
+        self.AllowIpList = params.get("AllowIpList")
+        if params.get("SRTSettings") is not None:
+            self.SRTSettings = CreateInputSRTSettings()
+            self.SRTSettings._deserialize(params.get("SRTSettings"))
+        if params.get("RTPSettings") is not None:
+            self.RTPSettings = CreateInputRTPSettings()
+            self.RTPSettings._deserialize(params.get("RTPSettings"))
+        self.Protocol = params.get("Protocol")
+        self.FailOver = params.get("FailOver")
+        if params.get("RTMPPullSettings") is not None:
+            self.RTMPPullSettings = CreateInputRTMPPullSettings()
+            self.RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
+        if params.get("RTSPPullSettings") is not None:
+            self.RTSPPullSettings = CreateInputRTSPPullSettings()
+            self.RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOutputInfo(AbstractModel):
+    """修改Output配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutputId: 需要修改的Output的Id。
+        :type OutputId: str
+        :param OutputName: 输出的名称。
+        :type OutputName: str
+        :param Description: 输出的描述。
+        :type Description: str
+        :param Protocol: 输出的转推协议，支持SRT|RTP|RTMP。
+        :type Protocol: str
+        :param SRTSettings: 转推SRT的配置。
+        :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputSRTSettings`
+        :param RTPSettings: 转推RTP的配置。
+        :type RTPSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputInfoRTPSettings`
+        :param RTMPSettings: 转推RTMP的配置。
+        :type RTMPSettings: :class:`tencentcloud.mps.v20190612.models.CreateOutputRTMPSettings`
+        :param AllowIpList: IP白名单列表，格式为CIDR，如0.0.0.0/0。
+当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+        :type AllowIpList: list of str
+        """
+        self.OutputId = None
+        self.OutputName = None
+        self.Description = None
+        self.Protocol = None
+        self.SRTSettings = None
+        self.RTPSettings = None
+        self.RTMPSettings = None
+        self.AllowIpList = None
+
+
+    def _deserialize(self, params):
+        self.OutputId = params.get("OutputId")
+        self.OutputName = params.get("OutputName")
+        self.Description = params.get("Description")
+        self.Protocol = params.get("Protocol")
+        if params.get("SRTSettings") is not None:
+            self.SRTSettings = CreateOutputSRTSettings()
+            self.SRTSettings._deserialize(params.get("SRTSettings"))
+        if params.get("RTPSettings") is not None:
+            self.RTPSettings = CreateOutputInfoRTPSettings()
+            self.RTPSettings._deserialize(params.get("RTPSettings"))
+        if params.get("RTMPSettings") is not None:
+            self.RTMPSettings = CreateOutputRTMPSettings()
+            self.RTMPSettings._deserialize(params.get("RTMPSettings"))
+        self.AllowIpList = params.get("AllowIpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyPersonSampleRequest(AbstractModel):
     """ModifyPersonSample请求参数结构体
 
@@ -11294,6 +14045,157 @@ class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyStreamLinkFlowRequest(AbstractModel):
+    """ModifyStreamLinkFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流Id。
+        :type FlowId: str
+        :param FlowName: 需要修改的流名称。
+        :type FlowName: str
+        """
+        self.FlowId = None
+        self.FlowName = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.FlowName = params.get("FlowName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamLinkFlowResponse(AbstractModel):
+    """ModifyStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyStreamLinkInputRequest(AbstractModel):
+    """ModifyStreamLinkInput请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流Id。
+        :type FlowId: str
+        :param Input: 需要修改的Input信息。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.ModifyInput`
+        """
+        self.FlowId = None
+        self.Input = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("Input") is not None:
+            self.Input = ModifyInput()
+            self.Input._deserialize(params.get("Input"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamLinkInputResponse(AbstractModel):
+    """ModifyStreamLinkInput返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 修改后的Input信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeInput`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeInput()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyStreamLinkOutputInfoRequest(AbstractModel):
+    """ModifyStreamLinkOutputInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流Id。
+        :type FlowId: str
+        :param Output: 需要修改的Output配置。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.ModifyOutputInfo`
+        """
+        self.FlowId = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("Output") is not None:
+            self.Output = ModifyOutputInfo()
+            self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamLinkOutputInfoResponse(AbstractModel):
+    """ModifyStreamLinkOutputInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 修改后的Output配置。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeOutput`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeOutput()
+            self.Info._deserialize(params.get("Info"))
         self.RequestId = params.get("RequestId")
 
 
@@ -11745,6 +14647,58 @@ class OcrWordsConfigureInfoForUpdate(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.LabelSet = params.get("LabelSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputAddress(AbstractModel):
+    """输出的出口的地址。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 出口IP。
+        :type Ip: str
+        """
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputSRTSourceAddressResp(AbstractModel):
+    """SRT输出的监听地址。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 监听IP。
+        :type Ip: str
+        :param Port: 监听端口。
+        :type Port: int
+        """
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12964,6 +15918,114 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class RTMPAddressDestination(AbstractModel):
+    """RTMP转推的目标地址信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 转推RTMP的目标Url，格式如'rtmp://domain/live'。
+        :type Url: str
+        :param StreamKey: 转推RTMP的目标StreamKey，格式如'steamid?key=value'。
+        :type StreamKey: str
+        """
+        self.Url = None
+        self.StreamKey = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RTMPPullSourceAddress(AbstractModel):
+    """创建的输入RTMP拉流源站配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TcUrl: RTMP源站的TcUrl地址。
+        :type TcUrl: str
+        :param StreamKey: RTMP源站的StreamKey信息。
+        :type StreamKey: str
+        """
+        self.TcUrl = None
+        self.StreamKey = None
+
+
+    def _deserialize(self, params):
+        self.TcUrl = params.get("TcUrl")
+        self.StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RTPAddressDestination(AbstractModel):
+    """转推的RTP目标地址信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 转推的目标地址的IP。
+        :type Ip: str
+        :param Port: 转推的目标地址的端口。
+        :type Port: int
+        """
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RTSPPullSourceAddress(AbstractModel):
+    """创建的输入RTSP拉流源站配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: RTSP源站的Url地址。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RawImageWatermarkInput(AbstractModel):
     """图片水印模板输入参数
 
@@ -13177,6 +16239,30 @@ class RecognizeMediaForZhiXueResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RegionInfo(AbstractModel):
+    """地区信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 地区名称。
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetWorkflowRequest(AbstractModel):
     """ResetWorkflow请求参数结构体
 
@@ -13270,6 +16356,90 @@ class ResetWorkflowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SRTAddressDestination(AbstractModel):
+    """转推的目标地址信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 目标地址的IP。
+        :type Ip: str
+        :param Port: 目标地址的端口。
+        :type Port: int
+        """
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SRTSourceAddressReq(AbstractModel):
+    """SRT输入源地址。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 对端IP。
+        :type Ip: str
+        :param Port: 对端端口。
+        :type Port: int
+        """
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SRTSourceAddressResp(AbstractModel):
+    """SRT输入源地址。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 对端IP。
+        :type Ip: str
+        :param Port: 对端端口。
+        :type Port: int
+        """
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SampleSnapshotTaskInput(AbstractModel):
@@ -13827,6 +16997,117 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStreamLinkFlowRequest(AbstractModel):
+    """StartStreamLinkFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流Id。
+        :type FlowId: str
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStreamLinkFlowResponse(AbstractModel):
+    """StartStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopStreamLinkFlowRequest(AbstractModel):
+    """StopStreamLinkFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流Id。
+        :type FlowId: str
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopStreamLinkFlowResponse(AbstractModel):
+    """StopStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StreamLinkRegionInfo(AbstractModel):
+    """媒体传输的地区信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Regions: 媒体直传输的地区信息列表。
+        :type Regions: list of RegionInfo
+        """
+        self.Regions = None
+
+
+    def _deserialize(self, params):
+        if params.get("Regions") is not None:
+            self.Regions = []
+            for item in params.get("Regions"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self.Regions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

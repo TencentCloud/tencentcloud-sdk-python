@@ -15195,6 +15195,8 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
+        :param Progress: 转自适应码流任务进度，取值范围 [0-100] 。
+        :type Progress: int
         :param Input: 对视频转自适应码流任务的输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingTaskInput`
         :param Output: 对视频转自适应码流任务的输出。
@@ -15204,6 +15206,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         self.ErrCodeExt = None
         self.ErrCode = None
         self.Message = None
+        self.Progress = None
         self.Input = None
         self.Output = None
 
@@ -15213,6 +15216,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         self.ErrCodeExt = params.get("ErrCodeExt")
         self.ErrCode = params.get("ErrCode")
         self.Message = params.get("Message")
+        self.Progress = params.get("Progress")
         if params.get("Input") is not None:
             self.Input = AdaptiveDynamicStreamingTaskInput()
             self.Input._deserialize(params.get("Input"))
