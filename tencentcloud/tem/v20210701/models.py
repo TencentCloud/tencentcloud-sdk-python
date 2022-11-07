@@ -5612,6 +5612,9 @@ class TemNamespaceInfo(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param HasAuthority: 资源是否有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasAuthority: bool
         """
         self.EnvironmentId = None
         self.Channel = None
@@ -5635,6 +5638,7 @@ class TemNamespaceInfo(AbstractModel):
         self.SubAccountUin = None
         self.ClusterId = None
         self.Tags = None
+        self.HasAuthority = None
 
 
     def _deserialize(self, params):
@@ -5665,6 +5669,7 @@ class TemNamespaceInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.HasAuthority = params.get("HasAuthority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5732,6 +5737,9 @@ class TemService(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param HasAuthority: 是否有资源权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasAuthority: bool
         """
         self.ApplicationId = None
         self.ApplicationName = None
@@ -5750,6 +5758,7 @@ class TemService(AbstractModel):
         self.ActiveVersions = None
         self.EnableTracing = None
         self.Tags = None
+        self.HasAuthority = None
 
 
     def _deserialize(self, params):
@@ -5780,6 +5789,7 @@ class TemService(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.HasAuthority = params.get("HasAuthority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

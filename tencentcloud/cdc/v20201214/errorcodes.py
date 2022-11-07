@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CDC绑定VPC失败。
+FAILEDOPERATION_CDCBINDVPCFAIL = 'FailedOperation.CdcBindVpcFail'
+
 # 删除site失败。
 FAILEDOPERATION_FAILDELETESITE = 'FailedOperation.FailDeleteSite'
 

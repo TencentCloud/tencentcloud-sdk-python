@@ -2202,7 +2202,7 @@ class RedisClient(AbstractClient):
 
 
     def RenewInstance(self, request):
-        """续费实例
+        """本接口（RenewInstance）可用于为实例续费。
 
         :param request: Request instance for RenewInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.RenewInstanceRequest`

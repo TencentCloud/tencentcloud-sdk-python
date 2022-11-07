@@ -3321,6 +3321,8 @@ class DescribeImagesRequest(AbstractModel):
         :type Offset: int
         :param Digest: 指定镜像 Digest 进行查找
         :type Digest: str
+        :param ExactMatch: 指定是否为精准匹配，true为精准匹配，不填为模糊匹配
+        :type ExactMatch: bool
         """
         self.RegistryId = None
         self.NamespaceName = None
@@ -3329,6 +3331,7 @@ class DescribeImagesRequest(AbstractModel):
         self.Limit = None
         self.Offset = None
         self.Digest = None
+        self.ExactMatch = None
 
 
     def _deserialize(self, params):
@@ -3339,6 +3342,7 @@ class DescribeImagesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.Digest = params.get("Digest")
+        self.ExactMatch = params.get("ExactMatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

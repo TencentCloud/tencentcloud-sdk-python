@@ -2118,6 +2118,9 @@ class IMCdrInfo(AbstractModel):
         :param SkillGroupName: 技能组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupName: str
+        :param Satisfaction: 满意度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Satisfaction: :class:`tencentcloud.ccc.v20200210.models.IMSatisfaction`
         """
         self.Id = None
         self.Duration = None
@@ -2129,6 +2132,7 @@ class IMCdrInfo(AbstractModel):
         self.SessionId = None
         self.SkillGroupId = None
         self.SkillGroupName = None
+        self.Satisfaction = None
 
 
     def _deserialize(self, params):
@@ -2142,6 +2146,39 @@ class IMCdrInfo(AbstractModel):
         self.SessionId = params.get("SessionId")
         self.SkillGroupId = params.get("SkillGroupId")
         self.SkillGroupName = params.get("SkillGroupName")
+        if params.get("Satisfaction") is not None:
+            self.Satisfaction = IMSatisfaction()
+            self.Satisfaction._deserialize(params.get("Satisfaction"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IMSatisfaction(AbstractModel):
+    """IM满意度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 满意度值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param Label: 满意度标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        """
+        self.Id = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

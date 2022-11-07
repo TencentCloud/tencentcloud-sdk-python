@@ -9630,7 +9630,8 @@ class PullStreamTaskInfo(AbstractModel):
         :type TaskId: str
         :param SourceType: 拉流源的类型：
 PullLivePushLive -直播，
-PullVodPushLive -点播。
+PullVodPushLive -点播，
+PullPicPushLive -图片。
         :type SourceType: str
         :param SourceUrls: 拉流源url列表。
 SourceType为直播（PullLiveToLive）只可以填1个，
@@ -9729,6 +9730,11 @@ PullVodPushLive -点播。
         :param WatermarkList: 水印信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkList: list of PullPushWatermarkInfo
+        :param VodLocalMode: 点播源是否启用本地推流模式，默认0，不启用。
+0 - 不启用。
+1 - 启用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VodLocalMode: int
         """
         self.TaskId = None
         self.SourceType = None
@@ -9756,6 +9762,7 @@ PullVodPushLive -点播。
         self.BackupSourceType = None
         self.BackupSourceUrl = None
         self.WatermarkList = None
+        self.VodLocalMode = None
 
 
     def _deserialize(self, params):
@@ -9792,6 +9799,7 @@ PullVodPushLive -点播。
                 obj = PullPushWatermarkInfo()
                 obj._deserialize(item)
                 self.WatermarkList.append(obj)
+        self.VodLocalMode = params.get("VodLocalMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9982,6 +9990,9 @@ class PushQualityData(AbstractModel):
         :type Bandwidth: float
         :param Flux: 流量，单位MB。
         :type Flux: float
+        :param ServerIp: 推流服务端 IP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerIp: str
         """
         self.Time = None
         self.PushDomain = None
@@ -10005,6 +10016,7 @@ class PushQualityData(AbstractModel):
         self.StreamParam = None
         self.Bandwidth = None
         self.Flux = None
+        self.ServerIp = None
 
 
     def _deserialize(self, params):
@@ -10030,6 +10042,7 @@ class PushQualityData(AbstractModel):
         self.StreamParam = params.get("StreamParam")
         self.Bandwidth = params.get("Bandwidth")
         self.Flux = params.get("Flux")
+        self.ServerIp = params.get("ServerIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

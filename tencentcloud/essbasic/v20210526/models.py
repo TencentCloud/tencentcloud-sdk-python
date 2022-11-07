@@ -148,6 +148,30 @@ class AuthFailMessage(AbstractModel):
         
 
 
+class AuthorizedUser(AbstractModel):
+    """授权用户
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 用户openid
+        :type OpenId: str
+        """
+        self.OpenId = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CcInfo(AbstractModel):
     """抄送信息
 
@@ -935,6 +959,78 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class ChannelDescribeOrganizationSealsRequest(AbstractModel):
+    """ChannelDescribeOrganizationSeals请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Limit: 返回最大数量，最大为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0，最大为20000
+        :type Offset: int
+        :param InfoType: 查询信息类型，为0时不返回授权用户，为1时返回
+        :type InfoType: int
+        :param SealId: 印章id（没有输入返回所有）
+        :type SealId: str
+        """
+        self.Agent = None
+        self.Limit = None
+        self.Offset = None
+        self.InfoType = None
+        self.SealId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.InfoType = params.get("InfoType")
+        self.SealId = params.get("SealId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDescribeOrganizationSealsResponse(AbstractModel):
+    """ChannelDescribeOrganizationSeals返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 在设置了SealId时返回0或1，没有设置时返回公司的总印章数量，可能比返回的印章数组数量多
+        :type TotalCount: int
+        :param Seals: 查询到的印章结果数组
+        :type Seals: list of OccupiedSeal
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Seals = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Seals") is not None:
+            self.Seals = []
+            for item in params.get("Seals"):
+                obj = OccupiedSeal()
+                obj._deserialize(item)
+                self.Seals.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2615,6 +2711,76 @@ class GetDownloadFlowUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self.DownLoadUrl = params.get("DownLoadUrl")
         self.RequestId = params.get("RequestId")
+
+
+class OccupiedSeal(AbstractModel):
+    """持有的电子印章信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SealId: 电子印章编号
+        :type SealId: str
+        :param SealName: 电子印章名称
+        :type SealName: str
+        :param CreateOn: 电子印章授权时间戳
+        :type CreateOn: int
+        :param Creator: 电子印章授权人
+        :type Creator: str
+        :param SealPolicyId: 电子印章策略Id
+        :type SealPolicyId: str
+        :param SealStatus: 印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
+        :type SealStatus: str
+        :param FailReason: 审核失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param Url: 印章图片url，5分钟内有效
+        :type Url: str
+        :param SealType: 印章类型
+        :type SealType: str
+        :param IsAllTime: 用印申请是否为永久授权
+        :type IsAllTime: bool
+        :param AuthorizedUsers: 授权人列表
+        :type AuthorizedUsers: list of AuthorizedUser
+        """
+        self.SealId = None
+        self.SealName = None
+        self.CreateOn = None
+        self.Creator = None
+        self.SealPolicyId = None
+        self.SealStatus = None
+        self.FailReason = None
+        self.Url = None
+        self.SealType = None
+        self.IsAllTime = None
+        self.AuthorizedUsers = None
+
+
+    def _deserialize(self, params):
+        self.SealId = params.get("SealId")
+        self.SealName = params.get("SealName")
+        self.CreateOn = params.get("CreateOn")
+        self.Creator = params.get("Creator")
+        self.SealPolicyId = params.get("SealPolicyId")
+        self.SealStatus = params.get("SealStatus")
+        self.FailReason = params.get("FailReason")
+        self.Url = params.get("Url")
+        self.SealType = params.get("SealType")
+        self.IsAllTime = params.get("IsAllTime")
+        if params.get("AuthorizedUsers") is not None:
+            self.AuthorizedUsers = []
+            for item in params.get("AuthorizedUsers"):
+                obj = AuthorizedUser()
+                obj._deserialize(item)
+                self.AuthorizedUsers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OperateChannelTemplateRequest(AbstractModel):

@@ -6598,18 +6598,22 @@ class RenewInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Period: 购买时长，单位：月
+        :param Period: 购买时长，单位：月。
         :type Period: int
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例 ID。
         :type InstanceId: str
+        :param ModifyPayMode: 标识是否修改计费模式。<ul><li>当前实例计费模式为按量计费方式，预转换为包年包月而续费，请指定该参数为 <b>prepaid</b>。</li><li>当前实例计费模式为包年包月方式，可不设置该参数。</li></ul>
+        :type ModifyPayMode: str
         """
         self.Period = None
         self.InstanceId = None
+        self.ModifyPayMode = None
 
 
     def _deserialize(self, params):
         self.Period = params.get("Period")
         self.InstanceId = params.get("InstanceId")
+        self.ModifyPayMode = params.get("ModifyPayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6626,7 +6630,7 @@ class RenewInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 交易ID
+        :param DealId: 交易ID。
         :type DealId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

@@ -22844,21 +22844,26 @@ class StorageRegionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Region: 存储地域
+        :param Region: 存储地域。
         :type Region: str
-        :param Description: 存储地域描述信息
+        :param Description: 存储地域描述信息。
         :type Description: str
         :param Status: 状态，是否开通，取值有：
 <li>opened：已经开通。</li>
 <li>unopened：未开通。</li>
         :type Status: str
-        :param IsDefault: 是否默认的存储地域，true：是；false：否
+        :param IsDefault: 是否默认的存储地域，true：是；false：否。
         :type IsDefault: bool
+        :param Area: 存储区域，取值有：
+<li>Chinese Mainland：中国境内（不包含港澳台）。</li>
+<li>Outside Chinese Mainland：中国境外。</li>
+        :type Area: str
         """
         self.Region = None
         self.Description = None
         self.Status = None
         self.IsDefault = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -22866,6 +22871,7 @@ class StorageRegionInfo(AbstractModel):
         self.Description = params.get("Description")
         self.Status = params.get("Status")
         self.IsDefault = params.get("IsDefault")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

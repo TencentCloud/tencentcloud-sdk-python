@@ -375,7 +375,7 @@ class CfsClient(AbstractClient):
 
 
     def DescribeAutoSnapshotPolicies(self, request):
-        """查询文件系统快照d定期策略列表信息
+        """查询文件系统快照定期策略列表信息
 
         :param request: Request instance for DescribeAutoSnapshotPolicies.
         :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeAutoSnapshotPoliciesRequest`
