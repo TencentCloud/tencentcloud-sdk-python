@@ -199,7 +199,7 @@ class AbstractClient(object):
             req.header["Content-Type"] = content_type + "; boundary=" + boundary
             req.data = self._get_multipart_body(params, boundary, options)
 
-        service = endpoint.split('.')[0]
+        service = self._service
         date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
         signature = self._get_tc3_signature(params, req, date, service, options)
 

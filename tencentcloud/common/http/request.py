@@ -38,10 +38,7 @@ class ProxyConnection(object):
         else:
             proxy = proxy or _get_proxy_from_env(host, varname="HTTPS_PROXY")
         if proxy:
-            if is_http:
-                self.proxy = {"http": proxy}
-            else:
-                self.proxy = {"https": proxy}
+            self.proxy = {"http": proxy, "https": proxy}
         self.request_length = 0
 
     def request(self, method, url, body=None, headers={}):
