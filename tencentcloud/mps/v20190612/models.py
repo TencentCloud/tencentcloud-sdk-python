@@ -4093,11 +4093,14 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 <li>6：立体声</li>
 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
         :type AudioChannel: int
+        :param StreamSelects: 指定输出要保留的音频轨道。默认是全部保留源的。
+        :type StreamSelects: list of int
         """
         self.Codec = None
         self.Bitrate = None
         self.SampleRate = None
         self.AudioChannel = None
+        self.StreamSelects = None
 
 
     def _deserialize(self, params):
@@ -4105,6 +4108,7 @@ class AudioTemplateInfoForUpdate(AbstractModel):
         self.Bitrate = params.get("Bitrate")
         self.SampleRate = params.get("SampleRate")
         self.AudioChannel = params.get("AudioChannel")
+        self.StreamSelects = params.get("StreamSelects")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17121,6 +17125,52 @@ class SubtitleTemplate(AbstractModel):
     """字幕流配置参数。
 
     """
+
+    def __init__(self):
+        r"""
+        :param Path: 要压制到视频中的字幕文件地址。
+        :type Path: str
+        :param StreamIndex: 指定要压制到视频中的字幕轨道，如果有指定Path，则Path 优先级更高。Path 和 StreamIndex 至少指定一个。
+        :type StreamIndex: int
+        :param FontType: 字体类型，
+<li>hei.ttf：黑体</li>
+<li>song.ttf：宋体</li>
+<li>simkai.ttf：楷体</li>
+<li>arial.ttf：仅支持英文</li>
+默认hei.ttf
+        :type FontType: str
+        :param FontSize: 字体大小，格式：Npx，N 为数值，不指定则以字幕文件中为准。
+        :type FontSize: str
+        :param FontColor: 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）
+        :type FontColor: str
+        :param FontAlpha: 文字透明度，取值范围：(0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
+默认值：1。
+        :type FontAlpha: float
+        """
+        self.Path = None
+        self.StreamIndex = None
+        self.FontType = None
+        self.FontSize = None
+        self.FontColor = None
+        self.FontAlpha = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.StreamIndex = params.get("StreamIndex")
+        self.FontType = params.get("FontType")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        self.FontAlpha = params.get("FontAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SuperResolutionConfig(AbstractModel):

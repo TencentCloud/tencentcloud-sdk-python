@@ -1999,7 +1999,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeSecurityPolicy(self, request):
-        """查询安全防护配置详情
+        """查询安全防护配置详情。请求参数中ZoneId+Entity或TemplateId至少填一项。
 
         :param request: Request instance for DescribeSecurityPolicy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityPolicyRequest`
@@ -3391,7 +3391,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifySecurityPolicy(self, request):
-        """修改Web&Bot安全配置
+        """修改Web&Bot安全配置。
 
         :param request: Request instance for ModifySecurityPolicy.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityPolicyRequest`

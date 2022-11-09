@@ -2934,8 +2934,11 @@ class ImageEnhancementRequest(AbstractModel):
 205：灰度模式
 207：省墨模式
 208：文字锐化（适合非彩色图片）
+300:自动增强（自动从301～304选择任务类型）
 301：去摩尔纹
 302：去除阴影
+303：去除模糊 
+304：去除过曝
         :type TaskType: int
         """
         self.ImageBase64 = None

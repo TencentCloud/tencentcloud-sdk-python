@@ -1289,6 +1289,7 @@ class CreateLivePullStreamTaskRequest(AbstractModel):
         :param SourceType: 拉流源的类型：
 PullLivePushLive -直播，
 PullVodPushLive -点播。
+PullPicPushLive -图片。
         :type SourceType: str
         :param SourceUrls: 拉流源 url 列表。
 SourceType 为直播（PullLivePushLive）只可以填1个，
@@ -1389,6 +1390,11 @@ PullVodPushLive -点播。
 2. 水印图片 URL 请使用合法外网可访问地址。
 3. 支持的水印图片格式：png，jpg，gif 等。
         :type WatermarkList: list of PullPushWatermarkInfo
+        :param VodLocalMode: 点播源是否启用本地推流模式，默认0，不启用。
+0 - 不启用。
+1 - 启用。
+注意：启用本地模式后，会将源列表中的 MP4 文件进行本地下载，优先使用本地已下载文件进行推流，提高点播源推流稳定性。使用本地下载文件推流时，会产生增值费用。
+        :type VodLocalMode: int
         """
         self.SourceType = None
         self.SourceUrls = None
@@ -1409,6 +1415,7 @@ PullVodPushLive -点播。
         self.BackupSourceType = None
         self.BackupSourceUrl = None
         self.WatermarkList = None
+        self.VodLocalMode = None
 
 
     def _deserialize(self, params):
@@ -1436,6 +1443,7 @@ PullVodPushLive -点播。
                 obj = PullPushWatermarkInfo()
                 obj._deserialize(item)
                 self.WatermarkList.append(obj)
+        self.VodLocalMode = params.get("VodLocalMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8568,8 +8576,9 @@ PullLivePushLive -直播，
 PullVodPushLive -点播。
 注意：
 1. 仅当主源类型为直播源时，备源才会生效。
-2. 主直播源拉流中断时，自动使用备源进行拉流。
-3. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
+2. 将该参数置为空，则可将任务去除备源信息。
+3. 主直播源拉流中断时，自动使用备源进行拉流。
+4. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
         :type BackupSourceType: str
         :param BackupSourceUrl: 备源 URL。
 只允许填一个备源 URL
@@ -8584,6 +8593,11 @@ PullVodPushLive -点播。
 6. 清除水印时，需携带该水印列表参数，内容为空数组。
 7. 暂不支持动图水印。
         :type WatermarkList: list of PullPushWatermarkInfo
+        :param VodLocalMode: 点播源是否启用本地推流模式，默认0，不启用。
+0 - 不启用。
+1 - 启用。
+注意：启用本地模式后，会将源列表中的 MP4 文件进行本地下载，优先使用本地已下载文件进行推流，提高点播源推流稳定性。使用本地下载文件推流时，会产生增值费用。
+        :type VodLocalMode: int
         """
         self.TaskId = None
         self.Operator = None
@@ -8601,6 +8615,7 @@ PullVodPushLive -点播。
         self.BackupSourceType = None
         self.BackupSourceUrl = None
         self.WatermarkList = None
+        self.VodLocalMode = None
 
 
     def _deserialize(self, params):
@@ -8625,6 +8640,7 @@ PullVodPushLive -点播。
                 obj = PullPushWatermarkInfo()
                 obj._deserialize(item)
                 self.WatermarkList.append(obj)
+        self.VodLocalMode = params.get("VodLocalMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

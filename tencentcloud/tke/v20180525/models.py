@@ -2126,9 +2126,9 @@ class CreateClusterNodePoolRequest(AbstractModel):
         r"""
         :param ClusterId: cluster id
         :type ClusterId: str
-        :param AutoScalingGroupPara: AutoScalingGroupPara AS组参数
+        :param AutoScalingGroupPara: AutoScalingGroupPara AS组参数，参考 https://cloud.tencent.com/document/product/377/20440
         :type AutoScalingGroupPara: str
-        :param LaunchConfigurePara: LaunchConfigurePara 运行参数
+        :param LaunchConfigurePara: LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447
         :type LaunchConfigurePara: str
         :param InstanceAdvancedSettings: InstanceAdvancedSettings 示例参数
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`

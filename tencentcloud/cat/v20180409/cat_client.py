@@ -287,6 +287,35 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateProbeTaskAttributes(self, request):
+        """更新探测任务属性
+
+        :param request: Request instance for UpdateProbeTaskAttributes.
+        :type request: :class:`tencentcloud.cat.v20180409.models.UpdateProbeTaskAttributesRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.UpdateProbeTaskAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateProbeTaskAttributes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateProbeTaskAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateProbeTaskConfigurationList(self, request):
         """批量更新拨测任务配置
 

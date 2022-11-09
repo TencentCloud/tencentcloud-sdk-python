@@ -2449,9 +2449,10 @@ class CreatePurgeTaskRequest(AbstractModel):
 <li>purge_url：URL；</li>
 <li>purge_prefix：前缀；</li>
 <li>purge_host：Hostname；</li>
-<li>purge_all：全部缓存。</li>
+<li>purge_all：全部缓存；</li>
+<li>purge_cache_tag：cache-tag刷新。</li>
         :type Type: str
-        :param Targets: 要刷新的资源列表，每个元素格式依据Type而定：
+        :param Targets: 要清除缓存的资源列表，每个元素格式依据Type而定：
 1) Type = purge_host 时：
 形如：www.example.com 或 foo.bar.example.com。
 2) Type = purge_prefix 时：
@@ -2460,6 +2461,8 @@ class CreatePurgeTaskRequest(AbstractModel):
 形如：https://www.example.com/example.jpg。
 4）Type = purge_all 时：
 Targets可为空，不需要填写。
+5）Type = purge_cache_tag 时：
+形如：tag1。
         :type Targets: list of str
         :param EncodeUrl: 若有编码转换，仅清除编码转换后匹配的资源。
 若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
@@ -4882,33 +4885,37 @@ class DescribeBotManagedRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点Id。
-        :type ZoneId: str
-        :param Entity: 子域名。
-        :type Entity: str
         :param Offset: 分页查询偏移量。默认值：0。
         :type Offset: int
         :param Limit: 分页查询限制数目。默认值：20，最大值：1000。
         :type Limit: int
+        :param ZoneId: 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
+        :type ZoneId: str
+        :param Entity: 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
+        :type Entity: str
         :param RuleType: 规则类型，取值有：
 <li> idcid；</li>
 <li>sipbot；</li>
 <li>uabot。</li>传空或不传，即全部类型。
         :type RuleType: str
+        :param TemplateId: 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+        :type TemplateId: str
         """
-        self.ZoneId = None
-        self.Entity = None
         self.Offset = None
         self.Limit = None
+        self.ZoneId = None
+        self.Entity = None
         self.RuleType = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.Entity = params.get("Entity")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
         self.RuleType = params.get("RuleType")
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6814,7 +6821,7 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点 ID。
+        :param ZoneId: 字段已废弃，请使用Filters中的zone-id。
         :type ZoneId: str
         :param StartTime: 查询起始时间。
         :type StartTime: str
@@ -6824,8 +6831,7 @@ class DescribePurgeTasksRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页查限制数目，默认值：20，最大值：1000。
         :type Limit: int
-        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname</li>
+        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-xxx，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
         :type Filters: list of AdvancedFilter
         """
         self.ZoneId = None
@@ -7044,19 +7050,22 @@ class DescribeSecurityGroupManagedRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点Id。
+        :param ZoneId: 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
         :type ZoneId: str
-        :param Entity: 子域名/应用名。
+        :param Entity: 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
         :type Entity: str
         :param Offset: 分页查询偏移量。默认值：0。
         :type Offset: int
         :param Limit: 分页查询限制数目。默认值：20，最大值：1000。
         :type Limit: int
+        :param TemplateId: 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+        :type TemplateId: str
         """
         self.ZoneId = None
         self.Entity = None
         self.Offset = None
         self.Limit = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
@@ -7064,6 +7073,7 @@ class DescribeSecurityGroupManagedRulesRequest(AbstractModel):
         self.Entity = params.get("Entity")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7221,16 +7231,20 @@ class DescribeSecurityPolicyRequest(AbstractModel):
         r"""
         :param ZoneId: 站点Id。
         :type ZoneId: str
-        :param Entity: 子域名/应用名。
+        :param Entity: 子域名/应用名。当使用Entity时可不填写TemplateId，否则必须填写TemplateId。
         :type Entity: str
+        :param TemplateId: 模板策略id。当使用模板Id时可不填Entity，否则必须填写Entity。
+        :type TemplateId: str
         """
         self.ZoneId = None
         self.Entity = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.Entity = params.get("Entity")
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7271,18 +7285,22 @@ class DescribeSecurityPortraitRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点Id。
+        :param ZoneId: 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
         :type ZoneId: str
-        :param Entity: 子域名/应用名。
+        :param Entity: 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
         :type Entity: str
+        :param TemplateId: 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+        :type TemplateId: str
         """
         self.ZoneId = None
         self.Entity = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.Entity = params.get("Entity")
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9926,7 +9944,7 @@ class FailReason(AbstractModel):
         r"""
         :param Reason: 失败原因。
         :type Reason: str
-        :param Targets: 处理失败的资源列表，该列表元素来源于输入参数中的Targets，因此格式和入参中的Targets保持一致。
+        :param Targets: 处理失败的资源列表。
         :type Targets: list of str
         """
         self.Reason = None
@@ -10481,12 +10499,18 @@ class IpTableRule(AbstractModel):
         :type RuleID: int
         :param UpdateTime: 更新时间。仅出参使用。
         :type UpdateTime: str
+        :param Status: 规则启用状态，当返回为null时，为启用。取值有：
+<li> on：启用；</li>
+<li> off：未启用。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self.Action = None
         self.MatchFrom = None
         self.MatchContent = None
         self.RuleID = None
         self.UpdateTime = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -10495,6 +10519,7 @@ class IpTableRule(AbstractModel):
         self.MatchContent = params.get("MatchContent")
         self.RuleID = params.get("RuleID")
         self.UpdateTime = params.get("UpdateTime")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12119,22 +12144,26 @@ class ModifySecurityPolicyRequest(AbstractModel):
         r"""
         :param ZoneId: 站点Id。
         :type ZoneId: str
-        :param Entity: 子域名/应用名。
-        :type Entity: str
         :param SecurityConfig: 安全配置。
         :type SecurityConfig: :class:`tencentcloud.teo.v20220901.models.SecurityConfig`
+        :param Entity: 子域名/应用名。当使用Entity时可不填写TemplateId，否则必须填写TemplateId。
+        :type Entity: str
+        :param TemplateId: 模板策略id。当使用模板Id时可不填Entity，否则必须填写Entity。
+        :type TemplateId: str
         """
         self.ZoneId = None
-        self.Entity = None
         self.SecurityConfig = None
+        self.Entity = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
-        self.Entity = params.get("Entity")
         if params.get("SecurityConfig") is not None:
             self.SecurityConfig = SecurityConfig()
             self.SecurityConfig._deserialize(params.get("SecurityConfig"))
+        self.Entity = params.get("Entity")
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12168,9 +12197,9 @@ class ModifySecurityWafGroupPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点Id。
+        :param ZoneId: 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
         :type ZoneId: str
-        :param Entity: 子域名。
+        :param Entity: 子域名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
         :type Entity: str
         :param Switch: 总开关，取值有：
 <li>on：开启；</li>
@@ -12193,6 +12222,8 @@ class ModifySecurityWafGroupPolicyRequest(AbstractModel):
         :type AiRule: :class:`tencentcloud.teo.v20220901.models.AiRule`
         :param WafGroups: 托管规则等级组。不填默认为上次的配置。
         :type WafGroups: list of WafGroup
+        :param TemplateId: 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+        :type TemplateId: str
         """
         self.ZoneId = None
         self.Entity = None
@@ -12202,6 +12233,7 @@ class ModifySecurityWafGroupPolicyRequest(AbstractModel):
         self.WafRules = None
         self.AiRule = None
         self.WafGroups = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
@@ -12222,6 +12254,7 @@ class ModifySecurityWafGroupPolicyRequest(AbstractModel):
                 obj = WafGroup()
                 obj._deserialize(item)
                 self.WafGroups.append(obj)
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13221,11 +13254,12 @@ class Quota(AbstractModel):
         :type Daily: int
         :param DailyAvailable: 每日剩余的可提交配额。
         :type DailyAvailable: int
-        :param Type: 配额类型，取值有：
-<li> purge_prefix：前缀；</li>
-<li> purge_url：URL；</li>
-<li> purge_host：Hostname；</li>
-<li> purge_all：全部缓存内容。</li>
+        :param Type: 刷新预热缓存类型，取值有：
+<li> purge_prefix：按前缀刷新；</li>
+<li> purge_url：按URL刷新；</li>
+<li> purge_host：按Hostname刷新；</li>
+<li> purge_all：刷新全部缓存内容；</li>
+<li> purge_cache_tag：按CacheTag刷新；</li><li> prefetch_url：按URL预热。</li>
         :type Type: str
         """
         self.Batch = None
@@ -13497,8 +13531,7 @@ class RateLimitUserRule(AbstractModel):
         :type PunishTimeUnit: str
         :param RuleStatus: 规则状态，取值有：
 <li>on：生效；</li>
-<li>off：不生效。</li>
-<li>hour：小时。</li>默认on生效。
+<li>off：不生效。</li>默认on生效。
         :type RuleStatus: str
         :param AclConditions: 规则详情。
         :type AclConditions: list of AclCondition
@@ -13508,13 +13541,17 @@ class RateLimitUserRule(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleID: int
         :param FreqFields: 过滤词，取值有：
-<li>host：域名；</li>
 <li>sip：客户端ip。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FreqFields: list of str
         :param UpdateTime: 更新时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FreqScope: 统计范围，字段为null时，代表source_to_eo。取值有：
+<li>source_to_eo：（响应）源站到EdgeOne。</li>
+<li>client_to_eo：（请求）客户端到EdgeOne；</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreqScope: list of str
         """
         self.Threshold = None
         self.Period = None
@@ -13528,6 +13565,7 @@ class RateLimitUserRule(AbstractModel):
         self.RuleID = None
         self.FreqFields = None
         self.UpdateTime = None
+        self.FreqScope = None
 
 
     def _deserialize(self, params):
@@ -13548,6 +13586,7 @@ class RateLimitUserRule(AbstractModel):
         self.RuleID = params.get("RuleID")
         self.FreqFields = params.get("FreqFields")
         self.UpdateTime = params.get("UpdateTime")
+        self.FreqScope = params.get("FreqScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14532,6 +14571,9 @@ class SecurityConfig(AbstractModel):
         :param DropPageConfig: 自定义拦截页面配置。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DropPageConfig: :class:`tencentcloud.teo.v20220901.models.DropPageConfig`
+        :param TemplateConfig: 模板配置。此处仅出参数使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateConfig: :class:`tencentcloud.teo.v20220901.models.TemplateConfig`
         """
         self.WafConfig = None
         self.RateLimitConfig = None
@@ -14541,6 +14583,7 @@ class SecurityConfig(AbstractModel):
         self.IpTableConfig = None
         self.ExceptConfig = None
         self.DropPageConfig = None
+        self.TemplateConfig = None
 
 
     def _deserialize(self, params):
@@ -14568,6 +14611,9 @@ class SecurityConfig(AbstractModel):
         if params.get("DropPageConfig") is not None:
             self.DropPageConfig = DropPageConfig()
             self.DropPageConfig._deserialize(params.get("DropPageConfig"))
+        if params.get("TemplateConfig") is not None:
+            self.TemplateConfig = TemplateConfig()
+            self.TemplateConfig._deserialize(params.get("TemplateConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15494,6 +15540,34 @@ class Task(AbstractModel):
         self.Type = params.get("Type")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateConfig(AbstractModel):
+    """安全模板配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板ID。
+        :type TemplateId: str
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

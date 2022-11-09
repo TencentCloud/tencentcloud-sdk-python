@@ -1353,6 +1353,64 @@ class DetectMisbehaviorResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetectPetRequest(AbstractModel):
+    """DetectPet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageUrl: 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。
+图片大小的限制为4M，图片像素的限制为4k。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+图片大小的限制为4M，图片像素的限制为4k。
+**注意：图片需要base64编码，并且要去掉编码头部。**
+        :type ImageBase64: str
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectPetResponse(AbstractModel):
+    """DetectPet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Pets: 识别出图片中的宠物信息列表。
+        :type Pets: list of Pet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Pets = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Pets") is not None:
+            self.Pets = []
+            for item in params.get("Pets"):
+                obj = Pet()
+                obj._deserialize(item)
+                self.Pets.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DetectProductBetaRequest(AbstractModel):
     """DetectProductBeta请求参数结构体
 
@@ -1835,6 +1893,40 @@ class ObjectInfo(AbstractModel):
                 obj = Box()
                 obj._deserialize(item)
                 self.AllBox.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Pet(AbstractModel):
+    """宠物具体信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 识别出的宠物类型（猫或者狗，暂不支持识别猫狗品种）。
+        :type Name: str
+        :param Score: 识别服务给识别目标打出的置信度，范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
+        :type Score: int
+        :param Location: 识别目标在图片中的坐标。
+        :type Location: :class:`tencentcloud.tiia.v20190529.models.Rect`
+        """
+        self.Name = None
+        self.Score = None
+        self.Location = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Score = params.get("Score")
+        if params.get("Location") is not None:
+            self.Location = Rect()
+            self.Location._deserialize(params.get("Location"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

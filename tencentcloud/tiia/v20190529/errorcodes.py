@@ -71,6 +71,9 @@ FAILEDOPERATION_INNERERROR = 'FailedOperation.InnerError'
 # 调用计费返回失败。
 FAILEDOPERATION_INVOKECHARGEERROR = 'FailedOperation.InvokeChargeError'
 
+# 未检测到目标。
+FAILEDOPERATION_NOOBJECTDETECTED = 'FailedOperation.NoObjectDetected'
+
 # 参数为空。
 FAILEDOPERATION_PARAMETEREMPTY = 'FailedOperation.ParameterEmpty'
 
