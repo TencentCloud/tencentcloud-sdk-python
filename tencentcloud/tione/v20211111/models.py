@@ -98,6 +98,64 @@ class APIConfigDetail(AbstractModel):
         
 
 
+class BatchModelAccTask(AbstractModel):
+    """批量模型加速任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param ModelVersion: 模型版本
+        :type ModelVersion: str
+        :param ModelSource: 模型来源(JOB/COS)
+        :type ModelSource: str
+        :param ModelFormat: 模型格式(TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/MMDETECTION/ONNX/HUGGING_FACE)
+        :type ModelFormat: str
+        :param TensorInfos: 模型Tensor信息
+        :type TensorInfos: list of str
+        :param AccEngineVersion: 加速引擎版本
+        :type AccEngineVersion: str
+        :param ModelInputPath: 模型输入cos路径
+        :type ModelInputPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param ModelName: 模型名称
+        :type ModelName: str
+        :param ModelSignature: SavedModel保存时配置的签名
+        :type ModelSignature: str
+        """
+        self.ModelId = None
+        self.ModelVersion = None
+        self.ModelSource = None
+        self.ModelFormat = None
+        self.TensorInfos = None
+        self.AccEngineVersion = None
+        self.ModelInputPath = None
+        self.ModelName = None
+        self.ModelSignature = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ModelVersion = params.get("ModelVersion")
+        self.ModelSource = params.get("ModelSource")
+        self.ModelFormat = params.get("ModelFormat")
+        self.TensorInfos = params.get("TensorInfos")
+        self.AccEngineVersion = params.get("AccEngineVersion")
+        if params.get("ModelInputPath") is not None:
+            self.ModelInputPath = CosPathInfo()
+            self.ModelInputPath._deserialize(params.get("ModelInputPath"))
+        self.ModelName = params.get("ModelName")
+        self.ModelSignature = params.get("ModelSignature")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchTaskDetail(AbstractModel):
     """跑批任务详情
 
@@ -509,6 +567,90 @@ class CosPathInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateBatchModelAccTasksRequest(AbstractModel):
+    """CreateBatchModelAccTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccTaskName: 模型加速任务名称
+        :type ModelAccTaskName: str
+        :param BatchModelAccTasks: 批量模型加速任务
+        :type BatchModelAccTasks: list of BatchModelAccTask
+        :param ModelOutputPath: 模型加速保存路径
+        :type ModelOutputPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param Tags: 标签
+        :type Tags: list of Tag
+        :param OptimizationLevel: 优化级别(NO_LOSS/FP16)，默认FP16
+        :type OptimizationLevel: str
+        :param GPUType: GPU卡类型(T4/V100)，默认T4
+        :type GPUType: str
+        :param HyperParameter: 专业参数设置
+        :type HyperParameter: :class:`tencentcloud.tione.v20211111.models.HyperParameter`
+        """
+        self.ModelAccTaskName = None
+        self.BatchModelAccTasks = None
+        self.ModelOutputPath = None
+        self.Tags = None
+        self.OptimizationLevel = None
+        self.GPUType = None
+        self.HyperParameter = None
+
+
+    def _deserialize(self, params):
+        self.ModelAccTaskName = params.get("ModelAccTaskName")
+        if params.get("BatchModelAccTasks") is not None:
+            self.BatchModelAccTasks = []
+            for item in params.get("BatchModelAccTasks"):
+                obj = BatchModelAccTask()
+                obj._deserialize(item)
+                self.BatchModelAccTasks.append(obj)
+        if params.get("ModelOutputPath") is not None:
+            self.ModelOutputPath = CosPathInfo()
+            self.ModelOutputPath._deserialize(params.get("ModelOutputPath"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.OptimizationLevel = params.get("OptimizationLevel")
+        self.GPUType = params.get("GPUType")
+        if params.get("HyperParameter") is not None:
+            self.HyperParameter = HyperParameter()
+            self.HyperParameter._deserialize(params.get("HyperParameter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchModelAccTasksResponse(AbstractModel):
+    """CreateBatchModelAccTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccTaskIds: 模型优化任务ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccTaskIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelAccTaskIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ModelAccTaskIds = params.get("ModelAccTaskIds")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateBatchTaskRequest(AbstractModel):
@@ -964,6 +1106,66 @@ class CreateModelServiceResponse(AbstractModel):
         if params.get("Service") is not None:
             self.Service = Service()
             self.Service._deserialize(params.get("Service"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateOptimizedModelRequest(AbstractModel):
+    """CreateOptimizedModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccTaskId: 模型加速任务ID
+        :type ModelAccTaskId: str
+        :param Tags: 标签
+        :type Tags: list of Tag
+        """
+        self.ModelAccTaskId = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.ModelAccTaskId = params.get("ModelAccTaskId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOptimizedModelResponse(AbstractModel):
+    """CreateOptimizedModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelId: 模型ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param ModelVersionId: 模型版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelVersionId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelId = None
+        self.ModelVersionId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ModelVersionId = params.get("ModelVersionId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1942,6 +2144,47 @@ class DeleteDatasetResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DatasetId = params.get("DatasetId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteModelAccelerateTaskRequest(AbstractModel):
+    """DeleteModelAccelerateTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccTaskId: 模型加速任务ID
+        :type ModelAccTaskId: str
+        """
+        self.ModelAccTaskId = None
+
+
+    def _deserialize(self, params):
+        self.ModelAccTaskId = params.get("ModelAccTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteModelAccelerateTaskResponse(AbstractModel):
+    """DeleteModelAccelerateTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -3100,6 +3343,189 @@ class DescribeLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeModelAccEngineVersionsRequest(AbstractModel):
+    """DescribeModelAccEngineVersions请求参数结构体
+
+    """
+
+
+class DescribeModelAccEngineVersionsResponse(AbstractModel):
+    """DescribeModelAccEngineVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccEngineVersions: 模型加速版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccEngineVersions: list of ModelAccEngineVersion
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelAccEngineVersions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ModelAccEngineVersions") is not None:
+            self.ModelAccEngineVersions = []
+            for item in params.get("ModelAccEngineVersions"):
+                obj = ModelAccEngineVersion()
+                obj._deserialize(item)
+                self.ModelAccEngineVersions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeModelAccelerateTaskRequest(AbstractModel):
+    """DescribeModelAccelerateTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccTaskId: 模型加速任务ID
+        :type ModelAccTaskId: str
+        """
+        self.ModelAccTaskId = None
+
+
+    def _deserialize(self, params):
+        self.ModelAccTaskId = params.get("ModelAccTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelAccelerateTaskResponse(AbstractModel):
+    """DescribeModelAccelerateTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccelerateTask: 模型加速任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccelerateTask: :class:`tencentcloud.tione.v20211111.models.ModelAccelerateTask`
+        :param ModelAccRuntimeInSecond: 模型加速时长，单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccRuntimeInSecond: int
+        :param ModelAccStartTime: 模型加速任务开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccStartTime: str
+        :param ModelAccEndTime: 模型加速任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccEndTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelAccelerateTask = None
+        self.ModelAccRuntimeInSecond = None
+        self.ModelAccStartTime = None
+        self.ModelAccEndTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ModelAccelerateTask") is not None:
+            self.ModelAccelerateTask = ModelAccelerateTask()
+            self.ModelAccelerateTask._deserialize(params.get("ModelAccelerateTask"))
+        self.ModelAccRuntimeInSecond = params.get("ModelAccRuntimeInSecond")
+        self.ModelAccStartTime = params.get("ModelAccStartTime")
+        self.ModelAccEndTime = params.get("ModelAccEndTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeModelAccelerateTasksRequest(AbstractModel):
+    """DescribeModelAccelerateTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤器
+ModelAccTaskName 任务名称
+        :type Filters: list of Filter
+        :param OrderField: 排序字段，默认CreateTime
+        :type OrderField: str
+        :param Order: 排序方式：ASC/DESC，默认DESC
+        :type Order: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 返回记录条数，默认20
+        :type Limit: int
+        :param TagFilters: 标签过滤
+        :type TagFilters: list of TagFilter
+        """
+        self.Filters = None
+        self.OrderField = None
+        self.Order = None
+        self.Offset = None
+        self.Limit = None
+        self.TagFilters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelAccelerateTasksResponse(AbstractModel):
+    """DescribeModelAccelerateTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccelerateTasks: 模型加速任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccelerateTasks: list of ModelAccelerateTask
+        :param TotalCount: 任务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelAccelerateTasks = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ModelAccelerateTasks") is not None:
+            self.ModelAccelerateTasks = []
+            for item in params.get("ModelAccelerateTasks"):
+                obj = ModelAccelerateTask()
+                obj._deserialize(item)
+                self.ModelAccelerateTasks.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeModelServiceCallInfoRequest(AbstractModel):
     """DescribeModelServiceCallInfo请求参数结构体
 
@@ -4059,6 +4485,36 @@ class DetectionLabelInfo(AbstractModel):
         
 
 
+class EngineVersion(AbstractModel):
+    """引擎版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Version: 引擎版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param Image: 运行镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Image: str
+        """
+        self.Version = None
+        self.Image = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Image = params.get("Image")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnvVar(AbstractModel):
     """环境变量
 
@@ -4450,6 +4906,61 @@ class HorizontalPodAutoscaler(AbstractModel):
         
 
 
+class HyperParameter(AbstractModel):
+    """模型专业参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxNNZ: 最大nnz数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxNNZ: str
+        :param SlotNum: slot数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlotNum: str
+        :param CpuCachePercentage: gpu cache 使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuCachePercentage: str
+        :param GpuCachePercentage: cpu cache 使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuCachePercentage: str
+        :param EnableDistributed: 是否开启分布式模式(true/false)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableDistributed: str
+        :param MinBlockSizePt: TORCH_SCRIPT、MMDETECTION、DETECTRON2、HUGGINGFACE格式在进行优化时切分子图的最小算子数目，一般无需进行改动，默认为3
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinBlockSizePt: str
+        :param MinBlockSizeTf: FROZEN_GRAPH、SAVED_MODEL格式在进行优化时切分子图的最小算子数目，一般无需进行改动，默认为10
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinBlockSizeTf: str
+        """
+        self.MaxNNZ = None
+        self.SlotNum = None
+        self.CpuCachePercentage = None
+        self.GpuCachePercentage = None
+        self.EnableDistributed = None
+        self.MinBlockSizePt = None
+        self.MinBlockSizeTf = None
+
+
+    def _deserialize(self, params):
+        self.MaxNNZ = params.get("MaxNNZ")
+        self.SlotNum = params.get("SlotNum")
+        self.CpuCachePercentage = params.get("CpuCachePercentage")
+        self.GpuCachePercentage = params.get("GpuCachePercentage")
+        self.EnableDistributed = params.get("EnableDistributed")
+        self.MinBlockSizePt = params.get("MinBlockSizePt")
+        self.MinBlockSizeTf = params.get("MinBlockSizeTf")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageInfo(AbstractModel):
     """镜像描述信息
 
@@ -4820,6 +5331,212 @@ class MetricData(AbstractModel):
         
 
 
+class ModelAccEngineVersion(AbstractModel):
+    """模型加速引擎版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelFormat: 模型格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelFormat: str
+        :param EngineVersions: 引擎版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineVersions: list of EngineVersion
+        """
+        self.ModelFormat = None
+        self.EngineVersions = None
+
+
+    def _deserialize(self, params):
+        self.ModelFormat = params.get("ModelFormat")
+        if params.get("EngineVersions") is not None:
+            self.EngineVersions = []
+            for item in params.get("EngineVersions"):
+                obj = EngineVersion()
+                obj._deserialize(item)
+                self.EngineVersions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelAccelerateTask(AbstractModel):
+    """模型加速任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccTaskId: 模型加速任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccTaskId: str
+        :param ModelAccTaskName: 模型加速任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccTaskName: str
+        :param ModelId: 模型ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param ModelName: 模型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelName: str
+        :param ModelVersion: 模型版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelVersion: str
+        :param ModelSource: 模型来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelSource: str
+        :param OptimizationLevel: 优化级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OptimizationLevel: str
+        :param TaskStatus: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: str
+        :param ModelInputNum: input节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelInputNum: int
+        :param ModelInputInfos: input节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelInputInfos: list of ModelInputInfo
+        :param GPUType: GPU型号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUType: str
+        :param ChargeType: 计费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: str
+        :param Speedup: 加速比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Speedup: str
+        :param ModelInputPath: 模型输入cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelInputPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param ModelOutputPath: 模型输出cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelOutputPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param AlgorithmFramework: 算法框架
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlgorithmFramework: str
+        :param WaitNumber: 排队个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitNumber: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param TaskProgress: 任务进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskProgress: int
+        :param ModelFormat: 模型格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelFormat: str
+        :param TensorInfos: 模型Tensor信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TensorInfos: list of str
+        :param HyperParameter: 模型专业参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HyperParameter: :class:`tencentcloud.tione.v20211111.models.HyperParameter`
+        :param AccEngineVersion: 加速引擎版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccEngineVersion: str
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param IsSaved: 优化模型是否已保存到模型仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSaved: bool
+        :param ModelSignature: SAVED_MODEL保存时配置的签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelSignature: str
+        """
+        self.ModelAccTaskId = None
+        self.ModelAccTaskName = None
+        self.ModelId = None
+        self.ModelName = None
+        self.ModelVersion = None
+        self.ModelSource = None
+        self.OptimizationLevel = None
+        self.TaskStatus = None
+        self.ModelInputNum = None
+        self.ModelInputInfos = None
+        self.GPUType = None
+        self.ChargeType = None
+        self.Speedup = None
+        self.ModelInputPath = None
+        self.ModelOutputPath = None
+        self.ErrorMsg = None
+        self.AlgorithmFramework = None
+        self.WaitNumber = None
+        self.CreateTime = None
+        self.TaskProgress = None
+        self.ModelFormat = None
+        self.TensorInfos = None
+        self.HyperParameter = None
+        self.AccEngineVersion = None
+        self.Tags = None
+        self.IsSaved = None
+        self.ModelSignature = None
+
+
+    def _deserialize(self, params):
+        self.ModelAccTaskId = params.get("ModelAccTaskId")
+        self.ModelAccTaskName = params.get("ModelAccTaskName")
+        self.ModelId = params.get("ModelId")
+        self.ModelName = params.get("ModelName")
+        self.ModelVersion = params.get("ModelVersion")
+        self.ModelSource = params.get("ModelSource")
+        self.OptimizationLevel = params.get("OptimizationLevel")
+        self.TaskStatus = params.get("TaskStatus")
+        self.ModelInputNum = params.get("ModelInputNum")
+        if params.get("ModelInputInfos") is not None:
+            self.ModelInputInfos = []
+            for item in params.get("ModelInputInfos"):
+                obj = ModelInputInfo()
+                obj._deserialize(item)
+                self.ModelInputInfos.append(obj)
+        self.GPUType = params.get("GPUType")
+        self.ChargeType = params.get("ChargeType")
+        self.Speedup = params.get("Speedup")
+        if params.get("ModelInputPath") is not None:
+            self.ModelInputPath = CosPathInfo()
+            self.ModelInputPath._deserialize(params.get("ModelInputPath"))
+        if params.get("ModelOutputPath") is not None:
+            self.ModelOutputPath = CosPathInfo()
+            self.ModelOutputPath._deserialize(params.get("ModelOutputPath"))
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.AlgorithmFramework = params.get("AlgorithmFramework")
+        self.WaitNumber = params.get("WaitNumber")
+        self.CreateTime = params.get("CreateTime")
+        self.TaskProgress = params.get("TaskProgress")
+        self.ModelFormat = params.get("ModelFormat")
+        self.TensorInfos = params.get("TensorInfos")
+        if params.get("HyperParameter") is not None:
+            self.HyperParameter = HyperParameter()
+            self.HyperParameter._deserialize(params.get("HyperParameter"))
+        self.AccEngineVersion = params.get("AccEngineVersion")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.IsSaved = params.get("IsSaved")
+        self.ModelSignature = params.get("ModelSignature")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModelInfo(AbstractModel):
     """模型描述信息
 
@@ -4868,6 +5585,38 @@ class ModelInfo(AbstractModel):
             self.CosPathInfo._deserialize(params.get("CosPathInfo"))
         self.AlgorithmFramework = params.get("AlgorithmFramework")
         self.ModelType = params.get("ModelType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelInputInfo(AbstractModel):
+    """模型输入信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelInputType: input数据类型
+FIXED：固定
+RANGE：浮动
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelInputType: str
+        :param ModelInputDimension: input数据尺寸
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelInputDimension: list of str
+        """
+        self.ModelInputType = None
+        self.ModelInputDimension = None
+
+
+    def _deserialize(self, params):
+        self.ModelInputType = params.get("ModelInputType")
+        self.ModelInputDimension = params.get("ModelInputDimension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5317,6 +6066,135 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RestartModelAccelerateTaskRequest(AbstractModel):
+    """RestartModelAccelerateTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccTaskId: 模型加速任务ID
+        :type ModelAccTaskId: str
+        :param ModelAccTaskName: 模型加速任务名称
+        :type ModelAccTaskName: str
+        :param ModelSource: 模型来源（JOB/COS）
+        :type ModelSource: str
+        :param AlgorithmFramework: 算法框架（废弃）
+        :type AlgorithmFramework: str
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param ModelName: 模型名称
+        :type ModelName: str
+        :param ModelVersion: 模型版本
+        :type ModelVersion: str
+        :param ModelInputPath: 模型输入cos路径
+        :type ModelInputPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param OptimizationLevel: 优化级别（NO_LOSS/FP16），默认FP16
+        :type OptimizationLevel: str
+        :param ModelInputNum: input节点个数（废弃）
+        :type ModelInputNum: int
+        :param ModelInputInfos: input节点信息（废弃）
+        :type ModelInputInfos: list of ModelInputInfo
+        :param ModelOutputPath: 模型输出cos路径
+        :type ModelOutputPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param ModelFormat: 模型格式（TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/MMDETECTION/ONNX/HUGGING_FACE）
+        :type ModelFormat: str
+        :param TensorInfos: 模型Tensor信息
+        :type TensorInfos: list of str
+        :param GPUType: GPU类型（T4/V100），默认T4
+        :type GPUType: str
+        :param HyperParameter: 模型专业参数
+        :type HyperParameter: :class:`tencentcloud.tione.v20211111.models.HyperParameter`
+        :param AccEngineVersion: 加速引擎版本
+        :type AccEngineVersion: str
+        :param Tags: 标签
+        :type Tags: list of Tag
+        :param ModelSignature: SavedModel保存时配置的签名
+        :type ModelSignature: str
+        """
+        self.ModelAccTaskId = None
+        self.ModelAccTaskName = None
+        self.ModelSource = None
+        self.AlgorithmFramework = None
+        self.ModelId = None
+        self.ModelName = None
+        self.ModelVersion = None
+        self.ModelInputPath = None
+        self.OptimizationLevel = None
+        self.ModelInputNum = None
+        self.ModelInputInfos = None
+        self.ModelOutputPath = None
+        self.ModelFormat = None
+        self.TensorInfos = None
+        self.GPUType = None
+        self.HyperParameter = None
+        self.AccEngineVersion = None
+        self.Tags = None
+        self.ModelSignature = None
+
+
+    def _deserialize(self, params):
+        self.ModelAccTaskId = params.get("ModelAccTaskId")
+        self.ModelAccTaskName = params.get("ModelAccTaskName")
+        self.ModelSource = params.get("ModelSource")
+        self.AlgorithmFramework = params.get("AlgorithmFramework")
+        self.ModelId = params.get("ModelId")
+        self.ModelName = params.get("ModelName")
+        self.ModelVersion = params.get("ModelVersion")
+        if params.get("ModelInputPath") is not None:
+            self.ModelInputPath = CosPathInfo()
+            self.ModelInputPath._deserialize(params.get("ModelInputPath"))
+        self.OptimizationLevel = params.get("OptimizationLevel")
+        self.ModelInputNum = params.get("ModelInputNum")
+        if params.get("ModelInputInfos") is not None:
+            self.ModelInputInfos = []
+            for item in params.get("ModelInputInfos"):
+                obj = ModelInputInfo()
+                obj._deserialize(item)
+                self.ModelInputInfos.append(obj)
+        if params.get("ModelOutputPath") is not None:
+            self.ModelOutputPath = CosPathInfo()
+            self.ModelOutputPath._deserialize(params.get("ModelOutputPath"))
+        self.ModelFormat = params.get("ModelFormat")
+        self.TensorInfos = params.get("TensorInfos")
+        self.GPUType = params.get("GPUType")
+        if params.get("HyperParameter") is not None:
+            self.HyperParameter = HyperParameter()
+            self.HyperParameter._deserialize(params.get("HyperParameter"))
+        self.AccEngineVersion = params.get("AccEngineVersion")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.ModelSignature = params.get("ModelSignature")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartModelAccelerateTaskResponse(AbstractModel):
+    """RestartModelAccelerateTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RowItem(AbstractModel):
@@ -6265,6 +7143,57 @@ class StopBatchTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopModelAccelerateTaskRequest(AbstractModel):
+    """StopModelAccelerateTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccTaskId: 模型加速任务ID
+        :type ModelAccTaskId: str
+        """
+        self.ModelAccTaskId = None
+
+
+    def _deserialize(self, params):
+        self.ModelAccTaskId = params.get("ModelAccTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopModelAccelerateTaskResponse(AbstractModel):
+    """StopModelAccelerateTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelAccTaskId: 模型加速任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccTaskId: str
+        :param AsyncTaskId: 异步任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncTaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelAccTaskId = None
+        self.AsyncTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ModelAccTaskId = params.get("ModelAccTaskId")
+        self.AsyncTaskId = params.get("AsyncTaskId")
         self.RequestId = params.get("RequestId")
 
 

@@ -65,6 +65,9 @@ FAILEDOPERATION_LANGUAGENOTSUPPORT = 'FailedOperation.LanguageNotSupport'
 # 照片中存在多张卡。
 FAILEDOPERATION_MULTICARDERROR = 'FailedOperation.MultiCardError'
 
+# 非营业执照。
+FAILEDOPERATION_NOBIZLICENSE = 'FailedOperation.NoBizLicense'
+
 # 非香港身份证。
 FAILEDOPERATION_NOHKIDCARD = 'FailedOperation.NoHKIDCard'
 

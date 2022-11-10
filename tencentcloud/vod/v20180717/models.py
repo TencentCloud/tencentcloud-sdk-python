@@ -20274,7 +20274,7 @@ class PullUploadRequest(AbstractModel):
         :type SubAppId: int
         :param MediaName: 媒体名称。
         :type MediaName: str
-        :param CoverUrl: 要拉取的视频封面 URL。仅支持 gif、jpeg、png 三种图片格式。
+        :param CoverUrl: 要拉取的视频封面 URL。支持的文件格式：gif、jpeg（jpg）、png。
         :type CoverUrl: str
         :param Procedure: 媒体后续任务操作，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。
         :type Procedure: str
