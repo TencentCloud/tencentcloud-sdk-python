@@ -968,6 +968,55 @@ class DeleteMountTargetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteUserQuotaRequest(AbstractModel):
+    """DeleteUserQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemId: 文件系统 ID
+        :type FileSystemId: str
+        :param UserType: 指定配额类型，包括Uid、Gid
+        :type UserType: str
+        :param UserId: UID/GID信息
+        :type UserId: str
+        """
+        self.FileSystemId = None
+        self.UserType = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.UserType = params.get("UserType")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserQuotaResponse(AbstractModel):
+    """DeleteUserQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
     """DescribeAutoSnapshotPolicies请求参数结构体
 
@@ -1535,6 +1584,79 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUserQuotaRequest(AbstractModel):
+    """DescribeUserQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemId: 文件系统 ID
+        :type FileSystemId: str
+        :param Filters: 过滤条件。
+<br><li>UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid| Gid )
+<br><li>UserId - Array of String - 是否必填：否 -（过滤条件）按UID/GID过滤。
+        :type Filters: list of Filter
+        :param Offset: Offset 分页码
+        :type Offset: int
+        :param Limit: Limit 页面大小
+        :type Limit: int
+        """
+        self.FileSystemId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserQuotaResponse(AbstractModel):
+    """DescribeUserQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: UserQuota条目总数
+        :type TotalCount: int
+        :param UserQuotaInfo: UserQuota条目
+        :type UserQuotaInfo: list of UserQuota
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.UserQuotaInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("UserQuotaInfo") is not None:
+            self.UserQuotaInfo = []
+            for item in params.get("UserQuotaInfo"):
+                obj = UserQuota()
+                obj._deserialize(item)
+                self.UserQuotaInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class FileSystemByPolicy(AbstractModel):
     """绑定快照策略的文件系统信息
 
@@ -1936,6 +2058,63 @@ class PGroupRuleInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetUserQuotaRequest(AbstractModel):
+    """SetUserQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemId: 文件系统 ID
+        :type FileSystemId: str
+        :param UserType: 指定配额类型，包括Uid、Gid
+        :type UserType: str
+        :param UserId: UID/GID信息
+        :type UserId: str
+        :param CapacityHardLimit: 容量硬限制，单位GiB
+        :type CapacityHardLimit: int
+        :param FileHardLimit: 文件硬限制，单位个
+        :type FileHardLimit: int
+        """
+        self.FileSystemId = None
+        self.UserType = None
+        self.UserId = None
+        self.CapacityHardLimit = None
+        self.FileHardLimit = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.UserType = params.get("UserType")
+        self.UserId = params.get("UserId")
+        self.CapacityHardLimit = params.get("CapacityHardLimit")
+        self.FileHardLimit = params.get("FileHardLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetUserQuotaResponse(AbstractModel):
+    """SetUserQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class SignUpCfsServiceRequest(AbstractModel):
@@ -2608,3 +2787,43 @@ class UpdateCfsSnapshotAttributeResponse(AbstractModel):
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
         self.RequestId = params.get("RequestId")
+
+
+class UserQuota(AbstractModel):
+    """文件系统配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserType: 指定配额类型，包括Uid、Gid
+        :type UserType: str
+        :param UserId: UID/GID信息
+        :type UserId: str
+        :param CapacityHardLimit: 容量硬限制，单位GiB
+        :type CapacityHardLimit: int
+        :param FileHardLimit: 文件硬限制，单位个
+        :type FileHardLimit: int
+        :param FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        """
+        self.UserType = None
+        self.UserId = None
+        self.CapacityHardLimit = None
+        self.FileHardLimit = None
+        self.FileSystemId = None
+
+
+    def _deserialize(self, params):
+        self.UserType = params.get("UserType")
+        self.UserId = params.get("UserId")
+        self.CapacityHardLimit = params.get("CapacityHardLimit")
+        self.FileHardLimit = params.get("FileHardLimit")
+        self.FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

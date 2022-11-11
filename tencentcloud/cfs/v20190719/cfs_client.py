@@ -374,6 +374,35 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteUserQuota(self, request):
+        """指定条件删除文件系统配额
+
+        :param request: Request instance for DeleteUserQuota.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DeleteUserQuotaRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DeleteUserQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserQuota", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteUserQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAutoSnapshotPolicies(self, request):
         """查询文件系统快照定期策略列表信息
 
@@ -679,6 +708,64 @@ class CfsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotOperationLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserQuota(self, request):
+        """查询文件系统配额
+
+        :param request: Request instance for DescribeUserQuota.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.DescribeUserQuotaRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.DescribeUserQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserQuota", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetUserQuota(self, request):
+        """设置文件系统配额，提供UID/GID的配额设置的接口
+
+        :param request: Request instance for SetUserQuota.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.SetUserQuotaRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.SetUserQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetUserQuota", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetUserQuotaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

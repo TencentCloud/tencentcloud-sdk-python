@@ -26,93 +26,6 @@ class FaceidClient(AbstractClient):
     _service = 'faceid'
 
 
-    def ApplyLivenessToken(self, request):
-        """每次调用活体服务前，需要先调用本接口获取Token，需要保存此Token用来发起核验流程，并且在核验完成后获取结果信息。
-
-        :param request: Request instance for ApplyLivenessToken.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyLivenessTokenRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.ApplyLivenessTokenResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ApplyLivenessToken", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ApplyLivenessTokenResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ApplySdkVerificationToken(self, request):
-        """每次调用Web核验服务前，需要先调用本接口获取Token，需要保存此Token用来发起核验流程，并且在核验完成后获取结果信息。
-
-        :param request: Request instance for ApplySdkVerificationToken.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.ApplySdkVerificationTokenRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.ApplySdkVerificationTokenResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ApplySdkVerificationToken", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ApplySdkVerificationTokenResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ApplyWebVerificationToken(self, request):
-        """每次调用Web核验服务前，需要先调用本接口获取BizToken，需要保存此BizToken用来发起核验流程，并且在核验完成后获取结果信息。
-
-        :param request: Request instance for ApplyWebVerificationToken.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationTokenRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationTokenResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ApplyWebVerificationToken", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ApplyWebVerificationTokenResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def BankCard2EVerification(self, request):
         """本接口用于校验姓名和银行卡号的真实性和一致性。
 
@@ -345,36 +258,6 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateUploadUrl(self, request):
-        """生成一个临时的UploadUrl用于上传资源文件，客户需要使用HTTP PUT方法上传，上传完成后将ResourceUrl传给TargetAction对应接口完成资源传递（具体字段由使用场景确定）。
-        数据存储于Region参数对应地域的腾讯云COS Bucket，存储有效期2小时。
-
-        :param request: Request instance for CreateUploadUrl.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.CreateUploadUrlRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.CreateUploadUrlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateUploadUrl", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateUploadUrlResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DetectAuth(self, request):
         """每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
 
@@ -404,36 +287,6 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DetectReflectLivenessAndCompare(self, request):
-        """使用活体比对（光线）SDK生成的数据包检测活体，并和传入的图片进行比对。
-        图片和SDK生成的数据内容必须存储在腾讯云COS，COS Bucket所在的Region需要和本接口请求的Region保持一致，推荐使用生成上传链接接口来完成资源传递。
-
-        :param request: Request instance for DetectReflectLivenessAndCompare.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.DetectReflectLivenessAndCompareRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.DetectReflectLivenessAndCompareResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DetectReflectLivenessAndCompare", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DetectReflectLivenessAndCompareResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def EncryptedPhoneVerification(self, request):
         """本接口用于校验手机号、姓名和身份证号的真实性和一致性，入参支持明文、MD5和SHA256加密传输。
 
@@ -449,36 +302,6 @@ class FaceidClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EncryptedPhoneVerificationResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GenerateReflectSequence(self, request):
-        """根据活体比对（光线）SDK采集的机器信息生成适合的光线序列，将光线序列传入SDK后开启核身。
-        SDK生成的数据内容必须存储在腾讯云COS，COS Bucket所在的Region需要和本接口请求的Region保持一致，推荐使用生成上传链接接口来完成资源传递。
-
-        :param request: Request instance for GenerateReflectSequence.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GenerateReflectSequenceRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GenerateReflectSequenceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GenerateReflectSequence", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GenerateReflectSequenceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -725,35 +548,6 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetLivenessResult(self, request):
-        """完成活体检测流程后，用核验令牌（SdkToken）调用本接口查询对应核验结果信息。Token申请后2小时内有效，可多次调用。
-
-        :param request: Request instance for GetLivenessResult.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetLivenessResultRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetLivenessResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetLivenessResult", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetLivenessResultResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def GetRealNameAuthResult(self, request):
         """获取微信实名认证结果
 
@@ -812,35 +606,6 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetSdkVerificationResult(self, request):
-        """完成Sdk核验流程后，用核验令牌（Token）调用本接口查询对应核验结果信息。Token申请后三天内有效，可多次调用。
-
-        :param request: Request instance for GetSdkVerificationResult.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetSdkVerificationResultRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetSdkVerificationResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetSdkVerificationResult", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetSdkVerificationResultResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def GetWeChatBillDetails(self, request):
         """查询微信渠道服务（微信小程序、微信原生H5、微信普通H5）的账单明细及计费状态。
 
@@ -856,35 +621,6 @@ class FaceidClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetWeChatBillDetailsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetWebVerificationResult(self, request):
-        """完成Web核验流程后，用核验令牌（BizToken）调用本接口查询对应核验结果信息。BizToken申请后三天内（3\*24\*3,600秒）有效，可多次调用。
-
-        :param request: Request instance for GetWebVerificationResult.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetWebVerificationResultRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetWebVerificationResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetWebVerificationResult", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetWebVerificationResultResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1291,35 +1027,6 @@ class FaceidClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PhoneVerificationCUCCResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def VideoLivenessCompare(self, request):
-        """传入视频和照片地址，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与上传照片是否属于同一个人。
-
-        :param request: Request instance for VideoLivenessCompare.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.VideoLivenessCompareRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.VideoLivenessCompareResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("VideoLivenessCompare", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.VideoLivenessCompareResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
