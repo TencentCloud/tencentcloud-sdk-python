@@ -84,3 +84,32 @@ class AfcClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TransportGeneralInterface(self, request):
+        """天御信鸽取数平台接口
+
+        :param request: Request instance for TransportGeneralInterface.
+        :type request: :class:`tencentcloud.afc.v20200226.models.TransportGeneralInterfaceRequest`
+        :rtype: :class:`tencentcloud.afc.v20200226.models.TransportGeneralInterfaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransportGeneralInterface", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TransportGeneralInterfaceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

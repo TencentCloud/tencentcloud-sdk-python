@@ -608,3 +608,120 @@ class SimpleKindRiskDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TransportGeneralInterfaceInput(AbstractModel):
+    """天御信鸽取数平台接口入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InterfaceName: 公证处请求接口名
+        :type InterfaceName: str
+        :param NotarizationInput: 公证处业务详情二层入参
+        :type NotarizationInput: str
+        :param NotarizationSign: 业务二层详情入参的哈希签名
+        :type NotarizationSign: str
+        """
+        self.InterfaceName = None
+        self.NotarizationInput = None
+        self.NotarizationSign = None
+
+
+    def _deserialize(self, params):
+        self.InterfaceName = params.get("InterfaceName")
+        self.NotarizationInput = params.get("NotarizationInput")
+        self.NotarizationSign = params.get("NotarizationSign")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransportGeneralInterfaceOutput(AbstractModel):
+    """天御信鸽取数平台接口出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
+        :param Message: 回包信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param NotarizationData: 公证处业务回包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotarizationData: str
+        """
+        self.Code = None
+        self.Message = None
+        self.NotarizationData = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        self.NotarizationData = params.get("NotarizationData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransportGeneralInterfaceRequest(AbstractModel):
+    """TransportGeneralInterface请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.afc.v20200226.models.TransportGeneralInterfaceInput`
+        """
+        self.BusinessSecurityData = None
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self.BusinessSecurityData = TransportGeneralInterfaceInput()
+            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransportGeneralInterfaceResponse(AbstractModel):
+    """TransportGeneralInterface返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 业务出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.afc.v20200226.models.TransportGeneralInterfaceOutput`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TransportGeneralInterfaceOutput()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
