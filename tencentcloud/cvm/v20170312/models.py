@@ -120,24 +120,24 @@ class ActionTimer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Externals: 扩展数据
-        :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         :param TimerAction: 定时器名称，目前仅支持销毁一个值：TerminateInstances。
         :type TimerAction: str
         :param ActionTime: 执行时间，格式形如：2018-5-29 11:26:40,执行时间必须大于当前时间5分钟。
         :type ActionTime: str
+        :param Externals: 扩展数据
+        :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
-        self.Externals = None
         self.TimerAction = None
         self.ActionTime = None
+        self.Externals = None
 
 
     def _deserialize(self, params):
+        self.TimerAction = params.get("TimerAction")
+        self.ActionTime = params.get("ActionTime")
         if params.get("Externals") is not None:
             self.Externals = Externals()
             self.Externals._deserialize(params.get("Externals"))
-        self.TimerAction = params.get("TimerAction")
-        self.ActionTime = params.get("ActionTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

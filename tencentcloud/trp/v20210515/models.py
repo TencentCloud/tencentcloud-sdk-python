@@ -3408,19 +3408,28 @@ class TraceData(AbstractModel):
 
 
 class TraceItem(AbstractModel):
-    """溯源数据
+    """溯源数据项
+    Type的枚举值
+    text:文本类型, longtext:长文本类型, banner:单图片类型, image:多图片类型, video:视频类型, mp:小程序类型
+    具体组合如下
+    Type: "text" 文本类型, 对应值 Value: "文本字符串"
+    Type: "longtext" 长文本类型, 对应值 Value: "长文本字符串, 支持换行\n"
+    Type: "banner" 单图片类型, 对应图片地址 Value: "https://sample.cdn.com/xxx.jpg"
+    Type: "image" 多图片类型, 对应图片地址 Values: ["https://sample.cdn.com/1.jpg", "https://sample.cdn.com/2.jpg"]
+    Type: "video" 视频类型, 对应视频地址 Value: "https://sample.cdn.com/xxx.mp4"
+    Type: "mp" 小程序类型, 对应配置 Values: ["WXAPPID", "WXAPP_PATH", "跳转说明"]
 
     """
 
     def __init__(self):
         r"""
-        :param Name: 名称
+        :param Name: 字段名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Value: 单个值
+        :param Value: 字段值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
-        :param Type: 类型
+        :param Type: 类型 text:文本类型, longtext:长文本类型, banner:单图片类型, image:多图片类型, video:视频类型, mp:小程序类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param ReadOnly: 只读

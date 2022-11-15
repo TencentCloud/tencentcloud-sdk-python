@@ -885,6 +885,7 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param Filters: 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
+查询离职员工时，Key为Status，Values为["QuiteJob"]
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0，最大为20000
         :type Offset: int
@@ -1368,6 +1369,10 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :type UniformSocialCreditCode: str
         :param MenuStatus: 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
         :type MenuStatus: str
+        :param Endpoint: 链接跳转类型："PC"-PC控制台，“CHANNEL”-H5跳转到电子签小程序；“APP”-第三方APP或小程序跳转电子签小程序，默认为PC控制台
+        :type Endpoint: str
+        :param AutoJumpBackEvent: 触发自动跳转事件，仅对App类型有效，"VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
+        :type AutoJumpBackEvent: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -1378,6 +1383,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self.ModuleId = None
         self.UniformSocialCreditCode = None
         self.MenuStatus = None
+        self.Endpoint = None
+        self.AutoJumpBackEvent = None
         self.Operator = None
 
 
@@ -1391,6 +1398,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self.ModuleId = params.get("ModuleId")
         self.UniformSocialCreditCode = params.get("UniformSocialCreditCode")
         self.MenuStatus = params.get("MenuStatus")
+        self.Endpoint = params.get("Endpoint")
+        self.AutoJumpBackEvent = params.get("AutoJumpBackEvent")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
@@ -1410,23 +1419,30 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConsoleUrl: 子客Web控制台url，此链接5分钟内有效，且只能访问一次。同时需要注意：
-1. 此链接仅单次有效，使用后需要再次创建新的链接（部分聊天软件，如企业微信默认会对链接进行解析，此时需要使用类似“代码片段”的方式或者放到txt文件里发送链接）；
-2. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
+        :param ConsoleUrl: 子客Web控制台url注意事项：
+1. 所有类型的链接在企业未认证/员工未认证完成时，只要在有效期内（一年）都可以访问
+2. 若企业认证完成且员工认证完成后，重新获取pc端的链接5分钟之内有效，且只能访问一次
+3. 若企业认证完成且员工认证完成后，重新获取H5/APP的链接只要在有效期内（一年）都可以访问
+4. 此链接仅单次有效，使用后需要再次创建新的链接（部分聊天软件，如企业微信默认会对链接进行解析，此时需要使用类似“代码片段”的方式或者放到txt文件里发送链接）
+5. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
         :type ConsoleUrl: str
         :param IsActivated: 渠道子客企业是否已开通腾讯电子签
         :type IsActivated: bool
+        :param ProxyOperatorIsVerified: 当前经办人是否已认证（false:未认证 true:已认证）
+        :type ProxyOperatorIsVerified: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ConsoleUrl = None
         self.IsActivated = None
+        self.ProxyOperatorIsVerified = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ConsoleUrl = params.get("ConsoleUrl")
         self.IsActivated = params.get("IsActivated")
+        self.ProxyOperatorIsVerified = params.get("ProxyOperatorIsVerified")
         self.RequestId = params.get("RequestId")
 
 
@@ -1441,16 +1457,19 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowInfos: 多个合同（签署流程）信息，最多支持20个
         :type FlowInfos: list of FlowInfo
-        :param NeedPreview: 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls（此Url返回的是PDF文件流 ）；
+        :param NeedPreview: 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls；
 预览链接有效期300秒；
 同时，如果预览的文件中指定了动态表格控件，需要进行异步合成；此时此接口返回的是合成前的文档预览链接，而合成完成后的文档预览链接会通过：回调通知的方式、或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询；
         :type NeedPreview: bool
+        :param PreviewType: 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+        :type PreviewType: int
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self.Agent = None
         self.FlowInfos = None
         self.NeedPreview = None
+        self.PreviewType = None
         self.Operator = None
 
 
@@ -1465,6 +1484,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.FlowInfos.append(obj)
         self.NeedPreview = params.get("NeedPreview")
+        self.PreviewType = params.get("PreviewType")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
@@ -1901,6 +1921,8 @@ class DescribeTemplatesRequest(AbstractModel):
         :type TemplateName: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param WithPreviewUrl: 是否获取模板预览链接
+        :type WithPreviewUrl: bool
         """
         self.Agent = None
         self.TemplateId = None
@@ -1910,6 +1932,7 @@ class DescribeTemplatesRequest(AbstractModel):
         self.QueryAllComponents = None
         self.TemplateName = None
         self.Operator = None
+        self.WithPreviewUrl = None
 
 
     def _deserialize(self, params):
@@ -1925,6 +1948,7 @@ class DescribeTemplatesRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.WithPreviewUrl = params.get("WithPreviewUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2202,12 +2226,12 @@ class FlowApproverInfo(AbstractModel):
         r"""
         :param Name: 签署人姓名，最大长度50个字符
         :type Name: str
-        :param IdCardType: 经办人身份证件类型
+        :param IdCardType: 签署人身份证件类型
 1.ID_CARD 居民身份证
 2.HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证
 3.HONGKONG_AND_MACAO 港澳居民来往内地通行证
         :type IdCardType: str
-        :param IdCardNumber: 经办人证件号
+        :param IdCardNumber: 签署人证件号
         :type IdCardNumber: str
         :param Mobile: 签署人手机号，脱敏显示。大陆手机号为11位，暂不支持海外手机号。
         :type Mobile: str
@@ -3576,6 +3600,8 @@ class SyncProxyOrganizationRequest(AbstractModel):
         :type BusinessLicense: str
         :param UniformSocialCreditCode: 渠道侧合作企业统一社会信用代码，最大长度200个字符
         :type UniformSocialCreditCode: str
+        :param ProxyLegalName: 渠道侧合作企业法人/负责人姓名
+        :type ProxyLegalName: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -3583,6 +3609,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
         self.ProxyOrganizationName = None
         self.BusinessLicense = None
         self.UniformSocialCreditCode = None
+        self.ProxyLegalName = None
         self.Operator = None
 
 
@@ -3593,6 +3620,7 @@ class SyncProxyOrganizationRequest(AbstractModel):
         self.ProxyOrganizationName = params.get("ProxyOrganizationName")
         self.BusinessLicense = params.get("BusinessLicense")
         self.UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self.ProxyLegalName = params.get("ProxyLegalName")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
@@ -3679,6 +3707,9 @@ class TemplateInfo(AbstractModel):
         :type Creator: str
         :param CreatedOn: 模板创建的时间戳（精确到秒）
         :type CreatedOn: int
+        :param PreviewUrl: 模板的预览链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewUrl: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -3690,6 +3721,7 @@ class TemplateInfo(AbstractModel):
         self.IsPromoter = None
         self.Creator = None
         self.CreatedOn = None
+        self.PreviewUrl = None
 
 
     def _deserialize(self, params):
@@ -3718,6 +3750,7 @@ class TemplateInfo(AbstractModel):
         self.IsPromoter = params.get("IsPromoter")
         self.Creator = params.get("Creator")
         self.CreatedOn = params.get("CreatedOn")
+        self.PreviewUrl = params.get("PreviewUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -655,10 +655,12 @@ class CreateDocumentRequest(AbstractModel):
         :param NeedPreview: 是否需要生成预览文件 默认不生成；
 预览链接有效期300秒；
         :type NeedPreview: bool
-        :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
-        :type ClientToken: str
+        :param PreviewType: 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+        :type PreviewType: int
         :param Agent: 应用相关信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
+        :type ClientToken: str
         """
         self.Operator = None
         self.FlowId = None
@@ -666,8 +668,9 @@ class CreateDocumentRequest(AbstractModel):
         self.FileNames = None
         self.FormFields = None
         self.NeedPreview = None
-        self.ClientToken = None
+        self.PreviewType = None
         self.Agent = None
+        self.ClientToken = None
 
 
     def _deserialize(self, params):
@@ -684,10 +687,11 @@ class CreateDocumentRequest(AbstractModel):
                 obj._deserialize(item)
                 self.FormFields.append(obj)
         self.NeedPreview = params.get("NeedPreview")
-        self.ClientToken = params.get("ClientToken")
+        self.PreviewType = params.get("PreviewType")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
+        self.ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -806,8 +810,8 @@ class CreateFlowByFilesRequest(AbstractModel):
 
 注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
         :type NeedPreview: bool
-        :param FlowDescription: 签署流程描述,最大长度1000个字符
-        :type FlowDescription: str
+        :param PreviewType: 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+        :type PreviewType: int
         :param Deadline: 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
         :type Deadline: int
@@ -832,6 +836,8 @@ VerifyCheck: 人脸识别（默认）
 MobileCheck：手机号验证
 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
         :type ApproverVerifyType: str
+        :param FlowDescription: 签署流程描述,最大长度1000个字符
+        :type FlowDescription: str
         """
         self.Operator = None
         self.FlowName = None
@@ -841,7 +847,7 @@ MobileCheck：手机号验证
         self.Components = None
         self.CcInfos = None
         self.NeedPreview = None
-        self.FlowDescription = None
+        self.PreviewType = None
         self.Deadline = None
         self.Unordered = None
         self.CustomShowMap = None
@@ -849,6 +855,7 @@ MobileCheck：手机号验证
         self.UserData = None
         self.Agent = None
         self.ApproverVerifyType = None
+        self.FlowDescription = None
 
 
     def _deserialize(self, params):
@@ -877,7 +884,7 @@ MobileCheck：手机号验证
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
         self.NeedPreview = params.get("NeedPreview")
-        self.FlowDescription = params.get("FlowDescription")
+        self.PreviewType = params.get("PreviewType")
         self.Deadline = params.get("Deadline")
         self.Unordered = params.get("Unordered")
         self.CustomShowMap = params.get("CustomShowMap")
@@ -887,6 +894,7 @@ MobileCheck：手机号验证
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
         self.ApproverVerifyType = params.get("ApproverVerifyType")
+        self.FlowDescription = params.get("FlowDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -92,6 +92,9 @@ INVALIDPARAMETER_INSTANCENOTFOUND = 'InvalidParameter.InstanceNotFound'
 # ip地址错误。
 INVALIDPARAMETER_INVALIDIPADDRESS = 'InvalidParameter.InvalidIpAddress'
 
+# 参数无效。
+INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
+
 # 业务参数错误。
 INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.BizInvalidParameterValueError'
 

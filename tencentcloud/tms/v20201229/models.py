@@ -48,6 +48,9 @@ class DetailResults(AbstractModel):
         :param SubLabel: 该字段用于返回当前标签（Label）下的二级标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
+        :param Tags: 该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.Label = None
         self.Suggestion = None
@@ -57,6 +60,7 @@ class DetailResults(AbstractModel):
         self.LibId = None
         self.LibName = None
         self.SubLabel = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -68,6 +72,12 @@ class DetailResults(AbstractModel):
         self.LibId = params.get("LibId")
         self.LibName = params.get("LibName")
         self.SubLabel = params.get("SubLabel")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -146,6 +156,41 @@ class RiskDetails(AbstractModel):
     def _deserialize(self, params):
         self.Label = params.get("Label")
         self.Level = params.get("Level")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """该字段用于返回审核结果明细字段的标签及分数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Keyword: 该字段用于返回命中的关键词
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keyword: str
+        :param SubLabel: 该字段用于返回子标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
+        :param Score: 该字段用于返回子标签对应的分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        """
+        self.Keyword = None
+        self.SubLabel = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.Keyword = params.get("Keyword")
+        self.SubLabel = params.get("SubLabel")
+        self.Score = params.get("Score")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

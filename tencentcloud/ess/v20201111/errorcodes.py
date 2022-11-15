@@ -77,6 +77,9 @@ INTERNALERROR_CACHE = 'InternalError.Cache'
 # 数据库异常。
 INTERNALERROR_DB = 'InternalError.Db'
 
+# 数据库连接出错。
+INTERNALERROR_DBCONNECTION = 'InternalError.DbConnection'
+
 # 数据库新增记录出错。
 INTERNALERROR_DBINSERT = 'InternalError.DbInsert'
 
@@ -95,8 +98,14 @@ INTERNALERROR_DEPENDSDB = 'InternalError.DependsDb'
 # 加密失败。
 INTERNALERROR_ENCRYPTION = 'InternalError.Encryption'
 
+# Json序列化失败。
+INTERNALERROR_JSONMARSHAL = 'InternalError.JsonMarshal'
+
 # Pdf错误。
 INTERNALERROR_PDF = 'InternalError.Pdf'
+
+# 序列化错误。
+INTERNALERROR_SERIALIZE = 'InternalError.Serialize'
 
 # 系统错误，请稍后重试。
 INTERNALERROR_SYSTEM = 'InternalError.System'
@@ -145,6 +154,9 @@ INVALIDPARAMETER_COMPONENTVALUE = 'InvalidParameter.ComponentValue'
 
 # 不合法的模板查询类型，请检查后重试。
 INVALIDPARAMETER_CONTENTTYPE = 'InvalidParameter.ContentType'
+
+# 无效的自定义页卡模板，请检查后重试。
+INVALIDPARAMETER_CUSTOMSHOWMAP = 'InvalidParameter.CustomShowMap'
 
 # 数据已存在。
 INVALIDPARAMETER_DATAEXISTS = 'InvalidParameter.DataExists'
@@ -259,6 +271,9 @@ INVALIDPARAMETER_RESOURCETYPE = 'InvalidParameter.ResourceType'
 
 # 不合法的印章id，请检查印章id是够正确，并在修改后重试。
 INVALIDPARAMETER_SEALID = 'InvalidParameter.SealId'
+
+# 签署控件参数不合法，请检查后重试。
+INVALIDPARAMETER_SIGNCOMPONENTS = 'InvalidParameter.SignComponents'
 
 # 参数Status不正确。
 INVALIDPARAMETER_STATUS = 'InvalidParameter.Status'

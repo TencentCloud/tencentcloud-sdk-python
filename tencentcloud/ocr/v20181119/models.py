@@ -6666,11 +6666,14 @@ class StructuralItem(AbstractModel):
         :param ItemCoord: 文本行在旋转纠正之后的图像中的像素
 坐标。
         :type ItemCoord: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
+        :param Row: 字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
+        :type Row: int
         """
         self.Name = None
         self.Value = None
         self.Confidence = None
         self.ItemCoord = None
+        self.Row = None
 
 
     def _deserialize(self, params):
@@ -6680,6 +6683,7 @@ class StructuralItem(AbstractModel):
         if params.get("ItemCoord") is not None:
             self.ItemCoord = ItemCoord()
             self.ItemCoord._deserialize(params.get("ItemCoord"))
+        self.Row = params.get("Row")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

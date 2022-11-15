@@ -827,6 +827,9 @@ MISSINGPARAMETER_GROUPIDNULL = 'MissingParameter.GroupIdNull'
 # 分组所属命名空间不能为空。
 MISSINGPARAMETER_GROUPNAMESPACENULL = 'MissingParameter.GroupNamespaceNull'
 
+# 虚拟机集群导入云主机导入方式为空。
+MISSINGPARAMETER_INSTANCEIMPORTMODENULL = 'MissingParameter.InstanceImportModeNull'
+
 # 命名空间ID不能为空。
 MISSINGPARAMETER_NAMESPACEIDREQUIRED = 'MissingParameter.NamespaceIdRequired'
 

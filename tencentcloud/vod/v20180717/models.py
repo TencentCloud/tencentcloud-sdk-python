@@ -6665,6 +6665,12 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 默认值：open。
         :type ResolutionAdaptive: str
+        :param Format: 图片格式，取值：
+<li> jpg：jpg 格式；</li>
+<li> png：png 格式；</li>
+<li> webp：webp 格式。</li>
+默认值：jpg。
+        :type Format: str
         """
         self.SampleType = None
         self.SampleInterval = None
@@ -6677,6 +6683,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -6691,6 +6698,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13426,6 +13434,8 @@ class ImageSpriteTemplate(AbstractModel):
         :type FillType: str
         :param Comment: 模板描述信息。
         :type Comment: str
+        :param Format: 图片格式。
+        :type Format: str
         """
         self.Definition = None
         self.Type = None
@@ -13441,6 +13451,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.UpdateTime = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -13458,6 +13469,7 @@ class ImageSpriteTemplate(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17041,6 +17053,11 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         :type FillType: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
+        :param Format: 图片格式，取值：
+<li> jpg：jpg 格式；</li>
+<li> png：png 格式；</li>
+<li> webp：webp 格式。</li>
+        :type Format: str
         """
         self.Definition = None
         self.SubAppId = None
@@ -17054,6 +17071,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.ColumnCount = None
         self.FillType = None
         self.Comment = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -17069,6 +17087,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         self.ColumnCount = params.get("ColumnCount")
         self.FillType = params.get("FillType")
         self.Comment = params.get("Comment")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

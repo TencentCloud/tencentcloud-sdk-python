@@ -1324,6 +1324,118 @@ class CheckAlarmRegularNameExistResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CheckDuplicateRuleNameRequest(AbstractModel):
+    """CheckDuplicateRuleName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param RuleGroupId: 规则组Id
+        :type RuleGroupId: int
+        :param Name: 规则名称
+        :type Name: str
+        :param RuleId: 规则Id
+        :type RuleId: int
+        """
+        self.ProjectId = None
+        self.RuleGroupId = None
+        self.Name = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.Name = params.get("Name")
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckDuplicateRuleNameResponse(AbstractModel):
+    """CheckDuplicateRuleName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则名称是否重复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class CheckDuplicateTemplateNameRequest(AbstractModel):
+    """CheckDuplicateTemplateName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 规则模板ID
+        :type TemplateId: int
+        :param Name: 模板名称
+        :type Name: str
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        """
+        self.TemplateId = None
+        self.Name = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckDuplicateTemplateNameResponse(AbstractModel):
+    """CheckDuplicateTemplateName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 是否重名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class CheckIntegrationNodeNameExistsRequest(AbstractModel):
     """CheckIntegrationNodeNameExists请求参数结构体
 
@@ -1495,6 +1607,68 @@ class CheckTaskNameExistResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CommitExportTaskRequest(AbstractModel):
+    """CommitExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param RuleExecId: 规则执行Id
+        :type RuleExecId: int
+        :param ExportType: 导出类型(1.全部,2.触发行,3.通过行)
+        :type ExportType: int
+        :param ExecutorGroupId: 执行资源组id
+        :type ExecutorGroupId: str
+        :param QueueName: 计算资源队列
+        :type QueueName: str
+        """
+        self.ProjectId = None
+        self.RuleExecId = None
+        self.ExportType = None
+        self.ExecutorGroupId = None
+        self.QueueName = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RuleExecId = params.get("RuleExecId")
+        self.ExportType = params.get("ExportType")
+        self.ExecutorGroupId = params.get("ExecutorGroupId")
+        self.QueueName = params.get("QueueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommitExportTaskResponse(AbstractModel):
+    """CommitExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 提交结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class CommitIntegrationTaskRequest(AbstractModel):
     """CommitIntegrationTask请求参数结构体
 
@@ -1552,6 +1726,140 @@ class CommitIntegrationTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CommitRuleGroupExecResultRequest(AbstractModel):
+    """CommitRuleGroupExecResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: preject id
+        :type ProjectId: str
+        :param RuleGroupExecId: rule group exec id
+        :type RuleGroupExecId: int
+        :param RuleGroupState: group exec state
+        :type RuleGroupState: str
+        :param RuleExecResults: runner rule exec result list
+        :type RuleExecResults: list of RunnerRuleExecResult
+        """
+        self.ProjectId = None
+        self.RuleGroupExecId = None
+        self.RuleGroupState = None
+        self.RuleExecResults = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RuleGroupExecId = params.get("RuleGroupExecId")
+        self.RuleGroupState = params.get("RuleGroupState")
+        if params.get("RuleExecResults") is not None:
+            self.RuleExecResults = []
+            for item in params.get("RuleExecResults"):
+                obj = RunnerRuleExecResult()
+                obj._deserialize(item)
+                self.RuleExecResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommitRuleGroupExecResultResponse(AbstractModel):
+    """CommitRuleGroupExecResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class CommitRuleGroupTaskRequest(AbstractModel):
+    """CommitRuleGroupTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组ID
+        :type RuleGroupId: int
+        :param TriggerType: 触发类型 1.手动触发 2.调度事中触发 3.周期调度触发
+        :type TriggerType: int
+        :param ExecRuleConfig: 规则配置列表
+        :type ExecRuleConfig: list of RuleConfig
+        :param ExecConfig: 执行配置
+        :type ExecConfig: :class:`tencentcloud.wedata.v20210820.models.RuleExecConfig`
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.RuleGroupId = None
+        self.TriggerType = None
+        self.ExecRuleConfig = None
+        self.ExecConfig = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.TriggerType = params.get("TriggerType")
+        if params.get("ExecRuleConfig") is not None:
+            self.ExecRuleConfig = []
+            for item in params.get("ExecRuleConfig"):
+                obj = RuleConfig()
+                obj._deserialize(item)
+                self.ExecRuleConfig.append(obj)
+        if params.get("ExecConfig") is not None:
+            self.ExecConfig = RuleExecConfig()
+            self.ExecConfig._deserialize(params.get("ExecConfig"))
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommitRuleGroupTaskResponse(AbstractModel):
+    """CommitRuleGroupTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则组执行id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroupExecResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroupExecResult()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class CommonContent(AbstractModel):
     """内容详情
 
@@ -1593,6 +1901,181 @@ class CommonId(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareResult(AbstractModel):
+    """质量检查对比结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 对比结果项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of CompareResultItem
+        :param TotalRows: 检测总行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRows: int
+        :param PassRows: 检测通过行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassRows: int
+        :param TriggerRows: 检测不通过行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerRows: int
+        """
+        self.Items = None
+        self.TotalRows = None
+        self.PassRows = None
+        self.TriggerRows = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = CompareResultItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.TotalRows = params.get("TotalRows")
+        self.PassRows = params.get("PassRows")
+        self.TriggerRows = params.get("TriggerRows")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareResultItem(AbstractModel):
+    """对比结果项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FixResult: 对比结果， 1为真 2为假
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixResult: int
+        :param ResultValue: 质量sql执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultValue: str
+        :param Values: 阈值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of ThresholdValue
+        :param Operator: 比较操作类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param CompareType: 比较类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareType: int
+        :param ValueComputeType: 值比较类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueComputeType: int
+        """
+        self.FixResult = None
+        self.ResultValue = None
+        self.Values = None
+        self.Operator = None
+        self.CompareType = None
+        self.ValueComputeType = None
+
+
+    def _deserialize(self, params):
+        self.FixResult = params.get("FixResult")
+        self.ResultValue = params.get("ResultValue")
+        if params.get("Values") is not None:
+            self.Values = []
+            for item in params.get("Values"):
+                obj = ThresholdValue()
+                obj._deserialize(item)
+                self.Values.append(obj)
+        self.Operator = params.get("Operator")
+        self.CompareType = params.get("CompareType")
+        self.ValueComputeType = params.get("ValueComputeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareRule(AbstractModel):
+    """对比规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 比较条件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of CompareRuleItem
+        """
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = CompareRuleItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareRuleItem(AbstractModel):
+    """比较条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CompareType: 比较类型 1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareType: int
+        :param Operator: 比较操作类型 <  <=  ==  =>  >
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param ValueComputeType: 质量统计值类型 1.绝对值  2.上升 3. 下降  4._C包含   5. N_C不包含
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueComputeType: int
+        :param ValueList: 比较阈值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueList: list of ThresholdValue
+        """
+        self.CompareType = None
+        self.Operator = None
+        self.ValueComputeType = None
+        self.ValueList = None
+
+
+    def _deserialize(self, params):
+        self.CompareType = params.get("CompareType")
+        self.Operator = params.get("Operator")
+        self.ValueComputeType = params.get("ValueComputeType")
+        if params.get("ValueList") is not None:
+            self.ValueList = []
+            for item in params.get("ValueList"):
+                obj = ThresholdValue()
+                obj._deserialize(item)
+                self.ValueList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2305,6 +2788,228 @@ class CreateOrUpdateResourceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRuleRequest(AbstractModel):
+    """CreateRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param RuleGroupId: 规则组Id
+        :type RuleGroupId: int
+        :param Name: 规则名称
+        :type Name: str
+        :param TableId: 数据表ID
+        :type TableId: str
+        :param RuleTemplateId: 规则模板列表
+        :type RuleTemplateId: int
+        :param Type: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        :type Type: int
+        :param QualityDim: 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+        :type QualityDim: int
+        :param SourceObjectDataTypeName: 源字段详细类型，int、string
+        :type SourceObjectDataTypeName: str
+        :param SourceObjectValue: 源字段名称
+        :type SourceObjectValue: str
+        :param ConditionType: 检测范围 1.全表   2.条件扫描
+        :type ConditionType: int
+        :param ConditionExpression: 条件扫描WHERE条件表达式
+        :type ConditionExpression: str
+        :param CustomSql: 自定义SQL
+        :type CustomSql: str
+        :param CompareRule: 报警触发条件
+        :type CompareRule: :class:`tencentcloud.wedata.v20210820.models.CompareRule`
+        :param AlarmLevel: 报警触发级别 1.低, 2.中, 3.高
+        :type AlarmLevel: int
+        :param Description: 规则描述
+        :type Description: str
+        :param DatasourceId: 数据源Id
+        :type DatasourceId: str
+        :param DatabaseId: 数据库Id
+        :type DatabaseId: str
+        :param TargetDatabaseId: 目标库Id
+        :type TargetDatabaseId: str
+        :param TargetTableId: 目标表Id
+        :type TargetTableId: str
+        :param TargetConditionExpr: 目标过滤条件表达式
+        :type TargetConditionExpr: str
+        :param RelConditionExpr: 源字段与目标字段关联条件on表达式
+        :type RelConditionExpr: str
+        :param FieldConfig: 自定义模版sql表达式字段替换参数
+        :type FieldConfig: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
+        :param TargetObjectValue: 目标字段名称  CITY
+        :type TargetObjectValue: str
+        """
+        self.ProjectId = None
+        self.RuleGroupId = None
+        self.Name = None
+        self.TableId = None
+        self.RuleTemplateId = None
+        self.Type = None
+        self.QualityDim = None
+        self.SourceObjectDataTypeName = None
+        self.SourceObjectValue = None
+        self.ConditionType = None
+        self.ConditionExpression = None
+        self.CustomSql = None
+        self.CompareRule = None
+        self.AlarmLevel = None
+        self.Description = None
+        self.DatasourceId = None
+        self.DatabaseId = None
+        self.TargetDatabaseId = None
+        self.TargetTableId = None
+        self.TargetConditionExpr = None
+        self.RelConditionExpr = None
+        self.FieldConfig = None
+        self.TargetObjectValue = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.Name = params.get("Name")
+        self.TableId = params.get("TableId")
+        self.RuleTemplateId = params.get("RuleTemplateId")
+        self.Type = params.get("Type")
+        self.QualityDim = params.get("QualityDim")
+        self.SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
+        self.SourceObjectValue = params.get("SourceObjectValue")
+        self.ConditionType = params.get("ConditionType")
+        self.ConditionExpression = params.get("ConditionExpression")
+        self.CustomSql = params.get("CustomSql")
+        if params.get("CompareRule") is not None:
+            self.CompareRule = CompareRule()
+            self.CompareRule._deserialize(params.get("CompareRule"))
+        self.AlarmLevel = params.get("AlarmLevel")
+        self.Description = params.get("Description")
+        self.DatasourceId = params.get("DatasourceId")
+        self.DatabaseId = params.get("DatabaseId")
+        self.TargetDatabaseId = params.get("TargetDatabaseId")
+        self.TargetTableId = params.get("TargetTableId")
+        self.TargetConditionExpr = params.get("TargetConditionExpr")
+        self.RelConditionExpr = params.get("RelConditionExpr")
+        if params.get("FieldConfig") is not None:
+            self.FieldConfig = RuleFieldConfig()
+            self.FieldConfig._deserialize(params.get("FieldConfig"))
+        self.TargetObjectValue = params.get("TargetObjectValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRuleResponse(AbstractModel):
+    """CreateRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.Rule`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = Rule()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRuleTemplateRequest(AbstractModel):
+    """CreateRuleTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 模版类型  1.系统模版   2.自定义模版
+        :type Type: int
+        :param Name: 模版名称
+        :type Name: str
+        :param QualityDim: 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
+        :type QualityDim: int
+        :param SourceObjectType: 源端数据对象类型 1.常量  2.离线表级   2.离线字段级
+        :type SourceObjectType: int
+        :param Description: 模板描述
+        :type Description: str
+        :param SourceEngineTypes: 源端对应的引擎类型
+        :type SourceEngineTypes: list of int non-negative
+        :param MultiSourceFlag: 是否关联其它库表
+        :type MultiSourceFlag: bool
+        :param SqlExpression: SQL 表达式
+        :type SqlExpression: str
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param WhereFlag: 是否添加where参数
+        :type WhereFlag: bool
+        """
+        self.Type = None
+        self.Name = None
+        self.QualityDim = None
+        self.SourceObjectType = None
+        self.Description = None
+        self.SourceEngineTypes = None
+        self.MultiSourceFlag = None
+        self.SqlExpression = None
+        self.ProjectId = None
+        self.WhereFlag = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.QualityDim = params.get("QualityDim")
+        self.SourceObjectType = params.get("SourceObjectType")
+        self.Description = params.get("Description")
+        self.SourceEngineTypes = params.get("SourceEngineTypes")
+        self.MultiSourceFlag = params.get("MultiSourceFlag")
+        self.SqlExpression = params.get("SqlExpression")
+        self.ProjectId = params.get("ProjectId")
+        self.WhereFlag = params.get("WhereFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRuleTemplateResponse(AbstractModel):
+    """CreateRuleTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 模板Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTaskAlarmRegularRequest(AbstractModel):
     """CreateTaskAlarmRegular请求参数结构体
 
@@ -2479,6 +3184,80 @@ class CreateWorkflowResponse(AbstractModel):
             self.Data = CommonId()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+
+
+class DailyScoreInfo(AbstractModel):
+    """日评分信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatisticsDate: 统计日期 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatisticsDate: int
+        :param Score: 评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: float
+        """
+        self.StatisticsDate = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.StatisticsDate = params.get("StatisticsDate")
+        self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataCheckStat(AbstractModel):
+    """数据监测情况结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableTotal: 表总数
+        :type TableTotal: int
+        :param ColumnTotal: 字段总数
+        :type ColumnTotal: int
+        :param TableConfig: 表配置检测数
+        :type TableConfig: int
+        :param ColumnConfig: 字段配置检测数
+        :type ColumnConfig: int
+        :param TableExec: 表实际检测数
+        :type TableExec: int
+        :param ColumnExec: 字段实际检测数
+        :type ColumnExec: int
+        """
+        self.TableTotal = None
+        self.ColumnTotal = None
+        self.TableConfig = None
+        self.ColumnConfig = None
+        self.TableExec = None
+        self.ColumnExec = None
+
+
+    def _deserialize(self, params):
+        self.TableTotal = params.get("TableTotal")
+        self.ColumnTotal = params.get("ColumnTotal")
+        self.TableConfig = params.get("TableConfig")
+        self.ColumnConfig = params.get("ColumnConfig")
+        self.TableExec = params.get("TableExec")
+        self.ColumnExec = params.get("ColumnExec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DataSourceInfo(AbstractModel):
@@ -2687,6 +3466,56 @@ class DataSourceInfoPage(AbstractModel):
                 self.Rows.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseInfo(AbstractModel):
+    """数据质量数据来源数据库
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param DatasourceId: 数据源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param DatabaseId: 数据库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param InstanceId: 实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
+        """
+        self.DatasourceName = None
+        self.DatasourceId = None
+        self.DatabaseName = None
+        self.DatabaseId = None
+        self.InstanceId = None
+        self.DatasourceType = None
+
+
+    def _deserialize(self, params):
+        self.DatasourceName = params.get("DatasourceName")
+        self.DatasourceId = params.get("DatasourceId")
+        self.DatabaseName = params.get("DatabaseName")
+        self.DatabaseId = params.get("DatabaseId")
+        self.InstanceId = params.get("InstanceId")
+        self.DatasourceType = params.get("DatasourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3158,6 +3987,106 @@ class DeleteResourceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRuleRequest(AbstractModel):
+    """DeleteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 质量规则ID
+        :type RuleId: int
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.RuleId = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRuleResponse(AbstractModel):
+    """DeleteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 是否删除成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRuleTemplateRequest(AbstractModel):
+    """DeleteRuleTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param Ids: 模版Id列表
+        :type Ids: list of int non-negative
+        """
+        self.ProjectId = None
+        self.Ids = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRuleTemplateResponse(AbstractModel):
+    """DeleteRuleTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 删除成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteTaskAlarmRegularRequest(AbstractModel):
     """DeleteTaskAlarmRegular请求参数结构体
 
@@ -3555,6 +4484,179 @@ class DescribeClusterNamespaceListResponse(AbstractModel):
                 obj = Namespace()
                 obj._deserialize(item)
                 self.Namespaces.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDataBasesRequest(AbstractModel):
+    """DescribeDataBases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param DatasourceId: 数据源id
+        :type DatasourceId: str
+        """
+        self.ProjectId = None
+        self.DatasourceId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.DatasourceId = params.get("DatasourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataBasesResponse(AbstractModel):
+    """DescribeDataBases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 数据来源数据数据库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DatabaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DatabaseInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDataCheckStatRequest(AbstractModel):
+    """DescribeDataCheckStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: Project id
+        :type ProjectId: str
+        :param BeginDate: 开始时间，时间戳到秒
+        :type BeginDate: str
+        :param EndDate: 结束时间，时间戳到秒
+        :type EndDate: str
+        """
+        self.ProjectId = None
+        self.BeginDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataCheckStatResponse(AbstractModel):
+    """DescribeDataCheckStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 结果
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.DataCheckStat`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DataCheckStat()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDataObjectsRequest(AbstractModel):
+    """DescribeDataObjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatasourceId: 数据来源ID
+        :type DatasourceId: str
+        :param TableId: 数据表ID
+        :type TableId: str
+        :param RuleGroupId: 质量规则组ID
+        :type RuleGroupId: int
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.DatasourceId = None
+        self.TableId = None
+        self.RuleGroupId = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.DatasourceId = params.get("DatasourceId")
+        self.TableId = params.get("TableId")
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataObjectsResponse(AbstractModel):
+    """DescribeDataObjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 数据对象列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of SourceObject
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SourceObject()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3978,6 +5080,114 @@ class DescribeDependTasksNewResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self.Data = CanvasInfo()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDimensionScoreRequest(AbstractModel):
+    """DescribeDimensionScore请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatisticsDate: 统计日期 时间戳
+        :type StatisticsDate: int
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param DatasourceId: 数据来源id
+        :type DatasourceId: str
+        """
+        self.StatisticsDate = None
+        self.ProjectId = None
+        self.DatasourceId = None
+
+
+    def _deserialize(self, params):
+        self.StatisticsDate = params.get("StatisticsDate")
+        self.ProjectId = params.get("ProjectId")
+        self.DatasourceId = params.get("DatasourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDimensionScoreResponse(AbstractModel):
+    """DescribeDimensionScore返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 维度评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.DimensionScore`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DimensionScore()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExecStrategyRequest(AbstractModel):
+    """DescribeExecStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组Id
+        :type RuleGroupId: int
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        """
+        self.RuleGroupId = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExecStrategyResponse(AbstractModel):
+    """DescribeExecStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则组执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroupExecStrategy`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroupExecStrategy()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
@@ -4861,6 +6071,69 @@ class DescribeInstanceLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstancesRequest(AbstractModel):
+    """DescribeInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param PageNumber: 页数
+        :type PageNumber: int
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self.ProjectId = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesResponse(AbstractModel):
+    """DescribeInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: Json 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeIntegrationNodeRequest(AbstractModel):
     """DescribeIntegrationNode请求参数结构体
 
@@ -5599,6 +6872,80 @@ class DescribeKafkaTopicInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMonitorsByPageRequest(AbstractModel):
+    """DescribeMonitorsByPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param OrderFields: 排序条件
+        :type OrderFields: list of OrderField
+        :param PageNumber: 分页序号
+        :type PageNumber: int
+        """
+        self.ProjectId = None
+        self.PageSize = None
+        self.Filters = None
+        self.OrderFields = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        self.PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMonitorsByPageResponse(AbstractModel):
+    """DescribeMonitorsByPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 分页查询结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroupMonitorPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroupMonitorPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOfflineTaskTokenRequest(AbstractModel):
     """DescribeOfflineTaskToken请求参数结构体
 
@@ -5694,6 +7041,74 @@ class DescribeOrganizationalFunctionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProdTasksRequest(AbstractModel):
+    """DescribeProdTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param PageSize: 页面大小
+        :type PageSize: int
+        :param PageNumber: 分页序号
+        :type PageNumber: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self.ProjectId = None
+        self.PageSize = None
+        self.PageNumber = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProdTasksResponse(AbstractModel):
+    """DescribeProdTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 生产调度任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ProdSchedulerTask
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ProdSchedulerTask()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProjectRequest(AbstractModel):
     """DescribeProject请求参数结构体
 
@@ -5756,6 +7171,122 @@ class DescribeProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeQualityScoreRequest(AbstractModel):
+    """DescribeQualityScore请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatisticsDate: 统计日期
+        :type StatisticsDate: int
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param DatasourceId: 数据来源id
+        :type DatasourceId: str
+        """
+        self.StatisticsDate = None
+        self.ProjectId = None
+        self.DatasourceId = None
+
+
+    def _deserialize(self, params):
+        self.StatisticsDate = params.get("StatisticsDate")
+        self.ProjectId = params.get("ProjectId")
+        self.DatasourceId = params.get("DatasourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQualityScoreResponse(AbstractModel):
+    """DescribeQualityScore返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 质量评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.QualityScore`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = QualityScore()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeQualityScoreTrendRequest(AbstractModel):
+    """DescribeQualityScoreTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatisticsStartDate: 统计开始日期
+        :type StatisticsStartDate: int
+        :param StatisticsEndDate: 统计结束日期
+        :type StatisticsEndDate: int
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param DatasourceId: 数据来源id
+        :type DatasourceId: str
+        """
+        self.StatisticsStartDate = None
+        self.StatisticsEndDate = None
+        self.ProjectId = None
+        self.DatasourceId = None
+
+
+    def _deserialize(self, params):
+        self.StatisticsStartDate = params.get("StatisticsStartDate")
+        self.StatisticsEndDate = params.get("StatisticsEndDate")
+        self.ProjectId = params.get("ProjectId")
+        self.DatasourceId = params.get("DatasourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQualityScoreTrendResponse(AbstractModel):
+    """DescribeQualityScoreTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 质量评分趋势视图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.QualityScoreTrend`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = QualityScoreTrend()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
 
@@ -6101,6 +7632,1384 @@ class DescribeResourceManagePathTreesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRuleDataSourcesRequest(AbstractModel):
+    """DescribeRuleDataSources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param DatasourceId: 数据来源Id
+        :type DatasourceId: str
+        """
+        self.ProjectId = None
+        self.DatasourceId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.DatasourceId = params.get("DatasourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleDataSourcesResponse(AbstractModel):
+    """DescribeRuleDataSources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 数据源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DatabaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DatabaseInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleDimStatRequest(AbstractModel):
+    """DescribeRuleDimStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: Project Id
+        :type ProjectId: str
+        :param BeginDate: 开始时间，时间戳到秒
+        :type BeginDate: str
+        :param EndDate: 结束时间，时间戳到秒
+        :type EndDate: str
+        """
+        self.ProjectId = None
+        self.BeginDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleDimStatResponse(AbstractModel):
+    """DescribeRuleDimStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 结果
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleDimStat`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleDimStat()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleExecDetailRequest(AbstractModel):
+    """DescribeRuleExecDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param RuleExecId: 规则执行id
+        :type RuleExecId: int
+        """
+        self.ProjectId = None
+        self.RuleExecId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RuleExecId = params.get("RuleExecId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleExecDetailResponse(AbstractModel):
+    """DescribeRuleExecDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则执行结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleExecResultDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleExecResultDetail()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleExecExportResultRequest(AbstractModel):
+    """DescribeRuleExecExportResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param RuleExecId: 规则执行id
+        :type RuleExecId: int
+        """
+        self.ProjectId = None
+        self.RuleExecId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RuleExecId = params.get("RuleExecId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleExecExportResultResponse(AbstractModel):
+    """DescribeRuleExecExportResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 导出结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleExecExportResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleExecExportResult()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleExecHistoryRequest(AbstractModel):
+    """DescribeRuleExecHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则Id
+        :type RuleId: int
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        """
+        self.RuleId = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleExecHistoryResponse(AbstractModel):
+    """DescribeRuleExecHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则执行结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of RuleExecResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = RuleExecResult()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleExecLogRequest(AbstractModel):
+    """DescribeRuleExecLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleExecId: 规则执行Id
+        :type RuleExecId: int
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param RuleGroupExecId: 规则组执行id
+        :type RuleGroupExecId: int
+        """
+        self.RuleExecId = None
+        self.ProjectId = None
+        self.RuleGroupExecId = None
+
+
+    def _deserialize(self, params):
+        self.RuleExecId = params.get("RuleExecId")
+        self.ProjectId = params.get("ProjectId")
+        self.RuleGroupExecId = params.get("RuleGroupExecId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleExecLogResponse(AbstractModel):
+    """DescribeRuleExecLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则执行日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleExecLog`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleExecLog()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleExecResultsByPageRequest(AbstractModel):
+    """DescribeRuleExecResultsByPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupExecId: 执行规则组ID
+        :type RuleGroupExecId: int
+        :param PageNumber: page number
+        :type PageNumber: int
+        :param PageSize: page size
+        :type PageSize: int
+        """
+        self.RuleGroupExecId = None
+        self.PageNumber = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupExecId = params.get("RuleGroupExecId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleExecResultsByPageResponse(AbstractModel):
+    """DescribeRuleExecResultsByPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: results
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleExecResultPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleExecResultPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleExecResultsRequest(AbstractModel):
+    """DescribeRuleExecResults请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupExecId: 规则组执行Id
+        :type RuleGroupExecId: int
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        """
+        self.RuleGroupExecId = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupExecId = params.get("RuleGroupExecId")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleExecResultsResponse(AbstractModel):
+    """DescribeRuleExecResults返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则执行结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleExecResultPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleExecResultPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleExecStatRequest(AbstractModel):
+    """DescribeRuleExecStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: ProjectId 值
+        :type ProjectId: str
+        :param BeginDate: 开始时间，时间戳到秒
+        :type BeginDate: str
+        :param EndDate: 结束时间，时间戳到秒
+        :type EndDate: str
+        """
+        self.ProjectId = None
+        self.BeginDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleExecStatResponse(AbstractModel):
+    """DescribeRuleExecStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 结果
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleExecStat`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleExecStat()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleGroupExecResultsByPageRequest(AbstractModel):
+    """DescribeRuleGroupExecResultsByPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 分页序号
+        :type PageNumber: int
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param OrderFields: 排序字段
+        :type OrderFields: list of OrderField
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+        self.OrderFields = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleGroupExecResultsByPageResponse(AbstractModel):
+    """DescribeRuleGroupExecResultsByPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则组执行结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroupExecResultPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroupExecResultPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleGroupExecResultsByPageWithoutAuthRequest(AbstractModel):
+    """DescribeRuleGroupExecResultsByPageWithoutAuth请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 分页序号
+        :type PageNumber: int
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param Filters: 过滤条件，指定表ID过滤字段为 TableIds
+        :type Filters: list of Filter
+        :param OrderFields: 排序字段
+        :type OrderFields: list of OrderField
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+        self.OrderFields = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleGroupExecResultsByPageWithoutAuthResponse(AbstractModel):
+    """DescribeRuleGroupExecResultsByPageWithoutAuth返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则组执行结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroupExecResultPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroupExecResultPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleGroupRequest(AbstractModel):
+    """DescribeRuleGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组ID
+        :type RuleGroupId: int
+        :param DatasourceId: 数据来源ID
+        :type DatasourceId: str
+        :param TableId: 数据表Id
+        :type TableId: str
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param DatabaseId: 数据库ID
+        :type DatabaseId: str
+        """
+        self.RuleGroupId = None
+        self.DatasourceId = None
+        self.TableId = None
+        self.ProjectId = None
+        self.DatabaseId = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.DatasourceId = params.get("DatasourceId")
+        self.TableId = params.get("TableId")
+        self.ProjectId = params.get("ProjectId")
+        self.DatabaseId = params.get("DatabaseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleGroupResponse(AbstractModel):
+    """DescribeRuleGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 数据质量规则组详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroup`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroup()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleGroupSubscriptionRequest(AbstractModel):
+    """DescribeRuleGroupSubscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组ID
+        :type RuleGroupId: int
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.RuleGroupId = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleGroupSubscriptionResponse(AbstractModel):
+    """DescribeRuleGroupSubscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则组订阅信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroupSubscribe`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroupSubscribe()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleGroupTableRequest(AbstractModel):
+    """DescribeRuleGroupTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableId: 表ID
+        :type TableId: str
+        """
+        self.TableId = None
+
+
+    def _deserialize(self, params):
+        self.TableId = params.get("TableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleGroupTableResponse(AbstractModel):
+    """DescribeRuleGroupTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroupTable`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroupTable()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleGroupsByPageRequest(AbstractModel):
+    """DescribeRuleGroupsByPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 分页序号
+        :type PageNumber: int
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param Filters: 过滤条件,每次请求的Filters的上限为10，Filter.Values的上限为5
+        :type Filters: list of Filter
+        :param OrderFields: 排序方式
+        :type OrderFields: list of OrderField
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+        self.OrderFields = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleGroupsByPageResponse(AbstractModel):
+    """DescribeRuleGroupsByPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroupPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroupPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleHistoryByPageRequest(AbstractModel):
+    """DescribeRuleHistoryByPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param PageNumber: 分页序号
+        :type PageNumber: int
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self.ProjectId = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleHistoryByPageResponse(AbstractModel):
+    """DescribeRuleHistoryByPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则组操作历史列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleHistoryPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleHistoryPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleRequest(AbstractModel):
+    """DescribeRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 质量规则ID
+        :type RuleId: int
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.RuleId = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleResponse(AbstractModel):
+    """DescribeRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.Rule`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = Rule()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleTablesByPageRequest(AbstractModel):
+    """DescribeRuleTablesByPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param PageSize: 分页序号
+        :type PageSize: int
+        :param PageNumber: 分页大小
+        :type PageNumber: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param OrderFields: 排序条件
+        :type OrderFields: list of OrderField
+        """
+        self.ProjectId = None
+        self.PageSize = None
+        self.PageNumber = None
+        self.Filters = None
+        self.OrderFields = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleTablesByPageResponse(AbstractModel):
+    """DescribeRuleTablesByPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 表列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleGroupPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleGroupPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleTemplateRequest(AbstractModel):
+    """DescribeRuleTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param TemplateId: 规则模板Id
+        :type TemplateId: int
+        """
+        self.ProjectId = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleTemplateResponse(AbstractModel):
+    """DescribeRuleTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 模板详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleTemplate`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleTemplate()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleTemplatesByPageRequest(AbstractModel):
+    """DescribeRuleTemplatesByPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 当前页
+        :type PageNumber: int
+        :param PageSize: 每页记录数
+        :type PageSize: int
+        :param ProjectId: 工作空间ID
+        :type ProjectId: str
+        :param OrderFields: 通用排序字段
+        :type OrderFields: list of OrderField
+        :param Filters: 通用过滤条件
+        :type Filters: list of Filter
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.ProjectId = None
+        self.OrderFields = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleTemplatesByPageResponse(AbstractModel):
+    """DescribeRuleTemplatesByPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 结果
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleTemplatePage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleTemplatePage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleTemplatesRequest(AbstractModel):
+    """DescribeRuleTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 模版类型 1.系统模版 2.自定义模版
+        :type Type: int
+        :param SourceObjectType: 1.常量 2.离线表级 2.离线字段级
+        :type SourceObjectType: int
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        """
+        self.Type = None
+        self.SourceObjectType = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.SourceObjectType = params.get("SourceObjectType")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleTemplatesResponse(AbstractModel):
+    """DescribeRuleTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则模版列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of RuleTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = RuleTemplate()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRulesByPageRequest(AbstractModel):
+    """DescribeRulesByPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 分页序号
+        :type PageNumber: int
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param OrderFields: 排序字段
+        :type OrderFields: list of OrderField
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+        self.OrderFields = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRulesByPageResponse(AbstractModel):
+    """DescribeRulesByPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则质量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RulePage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RulePage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRulesRequest(AbstractModel):
+    """DescribeRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param RuleGroupId: 规则组id
+        :type RuleGroupId: int
+        """
+        self.ProjectId = None
+        self.RuleGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RuleGroupId = params.get("RuleGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRulesResponse(AbstractModel):
+    """DescribeRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of Rule
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = Rule()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStandardRuleDetailInfoListRequest(AbstractModel):
     """DescribeStandardRuleDetailInfoList请求参数结构体
 
@@ -6303,6 +9212,88 @@ class DescribeTableInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTableQualityDetailsRequest(AbstractModel):
+    """DescribeTableQualityDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatisticsDate: 统计日期
+        :type StatisticsDate: int
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param PageNumber: 分页序号
+        :type PageNumber: int
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param Filters: 过滤参数TableName、DatabaseId 、DatabaseName、OwnerUserName
+        :type Filters: list of Filter
+        :param OrderFields: 排序参数 排序方式 DESC 或者 ASC，表得分排序 TableScore
+        :type OrderFields: list of OrderField
+        :param DatasourceId: 数据来源id
+        :type DatasourceId: str
+        """
+        self.StatisticsDate = None
+        self.ProjectId = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+        self.OrderFields = None
+        self.DatasourceId = None
+
+
+    def _deserialize(self, params):
+        self.StatisticsDate = params.get("StatisticsDate")
+        self.ProjectId = params.get("ProjectId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        self.DatasourceId = params.get("DatasourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableQualityDetailsResponse(AbstractModel):
+    """DescribeTableQualityDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 表质量分详情结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.TableQualityDetailPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TableQualityDetailPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTableSchemaInfoRequest(AbstractModel):
     """DescribeTableSchemaInfo请求参数结构体
 
@@ -6371,6 +9362,66 @@ class DescribeTableSchemaInfoResponse(AbstractModel):
                 obj = SchemaDetail()
                 obj._deserialize(item)
                 self.SchemaInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTableScoreTrendRequest(AbstractModel):
+    """DescribeTableScoreTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param StatisticsStartDate: 开始时间 秒级时间戳
+        :type StatisticsStartDate: int
+        :param StatisticsEndDate: 结束时间 秒级时间戳
+        :type StatisticsEndDate: int
+        :param TableId: 表id
+        :type TableId: str
+        """
+        self.ProjectId = None
+        self.StatisticsStartDate = None
+        self.StatisticsEndDate = None
+        self.TableId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.StatisticsStartDate = params.get("StatisticsStartDate")
+        self.StatisticsEndDate = params.get("StatisticsEndDate")
+        self.TableId = params.get("TableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableScoreTrendResponse(AbstractModel):
+    """DescribeTableScoreTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 表得分趋势
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.QualityScoreTrend`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = QualityScoreTrend()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
 
@@ -7137,6 +10188,352 @@ class DescribeTasksByPageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTemplateDimCountRequest(AbstractModel):
+    """DescribeTemplateDimCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 模版类型
+        :type Type: int
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.Type = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTemplateDimCountResponse(AbstractModel):
+    """DescribeTemplateDimCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 维度统计结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DimensionCount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DimensionCount()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTemplateHistoryRequest(AbstractModel):
+    """DescribeTemplateHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 分页序号
+        :type PageNumber: int
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTemplateHistoryResponse(AbstractModel):
+    """DescribeTemplateHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 分页记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RuleTemplateHistoryPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = RuleTemplateHistoryPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopTableStatRequest(AbstractModel):
+    """DescribeTopTableStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: Project Id
+        :type ProjectId: str
+        :param BeginDate: 开始时间，时间戳到秒
+        :type BeginDate: str
+        :param EndDate: 结束时间，时间戳到秒
+        :type EndDate: str
+        """
+        self.ProjectId = None
+        self.BeginDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopTableStatResponse(AbstractModel):
+    """DescribeTopTableStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 结果
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.TopTableStat`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TopTableStat()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTrendStatRequest(AbstractModel):
+    """DescribeTrendStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: Project id
+        :type ProjectId: str
+        :param BeginDate: 开始时间，时间戳到秒
+        :type BeginDate: str
+        :param EndDate: 结束时间，时间戳到秒
+        :type EndDate: str
+        """
+        self.ProjectId = None
+        self.BeginDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrendStatResponse(AbstractModel):
+    """DescribeTrendStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 结果
+        :type Data: list of RuleExecDateStat
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = RuleExecDateStat()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DimensionCount(AbstractModel):
+    """维度统计业务视图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DimType: 维度类型1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimType: int
+        :param Count: 统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.DimType = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.DimType = params.get("DimType")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DimensionScore(AbstractModel):
+    """维度评分
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DimensionScoreList: 维度评分列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimensionScoreList: list of DimensionScoreInfo
+        """
+        self.DimensionScoreList = None
+
+
+    def _deserialize(self, params):
+        if params.get("DimensionScoreList") is not None:
+            self.DimensionScoreList = []
+            for item in params.get("DimensionScoreList"):
+                obj = DimensionScoreInfo()
+                obj._deserialize(item)
+                self.DimensionScoreList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DimensionScoreInfo(AbstractModel):
+    """维度评分信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 维度名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Weight: 权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: float
+        :param UserId: 设置人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: int
+        :param UserName: 设置人名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param UpdateTime: 更新时间 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param JoinTableNumber: 参与评估表数量
+        :type JoinTableNumber: int
+        :param Score: 评分
+        :type Score: float
+        """
+        self.Name = None
+        self.Weight = None
+        self.UserId = None
+        self.UserName = None
+        self.UpdateTime = None
+        self.JoinTableNumber = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Weight = params.get("Weight")
+        self.UserId = params.get("UserId")
+        self.UserName = params.get("UserName")
+        self.UpdateTime = params.get("UpdateTime")
+        self.JoinTableNumber = params.get("JoinTableNumber")
+        self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DryRunDIOfflineTaskRequest(AbstractModel):
     """DryRunDIOfflineTask请求参数结构体
 
@@ -7208,6 +10605,106 @@ class DryRunDIOfflineTaskResponse(AbstractModel):
         self.TaskId = params.get("TaskId")
         self.TaskInstanceKey = params.get("TaskInstanceKey")
         self.RequestId = params.get("RequestId")
+
+
+class ExportTaskInfo(AbstractModel):
+    """数据导出任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExportTaskId: 导出任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExportTaskId: int
+        :param TaskType: 导出任务类型(1.全部,2.触发行,3.通过行)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: int
+        :param OperatorId: 任务创建人 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorId: int
+        :param OperatorName: 任务创建人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorName: str
+        :param CreateTime: 任务创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Status: 导出状态(1.已提交 2.导出中 3.导出成功 4.导出失败)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param SchedulerTaskId: 调度任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerTaskId: str
+        :param SchedulerCurRunDate: 调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerCurRunDate: str
+        :param FilePath: 文件相对路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilePath: str
+        """
+        self.ExportTaskId = None
+        self.TaskType = None
+        self.OperatorId = None
+        self.OperatorName = None
+        self.CreateTime = None
+        self.Status = None
+        self.SchedulerTaskId = None
+        self.SchedulerCurRunDate = None
+        self.FilePath = None
+
+
+    def _deserialize(self, params):
+        self.ExportTaskId = params.get("ExportTaskId")
+        self.TaskType = params.get("TaskType")
+        self.OperatorId = params.get("OperatorId")
+        self.OperatorName = params.get("OperatorName")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.SchedulerTaskId = params.get("SchedulerTaskId")
+        self.SchedulerCurRunDate = params.get("SchedulerCurRunDate")
+        self.FilePath = params.get("FilePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FieldConfig(AbstractModel):
+    """字段变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FieldKey: 字段key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldKey: str
+        :param FieldValue: 字段值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldValue: str
+        :param FieldDataType: 字段值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldDataType: str
+        """
+        self.FieldKey = None
+        self.FieldValue = None
+        self.FieldDataType = None
+
+
+    def _deserialize(self, params):
+        self.FieldKey = params.get("FieldKey")
+        self.FieldValue = params.get("FieldValue")
+        self.FieldDataType = params.get("FieldDataType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Filter(AbstractModel):
@@ -9289,6 +12786,180 @@ class ModifyDataSourceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDimensionWeightRequest(AbstractModel):
+    """ModifyDimensionWeight请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WeightInfoList: 权重信息列表
+        :type WeightInfoList: list of WeightInfo
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param Refresh: 是否重刷历史数据
+        :type Refresh: bool
+        """
+        self.WeightInfoList = None
+        self.ProjectId = None
+        self.Refresh = None
+
+
+    def _deserialize(self, params):
+        if params.get("WeightInfoList") is not None:
+            self.WeightInfoList = []
+            for item in params.get("WeightInfoList"):
+                obj = WeightInfo()
+                obj._deserialize(item)
+                self.WeightInfoList.append(obj)
+        self.ProjectId = params.get("ProjectId")
+        self.Refresh = params.get("Refresh")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDimensionWeightResponse(AbstractModel):
+    """ModifyDimensionWeight返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 更新权重是否成功
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyExecStrategyRequest(AbstractModel):
+    """ModifyExecStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组ID
+        :type RuleGroupId: int
+        :param MonitorType: 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+        :type MonitorType: int
+        :param ExecQueue: 计算队列
+        :type ExecQueue: str
+        :param ExecutorGroupId: 执行资源组ID
+        :type ExecutorGroupId: str
+        :param ExecutorGroupName: 执行资源组名称
+        :type ExecutorGroupName: str
+        :param Tasks: 关联的生产调度任务列表
+        :type Tasks: list of ProdSchedulerTask
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param StartTime: 离线周期模式下,生效日期-开始时间
+        :type StartTime: str
+        :param EndTime: 离线周期模式下,生效日期-结束时间
+        :type EndTime: str
+        :param CycleType: 离线周期模式下,调度周期 
+MINUTE_CYCLE:I,
+HOUR_CYCLE:H,
+DAY_CYCLE:D,
+WEEK_CYCLE:W,
+MONTH_CYCLE:M
+        :type CycleType: str
+        :param CycleStep: 离线周期模式下,调度步长
+        :type CycleStep: int
+        :param TaskAction: 离线周期模式下,指定时间
+        :type TaskAction: str
+        :param DelayTime: 延时执行时间，单位分钟，可选: <0-1439
+        :type DelayTime: int
+        :param DatabaseId: 数据库Id
+        :type DatabaseId: str
+        :param DatasourceId: 数据源Id
+        :type DatasourceId: str
+        :param TableId: 数据表Id
+        :type TableId: str
+        """
+        self.RuleGroupId = None
+        self.MonitorType = None
+        self.ExecQueue = None
+        self.ExecutorGroupId = None
+        self.ExecutorGroupName = None
+        self.Tasks = None
+        self.ProjectId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CycleType = None
+        self.CycleStep = None
+        self.TaskAction = None
+        self.DelayTime = None
+        self.DatabaseId = None
+        self.DatasourceId = None
+        self.TableId = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.MonitorType = params.get("MonitorType")
+        self.ExecQueue = params.get("ExecQueue")
+        self.ExecutorGroupId = params.get("ExecutorGroupId")
+        self.ExecutorGroupName = params.get("ExecutorGroupName")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = ProdSchedulerTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.ProjectId = params.get("ProjectId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CycleType = params.get("CycleType")
+        self.CycleStep = params.get("CycleStep")
+        self.TaskAction = params.get("TaskAction")
+        self.DelayTime = params.get("DelayTime")
+        self.DatabaseId = params.get("DatabaseId")
+        self.DatasourceId = params.get("DatasourceId")
+        self.TableId = params.get("TableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyExecStrategyResponse(AbstractModel):
+    """ModifyExecStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyFolderRequest(AbstractModel):
     """ModifyFolder请求参数结构体
 
@@ -9462,6 +13133,355 @@ class ModifyIntegrationTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyMonitorStatusRequest(AbstractModel):
+    """ModifyMonitorStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param RuleGroupId: 规则组ID
+        :type RuleGroupId: int
+        :param MonitorStatus: 监控开关状态
+        :type MonitorStatus: bool
+        """
+        self.ProjectId = None
+        self.RuleGroupId = None
+        self.MonitorStatus = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.MonitorStatus = params.get("MonitorStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMonitorStatusResponse(AbstractModel):
+    """ModifyMonitorStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 监控状态修改成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRuleGroupSubscriptionRequest(AbstractModel):
+    """ModifyRuleGroupSubscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组ID
+        :type RuleGroupId: int
+        :param Receivers: 订阅人信息
+        :type Receivers: list of SubscribeReceiver
+        :param SubscribeType: 订阅类型
+        :type SubscribeType: list of int non-negative
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param DatabaseId: 数据库Id
+        :type DatabaseId: str
+        :param DatasourceId: 数据源Id
+        :type DatasourceId: str
+        :param TableId: 数据表Id
+        :type TableId: str
+        """
+        self.RuleGroupId = None
+        self.Receivers = None
+        self.SubscribeType = None
+        self.ProjectId = None
+        self.DatabaseId = None
+        self.DatasourceId = None
+        self.TableId = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        if params.get("Receivers") is not None:
+            self.Receivers = []
+            for item in params.get("Receivers"):
+                obj = SubscribeReceiver()
+                obj._deserialize(item)
+                self.Receivers.append(obj)
+        self.SubscribeType = params.get("SubscribeType")
+        self.ProjectId = params.get("ProjectId")
+        self.DatabaseId = params.get("DatabaseId")
+        self.DatasourceId = params.get("DatasourceId")
+        self.TableId = params.get("TableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRuleGroupSubscriptionResponse(AbstractModel):
+    """ModifyRuleGroupSubscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRuleRequest(AbstractModel):
+    """ModifyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param RuleId: 规则ID
+        :type RuleId: int
+        :param RuleGroupId: 规则组ID
+        :type RuleGroupId: int
+        :param Name: 规则名称
+        :type Name: str
+        :param TableId: 数据表ID
+        :type TableId: str
+        :param RuleTemplateId: 规则模板ID
+        :type RuleTemplateId: int
+        :param Type: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+        :type Type: int
+        :param QualityDim: 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+        :type QualityDim: int
+        :param SourceObjectDataTypeName: 源字段详细类型，int、string
+        :type SourceObjectDataTypeName: str
+        :param SourceObjectValue: 源字段名称
+        :type SourceObjectValue: str
+        :param ConditionType: 检测范围 1.全表   2.条件扫描
+        :type ConditionType: int
+        :param ConditionExpression: 条件扫描WHERE条件表达式
+        :type ConditionExpression: str
+        :param CustomSql: 自定义SQL
+        :type CustomSql: str
+        :param CompareRule: 报警触发条件
+        :type CompareRule: :class:`tencentcloud.wedata.v20210820.models.CompareRule`
+        :param AlarmLevel: 报警触发级别 1.低, 2.中, 3.高
+        :type AlarmLevel: int
+        :param Description: 规则描述
+        :type Description: str
+        :param TargetDatabaseId: 目标库Id
+        :type TargetDatabaseId: str
+        :param TargetTableId: 目标表Id
+        :type TargetTableId: str
+        :param TargetConditionExpr: 目标过滤条件表达式
+        :type TargetConditionExpr: str
+        :param RelConditionExpr: 源字段与目标字段关联条件on表达式
+        :type RelConditionExpr: str
+        :param FieldConfig: 自定义模版sql表达式字段替换参数
+        :type FieldConfig: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
+        :param TargetObjectValue: 目标字段名称  CITY
+        :type TargetObjectValue: str
+        """
+        self.ProjectId = None
+        self.RuleId = None
+        self.RuleGroupId = None
+        self.Name = None
+        self.TableId = None
+        self.RuleTemplateId = None
+        self.Type = None
+        self.QualityDim = None
+        self.SourceObjectDataTypeName = None
+        self.SourceObjectValue = None
+        self.ConditionType = None
+        self.ConditionExpression = None
+        self.CustomSql = None
+        self.CompareRule = None
+        self.AlarmLevel = None
+        self.Description = None
+        self.TargetDatabaseId = None
+        self.TargetTableId = None
+        self.TargetConditionExpr = None
+        self.RelConditionExpr = None
+        self.FieldConfig = None
+        self.TargetObjectValue = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RuleId = params.get("RuleId")
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.Name = params.get("Name")
+        self.TableId = params.get("TableId")
+        self.RuleTemplateId = params.get("RuleTemplateId")
+        self.Type = params.get("Type")
+        self.QualityDim = params.get("QualityDim")
+        self.SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
+        self.SourceObjectValue = params.get("SourceObjectValue")
+        self.ConditionType = params.get("ConditionType")
+        self.ConditionExpression = params.get("ConditionExpression")
+        self.CustomSql = params.get("CustomSql")
+        if params.get("CompareRule") is not None:
+            self.CompareRule = CompareRule()
+            self.CompareRule._deserialize(params.get("CompareRule"))
+        self.AlarmLevel = params.get("AlarmLevel")
+        self.Description = params.get("Description")
+        self.TargetDatabaseId = params.get("TargetDatabaseId")
+        self.TargetTableId = params.get("TargetTableId")
+        self.TargetConditionExpr = params.get("TargetConditionExpr")
+        self.RelConditionExpr = params.get("RelConditionExpr")
+        if params.get("FieldConfig") is not None:
+            self.FieldConfig = RuleFieldConfig()
+            self.FieldConfig._deserialize(params.get("FieldConfig"))
+        self.TargetObjectValue = params.get("TargetObjectValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRuleResponse(AbstractModel):
+    """ModifyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 是否更新成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRuleTemplateRequest(AbstractModel):
+    """ModifyRuleTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模版ID
+        :type TemplateId: int
+        :param Type: 模版类型  1.系统模版   2.自定义模版
+        :type Type: int
+        :param Name: 模版名称
+        :type Name: str
+        :param QualityDim: 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
+        :type QualityDim: int
+        :param SourceObjectType: 源端数据对象类型 1.常量  2.离线表级   2.离线字段级
+        :type SourceObjectType: int
+        :param Description: 描述
+        :type Description: str
+        :param SourceEngineTypes: 源端对应的引擎类型
+        :type SourceEngineTypes: list of int non-negative
+        :param MultiSourceFlag: 是否关联其它库表
+        :type MultiSourceFlag: bool
+        :param SqlExpression: SQL 表达式
+        :type SqlExpression: str
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        :param WhereFlag: 是否添加where参数
+        :type WhereFlag: bool
+        """
+        self.TemplateId = None
+        self.Type = None
+        self.Name = None
+        self.QualityDim = None
+        self.SourceObjectType = None
+        self.Description = None
+        self.SourceEngineTypes = None
+        self.MultiSourceFlag = None
+        self.SqlExpression = None
+        self.ProjectId = None
+        self.WhereFlag = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.QualityDim = params.get("QualityDim")
+        self.SourceObjectType = params.get("SourceObjectType")
+        self.Description = params.get("Description")
+        self.SourceEngineTypes = params.get("SourceEngineTypes")
+        self.MultiSourceFlag = params.get("MultiSourceFlag")
+        self.SqlExpression = params.get("SqlExpression")
+        self.ProjectId = params.get("ProjectId")
+        self.WhereFlag = params.get("WhereFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRuleTemplateResponse(AbstractModel):
+    """ModifyRuleTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 修改成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 
@@ -10517,6 +14537,116 @@ class ParamInfo(AbstractModel):
         
 
 
+class ProdSchedulerTask(AbstractModel):
+    """数据质量生产调度任务业务实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkflowId: 生产调度任务工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param TaskId: 生产调度任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param TaskName: 生产调度任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        """
+        self.WorkflowId = None
+        self.TaskId = None
+        self.TaskName = None
+
+
+    def _deserialize(self, params):
+        self.WorkflowId = params.get("WorkflowId")
+        self.TaskId = params.get("TaskId")
+        self.TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityScore(AbstractModel):
+    """质量评分
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CompositeScore: 综合分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompositeScore: float
+        :param ScoringDistribution: 评分分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScoringDistribution: list of TableScoreStatisticsInfo
+        :param TotalTableNumber: 总表数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalTableNumber: int
+        """
+        self.CompositeScore = None
+        self.ScoringDistribution = None
+        self.TotalTableNumber = None
+
+
+    def _deserialize(self, params):
+        self.CompositeScore = params.get("CompositeScore")
+        if params.get("ScoringDistribution") is not None:
+            self.ScoringDistribution = []
+            for item in params.get("ScoringDistribution"):
+                obj = TableScoreStatisticsInfo()
+                obj._deserialize(item)
+                self.ScoringDistribution.append(obj)
+        self.TotalTableNumber = params.get("TotalTableNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityScoreTrend(AbstractModel):
+    """质量评分趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AverageScore: 周期平均分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AverageScore: float
+        :param DailyScoreList: 日评分列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DailyScoreList: list of DailyScoreInfo
+        """
+        self.AverageScore = None
+        self.DailyScoreList = None
+
+
+    def _deserialize(self, params):
+        self.AverageScore = params.get("AverageScore")
+        if params.get("DailyScoreList") is not None:
+            self.DailyScoreList = []
+            for item in params.get("DailyScoreList"):
+                obj = DailyScoreInfo()
+                obj._deserialize(item)
+                self.DailyScoreList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RealTimeTaskInstanceNodeInfo(AbstractModel):
     """实时任务实例当前的节点信息
 
@@ -11126,6 +15256,1767 @@ class RobLockState(AbstractModel):
         
 
 
+class Rule(AbstractModel):
+    """数据质量规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param RuleGroupId: 规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param TableId: 数据表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param Name: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Type: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param RuleTemplateId: 规则模板Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateId: int
+        :param RuleTemplateContent: 规则模板概述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateContent: str
+        :param QualityDim: 规则所属质量维度 1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityDim: int
+        :param SourceObjectType: 规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectType: int
+        :param SourceObjectDataType: 规则适用的源数据对象类型（1：数值，2：字符串）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectDataType: int
+        :param SourceObjectDataTypeName: 源字段详细类型，INT、STRING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectDataTypeName: str
+        :param SourceObjectValue: 源字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectValue: str
+        :param ConditionType: 检测范围 1.全表, 2.条件扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionType: int
+        :param ConditionExpression: 条件扫描WHERE条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionExpression: str
+        :param CustomSql: 自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomSql: str
+        :param CompareRule: 报警触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareRule: :class:`tencentcloud.wedata.v20210820.models.CompareRule`
+        :param AlarmLevel: 报警触发级别 1.低, 2.中, 3.高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
+        :param Description: 规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Operator: 规则配置人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param TargetDatabaseId: 目标库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDatabaseId: str
+        :param TargetDatabaseName: 目标库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDatabaseName: str
+        :param TargetTableId: 目标表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTableId: str
+        :param TargetTableName: 目标表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetTableName: str
+        :param TargetConditionExpr: 目标字段过滤条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetConditionExpr: str
+        :param RelConditionExpr: 源字段与目标字段关联条件on表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelConditionExpr: str
+        :param FieldConfig: 自定义模版sql表达式参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldConfig: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
+        :param MultiSourceFlag: 是否关联多表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiSourceFlag: bool
+        :param WhereFlag: 是否where参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhereFlag: bool
+        """
+        self.RuleId = None
+        self.RuleGroupId = None
+        self.TableId = None
+        self.Name = None
+        self.Type = None
+        self.RuleTemplateId = None
+        self.RuleTemplateContent = None
+        self.QualityDim = None
+        self.SourceObjectType = None
+        self.SourceObjectDataType = None
+        self.SourceObjectDataTypeName = None
+        self.SourceObjectValue = None
+        self.ConditionType = None
+        self.ConditionExpression = None
+        self.CustomSql = None
+        self.CompareRule = None
+        self.AlarmLevel = None
+        self.Description = None
+        self.Operator = None
+        self.TargetDatabaseId = None
+        self.TargetDatabaseName = None
+        self.TargetTableId = None
+        self.TargetTableName = None
+        self.TargetConditionExpr = None
+        self.RelConditionExpr = None
+        self.FieldConfig = None
+        self.MultiSourceFlag = None
+        self.WhereFlag = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.TableId = params.get("TableId")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.RuleTemplateId = params.get("RuleTemplateId")
+        self.RuleTemplateContent = params.get("RuleTemplateContent")
+        self.QualityDim = params.get("QualityDim")
+        self.SourceObjectType = params.get("SourceObjectType")
+        self.SourceObjectDataType = params.get("SourceObjectDataType")
+        self.SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
+        self.SourceObjectValue = params.get("SourceObjectValue")
+        self.ConditionType = params.get("ConditionType")
+        self.ConditionExpression = params.get("ConditionExpression")
+        self.CustomSql = params.get("CustomSql")
+        if params.get("CompareRule") is not None:
+            self.CompareRule = CompareRule()
+            self.CompareRule._deserialize(params.get("CompareRule"))
+        self.AlarmLevel = params.get("AlarmLevel")
+        self.Description = params.get("Description")
+        self.Operator = params.get("Operator")
+        self.TargetDatabaseId = params.get("TargetDatabaseId")
+        self.TargetDatabaseName = params.get("TargetDatabaseName")
+        self.TargetTableId = params.get("TargetTableId")
+        self.TargetTableName = params.get("TargetTableName")
+        self.TargetConditionExpr = params.get("TargetConditionExpr")
+        self.RelConditionExpr = params.get("RelConditionExpr")
+        if params.get("FieldConfig") is not None:
+            self.FieldConfig = RuleFieldConfig()
+            self.FieldConfig._deserialize(params.get("FieldConfig"))
+        self.MultiSourceFlag = params.get("MultiSourceFlag")
+        self.WhereFlag = params.get("WhereFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleConfig(AbstractModel):
+    """规则配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param ConditionType: 规则检测范围类型 1.全表  2.条件扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionType: int
+        :param Condition: 检测范围表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Condition: str
+        :param TargetCondition: 目标检测范围表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetCondition: str
+        """
+        self.RuleId = None
+        self.ConditionType = None
+        self.Condition = None
+        self.TargetCondition = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.ConditionType = params.get("ConditionType")
+        self.Condition = params.get("Condition")
+        self.TargetCondition = params.get("TargetCondition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleDimCnt(AbstractModel):
+    """RuleDimCnt 规则维度统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Dim: 1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+        :type Dim: int
+        :param Cnt: count 数
+        :type Cnt: int
+        """
+        self.Dim = None
+        self.Cnt = None
+
+
+    def _deserialize(self, params):
+        self.Dim = params.get("Dim")
+        self.Cnt = params.get("Cnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleDimStat(AbstractModel):
+    """规则维度数统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCnt: 总数
+        :type TotalCnt: int
+        :param DimCntList: 维度统计数
+        :type DimCntList: list of RuleDimCnt
+        """
+        self.TotalCnt = None
+        self.DimCntList = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("DimCntList") is not None:
+            self.DimCntList = []
+            for item in params.get("DimCntList"):
+                obj = RuleDimCnt()
+                obj._deserialize(item)
+                self.DimCntList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExecConfig(AbstractModel):
+    """规则执行配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueueName: 计算队列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueName: str
+        :param ExecutorGroupId: 执行资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupId: str
+        """
+        self.QueueName = None
+        self.ExecutorGroupId = None
+
+
+    def _deserialize(self, params):
+        self.QueueName = params.get("QueueName")
+        self.ExecutorGroupId = params.get("ExecutorGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExecDateStat(AbstractModel):
+    """概览趋势结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatDate: 统计日期
+        :type StatDate: str
+        :param AlarmCnt: 告警数
+        :type AlarmCnt: int
+        :param PipelineCnt: 阻塞数
+        :type PipelineCnt: int
+        """
+        self.StatDate = None
+        self.AlarmCnt = None
+        self.PipelineCnt = None
+
+
+    def _deserialize(self, params):
+        self.StatDate = params.get("StatDate")
+        self.AlarmCnt = params.get("AlarmCnt")
+        self.PipelineCnt = params.get("PipelineCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExecExportResult(AbstractModel):
+    """规则执行结果导出结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleExecId: 规则执行id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExecId: int
+        :param ExportTasks: 导出任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExportTasks: list of ExportTaskInfo
+        """
+        self.RuleExecId = None
+        self.ExportTasks = None
+
+
+    def _deserialize(self, params):
+        self.RuleExecId = params.get("RuleExecId")
+        if params.get("ExportTasks") is not None:
+            self.ExportTasks = []
+            for item in params.get("ExportTasks"):
+                obj = ExportTaskInfo()
+                obj._deserialize(item)
+                self.ExportTasks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExecLog(AbstractModel):
+    """规则执行日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Finished: 是否完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Finished: bool
+        :param Log: 内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Log: str
+        """
+        self.Finished = None
+        self.Log = None
+
+
+    def _deserialize(self, params):
+        self.Finished = params.get("Finished")
+        self.Log = params.get("Log")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExecResult(AbstractModel):
+    """规则执行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleExecId: 规则执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExecId: int
+        :param RuleGroupExecId: 规则组执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupExecId: int
+        :param RuleGroupId: 规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param RuleId: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param RuleType: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: int
+        :param SourceObjectDataTypeName: 源字段详细类型，int string
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectDataTypeName: str
+        :param SourceObjectValue: 源字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectValue: str
+        :param ConditionExpression: 条件扫描WHERE条件表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionExpression: str
+        :param ExecResultStatus: 检测结果（1:检测通过，2：触发规则，3：检测失败）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecResultStatus: int
+        :param TriggerResult: 触发结果，告警发送成功, 阻断任务成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerResult: str
+        :param CompareResult: 对比结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareResult: :class:`tencentcloud.wedata.v20210820.models.CompareResult`
+        :param TemplateName: 模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateName: str
+        :param QualityDim: 质量维度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityDim: int
+        :param TargetDBTableName: 目标表-库表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetDBTableName: str
+        :param TargetObjectValue: 目标表-字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectValue: str
+        :param TargetObjectDataType: 目标表-字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectDataType: str
+        :param FieldConfig: 自定义模版sql表达式参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldConfig: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
+        :param RelConditionExpr: 源字段与目标字段关联条件on表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelConditionExpr: str
+        """
+        self.RuleExecId = None
+        self.RuleGroupExecId = None
+        self.RuleGroupId = None
+        self.RuleId = None
+        self.RuleName = None
+        self.RuleType = None
+        self.SourceObjectDataTypeName = None
+        self.SourceObjectValue = None
+        self.ConditionExpression = None
+        self.ExecResultStatus = None
+        self.TriggerResult = None
+        self.CompareResult = None
+        self.TemplateName = None
+        self.QualityDim = None
+        self.TargetDBTableName = None
+        self.TargetObjectValue = None
+        self.TargetObjectDataType = None
+        self.FieldConfig = None
+        self.RelConditionExpr = None
+
+
+    def _deserialize(self, params):
+        self.RuleExecId = params.get("RuleExecId")
+        self.RuleGroupExecId = params.get("RuleGroupExecId")
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.RuleType = params.get("RuleType")
+        self.SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
+        self.SourceObjectValue = params.get("SourceObjectValue")
+        self.ConditionExpression = params.get("ConditionExpression")
+        self.ExecResultStatus = params.get("ExecResultStatus")
+        self.TriggerResult = params.get("TriggerResult")
+        if params.get("CompareResult") is not None:
+            self.CompareResult = CompareResult()
+            self.CompareResult._deserialize(params.get("CompareResult"))
+        self.TemplateName = params.get("TemplateName")
+        self.QualityDim = params.get("QualityDim")
+        self.TargetDBTableName = params.get("TargetDBTableName")
+        self.TargetObjectValue = params.get("TargetObjectValue")
+        self.TargetObjectDataType = params.get("TargetObjectDataType")
+        if params.get("FieldConfig") is not None:
+            self.FieldConfig = RuleFieldConfig()
+            self.FieldConfig._deserialize(params.get("FieldConfig"))
+        self.RelConditionExpr = params.get("RelConditionExpr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExecResultDetail(AbstractModel):
+    """规则执行结果详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatasourceId: 数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param DatabaseId: 数据库guid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param TableId: 表guid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param TableName: 表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param RuleExecResult: 规则执行记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExecResult: :class:`tencentcloud.wedata.v20210820.models.RuleExecResult`
+        :param TableOwnerUserId: 表负责人userId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerUserId: int
+        """
+        self.DatasourceId = None
+        self.DatasourceName = None
+        self.DatabaseId = None
+        self.DatabaseName = None
+        self.InstanceId = None
+        self.TableId = None
+        self.TableName = None
+        self.RuleExecResult = None
+        self.TableOwnerUserId = None
+
+
+    def _deserialize(self, params):
+        self.DatasourceId = params.get("DatasourceId")
+        self.DatasourceName = params.get("DatasourceName")
+        self.DatabaseId = params.get("DatabaseId")
+        self.DatabaseName = params.get("DatabaseName")
+        self.InstanceId = params.get("InstanceId")
+        self.TableId = params.get("TableId")
+        self.TableName = params.get("TableName")
+        if params.get("RuleExecResult") is not None:
+            self.RuleExecResult = RuleExecResult()
+            self.RuleExecResult._deserialize(params.get("RuleExecResult"))
+        self.TableOwnerUserId = params.get("TableOwnerUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExecResultPage(AbstractModel):
+    """规则执行结果分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Items: 规则执行结果
+        :type Items: list of RuleExecResult
+        """
+        self.TotalCount = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RuleExecResult()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExecStat(AbstractModel):
+    """规则运行情况结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCnt: 规则运行总数
+        :type TotalCnt: int
+        :param LastTotalCnt: 环比规则运行总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTotalCnt: int
+        :param TotalCntRatio: 规则运行总数占比
+        :type TotalCntRatio: float
+        :param LastTotalCntRatio: 规则运行总数环比变化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTotalCntRatio: float
+        :param TriggerCnt: 规则触发数
+        :type TriggerCnt: int
+        :param LastTriggerCnt: 环比规则触发数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTriggerCnt: int
+        :param TriggerCntRatio: 触发占总数占比
+        :type TriggerCntRatio: float
+        :param LastTriggerCntRatio: 环比规则触发数变化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTriggerCntRatio: float
+        :param AlarmCnt: 规则报警数
+        :type AlarmCnt: int
+        :param LastAlarmCnt: 环比规则报警数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastAlarmCnt: int
+        :param AlarmCntRatio: 报警占总数占比
+        :type AlarmCntRatio: float
+        :param LastAlarmCntRatio: 环比报警数变化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastAlarmCntRatio: float
+        :param PipelineCnt: 阻塞发生数
+        :type PipelineCnt: int
+        :param LastPipelineCnt: 环比阻塞发生数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastPipelineCnt: int
+        :param PipelineCntRatio: 阻塞占总数占比
+        :type PipelineCntRatio: float
+        :param LastPipelineCntRatio: 环比阻塞发生数变化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastPipelineCntRatio: float
+        """
+        self.TotalCnt = None
+        self.LastTotalCnt = None
+        self.TotalCntRatio = None
+        self.LastTotalCntRatio = None
+        self.TriggerCnt = None
+        self.LastTriggerCnt = None
+        self.TriggerCntRatio = None
+        self.LastTriggerCntRatio = None
+        self.AlarmCnt = None
+        self.LastAlarmCnt = None
+        self.AlarmCntRatio = None
+        self.LastAlarmCntRatio = None
+        self.PipelineCnt = None
+        self.LastPipelineCnt = None
+        self.PipelineCntRatio = None
+        self.LastPipelineCntRatio = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        self.LastTotalCnt = params.get("LastTotalCnt")
+        self.TotalCntRatio = params.get("TotalCntRatio")
+        self.LastTotalCntRatio = params.get("LastTotalCntRatio")
+        self.TriggerCnt = params.get("TriggerCnt")
+        self.LastTriggerCnt = params.get("LastTriggerCnt")
+        self.TriggerCntRatio = params.get("TriggerCntRatio")
+        self.LastTriggerCntRatio = params.get("LastTriggerCntRatio")
+        self.AlarmCnt = params.get("AlarmCnt")
+        self.LastAlarmCnt = params.get("LastAlarmCnt")
+        self.AlarmCntRatio = params.get("AlarmCntRatio")
+        self.LastAlarmCntRatio = params.get("LastAlarmCntRatio")
+        self.PipelineCnt = params.get("PipelineCnt")
+        self.LastPipelineCnt = params.get("LastPipelineCnt")
+        self.PipelineCntRatio = params.get("PipelineCntRatio")
+        self.LastPipelineCntRatio = params.get("LastPipelineCntRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleFieldConfig(AbstractModel):
+    """规则变量替换
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WhereConfig: where变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhereConfig: list of FieldConfig
+        :param TableConfig: 库表变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableConfig: list of TableConfig
+        """
+        self.WhereConfig = None
+        self.TableConfig = None
+
+
+    def _deserialize(self, params):
+        if params.get("WhereConfig") is not None:
+            self.WhereConfig = []
+            for item in params.get("WhereConfig"):
+                obj = FieldConfig()
+                obj._deserialize(item)
+                self.WhereConfig.append(obj)
+        if params.get("TableConfig") is not None:
+            self.TableConfig = []
+            for item in params.get("TableConfig"):
+                obj = TableConfig()
+                obj._deserialize(item)
+                self.TableConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroup(AbstractModel):
+    """数据质量规则组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param DatasourceId: 数据源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
+        :param MonitorType: 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param TableName: 关联数据表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param TableId: 关联数据表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param TableOwnerName: 关联数据表负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerName: str
+        :param ExecStrategy: 执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecStrategy: :class:`tencentcloud.wedata.v20210820.models.RuleGroupExecStrategy`
+        :param Subscription: 执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subscription: :class:`tencentcloud.wedata.v20210820.models.RuleGroupSubscribe`
+        :param DatabaseId: 数据库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param Permission: 是否有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permission: bool
+        :param RuleCount: 已经配置的规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleCount: int
+        :param MonitorStatus: 监控状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorStatus: bool
+        :param TableOwnerUserId: 表负责人UserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerUserId: int
+        """
+        self.RuleGroupId = None
+        self.DatasourceId = None
+        self.DatasourceName = None
+        self.DatasourceType = None
+        self.MonitorType = None
+        self.UpdateTime = None
+        self.TableName = None
+        self.TableId = None
+        self.TableOwnerName = None
+        self.ExecStrategy = None
+        self.Subscription = None
+        self.DatabaseId = None
+        self.DatabaseName = None
+        self.Permission = None
+        self.RuleCount = None
+        self.MonitorStatus = None
+        self.TableOwnerUserId = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.DatasourceId = params.get("DatasourceId")
+        self.DatasourceName = params.get("DatasourceName")
+        self.DatasourceType = params.get("DatasourceType")
+        self.MonitorType = params.get("MonitorType")
+        self.UpdateTime = params.get("UpdateTime")
+        self.TableName = params.get("TableName")
+        self.TableId = params.get("TableId")
+        self.TableOwnerName = params.get("TableOwnerName")
+        if params.get("ExecStrategy") is not None:
+            self.ExecStrategy = RuleGroupExecStrategy()
+            self.ExecStrategy._deserialize(params.get("ExecStrategy"))
+        if params.get("Subscription") is not None:
+            self.Subscription = RuleGroupSubscribe()
+            self.Subscription._deserialize(params.get("Subscription"))
+        self.DatabaseId = params.get("DatabaseId")
+        self.DatabaseName = params.get("DatabaseName")
+        self.Permission = params.get("Permission")
+        self.RuleCount = params.get("RuleCount")
+        self.MonitorStatus = params.get("MonitorStatus")
+        self.TableOwnerUserId = params.get("TableOwnerUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupExecResult(AbstractModel):
+    """规则组执行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupExecId: 规则组执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupExecId: int
+        :param RuleGroupId: 规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param TriggerType: 执行触发类型（1：手动触发， 2：调度事中触发，3：周期调度触发）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: int
+        :param ExecTime: 执行时间 yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecTime: str
+        :param Status: 执行状态（1.已提交 2.检测中 3.正常 4.异常）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param AlarmRuleCount: 异常规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRuleCount: int
+        :param TotalRuleCount: 总规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRuleCount: int
+        :param TableOwnerName: 源表负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerName: str
+        :param TableName: 源表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param TableId: 表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param DatabaseId: 数据库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param DatasourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param Permission: 有无权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permission: bool
+        :param ExecDetail: 执行详情，调度计划或者关联生产任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecDetail: str
+        """
+        self.RuleGroupExecId = None
+        self.RuleGroupId = None
+        self.TriggerType = None
+        self.ExecTime = None
+        self.Status = None
+        self.AlarmRuleCount = None
+        self.TotalRuleCount = None
+        self.TableOwnerName = None
+        self.TableName = None
+        self.TableId = None
+        self.DatabaseId = None
+        self.DatasourceId = None
+        self.Permission = None
+        self.ExecDetail = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupExecId = params.get("RuleGroupExecId")
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.TriggerType = params.get("TriggerType")
+        self.ExecTime = params.get("ExecTime")
+        self.Status = params.get("Status")
+        self.AlarmRuleCount = params.get("AlarmRuleCount")
+        self.TotalRuleCount = params.get("TotalRuleCount")
+        self.TableOwnerName = params.get("TableOwnerName")
+        self.TableName = params.get("TableName")
+        self.TableId = params.get("TableId")
+        self.DatabaseId = params.get("DatabaseId")
+        self.DatasourceId = params.get("DatasourceId")
+        self.Permission = params.get("Permission")
+        self.ExecDetail = params.get("ExecDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupExecResultPage(AbstractModel):
+    """规则组执行结果分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Items: 规则组执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of RuleGroupExecResult
+        """
+        self.TotalCount = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RuleGroupExecResult()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupExecStrategy(AbstractModel):
+    """质量规则执行策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param MonitorType: 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: int
+        :param ExecQueue: 计算队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecQueue: str
+        :param ExecutorGroupId: 执行资源组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupId: str
+        :param ExecutorGroupName: 执行资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupName: str
+        :param Tasks: 关联的生产调度任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of ProdSchedulerTask
+        :param StartTime: 周期开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 周期结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param CycleType: 调度周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
+        :param DelayTime: 延迟调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayTime: int
+        :param CycleStep: 间隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleStep: int
+        :param TaskAction: 时间指定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskAction: str
+        """
+        self.RuleGroupId = None
+        self.MonitorType = None
+        self.ExecQueue = None
+        self.ExecutorGroupId = None
+        self.ExecutorGroupName = None
+        self.Tasks = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CycleType = None
+        self.DelayTime = None
+        self.CycleStep = None
+        self.TaskAction = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.MonitorType = params.get("MonitorType")
+        self.ExecQueue = params.get("ExecQueue")
+        self.ExecutorGroupId = params.get("ExecutorGroupId")
+        self.ExecutorGroupName = params.get("ExecutorGroupName")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = ProdSchedulerTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CycleType = params.get("CycleType")
+        self.DelayTime = params.get("DelayTime")
+        self.CycleStep = params.get("CycleStep")
+        self.TaskAction = params.get("TaskAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupMonitor(AbstractModel):
+    """规则组监控业务视图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param TableId: 表guid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param DatasourceId: 数据源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param DatabaseId: 数据库guid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param MonitorType: 监控类型 1.未配置, 2.关联生产调度, 3.离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: int
+        :param MonitorStatus: 监控状态 0.false 1.true
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorStatus: int
+        :param CreateUserId: 规则组创建人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserId: int
+        :param CreateUserName: 规则组创建人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserName: str
+        :param CreateTime: 规则创建时间 yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self.RuleGroupId = None
+        self.TableId = None
+        self.DatasourceId = None
+        self.DatabaseId = None
+        self.MonitorType = None
+        self.MonitorStatus = None
+        self.CreateUserId = None
+        self.CreateUserName = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        self.TableId = params.get("TableId")
+        self.DatasourceId = params.get("DatasourceId")
+        self.DatabaseId = params.get("DatabaseId")
+        self.MonitorType = params.get("MonitorType")
+        self.MonitorStatus = params.get("MonitorStatus")
+        self.CreateUserId = params.get("CreateUserId")
+        self.CreateUserName = params.get("CreateUserName")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupMonitorPage(AbstractModel):
+    """规则组监控业务分页视图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Items: 记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of RuleGroupMonitor
+        """
+        self.TotalCount = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RuleGroupMonitor()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupPage(AbstractModel):
+    """规则组分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Items: 规则组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of RuleGroup
+        """
+        self.TotalCount = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RuleGroup()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupSchedulerInfo(AbstractModel):
+    """规则组调度信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 规则组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param MonitorType: 1:未配置 2:关联生产调度 3:离线周期检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorType: int
+        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param CycleType: 循环类型简写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
+        :param CycleStep: 循环步长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleStep: int
+        :param CycleDesc: 循环类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleDesc: str
+        :param TaskAction: 离线周期检测下指定时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskAction: str
+        :param DelayTime: 离线周期检测下延迟时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayTime: int
+        :param CycleTaskId: 离线周期检测下注册到任务调度的任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleTaskId: str
+        :param AssociateTaskIds: 关联生产调度下关联的任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociateTaskIds: list of str
+        """
+        self.Id = None
+        self.MonitorType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CycleType = None
+        self.CycleStep = None
+        self.CycleDesc = None
+        self.TaskAction = None
+        self.DelayTime = None
+        self.CycleTaskId = None
+        self.AssociateTaskIds = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.MonitorType = params.get("MonitorType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CycleType = params.get("CycleType")
+        self.CycleStep = params.get("CycleStep")
+        self.CycleDesc = params.get("CycleDesc")
+        self.TaskAction = params.get("TaskAction")
+        self.DelayTime = params.get("DelayTime")
+        self.CycleTaskId = params.get("CycleTaskId")
+        self.AssociateTaskIds = params.get("AssociateTaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupSubscribe(AbstractModel):
+    """数据质量规则组订阅信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleGroupId: 规则组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroupId: int
+        :param Receivers: 订阅接收人列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Receivers: list of SubscribeReceiver
+        :param SubscribeType: 订阅方式 1.邮件email  2.短信sms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeType: list of int non-negative
+        """
+        self.RuleGroupId = None
+        self.Receivers = None
+        self.SubscribeType = None
+
+
+    def _deserialize(self, params):
+        self.RuleGroupId = params.get("RuleGroupId")
+        if params.get("Receivers") is not None:
+            self.Receivers = []
+            for item in params.get("Receivers"):
+                obj = SubscribeReceiver()
+                obj._deserialize(item)
+                self.Receivers.append(obj)
+        self.SubscribeType = params.get("SubscribeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupTable(AbstractModel):
+    """表绑定规则组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableInfo: 表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableInfo: :class:`tencentcloud.wedata.v20210820.models.RuleGroupTableInnerInfo`
+        :param RuleGroups: 规则组调度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleGroups: list of RuleGroupSchedulerInfo
+        :param Subscriptions: 订阅者信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subscriptions: list of RuleGroupSubscribe
+        """
+        self.TableInfo = None
+        self.RuleGroups = None
+        self.Subscriptions = None
+
+
+    def _deserialize(self, params):
+        if params.get("TableInfo") is not None:
+            self.TableInfo = RuleGroupTableInnerInfo()
+            self.TableInfo._deserialize(params.get("TableInfo"))
+        if params.get("RuleGroups") is not None:
+            self.RuleGroups = []
+            for item in params.get("RuleGroups"):
+                obj = RuleGroupSchedulerInfo()
+                obj._deserialize(item)
+                self.RuleGroups.append(obj)
+        if params.get("Subscriptions") is not None:
+            self.Subscriptions = []
+            for item in params.get("Subscriptions"):
+                obj = RuleGroupSubscribe()
+                obj._deserialize(item)
+                self.Subscriptions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupTableInnerInfo(AbstractModel):
+    """规则组关联表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableId: 表ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param DatasourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
+        :param DatabaseId: 数据库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param UserId: 责任人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: int
+        """
+        self.TableId = None
+        self.TableName = None
+        self.InstanceId = None
+        self.DatasourceId = None
+        self.DatasourceName = None
+        self.DatasourceType = None
+        self.DatabaseId = None
+        self.DatabaseName = None
+        self.ProjectId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.TableId = params.get("TableId")
+        self.TableName = params.get("TableName")
+        self.InstanceId = params.get("InstanceId")
+        self.DatasourceId = params.get("DatasourceId")
+        self.DatasourceName = params.get("DatasourceName")
+        self.DatasourceType = params.get("DatasourceType")
+        self.DatabaseId = params.get("DatabaseId")
+        self.DatabaseName = params.get("DatabaseName")
+        self.ProjectId = params.get("ProjectId")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleHistory(AbstractModel):
+    """规则操作记录业务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param AlterTime: 变更时间 yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlterTime: str
+        :param AlterContent: 变更内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlterContent: str
+        :param OperatorUserId: 操作账号UId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorUserId: int
+        :param OperatorName: 操作人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorName: str
+        """
+        self.RuleId = None
+        self.AlterTime = None
+        self.AlterContent = None
+        self.OperatorUserId = None
+        self.OperatorName = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.AlterTime = params.get("AlterTime")
+        self.AlterContent = params.get("AlterContent")
+        self.OperatorUserId = params.get("OperatorUserId")
+        self.OperatorName = params.get("OperatorName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleHistoryPage(AbstractModel):
+    """数据质量规则操作历史分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Items: 规则操作历史列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of RuleHistory
+        """
+        self.TotalCount = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RuleHistory()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RulePage(AbstractModel):
+    """数据质量规则分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Items: 规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of Rule
+        """
+        self.TotalCount = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = Rule()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleTemplate(AbstractModel):
+    """规则模版
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateId: 规则模版ID
+        :type RuleTemplateId: int
+        :param Name: 规则模版名称
+        :type Name: str
+        :param Description: 规则模版描述
+        :type Description: str
+        :param Type: 模版类型（1：系统模版，2：自定义）
+        :type Type: int
+        :param SourceObjectType: 规则适用的源数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+        :type SourceObjectType: int
+        :param SourceObjectDataType: 规则适用的源数据对象类型（1：数值，2：字符串）
+        :type SourceObjectDataType: int
+        :param SourceContent: 规则模版源侧内容，区分引擎，JSON 结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceContent: str
+        :param SourceEngineTypes: 源数据适用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceEngineTypes: list of int non-negative
+        :param QualityDim: 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityDim: int
+        :param CompareType: 规则支持的比较方式类型（1：固定值比较，大于、小于，大于等于等 2：波动值比较，绝对值、上升、下降）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareType: int
+        :param CitationCount: 引用次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CitationCount: int
+        :param UserId: 创建人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: int
+        :param UserName: 创建人昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param UpdateTime: 更新时间yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param WhereFlag: 是否添加where参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhereFlag: bool
+        :param MultiSourceFlag: 是否关联多个库表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiSourceFlag: bool
+        :param SqlExpression: 自定义模板SQL表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlExpression: str
+        :param SubQualityDim: 模版子维度，0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubQualityDim: int
+        """
+        self.RuleTemplateId = None
+        self.Name = None
+        self.Description = None
+        self.Type = None
+        self.SourceObjectType = None
+        self.SourceObjectDataType = None
+        self.SourceContent = None
+        self.SourceEngineTypes = None
+        self.QualityDim = None
+        self.CompareType = None
+        self.CitationCount = None
+        self.UserId = None
+        self.UserName = None
+        self.UpdateTime = None
+        self.WhereFlag = None
+        self.MultiSourceFlag = None
+        self.SqlExpression = None
+        self.SubQualityDim = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateId = params.get("RuleTemplateId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.Type = params.get("Type")
+        self.SourceObjectType = params.get("SourceObjectType")
+        self.SourceObjectDataType = params.get("SourceObjectDataType")
+        self.SourceContent = params.get("SourceContent")
+        self.SourceEngineTypes = params.get("SourceEngineTypes")
+        self.QualityDim = params.get("QualityDim")
+        self.CompareType = params.get("CompareType")
+        self.CitationCount = params.get("CitationCount")
+        self.UserId = params.get("UserId")
+        self.UserName = params.get("UserName")
+        self.UpdateTime = params.get("UpdateTime")
+        self.WhereFlag = params.get("WhereFlag")
+        self.MultiSourceFlag = params.get("MultiSourceFlag")
+        self.SqlExpression = params.get("SqlExpression")
+        self.SubQualityDim = params.get("SubQualityDim")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleTemplateHistory(AbstractModel):
+    """规则模版变更历史记录视图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模版ID
+        :type TemplateId: int
+        :param Version: 版本
+        :type Version: int
+        :param UserId: 用户Id
+        :type UserId: int
+        :param UserName: 用户昵称
+        :type UserName: str
+        :param AlterType: 变更类型1.新增2.修改3.删除
+        :type AlterType: int
+        :param AlterContent: 变更内容
+        :type AlterContent: str
+        """
+        self.TemplateId = None
+        self.Version = None
+        self.UserId = None
+        self.UserName = None
+        self.AlterType = None
+        self.AlterContent = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Version = params.get("Version")
+        self.UserId = params.get("UserId")
+        self.UserName = params.get("UserName")
+        self.AlterType = params.get("AlterType")
+        self.AlterContent = params.get("AlterContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleTemplateHistoryPage(AbstractModel):
+    """规则模版分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Items: 记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of RuleTemplateHistory
+        """
+        self.TotalCount = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RuleTemplateHistory()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleTemplatePage(AbstractModel):
+    """RuleTemplatePage 结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录数
+        :type TotalCount: int
+        :param Items: 模版列表
+        :type Items: list of RuleTemplate
+        """
+        self.TotalCount = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RuleTemplate()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RunTaskRequest(AbstractModel):
     """RunTask请求参数结构体
 
@@ -11173,6 +17064,42 @@ class RunTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+
+
+class RunnerRuleExecResult(AbstractModel):
+    """规则执行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: rule id
+        :type RuleId: int
+        :param RuleExecId: rule exec id
+        :type RuleExecId: int
+        :param State: exec state
+        :type State: str
+        :param Data: 结果
+        :type Data: list of str
+        """
+        self.RuleId = None
+        self.RuleExecId = None
+        self.State = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleExecId = params.get("RuleExecId")
+        self.State = params.get("State")
+        self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SaveCustomFunctionRequest(AbstractModel):
@@ -11561,6 +17488,36 @@ class SimpleTaskInfo(AbstractModel):
         
 
 
+class SourceObject(AbstractModel):
+    """数据质量数据对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceObjectDataTypeName: 源字段详细类型，int、string
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectDataTypeName: str
+        :param SourceObjectValue: 源字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceObjectValue: str
+        """
+        self.SourceObjectDataTypeName = None
+        self.SourceObjectValue = None
+
+
+    def _deserialize(self, params):
+        self.SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
+        self.SourceObjectValue = params.get("SourceObjectValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SpeedValue(AbstractModel):
     """速度值对象
 
@@ -11907,6 +17864,36 @@ class SubmitWorkflowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SubscribeReceiver(AbstractModel):
+    """订阅接收人
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverUserId: 接收人Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverUserId: int
+        :param ReceiverName: 接收人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverName: str
+        """
+        self.ReceiverUserId = None
+        self.ReceiverName = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverUserId = params.get("ReceiverUserId")
+        self.ReceiverName = params.get("ReceiverName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SuspendIntegrationTaskRequest(AbstractModel):
     """SuspendIntegrationTask请求参数结构体
 
@@ -11956,6 +17943,61 @@ class SuspendIntegrationTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TableConfig(AbstractModel):
+    """规则表变量替换
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseId: 数据库Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param TableId: 表Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param TableKey: 表Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableKey: str
+        :param FieldConfig: 字段变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldConfig: list of FieldConfig
+        """
+        self.DatabaseId = None
+        self.DatabaseName = None
+        self.TableId = None
+        self.TableName = None
+        self.TableKey = None
+        self.FieldConfig = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseId = params.get("DatabaseId")
+        self.DatabaseName = params.get("DatabaseName")
+        self.TableId = params.get("TableId")
+        self.TableName = params.get("TableName")
+        self.TableKey = params.get("TableKey")
+        if params.get("FieldConfig") is not None:
+            self.FieldConfig = []
+            for item in params.get("FieldConfig"):
+                obj = FieldConfig()
+                obj._deserialize(item)
+                self.FieldConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TableInfo(AbstractModel):
     """元数据表详细信息
 
@@ -11977,6 +18019,141 @@ class TableInfo(AbstractModel):
     def _deserialize(self, params):
         self.TableId = params.get("TableId")
         self.TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableQualityDetail(AbstractModel):
+    """表质量详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseId: 数据库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param TableId: 表id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param OwnerUserId: 表责任人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUserId: int
+        :param OwnerUserName: 表责任人名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUserName: str
+        :param DatabaseScore: 库得分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseScore: float
+        :param TableScore: 表得分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableScore: float
+        :param LastPeriodRatio: 表环比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastPeriodRatio: float
+        """
+        self.DatabaseId = None
+        self.DatabaseName = None
+        self.TableId = None
+        self.TableName = None
+        self.OwnerUserId = None
+        self.OwnerUserName = None
+        self.DatabaseScore = None
+        self.TableScore = None
+        self.LastPeriodRatio = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseId = params.get("DatabaseId")
+        self.DatabaseName = params.get("DatabaseName")
+        self.TableId = params.get("TableId")
+        self.TableName = params.get("TableName")
+        self.OwnerUserId = params.get("OwnerUserId")
+        self.OwnerUserName = params.get("OwnerUserName")
+        self.DatabaseScore = params.get("DatabaseScore")
+        self.TableScore = params.get("TableScore")
+        self.LastPeriodRatio = params.get("LastPeriodRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableQualityDetailPage(AbstractModel):
+    """表质量分分页结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Items: 表质量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TableQualityDetail
+        """
+        self.TotalCount = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = TableQualityDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableScoreStatisticsInfo(AbstractModel):
+    """表评分统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Level: 等级 1、2、3、4、5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param Scale: 占比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scale: int
+        :param TableNumber: 表数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNumber: int
+        """
+        self.Level = None
+        self.Scale = None
+        self.TableNumber = None
+
+
+    def _deserialize(self, params):
+        self.Level = params.get("Level")
+        self.Scale = params.get("Scale")
+        self.TableNumber = params.get("TableNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13181,6 +19358,107 @@ class TaskScriptContent(AbstractModel):
         
 
 
+class ThresholdValue(AbstractModel):
+    """数据质量阈值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ValueType: 阈值类型  1.低阈值  2.高阈值   3.普通阈值  4.枚举值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueType: int
+        :param Value: 阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.ValueType = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.ValueType = params.get("ValueType")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopTableStat(AbstractModel):
+    """质量概览表排行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AlarmTables: 告警表列表
+        :type AlarmTables: list of TopTableStatItem
+        :param PipelineTables: 阻塞表列表
+        :type PipelineTables: list of TopTableStatItem
+        """
+        self.AlarmTables = None
+        self.PipelineTables = None
+
+
+    def _deserialize(self, params):
+        if params.get("AlarmTables") is not None:
+            self.AlarmTables = []
+            for item in params.get("AlarmTables"):
+                obj = TopTableStatItem()
+                obj._deserialize(item)
+                self.AlarmTables.append(obj)
+        if params.get("PipelineTables") is not None:
+            self.PipelineTables = []
+            for item in params.get("PipelineTables"):
+                obj = TopTableStatItem()
+                obj._deserialize(item)
+                self.PipelineTables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopTableStatItem(AbstractModel):
+    """质量概览表排行元素
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableId: 表Id
+        :type TableId: str
+        :param TableName: 表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param Cnt: 数
+        :type Cnt: int
+        """
+        self.TableId = None
+        self.TableName = None
+        self.Cnt = None
+
+
+    def _deserialize(self, params):
+        self.TableId = params.get("TableId")
+        self.TableName = params.get("TableName")
+        self.Cnt = params.get("Cnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TriggerEventRequest(AbstractModel):
     """TriggerEvent请求参数结构体
 
@@ -13449,6 +19727,34 @@ class UserFileDTO(AbstractModel):
         self.ZipPath = params.get("ZipPath")
         self.Bucket = params.get("Bucket")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WeightInfo(AbstractModel):
+    """权重信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Weight: 权重
+        :type Weight: int
+        :param QualityDim: 维度类型 1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+        :type QualityDim: int
+        """
+        self.Weight = None
+        self.QualityDim = None
+
+
+    def _deserialize(self, params):
+        self.Weight = params.get("Weight")
+        self.QualityDim = params.get("QualityDim")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

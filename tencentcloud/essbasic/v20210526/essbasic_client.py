@@ -60,6 +60,7 @@ class EssbasicClient(AbstractClient):
 
     def ChannelCancelFlow(self, request):
         """渠道版撤销签署流程接口
+        仅支持未签署完成的合同
         注意:
         能撤回合同的只能是合同的发起人或者发起企业的超管、法人
 
@@ -418,11 +419,10 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateConsoleLoginUrl(self, request):
-        """此接口（CreateConsoleLoginUrl）用于创建渠道子客企业控制台Web端登录链接。Web端登录链接是子客控制台的唯一入口。
-        若子客企业未激活，会进入企业激活流程,首次参与激活流程的经办人会成为超管。（若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
+        """此接口（CreateConsoleLoginUrl）用于创建渠道子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
+        若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。（若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
         若子客企业已激活，使用了新的经办人OpenId进入，则会进入经办人的实名流程。
         若子客企业、经办人均已完成认证，则会直接进入子客Web控制台。
-        返回的Url仅支持PC端操作。
 
         :param request: Request instance for CreateConsoleLoginUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateConsoleLoginUrlRequest`
@@ -452,6 +452,7 @@ class EssbasicClient(AbstractClient):
 
     def CreateFlowsByTemplates(self, request):
         """接口（CreateFlowsByTemplates）用于使用多个模板批量创建签署流程。当前可批量发起合同（签署流程）数量最大为20个。
+        如若在模板中配置了动态表格, 上传的附件必须为A4大小
         合同发起人必须在电子签已经进行实名。
 
         :param request: Request instance for CreateFlowsByTemplates.

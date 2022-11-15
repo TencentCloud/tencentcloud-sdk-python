@@ -3588,7 +3588,7 @@ class DescribeModelServiceGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceGroupId: 无
+        :param ServiceGroupId: 服务组ID
         :type ServiceGroupId: str
         """
         self.ServiceGroupId = None

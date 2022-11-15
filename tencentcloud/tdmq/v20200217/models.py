@@ -5144,7 +5144,7 @@ class DescribeRabbitMQNodeListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 不适用，默认参数
+        :param InstanceId: rabbitmq集群ID
         :type InstanceId: str
         :param Offset: 偏移量
         :type Offset: int
@@ -7927,6 +7927,12 @@ class RocketMQClusterInfo(AbstractModel):
         :param SupportNamespaceEndpoint: 是否支持命名空间接入点
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportNamespaceEndpoint: bool
+        :param Vpcs: VPC信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vpcs: list of VpcConfig
+        :param IsVip: 是否为专享实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsVip: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -7936,6 +7942,8 @@ class RocketMQClusterInfo(AbstractModel):
         self.PublicEndPoint = None
         self.VpcEndPoint = None
         self.SupportNamespaceEndpoint = None
+        self.Vpcs = None
+        self.IsVip = None
 
 
     def _deserialize(self, params):
@@ -7947,6 +7955,13 @@ class RocketMQClusterInfo(AbstractModel):
         self.PublicEndPoint = params.get("PublicEndPoint")
         self.VpcEndPoint = params.get("VpcEndPoint")
         self.SupportNamespaceEndpoint = params.get("SupportNamespaceEndpoint")
+        if params.get("Vpcs") is not None:
+            self.Vpcs = []
+            for item in params.get("Vpcs"):
+                obj = VpcConfig()
+                obj._deserialize(item)
+                self.Vpcs.append(obj)
+        self.IsVip = params.get("IsVip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9003,6 +9018,34 @@ class VpcBindRecord(AbstractModel):
         self.Ip = params.get("Ip")
         self.Port = params.get("Port")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcConfig(AbstractModel):
+    """VPC配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: vpc的id
+        :type VpcId: str
+        :param SubnetId: 子网id
+        :type SubnetId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

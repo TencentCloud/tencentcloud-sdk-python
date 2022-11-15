@@ -464,6 +464,64 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckDuplicateRuleName(self, request):
+        """检查规则名称是否重复
+
+        :param request: Request instance for CheckDuplicateRuleName.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CheckDuplicateRuleNameRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CheckDuplicateRuleNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDuplicateRuleName", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckDuplicateRuleNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CheckDuplicateTemplateName(self, request):
+        """检查规则模板名称是否重复
+
+        :param request: Request instance for CheckDuplicateTemplateName.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CheckDuplicateTemplateNameRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CheckDuplicateTemplateNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDuplicateTemplateName", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckDuplicateTemplateNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckIntegrationNodeNameExists(self, request):
         """判断集成节点名称是否存在
 
@@ -551,6 +609,35 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CommitExportTask(self, request):
+        """提交数据导出任务
+
+        :param request: Request instance for CommitExportTask.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CommitExportTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CommitExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CommitExportTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CommitExportTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CommitIntegrationTask(self, request):
         """提交集成任务
 
@@ -566,6 +653,64 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CommitIntegrationTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CommitRuleGroupExecResult(self, request):
+        """Runner 规则检测结果上报
+
+        :param request: Request instance for CommitRuleGroupExecResult.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CommitRuleGroupExecResultRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CommitRuleGroupExecResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CommitRuleGroupExecResult", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CommitRuleGroupExecResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CommitRuleGroupTask(self, request):
+        """提交规则组运行任务接口
+
+        :param request: Request instance for CommitRuleGroupTask.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CommitRuleGroupTaskRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CommitRuleGroupTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CommitRuleGroupTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CommitRuleGroupTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -858,6 +1003,64 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOrUpdateResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRule(self, request):
+        """创建质量规则接口
+
+        :param request: Request instance for CreateRule.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateRuleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRuleTemplate(self, request):
+        """创建规则模版
+
+        :param request: Request instance for CreateRuleTemplate.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateRuleTemplateRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateRuleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRuleTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRuleTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1195,6 +1398,64 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteRule(self, request):
+        """删除质量规则接口
+
+        :param request: Request instance for DeleteRule.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteRuleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRuleTemplate(self, request):
+        """删除规则模版
+
+        :param request: Request instance for DeleteRuleTemplate.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteRuleTemplateRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteRuleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRuleTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRuleTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteTaskAlarmRegular(self, request):
         """删除任务告警规则
 
@@ -1327,6 +1588,93 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterNamespaceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataBases(self, request):
+        """查询数据来源列表
+
+        :param request: Request instance for DescribeDataBases.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDataBasesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDataBasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataBases", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataBasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataCheckStat(self, request):
+        """数据质量的概览页面数据监测情况接口
+
+        :param request: Request instance for DescribeDataCheckStat.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDataCheckStatRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDataCheckStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataCheckStat", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataCheckStatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataObjects(self, request):
+        """查询规则组数据对象列表
+
+        :param request: Request instance for DescribeDataObjects.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDataObjectsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDataObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataObjects", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataObjectsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1534,6 +1882,64 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDependTasksNewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDimensionScore(self, request):
+        """质量报告-查询质量评分
+
+        :param request: Request instance for DescribeDimensionScore.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDimensionScoreRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDimensionScoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDimensionScore", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDimensionScoreResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeExecStrategy(self, request):
+        """查询规则组执行策略
+
+        :param request: Request instance for DescribeExecStrategy.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeExecStrategyRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeExecStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExecStrategy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExecStrategyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1928,6 +2334,35 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstances(self, request):
+        """数据质量，查询调度任务的实例列表
+
+        :param request: Request instance for DescribeInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeIntegrationNode(self, request):
         """查询集成节点
 
@@ -2247,6 +2682,35 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMonitorsByPage(self, request):
+        """分页查询质量监控组
+
+        :param request: Request instance for DescribeMonitorsByPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeMonitorsByPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeMonitorsByPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMonitorsByPage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMonitorsByPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOfflineTaskToken(self, request):
         """获取离线任务长连接Token
 
@@ -2305,6 +2769,35 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProdTasks(self, request):
+        """数据质量获取生产调度任务列表
+
+        :param request: Request instance for DescribeProdTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeProdTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeProdTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProdTasks", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProdTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProject(self, request):
         """获取项目信息
 
@@ -2320,6 +2813,64 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeQualityScore(self, request):
+        """质量报告-质量评分
+
+        :param request: Request instance for DescribeQualityScore.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeQualityScoreRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeQualityScoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQualityScore", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQualityScoreResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeQualityScoreTrend(self, request):
+        """质量报告-质量分周期趋势
+
+        :param request: Request instance for DescribeQualityScoreTrend.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeQualityScoreTrendRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeQualityScoreTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQualityScoreTrend", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQualityScoreTrendResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2479,6 +3030,676 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRule(self, request):
+        """查询规则详情
+
+        :param request: Request instance for DescribeRule.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleDataSources(self, request):
+        """查询质量规则数据源
+
+        :param request: Request instance for DescribeRuleDataSources.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleDataSourcesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleDataSourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleDataSources", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleDataSourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleDimStat(self, request):
+        """数据质量概览页面触发维度分布统计接口
+
+        :param request: Request instance for DescribeRuleDimStat.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleDimStatRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleDimStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleDimStat", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleDimStatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleExecDetail(self, request):
+        """查询规则执行结果详情
+
+        :param request: Request instance for DescribeRuleExecDetail.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecDetailRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleExecDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleExecDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleExecExportResult(self, request):
+        """查询规则执行导出结果
+
+        :param request: Request instance for DescribeRuleExecExportResult.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecExportResultRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecExportResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleExecExportResult", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleExecExportResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleExecHistory(self, request):
+        """查询规则执行历史， 最近30条
+
+        :param request: Request instance for DescribeRuleExecHistory.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecHistoryRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleExecHistory", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleExecHistoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleExecLog(self, request):
+        """规则执行日志查询
+
+        :param request: Request instance for DescribeRuleExecLog.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecLogRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleExecLog", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleExecLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleExecResults(self, request):
+        """规则执行结果列表查询
+
+        :param request: Request instance for DescribeRuleExecResults.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecResultsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecResultsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleExecResults", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleExecResultsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleExecResultsByPage(self, request):
+        """分页查询规则执行结果列表
+
+        :param request: Request instance for DescribeRuleExecResultsByPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecResultsByPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecResultsByPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleExecResultsByPage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleExecResultsByPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleExecStat(self, request):
+        """数据质量概览页面规则运行情况接口
+
+        :param request: Request instance for DescribeRuleExecStat.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecStatRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleExecStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleExecStat", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleExecStatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleGroup(self, request):
+        """查询规则组详情接口
+
+        :param request: Request instance for DescribeRuleGroup.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleGroupExecResultsByPage(self, request):
+        """规则组执行结果分页查询接口
+
+        :param request: Request instance for DescribeRuleGroupExecResultsByPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupExecResultsByPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupExecResultsByPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleGroupExecResultsByPage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleGroupExecResultsByPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleGroupExecResultsByPageWithoutAuth(self, request):
+        """规则组执行结果分页查询接口不带鉴权
+
+        :param request: Request instance for DescribeRuleGroupExecResultsByPageWithoutAuth.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupExecResultsByPageWithoutAuthRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupExecResultsByPageWithoutAuthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleGroupExecResultsByPageWithoutAuth", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleGroupExecResultsByPageWithoutAuthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleGroupSubscription(self, request):
+        """查询规则组订阅信息
+
+        :param request: Request instance for DescribeRuleGroupSubscription.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupSubscriptionRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupSubscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleGroupSubscription", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleGroupSubscriptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleGroupTable(self, request):
+        """查询表绑定执行规则组信息
+
+        :param request: Request instance for DescribeRuleGroupTable.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupTableRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleGroupTable", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleGroupTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleGroupsByPage(self, request):
+        """【过滤条件】
+        {表名称TableName,支持模糊匹配}       {表负责人TableOwnerName,支持模糊匹配}      {监控方式MonitorTypes，1.未配置 2.关联生产调度 3.离线周期检测,支持多选}  {订阅人ReceiverUin}
+        【必要字段】
+        {数据来源DatasourceId}
+
+        :param request: Request instance for DescribeRuleGroupsByPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupsByPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleGroupsByPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleGroupsByPage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleGroupsByPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleHistoryByPage(self, request):
+        """过滤条件【必要字段】{ruleId}
+
+        :param request: Request instance for DescribeRuleHistoryByPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleHistoryByPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleHistoryByPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleHistoryByPage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleHistoryByPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleTablesByPage(self, request):
+        """获取表列表
+
+        :param request: Request instance for DescribeRuleTablesByPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTablesByPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTablesByPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleTablesByPage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleTablesByPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleTemplate(self, request):
+        """查询模板详情
+
+        :param request: Request instance for DescribeRuleTemplate.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplateRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleTemplates(self, request):
+        """查询规则模版列表
+
+        :param request: Request instance for DescribeRuleTemplates.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRuleTemplatesByPage(self, request):
+        """过滤条件】 {模版名称Name,支持模糊匹配} {模版类型type，1.系统模版 2.自定义模版} {质量检测维度QualityDims, 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性} 【排序字段】 { 引用数排序类型CitationOrderType，根据引用数量排序 ASC DESC}
+
+        :param request: Request instance for DescribeRuleTemplatesByPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplatesByPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplatesByPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleTemplatesByPage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRuleTemplatesByPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRules(self, request):
+        """查询质量规则列表
+
+        :param request: Request instance for DescribeRules.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRulesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRulesByPage(self, request):
+        """分页查询质量规则
+
+        :param request: Request instance for DescribeRulesByPage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRulesByPageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRulesByPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRulesByPage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRulesByPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStandardRuleDetailInfoList(self, request):
         """获取数据标准规则详情
 
@@ -2566,6 +3787,35 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTableQualityDetails(self, request):
+        """质量报告-查询表质量详情
+
+        :param request: Request instance for DescribeTableQualityDetails.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableQualityDetailsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTableQualityDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableQualityDetails", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTableQualityDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTableSchemaInfo(self, request):
         """获取表schema信息
 
@@ -2581,6 +3831,35 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTableSchemaInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTableScoreTrend(self, request):
+        """查询表得分趋势
+
+        :param request: Request instance for DescribeTableScoreTrend.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableScoreTrendRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTableScoreTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableScoreTrend", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTableScoreTrendResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2874,6 +4153,122 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksByPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTemplateDimCount(self, request):
+        """查询规则模版维度分布情况
+
+        :param request: Request instance for DescribeTemplateDimCount.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTemplateDimCountRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTemplateDimCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTemplateDimCount", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTemplateDimCountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTemplateHistory(self, request):
+        """查询规则模版操作记录
+
+        :param request: Request instance for DescribeTemplateHistory.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTemplateHistoryRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTemplateHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTemplateHistory", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTemplateHistoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTopTableStat(self, request):
+        """数据质量概览页面表排行接口
+
+        :param request: Request instance for DescribeTopTableStat.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTopTableStatRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTopTableStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopTableStat", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTopTableStatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTrendStat(self, request):
+        """数据质量概览页面趋势变化接口
+
+        :param request: Request instance for DescribeTrendStat.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTrendStatRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTrendStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTrendStat", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTrendStatResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3274,6 +4669,64 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDimensionWeight(self, request):
+        """质量报告-修改维度权限
+
+        :param request: Request instance for ModifyDimensionWeight.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyDimensionWeightRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyDimensionWeightResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDimensionWeight", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDimensionWeightResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyExecStrategy(self, request):
+        """更新规则组执行策略
+
+        :param request: Request instance for ModifyExecStrategy.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyExecStrategyRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyExecStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyExecStrategy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyExecStrategyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyFolder(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         文件夹更新
@@ -3348,6 +4801,122 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIntegrationTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMonitorStatus(self, request):
+        """更新监控状态
+
+        :param request: Request instance for ModifyMonitorStatus.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyMonitorStatusRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyMonitorStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMonitorStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMonitorStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRule(self, request):
+        """更新质量规则接口
+
+        :param request: Request instance for ModifyRule.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRuleGroupSubscription(self, request):
+        """更新规则组订阅信息
+
+        :param request: Request instance for ModifyRuleGroupSubscription.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleGroupSubscriptionRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleGroupSubscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRuleGroupSubscription", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRuleGroupSubscriptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRuleTemplate(self, request):
+        """编辑规则模版
+
+        :param request: Request instance for ModifyRuleTemplate.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleTemplateRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRuleTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRuleTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
