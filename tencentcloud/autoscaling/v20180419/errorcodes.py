@@ -95,6 +95,9 @@ INVALIDPARAMETER_LOADBALANCERNOTINAUTOSCALINGGROUP = 'InvalidParameter.LoadBalan
 # 参数缺失，两种参数之中必须指定其中一个。
 INVALIDPARAMETER_MUSTONEPARAMETER = 'InvalidParameter.MustOneParameter'
 
+# 该参数已废弃。
+INVALIDPARAMETER_PARAMETERDEPRECATED = 'InvalidParameter.ParameterDeprecated'
+
 # 部分参数存在互斥应该删掉。
 INVALIDPARAMETER_PARAMETERMUSTBEDELETED = 'InvalidParameter.ParameterMustBeDeleted'
 

@@ -615,9 +615,12 @@ class CreateStaffRequest(AbstractModel):
         :type SdkAppId: int
         :param Staffs: 客服信息，个数不超过 10
         :type Staffs: list of SeatUserInfo
+        :param SendPassword: 是否发送密码邮件，默认true
+        :type SendPassword: bool
         """
         self.SdkAppId = None
         self.Staffs = None
+        self.SendPassword = None
 
 
     def _deserialize(self, params):
@@ -628,6 +631,7 @@ class CreateStaffRequest(AbstractModel):
                 obj = SeatUserInfo()
                 obj._deserialize(item)
                 self.Staffs.append(obj)
+        self.SendPassword = params.get("SendPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2280,6 +2280,10 @@ class DescribeDCDBPriceRequest(AbstractModel):
         :type ShardCount: int
         :param Paymode: 付费类型。postpaid：按量付费   prepaid：预付费
         :type Paymode: str
+        :param AmountUnit: 价格金额单位，不传默认单位为分，取值：  
+* pent：分
+* microPent：微分
+        :type AmountUnit: str
         """
         self.Zone = None
         self.Count = None
@@ -2289,6 +2293,7 @@ class DescribeDCDBPriceRequest(AbstractModel):
         self.ShardStorage = None
         self.ShardCount = None
         self.Paymode = None
+        self.AmountUnit = None
 
 
     def _deserialize(self, params):
@@ -2300,6 +2305,7 @@ class DescribeDCDBPriceRequest(AbstractModel):
         self.ShardStorage = params.get("ShardStorage")
         self.ShardCount = params.get("ShardCount")
         self.Paymode = params.get("Paymode")
+        self.AmountUnit = params.get("AmountUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2316,9 +2322,13 @@ class DescribeDCDBPriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 原价，单位：分
+        :param OriginalPrice: 原价  
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站为人民币，国际站为美元
         :type OriginalPrice: int
-        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
+        :param Price: 实际价格，受折扣等影响，可能和原价不同
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站人民币，国际站美元
         :type Price: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2345,14 +2355,20 @@ class DescribeDCDBRenewalPriceRequest(AbstractModel):
         :type InstanceId: str
         :param Period: 续费时长，单位：月。不传则默认为1个月。
         :type Period: int
+        :param AmountUnit: 价格金额单位，不传默认单位为分，取值：  
+* pent：分
+* microPent：微分
+        :type AmountUnit: str
         """
         self.InstanceId = None
         self.Period = None
+        self.AmountUnit = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Period = params.get("Period")
+        self.AmountUnit = params.get("AmountUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2369,9 +2385,13 @@ class DescribeDCDBRenewalPriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 原价，单位：分
+        :param OriginalPrice: 原价  
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站为人民币，国际站为美元
         :type OriginalPrice: int
-        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
+        :param Price: 实际价格，受折扣等影响，可能和原价不同
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站人民币，国际站美元
         :type Price: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2518,12 +2538,17 @@ class DescribeDCDBUpgradePriceRequest(AbstractModel):
         :type ExpandShardConfig: :class:`tencentcloud.dcdb.v20180411.models.ExpandShardConfig`
         :param SplitShardConfig: 切分分片配置，当UpgradeType为SPLIT时生效。
         :type SplitShardConfig: :class:`tencentcloud.dcdb.v20180411.models.SplitShardConfig`
+        :param AmountUnit: 价格金额单位，不传默认单位为分，取值：  
+* pent：分
+* microPent：微分
+        :type AmountUnit: str
         """
         self.InstanceId = None
         self.UpgradeType = None
         self.AddShardConfig = None
         self.ExpandShardConfig = None
         self.SplitShardConfig = None
+        self.AmountUnit = None
 
 
     def _deserialize(self, params):
@@ -2538,6 +2563,7 @@ class DescribeDCDBUpgradePriceRequest(AbstractModel):
         if params.get("SplitShardConfig") is not None:
             self.SplitShardConfig = SplitShardConfig()
             self.SplitShardConfig._deserialize(params.get("SplitShardConfig"))
+        self.AmountUnit = params.get("AmountUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2554,9 +2580,13 @@ class DescribeDCDBUpgradePriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 原价，单位：分
+        :param OriginalPrice: 原价  
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站为人民币，国际站为美元
         :type OriginalPrice: int
-        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
+        :param Price: 实际价格，受折扣等影响，可能和原价不同
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站人民币，国际站美元
         :type Price: int
         :param Formula: 变配明细计算公式
         :type Formula: str
@@ -3433,16 +3463,20 @@ class ExpandShardConfig(AbstractModel):
         :type ShardMemory: int
         :param ShardStorage: 分片存储大小，单位 GB
         :type ShardStorage: int
+        :param ShardNodeCount: 分片节点数
+        :type ShardNodeCount: int
         """
         self.ShardInstanceIds = None
         self.ShardMemory = None
         self.ShardStorage = None
+        self.ShardNodeCount = None
 
 
     def _deserialize(self, params):
         self.ShardInstanceIds = params.get("ShardInstanceIds")
         self.ShardMemory = params.get("ShardMemory")
         self.ShardStorage = params.get("ShardStorage")
+        self.ShardNodeCount = params.get("ShardNodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

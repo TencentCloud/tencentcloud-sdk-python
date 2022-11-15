@@ -841,18 +841,18 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 过滤参数的名字
-        :type Name: str
         :param Values: 数值
         :type Values: list of str
+        :param Name: 过滤参数的名字
+        :type Name: str
         """
-        self.Name = None
         self.Values = None
+        self.Name = None
 
 
     def _deserialize(self, params):
-        self.Name = params.get("Name")
         self.Values = params.get("Values")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

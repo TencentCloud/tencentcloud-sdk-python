@@ -1296,17 +1296,22 @@ class EncryptedPhoneVerificationResponse(AbstractModel):
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str
+        :param ISP: 运营商名称。
+取值范围为["移动","联通","电信",""]
+        :type ISP: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
         self.Description = None
+        self.ISP = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
+        self.ISP = params.get("ISP")
         self.RequestId = params.get("RequestId")
 
 
@@ -1959,7 +1964,7 @@ class GetFaceIdTokenRequest(AbstractModel):
         :type CompareLib: str
         :param IdCard: CompareLib为商业库时必传。
         :type IdCard: str
-        :param Name: CompareLib为商业库库时必传。
+        :param Name: CompareLib为商业库时必传。
         :type Name: str
         :param ImageBase64: CompareLib为上传照片比对时必传，Base64后图片最大8MB。
 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
@@ -1971,6 +1976,8 @@ class GetFaceIdTokenRequest(AbstractModel):
         :param UseCos: 默认为false，设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。开通地址见https://console.cloud.tencent.com/faceid/cos
 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
         :type UseCos: bool
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.CompareLib = None
         self.IdCard = None
@@ -1979,6 +1986,7 @@ class GetFaceIdTokenRequest(AbstractModel):
         self.Meta = None
         self.Extra = None
         self.UseCos = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -1989,6 +1997,9 @@ class GetFaceIdTokenRequest(AbstractModel):
         self.Meta = params.get("Meta")
         self.Extra = params.get("Extra")
         self.UseCos = params.get("UseCos")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

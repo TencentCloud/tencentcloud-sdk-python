@@ -17142,7 +17142,7 @@ class ModifyMediaInfoRequest(AbstractModel):
         :param ClearKeyFrameDescs: 取值 1 表示清空视频打点信息，其他值无意义。
 同一个请求里，ClearKeyFrameDescs 与 AddKeyFrameDescs 不能同时出现。
         :type ClearKeyFrameDescs: int
-        :param AddTags: 新增的一组标签，单个媒体文件最多 16 个标签，单个标签最多 16 个字符。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
+        :param AddTags: 新增的一组标签，单个媒体文件最多 16 个标签，单个标签最多 32 个字符。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
         :type AddTags: list of str
         :param DeleteTags: 要删除的一组标签。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
         :type DeleteTags: list of str

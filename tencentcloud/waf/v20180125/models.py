@@ -1518,6 +1518,61 @@ class DescribeAutoDenyIPResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainDetailsSaasRequest(AbstractModel):
+    """DescribeDomainDetailsSaas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param DomainId: 域名id
+        :type DomainId: str
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self.Domain = None
+        self.DomainId = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DomainId = params.get("DomainId")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainDetailsSaasResponse(AbstractModel):
+    """DescribeDomainDetailsSaas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainsPartInfo: 域名详情
+        :type DomainsPartInfo: :class:`tencentcloud.waf.v20180125.models.DomainsPartInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainsPartInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainsPartInfo") is not None:
+            self.DomainsPartInfo = DomainsPartInfo()
+            self.DomainsPartInfo._deserialize(params.get("DomainsPartInfo"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainWhiteRulesRequest(AbstractModel):
     """DescribeDomainWhiteRules请求参数结构体
 
@@ -1599,9 +1654,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移
+        :param Offset: 数据偏移量，从1开始。
         :type Offset: int
-        :param Limit: 容量
+        :param Limit: 返回域名的数量
         :type Limit: int
         :param Filters: 过滤数组
         :type Filters: list of FiltersItemNew
@@ -2150,6 +2205,126 @@ class DomainInfo(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param DomainId: 域名ID
+        :type DomainId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Cname: cname地址
+        :type Cname: str
+        :param Edition: 实例类型
+        :type Edition: str
+        :param Region: 地域
+        :type Region: str
+        :param InstanceName: 实例名
+        :type InstanceName: str
+        :param ClsStatus: 日志包
+        :type ClsStatus: int
+        :param FlowMode: clb模式
+        :type FlowMode: int
+        :param Status: waf开关
+        :type Status: int
+        :param Mode: 防御模式
+        :type Mode: int
+        :param Engine: AI防御模式
+        :type Engine: int
+        :param CCList: CC列表
+        :type CCList: list of str
+        :param RsList: 回源ip
+        :type RsList: list of str
+        :param Ports: 服务端口配置
+        :type Ports: list of PortInfo
+        :param LoadBalancerSet: 负载均衡器
+        :type LoadBalancerSet: list of LoadBalancerPackageNew
+        :param AppId: 用户id
+        :type AppId: int
+        :param State: clb状态
+        :type State: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Ipv6Status: 0关闭 1开启
+        :type Ipv6Status: int
+        :param BotStatus: 0关闭 1开启
+        :type BotStatus: int
+        :param Level: 版本信息
+        :type Level: int
+        :param PostCLSStatus: 是否开启投递CLS功能
+        :type PostCLSStatus: int
+        :param PostCKafkaStatus: 是否开启投递CKafka功能
+        :type PostCKafkaStatus: int
+        """
+        self.Domain = None
+        self.DomainId = None
+        self.InstanceId = None
+        self.Cname = None
+        self.Edition = None
+        self.Region = None
+        self.InstanceName = None
+        self.ClsStatus = None
+        self.FlowMode = None
+        self.Status = None
+        self.Mode = None
+        self.Engine = None
+        self.CCList = None
+        self.RsList = None
+        self.Ports = None
+        self.LoadBalancerSet = None
+        self.AppId = None
+        self.State = None
+        self.CreateTime = None
+        self.Ipv6Status = None
+        self.BotStatus = None
+        self.Level = None
+        self.PostCLSStatus = None
+        self.PostCKafkaStatus = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DomainId = params.get("DomainId")
+        self.InstanceId = params.get("InstanceId")
+        self.Cname = params.get("Cname")
+        self.Edition = params.get("Edition")
+        self.Region = params.get("Region")
+        self.InstanceName = params.get("InstanceName")
+        self.ClsStatus = params.get("ClsStatus")
+        self.FlowMode = params.get("FlowMode")
+        self.Status = params.get("Status")
+        self.Mode = params.get("Mode")
+        self.Engine = params.get("Engine")
+        self.CCList = params.get("CCList")
+        self.RsList = params.get("RsList")
+        if params.get("Ports") is not None:
+            self.Ports = []
+            for item in params.get("Ports"):
+                obj = PortInfo()
+                obj._deserialize(item)
+                self.Ports.append(obj)
+        if params.get("LoadBalancerSet") is not None:
+            self.LoadBalancerSet = []
+            for item in params.get("LoadBalancerSet"):
+                obj = LoadBalancerPackageNew()
+                obj._deserialize(item)
+                self.LoadBalancerSet.append(obj)
+        self.AppId = params.get("AppId")
+        self.State = params.get("State")
+        self.CreateTime = params.get("CreateTime")
+        self.Ipv6Status = params.get("Ipv6Status")
+        self.BotStatus = params.get("BotStatus")
+        self.Level = params.get("Level")
+        self.PostCLSStatus = params.get("PostCLSStatus")
+        self.PostCKafkaStatus = params.get("PostCKafkaStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DomainPackageNew(AbstractModel):
     """clb-waf 域名扩展套餐
@@ -2182,6 +2357,127 @@ class DomainPackageNew(AbstractModel):
         self.RenewFlag = params.get("RenewFlag")
         self.Count = params.get("Count")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DomainsPartInfo(AbstractModel):
+    """saas域名详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HttpsRewrite: 是否开启httpRewrite
+        :type HttpsRewrite: int
+        :param HttpsUpstreamPort: https回源端口
+        :type HttpsUpstreamPort: str
+        :param IsCdn: 是否是cdn
+        :type IsCdn: int
+        :param IsGray: 是否开启gray
+        :type IsGray: int
+        :param IsHttp2: 是否是http2
+        :type IsHttp2: int
+        :param IsWebsocket: 是否开启websocket
+        :type IsWebsocket: int
+        :param LoadBalance: 负载均衡
+        :type LoadBalance: int
+        :param Mode: 防御模式
+        :type Mode: int
+        :param PrivateKey: 私钥
+        :type PrivateKey: str
+        :param SSLId: ssl id
+        :type SSLId: str
+        :param UpstreamDomain: 回源域名
+        :type UpstreamDomain: str
+        :param UpstreamType: 回源类型
+        :type UpstreamType: int
+        :param SrcList: 回源ip
+        :type SrcList: list of str
+        :param Ports: 服务端口配置
+        :type Ports: list of PortInfo
+        :param CertType: 证书类型
+        :type CertType: int
+        :param UpstreamScheme: 回源方式
+        :type UpstreamScheme: str
+        :param Cls: 日志包
+        :type Cls: int
+        :param Cname: 一级cname
+        :type Cname: str
+        :param IsKeepAlive: 是否长连接
+        :type IsKeepAlive: int
+        :param ActiveCheck: 是否开启主动健康检测，1表示开启，0表示不开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveCheck: int
+        :param TLSVersion: TLS版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TLSVersion: int
+        :param Ciphers: 加密套件信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ciphers: list of int
+        :param CipherTemplate: 模版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CipherTemplate: int
+        """
+        self.HttpsRewrite = None
+        self.HttpsUpstreamPort = None
+        self.IsCdn = None
+        self.IsGray = None
+        self.IsHttp2 = None
+        self.IsWebsocket = None
+        self.LoadBalance = None
+        self.Mode = None
+        self.PrivateKey = None
+        self.SSLId = None
+        self.UpstreamDomain = None
+        self.UpstreamType = None
+        self.SrcList = None
+        self.Ports = None
+        self.CertType = None
+        self.UpstreamScheme = None
+        self.Cls = None
+        self.Cname = None
+        self.IsKeepAlive = None
+        self.ActiveCheck = None
+        self.TLSVersion = None
+        self.Ciphers = None
+        self.CipherTemplate = None
+
+
+    def _deserialize(self, params):
+        self.HttpsRewrite = params.get("HttpsRewrite")
+        self.HttpsUpstreamPort = params.get("HttpsUpstreamPort")
+        self.IsCdn = params.get("IsCdn")
+        self.IsGray = params.get("IsGray")
+        self.IsHttp2 = params.get("IsHttp2")
+        self.IsWebsocket = params.get("IsWebsocket")
+        self.LoadBalance = params.get("LoadBalance")
+        self.Mode = params.get("Mode")
+        self.PrivateKey = params.get("PrivateKey")
+        self.SSLId = params.get("SSLId")
+        self.UpstreamDomain = params.get("UpstreamDomain")
+        self.UpstreamType = params.get("UpstreamType")
+        self.SrcList = params.get("SrcList")
+        if params.get("Ports") is not None:
+            self.Ports = []
+            for item in params.get("Ports"):
+                obj = PortInfo()
+                obj._deserialize(item)
+                self.Ports.append(obj)
+        self.CertType = params.get("CertType")
+        self.UpstreamScheme = params.get("UpstreamScheme")
+        self.Cls = params.get("Cls")
+        self.Cname = params.get("Cname")
+        self.IsKeepAlive = params.get("IsKeepAlive")
+        self.ActiveCheck = params.get("ActiveCheck")
+        self.TLSVersion = params.get("TLSVersion")
+        self.Ciphers = params.get("Ciphers")
+        self.CipherTemplate = params.get("CipherTemplate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2730,6 +3026,12 @@ class IpHitItemsData(AbstractModel):
         
 
 
+class LoadBalancerPackageNew(AbstractModel):
+    """负载均衡算法
+
+    """
+
+
 class ModifyAccessPeriodRequest(AbstractModel):
     """ModifyAccessPeriod请求参数结构体
 
@@ -3054,6 +3356,12 @@ class ModifyWafThreatenIntelligenceResponse(AbstractModel):
             self.WafThreatenIntelligenceDetails = WafThreatenIntelligenceDetails()
             self.WafThreatenIntelligenceDetails._deserialize(params.get("WafThreatenIntelligenceDetails"))
         self.RequestId = params.get("RequestId")
+
+
+class PortInfo(AbstractModel):
+    """防护域名端口配置信息
+
+    """
 
 
 class PortItem(AbstractModel):

@@ -3884,12 +3884,16 @@ class UsageDetail(AbstractModel):
         :param Cancel: 撤回数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cancel: int
+        :param FlowChannel: 消耗渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowChannel: str
         """
         self.ProxyOrganizationOpenId = None
         self.ProxyOrganizationName = None
         self.Date = None
         self.Usage = None
         self.Cancel = None
+        self.FlowChannel = None
 
 
     def _deserialize(self, params):
@@ -3898,6 +3902,7 @@ class UsageDetail(AbstractModel):
         self.Date = params.get("Date")
         self.Usage = params.get("Usage")
         self.Cancel = params.get("Cancel")
+        self.FlowChannel = params.get("FlowChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

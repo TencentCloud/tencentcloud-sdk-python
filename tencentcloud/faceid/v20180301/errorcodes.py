@@ -245,6 +245,9 @@ INVALIDPARAMETERVALUE_RULEIDDISABLED = 'InvalidParameterValue.RuleIdDisabled'
 # RuleId不存在，请到人脸核身控制台申请。
 INVALIDPARAMETERVALUE_RULEIDNOTEXIST = 'InvalidParameterValue.RuleIdNotExist'
 
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 

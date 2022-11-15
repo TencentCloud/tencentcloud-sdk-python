@@ -269,6 +269,79 @@ class CFSOption(AbstractModel):
         
 
 
+class ClusterActivity(AbstractModel):
+    """符合条件的集群活动信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param ActivityId: 集群活动ID。
+        :type ActivityId: str
+        :param ActivityType: 集群活动类型。
+        :type ActivityType: str
+        :param ActivityStatus: 集群活动状态。取值范围：<br><li>PENDING：等待运行<br><li>RUNNING：运行中<br><li>SUCCESSFUL：活动成功<br><li>PARTIALLY_SUCCESSFUL：活动部分成功<br><li>FAILED：活动失败
+        :type ActivityStatus: str
+        :param ActivityStatusCode: 集群活动状态码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityStatusCode: str
+        :param ResultDetail: 集群活动结果详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultDetail: str
+        :param Cause: 集群活动起因。
+        :type Cause: str
+        :param Description: 集群活动描述。
+        :type Description: str
+        :param RelatedNodeActivitySet: 集群活动相关节点活动集合。
+        :type RelatedNodeActivitySet: list of NodeActivity
+        :param StartTime: 集群活动开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 集群活动结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self.ClusterId = None
+        self.ActivityId = None
+        self.ActivityType = None
+        self.ActivityStatus = None
+        self.ActivityStatusCode = None
+        self.ResultDetail = None
+        self.Cause = None
+        self.Description = None
+        self.RelatedNodeActivitySet = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ActivityId = params.get("ActivityId")
+        self.ActivityType = params.get("ActivityType")
+        self.ActivityStatus = params.get("ActivityStatus")
+        self.ActivityStatusCode = params.get("ActivityStatusCode")
+        self.ResultDetail = params.get("ResultDetail")
+        self.Cause = params.get("Cause")
+        self.Description = params.get("Description")
+        if params.get("RelatedNodeActivitySet") is not None:
+            self.RelatedNodeActivitySet = []
+            for item in params.get("RelatedNodeActivitySet"):
+                obj = NodeActivity()
+                obj._deserialize(item)
+                self.RelatedNodeActivitySet.append(obj)
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterOverview(AbstractModel):
     """集群概览信息。
 
@@ -701,6 +774,68 @@ class DeleteNodesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterActivitiesRequest(AbstractModel):
+    """DescribeClusterActivities请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。通过该参数指定需要查询活动历史记录的集群。
+        :type ClusterId: str
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterActivitiesResponse(AbstractModel):
+    """DescribeClusterActivities返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterActivitySet: 集群活动历史记录列表。
+        :type ClusterActivitySet: list of ClusterActivity
+        :param TotalCount: 集群活动历史记录数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterActivitySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterActivitySet") is not None:
+            self.ClusterActivitySet = []
+            for item in params.get("ClusterActivitySet"):
+                obj = ClusterActivity()
+                obj._deserialize(item)
+                self.ClusterActivitySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClustersRequest(AbstractModel):
     """DescribeClusters请求参数结构体
 
@@ -1104,6 +1239,45 @@ class ManagerNodeOverview(AbstractModel):
 
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeActivity(AbstractModel):
+    """节点活动信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeInstanceId: 节点活动所在的实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeInstanceId: str
+        :param NodeActivityStatus: 节点活动状态。取值范围：<br><li>RUNNING：运行中<br><li>SUCCESSFUL：活动成功<br><li>FAILED：活动失败
+        :type NodeActivityStatus: str
+        :param NodeActivityStatusCode: 节点活动状态码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeActivityStatusCode: str
+        :param NodeActivityStatusReason: 节点活动状态原因。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeActivityStatusReason: str
+        """
+        self.NodeInstanceId = None
+        self.NodeActivityStatus = None
+        self.NodeActivityStatusCode = None
+        self.NodeActivityStatusReason = None
+
+
+    def _deserialize(self, params):
+        self.NodeInstanceId = params.get("NodeInstanceId")
+        self.NodeActivityStatus = params.get("NodeActivityStatus")
+        self.NodeActivityStatusCode = params.get("NodeActivityStatusCode")
+        self.NodeActivityStatusReason = params.get("NodeActivityStatusReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

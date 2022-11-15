@@ -495,7 +495,7 @@ class BizLicenseOCRResponse(AbstractModel):
 注：告警码可以同时存在多个
         :type RecognizeWarnCode: list of int
         :param RecognizeWarnMsg: 告警码说明：
-OCR_WARNING_TPYE_NOT_MATCH 非营业执照
+OCR_WARNING_TYPE_NOT_MATCH 非营业执照
 WARN_COPY_CARD 黑白复印件告警
 注：告警信息可以同时存在多个
         :type RecognizeWarnMsg: list of str

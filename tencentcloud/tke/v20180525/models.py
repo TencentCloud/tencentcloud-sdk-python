@@ -9139,12 +9139,16 @@ class DisableClusterAuditRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param DeleteLogSetAndTopic: 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+        :type DeleteLogSetAndTopic: bool
         """
         self.ClusterId = None
+        self.DeleteLogSetAndTopic = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        self.DeleteLogSetAndTopic = params.get("DeleteLogSetAndTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9221,12 +9225,16 @@ class DisableEventPersistenceRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param DeleteLogSetAndTopic: 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+        :type DeleteLogSetAndTopic: bool
         """
         self.ClusterId = None
+        self.DeleteLogSetAndTopic = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        self.DeleteLogSetAndTopic = params.get("DeleteLogSetAndTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

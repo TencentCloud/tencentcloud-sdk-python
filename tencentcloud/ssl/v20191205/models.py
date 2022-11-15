@@ -1381,6 +1381,8 @@ class DescribeCertificatesRequest(AbstractModel):
         :type FilterSource: str
         :param IsSM: 是否筛选国密证书。1:筛选  0:不筛选
         :type IsSM: int
+        :param FilterExpiring: 筛选证书是否即将过期，传1是筛选，0不筛选
+        :type FilterExpiring: int
         """
         self.Offset = None
         self.Limit = None
@@ -1394,6 +1396,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self.Renew = None
         self.FilterSource = None
         self.IsSM = None
+        self.FilterExpiring = None
 
 
     def _deserialize(self, params):
@@ -1409,6 +1412,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self.Renew = params.get("Renew")
         self.FilterSource = params.get("FilterSource")
         self.IsSM = params.get("IsSM")
+        self.FilterExpiring = params.get("FilterExpiring")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

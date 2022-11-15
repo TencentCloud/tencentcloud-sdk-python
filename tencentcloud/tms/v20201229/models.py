@@ -277,6 +277,9 @@ class TextModerationResponse(AbstractModel):
         :param SubLabel: 该字段用于返回当前标签（Label）下的二级标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
+        :param ContextText: 该字段用于返回上下文关联文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContextText: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -290,6 +293,7 @@ class TextModerationResponse(AbstractModel):
         self.Extra = None
         self.DataId = None
         self.SubLabel = None
+        self.ContextText = None
         self.RequestId = None
 
 
@@ -314,6 +318,7 @@ class TextModerationResponse(AbstractModel):
         self.Extra = params.get("Extra")
         self.DataId = params.get("DataId")
         self.SubLabel = params.get("SubLabel")
+        self.ContextText = params.get("ContextText")
         self.RequestId = params.get("RequestId")
 
 

@@ -329,7 +329,7 @@ class Backup(AbstractModel):
         :type DBs: list of str
         :param Strategy: 备份策略（0-实例备份；1-多库备份）
         :type Strategy: int
-        :param BackupWay: 备份方式，0-定时备份；1-手动临时备份
+        :param BackupWay: 备份方式，0-定时备份；1-手动临时备份；2-定期备份
         :type BackupWay: int
         :param BackupName: 备份任务名称，可自定义
         :type BackupName: str
@@ -3288,7 +3288,7 @@ class DescribeBackupsRequest(AbstractModel):
         :type BackupName: str
         :param Strategy: 按照备份策略筛选，0-实例备份，1-多库备份，不填则不筛选此项
         :type Strategy: int
-        :param BackupWay: 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，不填则不筛选此项
+        :param BackupWay: 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，2-定期备份，不填则不筛选此项
         :type BackupWay: int
         :param BackupId: 按照备份ID筛选，不填则不筛选此项
         :type BackupId: int
@@ -6387,6 +6387,16 @@ class ModifyBackupStrategyRequest(AbstractModel):
         :type BackupCycle: list of int non-negative
         :param BackupSaveDays: 数据(日志)备份保留时间，取值[3-1830]天，默认7天
         :type BackupSaveDays: int
+        :param RegularBackupEnable: 定期备份状态 enable-开启，disable-关闭，默认关闭
+        :type RegularBackupEnable: str
+        :param RegularBackupSaveDays: 定期备份保留天数 [90 - 3650]天，默认365天
+        :type RegularBackupSaveDays: int
+        :param RegularBackupStrategy: 定期备份策略 years-每年，quarters-每季度，months-每月，默认months
+        :type RegularBackupStrategy: str
+        :param RegularBackupCounts: 定期备份保留个数，默认1个
+        :type RegularBackupCounts: int
+        :param RegularBackupStartTime: 定期备份开始日期，格式-YYYY-MM-DD 默认当前日期
+        :type RegularBackupStartTime: str
         """
         self.InstanceId = None
         self.BackupType = None
@@ -6395,6 +6405,11 @@ class ModifyBackupStrategyRequest(AbstractModel):
         self.BackupModel = None
         self.BackupCycle = None
         self.BackupSaveDays = None
+        self.RegularBackupEnable = None
+        self.RegularBackupSaveDays = None
+        self.RegularBackupStrategy = None
+        self.RegularBackupCounts = None
+        self.RegularBackupStartTime = None
 
 
     def _deserialize(self, params):
@@ -6405,6 +6420,11 @@ class ModifyBackupStrategyRequest(AbstractModel):
         self.BackupModel = params.get("BackupModel")
         self.BackupCycle = params.get("BackupCycle")
         self.BackupSaveDays = params.get("BackupSaveDays")
+        self.RegularBackupEnable = params.get("RegularBackupEnable")
+        self.RegularBackupSaveDays = params.get("RegularBackupSaveDays")
+        self.RegularBackupStrategy = params.get("RegularBackupStrategy")
+        self.RegularBackupCounts = params.get("RegularBackupCounts")
+        self.RegularBackupStartTime = params.get("RegularBackupStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

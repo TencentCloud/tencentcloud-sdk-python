@@ -2882,6 +2882,10 @@ class DescribePriceRequest(AbstractModel):
         :type Count: int
         :param Paymode: 付费类型。postpaid：按量付费   prepaid：预付费
         :type Paymode: str
+        :param AmountUnit: 价格金额单位，不传默认单位为分，取值：  
+* pent：分
+* microPent：微分
+        :type AmountUnit: str
         """
         self.Zone = None
         self.NodeCount = None
@@ -2890,6 +2894,7 @@ class DescribePriceRequest(AbstractModel):
         self.Period = None
         self.Count = None
         self.Paymode = None
+        self.AmountUnit = None
 
 
     def _deserialize(self, params):
@@ -2900,6 +2905,7 @@ class DescribePriceRequest(AbstractModel):
         self.Period = params.get("Period")
         self.Count = params.get("Count")
         self.Paymode = params.get("Paymode")
+        self.AmountUnit = params.get("AmountUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2916,9 +2922,13 @@ class DescribePriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 原价，单位：分
+        :param OriginalPrice: 原价  
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站为人民币，国际站为美元
         :type OriginalPrice: int
-        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
+        :param Price: 实际价格，受折扣等影响，可能和原价不同
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站人民币，国际站美元
         :type Price: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3003,14 +3013,20 @@ class DescribeRenewalPriceRequest(AbstractModel):
         :type InstanceId: str
         :param Period: 续费时长，单位：月。不传则默认为1个月。
         :type Period: int
+        :param AmountUnit: 价格金额单位，不传默认单位为分，取值：  
+* pent：分
+* microPent：微分
+        :type AmountUnit: str
         """
         self.InstanceId = None
         self.Period = None
+        self.AmountUnit = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Period = params.get("Period")
+        self.AmountUnit = params.get("AmountUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3027,9 +3043,13 @@ class DescribeRenewalPriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 原价，单位：分
+        :param OriginalPrice: 原价  
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站为人民币，国际站为美元
         :type OriginalPrice: int
-        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
+        :param Price: 实际价格，受折扣等影响，可能和原价不同
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站人民币，国际站美元
         :type Price: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3094,11 +3114,16 @@ class DescribeUpgradePriceRequest(AbstractModel):
         :type Storage: int
         :param NodeCount: 新节点数，传0表示节点数不变
         :type NodeCount: int
+        :param AmountUnit: 价格金额单位，不传默认单位为分，取值：  
+* pent：分
+* microPent：微分
+        :type AmountUnit: str
         """
         self.InstanceId = None
         self.Memory = None
         self.Storage = None
         self.NodeCount = None
+        self.AmountUnit = None
 
 
     def _deserialize(self, params):
@@ -3106,6 +3131,7 @@ class DescribeUpgradePriceRequest(AbstractModel):
         self.Memory = params.get("Memory")
         self.Storage = params.get("Storage")
         self.NodeCount = params.get("NodeCount")
+        self.AmountUnit = params.get("AmountUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3122,9 +3148,13 @@ class DescribeUpgradePriceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 原价，单位：分
+        :param OriginalPrice: 原价  
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站为人民币，国际站为美元
         :type OriginalPrice: int
-        :param Price: 实际价格，单位：分。受折扣等影响，可能和原价不同。
+        :param Price: 实际价格，受折扣等影响，可能和原价不同
+* 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+* 币种：国内站人民币，国际站美元
         :type Price: int
         :param Formula: 变配明细计算公式
         :type Formula: str

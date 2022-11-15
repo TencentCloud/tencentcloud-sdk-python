@@ -18,6 +18,89 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddOrganizationNodeRequest(AbstractModel):
+    """AddOrganizationNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParentNodeId: 父节点ID。可以调用DescribeOrganizationNodes获取
+        :type ParentNodeId: int
+        :param Name: 节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-
+        :type Name: str
+        :param Remark: 备注。
+        :type Remark: str
+        """
+        self.ParentNodeId = None
+        self.Name = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.ParentNodeId = params.get("ParentNodeId")
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddOrganizationNodeResponse(AbstractModel):
+    """AddOrganizationNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: 节点ID。
+        :type NodeId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NodeId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.RequestId = params.get("RequestId")
+
+
+class AuthNode(AbstractModel):
+    """认证主体主要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RelationId: 主体关系ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelationId: int
+        :param AuthName: 主体名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthName: str
+        """
+        self.RelationId = None
+        self.AuthName = None
+
+
+    def _deserialize(self, params):
+        self.RelationId = params.get("RelationId")
+        self.AuthName = params.get("AuthName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindOrganizationMemberAuthAccountRequest(AbstractModel):
     """BindOrganizationMemberAuthAccount请求参数结构体
 
@@ -27,9 +110,9 @@ class BindOrganizationMemberAuthAccountRequest(AbstractModel):
         r"""
         :param MemberUin: 成员Uin。
         :type MemberUin: int
-        :param PolicyId: 策略ID。
+        :param PolicyId: 策略ID。可以调用DescribeOrganizationMemberPolicies获取
         :type PolicyId: int
-        :param OrgSubAccountUins: 组织子账号Uin。
+        :param OrgSubAccountUins: 组织管理员子账号Uin列表。最大5个
         :type OrgSubAccountUins: list of int
         """
         self.MemberUin = None
@@ -76,9 +159,9 @@ class CreateOrganizationMemberPolicyRequest(AbstractModel):
         r"""
         :param MemberUin: 成员Uin。
         :type MemberUin: int
-        :param PolicyName: 策略名。
+        :param PolicyName: 策略名。最大长度为128个字符，支持英文字母、数字、符号+=,.@_-
         :type PolicyName: str
-        :param IdentityId: 身份ID。
+        :param IdentityId: 成员访问身份ID。可以调用DescribeOrganizationMemberAuthIdentities获取
         :type IdentityId: int
         :param Description: 描述。
         :type Description: str
@@ -132,25 +215,25 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 名称
+        :param Name: 成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
         :type Name: str
-        :param PolicyType: 关系策略  取值：Financial
+        :param PolicyType: 关系策略。取值：Financial
         :type PolicyType: str
-        :param PermissionIds: 关系权限 取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票 ，1、2 默认必须
+        :param PermissionIds: 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费，1、2 默认必须
         :type PermissionIds: list of int non-negative
-        :param NodeId: 成员所属部门的节点ID
+        :param NodeId: 成员所属部门的节点ID。可以调用DescribeOrganizationNodes获取
         :type NodeId: int
-        :param AccountName: 账号名
+        :param AccountName: 账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
         :type AccountName: str
-        :param Remark: 备注
+        :param Remark: 备注。
         :type Remark: str
-        :param RecordId: 重试创建传记录ID
+        :param RecordId: 成员创建记录ID。创建异常重试时需要
         :type RecordId: int
-        :param PayUin: 代付者Uin
+        :param PayUin: 代付者Uin。成员代付费时需要
         :type PayUin: str
-        :param IdentityRoleID: 管理身份
+        :param IdentityRoleID: 成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持
         :type IdentityRoleID: list of int non-negative
-        :param AuthRelationId: 主体关系ID
+        :param AuthRelationId: 认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取
         :type AuthRelationId: int
         """
         self.Name = None
@@ -192,7 +275,7 @@ class CreateOrganizationMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uin: 成员Uin
+        :param Uin: 成员Uin。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -207,6 +290,280 @@ class CreateOrganizationMemberResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteOrganizationMembersRequest(AbstractModel):
+    """DeleteOrganizationMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 被删除成员的UIN列表。
+        :type MemberUin: list of int
+        """
+        self.MemberUin = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrganizationMembersResponse(AbstractModel):
+    """DeleteOrganizationMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteOrganizationNodesRequest(AbstractModel):
+    """DeleteOrganizationNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: 节点ID列表。
+        :type NodeId: list of int
+        """
+        self.NodeId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrganizationNodesResponse(AbstractModel):
+    """DeleteOrganizationNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationAuthNodeRequest(AbstractModel):
+    """DescribeOrganizationAuthNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 限制数目。最大50
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationAuthNodeResponse(AbstractModel):
+    """DescribeOrganizationAuthNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Items: 条目详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuthNode
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuthNode()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
+    """DescribeOrganizationMemberAuthIdentities请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 限制数目。最大50
+        :type Limit: int
+        :param MemberUin: 组织成员Uin。
+        :type MemberUin: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.MemberUin = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.MemberUin = params.get("MemberUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
+    """DescribeOrganizationMemberAuthIdentities返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrgMemberAuthIdentity
+        :param Total: 总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrgMemberAuthIdentity()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationMemberPoliciesRequest(AbstractModel):
+    """DescribeOrganizationMemberPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 限制数目。最大50
+        :type Limit: int
+        :param MemberUin: 成员Uin。
+        :type MemberUin: int
+        :param SearchKey: 搜索关键字。可用于策略名或描述搜索
+        :type SearchKey: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.MemberUin = None
+        self.SearchKey = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.MemberUin = params.get("MemberUin")
+        self.SearchKey = params.get("SearchKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationMemberPoliciesResponse(AbstractModel):
+    """DescribeOrganizationMemberPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrgMemberPolicy
+        :param Total: 总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrgMemberPolicy()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOrganizationMembersRequest(AbstractModel):
     """DescribeOrganizationMembers请求参数结构体
 
@@ -214,17 +571,17 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量
+        :param Offset: 偏移量。
         :type Offset: int
-        :param Limit: 限制数目
+        :param Limit: 限制数目。最大50
         :type Limit: int
         :param Lang: 国际站：en，国内站：zh
         :type Lang: str
-        :param SearchKey: 成员名或者成员ID搜索
+        :param SearchKey: 成员名称或者成员ID搜索。
         :type SearchKey: str
-        :param AuthName: 主体名称
+        :param AuthName: 主体名称搜索。
         :type AuthName: str
-        :param Product: 集团服务（服务管理员查询时，必须指定）
+        :param Product: 可信服务产品简称。可信服务管理员查询时必须指定
         :type Product: str
         """
         self.Offset = None
@@ -258,9 +615,9 @@ class DescribeOrganizationMembersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: 成员列表
+        :param Items: 成员列表。
         :type Items: list of OrgMember
-        :param Total: 总数目
+        :param Total: 总数目。
         :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -281,6 +638,66 @@ class DescribeOrganizationMembersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOrganizationNodesRequest(AbstractModel):
+    """DescribeOrganizationNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 限制数目。最大50
+        :type Limit: int
+        :param Offset: 偏移量。
+        :type Offset: int
+        """
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationNodesResponse(AbstractModel):
+    """DescribeOrganizationNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Items: 列表详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrgNode
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrgNode()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOrganizationRequest(AbstractModel):
     """DescribeOrganization请求参数结构体
 
@@ -290,7 +707,7 @@ class DescribeOrganizationRequest(AbstractModel):
         r"""
         :param Lang: 国际站：en，国内站：zh
         :type Lang: str
-        :param Product: 产品简称（查询是否集团服务委派管理员必填）
+        :param Product: 可信服务产品简称。查询是否该可信服务管理员时必须指定
         :type Product: str
         """
         self.Lang = None
@@ -316,52 +733,52 @@ class DescribeOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrgId: 企业组织ID
+        :param OrgId: 企业组织ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgId: int
-        :param HostUin: 创建者UIN
+        :param HostUin: 创建者UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostUin: int
-        :param NickName: 创建者昵称
+        :param NickName: 创建者昵称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NickName: str
-        :param OrgType: 企业组织类型
+        :param OrgType: 企业组织类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgType: int
-        :param IsManager: 组织管理员：true，组织成员：false
+        :param IsManager: 是否组织管理员。是：true ，否：false
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsManager: bool
-        :param OrgPolicyType: 策略类型
+        :param OrgPolicyType: 策略类型。财务管理：Financial
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPolicyType: str
-        :param OrgPolicyName: 策略名
+        :param OrgPolicyName: 策略名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPolicyName: str
-        :param OrgPermission: 策略权限
+        :param OrgPermission: 成员财务权限列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPermission: list of OrgPermission
-        :param RootNodeId: 根节点ID
+        :param RootNodeId: 组织根节点ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RootNodeId: int
-        :param CreateTime: 创建时间
+        :param CreateTime: 组织创建时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param JoinTime: 成员加入时间
+        :param JoinTime: 成员加入时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type JoinTime: str
-        :param IsAllowQuit: 是否允许退出。允许：Allow，不允许：Denied。
+        :param IsAllowQuit: 成员是否允许退出。允许：Allow，不允许：Denied
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllowQuit: str
-        :param PayUin: 代付者Uin
+        :param PayUin: 代付者Uin。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayUin: str
-        :param PayName: 代付者名称
+        :param PayName: 代付者名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayName: str
-        :param IsAssignManager: 是否集团服务委派管理员 true-是、false-否
+        :param IsAssignManager: 是否可信服务管理员。是：true，否：false
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAssignManager: bool
-        :param IsAuthManager: 是否主体管理员 true-是、false-否
+        :param IsAuthManager: 是否实名主体管理员。是：true，否：false
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAuthManager: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -411,6 +828,102 @@ class DescribeOrganizationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class IdentityPolicy(AbstractModel):
+    """组织身份策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param PolicyName: 策略名称
+        :type PolicyName: str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListOrganizationIdentityRequest(AbstractModel):
+    """ListOrganizationIdentity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 限制数目。最大50
+        :type Limit: int
+        :param SearchKey: 名称搜索关键字。
+        :type SearchKey: str
+        :param IdentityId: 身份ID搜索。
+        :type IdentityId: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.SearchKey = None
+        self.IdentityId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchKey = params.get("SearchKey")
+        self.IdentityId = params.get("IdentityId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListOrganizationIdentityResponse(AbstractModel):
+    """ListOrganizationIdentity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Items: 条目详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrgIdentity
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrgIdentity()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class MemberIdentity(AbstractModel):
     """成员管理身份
 
@@ -432,6 +945,106 @@ class MemberIdentity(AbstractModel):
     def _deserialize(self, params):
         self.IdentityId = params.get("IdentityId")
         self.IdentityAliasName = params.get("IdentityAliasName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MoveOrganizationNodeMembersRequest(AbstractModel):
+    """MoveOrganizationNodeMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: 组织节点ID。
+        :type NodeId: int
+        :param MemberUin: 成员UIN列表。
+        :type MemberUin: list of int
+        """
+        self.NodeId = None
+        self.MemberUin = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.MemberUin = params.get("MemberUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MoveOrganizationNodeMembersResponse(AbstractModel):
+    """MoveOrganizationNodeMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class OrgIdentity(AbstractModel):
+    """组织身份
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityId: 身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityId: int
+        :param IdentityAliasName: 身份名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityAliasName: str
+        :param Description: 描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param IdentityPolicy: 身份策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityPolicy: list of IdentityPolicy
+        :param IdentityType: 身份类型。 1-预设、 2-自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityType: int
+        :param UpdateTime: 更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.IdentityId = None
+        self.IdentityAliasName = None
+        self.Description = None
+        self.IdentityPolicy = None
+        self.IdentityType = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.IdentityId = params.get("IdentityId")
+        self.IdentityAliasName = params.get("IdentityAliasName")
+        self.Description = params.get("Description")
+        if params.get("IdentityPolicy") is not None:
+            self.IdentityPolicy = []
+            for item in params.get("IdentityPolicy"):
+                obj = IdentityPolicy()
+                obj._deserialize(item)
+                self.IdentityPolicy.append(obj)
+        self.IdentityType = params.get("IdentityType")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -556,6 +1169,166 @@ class OrgMember(AbstractModel):
         
 
 
+class OrgMemberAuthIdentity(AbstractModel):
+    """组织成员可授权的身份
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityId: 身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityId: int
+        :param IdentityRoleName: 身份角色名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityRoleName: str
+        :param IdentityRoleAliasName: 身份角色别名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityRoleAliasName: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.IdentityId = None
+        self.IdentityRoleName = None
+        self.IdentityRoleAliasName = None
+        self.Description = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.IdentityId = params.get("IdentityId")
+        self.IdentityRoleName = params.get("IdentityRoleName")
+        self.IdentityRoleAliasName = params.get("IdentityRoleAliasName")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrgMemberPolicy(AbstractModel):
+    """组织成员被授权的策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: int
+        :param PolicyName: 策略名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyName: str
+        :param IdentityId: 身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityId: int
+        :param IdentityRoleName: 身份角色名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityRoleName: str
+        :param IdentityRoleAliasName: 身份角色别名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityRoleAliasName: str
+        :param Description: 描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.IdentityId = None
+        self.IdentityRoleName = None
+        self.IdentityRoleAliasName = None
+        self.Description = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.IdentityId = params.get("IdentityId")
+        self.IdentityRoleName = params.get("IdentityRoleName")
+        self.IdentityRoleAliasName = params.get("IdentityRoleAliasName")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrgNode(AbstractModel):
+    """企业组织单元
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: 组织节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: int
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param ParentNodeId: 父节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentNodeId: int
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.NodeId = None
+        self.Name = None
+        self.ParentNodeId = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.Name = params.get("Name")
+        self.ParentNodeId = params.get("ParentNodeId")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrgPermission(AbstractModel):
     """关系策略权限
 
@@ -582,3 +1355,52 @@ class OrgPermission(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateOrganizationNodeRequest(AbstractModel):
+    """UpdateOrganizationNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: 节点ID。
+        :type NodeId: int
+        :param Name: 节点名称。最大长度为40个字符，支持英文字母、数字、汉字、符号+@、&._[]-
+        :type Name: str
+        :param Remark: 备注。
+        :type Remark: str
+        """
+        self.NodeId = None
+        self.Name = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOrganizationNodeResponse(AbstractModel):
+    """UpdateOrganizationNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")

@@ -3500,6 +3500,12 @@ class DatabaseInfo(AbstractModel):
         :param DatasourceType: 数据源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: int
+        :param OriginDatabaseName: 数据库原始名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginDatabaseName: str
+        :param OriginSchemaName: schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginSchemaName: str
         """
         self.DatasourceName = None
         self.DatasourceId = None
@@ -3507,6 +3513,8 @@ class DatabaseInfo(AbstractModel):
         self.DatabaseId = None
         self.InstanceId = None
         self.DatasourceType = None
+        self.OriginDatabaseName = None
+        self.OriginSchemaName = None
 
 
     def _deserialize(self, params):
@@ -3516,6 +3524,8 @@ class DatabaseInfo(AbstractModel):
         self.DatabaseId = params.get("DatabaseId")
         self.InstanceId = params.get("InstanceId")
         self.DatasourceType = params.get("DatasourceType")
+        self.OriginDatabaseName = params.get("OriginDatabaseName")
+        self.OriginSchemaName = params.get("OriginSchemaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4498,14 +4508,18 @@ class DescribeDataBasesRequest(AbstractModel):
         :type ProjectId: str
         :param DatasourceId: 数据源id
         :type DatasourceId: str
+        :param DsTypes: 数据源类型
+        :type DsTypes: list of int non-negative
         """
         self.ProjectId = None
         self.DatasourceId = None
+        self.DsTypes = None
 
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.DatasourceId = params.get("DatasourceId")
+        self.DsTypes = params.get("DsTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7643,14 +7657,18 @@ class DescribeRuleDataSourcesRequest(AbstractModel):
         :type ProjectId: str
         :param DatasourceId: 数据来源Id
         :type DatasourceId: str
+        :param DsTypes: 数据源类型
+        :type DsTypes: list of int non-negative
         """
         self.ProjectId = None
         self.DatasourceId = None
+        self.DsTypes = None
 
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.DatasourceId = params.get("DatasourceId")
+        self.DsTypes = params.get("DsTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8835,16 +8853,20 @@ class DescribeRuleTemplatesRequest(AbstractModel):
         :type SourceObjectType: int
         :param ProjectId: 项目Id
         :type ProjectId: str
+        :param SourceEngineTypes: 源端对应的引擎类型
+        :type SourceEngineTypes: list of int non-negative
         """
         self.Type = None
         self.SourceObjectType = None
         self.ProjectId = None
+        self.SourceEngineTypes = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.SourceObjectType = params.get("SourceObjectType")
         self.ProjectId = params.get("ProjectId")
+        self.SourceEngineTypes = params.get("SourceEngineTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

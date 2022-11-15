@@ -2710,7 +2710,7 @@ class EnableAutoScalingGroupResponse(AbstractModel):
 
 
 class EnhancedService(AbstractModel):
-    """描述了实例的增强服务启用情况与其设置，如云安全，云监控等实例 Agent。
+    """描述了实例的增强服务启用情况与其设置，如云安全，云监控，自动化助手等实例 Agent。
 
     """
 
@@ -2722,10 +2722,13 @@ class EnhancedService(AbstractModel):
         :type MonitorService: :class:`tencentcloud.autoscaling.v20180419.models.RunMonitorServiceEnabled`
         :param AutomationService: 该参数已废弃，查询时会返回空值，请勿使用。
         :type AutomationService: list of RunAutomationServiceEnabled
+        :param AutomationToolsService: 开启自动化助手服务。若不指定该参数，则默认逻辑与CVM保持一致。注意：此字段可能返回 null，表示取不到有效值。
+        :type AutomationToolsService: :class:`tencentcloud.autoscaling.v20180419.models.RunAutomationServiceEnabled`
         """
         self.SecurityService = None
         self.MonitorService = None
         self.AutomationService = None
+        self.AutomationToolsService = None
 
 
     def _deserialize(self, params):
@@ -2741,6 +2744,9 @@ class EnhancedService(AbstractModel):
                 obj = RunAutomationServiceEnabled()
                 obj._deserialize(item)
                 self.AutomationService.append(obj)
+        if params.get("AutomationToolsService") is not None:
+            self.AutomationToolsService = RunAutomationServiceEnabled()
+            self.AutomationToolsService._deserialize(params.get("AutomationToolsService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

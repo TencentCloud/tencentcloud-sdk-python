@@ -890,12 +890,16 @@ class DataDiskPrice(AbstractModel):
         :type Discount: float
         :param DiscountPrice: 折后总价。
         :type DiscountPrice: float
+        :param InstanceId: 数据盘挂载的实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self.DiskId = None
         self.OriginalDiskPrice = None
         self.OriginalPrice = None
         self.Discount = None
         self.DiscountPrice = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -904,6 +908,7 @@ class DataDiskPrice(AbstractModel):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Discount = params.get("Discount")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3909,13 +3914,13 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 待续费的实例。
+        :param InstanceIds: 待续费的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573 )接口返回值中的InstanceId获取。每次请求批量实例的上限为50。
         :type InstanceIds: list of str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
-        :param RenewDataDisk: 是否续费数据盘
+        :param RenewDataDisk: 是否续费数据盘。默认值: false, 即不续费。
         :type RenewDataDisk: bool
-        :param AlignInstanceExpiredTime: 数据盘是否对齐实例到期时间
+        :param AlignInstanceExpiredTime: 数据盘是否对齐实例到期时间。默认值: false, 即不对齐。
         :type AlignInstanceExpiredTime: bool
         """
         self.InstanceIds = None
@@ -3947,16 +3952,20 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Price: 询价信息。
+        :param Price: 询价信息。默认为列表中第一个实例的价格信息。
         :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
         :param DataDiskPriceSet: 数据盘价格信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDiskPriceSet: list of DataDiskPrice
+        :param InstancePriceDetailSet: 待续费实例价格列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancePriceDetailSet: list of InstancePriceDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
         self.DataDiskPriceSet = None
+        self.InstancePriceDetailSet = None
         self.RequestId = None
 
 
@@ -3970,6 +3979,12 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
                 obj = DataDiskPrice()
                 obj._deserialize(item)
                 self.DataDiskPriceSet.append(obj)
+        if params.get("InstancePriceDetailSet") is not None:
+            self.InstancePriceDetailSet = []
+            for item in params.get("InstancePriceDetailSet"):
+                obj = InstancePriceDetail()
+                obj._deserialize(item)
+                self.InstancePriceDetailSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4219,6 +4234,38 @@ class InstancePrice(AbstractModel):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Discount = params.get("Discount")
         self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstancePriceDetail(AbstractModel):
+    """实例价格详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstancePrice: 询价信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancePrice: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
+        """
+        self.InstanceId = None
+        self.InstancePrice = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("InstancePrice") is not None:
+            self.InstancePrice = InstancePrice()
+            self.InstancePrice._deserialize(params.get("InstancePrice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

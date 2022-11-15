@@ -25,22 +25,27 @@ class AbstractRuntimeMC(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuntimeId: 运行时id
+        :param RuntimeId: 环境id
         :type RuntimeId: int
-        :param DisplayName: 运行时名称，用户输入，同一uin内唯一
+        :param DisplayName: 环境名称，用户输入，同一uin内唯一
         :type DisplayName: str
-        :param Type: 运行时类型：0: sandbox, 1:shared, 2:private
+        :param Type: 环境类型：0: sandbox, 1:shared, 2:private
         :type Type: int
-        :param Zone: 运行时所在地域，tianjin，beijiing，guangzhou等
+        :param Zone: 环境所在地域，tianjin，beijiing，guangzhou等
         :type Zone: str
-        :param Area: 运行时所在地域，tianjin，beijiing，guangzhou等（同Zone）
+        :param Area: 环境所在地域，tianjin，beijiing，guangzhou等（同Zone）
         :type Area: str
-        :param Addr: 运行时应用listener地址后缀
+        :param Addr: 环境应用listener地址后缀
         :type Addr: str
-        :param Status: 运行时状态
+        :param Status: 环境状态
         :type Status: int
-        :param ExpiredAt: 运行时过期时间
+        :param ExpiredAt: 环境过期时间
         :type ExpiredAt: int
+        :param RuntimeClass: 环境运行类型：0:运行时类型、1:api类型
+        :type RuntimeClass: int
+        :param Deployed: 是否已在当前环境发布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deployed: bool
         """
         self.RuntimeId = None
         self.DisplayName = None
@@ -50,6 +55,8 @@ class AbstractRuntimeMC(AbstractModel):
         self.Addr = None
         self.Status = None
         self.ExpiredAt = None
+        self.RuntimeClass = None
+        self.Deployed = None
 
 
     def _deserialize(self, params):
@@ -61,6 +68,8 @@ class AbstractRuntimeMC(AbstractModel):
         self.Addr = params.get("Addr")
         self.Status = params.get("Status")
         self.ExpiredAt = params.get("ExpiredAt")
+        self.RuntimeClass = params.get("RuntimeClass")
+        self.Deployed = params.get("Deployed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -77,18 +86,22 @@ class GetRuntimeMCRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuntimeId: 运行时id
+        :param RuntimeId: 环境id
         :type RuntimeId: int
-        :param Zone: 运行时地域
+        :param Zone: 环境地域
         :type Zone: str
+        :param RuntimeClass: 环境运行类型：0:运行时类型、1:api类型
+        :type RuntimeClass: int
         """
         self.RuntimeId = None
         self.Zone = None
+        self.RuntimeClass = None
 
 
     def _deserialize(self, params):
         self.RuntimeId = params.get("RuntimeId")
         self.Zone = params.get("Zone")
+        self.RuntimeClass = params.get("RuntimeClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -140,6 +153,8 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
         :type RateType: bool
         :param Interval: 采样粒度：60(s), 300(s), 3600(s), 86400(s)
         :type Interval: int
+        :param RuntimeClass: 环境运行类型：0:运行时类型、1:api类型
+        :type RuntimeClass: int
         """
         self.RuntimeId = None
         self.StartTime = None
@@ -147,6 +162,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
         self.MetricType = None
         self.RateType = None
         self.Interval = None
+        self.RuntimeClass = None
 
 
     def _deserialize(self, params):
@@ -156,6 +172,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
         self.MetricType = params.get("MetricType")
         self.RateType = params.get("RateType")
         self.Interval = params.get("Interval")
+        self.RuntimeClass = params.get("RuntimeClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -321,6 +338,24 @@ class ListRuntimesMCRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param RuntimeClass: 环境运行类型：0:运行时类型、1:api类型
+        :type RuntimeClass: int
+        """
+        self.RuntimeClass = None
+
+
+    def _deserialize(self, params):
+        self.RuntimeClass = params.get("RuntimeClass")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ListRuntimesMCResponse(AbstractModel):
     """ListRuntimesMC返回参数结构体
@@ -407,6 +442,8 @@ class RuntimeDeployedInstanceMC(AbstractModel):
         :type UpdatedAt: int
         :param ProjectType: 应用类型：0:NormalApp普通应用 1:TemplateApp模板应用 2:LightApp轻应用 3:MicroConnTemplate微连接模板 4:MicroConnApp微连接应用
         :type ProjectType: int
+        :param ProjectVersion: 应用版本：0:旧版 1:3.0新控制台
+        :type ProjectVersion: int
         """
         self.GroupId = None
         self.GroupName = None
@@ -419,6 +456,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
         self.CreatedAt = None
         self.UpdatedAt = None
         self.ProjectType = None
+        self.ProjectVersion = None
 
 
     def _deserialize(self, params):
@@ -433,6 +471,55 @@ class RuntimeDeployedInstanceMC(AbstractModel):
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
         self.ProjectType = params.get("ProjectType")
+        self.ProjectVersion = params.get("ProjectVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuntimeExtensionMC(AbstractModel):
+    """运行环境扩展组件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 扩展组件类型：0:cdc
+        :type Type: int
+        :param Size: 部署规格vcore数
+        :type Size: float
+        :param Replica: 副本数
+        :type Replica: int
+        :param Name: 扩展组件名称
+        :type Name: str
+        :param Status: 状态 1:未启用 2:已启用
+        :type Status: int
+        :param CreatedAt: 创建时间
+        :type CreatedAt: int
+        :param UpdatedAt: 修改时间
+        :type UpdatedAt: int
+        """
+        self.Type = None
+        self.Size = None
+        self.Replica = None
+        self.Name = None
+        self.Status = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Size = params.get("Size")
+        self.Replica = params.get("Replica")
+        self.Name = params.get("Name")
+        self.Status = params.get("Status")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -449,25 +536,25 @@ class RuntimeMC(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuntimeId: 运行时id
+        :param RuntimeId: 环境id
         :type RuntimeId: int
         :param Uin: 主账号uin
         :type Uin: str
-        :param DisplayName: 运行时名称，用户输入，同一uin内唯一
+        :param DisplayName: 环境名称，用户输入，同一uin内唯一
         :type DisplayName: str
-        :param Zone: 运行时所在地域，tianjin，beijiing，guangzhou等
+        :param Zone: 环境所在地域，tianjin，beijiing，guangzhou等
         :type Zone: str
-        :param Type: 运行时类型：0: sandbox, 1:shared, 2:private
+        :param Type: 环境类型：0: sandbox, 1:shared, 2:private 3: trial
         :type Type: int
         :param Status: 运行时状态：1:running, 2:deleting, 3:creating, 4:scaling, 5:unavailable, 6:deleted, 7:errored
         :type Status: int
-        :param CreatedAt: 运行时创建时间
+        :param CreatedAt: 环境创建时间
         :type CreatedAt: int
-        :param UpdatedAt: 运行时更新时间
+        :param UpdatedAt: 环境更新时间
         :type UpdatedAt: int
-        :param WorkerSize: 运行时资源配置，worker总配额，0:0vCore0G, 1:1vCore2G, 2:2vCore4G, 4:4vCore8G, 8:8vCore16G, 12:12vCore24G, 16:16vCore32G, 100:unlimited
+        :param WorkerSize: 环境资源配置，worker总配额，0:0vCore0G, 1:1vCore2G, 2:2vCore4G, 4:4vCore8G, 8:8vCore16G, 12:12vCore24G, 16:16vCore32G, 100:unlimited
         :type WorkerSize: int
-        :param WorkerReplica: 运行时资源配置，worker副本数
+        :param WorkerReplica: 环境资源配置，worker副本数
         :type WorkerReplica: int
         :param RunningInstanceCount: 正在运行的应用实例数量
         :type RunningInstanceCount: int
@@ -479,10 +566,10 @@ class RuntimeMC(AbstractModel):
         :type MemoryUsed: float
         :param MemoryLimit: 内存上限 MB
         :type MemoryLimit: float
-        :param ExpiredAt: 运行时过期时间
+        :param ExpiredAt: 环境过期时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredAt: int
-        :param ChargeType: 收费类型：0:缺省，1:通过订单页自助下单(支持续费/升配等操作)
+        :param ChargeType: 收费类型：0:缺省，1:自助下单页购买(支持续费/升配等操作)，2:代销下单页购买
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeType: int
         :param ResourceLimitType: 资源限制类型：0:无限制，1:有限制
@@ -491,6 +578,21 @@ class RuntimeMC(AbstractModel):
         :param AutoRenewal: 是否开启自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewal: bool
+        :param WorkerExtensions: 扩展组件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkerExtensions: list of RuntimeExtensionMC
+        :param RuntimeType: 环境类型：0: sandbox, 1:shared, 2:private 3: trial
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeType: int
+        :param RuntimeClass: 环境运行类型：0:运行时类型、1:api类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeClass: int
+        :param BandwidthOutUsed: 已使用出带宽 Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthOutUsed: float
+        :param BandwidthOutLimit: 出带宽上限 Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthOutLimit: float
         """
         self.RuntimeId = None
         self.Uin = None
@@ -511,6 +613,11 @@ class RuntimeMC(AbstractModel):
         self.ChargeType = None
         self.ResourceLimitType = None
         self.AutoRenewal = None
+        self.WorkerExtensions = None
+        self.RuntimeType = None
+        self.RuntimeClass = None
+        self.BandwidthOutUsed = None
+        self.BandwidthOutLimit = None
 
 
     def _deserialize(self, params):
@@ -533,6 +640,16 @@ class RuntimeMC(AbstractModel):
         self.ChargeType = params.get("ChargeType")
         self.ResourceLimitType = params.get("ResourceLimitType")
         self.AutoRenewal = params.get("AutoRenewal")
+        if params.get("WorkerExtensions") is not None:
+            self.WorkerExtensions = []
+            for item in params.get("WorkerExtensions"):
+                obj = RuntimeExtensionMC()
+                obj._deserialize(item)
+                self.WorkerExtensions.append(obj)
+        self.RuntimeType = params.get("RuntimeType")
+        self.RuntimeClass = params.get("RuntimeClass")
+        self.BandwidthOutUsed = params.get("BandwidthOutUsed")
+        self.BandwidthOutLimit = params.get("BandwidthOutLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
