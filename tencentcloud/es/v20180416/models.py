@@ -1372,6 +1372,8 @@ class DescribeLogstashInstancesRequest(AbstractModel):
         :type OrderByType: int
         :param VpcIds: VpcId 筛选项
         :type VpcIds: list of str
+        :param TagList: 标签信息列表
+        :type TagList: list of TagInfo
         """
         self.Zone = None
         self.InstanceIds = None
@@ -1381,6 +1383,7 @@ class DescribeLogstashInstancesRequest(AbstractModel):
         self.OrderByKey = None
         self.OrderByType = None
         self.VpcIds = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
@@ -1392,6 +1395,12 @@ class DescribeLogstashInstancesRequest(AbstractModel):
         self.OrderByKey = params.get("OrderByKey")
         self.OrderByType = params.get("OrderByType")
         self.VpcIds = params.get("VpcIds")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2813,6 +2822,15 @@ class LogstashInstanceInfo(AbstractModel):
         :param OperationDuration: 可维护时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
+        :param CpuNum: CPU数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuNum: int
+        :param TagList: 实例标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of TagInfo
+        :param MemSize: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2840,6 +2858,9 @@ class LogstashInstanceInfo(AbstractModel):
         self.YMLConfig = None
         self.ExtendedFiles = None
         self.OperationDuration = None
+        self.CpuNum = None
+        self.TagList = None
+        self.MemSize = None
 
 
     def _deserialize(self, params):
@@ -2881,6 +2902,14 @@ class LogstashInstanceInfo(AbstractModel):
         if params.get("OperationDuration") is not None:
             self.OperationDuration = OperationDuration()
             self.OperationDuration._deserialize(params.get("OperationDuration"))
+        self.CpuNum = params.get("CpuNum")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        self.MemSize = params.get("MemSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3635,16 +3664,24 @@ class RestartNodesRequest(AbstractModel):
         :type NodeNames: list of str
         :param ForceRestart: 是否强制重启
         :type ForceRestart: bool
+        :param RestartMode: 可选重启模式"in-place","blue-green"，分别表示重启，蓝绿重启；默认值为"in-place"
+        :type RestartMode: str
+        :param IsOffline: 节点状态，在蓝绿模式中使用；离线节点蓝绿有风险
+        :type IsOffline: bool
         """
         self.InstanceId = None
         self.NodeNames = None
         self.ForceRestart = None
+        self.RestartMode = None
+        self.IsOffline = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.NodeNames = params.get("NodeNames")
         self.ForceRestart = params.get("ForceRestart")
+        self.RestartMode = params.get("RestartMode")
+        self.IsOffline = params.get("IsOffline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

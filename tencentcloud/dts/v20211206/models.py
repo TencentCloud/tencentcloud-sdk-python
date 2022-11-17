@@ -1094,10 +1094,10 @@ class DBInfo(AbstractModel):
         :param AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountMode: str
-        :param TmpSecretId: 临时秘钥Id
+        :param TmpSecretId: 临时密钥Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时秘钥Key
+        :param TmpSecretKey: 临时密钥Key
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
         :param TmpToken: 临时Token
@@ -1748,11 +1748,11 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
         :type Offset: int
         :param AccountMode: 资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
         :type AccountMode: str
-        :param TmpSecretId: 临时秘钥Id，若为跨账号资源此项必填
+        :param TmpSecretId: 临时密钥Id，若为跨账号资源此项必填
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时秘钥Key，若为跨账号资源此项必填
+        :param TmpSecretKey: 临时密钥Key，若为跨账号资源此项必填
         :type TmpSecretKey: str
-        :param TmpToken: 临时秘钥Token，若为跨账号资源此项必填
+        :param TmpToken: 临时密钥Token，若为跨账号资源此项必填
         :type TmpToken: str
         """
         self.DatabaseType = None
@@ -2584,10 +2584,10 @@ class Endpoint(AbstractModel):
         :param AccountRole: 跨账号同步时的角色，只允许[a-zA-Z0-9\-\_]+，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountRole: str
-        :param TmpSecretId: 临时秘钥Id，如果为跨账号实例此项必填
+        :param TmpSecretId: 临时密钥Id，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
-        :param TmpSecretKey: 临时秘钥Key，如果为跨账号实例此项必填
+        :param TmpSecretKey: 临时密钥Key，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
         :param TmpToken: 临时Token，如果为跨账号实例此项必填

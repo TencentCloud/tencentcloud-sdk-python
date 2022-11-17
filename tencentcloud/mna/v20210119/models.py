@@ -31,16 +31,20 @@ class AddDeviceRequest(AbstractModel):
         :type Remark: str
         :param DataKey: 新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
         :type DataKey: str
+        :param Encrypted: 是否设置预置密钥
+        :type Encrypted: bool
         """
         self.DeviceName = None
         self.Remark = None
         self.DataKey = None
+        self.Encrypted = None
 
 
     def _deserialize(self, params):
         self.DeviceName = params.get("DeviceName")
         self.Remark = params.get("Remark")
         self.DataKey = params.get("DataKey")
+        self.Encrypted = params.get("Encrypted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -57,21 +61,26 @@ class AddDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataKey: 后台生成的base64字符串密钥
+        :param DataKey: 经过加密算法加密后的base64格式密钥
         :type DataKey: str
         :param DeviceId: 设备ID
         :type DeviceId: str
+        :param Signature: 签名字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Signature: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DataKey = None
         self.DeviceId = None
+        self.Signature = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DataKey = params.get("DataKey")
         self.DeviceId = params.get("DeviceId")
+        self.Signature = params.get("Signature")
         self.RequestId = params.get("RequestId")
 
 

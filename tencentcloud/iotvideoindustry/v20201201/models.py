@@ -3430,7 +3430,7 @@ class DescribeLiveStreamRequest(AbstractModel):
         r"""
         :param LiveChannelId: 频道ID
         :type LiveChannelId: str
-        :param ExpireTime: 过期时间
+        :param ExpireTime: 过期时间 秒级unix时间戳
         :type ExpireTime: int
         """
         self.LiveChannelId = None

@@ -512,14 +512,18 @@ class CreateCustomizationRequest(AbstractModel):
         :type BizId: int
         :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
         :type TextUrl: str
+        :param ModelName: 模型名称，名称长度不超过36，默认为BizId。
+        :type ModelName: str
         """
         self.BizId = None
         self.TextUrl = None
+        self.ModelName = None
 
 
     def _deserialize(self, params):
         self.BizId = params.get("BizId")
         self.TextUrl = params.get("TextUrl")
+        self.ModelName = params.get("ModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -610,18 +614,30 @@ class CustomizationConfigs(AbstractModel):
         :type BizId: int
         :param ModelId: 模型ID
         :type ModelId: str
-        :param ModelState: 模型状态，-1下线状态，1上线状态, 0训练中, -2训练失败
+        :param ModelState: 模型状态，-1下线状态，1上线状态, 0训练中, -2训练失败, 3上线中, 4下线中
         :type ModelState: int
+        :param ModelName: 模型名称
+        :type ModelName: str
+        :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
+        :type TextUrl: str
+        :param UpdateTime: 更新时间，11位时间戳
+        :type UpdateTime: int
         """
         self.BizId = None
         self.ModelId = None
         self.ModelState = None
+        self.ModelName = None
+        self.TextUrl = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
         self.BizId = params.get("BizId")
         self.ModelId = params.get("ModelId")
         self.ModelState = params.get("ModelState")
+        self.ModelName = params.get("ModelName")
+        self.TextUrl = params.get("TextUrl")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1532,7 +1548,7 @@ class ModifyCustomizationRequest(AbstractModel):
         r"""
         :param BizId: 应用 ID，登录控制台创建应用得到的AppID
         :type BizId: int
-        :param TextUrl: 文本文件
+        :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
         :type TextUrl: str
         :param ModelId: 要修改的模型ID
         :type ModelId: str

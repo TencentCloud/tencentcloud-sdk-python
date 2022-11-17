@@ -391,7 +391,8 @@ FILL_IMAGE - 图片控件；
 DYNAMIC_TABLE - 动态表格控件；
 ATTACHMENT - 附件控件；
 SELECTOR - 选择器控件；
-DATE - 日期控件；默认是格式化为xxxx年xx月xx日
+DATE - 日期控件；默认是格式化为xxxx年xx月xx日；
+DISTRICT - 省市区行政区划控件；
 
 如果是SignComponent控件类型，则可选的字段为
 SIGN_SEAL - 签署印章控件；
@@ -422,6 +423,12 @@ SIGN_PAGING_SEAL - 骑缝章；若文件发起，需要对应填充ComponentPosY
         :param ComponentRequired: 是否必选，默认为false
         :type ComponentRequired: bool
         :param ComponentExtra: 扩展参数：
+为JSON格式。
+
+ComponentType为FILL_IMAGE时，支持以下参数：
+NotMakeImageCenter：bool。是否设置图片居中。false：居中（默认）。 true: 不居中
+FillMethod: int. 填充方式。0-铺满（默认）；1-等比例缩放
+
 ComponentType为SIGN_SIGNATURE类型可以控制签署方式
 {“ComponentTypeLimit”: [“xxx”]}
 xxx可以为：
@@ -456,6 +463,14 @@ KEYWORD 关键字，使用ComponentId指定关键字
         :type OffsetX: float
         :param OffsetY: 指定关键字时纵坐标偏移量，单位pt
         :type OffsetY: float
+        :param KeywordOrder: 指定关键字排序规则
+        :type KeywordOrder: str
+        :param KeywordPage: 指定关键字页码
+        :type KeywordPage: int
+        :param RelativeLocation: 关键字位置模式
+        :type RelativeLocation: str
+        :param KeywordIndexes: 关键字索引
+        :type KeywordIndexes: list of int
         """
         self.ComponentType = None
         self.ComponentWidth = None
@@ -475,6 +490,10 @@ KEYWORD 关键字，使用ComponentId指定关键字
         self.ComponentDateFontSize = None
         self.OffsetX = None
         self.OffsetY = None
+        self.KeywordOrder = None
+        self.KeywordPage = None
+        self.RelativeLocation = None
+        self.KeywordIndexes = None
 
 
     def _deserialize(self, params):
@@ -496,6 +515,10 @@ KEYWORD 关键字，使用ComponentId指定关键字
         self.ComponentDateFontSize = params.get("ComponentDateFontSize")
         self.OffsetX = params.get("OffsetX")
         self.OffsetY = params.get("OffsetY")
+        self.KeywordOrder = params.get("KeywordOrder")
+        self.KeywordPage = params.get("KeywordPage")
+        self.RelativeLocation = params.get("RelativeLocation")
+        self.KeywordIndexes = params.get("KeywordIndexes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -971,17 +994,29 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReportUrl: 出证报告 URL（有效期5分钟）
+        :param ReportId: 出证报告 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportId: str
+        :param ReportUrl: 废除，字段无效
+注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
+        :param Status: 执行中：EvidenceStatusExecuting
+成功：EvidenceStatusSuccess
+失败：EvidenceStatusFailed
+        :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ReportId = None
         self.ReportUrl = None
+        self.Status = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ReportId = params.get("ReportId")
         self.ReportUrl = params.get("ReportUrl")
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 

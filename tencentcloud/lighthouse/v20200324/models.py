@@ -4864,6 +4864,58 @@ class ModifyInstancesAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstancesBundleRequest(AbstractModel):
+    """ModifyInstancesBundle请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为30。
+        :type InstanceIds: list of str
+        :param BundleId: 待变更的套餐Id。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
+        :type BundleId: str
+        :param AutoVoucher: 是否自动抵扣代金券。取值范围：
+true：表示自动抵扣代金券
+false：表示不自动抵扣代金券
+默认取值：false。
+        :type AutoVoucher: bool
+        """
+        self.InstanceIds = None
+        self.BundleId = None
+        self.AutoVoucher = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.BundleId = params.get("BundleId")
+        self.AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancesBundleResponse(AbstractModel):
+    """ModifyInstancesBundle返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstancesLoginKeyPairAttributeRequest(AbstractModel):
     """ModifyInstancesLoginKeyPairAttribute请求参数结构体
 

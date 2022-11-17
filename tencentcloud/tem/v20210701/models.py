@@ -3229,18 +3229,36 @@ class HorizontalAutoscaler(AbstractModel):
         :type MinReplicas: int
         :param MaxReplicas: 最大实例数（可以不传）
         :type MaxReplicas: int
-        :param Metrics: 指标度量（CPU or MEMORY）
+        :param Metrics: 指标度量
+CPU（CPU使用率，%）
+MEMORY（内存使用率，%）
+CPU_CORE_USED（CPU使用量，core）
+MEMORY_SIZE_USED(内存使用量，MiB)
+NETWORK_BANDWIDTH_RECEIVE(网络入带宽，MBps)
+NETWORK_BANDWIDTH_TRANSMIT(网络出带宽，MBps)
+NETWORK_TRAFFIC_RECEIVE(网络入流量，MiB/s)
+NETWORK_TRAFFIC_TRANSMIT(网络出流量，MiB/s)
+NETWORK_PACKETS_RECEIVE(网络入包量，Count/s)
+NETWORK_PACKETS_TRANSMIT(网络出包量，Count/s)
+FS_IOPS_WRITE(磁盘写次数，Count/s)
+FS_IOPS_READ(磁盘读次数，Count/s)
+FS_SIZE_WRITE(磁盘写大小，MiB/s)
+FS_SIZE_READ(磁盘读大小，MiB/s)
         :type Metrics: str
-        :param Threshold: 阈值（百分比）
+        :param Threshold: 阈值（整数）
         :type Threshold: int
         :param Enabled: 是否启用
         :type Enabled: bool
+        :param DoubleThreshold: 阈值（小数，优先使用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DoubleThreshold: float
         """
         self.MinReplicas = None
         self.MaxReplicas = None
         self.Metrics = None
         self.Threshold = None
         self.Enabled = None
+        self.DoubleThreshold = None
 
 
     def _deserialize(self, params):
@@ -3249,6 +3267,7 @@ class HorizontalAutoscaler(AbstractModel):
         self.Metrics = params.get("Metrics")
         self.Threshold = params.get("Threshold")
         self.Enabled = params.get("Enabled")
+        self.DoubleThreshold = params.get("DoubleThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

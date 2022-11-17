@@ -2610,6 +2610,35 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClientException(self, request):
+        """获取客户端异常事件
+
+        :param request: Request instance for DescribeClientException.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeClientExceptionRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeClientExceptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClientException", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClientExceptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeComponentStatistics(self, request):
         """本接口 (DescribeComponentStatistics) 用于获取组件统计列表数据。
 

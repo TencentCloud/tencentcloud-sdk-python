@@ -720,6 +720,51 @@ plan: 套餐
         
 
 
+class BindZoneToPlanRequest(AbstractModel):
+    """BindZoneToPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 未绑定套餐的站点ID。
+        :type ZoneId: str
+        :param PlanId: 待绑定的目标套餐ID。
+        :type PlanId: str
+        """
+        self.ZoneId = None
+        self.PlanId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.PlanId = params.get("PlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindZoneToPlanResponse(AbstractModel):
+    """BindZoneToPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BotConfig(AbstractModel):
     """安全Bot配置
 
@@ -2780,12 +2825,15 @@ class CreateZoneRequest(AbstractModel):
 <li> true：允许重复接入；</li>
 <li> false：不允许重复接入。</li>不填写使用默认值false。
         :type AllowDuplicates: bool
+        :param AliasZoneName: 站点别名。数字、英文、-和_组合，限制20个字符。
+        :type AliasZoneName: str
         """
         self.ZoneName = None
         self.Type = None
         self.JumpStart = None
         self.Tags = None
         self.AllowDuplicates = None
+        self.AliasZoneName = None
 
 
     def _deserialize(self, params):
@@ -2799,6 +2847,7 @@ class CreateZoneRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.AllowDuplicates = params.get("AllowDuplicates")
+        self.AliasZoneName = params.get("AliasZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9074,10 +9123,24 @@ class DescribeZonesRequest(AbstractModel):
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
 <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为zone-name。
         :type Filters: list of AdvancedFilter
+        :param Order: 排序字段，取值有：
+<li> type：接入类型；</li>
+<li> area：加速区域；</li>
+<li> create-time：创建时间；</li>
+<li> zone-name：站点名称；</li>
+<li> use-time：最近使用时间；</li>
+<li> active-status：生效状态。</li>不填写使用默认值create-time。
+        :type Order: str
+        :param Direction: 排序方向，取值有：
+<li> asc：从小到大排序；</li>
+<li> desc：从大到小排序。</li>不填写使用默认值desc。
+        :type Direction: str
         """
         self.Offset = None
         self.Limit = None
         self.Filters = None
+        self.Order = None
+        self.Direction = None
 
 
     def _deserialize(self, params):
@@ -9089,6 +9152,8 @@ class DescribeZonesRequest(AbstractModel):
                 obj = AdvancedFilter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12347,10 +12412,13 @@ class ModifyZoneRequest(AbstractModel):
         :type Type: str
         :param VanityNameServers: 自定义站点信息，以替代系统默认分配的名称服务器。不填写保持原有配置。
         :type VanityNameServers: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
+        :param AliasZoneName: 站点别名。数字、英文、-和_组合，限制20个字符。
+        :type AliasZoneName: str
         """
         self.ZoneId = None
         self.Type = None
         self.VanityNameServers = None
+        self.AliasZoneName = None
 
 
     def _deserialize(self, params):
@@ -12359,6 +12427,7 @@ class ModifyZoneRequest(AbstractModel):
         if params.get("VanityNameServers") is not None:
             self.VanityNameServers = VanityNameServers()
             self.VanityNameServers._deserialize(params.get("VanityNameServers"))
+        self.AliasZoneName = params.get("AliasZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16372,6 +16441,14 @@ class Zone(AbstractModel):
         :param VanityNameServersIps: 用户自定义 NS IP 信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VanityNameServersIps: list of VanityNameServersIps
+        :param ActiveStatus: 展示状态，取值有：
+<li> active：已启用；</li>
+<li> inactive：未生效；</li>
+<li> paused：已停用。</li>
+        :type ActiveStatus: str
+        :param AliasZoneName: 站点别名。数字、英文、-和_组合，限制20个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasZoneName: str
         """
         self.ZoneId = None
         self.ZoneName = None
@@ -16389,6 +16466,8 @@ class Zone(AbstractModel):
         self.Area = None
         self.VanityNameServers = None
         self.VanityNameServersIps = None
+        self.ActiveStatus = None
+        self.AliasZoneName = None
 
 
     def _deserialize(self, params):
@@ -16425,6 +16504,8 @@ class Zone(AbstractModel):
                 obj = VanityNameServersIps()
                 obj._deserialize(item)
                 self.VanityNameServersIps.append(obj)
+        self.ActiveStatus = params.get("ActiveStatus")
+        self.AliasZoneName = params.get("AliasZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

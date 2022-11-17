@@ -729,11 +729,14 @@ SIGN_REJECT:拒签(流程结束)
         :param ReviewMessage: 审核原因 
 当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
         :type ReviewMessage: str
+        :param RecipientId: 签署节点审核时需要指定
+        :type RecipientId: str
         """
         self.Agent = None
         self.FlowId = None
         self.ReviewType = None
         self.ReviewMessage = None
+        self.RecipientId = None
 
 
     def _deserialize(self, params):
@@ -743,6 +746,7 @@ SIGN_REJECT:拒签(流程结束)
         self.FlowId = params.get("FlowId")
         self.ReviewType = params.get("ReviewType")
         self.ReviewMessage = params.get("ReviewMessage")
+        self.RecipientId = params.get("RecipientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1229,7 +1233,8 @@ FILL_IMAGE - 图片控件；
 DYNAMIC_TABLE - 动态表格控件；
 ATTACHMENT - 附件控件；
 SELECTOR - 选择器控件；
-DATE - 日期控件；默认是格式化为xxxx年xx月xx日
+DATE - 日期控件；默认是格式化为xxxx年xx月xx日；
+DISTRICT - 省市区行政区划控件；
 
 如果是SignComponent控件类型，则可选的字段为
 SIGN_SEAL - 签署印章控件；
@@ -1266,12 +1271,27 @@ KEYWORD - 关键字
         :param ComponentPosY: 参数控件Y位置，单位px
         :type ComponentPosY: float
         :param ComponentExtra: 参数控件样式，json格式表述
+
 不同类型的控件会有部分非通用参数
+
 TEXT/MULTI_LINE_TEXT控件可以指定
 1 Font：目前只支持黑体、宋体
 2 FontSize： 范围12-72
 3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
 例如：{"FontSize":12}
+
+ComponentType为FILL_IMAGE时，支持以下参数：
+NotMakeImageCenter：bool。是否设置图片居中。false：居中（默认）。 true: 不居中
+FillMethod: int. 填充方式。0-铺满（默认）；1-等比例缩放
+
+ComponentType为SIGN_SIGNATURE类型可以控制签署方式
+{“ComponentTypeLimit”: [“xxx”]}
+xxx可以为：
+HANDWRITE – 手写签名
+BORDERLESS_ESIGN – 自动生成无边框腾讯体
+OCR_ESIGN -- AI智能识别手写签名
+ESIGN -- 个人印章类型
+如：{“ComponentTypeLimit”: [“BORDERLESS_ESIGN”]}
         :type ComponentExtra: str
         :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
 TEXT - 文本内容
@@ -1296,6 +1316,12 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         :type OffsetX: float
         :param OffsetY: 指定关键字时纵坐标偏移量，单位pt
         :type OffsetY: float
+        :param KeywordPage: 指定关键字页码
+        :type KeywordPage: int
+        :param RelativeLocation: 关键字位置模式
+        :type RelativeLocation: str
+        :param KeywordIndexes: 关键字索引
+        :type KeywordIndexes: list of int
         """
         self.ComponentId = None
         self.ComponentType = None
@@ -1316,6 +1342,9 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         self.ComponentDescription = None
         self.OffsetX = None
         self.OffsetY = None
+        self.KeywordPage = None
+        self.RelativeLocation = None
+        self.KeywordIndexes = None
 
 
     def _deserialize(self, params):
@@ -1338,6 +1367,9 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         self.ComponentDescription = params.get("ComponentDescription")
         self.OffsetX = params.get("OffsetX")
         self.OffsetY = params.get("OffsetY")
+        self.KeywordPage = params.get("KeywordPage")
+        self.RelativeLocation = params.get("RelativeLocation")
+        self.KeywordIndexes = params.get("KeywordIndexes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

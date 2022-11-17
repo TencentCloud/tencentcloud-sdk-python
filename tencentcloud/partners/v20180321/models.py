@@ -461,7 +461,7 @@ class AgentDealNewElem(AbstractModel):
         :param ClientRemark: 客户备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientRemark: str
-        :param ActionType: 订单操作类型，purchase（新购），renew（续费），modify（配置变更）
+        :param ActionType: 订单操作类型，"purchase":"新购","upgrade":"升配","upConvertExpire":"升配","downgrade":"降配","downConvertExpire":"降配","renew":"续费","refund":"退货","modifyNetworkMode":"调整带宽模式","modifyNetworkSize":"调整带宽大小","preMoveOut":"资源迁出","preMoveIn":"资源迁入","preToPost":"包年包月转按量","modify":"变配","postMoveOut":"资源迁出","postMoveIn":"资源迁入","recoverRefundForward":"调账补偿","recoverPayReserve":"调账补偿","recoverPayForward":"调账扣费","recoverRefundReserve":"调账扣费"
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
         :param VoucherDecline: 代金券抵扣金额，单位分

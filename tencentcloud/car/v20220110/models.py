@@ -27,7 +27,7 @@ class ApplyConcurrentRequest(AbstractModel):
         r"""
         :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
-        :param UserIp: 用户IP
+        :param UserIp: 用户IP，用户客户端的公网IP，用于就近调度
         :type UserIp: str
         :param ProjectId: 项目ID
         :type ProjectId: str
@@ -80,7 +80,7 @@ class CreateSessionRequest(AbstractModel):
         r"""
         :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
-        :param UserIp: 用户IP
+        :param UserIp: 用户IP，用户客户端的公网IP，用于就近调度
         :type UserIp: str
         :param ClientSession: 客户端session信息，从SDK请求中获得
         :type ClientSession: str

@@ -9555,6 +9555,76 @@ class DescribeBruteAttackRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClientExceptionRequest(AbstractModel):
+    """DescribeClientException请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExceptionType: 客户端异常类型 1:客户端离线，2:客户端卸载
+        :type ExceptionType: int
+        :param Offset: 分页的偏移量
+        :type Offset: int
+        :param Limit: 分页单页限制数目，不为0，最大值100
+        :type Limit: int
+        :param StartTime: 起始时间 `2006-01-02 15:04:05` 格式
+        :type StartTime: str
+        :param EndTime: 结束时间 `2006-01-02 15:04:05` 格式
+        :type EndTime: str
+        """
+        self.ExceptionType = None
+        self.Offset = None
+        self.Limit = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ExceptionType = params.get("ExceptionType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClientExceptionResponse(AbstractModel):
+    """DescribeClientException返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 事件总数量
+        :type TotalCount: int
+        :param Records: 事件详情
+        :type Records: list of RecordInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Records = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = RecordInfo()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeComponentStatisticsRequest(AbstractModel):
     """DescribeComponentStatistics请求参数结构体
 
@@ -19848,6 +19918,50 @@ class ProtectStat(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Num = params.get("Num")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordInfo(AbstractModel):
+    """客户端异常信息结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostIP: 主机ip
+        :type HostIP: str
+        :param InstanceID: 主机实例id
+        :type InstanceID: str
+        :param OfflineTime: 客户端离线时间
+        :type OfflineTime: str
+        :param UninstallTime: 客户端卸载时间
+        :type UninstallTime: str
+        :param UninstallCmd: 客户端卸载调用链
+        :type UninstallCmd: str
+        :param Uuid: 客户端uuid
+        :type Uuid: str
+        """
+        self.HostIP = None
+        self.InstanceID = None
+        self.OfflineTime = None
+        self.UninstallTime = None
+        self.UninstallCmd = None
+        self.Uuid = None
+
+
+    def _deserialize(self, params):
+        self.HostIP = params.get("HostIP")
+        self.InstanceID = params.get("InstanceID")
+        self.OfflineTime = params.get("OfflineTime")
+        self.UninstallTime = params.get("UninstallTime")
+        self.UninstallCmd = params.get("UninstallCmd")
+        self.Uuid = params.get("Uuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

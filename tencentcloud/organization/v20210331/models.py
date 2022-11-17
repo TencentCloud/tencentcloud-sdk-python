@@ -150,6 +150,55 @@ class BindOrganizationMemberAuthAccountResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CancelOrganizationMemberAuthAccountRequest(AbstractModel):
+    """CancelOrganizationMemberAuthAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 成员Uin。
+        :type MemberUin: int
+        :param PolicyId: 策略ID。
+        :type PolicyId: int
+        :param OrgSubAccountUin: 组织子账号Uin。
+        :type OrgSubAccountUin: int
+        """
+        self.MemberUin = None
+        self.PolicyId = None
+        self.OrgSubAccountUin = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        self.PolicyId = params.get("PolicyId")
+        self.OrgSubAccountUin = params.get("OrgSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelOrganizationMemberAuthAccountResponse(AbstractModel):
+    """CancelOrganizationMemberAuthAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateOrganizationMemberPolicyRequest(AbstractModel):
     """CreateOrganizationMemberPolicy请求参数结构体
 
@@ -429,6 +478,74 @@ class DescribeOrganizationAuthNodeResponse(AbstractModel):
                 obj = AuthNode()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
+    """DescribeOrganizationMemberAuthAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 限制数目。
+        :type Limit: int
+        :param MemberUin: 成员Uin。
+        :type MemberUin: int
+        :param PolicyId: 策略ID。
+        :type PolicyId: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.MemberUin = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.MemberUin = params.get("MemberUin")
+        self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationMemberAuthAccountsResponse(AbstractModel):
+    """DescribeOrganizationMemberAuthAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrgMemberAuthAccount
+        :param Total: 总数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrgMemberAuthAccount()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -1160,6 +1277,71 @@ class OrgMember(AbstractModel):
                 self.OrgIdentity.append(obj)
         self.BindStatus = params.get("BindStatus")
         self.PermissionStatus = params.get("PermissionStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrgMemberAuthAccount(AbstractModel):
+    """成员和子账号的授权关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrgSubAccountUin: 组织子账号Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgSubAccountUin: int
+        :param PolicyId: 策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: int
+        :param PolicyName: 策略名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyName: str
+        :param IdentityId: 身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityId: int
+        :param IdentityRoleName: 身份角色名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityRoleName: str
+        :param IdentityRoleAliasName: 身份角色别名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityRoleAliasName: str
+        :param CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param OrgSubAccountName: 子账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgSubAccountName: str
+        """
+        self.OrgSubAccountUin = None
+        self.PolicyId = None
+        self.PolicyName = None
+        self.IdentityId = None
+        self.IdentityRoleName = None
+        self.IdentityRoleAliasName = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.OrgSubAccountName = None
+
+
+    def _deserialize(self, params):
+        self.OrgSubAccountUin = params.get("OrgSubAccountUin")
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.IdentityId = params.get("IdentityId")
+        self.IdentityRoleName = params.get("IdentityRoleName")
+        self.IdentityRoleAliasName = params.get("IdentityRoleAliasName")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.OrgSubAccountName = params.get("OrgSubAccountName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

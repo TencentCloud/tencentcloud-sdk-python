@@ -259,7 +259,7 @@ class PartnersClient(AbstractClient):
 
 
     def DescribeAgentDealsByCache(self, request):
-        """供代理商拉取缓存的全量客户订单
+        """供代理商拉取缓存的全量预付费客户订单
 
         :param request: Request instance for DescribeAgentDealsByCache.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsByCacheRequest`
@@ -346,7 +346,7 @@ class PartnersClient(AbstractClient):
 
 
     def DescribeAgentPayDealsV2(self, request):
-        """可以查询代理商代付的所有订单
+        """可以查询代理商代付的预付费订单
 
         :param request: Request instance for DescribeAgentPayDealsV2.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentPayDealsV2Request`
@@ -404,7 +404,7 @@ class PartnersClient(AbstractClient):
 
 
     def DescribeAgentSelfPayDealsV2(self, request):
-        """查询代理商名下指定代客的自付订单
+        """查询代理商名下指定代客的自付订单（预付费）
 
         :param request: Request instance for DescribeAgentSelfPayDealsV2.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentSelfPayDealsV2Request`

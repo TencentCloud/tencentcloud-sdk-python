@@ -26,6 +26,35 @@ class TeoClient(AbstractClient):
     _service = 'teo'
 
 
+    def BindZoneToPlan(self, request):
+        """将未绑定套餐的站点绑定到已有套餐
+
+        :param request: Request instance for BindZoneToPlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.BindZoneToPlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BindZoneToPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindZoneToPlan", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindZoneToPlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckCertificate(self, request):
         """校验证书
 

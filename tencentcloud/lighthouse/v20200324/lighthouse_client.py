@@ -1729,6 +1729,38 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstancesBundle(self, request):
+        """本接口(ModifyInstancesBundle)用于变更一个或多个轻量应用服务器实例套餐。
+        * 只有状态为 RUNNING，STOPPED的实例才可以进行此操作。
+        * 支持批量操作。每次请求批量实例的上限为 30。
+        * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+
+        :param request: Request instance for ModifyInstancesBundle.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesBundleRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyInstancesBundleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstancesBundle", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstancesBundleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyInstancesLoginKeyPairAttribute(self, request):
         """本接口用于设置实例默认登录密钥对属性。
 
