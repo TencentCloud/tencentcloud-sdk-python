@@ -3578,6 +3578,12 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         :param NotificationHooks: 通知事件回调
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotificationHooks: list of NotificationHook
+        :param NetworkReceiveRate: 每秒接收字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkReceiveRate: float
+        :param NetworkSendRate: 每秒发送字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkSendRate: float
         """
         self.JobId = None
         self.ScenarioId = None
@@ -3617,6 +3623,8 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         self.CreatedAt = None
         self.ProjectId = None
         self.NotificationHooks = None
+        self.NetworkReceiveRate = None
+        self.NetworkSendRate = None
 
 
     def _deserialize(self, params):
@@ -3699,6 +3707,8 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
                 obj = NotificationHook()
                 obj._deserialize(item)
                 self.NotificationHooks.append(obj)
+        self.NetworkReceiveRate = params.get("NetworkReceiveRate")
+        self.NetworkSendRate = params.get("NetworkSendRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

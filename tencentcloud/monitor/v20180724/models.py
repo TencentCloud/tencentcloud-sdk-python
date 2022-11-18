@@ -11707,6 +11707,10 @@ class UpdateExporterIntegrationRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID
         :type InstanceId: str
+        :param Kind: 类型
+        :type Kind: str
+        :param Content: 配置内容
+        :type Content: str
         :param KubeType: Kubernetes 集群类型，取值如下：
 <li> 1= 容器集群(TKE) </li>
 <li> 2=弹性集群<EKS> </li>
@@ -11714,24 +11718,20 @@ class UpdateExporterIntegrationRequest(AbstractModel):
         :type KubeType: int
         :param ClusterId: 集群 ID
         :type ClusterId: str
-        :param Kind: 类型
-        :type Kind: str
-        :param Content: 配置内容
-        :type Content: str
         """
         self.InstanceId = None
-        self.KubeType = None
-        self.ClusterId = None
         self.Kind = None
         self.Content = None
+        self.KubeType = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.KubeType = params.get("KubeType")
-        self.ClusterId = params.get("ClusterId")
         self.Kind = params.get("Kind")
         self.Content = params.get("Content")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

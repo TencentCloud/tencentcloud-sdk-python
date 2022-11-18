@@ -85,7 +85,7 @@ class OrganizationClient(AbstractClient):
 
 
     def CancelOrganizationMemberAuthAccount(self, request):
-        """取消组织成员和子账号的授权绑定关系
+        """取消组织成员和组织管理员子账号的授权关系
 
         :param request: Request instance for CancelOrganizationMemberAuthAccount.
         :type request: :class:`tencentcloud.organization.v20210331.models.CancelOrganizationMemberAuthAccountRequest`
@@ -288,7 +288,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeOrganizationMemberAuthAccounts(self, request):
-        """获取组织成员被绑定的子账号列表
+        """获取组织成员被绑定授权关系的子账号列表
 
         :param request: Request instance for DescribeOrganizationMemberAuthAccounts.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMemberAuthAccountsRequest`

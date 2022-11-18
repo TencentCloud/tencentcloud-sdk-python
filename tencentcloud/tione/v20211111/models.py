@@ -5626,6 +5626,65 @@ RANGE：浮动
         
 
 
+class ModifyModelServicePartialConfigRequest(AbstractModel):
+    """ModifyModelServicePartialConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: 在线推理服务Id，需已存在
+        :type ServiceId: str
+        :param ScheduledAction: 更新后服务不重启，定时停止的配置
+        :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
+        :param ServiceLimit: 更新后服务不重启，服务对应限流限频配置
+        :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        """
+        self.ServiceId = None
+        self.ScheduledAction = None
+        self.ServiceLimit = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        if params.get("ScheduledAction") is not None:
+            self.ScheduledAction = ScheduledAction()
+            self.ScheduledAction._deserialize(params.get("ScheduledAction"))
+        if params.get("ServiceLimit") is not None:
+            self.ServiceLimit = ServiceLimit()
+            self.ServiceLimit._deserialize(params.get("ServiceLimit"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyModelServicePartialConfigResponse(AbstractModel):
+    """ModifyModelServicePartialConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Service: 被修改后的服务配置
+        :type Service: :class:`tencentcloud.tione.v20211111.models.Service`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Service = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Service") is not None:
+            self.Service = Service()
+            self.Service._deserialize(params.get("Service"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyServiceGroupWeightsRequest(AbstractModel):
     """ModifyServiceGroupWeights请求参数结构体
 

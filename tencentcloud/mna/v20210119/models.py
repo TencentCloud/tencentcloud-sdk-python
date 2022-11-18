@@ -150,6 +150,33 @@ class Context(AbstractModel):
         
 
 
+class CreateEncryptedKeyRequest(AbstractModel):
+    """CreateEncryptedKey请求参数结构体
+
+    """
+
+
+class CreateEncryptedKeyResponse(AbstractModel):
+    """CreateEncryptedKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EncryptedKey: 预置密钥
+        :type EncryptedKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EncryptedKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EncryptedKey = params.get("EncryptedKey")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateQosRequest(AbstractModel):
     """CreateQos请求参数结构体
 
@@ -881,6 +908,33 @@ class GetFlowStatisticResponse(AbstractModel):
         self.MaxValue = params.get("MaxValue")
         self.AvgValue = params.get("AvgValue")
         self.TotalValue = params.get("TotalValue")
+        self.RequestId = params.get("RequestId")
+
+
+class GetPublicKeyRequest(AbstractModel):
+    """GetPublicKey请求参数结构体
+
+    """
+
+
+class GetPublicKeyResponse(AbstractModel):
+    """GetPublicKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PublicKey: 非对称公钥
+        :type PublicKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PublicKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PublicKey = params.get("PublicKey")
         self.RequestId = params.get("RequestId")
 
 

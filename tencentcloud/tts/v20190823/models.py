@@ -290,6 +290,8 @@ class TextToVoiceRequest(AbstractModel):
         :type Codec: str
         :param EnableSubtitle: 是否开启时间戳功能，默认为false。
         :type EnableSubtitle: bool
+        :param SegmentRate: 断句敏感度，默认值为:0，取值范围:[0,1,2]，值越大则敏感度越低，更易断句，此参数建议不要随意调整，可能会影响合成效果。
+        :type SegmentRate: int
         """
         self.Text = None
         self.SessionId = None
@@ -302,6 +304,7 @@ class TextToVoiceRequest(AbstractModel):
         self.SampleRate = None
         self.Codec = None
         self.EnableSubtitle = None
+        self.SegmentRate = None
 
 
     def _deserialize(self, params):
@@ -316,6 +319,7 @@ class TextToVoiceRequest(AbstractModel):
         self.SampleRate = params.get("SampleRate")
         self.Codec = params.get("Codec")
         self.EnableSubtitle = params.get("EnableSubtitle")
+        self.SegmentRate = params.get("SegmentRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

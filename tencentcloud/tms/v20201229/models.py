@@ -354,6 +354,12 @@ class User(AbstractModel):
         :type HeadUrl: str
         :param Desc: 该字段表示业务用户的简介信息，支持汉字、英文及特殊符号，长度不超过5000个汉字字符。
         :type Desc: str
+        :param RoomId: 该字段表示业务群聊场景时的房间ID。
+        :type RoomId: str
+        :param ReceiverId: 该字段表示消息接受者ID
+        :type ReceiverId: str
+        :param SendTime: 消息生成时间，精确到毫秒
+        :type SendTime: int
         """
         self.UserId = None
         self.Nickname = None
@@ -364,6 +370,9 @@ class User(AbstractModel):
         self.Phone = None
         self.HeadUrl = None
         self.Desc = None
+        self.RoomId = None
+        self.ReceiverId = None
+        self.SendTime = None
 
 
     def _deserialize(self, params):
@@ -376,6 +385,9 @@ class User(AbstractModel):
         self.Phone = params.get("Phone")
         self.HeadUrl = params.get("HeadUrl")
         self.Desc = params.get("Desc")
+        self.RoomId = params.get("RoomId")
+        self.ReceiverId = params.get("ReceiverId")
+        self.SendTime = params.get("SendTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

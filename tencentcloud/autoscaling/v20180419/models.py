@@ -1007,6 +1007,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :param HpcClusterId: 高性能计算集群ID。<br>
 注意：此字段默认为空。
         :type HpcClusterId: str
+        :param IPv6InternetAccessible: IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+        :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -1031,6 +1033,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.InstanceChargePrepaid = None
         self.DiskTypePolicy = None
         self.HpcClusterId = None
+        self.IPv6InternetAccessible = None
 
 
     def _deserialize(self, params):
@@ -1088,6 +1091,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
         self.HpcClusterId = params.get("HpcClusterId")
+        if params.get("IPv6InternetAccessible") is not None:
+            self.IPv6InternetAccessible = IPv6InternetAccessible()
+            self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2960,6 +2966,43 @@ class HostNameSettings(AbstractModel):
         
 
 
+class IPv6InternetAccessible(AbstractModel):
+    """描述了启动配置创建实例的IPv6地址公网可访问性，声明了IPv6地址公网使用计费模式，最大带宽等
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InternetChargeType: 网络计费模式。取值包括TRAFFIC_POSTPAID_BY_HOUR、BANDWIDTH_PACKAGE，默认取值为TRAFFIC_POSTPAID_BY_HOUR。查看当前账户类型可参考[账户类型说明](https://cloud.tencent.com/document/product/1199/49090#judge)。
+<br><li> IPv6对标准账户类型支持TRAFFIC_POSTPAID_BY_HOUR。
+<br><li> IPv6对传统账户类型支持BANDWIDTH_PACKAGE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetChargeType: str
+        :param InternetMaxBandwidthOut: 公网出带宽上限，单位：Mbps。<br>默认值：0Mbps，此时不为IPv6分配公网带宽。不同机型、可用区、计费模式的带宽上限范围不一致，具体限制详见[公网带宽上限](https://cloud.tencent.com/document/product/213/12523)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetMaxBandwidthOut: int
+        :param BandwidthPackageId: 带宽包ID。可通过[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthPackageId: str
+        """
+        self.InternetChargeType = None
+        self.InternetMaxBandwidthOut = None
+        self.BandwidthPackageId = None
+
+
+    def _deserialize(self, params):
+        self.InternetChargeType = params.get("InternetChargeType")
+        self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.BandwidthPackageId = params.get("BandwidthPackageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Instance(AbstractModel):
     """实例信息
 
@@ -3330,6 +3373,8 @@ class LaunchConfiguration(AbstractModel):
         :param HpcClusterId: 高性能计算集群ID。<br>
 注意：此字段默认为空。
         :type HpcClusterId: str
+        :param IPv6InternetAccessible: IPv6公网带宽相关信息设置。
+        :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -3360,6 +3405,7 @@ class LaunchConfiguration(AbstractModel):
         self.InstanceChargePrepaid = None
         self.DiskTypePolicy = None
         self.HpcClusterId = None
+        self.IPv6InternetAccessible = None
 
 
     def _deserialize(self, params):
@@ -3428,6 +3474,9 @@ class LaunchConfiguration(AbstractModel):
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
         self.HpcClusterId = params.get("HpcClusterId")
+        if params.get("IPv6InternetAccessible") is not None:
+            self.IPv6InternetAccessible = IPv6InternetAccessible()
+            self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3978,6 +4027,8 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         :param HpcClusterId: 高性能计算集群ID。<br>
 注意：此字段默认为空。
         :type HpcClusterId: str
+        :param IPv6InternetAccessible: IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+        :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3998,6 +4049,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         self.EnhancedService = None
         self.CamRoleName = None
         self.HpcClusterId = None
+        self.IPv6InternetAccessible = None
 
 
     def _deserialize(self, params):
@@ -4039,6 +4091,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
             self.EnhancedService._deserialize(params.get("EnhancedService"))
         self.CamRoleName = params.get("CamRoleName")
         self.HpcClusterId = params.get("HpcClusterId")
+        if params.get("IPv6InternetAccessible") is not None:
+            self.IPv6InternetAccessible = IPv6InternetAccessible()
+            self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5255,6 +5310,8 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
 <br><li>ORIGINAL：使用设置的云盘类型
 <br><li>AUTOMATIC：自动选择当前可用的云盘类型
         :type DiskTypePolicy: str
+        :param IPv6InternetAccessible: IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+        :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -5277,6 +5334,7 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
         self.InstanceNameSettings = None
         self.InstanceChargePrepaid = None
         self.DiskTypePolicy = None
+        self.IPv6InternetAccessible = None
 
 
     def _deserialize(self, params):
@@ -5327,6 +5385,9 @@ class UpgradeLaunchConfigurationRequest(AbstractModel):
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
+        if params.get("IPv6InternetAccessible") is not None:
+            self.IPv6InternetAccessible = IPv6InternetAccessible()
+            self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

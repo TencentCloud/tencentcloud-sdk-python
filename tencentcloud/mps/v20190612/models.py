@@ -4967,6 +4967,8 @@ class CreateInput(AbstractModel):
         :type RTMPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTMPPullSettings`
         :param RTSPPullSettings: 输入的RTSP_PULL配置信息。
         :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTSPPullSettings`
+        :param HLSPullSettings: 输入的HLS_PULL配置信息。
+        :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputHLSPullSettings`
         """
         self.InputName = None
         self.Protocol = None
@@ -4977,6 +4979,7 @@ class CreateInput(AbstractModel):
         self.FailOver = None
         self.RTMPPullSettings = None
         self.RTSPPullSettings = None
+        self.HLSPullSettings = None
 
 
     def _deserialize(self, params):
@@ -4997,6 +5000,38 @@ class CreateInput(AbstractModel):
         if params.get("RTSPPullSettings") is not None:
             self.RTSPPullSettings = CreateInputRTSPPullSettings()
             self.RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        if params.get("HLSPullSettings") is not None:
+            self.HLSPullSettings = CreateInputHLSPullSettings()
+            self.HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputHLSPullSettings(AbstractModel):
+    """创建的输入HLS拉流的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceAddresses: HLS源站的源站地址，有且只能有一个。
+        :type SourceAddresses: list of HLSPullSourceAddress
+        """
+        self.SourceAddresses = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self.SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = HLSPullSourceAddress()
+                obj._deserialize(item)
+                self.SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7163,6 +7198,31 @@ class DescribeFlow(AbstractModel):
         
 
 
+class DescribeHLSPullSourceAddress(AbstractModel):
+    """查询输入的HLS配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: HLS源站的Url地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeImageSpriteTemplatesRequest(AbstractModel):
     """DescribeImageSpriteTemplates请求参数结构体
 
@@ -7270,6 +7330,9 @@ class DescribeInput(AbstractModel):
         :param RTSPPullSettings: 输入的RTSP_PULL配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputRTSPPullSettings`
+        :param HLSPullSettings: 输入的HLS_PULL配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputHLSPullSettings`
         """
         self.InputId = None
         self.InputName = None
@@ -7284,6 +7347,7 @@ class DescribeInput(AbstractModel):
         self.FailOver = None
         self.RTMPPullSettings = None
         self.RTSPPullSettings = None
+        self.HLSPullSettings = None
 
 
     def _deserialize(self, params):
@@ -7315,6 +7379,38 @@ class DescribeInput(AbstractModel):
         if params.get("RTSPPullSettings") is not None:
             self.RTSPPullSettings = DescribeInputRTSPPullSettings()
             self.RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        if params.get("HLSPullSettings") is not None:
+            self.HLSPullSettings = DescribeInputHLSPullSettings()
+            self.HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputHLSPullSettings(AbstractModel):
+    """查询输入的HLS配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceAddresses: HLS源站地址信息。
+        :type SourceAddresses: list of DescribeHLSPullSourceAddress
+        """
+        self.SourceAddresses = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self.SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = DescribeHLSPullSourceAddress()
+                obj._deserialize(item)
+                self.SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7594,6 +7690,9 @@ class DescribeOutput(AbstractModel):
         :param RTSPPullSettings: 输出的RTSP拉流配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTSPPullSettings`
+        :param HLSPullSettings: 输出的HLS拉流配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputHLSPullSettings`
         """
         self.OutputId = None
         self.OutputName = None
@@ -7608,6 +7707,7 @@ class DescribeOutput(AbstractModel):
         self.RTMPPullSettings = None
         self.AllowIpList = None
         self.RTSPPullSettings = None
+        self.HLSPullSettings = None
 
 
     def _deserialize(self, params):
@@ -7639,6 +7739,63 @@ class DescribeOutput(AbstractModel):
         if params.get("RTSPPullSettings") is not None:
             self.RTSPPullSettings = DescribeOutputRTSPPullSettings()
             self.RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        if params.get("HLSPullSettings") is not None:
+            self.HLSPullSettings = DescribeOutputHLSPullSettings()
+            self.HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputHLSPullServerUrl(AbstractModel):
+    """查询输出的HLS拉流URL信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: HLS拉流地址的Url。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputHLSPullSettings(AbstractModel):
+    """查询输出的HLS拉流配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServerUrls: HLS拉流地址列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerUrls: list of DescribeOutputHLSPullServerUrl
+        """
+        self.ServerUrls = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServerUrls") is not None:
+            self.ServerUrls = []
+            for item in params.get("ServerUrls"):
+                obj = DescribeOutputHLSPullServerUrl()
+                obj._deserialize(item)
+                self.ServerUrls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10492,6 +10649,30 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HLSPullSourceAddress(AbstractModel):
+    """创建的输入HLS拉流源站配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: HLS源站的Url地址。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13682,6 +13863,8 @@ class ModifyInput(AbstractModel):
         :type RTMPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTMPPullSettings`
         :param RTSPPullSettings: RTSP_PULL的配置信息。
         :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTSPPullSettings`
+        :param HLSPullSettings: HLS_PULL的配置信息。
+        :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputHLSPullSettings`
         """
         self.InputId = None
         self.InputName = None
@@ -13693,6 +13876,7 @@ class ModifyInput(AbstractModel):
         self.FailOver = None
         self.RTMPPullSettings = None
         self.RTSPPullSettings = None
+        self.HLSPullSettings = None
 
 
     def _deserialize(self, params):
@@ -13714,6 +13898,9 @@ class ModifyInput(AbstractModel):
         if params.get("RTSPPullSettings") is not None:
             self.RTSPPullSettings = CreateInputRTSPPullSettings()
             self.RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        if params.get("HLSPullSettings") is not None:
+            self.HLSPullSettings = CreateInputHLSPullSettings()
+            self.HLSPullSettings._deserialize(params.get("HLSPullSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
