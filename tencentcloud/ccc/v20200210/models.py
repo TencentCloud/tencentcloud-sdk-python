@@ -18,6 +18,42 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActiveCarrierPrivilegeNumber(AbstractModel):
+    """生效运营商白名单号码
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 实例Id
+        :type SdkAppId: int
+        :param Caller: 主叫号码
+        :type Caller: str
+        :param Callee: 被叫号码
+        :type Callee: str
+        :param CreateTime: 生效unix时间戳(秒)
+        :type CreateTime: int
+        """
+        self.SdkAppId = None
+        self.Caller = None
+        self.Callee = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Caller = params.get("Caller")
+        self.Callee = params.get("Callee")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoCalloutTaskCalleeInfo(AbstractModel):
     """外呼任务被叫信息
 
@@ -289,6 +325,59 @@ class CallInSkillGroupMetrics(AbstractModel):
         
 
 
+class CarrierPrivilegeNumberApplicant(AbstractModel):
+    """运营商白名单号码申请单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 实例Id
+        :type SdkAppId: int
+        :param ApplicantId: 申请单Id
+        :type ApplicantId: int
+        :param Callers: 主叫号码列表
+        :type Callers: list of str
+        :param Callees: 被叫号码列表
+        :type Callees: list of str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param State: 审批状态:1 待审核、2 通过、3 拒绝
+        :type State: int
+        :param CreateTime: 创建时间，unix时间戳(秒)
+        :type CreateTime: int
+        :param UpdateTime: 更新时间，unix时间戳(秒)
+        :type UpdateTime: int
+        """
+        self.SdkAppId = None
+        self.ApplicantId = None
+        self.Callers = None
+        self.Callees = None
+        self.Description = None
+        self.State = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.ApplicantId = params.get("ApplicantId")
+        self.Callers = params.get("Callers")
+        self.Callees = params.get("Callees")
+        self.Description = params.get("Description")
+        self.State = params.get("State")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAutoCalloutTaskRequest(AbstractModel):
     """CreateAutoCalloutTask请求参数结构体
 
@@ -495,6 +584,63 @@ class CreateCallOutSessionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.SessionId = params.get("SessionId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCarrierPrivilegeNumberApplicantRequest(AbstractModel):
+    """CreateCarrierPrivilegeNumberApplicant请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId
+        :type SdkAppId: int
+        :param Callers: 主叫号码，必须为实例中存在的号码，格式为0086xxxx（暂时只支持国内号码）
+        :type Callers: list of str
+        :param Callees: 被叫号码，必须为实例中坐席绑定的手机号码，格式为0086xxxx（暂时只支持国内号码）
+        :type Callees: list of str
+        :param Description: 描述
+        :type Description: str
+        """
+        self.SdkAppId = None
+        self.Callers = None
+        self.Callees = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Callers = params.get("Callers")
+        self.Callees = params.get("Callees")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCarrierPrivilegeNumberApplicantResponse(AbstractModel):
+    """CreateCarrierPrivilegeNumberApplicant返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicantId: 申请单Id
+        :type ApplicantId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ApplicantId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicantId = params.get("ApplicantId")
         self.RequestId = params.get("RequestId")
 
 
@@ -820,6 +966,81 @@ class DeleteStaffResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeActiveCarrierPrivilegeNumberRequest(AbstractModel):
+    """DescribeActiveCarrierPrivilegeNumber请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 实例Id
+        :type SdkAppId: int
+        :param PageNumber: 默认0
+        :type PageNumber: int
+        :param PageSize: 默认10，最大100
+        :type PageSize: int
+        :param Filters: 筛选条件 Name支持PhoneNumber(按号码模糊查找)
+        :type Filters: list of Filter
+        """
+        self.SdkAppId = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeActiveCarrierPrivilegeNumberResponse(AbstractModel):
+    """DescribeActiveCarrierPrivilegeNumber返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param ActiveCarrierPrivilegeNumbers: 生效列表
+        :type ActiveCarrierPrivilegeNumbers: list of ActiveCarrierPrivilegeNumber
+        :param PendingApplicantIds: 待审核单号
+        :type PendingApplicantIds: list of int non-negative
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ActiveCarrierPrivilegeNumbers = None
+        self.PendingApplicantIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ActiveCarrierPrivilegeNumbers") is not None:
+            self.ActiveCarrierPrivilegeNumbers = []
+            for item in params.get("ActiveCarrierPrivilegeNumbers"):
+                obj = ActiveCarrierPrivilegeNumber()
+                obj._deserialize(item)
+                self.ActiveCarrierPrivilegeNumbers.append(obj)
+        self.PendingApplicantIds = params.get("PendingApplicantIds")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAutoCalloutTaskRequest(AbstractModel):
     """DescribeAutoCalloutTask请求参数结构体
 
@@ -1104,6 +1325,77 @@ class DescribeCallInMetricsResponse(AbstractModel):
                 obj = CallInSkillGroupMetrics()
                 obj._deserialize(item)
                 self.SkillGroupMetrics.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCarrierPrivilegeNumberApplicantsRequest(AbstractModel):
+    """DescribeCarrierPrivilegeNumberApplicants请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 实例Id
+        :type SdkAppId: int
+        :param PageNumber: 默认0，从0开始
+        :type PageNumber: int
+        :param PageSize: 默认10，最大100
+        :type PageSize: int
+        :param Filters: 筛选条件,Name支持ApplicantId,PhoneNumber(按号码模糊查找)
+        :type Filters: list of Filter
+        """
+        self.SdkAppId = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCarrierPrivilegeNumberApplicantsResponse(AbstractModel):
+    """DescribeCarrierPrivilegeNumberApplicants返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 筛选出的总申请单数量
+        :type TotalCount: int
+        :param Applicants: 申请单列表
+        :type Applicants: list of CarrierPrivilegeNumberApplicant
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Applicants = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Applicants") is not None:
+            self.Applicants = []
+            for item in params.get("Applicants"):
+                obj = CarrierPrivilegeNumberApplicant()
+                obj._deserialize(item)
+                self.Applicants.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2075,6 +2367,36 @@ class ExtensionInfo(AbstractModel):
         self.Register = params.get("Register")
         self.Relation = params.get("Relation")
         self.RelationName = params.get("RelationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filter(AbstractModel):
+    """筛选条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 筛选字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Values: 筛选条件值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -983,6 +983,35 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDeviceLocationSolve(self, request):
+        """获取实时位置解析
+
+        :param request: Request instance for DescribeDeviceLocationSolve.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceLocationSolveRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceLocationSolveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceLocationSolve", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceLocationSolveResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDevicePositionList(self, request):
         """获取设备位置列表
 

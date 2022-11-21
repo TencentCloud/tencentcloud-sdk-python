@@ -1932,6 +1932,7 @@ class CvmClient(AbstractClient):
         * 只支持实例的本地系统盘、本地数据盘转化成指定云硬盘介质。
         * 只支持实例在关机状态下转换成指定云硬盘介质。
         * 不支持竞价实例类型。
+        * 若实例同时存在本地系统盘和本地数据盘，需同时调整系统盘和数据盘的介质类型，不支持单独针对本地系统盘或本地数据盘修改介质类型。
         * 修改前请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/378/4397)接口查询账户余额。
 
         :param request: Request instance for ModifyInstanceDiskType.

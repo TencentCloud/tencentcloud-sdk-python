@@ -887,12 +887,16 @@ class DeleteCfsSnapshotRequest(AbstractModel):
         r"""
         :param SnapshotId: 文件系统快照id
         :type SnapshotId: str
+        :param SnapshotIds: 需要删除的文件文件系统快照ID 列表，快照ID，跟ID列表至少填一项
+        :type SnapshotIds: list of str
         """
         self.SnapshotId = None
+        self.SnapshotIds = None
 
 
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
+        self.SnapshotIds = params.get("SnapshotIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

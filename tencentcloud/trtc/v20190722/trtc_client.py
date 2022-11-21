@@ -480,7 +480,7 @@ class TrtcClient(AbstractClient):
         networkDelay ：网络延迟率。
         注意：
         1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-        2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+        2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 
         :param request: Request instance for DescribeTRTCMarketQualityMetricData.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCMarketQualityMetricDataRequest`
@@ -516,7 +516,7 @@ class TrtcClient(AbstractClient):
         peakCurrentUsers：峰值同时在线人数。
         注意：
         1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-        2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+        2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 
         :param request: Request instance for DescribeTRTCMarketScaleMetricData.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCMarketScaleMetricDataRequest`
@@ -550,7 +550,7 @@ class TrtcClient(AbstractClient):
         -音频卡顿率
         注意：
         1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-        2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+        2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 
         :param request: Request instance for DescribeTRTCRealTimeQualityMetricData.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCRealTimeQualityMetricDataRequest`
@@ -584,7 +584,7 @@ class TrtcClient(AbstractClient):
         -roomCount（在线房间数）
         注意：
         1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
-        2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+        2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 
         :param request: Request instance for DescribeTRTCRealTimeScaleMetricData.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCRealTimeScaleMetricDataRequest`

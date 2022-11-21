@@ -142,6 +142,35 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCarrierPrivilegeNumberApplicant(self, request):
+        """用于无限频率地呼叫坐席手机
+
+        :param request: Request instance for CreateCarrierPrivilegeNumberApplicant.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateCarrierPrivilegeNumberApplicantRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateCarrierPrivilegeNumberApplicantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCarrierPrivilegeNumberApplicant", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCarrierPrivilegeNumberApplicantResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateExtension(self, request):
         """创建话机账号
 
@@ -316,6 +345,35 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeActiveCarrierPrivilegeNumber(self, request):
+        """查询生效运营商白名单规则
+
+        :param request: Request instance for DescribeActiveCarrierPrivilegeNumber.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeActiveCarrierPrivilegeNumberRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeActiveCarrierPrivilegeNumberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeActiveCarrierPrivilegeNumber", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeActiveCarrierPrivilegeNumberResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAutoCalloutTask(self, request):
         """查询自动外呼任务详情
 
@@ -418,6 +476,35 @@ class CccClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCallInMetricsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCarrierPrivilegeNumberApplicants(self, request):
+        """查询单状态
+
+        :param request: Request instance for DescribeCarrierPrivilegeNumberApplicants.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCarrierPrivilegeNumberApplicantsRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeCarrierPrivilegeNumberApplicantsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCarrierPrivilegeNumberApplicants", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCarrierPrivilegeNumberApplicantsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

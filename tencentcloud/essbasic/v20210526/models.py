@@ -448,6 +448,60 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreateBoundFlowsRequest(AbstractModel):
+    """ChannelCreateBoundFlows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 应用信息
+此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param FlowIds: 领取的合同id列表
+        :type FlowIds: list of str
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.Agent = None
+        self.FlowIds = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.FlowIds = params.get("FlowIds")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateBoundFlowsResponse(AbstractModel):
+    """ChannelCreateBoundFlows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelCreateConvertTaskApiRequest(AbstractModel):
     """ChannelCreateConvertTaskApi请求参数结构体
 
@@ -2490,8 +2544,8 @@ class FlowInfo(AbstractModel):
     """此结构体 (FlowInfo) 用于描述签署流程信息。
 
     【动态表格传参说明】
-    当模板的 ComponentType='DYNAMIC_TABLE'时（渠道版），FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充动态表格（支持内容的单元格合并）
-    输入示例
+    当模板的 ComponentType='DYNAMIC_TABLE'时（渠道版或集成版），FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充动态表格（支持内容的单元格合并）
+    输入示例1：
 
     ```
     {
@@ -2536,6 +2590,53 @@ class FlowInfo(AbstractModel):
 
     ```
 
+    输入示例2（表格表头宽度比例配置）：
+
+    ```
+    {
+        "headers":[
+            {
+                "content":"head1",
+                "widthPercent": 30
+            },
+            {
+                "content":"head2",
+                "widthPercent": 30
+            },
+            {
+                "content":"head3",
+                "widthPercent": 40
+            }
+        ],
+        "rowCount":3,
+        "body":{
+            "cells":[
+                {
+                    "rowStart":1,
+                    "rowEnd":1,
+                    "columnStart":1,
+                    "columnEnd":1,
+                    "content":"123"
+                },
+                {
+                    "rowStart":2,
+                    "rowEnd":3,
+                    "columnStart":1,
+                    "columnEnd":2,
+                    "content":"456"
+                },
+                {
+                    "rowStart":3,
+                    "rowEnd":3,
+                    "columnStart":3,
+                    "columnEnd":3,
+                    "content":"789"
+                }
+            ]
+        }
+    }
+
+    ```
     表格参数说明
 
     | 名称                | 类型    | 描述                                              |
@@ -2547,6 +2648,12 @@ class FlowInfo(AbstractModel):
     | cells.N.columnStart | Integer | 单元格坐标：列起始index                           |
     | cells.N.columnEnd   | Integer | 单元格坐标：列结束index                           |
     | cells.N.content     | String  | 单元格内容，字数不超过100                         |
+
+    表格参数headers说明
+    | 名称                | 类型    | 描述                                              |
+    | ------------------- | ------- | ------------------------------------------------- |
+    | widthPercent   | Integer | 表头单元格列占总表头的比例，例如1：30表示 此列占表头的30%，不填写时列宽度平均拆分；例如2：总2列，某一列填写40，剩余列可以为空，按照60计算。；例如3：总3列，某一列填写30，剩余2列可以为空，分别为(100-30)/2=35                    |
+    | content    | String  | 表头单元格内容，字数不超过100                         |
 
     """
 

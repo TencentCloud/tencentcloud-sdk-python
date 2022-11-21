@@ -2054,6 +2054,85 @@ class DescribeDeviceDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDeviceLocationSolveRequest(AbstractModel):
+    """DescribeDeviceLocationSolve请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param LocationType: 定位解析类型，wifi或GNSSNavigation
+        :type LocationType: str
+        :param GNSSNavigation: LoRaEdge卫星导航电文
+        :type GNSSNavigation: str
+        :param WiFiInfo: wifi信息
+        :type WiFiInfo: list of WifiInfo
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.LocationType = None
+        self.GNSSNavigation = None
+        self.WiFiInfo = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.LocationType = params.get("LocationType")
+        self.GNSSNavigation = params.get("GNSSNavigation")
+        if params.get("WiFiInfo") is not None:
+            self.WiFiInfo = []
+            for item in params.get("WiFiInfo"):
+                obj = WifiInfo()
+                obj._deserialize(item)
+                self.WiFiInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceLocationSolveResponse(AbstractModel):
+    """DescribeDeviceLocationSolve返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Longitude: 经度
+        :type Longitude: float
+        :param Latitude: 维度
+        :type Latitude: float
+        :param LocationType: 类型
+        :type LocationType: str
+        :param Accuracy: 误差精度预估，单位为米
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Accuracy: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Longitude = None
+        self.Latitude = None
+        self.LocationType = None
+        self.Accuracy = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Longitude = params.get("Longitude")
+        self.Latitude = params.get("Latitude")
+        self.LocationType = params.get("LocationType")
+        self.Accuracy = params.get("Accuracy")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDevicePositionListRequest(AbstractModel):
     """DescribeDevicePositionList请求参数结构体
 
@@ -6944,3 +7023,31 @@ class UploadFirmwareResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class WifiInfo(AbstractModel):
+    """wifi定位信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MAC: mac地址
+        :type MAC: str
+        :param RSSI: 信号强度
+        :type RSSI: int
+        """
+        self.MAC = None
+        self.RSSI = None
+
+
+    def _deserialize(self, params):
+        self.MAC = params.get("MAC")
+        self.RSSI = params.get("RSSI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

@@ -12345,6 +12345,12 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type OsName: str
         :param OsCustomizeType: 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
         :type OsCustomizeType: str
+        :param GPUArgs: GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性
+        :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
+        :param UserScript: base64编码后的自定义脚本
+        :type UserScript: str
+        :param IgnoreExistedNode: 更新label和taint时忽略存量节点
+        :type IgnoreExistedNode: bool
         :param ExtraArgs: 节点自定义参数
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         :param Tags: 资源标签
@@ -12353,6 +12359,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type Unschedulable: int
         :param DeletionProtection: 删除保护开关
         :type DeletionProtection: bool
+        :param DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
+        :type DockerGraphPath: str
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -12364,10 +12372,14 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.EnableAutoscale = None
         self.OsName = None
         self.OsCustomizeType = None
+        self.GPUArgs = None
+        self.UserScript = None
+        self.IgnoreExistedNode = None
         self.ExtraArgs = None
         self.Tags = None
         self.Unschedulable = None
         self.DeletionProtection = None
+        self.DockerGraphPath = None
 
 
     def _deserialize(self, params):
@@ -12391,6 +12403,11 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.EnableAutoscale = params.get("EnableAutoscale")
         self.OsName = params.get("OsName")
         self.OsCustomizeType = params.get("OsCustomizeType")
+        if params.get("GPUArgs") is not None:
+            self.GPUArgs = GPUArgs()
+            self.GPUArgs._deserialize(params.get("GPUArgs"))
+        self.UserScript = params.get("UserScript")
+        self.IgnoreExistedNode = params.get("IgnoreExistedNode")
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
@@ -12402,6 +12419,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
                 self.Tags.append(obj)
         self.Unschedulable = params.get("Unschedulable")
         self.DeletionProtection = params.get("DeletionProtection")
+        self.DockerGraphPath = params.get("DockerGraphPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
