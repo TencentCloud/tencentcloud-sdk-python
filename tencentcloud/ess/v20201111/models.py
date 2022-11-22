@@ -861,6 +861,8 @@ MobileCheck：手机号验证
         :type ApproverVerifyType: str
         :param FlowDescription: 签署流程描述,最大长度1000个字符
         :type FlowDescription: str
+        :param SignBeanTag: 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+        :type SignBeanTag: int
         """
         self.Operator = None
         self.FlowName = None
@@ -879,6 +881,7 @@ MobileCheck：手机号验证
         self.Agent = None
         self.ApproverVerifyType = None
         self.FlowDescription = None
+        self.SignBeanTag = None
 
 
     def _deserialize(self, params):
@@ -918,6 +921,7 @@ MobileCheck：手机号验证
             self.Agent._deserialize(params.get("Agent"))
         self.ApproverVerifyType = params.get("ApproverVerifyType")
         self.FlowDescription = params.get("FlowDescription")
+        self.SignBeanTag = params.get("SignBeanTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

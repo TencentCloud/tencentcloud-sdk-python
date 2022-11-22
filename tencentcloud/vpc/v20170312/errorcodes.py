@@ -725,6 +725,9 @@ UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = 'UnsupportedOperation.ModifyAddres
 # 资源互斥操作任务正在执行。
 UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOperationTaskRunning'
 
+# NAT网关的公网IP不存在。
+UNSUPPORTEDOPERATION_NATGATEWAYEIPNOTEXISTS = 'UnsupportedOperation.NatGatewayEipNotExists'
+
 # SNAT/DNAT转换规则所指定的内网IP已绑定了其他的规则，无法重复绑定。
 UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = 'UnsupportedOperation.NatGatewayRulePipExists'
 

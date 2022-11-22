@@ -2376,7 +2376,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """升级实例
+        """变更实例配置
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceRequest`

@@ -443,15 +443,19 @@ class CreateWhitelistResponse(AbstractModel):
         r"""
         :param Msg: 消息
         :type Msg: str
+        :param ID: 白名单ID
+        :type ID: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Msg = None
+        self.ID = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Msg = params.get("Msg")
+        self.ID = params.get("ID")
         self.RequestId = params.get("RequestId")
 
 

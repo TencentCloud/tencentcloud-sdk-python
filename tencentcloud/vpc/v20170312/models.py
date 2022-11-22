@@ -16612,14 +16612,18 @@ class ModifyNetworkInterfaceQosRequest(AbstractModel):
         :type NetworkInterfaceIds: list of str
         :param QosLevel: 服务质量，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
         :type QosLevel: str
+        :param DirectSendMaxPort: DirectSend端口范围最大值。
+        :type DirectSendMaxPort: int
         """
         self.NetworkInterfaceIds = None
         self.QosLevel = None
+        self.DirectSendMaxPort = None
 
 
     def _deserialize(self, params):
         self.NetworkInterfaceIds = params.get("NetworkInterfaceIds")
         self.QosLevel = params.get("QosLevel")
+        self.DirectSendMaxPort = params.get("DirectSendMaxPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

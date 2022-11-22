@@ -451,6 +451,8 @@ class CreateCodePackRequest(AbstractModel):
         :type PackLevel: int
         :param PackSpec: 码包规格
         :type PackSpec: list of PackSpec
+        :param BatchId: 批次ID，如果传了生码后会同时绑定批次，并激活码
+        :type BatchId: str
         """
         self.MerchantId = None
         self.CodeLength = None
@@ -460,6 +462,7 @@ class CreateCodePackRequest(AbstractModel):
         self.PackType = None
         self.PackLevel = None
         self.PackSpec = None
+        self.BatchId = None
 
 
     def _deserialize(self, params):
@@ -476,6 +479,7 @@ class CreateCodePackRequest(AbstractModel):
                 obj = PackSpec()
                 obj._deserialize(item)
                 self.PackSpec.append(obj)
+        self.BatchId = params.get("BatchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -607,6 +611,8 @@ class CreateCustomPackRequest(AbstractModel):
         :type CustomId: str
         :param CodeParts: 码段配置，和CustomId二选一必填
         :type CodeParts: list of CodePart
+        :param BatchId: 批次ID，如果传了生码后会同时绑定批次，并激活码
+        :type BatchId: str
         """
         self.MerchantId = None
         self.Amount = None
@@ -616,6 +622,7 @@ class CreateCustomPackRequest(AbstractModel):
         self.PackSpec = None
         self.CustomId = None
         self.CodeParts = None
+        self.BatchId = None
 
 
     def _deserialize(self, params):
@@ -637,6 +644,7 @@ class CreateCustomPackRequest(AbstractModel):
                 obj = CodePart()
                 obj._deserialize(item)
                 self.CodeParts.append(obj)
+        self.BatchId = params.get("BatchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2672,14 +2680,18 @@ class ModifyCustomRuleStatusRequest(AbstractModel):
         :type CustomId: str
         :param Status: 码规则状态 0:未生效 1:已生效 -1:已失效
         :type Status: int
+        :param CorpId: 企业ID
+        :type CorpId: int
         """
         self.CustomId = None
         self.Status = None
+        self.CorpId = None
 
 
     def _deserialize(self, params):
         self.CustomId = params.get("CustomId")
         self.Status = params.get("Status")
+        self.CorpId = params.get("CorpId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1383,7 +1383,7 @@ class GetTicketStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CaptchaAppId: 验证码appid
+        :param CaptchaAppId: 验证码AppId
         :type CaptchaAppId: str
         :param StartTimeStr: 开始时间字符串
         :type StartTimeStr: str

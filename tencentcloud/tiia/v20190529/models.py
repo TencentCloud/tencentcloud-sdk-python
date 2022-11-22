@@ -127,6 +127,83 @@ class Attribute(AbstractModel):
         
 
 
+class AttributesForBody(AbstractModel):
+    """属性检测到的人体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rect: 人体框。当不开启人体检测时，内部参数默认为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rect: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
+        :param DetectConfidence: 人体检测置信度。取值0-1之间，当不开启人体检测开关时默认为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectConfidence: float
+        :param Attributes: 属性信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attributes: list of BodyAttributes
+        """
+        self.Rect = None
+        self.DetectConfidence = None
+        self.Attributes = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rect") is not None:
+            self.Rect = ImageRect()
+            self.Rect._deserialize(params.get("Rect"))
+        self.DetectConfidence = params.get("DetectConfidence")
+        if params.get("Attributes") is not None:
+            self.Attributes = []
+            for item in params.get("Attributes"):
+                obj = BodyAttributes()
+                obj._deserialize(item)
+                self.Attributes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BodyAttributes(AbstractModel):
+    """属性列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: 属性值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param Confidence: 置信度，取值0-1之间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Confidence: float
+        :param Name: 属性名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self.Label = None
+        self.Confidence = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.Confidence = params.get("Confidence")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Box(AbstractModel):
     """图像主体区域。
 
@@ -820,6 +897,82 @@ class DescribeImagesResponse(AbstractModel):
                 obj = ImageInfo()
                 obj._deserialize(item)
                 self.ImageInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DetectChefDressRequest(AbstractModel):
+    """DetectChefDress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageUrl: 图片的 Url 。
+ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
+图片限制：
+• 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
+• 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过 3840 x 2160pixel。
+建议：
+• 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。
+注意：图片需要base64编码，并且要去掉编码头部。
+支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
+支持的图片大小：所下载图片经Base64编码后不超过5M。
+        :type ImageBase64: str
+        :param EnableDetect: 人体检测模型开关，“true”为开启，“false”为关闭
+默认为开启，开启后可先对图片中的人体进行检测之后再进行属性识别
+        :type EnableDetect: bool
+        :param EnablePreferred: 人体优选开关，“true”为开启，“false”为关闭
+开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
+默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
+人体优选开启时，检测到的人体分辨率不超过1920*1080 pixel
+        :type EnablePreferred: bool
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+        self.EnableDetect = None
+        self.EnablePreferred = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.EnableDetect = params.get("EnableDetect")
+        self.EnablePreferred = params.get("EnablePreferred")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectChefDressResponse(AbstractModel):
+    """DetectChefDress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bodies: list of AttributesForBody
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Bodies = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Bodies") is not None:
+            self.Bodies = []
+            for item in params.get("Bodies"):
+                obj = AttributesForBody()
+                obj._deserialize(item)
+                self.Bodies.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1549,6 +1702,83 @@ class DetectProductResponse(AbstractModel):
                 obj = Product()
                 obj._deserialize(item)
                 self.Products.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DetectSecurityRequest(AbstractModel):
+    """DetectSecurity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageUrl: 图片的 Url 。
+ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
+图片限制：
+• 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
+• 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过3840 x 2160 pixel。
+建议：
+• 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。
+最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+注意：图片需要base64编码，并且要去掉编码头部。
+支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
+支持的图片大小：所下载图片经Base64编码后不超过5M。
+        :type ImageBase64: str
+        :param EnableDetect: 人体检测模型开关，“true”为开启，“false”为关闭
+开启后可先对图片中的人体进行检测之后再进行属性识别，默认为开启
+        :type EnableDetect: bool
+        :param EnablePreferred: 人体优选开关，“true”为开启，“false”为关闭
+开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
+默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
+如开启人体优选，检测到的人体分辨率需不大于1920*1080 pixel
+        :type EnablePreferred: bool
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+        self.EnableDetect = None
+        self.EnablePreferred = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+        self.EnableDetect = params.get("EnableDetect")
+        self.EnablePreferred = params.get("EnablePreferred")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectSecurityResponse(AbstractModel):
+    """DetectSecurity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bodies: list of AttributesForBody
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Bodies = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Bodies") is not None:
+            self.Bodies = []
+            for item in params.get("Bodies"):
+                obj = AttributesForBody()
+                obj._deserialize(item)
+                self.Bodies.append(obj)
         self.RequestId = params.get("RequestId")
 
 

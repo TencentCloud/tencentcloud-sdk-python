@@ -613,6 +613,8 @@ VerifyCheck: 人脸识别（默认）
 MobileCheck：手机号验证
 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
         :type ApproverVerifyType: str
+        :param SignBeanTag: 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+        :type SignBeanTag: int
         """
         self.Agent = None
         self.FlowName = None
@@ -629,6 +631,7 @@ MobileCheck：手机号验证
         self.NeedSignReview = None
         self.Operator = None
         self.ApproverVerifyType = None
+        self.SignBeanTag = None
 
 
     def _deserialize(self, params):
@@ -661,6 +664,7 @@ MobileCheck：手机号验证
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
         self.ApproverVerifyType = params.get("ApproverVerifyType")
+        self.SignBeanTag = params.get("SignBeanTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1370,6 +1374,9 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         :type OffsetX: float
         :param OffsetY: 指定关键字时纵坐标偏移量，单位pt
         :type OffsetY: float
+        :param ChannelComponentId: 渠道控件ID。
+如果不为空，属于渠道预设控件；
+        :type ChannelComponentId: str
         :param KeywordPage: 指定关键字页码
         :type KeywordPage: int
         :param RelativeLocation: 关键字位置模式
@@ -1396,6 +1403,7 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         self.ComponentDescription = None
         self.OffsetX = None
         self.OffsetY = None
+        self.ChannelComponentId = None
         self.KeywordPage = None
         self.RelativeLocation = None
         self.KeywordIndexes = None
@@ -1421,6 +1429,7 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         self.ComponentDescription = params.get("ComponentDescription")
         self.OffsetX = params.get("OffsetX")
         self.OffsetY = params.get("OffsetY")
+        self.ChannelComponentId = params.get("ChannelComponentId")
         self.KeywordPage = params.get("KeywordPage")
         self.RelativeLocation = params.get("RelativeLocation")
         self.KeywordIndexes = params.get("KeywordIndexes")
@@ -2327,6 +2336,7 @@ class FlowApproverInfo(AbstractModel):
 默认为false，即签署人位于同一个渠道应用号下；
         :type NotChannelOrganization: bool
         :param OpenId: 用户侧第三方id，最大长度64个字符
+当签署方为同一渠道下的员工时，该字段若不指定，则发起【待领取】的流程
         :type OpenId: str
         :param OrganizationOpenId: 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
         :type OrganizationOpenId: str
@@ -2650,6 +2660,7 @@ class FlowInfo(AbstractModel):
     | cells.N.content     | String  | 单元格内容，字数不超过100                         |
 
     表格参数headers说明
+
     | 名称                | 类型    | 描述                                              |
     | ------------------- | ------- | ------------------------------------------------- |
     | widthPercent   | Integer | 表头单元格列占总表头的比例，例如1：30表示 此列占表头的30%，不填写时列宽度平均拆分；例如2：总2列，某一列填写40，剩余列可以为空，按照60计算。；例如3：总3列，某一列填写30，剩余2列可以为空，分别为(100-30)/2=35                    |
@@ -3849,6 +3860,9 @@ class TemplateInfo(AbstractModel):
         :param PreviewUrl: 模板的H5预览链接,可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
+        :param ChannelTemplateId: 渠道模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelTemplateId: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -3861,6 +3875,7 @@ class TemplateInfo(AbstractModel):
         self.Creator = None
         self.CreatedOn = None
         self.PreviewUrl = None
+        self.ChannelTemplateId = None
 
 
     def _deserialize(self, params):
@@ -3890,6 +3905,7 @@ class TemplateInfo(AbstractModel):
         self.Creator = params.get("Creator")
         self.CreatedOn = params.get("CreatedOn")
         self.PreviewUrl = params.get("PreviewUrl")
+        self.ChannelTemplateId = params.get("ChannelTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

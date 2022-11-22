@@ -4969,6 +4969,8 @@ class CreateInput(AbstractModel):
         :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTSPPullSettings`
         :param HLSPullSettings: 输入的HLS_PULL配置信息。
         :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputHLSPullSettings`
+        :param ResilientStream: 延播平滑吐流配置信息。
+        :type ResilientStream: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
         """
         self.InputName = None
         self.Protocol = None
@@ -4980,6 +4982,7 @@ class CreateInput(AbstractModel):
         self.RTMPPullSettings = None
         self.RTSPPullSettings = None
         self.HLSPullSettings = None
+        self.ResilientStream = None
 
 
     def _deserialize(self, params):
@@ -5003,6 +5006,9 @@ class CreateInput(AbstractModel):
         if params.get("HLSPullSettings") is not None:
             self.HLSPullSettings = CreateInputHLSPullSettings()
             self.HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        if params.get("ResilientStream") is not None:
+            self.ResilientStream = ResilientStreamConf()
+            self.ResilientStream._deserialize(params.get("ResilientStream"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7333,6 +7339,9 @@ class DescribeInput(AbstractModel):
         :param HLSPullSettings: 输入的HLS_PULL配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeInputHLSPullSettings`
+        :param ResilientStream: 延播平滑吐流配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResilientStream: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
         """
         self.InputId = None
         self.InputName = None
@@ -7348,6 +7357,7 @@ class DescribeInput(AbstractModel):
         self.RTMPPullSettings = None
         self.RTSPPullSettings = None
         self.HLSPullSettings = None
+        self.ResilientStream = None
 
 
     def _deserialize(self, params):
@@ -7382,6 +7392,9 @@ class DescribeInput(AbstractModel):
         if params.get("HLSPullSettings") is not None:
             self.HLSPullSettings = DescribeInputHLSPullSettings()
             self.HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        if params.get("ResilientStream") is not None:
+            self.ResilientStream = ResilientStreamConf()
+            self.ResilientStream._deserialize(params.get("ResilientStream"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13865,6 +13878,8 @@ class ModifyInput(AbstractModel):
         :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputRTSPPullSettings`
         :param HLSPullSettings: HLS_PULL的配置信息。
         :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputHLSPullSettings`
+        :param ResilientStream: 延播平滑吐流配置信息。
+        :type ResilientStream: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
         """
         self.InputId = None
         self.InputName = None
@@ -13877,6 +13892,7 @@ class ModifyInput(AbstractModel):
         self.RTMPPullSettings = None
         self.RTSPPullSettings = None
         self.HLSPullSettings = None
+        self.ResilientStream = None
 
 
     def _deserialize(self, params):
@@ -13901,6 +13917,9 @@ class ModifyInput(AbstractModel):
         if params.get("HLSPullSettings") is not None:
             self.HLSPullSettings = CreateInputHLSPullSettings()
             self.HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        if params.get("ResilientStream") is not None:
+            self.ResilientStream = ResilientStreamConf()
+            self.ResilientStream._deserialize(params.get("ResilientStream"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16547,6 +16566,36 @@ class ResetWorkflowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResilientStreamConf(AbstractModel):
+    """延播平滑吐流配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enable: 是否开启延播平滑吐流，true开启，false不开启，默认不开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        :param BufferTime: 延播时间，单位秒，目前支持的范围为10~300秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BufferTime: int
+        """
+        self.Enable = None
+        self.BufferTime = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.BufferTime = params.get("BufferTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SRTAddressDestination(AbstractModel):

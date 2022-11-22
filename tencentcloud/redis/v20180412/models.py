@@ -7394,15 +7394,15 @@ class UpgradeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 待变更实例 ID。
         :type InstanceId: str
-        :param MemSize: 分片大小 单位 MB。该参数不支持与RedisShardNum或RedisReplicasNum同时输入。
+        :param MemSize: 指实例每个分片内存变更后的大小。<ul><li>单位 MB。</li><li>每次只能修改参数MemSize、RedisShardNum和RedisReplicasNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li></ul>
         :type MemSize: int
-        :param RedisShardNum: 分片数量，标准架构不需要填写。该参数不支持与RedisReplicasNum或MemSize同时输入。
+        :param RedisShardNum: 指实例变更后的分片数量。<ul><li>标准架构不需要配置该参数，集群架构为必填参数。</li><li>集群架构，每次只能修改参数RedisShardNum、MemSize和RedisReplicasNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li></ul>
         :type RedisShardNum: int
-        :param RedisReplicasNum: 副本数量，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
+        :param RedisReplicasNum: 指实例变更后的副本数量。<ul><li>每次只能修改参数RedisReplicasNum、MemSize和RedisShardNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li><li>多AZ实例修改副本时必须要传入NodeSet。</li></ul>
         :type RedisReplicasNum: int
-        :param NodeSet: 多AZ实例增加副本时的附带信息，非多AZ实例不需要传此参数。多AZ增加副本时此参数为必传参数，传入要增加的副本的信息，包括副本的可用区和副本的类型（NodeType为1）
+        :param NodeSet: 多AZ实例，增加副本时的附带信息，包括副本的可用区和副本的类型（NodeType为1）。非多AZ实例不需要配置该参数。
         :type NodeSet: list of RedisNodeInfo
         """
         self.InstanceId = None
@@ -7439,7 +7439,7 @@ class UpgradeInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 订单ID
+        :param DealId: 订单ID。
         :type DealId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

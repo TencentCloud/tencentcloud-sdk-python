@@ -95,6 +95,9 @@ FAILEDOPERATION_MESSAGEIDERROR = 'FailedOperation.MessageIDError'
 # 必须先清除关联命名空间才能继续操作。
 FAILEDOPERATION_NAMESPACEINUSE = 'FailedOperation.NamespaceInUse'
 
+# PulsarAdminClient错误。
+FAILEDOPERATION_PULSARADMINERROR = 'FailedOperation.PulsarAdminError'
+
 # 接收消息出错。
 FAILEDOPERATION_RECEIVEERROR = 'FailedOperation.ReceiveError'
 

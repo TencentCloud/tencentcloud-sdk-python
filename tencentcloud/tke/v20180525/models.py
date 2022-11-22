@@ -15605,16 +15605,24 @@ class SubnetInfos(AbstractModel):
         :type Name: str
         :param SecurityGroups: 安全组id
         :type SecurityGroups: list of str
+        :param Os: 系统
+        :type Os: str
+        :param Arch: 硬件架构
+        :type Arch: str
         """
         self.SubnetId = None
         self.Name = None
         self.SecurityGroups = None
+        self.Os = None
+        self.Arch = None
 
 
     def _deserialize(self, params):
         self.SubnetId = params.get("SubnetId")
         self.Name = params.get("Name")
         self.SecurityGroups = params.get("SecurityGroups")
+        self.Os = params.get("Os")
+        self.Arch = params.get("Arch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

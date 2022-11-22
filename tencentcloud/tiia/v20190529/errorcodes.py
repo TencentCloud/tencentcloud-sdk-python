@@ -20,8 +20,8 @@ AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 # 余额不足，开通失败，请充值后再开通。
 FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
 
-# 文件下载错误。
-FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownloadError'
+# 文件下载失败。
+FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 
 # 图片内容为空。
 FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
@@ -70,6 +70,9 @@ FAILEDOPERATION_INNERERROR = 'FailedOperation.InnerError'
 
 # 调用计费返回失败。
 FAILEDOPERATION_INVOKECHARGEERROR = 'FailedOperation.InvokeChargeError'
+
+# 图片中没有人体。
+FAILEDOPERATION_NOBODYINPHOTO = 'FailedOperation.NoBodyInPhoto'
 
 # 未检测到目标。
 FAILEDOPERATION_NOOBJECTDETECTED = 'FailedOperation.NoObjectDetected'
@@ -127,6 +130,9 @@ INVALIDPARAMETERVALUE_FILTERINVALID = 'InvalidParameterValue.FilterInvalid'
 
 # Filter参数过长。
 INVALIDPARAMETERVALUE_FILTERSIZEEXCEED = 'InvalidParameterValue.FilterSizeExceed'
+
+# 图片为空。
+INVALIDPARAMETERVALUE_IMAGEEMPTY = 'InvalidParameterValue.ImageEmpty'
 
 # 图库ID已存在。
 INVALIDPARAMETERVALUE_IMAGEGROUPIDALREADYEXIST = 'InvalidParameterValue.ImageGroupIdAlreadyExist'

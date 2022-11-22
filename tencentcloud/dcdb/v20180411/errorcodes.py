@@ -194,6 +194,9 @@ INTERNALERROR_QUERYPRICEFAILED = 'InternalError.QueryPriceFailed'
 # 操作读DB数据错误。
 INTERNALERROR_READDATABASEFAILED = 'InternalError.ReadDatabaseFailed'
 
+# 回档的时间不合法。
+INTERNALERROR_RETREATETIME = 'InternalError.RetreateTime'
+
 # 路由未发现。
 INTERNALERROR_ROUTENOTFOUND = 'InternalError.RouteNotFound'
 
