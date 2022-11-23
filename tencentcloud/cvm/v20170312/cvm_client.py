@@ -207,6 +207,35 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateHpcCluster(self, request):
+        """创建高性能计算集群
+
+        :param request: Request instance for CreateHpcCluster.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.CreateHpcClusterRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.CreateHpcClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHpcCluster", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateHpcClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImage(self, request):
         """本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
 
@@ -347,6 +376,35 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDisasterRecoverGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteHpcClusters(self, request):
+        """当高性能计算集群为空, 即集群内没有任何设备时候, 可以删除改集群。
+
+        :param request: Request instance for DeleteHpcClusters.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteHpcClustersRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteHpcClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteHpcClusters", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteHpcClustersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -647,6 +705,35 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHostsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHpcClusters(self, request):
+        """查询高性能集群信息
+
+        :param request: Request instance for DescribeHpcClusters.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeHpcClustersRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeHpcClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHpcClusters", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHpcClustersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1847,6 +1934,35 @@ class CvmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyHostsAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyHpcClusterAttribute(self, request):
+        """修改高性能计算集群属性。
+
+        :param request: Request instance for ModifyHpcClusterAttribute.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyHpcClusterAttributeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyHpcClusterAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyHpcClusterAttribute", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyHpcClusterAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

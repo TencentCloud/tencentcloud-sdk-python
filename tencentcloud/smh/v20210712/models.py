@@ -725,25 +725,25 @@ class SendSmsCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Purpose: 验证码目的，当前仅支持换绑超级管理员账号，固定填写 BindSuperAdmin。
+        :param Purpose: 验证码目的，当前支持换绑超级管理员账号， BindSuperAdmin；体验版企业升级，ChannelUpdateVerify等
         :type Purpose: str
-        :param InstanceId: 官方云盘实例 ID
-        :type InstanceId: str
         :param PhoneNumber: 将作为超级管理员账号的手机号码
         :type PhoneNumber: str
+        :param InstanceId: 官方云盘实例 ID
+        :type InstanceId: str
         :param CountryCode: 将作为超级管理员账号的手机号码的国家代码。默认为 +86。
         :type CountryCode: str
         """
         self.Purpose = None
-        self.InstanceId = None
         self.PhoneNumber = None
+        self.InstanceId = None
         self.CountryCode = None
 
 
     def _deserialize(self, params):
         self.Purpose = params.get("Purpose")
-        self.InstanceId = params.get("InstanceId")
         self.PhoneNumber = params.get("PhoneNumber")
+        self.InstanceId = params.get("InstanceId")
         self.CountryCode = params.get("CountryCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -840,29 +840,29 @@ class VerifySmsCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Purpose: 验证码目的，当前仅支持换绑超级管理员账号，固定填写 BindSuperAdmin。
+        :param Purpose: 验证码目的，当前支持换绑超级管理员账号，BindSuperAdmin；体验版企业升级验证ChannelUpdateVerify，等
         :type Purpose: str
-        :param InstanceId: 官方云盘实例 ID
-        :type InstanceId: str
         :param PhoneNumber: 将作为超级管理员账号的手机号码
         :type PhoneNumber: str
         :param Code: 短信验证码
         :type Code: str
+        :param InstanceId: 官方云盘实例 ID
+        :type InstanceId: str
         :param CountryCode: 将作为超级管理员账号的手机号码的国家代码。默认为 +86。
         :type CountryCode: str
         """
         self.Purpose = None
-        self.InstanceId = None
         self.PhoneNumber = None
         self.Code = None
+        self.InstanceId = None
         self.CountryCode = None
 
 
     def _deserialize(self, params):
         self.Purpose = params.get("Purpose")
-        self.InstanceId = params.get("InstanceId")
         self.PhoneNumber = params.get("PhoneNumber")
         self.Code = params.get("Code")
+        self.InstanceId = params.get("InstanceId")
         self.CountryCode = params.get("CountryCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

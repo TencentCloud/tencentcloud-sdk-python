@@ -1771,7 +1771,7 @@ class CreateRuleRequest(AbstractModel):
         :type Path: str
         :param RealServerType: 转发规则对应源站的类型，支持IP和DOMAIN类型。
         :type RealServerType: str
-        :param Scheduler: 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
+        :param Scheduler: 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数。
         :type Scheduler: str
         :param HealthCheck: 规则是否开启健康检查，1开启，0关闭。
         :type HealthCheck: int
@@ -1782,7 +1782,7 @@ class CreateRuleRequest(AbstractModel):
         :type ForwardProtocol: str
         :param ForwardHost: 回源Host。加速通道转发到源站的host，不设置该参数时，使用默认的host设置，即客户端发起的http请求的host。
         :type ForwardHost: str
-        :param ServerNameIndicationSwitch: 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。
+        :param ServerNameIndicationSwitch: 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。创建HTTP监听器转发规则时，SNI功能默认关闭。
         :type ServerNameIndicationSwitch: str
         :param ServerNameIndication: 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
         :type ServerNameIndication: str

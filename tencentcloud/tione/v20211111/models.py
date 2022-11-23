@@ -1365,7 +1365,7 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         :param StartCmdInfo: 启动命令信息，默认为sh start.sh
         :type StartCmdInfo: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
-        :param DataConfigs: 数据配置
+        :param DataConfigs: 数据配置，依赖DataSource字段
         :type DataConfigs: list of DataConfig
         :param VpcId: VPC Id
         :type VpcId: str
@@ -5685,6 +5685,179 @@ class ModifyModelServicePartialConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyModelServiceRequest(AbstractModel):
+    """ModifyModelService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: 服务id
+        :type ServiceId: str
+        :param ModelInfo: 模型信息，需要挂载模型时填写
+        :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        :param ImageInfo: 镜像信息，配置服务运行所需的镜像地址等信息
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param Env: 环境变量，可选参数，用于配置容器中的环境变量
+        :type Env: list of EnvVar
+        :param Resources: 资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写
+        :type Resources: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
+        :param InstanceType: 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
+TI.S.MEDIUM.POST	2C4G
+TI.S.LARGE.POST	4C8G
+TI.S.2XLARGE16.POST	8C16G
+TI.S.2XLARGE32.POST	8C32G
+TI.S.4XLARGE32.POST	16C32G
+TI.S.4XLARGE64.POST	16C64G
+TI.S.6XLARGE48.POST	24C48G
+TI.S.6XLARGE96.POST	24C96G
+TI.S.8XLARGE64.POST	32C64G
+TI.S.8XLARGE128.POST 32C128G
+TI.GN7.LARGE20.POST	4C20G T4*1/4
+TI.GN7.2XLARGE40.POST	10C40G T4*1/2
+TI.GN7.2XLARGE32.POST	8C32G T4*1
+TI.GN7.5XLARGE80.POST	20C80G T4*1
+TI.GN7.8XLARGE128.POST	32C128G T4*1
+TI.GN7.10XLARGE160.POST	40C160G T4*2
+TI.GN7.20XLARGE320.POST	80C320G T4*4
+        :type InstanceType: str
+        :param ScaleMode: 扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL"
+        :type ScaleMode: str
+        :param Replicas: 实例数量, 不同计费模式和调节模式下对应关系如下
+PREPAID 和 POSTPAID_BY_HOUR:
+手动调节模式下对应 实例数量
+自动调节模式下对应 基于时间的默认策略的实例数量
+HYBRID_PAID:
+后付费实例手动调节模式下对应 实例数量
+后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+        :type Replicas: int
+        :param HorizontalPodAutoscaler: 自动伸缩信息
+        :type HorizontalPodAutoscaler: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
+        :param LogEnable: 是否开启日志投递，开启后需填写配置投递到指定cls
+        :type LogEnable: bool
+        :param LogConfig: 日志配置，需要投递服务日志到指定cls时填写
+        :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param ServiceAction: 特殊更新行为： "STOP": 停止, "RESUME": 重启, "SCALE": 扩缩容, 存在这些特殊更新行为时，会忽略其他更新字段
+        :type ServiceAction: str
+        :param ServiceDescription: 服务的描述
+        :type ServiceDescription: str
+        :param ScaleStrategy: 自动伸缩策略
+        :type ScaleStrategy: str
+        :param CronScaleJobs: 自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+        :type CronScaleJobs: list of CronScaleJob
+        :param HybridBillingPrepaidReplicas: 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+        :type HybridBillingPrepaidReplicas: int
+        :param ModelHotUpdateEnable: 是否开启模型的热更新。默认不开启
+        :type ModelHotUpdateEnable: bool
+        :param ScheduledAction: 定时停止配置
+        :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
+        :param ServiceLimit: 服务限速限流相关配置
+        :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        :param VolumeMount: 挂载配置，目前只支持CFS
+        :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
+        """
+        self.ServiceId = None
+        self.ModelInfo = None
+        self.ImageInfo = None
+        self.Env = None
+        self.Resources = None
+        self.InstanceType = None
+        self.ScaleMode = None
+        self.Replicas = None
+        self.HorizontalPodAutoscaler = None
+        self.LogEnable = None
+        self.LogConfig = None
+        self.ServiceAction = None
+        self.ServiceDescription = None
+        self.ScaleStrategy = None
+        self.CronScaleJobs = None
+        self.HybridBillingPrepaidReplicas = None
+        self.ModelHotUpdateEnable = None
+        self.ScheduledAction = None
+        self.ServiceLimit = None
+        self.VolumeMount = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        if params.get("ModelInfo") is not None:
+            self.ModelInfo = ModelInfo()
+            self.ModelInfo._deserialize(params.get("ModelInfo"))
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = ImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("Env") is not None:
+            self.Env = []
+            for item in params.get("Env"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self.Env.append(obj)
+        if params.get("Resources") is not None:
+            self.Resources = ResourceInfo()
+            self.Resources._deserialize(params.get("Resources"))
+        self.InstanceType = params.get("InstanceType")
+        self.ScaleMode = params.get("ScaleMode")
+        self.Replicas = params.get("Replicas")
+        if params.get("HorizontalPodAutoscaler") is not None:
+            self.HorizontalPodAutoscaler = HorizontalPodAutoscaler()
+            self.HorizontalPodAutoscaler._deserialize(params.get("HorizontalPodAutoscaler"))
+        self.LogEnable = params.get("LogEnable")
+        if params.get("LogConfig") is not None:
+            self.LogConfig = LogConfig()
+            self.LogConfig._deserialize(params.get("LogConfig"))
+        self.ServiceAction = params.get("ServiceAction")
+        self.ServiceDescription = params.get("ServiceDescription")
+        self.ScaleStrategy = params.get("ScaleStrategy")
+        if params.get("CronScaleJobs") is not None:
+            self.CronScaleJobs = []
+            for item in params.get("CronScaleJobs"):
+                obj = CronScaleJob()
+                obj._deserialize(item)
+                self.CronScaleJobs.append(obj)
+        self.HybridBillingPrepaidReplicas = params.get("HybridBillingPrepaidReplicas")
+        self.ModelHotUpdateEnable = params.get("ModelHotUpdateEnable")
+        if params.get("ScheduledAction") is not None:
+            self.ScheduledAction = ScheduledAction()
+            self.ScheduledAction._deserialize(params.get("ScheduledAction"))
+        if params.get("ServiceLimit") is not None:
+            self.ServiceLimit = ServiceLimit()
+            self.ServiceLimit._deserialize(params.get("ServiceLimit"))
+        if params.get("VolumeMount") is not None:
+            self.VolumeMount = VolumeMount()
+            self.VolumeMount._deserialize(params.get("VolumeMount"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyModelServiceResponse(AbstractModel):
+    """ModifyModelService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Service: 生成的模型服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: :class:`tencentcloud.tione.v20211111.models.Service`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Service = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Service") is not None:
+            self.Service = Service()
+            self.Service._deserialize(params.get("Service"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyServiceGroupWeightsRequest(AbstractModel):
     """ModifyServiceGroupWeights请求参数结构体
 
@@ -7885,7 +8058,7 @@ class TrainingTaskDetail(AbstractModel):
         :type SubUin: str
         :param Region: 地域
         :type Region: str
-        :param FrameworkName: 训练框架名称，eg：SPARK、TENSORFLOW、PYTORCH、LIGHT
+        :param FrameworkName: 训练框架名称，eg：SPARK、PYSARK、TENSORFLOW、PYTORCH
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameworkName: str
         :param FrameworkVersion: 训练框架版本
@@ -7972,7 +8145,7 @@ class TrainingTaskDetail(AbstractModel):
         :param Message: 任务信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param Status: 任务状态
+        :param Status: 任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
         :type Status: str
         """
         self.Id = None
@@ -8120,7 +8293,7 @@ class TrainingTaskSetItem(AbstractModel):
         :param TrainingMode: 训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrainingMode: str
-        :param Status: 任务状态
+        :param Status: 任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
         :type Status: str
         :param RuntimeInSeconds: 运行时长
 注意：此字段可能返回 null，表示取不到有效值。

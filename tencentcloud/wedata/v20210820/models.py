@@ -2788,6 +2788,60 @@ class CreateOrUpdateResourceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateResourcePathRequest(AbstractModel):
+    """CreateResourcePath请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 文件夹名称，如 aaa
+        :type Name: str
+        :param FilePath: 文件夹所属父目录，请注意，根目录为 /datastudio/resource
+        :type FilePath: str
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.Name = None
+        self.FilePath = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.FilePath = params.get("FilePath")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateResourcePathResponse(AbstractModel):
+    """CreateResourcePath返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 新建成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRuleRequest(AbstractModel):
     """CreateRule请求参数结构体
 
@@ -11107,6 +11161,8 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         :type SinkType: str
         :param SchemaName: schema名称
         :type SchemaName: str
+        :param SourceFieldInfoList: 上游节点的字段信息
+        :type SourceFieldInfoList: list of SourceFieldInfo
         """
         self.ProjectId = None
         self.SinkDatabase = None
@@ -11117,6 +11173,7 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         self.TableName = None
         self.SinkType = None
         self.SchemaName = None
+        self.SourceFieldInfoList = None
 
 
     def _deserialize(self, params):
@@ -11129,6 +11186,12 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         self.TableName = params.get("TableName")
         self.SinkType = params.get("SinkType")
         self.SchemaName = params.get("SchemaName")
+        if params.get("SourceFieldInfoList") is not None:
+            self.SourceFieldInfoList = []
+            for item in params.get("SourceFieldInfoList"):
+                obj = SourceFieldInfo()
+                obj._deserialize(item)
+                self.SourceFieldInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12086,12 +12149,16 @@ class IntegrationNodeSchema(AbstractModel):
         :param Properties: schema拓展属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of RecordField
+        :param Alias: schema别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
         """
         self.Id = None
         self.Name = None
         self.Type = None
         self.Value = None
         self.Properties = None
+        self.Alias = None
 
 
     def _deserialize(self, params):
@@ -12105,6 +12172,7 @@ class IntegrationNodeSchema(AbstractModel):
                 obj = RecordField()
                 obj._deserialize(item)
                 self.Properties.append(obj)
+        self.Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17501,6 +17569,38 @@ class SimpleTaskInfo(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceFieldInfo(AbstractModel):
+    """上游节点字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FieldName: 字段名称
+        :type FieldName: str
+        :param FieldType: 字段类型
+        :type FieldType: str
+        :param Alias: 字段别名
+        :type Alias: str
+        """
+        self.FieldName = None
+        self.FieldType = None
+        self.Alias = None
+
+
+    def _deserialize(self, params):
+        self.FieldName = params.get("FieldName")
+        self.FieldType = params.get("FieldType")
+        self.Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

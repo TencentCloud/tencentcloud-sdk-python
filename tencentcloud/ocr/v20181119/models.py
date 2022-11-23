@@ -4100,14 +4100,18 @@ class OnlineTaxiItineraryInfo(AbstractModel):
         :type Name: str
         :param Value: 识别出的字段名称对应的值，也就是字段name对应的字符串结果。
         :type Value: str
+        :param Row: 字段所在行，下标从0开始，非行字段或未能识别行号的返回-1
+        :type Row: int
         """
         self.Name = None
         self.Value = None
+        self.Row = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        self.Row = params.get("Row")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

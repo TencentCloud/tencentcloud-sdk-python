@@ -710,6 +710,65 @@ class CreateDisasterRecoverGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateHpcClusterRequest(AbstractModel):
+    """CreateHpcCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 可用区。
+        :type Zone: str
+        :param Name: 高性能计算集群名称。
+        :type Name: str
+        :param Remark: 高性能计算集群备注。
+        :type Remark: str
+        """
+        self.Zone = None
+        self.Name = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHpcClusterResponse(AbstractModel):
+    """CreateHpcCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HpcClusterSet: 高性能计算集群信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HpcClusterSet: list of HpcClusterInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HpcClusterSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HpcClusterSet") is not None:
+            self.HpcClusterSet = []
+            for item in params.get("HpcClusterSet"):
+                obj = HpcClusterInfo()
+                obj._deserialize(item)
+                self.HpcClusterSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateImageRequest(AbstractModel):
     """CreateImage请求参数结构体
 
@@ -1342,6 +1401,47 @@ class DeleteDisasterRecoverGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteHpcClustersRequest(AbstractModel):
+    """DeleteHpcClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HpcClusterIds: 高性能计算集群ID列表。
+        :type HpcClusterIds: list of str
+        """
+        self.HpcClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.HpcClusterIds = params.get("HpcClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteHpcClustersResponse(AbstractModel):
+    """DeleteHpcClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteImagesRequest(AbstractModel):
     """DeleteImages请求参数结构体
 
@@ -1892,6 +1992,76 @@ class DescribeHostsResponse(AbstractModel):
                 obj = HostItem()
                 obj._deserialize(item)
                 self.HostSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHpcClustersRequest(AbstractModel):
+    """DescribeHpcClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HpcClusterIds: 高性能计算集群ID数组。
+        :type HpcClusterIds: list of str
+        :param Name: 高性能计算集群名称。
+        :type Name: str
+        :param Zone: 可用区。
+        :type Zone: str
+        :param Offset: 偏移量, 默认值0。
+        :type Offset: int
+        :param Limit: 本次请求量, 默认值20。
+        :type Limit: int
+        """
+        self.HpcClusterIds = None
+        self.Name = None
+        self.Zone = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.HpcClusterIds = params.get("HpcClusterIds")
+        self.Name = params.get("Name")
+        self.Zone = params.get("Zone")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHpcClustersResponse(AbstractModel):
+    """DescribeHpcClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HpcClusterSet: 高性能计算集群信息。
+        :type HpcClusterSet: list of HpcClusterInfo
+        :param TotalCount: 高性能计算集群总数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HpcClusterSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("HpcClusterSet") is not None:
+            self.HpcClusterSet = []
+            for item in params.get("HpcClusterSet"):
+                obj = HpcClusterInfo()
+                obj._deserialize(item)
+                self.HpcClusterSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -3758,6 +3928,62 @@ class HostResource(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.GpuTotal = params.get("GpuTotal")
         self.GpuAvailable = params.get("GpuAvailable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HpcClusterInfo(AbstractModel):
+    """高性能计算集群
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HpcClusterId: 高性能计算集群ID
+        :type HpcClusterId: str
+        :param Name: 高性能计算集群名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Remark: 高性能计算集群备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CvmQuotaTotal: 集群下设备容量
+        :type CvmQuotaTotal: int
+        :param Zone: 集群所在可用区
+        :type Zone: str
+        :param CurrentNum: 集群当前已有设备量
+        :type CurrentNum: int
+        :param CreateTime: 集群创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param InstanceIds: 集群内实例ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIds: list of str
+        """
+        self.HpcClusterId = None
+        self.Name = None
+        self.Remark = None
+        self.CvmQuotaTotal = None
+        self.Zone = None
+        self.CurrentNum = None
+        self.CreateTime = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.HpcClusterId = params.get("HpcClusterId")
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        self.CvmQuotaTotal = params.get("CvmQuotaTotal")
+        self.Zone = params.get("Zone")
+        self.CurrentNum = params.get("CurrentNum")
+        self.CreateTime = params.get("CreateTime")
+        self.InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6054,6 +6280,55 @@ class ModifyHostsAttributeRequest(AbstractModel):
 
 class ModifyHostsAttributeResponse(AbstractModel):
     """ModifyHostsAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyHpcClusterAttributeRequest(AbstractModel):
+    """ModifyHpcClusterAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HpcClusterId: 高性能计算集群ID。
+        :type HpcClusterId: str
+        :param Name: 高性能计算集群新名称。
+        :type Name: str
+        :param Remark: 高性能计算集群新备注。
+        :type Remark: str
+        """
+        self.HpcClusterId = None
+        self.Name = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.HpcClusterId = params.get("HpcClusterId")
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHpcClusterAttributeResponse(AbstractModel):
+    """ModifyHpcClusterAttribute返回参数结构体
 
     """
 

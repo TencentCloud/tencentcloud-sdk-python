@@ -1012,35 +1012,6 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBillingData(self, request):
-        """获取计费数据。
-
-        :param request: Request instance for DescribeBillingData.
-        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeBillingDataRequest`
-        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeBillingDataResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBillingData", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBillingDataResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeBotClientIpList(self, request):
         """本接口（DescribeBotClientIpList）用于查询Bot攻击客户端Ip信息列表。
 

@@ -820,6 +820,8 @@ class HostDetail(AbstractModel):
         :type PidTag: str
         :param Pid: 计费ID
         :type Pid: int
+        :param InstanceId: 独享集群实例Id
+        :type InstanceId: str
         """
         self.HostId = None
         self.HostName = None
@@ -844,6 +846,7 @@ class HostDetail(AbstractModel):
         self.MachineType = None
         self.PidTag = None
         self.Pid = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -870,6 +873,7 @@ class HostDetail(AbstractModel):
         self.MachineType = params.get("MachineType")
         self.PidTag = params.get("PidTag")
         self.Pid = params.get("Pid")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

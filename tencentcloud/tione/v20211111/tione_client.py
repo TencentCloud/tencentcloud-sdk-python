@@ -1360,6 +1360,35 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyModelService(self, request):
+        """用于更新模型服务
+
+        :param request: Request instance for ModifyModelService.
+        :type request: :class:`tencentcloud.tione.v20211111.models.ModifyModelServiceRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ModifyModelServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyModelService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyModelServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyModelServicePartialConfig(self, request):
         """增量更新在线推理服务的部分配置，不更新的配置项不需要传入
 

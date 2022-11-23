@@ -1364,6 +1364,75 @@ class DBParamValue(AbstractModel):
         
 
 
+class DCNReplicaConfig(AbstractModel):
+    """dcn 配置情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoReplicationMode: DCN 运行状态，START为正常运行，STOP为暂停
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoReplicationMode: str
+        :param DelayReplicationType: 延迟复制的类型，DEFAULT为正常，DUE_TIME为指定时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayReplicationType: str
+        :param DueTime: 延迟复制的指定时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DueTime: str
+        :param ReplicationDelay: 延迟复制时的延迟秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicationDelay: int
+        """
+        self.RoReplicationMode = None
+        self.DelayReplicationType = None
+        self.DueTime = None
+        self.ReplicationDelay = None
+
+
+    def _deserialize(self, params):
+        self.RoReplicationMode = params.get("RoReplicationMode")
+        self.DelayReplicationType = params.get("DelayReplicationType")
+        self.DueTime = params.get("DueTime")
+        self.ReplicationDelay = params.get("ReplicationDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DCNReplicaStatus(AbstractModel):
+    """DCN的状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: DCN 的运行状态，START为正常运行，STOP为暂停，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Delay: 当前延迟情况，取备实例的 master 节点的 delay 值
+        :type Delay: int
+        """
+        self.Status = None
+        self.Delay = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Delay = params.get("Delay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Database(AbstractModel):
     """数据库信息
 
@@ -1555,6 +1624,14 @@ class DcnDetailItem(AbstractModel):
         :type PeriodEndTime: str
         :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
         :type InstanceType: int
+        :param ReplicaConfig: DCN复制的配置信息；对于主实例，此字段为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicaConfig: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaConfig`
+        :param ReplicaStatus: DCN复制的状态；对于主实例，此字段为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicaStatus: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaStatus`
+        :param EncryptStatus: 是否开启了 kms
+        :type EncryptStatus: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1574,6 +1651,9 @@ class DcnDetailItem(AbstractModel):
         self.CreateTime = None
         self.PeriodEndTime = None
         self.InstanceType = None
+        self.ReplicaConfig = None
+        self.ReplicaStatus = None
+        self.EncryptStatus = None
 
 
     def _deserialize(self, params):
@@ -1595,6 +1675,13 @@ class DcnDetailItem(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.PeriodEndTime = params.get("PeriodEndTime")
         self.InstanceType = params.get("InstanceType")
+        if params.get("ReplicaConfig") is not None:
+            self.ReplicaConfig = DCNReplicaConfig()
+            self.ReplicaConfig._deserialize(params.get("ReplicaConfig"))
+        if params.get("ReplicaStatus") is not None:
+            self.ReplicaStatus = DCNReplicaStatus()
+            self.ReplicaStatus._deserialize(params.get("ReplicaStatus"))
+        self.EncryptStatus = params.get("EncryptStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1619,7 +1706,7 @@ class Deal(AbstractModel):
         :type Count: int
         :param FlowId: 关联的流程 Id，可用于查询流程执行状态
         :type FlowId: int
-        :param InstanceIds: 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+        :param InstanceIds: 只有创建实例且已完成发货的订单会填充该字段，表示该订单创建的实例的 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param PayMode: 付费模式，0后付费/1预付费

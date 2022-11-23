@@ -7539,6 +7539,18 @@ class ModifyDDoSThresholdRequest(AbstractModel):
         :type UdpFloodThreshold: int
         :param UdpFloodPktThreshold: UDP FLOOD包量阈值
         :type UdpFloodPktThreshold: int
+        :param AckFloodThreshold: ACK FLOOD流量阈值
+        :type AckFloodThreshold: int
+        :param AckFloodPktThreshold: ACK FLOOD包量阈值
+        :type AckFloodPktThreshold: int
+        :param SynAckFloodThreshold: SYNACK FLOOD流量阈值
+        :type SynAckFloodThreshold: int
+        :param SynAckFloodPktThreshold: SYNACK FLOOD包量阈值
+        :type SynAckFloodPktThreshold: int
+        :param RstFloodThreshold: RST FLOOD流量阈值
+        :type RstFloodThreshold: int
+        :param RstFloodPktThreshold: RST FLOOD包量阈值
+        :type RstFloodPktThreshold: int
         """
         self.Threshold = None
         self.Id = None
@@ -7548,6 +7560,12 @@ class ModifyDDoSThresholdRequest(AbstractModel):
         self.SynFloodPktThreshold = None
         self.UdpFloodThreshold = None
         self.UdpFloodPktThreshold = None
+        self.AckFloodThreshold = None
+        self.AckFloodPktThreshold = None
+        self.SynAckFloodThreshold = None
+        self.SynAckFloodPktThreshold = None
+        self.RstFloodThreshold = None
+        self.RstFloodPktThreshold = None
 
 
     def _deserialize(self, params):
@@ -7559,6 +7577,12 @@ class ModifyDDoSThresholdRequest(AbstractModel):
         self.SynFloodPktThreshold = params.get("SynFloodPktThreshold")
         self.UdpFloodThreshold = params.get("UdpFloodThreshold")
         self.UdpFloodPktThreshold = params.get("UdpFloodPktThreshold")
+        self.AckFloodThreshold = params.get("AckFloodThreshold")
+        self.AckFloodPktThreshold = params.get("AckFloodPktThreshold")
+        self.SynAckFloodThreshold = params.get("SynAckFloodThreshold")
+        self.SynAckFloodPktThreshold = params.get("SynAckFloodPktThreshold")
+        self.RstFloodThreshold = params.get("RstFloodThreshold")
+        self.RstFloodPktThreshold = params.get("RstFloodPktThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8276,6 +8300,24 @@ off(关闭)
         :param UdpFloodPktThreshold: UDP FLOOD包量阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type UdpFloodPktThreshold: int
+        :param AckFloodThreshold: ACK FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AckFloodThreshold: int
+        :param AckFloodPktThreshold: ACK FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AckFloodPktThreshold: int
+        :param SynAckFloodThreshold: SYNACK FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SynAckFloodThreshold: int
+        :param SynAckFloodPktThreshold: SYNACK FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SynAckFloodPktThreshold: int
+        :param RstFloodThreshold: RST FLOOD流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RstFloodThreshold: int
+        :param RstFloodPktThreshold: RST FLOOD包量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RstFloodPktThreshold: int
         """
         self.DDoSLevel = None
         self.DDoSThreshold = None
@@ -8288,6 +8330,12 @@ off(关闭)
         self.SynFloodPktThreshold = None
         self.UdpFloodThreshold = None
         self.UdpFloodPktThreshold = None
+        self.AckFloodThreshold = None
+        self.AckFloodPktThreshold = None
+        self.SynAckFloodThreshold = None
+        self.SynAckFloodPktThreshold = None
+        self.RstFloodThreshold = None
+        self.RstFloodPktThreshold = None
 
 
     def _deserialize(self, params):
@@ -8312,6 +8360,12 @@ off(关闭)
         self.SynFloodPktThreshold = params.get("SynFloodPktThreshold")
         self.UdpFloodThreshold = params.get("UdpFloodThreshold")
         self.UdpFloodPktThreshold = params.get("UdpFloodPktThreshold")
+        self.AckFloodThreshold = params.get("AckFloodThreshold")
+        self.AckFloodPktThreshold = params.get("AckFloodPktThreshold")
+        self.SynAckFloodThreshold = params.get("SynAckFloodThreshold")
+        self.SynAckFloodPktThreshold = params.get("SynAckFloodPktThreshold")
+        self.RstFloodThreshold = params.get("RstFloodThreshold")
+        self.RstFloodPktThreshold = params.get("RstFloodPktThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

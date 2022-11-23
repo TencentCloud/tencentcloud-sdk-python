@@ -929,6 +929,59 @@ class CreateRecordBatchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRecordGroupRequest(AbstractModel):
+    """CreateRecordGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param GroupName: 分组名称
+        :type GroupName: str
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :type DomainId: int
+        """
+        self.Domain = None
+        self.GroupName = None
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.GroupName = params.get("GroupName")
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRecordGroupResponse(AbstractModel):
+    """CreateRecordGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 新增的分组 ID
+        :type GroupId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRecordRequest(AbstractModel):
     """CreateRecord请求参数结构体
 
@@ -1166,6 +1219,55 @@ class DeleteDomainRequest(AbstractModel):
 
 class DeleteDomainResponse(AbstractModel):
     """DeleteDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRecordGroupRequest(AbstractModel):
+    """DeleteRecordGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param GroupId: 分组 ID
+        :type GroupId: int
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :type DomainId: int
+        """
+        self.Domain = None
+        self.GroupId = None
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.GroupId = params.get("GroupId")
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRecordGroupResponse(AbstractModel):
+    """DeleteRecordGroup返回参数结构体
 
     """
 
@@ -1927,6 +2029,68 @@ class DescribeDomainShareInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ShareList.append(obj)
         self.Owner = params.get("Owner")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRecordGroupListRequest(AbstractModel):
+    """DescribeRecordGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :type DomainId: int
+        :param Offset: 分页开始位置
+        :type Offset: int
+        :param Limit: 分页每页数
+        :type Limit: int
+        """
+        self.Domain = None
+        self.DomainId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DomainId = params.get("DomainId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordGroupListResponse(AbstractModel):
+    """DescribeRecordGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupList: 分组列表
+        :type GroupList: list of RecordGroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GroupList") is not None:
+            self.GroupList = []
+            for item in params.get("GroupList"):
+                obj = RecordGroupInfo()
+                obj._deserialize(item)
+                self.GroupList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3883,6 +4047,63 @@ class ModifyRecordBatchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRecordGroupRequest(AbstractModel):
+    """ModifyRecordGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param GroupName: 分组名称
+        :type GroupName: str
+        :param GroupId: 要修改的分组 ID
+        :type GroupId: int
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :type DomainId: int
+        """
+        self.Domain = None
+        self.GroupName = None
+        self.GroupId = None
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.GroupName = params.get("GroupName")
+        self.GroupId = params.get("GroupId")
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordGroupResponse(AbstractModel):
+    """ModifyRecordGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 修改的分组 ID
+        :type GroupId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRecordRemarkRequest(AbstractModel):
     """ModifyRecordRemark请求参数结构体
 
@@ -4079,6 +4300,59 @@ class ModifyRecordStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RecordId = params.get("RecordId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRecordToGroupRequest(AbstractModel):
+    """ModifyRecordToGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param GroupId: 分组 ID
+        :type GroupId: int
+        :param RecordId: 记录 ID，多个 ID 用竖线“|”分割
+        :type RecordId: str
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :type DomainId: int
+        """
+        self.Domain = None
+        self.GroupId = None
+        self.RecordId = None
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.GroupId = params.get("GroupId")
+        self.RecordId = params.get("RecordId")
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordToGroupResponse(AbstractModel):
+    """ModifyRecordToGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4341,6 +4615,38 @@ class RecordCountInfo(AbstractModel):
         self.SubdomainCount = params.get("SubdomainCount")
         self.ListCount = params.get("ListCount")
         self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordGroupInfo(AbstractModel):
+    """解析记录分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 分组 ID
+        :type GroupId: int
+        :param GroupName: 分组名称
+        :type GroupName: str
+        :param GroupType: 分组类型：system-系统；user-用户
+        :type GroupType: str
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.GroupType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.GroupType = params.get("GroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

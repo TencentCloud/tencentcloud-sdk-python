@@ -287,6 +287,35 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateRecordGroup(self, request):
+        """添加记录分组
+
+        :param request: Request instance for CreateRecordGroup.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateRecordGroupRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreateRecordGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRecordGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRecordGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSnapshot(self, request):
         """创建快照
 
@@ -389,6 +418,35 @@ class DnspodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRecordGroup(self, request):
+        """删除记录分组
+
+        :param request: Request instance for DeleteRecordGroup.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteRecordGroupRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DeleteRecordGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRecordGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRecordGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -737,6 +795,35 @@ class DnspodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRecordGroupList(self, request):
+        """查询解析记录分组列表
+
+        :param request: Request instance for DescribeRecordGroupList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordGroupListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordGroupList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRecordGroupListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1331,6 +1418,35 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRecordGroup(self, request):
+        """修改记录分组
+
+        :param request: Request instance for ModifyRecordGroup.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordGroupRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRecordGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRecordGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyRecordRemark(self, request):
         """设置记录备注
 
@@ -1375,6 +1491,35 @@ class DnspodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRecordStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRecordToGroup(self, request):
+        """将记录添加到分组
+
+        :param request: Request instance for ModifyRecordToGroup.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordToGroupRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordToGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRecordToGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRecordToGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

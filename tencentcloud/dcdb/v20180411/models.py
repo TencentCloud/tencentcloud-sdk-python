@@ -1436,6 +1436,8 @@ class DcnDetailItem(AbstractModel):
         :type PeriodEndTime: str
         :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
         :type InstanceType: int
+        :param EncryptStatus: 是否开启了 kms
+        :type EncryptStatus: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1455,6 +1457,7 @@ class DcnDetailItem(AbstractModel):
         self.CreateTime = None
         self.PeriodEndTime = None
         self.InstanceType = None
+        self.EncryptStatus = None
 
 
     def _deserialize(self, params):
@@ -1476,6 +1479,7 @@ class DcnDetailItem(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.PeriodEndTime = params.get("PeriodEndTime")
         self.InstanceType = params.get("InstanceType")
+        self.EncryptStatus = params.get("EncryptStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1500,7 +1504,7 @@ class Deal(AbstractModel):
         :type Count: int
         :param FlowId: 关联的流程 Id，可用于查询流程执行状态
         :type FlowId: int
-        :param InstanceIds: 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+        :param InstanceIds: 只有创建实例且已完成发货的订单会填充该字段，表示该订单创建的实例的 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
         :param PayMode: 付费模式，0后付费/1预付费

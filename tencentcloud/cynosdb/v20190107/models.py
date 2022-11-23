@@ -3531,6 +3531,64 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param EngineVersions: 数据库引擎版本号
+        :type EngineVersions: list of str
+        :param TemplateNames: 模版名称
+        :type TemplateNames: list of str
+        :param TemplateIds: 模版ID
+        :type TemplateIds: list of int
+        :param DbModes: 数据库类型，可选值：NORMAL，SERVERLESS
+        :type DbModes: list of str
+        :param Offset: 查询偏移量
+        :type Offset: int
+        :param Limit: 查询限制条数
+        :type Limit: int
+        :param Products: 查询的模板对应的产品类型
+        :type Products: list of str
+        :param TemplateTypes: 模版类型
+        :type TemplateTypes: list of str
+        :param EngineTypes: 版本类型
+        :type EngineTypes: list of str
+        :param OrderBy: 返回结果的排序字段
+        :type OrderBy: str
+        :param OrderDirection: 排序方式（asc、desc）
+        :type OrderDirection: str
+        """
+        self.EngineVersions = None
+        self.TemplateNames = None
+        self.TemplateIds = None
+        self.DbModes = None
+        self.Offset = None
+        self.Limit = None
+        self.Products = None
+        self.TemplateTypes = None
+        self.EngineTypes = None
+        self.OrderBy = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.EngineVersions = params.get("EngineVersions")
+        self.TemplateNames = params.get("TemplateNames")
+        self.TemplateIds = params.get("TemplateIds")
+        self.DbModes = params.get("DbModes")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Products = params.get("Products")
+        self.TemplateTypes = params.get("TemplateTypes")
+        self.EngineTypes = params.get("EngineTypes")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeParamTemplatesResponse(AbstractModel):
     """DescribeParamTemplates返回参数结构体
@@ -5225,11 +5283,18 @@ class ParamTemplateListInfo(AbstractModel):
         :type TemplateDescription: str
         :param EngineVersion: 引擎版本
         :type EngineVersion: str
+        :param DbMode: 数据库类型，可选值：NORMAL，SERVERLESS
+        :type DbMode: str
+        :param ParamInfoSet: 参数模板详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamInfoSet: list of TemplateParamInfo
         """
         self.Id = None
         self.TemplateName = None
         self.TemplateDescription = None
         self.EngineVersion = None
+        self.DbMode = None
+        self.ParamInfoSet = None
 
 
     def _deserialize(self, params):
@@ -5237,6 +5302,13 @@ class ParamTemplateListInfo(AbstractModel):
         self.TemplateName = params.get("TemplateName")
         self.TemplateDescription = params.get("TemplateDescription")
         self.EngineVersion = params.get("EngineVersion")
+        self.DbMode = params.get("DbMode")
+        if params.get("ParamInfoSet") is not None:
+            self.ParamInfoSet = []
+            for item in params.get("ParamInfoSet"):
+                obj = TemplateParamInfo()
+                obj._deserialize(item)
+                self.ParamInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5556,11 +5628,11 @@ class RollBackClusterRequest(AbstractModel):
         :type RollbackId: int
         :param ExpectTime: 期望回档时间
         :type ExpectTime: str
-        :param ExpectTimeThresh: 期望阈值
+        :param ExpectTimeThresh: 期望阈值（已废弃）
         :type ExpectTimeThresh: int
         :param RollbackDatabases: 回档数据库列表
         :type RollbackDatabases: list of RollbackDatabase
-        :param RollbackTables: 回档数据库表
+        :param RollbackTables: 回档数据库表列表
         :type RollbackTables: list of RollbackTable
         """
         self.ClusterId = None
@@ -6016,6 +6088,65 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateParamInfo(AbstractModel):
+    """参数模板详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: 当前值
+        :type CurrentValue: str
+        :param Default: 默认值
+        :type Default: str
+        :param EnumValue: 参数类型为enum时可选的值类型集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnumValue: list of str
+        :param Max: 参数类型为float/integer时的最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Max: str
+        :param Min: 参数类型为float/integer时的最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Min: str
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param NeedReboot: 是否需要重启
+        :type NeedReboot: int
+        :param Description: 参数描述
+        :type Description: str
+        :param ParamType: 参数类型，integer/float/string/enum
+        :type ParamType: str
+        """
+        self.CurrentValue = None
+        self.Default = None
+        self.EnumValue = None
+        self.Max = None
+        self.Min = None
+        self.ParamName = None
+        self.NeedReboot = None
+        self.Description = None
+        self.ParamType = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.Default = params.get("Default")
+        self.EnumValue = params.get("EnumValue")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.ParamName = params.get("ParamName")
+        self.NeedReboot = params.get("NeedReboot")
+        self.Description = params.get("Description")
+        self.ParamType = params.get("ParamType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
