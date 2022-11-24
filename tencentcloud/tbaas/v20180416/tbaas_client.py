@@ -26,6 +26,35 @@ class TbaasClient(AbstractClient):
     _service = 'tbaas'
 
 
+    def ApplyChainMakerBatchUserCert(self, request):
+        """批量申请长安链用户签名证书
+
+        :param request: Request instance for ApplyChainMakerBatchUserCert.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.ApplyChainMakerBatchUserCertRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.ApplyChainMakerBatchUserCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyChainMakerBatchUserCert", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyChainMakerBatchUserCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyUserCert(self, request):
         """申请用户证书
 

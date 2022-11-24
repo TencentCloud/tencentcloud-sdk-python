@@ -248,6 +248,50 @@ class CreateAuditTrackRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        :type Name: str
+        :param ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :type ActionType: str
+        :param ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        :type ResourceType: str
+        :param Status: 跟踪集状态（未开启：0；开启：1）
+        :type Status: int
+        :param EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        :type EventNames: list of str
+        :param Storage: 数据投递存储（目前支持 cos、cls）
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        :type TrackForAllMembers: int
+        """
+        self.Name = None
+        self.ActionType = None
+        self.ResourceType = None
+        self.Status = None
+        self.EventNames = None
+        self.Storage = None
+        self.TrackForAllMembers = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ActionType = params.get("ActionType")
+        self.ResourceType = params.get("ResourceType")
+        self.Status = params.get("Status")
+        self.EventNames = params.get("EventNames")
+        if params.get("Storage") is not None:
+            self.Storage = Storage()
+            self.Storage._deserialize(params.get("Storage"))
+        self.TrackForAllMembers = params.get("TrackForAllMembers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateAuditTrackResponse(AbstractModel):
     """CreateAuditTrack返回参数结构体
@@ -256,13 +300,17 @@ class CreateAuditTrackResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TrackId: 跟踪集 ID
+        :type TrackId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TrackId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TrackId = params.get("TrackId")
         self.RequestId = params.get("RequestId")
 
 
@@ -315,6 +363,24 @@ class DeleteAuditTrackRequest(AbstractModel):
     """DeleteAuditTrack请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param TrackId: 跟踪集 ID
+        :type TrackId: int
+        """
+        self.TrackId = None
+
+
+    def _deserialize(self, params):
+        self.TrackId = params.get("TrackId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteAuditTrackResponse(AbstractModel):
@@ -427,10 +493,108 @@ class DescribeAuditResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAuditTrackRequest(AbstractModel):
+    """DescribeAuditTrack请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TrackId: 跟踪集 ID
+        :type TrackId: int
+        """
+        self.TrackId = None
+
+
+    def _deserialize(self, params):
+        self.TrackId = params.get("TrackId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditTrackResponse(AbstractModel):
+    """DescribeAuditTrack返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 跟踪集名称
+        :type Name: str
+        :param ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :type ActionType: str
+        :param ResourceType: 跟踪事件所属产品（如：cos，全部：*）
+        :type ResourceType: str
+        :param Status: 跟踪集状态（未开启：0；开启：1）
+        :type Status: int
+        :param EventNames: 跟踪事件接口名列表（全部：[*]）
+        :type EventNames: list of str
+        :param Storage: 数据投递存储（目前支持 cos、cls）
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param CreateTime: 跟踪集创建时间
+        :type CreateTime: str
+        :param TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrackForAllMembers: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.ActionType = None
+        self.ResourceType = None
+        self.Status = None
+        self.EventNames = None
+        self.Storage = None
+        self.CreateTime = None
+        self.TrackForAllMembers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ActionType = params.get("ActionType")
+        self.ResourceType = params.get("ResourceType")
+        self.Status = params.get("Status")
+        self.EventNames = params.get("EventNames")
+        if params.get("Storage") is not None:
+            self.Storage = Storage()
+            self.Storage._deserialize(params.get("Storage"))
+        self.CreateTime = params.get("CreateTime")
+        self.TrackForAllMembers = params.get("TrackForAllMembers")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAuditTracksRequest(AbstractModel):
     """DescribeAuditTracks请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 页码
+        :type PageNumber: int
+        :param PageSize: 每页数目
+        :type PageSize: int
+        """
+        self.PageNumber = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAuditTracksResponse(AbstractModel):
@@ -440,13 +604,26 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Tracks: 跟踪集列表
+        :type Tracks: list of Tracks
+        :param TotalCount: 总数目
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Tracks = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Tracks") is not None:
+            self.Tracks = []
+            for item in params.get("Tracks"):
+                obj = Tracks()
+                obj._deserialize(item)
+                self.Tracks.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1052,6 +1229,54 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param TrackId: 跟踪集 ID
+        :type TrackId: int
+        :param Name: 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+        :type Name: str
+        :param ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :type ActionType: str
+        :param ResourceType: 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+        :type ResourceType: str
+        :param Status: 跟踪集状态（未开启：0；开启：1）
+        :type Status: int
+        :param EventNames: 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+        :type EventNames: list of str
+        :param Storage: 数据投递存储（目前支持 cos、cls）
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        :type TrackForAllMembers: int
+        """
+        self.TrackId = None
+        self.Name = None
+        self.ActionType = None
+        self.ResourceType = None
+        self.Status = None
+        self.EventNames = None
+        self.Storage = None
+        self.TrackForAllMembers = None
+
+
+    def _deserialize(self, params):
+        self.TrackId = params.get("TrackId")
+        self.Name = params.get("Name")
+        self.ActionType = params.get("ActionType")
+        self.ResourceType = params.get("ResourceType")
+        self.Status = params.get("Status")
+        self.EventNames = params.get("EventNames")
+        if params.get("Storage") is not None:
+            self.Storage = Storage()
+            self.Storage._deserialize(params.get("Storage"))
+        self.TrackForAllMembers = params.get("TrackForAllMembers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyAuditTrackResponse(AbstractModel):
     """ModifyAuditTrack返回参数结构体
@@ -1187,6 +1412,96 @@ class StopLoggingResponse(AbstractModel):
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
         self.RequestId = params.get("RequestId")
+
+
+class Storage(AbstractModel):
+    """跟踪集存储信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageType: 存储类型（目前支持 cos、cls）
+        :type StorageType: str
+        :param StorageRegion: 存储所在地域
+        :type StorageRegion: str
+        :param StorageName: 存储名称(cos：存储名称为用户自定义的存储桶名称，不包含"-APPID"，仅支持小写字母、数字以及中划线"-"的组合，不能超过50字符，且不支持中划线"-"开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符)
+        :type StorageName: str
+        :param StoragePrefix: 存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
+        :type StoragePrefix: str
+        """
+        self.StorageType = None
+        self.StorageRegion = None
+        self.StorageName = None
+        self.StoragePrefix = None
+
+
+    def _deserialize(self, params):
+        self.StorageType = params.get("StorageType")
+        self.StorageRegion = params.get("StorageRegion")
+        self.StorageName = params.get("StorageName")
+        self.StoragePrefix = params.get("StoragePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tracks(AbstractModel):
+    """跟踪集列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 跟踪集名称
+        :type Name: str
+        :param ActionType: 跟踪事件类型（读：Read；写：Write；全部：*）
+        :type ActionType: str
+        :param ResourceType: 跟踪事件所属产品（如：cos，全部：*）
+        :type ResourceType: str
+        :param Status: 跟踪集状态（未开启：0；开启：1）
+        :type Status: int
+        :param EventNames: 跟踪事件接口名列表（全部：[*]）
+        :type EventNames: list of str
+        :param Storage: 数据投递存储（目前支持 cos、cls）
+        :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        :param CreateTime: 跟踪集创建时间
+        :type CreateTime: str
+        :param TrackId: 跟踪集 ID
+        :type TrackId: int
+        """
+        self.Name = None
+        self.ActionType = None
+        self.ResourceType = None
+        self.Status = None
+        self.EventNames = None
+        self.Storage = None
+        self.CreateTime = None
+        self.TrackId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ActionType = params.get("ActionType")
+        self.ResourceType = params.get("ResourceType")
+        self.Status = params.get("Status")
+        self.EventNames = params.get("EventNames")
+        if params.get("Storage") is not None:
+            self.Storage = Storage()
+            self.Storage._deserialize(params.get("Storage"))
+        self.CreateTime = params.get("CreateTime")
+        self.TrackId = params.get("TrackId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpdateAuditRequest(AbstractModel):

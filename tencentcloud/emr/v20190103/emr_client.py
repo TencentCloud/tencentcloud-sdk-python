@@ -86,7 +86,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeClusterNodes(self, request):
-        """查询硬件节点信息
+        """查询集群节点信息
 
         :param request: Request instance for DescribeClusterNodes.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesRequest`
@@ -522,7 +522,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourceScheduleConfig(self, request):
-        """修改yarn资源调度的资源配置
+        """修改YARN资源调度的资源配置
 
         :param request: Request instance for ModifyResourceScheduleConfig.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigRequest`
@@ -609,7 +609,7 @@ class EmrClient(AbstractClient):
 
 
     def ScaleOutInstance(self, request):
-        """实例扩容
+        """扩容节点
 
         :param request: Request instance for ScaleOutInstance.
         :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceRequest`

@@ -4928,29 +4928,38 @@ class CreateHostExportJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ExportField: 导出字段
-        :type ExportField: list of str
-        :param Filters: 需要返回的数量，默认为10，最大值为10000
+        :param Filters: 过滤条件。
+<li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
+<li>HostName - String - 是否必填：否 - 主机名筛选</li>
+<li>Group- String - 是否必填：否 - 主机群组搜索</li>
+<li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
+<li>HostID- string - 是否必填：否 - 主机id搜索</li>
+<li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
+<li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
+<li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
+<li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
+<li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
         :type Filters: list of AssetFilters
         :param Limit: 偏移量，默认为0。
         :type Limit: int
-        :param Offset: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+        :param Offset: 需要返回的数量，默认为10，最大值为10000
         :type Offset: int
         :param By: 排序字段
         :type By: str
         :param Order: 升序降序,asc desc
         :type Order: str
+        :param ExportField: 导出字段
+        :type ExportField: list of str
         """
-        self.ExportField = None
         self.Filters = None
         self.Limit = None
         self.Offset = None
         self.By = None
         self.Order = None
+        self.ExportField = None
 
 
     def _deserialize(self, params):
-        self.ExportField = params.get("ExportField")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
@@ -4961,6 +4970,7 @@ class CreateHostExportJobRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.By = params.get("By")
         self.Order = params.get("Order")
+        self.ExportField = params.get("ExportField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8708,6 +8718,10 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         :type InstanceID: str
         :param RegionID: 地域ID
         :type RegionID: int
+        :param Project: 所属项目
+        :type Project: :class:`tencentcloud.tcss.v20201101.models.ProjectInfo`
+        :param Tags: 标签
+        :type Tags: list of TagInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8735,6 +8749,8 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self.PublicIp = None
         self.InstanceID = None
         self.RegionID = None
+        self.Project = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -8763,6 +8779,15 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self.PublicIp = params.get("PublicIp")
         self.InstanceID = params.get("InstanceID")
         self.RegionID = params.get("RegionID")
+        if params.get("Project") is not None:
+            self.Project = ProjectInfo()
+            self.Project._deserialize(params.get("Project"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -8786,6 +8811,8 @@ class DescribeAssetHostListRequest(AbstractModel):
 <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
 <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
 <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
+<li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
+<li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
         :type Filters: list of AssetFilters
         :param By: 排序字段
         :type By: str
@@ -20605,6 +20632,12 @@ class HostInfo(AbstractModel):
         :type InstanceID: str
         :param RegionID: 地域ID
         :type RegionID: int
+        :param Project: 所属项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Project: :class:`tencentcloud.tcss.v20201101.models.ProjectInfo`
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
         """
         self.HostID = None
         self.HostIP = None
@@ -20621,6 +20654,8 @@ class HostInfo(AbstractModel):
         self.Uuid = None
         self.InstanceID = None
         self.RegionID = None
+        self.Project = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -20639,6 +20674,15 @@ class HostInfo(AbstractModel):
         self.Uuid = params.get("Uuid")
         self.InstanceID = params.get("InstanceID")
         self.RegionID = params.get("RegionID")
+        if params.get("Project") is not None:
+            self.Project = ProjectInfo()
+            self.Project._deserialize(params.get("Project"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -24241,6 +24285,34 @@ class ProcessInfo(AbstractModel):
         
 
 
+class ProjectInfo(AbstractModel):
+    """主机所属项目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectName: 项目名称
+        :type ProjectName: str
+        :param ProjectID: 项目ID
+        :type ProjectID: int
+        """
+        self.ProjectName = None
+        self.ProjectID = None
+
+
+    def _deserialize(self, params):
+        self.ProjectName = params.get("ProjectName")
+        self.ProjectID = params.get("ProjectID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PromotionActivityContent(AbstractModel):
     """促销活动内容
 
@@ -26198,6 +26270,34 @@ class SyncAssetImageRegistryAssetResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class TagInfo(AbstractModel):
+    """主机标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UnauthorizedCoresTendency(AbstractModel):

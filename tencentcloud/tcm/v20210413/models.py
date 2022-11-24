@@ -598,6 +598,71 @@ class DeployConfig(AbstractModel):
         
 
 
+class DescribeAccessLogConfigRequest(AbstractModel):
+    """DescribeAccessLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshId: mesh名字
+        :type MeshId: str
+        """
+        self.MeshId = None
+
+
+    def _deserialize(self, params):
+        self.MeshId = params.get("MeshId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessLogConfigResponse(AbstractModel):
+    """DescribeAccessLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param File: 访问日志输出路径。默认 /dev/stdout
+        :type File: str
+        :param Format: 访问日志的格式。
+        :type Format: str
+        :param Encoding: 访问日志输出编码。默认 “TEXT”。除此之外还有“JSON”
+        :type Encoding: str
+        :param SelectedRange: 选中的范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelectedRange: :class:`tencentcloud.tcm.v20210413.models.SelectedRange`
+        :param Template: 采用的模板，可取值为"istio, trace，默认为istio
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Template: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.File = None
+        self.Format = None
+        self.Encoding = None
+        self.SelectedRange = None
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.File = params.get("File")
+        self.Format = params.get("Format")
+        self.Encoding = params.get("Encoding")
+        if params.get("SelectedRange") is not None:
+            self.SelectedRange = SelectedRange()
+            self.SelectedRange._deserialize(params.get("SelectedRange"))
+        self.Template = params.get("Template")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMeshListRequest(AbstractModel):
     """DescribeMeshList请求参数结构体
 
@@ -1637,6 +1702,87 @@ class MetricSpec(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAccessLogConfigRequest(AbstractModel):
+    """ModifyAccessLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MeshId: mesh ID
+        :type MeshId: str
+        :param SelectedRange: 选中的范围
+        :type SelectedRange: :class:`tencentcloud.tcm.v20210413.models.SelectedRange`
+        :param Template: 采用的模板，可选值：istio（默认）、trace、custom
+        :type Template: str
+        :param Enable: 是否启用
+        :type Enable: bool
+        :param CLS: 腾讯云日志服务相关参数
+        :type CLS: :class:`tencentcloud.tcm.v20210413.models.CLS`
+        :param Encoding: 编码格式，可选值：TEXT、JSON
+        :type Encoding: str
+        :param Format: 日志格式
+        :type Format: str
+        :param EnableStdout: 是否启用标准输出
+        :type EnableStdout: bool
+        :param EnableServer: 是否启动GRPC第三方服务器
+        :type EnableServer: bool
+        :param Address: GRPC第三方服务器地址
+        :type Address: str
+        """
+        self.MeshId = None
+        self.SelectedRange = None
+        self.Template = None
+        self.Enable = None
+        self.CLS = None
+        self.Encoding = None
+        self.Format = None
+        self.EnableStdout = None
+        self.EnableServer = None
+        self.Address = None
+
+
+    def _deserialize(self, params):
+        self.MeshId = params.get("MeshId")
+        if params.get("SelectedRange") is not None:
+            self.SelectedRange = SelectedRange()
+            self.SelectedRange._deserialize(params.get("SelectedRange"))
+        self.Template = params.get("Template")
+        self.Enable = params.get("Enable")
+        if params.get("CLS") is not None:
+            self.CLS = CLS()
+            self.CLS._deserialize(params.get("CLS"))
+        self.Encoding = params.get("Encoding")
+        self.Format = params.get("Format")
+        self.EnableStdout = params.get("EnableStdout")
+        self.EnableServer = params.get("EnableServer")
+        self.Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccessLogConfigResponse(AbstractModel):
+    """ModifyAccessLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyMeshRequest(AbstractModel):

@@ -326,6 +326,35 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplicationList(self, request):
+        """本接口(DescribeApplicationList)用于查询自己账号下的应用列表
+
+        :param request: Request instance for DescribeApplicationList.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationListRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeApplicationListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRealtimeScanConfig(self, request):
         """获取用户自定义送检信息
 

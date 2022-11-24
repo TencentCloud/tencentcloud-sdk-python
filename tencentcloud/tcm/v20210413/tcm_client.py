@@ -84,6 +84,35 @@ class TcmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAccessLogConfig(self, request):
+        """获取AccessLog配置
+
+        :param request: Request instance for DescribeAccessLogConfig.
+        :type request: :class:`tencentcloud.tcm.v20210413.models.DescribeAccessLogConfigRequest`
+        :rtype: :class:`tencentcloud.tcm.v20210413.models.DescribeAccessLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccessLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMesh(self, request):
         """查询网格详情
 
@@ -186,6 +215,35 @@ class TcmClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LinkPrometheusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAccessLogConfig(self, request):
+        """修改访问日志配置
+
+        :param request: Request instance for ModifyAccessLogConfig.
+        :type request: :class:`tencentcloud.tcm.v20210413.models.ModifyAccessLogConfigRequest`
+        :rtype: :class:`tencentcloud.tcm.v20210413.models.ModifyAccessLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccessLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAccessLogConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

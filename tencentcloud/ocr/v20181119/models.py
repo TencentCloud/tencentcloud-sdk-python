@@ -4790,7 +4790,7 @@ class QrcodeResultsInfo(AbstractModel):
         :type TypeName: str
         :param Url: 二维码/条形码包含的地址
         :type Url: str
-        :param Position: 二维码/条形码坐标（二维码会返回位置坐标，条形码暂不返回位置坐标，因此默认X和Y返回值均为-1）
+        :param Position: 二维码/条形码坐标
         :type Position: :class:`tencentcloud.ocr.v20181119.models.QrcodePositionObj`
         """
         self.TypeName = None

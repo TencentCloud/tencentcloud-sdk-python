@@ -2721,6 +2721,8 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
         :param Currency: 货币种类。取值范围：
 <li>CNY：表示人民币。</li>
         :type Currency: str
+        :param ResourceIdList: 批量变配资源ID列表
+        :type ResourceIdList: list of str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -2728,6 +2730,7 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
         self.PayMode = None
         self.Placement = None
         self.Currency = None
+        self.ResourceIdList = None
 
 
     def _deserialize(self, params):
@@ -2741,6 +2744,7 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
         self.Currency = params.get("Currency")
+        self.ResourceIdList = params.get("ResourceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2771,6 +2775,9 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
         :param TimeSpan: 变配的时长。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
+        :param PriceDetail: 价格详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceDetail: list of PriceDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2778,6 +2785,7 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
         self.DiscountCost = None
         self.TimeUnit = None
         self.TimeSpan = None
+        self.PriceDetail = None
         self.RequestId = None
 
 
@@ -2786,6 +2794,12 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
         self.DiscountCost = params.get("DiscountCost")
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
+        if params.get("PriceDetail") is not None:
+            self.PriceDetail = []
+            for item in params.get("PriceDetail"):
+                obj = PriceDetail()
+                obj._deserialize(item)
+                self.PriceDetail.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3133,17 +3147,22 @@ class ModifyResourceScheduleConfigResponse(AbstractModel):
         :param ErrorMsg: 校验错误信息，如果不为空，则说明校验失败，配置没有成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
+        :param Data: 返回数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.IsDraft = None
         self.ErrorMsg = None
+        self.Data = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.IsDraft = params.get("IsDraft")
         self.ErrorMsg = params.get("ErrorMsg")
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 
@@ -3521,6 +3540,12 @@ class NodeHardwareInfo(AbstractModel):
         :param ServiceClient: 服务
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceClient: str
+        :param DisableApiTermination: 该实例是否开启实例保护，true为开启 false为关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableApiTermination: bool
+        :param TradeVersion: 0表示老计费，1表示新计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeVersion: int
         """
         self.AppId = None
         self.SerialNo = None
@@ -3570,6 +3595,8 @@ class NodeHardwareInfo(AbstractModel):
         self.IsFederation = None
         self.DeviceName = None
         self.ServiceClient = None
+        self.DisableApiTermination = None
+        self.TradeVersion = None
 
 
     def _deserialize(self, params):
@@ -3635,6 +3662,8 @@ class NodeHardwareInfo(AbstractModel):
         self.IsFederation = params.get("IsFederation")
         self.DeviceName = params.get("DeviceName")
         self.ServiceClient = params.get("ServiceClient")
+        self.DisableApiTermination = params.get("DisableApiTermination")
+        self.TradeVersion = params.get("TradeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3751,18 +3780,18 @@ class Placement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。填0为默认项目。
-        :type ProjectId: int
-        :param Zone: 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
+        :param Zone: 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用[DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
         :type Zone: str
+        :param ProjectId: 实例所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :type ProjectId: int
         """
-        self.ProjectId = None
         self.Zone = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
         self.Zone = params.get("Zone")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4173,6 +4202,42 @@ class PreExecuteFileSettings(AbstractModel):
         self.CosSecretId = params.get("CosSecretId")
         self.CosSecretKey = params.get("CosSecretKey")
         self.AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PriceDetail(AbstractModel):
+    """价格详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 节点ID
+        :type ResourceId: str
+        :param Formula: 价格计算公式
+        :type Formula: str
+        :param OriginalCost: 原价
+        :type OriginalCost: float
+        :param DiscountCost: 折扣价
+        :type DiscountCost: float
+        """
+        self.ResourceId = None
+        self.Formula = None
+        self.OriginalCost = None
+        self.DiscountCost = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Formula = params.get("Formula")
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountCost = params.get("DiscountCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

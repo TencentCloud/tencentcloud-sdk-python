@@ -1493,6 +1493,9 @@ class DBInstanceNetInfo(AbstractModel):
         :param SubnetId: 子网ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
+        :param ProtocolType: 连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolType: str
         """
         self.Address = None
         self.Ip = None
@@ -1501,6 +1504,7 @@ class DBInstanceNetInfo(AbstractModel):
         self.Status = None
         self.VpcId = None
         self.SubnetId = None
+        self.ProtocolType = None
 
 
     def _deserialize(self, params):
@@ -1511,6 +1515,7 @@ class DBInstanceNetInfo(AbstractModel):
         self.Status = params.get("Status")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.ProtocolType = params.get("ProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

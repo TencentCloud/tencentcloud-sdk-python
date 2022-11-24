@@ -1221,7 +1221,7 @@ EXIST：导入现有版本
 枚举值：NORMAL(通用)  ACCELERATE(加速)
 注意:  默认为NORMAL
         :type ModelVersionType: str
-        :param ModelFormat: 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML）
+        :param ModelFormat: 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE）
         :type ModelFormat: str
         :param ReasoningEnvironmentId: 推理镜像ID
         :type ReasoningEnvironmentId: str
@@ -3448,6 +3448,7 @@ class DescribeModelAccelerateTasksRequest(AbstractModel):
         r"""
         :param Filters: 过滤器
 ModelAccTaskName 任务名称
+ModelSource 模型来源
         :type Filters: list of Filter
         :param OrderField: 排序字段，默认CreateTime
         :type OrderField: str
@@ -3455,7 +3456,7 @@ ModelAccTaskName 任务名称
         :type Order: str
         :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 返回记录条数，默认20
+        :param Limit: 返回记录条数，默认10
         :type Limit: int
         :param TagFilters: 标签过滤
         :type TagFilters: list of TagFilter
@@ -4175,10 +4176,9 @@ Filter.Name: 枚举值:
     keyword (模型名称)
     TrainingModelId (模型ID)
     ModelVersionType (模型版本类型) 其值Filter.Values支持: NORMAL(通用) ACCELERATE (加速)
-    TrainingModelSource (模型来源)  其值Filter.Values支持： JOB/COS/AUTO_ML
-    AlgorithmFramework (算法框架) 其值Filter.Values支持：TENSORFLOW/PYTORCH/DETECTRON2
+    TrainingModelSource (模型来源)  其值Filter.Values支持： JOB/COS
     ModelFormat（模型格式）其值Filter.Values支持：
-TORCH_SCRIPT/PYTORCH/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML
+PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE
 Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
 每次请求的Filters的上限为10，Filter.Values的上限为100
 Filter.Fuzzy取值：true/false，是否支持模糊匹配
@@ -7941,6 +7941,7 @@ class TrainingModelVersionDTO(AbstractModel):
         :param CreateTime: 模型版本创建时间
         :type CreateTime: str
         :param TrainingModelStatus: 模型处理状态
+STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING：导入中
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrainingModelStatus: str
         :param TrainingModelProgress: 模型处理进度

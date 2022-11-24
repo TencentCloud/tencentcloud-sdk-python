@@ -18,6 +18,61 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplyChainMakerBatchUserCertRequest(AbstractModel):
+    """ApplyChainMakerBatchUserCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param SignUserCsrList: 证书标识和证书请求文件，可参考TBaaS证书生成相关文档生成证书请求文件
+        :type SignUserCsrList: list of SignCertCsr
+        """
+        self.ClusterId = None
+        self.SignUserCsrList = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("SignUserCsrList") is not None:
+            self.SignUserCsrList = []
+            for item in params.get("SignUserCsrList"):
+                obj = SignCertCsr()
+                obj._deserialize(item)
+                self.SignUserCsrList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyChainMakerBatchUserCertResponse(AbstractModel):
+    """ApplyChainMakerBatchUserCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SignUserCrtList: 成功生成的用户证书的base64编码字符串列表，与SignUserCsrList一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignUserCrtList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SignUserCrtList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SignUserCrtList = params.get("SignUserCrtList")
+        self.RequestId = params.get("RequestId")
+
+
 class ApplyUserCertRequest(AbstractModel):
     """ApplyUserCert请求参数结构体
 
@@ -2899,6 +2954,34 @@ class QueryResponse(AbstractModel):
     def _deserialize(self, params):
         self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
+
+
+class SignCertCsr(AbstractModel):
+    """用于申请用户签名证书的结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertMark: 用户签名证书的标识，会存在于用户申请的证书中
+        :type CertMark: str
+        :param SignCsrContent: 用户申请签名证书所需要的证书请求文件的base64编码
+        :type SignCsrContent: str
+        """
+        self.CertMark = None
+        self.SignCsrContent = None
+
+
+    def _deserialize(self, params):
+        self.CertMark = params.get("CertMark")
+        self.SignCsrContent = params.get("SignCsrContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SrvInvokeRequest(AbstractModel):

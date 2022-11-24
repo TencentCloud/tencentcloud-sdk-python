@@ -272,6 +272,56 @@ class ApplicationDataStatistics(AbstractModel):
         
 
 
+class ApplicationList(AbstractModel):
+    """获取应用列表返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceConf: 服务开关状态
+        :type ServiceConf: :class:`tencentcloud.gme.v20180711.models.ServiceStatus`
+        :param BizId: 应用ID(AppID)
+        :type BizId: int
+        :param AppName: 应用名称
+        :type AppName: str
+        :param ProjectId: 项目ID，默认为0
+        :type ProjectId: int
+        :param AppStatus: 应用状态，返回0表示正常，1表示关闭，2表示欠费停服，3表示欠费回收
+        :type AppStatus: int
+        :param CreateTime: 创建时间，Unix时间戳格式
+        :type CreateTime: int
+        :param AppType: 应用类型，无需关注此数值
+        :type AppType: int
+        """
+        self.ServiceConf = None
+        self.BizId = None
+        self.AppName = None
+        self.ProjectId = None
+        self.AppStatus = None
+        self.CreateTime = None
+        self.AppType = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceConf") is not None:
+            self.ServiceConf = ServiceStatus()
+            self.ServiceConf._deserialize(params.get("ServiceConf"))
+        self.BizId = params.get("BizId")
+        self.AppName = params.get("AppName")
+        self.ProjectId = params.get("ProjectId")
+        self.AppStatus = params.get("AppStatus")
+        self.CreateTime = params.get("CreateTime")
+        self.AppType = params.get("AppType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioTextStatisticsItem(AbstractModel):
     """录音转文本用量统计数据
 
@@ -1037,6 +1087,90 @@ class DescribeApplicationDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApplicationListRequest(AbstractModel):
+    """DescribeApplicationList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID，0表示默认项目，-1表示所有项目，如果需要查找具体项目下的应用列表，请填入具体项目ID，项目ID在项目管理中查看 https://console.cloud.tencent.com/project
+        :type ProjectId: int
+        :param PageNo: 页码ID，0表示第一页，以此后推。默认填0
+        :type PageNo: int
+        :param PageSize: 每页展示应用数量。默认填200
+        :type PageSize: int
+        :param SearchText: 所查找应用名称的关键字，支持模糊匹配查找。空串表示查询所有应用
+        :type SearchText: str
+        :param TagSet: 标签列表
+        :type TagSet: list of Tag
+        :param Filters: 查找过滤关键字列表
+        :type Filters: list of Filter
+        """
+        self.ProjectId = None
+        self.PageNo = None
+        self.PageSize = None
+        self.SearchText = None
+        self.TagSet = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
+        self.SearchText = params.get("SearchText")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationListResponse(AbstractModel):
+    """DescribeApplicationList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationList: 获取应用列表返回
+        :type ApplicationList: list of ApplicationList
+        :param Total: 应用总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ApplicationList = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ApplicationList") is not None:
+            self.ApplicationList = []
+            for item in params.get("ApplicationList"):
+                obj = ApplicationList()
+                obj._deserialize(item)
+                self.ApplicationList.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRealtimeScanConfigRequest(AbstractModel):
     """DescribeRealtimeScanConfig请求参数结构体
 
@@ -1379,6 +1513,34 @@ class DescribeUserInAndOutTimeResponse(AbstractModel):
                 self.InOutList.append(obj)
         self.Duration = params.get("Duration")
         self.RequestId = params.get("RequestId")
+
+
+class Filter(AbstractModel):
+    """查找过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 要过滤的字段名, 比如"AppName"
+        :type Name: str
+        :param Values: 多个关键字
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GetCustomizationListRequest(AbstractModel):
@@ -2090,6 +2252,61 @@ class ScanVoiceResult(AbstractModel):
         
 
 
+class ServiceStatus(AbstractModel):
+    """服务开关状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RealTimeSpeech: 实时语音服务开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTimeSpeech: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
+        :param VoiceMessage: 语音消息服务开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceMessage: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
+        :param Porn: 语音内容安全服务开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Porn: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
+        :param Live: 语音录制服务开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Live: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
+        :param RealTimeAsr: 语音转文本服务开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTimeAsr: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
+        """
+        self.RealTimeSpeech = None
+        self.VoiceMessage = None
+        self.Porn = None
+        self.Live = None
+        self.RealTimeAsr = None
+
+
+    def _deserialize(self, params):
+        if params.get("RealTimeSpeech") is not None:
+            self.RealTimeSpeech = StatusInfo()
+            self.RealTimeSpeech._deserialize(params.get("RealTimeSpeech"))
+        if params.get("VoiceMessage") is not None:
+            self.VoiceMessage = StatusInfo()
+            self.VoiceMessage._deserialize(params.get("VoiceMessage"))
+        if params.get("Porn") is not None:
+            self.Porn = StatusInfo()
+            self.Porn._deserialize(params.get("Porn"))
+        if params.get("Live") is not None:
+            self.Live = StatusInfo()
+            self.Live._deserialize(params.get("Live"))
+        if params.get("RealTimeAsr") is not None:
+            self.RealTimeAsr = StatusInfo()
+            self.RealTimeAsr._deserialize(params.get("RealTimeAsr"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StatisticsItem(AbstractModel):
     """用量数据单元
 
@@ -2109,6 +2326,30 @@ class StatisticsItem(AbstractModel):
     def _deserialize(self, params):
         self.StatDate = params.get("StatDate")
         self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatusInfo(AbstractModel):
+    """服务开关状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 服务开关状态， 0-正常，1-关闭
+        :type Status: int
+        """
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -325,7 +325,7 @@ class CreateTawInstanceRequest(AbstractModel):
         r"""
         :param AreaId: 片区Id，(至少大于0)
         :type AreaId: int
-        :param ChargeType: 计费类型, (1=后付费，2=预付费)
+        :param ChargeType: 计费类型, (1=后付费)
         :type ChargeType: int
         :param DataRetentionDays: 数据保存时间，(至少大于0)
         :type DataRetentionDays: int
@@ -3758,9 +3758,9 @@ class DescribeTawInstancesRequest(AbstractModel):
         :type Offset: int
         :param AreaIds: 片区Id
         :type AreaIds: list of int
-        :param InstanceStatuses: 实例状态(1=创建中，2=运行中，3=异常，4=重启中，5=停止中，6=已停止，7=销毁中，8=已销毁)
+        :param InstanceStatuses: 实例状态(1=创建中，2=运行中，3=异常，4=重启中，5=停止中，6=已停止，7=销毁中，8=已销毁), 该参数已废弃，请在Filters内注明
         :type InstanceStatuses: list of int
-        :param InstanceIds: 实例Id
+        :param InstanceIds: 实例Id, 该参数已废弃，请在Filters内注明
         :type InstanceIds: list of str
         :param Filters: 过滤参数；demo模式传{"Name": "IsDemo", "Values":["1"]}
         :type Filters: list of Filter

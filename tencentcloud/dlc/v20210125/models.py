@@ -2393,6 +2393,12 @@ class DataFormat(AbstractModel):
         
 
 
+class DataGovernPolicy(AbstractModel):
+    """数据治理规则
+
+    """
+
+
 class DatabaseInfo(AbstractModel):
     """数据库对象
 
@@ -2467,6 +2473,12 @@ class DatabaseResponseInfo(AbstractModel):
         :param UserSubUin: 建库用户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserSubUin: str
+        :param GovernPolicy: 数据治理配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GovernPolicy: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
+        :param DatabaseId: 数据库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
         """
         self.DatabaseName = None
         self.Comment = None
@@ -2476,6 +2488,8 @@ class DatabaseResponseInfo(AbstractModel):
         self.Location = None
         self.UserAlias = None
         self.UserSubUin = None
+        self.GovernPolicy = None
+        self.DatabaseId = None
 
 
     def _deserialize(self, params):
@@ -2492,6 +2506,10 @@ class DatabaseResponseInfo(AbstractModel):
         self.Location = params.get("Location")
         self.UserAlias = params.get("UserAlias")
         self.UserSubUin = params.get("UserSubUin")
+        if params.get("GovernPolicy") is not None:
+            self.GovernPolicy = DataGovernPolicy()
+            self.GovernPolicy._deserialize(params.get("GovernPolicy"))
+        self.DatabaseId = params.get("DatabaseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5609,6 +5627,9 @@ class TableBaseInfo(AbstractModel):
         :param UserSubUin: 建表用户ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserSubUin: str
+        :param GovernPolicy: 数据治理配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GovernPolicy: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
         """
         self.DatabaseName = None
         self.TableName = None
@@ -5618,6 +5639,7 @@ class TableBaseInfo(AbstractModel):
         self.TableFormat = None
         self.UserAlias = None
         self.UserSubUin = None
+        self.GovernPolicy = None
 
 
     def _deserialize(self, params):
@@ -5629,6 +5651,9 @@ class TableBaseInfo(AbstractModel):
         self.TableFormat = params.get("TableFormat")
         self.UserAlias = params.get("UserAlias")
         self.UserSubUin = params.get("UserSubUin")
+        if params.get("GovernPolicy") is not None:
+            self.GovernPolicy = DataGovernPolicy()
+            self.GovernPolicy._deserialize(params.get("GovernPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
