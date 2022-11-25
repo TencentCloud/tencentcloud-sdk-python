@@ -1295,9 +1295,9 @@ class DescribeBackupUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例 ID。
         :type InstanceId: str
-        :param BackupId: 备份ID，通过DescribeInstanceBackups接口可查
+        :param BackupId: 备份 ID，可通过DescribeInstanceBackups接口返回的参数 BackupSet 获取。
         :type BackupId: str
         """
         self.InstanceId = None
@@ -1330,7 +1330,7 @@ class DescribeBackupUrlResponse(AbstractModel):
         :param Filenames: 文件名称，该字段正在逐步废弃中。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Filenames: list of str
-        :param BackupInfos: 备份文件信息列表
+        :param BackupInfos: 备份文件信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupInfos: list of BackupDownloadInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -1043,6 +1043,93 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateK8sApiAbnormalEventExportJob(self, request):
+        """创建k8s api异常事件导出任务
+
+        :param request: Request instance for CreateK8sApiAbnormalEventExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalEventExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalEventExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateK8sApiAbnormalEventExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateK8sApiAbnormalEventExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateK8sApiAbnormalRuleExportJob(self, request):
+        """创建k8sApi异常规则导出任务
+
+        :param request: Request instance for CreateK8sApiAbnormalRuleExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalRuleExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalRuleExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateK8sApiAbnormalRuleExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateK8sApiAbnormalRuleExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateK8sApiAbnormalRuleInfo(self, request):
+        """创建k8sapi异常事件规则
+
+        :param request: Request instance for CreateK8sApiAbnormalRuleInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalRuleInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateK8sApiAbnormalRuleInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateK8sApiAbnormalRuleInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateK8sApiAbnormalRuleInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNetworkFirewallClusterRefresh(self, request):
         """容器网络集群下发刷新任务
 
@@ -1784,6 +1871,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIgnoreVulResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteK8sApiAbnormalRule(self, request):
+        """删除k8sapi异常事件规则
+
+        :param request: Request instance for DeleteK8sApiAbnormalRule.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteK8sApiAbnormalRuleRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteK8sApiAbnormalRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteK8sApiAbnormalRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteK8sApiAbnormalRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2596,6 +2712,35 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetAppServiceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAssetClusterList(self, request):
+        """查询集群列表
+
+        :param request: Request instance for DescribeAssetClusterList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetClusterListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetClusterListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAssetClusterList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAssetClusterListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4974,6 +5119,209 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInspectionReportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeK8sApiAbnormalEventInfo(self, request):
+        """查询k8s api 异常事件详情
+
+        :param request: Request instance for DescribeK8sApiAbnormalEventInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalEventInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalEventInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeK8sApiAbnormalEventInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeK8sApiAbnormalEventInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeK8sApiAbnormalEventList(self, request):
+        """查询k8s api异常事件列表
+
+        :param request: Request instance for DescribeK8sApiAbnormalEventList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalEventListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeK8sApiAbnormalEventList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeK8sApiAbnormalEventListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeK8sApiAbnormalRuleInfo(self, request):
+        """查询k8sapi异常请求规则详情
+
+        :param request: Request instance for DescribeK8sApiAbnormalRuleInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeK8sApiAbnormalRuleInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeK8sApiAbnormalRuleInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeK8sApiAbnormalRuleList(self, request):
+        """查询k8sapi异常请求规则列表
+
+        :param request: Request instance for DescribeK8sApiAbnormalRuleList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeK8sApiAbnormalRuleList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeK8sApiAbnormalRuleListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeK8sApiAbnormalRuleScopeList(self, request):
+        """查询k8s api 异常规则中范围列表
+
+        :param request: Request instance for DescribeK8sApiAbnormalRuleScopeList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleScopeListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleScopeListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeK8sApiAbnormalRuleScopeList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeK8sApiAbnormalRuleScopeListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeK8sApiAbnormalSummary(self, request):
+        """查询k8sapi异常事件统计
+
+        :param request: Request instance for DescribeK8sApiAbnormalSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeK8sApiAbnormalSummary", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeK8sApiAbnormalSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeK8sApiAbnormalTendency(self, request):
+        """查询k8sapi异常事件趋势
+
+        :param request: Request instance for DescribeK8sApiAbnormalTendency.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalTendencyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalTendencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeK8sApiAbnormalTendency", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeK8sApiAbnormalTendencyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -8077,6 +8425,93 @@ class TcssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImageAuthorizedResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyK8sApiAbnormalEventStatus(self, request):
+        """修改k8sapi异常事件状态
+
+        :param request: Request instance for ModifyK8sApiAbnormalEventStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalEventStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalEventStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyK8sApiAbnormalEventStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyK8sApiAbnormalEventStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyK8sApiAbnormalRuleInfo(self, request):
+        """修改k8sapi异常规则信息
+
+        :param request: Request instance for ModifyK8sApiAbnormalRuleInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalRuleInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalRuleInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyK8sApiAbnormalRuleInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyK8sApiAbnormalRuleInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyK8sApiAbnormalRuleStatus(self, request):
+        """修改k8sapi异常事件规则状态
+
+        :param request: Request instance for ModifyK8sApiAbnormalRuleStatus.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalRuleStatusRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ModifyK8sApiAbnormalRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyK8sApiAbnormalRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyK8sApiAbnormalRuleStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

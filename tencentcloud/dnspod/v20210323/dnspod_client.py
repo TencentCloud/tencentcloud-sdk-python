@@ -868,7 +868,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeRecordList(self, request):
-        """获取某个域名下的解析记录
+        """获取某个域名下的解析记录列表
 
         :param request: Request instance for DescribeRecordList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordListRequest`
@@ -1404,6 +1404,35 @@ class DnspodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRecordBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRecordFields(self, request):
+        """修改记录可选字段
+
+        :param request: Request instance for ModifyRecordFields.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordFieldsRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordFieldsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRecordFields", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRecordFieldsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

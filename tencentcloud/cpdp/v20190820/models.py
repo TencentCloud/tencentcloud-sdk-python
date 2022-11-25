@@ -4651,6 +4651,14 @@ wechat:微信支付
         :param PaymentMethod: 支付方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentMethod: str
+        :param TotalPlatformIncome: 平台应收金额
+单位：分，需要注意的是，TotalAmt=TotalPlatformIncome+TotalMchIncome
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPlatformIncome: int
+        :param TotalMchIncome: 商户应收金额
+单位：分，需要注意的是，TotalAmt=TotalPlatformIncome+TotalMchIncome
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalMchIncome: int
         """
         self.AppId = None
         self.OutTradeNo = None
@@ -4680,6 +4688,8 @@ wechat:微信支付
         self.SubAppId = None
         self.PayScene = None
         self.PaymentMethod = None
+        self.TotalPlatformIncome = None
+        self.TotalMchIncome = None
 
 
     def _deserialize(self, params):
@@ -4733,6 +4743,8 @@ wechat:微信支付
         self.SubAppId = params.get("SubAppId")
         self.PayScene = params.get("PayScene")
         self.PaymentMethod = params.get("PaymentMethod")
+        self.TotalPlatformIncome = params.get("TotalPlatformIncome")
+        self.TotalMchIncome = params.get("TotalMchIncome")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

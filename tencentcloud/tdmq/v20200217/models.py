@@ -7933,6 +7933,9 @@ class RocketMQClusterInfo(AbstractModel):
         :param IsVip: 是否为专享实例
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsVip: bool
+        :param RocketMQFlag: Rocketmq集群标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RocketMQFlag: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -7944,6 +7947,7 @@ class RocketMQClusterInfo(AbstractModel):
         self.SupportNamespaceEndpoint = None
         self.Vpcs = None
         self.IsVip = None
+        self.RocketMQFlag = None
 
 
     def _deserialize(self, params):
@@ -7962,6 +7966,7 @@ class RocketMQClusterInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Vpcs.append(obj)
         self.IsVip = params.get("IsVip")
+        self.RocketMQFlag = params.get("RocketMQFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

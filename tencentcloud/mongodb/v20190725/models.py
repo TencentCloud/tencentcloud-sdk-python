@@ -570,7 +570,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 查询子网列表
         :type SubnetId: str
-        :param Password: 实例密码，不设置该参数则默认密码规则为 实例ID+"@"+主账户uin。举例实例id为cmgo-higv73ed，uin为100000001，则默认密码为"cmgo-higv73ed@100000001"。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
+        :param Password: 实例密码，不设置该参数则默认密码规则为 实例ID+"@"+主账户uin。举例实例id为cmgo-higv73ed，uin为100000001，则默认密码为"cmgo-higv73ed@100000001"。 自定义密码格式为8-32个字符长度，至少包含字母、数字和字符（!@#%^*()_）中的两种
         :type Password: str
         :param Tags: 实例标签信息
         :type Tags: list of TagInfo
@@ -596,6 +596,12 @@ class CreateDBInstanceRequest(AbstractModel):
         :type MongosMemory: int
         :param MongosNodeNum: mongos 数量，购买MongoDB 4.2 WiredTiger存储引擎版本的分片集群时必须填写，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。注：为了保障高可用，最低需要购买3个mongos，上限为32个
         :type MongosNodeNum: int
+        :param ReadonlyNodeNum: 只读节点数量，最大不超过7个
+        :type ReadonlyNodeNum: int
+        :param ReadonlyNodeAvailabilityZoneList: 只读节点部署可用区
+        :type ReadonlyNodeAvailabilityZoneList: list of str
+        :param HiddenZone: Hidden节点所在的可用区，跨可用区实例必传
+        :type HiddenZone: str
         """
         self.NodeNum = None
         self.Memory = None
@@ -623,6 +629,9 @@ class CreateDBInstanceRequest(AbstractModel):
         self.MongosCpu = None
         self.MongosMemory = None
         self.MongosNodeNum = None
+        self.ReadonlyNodeNum = None
+        self.ReadonlyNodeAvailabilityZoneList = None
+        self.HiddenZone = None
 
 
     def _deserialize(self, params):
@@ -657,6 +666,9 @@ class CreateDBInstanceRequest(AbstractModel):
         self.MongosCpu = params.get("MongosCpu")
         self.MongosMemory = params.get("MongosMemory")
         self.MongosNodeNum = params.get("MongosNodeNum")
+        self.ReadonlyNodeNum = params.get("ReadonlyNodeNum")
+        self.ReadonlyNodeAvailabilityZoneList = params.get("ReadonlyNodeAvailabilityZoneList")
+        self.HiddenZone = params.get("HiddenZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

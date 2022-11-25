@@ -549,7 +549,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeBackupUrl(self, request):
-        """查询备份Rdb下载地址(接口灰度中，需要加白名单使用)
+        """查询备份Rdb下载地址
 
         :param request: Request instance for DescribeBackupUrl.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupUrlRequest`
