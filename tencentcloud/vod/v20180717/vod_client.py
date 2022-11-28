@@ -3601,12 +3601,6 @@ class VodClient(AbstractClient):
 
         如使用事件通知，事件通知的类型为 [任务流状态变更](https://cloud.tencent.com/document/product/266/9636)。
 
-        使用溯源水印存在以下限制条件：
-        <li> 溯源水印仅支持图片水印； </li>
-        <li> 溯源水印仅支持水印重复类型为水印循环播放； </li>
-        <li> 溯源水印仅支持输出文件封装格式为 HLS； </li>
-        <li> 溯源水印的位置仅支持位于视频的上半部分。 </li>
-
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaRequest`
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaResponse`

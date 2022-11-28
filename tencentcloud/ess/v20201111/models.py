@@ -595,7 +595,7 @@ class CreateConvertTaskApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 资源类型 取值范围doc,docx,html,excel之一
+        :param ResourceType: 资源类型 取值范围doc,docx,html,xls,xlsx之一
         :type ResourceType: str
         :param ResourceName: 资源名称，长度限制为256字符
         :type ResourceName: str
@@ -1363,6 +1363,87 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePrepareFlowRequest(AbstractModel):
+    """CreatePrepareFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param ResourceId: 资源Id,通过上传uploadfile接口获得
+        :type ResourceId: str
+        :param FlowName: 合同名称
+        :type FlowName: str
+        :param Unordered: 是否顺序签署(true:无序签,false:顺序签)
+        :type Unordered: bool
+        :param Deadline: 签署流程的签署截止时间。
+值为unix时间戳,精确到秒,不传默认为当前时间一年后
+        :type Deadline: int
+        :param UserFlowTypeId: 用户自定义合同类型
+        :type UserFlowTypeId: str
+        :param Approvers: 签署流程参与者信息，最大限制50方
+        :type Approvers: list of FlowCreateApprover
+        :param IntelligentStatus: 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+        :type IntelligentStatus: str
+        """
+        self.Operator = None
+        self.ResourceId = None
+        self.FlowName = None
+        self.Unordered = None
+        self.Deadline = None
+        self.UserFlowTypeId = None
+        self.Approvers = None
+        self.IntelligentStatus = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.ResourceId = params.get("ResourceId")
+        self.FlowName = params.get("FlowName")
+        self.Unordered = params.get("Unordered")
+        self.Deadline = params.get("Deadline")
+        self.UserFlowTypeId = params.get("UserFlowTypeId")
+        if params.get("Approvers") is not None:
+            self.Approvers = []
+            for item in params.get("Approvers"):
+                obj = FlowCreateApprover()
+                obj._deserialize(item)
+                self.Approvers.append(obj)
+        self.IntelligentStatus = params.get("IntelligentStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrepareFlowResponse(AbstractModel):
+    """CreatePrepareFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 快速发起预览链接
+        :type Url: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSchemeUrlRequest(AbstractModel):
     """CreateSchemeUrl请求参数结构体
 
@@ -1775,6 +1856,64 @@ class DescribeFlowBriefsResponse(AbstractModel):
                 obj = FlowBrief()
                 obj._deserialize(item)
                 self.FlowBriefs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFlowEvidenceReportRequest(AbstractModel):
+    """DescribeFlowEvidenceReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param ReportId: 出证报告编号
+        :type ReportId: str
+        """
+        self.Operator = None
+        self.ReportId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.ReportId = params.get("ReportId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlowEvidenceReportResponse(AbstractModel):
+    """DescribeFlowEvidenceReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportUrl: 报告 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportUrl: str
+        :param Status: 执行中：EvidenceStatusExecuting
+成功：EvidenceStatusSuccess
+失败：EvidenceStatusFailed
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReportUrl = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReportUrl = params.get("ReportUrl")
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 

@@ -1349,6 +1349,8 @@ class DescribeBundlesRequest(AbstractModel):
 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）
 类型：String
 必选：否
+<li>bundle-type</li>按照 【套餐类型进行过滤】。
+取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
         :type Filters: list of Filter
         :param Zones: 可用区列表。默认为全部可用区。
@@ -2443,6 +2445,10 @@ class DescribeModifyInstanceBundlesRequest(AbstractModel):
 必选：否
 <li>support-platform-type</li>按照【系统类型】进行过滤。
 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）
+类型：String
+必选：否
+<li>bundle-type</li>按照 【套餐类型进行过滤】。
+取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);
 类型：String
 必选：否
 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。

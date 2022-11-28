@@ -549,7 +549,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeBackupUrl(self, request):
-        """查询备份Rdb下载地址
+        """本接口（DescribeBackupUrl）用于查询备份 Rdb 文件的下载地址。
 
         :param request: Request instance for DescribeBackupUrl.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupUrlRequest`

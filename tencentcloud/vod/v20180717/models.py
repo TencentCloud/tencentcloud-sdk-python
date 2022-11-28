@@ -608,6 +608,8 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         :param Output: 智能分类任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`
+        :param Progress: 智能分类任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -615,6 +617,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -628,6 +631,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskClassificationOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -719,6 +723,8 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         :param Output: 智能封面任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
+        :param Progress: 智能封面任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -726,6 +732,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -739,6 +746,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskCoverOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -830,6 +838,8 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         :param Output: 智能按帧标签任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`
+        :param Progress: 智能按帧标签任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -837,6 +847,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -850,6 +861,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskFrameTagOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -941,6 +953,8 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
         :param Output: 智能精彩片段任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`
+        :param Progress: 智能精彩片段任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -948,6 +962,7 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -961,6 +976,7 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskHighlightOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1076,6 +1092,8 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :param Output: 智能标签任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`
+        :param Progress: 智能标签任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1083,6 +1101,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -1096,6 +1115,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiAnalysisTaskTagOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1542,6 +1562,8 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         :param Output: 语音关键词识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
+        :param Progress: 语音关键词识别任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1549,6 +1571,7 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -1562,6 +1585,7 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskAsrWordsResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1718,6 +1742,8 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         :param Output: 人脸识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`
+        :param Progress: 人脸识别任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1725,6 +1751,7 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -1738,6 +1765,7 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskFaceResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1908,6 +1936,8 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
         :param Output: 视频片头片尾识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`
+        :param Progress: 视频片头片尾识别任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1915,6 +1945,7 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -1928,6 +1959,7 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskHeadTailResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2041,6 +2073,8 @@ class AiRecognitionTaskObjectResult(AbstractModel):
         :param Output: 物体识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`
+        :param Progress: 物体识别任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2048,6 +2082,7 @@ class AiRecognitionTaskObjectResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -2061,6 +2096,7 @@ class AiRecognitionTaskObjectResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskObjectResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2221,6 +2257,8 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         :param Output: 文本全文识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`
+        :param Progress: 文本全文识别任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2228,6 +2266,7 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -2241,6 +2280,7 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskOcrFullTextResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2401,6 +2441,8 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         :param Output: 文本关键词识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
+        :param Progress: 文本关键词识别任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2408,6 +2450,7 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -2421,6 +2464,7 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskOcrWordsResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2582,6 +2626,8 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
         :param Output: 视频拆条任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`
+        :param Progress: 视频拆条任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2589,6 +2635,7 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -2602,6 +2649,7 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskSegmentResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3340,6 +3388,8 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskInput`
         :param Output: 音视频审核 Asr 文字涉及令人不适宜信息的任务输出。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskOutput`
+        :param Progress: 音视频审核 Asr 文字涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3347,6 +3397,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3360,6 +3411,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewPoliticalAsrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3438,6 +3490,8 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         :param Output: 音视频审核涉及令人不适宜信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`
+        :param Progress: 音视频审核涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3445,6 +3499,7 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3458,6 +3513,7 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewPoliticalTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3487,6 +3543,8 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         :param Output: 音视频审核 Asr 文字涉及令人反感的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`
+        :param Progress: 音视频审核 Asr 文字涉及令人反感的信息的任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3494,6 +3552,7 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3507,6 +3566,7 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewPornAsrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3536,6 +3596,8 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         :param Output: Ocr 文字音视频审核涉及令人反感的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`
+        :param Progress: Ocr 文字音视频审核涉及令人反感的信息的任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3543,6 +3605,7 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3556,6 +3619,7 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewPornOcrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3585,6 +3649,8 @@ class AiReviewTaskPornResult(AbstractModel):
         :param Output: 音视频审核涉及令人反感的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`
+        :param Progress: 音视频审核涉及令人反感的信息的任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3592,6 +3658,7 @@ class AiReviewTaskPornResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3605,6 +3672,7 @@ class AiReviewTaskPornResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewPornTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3634,6 +3702,8 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         :param Output: 音视频审核 Asr 文字鉴违禁任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskOutput`
+        :param Progress: 音视频审核 Asr 文字鉴违禁任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3641,6 +3711,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3654,6 +3725,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewProhibitedAsrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3683,6 +3755,8 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         :param Output: 音视频审核 Ocr 文字鉴违禁任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskOutput`
+        :param Progress: 音视频审核 Ocr 文字鉴违禁任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3690,6 +3764,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3703,6 +3778,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewProhibitedOcrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3732,6 +3808,8 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :param Output: 音视频审核 Ocr 文字涉及令人不安全的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskOutput`
+        :param Progress: 音视频审核 Ocr 文字涉及令人不安全的信息的任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3739,6 +3817,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3752,6 +3831,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewTerrorismOcrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3781,6 +3861,8 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         :param Output: 音视频审核涉及令人不安全的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`
+        :param Progress: 音视频审核涉及令人不安全的信息的任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3788,6 +3870,7 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3801,6 +3884,7 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewTerrorismTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11002,7 +11086,6 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>FastClipMedia：快速剪辑任务；</li>
 <li>RemoveWatermarkTask：智能去除水印任务；</li>
 <li> ReviewAudioVideo：音视频审核任务。</li>
-<li> ReduceMediaBitrate：降码率任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -11060,7 +11143,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param ReviewAudioVideoTask: 音视频审核任务信息，仅当 TaskType 为 ReviewAudioVideo，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
-        :param ReduceMediaBitrateTask: 降码率任务信息，仅当 TaskType 为 ReduceMediaBitrate，该字段有值。
+        :param ReduceMediaBitrateTask: 该字段已无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReduceMediaBitrateTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -12196,8 +12279,8 @@ class EventContent(AbstractModel):
 <li>ComposeMediaComplete：制作媒体文件完成；</li>
 <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
 <li>FastClipMediaComplete：快速剪辑完成；</li>
-<li>ReviewAudioVideoComplete：音视频审核完成。</li>
-<li>ExtractTraceWatermarkComplete：提取溯源水印完成。</li>
+<li>ReviewAudioVideoComplete：音视频审核完成；</li>
+<li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -12259,7 +12342,7 @@ class EventContent(AbstractModel):
         :param ReviewAudioVideoCompleteEvent: 音视频审核完成事件，当事件类型为 ReviewAudioVideoComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewAudioVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
-        :param ReduceMediaBitrateCompleteEvent: 降码率完成事件，当事件类型为 ReduceMediaBitrateComplete 时有效。
+        :param ReduceMediaBitrateCompleteEvent: 该字段已无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReduceMediaBitrateCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
         """
@@ -15264,6 +15347,8 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         :param Output: 转动图任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsItem`
+        :param Progress: 转动图任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -15271,6 +15356,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -15284,6 +15370,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = MediaAnimatedGraphicsItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15312,6 +15399,8 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
         :type Input: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskInput`
         :param Output: 对视频截图做封面任务的输出。
         :type Output: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskOutput`
+        :param Progress: 对视频截图做封面任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -15319,6 +15408,7 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -15332,6 +15422,7 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = CoverBySnapshotTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15361,6 +15452,8 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :param Output: 对视频截雪碧图任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteItem`
+        :param Progress: 对视频截雪碧图任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -15368,6 +15461,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -15381,6 +15475,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = MediaImageSpriteItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15573,6 +15668,8 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         :param Output: 对视频做采样截图任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotItem`
+        :param Progress: 对视频做采样截图任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -15580,6 +15677,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -15593,6 +15691,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = MediaSampleSnapshotItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15622,6 +15721,8 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :param Output: 对视频按指定时间点截图任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetItem`
+        :param Progress: 对视频按指定时间点截图任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -15629,6 +15730,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -15642,6 +15744,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = MediaSnapshotByTimeOffsetItem()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19432,6 +19535,12 @@ class ProcedureTask(AbstractModel):
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param Operator: 操作者。取值范围：
+<li>System: 表示系统触发。</li>
+        :type Operator: str
+        :param OperationType: 操作类型。取值范围：
+<li>TSC: 表示使用极速高清进行智能降码。</li>
+        :type OperationType: str
         """
         self.TaskId = None
         self.Status = None
@@ -19449,6 +19558,8 @@ class ProcedureTask(AbstractModel):
         self.TasksNotifyMode = None
         self.SessionContext = None
         self.SessionId = None
+        self.Operator = None
+        self.OperationType = None
 
 
     def _deserialize(self, params):
@@ -19490,6 +19601,8 @@ class ProcedureTask(AbstractModel):
         self.TasksNotifyMode = params.get("TasksNotifyMode")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.Operator = params.get("Operator")
+        self.OperationType = params.get("OperationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20406,6 +20519,8 @@ class PullUploadTask(AbstractModel):
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param Progress: 转拉任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.TaskId = None
         self.Status = None
@@ -20418,6 +20533,7 @@ class PullUploadTask(AbstractModel):
         self.ProcedureTaskId = None
         self.SessionContext = None
         self.SessionId = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -20436,6 +20552,7 @@ class PullUploadTask(AbstractModel):
         self.ProcedureTaskId = params.get("ProcedureTaskId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22577,6 +22694,8 @@ class SplitMediaTask(AbstractModel):
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
+        :param Progress: 视频拆条任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.TaskId = None
         self.Status = None
@@ -22586,6 +22705,7 @@ class SplitMediaTask(AbstractModel):
         self.FileInfoSet = None
         self.SessionContext = None
         self.SessionId = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -22602,6 +22722,7 @@ class SplitMediaTask(AbstractModel):
                 self.FileInfoSet.append(obj)
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

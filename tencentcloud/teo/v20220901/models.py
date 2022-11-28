@@ -2783,7 +2783,7 @@ class CreateZoneRequest(AbstractModel):
         :type ZoneName: str
         :param Type: 接入方式，取值有：
 <li> full：NS接入；</li>
-<li> partial：CNAME接入。</li>不填写使用默认值full。
+<li> partial：CNAME接入，请先调用认证站点API（IdentifyZone）进行站点归属权校验，校验通过后继续调用本接口创建站点。</li>不填写使用默认值full。
         :type Type: str
         :param JumpStart: 是否跳过站点现有的DNS记录扫描。默认值：false。
         :type JumpStart: bool

@@ -511,7 +511,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
         r"""
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param ResourceType: 资源类型 取值范围doc,docx,html,excel之一
+        :param ResourceType: 资源类型 取值范围doc,docx,html,xls,xlsx之一
         :type ResourceType: str
         :param ResourceName: 资源名称，长度限制为256字符
         :type ResourceName: str
@@ -1442,6 +1442,75 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         
 
 
+class CreateChannelFlowEvidenceReportRequest(AbstractModel):
+    """CreateChannelFlowEvidenceReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 签署流程编号
+        :type FlowId: str
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.FlowId = None
+        self.Agent = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateChannelFlowEvidenceReportResponse(AbstractModel):
+    """CreateChannelFlowEvidenceReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportUrl: 废除，字段无效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportUrl: str
+        :param ReportId: 出证报告 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportId: str
+        :param Status: 执行中：EvidenceStatusExecuting
+成功：EvidenceStatusSuccess
+失败：EvidenceStatusFailed
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReportUrl = None
+        self.ReportId = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReportUrl = params.get("ReportUrl")
+        self.ReportId = params.get("ReportId")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateConsoleLoginUrlRequest(AbstractModel):
     """CreateConsoleLoginUrl请求参数结构体
 
@@ -1841,6 +1910,70 @@ class Department(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
+    """DescribeChannelFlowEvidenceReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportId: 出证报告编号
+        :type ReportId: str
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.ReportId = None
+        self.Agent = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.ReportId = params.get("ReportId")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
+    """DescribeChannelFlowEvidenceReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportUrl: 出证报告 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportUrl: str
+        :param Status: 执行中：EvidenceStatusExecuting
+成功：EvidenceStatusSuccess
+失败：EvidenceStatusFailed
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReportUrl = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReportUrl = params.get("ReportUrl")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeFlowDetailInfoRequest(AbstractModel):

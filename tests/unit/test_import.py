@@ -239,6 +239,11 @@ def test_import_cds():
     from tencentcloud.cds.v20180420 import models
 
 
+def test_import_cdwch():
+    from tencentcloud.cdwch.v20200915 import cdwch_client
+    from tencentcloud.cdwch.v20200915 import models
+
+
 def test_import_cfg():
     from tencentcloud.cfg.v20210820 import cfg_client
     from tencentcloud.cfg.v20210820 import models

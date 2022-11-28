@@ -3344,7 +3344,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleType: 1拦截列表 2 忽略列表
+        :param RuleType: 1封禁列表 2 放通列表
         :type RuleType: int
         :param IOC: IP、Domain二选一，不能同时为空
         :type IOC: list of IocListData
@@ -3352,7 +3352,7 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
         :type IocAction: str
         :param StartTime: 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
         :type StartTime: str
-        :param EndTime: 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
+        :param EndTime: 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime
         :type EndTime: str
         """
         self.RuleType = None
