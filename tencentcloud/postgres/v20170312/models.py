@@ -3683,9 +3683,9 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 总费用，打折前的。比如24650表示246.5元
+        :param OriginalPrice: 刊例价，单位为分。如24650表示246.5元
         :type OriginalPrice: int
-        :param Price: 实际需要付款金额。比如24650表示246.5元
+        :param Price: 折后实际付款金额，单位为分。如24650表示246.5元
         :type Price: int
         :param Currency: 币种。例如，CNY：人民币。
         :type Currency: str
@@ -4652,7 +4652,7 @@ class ParamInfo(AbstractModel):
 当参数类型为enum（枚举类型）、mutil_enum（多枚举类型）时，参数的取值范围由返回值中的EnumValue确定。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamValueType: str
-        :param Unit: 参数值 单位。参数没有单位是，该字段返回空
+        :param Unit: 参数值 单位。参数没有单位时，该字段返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Unit: str
         :param DefaultValue: 参数默认值。以字符串形式返回
@@ -4661,12 +4661,12 @@ class ParamInfo(AbstractModel):
         :param CurrentValue: 参数当前运行值。以字符串形式返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentValue: str
-        :param EnumValue: 枚举类型参数，取值范围
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnumValue: list of str
         :param Max: 数值类型（integer、real）参数，取值下界
 注意：此字段可能返回 null，表示取不到有效值。
         :type Max: float
+        :param EnumValue: 枚举类型参数，取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnumValue: list of str
         :param Min: 数值类型（integer、real）参数，取值上界
 注意：此字段可能返回 null，表示取不到有效值。
         :type Min: float
@@ -4694,6 +4694,15 @@ class ParamInfo(AbstractModel):
         :param LastModifyTime: 参数最后一次修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifyTime: str
+        :param StandbyRelated: 参数存在主备制约，0：无主备制约关系，1:备机参数值需比主机大，2:主机参数值需比备机大
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandbyRelated: int
+        :param VersionRelationSet: 参数版本关联信息，存储具体内核版本下的具体参数信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionRelationSet: list of ParamVersionRelation
+        :param SpecRelationSet: 参数规格关联信息，存储具体规格下具体的参数信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecRelationSet: list of ParamSpecRelation
         """
         self.ID = None
         self.Name = None
@@ -4701,8 +4710,8 @@ class ParamInfo(AbstractModel):
         self.Unit = None
         self.DefaultValue = None
         self.CurrentValue = None
-        self.EnumValue = None
         self.Max = None
+        self.EnumValue = None
         self.Min = None
         self.ParamDescriptionCH = None
         self.ParamDescriptionEN = None
@@ -4712,6 +4721,9 @@ class ParamInfo(AbstractModel):
         self.SpecRelated = None
         self.Advanced = None
         self.LastModifyTime = None
+        self.StandbyRelated = None
+        self.VersionRelationSet = None
+        self.SpecRelationSet = None
 
 
     def _deserialize(self, params):
@@ -4721,8 +4733,8 @@ class ParamInfo(AbstractModel):
         self.Unit = params.get("Unit")
         self.DefaultValue = params.get("DefaultValue")
         self.CurrentValue = params.get("CurrentValue")
-        self.EnumValue = params.get("EnumValue")
         self.Max = params.get("Max")
+        self.EnumValue = params.get("EnumValue")
         self.Min = params.get("Min")
         self.ParamDescriptionCH = params.get("ParamDescriptionCH")
         self.ParamDescriptionEN = params.get("ParamDescriptionEN")
@@ -4732,6 +4744,129 @@ class ParamInfo(AbstractModel):
         self.SpecRelated = params.get("SpecRelated")
         self.Advanced = params.get("Advanced")
         self.LastModifyTime = params.get("LastModifyTime")
+        self.StandbyRelated = params.get("StandbyRelated")
+        if params.get("VersionRelationSet") is not None:
+            self.VersionRelationSet = []
+            for item in params.get("VersionRelationSet"):
+                obj = ParamVersionRelation()
+                obj._deserialize(item)
+                self.VersionRelationSet.append(obj)
+        if params.get("SpecRelationSet") is not None:
+            self.SpecRelationSet = []
+            for item in params.get("SpecRelationSet"):
+                obj = ParamSpecRelation()
+                obj._deserialize(item)
+                self.SpecRelationSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamSpecRelation(AbstractModel):
+    """描述各规格下的参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 参数名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Memory: 参数信息所属规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: str
+        :param Value: 参数在该规格下的默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param Unit: 参数值单位。参数没有单位时，该字段返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param Max: 数值类型（integer、real）参数，取值上界
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Max: float
+        :param Min: 数值类型（integer、real）参数，取值下界
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Min: float
+        :param EnumValue: 枚举类型参数，取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnumValue: list of str
+        """
+        self.Name = None
+        self.Memory = None
+        self.Value = None
+        self.Unit = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Memory = params.get("Memory")
+        self.Value = params.get("Value")
+        self.Unit = params.get("Unit")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamVersionRelation(AbstractModel):
+    """描述各版本下的参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 参数名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param DBKernelVersion: 参数信息所属内核版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBKernelVersion: str
+        :param Value: 参数在该版本该规格下的默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param Unit: 参数值单位。参数没有单位时，该字段返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param Max: 数值类型（integer、real）参数，取值上界
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Max: float
+        :param Min: 数值类型（integer、real）参数，取值下界
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Min: float
+        :param EnumValue: 枚举类型参数，取值范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnumValue: list of str
+        """
+        self.Name = None
+        self.DBKernelVersion = None
+        self.Value = None
+        self.Unit = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DBKernelVersion = params.get("DBKernelVersion")
+        self.Value = params.get("Value")
+        self.Unit = params.get("Unit")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

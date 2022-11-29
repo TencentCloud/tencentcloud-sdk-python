@@ -639,8 +639,18 @@ class DescribeAccessLogConfigResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelectedRange: :class:`tencentcloud.tcm.v20210413.models.SelectedRange`
         :param Template: 采用的模板，可取值为"istio, trace，默认为istio
-注意：此字段可能返回 null，表示取不到有效值。
         :type Template: str
+        :param CLS: 腾讯云日志服务相关参数
+        :type CLS: :class:`tencentcloud.tcm.v20210413.models.CLS`
+        :param Address: GRPC第三方服务器地址
+        :type Address: str
+        :param EnableServer: 是否启用GRPC第三方服务器
+        :type EnableServer: bool
+        :param EnableStdout: 是否启用标准输出
+        :type EnableStdout: bool
+        :param Enable: 是否启用访问日志采集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -649,6 +659,11 @@ class DescribeAccessLogConfigResponse(AbstractModel):
         self.Encoding = None
         self.SelectedRange = None
         self.Template = None
+        self.CLS = None
+        self.Address = None
+        self.EnableServer = None
+        self.EnableStdout = None
+        self.Enable = None
         self.RequestId = None
 
 
@@ -660,6 +675,13 @@ class DescribeAccessLogConfigResponse(AbstractModel):
             self.SelectedRange = SelectedRange()
             self.SelectedRange._deserialize(params.get("SelectedRange"))
         self.Template = params.get("Template")
+        if params.get("CLS") is not None:
+            self.CLS = CLS()
+            self.CLS._deserialize(params.get("CLS"))
+        self.Address = params.get("Address")
+        self.EnableServer = params.get("EnableServer")
+        self.EnableStdout = params.get("EnableStdout")
+        self.Enable = params.get("Enable")
         self.RequestId = params.get("RequestId")
 
 

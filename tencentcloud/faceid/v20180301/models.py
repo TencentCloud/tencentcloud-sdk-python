@@ -760,6 +760,8 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         :type IntentionVerifyText: str
         :param IntentionQuestions: 意愿核身（问答模式）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持一个播报文本+回答文本。
         :type IntentionQuestions: list of IntentionQuestion
+        :param Config: RuleId相关配置
+        :type Config: :class:`tencentcloud.faceid.v20180301.models.RuleIdConfig`
         """
         self.RuleId = None
         self.TerminalType = None
@@ -771,6 +773,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         self.Encryption = None
         self.IntentionVerifyText = None
         self.IntentionQuestions = None
+        self.Config = None
 
 
     def _deserialize(self, params):
@@ -791,6 +794,9 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
                 obj = IntentionQuestion()
                 obj._deserialize(item)
                 self.IntentionQuestions.append(obj)
+        if params.get("Config") is not None:
+            self.Config = RuleIdConfig()
+            self.Config._deserialize(params.get("Config"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3595,6 +3601,30 @@ class PhoneVerificationResponse(AbstractModel):
         self.Description = params.get("Description")
         self.Isp = params.get("Isp")
         self.RequestId = params.get("RequestId")
+
+
+class RuleIdConfig(AbstractModel):
+    """RuleId相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntentionRecognition: 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
+        :type IntentionRecognition: bool
+        """
+        self.IntentionRecognition = None
+
+
+    def _deserialize(self, params):
+        self.IntentionRecognition = params.get("IntentionRecognition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WeChatBillDetail(AbstractModel):

@@ -330,6 +330,36 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCreateReleaseFlow(self, request):
+        """渠道版发起解除协议，主要应用场景为：基于一份已经签署的合同，进行解除操作。
+        合同发起人必须在电子签已经进行实名。
+
+        :param request: Request instance for ChannelCreateReleaseFlow.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateReleaseFlowRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateReleaseFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateReleaseFlow", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChannelCreateReleaseFlowResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelDescribeEmployees(self, request):
         """查询企业员工列表
 

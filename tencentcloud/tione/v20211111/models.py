@@ -8484,6 +8484,8 @@ Stopping 停止中
         :type Status: str
         :param StatefulSetCondition: 工作负载的状况信息
         :type StatefulSetCondition: list of StatefulSetCondition
+        :param Conditions: 工作负载历史的状况信息
+        :type Conditions: list of StatefulSetCondition
         """
         self.Replicas = None
         self.UpdatedReplicas = None
@@ -8492,6 +8494,7 @@ Stopping 停止中
         self.UnavailableReplicas = None
         self.Status = None
         self.StatefulSetCondition = None
+        self.Conditions = None
 
 
     def _deserialize(self, params):
@@ -8507,6 +8510,12 @@ Stopping 停止中
                 obj = StatefulSetCondition()
                 obj._deserialize(item)
                 self.StatefulSetCondition.append(obj)
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = StatefulSetCondition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

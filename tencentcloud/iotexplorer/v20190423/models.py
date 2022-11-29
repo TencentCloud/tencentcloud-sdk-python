@@ -3257,6 +3257,9 @@ class DeviceInfo(AbstractModel):
         :param DeviceType: 设备类型（设备、子设备、网关）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceType: str
+        :param IsLora: 是否是 lora 设备
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLora: bool
         """
         self.DeviceName = None
         self.Status = None
@@ -3278,6 +3281,7 @@ class DeviceInfo(AbstractModel):
         self.ProductId = None
         self.ProductName = None
         self.DeviceType = None
+        self.IsLora = None
 
 
     def _deserialize(self, params):
@@ -3301,6 +3305,7 @@ class DeviceInfo(AbstractModel):
         self.ProductId = params.get("ProductId")
         self.ProductName = params.get("ProductName")
         self.DeviceType = params.get("DeviceType")
+        self.IsLora = params.get("IsLora")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -5088,12 +5088,15 @@ global: 全球节点
         :type Segment: bool
         :param ShowIpv6: 是否查询节点 IPV6 信息。
         :type ShowIpv6: bool
+        :param AbbreviationIpv6: 是否对IPV6进行缩写。
+        :type AbbreviationIpv6: bool
         """
         self.Domain = None
         self.Layer = None
         self.Area = None
         self.Segment = None
         self.ShowIpv6 = None
+        self.AbbreviationIpv6 = None
 
 
     def _deserialize(self, params):
@@ -5102,6 +5105,7 @@ global: 全球节点
         self.Area = params.get("Area")
         self.Segment = params.get("Segment")
         self.ShowIpv6 = params.get("ShowIpv6")
+        self.AbbreviationIpv6 = params.get("AbbreviationIpv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10697,7 +10701,7 @@ class OriginIp(AbstractModel):
 
 
 class OriginPullOptimization(AbstractModel):
-    """跨国回源优化配置，默认为关闭状态（功能灰度中，尚未全量）
+    """跨国回源优化配置，默认为关闭状态 (已下线)
 
     """
 
@@ -10739,7 +10743,7 @@ class OriginPullTimeout(AbstractModel):
         :param ConnectTimeout: 回源建连超时时间，单位为秒，要求5~60之间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectTimeout: int
-        :param ReceiveTimeout: 回源接收超时时间，单位为秒，要求10 ~ 60之间
+        :param ReceiveTimeout: 回源接收超时时间，单位为秒，要求10 ~ 300之间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReceiveTimeout: int
         """
@@ -14504,7 +14508,7 @@ class UpdateDomainConfigRequest(AbstractModel):
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
         :param Cache: 缓存过期时间配置
         :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param OriginPullOptimization: 跨国链路优化配置
+        :param OriginPullOptimization: 跨国链路优化配置（已下线）
         :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
         :param Https: Https 加速配置
         :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`

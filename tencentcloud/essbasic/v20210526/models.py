@@ -934,6 +934,88 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreateReleaseFlowRequest(AbstractModel):
+    """ChannelCreateReleaseFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NeedRelievedFlowId: 待解除的流程编号（即原流程的编号）
+        :type NeedRelievedFlowId: str
+        :param ReliveInfo: 解除协议内容
+        :type ReliveInfo: :class:`tencentcloud.essbasic.v20210526.models.RelieveInfo`
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param ReleasedApprovers: 非必须，解除协议的本企业签署人列表，默认使用原流程的签署人列表；当解除协议的签署人与原流程的签署人不能相同时（比如原流程签署人离职了），需要指定本企业的其他签署人来替换原流程中的原签署人，注意需要指明ApproverNumber来代表需要替换哪一个签署人，解除协议的签署人数量不能多于原流程的签署人数量
+        :type ReleasedApprovers: list of ReleasedApprover
+        :param CallbackUrl: 签署完回调url，最大长度1000个字符
+        :type CallbackUrl: str
+        :param Organization: 机构信息
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        :param Operator: 用户信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.NeedRelievedFlowId = None
+        self.ReliveInfo = None
+        self.Agent = None
+        self.ReleasedApprovers = None
+        self.CallbackUrl = None
+        self.Organization = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.NeedRelievedFlowId = params.get("NeedRelievedFlowId")
+        if params.get("ReliveInfo") is not None:
+            self.ReliveInfo = RelieveInfo()
+            self.ReliveInfo._deserialize(params.get("ReliveInfo"))
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("ReleasedApprovers") is not None:
+            self.ReleasedApprovers = []
+            for item in params.get("ReleasedApprovers"):
+                obj = ReleasedApprover()
+                obj._deserialize(item)
+                self.ReleasedApprovers.append(obj)
+        self.CallbackUrl = params.get("CallbackUrl")
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateReleaseFlowResponse(AbstractModel):
+    """ChannelCreateReleaseFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 解除协议流程编号
+        :type FlowId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelDescribeEmployeesRequest(AbstractModel):
     """ChannelDescribeEmployees请求参数结构体
 
@@ -1038,7 +1120,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为0，最大为20000
         :type Offset: int
-        :param InfoType: 查询信息类型，为0时不返回授权用户，为1时返回
+        :param InfoType: 查询信息类型，为1时返回授权用户，为其他值时不返回
         :type InfoType: int
         :param SealId: 印章id（没有输入返回所有）
         :type SealId: str
@@ -3466,6 +3548,114 @@ class Recipient(AbstractModel):
         self.SignType = params.get("SignType")
         self.RoutingOrder = params.get("RoutingOrder")
         self.IsPromoter = params.get("IsPromoter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleasedApprover(AbstractModel):
+    """解除协议的签署人，如不指定，默认使用待解除流程（即原流程）中的签署人。
+    注意：不支持更换C端（个人身份类型）签署人，如果原流程中含有C端签署人，默认使用原流程中的该签署人。
+
+    如果需要指定B端（机构身份类型）签署人，其中ReleasedApprover需要传递的参数如下：
+    ApproverNumber, OrganizationName, ApproverType必传。
+    对于其他身份标识
+    - 渠道子客企业指定经办人：OpenId必传，OrganizationOpenId必传；
+    - 非渠道合作企业：Name、Mobile必传。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrganizationName: 企业签署方工商营业执照上的企业名称，签署方为非发起方企业场景下必传，最大长度64个字符
+        :type OrganizationName: str
+        :param ApproverNumber: 签署人在原流程中的签署人列表中的顺序序号（从0开始，按顺序依次递增），如果不清楚原流程中的签署人列表，可以通过DescribeFlows接口查看
+        :type ApproverNumber: int
+        :param ApproverType: 签署人类型，目前仅支持
+ORGANIZATION-企业
+        :type ApproverType: str
+        :param Name: 签署人姓名，最大长度50个字符
+        :type Name: str
+        :param IdCardType: 签署人身份证件类型
+1.ID_CARD 居民身份证
+2.HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证
+3.HONGKONG_AND_MACAO 港澳居民来往内地通行证
+        :type IdCardType: str
+        :param IdCardNumber: 签署人证件号
+        :type IdCardNumber: str
+        :param Mobile: 签署人手机号，脱敏显示。大陆手机号为11位，暂不支持海外手机号
+        :type Mobile: str
+        :param OrganizationOpenId: 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符
+        :type OrganizationOpenId: str
+        :param OpenId: 用户侧第三方id，最大长度64个字符
+当签署方为同一渠道下的员工时，该字必传
+        :type OpenId: str
+        """
+        self.OrganizationName = None
+        self.ApproverNumber = None
+        self.ApproverType = None
+        self.Name = None
+        self.IdCardType = None
+        self.IdCardNumber = None
+        self.Mobile = None
+        self.OrganizationOpenId = None
+        self.OpenId = None
+
+
+    def _deserialize(self, params):
+        self.OrganizationName = params.get("OrganizationName")
+        self.ApproverNumber = params.get("ApproverNumber")
+        self.ApproverType = params.get("ApproverType")
+        self.Name = params.get("Name")
+        self.IdCardType = params.get("IdCardType")
+        self.IdCardNumber = params.get("IdCardNumber")
+        self.Mobile = params.get("Mobile")
+        self.OrganizationOpenId = params.get("OrganizationOpenId")
+        self.OpenId = params.get("OpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RelieveInfo(AbstractModel):
+    """解除协议文档中内容信息，包括但不限于：解除理由、解除后仍然有效的条款-保留条款、原合同事项处理-费用结算、原合同事项处理-其他事项、其他约定等。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Reason: 解除理由，最大支持200个字
+        :type Reason: str
+        :param RemainInForceItem: 解除后仍然有效的条款，保留条款，最大支持200个字
+        :type RemainInForceItem: str
+        :param OriginalExpenseSettlement: 原合同事项处理-费用结算，最大支持200个字
+        :type OriginalExpenseSettlement: str
+        :param OriginalOtherSettlement: 原合同事项处理-其他事项，最大支持200个字
+        :type OriginalOtherSettlement: str
+        :param OtherDeals: 其他约定，最大支持200个字
+        :type OtherDeals: str
+        """
+        self.Reason = None
+        self.RemainInForceItem = None
+        self.OriginalExpenseSettlement = None
+        self.OriginalOtherSettlement = None
+        self.OtherDeals = None
+
+
+    def _deserialize(self, params):
+        self.Reason = params.get("Reason")
+        self.RemainInForceItem = params.get("RemainInForceItem")
+        self.OriginalExpenseSettlement = params.get("OriginalExpenseSettlement")
+        self.OriginalOtherSettlement = params.get("OriginalOtherSettlement")
+        self.OtherDeals = params.get("OtherDeals")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

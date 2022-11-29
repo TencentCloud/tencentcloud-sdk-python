@@ -2665,9 +2665,9 @@ class CreateSecurityDropPageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点Id。
+        :param ZoneId: 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
         :type ZoneId: str
-        :param Entity: 站点子域名。
+        :param Entity: 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
         :type Entity: str
         :param Name: 自定义页面的文件名。
         :type Name: str
@@ -2681,6 +2681,8 @@ class CreateSecurityDropPageRequest(AbstractModel):
 <li> waf ：托管规则模块；</li>
 <li> rate：自定义规则模块。</li>
         :type Module: str
+        :param TemplateId: 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+        :type TemplateId: str
         """
         self.ZoneId = None
         self.Entity = None
@@ -2688,6 +2690,7 @@ class CreateSecurityDropPageRequest(AbstractModel):
         self.Content = None
         self.Type = None
         self.Module = None
+        self.TemplateId = None
 
 
     def _deserialize(self, params):
@@ -2697,6 +2700,7 @@ class CreateSecurityDropPageRequest(AbstractModel):
         self.Content = params.get("Content")
         self.Type = params.get("Type")
         self.Module = params.get("Module")
+        self.TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

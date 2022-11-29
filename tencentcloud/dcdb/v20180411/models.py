@@ -18,6 +18,34 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Account(AbstractModel):
+    """数据库账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param User: 账户的名称
+        :type User: str
+        :param Host: 账户的域名
+        :type Host: str
+        """
+        self.User = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.User = params.get("User")
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ActiveHourDCDBInstanceRequest(AbstractModel):
     """ActiveHourDCDBInstance请求参数结构体
 
@@ -337,6 +365,42 @@ class CloseDBExtranetAccessResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class ColumnPrivilege(AbstractModel):
+    """列权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: 数据库名
+        :type Database: str
+        :param Table: 数据库表名
+        :type Table: str
+        :param Column: 数据库列名
+        :type Column: str
+        :param Privileges: 权限信息
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.Table = None
+        self.Column = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Column = params.get("Column")
+        self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ConstraintRange(AbstractModel):
@@ -1312,6 +1376,34 @@ class DatabaseFunction(AbstractModel):
 
     def _deserialize(self, params):
         self.Func = params.get("Func")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabasePrivilege(AbstractModel):
+    """数据库权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Privileges: 权限信息
+        :type Privileges: list of str
+        :param Database: 数据库名
+        :type Database: str
+        """
+        self.Privileges = None
+        self.Database = None
+
+
+    def _deserialize(self, params):
+        self.Privileges = params.get("Privileges")
+        self.Database = params.get("Database")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3897,6 +3989,105 @@ class ModifyAccountDescriptionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAccountPrivilegesRequest(AbstractModel):
+    """ModifyAccountPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param Accounts: 数据库的账号，包括用户名和域名。
+        :type Accounts: list of Account
+        :param GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+注意，不传该参数表示保留现有权限，如需清除，该字段传空数组。
+        :type GlobalPrivileges: list of str
+        :param DatabasePrivileges: 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+        :type DatabasePrivileges: list of DatabasePrivilege
+        :param TablePrivileges: 数据库中表的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+        :type TablePrivileges: list of TablePrivilege
+        :param ColumnPrivileges: 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+        :type ColumnPrivileges: list of ColumnPrivilege
+        :param ViewPrivileges: 数据库视图的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+        :type ViewPrivileges: list of ViewPrivileges
+        """
+        self.InstanceId = None
+        self.Accounts = None
+        self.GlobalPrivileges = None
+        self.DatabasePrivileges = None
+        self.TablePrivileges = None
+        self.ColumnPrivileges = None
+        self.ViewPrivileges = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = Account()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        self.GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self.DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivilege()
+                obj._deserialize(item)
+                self.DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self.TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivilege()
+                obj._deserialize(item)
+                self.TablePrivileges.append(obj)
+        if params.get("ColumnPrivileges") is not None:
+            self.ColumnPrivileges = []
+            for item in params.get("ColumnPrivileges"):
+                obj = ColumnPrivilege()
+                obj._deserialize(item)
+                self.ColumnPrivileges.append(obj)
+        if params.get("ViewPrivileges") is not None:
+            self.ViewPrivileges = []
+            for item in params.get("ViewPrivileges"):
+                obj = ViewPrivileges()
+                obj._deserialize(item)
+                self.ViewPrivileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountPrivilegesResponse(AbstractModel):
+    """ModifyAccountPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName请求参数结构体
 
@@ -5330,6 +5521,38 @@ class TableColumn(AbstractModel):
         
 
 
+class TablePrivilege(AbstractModel):
+    """数据库表权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: 数据库名
+        :type Database: str
+        :param Table: 数据库表名
+        :type Table: str
+        :param Privileges: 权限信息
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.Table = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TerminateDedicatedDBInstanceRequest(AbstractModel):
     """TerminateDedicatedDBInstance请求参数结构体
 
@@ -5513,6 +5736,38 @@ class UserTaskInfo(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.InstanceName = params.get("InstanceName")
         self.RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ViewPrivileges(AbstractModel):
+    """视图权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: 数据库名
+        :type Database: str
+        :param View: 数据库视图名
+        :type View: str
+        :param Privileges: 权限信息
+        :type Privileges: list of str
+        """
+        self.Database = None
+        self.View = None
+        self.Privileges = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.View = params.get("View")
+        self.Privileges = params.get("Privileges")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

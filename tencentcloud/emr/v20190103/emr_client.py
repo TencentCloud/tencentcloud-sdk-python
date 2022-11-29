@@ -173,7 +173,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInstanceRenewNodes(self, request):
-        """预付费集群隔离后续费资源查询
+        """查询待续费节点信息
 
         :param request: Request instance for DescribeInstanceRenewNodes.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceRenewNodesRequest`
@@ -202,7 +202,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """查询EMR实例
+        """查询集群实例信息
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesRequest`
@@ -231,7 +231,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeInstancesList(self, request):
-        """EMR集群实例列表查询
+        """查询集群列表
 
         :param request: Request instance for DescribeInstancesList.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListRequest`
@@ -289,7 +289,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeResourceSchedule(self, request):
-        """获取yarn资源调度页面的数据
+        """查询YARN资源调度数据信息
 
         :param request: Request instance for DescribeResourceSchedule.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleRequest`
@@ -493,7 +493,7 @@ class EmrClient(AbstractClient):
 
 
     def ModifyResourcePools(self, request):
-        """刷新动态资源池
+        """刷新YARN的动态资源池
 
         :param request: Request instance for ModifyResourcePools.
         :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourcePoolsRequest`

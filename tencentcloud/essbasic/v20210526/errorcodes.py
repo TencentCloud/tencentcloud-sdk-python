@@ -83,6 +83,9 @@ INTERNALERROR_ENCRYPTION = 'InternalError.Encryption'
 # 生成唯一ID错误。
 INTERNALERROR_GENERATEID = 'InternalError.GenerateId'
 
+# Pdf合成错误。
+INTERNALERROR_PDF = 'InternalError.Pdf'
+
 # 上传印章失败。
 INTERNALERROR_SEALUPLOAD = 'InternalError.SealUpload'
 
@@ -193,6 +196,9 @@ INVALIDPARAMETER_MENUSTATUS = 'InvalidParameter.MenuStatus'
 
 # 缺少必填参数的值。
 INVALIDPARAMETER_MISSINGREQUIREDPARAMETERVALUE = 'InvalidParameter.MissingRequiredParameterValue'
+
+# 手机号码不正确。
+INVALIDPARAMETER_MOBILE = 'InvalidParameter.Mobile'
 
 # 姓名不符合要求。
 INVALIDPARAMETER_NAME = 'InvalidParameter.Name'

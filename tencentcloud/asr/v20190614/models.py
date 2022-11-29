@@ -1182,7 +1182,7 @@ class SentenceRecognitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 腾讯云项目 ID，废弃参数，默认填写0即可。
+        :param ProjectId: 腾讯云项目 ID，废弃参数，填写0即可。
         :type ProjectId: int
         :param SubServiceType: 子服务类型。2： 一句话识别。
         :type SubServiceType: int
@@ -1203,7 +1203,7 @@ class SentenceRecognitionRequest(AbstractModel):
         :type SourceType: int
         :param VoiceFormat: 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
         :type VoiceFormat: str
-        :param UsrAudioKey: 用户端对此任务的唯一标识。废弃参数，忽略即可。
+        :param UsrAudioKey: 废弃参数，填写任意字符串即可。
         :type UsrAudioKey: str
         :param Url: 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
         :type Url: str

@@ -8662,6 +8662,34 @@ class StorageBlock(AbstractModel):
         
 
 
+class SyncImage(AbstractModel):
+    """同步镜像信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageId: 镜像ID
+        :type ImageId: str
+        :param Region: 地域
+        :type Region: str
+        """
+        self.ImageId = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncImagesRequest(AbstractModel):
     """SyncImages请求参数结构体
 
@@ -8677,11 +8705,14 @@ class SyncImagesRequest(AbstractModel):
         :type DryRun: bool
         :param ImageName: 目标镜像名称。
         :type ImageName: str
+        :param ImageSetRequired: 是否需要返回目的地域的镜像ID。
+        :type ImageSetRequired: bool
         """
         self.ImageIds = None
         self.DestinationRegions = None
         self.DryRun = None
         self.ImageName = None
+        self.ImageSetRequired = None
 
 
     def _deserialize(self, params):
@@ -8689,6 +8720,7 @@ class SyncImagesRequest(AbstractModel):
         self.DestinationRegions = params.get("DestinationRegions")
         self.DryRun = params.get("DryRun")
         self.ImageName = params.get("ImageName")
+        self.ImageSetRequired = params.get("ImageSetRequired")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8705,13 +8737,22 @@ class SyncImagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param ImageSet: 目的地域的镜像ID信息。
+        :type ImageSet: list of SyncImage
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ImageSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("ImageSet") is not None:
+            self.ImageSet = []
+            for item in params.get("ImageSet"):
+                obj = SyncImage()
+                obj._deserialize(item)
+                self.ImageSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 

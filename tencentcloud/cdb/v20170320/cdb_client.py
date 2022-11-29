@@ -2811,35 +2811,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyCDBProxy(self, request):
-        """配置数据库代理读写分离
-
-        :param request: Request instance for ModifyCDBProxy.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyCDBProxy", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyCDBProxyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyCDBProxyConnectionPool(self, request):
         """请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
 
