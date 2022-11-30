@@ -401,7 +401,7 @@ class DescribeRoomResponse(AbstractModel):
 2 高清
 3 全高清
         :type Resolution: int
-        :param MaxMicNumber: 最大连麦人数（不包括老师）。取值范围[0, 17)
+        :param MaxMicNumber: 最大连麦人数（不包括老师）。取值范围[0, 16]
         :type MaxMicNumber: int
         :param AutoMic: 进入房间时是否自动连麦。可以有以下取值：
 0 不自动连麦（默认值）

@@ -153,7 +153,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateBoundFlows(self, request):
-        """此接口（CreateConsoleLoginUrl）用于渠道子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取
+        """此接口（ChannelCreateBoundFlows）用于渠道子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取。
 
         :param request: Request instance for ChannelCreateBoundFlows.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateBoundFlowsRequest`

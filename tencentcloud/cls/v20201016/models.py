@@ -5526,7 +5526,7 @@ class ModifyTopicRequest(AbstractModel):
         :type AutoSplit: bool
         :param MaxSplitPartitions: 若开启最大分裂，该主题能够能够允许的最大分区数
         :type MaxSplitPartitions: int
-        :param Period: 生命周期，单位天，标准存储取值范围1~3600，低频存储取值范围7~3600。取值为3640时代表永久保存
+        :param Period: 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
         :type Period: int
         """
         self.TopicId = None

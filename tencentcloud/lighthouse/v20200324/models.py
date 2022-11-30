@@ -1127,6 +1127,68 @@ class DeniedAction(AbstractModel):
         
 
 
+class DescribeAllScenesRequest(AbstractModel):
+    """DescribeAllScenes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneIds: 使用场景ID列表。
+        :type SceneIds: list of str
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self.SceneIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SceneIds = params.get("SceneIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllScenesResponse(AbstractModel):
+    """DescribeAllScenes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneInfoSet: 使用场景详细信息列表。
+        :type SceneInfoSet: list of SceneInfo
+        :param TotalCount: 使用场景详细信息总数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SceneInfoSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SceneInfoSet") is not None:
+            self.SceneInfoSet = []
+            for item in params.get("SceneInfoSet"):
+                obj = SceneInfo()
+                obj._deserialize(item)
+                self.SceneInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBlueprintInstancesRequest(AbstractModel):
     """DescribeBlueprintInstances请求参数结构体
 
@@ -2646,6 +2708,68 @@ class DescribeResetInstanceBlueprintsResponse(AbstractModel):
                 obj = ResetInstanceBlueprint()
                 obj._deserialize(item)
                 self.ResetInstanceBlueprintSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeScenesRequest(AbstractModel):
+    """DescribeScenes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneIds: 使用场景ID列表。
+        :type SceneIds: list of str
+        :param Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self.SceneIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SceneIds = params.get("SceneIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScenesResponse(AbstractModel):
+    """DescribeScenes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneSet: 使用场景列表。
+        :type SceneSet: list of Scene
+        :param TotalCount: 使用场景总数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SceneSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SceneSet") is not None:
+            self.SceneSet = []
+            for item in params.get("SceneSet"):
+                obj = Scene()
+                obj._deserialize(item)
+                self.SceneSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5468,6 +5592,70 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Scene(AbstractModel):
+    """使用场景信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneId: 使用场景Id
+        :type SceneId: str
+        :param DisplayName: 使用场景展示名称
+        :type DisplayName: str
+        :param Description: 使用场景描述
+        :type Description: str
+        """
+        self.SceneId = None
+        self.DisplayName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.SceneId = params.get("SceneId")
+        self.DisplayName = params.get("DisplayName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneInfo(AbstractModel):
+    """使用场景详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneId: 使用场景Id。
+        :type SceneId: str
+        :param DisplayName: 使用场景展示名称。
+        :type DisplayName: str
+        :param Description: 使用场景描述信息。
+        :type Description: str
+        """
+        self.SceneId = None
+        self.DisplayName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.SceneId = params.get("SceneId")
+        self.DisplayName = params.get("DisplayName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Snapshot(AbstractModel):

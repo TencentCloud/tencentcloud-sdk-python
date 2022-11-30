@@ -2108,7 +2108,7 @@ class DescribeDeviceLocationSolveResponse(AbstractModel):
         r"""
         :param Longitude: 经度
         :type Longitude: float
-        :param Latitude: 维度
+        :param Latitude: 纬度
         :type Latitude: float
         :param LocationType: 类型
         :type LocationType: str

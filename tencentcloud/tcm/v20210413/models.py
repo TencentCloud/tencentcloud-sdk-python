@@ -633,12 +633,12 @@ class DescribeAccessLogConfigResponse(AbstractModel):
         :type File: str
         :param Format: 访问日志的格式。
         :type Format: str
-        :param Encoding: 访问日志输出编码。默认 “TEXT”。除此之外还有“JSON”
+        :param Encoding: 访问日志输出编码，可取值为 "TEXT" 或 "JSON"，默认 TEXT"
         :type Encoding: str
         :param SelectedRange: 选中的范围
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelectedRange: :class:`tencentcloud.tcm.v20210413.models.SelectedRange`
-        :param Template: 采用的模板，可取值为"istio, trace，默认为istio
+        :param Template: 采用的模板，可取值为"istio" 或 "trace"，默认为"istio"
         :type Template: str
         :param CLS: 腾讯云日志服务相关参数
         :type CLS: :class:`tencentcloud.tcm.v20210413.models.CLS`

@@ -344,6 +344,123 @@ class DescribeInstanceShardsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSpecRequest(AbstractModel):
+    """DescribeSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 地域信息，例如"ap-guangzhou-1"
+        :type Zone: str
+        :param PayMode: 计费类型，PREPAID 包年包月，POSTPAID_BY_HOUR 按量计费
+        :type PayMode: str
+        :param IsElastic: 是否弹性ck
+        :type IsElastic: bool
+        """
+        self.Zone = None
+        self.PayMode = None
+        self.IsElastic = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.PayMode = params.get("PayMode")
+        self.IsElastic = params.get("IsElastic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpecResponse(AbstractModel):
+    """DescribeSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CommonSpec: zookeeper节点规格描述
+        :type CommonSpec: list of ResourceSpec
+        :param DataSpec: 数据节点规格描述
+        :type DataSpec: list of ResourceSpec
+        :param AttachCBSSpec: 云盘列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachCBSSpec: list of DiskSpec
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CommonSpec = None
+        self.DataSpec = None
+        self.AttachCBSSpec = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CommonSpec") is not None:
+            self.CommonSpec = []
+            for item in params.get("CommonSpec"):
+                obj = ResourceSpec()
+                obj._deserialize(item)
+                self.CommonSpec.append(obj)
+        if params.get("DataSpec") is not None:
+            self.DataSpec = []
+            for item in params.get("DataSpec"):
+                obj = ResourceSpec()
+                obj._deserialize(item)
+                self.DataSpec.append(obj)
+        if params.get("AttachCBSSpec") is not None:
+            self.AttachCBSSpec = []
+            for item in params.get("AttachCBSSpec"):
+                obj = DiskSpec()
+                obj._deserialize(item)
+                self.AttachCBSSpec.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DiskSpec(AbstractModel):
+    """磁盘规格描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskType: 磁盘类型，例如“CLOUD_SSD", "LOCAL_SSD"等
+        :type DiskType: str
+        :param DiskDesc: 磁盘类型说明，例如"云SSD", "本地SSD"等
+        :type DiskDesc: str
+        :param MinDiskSize: 磁盘最小规格大小，单位G
+        :type MinDiskSize: int
+        :param MaxDiskSize: 磁盘最大规格大小，单位G
+        :type MaxDiskSize: int
+        :param DiskCount: 磁盘数目
+        :type DiskCount: int
+        """
+        self.DiskType = None
+        self.DiskDesc = None
+        self.MinDiskSize = None
+        self.MaxDiskSize = None
+        self.DiskCount = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskDesc = params.get("DiskDesc")
+        self.MinDiskSize = params.get("MinDiskSize")
+        self.MaxDiskSize = params.get("MaxDiskSize")
+        self.DiskCount = params.get("DiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyClusterConfigsRequest(AbstractModel):
     """ModifyClusterConfigs请求参数结构体
 
@@ -476,3 +593,75 @@ class OpenBackUpResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ResourceSpec(AbstractModel):
+    """资源规格描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 规格名称，例如“SCH1"
+        :type Name: str
+        :param Cpu: cpu核数
+        :type Cpu: int
+        :param Mem: 内存大小，单位G
+        :type Mem: int
+        :param Type: 分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO
+        :type Type: str
+        :param SystemDisk: 系统盘描述信息
+        :type SystemDisk: :class:`tencentcloud.cdwch.v20200915.models.DiskSpec`
+        :param DataDisk: 数据盘描述信息
+        :type DataDisk: :class:`tencentcloud.cdwch.v20200915.models.DiskSpec`
+        :param MaxNodeSize: 最大节点数目限制
+        :type MaxNodeSize: int
+        :param Available: 是否可用，false代表售罄
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Available: bool
+        :param ComputeSpecDesc: 规格描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeSpecDesc: str
+        :param DisplayName: 规格名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param InstanceQuota: 库存数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceQuota: int
+        """
+        self.Name = None
+        self.Cpu = None
+        self.Mem = None
+        self.Type = None
+        self.SystemDisk = None
+        self.DataDisk = None
+        self.MaxNodeSize = None
+        self.Available = None
+        self.ComputeSpecDesc = None
+        self.DisplayName = None
+        self.InstanceQuota = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
+        self.Type = params.get("Type")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = DiskSpec()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisk") is not None:
+            self.DataDisk = DiskSpec()
+            self.DataDisk._deserialize(params.get("DataDisk"))
+        self.MaxNodeSize = params.get("MaxNodeSize")
+        self.Available = params.get("Available")
+        self.ComputeSpecDesc = params.get("ComputeSpecDesc")
+        self.DisplayName = params.get("DisplayName")
+        self.InstanceQuota = params.get("InstanceQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

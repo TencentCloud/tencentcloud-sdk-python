@@ -432,6 +432,35 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAllScenes(self, request):
+        """本接口(DescribeAllScenes)用于查询全地域使用场景列表。
+
+        :param request: Request instance for DescribeAllScenes.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeAllScenesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeAllScenesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllScenes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAllScenesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBlueprintInstances(self, request):
         """本接口（DescribeBlueprintInstances）用于查询镜像实例信息。
 
@@ -1131,6 +1160,35 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResetInstanceBlueprintsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScenes(self, request):
+        """本接口(DescribeScenes)用于查看使用场景列表。
+
+        :param request: Request instance for DescribeScenes.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeScenesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeScenesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScenes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScenesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
