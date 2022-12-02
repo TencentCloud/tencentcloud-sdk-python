@@ -2231,6 +2231,96 @@ class CreateClusterNodePoolResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateClusterReleaseRequest(AbstractModel):
+    """CreateClusterRelease请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Name: 应用名称
+        :type Name: str
+        :param Namespace: 应用命名空间
+        :type Namespace: str
+        :param Chart: 制品名称或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
+        :type Chart: str
+        :param Values: 自定义参数
+        :type Values: :class:`tencentcloud.tke.v20180525.models.ReleaseValues`
+        :param ChartFrom: 制品来源，范围：tke-market/tcr/other
+        :type ChartFrom: str
+        :param ChartVersion: 制品版本
+        :type ChartVersion: str
+        :param ChartRepoURL: 制品仓库URL地址
+        :type ChartRepoURL: str
+        :param Username: 制品访问用户名
+        :type Username: str
+        :param Password: 制品访问密码
+        :type Password: str
+        :param ChartNamespace: 制品命名空间
+        :type ChartNamespace: str
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.Namespace = None
+        self.Chart = None
+        self.Values = None
+        self.ChartFrom = None
+        self.ChartVersion = None
+        self.ChartRepoURL = None
+        self.Username = None
+        self.Password = None
+        self.ChartNamespace = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.Chart = params.get("Chart")
+        if params.get("Values") is not None:
+            self.Values = ReleaseValues()
+            self.Values._deserialize(params.get("Values"))
+        self.ChartFrom = params.get("ChartFrom")
+        self.ChartVersion = params.get("ChartVersion")
+        self.ChartRepoURL = params.get("ChartRepoURL")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        self.ChartNamespace = params.get("ChartNamespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterReleaseResponse(AbstractModel):
+    """CreateClusterRelease返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Release: 应用详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Release = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Release") is not None:
+            self.Release = PendingRelease()
+            self.Release._deserialize(params.get("Release"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClusterRequest(AbstractModel):
     """CreateCluster请求参数结构体
 
@@ -13223,6 +13313,61 @@ class OIDCConfigAuthenticationOptions(AbstractModel):
         
 
 
+class PendingRelease(AbstractModel):
+    """应用市场安装的Pending应用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Condition: 应用状态详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Condition: str
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ID: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param Name: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Namespace: 应用命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param Status: 应用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param UpdatedTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        """
+        self.Condition = None
+        self.CreatedTime = None
+        self.ID = None
+        self.Name = None
+        self.Namespace = None
+        self.Status = None
+        self.UpdatedTime = None
+
+
+    def _deserialize(self, params):
+        self.Condition = params.get("Condition")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ID = params.get("ID")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.Status = params.get("Status")
+        self.UpdatedTime = params.get("UpdatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PodLimitsByType(AbstractModel):
     """某机型可支持的最大 VPC-CNI 模式的 Pod 数量
 
@@ -14865,6 +15010,34 @@ class RegionInstance(AbstractModel):
         self.FeatureGates = params.get("FeatureGates")
         self.Alias = params.get("Alias")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseValues(AbstractModel):
+    """应用市场自定义参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RawOriginal: 自定义参数原始值
+        :type RawOriginal: str
+        :param ValuesType: 自定义参数值类型
+        :type ValuesType: str
+        """
+        self.RawOriginal = None
+        self.ValuesType = None
+
+
+    def _deserialize(self, params):
+        self.RawOriginal = params.get("RawOriginal")
+        self.ValuesType = params.get("ValuesType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -65,6 +65,9 @@ LIMITEXCEEDED_ROUTEOVERLIMIT = 'LimitExceeded.RouteOverLimit'
 # SASL路由超过限制。
 LIMITEXCEEDED_ROUTESASLOVERLIMIT = 'LimitExceeded.RouteSASLOverLimit'
 
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
+
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 

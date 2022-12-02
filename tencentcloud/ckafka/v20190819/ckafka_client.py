@@ -345,6 +345,35 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInstancePost(self, request):
+        """创建按量计费实例
+
+        :param request: Request instance for CreateInstancePost.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstancePost", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstancePostResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateInstancePre(self, request):
         """创建实例(预付费包年包月)
 
@@ -1666,6 +1695,35 @@ class CkafkaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FetchMessageListByOffsetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def InquireCkafkaPrice(self, request):
+        """Ckafka实例购买/续费询价
+
+        :param request: Request instance for InquireCkafkaPrice.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquireCkafkaPrice", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquireCkafkaPriceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

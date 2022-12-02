@@ -1968,6 +1968,77 @@ class CreateDatahubTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInstancePostRequest(AbstractModel):
+    """CreateInstancePost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :type InstanceName: str
+        :param BandWidth: 实例带宽
+        :type BandWidth: int
+        :param VpcId: vpcId，不填默认基础网络
+        :type VpcId: str
+        :param SubnetId: 子网id，vpc网络需要传该参数，基础网络可以不传
+        :type SubnetId: str
+        :param MsgRetentionTime: 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+        :type MsgRetentionTime: int
+        :param ZoneId: 可用区
+        :type ZoneId: int
+        :param ClusterId: 创建实例时可以选择集群Id, 该入参表示集群Id
+        :type ClusterId: int
+        """
+        self.InstanceName = None
+        self.BandWidth = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.MsgRetentionTime = None
+        self.ZoneId = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.BandWidth = params.get("BandWidth")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.MsgRetentionTime = params.get("MsgRetentionTime")
+        self.ZoneId = params.get("ZoneId")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstancePostResponse(AbstractModel):
+    """CreateInstancePost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInstancePreData(AbstractModel):
     """创建预付费接口返回的Data
 
@@ -6852,6 +6923,409 @@ class GroupResponse(AbstractModel):
         
 
 
+class InquireCkafkaPriceRequest(AbstractModel):
+    """InquireCkafkaPrice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceType: 国内站标准版填写standards2, 专业版填写profession
+        :type InstanceType: str
+        :param InstanceChargeParam: 购买/续费付费类型(购买时不填的话, 默认获取购买包年包月一个月的费用)
+        :type InstanceChargeParam: :class:`tencentcloud.ckafka.v20190819.models.InstanceChargeParam`
+        :param InstanceNum: 购买/续费时购买的实例数量(不填时, 默认为1个)
+        :type InstanceNum: int
+        :param Bandwidth: 实例内网带宽大小, 单位MB/s (购买时必填)
+        :type Bandwidth: int
+        :param InquiryDiskParam: 实例的硬盘购买类型以及大小 (购买时必填)
+        :type InquiryDiskParam: :class:`tencentcloud.ckafka.v20190819.models.InquiryDiskParam`
+        :param MessageRetention: 实例消息保留时间大小, 单位小时 (购买时必填)
+        :type MessageRetention: int
+        :param Topic: 购买实例topic数, 单位个 (购买时必填)
+        :type Topic: int
+        :param Partition: 购买实例分区数, 单位个 (购买时必填)
+        :type Partition: int
+        :param ZoneIds: 购买地域, 可通过查看DescribeCkafkaZone这个接口获取ZoneId
+        :type ZoneIds: list of int
+        :param CategoryAction: 标记操作, 新购填写purchase, 续费填写renew, (不填时, 默认为purchase)
+        :type CategoryAction: str
+        :param BillType: 国内站购买的版本, sv_ckafka_instance_s2_1(入门型), sv_ckafka_instance_s2_2(标准版), sv_ckafka_instance_s2_3(进阶型), 如果instanceType为standards2, 但该参数为空, 则默认值为sv_ckafka_instance_s2_1
+        :type BillType: str
+        :param PublicNetworkParam: 公网带宽计费模式, 目前只有专业版支持公网带宽 (购买公网带宽时必填)
+        :type PublicNetworkParam: :class:`tencentcloud.ckafka.v20190819.models.InquiryPublicNetworkParam`
+        :param InstanceId: 续费时的实例id, 续费时填写
+        :type InstanceId: str
+        """
+        self.InstanceType = None
+        self.InstanceChargeParam = None
+        self.InstanceNum = None
+        self.Bandwidth = None
+        self.InquiryDiskParam = None
+        self.MessageRetention = None
+        self.Topic = None
+        self.Partition = None
+        self.ZoneIds = None
+        self.CategoryAction = None
+        self.BillType = None
+        self.PublicNetworkParam = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        if params.get("InstanceChargeParam") is not None:
+            self.InstanceChargeParam = InstanceChargeParam()
+            self.InstanceChargeParam._deserialize(params.get("InstanceChargeParam"))
+        self.InstanceNum = params.get("InstanceNum")
+        self.Bandwidth = params.get("Bandwidth")
+        if params.get("InquiryDiskParam") is not None:
+            self.InquiryDiskParam = InquiryDiskParam()
+            self.InquiryDiskParam._deserialize(params.get("InquiryDiskParam"))
+        self.MessageRetention = params.get("MessageRetention")
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.ZoneIds = params.get("ZoneIds")
+        self.CategoryAction = params.get("CategoryAction")
+        self.BillType = params.get("BillType")
+        if params.get("PublicNetworkParam") is not None:
+            self.PublicNetworkParam = InquiryPublicNetworkParam()
+            self.PublicNetworkParam._deserialize(params.get("PublicNetworkParam"))
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquireCkafkaPriceResp(AbstractModel):
+    """InquireCkafkaPrice接口询价返回值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstancePrice: 实例价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancePrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
+        :param PublicNetworkBandwidthPrice: 公网带宽价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicNetworkBandwidthPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
+        """
+        self.InstancePrice = None
+        self.PublicNetworkBandwidthPrice = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self.InstancePrice = InquiryPrice()
+            self.InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("PublicNetworkBandwidthPrice") is not None:
+            self.PublicNetworkBandwidthPrice = InquiryPrice()
+            self.PublicNetworkBandwidthPrice._deserialize(params.get("PublicNetworkBandwidthPrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquireCkafkaPriceResponse(AbstractModel):
+    """InquireCkafkaPrice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 出参
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InquireCkafkaPriceResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryBasePrice(AbstractModel):
+    """询价返回参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnitPrice: 单位原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: float
+        :param UnitPriceDiscount: 折扣单位价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscount: float
+        :param OriginalPrice: 合计原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPrice: float
+        :param DiscountPrice: 折扣合计价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPrice: float
+        :param Discount: 折扣(单位是%)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: float
+        :param GoodsNum: 商品数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsNum: int
+        :param Currency: 付费货币
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Currency: str
+        :param DiskType: 硬盘专用返回参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param TimeSpan: 购买时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: int
+        :param TimeUnit: 购买时长单位("m"按月, "h"按小时)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param Value: 购买数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: int
+        """
+        self.UnitPrice = None
+        self.UnitPriceDiscount = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+        self.Discount = None
+        self.GoodsNum = None
+        self.Currency = None
+        self.DiskType = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.UnitPrice = params.get("UnitPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.Discount = params.get("Discount")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Currency = params.get("Currency")
+        self.DiskType = params.get("DiskType")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryDetailPrice(AbstractModel):
+    """详细类别的价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BandwidthPrice: 额外内网带宽价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        :param DiskPrice: 硬盘价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        :param PartitionPrice: 额外分区价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        :param TopicPrice: 额外Topic价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicPrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        :param InstanceTypePrice: 实例套餐价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTypePrice: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
+        self.BandwidthPrice = None
+        self.DiskPrice = None
+        self.PartitionPrice = None
+        self.TopicPrice = None
+        self.InstanceTypePrice = None
+
+
+    def _deserialize(self, params):
+        if params.get("BandwidthPrice") is not None:
+            self.BandwidthPrice = InquiryBasePrice()
+            self.BandwidthPrice._deserialize(params.get("BandwidthPrice"))
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = InquiryBasePrice()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
+        if params.get("PartitionPrice") is not None:
+            self.PartitionPrice = InquiryBasePrice()
+            self.PartitionPrice._deserialize(params.get("PartitionPrice"))
+        if params.get("TopicPrice") is not None:
+            self.TopicPrice = InquiryBasePrice()
+            self.TopicPrice._deserialize(params.get("TopicPrice"))
+        if params.get("InstanceTypePrice") is not None:
+            self.InstanceTypePrice = InquiryBasePrice()
+            self.InstanceTypePrice._deserialize(params.get("InstanceTypePrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryDiskParam(AbstractModel):
+    """购买硬盘参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskType: 购买硬盘类型: SSD(SSD), CLOUD_SSD(SSD云硬盘), CLOUD_PREMIUM(高性能云硬盘), CLOUD_BASIC(云盘)
+        :type DiskType: str
+        :param DiskSize: 购买硬盘大小: 单位GB
+        :type DiskSize: int
+        """
+        self.DiskType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPrice(AbstractModel):
+    """询价返回参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnitPrice: 单位原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: float
+        :param UnitPriceDiscount: 折扣单位价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscount: float
+        :param OriginalPrice: 合计原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPrice: float
+        :param DiscountPrice: 折扣合计价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPrice: float
+        :param Discount: 折扣(单位是%)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: float
+        :param GoodsNum: 商品数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsNum: int
+        :param Currency: 付费货币
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Currency: str
+        :param DiskType: 硬盘专用返回参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param TimeSpan: 购买时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: int
+        :param TimeUnit: 购买时长单位("m"按月, "h"按小时)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param Value: 购买数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: int
+        :param DetailPrices: 详细类别的价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetailPrices: :class:`tencentcloud.ckafka.v20190819.models.InquiryDetailPrice`
+        """
+        self.UnitPrice = None
+        self.UnitPriceDiscount = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+        self.Discount = None
+        self.GoodsNum = None
+        self.Currency = None
+        self.DiskType = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.Value = None
+        self.DetailPrices = None
+
+
+    def _deserialize(self, params):
+        self.UnitPrice = params.get("UnitPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.Discount = params.get("Discount")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Currency = params.get("Currency")
+        self.DiskType = params.get("DiskType")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.Value = params.get("Value")
+        if params.get("DetailPrices") is not None:
+            self.DetailPrices = InquiryDetailPrice()
+            self.DetailPrices._deserialize(params.get("DetailPrices"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPublicNetworkParam(AbstractModel):
+    """公网带宽参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PublicNetworkChargeType: 公网计费模式: BANDWIDTH_PREPAID(包年包月), BANDWIDTH_POSTPAID_BY_HOUR(带宽按小时计费)
+        :type PublicNetworkChargeType: str
+        :param PublicNetworkMonthly: 公网带宽, 单位MB
+        :type PublicNetworkMonthly: int
+        """
+        self.PublicNetworkChargeType = None
+        self.PublicNetworkMonthly = None
+
+
+    def _deserialize(self, params):
+        self.PublicNetworkChargeType = params.get("PublicNetworkChargeType")
+        self.PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Instance(AbstractModel):
     """实例对象
 
@@ -7071,6 +7545,34 @@ class InstanceAttributesResponse(AbstractModel):
         if params.get("DynamicDiskConfig") is not None:
             self.DynamicDiskConfig = DynamicDiskConfig()
             self.DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceChargeParam(AbstractModel):
+    """实例购买付费参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceChargeType: 实例付费类型: PREPAID(包年包月), POSTPAID_BY_HOUR(按量付费)
+        :type InstanceChargeType: str
+        :param InstanceChargePeriod: 购买时长: 包年包月时需要填写, 按量计费无需填写
+        :type InstanceChargePeriod: int
+        """
+        self.InstanceChargeType = None
+        self.InstanceChargePeriod = None
+
+
+    def _deserialize(self, params):
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InstanceChargePeriod = params.get("InstanceChargePeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
