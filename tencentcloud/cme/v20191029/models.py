@@ -2054,7 +2054,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param TaskType: 任务类型，取值有：
 <li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
         :type TaskType: str
-        :param VideoEditProjectOutput: 导出项目输出信息。
+        :param VideoEditProjectOutput: 导出项目输出信息。仅当 TaskType 为 VIDEO_EDIT_PROJECT_EXPORT 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoEditProjectOutput: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectOutput`
         :param CreateTime: 创建时间，格式按照 ISO 8601 标准表示。

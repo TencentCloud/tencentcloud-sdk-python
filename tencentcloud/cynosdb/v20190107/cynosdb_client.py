@@ -1679,6 +1679,35 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ResetAccountPassword(self, request):
+        """本接口(ResetAccountPassword)用于重置实例的数据库账号密码。
+
+        :param request: Request instance for ResetAccountPassword.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ResetAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ResetAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetAccountPasswordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResumeServerless(self, request):
         """恢复serverless集群
 
@@ -1766,6 +1795,64 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SearchClusterDatabases(self, request):
+        """本接口(SearchClusterDatabases)搜索集群database列表
+
+        :param request: Request instance for SearchClusterDatabases.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.SearchClusterDatabasesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SearchClusterDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchClusterDatabases", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchClusterDatabasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchClusterTables(self, request):
+        """本接口(SearchClusterTables)搜索集群数据表列表
+
+        :param request: Request instance for SearchClusterTables.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.SearchClusterTablesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SearchClusterTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchClusterTables", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchClusterTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetRenewFlag(self, request):
         """SetRenewFlag设置实例的自动续费功能
 
@@ -1810,6 +1897,35 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchClusterZoneResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchProxyVpc(self, request):
+        """本接口(SwitchProxyVpc)更换数据库代理vpc
+
+        :param request: Request instance for SwitchProxyVpc.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.SwitchProxyVpcRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SwitchProxyVpcResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchProxyVpc", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchProxyVpcResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -304,6 +304,8 @@ class BatchUpdateFirmwareRequest(AbstractModel):
         :type FileSize: int
         :param DeviceNames: 需要升级的设备名称列表
         :type DeviceNames: list of str
+        :param TimeoutInterval: 固件升级任务默认超时时间。 最小取值60秒，最大为3600秒
+        :type TimeoutInterval: int
         """
         self.ProductID = None
         self.FirmwareVersion = None
@@ -313,6 +315,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
         self.FileMd5 = None
         self.FileSize = None
         self.DeviceNames = None
+        self.TimeoutInterval = None
 
 
     def _deserialize(self, params):
@@ -324,6 +327,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
         self.FileMd5 = params.get("FileMd5")
         self.FileSize = params.get("FileSize")
         self.DeviceNames = params.get("DeviceNames")
+        self.TimeoutInterval = params.get("TimeoutInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3770,6 +3774,9 @@ class DescribeFirmwareResponse(AbstractModel):
         :type Createtime: int
         :param ProductName: 产品名称
         :type ProductName: str
+        :param FwType: 固件升级模块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3780,6 +3787,7 @@ class DescribeFirmwareResponse(AbstractModel):
         self.Md5sum = None
         self.Createtime = None
         self.ProductName = None
+        self.FwType = None
         self.RequestId = None
 
 
@@ -3791,6 +3799,7 @@ class DescribeFirmwareResponse(AbstractModel):
         self.Md5sum = params.get("Md5sum")
         self.Createtime = params.get("Createtime")
         self.ProductName = params.get("ProductName")
+        self.FwType = params.get("FwType")
         self.RequestId = params.get("RequestId")
 
 
@@ -5184,6 +5193,9 @@ class FirmwareInfo(AbstractModel):
         :type Description: str
         :param ProductId: 产品ID
         :type ProductId: str
+        :param FwType: 固件升级模块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwType: str
         """
         self.Version = None
         self.Md5sum = None
@@ -5192,6 +5204,7 @@ class FirmwareInfo(AbstractModel):
         self.Name = None
         self.Description = None
         self.ProductId = None
+        self.FwType = None
 
 
     def _deserialize(self, params):
@@ -5202,6 +5215,7 @@ class FirmwareInfo(AbstractModel):
         self.Name = params.get("Name")
         self.Description = params.get("Description")
         self.ProductId = params.get("ProductId")
+        self.FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6860,6 +6874,8 @@ class UploadFirmwareRequest(AbstractModel):
         :type FirmwareName: str
         :param FirmwareDescription: 固件描述
         :type FirmwareDescription: str
+        :param FwType: 固件升级模块；可选值 mcu|moudule
+        :type FwType: str
         """
         self.ProductID = None
         self.FirmwareVersion = None
@@ -6867,6 +6883,7 @@ class UploadFirmwareRequest(AbstractModel):
         self.FileSize = None
         self.FirmwareName = None
         self.FirmwareDescription = None
+        self.FwType = None
 
 
     def _deserialize(self, params):
@@ -6876,6 +6893,7 @@ class UploadFirmwareRequest(AbstractModel):
         self.FileSize = params.get("FileSize")
         self.FirmwareName = params.get("FirmwareName")
         self.FirmwareDescription = params.get("FirmwareDescription")
+        self.FwType = params.get("FwType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

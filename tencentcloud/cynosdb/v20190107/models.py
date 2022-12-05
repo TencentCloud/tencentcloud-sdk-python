@@ -5508,6 +5508,59 @@ class RemoveClusterSlaveZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResetAccountPasswordRequest(AbstractModel):
+    """ResetAccountPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountName: 数据库账号名
+        :type AccountName: str
+        :param AccountPassword: 数据库账号新密码
+        :type AccountPassword: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Host: 主机，不填默认为"%"
+        :type Host: str
+        """
+        self.AccountName = None
+        self.AccountPassword = None
+        self.ClusterId = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.AccountName = params.get("AccountName")
+        self.AccountPassword = params.get("AccountPassword")
+        self.ClusterId = params.get("ClusterId")
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetAccountPasswordResponse(AbstractModel):
+    """ResetAccountPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResumeServerlessRequest(AbstractModel):
     """ResumeServerless请求参数结构体
 
@@ -5809,6 +5862,128 @@ class RollbackTimeRange(AbstractModel):
         
 
 
+class SearchClusterDatabasesRequest(AbstractModel):
+    """SearchClusterDatabases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Database: 数据库名
+        :type Database: str
+        :param MatchType: 是否精确搜索。
+0: 模糊搜索 1:精确搜索 
+默认为0
+        :type MatchType: int
+        """
+        self.ClusterId = None
+        self.Database = None
+        self.MatchType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Database = params.get("Database")
+        self.MatchType = params.get("MatchType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchClusterDatabasesResponse(AbstractModel):
+    """SearchClusterDatabases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Databases: 数据库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Databases: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Databases = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Databases = params.get("Databases")
+        self.RequestId = params.get("RequestId")
+
+
+class SearchClusterTablesRequest(AbstractModel):
+    """SearchClusterTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Database: 数据库名
+        :type Database: str
+        :param Table: 数据表名
+        :type Table: str
+        :param TableType: 数据表类型：
+view：只返回 view，
+base_table： 只返回基本表，
+all：返回 view 和表
+        :type TableType: str
+        """
+        self.ClusterId = None
+        self.Database = None
+        self.Table = None
+        self.TableType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.TableType = params.get("TableType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchClusterTablesResponse(AbstractModel):
+    """SearchClusterTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tables: 数据表列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tables: list of DatabaseTables
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Tables = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tables") is not None:
+            self.Tables = []
+            for item in params.get("Tables"):
+                obj = DatabaseTables()
+                obj._deserialize(item)
+                self.Tables.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class SecurityGroup(AbstractModel):
     """安全组详情
 
@@ -6024,6 +6199,67 @@ class SwitchClusterZoneResponse(AbstractModel):
     def __init__(self):
         r"""
         :param FlowId: 异步FlowId
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class SwitchProxyVpcRequest(AbstractModel):
+    """SwitchProxyVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param UniqVpcId: 字符串vpc id
+        :type UniqVpcId: str
+        :param UniqSubnetId: 字符串子网id
+        :type UniqSubnetId: str
+        :param OldIpReserveHours: 旧地址回收时间
+        :type OldIpReserveHours: int
+        :param ProxyGroupId: 数据库代理组Id
+        :type ProxyGroupId: str
+        """
+        self.ClusterId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.OldIpReserveHours = None
+        self.ProxyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.OldIpReserveHours = params.get("OldIpReserveHours")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchProxyVpcResponse(AbstractModel):
+    """SwitchProxyVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步任务id。
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

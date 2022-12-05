@@ -2179,7 +2179,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param JobId: 同步任务id，如sync-werwfs23
         :type JobId: str
         :param JobName: 同步任务名
         :type JobName: str
@@ -2593,6 +2593,9 @@ class Endpoint(AbstractModel):
         :param TmpToken: 临时Token，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
+        :param RoleExternalId: 外部角色id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleExternalId: str
         """
         self.Region = None
         self.DbKernel = None
@@ -2616,6 +2619,7 @@ class Endpoint(AbstractModel):
         self.TmpSecretId = None
         self.TmpSecretKey = None
         self.TmpToken = None
+        self.RoleExternalId = None
 
 
     def _deserialize(self, params):
@@ -2641,6 +2645,7 @@ class Endpoint(AbstractModel):
         self.TmpSecretId = params.get("TmpSecretId")
         self.TmpSecretKey = params.get("TmpSecretKey")
         self.TmpToken = params.get("TmpToken")
+        self.RoleExternalId = params.get("RoleExternalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4187,11 +4192,15 @@ class StepTip(AbstractModel):
         :param HelpDoc: 帮助文档
 注意：此字段可能返回 null，表示取不到有效值。
         :type HelpDoc: str
+        :param SkipInfo: 当前步骤跳过信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkipInfo: str
         """
         self.Code = None
         self.Message = None
         self.Solution = None
         self.HelpDoc = None
+        self.SkipInfo = None
 
 
     def _deserialize(self, params):
@@ -4199,6 +4208,7 @@ class StepTip(AbstractModel):
         self.Message = params.get("Message")
         self.Solution = params.get("Solution")
         self.HelpDoc = params.get("HelpDoc")
+        self.SkipInfo = params.get("SkipInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4407,19 +4417,19 @@ class SyncJobInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 同步任务id
+        :param JobId: 同步任务id，如：sync-btso140
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param JobName: 同步任务名
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobName: str
-        :param PayMode: 付款方式
+        :param PayMode: 付款方式，PostPay(按量付费)、PrePay(包年包月)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: str
-        :param RunMode: 运行模式
+        :param RunMode: 运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunMode: str
-        :param ExpectRunTime: 期待运行时间
+        :param ExpectRunTime: 期待运行时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpectRunTime: str
         :param AllActions: 支持的所有操作
@@ -4437,51 +4447,63 @@ class SyncJobInfo(AbstractModel):
         :param Specification: 任务规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type Specification: str
-        :param ExpireTime: 过期时间
+        :param ExpireTime: 过期时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param SrcRegion: 源端地域
+        :param SrcRegion: 源端地域，如：ap-guangzhou等
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcRegion: str
-        :param SrcDatabaseType: 源端数据库类型
+        :param SrcDatabaseType: 源端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcDatabaseType: str
-        :param SrcAccessType: 源端接入类型
+        :param SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcAccessType: str
         :param SrcInfo: 源端信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param DstRegion: 目标端地域
+        :param DstRegion: 目标端地域，如：ap-guangzhou等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstRegion: str
-        :param DstDatabaseType: 目标端数据库类型
+        :param DstDatabaseType: 目标端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstDatabaseType: str
-        :param DstAccessType: 目标端接入类型
+        :param DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstAccessType: str
         :param DstInfo: 目标端信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param CreateTime: 创建时间
+        :param CreateTime: 创建时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param Status: 任务状态
+        :param Status: 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已停止)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param Tags: 标签相关
+        :param Tags: 标签相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
         :param Detail: 同步任务运行步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: :class:`tencentcloud.dts.v20211206.models.SyncDetailInfo`
+        :param TradeStatus: 用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeStatus: str
+        :param InstanceClass: 同步链路规格，如micro,small,medium,large
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceClass: str
+        :param AutoRenew: 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenew: int
+        :param OfflineTime: 下线时间，格式为 yyyy-mm-dd hh:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineTime: str
         """
         self.JobId = None
         self.JobName = None
@@ -4508,6 +4530,10 @@ class SyncJobInfo(AbstractModel):
         self.Status = None
         self.Tags = None
         self.Detail = None
+        self.TradeStatus = None
+        self.InstanceClass = None
+        self.AutoRenew = None
+        self.OfflineTime = None
 
 
     def _deserialize(self, params):
@@ -4551,6 +4577,10 @@ class SyncJobInfo(AbstractModel):
         if params.get("Detail") is not None:
             self.Detail = SyncDetailInfo()
             self.Detail._deserialize(params.get("Detail"))
+        self.TradeStatus = params.get("TradeStatus")
+        self.InstanceClass = params.get("InstanceClass")
+        self.AutoRenew = params.get("AutoRenew")
+        self.OfflineTime = params.get("OfflineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

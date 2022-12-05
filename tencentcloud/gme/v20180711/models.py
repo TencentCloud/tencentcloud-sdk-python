@@ -1822,11 +1822,11 @@ class ModifyUserMicStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BizId: 应用ID
+        :param BizId: 来自 [腾讯云控制台](https://console.cloud.tencent.com/gamegme) 的 GME 服务提供的 AppID，获取请参考 [语音服务开通指引](https://cloud.tencent.com/document/product/607/10782#.E9.87.8D.E7.82.B9.E5.8F.82.E6.95.B0)。
         :type BizId: int
-        :param RoomId: 房间ID
+        :param RoomId: 实时语音房间号。
         :type RoomId: str
-        :param Users: 用户麦克风状态，数组长度不超过20
+        :param Users: 需要操作的房间内用户以及该用户的目标麦克风状态。
         :type Users: list of UserMicStatus
         """
         self.BizId = None
@@ -1859,9 +1859,9 @@ class ModifyUserMicStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回结果：0为成功，非0为失败
+        :param Result: 返回结果：0为成功，非0为失败。
         :type Result: int
-        :param ErrMsg: 错误信息
+        :param ErrMsg: 错误信息。
         :type ErrMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2564,9 +2564,9 @@ class UserMicStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uid: 用户ID
+        :param Uid: 客户端用于标识用户的Openid。
         :type Uid: int
-        :param EnableMic: 是否开麦 。1闭麦  2开麦
+        :param EnableMic: 开麦状态。1表示关闭麦克风，2表示打开麦克风。
         :type EnableMic: int
         """
         self.Uid = None

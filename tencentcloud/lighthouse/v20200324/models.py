@@ -1278,7 +1278,7 @@ class DescribeBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 
-每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds 和 Filters 。
         :type Filters: list of Filter
         """
         self.BlueprintIds = None
@@ -4100,12 +4100,15 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
         :param InstancePriceDetailSet: 待续费实例价格列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePriceDetailSet: list of InstancePriceDetail
+        :param TotalPrice: 总计价格。
+        :type TotalPrice: :class:`tencentcloud.lighthouse.v20200324.models.TotalPrice`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Price = None
         self.DataDiskPriceSet = None
         self.InstancePriceDetailSet = None
+        self.TotalPrice = None
         self.RequestId = None
 
 
@@ -4125,6 +4128,9 @@ class InquirePriceRenewInstancesResponse(AbstractModel):
                 obj = InstancePriceDetail()
                 obj._deserialize(item)
                 self.InstancePriceDetailSet.append(obj)
+        if params.get("TotalPrice") is not None:
+            self.TotalPrice = TotalPrice()
+            self.TotalPrice._deserialize(params.get("TotalPrice"))
         self.RequestId = params.get("RequestId")
 
 
@@ -6068,6 +6074,36 @@ class TerminateInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class TotalPrice(AbstractModel):
+    """总计价格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalPrice: 原始总计价格。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPrice: float
+        :param DiscountPrice: 折扣总计价格。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPrice: float
+        """
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TrafficPackage(AbstractModel):

@@ -1721,7 +1721,7 @@ class CreateCcGeoIPBlockConfigRequest(AbstractModel):
         :type Domain: str
         :param Protocol: 协议类型
         :type Protocol: str
-        :param CcGeoIPBlockConfig: CC区域封禁配置，填写参数时配置ID请为空
+        :param CcGeoIPBlockConfig: CC区域封禁配置
         :type CcGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.CcGeoIPBlockConfig`
         """
         self.InstanceId = None
@@ -5798,9 +5798,9 @@ class DescribeOverviewAttackTrendRequest(AbstractModel):
         :type Dimension: str
         :param Period: 周期，当前仅支持86400
         :type Period: int
-        :param StartTime: 起始时间
+        :param StartTime: 统计开始时间
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 统计结束时间
         :type EndTime: str
         """
         self.Type = None
@@ -5834,9 +5834,9 @@ class DescribeOverviewAttackTrendResponse(AbstractModel):
         r"""
         :param Type: 攻击类型
         :type Type: str
-        :param StartTime: 起始时间
+        :param StartTime: 统计起始时间
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 统计结束时间
         :type EndTime: str
         :param Period: 周期
         :type Period: int
@@ -6180,7 +6180,7 @@ class DescribePendingRiskInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsPaidUsr: 是否为付费用户
+        :param IsPaidUsr: 是否为付费用户，true：付费用户， false：普通用户
         :type IsPaidUsr: bool
         :param AttackingCount: 攻击中的资源数量
         :type AttackingCount: int
@@ -7308,7 +7308,7 @@ class ModifyDDoSBlackWhiteIpListRequest(AbstractModel):
         r"""
         :param InstanceId: 资源Id
         :type InstanceId: str
-        :param OldIpType: 当前黑名单类型，取值black时黑名单；取值white时白名单
+        :param OldIpType: 当前配置的黑白名单类型，取值black时表示黑名单；取值white时表示白名单
         :type OldIpType: str
         :param OldIp: 当前配置的Ip段，包含ip与掩码
         :type OldIp: :class:`tencentcloud.antiddos.v20200309.models.IpSegment`

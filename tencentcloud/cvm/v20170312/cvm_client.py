@@ -391,7 +391,7 @@ class CvmClient(AbstractClient):
 
 
     def DeleteHpcClusters(self, request):
-        """当高性能计算集群为空, 即集群内没有任何设备时候, 可以删除改集群。
+        """当高性能计算集群为空, 即集群内没有任何设备时候, 可以删除该集群。
 
         :param request: Request instance for DeleteHpcClusters.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteHpcClustersRequest`

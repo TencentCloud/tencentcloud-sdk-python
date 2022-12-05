@@ -2253,6 +2253,9 @@ class Docker(AbstractModel):
         :type MaxRetryCount: int
         :param DelayOnRetry: 拉取Docker镜像失败时延迟时间。单位：秒。
         :type DelayOnRetry: int
+        :param DockerRunOption: Docker命令运行参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DockerRunOption: str
         """
         self.User = None
         self.Password = None
@@ -2260,6 +2263,7 @@ class Docker(AbstractModel):
         self.Server = None
         self.MaxRetryCount = None
         self.DelayOnRetry = None
+        self.DockerRunOption = None
 
 
     def _deserialize(self, params):
@@ -2269,6 +2273,7 @@ class Docker(AbstractModel):
         self.Server = params.get("Server")
         self.MaxRetryCount = params.get("MaxRetryCount")
         self.DelayOnRetry = params.get("DelayOnRetry")
+        self.DockerRunOption = params.get("DockerRunOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

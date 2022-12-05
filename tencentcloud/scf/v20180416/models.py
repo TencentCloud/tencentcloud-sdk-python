@@ -1924,8 +1924,10 @@ class GetFunctionRequest(AbstractModel):
         :param FunctionName: 需要获取详情的函数名称
         :type FunctionName: str
         :param Qualifier: 函数的版本号
+默认值: $LATEST
         :type Qualifier: str
         :param Namespace: 函数所属命名空间
+默认值: default
         :type Namespace: str
         :param ShowCode: 是否显示代码, TRUE表示显示代码，FALSE表示不显示代码,大于1M的入口文件不会显示
         :type ShowCode: str
@@ -4779,6 +4781,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :param Environment: 函数的环境变量
         :type Environment: :class:`tencentcloud.scf.v20180416.models.Environment`
         :param Namespace: 函数所属命名空间
+默认值: default
         :type Namespace: str
         :param VpcConfig: 函数的私有网络配置
         :type VpcConfig: :class:`tencentcloud.scf.v20180416.models.VpcConfig`

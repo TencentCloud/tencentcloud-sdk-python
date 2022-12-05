@@ -687,6 +687,9 @@ class BackupInfo(AbstractModel):
         :type CosStorageType: int
         :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
+        :param EncryptionFlag: 备份文件是否加密， on-加密， off-未加密
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptionFlag: str
         """
         self.Name = None
         self.Size = None
@@ -707,6 +710,7 @@ class BackupInfo(AbstractModel):
         self.RemoteInfo = None
         self.CosStorageType = None
         self.InstanceId = None
+        self.EncryptionFlag = None
 
 
     def _deserialize(self, params):
@@ -734,6 +738,7 @@ class BackupInfo(AbstractModel):
                 self.RemoteInfo.append(obj)
         self.CosStorageType = params.get("CosStorageType")
         self.InstanceId = params.get("InstanceId")
+        self.EncryptionFlag = params.get("EncryptionFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

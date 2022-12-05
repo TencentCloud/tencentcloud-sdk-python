@@ -1923,6 +1923,35 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusZones(self, request):
+        """列出 Prometheus 服务可用区
+
+        :param request: Request instance for DescribePrometheusZones.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusZonesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusZones", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusZonesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRecordingRules(self, request):
         """根据条件查询 Prometheus 预聚合规则
 

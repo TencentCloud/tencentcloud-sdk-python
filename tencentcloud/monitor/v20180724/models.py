@@ -7275,6 +7275,57 @@ class DescribePrometheusScrapeJobsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusZonesRequest(AbstractModel):
+    """DescribePrometheusZones请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionId: 地域 ID
+        :type RegionId: int
+        """
+        self.RegionId = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusZonesResponse(AbstractModel):
+    """DescribePrometheusZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneSet: 区域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneSet: list of PrometheusZoneItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ZoneSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneSet") is not None:
+            self.ZoneSet = []
+            for item in params.get("ZoneSet"):
+                obj = PrometheusZoneItem()
+                obj._deserialize(item)
+                self.ZoneSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRecordingRulesRequest(AbstractModel):
     """DescribeRecordingRules请求参数结构体
 
@@ -10604,6 +10655,46 @@ class PrometheusTag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusZoneItem(AbstractModel):
+    """PrometheusZoneItem 响应结构体内的地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 可用区
+        :type Zone: str
+        :param ZoneId: 可用区 ID
+        :type ZoneId: int
+        :param ZoneState: 可用区状态( 0: 不可用；1: 可用)
+        :type ZoneState: int
+        :param RegionId: 地域 ID
+        :type RegionId: int
+        :param ZoneName: 可用区名（目前为中文）
+        :type ZoneName: str
+        """
+        self.Zone = None
+        self.ZoneId = None
+        self.ZoneState = None
+        self.RegionId = None
+        self.ZoneName = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneState = params.get("ZoneState")
+        self.RegionId = params.get("RegionId")
+        self.ZoneName = params.get("ZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
