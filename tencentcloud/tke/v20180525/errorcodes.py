@@ -155,6 +155,9 @@ FAILEDOPERATION_OSNOTSUPPORT = 'FailedOperation.OsNotSupport'
 # 参数错误。
 FAILEDOPERATION_PARAM = 'FailedOperation.Param'
 
+# gpe错误。
+FAILEDOPERATION_POLICYSERVERCOMMONERROR = 'FailedOperation.PolicyServerCommonError'
+
 # 超过配额限制。
 FAILEDOPERATION_QUOTAMAXCLSLIMIT = 'FailedOperation.QuotaMaxClsLimit'
 

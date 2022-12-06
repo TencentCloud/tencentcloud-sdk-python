@@ -26,7 +26,7 @@ FAILEDOPERATION_CREATEACCOUNT = 'FailedOperation.CreateAccount'
 # 账号实名认证超过上限。
 FAILEDOPERATION_CREATEMEMBERAUTHOVERLIMIT = 'FailedOperation.CreateMemberAuthOverLimit'
 
-# 创建测试失败。
+# 创建策略失败。
 FAILEDOPERATION_CREATEPOLICY = 'FailedOperation.CreatePolicy'
 
 # 创建已成功。
@@ -38,7 +38,7 @@ FAILEDOPERATION_CREATERECORDNOTEXIST = 'FailedOperation.CreateRecordNotExist'
 # 创建角色异常。
 FAILEDOPERATION_CREATEROLE = 'FailedOperation.CreateRole'
 
-# 不能退出自己创业的企业组织。
+# 不能退出自己创建的企业组织。
 FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = 'FailedOperation.DisableQuitSelfCreatedOrganization'
 
 # 查询实名信息出错。

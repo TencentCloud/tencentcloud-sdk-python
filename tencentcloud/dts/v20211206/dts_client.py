@@ -1049,7 +1049,7 @@ class DtsClient(AbstractClient):
 
 
     def StopSyncJob(self, request):
-        """终止同步任务
+        """结束同步任务，操作后可通过查询同步任务信息接口DescribeSyncJobs，获取操作后的状态。
 
         :param request: Request instance for StopSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.StopSyncJobRequest`

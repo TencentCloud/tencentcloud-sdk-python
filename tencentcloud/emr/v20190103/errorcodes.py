@@ -17,6 +17,9 @@
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 操作失败。
+FAILEDOPERATION_CHECKIFSUPPORTPODSTRETCH = 'FailedOperation.CheckIfSupportPodStretch'
+
 # 重复的订单，请检查emr控制台。
 FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = 'FailedOperation.DuplicateOrderNotAllowed'
 

@@ -92,6 +92,74 @@ class AbnormalExperience(AbstractModel):
         
 
 
+class AgentParams(AbstractModel):
+    """转推服务加入TRTC房间的机器人参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 转推服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转推服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+        :type UserId: str
+        :param UserSig: 转推服务加入TRTC房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :type UserSig: str
+        :param MaxIdleTime: 所有参与混流转推的主播持续离开TRTC房间超过MaxIdleTime的时长，自动停止转推，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+        :type MaxIdleTime: int
+        """
+        self.UserId = None
+        self.UserSig = None
+        self.MaxIdleTime = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserSig = params.get("UserSig")
+        self.MaxIdleTime = params.get("MaxIdleTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioEncode(AbstractModel):
+    """音频编码参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SampleRate: 输出流音频采样率。取值为[48000, 44100, 32000, 24000, 16000, 8000]，单位是Hz。
+        :type SampleRate: int
+        :param Channel: 输出流音频声道数，取值范围[1,2]，1表示混流输出音频为单声道，2表示混流输出音频为双声道。
+        :type Channel: int
+        :param BitRate: 输出流音频码率。取值范围[8,500]，单位为kbps。
+        :type BitRate: int
+        :param Codec: 输出流音频编码类型，取值范围[0, 1, 2]，0为LC-AAC，1为HE-AAC，2为HE-AACv2。默认值为0。当音频编码设置为HE-AACv2时，只支持输出流音频声道数为双声道。HE-AAC和HE-AACv2支持的输出流音频采样率范围为[48000, 44100, 32000, 24000, 16000]。
+        :type Codec: int
+        """
+        self.SampleRate = None
+        self.Channel = None
+        self.BitRate = None
+        self.Codec = None
+
+
+    def _deserialize(self, params):
+        self.SampleRate = params.get("SampleRate")
+        self.Channel = params.get("Channel")
+        self.BitRate = params.get("BitRate")
+        self.Codec = params.get("Codec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioParams(AbstractModel):
     """录制音频转码参数。
 
@@ -2064,6 +2132,541 @@ class LayoutParams(AbstractModel):
         
 
 
+class MaxVideoUser(AbstractModel):
+    """指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserMediaStream: 用户媒体流参数。
+        :type UserMediaStream: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
+        self.UserMediaStream = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserMediaStream") is not None:
+            self.UserMediaStream = UserMediaStream()
+            self.UserMediaStream._deserialize(params.get("UserMediaStream"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuAudioParams(AbstractModel):
+    """混流转推的音频相关参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AudioEncode: 音频编码参数。
+        :type AudioEncode: :class:`tencentcloud.trtc.v20190722.models.AudioEncode`
+        :param SubscribeAudioList: 音频用户白名单，start时，为空或不填表示混所有主播音频，填具体值表示混指定主播音频；update时，不填表示不更新，为空表示更新为混所有主播音频，填具体值表示更新为混指定主播音频。
+使用黑白名单时，黑白名单必须同时填写。都不填写时表示不更新。同一个用户同时在黑白名单时，以黑名单为主。
+        :type SubscribeAudioList: list of McuUserInfoParams
+        :param UnSubscribeAudioList: 音频用户黑名单，为空或不填表示无黑名单，填具体值表示不混指定主播音频。update时，不填表示不更新，为空表示更新为清空黑名单，填具体值表示更新为不混指定主播音频。
+使用黑白名单时，黑白名单必须同时填写。都不填写时表示不更新。同一个用户同时在黑白名单时，以黑名单为主。
+        :type UnSubscribeAudioList: list of McuUserInfoParams
+        """
+        self.AudioEncode = None
+        self.SubscribeAudioList = None
+        self.UnSubscribeAudioList = None
+
+
+    def _deserialize(self, params):
+        if params.get("AudioEncode") is not None:
+            self.AudioEncode = AudioEncode()
+            self.AudioEncode._deserialize(params.get("AudioEncode"))
+        if params.get("SubscribeAudioList") is not None:
+            self.SubscribeAudioList = []
+            for item in params.get("SubscribeAudioList"):
+                obj = McuUserInfoParams()
+                obj._deserialize(item)
+                self.SubscribeAudioList.append(obj)
+        if params.get("UnSubscribeAudioList") is not None:
+            self.UnSubscribeAudioList = []
+            for item in params.get("UnSubscribeAudioList"):
+                obj = McuUserInfoParams()
+                obj._deserialize(item)
+                self.UnSubscribeAudioList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuCustomCrop(AbstractModel):
+    """混流自定义裁剪参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocationX: 自定义裁剪起始位置的X偏移，单位为像素值，大于等于0。
+        :type LocationX: int
+        :param LocationY: 自定义裁剪起始位置的Y偏移，单位为像素值，大于等于0。
+        :type LocationY: int
+        :param Width: 自定义裁剪画面的宽度，单位为像素值，大于0，且LocationX+Width不超过10000
+        :type Width: int
+        :param Height: 自定义裁剪画面的高度，单位为像素值，大于0，且LocationY+Height不超过10000
+        :type Height: int
+        """
+        self.LocationX = None
+        self.LocationY = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuFeedBackRoomParams(AbstractModel):
+    """回推房间参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 回推房间的RoomId。
+        :type RoomId: str
+        :param RoomIdType: 房间类型，必须和回推房间所对应的RoomId类型相同，0为整形房间号，1为字符串房间号。
+        :type RoomIdType: int
+        :param UserId: 回推房间使用的UserId(https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转推服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+        :type UserId: str
+        :param UserSig: 回推房间UserId对应的用户签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :type UserSig: str
+        """
+        self.RoomId = None
+        self.RoomIdType = None
+        self.UserId = None
+        self.UserSig = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.RoomIdType = params.get("RoomIdType")
+        self.UserId = params.get("UserId")
+        self.UserSig = params.get("UserSig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuLayout(AbstractModel):
+    """混流布局参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserMediaStream: 用户媒体流参数。不填时腾讯云后台按照上行主播的进房顺序自动填充。
+        :type UserMediaStream: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        :param ImageWidth: 子画面在输出时的宽度，单位为像素值，不填默认为0。
+        :type ImageWidth: int
+        :param ImageHeight: 子画面在输出时的高度，单位为像素值，不填默认为0。
+        :type ImageHeight: int
+        :param LocationX: 子画面在输出时的X偏移，单位为像素值，LocationX与ImageWidth之和不能超过混流输出的总宽度，不填默认为0。
+        :type LocationX: int
+        :param LocationY: 子画面在输出时的Y偏移，单位为像素值，LocationY与ImageHeight之和不能超过混流输出的总高度，不填默认为0。
+        :type LocationY: int
+        :param ZOrder: 子画面在输出时的层级，不填默认为0。
+        :type ZOrder: int
+        :param RenderMode: 子画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底。不填默认为0。
+        :type RenderMode: int
+        :param BackGroundColor: 子画面的背景颜色，常用的颜色有：
+红色：0xcc0033。
+黄色：0xcc9900。
+绿色：0xcccc33。
+蓝色：0x99CCFF。
+黑色：0x000000。
+白色：0xFFFFFF。
+灰色：0x999999。
+        :type BackGroundColor: str
+        :param BackgroundImageUrl: 子画面的背景图url，填写该参数，当用户关闭摄像头或未进入TRTC房间时，会在布局位置填充为指定图片。若指定图片与布局位置尺寸比例不一致，则会对图片进行拉伸处理，优先级高于BackGroundColor。
+        :type BackgroundImageUrl: str
+        :param CustomCrop: 客户自定义裁剪，针对原始输入流裁剪
+        :type CustomCrop: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
+        """
+        self.UserMediaStream = None
+        self.ImageWidth = None
+        self.ImageHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.ZOrder = None
+        self.RenderMode = None
+        self.BackGroundColor = None
+        self.BackgroundImageUrl = None
+        self.CustomCrop = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserMediaStream") is not None:
+            self.UserMediaStream = UserMediaStream()
+            self.UserMediaStream._deserialize(params.get("UserMediaStream"))
+        self.ImageWidth = params.get("ImageWidth")
+        self.ImageHeight = params.get("ImageHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.ZOrder = params.get("ZOrder")
+        self.RenderMode = params.get("RenderMode")
+        self.BackGroundColor = params.get("BackGroundColor")
+        self.BackgroundImageUrl = params.get("BackgroundImageUrl")
+        if params.get("CustomCrop") is not None:
+            self.CustomCrop = McuCustomCrop()
+            self.CustomCrop._deserialize(params.get("CustomCrop"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuLayoutParams(AbstractModel):
+    """混流布局参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MixLayoutMode: 布局模式：动态布局（1：悬浮布局（默认），2：屏幕分享布局，3：九宫格布局），静态布局（4：自定义布局）。
+        :type MixLayoutMode: int
+        :param PureAudioHoldPlaceMode: 纯音频上行是否占布局位置，只在动态布局中有效。0表示纯音频不占布局位置，1表示纯音频占布局位置，不填默认为0。
+        :type PureAudioHoldPlaceMode: int
+        :param MixLayoutList: 自定义模板中有效，指定用户视频在混合画面中的位置。
+        :type MixLayoutList: list of McuLayout
+        :param MaxVideoUser: 指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。
+        :type MaxVideoUser: :class:`tencentcloud.trtc.v20190722.models.MaxVideoUser`
+        """
+        self.MixLayoutMode = None
+        self.PureAudioHoldPlaceMode = None
+        self.MixLayoutList = None
+        self.MaxVideoUser = None
+
+
+    def _deserialize(self, params):
+        self.MixLayoutMode = params.get("MixLayoutMode")
+        self.PureAudioHoldPlaceMode = params.get("PureAudioHoldPlaceMode")
+        if params.get("MixLayoutList") is not None:
+            self.MixLayoutList = []
+            for item in params.get("MixLayoutList"):
+                obj = McuLayout()
+                obj._deserialize(item)
+                self.MixLayoutList.append(obj)
+        if params.get("MaxVideoUser") is not None:
+            self.MaxVideoUser = MaxVideoUser()
+            self.MaxVideoUser._deserialize(params.get("MaxVideoUser"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuLayoutVolume(AbstractModel):
+    """音量布局SEI参数，可以自定义AppData和PayloadType类型。
+    该参数内容可以为空，表示携带默认的音量布局SEI。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppData: AppData的内容，会被写入自定义SEI中的app_data字段，长度需小于4096。
+        :type AppData: str
+        :param PayloadType: SEI消息的payload_type，默认值100，取值范围100-254（244除外，244为我们内部自定义的时间戳SEI）
+        :type PayloadType: int
+        """
+        self.AppData = None
+        self.PayloadType = None
+
+
+    def _deserialize(self, params):
+        self.AppData = params.get("AppData")
+        self.PayloadType = params.get("PayloadType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuPassThrough(AbstractModel):
+    """自定义透传SEI
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayloadContent: 透传SEI的payload内容。
+        :type PayloadContent: str
+        :param PayloadType: SEI消息的payload_type，取值范围5、100-254（244除外，244为我们内部自定义的时间戳SEI）。
+        :type PayloadType: int
+        :param PayloadUuid: PayloadType为5，PayloadUuid必须填写。PayloadType不是5时，不需要填写，填写会被后台忽略。该值必须是32长度的十六进制。
+        :type PayloadUuid: str
+        """
+        self.PayloadContent = None
+        self.PayloadType = None
+        self.PayloadUuid = None
+
+
+    def _deserialize(self, params):
+        self.PayloadContent = params.get("PayloadContent")
+        self.PayloadType = params.get("PayloadType")
+        self.PayloadUuid = params.get("PayloadUuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuPublishCdnParam(AbstractModel):
+    """转推参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PublishCdnUrl: CDN转推URL。
+        :type PublishCdnUrl: str
+        :param IsTencentCdn: 是否是腾讯云CDN，0为转推非腾讯云CDN，1为转推腾讯CDN，不携带该参数默认为1。注意：为避免误产生转推费用，该参数建议明确填写。转推非腾讯云CDN时会产生转推费用，详情参见接口文档说明。
+        :type IsTencentCdn: int
+        """
+        self.PublishCdnUrl = None
+        self.IsTencentCdn = None
+
+
+    def _deserialize(self, params):
+        self.PublishCdnUrl = params.get("PublishCdnUrl")
+        self.IsTencentCdn = params.get("IsTencentCdn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuSeiParams(AbstractModel):
+    """混流SEI参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LayoutVolume: 音量布局SEI
+        :type LayoutVolume: :class:`tencentcloud.trtc.v20190722.models.McuLayoutVolume`
+        :param PassThrough: 透传SEI
+        :type PassThrough: :class:`tencentcloud.trtc.v20190722.models.McuPassThrough`
+        """
+        self.LayoutVolume = None
+        self.PassThrough = None
+
+
+    def _deserialize(self, params):
+        if params.get("LayoutVolume") is not None:
+            self.LayoutVolume = McuLayoutVolume()
+            self.LayoutVolume._deserialize(params.get("LayoutVolume"))
+        if params.get("PassThrough") is not None:
+            self.PassThrough = McuPassThrough()
+            self.PassThrough._deserialize(params.get("PassThrough"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuUserInfoParams(AbstractModel):
+    """混流用户参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserInfo: 用户参数。
+        :type UserInfo: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        """
+        self.UserInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self.UserInfo = MixUserInfo()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuVideoParams(AbstractModel):
+    """混流转推的视频相关参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoEncode: 输出流视频编码参数。
+        :type VideoEncode: :class:`tencentcloud.trtc.v20190722.models.VideoEncode`
+        :param LayoutParams: 混流布局参数。
+        :type LayoutParams: :class:`tencentcloud.trtc.v20190722.models.McuLayoutParams`
+        :param BackGroundColor: 整个画布背景颜色，常用的颜色有：
+红色：0xcc0033。
+黄色：0xcc9900。
+绿色：0xcccc33。
+蓝色：0x99CCFF。
+黑色：0x000000。
+白色：0xFFFFFF。
+灰色：0x999999。
+        :type BackGroundColor: str
+        :param BackgroundImageUrl: 整个画布的背景图url，优先级高于BackGroundColor。
+        :type BackgroundImageUrl: str
+        :param WaterMarkList: 混流布局的水印参数。
+        :type WaterMarkList: list of McuWaterMarkParams
+        """
+        self.VideoEncode = None
+        self.LayoutParams = None
+        self.BackGroundColor = None
+        self.BackgroundImageUrl = None
+        self.WaterMarkList = None
+
+
+    def _deserialize(self, params):
+        if params.get("VideoEncode") is not None:
+            self.VideoEncode = VideoEncode()
+            self.VideoEncode._deserialize(params.get("VideoEncode"))
+        if params.get("LayoutParams") is not None:
+            self.LayoutParams = McuLayoutParams()
+            self.LayoutParams._deserialize(params.get("LayoutParams"))
+        self.BackGroundColor = params.get("BackGroundColor")
+        self.BackgroundImageUrl = params.get("BackgroundImageUrl")
+        if params.get("WaterMarkList") is not None:
+            self.WaterMarkList = []
+            for item in params.get("WaterMarkList"):
+                obj = McuWaterMarkParams()
+                obj._deserialize(item)
+                self.WaterMarkList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuWaterMarkImage(AbstractModel):
+    """图片水印参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WaterMarkUrl: 水印图片URL地址，支持png、jpg、jpeg格式。图片大小限制不超过5MB。
+        :type WaterMarkUrl: str
+        :param WaterMarkWidth: 水印在输出时的宽。单位为像素值。
+        :type WaterMarkWidth: int
+        :param WaterMarkHeight: 水印在输出时的高。单位为像素值。
+        :type WaterMarkHeight: int
+        :param LocationX: 水印在输出时的X偏移。单位为像素值。
+        :type LocationX: int
+        :param LocationY: 水印在输出时的Y偏移。单位为像素值。
+        :type LocationY: int
+        :param ZOrder: 水印在输出时的层级，不填默认为0。
+        :type ZOrder: int
+        """
+        self.WaterMarkUrl = None
+        self.WaterMarkWidth = None
+        self.WaterMarkHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.ZOrder = None
+
+
+    def _deserialize(self, params):
+        self.WaterMarkUrl = params.get("WaterMarkUrl")
+        self.WaterMarkWidth = params.get("WaterMarkWidth")
+        self.WaterMarkHeight = params.get("WaterMarkHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.ZOrder = params.get("ZOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuWaterMarkParams(AbstractModel):
+    """水印参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WaterMarkType: 水印类型，0为图片（默认）。
+        :type WaterMarkType: int
+        :param WaterMarkImage: 图片水印参数。WaterMarkType为0指定。
+        :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkImage`
+        """
+        self.WaterMarkType = None
+        self.WaterMarkImage = None
+
+
+    def _deserialize(self, params):
+        self.WaterMarkType = params.get("WaterMarkType")
+        if params.get("WaterMarkImage") is not None:
+            self.WaterMarkImage = McuWaterMarkImage()
+            self.WaterMarkImage._deserialize(params.get("WaterMarkImage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MixLayout(AbstractModel):
     """用户自定义混流布局参数列表。
 
@@ -2240,6 +2843,38 @@ class MixTranscodeParams(AbstractModel):
         if params.get("AudioParams") is not None:
             self.AudioParams = AudioParams()
             self.AudioParams._deserialize(params.get("AudioParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MixUserInfo(AbstractModel):
+    """TRTC用户参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户ID。
+        :type UserId: str
+        :param RoomId: 动态布局时房间信息必须和主房间信息保持一致，自定义布局时房间信息必须和MixLayoutList中对应用户的房间信息保持一致，不填时默认与主房间信息一致。
+        :type RoomId: str
+        :param RoomIdType: 房间号类型，0为整形房间号，1为字符串房间号。
+        :type RoomIdType: int
+        """
+        self.UserId = None
+        self.RoomId = None
+        self.RoomIdType = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.RoomId = params.get("RoomId")
+        self.RoomIdType = params.get("RoomIdType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3041,6 +3676,32 @@ class SeriesInfo(AbstractModel):
         
 
 
+class SingleSubscribeParams(AbstractModel):
+    """单流旁路转推的用户上行信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserMediaStream: 用户媒体流参数。
+        :type UserMediaStream: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
+        self.UserMediaStream = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserMediaStream") is not None:
+            self.UserMediaStream = UserMediaStream()
+            self.UserMediaStream._deserialize(params.get("UserMediaStream"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SmallVideoLayoutParams(AbstractModel):
     """画中画模板中有效，代表小画面的布局参数
 
@@ -3223,6 +3884,111 @@ class StartMCUMixTranscodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StartPublishCdnStreamRequest(AbstractModel):
+    """StartPublishCdnStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        :type SdkAppId: int
+        :param RoomId: 主房间信息RoomId，转推的TRTC房间所对应的RoomId。
+        :type RoomId: str
+        :param RoomIdType: 主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整形房间号，1为字符串房间号。
+        :type RoomIdType: int
+        :param AgentParams: 转推服务加入TRTC房间的机器人参数。
+        :type AgentParams: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
+        :param WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。
+        :type WithTranscoding: int
+        :param AudioParams: 转推流的音频编码参数。
+        :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
+        :param VideoParams: 转推流的视频编码参数，不填表示纯音频转推。
+        :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
+        :param SingleSubscribeParams: 需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。
+        :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
+        :param PublishCdnParams: 转推的CDN参数。
+        :type PublishCdnParams: list of McuPublishCdnParam
+        :param SeiParams: 混流SEI参数
+        :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
+        :param FeedBackRoomParams: 回推房间信息
+        :type FeedBackRoomParams: list of McuFeedBackRoomParams
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.RoomIdType = None
+        self.AgentParams = None
+        self.WithTranscoding = None
+        self.AudioParams = None
+        self.VideoParams = None
+        self.SingleSubscribeParams = None
+        self.PublishCdnParams = None
+        self.SeiParams = None
+        self.FeedBackRoomParams = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.RoomIdType = params.get("RoomIdType")
+        if params.get("AgentParams") is not None:
+            self.AgentParams = AgentParams()
+            self.AgentParams._deserialize(params.get("AgentParams"))
+        self.WithTranscoding = params.get("WithTranscoding")
+        if params.get("AudioParams") is not None:
+            self.AudioParams = McuAudioParams()
+            self.AudioParams._deserialize(params.get("AudioParams"))
+        if params.get("VideoParams") is not None:
+            self.VideoParams = McuVideoParams()
+            self.VideoParams._deserialize(params.get("VideoParams"))
+        if params.get("SingleSubscribeParams") is not None:
+            self.SingleSubscribeParams = SingleSubscribeParams()
+            self.SingleSubscribeParams._deserialize(params.get("SingleSubscribeParams"))
+        if params.get("PublishCdnParams") is not None:
+            self.PublishCdnParams = []
+            for item in params.get("PublishCdnParams"):
+                obj = McuPublishCdnParam()
+                obj._deserialize(item)
+                self.PublishCdnParams.append(obj)
+        if params.get("SeiParams") is not None:
+            self.SeiParams = McuSeiParams()
+            self.SeiParams._deserialize(params.get("SeiParams"))
+        if params.get("FeedBackRoomParams") is not None:
+            self.FeedBackRoomParams = []
+            for item in params.get("FeedBackRoomParams"):
+                obj = McuFeedBackRoomParams()
+                obj._deserialize(item)
+                self.FeedBackRoomParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartPublishCdnStreamResponse(AbstractModel):
+    """StartPublishCdnStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 用于唯一标识转推任务，由腾讯云服务端生成，后续更新和停止请求都需要携带TaskiD参数。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
     """StopMCUMixTranscodeByStrRoomId请求参数结构体
 
@@ -3310,6 +4076,55 @@ class StopMCUMixTranscodeResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopPublishCdnStreamRequest(AbstractModel):
+    """StopPublishCdnStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        :type SdkAppId: int
+        :param TaskId: 唯一标识转推任务。
+        :type TaskId: str
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopPublishCdnStreamResponse(AbstractModel):
+    """StopPublishCdnStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 转推任务唯一的String Id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3631,6 +4446,105 @@ class TrtcUsage(AbstractModel):
         
 
 
+class UpdatePublishCdnStreamRequest(AbstractModel):
+    """UpdatePublishCdnStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        :type SdkAppId: int
+        :param TaskId: 唯一标识转推任务。
+        :type TaskId: str
+        :param SequenceNumber: 客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。
+        :type SequenceNumber: int
+        :param WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。
+        :type WithTranscoding: int
+        :param AudioParams: 更新相关参数，只支持更新参与混音的主播列表参数。不填表示不更新此参数。
+        :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
+        :param VideoParams: 更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。
+        :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
+        :param SingleSubscribeParams: 更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。
+        :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
+        :param PublishCdnParams: 更新转推的CDN参数。不填表示不更新此参数。
+        :type PublishCdnParams: list of McuPublishCdnParam
+        :param SeiParams: 混流SEI参数
+        :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
+        :param FeedBackRoomParams: 回推房间信息
+        :type FeedBackRoomParams: list of McuFeedBackRoomParams
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+        self.SequenceNumber = None
+        self.WithTranscoding = None
+        self.AudioParams = None
+        self.VideoParams = None
+        self.SingleSubscribeParams = None
+        self.PublishCdnParams = None
+        self.SeiParams = None
+        self.FeedBackRoomParams = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        self.SequenceNumber = params.get("SequenceNumber")
+        self.WithTranscoding = params.get("WithTranscoding")
+        if params.get("AudioParams") is not None:
+            self.AudioParams = McuAudioParams()
+            self.AudioParams._deserialize(params.get("AudioParams"))
+        if params.get("VideoParams") is not None:
+            self.VideoParams = McuVideoParams()
+            self.VideoParams._deserialize(params.get("VideoParams"))
+        if params.get("SingleSubscribeParams") is not None:
+            self.SingleSubscribeParams = SingleSubscribeParams()
+            self.SingleSubscribeParams._deserialize(params.get("SingleSubscribeParams"))
+        if params.get("PublishCdnParams") is not None:
+            self.PublishCdnParams = []
+            for item in params.get("PublishCdnParams"):
+                obj = McuPublishCdnParam()
+                obj._deserialize(item)
+                self.PublishCdnParams.append(obj)
+        if params.get("SeiParams") is not None:
+            self.SeiParams = McuSeiParams()
+            self.SeiParams._deserialize(params.get("SeiParams"))
+        if params.get("FeedBackRoomParams") is not None:
+            self.FeedBackRoomParams = []
+            for item in params.get("FeedBackRoomParams"):
+                obj = McuFeedBackRoomParams()
+                obj._deserialize(item)
+                self.FeedBackRoomParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePublishCdnStreamResponse(AbstractModel):
+    """UpdatePublishCdnStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 转推任务唯一的String Id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class UserInformation(AbstractModel):
     """用户信息，包括用户进房时间，退房时间等
 
@@ -3674,6 +4588,76 @@ class UserInformation(AbstractModel):
         self.SdkVersion = params.get("SdkVersion")
         self.ClientIp = params.get("ClientIp")
         self.Finished = params.get("Finished")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserMediaStream(AbstractModel):
+    """用户媒体流参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserInfo: TRTC用户参数。
+        :type UserInfo: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        :param StreamType: 主辅路流类型，0为摄像头，1为屏幕分享，不填默认为0。
+        :type StreamType: int
+        """
+        self.UserInfo = None
+        self.StreamType = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self.UserInfo = MixUserInfo()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        self.StreamType = params.get("StreamType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncode(AbstractModel):
+    """视频编码参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Width: 输出流宽，音视频输出时必填。取值范围[0,1920]，单位为像素值。
+        :type Width: int
+        :param Height: 输出流高，音视频输出时必填。取值范围[0,1080]，单位为像素值。
+        :type Height: int
+        :param Fps: 输出流帧率，音视频输出时必填。取值范围[1,60]，表示混流的输出帧率可选范围为1到60fps。
+        :type Fps: int
+        :param BitRate: 输出流码率，音视频输出时必填。取值范围[1,10000]，单位为kbps。
+        :type BitRate: int
+        :param Gop: 输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
+        :type Gop: int
+        """
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+        self.BitRate = None
+        self.Gop = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.BitRate = params.get("BitRate")
+        self.Gop = params.get("Gop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

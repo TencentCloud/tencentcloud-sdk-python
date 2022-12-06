@@ -18,6 +18,36 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class APMKV(AbstractModel):
+    """APM浮点数类型键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Key值定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: Value值定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class APMKVItem(AbstractModel):
     """Apm通用KV结构
 
@@ -119,12 +149,16 @@ class ApmField(AbstractModel):
         :type Unit: str
         :param Key: 请求数
         :type Key: str
+        :param LastPeriodValue: 同环比上周期具体数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastPeriodValue: list of APMKV
         """
         self.CompareVal = None
         self.CompareVals = None
         self.Value = None
         self.Unit = None
         self.Key = None
+        self.LastPeriodValue = None
 
 
     def _deserialize(self, params):
@@ -138,6 +172,12 @@ class ApmField(AbstractModel):
         self.Value = params.get("Value")
         self.Unit = params.get("Unit")
         self.Key = params.get("Key")
+        if params.get("LastPeriodValue") is not None:
+            self.LastPeriodValue = []
+            for item in params.get("LastPeriodValue"):
+                obj = APMKV()
+                obj._deserialize(item)
+                self.LastPeriodValue.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

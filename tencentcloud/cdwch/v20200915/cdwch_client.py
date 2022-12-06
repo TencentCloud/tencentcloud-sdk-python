@@ -85,7 +85,7 @@ class CdwchClient(AbstractClient):
 
 
     def DescribeCkSqlApis(self, request):
-        """针对驱动sql命令查询ck集群接口
+        """查询集群用户、集群表，数据库等相关信息
 
         :param request: Request instance for DescribeCkSqlApis.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeCkSqlApisRequest`

@@ -812,7 +812,7 @@ class CreateMigrationServiceRequest(AbstractModel):
         :type SrcRegion: str
         :param DstRegion: 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
         :type DstRegion: str
-        :param InstanceClass: 实例规格，包括：micro、small、medium、large、xlarge、2xlarge
+        :param InstanceClass: 实例规格，包括：small、medium、large、xlarge、2xlarge
         :type InstanceClass: str
         :param Count: 购买数量，范围为[1,15]，默认为1
         :type Count: int
@@ -4480,12 +4480,12 @@ class SyncJobInfo(AbstractModel):
         :param StartTime: 开始时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
+        :param Status: 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         :param EndTime: 结束时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param Status: 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已停止)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: str
         :param Tags: 标签相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
@@ -4526,8 +4526,8 @@ class SyncJobInfo(AbstractModel):
         self.DstInfo = None
         self.CreateTime = None
         self.StartTime = None
-        self.EndTime = None
         self.Status = None
+        self.EndTime = None
         self.Tags = None
         self.Detail = None
         self.TradeStatus = None
@@ -4566,8 +4566,8 @@ class SyncJobInfo(AbstractModel):
             self.DstInfo._deserialize(params.get("DstInfo"))
         self.CreateTime = params.get("CreateTime")
         self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
         self.Status = params.get("Status")
+        self.EndTime = params.get("EndTime")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):

@@ -397,31 +397,33 @@ DISTRICT - 省市区行政区划控件；
 如果是SignComponent控件类型，则可选的字段为
 SIGN_SEAL - 签署印章控件；
 SIGN_DATE - 签署日期控件；
-DATE， 日期控件，默认是格式化为xxxx年xx月xx日
 SIGN_SIGNATURE - 用户签名控件；
 SIGN_PERSONAL_SEAL - 个人签署印章控件（使用文件发起暂不支持此类型）；
 SIGN_PAGING_SEAL - 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight
+SIGN_OPINION - 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认
 
 表单域的控件不能作为印章和签名控件
         :type ComponentType: str
-        :param ComponentWidth: 参数控件宽度，单位pt
-        :type ComponentWidth: float
+        :param FileIndex: 控件所属文件的序号（模板中的resourceId排列序号，取值为：0-N）
+        :type FileIndex: int
         :param ComponentHeight: 参数控件高度，单位pt
         :type ComponentHeight: float
+        :param ComponentWidth: 参数控件宽度，单位pt
+        :type ComponentWidth: float
         :param ComponentPage: 参数控件所在页码，取值为：1-N
         :type ComponentPage: int
         :param ComponentPosX: 参数控件X位置，单位pt
         :type ComponentPosX: float
         :param ComponentPosY: 参数控件Y位置，单位pt
         :type ComponentPosY: float
-        :param FileIndex: 控件所属文件的序号（模板中的resourceId排列序号，取值为：0-N）
-        :type FileIndex: int
         :param ComponentId: GenerateMode==KEYWORD 指定关键字
         :type ComponentId: str
         :param ComponentName: GenerateMode==FIELD 指定表单域名称
         :type ComponentName: str
         :param ComponentRequired: 是否必选，默认为false
         :type ComponentRequired: bool
+        :param ComponentRecipientId: 控件关联的签署人ID
+        :type ComponentRecipientId: str
         :param ComponentExtra: 扩展参数：
 为JSON格式。
 
@@ -438,8 +440,8 @@ OCR_ESIGN -- AI智能识别手写签名
 ESIGN -- 个人印章类型
 如：{“ComponentTypeLimit”: [“BORDERLESS_ESIGN”]}
         :type ComponentExtra: str
-        :param ComponentRecipientId: 控件关联的签署人ID
-        :type ComponentRecipientId: str
+        :param IsFormType: 是否是表单域类型，默认不存在
+        :type IsFormType: bool
         :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
 TEXT - 文本内容
 MULTI_LINE_TEXT - 文本内容
@@ -451,18 +453,20 @@ DATE - 默认是格式化为xxxx年xx月xx日
 SIGN_SEAL - 印章ID，于控制台查询获取
 SIGN_PAGING_SEAL - 可以指定印章ID，于控制台查询获取
         :type ComponentValue: str
-        :param IsFormType: 是否是表单域类型，默认不存在
-        :type IsFormType: bool
         :param GenerateMode: NORMAL 正常模式，使用坐标制定签署控件位置
 FIELD 表单域，需使用ComponentName指定表单域名称
 KEYWORD 关键字，使用ComponentId指定关键字
         :type GenerateMode: str
-        :param ComponentDateFontSize: 日期控件类型字号
+        :param ComponentDateFontSize: 日期签署控件的字号，默认为 12
         :type ComponentDateFontSize: int
+        :param ChannelComponentId: 渠道版控件 id 标识
+        :type ChannelComponentId: str
         :param OffsetX: 指定关键字时横坐标偏移量，单位pt
         :type OffsetX: float
         :param OffsetY: 指定关键字时纵坐标偏移量，单位pt
         :type OffsetY: float
+        :param ChannelComponentSource: //渠道子客控件来源。0-渠道指定；1-用户自定义
+        :type ChannelComponentSource: int
         :param KeywordOrder: 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
         :type KeywordOrder: str
@@ -474,23 +478,25 @@ KEYWORD 关键字，使用ComponentId指定关键字
         :type KeywordIndexes: list of int
         """
         self.ComponentType = None
-        self.ComponentWidth = None
+        self.FileIndex = None
         self.ComponentHeight = None
+        self.ComponentWidth = None
         self.ComponentPage = None
         self.ComponentPosX = None
         self.ComponentPosY = None
-        self.FileIndex = None
         self.ComponentId = None
         self.ComponentName = None
         self.ComponentRequired = None
-        self.ComponentExtra = None
         self.ComponentRecipientId = None
-        self.ComponentValue = None
+        self.ComponentExtra = None
         self.IsFormType = None
+        self.ComponentValue = None
         self.GenerateMode = None
         self.ComponentDateFontSize = None
+        self.ChannelComponentId = None
         self.OffsetX = None
         self.OffsetY = None
+        self.ChannelComponentSource = None
         self.KeywordOrder = None
         self.KeywordPage = None
         self.RelativeLocation = None
@@ -499,23 +505,25 @@ KEYWORD 关键字，使用ComponentId指定关键字
 
     def _deserialize(self, params):
         self.ComponentType = params.get("ComponentType")
-        self.ComponentWidth = params.get("ComponentWidth")
+        self.FileIndex = params.get("FileIndex")
         self.ComponentHeight = params.get("ComponentHeight")
+        self.ComponentWidth = params.get("ComponentWidth")
         self.ComponentPage = params.get("ComponentPage")
         self.ComponentPosX = params.get("ComponentPosX")
         self.ComponentPosY = params.get("ComponentPosY")
-        self.FileIndex = params.get("FileIndex")
         self.ComponentId = params.get("ComponentId")
         self.ComponentName = params.get("ComponentName")
         self.ComponentRequired = params.get("ComponentRequired")
-        self.ComponentExtra = params.get("ComponentExtra")
         self.ComponentRecipientId = params.get("ComponentRecipientId")
-        self.ComponentValue = params.get("ComponentValue")
+        self.ComponentExtra = params.get("ComponentExtra")
         self.IsFormType = params.get("IsFormType")
+        self.ComponentValue = params.get("ComponentValue")
         self.GenerateMode = params.get("GenerateMode")
         self.ComponentDateFontSize = params.get("ComponentDateFontSize")
+        self.ChannelComponentId = params.get("ChannelComponentId")
         self.OffsetX = params.get("OffsetX")
         self.OffsetY = params.get("OffsetY")
+        self.ChannelComponentSource = params.get("ChannelComponentSource")
         self.KeywordOrder = params.get("KeywordOrder")
         self.KeywordPage = params.get("KeywordPage")
         self.RelativeLocation = params.get("RelativeLocation")

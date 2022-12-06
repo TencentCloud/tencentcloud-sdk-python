@@ -1134,6 +1134,11 @@ def test_import_tmt():
     from tencentcloud.tmt.v20180321 import models
 
 
+def test_import_trdp():
+    from tencentcloud.trdp.v20220726 import trdp_client
+    from tencentcloud.trdp.v20220726 import models
+
+
 def test_import_trp():
     from tencentcloud.trp.v20210515 import trp_client
     from tencentcloud.trp.v20210515 import models

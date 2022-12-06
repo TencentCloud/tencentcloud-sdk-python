@@ -35,12 +35,15 @@ class Account(AbstractModel):
         :type UpdateTime: str
         :param Host: 主机
         :type Host: str
+        :param MaxUserConnections: 用户最大连接数
+        :type MaxUserConnections: int
         """
         self.AccountName = None
         self.Description = None
         self.CreateTime = None
         self.UpdateTime = None
         self.Host = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -49,6 +52,7 @@ class Account(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.Host = params.get("Host")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1650,6 +1654,20 @@ pause
         :type StorageId: str
         :param StoragePayMode: 存储付费类型
         :type StoragePayMode: int
+        :param PhysicalZone: 物理区
+        :type PhysicalZone: str
+        :param BusinessType: 商业类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessType: str
+        :param Tasks: 任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of ObjectTask
+        :param IsFreeze: 是否冻结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFreeze: str
+        :param ResourceTags: 资源标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of Tag
         """
         self.Uin = None
         self.AppId = None
@@ -1693,6 +1711,11 @@ pause
         self.ServerlessStatus = None
         self.StorageId = None
         self.StoragePayMode = None
+        self.PhysicalZone = None
+        self.BusinessType = None
+        self.Tasks = None
+        self.IsFreeze = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -1738,6 +1761,21 @@ pause
         self.ServerlessStatus = params.get("ServerlessStatus")
         self.StorageId = params.get("StorageId")
         self.StoragePayMode = params.get("StoragePayMode")
+        self.PhysicalZone = params.get("PhysicalZone")
+        self.BusinessType = params.get("BusinessType")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.IsFreeze = params.get("IsFreeze")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4399,6 +4437,12 @@ class IsolateInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifiableInfo(AbstractModel):
+    """参数是否可修改的详细信息
+
+    """
+
+
 class ModifyAccountParamsRequest(AbstractModel):
     """ModifyAccountParams请求参数结构体
 
@@ -5201,6 +5245,18 @@ class ParamInfo(AbstractModel):
         :type MatchValue: str
         :param Description: 参数描述
         :type Description: str
+        :param IsGlobal: 是否为全局参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsGlobal: int
+        :param ModifiableInfo: 参数是否可修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiableInfo: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
+        :param IsFunc: 是否为函数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFunc: bool
+        :param Func: 函数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Func: str
         """
         self.CurrentValue = None
         self.Default = None
@@ -5213,6 +5269,10 @@ class ParamInfo(AbstractModel):
         self.MatchType = None
         self.MatchValue = None
         self.Description = None
+        self.IsGlobal = None
+        self.ModifiableInfo = None
+        self.IsFunc = None
+        self.Func = None
 
 
     def _deserialize(self, params):
@@ -5227,6 +5287,12 @@ class ParamInfo(AbstractModel):
         self.MatchType = params.get("MatchType")
         self.MatchValue = params.get("MatchValue")
         self.Description = params.get("Description")
+        self.IsGlobal = params.get("IsGlobal")
+        if params.get("ModifiableInfo") is not None:
+            self.ModifiableInfo = ModifiableInfo()
+            self.ModifiableInfo._deserialize(params.get("ModifiableInfo"))
+        self.IsFunc = params.get("IsFunc")
+        self.Func = params.get("Func")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6227,7 +6293,7 @@ class SwitchProxyVpcRequest(AbstractModel):
         :type UniqSubnetId: str
         :param OldIpReserveHours: 旧地址回收时间
         :type OldIpReserveHours: int
-        :param ProxyGroupId: 数据库代理组Id
+        :param ProxyGroupId: 数据库代理组Id（该参数为必填项，可以通过DescribeProxies接口获得）
         :type ProxyGroupId: str
         """
         self.ClusterId = None

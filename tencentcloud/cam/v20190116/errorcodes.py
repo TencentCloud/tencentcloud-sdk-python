@@ -200,6 +200,9 @@ INVALIDPARAMETER_ROLENOTEXIST = 'InvalidParameter.RoleNotExist'
 # Scope字段不合法。
 INVALIDPARAMETER_SCOPEERROR = 'InvalidParameter.ScopeError'
 
+# 查询关键字长度错误。
+INVALIDPARAMETER_SEARCHKEYWORDLENGTHERROR = 'InvalidParameter.SearchKeywordLengthError'
+
 # 权限边界不能用服务相关策略。
 INVALIDPARAMETER_SERVICELINKEDPOLICYCANTINPERMISSIONBOUNDARY = 'InvalidParameter.ServiceLinkedPolicyCantInPermissionBoundary'
 

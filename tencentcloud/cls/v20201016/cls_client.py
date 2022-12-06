@@ -201,7 +201,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateConfigExtra(self, request):
-        """本接口用于创建特殊采集配置任务
+        """本接口用于创建特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
 
         :param request: Request instance for CreateConfigExtra.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateConfigExtraRequest`
@@ -520,7 +520,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConfigExtra(self, request):
-        """本接口用于删除特殊采集规则配置
+        """本接口用于删除特殊采集规则配置，特殊采集配置应用于自建K8S环境的采集Agent
 
         :param request: Request instance for DeleteConfigExtra.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigExtraRequest`
@@ -868,7 +868,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConfigExtras(self, request):
-        """本接口用于获取特殊采集配置
+        """本接口用于获取特殊采集配置，特殊采集配置应用于自建K8S环境的采集Agent
 
         :param request: Request instance for DescribeConfigExtras.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigExtrasRequest`
@@ -1477,7 +1477,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConfigExtra(self, request):
-        """本接口用于修改特殊采集配置任务
+        """本接口用于修改特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
 
         :param request: Request instance for ModifyConfigExtra.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConfigExtraRequest`

@@ -84,6 +84,35 @@ class TdsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFraudUltimate(self, request):
+        """查询设备标识及风险（旗舰版）
+
+        :param request: Request instance for DescribeFraudUltimate.
+        :type request: :class:`tencentcloud.tds.v20220801.models.DescribeFraudUltimateRequest`
+        :rtype: :class:`tencentcloud.tds.v20220801.models.DescribeFraudUltimateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFraudUltimate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFraudUltimateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTrustedID(self, request):
         """查询设备标识
 
