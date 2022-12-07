@@ -530,6 +530,10 @@ class AuditLogFilter(AbstractModel):
         :type SqlTypes: list of str
         :param Sqls: SQL 语句。支持传递多个sql语句。
         :type Sqls: list of str
+        :param SentRows: 返回行数。
+        :type SentRows: int
+        :param ThreadId: 线程ID。
+        :type ThreadId: list of str
         """
         self.Host = None
         self.User = None
@@ -542,6 +546,8 @@ class AuditLogFilter(AbstractModel):
         self.AffectRows = None
         self.SqlTypes = None
         self.Sqls = None
+        self.SentRows = None
+        self.ThreadId = None
 
 
     def _deserialize(self, params):
@@ -556,6 +562,8 @@ class AuditLogFilter(AbstractModel):
         self.AffectRows = params.get("AffectRows")
         self.SqlTypes = params.get("SqlTypes")
         self.Sqls = params.get("Sqls")
+        self.SentRows = params.get("SentRows")
+        self.ThreadId = params.get("ThreadId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -779,6 +787,10 @@ class ClusterParamModifyLog(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 更新时间
         :type UpdateTime: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
         """
         self.ParamName = None
         self.CurrentValue = None
@@ -786,6 +798,8 @@ class ClusterParamModifyLog(AbstractModel):
         self.Status = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.ClusterId = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -795,6 +809,8 @@ class ClusterParamModifyLog(AbstractModel):
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6529,6 +6545,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type DbType: str
         :param DealMode: 交易模式 0-下单并支付 1-下单
         :type DealMode: int
+        :param UpgradeMode: NormalUpgrade：普通变配，FastUpgrade：极速变配，若变配过程判断会造成闪断，变配流程会终止。
+        :type UpgradeMode: str
         """
         self.InstanceId = None
         self.Cpu = None
@@ -6538,6 +6556,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.AutoVoucher = None
         self.DbType = None
         self.DealMode = None
+        self.UpgradeMode = None
 
 
     def _deserialize(self, params):
@@ -6549,6 +6568,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.AutoVoucher = params.get("AutoVoucher")
         self.DbType = params.get("DbType")
         self.DealMode = params.get("DealMode")
+        self.UpgradeMode = params.get("UpgradeMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -7419,33 +7419,35 @@ class TagInfo(AbstractModel):
         r"""
         :param TagName: Tag名称
         :type TagName: str
-        :param TagId: 镜像Id
+        :param TagId: 制品的 ID
         :type TagId: str
         :param ImageId: docker image 可以看到的id
         :type ImageId: str
         :param Size: 大小
         :type Size: str
-        :param CreationTime: 镜像的创建时间
+        :param CreationTime: 制品的创建时间
         :type CreationTime: str
-        :param DurationDays: 镜像创建至今时间长度
+        :param DurationDays: 制品创建至今时间长度
 注意：此字段可能返回 null，表示取不到有效值。
         :type DurationDays: str
-        :param Author: 镜像的作者
+        :param Author: 标注的制品作者
         :type Author: str
-        :param Architecture: 次镜像建议运行的系统架构
+        :param Architecture: 标注的制品平台
         :type Architecture: str
-        :param DockerVersion: 创建此镜像的docker版本
+        :param DockerVersion: 创建制品的 Docker 版本
         :type DockerVersion: str
-        :param OS: 此镜像建议运行系统
+        :param OS: 标注的制品操作系统
         :type OS: str
-        :param SizeByte: SizeByte
+        :param SizeByte: 制品大小
         :type SizeByte: int
-        :param Id: Id
+        :param Id: 序号
         :type Id: int
         :param UpdateTime: 数据更新时间
         :type UpdateTime: str
-        :param PushTime: 镜像更新时间
+        :param PushTime: 制品更新时间
         :type PushTime: str
+        :param Kind: 制品类型
+        :type Kind: str
         """
         self.TagName = None
         self.TagId = None
@@ -7461,6 +7463,7 @@ class TagInfo(AbstractModel):
         self.Id = None
         self.UpdateTime = None
         self.PushTime = None
+        self.Kind = None
 
 
     def _deserialize(self, params):
@@ -7478,6 +7481,7 @@ class TagInfo(AbstractModel):
         self.Id = params.get("Id")
         self.UpdateTime = params.get("UpdateTime")
         self.PushTime = params.get("PushTime")
+        self.Kind = params.get("Kind")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

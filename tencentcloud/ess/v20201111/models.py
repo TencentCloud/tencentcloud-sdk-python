@@ -1990,45 +1990,63 @@ class DescribeFlowTemplatesRequest(AbstractModel):
         r"""
         :param Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Filters: 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
-        :type Filters: list of Filter
-        :param Limit: 查询个数，默认20，最大200
-        :type Limit: int
-        :param Offset: 查询偏移位置，默认0
-        :type Offset: int
-        :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
-        :type ContentType: int
-        :param GenerateSource: 暂未开放
-        :type GenerateSource: int
+        :param Organization: 企业组织相关信息
+        :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
         :param Agent: 应用相关信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param Offset: 查询偏移位置，默认0
+        :type Offset: int
+        :param Limit: 查询个数，默认20，最大200
+        :type Limit: int
+        :param Filters: 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
+        :type Filters: list of Filter
+        :param ApplicationId: 这个参数跟下面的IsChannel参数配合使用。
+IsChannel=false时，ApplicationId参数不起任何作用。
+IsChannel=true时，ApplicationId为空，查询所有渠道模板列表；ApplicationId不为空，查询指定渠道下的模板列表
+ApplicationId为空，查询渠道模板列表
+        :type ApplicationId: str
+        :param IsChannel: 默认为false，查询SaaS模板库列表；
+为true，查询渠道模板库管理列表
+        :type IsChannel: bool
+        :param GenerateSource: 暂未开放
+        :type GenerateSource: int
+        :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
+        :type ContentType: int
         """
         self.Operator = None
-        self.Filters = None
-        self.Limit = None
-        self.Offset = None
-        self.ContentType = None
-        self.GenerateSource = None
+        self.Organization = None
         self.Agent = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.ApplicationId = None
+        self.IsChannel = None
+        self.GenerateSource = None
+        self.ContentType = None
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        self.ContentType = params.get("ContentType")
+        self.ApplicationId = params.get("ApplicationId")
+        self.IsChannel = params.get("IsChannel")
         self.GenerateSource = params.get("GenerateSource")
-        if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+        self.ContentType = params.get("ContentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3512,6 +3530,11 @@ class TemplateInfo(AbstractModel):
         :type CreatedOn: int
         :param Promoter: 发起人角色信息
         :type Promoter: :class:`tencentcloud.ess.v20201111.models.Recipient`
+        :param OrganizationId: 模板创建组织id
+        :type OrganizationId: str
+        :param PreviewUrl: 模板预览链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewUrl: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -3527,6 +3550,8 @@ class TemplateInfo(AbstractModel):
         self.Creator = None
         self.CreatedOn = None
         self.Promoter = None
+        self.OrganizationId = None
+        self.PreviewUrl = None
 
 
     def _deserialize(self, params):
@@ -3566,6 +3591,8 @@ class TemplateInfo(AbstractModel):
         if params.get("Promoter") is not None:
             self.Promoter = Recipient()
             self.Promoter._deserialize(params.get("Promoter"))
+        self.OrganizationId = params.get("OrganizationId")
+        self.PreviewUrl = params.get("PreviewUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

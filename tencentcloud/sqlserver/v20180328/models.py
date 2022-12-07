@@ -2018,6 +2018,11 @@ class DBInstance(AbstractModel):
         :type Collation: str
         :param TimeZone: 系统时区，默认：China Standard Time
         :type TimeZone: str
+        :param IsDrZone: 是否跨AZ
+        :type IsDrZone: bool
+        :param SlaveZones: 备可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZones: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
         """
         self.InstanceId = None
         self.Name = None
@@ -2069,6 +2074,8 @@ class DBInstance(AbstractModel):
         self.TgwWanVPort = None
         self.Collation = None
         self.TimeZone = None
+        self.IsDrZone = None
+        self.SlaveZones = None
 
 
     def _deserialize(self, params):
@@ -2127,6 +2134,10 @@ class DBInstance(AbstractModel):
         self.TgwWanVPort = params.get("TgwWanVPort")
         self.Collation = params.get("Collation")
         self.TimeZone = params.get("TimeZone")
+        self.IsDrZone = params.get("IsDrZone")
+        if params.get("SlaveZones") is not None:
+            self.SlaveZones = SlaveZones()
+            self.SlaveZones._deserialize(params.get("SlaveZones"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2834,16 +2845,28 @@ class DescribeAccountsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
+        :param Name: 账号名称
+        :type Name: str
+        :param OrderBy: createTime,updateTime,passTime" note:"排序字段，默认按照账号创建时间倒序
+        :type OrderBy: str
+        :param OrderByType: 排序规则（desc-降序，asc-升序），默认desc
+        :type OrderByType: str
         """
         self.InstanceId = None
         self.Limit = None
         self.Offset = None
+        self.Name = None
+        self.OrderBy = None
+        self.OrderByType = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Name = params.get("Name")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3862,16 +3885,24 @@ class DescribeDBsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 分页返回，页编号，默认值为第0页
         :type Offset: int
+        :param Name: 数据库名称
+        :type Name: str
+        :param OrderByType: 排序规则（desc-降序，asc-升序），默认desc
+        :type OrderByType: str
         """
         self.InstanceIdSet = None
         self.Limit = None
         self.Offset = None
+        self.Name = None
+        self.OrderByType = None
 
 
     def _deserialize(self, params):
         self.InstanceIdSet = params.get("InstanceIdSet")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Name = params.get("Name")
+        self.OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8591,6 +8622,34 @@ class SecurityGroupPolicy(AbstractModel):
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
         self.Dir = params.get("Dir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlaveZones(AbstractModel):
+    """备可用区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SlaveZone: 备可用区地域码
+        :type SlaveZone: str
+        :param SlaveZoneName: 备可用区
+        :type SlaveZoneName: str
+        """
+        self.SlaveZone = None
+        self.SlaveZoneName = None
+
+
+    def _deserialize(self, params):
+        self.SlaveZone = params.get("SlaveZone")
+        self.SlaveZoneName = params.get("SlaveZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

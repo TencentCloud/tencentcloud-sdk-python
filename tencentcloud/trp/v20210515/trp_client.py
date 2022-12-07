@@ -635,6 +635,35 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCorpQuotas(self, request):
+        """查询渠道商下属企业额度使用情况
+
+        :param request: Request instance for DescribeCorpQuotas.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCorpQuotasRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCorpQuotasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCorpQuotas", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCorpQuotasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCustomRuleById(self, request):
         """查自定义码规则
 

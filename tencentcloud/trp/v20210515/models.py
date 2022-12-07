@@ -355,6 +355,46 @@ class CodePart(AbstractModel):
         
 
 
+class CorpQuota(AbstractModel):
+    """渠道商的子企业额度使用情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CorpId: 企业ID
+        :type CorpId: int
+        :param CorpName: 企业名称
+        :type CorpName: str
+        :param Quota: 额度
+        :type Quota: :class:`tencentcloud.trp.v20210515.models.Quota`
+        :param UsageQuota: 额度使用量
+        :type UsageQuota: :class:`tencentcloud.trp.v20210515.models.UsageQuota`
+        """
+        self.CorpId = None
+        self.CorpName = None
+        self.Quota = None
+        self.UsageQuota = None
+
+
+    def _deserialize(self, params):
+        self.CorpId = params.get("CorpId")
+        self.CorpName = params.get("CorpName")
+        if params.get("Quota") is not None:
+            self.Quota = Quota()
+            self.Quota._deserialize(params.get("Quota"))
+        if params.get("UsageQuota") is not None:
+            self.UsageQuota = UsageQuota()
+            self.UsageQuota._deserialize(params.get("UsageQuota"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCodeBatchRequest(AbstractModel):
     """CreateCodeBatch请求参数结构体
 
@@ -1765,6 +1805,74 @@ class DescribeCodesByPackResponse(AbstractModel):
                 obj = CodeItem()
                 obj._deserialize(item)
                 self.Codes.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCorpQuotasRequest(AbstractModel):
+    """DescribeCorpQuotas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AgentId: 渠道商ID，不要传
+        :type AgentId: int
+        :param PageNumber: 页数
+        :type PageNumber: int
+        :param PageSize: 每页数量
+        :type PageSize: int
+        :param Keyword: 搜索企业ID
+        :type Keyword: str
+        """
+        self.AgentId = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.AgentId = params.get("AgentId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCorpQuotasResponse(AbstractModel):
+    """DescribeCorpQuotas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CorpQuotas: 子企业额度使用情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpQuotas: list of CorpQuota
+        :param Total: 记录总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CorpQuotas = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CorpQuotas") is not None:
+            self.CorpQuotas = []
+            for item in params.get("CorpQuotas"):
+                obj = CorpQuota()
+                obj._deserialize(item)
+                self.CorpQuotas.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -3251,6 +3359,91 @@ class Product(AbstractModel):
         
 
 
+class Quota(AbstractModel):
+    """企业配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 服务开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 服务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param QuotaId: 配额ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaId: int
+        :param CorpId: 企业ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpId: int
+        :param Services: 开通服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Services: list of str
+        :param FactoryQuota: 工厂配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FactoryQuota: int
+        :param ItemQuota: 产品配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemQuota: int
+        :param TrackQuota: 溯源码配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrackQuota: int
+        :param SaleQuota: 销售码配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SaleQuota: int
+        :param ChainQuota: 上链配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChainQuota: int
+        :param RiskQuota: 风控配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskQuota: int
+        :param TrackType: 溯源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrackType: int
+        :param Version: 开通版本 basic standard enterprise
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.QuotaId = None
+        self.CorpId = None
+        self.Services = None
+        self.FactoryQuota = None
+        self.ItemQuota = None
+        self.TrackQuota = None
+        self.SaleQuota = None
+        self.ChainQuota = None
+        self.RiskQuota = None
+        self.TrackType = None
+        self.Version = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.QuotaId = params.get("QuotaId")
+        self.CorpId = params.get("CorpId")
+        self.Services = params.get("Services")
+        self.FactoryQuota = params.get("FactoryQuota")
+        self.ItemQuota = params.get("ItemQuota")
+        self.TrackQuota = params.get("TrackQuota")
+        self.SaleQuota = params.get("SaleQuota")
+        self.ChainQuota = params.get("ChainQuota")
+        self.RiskQuota = params.get("RiskQuota")
+        self.TrackType = params.get("TrackType")
+        self.Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TraceCode(AbstractModel):
     """溯源码
 
@@ -3479,6 +3672,66 @@ class TraceItem(AbstractModel):
         self.Values = params.get("Values")
         self.Key = params.get("Key")
         self.Ext = params.get("Ext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageQuota(AbstractModel):
+    """付费信息使用量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CorpId: 企业ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpId: int
+        :param FactoryCnt: 商户配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FactoryCnt: int
+        :param ItemCnt: 商品数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemCnt: int
+        :param TrackCnt: 溯源码量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrackCnt: int
+        :param SaleCnt: 营销码额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SaleCnt: int
+        :param ChainCnt: 区块链上链次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChainCnt: int
+        :param RiskCnt: 营销风控次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskCnt: int
+        :param UpdateTime: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.CorpId = None
+        self.FactoryCnt = None
+        self.ItemCnt = None
+        self.TrackCnt = None
+        self.SaleCnt = None
+        self.ChainCnt = None
+        self.RiskCnt = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.CorpId = params.get("CorpId")
+        self.FactoryCnt = params.get("FactoryCnt")
+        self.ItemCnt = params.get("ItemCnt")
+        self.TrackCnt = params.get("TrackCnt")
+        self.SaleCnt = params.get("SaleCnt")
+        self.ChainCnt = params.get("ChainCnt")
+        self.RiskCnt = params.get("RiskCnt")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

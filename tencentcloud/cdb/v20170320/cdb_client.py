@@ -55,35 +55,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ApplyCDBProxy(self, request):
-        """针对主实例申请创建数据库代理。
-
-        :param request: Request instance for ApplyCDBProxy.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.ApplyCDBProxyRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.ApplyCDBProxyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ApplyCDBProxy", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ApplyCDBProxyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def AssociateSecurityGroups(self, request):
         """本接口(AssociateSecurityGroups)用于安全组批量绑定实例。
 

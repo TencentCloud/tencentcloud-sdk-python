@@ -3244,7 +3244,7 @@ class SkillGroupInfoItem(AbstractModel):
         :type SkillGroupId: int
         :param SkillGroupName: 技能组名称
         :type SkillGroupName: str
-        :param Type: 类型：IM、TEL、ALL（全媒体）
+        :param Type: （废弃）类型：IM、TEL、ALL（全媒体）
         :type Type: str
         :param RoutePolicy: 会话分配策略
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3258,6 +3258,9 @@ class SkillGroupInfoItem(AbstractModel):
         :param LastModifyTimestamp: 最后修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifyTimestamp: int
+        :param SkillGroupType: 技能组类型0-电话，1-在线，3-音频，4-视频	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupType: int
         """
         self.SkillGroupId = None
         self.SkillGroupName = None
@@ -3266,6 +3269,7 @@ class SkillGroupInfoItem(AbstractModel):
         self.UsingLastSeat = None
         self.MaxConcurrency = None
         self.LastModifyTimestamp = None
+        self.SkillGroupType = None
 
 
     def _deserialize(self, params):
@@ -3276,6 +3280,7 @@ class SkillGroupInfoItem(AbstractModel):
         self.UsingLastSeat = params.get("UsingLastSeat")
         self.MaxConcurrency = params.get("MaxConcurrency")
         self.LastModifyTimestamp = params.get("LastModifyTimestamp")
+        self.SkillGroupType = params.get("SkillGroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

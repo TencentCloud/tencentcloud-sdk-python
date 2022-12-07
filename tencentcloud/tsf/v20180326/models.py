@@ -553,6 +553,18 @@ class ApiGroupInfo(AbstractModel):
         :param GatewayInstanceId: 网关实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayInstanceId: str
+        :param NamespaceNameKey: 命名空间参数key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceNameKey: str
+        :param ServiceNameKey: 微服务名参数key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceNameKey: str
+        :param NamespaceNameKeyPosition: 命名空间参数位置，path，header或query，默认是path
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceNameKeyPosition: str
+        :param ServiceNameKeyPosition: 微服务名参数位置，path，header或query，默认是path
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceNameKeyPosition: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -568,6 +580,10 @@ class ApiGroupInfo(AbstractModel):
         self.GroupType = None
         self.GatewayInstanceType = None
         self.GatewayInstanceId = None
+        self.NamespaceNameKey = None
+        self.ServiceNameKey = None
+        self.NamespaceNameKeyPosition = None
+        self.ServiceNameKeyPosition = None
 
 
     def _deserialize(self, params):
@@ -590,6 +606,10 @@ class ApiGroupInfo(AbstractModel):
         self.GroupType = params.get("GroupType")
         self.GatewayInstanceType = params.get("GatewayInstanceType")
         self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.NamespaceNameKey = params.get("NamespaceNameKey")
+        self.ServiceNameKey = params.get("ServiceNameKey")
+        self.NamespaceNameKeyPosition = params.get("NamespaceNameKeyPosition")
+        self.ServiceNameKeyPosition = params.get("ServiceNameKeyPosition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2248,6 +2268,12 @@ class ContainerGroupDeploy(AbstractModel):
         :param RepoType: 仓库类型 (person, tcr)
 注意：此字段可能返回 null，表示取不到有效值。
         :type RepoType: str
+        :param WarmupSetting: 预热配置设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
+        :param GatewayConfig: Envoy网关服务配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayConfig: :class:`tencentcloud.tsf.v20180326.models.GatewayConfig`
         """
         self.GroupId = None
         self.GroupName = None
@@ -2285,6 +2311,8 @@ class ContainerGroupDeploy(AbstractModel):
         self.VolumeMountInfos = None
         self.KubeInjectEnable = None
         self.RepoType = None
+        self.WarmupSetting = None
+        self.GatewayConfig = None
 
 
     def _deserialize(self, params):
@@ -2348,6 +2376,12 @@ class ContainerGroupDeploy(AbstractModel):
                 self.VolumeMountInfos.append(obj)
         self.KubeInjectEnable = params.get("KubeInjectEnable")
         self.RepoType = params.get("RepoType")
+        if params.get("WarmupSetting") is not None:
+            self.WarmupSetting = WarmupSetting()
+            self.WarmupSetting._deserialize(params.get("WarmupSetting"))
+        if params.get("GatewayConfig") is not None:
+            self.GatewayConfig = GatewayConfig()
+            self.GatewayConfig._deserialize(params.get("GatewayConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2825,6 +2859,14 @@ class CreateApiGroupRequest(AbstractModel):
         :type GroupType: str
         :param GatewayInstanceId: 网关实体ID
         :type GatewayInstanceId: str
+        :param NamespaceNameKey: 命名空间参数key值
+        :type NamespaceNameKey: str
+        :param ServiceNameKey: 微服务名参数key值
+        :type ServiceNameKey: str
+        :param NamespaceNameKeyPosition: 命名空间参数位置，path，header或query，默认是path
+        :type NamespaceNameKeyPosition: str
+        :param ServiceNameKeyPosition: 微服务名参数位置，path，header或query，默认是path
+        :type ServiceNameKeyPosition: str
         """
         self.GroupName = None
         self.GroupContext = None
@@ -2832,6 +2874,10 @@ class CreateApiGroupRequest(AbstractModel):
         self.Description = None
         self.GroupType = None
         self.GatewayInstanceId = None
+        self.NamespaceNameKey = None
+        self.ServiceNameKey = None
+        self.NamespaceNameKeyPosition = None
+        self.ServiceNameKeyPosition = None
 
 
     def _deserialize(self, params):
@@ -2841,6 +2887,10 @@ class CreateApiGroupRequest(AbstractModel):
         self.Description = params.get("Description")
         self.GroupType = params.get("GroupType")
         self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.NamespaceNameKey = params.get("NamespaceNameKey")
+        self.ServiceNameKey = params.get("ServiceNameKey")
+        self.NamespaceNameKeyPosition = params.get("NamespaceNameKeyPosition")
+        self.ServiceNameKeyPosition = params.get("ServiceNameKeyPosition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5697,6 +5747,7 @@ class DescribeApiGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: API分组信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ApiGroupInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6842,6 +6893,7 @@ class DescribeContainerGroupDeployInfoResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 获取部署组
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupDeploy`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12026,6 +12078,12 @@ class GatewayApiGroupVo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GatewayConfig(AbstractModel):
+    """TSF Envoy网关服务配置
+
+    """
 
 
 class GatewayDeployGroup(AbstractModel):
@@ -19992,12 +20050,24 @@ class UpdateApiGroupRequest(AbstractModel):
         :type AuthType: str
         :param GroupContext: 分组上下文
         :type GroupContext: str
+        :param NamespaceNameKey: 命名空间参数key值
+        :type NamespaceNameKey: str
+        :param ServiceNameKey: 微服务名参数key值
+        :type ServiceNameKey: str
+        :param NamespaceNameKeyPosition: 命名空间参数位置，path，header或query，默认是path
+        :type NamespaceNameKeyPosition: str
+        :param ServiceNameKeyPosition: 微服务名参数位置，path，header或query，默认是path
+        :type ServiceNameKeyPosition: str
         """
         self.GroupId = None
         self.GroupName = None
         self.Description = None
         self.AuthType = None
         self.GroupContext = None
+        self.NamespaceNameKey = None
+        self.ServiceNameKey = None
+        self.NamespaceNameKeyPosition = None
+        self.ServiceNameKeyPosition = None
 
 
     def _deserialize(self, params):
@@ -20006,6 +20076,10 @@ class UpdateApiGroupRequest(AbstractModel):
         self.Description = params.get("Description")
         self.AuthType = params.get("AuthType")
         self.GroupContext = params.get("GroupContext")
+        self.NamespaceNameKey = params.get("NamespaceNameKey")
+        self.ServiceNameKey = params.get("ServiceNameKey")
+        self.NamespaceNameKeyPosition = params.get("NamespaceNameKeyPosition")
+        self.ServiceNameKeyPosition = params.get("ServiceNameKeyPosition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20023,6 +20097,7 @@ class UpdateApiGroupResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 返回结果，true: 成功, false: 失败
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20583,6 +20658,9 @@ class VmGroup(AbstractModel):
         :param WarmupSetting: 预热属性配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmupSetting: :class:`tencentcloud.tsf.v20180326.models.WarmupSetting`
+        :param GatewayConfig: Envoy网关配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayConfig: :class:`tencentcloud.tsf.v20180326.models.GatewayConfig`
         """
         self.GroupId = None
         self.GroupName = None
@@ -20621,6 +20699,7 @@ class VmGroup(AbstractModel):
         self.Alias = None
         self.AgentProfileList = None
         self.WarmupSetting = None
+        self.GatewayConfig = None
 
 
     def _deserialize(self, params):
@@ -20670,6 +20749,9 @@ class VmGroup(AbstractModel):
         if params.get("WarmupSetting") is not None:
             self.WarmupSetting = WarmupSetting()
             self.WarmupSetting._deserialize(params.get("WarmupSetting"))
+        if params.get("GatewayConfig") is not None:
+            self.GatewayConfig = GatewayConfig()
+            self.GatewayConfig._deserialize(params.get("GatewayConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

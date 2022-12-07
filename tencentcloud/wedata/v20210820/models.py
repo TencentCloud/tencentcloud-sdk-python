@@ -13301,6 +13301,8 @@ class ModifyRuleGroupSubscriptionRequest(AbstractModel):
         :type DatasourceId: str
         :param TableId: 数据表Id
         :type TableId: str
+        :param WebHooks: 群机器人webhook信息
+        :type WebHooks: list of SubscribeWebHook
         """
         self.RuleGroupId = None
         self.Receivers = None
@@ -13309,6 +13311,7 @@ class ModifyRuleGroupSubscriptionRequest(AbstractModel):
         self.DatabaseId = None
         self.DatasourceId = None
         self.TableId = None
+        self.WebHooks = None
 
 
     def _deserialize(self, params):
@@ -13324,6 +13327,12 @@ class ModifyRuleGroupSubscriptionRequest(AbstractModel):
         self.DatabaseId = params.get("DatabaseId")
         self.DatasourceId = params.get("DatasourceId")
         self.TableId = params.get("TableId")
+        if params.get("WebHooks") is not None:
+            self.WebHooks = []
+            for item in params.get("WebHooks"):
+                obj = SubscribeWebHook()
+                obj._deserialize(item)
+                self.WebHooks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16635,10 +16644,14 @@ class RuleGroupSubscribe(AbstractModel):
         :param SubscribeType: 订阅方式 1.邮件email  2.短信sms
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeType: list of int non-negative
+        :param WebHooks: 群机器人配置的webhook信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebHooks: list of SubscribeWebHook
         """
         self.RuleGroupId = None
         self.Receivers = None
         self.SubscribeType = None
+        self.WebHooks = None
 
 
     def _deserialize(self, params):
@@ -16650,6 +16663,12 @@ class RuleGroupSubscribe(AbstractModel):
                 obj._deserialize(item)
                 self.Receivers.append(obj)
         self.SubscribeType = params.get("SubscribeType")
+        if params.get("WebHooks") is not None:
+            self.WebHooks = []
+            for item in params.get("WebHooks"):
+                obj = SubscribeWebHook()
+                obj._deserialize(item)
+                self.WebHooks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18007,6 +18026,36 @@ class SubscribeReceiver(AbstractModel):
     def _deserialize(self, params):
         self.ReceiverUserId = params.get("ReceiverUserId")
         self.ReceiverName = params.get("ReceiverName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeWebHook(AbstractModel):
+    """群机器人订阅配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HookType: 群机器人类型，当前支持飞书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HookType: str
+        :param HookAddress: 群机器人webhook地址，配置方式参考https://cloud.tencent.com/document/product/1254/70736
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HookAddress: str
+        """
+        self.HookType = None
+        self.HookAddress = None
+
+
+    def _deserialize(self, params):
+        self.HookType = params.get("HookType")
+        self.HookAddress = params.get("HookAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

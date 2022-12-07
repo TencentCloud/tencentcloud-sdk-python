@@ -85,6 +85,35 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteUserManagerUserList(self, request):
+        """删除用户列表（用户管理）
+
+        :param request: Request instance for DeleteUserManagerUserList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DeleteUserManagerUserListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DeleteUserManagerUserListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserManagerUserList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteUserManagerUserListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterNodes(self, request):
         """查询集群节点信息
 

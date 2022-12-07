@@ -579,6 +579,64 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAbnormalProcessRulesExportJob(self, request):
+        """创建异常进程规则导出任务
+
+        :param request: Request instance for CreateAbnormalProcessRulesExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAbnormalProcessRulesExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateAbnormalProcessRulesExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAbnormalProcessRulesExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAbnormalProcessRulesExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAccessControlsRuleExportJob(self, request):
+        """创建文件篡改规则导出任务
+
+        :param request: Request instance for CreateAccessControlsRuleExportJob.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.CreateAccessControlsRuleExportJobRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.CreateAccessControlsRuleExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccessControlsRuleExportJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAccessControlsRuleExportJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAssetImageRegistryScanTask(self, request):
         """镜像仓库创建镜像扫描任务
 

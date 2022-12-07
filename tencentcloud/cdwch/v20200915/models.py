@@ -192,7 +192,7 @@ class CreateBackUpScheduleRequest(AbstractModel):
         r"""
         :param ScheduleId: 编辑时需要传
         :type ScheduleId: int
-        :param WeekDays: 选择的星期 逗号分隔
+        :param WeekDays: 选择的星期 逗号分隔，例如 2 代表周二
         :type WeekDays: str
         :param ExecuteHour: 执行小时
         :type ExecuteHour: int

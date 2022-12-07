@@ -8127,8 +8127,6 @@ class CreateOpenBankMerchantRequest(AbstractModel):
         :type OutMerchantId: str
         :param ChannelName: 渠道名称。
 __TENPAY__: 商企付
-__WECHAT__: 微信支付
-__ALIPAY__: 支付宝
         :type ChannelName: str
         :param OutMerchantName: 外部商户名称。
         :type OutMerchantName: str
@@ -8540,7 +8538,7 @@ __ALIPAY__: 支付宝
         :type ChannelSubMerchantId: str
         :param NotifyUrl: 通知地址，如www.test.com。
         :type NotifyUrl: str
-        :param Remark: 备注信息。
+        :param Remark: 备注信息。限制200个字符。
         :type Remark: str
         :param Environment: 环境类型。
 __release__:生产环境

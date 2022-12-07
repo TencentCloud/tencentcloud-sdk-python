@@ -260,6 +260,37 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTIWRoomDailyUsage(self, request):
+        """查询互动白板房间维度每天计费用量。
+        1. 单次查询统计区间最多不能超过31天。
+        2. 由于统计延迟等原因，暂时不支持查询当天数据，建议在次日上午7点以后再来查询前一天的用量，例如在10月27日上午7点后，再来查询到10月26日整天的用量
+
+        :param request: Request instance for DescribeTIWRoomDailyUsage.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTIWRoomDailyUsageRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeTIWRoomDailyUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTIWRoomDailyUsage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTIWRoomDailyUsageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTranscode(self, request):
         """查询文档转码任务的执行进度与转码结果
 

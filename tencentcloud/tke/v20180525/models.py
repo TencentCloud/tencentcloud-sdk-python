@@ -2248,7 +2248,7 @@ class CreateClusterReleaseRequest(AbstractModel):
         :type Chart: str
         :param Values: 自定义参数
         :type Values: :class:`tencentcloud.tke.v20180525.models.ReleaseValues`
-        :param ChartFrom: 制品来源，范围：tke-market/tcr/other
+        :param ChartFrom: 制品来源，范围：tke 应用市场/第三方chart
         :type ChartFrom: str
         :param ChartVersion: 制品版本
         :type ChartVersion: str
@@ -2260,6 +2260,8 @@ class CreateClusterReleaseRequest(AbstractModel):
         :type Password: str
         :param ChartNamespace: 制品命名空间
         :type ChartNamespace: str
+        :param ClusterType: 集群类型，支持传 tke, eks, tkeedge, exernal(注册集群）
+        :type ClusterType: str
         """
         self.ClusterId = None
         self.Name = None
@@ -2272,6 +2274,7 @@ class CreateClusterReleaseRequest(AbstractModel):
         self.Username = None
         self.Password = None
         self.ChartNamespace = None
+        self.ClusterType = None
 
 
     def _deserialize(self, params):
@@ -2288,6 +2291,7 @@ class CreateClusterReleaseRequest(AbstractModel):
         self.Username = params.get("Username")
         self.Password = params.get("Password")
         self.ChartNamespace = params.get("ChartNamespace")
+        self.ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

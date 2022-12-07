@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 请求头部的 Authorization 不符合腾讯云标准。
+AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 

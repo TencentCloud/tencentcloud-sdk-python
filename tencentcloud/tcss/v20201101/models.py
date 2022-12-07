@@ -4036,6 +4036,134 @@ class ContainerNetwork(AbstractModel):
         
 
 
+class CreateAbnormalProcessRulesExportJobRequest(AbstractModel):
+    """CreateAbnormalProcessRulesExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>RuleType - string  - 是否必填: 否 -规则类型</li>
+<li>Status - string  - 是否必填: 否 -状态</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: str
+        :param ExportField: 导出字段
+        :type ExportField: list of str
+        """
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.ExportField = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.ExportField = params.get("ExportField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAbnormalProcessRulesExportJobResponse(AbstractModel):
+    """CreateAbnormalProcessRulesExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAccessControlsRuleExportJobRequest(AbstractModel):
+    """CreateAccessControlsRuleExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件。
+<li>RuleType - string  - 是否必填: 否 -规则类型</li>
+<li>Status - string  - 是否必填: 否 -状态</li>
+        :type Filters: list of RunTimeFilters
+        :param Order: 排序方式
+        :type Order: str
+        :param By: 排序字段
+        :type By: list of str
+        :param ExportField: 导出字段
+        :type ExportField: list of str
+        """
+        self.Filters = None
+        self.Order = None
+        self.By = None
+        self.ExportField = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.ExportField = params.get("ExportField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccessControlsRuleExportJobResponse(AbstractModel):
+    """CreateAccessControlsRuleExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 导出任务ID，前端拿着任务ID查询任务进度
+        :type JobId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
     """CreateAssetImageRegistryScanTaskOneKey请求参数结构体
 
