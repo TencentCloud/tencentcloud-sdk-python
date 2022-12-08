@@ -3132,7 +3132,7 @@ class File(AbstractModel):
         :param ProjectId: 项目 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param AppID: 用户账号的 App ID
+        :param AppID: 此字段不再使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppID: int
         :param Uin: 用户主账号
@@ -3471,13 +3471,13 @@ class Job(AbstractModel):
         :param Load: 任务的施压配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Load: :class:`tencentcloud.pts.v20210728.models.Load`
-        :param Configs: deprecated
+        :param Configs: 此字段不再使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Configs: list of str
         :param Datasets: 任务的数据集文件
 注意：此字段可能返回 null，表示取不到有效值。
         :type Datasets: list of TestData
-        :param Extensions: deprecated
+        :param Extensions: 此字段不再使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extensions: list of str
         :param Status: 任务的运行状态, JobUnknown: 0,JobCreated:1,JobPending:2, JobPreparing:3,JobSelectClustering:4,JobCreateTasking:5,JobSyncTasking:6
@@ -3503,7 +3503,7 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         :param JobOwner: 任务发起人
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobOwner: str
-        :param LoadSources: deprecated
+        :param LoadSources: 此字段不再使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadSources: :class:`tencentcloud.pts.v20210728.models.LoadSource`
         :param Duration: 任务时长
@@ -3530,7 +3530,7 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         :param ResponseTimeP90: 响应时间第90百分位
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseTimeP90: float
-        :param Scripts: deprecated
+        :param Scripts: 此字段不再使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scripts: list of str
         :param ResponseTimeMax: 最大响应时间
@@ -3584,6 +3584,9 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         :param NetworkSendRate: 每秒发送字节数
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkSendRate: float
+        :param Message: 任务状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
         """
         self.JobId = None
         self.ScenarioId = None
@@ -3625,6 +3628,7 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         self.NotificationHooks = None
         self.NetworkReceiveRate = None
         self.NetworkSendRate = None
+        self.Message = None
 
 
     def _deserialize(self, params):
@@ -3709,6 +3713,7 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
                 self.NotificationHooks.append(obj)
         self.NetworkReceiveRate = params.get("NetworkReceiveRate")
         self.NetworkSendRate = params.get("NetworkSendRate")
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

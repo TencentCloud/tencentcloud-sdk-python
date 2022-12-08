@@ -171,6 +171,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelClusterRelease(self, request):
+        """在应用市场中取消安装失败的应用
+
+        :param request: Request instance for CancelClusterRelease.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CancelClusterReleaseRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CancelClusterReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelClusterRelease", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelClusterReleaseResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CheckEdgeClusterCIDR(self, request):
         """检查边缘计算集群的CIDR是否冲突
 
@@ -2100,6 +2129,122 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterNodePoolsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterPendingReleases(self, request):
+        """在应用市场中查询正在安装中的应用列表
+
+        :param request: Request instance for DescribeClusterPendingReleases.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterPendingReleasesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterPendingReleasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterPendingReleases", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterPendingReleasesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterReleaseDetails(self, request):
+        """查询通过应用市场安装的某个应用详情
+
+        :param request: Request instance for DescribeClusterReleaseDetails.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterReleaseDetailsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterReleaseDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterReleaseDetails", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterReleaseDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterReleaseHistory(self, request):
+        """查询集群在应用市场中某个已安装应用的版本历史
+
+        :param request: Request instance for DescribeClusterReleaseHistory.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterReleaseHistoryRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterReleaseHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterReleaseHistory", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterReleaseHistoryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterReleases(self, request):
+        """查询集群在应用市场中已安装应用列表
+
+        :param request: Request instance for DescribeClusterReleases.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterReleasesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterReleasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterReleases", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterReleasesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4608,6 +4753,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RollbackClusterRelease(self, request):
+        """在应用市场中集群回滚应用至某个历史版本
+
+        :param request: Request instance for RollbackClusterRelease.
+        :type request: :class:`tencentcloud.tke.v20180525.models.RollbackClusterReleaseRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.RollbackClusterReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackClusterRelease", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RollbackClusterReleaseResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RunPrometheusInstance(self, request):
         """初始化TMP实例，开启集成中心时调用
 
@@ -4768,6 +4942,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncPrometheusTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UninstallClusterRelease(self, request):
+        """在应用市场中集群删除某个应用
+
+        :param request: Request instance for UninstallClusterRelease.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UninstallClusterReleaseRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UninstallClusterReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UninstallClusterRelease", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UninstallClusterReleaseResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5029,6 +5232,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeClusterInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeClusterRelease(self, request):
+        """升级集群中已安装的应用
+
+        :param request: Request instance for UpgradeClusterRelease.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpgradeClusterReleaseRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpgradeClusterReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeClusterRelease", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeClusterReleaseResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

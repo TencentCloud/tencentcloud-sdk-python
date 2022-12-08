@@ -2773,10 +2773,14 @@ class MixLayoutParams(AbstractModel):
         :type PlaceHolderMode: int
         :param BackgroundImageRenderMode: 背景画面宽高比不一致的时候处理方案，与MixLayoufList定义的RenderMode一致。
         :type BackgroundImageRenderMode: int
-        :param DefaultSubBackgroundImage: 下载的url地址， 只支持jpg， png，大小限制不超过5M，宽高比不一致的处理方案同 RenderMode。
+        :param DefaultSubBackgroundImage: 子画面占位图url地址， 只支持jpg， png，大小限制不超过5M，宽高比不一致的处理方案同 RenderMode。
         :type DefaultSubBackgroundImage: str
         :param WaterMarkList: 水印布局参数， 最多支持25个。
         :type WaterMarkList: list of WaterMark
+        :param RenderMode: 模板布局下，背景画面宽高比不一致的时候处理方案。自定义布局不生效，与MixLayoufList定义的RenderMode一致。
+        :type RenderMode: int
+        :param MaxResolutionUserAlign: 屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。
+        :type MaxResolutionUserAlign: int
         """
         self.MixLayoutMode = None
         self.MixLayoutList = None
@@ -2788,6 +2792,8 @@ class MixLayoutParams(AbstractModel):
         self.BackgroundImageRenderMode = None
         self.DefaultSubBackgroundImage = None
         self.WaterMarkList = None
+        self.RenderMode = None
+        self.MaxResolutionUserAlign = None
 
 
     def _deserialize(self, params):
@@ -2811,6 +2817,8 @@ class MixLayoutParams(AbstractModel):
                 obj = WaterMark()
                 obj._deserialize(item)
                 self.WaterMarkList.append(obj)
+        self.RenderMode = params.get("RenderMode")
+        self.MaxResolutionUserAlign = params.get("MaxResolutionUserAlign")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3274,10 +3282,13 @@ class RecordParams(AbstractModel):
         :type StreamType: int
         :param SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
-        :param OutputFormat: 输出文件的格式，上传到云点播时此参数无效，存储到云点播时请关注TencentVod内的MediaType参数。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4（hls录制完成后转mp4文件）。
+        :param OutputFormat: 输出文件的格式，上传到云点播时此参数无效，存储到云点播时请关注TencentVod内的MediaType参数。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4。2：输出文件格式为hls+aac 。
         :type OutputFormat: int
         :param AvMerge: 单流录制模式下，用户的音视频是否合并，0：单流音视频不合并（默认）。1：单流音视频合并成一个ts。混流录制此参数无需设置，默认音视频合并。
         :type AvMerge: int
+        :param MaxMediaFileDuration: 如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】
+Hls 格式录制此参数不生效。
+        :type MaxMediaFileDuration: int
         """
         self.RecordMode = None
         self.MaxIdleTime = None
@@ -3285,6 +3296,7 @@ class RecordParams(AbstractModel):
         self.SubscribeStreamUserIds = None
         self.OutputFormat = None
         self.AvMerge = None
+        self.MaxMediaFileDuration = None
 
 
     def _deserialize(self, params):
@@ -3296,6 +3308,7 @@ class RecordParams(AbstractModel):
             self.SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
         self.OutputFormat = params.get("OutputFormat")
         self.AvMerge = params.get("AvMerge")
+        self.MaxMediaFileDuration = params.get("MaxMediaFileDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4301,6 +4314,8 @@ class TencentVod(AbstractModel):
         :type SourceContext: str
         :param MediaType: 上传到vod平台的录制文件格式类型，0：mp4(默认), 1: hls。
         :type MediaType: int
+        :param UserDefineRecordId: 仅支持API录制上传vod，该参数表示用户可以自定义录制文件名前缀，【限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符】。前缀与自动生成的录制文件名之间用__UserId_u_分开。
+        :type UserDefineRecordId: str
         """
         self.Procedure = None
         self.ExpireTime = None
@@ -4310,6 +4325,7 @@ class TencentVod(AbstractModel):
         self.SessionContext = None
         self.SourceContext = None
         self.MediaType = None
+        self.UserDefineRecordId = None
 
 
     def _deserialize(self, params):
@@ -4321,6 +4337,7 @@ class TencentVod(AbstractModel):
         self.SessionContext = params.get("SessionContext")
         self.SourceContext = params.get("SourceContext")
         self.MediaType = params.get("MediaType")
+        self.UserDefineRecordId = params.get("UserDefineRecordId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

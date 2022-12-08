@@ -6681,6 +6681,15 @@ Waiting 就绪中
         :param ScheduledAction: 定时停止的配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
+        :param CreateFailedReason: 服务创建失败的原因，创建成功后该字段为默认值 CREATE_SUCCEED
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateFailedReason: str
+        :param ResourceGroupName: 预付费服务对应的资源组名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param Tags: 服务的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.ServiceGroupId = None
         self.ServiceId = None
@@ -6708,6 +6717,9 @@ Waiting 就绪中
         self.IngressName = None
         self.ServiceLimit = None
         self.ScheduledAction = None
+        self.CreateFailedReason = None
+        self.ResourceGroupName = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -6743,6 +6755,14 @@ Waiting 就绪中
         if params.get("ScheduledAction") is not None:
             self.ScheduledAction = ScheduledAction()
             self.ScheduledAction._deserialize(params.get("ScheduledAction"))
+        self.CreateFailedReason = params.get("CreateFailedReason")
+        self.ResourceGroupName = params.get("ResourceGroupName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

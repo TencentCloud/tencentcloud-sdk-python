@@ -1246,10 +1246,13 @@ class ImageToClassRequest(AbstractModel):
         :type HandleParam: :class:`tencentcloud.mrs.v20200910.models.HandleParam`
         :param Type: 不填，默认为0
         :type Type: int
+        :param UserType: 用户类型，新客户传1，老客户可不传
+        :type UserType: int
         """
         self.ImageInfoList = None
         self.HandleParam = None
         self.Type = None
+        self.UserType = None
 
 
     def _deserialize(self, params):
@@ -1263,6 +1266,7 @@ class ImageToClassRequest(AbstractModel):
             self.HandleParam = HandleParam()
             self.HandleParam._deserialize(params.get("HandleParam"))
         self.Type = params.get("Type")
+        self.UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1315,11 +1319,14 @@ class ImageToObjectRequest(AbstractModel):
         :param IsUsedClassify: 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
         :type IsUsedClassify: bool
+        :param UserType: 用户类型，新客户传1，老客户可不传
+        :type UserType: int
         """
         self.ImageInfoList = None
         self.HandleParam = None
         self.Type = None
         self.IsUsedClassify = None
+        self.UserType = None
 
 
     def _deserialize(self, params):
@@ -1334,6 +1341,7 @@ class ImageToObjectRequest(AbstractModel):
             self.HandleParam._deserialize(params.get("HandleParam"))
         self.Type = params.get("Type")
         self.IsUsedClassify = params.get("IsUsedClassify")
+        self.UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3082,12 +3090,16 @@ class TextToClassRequest(AbstractModel):
         r"""
         :param Text: 报告文本
         :type Text: str
+        :param UserType: 用户类型，新客户传1，老客户可不传
+        :type UserType: int
         """
         self.Text = None
+        self.UserType = None
 
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
+        self.UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3137,16 +3149,20 @@ class TextToObjectRequest(AbstractModel):
         :param IsUsedClassify: 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
         :type IsUsedClassify: bool
+        :param UserType: 用户类型，新客户传1，老客户可不传
+        :type UserType: int
         """
         self.Text = None
         self.Type = None
         self.IsUsedClassify = None
+        self.UserType = None
 
 
     def _deserialize(self, params):
         self.Text = params.get("Text")
         self.Type = params.get("Type")
         self.IsUsedClassify = params.get("IsUsedClassify")
+        self.UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

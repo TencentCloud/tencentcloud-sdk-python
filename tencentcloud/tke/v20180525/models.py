@@ -479,6 +479,62 @@ class CUDNN(AbstractModel):
         
 
 
+class CancelClusterReleaseRequest(AbstractModel):
+    """CancelClusterRelease请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: 应用ID
+        :type ID: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        """
+        self.ID = None
+        self.ClusterId = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelClusterReleaseResponse(AbstractModel):
+    """CancelClusterRelease返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Release: 应用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Release = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Release") is not None:
+            self.Release = PendingRelease()
+            self.Release._deserialize(params.get("Release"))
+        self.RequestId = params.get("RequestId")
+
+
 class Capabilities(AbstractModel):
     """cloudrun安全特性能力
 
@@ -5900,6 +5956,298 @@ class DescribeClusterNodePoolsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NodePoolSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterPendingReleasesRequest(AbstractModel):
+    """DescribeClusterPendingReleases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Limit: 返回数量限制，默认20，最大100
+        :type Limit: int
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        """
+        self.ClusterId = None
+        self.Limit = None
+        self.Offset = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterPendingReleasesResponse(AbstractModel):
+    """DescribeClusterPendingReleases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReleaseSet: 正在安装中应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseSet: list of PendingRelease
+        :param Limit: 每页返回数量限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Limit: int
+        :param Offset: 页偏移量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param Total: 总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReleaseSet = None
+        self.Limit = None
+        self.Offset = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReleaseSet") is not None:
+            self.ReleaseSet = []
+            for item in params.get("ReleaseSet"):
+                obj = PendingRelease()
+                obj._deserialize(item)
+                self.ReleaseSet.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterReleaseDetailsRequest(AbstractModel):
+    """DescribeClusterReleaseDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Name: 应用名称
+        :type Name: str
+        :param Namespace: 应用所在命名空间
+        :type Namespace: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.Namespace = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterReleaseDetailsResponse(AbstractModel):
+    """DescribeClusterReleaseDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Release: 应用详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Release: :class:`tencentcloud.tke.v20180525.models.ReleaseDetails`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Release = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Release") is not None:
+            self.Release = ReleaseDetails()
+            self.Release._deserialize(params.get("Release"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterReleaseHistoryRequest(AbstractModel):
+    """DescribeClusterReleaseHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Name: 应用名称
+        :type Name: str
+        :param Namespace: 应用所在命名空间
+        :type Namespace: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.Namespace = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterReleaseHistoryResponse(AbstractModel):
+    """DescribeClusterReleaseHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReleaseHistorySet: 已安装应用版本历史
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseHistorySet: list of ReleaseHistory
+        :param Total: 总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReleaseHistorySet = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReleaseHistorySet") is not None:
+            self.ReleaseHistorySet = []
+            for item in params.get("ReleaseHistorySet"):
+                obj = ReleaseHistory()
+                obj._deserialize(item)
+                self.ReleaseHistorySet.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterReleasesRequest(AbstractModel):
+    """DescribeClusterReleases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Limit: 每页数量限制
+        :type Limit: int
+        :param Offset: 页偏移量
+        :type Offset: int
+        :param Namespace: helm Release 安装的namespace
+        :type Namespace: str
+        :param ReleaseName: helm Release 的名字
+        :type ReleaseName: str
+        :param ChartName: helm Chart 的名字
+        :type ChartName: str
+        """
+        self.ClusterId = None
+        self.Limit = None
+        self.Offset = None
+        self.Namespace = None
+        self.ReleaseName = None
+        self.ChartName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Namespace = params.get("Namespace")
+        self.ReleaseName = params.get("ReleaseName")
+        self.ChartName = params.get("ChartName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterReleasesResponse(AbstractModel):
+    """DescribeClusterReleases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 数量限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Limit: int
+        :param Offset: 偏移量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param ReleaseSet: 已安装应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseSet: list of Release
+        :param Total: 已安装应用总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.ReleaseSet = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("ReleaseSet") is not None:
+            self.ReleaseSet = []
+            for item in params.get("ReleaseSet"):
+                obj = Release()
+                obj._deserialize(item)
+                self.ReleaseSet.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -15023,6 +15371,220 @@ class RegionInstance(AbstractModel):
         
 
 
+class Release(AbstractModel):
+    """应用市场部署的应用结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 应用名称
+        :type Name: str
+        :param Namespace: 应用命名空间
+        :type Namespace: str
+        :param Revision: 应用当前版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: str
+        :param Status: 应用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param ChartName: 制品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChartName: str
+        :param ChartVersion: 制品版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChartVersion: str
+        :param AppVersion: 制品应用版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppVersion: str
+        :param UpdatedTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        :param Description: 应用描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.Name = None
+        self.Namespace = None
+        self.Revision = None
+        self.Status = None
+        self.ChartName = None
+        self.ChartVersion = None
+        self.AppVersion = None
+        self.UpdatedTime = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.Revision = params.get("Revision")
+        self.Status = params.get("Status")
+        self.ChartName = params.get("ChartName")
+        self.ChartVersion = params.get("ChartVersion")
+        self.AppVersion = params.get("AppVersion")
+        self.UpdatedTime = params.get("UpdatedTime")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseDetails(AbstractModel):
+    """应用市场的安装应用详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 应用名称
+        :type Name: str
+        :param Namespace: 应用所在命名空间
+        :type Namespace: str
+        :param Version: 应用当前版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: int
+        :param Status: 应用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Description: 应用描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Notes: 应用提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Notes: str
+        :param Config: 用户自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: str
+        :param Manifest: 应用资源详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Manifest: str
+        :param ChartVersion: 应用制品版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChartVersion: str
+        :param ChartName: 应用制品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChartName: str
+        :param ChartDescription: 应用制品描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChartDescription: str
+        :param AppVersion: 应用制品app版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppVersion: str
+        :param FirstDeployedTime: 应用首次部署时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstDeployedTime: str
+        :param LastDeployedTime: 应用最近部署时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastDeployedTime: str
+        :param ComputedValues: 应用参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputedValues: str
+        """
+        self.Name = None
+        self.Namespace = None
+        self.Version = None
+        self.Status = None
+        self.Description = None
+        self.Notes = None
+        self.Config = None
+        self.Manifest = None
+        self.ChartVersion = None
+        self.ChartName = None
+        self.ChartDescription = None
+        self.AppVersion = None
+        self.FirstDeployedTime = None
+        self.LastDeployedTime = None
+        self.ComputedValues = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.Version = params.get("Version")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        self.Notes = params.get("Notes")
+        self.Config = params.get("Config")
+        self.Manifest = params.get("Manifest")
+        self.ChartVersion = params.get("ChartVersion")
+        self.ChartName = params.get("ChartName")
+        self.ChartDescription = params.get("ChartDescription")
+        self.AppVersion = params.get("AppVersion")
+        self.FirstDeployedTime = params.get("FirstDeployedTime")
+        self.LastDeployedTime = params.get("LastDeployedTime")
+        self.ComputedValues = params.get("ComputedValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseHistory(AbstractModel):
+    """应用市场中部署的应用版本历史
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 应用名称
+        :type Name: str
+        :param Namespace: 应用命名空间
+        :type Namespace: str
+        :param Revision: 应用版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: int
+        :param Status: 应用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Chart: 应用制品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Chart: str
+        :param AppVersion: 应用制品版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppVersion: str
+        :param UpdatedTime: 应用更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        :param Description: 应用描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.Name = None
+        self.Namespace = None
+        self.Revision = None
+        self.Status = None
+        self.Chart = None
+        self.AppVersion = None
+        self.UpdatedTime = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.Revision = params.get("Revision")
+        self.Status = params.get("Status")
+        self.Chart = params.get("Chart")
+        self.AppVersion = params.get("AppVersion")
+        self.UpdatedTime = params.get("UpdatedTime")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReleaseValues(AbstractModel):
     """应用市场自定义参数
 
@@ -15231,6 +15793,70 @@ class RestartEKSContainerInstancesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RollbackClusterReleaseRequest(AbstractModel):
+    """RollbackClusterRelease请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Name: 应用名称
+        :type Name: str
+        :param Namespace: 应用命名空间
+        :type Namespace: str
+        :param Revision: 回滚版本号
+        :type Revision: int
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.Namespace = None
+        self.Revision = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.Revision = params.get("Revision")
+        self.ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackClusterReleaseResponse(AbstractModel):
+    """RollbackClusterRelease返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Release: 应用详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Release = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Release") is not None:
+            self.Release = PendingRelease()
+            self.Release._deserialize(params.get("Release"))
         self.RequestId = params.get("RequestId")
 
 
@@ -16108,6 +16734,66 @@ class Toleration(AbstractModel):
         
 
 
+class UninstallClusterReleaseRequest(AbstractModel):
+    """UninstallClusterRelease请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Name: 应用名称
+        :type Name: str
+        :param Namespace: 应用命名空间
+        :type Namespace: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.Namespace = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UninstallClusterReleaseResponse(AbstractModel):
+    """UninstallClusterRelease返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Release: 应用详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Release = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Release") is not None:
+            self.Release = PendingRelease()
+            self.Release._deserialize(params.get("Release"))
+        self.RequestId = params.get("RequestId")
+
+
 class UninstallEdgeLogAgentRequest(AbstractModel):
     """UninstallEdgeLogAgent请求参数结构体
 
@@ -16494,14 +17180,39 @@ class UpdateImageCacheRequest(AbstractModel):
         :type ImageCacheId: str
         :param ImageCacheName: 镜像缓存名称
         :type ImageCacheName: str
+        :param ImageRegistryCredentials: 镜像仓库凭证数组
+        :type ImageRegistryCredentials: list of ImageRegistryCredential
+        :param Images: 用于制作镜像缓存的容器镜像列表
+        :type Images: list of str
+        :param ImageCacheSize: 镜像缓存的大小。默认为20 GiB。取值范围参考[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)中的高性能云盘类型的大小限制。
+        :type ImageCacheSize: int
+        :param RetentionDays: 镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
+        :type RetentionDays: int
+        :param SecurityGroupIds: 安全组Id
+        :type SecurityGroupIds: list of str
         """
         self.ImageCacheId = None
         self.ImageCacheName = None
+        self.ImageRegistryCredentials = None
+        self.Images = None
+        self.ImageCacheSize = None
+        self.RetentionDays = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
         self.ImageCacheId = params.get("ImageCacheId")
         self.ImageCacheName = params.get("ImageCacheName")
+        if params.get("ImageRegistryCredentials") is not None:
+            self.ImageRegistryCredentials = []
+            for item in params.get("ImageRegistryCredentials"):
+                obj = ImageRegistryCredential()
+                obj._deserialize(item)
+                self.ImageRegistryCredentials.append(obj)
+        self.Images = params.get("Images")
+        self.ImageCacheSize = params.get("ImageCacheSize")
+        self.RetentionDays = params.get("RetentionDays")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16724,6 +17435,100 @@ class UpgradeClusterInstancesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeClusterReleaseRequest(AbstractModel):
+    """UpgradeClusterRelease请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Name: 自定义的应用名称
+        :type Name: str
+        :param Namespace: 应用命名空间
+        :type Namespace: str
+        :param Chart: 制品名称或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
+        :type Chart: str
+        :param Values: 自定义参数，覆盖chart 中values.yaml 中的参数
+        :type Values: :class:`tencentcloud.tke.v20180525.models.ReleaseValues`
+        :param ChartFrom: 制品来源，范围：tke-market/tcr/other
+        :type ChartFrom: str
+        :param ChartVersion: 制品版本( 从第三安装时，不传这个参数）
+        :type ChartVersion: str
+        :param ChartRepoURL: 制品仓库URL地址
+        :type ChartRepoURL: str
+        :param Username: 制品访问用户名
+        :type Username: str
+        :param Password: 制品访问密码
+        :type Password: str
+        :param ChartNamespace: 制品命名空间
+        :type ChartNamespace: str
+        :param ClusterType: 集群类型，支持传 tke, eks, tkeedge, exernal(注册集群）
+        :type ClusterType: str
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.Namespace = None
+        self.Chart = None
+        self.Values = None
+        self.ChartFrom = None
+        self.ChartVersion = None
+        self.ChartRepoURL = None
+        self.Username = None
+        self.Password = None
+        self.ChartNamespace = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.Namespace = params.get("Namespace")
+        self.Chart = params.get("Chart")
+        if params.get("Values") is not None:
+            self.Values = ReleaseValues()
+            self.Values._deserialize(params.get("Values"))
+        self.ChartFrom = params.get("ChartFrom")
+        self.ChartVersion = params.get("ChartVersion")
+        self.ChartRepoURL = params.get("ChartRepoURL")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        self.ChartNamespace = params.get("ChartNamespace")
+        self.ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeClusterReleaseResponse(AbstractModel):
+    """UpgradeClusterRelease返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Release: 应用详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Release: :class:`tencentcloud.tke.v20180525.models.PendingRelease`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Release = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Release") is not None:
+            self.Release = PendingRelease()
+            self.Release._deserialize(params.get("Release"))
         self.RequestId = params.get("RequestId")
 
 

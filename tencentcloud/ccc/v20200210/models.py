@@ -3698,6 +3698,9 @@ notInService       不在服务区
         :param CustomRecordURL: 录音转存第三方COS地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRecordURL: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         """
         self.Caller = None
         self.Callee = None
@@ -3729,6 +3732,7 @@ notInService       不在服务区
         self.IVRKeyPressedEx = None
         self.AsrUrl = None
         self.CustomRecordURL = None
+        self.Remark = None
 
 
     def _deserialize(self, params):
@@ -3779,6 +3783,7 @@ notInService       不在服务区
                 self.IVRKeyPressedEx.append(obj)
         self.AsrUrl = params.get("AsrUrl")
         self.CustomRecordURL = params.get("CustomRecordURL")
+        self.Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

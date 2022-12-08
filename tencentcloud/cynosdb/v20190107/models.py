@@ -2996,18 +2996,30 @@ class DescribeClusterParamLogsRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param InstanceIds: 实例ID列表，用来记录具体操作哪些实例
+        :type InstanceIds: list of str
+        :param OrderBy: 排序字段，定义在回返结果的基于哪个字段进行排序
+        :type OrderBy: str
+        :param OrderByType: 定义具体的排序规则，限定为desc,asc,DESC,ASC其中之一
+        :type OrderByType: str
         :param Limit: 返回数量，默认为 20，取值范围为(0,100]
         :type Limit: int
         :param Offset: 记录偏移量，默认值为0，取值范围为[0,INF)
         :type Offset: int
         """
         self.ClusterId = None
+        self.InstanceIds = None
+        self.OrderBy = None
+        self.OrderByType = None
         self.Limit = None
         self.Offset = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
