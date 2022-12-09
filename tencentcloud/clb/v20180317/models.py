@@ -700,21 +700,26 @@ class CertificateOutput(AbstractModel):
         r"""
         :param SSLMode: 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
         :type SSLMode: str
-        :param CertId: 服务端证书的 ID。
+        :param CertId: 服务端证书的ID。
         :type CertId: str
         :param CertCaId: 客户端证书的 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertCaId: str
+        :param ExtCertIds: 多本服务器证书场景扩展的服务器证书ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtCertIds: list of str
         """
         self.SSLMode = None
         self.CertId = None
         self.CertCaId = None
+        self.ExtCertIds = None
 
 
     def _deserialize(self, params):
         self.SSLMode = params.get("SSLMode")
         self.CertId = params.get("CertId")
         self.CertCaId = params.get("CertCaId")
+        self.ExtCertIds = params.get("ExtCertIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4860,6 +4865,9 @@ class Listener(AbstractModel):
         :param AttrFlags: 监听器的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttrFlags: list of str
+        :param TargetGroupList: 绑定的目标组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetGroupList: list of BasicTargetGroupInfo
         """
         self.ListenerId = None
         self.Protocol = None
@@ -4880,6 +4888,7 @@ class Listener(AbstractModel):
         self.Toa = None
         self.DeregisterTargetRst = None
         self.AttrFlags = None
+        self.TargetGroupList = None
 
 
     def _deserialize(self, params):
@@ -4913,6 +4922,12 @@ class Listener(AbstractModel):
         self.Toa = params.get("Toa")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
         self.AttrFlags = params.get("AttrFlags")
+        if params.get("TargetGroupList") is not None:
+            self.TargetGroupList = []
+            for item in params.get("TargetGroupList"):
+                obj = BasicTargetGroupInfo()
+                obj._deserialize(item)
+                self.TargetGroupList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5501,6 +5516,15 @@ Public：公网属性， Private：内网属性。
         :param Domains: 转发规则的域名列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domains: str
+        :param SlaveZone: 多可用区负载均衡实例所选备区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZone: list of str
+        :param Zones: 内网负载均衡实例所在可用区，由白名单CLB_Internal_Zone控制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zones: list of str
+        :param SniSwitch: 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SniSwitch: int
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -5536,6 +5560,9 @@ Public：公网属性， Private：内网属性。
         self.LoadBalancerPassToTarget = None
         self.TargetHealth = None
         self.Domains = None
+        self.SlaveZone = None
+        self.Zones = None
+        self.SniSwitch = None
 
 
     def _deserialize(self, params):
@@ -5584,6 +5611,9 @@ Public：公网属性， Private：内网属性。
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self.TargetHealth = params.get("TargetHealth")
         self.Domains = params.get("Domains")
+        self.SlaveZone = params.get("SlaveZone")
+        self.Zones = params.get("Zones")
+        self.SniSwitch = params.get("SniSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7255,6 +7285,9 @@ class RuleOutput(AbstractModel):
         :param Domains: 转发规则的域名列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domains: list of str
+        :param TargetGroupList: 绑定的目标组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetGroupList: list of BasicTargetGroupInfo
         """
         self.LocationId = None
         self.Domain = None
@@ -7278,6 +7311,7 @@ class RuleOutput(AbstractModel):
         self.TrpcFunc = None
         self.QuicStatus = None
         self.Domains = None
+        self.TargetGroupList = None
 
 
     def _deserialize(self, params):
@@ -7311,6 +7345,12 @@ class RuleOutput(AbstractModel):
         self.TrpcFunc = params.get("TrpcFunc")
         self.QuicStatus = params.get("QuicStatus")
         self.Domains = params.get("Domains")
+        if params.get("TargetGroupList") is not None:
+            self.TargetGroupList = []
+            for item in params.get("TargetGroupList"):
+                obj = BasicTargetGroupInfo()
+                obj._deserialize(item)
+                self.TargetGroupList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8037,12 +8077,16 @@ class ZoneInfo(AbstractModel):
         :param LocalZone: 可用区是否是LocalZone可用区，如：false
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalZone: bool
+        :param EdgeZone: 可用区是否是EdgeZone可用区，如：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EdgeZone: bool
         """
         self.ZoneId = None
         self.Zone = None
         self.ZoneName = None
         self.ZoneRegion = None
         self.LocalZone = None
+        self.EdgeZone = None
 
 
     def _deserialize(self, params):
@@ -8051,6 +8095,7 @@ class ZoneInfo(AbstractModel):
         self.ZoneName = params.get("ZoneName")
         self.ZoneRegion = params.get("ZoneRegion")
         self.LocalZone = params.get("LocalZone")
+        self.EdgeZone = params.get("EdgeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

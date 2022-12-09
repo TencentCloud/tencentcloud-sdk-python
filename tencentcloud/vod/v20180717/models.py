@@ -9740,6 +9740,96 @@ class DescribeEventsStateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFileAttributesTask(AbstractModel):
+    """获取文件属性任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param Message: 错误信息。
+        :type Message: str
+        :param Progress: 任务进度，取值范围 [0-100] 。
+        :type Progress: int
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param Output: 获取媒体文件属性任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTaskOutput`
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.ErrCodeExt = None
+        self.Message = None
+        self.Progress = None
+        self.FileId = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Message = params.get("Message")
+        self.Progress = params.get("Progress")
+        self.FileId = params.get("FileId")
+        if params.get("Output") is not None:
+            self.Output = DescribeFileAttributesTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileAttributesTaskOutput(AbstractModel):
+    """获取文件属性任务输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Md5: 媒体文件的 Md5 值。
+        :type Md5: str
+        """
+        self.Md5 = None
+
+
+    def _deserialize(self, params):
+        self.Md5 = params.get("Md5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeHeadTailTemplatesRequest(AbstractModel):
     """DescribeHeadTailTemplates请求参数结构体
 
@@ -11085,6 +11175,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>PullUpload：拉取上传媒体文件任务；</li>
 <li>FastClipMedia：快速剪辑任务；</li>
 <li>RemoveWatermarkTask：智能去除水印任务；</li>
+<li>DescribeFileAttributesTask：获取文件属性任务；</li>
 <li> ReviewAudioVideo：音视频审核任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
@@ -11146,6 +11237,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param ReduceMediaBitrateTask: 该字段已无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReduceMediaBitrateTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
+        :param DescribeFileAttributesTask: 获取文件属性任务信息，仅当 TaskType 为 DescribeFileAttributes，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DescribeFileAttributesTask: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11170,6 +11264,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.ExtractTraceWatermarkTask = None
         self.ReviewAudioVideoTask = None
         self.ReduceMediaBitrateTask = None
+        self.DescribeFileAttributesTask = None
         self.RequestId = None
 
 
@@ -11227,6 +11322,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("ReduceMediaBitrateTask") is not None:
             self.ReduceMediaBitrateTask = ReduceMediaBitrateTask()
             self.ReduceMediaBitrateTask._deserialize(params.get("ReduceMediaBitrateTask"))
+        if params.get("DescribeFileAttributesTask") is not None:
+            self.DescribeFileAttributesTask = DescribeFileAttributesTask()
+            self.DescribeFileAttributesTask._deserialize(params.get("DescribeFileAttributesTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -12281,6 +12379,7 @@ class EventContent(AbstractModel):
 <li>FastClipMediaComplete：快速剪辑完成；</li>
 <li>ReviewAudioVideoComplete：音视频审核完成；</li>
 <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
+<li>DescribeFileAttributesComplete：获取文件属性完成；</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -12345,6 +12444,9 @@ class EventContent(AbstractModel):
         :param ReduceMediaBitrateCompleteEvent: 该字段已无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReduceMediaBitrateCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
+        :param DescribeFileAttributesCompleteEvent: 获取文件属性完成事件，当事件类型为 DescribeFileAttributesComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DescribeFileAttributesCompleteEvent: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -12367,6 +12469,7 @@ class EventContent(AbstractModel):
         self.ExtractTraceWatermarkCompleteEvent = None
         self.ReviewAudioVideoCompleteEvent = None
         self.ReduceMediaBitrateCompleteEvent = None
+        self.DescribeFileAttributesCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -12429,6 +12532,9 @@ class EventContent(AbstractModel):
         if params.get("ReduceMediaBitrateCompleteEvent") is not None:
             self.ReduceMediaBitrateCompleteEvent = ReduceMediaBitrateTask()
             self.ReduceMediaBitrateCompleteEvent._deserialize(params.get("ReduceMediaBitrateCompleteEvent"))
+        if params.get("DescribeFileAttributesCompleteEvent") is not None:
+            self.DescribeFileAttributesCompleteEvent = DescribeFileAttributesTask()
+            self.DescribeFileAttributesCompleteEvent._deserialize(params.get("DescribeFileAttributesCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15078,6 +15184,9 @@ class MediaMetaData(AbstractModel):
         :type VideoDuration: float
         :param AudioDuration: 音频时长，单位：秒。
         :type AudioDuration: float
+        :param Md5: 媒体文件的 Md5 值。
+<li><font color=red>注意</font>：如需要获取媒体文件的 Md5，调用 DescribeFileAttributes 接口，待任务执行完成后获取。</li>
+        :type Md5: str
         """
         self.Size = None
         self.Container = None
@@ -15090,6 +15199,7 @@ class MediaMetaData(AbstractModel):
         self.AudioStreamSet = None
         self.VideoDuration = None
         self.AudioDuration = None
+        self.Md5 = None
 
 
     def _deserialize(self, params):
@@ -15114,6 +15224,7 @@ class MediaMetaData(AbstractModel):
                 self.AudioStreamSet.append(obj)
         self.VideoDuration = params.get("VideoDuration")
         self.AudioDuration = params.get("AudioDuration")
+        self.Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21449,6 +21560,11 @@ class ReviewAudioVideoSegmentItem(AbstractModel):
         :type Text: str
         :param KeywordSet: 当 Form 为 OCR 或 ASR 时有效，表示嫌疑片段命中的违规关键词列表。
         :type KeywordSet: list of str
+        :param Url: 嫌疑图片 URL （图片不会永久存储，到达
+ PicUrlExpireTime 时间点后图片将被删除）。
+        :type Url: str
+        :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type PicUrlExpireTime: str
         """
         self.StartTimeOffset = None
         self.EndTimeOffset = None
@@ -21460,6 +21576,8 @@ class ReviewAudioVideoSegmentItem(AbstractModel):
         self.AreaCoordSet = None
         self.Text = None
         self.KeywordSet = None
+        self.Url = None
+        self.PicUrlExpireTime = None
 
 
     def _deserialize(self, params):
@@ -21473,6 +21591,8 @@ class ReviewAudioVideoSegmentItem(AbstractModel):
         self.AreaCoordSet = params.get("AreaCoordSet")
         self.Text = params.get("Text")
         self.KeywordSet = params.get("KeywordSet")
+        self.Url = params.get("Url")
+        self.PicUrlExpireTime = params.get("PicUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

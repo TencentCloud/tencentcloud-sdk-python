@@ -1569,6 +1569,18 @@ class PrivateZone(AbstractModel):
         :type IsCustomTld: bool
         :param CnameSpeedupStatus: CNAME加速状态：开通：ENABLED, 关闭，DISABLED
         :type CnameSpeedupStatus: str
+        :param ForwardRuleName: 转发规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardRuleName: str
+        :param ForwardRuleType: 转发规则类型：云上到云下，DOWN；云下到云上，UP，目前只支持DOWN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardRuleType: str
+        :param ForwardAddress: 转发的地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardAddress: str
+        :param EndPointName: 终端节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndPointName: str
         """
         self.ZoneId = None
         self.OwnerUin = None
@@ -1584,6 +1596,10 @@ class PrivateZone(AbstractModel):
         self.AccountVpcSet = None
         self.IsCustomTld = None
         self.CnameSpeedupStatus = None
+        self.ForwardRuleName = None
+        self.ForwardRuleType = None
+        self.ForwardAddress = None
+        self.EndPointName = None
 
 
     def _deserialize(self, params):
@@ -1616,6 +1632,10 @@ class PrivateZone(AbstractModel):
                 self.AccountVpcSet.append(obj)
         self.IsCustomTld = params.get("IsCustomTld")
         self.CnameSpeedupStatus = params.get("CnameSpeedupStatus")
+        self.ForwardRuleName = params.get("ForwardRuleName")
+        self.ForwardRuleType = params.get("ForwardRuleType")
+        self.ForwardAddress = params.get("ForwardAddress")
+        self.EndPointName = params.get("EndPointName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

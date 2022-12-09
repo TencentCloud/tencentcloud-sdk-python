@@ -62,6 +62,7 @@ class AclCondition(AbstractModel):
 <li>accept：请求内容类型；</li>
 <li>method：请求方式；</li>
 <li>header：请求头部；</li>
+<li>app_proto：应用层协议；</li>
 <li>sip_proto：网络层协议。</li>
         :type MatchFrom: str
         :param MatchParam: 匹配字符串。当 MatchFrom 为 header 时，可以填入 header 的 key 作为参数。
@@ -793,31 +794,31 @@ class BotLog(AbstractModel):
         :type Domain: str
         :param RequestUri: URI。
         :type RequestUri: str
-        :param AttackType: 攻击类型。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AttackType: str
         :param RequestMethod: 请求方法。
         :type RequestMethod: str
         :param AttackContent: 攻击内容。
         :type AttackContent: str
-        :param RiskLevel: 攻击等级。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RiskLevel: str
+        :param SipCountryCode: IP所在国家iso-3166中alpha-2编码，编码信息请参考[ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json)。
+        :type SipCountryCode: str
+        :param Ua: user agent。
+        :type Ua: str
+        :param EventId: 攻击事件ID。
+        :type EventId: str
         :param RuleId: 规则ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
-        :param SipCountryCode: IP所在国家iso-3166中alpha-2编码，编码信息请参考[ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json)。
-        :type SipCountryCode: str
-        :param EventId: 请求（事件）ID。
-        :type EventId: str
+        :param AttackType: 攻击类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackType: str
         :param DisposalMethod: 处置方式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisposalMethod: str
         :param HttpLog: HTTP日志。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpLog: str
-        :param Ua: user agent。
-        :type Ua: str
+        :param RiskLevel: 攻击等级。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: str
         :param DetectionMethod: 检出方法。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetectionMethod: str
@@ -833,26 +834,30 @@ class BotLog(AbstractModel):
         :param Label: Bot标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
+        :param Area: 日志所属的区域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Area: str
         """
         self.AttackTime = None
         self.AttackIp = None
         self.Domain = None
         self.RequestUri = None
-        self.AttackType = None
         self.RequestMethod = None
         self.AttackContent = None
-        self.RiskLevel = None
-        self.RuleId = None
         self.SipCountryCode = None
+        self.Ua = None
         self.EventId = None
+        self.RuleId = None
+        self.AttackType = None
         self.DisposalMethod = None
         self.HttpLog = None
-        self.Ua = None
+        self.RiskLevel = None
         self.DetectionMethod = None
         self.Confidence = None
         self.Maliciousness = None
         self.RuleDetailList = None
         self.Label = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -860,16 +865,16 @@ class BotLog(AbstractModel):
         self.AttackIp = params.get("AttackIp")
         self.Domain = params.get("Domain")
         self.RequestUri = params.get("RequestUri")
-        self.AttackType = params.get("AttackType")
         self.RequestMethod = params.get("RequestMethod")
         self.AttackContent = params.get("AttackContent")
-        self.RiskLevel = params.get("RiskLevel")
-        self.RuleId = params.get("RuleId")
         self.SipCountryCode = params.get("SipCountryCode")
+        self.Ua = params.get("Ua")
         self.EventId = params.get("EventId")
+        self.RuleId = params.get("RuleId")
+        self.AttackType = params.get("AttackType")
         self.DisposalMethod = params.get("DisposalMethod")
         self.HttpLog = params.get("HttpLog")
-        self.Ua = params.get("Ua")
+        self.RiskLevel = params.get("RiskLevel")
         self.DetectionMethod = params.get("DetectionMethod")
         self.Confidence = params.get("Confidence")
         self.Maliciousness = params.get("Maliciousness")
@@ -880,6 +885,7 @@ class BotLog(AbstractModel):
                 obj._deserialize(item)
                 self.RuleDetailList.append(obj)
         self.Label = params.get("Label")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7280,8 +7286,6 @@ class DescribeSecurityRuleIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleIdList: 规则Id数组。
-        :type RuleIdList: list of int
         :param RuleType: 规则类型，取值有：
 <li>waf：web托管规则；</li>
 <li>acl：自定义规则；</li>
@@ -7290,16 +7294,22 @@ class DescribeSecurityRuleIdRequest(AbstractModel):
         :type RuleType: str
         :param Entity: 子域名/应用名。
         :type Entity: str
+        :param RuleIdList: 规则Id数组。 当为空时查询 子域名或者应用名下所有规则
+        :type RuleIdList: list of int
+        :param Domains: 子域名数组。
+        :type Domains: list of str
         """
-        self.RuleIdList = None
         self.RuleType = None
         self.Entity = None
+        self.RuleIdList = None
+        self.Domains = None
 
 
     def _deserialize(self, params):
-        self.RuleIdList = params.get("RuleIdList")
         self.RuleType = params.get("RuleType")
         self.Entity = params.get("Entity")
+        self.RuleIdList = params.get("RuleIdList")
+        self.Domains = params.get("Domains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7316,12 +7326,17 @@ class DescribeSecurityRuleIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WafGroupRules: 规则列表。
+        :param WafGroupRules: 托管规则类型的规则列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type WafGroupRules: list of WafGroupRule
+        :param SecurityRules: 自定义规则、速率限制、Bot规则的规则列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityRules: list of SecurityRule
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.WafGroupRules = None
+        self.SecurityRules = None
         self.RequestId = None
 
 
@@ -7332,6 +7347,12 @@ class DescribeSecurityRuleIdResponse(AbstractModel):
                 obj = WafGroupRule()
                 obj._deserialize(item)
                 self.WafGroupRules.append(obj)
+        if params.get("SecurityRules") is not None:
+            self.SecurityRules = []
+            for item in params.get("SecurityRules"):
+                obj = SecurityRule()
+                obj._deserialize(item)
+                self.SecurityRules.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -10438,8 +10459,16 @@ class IpTableRule(AbstractModel):
 <li>ip：对ip进行匹配；</li>
 <li>area：对ip所属地区匹配。</li>
         :type MatchFrom: str
-        :param MatchContent: 匹配内容。
-        :type MatchContent: str
+        :param Operator: 规则的匹配方式，默认为空代表等于。
+取值有：
+<li> is_emty：配置为空；</li>
+<li> not_exists：配置为不存在；</li>
+<li> include：包含；</li>
+<li> not_include：不包含；</li>
+<li> equal：等于；</li>
+<li> not_equal：不等于。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
         :param RuleID: 规则id。仅出参使用。
         :type RuleID: int
         :param UpdateTime: 更新时间。仅出参使用。
@@ -10449,22 +10478,31 @@ class IpTableRule(AbstractModel):
 <li> off：未启用。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param RuleName: 规则名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param MatchContent: 匹配内容。当 Operator为is_emty 或not_exists时，此值允许为空。
+        :type MatchContent: str
         """
         self.Action = None
         self.MatchFrom = None
-        self.MatchContent = None
+        self.Operator = None
         self.RuleID = None
         self.UpdateTime = None
         self.Status = None
+        self.RuleName = None
+        self.MatchContent = None
 
 
     def _deserialize(self, params):
         self.Action = params.get("Action")
         self.MatchFrom = params.get("MatchFrom")
-        self.MatchContent = params.get("MatchContent")
+        self.Operator = params.get("Operator")
         self.RuleID = params.get("RuleID")
         self.UpdateTime = params.get("UpdateTime")
         self.Status = params.get("Status")
+        self.RuleName = params.get("RuleName")
+        self.MatchContent = params.get("MatchContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13300,14 +13338,18 @@ class RateLimitIntelligence(AbstractModel):
 <li>monitor：观察；</li>
 <li>alg：挑战。</li>
         :type Action: str
+        :param RuleId: 规则id，仅出参使用。
+        :type RuleId: int
         """
         self.Switch = None
         self.Action = None
+        self.RuleId = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.Action = params.get("Action")
+        self.RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14381,10 +14423,20 @@ class SecHitRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param ZoneId: 站点ID。
+        :type ZoneId: str
         :param RuleId: 规则ID。
         :type RuleId: int
         :param RuleTypeName: 规则类型名称。
         :type RuleTypeName: str
+        :param HitTime: 命中时间，采用unix秒级时间戳。
+        :type HitTime: int
+        :param RequestNum: 请求数。
+        :type RequestNum: int
+        :param Description: 规则描述。
+        :type Description: str
+        :param Domain: 子域名。
+        :type Domain: str
         :param Action: 执行动作（处置方式），取值有：
 <li>trans ：通过 ；</li>
 <li>alg ：算法挑战 ；</li>
@@ -14394,14 +14446,6 @@ class SecHitRuleInfo(AbstractModel):
 <li>page ：返回指定页面 ；</li>
 <li>monitor ：观察 。</li>
         :type Action: str
-        :param HitTime: 命中时间，采用unix秒级时间戳。
-        :type HitTime: int
-        :param RequestNum: 请求数。
-        :type RequestNum: int
-        :param Description: 规则描述。
-        :type Description: str
-        :param Domain: 子域名。
-        :type Domain: str
         :param BotLabel: Bot标签，取值有:
 <li>evil_bot：恶意Bot；</li>
 <li>suspect_bot：疑似Bot；</li>
@@ -14409,26 +14453,42 @@ class SecHitRuleInfo(AbstractModel):
 <li>normal：正常请求；</li>
 <li>none：未分类。</li>
         :type BotLabel: str
+        :param RuleEnabled: 规则是否启用。
+        :type RuleEnabled: bool
+        :param AlarmEnabled: 规则是否启用监控告警。
+        :type AlarmEnabled: bool
+        :param RuleDeleted: 规则是否存在，取值有：
+<li>true: 规则不存在；</li>
+<li>false: 规则存在。</li>
+        :type RuleDeleted: bool
         """
+        self.ZoneId = None
         self.RuleId = None
         self.RuleTypeName = None
-        self.Action = None
         self.HitTime = None
         self.RequestNum = None
         self.Description = None
         self.Domain = None
+        self.Action = None
         self.BotLabel = None
+        self.RuleEnabled = None
+        self.AlarmEnabled = None
+        self.RuleDeleted = None
 
 
     def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
         self.RuleId = params.get("RuleId")
         self.RuleTypeName = params.get("RuleTypeName")
-        self.Action = params.get("Action")
         self.HitTime = params.get("HitTime")
         self.RequestNum = params.get("RequestNum")
         self.Description = params.get("Description")
         self.Domain = params.get("Domain")
+        self.Action = params.get("Action")
         self.BotLabel = params.get("BotLabel")
+        self.RuleEnabled = params.get("RuleEnabled")
+        self.AlarmEnabled = params.get("AlarmEnabled")
+        self.RuleDeleted = params.get("RuleDeleted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14472,6 +14532,20 @@ class SecRuleRelatedInfo(AbstractModel):
         :param AttackContent: 攻击内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackContent: str
+        :param RuleType: 规则类型，取值有：
+<li>waf: 托管规则；</li>
+<li>acl：自定义规则；</li>
+<li>rate：速率限制规则；</li>
+<li>bot：bot防护规则。</li>
+        :type RuleType: str
+        :param RuleEnabled: 规则是否开启。
+        :type RuleEnabled: bool
+        :param RuleDeleted: 规则是否存在，取值有：
+<li>true: 规则不存在；</li>
+<li>false: 规则存在。</li>
+        :type RuleDeleted: bool
+        :param AlarmEnabled: 规则是否启用监控告警。
+        :type AlarmEnabled: bool
         """
         self.RuleId = None
         self.Action = None
@@ -14480,6 +14554,10 @@ class SecRuleRelatedInfo(AbstractModel):
         self.Description = None
         self.RuleTypeName = None
         self.AttackContent = None
+        self.RuleType = None
+        self.RuleEnabled = None
+        self.RuleDeleted = None
+        self.AlarmEnabled = None
 
 
     def _deserialize(self, params):
@@ -14490,6 +14568,10 @@ class SecRuleRelatedInfo(AbstractModel):
         self.Description = params.get("Description")
         self.RuleTypeName = params.get("RuleTypeName")
         self.AttackContent = params.get("AttackContent")
+        self.RuleType = params.get("RuleType")
+        self.RuleEnabled = params.get("RuleEnabled")
+        self.RuleDeleted = params.get("RuleDeleted")
+        self.AlarmEnabled = params.get("AlarmEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14607,6 +14689,70 @@ class SecurityEntity(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.Entity = params.get("Entity")
         self.EntityType = params.get("EntityType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityRule(AbstractModel):
+    """托管规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则id。
+        :type RuleId: int
+        :param Description: 规则描述。
+        :type Description: str
+        :param RuleTypeName: 规则类型名。
+        :type RuleTypeName: str
+        :param RuleLevelDesc: 等级描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleLevelDesc: str
+        :param RuleTypeId: 规则类型id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTypeId: int
+        :param RuleTypeDesc: 规则类型描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTypeDesc: str
+        :param RuleTags: 规则标签。部分类型的规则不存在该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTags: list of str
+        :param Status: 状态，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>为空时对应接口Status无意义，例如仅查询规则详情时。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Entity: 子域名/应用名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Entity: str
+        """
+        self.RuleId = None
+        self.Description = None
+        self.RuleTypeName = None
+        self.RuleLevelDesc = None
+        self.RuleTypeId = None
+        self.RuleTypeDesc = None
+        self.RuleTags = None
+        self.Status = None
+        self.Entity = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.Description = params.get("Description")
+        self.RuleTypeName = params.get("RuleTypeName")
+        self.RuleLevelDesc = params.get("RuleLevelDesc")
+        self.RuleTypeId = params.get("RuleTypeId")
+        self.RuleTypeDesc = params.get("RuleTypeDesc")
+        self.RuleTags = params.get("RuleTags")
+        self.Status = params.get("Status")
+        self.Entity = params.get("Entity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16200,6 +16346,9 @@ class WebLogs(AbstractModel):
         :param ReqMethod: 请求类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReqMethod: str
+        :param Area: 日志所属区域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Area: str
         """
         self.EventId = None
         self.AttackIp = None
@@ -16211,6 +16360,7 @@ class WebLogs(AbstractModel):
         self.AttackContent = None
         self.RuleDetailList = None
         self.ReqMethod = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -16229,6 +16379,7 @@ class WebLogs(AbstractModel):
                 obj._deserialize(item)
                 self.RuleDetailList.append(obj)
         self.ReqMethod = params.get("ReqMethod")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

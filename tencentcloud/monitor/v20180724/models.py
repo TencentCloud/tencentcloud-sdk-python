@@ -1606,11 +1606,11 @@ class CreateAlertRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Prometheus 实例 ID
+        :param InstanceId: Prometheus 实例 ID，例如：prom-abcd1234
         :type InstanceId: str
         :param RuleName: 规则名称
         :type RuleName: str
-        :param Expr: 规则表达式
+        :param Expr: 规则表达式，可参考<a href="https://cloud.tencent.com/document/product/1416/56008">告警规则说明</a>
         :type Expr: str
         :param Receivers: 告警通知模板 ID 列表
         :type Receivers: list of str
@@ -2262,11 +2262,11 @@ class CreatePrometheusScrapeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Prometheus 实例 ID，例如：prom-abcd1234
         :type InstanceId: str
-        :param AgentId: Agent ID
+        :param AgentId: Agent ID，例如：agent-abcd1234，可在控制台 Agent 管理中获取
         :type AgentId: str
-        :param Config: 任务内容
+        :param Config: 抓取任务配置，格式：job_name:xx
         :type Config: str
         """
         self.InstanceId = None
@@ -3053,7 +3053,7 @@ class DeleteServiceDiscoveryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Prometheus 实例 ID
+        :param InstanceId: Prometheus 实例 ID，例如：prom-sdfk2342a
         :type InstanceId: str
         :param KubeClusterId: <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
         :type KubeClusterId: str
@@ -4890,7 +4890,7 @@ class DescribeGrafanaConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -5196,7 +5196,7 @@ class DescribeGrafanaWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -5241,9 +5241,9 @@ class DescribeInstalledPluginsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-kleu3gt0
         :type InstanceId: str
-        :param PluginId: 按插件 ID 过滤
+        :param PluginId: 按插件 ID 过滤，例如：grafana-piechart-panel，可通过接口 DescribeInstalledPlugins 查看已安装的插件 ID
         :type PluginId: str
         """
         self.InstanceId = None
@@ -7411,9 +7411,9 @@ class DescribeSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param UserId: 按账号 UIN 进行过滤
+        :param UserId: 填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000
         :type UserId: str
         """
         self.InstanceId = None
@@ -7793,9 +7793,9 @@ class EnableGrafanaInternetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceID: 实例 ID
+        :param InstanceID: Grafana 实例 ID，例如：grafana-kleu3gt0
         :type InstanceID: str
-        :param EnableInternet: 开启或关闭
+        :param EnableInternet: 开启或关闭公网访问，true为开启，false 为不开启
         :type EnableInternet: bool
         """
         self.InstanceID = None
@@ -7838,9 +7838,9 @@ class EnableGrafanaSSORequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EnableSSO: 是否开启 SSO
+        :param EnableSSO: 是否开启 SSO，true为开启，false 为不开启
         :type EnableSSO: bool
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
         """
         self.EnableSSO = None
@@ -7883,9 +7883,9 @@ class EnableSSOCamCheckRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param EnableSSOCamCheck: 是否开启cam鉴权
+        :param EnableSSOCamCheck: 是否开启 cam 鉴权，true为开启，false 为不开启
         :type EnableSSOCamCheck: bool
         """
         self.InstanceId = None
@@ -11557,9 +11557,9 @@ class UninstallGrafanaPluginsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PluginIds: 插件 ID 数组
+        :param PluginIds: 插件 ID 数组，例如"PluginIds": [ "grafana-clock-panel" ]，可通过 DescribePluginOverviews 获取 PluginId
         :type PluginIds: list of str
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefg
         :type InstanceId: str
         """
         self.PluginIds = None
@@ -11999,11 +11999,11 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChannelId: 通道 ID
+        :param ChannelId: 通道 ID，例如：nchannel-abcd1234
         :type ChannelId: str
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
-        :param ChannelName: 渠道名
+        :param ChannelName: 告警通道名称，例如：test
         :type ChannelName: str
         :param Receivers: 接受告警通道 ID 数组
         :type Receivers: list of str
@@ -12060,9 +12060,9 @@ class UpdateGrafanaWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param Whitelist: 白名单数组
+        :param Whitelist: 白名单数组，输入公网域名 IP ，例如：127.0.0.1，可通过接口 DescribeGrafanaWhiteList 查看
         :type Whitelist: list of str
         """
         self.InstanceId = None
@@ -12105,9 +12105,9 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Prometheus 实例 ID，例如：prom-abcd1234
         :type InstanceId: str
-        :param AgentIds: Agent ID 列表
+        :param AgentIds: Agent ID 列表，例如：agent-abcd1234，可在控制台 Agent 管理中获取
         :type AgentIds: list of str
         :param Status: 要更新的状态
 <li> 1= 开启 </li>
@@ -12156,13 +12156,13 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Prometheus 实例 ID，例如：prom-abcd1234
         :type InstanceId: str
-        :param AgentId: Agent ID
+        :param AgentId: Agent ID，例如：agent-abcd1234，可在控制台 Agent 管理中获取
         :type AgentId: str
-        :param JobId: 抓取任务 ID
+        :param JobId: 抓取任务 ID，例如：job-abcd1234，可在控制台 Agent 管理-抓取任务配置中获取
         :type JobId: str
-        :param Config: 抓取任务配置
+        :param Config: 抓取任务配置，格式：job_name:xx
         :type Config: str
         """
         self.InstanceId = None
@@ -12275,9 +12275,9 @@ class UpdateSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 示例ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param UserId: 用户账号ID
+        :param UserId: 用户账号 ID ，例如：10000000
         :type UserId: str
         :param Role: 权限
         :type Role: list of GrafanaAccountRole
@@ -12462,9 +12462,9 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
-        :param Alias: 版本别名
+        :param Alias: 版本别名，例如：v7.4.2
         :type Alias: str
         """
         self.InstanceId = None

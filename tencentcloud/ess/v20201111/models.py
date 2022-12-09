@@ -3300,6 +3300,9 @@ class Staff(AbstractModel):
         :param VerifiedOn: 员工实名时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifiedOn: int
+        :param QuiteJob: 员工是否离职：0-未离职，1-离职
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuiteJob: int
         """
         self.UserId = None
         self.DisplayName = None
@@ -3311,6 +3314,7 @@ class Staff(AbstractModel):
         self.Verified = None
         self.CreatedOn = None
         self.VerifiedOn = None
+        self.QuiteJob = None
 
 
     def _deserialize(self, params):
@@ -3331,6 +3335,7 @@ class Staff(AbstractModel):
         self.Verified = params.get("Verified")
         self.CreatedOn = params.get("CreatedOn")
         self.VerifiedOn = params.get("VerifiedOn")
+        self.QuiteJob = params.get("QuiteJob")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

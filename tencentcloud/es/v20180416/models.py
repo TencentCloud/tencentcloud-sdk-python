@@ -1106,7 +1106,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小，默认值20
         :type Limit: int
-        :param OrderByKey: 排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderKey未传递则按创建时间降序排序
+        :param OrderByKey: 排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderByKey未传递则按创建时间降序排序
         :type OrderByKey: int
         :param OrderByType: 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
         :type OrderByType: int
@@ -1116,7 +1116,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type IpList: list of str
         :param ZoneList: 可用区列表
         :type ZoneList: list of str
-        :param HealthStatus: 健康状态筛列表
+        :param HealthStatus: 健康状态筛列表:0表示绿色，1表示黄色，2表示红色,-1表示未知
         :type HealthStatus: list of int
         :param VpcIds: Vpc列表 筛选项
         :type VpcIds: list of str

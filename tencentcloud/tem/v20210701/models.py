@@ -581,6 +581,10 @@ class CreateEnvironmentRequest(AbstractModel):
         :type EnableTswTraceService: bool
         :param Tags: 标签
         :type Tags: list of Tag
+        :param EnvType: 环境类型：test、pre、prod
+        :type EnvType: str
+        :param CreateRegion: 创建环境的region
+        :type CreateRegion: str
         """
         self.EnvironmentName = None
         self.Vpc = None
@@ -590,6 +594,8 @@ class CreateEnvironmentRequest(AbstractModel):
         self.SourceChannel = None
         self.EnableTswTraceService = None
         self.Tags = None
+        self.EnvType = None
+        self.CreateRegion = None
 
 
     def _deserialize(self, params):
@@ -606,6 +612,8 @@ class CreateEnvironmentRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.EnvType = params.get("EnvType")
+        self.CreateRegion = params.get("CreateRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1821,6 +1829,8 @@ class DescribeApplicationsRequest(AbstractModel):
         :type Keyword: str
         :param Filters: 查询过滤器
         :type Filters: list of QueryFilter
+        :param SortInfo: 排序字段
+        :type SortInfo: :class:`tencentcloud.tem.v20210701.models.SortType`
         """
         self.EnvironmentId = None
         self.Limit = None
@@ -1829,6 +1839,7 @@ class DescribeApplicationsRequest(AbstractModel):
         self.ApplicationId = None
         self.Keyword = None
         self.Filters = None
+        self.SortInfo = None
 
 
     def _deserialize(self, params):
@@ -1844,6 +1855,9 @@ class DescribeApplicationsRequest(AbstractModel):
                 obj = QueryFilter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        if params.get("SortInfo") is not None:
+            self.SortInfo = SortType()
+            self.SortInfo._deserialize(params.get("SortInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2258,11 +2272,14 @@ class DescribeEnvironmentsRequest(AbstractModel):
         :type SourceChannel: int
         :param Filters: 查询过滤器
         :type Filters: list of QueryFilter
+        :param SortInfo: 排序字段
+        :type SortInfo: :class:`tencentcloud.tem.v20210701.models.SortType`
         """
         self.Limit = None
         self.Offset = None
         self.SourceChannel = None
         self.Filters = None
+        self.SortInfo = None
 
 
     def _deserialize(self, params):
@@ -2275,6 +2292,9 @@ class DescribeEnvironmentsRequest(AbstractModel):
                 obj = QueryFilter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        if params.get("SortInfo") is not None:
+            self.SortInfo = SortType()
+            self.SortInfo._deserialize(params.get("SortInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4069,6 +4089,8 @@ class ModifyEnvironmentRequest(AbstractModel):
         :type SubnetIds: list of str
         :param SourceChannel: 来源渠道
         :type SourceChannel: int
+        :param EnvType: 环境类型：test、pre、prod
+        :type EnvType: str
         """
         self.EnvironmentId = None
         self.EnvironmentName = None
@@ -4076,6 +4098,7 @@ class ModifyEnvironmentRequest(AbstractModel):
         self.Vpc = None
         self.SubnetIds = None
         self.SourceChannel = None
+        self.EnvType = None
 
 
     def _deserialize(self, params):
@@ -4085,6 +4108,7 @@ class ModifyEnvironmentRequest(AbstractModel):
         self.Vpc = params.get("Vpc")
         self.SubnetIds = params.get("SubnetIds")
         self.SourceChannel = params.get("SourceChannel")
+        self.EnvType = params.get("EnvType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4301,6 +4325,9 @@ class NamespaceInfo(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param EnvType: 环境类型：test、pre、prod
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvType: str
         """
         self.EnvironmentId = None
         self.NamespaceName = None
@@ -4313,6 +4340,7 @@ class NamespaceInfo(AbstractModel):
         self.ApmInstanceId = None
         self.Locked = None
         self.Tags = None
+        self.EnvType = None
 
 
     def _deserialize(self, params):
@@ -4332,6 +4360,7 @@ class NamespaceInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.EnvType = params.get("EnvType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5269,6 +5298,34 @@ class ServiceVersionBrief(AbstractModel):
         
 
 
+class SortType(AbstractModel):
+    """查询过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 排序字段名称
+        :type Key: str
+        :param Type: 0：升序，1：倒序
+        :type Type: int
+        """
+        self.Key = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StopApplicationRequest(AbstractModel):
     """StopApplication请求参数结构体
 
@@ -5634,6 +5691,12 @@ class TemNamespaceInfo(AbstractModel):
         :param HasAuthority: 资源是否有权限
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasAuthority: bool
+        :param EnvType: 环境类型: test、pre、prod
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvType: str
+        :param RegionId: 地域码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
         """
         self.EnvironmentId = None
         self.Channel = None
@@ -5658,6 +5721,8 @@ class TemNamespaceInfo(AbstractModel):
         self.ClusterId = None
         self.Tags = None
         self.HasAuthority = None
+        self.EnvType = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
@@ -5689,6 +5754,8 @@ class TemNamespaceInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.HasAuthority = params.get("HasAuthority")
+        self.EnvType = params.get("EnvType")
+        self.RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

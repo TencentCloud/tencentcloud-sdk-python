@@ -65,6 +65,9 @@ LIMITEXCEEDED_LIMITEDACCESSFREQUENCY = 'LimitExceeded.LimitedAccessFrequency'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 超出UIN使用限额。
+REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = 'RequestLimitExceeded.UinLimitExceeded'
+
 # 请填写正确的Action字段名称。
 UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = 'UnauthorizedOperation.ActionNotFound'
 

@@ -251,7 +251,7 @@ class ChannelBatchCancelFlowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FailMessages: 签署流程批量撤销失败原因，错误信息与流程Id一一对应，如果部分流程不可撤销，不会返回错误信息，只会撤销可撤销流程
+        :param FailMessages: 签署流程批量撤销失败原因，错误信息与流程Id一一对应，成功为“”,失败则对应失败消息
         :type FailMessages: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3887,6 +3887,8 @@ class Staff(AbstractModel):
         :type CreatedOn: int
         :param VerifiedOn: 员工实名时间戳
         :type VerifiedOn: int
+        :param QuiteJob: 员工是否离职：0-未离职，1-离职
+        :type QuiteJob: int
         """
         self.UserId = None
         self.DisplayName = None
@@ -3898,6 +3900,7 @@ class Staff(AbstractModel):
         self.Verified = None
         self.CreatedOn = None
         self.VerifiedOn = None
+        self.QuiteJob = None
 
 
     def _deserialize(self, params):
@@ -3918,6 +3921,7 @@ class Staff(AbstractModel):
         self.Verified = params.get("Verified")
         self.CreatedOn = params.get("CreatedOn")
         self.VerifiedOn = params.get("VerifiedOn")
+        self.QuiteJob = params.get("QuiteJob")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

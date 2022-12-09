@@ -3833,14 +3833,21 @@ class OutputMapping(AbstractModel):
         :type SourcePath: str
         :param DestinationPath: 目的端路径
         :type DestinationPath: str
+        :param OutputMappingOption: 输出映射选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputMappingOption: :class:`tencentcloud.batch.v20170312.models.OutputMappingOption`
         """
         self.SourcePath = None
         self.DestinationPath = None
+        self.OutputMappingOption = None
 
 
     def _deserialize(self, params):
         self.SourcePath = params.get("SourcePath")
         self.DestinationPath = params.get("DestinationPath")
+        if params.get("OutputMappingOption") is not None:
+            self.OutputMappingOption = OutputMappingOption()
+            self.OutputMappingOption._deserialize(params.get("OutputMappingOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3873,6 +3880,33 @@ class OutputMappingConfig(AbstractModel):
         self.Scene = params.get("Scene")
         self.WorkerNum = params.get("WorkerNum")
         self.WorkerPartSize = params.get("WorkerPartSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputMappingOption(AbstractModel):
+    """输出映射选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Workspace: 容器场景下,输出选项从实例映射到容器内的实例侧的工作空间。
+BATCH_WORKSPACE: 工作空间为BATCH在实例内定义的工作空间，BATCH侧保证作业之间的隔离。（默认）
+GLOBAL_WORKSPACE: 工作空间为实例操作系统空间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Workspace: str
+        """
+        self.Workspace = None
+
+
+    def _deserialize(self, params):
+        self.Workspace = params.get("Workspace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

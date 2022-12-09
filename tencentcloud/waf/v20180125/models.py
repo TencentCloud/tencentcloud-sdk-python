@@ -575,6 +575,10 @@ class AddSpartaProtectionRequest(AbstractModel):
         :type Ciphers: list of int
         :param CipherTemplate: 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
         :type CipherTemplate: int
+        :param ProxyReadTimeout: 300s
+        :type ProxyReadTimeout: int
+        :param ProxySendTimeout: 300s
+        :type ProxySendTimeout: int
         """
         self.Domain = None
         self.CertType = None
@@ -604,6 +608,8 @@ class AddSpartaProtectionRequest(AbstractModel):
         self.TLSVersion = None
         self.Ciphers = None
         self.CipherTemplate = None
+        self.ProxyReadTimeout = None
+        self.ProxySendTimeout = None
 
 
     def _deserialize(self, params):
@@ -640,6 +646,8 @@ class AddSpartaProtectionRequest(AbstractModel):
         self.TLSVersion = params.get("TLSVersion")
         self.Ciphers = params.get("Ciphers")
         self.CipherTemplate = params.get("CipherTemplate")
+        self.ProxyReadTimeout = params.get("ProxyReadTimeout")
+        self.ProxySendTimeout = params.get("ProxySendTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2423,6 +2431,12 @@ class DomainsPartInfo(AbstractModel):
         :param CipherTemplate: 模版
 注意：此字段可能返回 null，表示取不到有效值。
         :type CipherTemplate: int
+        :param ProxyReadTimeout: 300s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyReadTimeout: int
+        :param ProxySendTimeout: 300s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxySendTimeout: int
         """
         self.HttpsRewrite = None
         self.HttpsUpstreamPort = None
@@ -2447,6 +2461,8 @@ class DomainsPartInfo(AbstractModel):
         self.TLSVersion = None
         self.Ciphers = None
         self.CipherTemplate = None
+        self.ProxyReadTimeout = None
+        self.ProxySendTimeout = None
 
 
     def _deserialize(self, params):
@@ -2478,6 +2494,8 @@ class DomainsPartInfo(AbstractModel):
         self.TLSVersion = params.get("TLSVersion")
         self.Ciphers = params.get("Ciphers")
         self.CipherTemplate = params.get("CipherTemplate")
+        self.ProxyReadTimeout = params.get("ProxyReadTimeout")
+        self.ProxySendTimeout = params.get("ProxySendTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2801,6 +2819,12 @@ class InstanceInfo(AbstractModel):
         :param ElasticBilling: qps弹性计费上限
 注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticBilling: int
+        :param AttackLogPost: 攻击日志投递开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackLogPost: int
+        :param MaxBandwidth: 带宽峰值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxBandwidth: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2825,6 +2849,8 @@ class InstanceInfo(AbstractModel):
         self.BotPkg = None
         self.BotQPS = None
         self.ElasticBilling = None
+        self.AttackLogPost = None
+        self.MaxBandwidth = None
 
 
     def _deserialize(self, params):
@@ -2861,6 +2887,8 @@ class InstanceInfo(AbstractModel):
             self.BotQPS = BotQPS()
             self.BotQPS._deserialize(params.get("BotQPS"))
         self.ElasticBilling = params.get("ElasticBilling")
+        self.AttackLogPost = params.get("AttackLogPost")
+        self.MaxBandwidth = params.get("MaxBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

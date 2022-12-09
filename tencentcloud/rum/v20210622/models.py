@@ -341,6 +341,10 @@ class CreateTawInstanceRequest(AbstractModel):
         :type PeriodRetain: str
         :param BuyingChannel: 实例购买渠道("cdn" 等)
         :type BuyingChannel: str
+        :param ResourcePackageType: 预付费资源包类型(仅预付费需要)
+        :type ResourcePackageType: int
+        :param ResourcePackageNum: 预付费资源包数量(仅预付费需要)
+        :type ResourcePackageNum: int
         """
         self.AreaId = None
         self.ChargeType = None
@@ -351,6 +355,8 @@ class CreateTawInstanceRequest(AbstractModel):
         self.CountNum = None
         self.PeriodRetain = None
         self.BuyingChannel = None
+        self.ResourcePackageType = None
+        self.ResourcePackageNum = None
 
 
     def _deserialize(self, params):
@@ -368,6 +374,8 @@ class CreateTawInstanceRequest(AbstractModel):
         self.CountNum = params.get("CountNum")
         self.PeriodRetain = params.get("PeriodRetain")
         self.BuyingChannel = params.get("BuyingChannel")
+        self.ResourcePackageType = params.get("ResourcePackageType")
+        self.ResourcePackageNum = params.get("ResourcePackageNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -386,15 +394,20 @@ class CreateTawInstanceResponse(AbstractModel):
         r"""
         :param InstanceId: 实例Id
         :type InstanceId: str
+        :param DealName: 预付费订单 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
