@@ -2777,8 +2777,8 @@ class FlowFileInfo(AbstractModel):
 class FlowInfo(AbstractModel):
     """此结构体 (FlowInfo) 用于描述签署流程信息。
 
-    【动态表格传参说明】
-    当模板的 ComponentType='DYNAMIC_TABLE'时（渠道版或集成版），FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充动态表格（支持内容的单元格合并）
+    【数据表格传参说明】
+    当模板的 ComponentType='DYNAMIC_TABLE'时（渠道版或集成版），FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充数据表格（支持内容的单元格合并）
     输入示例1：
 
     ```

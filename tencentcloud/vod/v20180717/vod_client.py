@@ -1857,6 +1857,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFileAttributes(self, request):
+        """用于异步获取文件属性。
+        - 当前仅支持获取源文件的 Md5。
+        - 对输入文件为 HLS 或 DASH 的情况，仅获取索引文件的属性。
+
+        :param request: Request instance for DescribeFileAttributes.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFileAttributes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFileAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeHeadTailTemplates(self, request):
         """获取片头片尾模板列表。
 
