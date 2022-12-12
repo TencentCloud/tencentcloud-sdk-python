@@ -3831,6 +3831,96 @@ class RoleItem(AbstractModel):
         
 
 
+class SkipCheckItemRequest(AbstractModel):
+    """SkipCheckItem请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 数据迁移任务ID
+        :type JobId: str
+        :param StepIds: 需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
+        :type StepIds: list of str
+        """
+        self.JobId = None
+        self.StepIds = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.StepIds = params.get("StepIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkipCheckItemResponse(AbstractModel):
+    """SkipCheckItem返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SkipSyncCheckItemRequest(AbstractModel):
+    """SkipSyncCheckItem请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 任务id，如：sync-4ddgid2
+        :type JobId: str
+        :param StepIds: 需要跳过校验项的步骤id，需要通过`DescribeCheckSyncJobResult`接口返回StepInfos[i].StepId字段获取，例如：["OptimizeCheck"]
+        :type StepIds: list of str
+        """
+        self.JobId = None
+        self.StepIds = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.StepIds = params.get("StepIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkipSyncCheckItemResponse(AbstractModel):
+    """SkipSyncCheckItem返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SkippedDetail(AbstractModel):
     """跳过校验的表详情
 

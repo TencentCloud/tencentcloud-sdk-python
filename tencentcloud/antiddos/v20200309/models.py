@@ -330,6 +330,9 @@ class BGPIPInstance(AbstractModel):
         :param InstanceVersion: 资源实例版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: int
+        :param ConvoyId: 重保实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConvoyId: str
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -354,6 +357,7 @@ class BGPIPInstance(AbstractModel):
         self.TagInfoList = None
         self.AnycastOutPackRelation = None
         self.InstanceVersion = None
+        self.ConvoyId = None
 
 
     def _deserialize(self, params):
@@ -403,6 +407,7 @@ class BGPIPInstance(AbstractModel):
             self.AnycastOutPackRelation = AnycastOutPackRelation()
             self.AnycastOutPackRelation._deserialize(params.get("AnycastOutPackRelation"))
         self.InstanceVersion = params.get("InstanceVersion")
+        self.ConvoyId = params.get("ConvoyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4661,7 +4666,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterEipEipAddressStatus: list of str
         :param FilterDamDDoSStatus: 是否只获取安全加速实例。填写时，只能填写1或者0。当填写1时，表示返回安全加速实例。当填写0时，表示返回非安全加速实例。
         :type FilterDamDDoSStatus: int
-        :param FilterStatus: 获取特定状态的资源，运行中填idle，攻击中填attacking，封堵中填blocking
+        :param FilterStatus: 获取特定状态的资源，运行中填idle，攻击中填attacking，封堵中填blocking，试用资源填trial
         :type FilterStatus: str
         :param FilterCname: 获取特定的实例Cname
         :type FilterCname: str
@@ -4671,6 +4676,8 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
         :param FilterPackType: 按照套餐类型进行过滤
         :type FilterPackType: list of str
+        :param FilterConvoy: 重保护航搜索
+        :type FilterConvoy: int
         """
         self.Offset = None
         self.Limit = None
@@ -4687,6 +4694,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterInstanceIdList = None
         self.FilterTag = None
         self.FilterPackType = None
+        self.FilterConvoy = None
 
 
     def _deserialize(self, params):
@@ -4707,6 +4715,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
             self.FilterTag = TagFilter()
             self.FilterTag._deserialize(params.get("FilterTag"))
         self.FilterPackType = params.get("FilterPackType")
+        self.FilterConvoy = params.get("FilterConvoy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4781,6 +4790,10 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterChannelFlag: int
         :param FilterTag: 标签搜索
         :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
+        :param FilterTrialFlag: 试用资源搜索，1: 应急防护资源；2：PLG试用资源
+        :type FilterTrialFlag: int
+        :param FilterConvoy: 重保护航搜索
+        :type FilterConvoy: int
         """
         self.Offset = None
         self.Limit = None
@@ -4796,6 +4809,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterLightFlag = None
         self.FilterChannelFlag = None
         self.FilterTag = None
+        self.FilterTrialFlag = None
+        self.FilterConvoy = None
 
 
     def _deserialize(self, params):
@@ -4815,6 +4830,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         if params.get("FilterTag") is not None:
             self.FilterTag = TagFilter()
             self.FilterTag._deserialize(params.get("FilterTag"))
+        self.FilterTrialFlag = params.get("FilterTrialFlag")
+        self.FilterConvoy = params.get("FilterConvoy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

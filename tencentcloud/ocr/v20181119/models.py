@@ -6414,6 +6414,13 @@ class SealOCRResponse(AbstractModel):
         :type OtherTexts: list of str
         :param SealInfos: 全部印章信息
         :type SealInfos: list of SealInfo
+        :param SealShape: 印章类型，表示为：
+圆形印章：0
+椭圆形印章：1
+方形印章：2
+菱形印章：3
+三角形印章：4
+        :type SealShape: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6421,6 +6428,7 @@ class SealOCRResponse(AbstractModel):
         self.Location = None
         self.OtherTexts = None
         self.SealInfos = None
+        self.SealShape = None
         self.RequestId = None
 
 
@@ -6436,6 +6444,7 @@ class SealOCRResponse(AbstractModel):
                 obj = SealInfo()
                 obj._deserialize(item)
                 self.SealInfos.append(obj)
+        self.SealShape = params.get("SealShape")
         self.RequestId = params.get("RequestId")
 
 

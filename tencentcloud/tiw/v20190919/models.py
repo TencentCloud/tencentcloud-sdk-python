@@ -224,6 +224,13 @@ tar.gz： 生成`.tar.gz`压缩包
 
 示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
         :type MinScaleResolution: str
+        :param AutoHandleUnsupportedElement: 是否对不支持元素开启自动处理的功能。默认不开启。
+
+在开启自动处理的情况下，会自动进行如下处理：
+1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
+2. 自动翻页：移除PPT上所有的自动翻页设置
+3. 已损坏音视频：移除PPT上对损坏音视频的引用
+        :type AutoHandleUnsupportedElement: bool
         """
         self.SdkAppId = None
         self.Url = None
@@ -234,6 +241,7 @@ tar.gz： 生成`.tar.gz`压缩包
         self.ExtraData = None
         self.Priority = None
         self.MinScaleResolution = None
+        self.AutoHandleUnsupportedElement = None
 
 
     def _deserialize(self, params):
@@ -246,6 +254,7 @@ tar.gz： 生成`.tar.gz`压缩包
         self.ExtraData = params.get("ExtraData")
         self.Priority = params.get("Priority")
         self.MinScaleResolution = params.get("MinScaleResolution")
+        self.AutoHandleUnsupportedElement = params.get("AutoHandleUnsupportedElement")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

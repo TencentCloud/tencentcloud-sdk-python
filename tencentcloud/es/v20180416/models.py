@@ -1878,6 +1878,9 @@ class IndexMetaField(AbstractModel):
         :param AppId: 索引所属集群APP ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
+        :param IndexDocs: 索引文档数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexDocs: int
         """
         self.IndexType = None
         self.IndexName = None
@@ -1892,6 +1895,7 @@ class IndexMetaField(AbstractModel):
         self.IndexOptionsField = None
         self.IndexSettingsField = None
         self.AppId = None
+        self.IndexDocs = None
 
 
     def _deserialize(self, params):
@@ -1919,6 +1923,7 @@ class IndexMetaField(AbstractModel):
             self.IndexSettingsField = IndexSettingsField()
             self.IndexSettingsField._deserialize(params.get("IndexSettingsField"))
         self.AppId = params.get("AppId")
+        self.IndexDocs = params.get("IndexDocs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

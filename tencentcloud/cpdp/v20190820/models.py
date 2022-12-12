@@ -18916,11 +18916,13 @@ class QueryFinancialDataUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EndTime: 数据查询范围:结束时间
+        :param EndTime: 数据查询范围:结束时间 yyyy-MM-dd HH:mm:ss
         :type EndTime: str
-        :param StartTime: 数据查询范围:开始时间
+        :param StartTime: 数据查询范围:开始时间 yyyy-MM-dd HH:mm:ss
         :type StartTime: str
-        :param DataType: 数据类型：ADDED_INVOICE_REPORT  增值税开票数据，NATURAL_FINANCE_REPORT 自然人金融数据
+        :param DataType: 数据类型：ADDED_INVOICE_REPORT  增值税开票数据，NATURAL_FINANCE_REPORT 自然人金融数据,
+NATURAL_FINANCE_REPORT_BY_TIME 按次报税数据导出,
+NATURAL_FINANCE_REPORT_STAT_BY_DAY 按日累计报税数据导出
         :type DataType: str
         """
         self.EndTime = None
