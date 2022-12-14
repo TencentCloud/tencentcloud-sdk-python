@@ -1124,7 +1124,7 @@ class CleanGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -1832,11 +1832,11 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param Kind: 类型
+        :param Kind: 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
         :type Kind: str
-        :param Content: 配置
+        :param Content: 集成配置
         :type Content: str
         """
         self.InstanceId = None
@@ -1886,9 +1886,9 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param ChannelName: 渠道名
+        :param ChannelName: 告警通道名称，例如：test
         :type ChannelName: str
         :param OrgId: 默认为1，已废弃，请使用 OrganizationIds
         :type OrgId: int
@@ -2377,9 +2377,9 @@ class CreateSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param UserId: 用户账号ID
+        :param UserId: 用户账号 ID ，例如：10000000
         :type UserId: str
         :param Role: 权限
         :type Role: list of GrafanaAccountRole
@@ -2779,9 +2779,9 @@ class DeleteGrafanaIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
-        :param IntegrationId: 集成 ID
+        :param IntegrationId: 集成 ID，可在实例详情-云产品集成-集成列表查看。例如：integration-abcd1234
         :type IntegrationId: str
         """
         self.InstanceId = None
@@ -2824,9 +2824,9 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ChannelIDs: 通道 ID 数组
+        :param ChannelIDs: 通道 ID 数组。例如：nchannel-abcd1234
         :type ChannelIDs: list of str
-        :param InstanceId: 实例名
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
         """
         self.ChannelIDs = None
@@ -3008,9 +3008,9 @@ class DeleteSSOAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param UserId: 用户账号ID
+        :param UserId: 用户账号 ID ，例如：10000000
         :type UserId: str
         """
         self.InstanceId = None
@@ -4706,7 +4706,7 @@ class DescribeDNSConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4820,17 +4820,17 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 查询数量
         :type Limit: int
-        :param ChannelName: 渠道名
+        :param ChannelName: 告警通道名称，例如：test
         :type ChannelName: str
-        :param ChannelIds: 渠道 ID
+        :param ChannelIds: 告警通道 ID，例如：nchannel-abcd1234
         :type ChannelIds: list of str
-        :param ChannelState: 状态
+        :param ChannelState: 告警通道状态
         :type ChannelState: int
         """
         self.InstanceId = None
@@ -4935,7 +4935,7 @@ class DescribeGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：Grafana 实例 ID，例如：grafana-abcdefghGrafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4984,9 +4984,9 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 查询数量
         :type Limit: int
-        :param InstanceIds: 实例 ID 数组
+        :param InstanceIds: Grafana 实例 ID 数组
         :type InstanceIds: list of str
-        :param InstanceName: 实例名，支持前缀模糊搜索
+        :param InstanceName: Grafana 实例名，支持前缀模糊搜索
         :type InstanceName: str
         :param InstanceStatus: 查询状态
         :type InstanceStatus: list of int
@@ -5126,17 +5126,17 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 查询数量
         :type Limit: int
-        :param ChannelName: 渠道名
+        :param ChannelName: 告警通道名称，例如：test
         :type ChannelName: str
-        :param ChannelIDs: 渠道 ID
+        :param ChannelIDs: 告警通道 ID，例如：nchannel-abcd1234
         :type ChannelIDs: list of str
-        :param ChannelState: 状态
+        :param ChannelState: 告警通道状态
         :type ChannelState: int
         """
         self.InstanceId = None
@@ -8472,7 +8472,7 @@ class InstallPluginsRequest(AbstractModel):
         r"""
         :param Plugins: 插件信息
         :type Plugins: list of GrafanaPlugin
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
         """
         self.Plugins = None
@@ -9537,9 +9537,9 @@ class ModifyGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param InstanceName: 实例名称
+        :param InstanceName: Grafana 实例名称，例如：test
         :type InstanceName: str
         """
         self.InstanceId = None
@@ -10902,7 +10902,7 @@ class ResumeGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -11751,7 +11751,7 @@ class UpdateDNSConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
         :param NameServers: DNS 数组
         :type NameServers: list of str
@@ -11901,7 +11901,7 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
         :param Envs: 环境变量字符串
         :type Envs: str
@@ -11946,11 +11946,11 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IntegrationId: 集成 ID
+        :param IntegrationId: 集成 ID，可在实例详情-云产品集成-集成列表查看。例如：integration-abcd1234
         :type IntegrationId: str
-        :param InstanceId: 实例 ID
+        :param InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
-        :param Kind: 集成类型
+        :param Kind: 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
         :type Kind: str
         :param Content: 集成内容
         :type Content: str

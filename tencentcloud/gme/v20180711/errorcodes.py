@@ -41,6 +41,9 @@ INVALIDPARAMETER_CALLBACKADDRESS = 'InvalidParameter.CallbackAddress'
 # 日期无效。
 INVALIDPARAMETER_DATEINVALID = 'InvalidParameter.DateInvalid'
 
+# 输入日期超出60天查询范围。
+INVALIDPARAMETER_DATEOUTOFSIXTYDAYS = 'InvalidParameter.DateOutOfSixtyDays'
+
 # 标签不正确
 INVALIDPARAMETER_TAGKEY = 'InvalidParameter.TagKey'
 

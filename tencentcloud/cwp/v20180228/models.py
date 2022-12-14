@@ -4130,8 +4130,10 @@ class CreateLicenseOrderRequest(AbstractModel):
         :param AutoRenewFlag: 是否自动续费, 默认不自动续费.
 该参数仅包年包月生效
         :type AutoRenewFlag: bool
-        :param AutoProtectOpenConfig: 自动防护授权配置值, 不空则表示开启
+        :param AutoProtectOpenConfig: 该字段作废
         :type AutoProtectOpenConfig: str
+        :param ModifyConfig: 变配参数
+        :type ModifyConfig: :class:`tencentcloud.cwp.v20180228.models.OrderModifyObject`
         """
         self.Tags = None
         self.LicenseType = None
@@ -4141,6 +4143,7 @@ class CreateLicenseOrderRequest(AbstractModel):
         self.TimeSpan = None
         self.AutoRenewFlag = None
         self.AutoProtectOpenConfig = None
+        self.ModifyConfig = None
 
 
     def _deserialize(self, params):
@@ -4157,6 +4160,9 @@ class CreateLicenseOrderRequest(AbstractModel):
         self.TimeSpan = params.get("TimeSpan")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.AutoProtectOpenConfig = params.get("AutoProtectOpenConfig")
+        if params.get("ModifyConfig") is not None:
+            self.ModifyConfig = OrderModifyObject()
+            self.ModifyConfig._deserialize(params.get("ModifyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10947,6 +10953,10 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         :type CwpVersionLicenseCnt: int
         :param AvailableLHLicenseCnt: 可用惠普版授权数
         :type AvailableLHLicenseCnt: int
+        :param AutoRepurchaseSwitch: 自动加购开关, true 开启, false 关闭
+        :type AutoRepurchaseSwitch: bool
+        :param AutoRepurchaseRenewSwitch: 自动加购订单是否自动续费 ,true 开启, false 关闭
+        :type AutoRepurchaseRenewSwitch: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10965,6 +10975,8 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self.ProVersionLicenseCnt = None
         self.CwpVersionLicenseCnt = None
         self.AvailableLHLicenseCnt = None
+        self.AutoRepurchaseSwitch = None
+        self.AutoRepurchaseRenewSwitch = None
         self.RequestId = None
 
 
@@ -10984,6 +10996,8 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self.ProVersionLicenseCnt = params.get("ProVersionLicenseCnt")
         self.CwpVersionLicenseCnt = params.get("CwpVersionLicenseCnt")
         self.AvailableLHLicenseCnt = params.get("AvailableLHLicenseCnt")
+        self.AutoRepurchaseSwitch = params.get("AutoRepurchaseSwitch")
+        self.AutoRepurchaseRenewSwitch = params.get("AutoRepurchaseRenewSwitch")
         self.RequestId = params.get("RequestId")
 
 
@@ -18576,12 +18590,20 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
 <li>CLOSE：关闭</li>
 <li>OPEN：打开</li>
         :type Status: str
+        :param AutoRepurchaseSwitch: 自动加购/扩容授权开关,默认 1, 0关闭, 1开启
+        :type AutoRepurchaseSwitch: int
+        :param AutoRepurchaseRenewSwitch: 自动加购的订单是否自动续费,默认0 ,0关闭, 1开启
+        :type AutoRepurchaseRenewSwitch: int
         """
         self.Status = None
+        self.AutoRepurchaseSwitch = None
+        self.AutoRepurchaseRenewSwitch = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.AutoRepurchaseSwitch = params.get("AutoRepurchaseSwitch")
+        self.AutoRepurchaseRenewSwitch = params.get("AutoRepurchaseRenewSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19318,6 +19340,38 @@ class OpenPortStatistics(AbstractModel):
     def _deserialize(self, params):
         self.Port = params.get("Port")
         self.MachineNum = params.get("MachineNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderModifyObject(AbstractModel):
+    """订单变配参数对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param NewSubProductCode: 新产品标识,这里支持PRO_VERSION 专业版,FLAGSHIP 旗舰版
+        :type NewSubProductCode: str
+        :param InquireNum: 扩容/缩容数,变配子产品忽略该参数
+        :type InquireNum: int
+        """
+        self.ResourceId = None
+        self.NewSubProductCode = None
+        self.InquireNum = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.NewSubProductCode = params.get("NewSubProductCode")
+        self.InquireNum = params.get("InquireNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1608,7 +1608,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :type ProxyOrganizationName: str
         :param ProxyOperatorName: 渠道子客企业经办人的姓名，最大长度50个字符
         :type ProxyOperatorName: str
-        :param Module: 控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
+        :param Module: PC控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"。 EndPoint为"CHANNEL"/"APP"只支持"SEAL"-印章管理
         :type Module: str
         :param ModuleId: 控制台指定模块Id
         :type ModuleId: str
@@ -2567,7 +2567,7 @@ class FlowApproverInfo(AbstractModel):
         :param ApproverType: 签署人类型
 PERSON-个人/自然人；
 PERSON_AUTO_SIGN-个人自动签（定制化场景下使用）；
-ORGANIZATION-企业（企业签署方或模版发起时的企业静默签）；
+ORGANIZATION-企业（企业签署方或模板发起时的企业静默签）；
 ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
         :type ApproverType: str
         :param RecipientId: 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；
@@ -3470,7 +3470,7 @@ class ProxyOrganizationOperator(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 对应Agent-ProxyOperator-OpenId。渠道平台自定义，对渠道子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（比如，可以使用经办人企业名+员工身份证的hash值，需要渠道平台保存），最大64位字符串
+        :param Id: 对应Agent-ProxyOperator-OpenId。渠道平台自定义，对渠道子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要渠道平台保存），最大64位字符串
         :type Id: str
         :param Name: 经办人姓名，最大长度50个字符
         :type Name: str
@@ -4196,11 +4196,20 @@ class TemplateInfo(AbstractModel):
         :param PreviewUrl: 模板的H5预览链接,可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
-        :param ChannelTemplateId: 渠道模板ID
-        :type ChannelTemplateId: str
         :param PdfUrl: 渠道版-模板PDF文件链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type PdfUrl: str
+        :param ChannelTemplateId: 关联的渠道模板ID
+        :type ChannelTemplateId: str
+        :param ChannelTemplateName: 关联的渠道模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelTemplateName: str
+        :param ChannelAutoSave: 0-需要渠道子客手动领取渠道的模板(默认); 1-渠道自动设置子客模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelAutoSave: int
+        :param TemplateVersion: 模板版本，全数字字符。默认为空，初始版本为yyyyMMdd001。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateVersion: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -4213,8 +4222,11 @@ class TemplateInfo(AbstractModel):
         self.Creator = None
         self.CreatedOn = None
         self.PreviewUrl = None
-        self.ChannelTemplateId = None
         self.PdfUrl = None
+        self.ChannelTemplateId = None
+        self.ChannelTemplateName = None
+        self.ChannelAutoSave = None
+        self.TemplateVersion = None
 
 
     def _deserialize(self, params):
@@ -4244,8 +4256,11 @@ class TemplateInfo(AbstractModel):
         self.Creator = params.get("Creator")
         self.CreatedOn = params.get("CreatedOn")
         self.PreviewUrl = params.get("PreviewUrl")
-        self.ChannelTemplateId = params.get("ChannelTemplateId")
         self.PdfUrl = params.get("PdfUrl")
+        self.ChannelTemplateId = params.get("ChannelTemplateId")
+        self.ChannelTemplateName = params.get("ChannelTemplateName")
+        self.ChannelAutoSave = params.get("ChannelAutoSave")
+        self.TemplateVersion = params.get("TemplateVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

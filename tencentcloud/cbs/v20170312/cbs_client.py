@@ -1091,7 +1091,6 @@ class CbsClient(AbstractClient):
 
         本接口 (ModifyDisksChargeType) 用于切换云盘的计费模式。
 
-        只支持从 POSTPAID_BY_HOUR 计费模式切换为PREPAID计费模式。
         非弹性云盘不支持此接口，请通过修改实例计费模式接口将实例连同非弹性云盘一起转换。
         默认接口请求频率限制：10次/秒。
 

@@ -503,6 +503,9 @@ INVALIDPARAMETERVALUE_TOOLARGE = 'InvalidParameterValue.TooLarge'
 # 无效参数值。参数值太长。
 INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 
+# uuid不合要求。
+INVALIDPARAMETERVALUE_UUIDMALFORMED = 'InvalidParameterValue.UuidMalformed'
+
 # VPC ID`xxx`不合要求，请提供规范的Vpc ID， 类似vpc-xxxxxxxx，字母x代表小写字符或者数字。
 INVALIDPARAMETERVALUE_VPCIDMALFORMED = 'InvalidParameterValue.VpcIdMalformed'
 

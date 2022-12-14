@@ -764,7 +764,7 @@ class ModifyAppRequest(AbstractModel):
         r"""
         :param SdkAppId: 低代码互动课堂的SdkAppId。
         :type SdkAppId: int
-        :param Callback: 回调地址。
+        :param Callback: 回调地址。端口目前仅支持80、443
         :type Callback: str
         """
         self.SdkAppId = None

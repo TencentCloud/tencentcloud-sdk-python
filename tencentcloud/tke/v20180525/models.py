@@ -2124,55 +2124,6 @@ class CreateClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateClusterNodePoolFromExistingAsgRequest(AbstractModel):
-    """CreateClusterNodePoolFromExistingAsg请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param AutoscalingGroupId: 伸缩组ID
-        :type AutoscalingGroupId: str
-        """
-        self.ClusterId = None
-        self.AutoscalingGroupId = None
-
-
-    def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.AutoscalingGroupId = params.get("AutoscalingGroupId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateClusterNodePoolFromExistingAsgResponse(AbstractModel):
-    """CreateClusterNodePoolFromExistingAsg返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param NodePoolId: 节点池ID
-        :type NodePoolId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.NodePoolId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.NodePoolId = params.get("NodePoolId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateClusterNodePoolRequest(AbstractModel):
     """CreateClusterNodePool请求参数结构体
 
@@ -3085,6 +3036,13 @@ class CreateImageCacheRequest(AbstractModel):
         :type ImageCacheSize: int
         :param RetentionDays: 镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
         :type RetentionDays: int
+        :param RegistrySkipVerifyList: 指定拉取镜像仓库的镜像时不校验证书。如["harbor.example.com"]。
+        :type RegistrySkipVerifyList: list of str
+        :param RegistryHttpEndPointList: 指定拉取镜像仓库的镜像时使用 HTTP 协议。如["harbor.example.com"]。
+        :type RegistryHttpEndPointList: list of str
+        :param ResolveConfig: 自定义制作镜像缓存过程中容器实例的宿主机上的 DNS。如：
+"nameserver 4.4.4.4\nnameserver 8.8.8.8"
+        :type ResolveConfig: str
         """
         self.Images = None
         self.SubnetId = None
@@ -3097,6 +3055,9 @@ class CreateImageCacheRequest(AbstractModel):
         self.AutoCreateEipAttribute = None
         self.ImageCacheSize = None
         self.RetentionDays = None
+        self.RegistrySkipVerifyList = None
+        self.RegistryHttpEndPointList = None
+        self.ResolveConfig = None
 
 
     def _deserialize(self, params):
@@ -3118,6 +3079,9 @@ class CreateImageCacheRequest(AbstractModel):
             self.AutoCreateEipAttribute._deserialize(params.get("AutoCreateEipAttribute"))
         self.ImageCacheSize = params.get("ImageCacheSize")
         self.RetentionDays = params.get("RetentionDays")
+        self.RegistrySkipVerifyList = params.get("RegistrySkipVerifyList")
+        self.RegistryHttpEndPointList = params.get("RegistryHttpEndPointList")
+        self.ResolveConfig = params.get("ResolveConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

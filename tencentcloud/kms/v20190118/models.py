@@ -1286,12 +1286,16 @@ class EnableKeyRotationRequest(AbstractModel):
         r"""
         :param KeyId: CMK唯一标识符
         :type KeyId: str
+        :param RotateDays: 密钥轮转周期，单位天，允许范围 7 ~ 365，默认值 365。
+        :type RotateDays: int
         """
         self.KeyId = None
+        self.RotateDays = None
 
 
     def _deserialize(self, params):
         self.KeyId = params.get("KeyId")
+        self.RotateDays = params.get("RotateDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

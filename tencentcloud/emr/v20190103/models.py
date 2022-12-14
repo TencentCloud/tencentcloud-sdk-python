@@ -78,6 +78,74 @@ class AddUsersForUserManagerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AllNodeResourceSpec(AbstractModel):
+    """资源描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MasterResourceSpec: 描述Master节点资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param CoreResourceSpec: 描述Core节点资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoreResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param TaskResourceSpec: 描述Taskr节点资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param CommonResourceSpec: 描述Common节点资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommonResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param MasterCount: Master节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterCount: int
+        :param CoreCount: Corer节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoreCount: int
+        :param TaskCount: Task节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskCount: int
+        :param CommonCount: Common节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommonCount: int
+        """
+        self.MasterResourceSpec = None
+        self.CoreResourceSpec = None
+        self.TaskResourceSpec = None
+        self.CommonResourceSpec = None
+        self.MasterCount = None
+        self.CoreCount = None
+        self.TaskCount = None
+        self.CommonCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("MasterResourceSpec") is not None:
+            self.MasterResourceSpec = NodeResourceSpec()
+            self.MasterResourceSpec._deserialize(params.get("MasterResourceSpec"))
+        if params.get("CoreResourceSpec") is not None:
+            self.CoreResourceSpec = NodeResourceSpec()
+            self.CoreResourceSpec._deserialize(params.get("CoreResourceSpec"))
+        if params.get("TaskResourceSpec") is not None:
+            self.TaskResourceSpec = NodeResourceSpec()
+            self.TaskResourceSpec._deserialize(params.get("TaskResourceSpec"))
+        if params.get("CommonResourceSpec") is not None:
+            self.CommonResourceSpec = NodeResourceSpec()
+            self.CommonResourceSpec._deserialize(params.get("CommonResourceSpec"))
+        self.MasterCount = params.get("MasterCount")
+        self.CoreCount = params.get("CoreCount")
+        self.TaskCount = params.get("TaskCount")
+        self.CommonCount = params.get("CommonCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplicationStatics(AbstractModel):
     """yarn application 统计信息
 
@@ -719,6 +787,175 @@ class Configuration(AbstractModel):
         
 
 
+class CreateClusterRequest(AbstractModel):
+    """CreateCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductVersion: EMR产品版本名称如EMR-V2.3.0 表示2.3.0版本的EMR， 当前支持产品版本名称查询：[产品版本名称](https://cloud.tencent.com/document/product/589/66338)
+        :type ProductVersion: str
+        :param EnableSupportHAFlag: 是否开启节点高可用。取值范围：
+<li>true：表示开启节点高可用。</li>
+<li>false：表示不开启节点高可用。</li>
+        :type EnableSupportHAFlag: bool
+        :param InstanceName: 实例名称。
+<li>长度限制为6-36个字符。</li>
+<li>只允许包含中文、字母、数字、-、_。</li>
+        :type InstanceName: str
+        :param InstanceChargeType: 实例计费模式。取值范围：
+<li>PREPAID：预付费，即包年包月。</li>
+<li>POSTPAID_BY_HOUR：按小时后付费。</li>
+        :type InstanceChargeType: str
+        :param LoginSettings: 实例登录设置。通过该参数可以设置所购买节点的登录方式密码或者密钥。
+<li>设置密钥时，密码仅用于组件原生WebUI快捷入口登录。</li>
+<li>未设置密钥时，密码用于登录所购节点以及组件原生WebUI快捷入口登录。</li>
+        :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        :param SceneSoftwareConfig: 集群应用场景以及支持部署组件配置
+        :type SceneSoftwareConfig: :class:`tencentcloud.emr.v20190103.models.SceneSoftwareConfig`
+        :param InstanceChargePrepaid: 即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
+        :param SecurityGroupIds: 实例所属安全组的ID，形如sg-xxxxxxxx。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的SecurityGroupId字段来获取。
+        :type SecurityGroupIds: list of str
+        :param ScriptBootstrapActionConfig: [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。
+        :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
+        :param ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-751a-41b6-aad6-fae360632808
+        :type ClientToken: str
+        :param NeedMasterWan: 是否开启集群Master节点公网。取值范围：
+<li>NEED_MASTER_WAN：表示开启集群Master节点公网。</li>
+<li>NOT_NEED_MASTER_WAN：表示不开启。</li>默认开启集群Master节点公网。
+        :type NeedMasterWan: str
+        :param EnableRemoteLoginFlag: 是否开启外网远程登录。（在SecurityGroupId不为空时，该参数无效）不填默认为不开启 取值范围：
+<li>true：表示开启</li>
+<li>false：表示不开启</li>
+        :type EnableRemoteLoginFlag: bool
+        :param EnableKerberosFlag: 是否开启Kerberos认证。默认不开启 取值范围：
+<li>true：表示开启</li>
+<li>false：表示不开启</li>
+        :type EnableKerberosFlag: bool
+        :param CustomConf: [自定义软件配置](https://cloud.tencent.com/document/product/589/35655?from_cn_redirect=1)
+        :type CustomConf: str
+        :param Tags: 标签描述列表。通过指定该参数可以同时绑定标签到相应的实例。
+        :type Tags: list of Tag
+        :param DisasterRecoverGroupIds: 分散置放群组ID列表，当前只支持指定一个。
+该参数可以通过调用 [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810)的返回值中的DisasterRecoverGroupId字段来获取。
+        :type DisasterRecoverGroupIds: list of str
+        :param EnableCbsEncryptFlag: 是否开启集群维度CBS加密。默认不加密 取值范围：
+<li>true：表示加密</li>
+<li>false：表示不加密</li>
+        :type EnableCbsEncryptFlag: bool
+        :param MetaDBInfo: MetaDB信息，当MetaType选择EMR_NEW_META时，MetaDataJdbcUrl MetaDataUser MetaDataPass UnifyMetaInstanceId不用填
+当MetaType选择EMR_EXIT_META时，填写UnifyMetaInstanceId
+当MetaType选择USER_CUSTOM_META时，填写MetaDataJdbcUrl MetaDataUser MetaDataPass
+        :type MetaDBInfo: :class:`tencentcloud.emr.v20190103.models.CustomMetaDBInfo`
+        :param DependService: 共享组件信息
+        :type DependService: list of DependService
+        :param ZoneResourceConfiguration: 节点资源的规格，有几个可用区，就填几个，按顺序第一个为主可用区，第二个为备可用区，第三个为仲裁可用区。如果没有开启跨AZ，则长度为1即可。
+        :type ZoneResourceConfiguration: list of ZoneResourceConfiguration
+        """
+        self.ProductVersion = None
+        self.EnableSupportHAFlag = None
+        self.InstanceName = None
+        self.InstanceChargeType = None
+        self.LoginSettings = None
+        self.SceneSoftwareConfig = None
+        self.InstanceChargePrepaid = None
+        self.SecurityGroupIds = None
+        self.ScriptBootstrapActionConfig = None
+        self.ClientToken = None
+        self.NeedMasterWan = None
+        self.EnableRemoteLoginFlag = None
+        self.EnableKerberosFlag = None
+        self.CustomConf = None
+        self.Tags = None
+        self.DisasterRecoverGroupIds = None
+        self.EnableCbsEncryptFlag = None
+        self.MetaDBInfo = None
+        self.DependService = None
+        self.ZoneResourceConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.ProductVersion = params.get("ProductVersion")
+        self.EnableSupportHAFlag = params.get("EnableSupportHAFlag")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        if params.get("SceneSoftwareConfig") is not None:
+            self.SceneSoftwareConfig = SceneSoftwareConfig()
+            self.SceneSoftwareConfig._deserialize(params.get("SceneSoftwareConfig"))
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("ScriptBootstrapActionConfig") is not None:
+            self.ScriptBootstrapActionConfig = []
+            for item in params.get("ScriptBootstrapActionConfig"):
+                obj = ScriptBootstrapActionConfig()
+                obj._deserialize(item)
+                self.ScriptBootstrapActionConfig.append(obj)
+        self.ClientToken = params.get("ClientToken")
+        self.NeedMasterWan = params.get("NeedMasterWan")
+        self.EnableRemoteLoginFlag = params.get("EnableRemoteLoginFlag")
+        self.EnableKerberosFlag = params.get("EnableKerberosFlag")
+        self.CustomConf = params.get("CustomConf")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self.EnableCbsEncryptFlag = params.get("EnableCbsEncryptFlag")
+        if params.get("MetaDBInfo") is not None:
+            self.MetaDBInfo = CustomMetaDBInfo()
+            self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
+        if params.get("DependService") is not None:
+            self.DependService = []
+            for item in params.get("DependService"):
+                obj = DependService()
+                obj._deserialize(item)
+                self.DependService.append(obj)
+        if params.get("ZoneResourceConfiguration") is not None:
+            self.ZoneResourceConfiguration = []
+            for item in params.get("ZoneResourceConfiguration"):
+                obj = ZoneResourceConfiguration()
+                obj._deserialize(item)
+                self.ZoneResourceConfiguration.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterResponse(AbstractModel):
+    """CreateCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInstanceRequest(AbstractModel):
     """CreateInstance请求参数结构体
 
@@ -958,6 +1195,49 @@ class CreateInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CustomMetaDBInfo(AbstractModel):
+    """用户Hive-MetaDB信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MetaDataJdbcUrl: 自定义MetaDB的JDBC连接，示例: jdbc:mysql://10.10.10.10:3306/dbname
+        :type MetaDataJdbcUrl: str
+        :param MetaDataUser: 自定义MetaDB用户名
+        :type MetaDataUser: str
+        :param MetaDataPass: 自定义MetaDB密码
+        :type MetaDataPass: str
+        :param MetaType: hive共享元数据库类型。取值范围：
+<li>EMR_NEW_META：表示集群默认创建</li>
+<li>EMR_EXIT_META：表示集群使用指定EMR-MetaDB。</li>
+<li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
+        :type MetaType: str
+        :param UnifyMetaInstanceId: EMR-MetaDB实例
+        :type UnifyMetaInstanceId: str
+        """
+        self.MetaDataJdbcUrl = None
+        self.MetaDataUser = None
+        self.MetaDataPass = None
+        self.MetaType = None
+        self.UnifyMetaInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.MetaDataJdbcUrl = params.get("MetaDataJdbcUrl")
+        self.MetaDataUser = params.get("MetaDataUser")
+        self.MetaDataPass = params.get("MetaDataPass")
+        self.MetaType = params.get("MetaType")
+        self.UnifyMetaInstanceId = params.get("UnifyMetaInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomMetaInfo(AbstractModel):
     """用户自建Hive-MetaDB信息
 
@@ -1061,6 +1341,34 @@ class DeleteUserManagerUserListResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DependService(AbstractModel):
+    """共用组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceName: 共用组件名
+        :type ServiceName: str
+        :param InstanceId: 共用组件集群
+        :type InstanceId: str
+        """
+        self.ServiceName = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceName = params.get("ServiceName")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeClusterNodesRequest(AbstractModel):
@@ -1829,6 +2137,56 @@ CLOUD_HSSD 增强型云SSD。
 
 
     def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiskSpecInfo(AbstractModel):
+    """节点磁盘信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 磁盘数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param DiskType: 系统盘类型 取值范围：
+<li>CLOUD_SSD：表示云SSD。</li>
+<li>CLOUD_PREMIUM：表示高效云盘。</li>
+<li>CLOUD_BASIC：表示云硬盘。</li>
+<li>LOCAL_BASIC：表示本地盘。</li>
+<li>LOCAL_SSD：表示本地SSD。</li>
+
+数据盘类型 取值范围：
+<li>CLOUD_SSD：表示云SSD。</li>
+<li>CLOUD_PREMIUM：表示高效云盘。</li>
+<li>CLOUD_BASIC：表示云硬盘。</li>
+<li>LOCAL_BASIC：表示本地盘。</li>
+<li>LOCAL_SSD：表示本地SSD。</li>
+<li>CLOUD_HSSD：表示增强型SSD云硬盘。</li>
+<li>CLOUD_THROUGHPUT：表示吞吐型云硬盘。</li>
+<li>CLOUD_TSSD：表示极速型SSD云硬盘。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param DiskSize: 数据容量，单位为GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        """
+        self.Count = None
+        self.DiskType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
         memeber_set = set(params.keys())
@@ -3712,6 +4070,71 @@ class NodeHardwareInfo(AbstractModel):
         
 
 
+class NodeResourceSpec(AbstractModel):
+    """资源详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceType: 规格类型，如S2.MEDIUM8
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param SystemDisk: 系统盘，系统盘个数不超过1块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemDisk: list of DiskSpecInfo
+        :param Tags: 需要绑定的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param DataDisk: 云数据盘，云数据盘总个数不超过15块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDisk: list of DiskSpecInfo
+        :param LocalDataDisk: 本地数据盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalDataDisk: list of DiskSpecInfo
+        """
+        self.InstanceType = None
+        self.SystemDisk = None
+        self.Tags = None
+        self.DataDisk = None
+        self.LocalDataDisk = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = []
+            for item in params.get("SystemDisk"):
+                obj = DiskSpecInfo()
+                obj._deserialize(item)
+                self.SystemDisk.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("DataDisk") is not None:
+            self.DataDisk = []
+            for item in params.get("DataDisk"):
+                obj = DiskSpecInfo()
+                obj._deserialize(item)
+                self.DataDisk.append(obj)
+        if params.get("LocalDataDisk") is not None:
+            self.LocalDataDisk = []
+            for item in params.get("LocalDataDisk"):
+                obj = DiskSpecInfo()
+                obj._deserialize(item)
+                self.LocalDataDisk.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutterResource(AbstractModel):
     """资源详情
 
@@ -3831,6 +4254,227 @@ class Placement(AbstractModel):
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodNewParameter(AbstractModel):
+    """POD自定义权限和自定义参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: TKE或EKS集群ID
+        :type InstanceId: str
+        :param Config: 自定义权限
+如：
+{
+  "apiVersion": "v1",
+  "clusters": [
+    {
+      "cluster": {
+        "certificate-authority-data": "xxxxxx==",
+        "server": "https://xxxxx.com"
+      },
+      "name": "cls-xxxxx"
+    }
+  ],
+  "contexts": [
+    {
+      "context": {
+        "cluster": "cls-xxxxx",
+        "user": "100014xxxxx"
+      },
+      "name": "cls-a44yhcxxxxxxxxxx"
+    }
+  ],
+  "current-context": "cls-a4xxxx-context-default",
+  "kind": "Config",
+  "preferences": {},
+  "users": [
+    {
+      "name": "100014xxxxx",
+      "user": {
+        "client-certificate-data": "xxxxxx",
+        "client-key-data": "xxxxxx"
+      }
+    }
+  ]
+}
+        :type Config: str
+        :param Parameter: 自定义参数
+如：
+{
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "name": "test-deployment",
+      "labels": {
+        "app": "test"
+      }
+    },
+    "spec": {
+      "replicas": 3,
+      "selector": {
+        "matchLabels": {
+          "app": "test-app"
+        }
+      },
+      "template": {
+        "metadata": {
+          "annotations": {
+            "your-organization.com/department-v1": "test-example-v1",
+            "your-organization.com/department-v2": "test-example-v2"
+          },
+          "labels": {
+            "app": "test-app",
+            "environment": "production"
+          }
+        },
+        "spec": {
+          "nodeSelector": {
+            "your-organization/node-test": "test-node"
+          },
+          "containers": [
+            {
+              "name": "nginx",
+              "image": "nginx:1.14.2",
+              "ports": [
+                {
+                  "containerPort": 80
+                }
+              ]
+            }
+          ],
+          "affinity": {
+            "nodeAffinity": {
+              "requiredDuringSchedulingIgnoredDuringExecution": {
+                "nodeSelectorTerms": [
+                  {
+                    "matchExpressions": [
+                      {
+                        "key": "disk-type",
+                        "operator": "In",
+                        "values": [
+                          "ssd",
+                          "sas"
+                        ]
+                      },
+                      {
+                        "key": "cpu-num",
+                        "operator": "Gt",
+                        "values": [
+                          "6"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+        :type Parameter: str
+        """
+        self.InstanceId = None
+        self.Config = None
+        self.Parameter = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Config = params.get("Config")
+        self.Parameter = params.get("Parameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodNewSpec(AbstractModel):
+    """扩容容器资源时的资源描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceProviderIdentifier: 外部资源提供者的标识符，例如"cls-a1cd23fa"。
+        :type ResourceProviderIdentifier: str
+        :param ResourceProviderType: 外部资源提供者类型，例如"tke",当前仅支持"tke"。
+        :type ResourceProviderType: str
+        :param NodeFlag: 资源的用途，即节点类型，当前仅支持"TASK"。
+        :type NodeFlag: str
+        :param Cpu: CPU核数。
+        :type Cpu: int
+        :param Memory: 内存大小，单位为GB。
+        :type Memory: int
+        :param CpuType: Eks集群-CPU类型，当前支持"intel"和"amd"
+        :type CpuType: str
+        :param PodVolumes: Pod节点数据目录挂载信息。
+        :type PodVolumes: list of PodVolume
+        :param EnableDynamicSpecFlag: 是否浮动规格，默认否
+<li>true：代表是</li>
+<li>false：代表否</li>
+        :type EnableDynamicSpecFlag: bool
+        :param DynamicPodSpec: 浮动规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DynamicPodSpec: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
+        :param VpcId: 代表vpc网络唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 代表vpc子网唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param PodName: pod name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodName: str
+        """
+        self.ResourceProviderIdentifier = None
+        self.ResourceProviderType = None
+        self.NodeFlag = None
+        self.Cpu = None
+        self.Memory = None
+        self.CpuType = None
+        self.PodVolumes = None
+        self.EnableDynamicSpecFlag = None
+        self.DynamicPodSpec = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.PodName = None
+
+
+    def _deserialize(self, params):
+        self.ResourceProviderIdentifier = params.get("ResourceProviderIdentifier")
+        self.ResourceProviderType = params.get("ResourceProviderType")
+        self.NodeFlag = params.get("NodeFlag")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.CpuType = params.get("CpuType")
+        if params.get("PodVolumes") is not None:
+            self.PodVolumes = []
+            for item in params.get("PodVolumes"):
+                obj = PodVolume()
+                obj._deserialize(item)
+                self.PodVolumes.append(obj)
+        self.EnableDynamicSpecFlag = params.get("EnableDynamicSpecFlag")
+        if params.get("DynamicPodSpec") is not None:
+            self.DynamicPodSpec = DynamicPodSpec()
+            self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.PodName = params.get("PodName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4090,6 +4734,38 @@ class PodSpec(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.PodName = params.get("PodName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodSpecInfo(AbstractModel):
+    """Pod相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PodSpec: 使用Pod资源扩容时，指定的Pod规格以及来源等信息
+        :type PodSpec: :class:`tencentcloud.emr.v20190103.models.PodNewSpec`
+        :param PodParameter: POD自定义权限和自定义参数
+        :type PodParameter: :class:`tencentcloud.emr.v20190103.models.PodNewParameter`
+        """
+        self.PodSpec = None
+        self.PodParameter = None
+
+
+    def _deserialize(self, params):
+        if params.get("PodSpec") is not None:
+            self.PodSpec = PodNewSpec()
+            self.PodSpec._deserialize(params.get("PodSpec"))
+        if params.get("PodParameter") is not None:
+            self.PodParameter = PodNewParameter()
+            self.PodParameter._deserialize(params.get("PodParameter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4698,6 +5374,157 @@ class RunJobFlowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ScaleOutClusterRequest(AbstractModel):
+    """ScaleOutCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceChargeType: 节点计费模式。取值范围：
+<li>PREPAID：预付费，即包年包月。</li>
+<li>POSTPAID_BY_HOUR：按小时后付费。</li>
+<li>SPOTPAID：竞价付费（仅支持TASK节点）。</li>
+        :type InstanceChargeType: str
+        :param InstanceId: 集群实例ID。
+        :type InstanceId: str
+        :param ScaleOutNodeConfig: 扩容节点类型以及数量
+        :type ScaleOutNodeConfig: :class:`tencentcloud.emr.v20190103.models.ScaleOutNodeConfig`
+        :param ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
+        :type ClientToken: str
+        :param InstanceChargePrepaid: 即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
+        :param ScriptBootstrapActionConfig: [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。
+        :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
+        :param SoftDeployInfo: 扩容部署服务，新增节点将默认继承当前节点类型中所部署服务，部署服务含默认可选服务，该参数仅支持可选服务填写，如：存量task节点已部署HDFS、YARN、impala；使用api扩容task节不部署impala时，此参数仅填写HDFS、YARN
+        :type SoftDeployInfo: list of int
+        :param ServiceNodeInfo: 部署进程，默认部署扩容服务的全部进程，支持修改部署进程，如：当前task节点部署服务为：HDFS、YARN、impala，默认部署服务为：DataNode,NodeManager,ImpalaServer，若用户需修改部署进程信息，此参数信息可填写：	DataNode,NodeManager,ImpalaServerCoordinator或DataNode,NodeManager,ImpalaServerExecutor
+        :type ServiceNodeInfo: list of int
+        :param DisasterRecoverGroupIds: 分散置放群组ID列表，当前只支持指定一个。
+该参数可以通过调用 [DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810)的返回值中的DisasterRecoverGroupId字段来获取。
+        :type DisasterRecoverGroupIds: list of str
+        :param Tags: 扩容节点绑定标签列表。
+        :type Tags: list of Tag
+        :param HardwareSourceType: 扩容所选资源类型，可选范围为"host","pod"，host为普通的CVM资源，Pod为TKE集群或EKS集群提供的资源
+        :type HardwareSourceType: str
+        :param PodSpecInfo: Pod相关资源信息
+        :type PodSpecInfo: :class:`tencentcloud.emr.v20190103.models.PodSpecInfo`
+        :param ClickHouseClusterName: 使用clickhouse集群扩容时，选择的机器分组名称
+        :type ClickHouseClusterName: str
+        :param ClickHouseClusterType: 使用clickhouse集群扩容时，选择的机器分组类型。new为新增，old为选择旧分组
+        :type ClickHouseClusterType: str
+        :param YarnNodeLabel: 扩容指定 Yarn Node Label
+        :type YarnNodeLabel: str
+        :param EnableStartServiceFlag: 扩容后是否启动服务，默认取值否
+<li>true：是</li>
+<li>false：否</li>
+        :type EnableStartServiceFlag: bool
+        :param ResourceSpec: 规格设置
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        :param Zone: 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用[DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
+        :type Zone: str
+        :param SubnetId: 子网，默认是集群创建时的子网
+        :type SubnetId: str
+        """
+        self.InstanceChargeType = None
+        self.InstanceId = None
+        self.ScaleOutNodeConfig = None
+        self.ClientToken = None
+        self.InstanceChargePrepaid = None
+        self.ScriptBootstrapActionConfig = None
+        self.SoftDeployInfo = None
+        self.ServiceNodeInfo = None
+        self.DisasterRecoverGroupIds = None
+        self.Tags = None
+        self.HardwareSourceType = None
+        self.PodSpecInfo = None
+        self.ClickHouseClusterName = None
+        self.ClickHouseClusterType = None
+        self.YarnNodeLabel = None
+        self.EnableStartServiceFlag = None
+        self.ResourceSpec = None
+        self.Zone = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("ScaleOutNodeConfig") is not None:
+            self.ScaleOutNodeConfig = ScaleOutNodeConfig()
+            self.ScaleOutNodeConfig._deserialize(params.get("ScaleOutNodeConfig"))
+        self.ClientToken = params.get("ClientToken")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("ScriptBootstrapActionConfig") is not None:
+            self.ScriptBootstrapActionConfig = []
+            for item in params.get("ScriptBootstrapActionConfig"):
+                obj = ScriptBootstrapActionConfig()
+                obj._deserialize(item)
+                self.ScriptBootstrapActionConfig.append(obj)
+        self.SoftDeployInfo = params.get("SoftDeployInfo")
+        self.ServiceNodeInfo = params.get("ServiceNodeInfo")
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.HardwareSourceType = params.get("HardwareSourceType")
+        if params.get("PodSpecInfo") is not None:
+            self.PodSpecInfo = PodSpecInfo()
+            self.PodSpecInfo._deserialize(params.get("PodSpecInfo"))
+        self.ClickHouseClusterName = params.get("ClickHouseClusterName")
+        self.ClickHouseClusterType = params.get("ClickHouseClusterType")
+        self.YarnNodeLabel = params.get("YarnNodeLabel")
+        self.EnableStartServiceFlag = params.get("EnableStartServiceFlag")
+        if params.get("ResourceSpec") is not None:
+            self.ResourceSpec = NodeResourceSpec()
+            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
+        self.Zone = params.get("Zone")
+        self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOutClusterResponse(AbstractModel):
+    """ScaleOutCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param ClientToken: 客户端Token。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientToken: str
+        :param FlowId: 扩容流程ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.ClientToken = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClientToken = params.get("ClientToken")
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ScaleOutInstanceRequest(AbstractModel):
     """ScaleOutInstance请求参数结构体
 
@@ -4886,6 +5713,111 @@ class ScaleOutInstanceResponse(AbstractModel):
         self.FlowId = params.get("FlowId")
         self.BillId = params.get("BillId")
         self.RequestId = params.get("RequestId")
+
+
+class ScaleOutNodeConfig(AbstractModel):
+    """扩容节点类型以及数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeFlag: 扩容节点类型取值范围：
+  <li>MASTER</li>
+  <li>TASK</li>
+  <li>CORE</li>
+  <li>ROUTER</li>
+        :type NodeFlag: str
+        :param NodeCount: 扩容节点数量
+        :type NodeCount: int
+        """
+        self.NodeFlag = None
+        self.NodeCount = None
+
+
+    def _deserialize(self, params):
+        self.NodeFlag = params.get("NodeFlag")
+        self.NodeCount = params.get("NodeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneSoftwareConfig(AbstractModel):
+    """集群应用场景以及支持部署组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Software: 部署的组件列表。不同的EMR产品版本ProductVersion 对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
+填写实例值：hive、flink。
+        :type Software: list of str
+        :param SceneName: 默认Hadoop-Default,[场景查询](https://cloud.tencent.com/document/product/589/14624)场景化取值范围：
+Hadoop-Kudu
+Hadoop-Zookeeper
+Hadoop-Presto
+Hadoop-Hbase
+Hadoop-Default
+        :type SceneName: str
+        """
+        self.Software = None
+        self.SceneName = None
+
+
+    def _deserialize(self, params):
+        self.Software = params.get("Software")
+        self.SceneName = params.get("SceneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScriptBootstrapActionConfig(AbstractModel):
+    """添加引导操作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CosFileURI: 脚本的cos地址，参照格式：https://beijing-111111.cos.ap-beijing.myqcloud.com/data/test.sh查询cos存储桶列表：[存储桶列表](https://console.cloud.tencent.com/cos/bucket)
+        :type CosFileURI: str
+        :param ExecutionMoment: 引导脚步执行时机范围
+<li>resourceAfter：节点初始化后</li>
+<li>clusterAfter：集群启动后</li>
+<li>clusterBefore：集群启动前</li>
+        :type ExecutionMoment: str
+        :param Args: 执行脚本参数，参数格式请遵循标准Shell规范
+        :type Args: list of str
+        :param CosFileName: 脚本文件名
+        :type CosFileName: str
+        """
+        self.CosFileURI = None
+        self.ExecutionMoment = None
+        self.Args = None
+        self.CosFileName = None
+
+
+    def _deserialize(self, params):
+        self.CosFileURI = params.get("CosFileURI")
+        self.ExecutionMoment = params.get("ExecutionMoment")
+        self.Args = params.get("Args")
+        self.CosFileName = params.get("CosFileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SearchItem(AbstractModel):
@@ -5389,6 +6321,83 @@ class VPCSettings(AbstractModel):
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirtualPrivateCloud(AbstractModel):
+    """VPC 参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: Subnet ID
+        :type SubnetId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneResourceConfiguration(AbstractModel):
+    """可用区配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VirtualPrivateCloud: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualPrivateCloud: :class:`tencentcloud.emr.v20190103.models.VirtualPrivateCloud`
+        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param AllNodeResourceSpec: 所有节点资源的规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllNodeResourceSpec: :class:`tencentcloud.emr.v20190103.models.AllNodeResourceSpec`
+        :param ZoneTag: 如果是单可用区，ZoneTag可以不用填， 如果是双AZ部署，第一个可用区ZoneTag选择master，第二个可用区ZoneTag选择standby，如果是三AZ部署，第一个可用区ZoneTag选择master，第二个可用区ZoneTag选择standby，第三个可用区ZoneTag选择third-party，取值范围：
+  <li>master</li>
+  <li>standby</li>
+  <li>third-party</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneTag: str
+        """
+        self.VirtualPrivateCloud = None
+        self.Placement = None
+        self.AllNodeResourceSpec = None
+        self.ZoneTag = None
+
+
+    def _deserialize(self, params):
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        if params.get("AllNodeResourceSpec") is not None:
+            self.AllNodeResourceSpec = AllNodeResourceSpec()
+            self.AllNodeResourceSpec._deserialize(params.get("AllNodeResourceSpec"))
+        self.ZoneTag = params.get("ZoneTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

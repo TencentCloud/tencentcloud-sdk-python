@@ -149,11 +149,17 @@ INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUECONTAINFILENAMEEXTENSION = 'Inv
 # 非法条件-非法参数值-参数值长度超出限制。
 INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOLONGVALUE = 'InvalidParameter.ErrInvalidConditionValueTooLongValue'
 
+# 非法条件-非法参数值-通配符数量超出限制。
+INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYWILDCARD = 'InvalidParameter.ErrInvalidConditionValueTooManyWildcard'
+
 # 非法条件-非法参数值-参数值数量为0。
 INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEZEROLENGTH = 'InvalidParameter.ErrInvalidConditionValueZeroLength'
 
 # 域名不存在。
 INVALIDPARAMETER_HOSTNOTFOUND = 'InvalidParameter.HostNotFound'
+
+# CNAME 未切换或者源站未路由到EO服务器。
+INVALIDPARAMETER_HOSTSTATUSNOTALLOWAPPLYCERTIFICATE = 'InvalidParameter.HostStatusNotAllowApplyCertificate'
 
 # 无效的token鉴权。
 INVALIDPARAMETER_INVALIDAUTHENTICATION = 'InvalidParameter.InvalidAuthentication'
@@ -178,6 +184,9 @@ INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = 'InvalidParameter.InvalidClientIpHe
 
 # 无效的智能加速。
 INVALIDPARAMETER_INVALIDDYNAMICROUTINE = 'InvalidParameter.InvalidDynamicRoutine'
+
+# 套餐包不支持智能加速配置。
+INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = 'InvalidParameter.InvalidDynamicRoutineBilling'
 
 # 无效的自定义错误页面。
 INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = 'InvalidParameter.InvalidErrorPageRedirectUrl'
@@ -266,6 +275,9 @@ INVALIDPARAMETER_TARGET = 'InvalidParameter.Target'
 # 任务无法生成。
 INVALIDPARAMETER_TASKNOTGENERATED = 'InvalidParameter.TaskNotGenerated'
 
+# 内部错误。
+INVALIDPARAMETER_TASKSYSTEMERROR = 'InvalidParameter.TaskSystemError'
+
 # 文件上传链接存在问题。
 INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 
@@ -292,6 +304,9 @@ INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = 'InvalidParameterValue.ConflictWith
 
 # DNS 记录内容错误。
 INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = 'InvalidParameterValue.InvalidDNSContent'
+
+# MX 记录优先级取值错误。
+INVALIDPARAMETERVALUE_INVALIDDNSMXPRIORITY = 'InvalidParameterValue.InvalidDNSMXPriority'
 
 # DNS 记录名称错误。
 INVALIDPARAMETERVALUE_INVALIDDNSNAME = 'InvalidParameterValue.InvalidDNSName'

@@ -1168,6 +1168,9 @@ class Cluster(AbstractModel):
         :param ClustersVersion: 集群版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClustersVersion: str
+        :param DisasterRecoveryType: 集群容灾类型，如SINGLE-ZONE，DISASTER-RECOVERY，MUTUAL-DISASTER-RECOVERY
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisasterRecoveryType: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -1191,6 +1194,7 @@ class Cluster(AbstractModel):
         self.Isp = None
         self.ClustersZone = None
         self.ClustersVersion = None
+        self.DisasterRecoveryType = None
 
 
     def _deserialize(self, params):
@@ -1218,6 +1222,7 @@ class Cluster(AbstractModel):
             self.ClustersZone = ClustersZone()
             self.ClustersZone._deserialize(params.get("ClustersZone"))
         self.ClustersVersion = params.get("ClustersVersion")
+        self.DisasterRecoveryType = params.get("DisasterRecoveryType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1283,6 +1288,9 @@ class ClusterResource(AbstractModel):
         :param Isp: 集群的Isp属性，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Isp: str
+        :param ClustersZone: 集群所在的可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClustersZone: :class:`tencentcloud.clb.v20180317.models.ClustersZone`
         """
         self.ClusterId = None
         self.Vip = None
@@ -1290,6 +1298,7 @@ class ClusterResource(AbstractModel):
         self.Idle = None
         self.ClusterName = None
         self.Isp = None
+        self.ClustersZone = None
 
 
     def _deserialize(self, params):
@@ -1299,6 +1308,9 @@ class ClusterResource(AbstractModel):
         self.Idle = params.get("Idle")
         self.ClusterName = params.get("ClusterName")
         self.Isp = params.get("Isp")
+        if params.get("ClustersZone") is not None:
+            self.ClustersZone = ClustersZone()
+            self.ClustersZone._deserialize(params.get("ClustersZone"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6939,14 +6951,52 @@ class Resource(AbstractModel):
         :type Type: list of str
         :param Isp: 运营商信息，如"CMCC", "CUCC", "CTCC", "BGP", "INTERNAL"。
         :type Isp: str
+        :param AvailabilitySet: 可用资源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailabilitySet: list of ResourceAvailability
         """
         self.Type = None
         self.Isp = None
+        self.AvailabilitySet = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Isp = params.get("Isp")
+        if params.get("AvailabilitySet") is not None:
+            self.AvailabilitySet = []
+            for item in params.get("AvailabilitySet"):
+                obj = ResourceAvailability()
+                obj._deserialize(item)
+                self.AvailabilitySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceAvailability(AbstractModel):
+    """资源可用性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 运营商内具体资源信息，如"CMCC", "CUCC", "CTCC", "BGP"。
+        :type Type: str
+        :param Availability: 资源可用性，"Available"：可用，"Unavailable"：不可用
+        :type Availability: str
+        """
+        self.Type = None
+        self.Availability = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Availability = params.get("Availability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8126,6 +8176,10 @@ class ZoneResource(AbstractModel):
         :type ZoneRegion: str
         :param LocalZone: 可用区是否是LocalZone可用区，如：false
         :type LocalZone: bool
+        :param ZoneResourceType: 可用区资源的类型，SHARED表示共享资源，EXCLUSIVE表示独占资源。
+        :type ZoneResourceType: str
+        :param EdgeZone: 可用区是否是EdgeZone可用区，如：false
+        :type EdgeZone: bool
         """
         self.MasterZone = None
         self.ResourceSet = None
@@ -8133,6 +8187,8 @@ class ZoneResource(AbstractModel):
         self.IPVersion = None
         self.ZoneRegion = None
         self.LocalZone = None
+        self.ZoneResourceType = None
+        self.EdgeZone = None
 
 
     def _deserialize(self, params):
@@ -8147,6 +8203,8 @@ class ZoneResource(AbstractModel):
         self.IPVersion = params.get("IPVersion")
         self.ZoneRegion = params.get("ZoneRegion")
         self.LocalZone = params.get("LocalZone")
+        self.ZoneResourceType = params.get("ZoneResourceType")
+        self.EdgeZone = params.get("EdgeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

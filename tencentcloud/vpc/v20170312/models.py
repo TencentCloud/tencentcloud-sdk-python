@@ -13606,6 +13606,8 @@ class EndPointService(AbstractModel):
         :type EndPointSet: list of EndPoint
         :param CreateTime: 创建时间。
         :type CreateTime: str
+        :param ServiceType: 挂载的PAAS服务类型，CLB,CDB,CRS
+        :type ServiceType: str
         """
         self.EndPointServiceId = None
         self.VpcId = None
@@ -13617,6 +13619,7 @@ class EndPointService(AbstractModel):
         self.EndPointCount = None
         self.EndPointSet = None
         self.CreateTime = None
+        self.ServiceType = None
 
 
     def _deserialize(self, params):
@@ -13635,6 +13638,7 @@ class EndPointService(AbstractModel):
                 obj._deserialize(item)
                 self.EndPointSet.append(obj)
         self.CreateTime = params.get("CreateTime")
+        self.ServiceType = params.get("ServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

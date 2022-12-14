@@ -2748,9 +2748,9 @@ class ModifyDisksChargeTypeRequest(AbstractModel):
         r"""
         :param DiskIds: 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
         :type DiskIds: list of str
-        :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+        :param DiskChargePrepaid: 设置为预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
-        :param DiskChargePostpaid: 后付费模式
+        :param DiskChargePostpaid: 设置为后付费模式
         :type DiskChargePostpaid: bool
         """
         self.DiskIds = None

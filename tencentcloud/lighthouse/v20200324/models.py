@@ -4368,11 +4368,15 @@ class InstancePrice(AbstractModel):
         :type Discount: int
         :param DiscountPrice: 折后价。
         :type DiscountPrice: float
+        :param Currency: 价格货币单位。取值范围CNY:人民币。USD:美元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Currency: str
         """
         self.OriginalBundlePrice = None
         self.OriginalPrice = None
         self.Discount = None
         self.DiscountPrice = None
+        self.Currency = None
 
 
     def _deserialize(self, params):
@@ -4380,6 +4384,7 @@ class InstancePrice(AbstractModel):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Discount = params.get("Discount")
         self.DiscountPrice = params.get("DiscountPrice")
+        self.Currency = params.get("Currency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4402,9 +4407,13 @@ class InstancePriceDetail(AbstractModel):
         :param InstancePrice: 询价信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstancePrice: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
+        :param DiscountDetail: 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountDetail: list of DiscountDetail
         """
         self.InstanceId = None
         self.InstancePrice = None
+        self.DiscountDetail = None
 
 
     def _deserialize(self, params):
@@ -4412,6 +4421,12 @@ class InstancePriceDetail(AbstractModel):
         if params.get("InstancePrice") is not None:
             self.InstancePrice = InstancePrice()
             self.InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("DiscountDetail") is not None:
+            self.DiscountDetail = []
+            for item in params.get("DiscountDetail"):
+                obj = DiscountDetail()
+                obj._deserialize(item)
+                self.DiscountDetail.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

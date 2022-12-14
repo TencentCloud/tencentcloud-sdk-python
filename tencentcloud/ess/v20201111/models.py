@@ -3650,6 +3650,12 @@ class TemplateInfo(AbstractModel):
         :param PreviewUrl: 模板预览链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
+        :param TemplateVersion: 模板版本。默认为空时，全数字字符，初始版本为yyyyMMdd001。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateVersion: str
+        :param Published: 模板是否已发布。true-已发布；false-未发布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Published: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -3667,6 +3673,8 @@ class TemplateInfo(AbstractModel):
         self.Promoter = None
         self.OrganizationId = None
         self.PreviewUrl = None
+        self.TemplateVersion = None
+        self.Published = None
 
 
     def _deserialize(self, params):
@@ -3708,6 +3716,8 @@ class TemplateInfo(AbstractModel):
             self.Promoter._deserialize(params.get("Promoter"))
         self.OrganizationId = params.get("OrganizationId")
         self.PreviewUrl = params.get("PreviewUrl")
+        self.TemplateVersion = params.get("TemplateVersion")
+        self.Published = params.get("Published")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

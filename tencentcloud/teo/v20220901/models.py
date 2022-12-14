@@ -1577,8 +1577,7 @@ class CreateAliasDomainRequest(AbstractModel):
         :type TargetName: str
         :param CertType: 证书配置，取值有：
 <li> none：不配置；</li>
-<li> hosting：SSL托管证书；</li>
-<li> apply：申请免费证书。</li>默认取值为 none。
+<li> hosting：SSL托管证书。</li>默认取值为 none。
         :type CertType: str
         :param CertId: 当 CertType 取值为 hosting 时需填入相应证书 ID。
         :type CertId: list of str

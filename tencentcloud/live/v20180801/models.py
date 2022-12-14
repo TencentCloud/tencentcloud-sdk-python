@@ -520,6 +520,9 @@ class CallBackTemplateInfo(AbstractModel):
         :type PornCensorshipNotifyUrl: str
         :param CallbackKey: 回调的鉴权 key。
         :type CallbackKey: str
+        :param PushExceptionNotifyUrl: 推流异常回调 URL。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PushExceptionNotifyUrl: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -531,6 +534,7 @@ class CallBackTemplateInfo(AbstractModel):
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
+        self.PushExceptionNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -544,6 +548,7 @@ class CallBackTemplateInfo(AbstractModel):
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
+        self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1227,6 +1232,8 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         :type CallbackKey: str
         :param StreamMixNotifyUrl: 参数已弃用。
         :type StreamMixNotifyUrl: str
+        :param PushExceptionNotifyUrl: 推流异常回调 URL。
+        :type PushExceptionNotifyUrl: str
         """
         self.TemplateName = None
         self.Description = None
@@ -1237,6 +1244,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
         self.StreamMixNotifyUrl = None
+        self.PushExceptionNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -1249,6 +1257,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
         self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
+        self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8218,6 +8227,8 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :param CallbackKey: 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
 [事件消息通知](/document/product/267/32744)。
         :type CallbackKey: str
+        :param PushExceptionNotifyUrl: 推流异常回调 URL。
+        :type PushExceptionNotifyUrl: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -8228,6 +8239,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self.SnapshotNotifyUrl = None
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
+        self.PushExceptionNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -8240,6 +8252,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self.SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
+        self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
