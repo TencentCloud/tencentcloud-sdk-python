@@ -1370,7 +1370,7 @@ TEXT - 普通文本控件；
 MULTI_LINE_TEXT - 多行文本控件；
 CHECK_BOX - 勾选框控件；
 FILL_IMAGE - 图片控件；
-DYNAMIC_TABLE - 动态表格控件；
+DYNAMIC_TABLE - 数据表格控件；
 ATTACHMENT - 附件控件；
 SELECTOR - 选择器控件；
 DATE - 日期控件；默认是格式化为xxxx年xx月xx日；

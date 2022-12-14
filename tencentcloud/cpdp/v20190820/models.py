@@ -15980,6 +15980,58 @@ class PaymentOrders(AbstractModel):
         
 
 
+class PlatformAccountBalanceResult(AbstractModel):
+    """平台账户余额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncomeType: str
+        :param Balance: 总余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Balance: str
+        :param SystemFreezeBalance: 系统冻结余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemFreezeBalance: str
+        :param ManualFreezeBalance: 人工冻结余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManualFreezeBalance: str
+        :param PayableBalance: 可提现余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayableBalance: str
+        :param InPayBalance: 提现中余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InPayBalance: str
+        """
+        self.IncomeType = None
+        self.Balance = None
+        self.SystemFreezeBalance = None
+        self.ManualFreezeBalance = None
+        self.PayableBalance = None
+        self.InPayBalance = None
+
+
+    def _deserialize(self, params):
+        self.IncomeType = params.get("IncomeType")
+        self.Balance = params.get("Balance")
+        self.SystemFreezeBalance = params.get("SystemFreezeBalance")
+        self.ManualFreezeBalance = params.get("ManualFreezeBalance")
+        self.PayableBalance = params.get("PayableBalance")
+        self.InPayBalance = params.get("InPayBalance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryAcctBindingRequest(AbstractModel):
     """QueryAcctBinding请求参数结构体
 
@@ -19710,6 +19762,76 @@ class QueryFlexPaymentOrderStatusResponse(AbstractModel):
         self.ErrMessage = params.get("ErrMessage")
         if params.get("Result") is not None:
             self.Result = PaymentOrderStatusResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexPlatformAccountBalanceRequest(AbstractModel):
+    """QueryFlexPlatformAccountBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+        :type IncomeType: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
+        :param SnapshotDate: 快照日期。格式yyyy-MM-dd
+        :type SnapshotDate: str
+        """
+        self.IncomeType = None
+        self.Environment = None
+        self.SnapshotDate = None
+
+
+    def _deserialize(self, params):
+        self.IncomeType = params.get("IncomeType")
+        self.Environment = params.get("Environment")
+        self.SnapshotDate = params.get("SnapshotDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexPlatformAccountBalanceResponse(AbstractModel):
+    """QueryFlexPlatformAccountBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PlatformAccountBalanceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = PlatformAccountBalanceResult()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 

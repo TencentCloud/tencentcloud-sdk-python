@@ -3806,6 +3806,35 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryFlexPlatformAccountBalance(self, request):
+        """灵云V2-平台账户余额查询
+
+        :param request: Request instance for QueryFlexPlatformAccountBalance.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPlatformAccountBalanceRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPlatformAccountBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexPlatformAccountBalance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexPlatformAccountBalanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryFlexSettlementOrderList(self, request):
         """灵云V2-查询结算订单列表
 
