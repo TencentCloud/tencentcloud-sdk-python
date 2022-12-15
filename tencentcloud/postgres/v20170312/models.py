@@ -830,6 +830,63 @@ class CreateInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateParameterTemplateRequest(AbstractModel):
+    """CreateParameterTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateName: 模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
+        :type TemplateName: str
+        :param DBMajorVersion: 数据库大版本号，例如：11，12，13
+        :type DBMajorVersion: str
+        :param DBEngine: 数据库引擎，例如：postgresql，mssql_compatible
+        :type DBEngine: str
+        :param TemplateDescription: 参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
+        :type TemplateDescription: str
+        """
+        self.TemplateName = None
+        self.DBMajorVersion = None
+        self.DBEngine = None
+        self.TemplateDescription = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBEngine = params.get("DBEngine")
+        self.TemplateDescription = params.get("TemplateDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateParameterTemplateResponse(AbstractModel):
+    """CreateParameterTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模板ID，用于唯一确认参数模板
+        :type TemplateId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateReadOnlyDBInstanceRequest(AbstractModel):
     """CreateReadOnlyDBInstance请求参数结构体
 
@@ -1613,6 +1670,47 @@ class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteParameterTemplateRequest(AbstractModel):
+    """DeleteParameterTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模板ID，用于唯一确认待操作的参数模板
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteParameterTemplateResponse(AbstractModel):
+    """DeleteParameterTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
     """DeleteReadOnlyGroupNetworkAccess请求参数结构体
 
@@ -2245,6 +2343,60 @@ class DescribeDBInstanceParametersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceSecurityGroupsRequest(AbstractModel):
+    """DescribeDBInstanceSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: 只读组ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果要查询只读组关联的安全组，只传ReadOnlyGroupId
+        :type ReadOnlyGroupId: str
+        """
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceSecurityGroupsResponse(AbstractModel):
+    """DescribeDBInstanceSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecurityGroupSet: 安全组信息数组
+        :type SecurityGroupSet: list of SecurityGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SecurityGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityGroupSet") is not None:
+            self.SecurityGroupSet = []
+            for item in params.get("SecurityGroupSet"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.SecurityGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances请求参数结构体
 
@@ -2519,6 +2671,65 @@ class DescribeDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDefaultParametersRequest(AbstractModel):
+    """DescribeDefaultParameters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBMajorVersion: 数据库版本，大版本号，例如11，12，13
+        :type DBMajorVersion: str
+        :param DBEngine: 数据库引擎，例如：postgresql,mssql_compatible
+        :type DBEngine: str
+        """
+        self.DBMajorVersion = None
+        self.DBEngine = None
+
+
+    def _deserialize(self, params):
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBEngine = params.get("DBEngine")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDefaultParametersResponse(AbstractModel):
+    """DescribeDefaultParameters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 参数个数
+        :type TotalCount: int
+        :param ParamInfoSet: 参数信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamInfoSet: list of ParamInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ParamInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ParamInfoSet") is not None:
+            self.ParamInfoSet = []
+            for item in params.get("ParamInfoSet"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.ParamInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEncryptionKeysRequest(AbstractModel):
     """DescribeEncryptionKeys请求参数结构体
 
@@ -2621,6 +2832,162 @@ class DescribeOrdersResponse(AbstractModel):
                 obj = PgDeal()
                 obj._deserialize(item)
                 self.Deals.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParameterTemplateAttributesRequest(AbstractModel):
+    """DescribeParameterTemplateAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模板ID
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParameterTemplateAttributesResponse(AbstractModel):
+    """DescribeParameterTemplateAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        :param TotalCount: 参数模板包含的参数个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param ParamInfoSet: 参数模板包含的参数信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamInfoSet: list of ParamInfo
+        :param TemplateName: 参数模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateName: str
+        :param DBMajorVersion: 参数模板适用的数据库版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBMajorVersion: str
+        :param DBEngine: 参数模板适用的数据库引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBEngine: str
+        :param TemplateDescription: 参数模板描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateDescription: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.TotalCount = None
+        self.ParamInfoSet = None
+        self.TemplateName = None
+        self.DBMajorVersion = None
+        self.DBEngine = None
+        self.TemplateDescription = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ParamInfoSet") is not None:
+            self.ParamInfoSet = []
+            for item in params.get("ParamInfoSet"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.ParamInfoSet.append(obj)
+        self.TemplateName = params.get("TemplateName")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBEngine = params.get("DBEngine")
+        self.TemplateDescription = params.get("TemplateDescription")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParameterTemplatesRequest(AbstractModel):
+    """DescribeParameterTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine
+        :type Filters: list of Filter
+        :param Limit: 每页显示数量，[0，100]，默认 20
+        :type Limit: int
+        :param Offset: 数据偏移量
+        :type Offset: int
+        :param OrderBy: 排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion
+        :type OrderBy: str
+        :param OrderByType: 排序方式，枚举值，支持：asc（升序） ，desc（降序）
+        :type OrderByType: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParameterTemplatesResponse(AbstractModel):
+    """DescribeParameterTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合查询条件的参数模板总数
+        :type TotalCount: int
+        :param ParameterTemplateSet: 参数模板列表
+        :type ParameterTemplateSet: list of ParameterTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ParameterTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ParameterTemplateSet") is not None:
+            self.ParameterTemplateSet = []
+            for item in params.get("ParameterTemplateSet"):
+                obj = ParameterTemplate()
+                obj._deserialize(item)
+                self.ParameterTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4127,6 +4494,55 @@ class ModifyDBInstanceReadOnlyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
+    """ModifyDBInstanceSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecurityGroupIdSet: 实例或只读组要绑定的安全组列表
+        :type SecurityGroupIdSet: list of str
+        :param DBInstanceId: 实例ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId
+        :type DBInstanceId: str
+        :param ReadOnlyGroupId: 只读组ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果要修改只读组关联的安全组，只传ReadOnlyGroupId
+        :type ReadOnlyGroupId: str
+        """
+        self.SecurityGroupIdSet = None
+        self.DBInstanceId = None
+        self.ReadOnlyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupIdSet = params.get("SecurityGroupIdSet")
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
+    """ModifyDBInstanceSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSpecRequest(AbstractModel):
     """ModifyDBInstanceSpec请求参数结构体
 
@@ -4254,6 +4670,68 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Count = params.get("Count")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyParameterTemplateRequest(AbstractModel):
+    """ModifyParameterTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模板ID，用于唯一确认参数模板，不可修改
+        :type TemplateId: str
+        :param TemplateName: 参数模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若该字段为空    ，则保持原参数模板名称
+        :type TemplateName: str
+        :param TemplateDescription: 参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若不传入该参数，则保持原参数模板描述
+        :type TemplateDescription: str
+        :param ModifyParamEntrySet: 需要修改或添加的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
+        :type ModifyParamEntrySet: list of ParamEntry
+        :param DeleteParamSet: 需要从模板中删除的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
+        :type DeleteParamSet: list of str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.TemplateDescription = None
+        self.ModifyParamEntrySet = None
+        self.DeleteParamSet = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.TemplateDescription = params.get("TemplateDescription")
+        if params.get("ModifyParamEntrySet") is not None:
+            self.ModifyParamEntrySet = []
+            for item in params.get("ModifyParamEntrySet"):
+                obj = ParamEntry()
+                obj._deserialize(item)
+                self.ModifyParamEntrySet.append(obj)
+        self.DeleteParamSet = params.get("DeleteParamSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyParameterTemplateResponse(AbstractModel):
+    """ModifyParameterTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4876,6 +5354,46 @@ class ParamVersionRelation(AbstractModel):
         
 
 
+class ParameterTemplate(AbstractModel):
+    """参数模板的基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模板ID
+        :type TemplateId: str
+        :param TemplateName: 参数模板名称
+        :type TemplateName: str
+        :param DBMajorVersion: 参数模板适用的数据库版本
+        :type DBMajorVersion: str
+        :param DBEngine: 参数模板适用的数据库引擎
+        :type DBEngine: str
+        :param TemplateDescription: 参数模板描述
+        :type TemplateDescription: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.DBMajorVersion = None
+        self.DBEngine = None
+        self.TemplateDescription = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBEngine = params.get("DBEngine")
+        self.TemplateDescription = params.get("TemplateDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PgDeal(AbstractModel):
     """订单详情
 
@@ -4911,6 +5429,46 @@ class PgDeal(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.FlowId = params.get("FlowId")
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyRule(AbstractModel):
+    """安全组规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 策略，ACCEPT 或者 DROP
+        :type Action: str
+        :param CidrIp: 来源或目的 IP 或 IP 段，例如172.16.0.0/12
+        :type CidrIp: str
+        :param PortRange: 端口
+        :type PortRange: str
+        :param IpProtocol: 网络协议，支持 UDP、TCP 等
+        :type IpProtocol: str
+        :param Description: 规则描述
+        :type Description: str
+        """
+        self.Action = None
+        self.CidrIp = None
+        self.PortRange = None
+        self.IpProtocol = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.CidrIp = params.get("CidrIp")
+        self.PortRange = params.get("PortRange")
+        self.IpProtocol = params.get("IpProtocol")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5358,6 +5916,64 @@ class RestartDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class SecurityGroup(AbstractModel):
+    """安全组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目Id
+        :type ProjectId: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Inbound: 入站规则
+        :type Inbound: list of PolicyRule
+        :param Outbound: 出站规则
+        :type Outbound: list of PolicyRule
+        :param SecurityGroupId: 安全组ID
+        :type SecurityGroupId: str
+        :param SecurityGroupName: 安全组名称
+        :type SecurityGroupName: str
+        :param SecurityGroupDescription: 安全组备注
+        :type SecurityGroupDescription: str
+        """
+        self.ProjectId = None
+        self.CreateTime = None
+        self.Inbound = None
+        self.Outbound = None
+        self.SecurityGroupId = None
+        self.SecurityGroupName = None
+        self.SecurityGroupDescription = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("Inbound") is not None:
+            self.Inbound = []
+            for item in params.get("Inbound"):
+                obj = PolicyRule()
+                obj._deserialize(item)
+                self.Inbound.append(obj)
+        if params.get("Outbound") is not None:
+            self.Outbound = []
+            for item in params.get("Outbound"):
+                obj = PolicyRule()
+                obj._deserialize(item)
+                self.Outbound.append(obj)
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupName = params.get("SecurityGroupName")
+        self.SecurityGroupDescription = params.get("SecurityGroupDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ServerlessDBAccount(AbstractModel):

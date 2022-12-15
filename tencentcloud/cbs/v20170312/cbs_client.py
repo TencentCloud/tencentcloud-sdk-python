@@ -625,9 +625,7 @@ class CbsClient(AbstractClient):
 
 
     def DescribeSnapshotOperationLogs(self, request):
-        """本接口（DescribeSnapshotOperationLogs）用于查询快照操作日志列表。
-
-        可根据快照ID过滤。快照ID形如：snap-a1kmcp13。
+        """查询快照操作日志功能已迁移至LookUpEvents接口（https://cloud.tencent.com/document/product/629/12359），本接口（DescribeSnapshotOperationLogs）即将下线，后续不再提供调用，请知悉。
 
         :param request: Request instance for DescribeSnapshotOperationLogs.
         :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeSnapshotOperationLogsRequest`

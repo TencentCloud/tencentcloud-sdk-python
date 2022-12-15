@@ -5308,7 +5308,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeK8sApiAbnormalRuleScopeList(self, request):
-        """查询k8s api 异常规则中范围列表
+        """查询k8sapi 异常规则中范围列表
 
         :param request: Request instance for DescribeK8sApiAbnormalRuleScopeList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeK8sApiAbnormalRuleScopeListRequest`

@@ -1454,14 +1454,14 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
         :param Filters: 过滤条件。支持以下条件：
 <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
         :type Filters: list of Filter
-        :param BeginTime: 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
-        :type BeginTime: str
         :param EndTime: 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
         :type EndTime: str
+        :param BeginTime: 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
+        :type BeginTime: str
         """
         self.Filters = None
-        self.BeginTime = None
         self.EndTime = None
+        self.BeginTime = None
 
 
     def _deserialize(self, params):
@@ -1471,8 +1471,8 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
+        self.BeginTime = params.get("BeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3411,15 +3411,24 @@ class SnapshotCopyResult(AbstractModel):
 
 
 class SnapshotOperationLog(AbstractModel):
-    """快照操作日志。
+    """快照操作日志，已废弃。
 
     """
 
     def __init__(self):
         r"""
+        :param OperationState: 操作的状态。取值范围：
+SUCCESS :表示操作成功 
+FAILED :表示操作失败 
+PROCESSING :表示操作中。
+        :type OperationState: str
+        :param StartTime: 开始时间。
+        :type StartTime: str
         :param Operator: 操作者的UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
+        :param SnapshotId: 操作的快照ID。
+        :type SnapshotId: str
         :param Operation: 操作类型。取值范围：
 SNAP_OPERATION_DELETE：删除快照
 SNAP_OPERATION_ROLLBACK：回滚快照
@@ -3429,32 +3438,23 @@ SNAP_OPERATION_COPY：跨地域复制快照
 ASP_OPERATION_CREATE_SNAP：由定期快照策略创建快照
 ASP_OPERATION_DELETE_SNAP：由定期快照策略删除快照
         :type Operation: str
-        :param SnapshotId: 操作的快照ID。
-        :type SnapshotId: str
-        :param OperationState: 操作的状态。取值范围：
-SUCCESS :表示操作成功 
-FAILED :表示操作失败 
-PROCESSING :表示操作中。
-        :type OperationState: str
-        :param StartTime: 开始时间。
-        :type StartTime: str
         :param EndTime: 结束时间。
         :type EndTime: str
         """
-        self.Operator = None
-        self.Operation = None
-        self.SnapshotId = None
         self.OperationState = None
         self.StartTime = None
+        self.Operator = None
+        self.SnapshotId = None
+        self.Operation = None
         self.EndTime = None
 
 
     def _deserialize(self, params):
-        self.Operator = params.get("Operator")
-        self.Operation = params.get("Operation")
-        self.SnapshotId = params.get("SnapshotId")
         self.OperationState = params.get("OperationState")
         self.StartTime = params.get("StartTime")
+        self.Operator = params.get("Operator")
+        self.SnapshotId = params.get("SnapshotId")
+        self.Operation = params.get("Operation")
         self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

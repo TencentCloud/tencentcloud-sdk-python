@@ -1106,7 +1106,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type SecurityGroupIds: list of str
         :param AlarmPolicyIds: 告警策略Id数组
         :type AlarmPolicyIds: list of str
-        :param ClusterParams: 参数数组
+        :param ClusterParams: 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
         :type ClusterParams: list of ParamItem
         :param DealMode: 交易模式，0-下单且支付，1-下单
         :type DealMode: int
@@ -2310,17 +2310,30 @@ class DescribeAccountsRequest(AbstractModel):
         :type AccountNames: list of str
         :param DbType: 数据库类型，取值范围: 
 <li> MYSQL </li>
+该参数已废用
         :type DbType: str
+        :param Hosts: 需要过滤的账户列表
+        :type Hosts: list of str
+        :param Limit: 限制量
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
         """
         self.ClusterId = None
         self.AccountNames = None
         self.DbType = None
+        self.Hosts = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.AccountNames = params.get("AccountNames")
         self.DbType = params.get("DbType")
+        self.Hosts = params.get("Hosts")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2338,11 +2351,15 @@ class DescribeAccountsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param AccountSet: 数据库账号列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type AccountSet: list of Account
+        :param TotalCount: 账号总数量
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AccountSet = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -2353,6 +2370,7 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = Account()
                 obj._deserialize(item)
                 self.AccountSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2654,6 +2672,8 @@ class DescribeBackupListRequest(AbstractModel):
         :type FileNames: list of str
         :param BackupNames: 备份备注名，模糊查询
         :type BackupNames: list of str
+        :param SnapshotIdList: 快照备份Id列表
+        :type SnapshotIdList: list of int
         """
         self.ClusterId = None
         self.Limit = None
@@ -2667,6 +2687,7 @@ class DescribeBackupListRequest(AbstractModel):
         self.EndTime = None
         self.FileNames = None
         self.BackupNames = None
+        self.SnapshotIdList = None
 
 
     def _deserialize(self, params):
@@ -2682,6 +2703,7 @@ class DescribeBackupListRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.FileNames = params.get("FileNames")
         self.BackupNames = params.get("BackupNames")
+        self.SnapshotIdList = params.get("SnapshotIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3071,12 +3093,16 @@ class DescribeClusterParamsRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param ParamName: 参数名字
+        :type ParamName: str
         """
         self.ClusterId = None
+        self.ParamName = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        self.ParamName = params.get("ParamName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3096,6 +3122,7 @@ class DescribeClusterParamsResponse(AbstractModel):
         :param TotalCount: 参数个数
         :type TotalCount: int
         :param Items: 实例参数列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of ParamInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3695,12 +3722,24 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
         r"""
         :param ProjectId: 项目ID
         :type ProjectId: int
+        :param Limit: 限制量
+        :type Limit: int
+        :param Offset: 偏移量
+        :type Offset: int
+        :param SearchKey: 搜索关键字
+        :type SearchKey: str
         """
         self.ProjectId = None
+        self.Limit = None
+        self.Offset = None
+        self.SearchKey = None
 
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SearchKey = params.get("SearchKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3719,10 +3758,13 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         r"""
         :param Groups: 安全组详情
         :type Groups: list of SecurityGroup
+        :param Total: 总数量
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -3733,6 +3775,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -3822,8 +3865,10 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
     def __init__(self):
         r"""
         :param TimeRangeStart: 有效回归时间范围开始时间点（已废弃）
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeRangeStart: str
         :param TimeRangeEnd: 有效回归时间范围结束时间点（已废弃）
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeRangeEnd: str
         :param RollbackTimeRanges: 可回档时间范围
         :type RollbackTimeRanges: list of RollbackTimeRange

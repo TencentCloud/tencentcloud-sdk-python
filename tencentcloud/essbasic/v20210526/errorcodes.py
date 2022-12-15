@@ -365,7 +365,7 @@ OPERATIONDENIED_OPERATORHASNOPERMISSION = 'OperationDenied.OperatorHasNoPermissi
 # 超出查询上限。
 OPERATIONDENIED_OUTQUERYLIMIT = 'OperationDenied.OutQueryLimit'
 
-# 当前企业员工没有开通海外签署能力。
+# 当前企业员工没有开通境外签署能力。
 OPERATIONDENIED_OVERSEAABILITYNOTOPEN = 'OperationDenied.OverseaAbilityNotOpen'
 
 # 出证计费额度不足。

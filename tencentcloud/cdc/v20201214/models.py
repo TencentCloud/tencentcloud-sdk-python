@@ -561,6 +561,9 @@ class DedicatedClusterOrder(AbstractModel):
         :param TimeSpan: 购买时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
+        :param OrderType: 订单类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderType: str
         """
         self.DedicatedClusterId = None
         self.DedicatedClusterTypeId = None
@@ -581,6 +584,7 @@ class DedicatedClusterOrder(AbstractModel):
         self.PayType = None
         self.TimeUnit = None
         self.TimeSpan = None
+        self.OrderType = None
 
 
     def _deserialize(self, params):
@@ -608,6 +612,7 @@ class DedicatedClusterOrder(AbstractModel):
         self.PayType = params.get("PayType")
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
+        self.OrderType = params.get("OrderType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

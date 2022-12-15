@@ -24094,7 +24094,7 @@ class ModifyK8sApiAbnormalRuleStatusRequest(AbstractModel):
         r"""
         :param RuleID: 规则ID
         :type RuleID: str
-        :param Status: 状态(ture:开 false:关)
+        :param Status: 状态(true:开 false:关)
         :type Status: bool
         """
         self.RuleID = None

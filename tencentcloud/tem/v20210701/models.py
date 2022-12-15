@@ -2274,12 +2274,15 @@ class DescribeEnvironmentsRequest(AbstractModel):
         :type Filters: list of QueryFilter
         :param SortInfo: 排序字段
         :type SortInfo: :class:`tencentcloud.tem.v20210701.models.SortType`
+        :param EnvironmentId: 环境id
+        :type EnvironmentId: str
         """
         self.Limit = None
         self.Offset = None
         self.SourceChannel = None
         self.Filters = None
         self.SortInfo = None
+        self.EnvironmentId = None
 
 
     def _deserialize(self, params):
@@ -2295,6 +2298,7 @@ class DescribeEnvironmentsRequest(AbstractModel):
         if params.get("SortInfo") is not None:
             self.SortInfo = SortType()
             self.SortInfo._deserialize(params.get("SortInfo"))
+        self.EnvironmentId = params.get("EnvironmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

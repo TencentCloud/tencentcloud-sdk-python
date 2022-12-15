@@ -379,7 +379,7 @@ class StatusNode(AbstractModel):
         :param ScfName: scf函数名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScfName: str
-        :param SubStatus: 状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）
+        :param SubStatus: 状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubStatus: int
         :param ApprovedUin: 审批节点审批人
@@ -409,6 +409,18 @@ class StatusNode(AbstractModel):
         :param CallMethod: 外部审批类型 scf:0或null ; CKafka:1
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallMethod: int
+        :param DataHubId: CKafka - 接入资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataHubId: str
+        :param TaskName: CKafka - 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param CKafkaRegion: CKafka - 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CKafkaRegion: str
+        :param ExternalUrl: 外部审批Url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalUrl: str
         """
         self.NodeId = None
         self.NodeName = None
@@ -426,6 +438,10 @@ class StatusNode(AbstractModel):
         self.ApproveMethod = None
         self.ApproveType = None
         self.CallMethod = None
+        self.DataHubId = None
+        self.TaskName = None
+        self.CKafkaRegion = None
+        self.ExternalUrl = None
 
 
     def _deserialize(self, params):
@@ -449,6 +465,10 @@ class StatusNode(AbstractModel):
         self.ApproveMethod = params.get("ApproveMethod")
         self.ApproveType = params.get("ApproveType")
         self.CallMethod = params.get("CallMethod")
+        self.DataHubId = params.get("DataHubId")
+        self.TaskName = params.get("TaskName")
+        self.CKafkaRegion = params.get("CKafkaRegion")
+        self.ExternalUrl = params.get("ExternalUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

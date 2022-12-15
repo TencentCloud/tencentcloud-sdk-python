@@ -229,6 +229,35 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateParameterTemplate(self, request):
+        """本接口 (CreateParameterTemplate) 用于创建参数模板。
+
+        :param request: Request instance for CreateParameterTemplate.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateParameterTemplateRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateParameterTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateParameterTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateParameterTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateReadOnlyDBInstance(self, request):
         """本接口(CreateReadOnlyDBInstance)用于创建只读实例
 
@@ -360,6 +389,35 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDBInstanceNetworkAccessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteParameterTemplate(self, request):
+        """本接口（DeleteParameterTemplate）主要用于删除某个参数模板。
+
+        :param request: Request instance for DeleteParameterTemplate.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteParameterTemplateRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteParameterTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteParameterTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteParameterTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -693,6 +751,35 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBInstanceSecurityGroups(self, request):
+        """本接口（DescribeDBInstanceSecurityGroups）用于查询实例安全组信息。
+
+        :param request: Request instance for DescribeDBInstanceSecurityGroups.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstanceSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstances(self, request):
         """本接口 (DescribeDBInstances) 用于查询一个或多个实例的详细信息。
 
@@ -809,6 +896,35 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDefaultParameters(self, request):
+        """本接口（DescribeDefaultParameters）主要用于查询某个数据库版本和引擎支持的所有参数。
+
+        :param request: Request instance for DescribeDefaultParameters.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDefaultParametersRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDefaultParametersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDefaultParameters", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDefaultParametersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEncryptionKeys(self, request):
         """获取实例的密钥信息列表。
 
@@ -853,6 +969,64 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrdersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeParameterTemplateAttributes(self, request):
+        """本接口（DescribeParameterTemplateAttributes）用于查询某个参数模板的具体内容，包括基本信息和参数信息。
+
+        :param request: Request instance for DescribeParameterTemplateAttributes.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParameterTemplateAttributesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeParameterTemplateAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeParameterTemplateAttributes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeParameterTemplateAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeParameterTemplates(self, request):
+        """本接口 (DescribeParameterTemplates) 用于查询参数模板列表。
+
+        :param request: Request instance for DescribeParameterTemplates.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeParameterTemplatesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeParameterTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeParameterTemplates", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeParameterTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1476,6 +1650,35 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDBInstanceSecurityGroups(self, request):
+        """本接口（ModifyDBInstanceSecurityGroups）用于修改实例安全组。
+
+        :param request: Request instance for ModifyDBInstanceSecurityGroups.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBInstanceSpec(self, request):
         """本接口（ModifyDBInstanceSpec）用于调整实例规格，包括内存、磁盘。
 
@@ -1520,6 +1723,35 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstancesProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyParameterTemplate(self, request):
+        """本接口（ModifyParameterTemplate）主要用于修改参数模板名称，描述，修改，添加和删除参数模板参数。
+
+        :param request: Request instance for ModifyParameterTemplate.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyParameterTemplateRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyParameterTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyParameterTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyParameterTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
