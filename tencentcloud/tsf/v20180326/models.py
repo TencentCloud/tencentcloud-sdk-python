@@ -3158,6 +3158,7 @@ class CreateClusterResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

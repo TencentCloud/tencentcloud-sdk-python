@@ -557,6 +557,11 @@ class BGPInstance(AbstractModel):
         :type IpCountNewFlag: int
         :param VitalityVersion: 攻击封堵套餐标记
         :type VitalityVersion: int
+        :param Line: 网络线路
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Line: int
+        :param ElasticServiceBandwidth: 弹性业务带宽开关
+        :type ElasticServiceBandwidth: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -574,6 +579,8 @@ class BGPInstance(AbstractModel):
         self.TagInfoList = None
         self.IpCountNewFlag = None
         self.VitalityVersion = None
+        self.Line = None
+        self.ElasticServiceBandwidth = None
 
 
     def _deserialize(self, params):
@@ -613,6 +620,8 @@ class BGPInstance(AbstractModel):
                 self.TagInfoList.append(obj)
         self.IpCountNewFlag = params.get("IpCountNewFlag")
         self.VitalityVersion = params.get("VitalityVersion")
+        self.Line = params.get("Line")
+        self.ElasticServiceBandwidth = params.get("ElasticServiceBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3553,7 +3562,7 @@ class DescribeBizTrendRequest(AbstractModel):
         :type Statistics: str
         :param Business: 大禹子产品代号（bgpip表示高防IP）
         :type Business: str
-        :param Period: 统计周期，可取值300，1800，3600，21600，86400，单位秒
+        :param Period: 统计周期，可取值60，300，1800，3600，21600，86400，单位秒
         :type Period: int
         :param StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”
         :type StartTime: str
@@ -8803,14 +8812,18 @@ class SwitchWaterPrintConfigRequest(AbstractModel):
         :type InstanceId: str
         :param OpenStatus: 水印开启/关闭状态，1表示开启；0表示关闭
         :type OpenStatus: int
+        :param CloudSdkProxy: 是否开启代理，1开启则忽略IP+端口校验；0关闭则需要IP+端口校验
+        :type CloudSdkProxy: int
         """
         self.InstanceId = None
         self.OpenStatus = None
+        self.CloudSdkProxy = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.OpenStatus = params.get("OpenStatus")
+        self.CloudSdkProxy = params.get("CloudSdkProxy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8916,12 +8929,16 @@ checkall（普通模式）
 shortfpcheckall（精简模式）
 ]
         :type Verify: str
+        :param CloudSdkProxy: 是否开启代理，1开启则忽略IP+端口校验；0关闭则需要IP+端口校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudSdkProxy: int
         """
         self.Offset = None
         self.OpenStatus = None
         self.Listeners = None
         self.Keys = None
         self.Verify = None
+        self.CloudSdkProxy = None
 
 
     def _deserialize(self, params):
@@ -8940,6 +8957,7 @@ shortfpcheckall（精简模式）
                 obj._deserialize(item)
                 self.Keys.append(obj)
         self.Verify = params.get("Verify")
+        self.CloudSdkProxy = params.get("CloudSdkProxy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

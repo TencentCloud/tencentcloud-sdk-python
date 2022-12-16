@@ -654,7 +654,7 @@ class CreateScanUserResponse(AbstractModel):
 
 
 class CustomizationConfigs(AbstractModel):
-    """语音消息转文本自学习模型配置
+    """语音消息转文本热句模型配置
 
     """
 
@@ -704,7 +704,7 @@ class DeleteCustomizationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModelId: 要删除的模型ID
+        :param ModelId: 删除的模型ID
         :type ModelId: str
         :param BizId: 应用 ID，登录控制台创建应用得到的AppID
         :type BizId: int
@@ -1574,7 +1574,7 @@ class GetCustomizationListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomizationConfigs: 语音消息转文本自学习模型配置
+        :param CustomizationConfigs: 语音消息转文本热句模型配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomizationConfigs: list of CustomizationConfigs
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1712,7 +1712,7 @@ class ModifyCustomizationRequest(AbstractModel):
         :type BizId: int
         :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
         :type TextUrl: str
-        :param ModelId: 要修改的模型ID
+        :param ModelId: 修改的模型ID
         :type ModelId: str
         """
         self.BizId = None
@@ -1742,7 +1742,7 @@ class ModifyCustomizationResponse(AbstractModel):
         r"""
         :param ErrorCode: 返回值。0为成功，非0为失败。
         :type ErrorCode: int
-        :param ModelId: 自学习模型ID
+        :param ModelId: 模型ID
         :type ModelId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1765,7 +1765,7 @@ class ModifyCustomizationStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModelId: 自学习模型ID
+        :param ModelId: 模型ID
         :type ModelId: str
         :param ToState: 想要变换的模型状态，-1代表下线，1代表上线
         :type ToState: int
@@ -1797,7 +1797,7 @@ class ModifyCustomizationStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ModelId: 自学习模型ID
+        :param ModelId: 模型ID
         :type ModelId: str
         :param ErrorCode: 返回值。0为成功，非0为失败。
         :type ErrorCode: int

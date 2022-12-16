@@ -989,6 +989,8 @@ HYBRID_PAID:
         :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
         :param ServiceLimit: 服务限速限流相关配置
         :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
+        :param CallbackUrl: 回调地址，用于回调创建服务状态信息
+        :type CallbackUrl: str
         """
         self.ImageInfo = None
         self.ServiceGroupId = None
@@ -1016,6 +1018,7 @@ HYBRID_PAID:
         self.ScheduledAction = None
         self.VolumeMount = None
         self.ServiceLimit = None
+        self.CallbackUrl = None
 
 
     def _deserialize(self, params):
@@ -1076,6 +1079,7 @@ HYBRID_PAID:
         if params.get("ServiceLimit") is not None:
             self.ServiceLimit = ServiceLimit()
             self.ServiceLimit._deserialize(params.get("ServiceLimit"))
+        self.CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -11833,6 +11833,8 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         :param TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
         :type TopicName: str
         :param NotifyType: 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+
+<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
         :type NotifyType: str
         :param NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
         :type NotifyUrl: str
@@ -12533,7 +12535,7 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 输入来源对象的类型，支持 COS 和 URL 两种。
+        :param Type: 输入来源对象的类型，支持 COS、URL 两种。
         :type Type: str
         :param CosInputInfo: 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 对象信息。
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
@@ -15854,6 +15856,10 @@ class ProcessMediaRequest(AbstractModel):
 
 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
         :type ScheduleId: int
+        :param TaskType: 任务类型，默认Online
+<li> Online：实时任务</li>
+<li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
+        :type TaskType: str
         """
         self.InputInfo = None
         self.OutputStorage = None
@@ -15867,6 +15873,7 @@ class ProcessMediaRequest(AbstractModel):
         self.SessionId = None
         self.SessionContext = None
         self.ScheduleId = None
+        self.TaskType = None
 
 
     def _deserialize(self, params):
@@ -15896,6 +15903,7 @@ class ProcessMediaRequest(AbstractModel):
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         self.ScheduleId = params.get("ScheduleId")
+        self.TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17674,7 +17682,7 @@ class TaskNotifyConfig(AbstractModel):
 <li>TDMQ-CMQ：消息队列</li>
 <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
 <li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
-目前 默认CMQ。
+<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
         :type NotifyType: str
         :param NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
         :type NotifyUrl: str

@@ -317,6 +317,64 @@ class NlpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GenerateCouplet(self, request):
+        """根据用户输入的命题关键词自动生成一副春联，包括上联、下联和横批。（如需开通请联系商务）
+
+        :param request: Request instance for GenerateCouplet.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.GenerateCoupletRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.GenerateCoupletResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateCouplet", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GenerateCoupletResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GeneratePoetry(self, request):
+        """根据用户输入的命题关键词自动生成一首七言律诗或五言律诗。（如需开通请联系商务）
+
+        :param request: Request instance for GeneratePoetry.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.GeneratePoetryRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.GeneratePoetryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GeneratePoetry", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GeneratePoetryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def KeywordsExtraction(self, request):
         """基于关键词提取平台，通过对文本内容进行深度分析，提取出文本内容中的关键信息，为用户实现诸如新闻内容关键词自动提取、评论关键词提取等提供基础服务。
 

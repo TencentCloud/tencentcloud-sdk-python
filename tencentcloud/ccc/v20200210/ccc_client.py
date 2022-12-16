@@ -896,6 +896,35 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def HangUpCall(self, request):
+        """挂断电话
+
+        :param request: Request instance for HangUpCall.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.HangUpCallRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.HangUpCallResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("HangUpCall", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.HangUpCallResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyExtension(self, request):
         """修改话机账号(绑定技能组、绑定坐席账号)
 

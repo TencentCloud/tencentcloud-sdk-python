@@ -2406,6 +2406,51 @@ class Filter(AbstractModel):
         
 
 
+class HangUpCallRequest(AbstractModel):
+    """HangUpCall请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TCCC 实例应用 ID
+        :type SdkAppId: int
+        :param SessionId: 会话ID
+        :type SessionId: str
+        """
+        self.SdkAppId = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HangUpCallResponse(AbstractModel):
+    """HangUpCall返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class IMCdrInfo(AbstractModel):
     """文本会话服务记录信息
 

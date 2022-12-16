@@ -182,6 +182,9 @@ INTERNALERROR_QUERYHDFSINFOFAILED = 'InternalError.QueryHDFSInfoFailed'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 模型包不符合规范。
+INVALIDPARAMETER_MODELFILEINVALID = 'InvalidParameter.ModelFileInvalid'
+
 # 无效的接口。
 INVALIDPARAMETER_TGWINVALIDINTERFACE = 'InvalidParameter.TgwInvalidInterface'
 

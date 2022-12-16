@@ -745,6 +745,120 @@ class DpToken(AbstractModel):
         
 
 
+class GenerateCoupletRequest(AbstractModel):
+    """GenerateCouplet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
+        :type Text: str
+        :param TargetType: 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
+        :type TargetType: int
+        """
+        self.Text = None
+        self.TargetType = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.TargetType = params.get("TargetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateCoupletResponse(AbstractModel):
+    """GenerateCouplet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopScroll: 横批。
+        :type TopScroll: str
+        :param Content: 上联与下联。
+        :type Content: list of str
+        :param RandomCause: 当对联随机生成时，展示随机生成原因。
+        :type RandomCause: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopScroll = None
+        self.Content = None
+        self.RandomCause = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TopScroll = params.get("TopScroll")
+        self.Content = params.get("Content")
+        self.RandomCause = params.get("RandomCause")
+        self.RequestId = params.get("RequestId")
+
+
+class GeneratePoetryRequest(AbstractModel):
+    """GeneratePoetry请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 生成诗词的关键词。
+        :type Text: str
+        :param PoetryType: 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
+        :type PoetryType: int
+        :param Genre: 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
+        :type Genre: int
+        """
+        self.Text = None
+        self.PoetryType = None
+        self.Genre = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.PoetryType = params.get("PoetryType")
+        self.Genre = params.get("Genre")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeneratePoetryResponse(AbstractModel):
+    """GeneratePoetry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Title: 诗题，即输入的生成诗词的关键词。
+        :type Title: str
+        :param Content: 诗的内容。
+        :type Content: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Title = None
+        self.Content = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Title = params.get("Title")
+        self.Content = params.get("Content")
+        self.RequestId = params.get("RequestId")
+
+
 class Keyword(AbstractModel):
     """关键词提取结果
 

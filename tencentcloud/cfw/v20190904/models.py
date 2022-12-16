@@ -1003,7 +1003,7 @@ class DeleteAllAccessControlRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 状态值 0: 修改成功, !0: 修改失败
+        :param Status: 状态值 0: 修改成功, 非0: 修改失败
         :type Status: int
         :param Info: 删除了几条访问控制规则
 注意：此字段可能返回 null，表示取不到有效值。
