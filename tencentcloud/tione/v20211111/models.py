@@ -696,6 +696,8 @@ class CreateBatchTaskRequest(AbstractModel):
         :type SubnetId: str
         :param Remark: 备注
         :type Remark: str
+        :param CallbackUrl: 任务执行结果回调URL，仅支持http和https。回调格式&内容详见: [TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
+        :type CallbackUrl: str
         """
         self.BatchTaskName = None
         self.ChargeType = None
@@ -715,6 +717,7 @@ class CreateBatchTaskRequest(AbstractModel):
         self.VpcId = None
         self.SubnetId = None
         self.Remark = None
+        self.CallbackUrl = None
 
 
     def _deserialize(self, params):
@@ -763,6 +766,7 @@ class CreateBatchTaskRequest(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.Remark = params.get("Remark")
+        self.CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -989,7 +993,7 @@ HYBRID_PAID:
         :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
         :param ServiceLimit: 服务限速限流相关配置
         :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
-        :param CallbackUrl: 回调地址，用于回调创建服务状态信息
+        :param CallbackUrl: 回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
         :type CallbackUrl: str
         """
         self.ImageInfo = None
@@ -1383,6 +1387,8 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type Remark: str
         :param DataSource: 数据来源，eg：DATASET、COS、CFS、HDFS
         :type DataSource: str
+        :param CallbackUrl: 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+        :type CallbackUrl: str
         """
         self.Name = None
         self.ChargeType = None
@@ -1405,6 +1411,7 @@ class CreateTrainingTaskRequest(AbstractModel):
         self.TuningParameters = None
         self.Remark = None
         self.DataSource = None
+        self.CallbackUrl = None
 
 
     def _deserialize(self, params):
@@ -1454,6 +1461,7 @@ class CreateTrainingTaskRequest(AbstractModel):
         self.TuningParameters = params.get("TuningParameters")
         self.Remark = params.get("Remark")
         self.DataSource = params.get("DataSource")
+        self.CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8172,6 +8180,9 @@ class TrainingTaskDetail(AbstractModel):
         :type Message: str
         :param Status: 任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
         :type Status: str
+        :param CallbackUrl: 回调地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackUrl: str
         """
         self.Id = None
         self.Name = None
@@ -8211,6 +8222,7 @@ class TrainingTaskDetail(AbstractModel):
         self.ResourceGroupName = None
         self.Message = None
         self.Status = None
+        self.CallbackUrl = None
 
 
     def _deserialize(self, params):
@@ -8277,6 +8289,7 @@ class TrainingTaskDetail(AbstractModel):
         self.ResourceGroupName = params.get("ResourceGroupName")
         self.Message = params.get("Message")
         self.Status = params.get("Status")
+        self.CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8351,6 +8364,9 @@ class TrainingTaskSetItem(AbstractModel):
         :param Tags: 标签配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param CallbackUrl: 回调地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackUrl: str
         """
         self.Id = None
         self.Name = None
@@ -8375,6 +8391,7 @@ class TrainingTaskSetItem(AbstractModel):
         self.ImageInfo = None
         self.Message = None
         self.Tags = None
+        self.CallbackUrl = None
 
 
     def _deserialize(self, params):
@@ -8415,6 +8432,7 @@ class TrainingTaskSetItem(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

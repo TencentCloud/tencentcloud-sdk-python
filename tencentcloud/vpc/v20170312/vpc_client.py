@@ -8272,7 +8272,7 @@ class VpcClient(AbstractClient):
 
     def ReturnNormalAddresses(self, request):
         """本接口（ReturnNormalAddresses）用于解绑并释放普通公网IP。
-        为完善公网IP的访问管理功能，此接口于2022年12月15日升级优化鉴权功能，升级后子用户调用此接口需向主账号申请CAM策略授权，否则可能调用失败。您可以提前为子账号配置操作授权，详情见 授权指南(https://cloud.tencent.com/document/product/598/34545)。
+        为完善公网IP的访问管理功能，此接口于2022年12月15日升级优化鉴权功能，升级后子用户调用此接口需向主账号申请CAM策略授权，否则可能调用失败。您可以提前为子账号配置操作授权，详情见[授权指南](https://cloud.tencent.com/document/product/598/34545)。
 
         :param request: Request instance for ReturnNormalAddresses.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ReturnNormalAddressesRequest`

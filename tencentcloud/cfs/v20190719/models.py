@@ -2810,12 +2810,20 @@ class UserQuota(AbstractModel):
         :type FileHardLimit: int
         :param FileSystemId: 文件系统ID
         :type FileSystemId: str
+        :param CapacityUsed: 容量使用，单位GiB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CapacityUsed: int
+        :param FileUsed: 文件使用个数，单位个
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileUsed: int
         """
         self.UserType = None
         self.UserId = None
         self.CapacityHardLimit = None
         self.FileHardLimit = None
         self.FileSystemId = None
+        self.CapacityUsed = None
+        self.FileUsed = None
 
 
     def _deserialize(self, params):
@@ -2824,6 +2832,8 @@ class UserQuota(AbstractModel):
         self.CapacityHardLimit = params.get("CapacityHardLimit")
         self.FileHardLimit = params.get("FileHardLimit")
         self.FileSystemId = params.get("FileSystemId")
+        self.CapacityUsed = params.get("CapacityUsed")
+        self.FileUsed = params.get("FileUsed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

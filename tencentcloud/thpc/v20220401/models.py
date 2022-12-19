@@ -237,9 +237,9 @@ class CFSOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LocalPath: 文件系统本地挂载路径
+        :param LocalPath: 文件系统本地挂载路径。
         :type LocalPath: str
-        :param RemotePath: 文件系统远程挂载ip及路径
+        :param RemotePath: 文件系统远程挂载ip及路径。
         :type RemotePath: str
         :param Protocol: 文件系统协议类型，默认值NFS 3.0。
 <li>NFS 3.0。
@@ -952,11 +952,11 @@ class GooseFSOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LocalPath: 文件系统本地挂载路径
+        :param LocalPath: 文件系统本地挂载路径。
         :type LocalPath: str
-        :param RemotePath: 文件系统远程挂载路径
+        :param RemotePath: 文件系统远程挂载路径。
         :type RemotePath: str
-        :param Masters: 文件系统master的ip和端口
+        :param Masters: 文件系统master的ip和端口。
         :type Masters: list of str
         """
         self.LocalPath = None

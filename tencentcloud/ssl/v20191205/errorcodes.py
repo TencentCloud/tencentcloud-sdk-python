@@ -131,6 +131,9 @@ FAILEDOPERATION_REVOKERESOURCEFAILED = 'FailedOperation.RevokeResourceFailed'
 # 角色不存在，请前往授权。
 FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = 'FailedOperation.RoleNotFoundAuthorization'
 
+# 系统错误。
+FAILEDOPERATION_SYSTEMERROR = 'FailedOperation.SystemError'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

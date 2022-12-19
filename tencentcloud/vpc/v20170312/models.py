@@ -745,6 +745,8 @@ AnycastEIP是否用于绑定负载均衡。
         :type BandwidthPackageId: str
         :param AddressName: EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
         :type AddressName: str
+        :param Egress: 网络出口，默认是：center_egress1
+        :type Egress: str
         """
         self.AddressCount = None
         self.InternetServiceProvider = None
@@ -757,6 +759,7 @@ AnycastEIP是否用于绑定负载均衡。
         self.Tags = None
         self.BandwidthPackageId = None
         self.AddressName = None
+        self.Egress = None
 
 
     def _deserialize(self, params):
@@ -778,6 +781,7 @@ AnycastEIP是否用于绑定负载均衡。
                 self.Tags.append(obj)
         self.BandwidthPackageId = params.get("BandwidthPackageId")
         self.AddressName = params.get("AddressName")
+        self.Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4635,14 +4639,17 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
         :type AutoAcceptFlag: bool
         :param ServiceInstanceId: 后端服务ID，比如lb-xxx。
         :type ServiceInstanceId: str
-        :param IsPassService: 是否是PassService类型。
+        :param IsPassService: ~~是否是PassService类型。该字段已废弃，请不要使用该字段。~~
         :type IsPassService: bool
+        :param ServiceType: 挂载的PAAS服务类型，CLB,CDB,CRS，不填默认挂载为CLB。
+        :type ServiceType: str
         """
         self.VpcId = None
         self.EndPointServiceName = None
         self.AutoAcceptFlag = None
         self.ServiceInstanceId = None
         self.IsPassService = None
+        self.ServiceType = None
 
 
     def _deserialize(self, params):
@@ -4651,6 +4658,7 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
         self.AutoAcceptFlag = params.get("AutoAcceptFlag")
         self.ServiceInstanceId = params.get("ServiceInstanceId")
         self.IsPassService = params.get("IsPassService")
+        self.ServiceType = params.get("ServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15436,22 +15444,19 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
         :type BandwidthPackageId: str
         :param BandwidthPackageName: 带宽包名称
         :type BandwidthPackageName: str
-        :param ChargeType: 带宽包计费模式
+        :param ChargeType: 带宽包计费模式，示例 ：
+'TOP5_POSTPAID_BY_MONTH'（后付费-TOP5计费）
         :type ChargeType: str
-        :param MigrateOnRefund: 退款时迁移为后付费带宽包。默认值：否
-        :type MigrateOnRefund: bool
         """
         self.BandwidthPackageId = None
         self.BandwidthPackageName = None
         self.ChargeType = None
-        self.MigrateOnRefund = None
 
 
     def _deserialize(self, params):
         self.BandwidthPackageId = params.get("BandwidthPackageId")
         self.BandwidthPackageName = params.get("BandwidthPackageName")
         self.ChargeType = params.get("ChargeType")
-        self.MigrateOnRefund = params.get("MigrateOnRefund")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

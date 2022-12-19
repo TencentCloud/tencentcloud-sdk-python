@@ -346,6 +346,18 @@ class Certificates(AbstractModel):
         :param EncryptAlgorithm: 证书算法
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptAlgorithm: str
+        :param CAEncryptAlgorithms: 上传CA证书的加密算法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CAEncryptAlgorithms: list of str
+        :param CAEndTimes: 上传CA证书的过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CAEndTimes: list of str
+        :param CACommonNames: 上传CA证书的通用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CACommonNames: list of str
+        :param PreAuditInfo: 证书预审核信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreAuditInfo: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
         """
         self.OwnerUin = None
         self.ProjectId = None
@@ -380,6 +392,10 @@ class Certificates(AbstractModel):
         self.IsIgnore = None
         self.IsSM = None
         self.EncryptAlgorithm = None
+        self.CAEncryptAlgorithms = None
+        self.CAEndTimes = None
+        self.CACommonNames = None
+        self.PreAuditInfo = None
 
 
     def _deserialize(self, params):
@@ -425,6 +441,12 @@ class Certificates(AbstractModel):
         self.IsIgnore = params.get("IsIgnore")
         self.IsSM = params.get("IsSM")
         self.EncryptAlgorithm = params.get("EncryptAlgorithm")
+        self.CAEncryptAlgorithms = params.get("CAEncryptAlgorithms")
+        self.CAEndTimes = params.get("CAEndTimes")
+        self.CACommonNames = params.get("CACommonNames")
+        if params.get("PreAuditInfo") is not None:
+            self.PreAuditInfo = PreAuditInfo()
+            self.PreAuditInfo._deserialize(params.get("PreAuditInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2414,6 +2436,41 @@ class PackageTransferOutInfo(AbstractModel):
         self.TransferStatus = params.get("TransferStatus")
         self.ReceiverUin = params.get("ReceiverUin")
         self.ReceiveTime = params.get("ReceiveTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PreAuditInfo(AbstractModel):
+    """预审核信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalPeriod: 证书总年限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPeriod: int
+        :param NowPeriod: 证书当前年限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NowPeriod: int
+        :param ManagerId: 证书预审核管理人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagerId: str
+        """
+        self.TotalPeriod = None
+        self.NowPeriod = None
+        self.ManagerId = None
+
+
+    def _deserialize(self, params):
+        self.TotalPeriod = params.get("TotalPeriod")
+        self.NowPeriod = params.get("NowPeriod")
+        self.ManagerId = params.get("ManagerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
