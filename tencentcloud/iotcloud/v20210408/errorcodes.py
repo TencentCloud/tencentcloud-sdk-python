@@ -26,6 +26,9 @@ FAILEDOPERATION_ALREADYDISTRIBUTIONDEVICE = 'FailedOperation.AlreadyDistribution
 # 绑定设备超过限制。
 FAILEDOPERATION_BINDDEVICEOVERLIMIT = 'FailedOperation.BindDeviceOverLimit'
 
+# 单次绑定的设备数量超过限制。
+FAILEDOPERATION_BINDDEVICEPERONCEOVERLIMIT = 'FailedOperation.BindDevicePerOnceOverLimit'
+
 # 广播任务正在执行。
 FAILEDOPERATION_BROADCASTTASKISRUNNING = 'FailedOperation.BroadcastTaskIsRunning'
 

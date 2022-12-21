@@ -1861,6 +1861,35 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusInstanceUsage(self, request):
+        """查询Prometheus按量实例用量
+
+        :param request: Request instance for DescribePrometheusInstanceUsage.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceUsageRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstanceUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusInstanceUsage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusInstanceUsageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePrometheusInstances(self, request):
         """本接口 (DescribePrometheusInstances) 用于查询一个或多个实例的详细信息。
         <ul>

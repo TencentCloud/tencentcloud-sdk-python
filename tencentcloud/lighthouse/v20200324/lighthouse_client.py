@@ -26,6 +26,41 @@ class LighthouseClient(AbstractClient):
     _service = 'lighthouse'
 
 
+    def ApplyDiskBackup(self, request):
+        """本接口（ApplyDiskBackup）用于回滚指定云硬盘的备份点。
+        * 仅支持回滚到原云硬盘。
+        * 用于回滚的云硬盘备份点必须处于 NORMAL 状态。
+          云硬盘备份点状态可以通过 DescribeDiskBackups 接口查询。
+        * 回滚云硬盘备份点时，云硬盘的状态必须为 UNATTACHED或ATTACHED。
+          云硬盘状态可通过 [DescribeDisks](https://cloud.tencent.com/document/api/1207/66093) 接口查询。
+        * 如果云硬盘处于 ATTACHED状态，相关RUNNING 状态的实例会强制关机，然后回滚云硬盘备份点。
+
+        :param request: Request instance for ApplyDiskBackup.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ApplyDiskBackupRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ApplyDiskBackupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyDiskBackup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyDiskBackupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyInstanceSnapshot(self, request):
         """本接口（ApplyInstanceSnapshot）用于回滚指定实例的系统盘快照。
         <li>仅支持回滚到原系统盘。</li>
@@ -166,6 +201,35 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBlueprintResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDiskBackup(self, request):
+        """本接口 ( CreateDiskBackup  ) 用于创建指定云硬盘（当前只支持数据盘）的备份点。
+
+        :param request: Request instance for CreateDiskBackup.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateDiskBackupRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.CreateDiskBackupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDiskBackup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDiskBackupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -321,6 +385,36 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBlueprintsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDiskBackups(self, request):
+        """本接口（DeleteDiskBackups）用于删除云硬盘备份点。
+        云硬盘备份点必须处于 NORMAL 状态，云硬盘备份点状态可以通过 DescribeDiskBackups接口查询，见输出参数中 DiskBackupState 字段解释。
+
+        :param request: Request instance for DeleteDiskBackups.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DeleteDiskBackupsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DeleteDiskBackupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDiskBackups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDiskBackupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -592,6 +686,64 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCcnAttachedInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiskBackups(self, request):
+        """本接口（DescribeDiskBackups）用于查询云硬盘备份点的详细信息。
+
+        :param request: Request instance for DescribeDiskBackups.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskBackupsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskBackupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDiskBackups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskBackupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiskBackupsDeniedActions(self, request):
+        """本接口（DescribeDiskBackupsDeniedActions）用于查询一个或多个云硬盘备份点的操作限制列表信息。
+
+        :param request: Request instance for DescribeDiskBackupsDeniedActions.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskBackupsDeniedActionsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeDiskBackupsDeniedActionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDiskBackupsDeniedActions", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskBackupsDeniedActionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1605,6 +1757,35 @@ class LighthouseClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBlueprintAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDiskBackupsAttribute(self, request):
+        """本接口 (ModifyDiskBackupsAttribute) 用于修改云硬盘备份点属性。
+
+        :param request: Request instance for ModifyDiskBackupsAttribute.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDiskBackupsAttributeRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDiskBackupsAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDiskBackupsAttribute", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDiskBackupsAttributeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

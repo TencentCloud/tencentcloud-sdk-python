@@ -26,6 +26,35 @@ class ThpcClient(AbstractClient):
     _service = 'thpc'
 
 
+    def AddClusterStorageOption(self, request):
+        """本接口（AddClusterStorageOption）用于添加集群存储选项信息。
+
+        :param request: Request instance for AddClusterStorageOption.
+        :type request: :class:`tencentcloud.thpc.v20220401.models.AddClusterStorageOptionRequest`
+        :rtype: :class:`tencentcloud.thpc.v20220401.models.AddClusterStorageOptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddClusterStorageOption", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddClusterStorageOptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddNodes(self, request):
         """本接口(AddNodes)用于添加一个或者多个计算节点或者登录节点到指定集群。
 
@@ -142,6 +171,35 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteClusterStorageOption(self, request):
+        """本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
+
+        :param request: Request instance for DeleteClusterStorageOption.
+        :type request: :class:`tencentcloud.thpc.v20220401.models.DeleteClusterStorageOptionRequest`
+        :rtype: :class:`tencentcloud.thpc.v20220401.models.DeleteClusterStorageOptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteClusterStorageOption", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterStorageOptionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteNodes(self, request):
         """本接口(DeleteNodes)用于删除指定集群中一个或者多个计算节点或者登录节点。
 
@@ -186,6 +244,35 @@ class ThpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterActivitiesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterStorageOption(self, request):
+        """本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
+
+        :param request: Request instance for DescribeClusterStorageOption.
+        :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeClusterStorageOptionRequest`
+        :rtype: :class:`tencentcloud.thpc.v20220401.models.DescribeClusterStorageOptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterStorageOption", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterStorageOptionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

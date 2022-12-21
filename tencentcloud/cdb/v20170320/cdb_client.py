@@ -2024,6 +2024,35 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRemoteBackupConfig(self, request):
+        """本接口(DescribeRemoteBackupConfig)用于查询数据库异地备份配置信息。
+
+        :param request: Request instance for DescribeRemoteBackupConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeRemoteBackupConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeRemoteBackupConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRemoteBackupConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRemoteBackupConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRoGroups(self, request):
         """本接口(DescribeRoGroups)用于查询云数据库实例的所有的RO组的信息。
 
@@ -3145,6 +3174,35 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyParamTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRemoteBackupConfig(self, request):
+        """本接口(ModifyRemoteBackupConfig)用于查询数据库异地备份配置信息。
+
+        :param request: Request instance for ModifyRemoteBackupConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRemoteBackupConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyRemoteBackupConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRemoteBackupConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRemoteBackupConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

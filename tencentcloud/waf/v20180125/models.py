@@ -3059,6 +3059,75 @@ class LoadBalancerPackageNew(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param ListenerId: 监听id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param ListenerName: 监听名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerName: str
+        :param LoadBalancerId: 负载均衡id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerId: str
+        :param LoadBalancerName: 负载均衡名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerName: str
+        :param Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Region: 地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Vip: 接入IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param Vport: 接入端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        :param Zone: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param NumericalVpcId: VPCID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumericalVpcId: int
+        :param LoadBalancerType: CLB类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerType: str
+        """
+        self.ListenerId = None
+        self.ListenerName = None
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.Protocol = None
+        self.Region = None
+        self.Vip = None
+        self.Vport = None
+        self.Zone = None
+        self.NumericalVpcId = None
+        self.LoadBalancerType = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.ListenerName = params.get("ListenerName")
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.Protocol = params.get("Protocol")
+        self.Region = params.get("Region")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.Zone = params.get("Zone")
+        self.NumericalVpcId = params.get("NumericalVpcId")
+        self.LoadBalancerType = params.get("LoadBalancerType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyAccessPeriodRequest(AbstractModel):
     """ModifyAccessPeriod请求参数结构体

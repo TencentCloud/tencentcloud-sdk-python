@@ -7096,6 +7096,65 @@ class DescribePrometheusAgentsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusInstanceUsageRequest(AbstractModel):
+    """DescribePrometheusInstanceUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
+        :type InstanceIds: list of str
+        :param StartCalcDate: 开始时间
+        :type StartCalcDate: str
+        :param EndCalcDate: 结束时间
+        :type EndCalcDate: str
+        """
+        self.InstanceIds = None
+        self.StartCalcDate = None
+        self.EndCalcDate = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.StartCalcDate = params.get("StartCalcDate")
+        self.EndCalcDate = params.get("EndCalcDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusInstanceUsageResponse(AbstractModel):
+    """DescribePrometheusInstanceUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UsageSet: 用量列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageSet: list of PrometheusInstanceTenantUsage
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UsageSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UsageSet") is not None:
+            self.UsageSet = []
+            for item in params.get("UsageSet"):
+                obj = PrometheusInstanceTenantUsage()
+                obj._deserialize(item)
+                self.UsageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusInstancesRequest(AbstractModel):
     """DescribePrometheusInstances请求参数结构体
 
@@ -10261,6 +10320,51 @@ class PrometheusInstanceGrantInfo(AbstractModel):
         self.HasAgentManage = params.get("HasAgentManage")
         self.HasTkeManage = params.get("HasTkeManage")
         self.HasApiOperation = params.get("HasApiOperation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusInstanceTenantUsage(AbstractModel):
+    """Prometheus用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param CalcDate: 计费周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcDate: str
+        :param Total: 总用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: float
+        :param Basic: 基础指标用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Basic: float
+        :param Fee: 付费指标用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fee: float
+        """
+        self.InstanceId = None
+        self.CalcDate = None
+        self.Total = None
+        self.Basic = None
+        self.Fee = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.CalcDate = params.get("CalcDate")
+        self.Total = params.get("Total")
+        self.Basic = params.get("Basic")
+        self.Fee = params.get("Fee")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

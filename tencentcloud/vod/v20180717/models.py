@@ -6968,6 +6968,71 @@ class CreateProcedureTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateReviewTemplateRequest(AbstractModel):
+    """CreateReviewTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Labels: 需要返回的违规标签列表，可选值为：
+<li>Porn：色情；</li>
+<li>Terror：暴恐；</li>
+<li>Polity：不适宜的信息；</li>
+<li>Illegal：违法；</li>
+<li>Religion：宗教；</li>
+<li>Abuse：谩骂；</li>
+<li>Ad：广告；</li>
+<li>Moan：娇喘。</li>
+        :type Labels: list of str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: str
+        :param Name: 审核模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 审核模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        """
+        self.Labels = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.Labels = params.get("Labels")
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReviewTemplateResponse(AbstractModel):
+    """CreateReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 审核模板唯一标识。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSampleSnapshotTemplateRequest(AbstractModel):
     """CreateSampleSnapshotTemplate请求参数结构体
 
@@ -8272,6 +8337,51 @@ class DeleteProcedureTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteReviewTemplateRequest(AbstractModel):
+    """DeleteReviewTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 审核模板唯一标识。
+        :type Definition: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReviewTemplateResponse(AbstractModel):
+    """DeleteReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSampleSnapshotTemplateRequest(AbstractModel):
     """DeleteSampleSnapshotTemplate请求参数结构体
 
@@ -9549,12 +9659,16 @@ class DescribeDrmDataKeyRequest(AbstractModel):
         r"""
         :param EdkList: 加密后的数据密钥列表，最大支持10个。
         :type EdkList: list of str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         """
         self.EdkList = None
+        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.EdkList = params.get("EdkList")
+        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10235,6 +10349,8 @@ class DescribeMediaInfosRequest(AbstractModel):
         r"""
         :param FileIds: 媒体文件 ID 列表，N 从 0 开始取值，最大 19。
         :type FileIds: list of str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Filters: 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
 <li>basicInfo（视频基础信息）。</li>
 <li>metaData（视频元信息）。</li>
@@ -10246,19 +10362,19 @@ class DescribeMediaInfosRequest(AbstractModel):
 <li>keyFrameDescInfo（打点信息）。</li>
 <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
 <li>miniProgramReviewInfo（小程序审核信息）。</li>
+<li>subtitleInfo（字幕信息）。</li>
+<li>reviewInfo（审核信息）。</li>
         :type Filters: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.FileIds = None
-        self.Filters = None
         self.SubAppId = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.FileIds = params.get("FileIds")
-        self.Filters = params.get("Filters")
         self.SubAppId = params.get("SubAppId")
+        self.Filters = params.get("Filters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10690,6 +10806,78 @@ class DescribeReviewDetailsResponse(AbstractModel):
                 obj = StatDataItem()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReviewTemplatesRequest(AbstractModel):
+    """DescribeReviewTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Definitions: 审核模版唯一标识过滤条件，数组长度限制：100。
+        :type Definitions: list of int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        """
+        self.SubAppId = None
+        self.Definitions = None
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.Definitions = params.get("Definitions")
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReviewTemplatesResponse(AbstractModel):
+    """DescribeReviewTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param ReviewTemplateSet: 审核模板详情列表。
+        :type ReviewTemplateSet: list of ReviewTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ReviewTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ReviewTemplateSet") is not None:
+            self.ReviewTemplateSet = []
+            for item in params.get("ReviewTemplateSet"):
+                obj = ReviewTemplate()
+                obj._deserialize(item)
+                self.ReviewTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -13022,6 +13210,44 @@ class FileDeleteTask(AbstractModel):
         
 
 
+class FileReviewInfo(AbstractModel):
+    """文件审核信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MediaReviewInfo: 媒体审核信息\*。
+
+\* 只展示通过 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217) 发起的审核结果信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaReviewInfo: :class:`tencentcloud.vod.v20180717.models.ReviewInfo`
+        :param CoverReviewInfo: 媒体封面审核信息\*。
+
+\* 只展示通过 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217) 发起的审核结果信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverReviewInfo: :class:`tencentcloud.vod.v20180717.models.ReviewInfo`
+        """
+        self.MediaReviewInfo = None
+        self.CoverReviewInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("MediaReviewInfo") is not None:
+            self.MediaReviewInfo = ReviewInfo()
+            self.MediaReviewInfo._deserialize(params.get("MediaReviewInfo"))
+        if params.get("CoverReviewInfo") is not None:
+            self.CoverReviewInfo = ReviewInfo()
+            self.CoverReviewInfo._deserialize(params.get("CoverReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileUploadTask(AbstractModel):
     """文件上传任务信息
 
@@ -15072,6 +15298,9 @@ class MediaInfo(AbstractModel):
         :type SubtitleInfo: :class:`tencentcloud.vod.v20180717.models.MediaSubtitleInfo`
         :param FileId: 媒体文件唯一标识 ID。
         :type FileId: str
+        :param ReviewInfo: 审核信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReviewInfo: :class:`tencentcloud.vod.v20180717.models.FileReviewInfo`
         """
         self.BasicInfo = None
         self.MetaData = None
@@ -15085,6 +15314,7 @@ class MediaInfo(AbstractModel):
         self.MiniProgramReviewInfo = None
         self.SubtitleInfo = None
         self.FileId = None
+        self.ReviewInfo = None
 
 
     def _deserialize(self, params):
@@ -15122,6 +15352,9 @@ class MediaInfo(AbstractModel):
             self.SubtitleInfo = MediaSubtitleInfo()
             self.SubtitleInfo._deserialize(params.get("SubtitleInfo"))
         self.FileId = params.get("FileId")
+        if params.get("ReviewInfo") is not None:
+            self.ReviewInfo = FileReviewInfo()
+            self.ReviewInfo._deserialize(params.get("ReviewInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17670,6 +17903,73 @@ class ModifyPersonSampleResponse(AbstractModel):
                 obj = AiSampleFailFaceInfo()
                 obj._deserialize(item)
                 self.FailFaceInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyReviewTemplateRequest(AbstractModel):
+    """ModifyReviewTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 审核模板唯一标识。
+        :type Definition: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Name: 审核模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 审核模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param Labels: 需要返回的违规标签列表，可选值为：
+<li>Porn：色情；</li>
+<li>Terror：暴恐；</li>
+<li>Polity：不适宜的信息；</li>
+<li>Illegal：违法；</li>
+<li>Religion：宗教；</li>
+<li>Abuse：谩骂；</li>
+<li>Ad：广告；</li>
+<li>Moan：娇喘。</li>
+
+注意：不填表示不更新。
+        :type Labels: list of str
+        """
+        self.Definition = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+        self.Labels = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Labels = params.get("Labels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReviewTemplateResponse(AbstractModel):
+    """ModifyReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -21876,6 +22176,109 @@ class ReviewImageResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ReviewResultSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class ReviewInfo(AbstractModel):
+    """审核信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 审核模板 ID。
+        :type Definition: int
+        :param Suggestion: 审核的结果建议，取值范围：
+<li>pass：建议通过；</li>
+<li>review：建议复审；</li>
+<li>block：建议封禁。</li>
+        :type Suggestion: str
+        :param TypeSet: 审核类型，当 Suggestion 为 review 或 block 时有效，格式为：Form.Label。
+Form 表示违禁的形式，取值范围：
+<li>Image：画面上的人物或图标；</li>
+<li>OCR：画面上的文字；</li>
+<li>ASR：语音中的文字；</li>
+<li>Voice：声音。</li>
+Label 表示违禁的标签，取值范围：
+<li>Porn：色情；</li>
+<li>Terror：暴恐；</li>
+<li>Polity：不适宜的信息；</li>
+<li>Ad：广告；</li>
+<li>Illegal：违法；</li>
+<li>Religion：宗教；</li>
+<li>Abuse：谩骂；</li>
+<li>Moan：娇喘。</li>
+        :type TypeSet: list of str
+        :param ReviewTime: 审核时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ReviewTime: str
+        """
+        self.Definition = None
+        self.Suggestion = None
+        self.TypeSet = None
+        self.ReviewTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Suggestion = params.get("Suggestion")
+        self.TypeSet = params.get("TypeSet")
+        self.ReviewTime = params.get("ReviewTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewTemplate(AbstractModel):
+    """审核模版详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 审核模版唯一标签。
+        :type Definition: int
+        :param Name: 模板名称。
+        :type Name: str
+        :param Comment: 模板描述信息。
+        :type Comment: str
+        :param Type: 模板类型，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Labels: 需要返回的违规标签列表。
+        :type Labels: list of str
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Name = None
+        self.Comment = None
+        self.Type = None
+        self.Labels = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.Type = params.get("Type")
+        self.Labels = params.get("Labels")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SDMCDrmKeyProviderInfo(AbstractModel):

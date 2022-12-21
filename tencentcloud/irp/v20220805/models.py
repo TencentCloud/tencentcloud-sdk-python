@@ -55,7 +55,7 @@ class DocItem(AbstractModel):
         r"""
         :param ItemId: 内容唯一id，建议限制在128字符以内
         :type ItemId: str
-        :param ItemType: 内容类型：<br/>● article -图文<br>● text -纯文本<br/>● video -视频<br/>● short_video -时长15秒以内的视频<br/>● mini_video -竖屏视频<br/>● image -纯图片<br/>（如当前类型不满足，请<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决方案）
+        :param ItemType: 内容类型：<br/>● article -图文<br>● text -纯文本<br/>● video -视频<br/>● short_video -时长15秒以内的视频<br/>● mini_video -竖屏视频<br/>● image -纯图片<br/>（如当前类型不满足，请登录控制台进入对应项目，在<b>物料管理->物料类型管理</b>中添加）
         :type ItemType: str
         :param Status: 内容状态：
 ● 1 - 上架 
@@ -107,7 +107,7 @@ Status=2的内容不会在推荐结果中出现
         :type RewardCnt: int
         :param Score: 内容质量评分，<b>用作特征</b>
         :type Score: float
-        :param Extension: json字符串，<b>用于物料池管理的自定义扩展</b>
+        :param Extension: json字符串，<b>用于物料池管理的自定义扩展</b>，需要base64加密
         :type Extension: str
         """
         self.ItemId = None
@@ -222,7 +222,7 @@ class FeedBehaviorInfo(AbstractModel):
         :type OsVersion: str
         :param DeviceModel: 行为发生时的机型，<b>用作特征</b>
         :type DeviceModel: str
-        :param Extension: json字符串，<b>用于行为数据的扩展</b>
+        :param Extension: json字符串，<b>用于行为数据的扩展</b>，需要base64加密
         :type Extension: str
         """
         self.UserId = None
@@ -402,7 +402,7 @@ class FeedUserInfo(AbstractModel):
         :type LastLoginIp: str
         :param LastModifyTimestamp: 用户信息的最后修改时间戳，秒级时间戳（1639624786）
         :type LastModifyTimestamp: int
-        :param Extension: json字符串，用于画像数据的扩展
+        :param Extension: json字符串，用于画像数据的扩展，需要base64加密
         :type Extension: str
         """
         self.UserId = None
@@ -480,7 +480,7 @@ class RecItemData(AbstractModel):
         :param ItemTraceId: 推荐追踪id，本次推荐内容产生的后续行为上报均要用该ItemTraceId上报。每次接口调用返回的ItemTraceId不同
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemTraceId: str
-        :param Score: 推荐结果分，取值范围[0,1000000]
+        :param Score: 推荐预测分，分值越高被推荐的理由越充分，取值范围[0,1000000]，用于做二次排序的参考
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: float
         """

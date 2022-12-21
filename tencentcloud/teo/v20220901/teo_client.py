@@ -3245,35 +3245,6 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyLoadBalancingStatus(self, request):
-        """修改负载均衡状态
-
-        :param request: Request instance for ModifyLoadBalancingStatus.
-        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyLoadBalancingStatusRequest`
-        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyLoadBalancingStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyLoadBalancingStatus", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyLoadBalancingStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyLogTopicTask(self, request):
         """本接口（ModifyLogTopicTask）用于修改日志推送任务信息。
 

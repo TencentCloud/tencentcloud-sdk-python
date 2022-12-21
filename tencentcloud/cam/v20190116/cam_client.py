@@ -27,7 +27,7 @@ class CamClient(AbstractClient):
 
 
     def AddUser(self, request):
-        """添加子用户
+        """创建子用户
 
         :param request: Request instance for AddUser.
         :type request: :class:`tencentcloud.cam.v20190116.models.AddUserRequest`

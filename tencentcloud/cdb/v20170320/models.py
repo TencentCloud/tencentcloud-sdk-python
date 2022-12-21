@@ -3759,6 +3759,14 @@ class DescribeBackupConfigResponse(AbstractModel):
         :type EnableBinlogArchive: str
         :param BinlogArchiveDays: 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
         :type BinlogArchiveDays: int
+        :param EnableBackupStandby: 是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+        :type EnableBackupStandby: str
+        :param BackupStandbyDays: 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        :type BackupStandbyDays: int
+        :param EnableBinlogStandby: 是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+        :type EnableBinlogStandby: str
+        :param BinlogStandbyDays: 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        :type BinlogStandbyDays: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3777,6 +3785,10 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupArchiveDays = None
         self.EnableBinlogArchive = None
         self.BinlogArchiveDays = None
+        self.EnableBackupStandby = None
+        self.BackupStandbyDays = None
+        self.EnableBinlogStandby = None
+        self.BinlogStandbyDays = None
         self.RequestId = None
 
 
@@ -3798,6 +3810,10 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupArchiveDays = params.get("BackupArchiveDays")
         self.EnableBinlogArchive = params.get("EnableBinlogArchive")
         self.BinlogArchiveDays = params.get("BinlogArchiveDays")
+        self.EnableBackupStandby = params.get("EnableBackupStandby")
+        self.BackupStandbyDays = params.get("BackupStandbyDays")
+        self.EnableBinlogStandby = params.get("EnableBinlogStandby")
+        self.BinlogStandbyDays = params.get("BinlogStandbyDays")
         self.RequestId = params.get("RequestId")
 
 
@@ -3964,6 +3980,9 @@ class DescribeBackupOverviewResponse(AbstractModel):
         :param BackupArchiveVolume: 归档备份容量，包含数据备份以及日志备份。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupArchiveVolume: int
+        :param BackupStandbyVolume: 标准存储备份容量，包含数据备份以及日志备份。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupStandbyVolume: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3973,6 +3992,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
         self.FreeVolume = None
         self.RemoteBackupVolume = None
         self.BackupArchiveVolume = None
+        self.BackupStandbyVolume = None
         self.RequestId = None
 
 
@@ -3983,6 +4003,7 @@ class DescribeBackupOverviewResponse(AbstractModel):
         self.FreeVolume = params.get("FreeVolume")
         self.RemoteBackupVolume = params.get("RemoteBackupVolume")
         self.BackupArchiveVolume = params.get("BackupArchiveVolume")
+        self.BackupStandbyVolume = params.get("BackupStandbyVolume")
         self.RequestId = params.get("RequestId")
 
 
@@ -4235,6 +4256,10 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         :type BinlogArchiveVolume: int
         :param BinlogArchiveCount: 归档日志备份个数。
         :type BinlogArchiveCount: int
+        :param BinlogStandbyVolume: 标准存储日志备份容量（单位为字节）。
+        :type BinlogStandbyVolume: int
+        :param BinlogStandbyCount: 标准存储日志备份个数。
+        :type BinlogStandbyCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4244,6 +4269,8 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         self.RemoteBinlogCount = None
         self.BinlogArchiveVolume = None
         self.BinlogArchiveCount = None
+        self.BinlogStandbyVolume = None
+        self.BinlogStandbyCount = None
         self.RequestId = None
 
 
@@ -4254,6 +4281,8 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
         self.RemoteBinlogCount = params.get("RemoteBinlogCount")
         self.BinlogArchiveVolume = params.get("BinlogArchiveVolume")
         self.BinlogArchiveCount = params.get("BinlogArchiveCount")
+        self.BinlogStandbyVolume = params.get("BinlogStandbyVolume")
+        self.BinlogStandbyCount = params.get("BinlogStandbyCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5309,6 +5338,10 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         :type DataBackupArchiveVolume: int
         :param DataBackupArchiveCount: 当前地域归档备份总个数。
         :type DataBackupArchiveCount: int
+        :param DataBackupStandbyVolume: 当前地域标准存储备份总容量。
+        :type DataBackupStandbyVolume: int
+        :param DataBackupStandbyCount: 当前地域标准存储备份总个数。
+        :type DataBackupStandbyCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5322,6 +5355,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.RemoteBackupCount = None
         self.DataBackupArchiveVolume = None
         self.DataBackupArchiveCount = None
+        self.DataBackupStandbyVolume = None
+        self.DataBackupStandbyCount = None
         self.RequestId = None
 
 
@@ -5336,6 +5371,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.RemoteBackupCount = params.get("RemoteBackupCount")
         self.DataBackupArchiveVolume = params.get("DataBackupArchiveVolume")
         self.DataBackupArchiveCount = params.get("DataBackupArchiveCount")
+        self.DataBackupStandbyVolume = params.get("DataBackupStandbyVolume")
+        self.DataBackupStandbyCount = params.get("DataBackupStandbyCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -6171,6 +6208,67 @@ class DescribeProxyCustomConfResponse(AbstractModel):
         if params.get("WeightRule") is not None:
             self.WeightRule = Rule()
             self.WeightRule._deserialize(params.get("WeightRule"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRemoteBackupConfigRequest(AbstractModel):
+    """DescribeRemoteBackupConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRemoteBackupConfigResponse(AbstractModel):
+    """DescribeRemoteBackupConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExpireDays: 异地备份保留天时间，单位为天
+        :type ExpireDays: int
+        :param RemoteBackupSave: 异地数据备份开关，off - 关闭异地备份，on-开启异地备份
+        :type RemoteBackupSave: str
+        :param RemoteBinlogSave: 异地日志备份开关，off - 关闭异地备份，on-开启异地备份，只有在参数RemoteBackupSave为on时，RemoteBinlogSave参数才可设置为on
+        :type RemoteBinlogSave: str
+        :param RemoteRegion: 用户已设置异地备份地域列表
+        :type RemoteRegion: list of str
+        :param RegionList: 用户可设置异地备份地域列表
+        :type RegionList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ExpireDays = None
+        self.RemoteBackupSave = None
+        self.RemoteBinlogSave = None
+        self.RemoteRegion = None
+        self.RegionList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ExpireDays = params.get("ExpireDays")
+        self.RemoteBackupSave = params.get("RemoteBackupSave")
+        self.RemoteBinlogSave = params.get("RemoteBinlogSave")
+        self.RemoteRegion = params.get("RemoteRegion")
+        self.RegionList = params.get("RegionList")
         self.RequestId = params.get("RequestId")
 
 
@@ -8564,6 +8662,14 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BinlogArchiveDays: int
         :param EnableBinlogArchive: 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
         :type EnableBinlogArchive: str
+        :param EnableBackupStandby: 是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+        :type EnableBackupStandby: str
+        :param BackupStandbyDays: 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        :type BackupStandbyDays: int
+        :param EnableBinlogStandby: 是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+        :type EnableBinlogStandby: str
+        :param BinlogStandbyDays: 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+        :type BinlogStandbyDays: int
         """
         self.InstanceId = None
         self.ExpireDays = None
@@ -8581,6 +8687,10 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupArchiveDays = None
         self.BinlogArchiveDays = None
         self.EnableBinlogArchive = None
+        self.EnableBackupStandby = None
+        self.BackupStandbyDays = None
+        self.EnableBinlogStandby = None
+        self.BinlogStandbyDays = None
 
 
     def _deserialize(self, params):
@@ -8602,6 +8712,10 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupArchiveDays = params.get("BackupArchiveDays")
         self.BinlogArchiveDays = params.get("BinlogArchiveDays")
         self.EnableBinlogArchive = params.get("EnableBinlogArchive")
+        self.EnableBackupStandby = params.get("EnableBackupStandby")
+        self.BackupStandbyDays = params.get("BackupStandbyDays")
+        self.EnableBinlogStandby = params.get("EnableBinlogStandby")
+        self.BinlogStandbyDays = params.get("BinlogStandbyDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9389,6 +9503,63 @@ class ModifyParamTemplateRequest(AbstractModel):
 
 class ModifyParamTemplateResponse(AbstractModel):
     """ModifyParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRemoteBackupConfigRequest(AbstractModel):
+    """ModifyRemoteBackupConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param RemoteBackupSave: 异地数据备份开关，off - 关闭异地备份，on-开启异地备份
+        :type RemoteBackupSave: str
+        :param RemoteBinlogSave: 异地日志备份开关，off - 关闭异地备份，on-开启异地备份，只有在参数RemoteBackupSave为on时，RemoteBinlogSave参数才可设置为on
+        :type RemoteBinlogSave: str
+        :param RemoteRegion: 用户设置异地备份地域列表
+        :type RemoteRegion: list of str
+        :param ExpireDays: 异地备份保留天时间，单位为天
+        :type ExpireDays: int
+        """
+        self.InstanceId = None
+        self.RemoteBackupSave = None
+        self.RemoteBinlogSave = None
+        self.RemoteRegion = None
+        self.ExpireDays = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RemoteBackupSave = params.get("RemoteBackupSave")
+        self.RemoteBinlogSave = params.get("RemoteBinlogSave")
+        self.RemoteRegion = params.get("RemoteRegion")
+        self.ExpireDays = params.get("ExpireDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRemoteBackupConfigResponse(AbstractModel):
+    """ModifyRemoteBackupConfig返回参数结构体
 
     """
 

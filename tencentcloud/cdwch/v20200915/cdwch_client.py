@@ -84,6 +84,35 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInstanceNew(self, request):
+        """创建集群
+
+        :param request: Request instance for CreateInstanceNew.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.CreateInstanceNewRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.CreateInstanceNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstanceNew", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstanceNewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCkSqlApis(self, request):
         """查询集群用户、集群表，数据库等相关信息
 
@@ -99,6 +128,35 @@ class CdwchClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCkSqlApisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstance(self, request):
+        """根据实例ID查询某个实例的具体信息
+
+        :param request: Request instance for DescribeInstance.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

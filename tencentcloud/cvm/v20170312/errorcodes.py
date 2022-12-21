@@ -734,6 +734,9 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 # 指定的实例付费模式或者网络付费模式不支持共享带宽包
 UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = 'UnsupportedOperation.BandwidthPackageIdNotSupported'
 
+# 实例创建快照的时间距今不到24小时。
+UNSUPPORTEDOPERATION_DISKSNAPCREATETIMETOOOLD = 'UnsupportedOperation.DiskSnapCreateTimeTooOld'
+
 # 所选择的边缘可用区不支持云盘操作。
 UNSUPPORTEDOPERATION_EDGEZONENOTSUPPORTCLOUDDISK = 'UnsupportedOperation.EdgeZoneNotSupportCloudDisk'
 
@@ -871,6 +874,9 @@ UNSUPPORTEDOPERATION_MODIFYENCRYPTIONNOTSUPPORTED = 'UnsupportedOperation.Modify
 
 # 绑定负载均衡的实例，不支持修改vpc属性。
 UNSUPPORTEDOPERATION_MODIFYVPCWITHCLB = 'UnsupportedOperation.ModifyVPCWithCLB'
+
+# 实例基础网络已互通VPC网络，请自行解除关联，再进行切换VPC。
+UNSUPPORTEDOPERATION_MODIFYVPCWITHCLASSLINK = 'UnsupportedOperation.ModifyVPCWithClassLink'
 
 # 该实例类型不支持竞价计费
 UNSUPPORTEDOPERATION_NOINSTANCETYPESUPPORTSPOT = 'UnsupportedOperation.NoInstanceTypeSupportSpot'

@@ -51,6 +51,8 @@ class ApplyCertificateRequest(AbstractModel):
         :type OldCertificateId: str
         :param PackageId: 权益包ID，用于免费证书扩容包使用
         :type PackageId: str
+        :param DeleteDnsAutoRecord: 签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
+        :type DeleteDnsAutoRecord: bool
         """
         self.DvAuthMethod = None
         self.DomainName = None
@@ -65,6 +67,7 @@ class ApplyCertificateRequest(AbstractModel):
         self.Alias = None
         self.OldCertificateId = None
         self.PackageId = None
+        self.DeleteDnsAutoRecord = None
 
 
     def _deserialize(self, params):
@@ -81,6 +84,7 @@ class ApplyCertificateRequest(AbstractModel):
         self.Alias = params.get("Alias")
         self.OldCertificateId = params.get("OldCertificateId")
         self.PackageId = params.get("PackageId")
+        self.DeleteDnsAutoRecord = params.get("DeleteDnsAutoRecord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

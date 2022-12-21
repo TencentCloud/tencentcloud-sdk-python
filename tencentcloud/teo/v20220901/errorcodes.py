@@ -119,6 +119,9 @@ INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
 # 当前域名已开启流量调度功能。
 INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = 'InvalidParameter.DomainOnTrafficScheduling'
 
+# 操作不支持条件。
+INVALIDPARAMETER_ERRACTIONUNSUPPORTTARGET = 'InvalidParameter.ErrActionUnsupportTarget'
+
 # 非法操作。
 INVALIDPARAMETER_ERRINVALIDACTION = 'InvalidParameter.ErrInvalidAction'
 

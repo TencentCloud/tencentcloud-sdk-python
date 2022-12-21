@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 课堂状态错误，课堂已开始。
+FAILEDOPERATION_CLASSSTARTED = 'FailedOperation.ClassStarted'
+
 # 课堂时长不能超过5小时。
 FAILEDOPERATION_CLASSTOOLONG = 'FailedOperation.ClassTooLong'
 

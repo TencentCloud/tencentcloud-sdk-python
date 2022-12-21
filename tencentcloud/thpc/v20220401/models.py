@@ -18,6 +18,53 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddClusterStorageOptionRequest(AbstractModel):
+    """AddClusterStorageOption请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param StorageOption: 集群存储选项。
+        :type StorageOption: :class:`tencentcloud.thpc.v20220401.models.StorageOption`
+        """
+        self.ClusterId = None
+        self.StorageOption = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("StorageOption") is not None:
+            self.StorageOption = StorageOption()
+            self.StorageOption._deserialize(params.get("StorageOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddClusterStorageOptionResponse(AbstractModel):
+    """AddClusterStorageOption返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AddNodesRequest(AbstractModel):
     """AddNodes请求参数结构体
 
@@ -729,6 +776,51 @@ class DeleteClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteClusterStorageOptionRequest(AbstractModel):
+    """DeleteClusterStorageOption请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param LocalPath: 本地挂载路径。
+        :type LocalPath: str
+        """
+        self.ClusterId = None
+        self.LocalPath = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.LocalPath = params.get("LocalPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterStorageOptionResponse(AbstractModel):
+    """DeleteClusterStorageOption返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteNodesRequest(AbstractModel):
     """DeleteNodes请求参数结构体
 
@@ -833,6 +925,47 @@ class DescribeClusterActivitiesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ClusterActivitySet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterStorageOptionRequest(AbstractModel):
+    """DescribeClusterStorageOption请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterStorageOptionResponse(AbstractModel):
+    """DescribeClusterStorageOption返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

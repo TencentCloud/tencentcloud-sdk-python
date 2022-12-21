@@ -375,6 +375,31 @@ class AuthorizeTokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BatchAnalyseParam(AbstractModel):
+    """批量解析
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Format: ONE_BY_ONE单条输出，MERGE合并输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        """
+        self.Format = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchContent(AbstractModel):
     """批量发送消息内容
 
@@ -2851,6 +2876,9 @@ class DatahubResource(AbstractModel):
         :param CtsdbParam: Ctsdb配置，Type为CTSDB时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type CtsdbParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbParam`
+        :param ScfParam: Scf配置，Type为SCF时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScfParam: :class:`tencentcloud.ckafka.v20190819.models.ScfParam`
         """
         self.Type = None
         self.KafkaParam = None
@@ -2868,6 +2896,7 @@ class DatahubResource(AbstractModel):
         self.MariaDBParam = None
         self.SQLServerParam = None
         self.CtsdbParam = None
+        self.ScfParam = None
 
 
     def _deserialize(self, params):
@@ -2917,6 +2946,9 @@ class DatahubResource(AbstractModel):
         if params.get("CtsdbParam") is not None:
             self.CtsdbParam = CtsdbParam()
             self.CtsdbParam._deserialize(params.get("CtsdbParam"))
+        if params.get("ScfParam") is not None:
+            self.ScfParam = ScfParam()
+            self.ScfParam._deserialize(params.get("ScfParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6101,6 +6133,8 @@ class EsParam(AbstractModel):
         :type DropCls: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
         :param DatabasePrimaryKey: 转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键
         :type DatabasePrimaryKey: str
+        :param DropDlq: 死信队列
+        :type DropDlq: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
         """
         self.Resource = None
         self.Port = None
@@ -6118,6 +6152,7 @@ class EsParam(AbstractModel):
         self.IndexType = None
         self.DropCls = None
         self.DatabasePrimaryKey = None
+        self.DropDlq = None
 
 
     def _deserialize(self, params):
@@ -6139,6 +6174,9 @@ class EsParam(AbstractModel):
             self.DropCls = DropCls()
             self.DropCls._deserialize(params.get("DropCls"))
         self.DatabasePrimaryKey = params.get("DatabasePrimaryKey")
+        if params.get("DropDlq") is not None:
+            self.DropDlq = FailureParam()
+            self.DropDlq._deserialize(params.get("DropDlq"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8028,6 +8066,9 @@ class KafkaParam(AbstractModel):
         :param CompressionType: 写入Topic时是否进行压缩，不开启填"none"，开启的话，填写"open"。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompressionType: str
+        :param MsgMultiple: 源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgMultiple: int
         """
         self.SelfBuilt = None
         self.Resource = None
@@ -8044,6 +8085,7 @@ class KafkaParam(AbstractModel):
         self.UseTableMapping = None
         self.UseAutoCreateTopic = None
         self.CompressionType = None
+        self.MsgMultiple = None
 
 
     def _deserialize(self, params):
@@ -8067,6 +8109,7 @@ class KafkaParam(AbstractModel):
         self.UseTableMapping = params.get("UseTableMapping")
         self.UseAutoCreateTopic = params.get("UseAutoCreateTopic")
         self.CompressionType = params.get("CompressionType")
+        self.MsgMultiple = params.get("MsgMultiple")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10232,6 +10275,49 @@ class SaleInfo(AbstractModel):
         
 
 
+class ScfParam(AbstractModel):
+    """Scf类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FunctionName: SCF云函数函数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FunctionName: str
+        :param Namespace: SCF云函数命名空间, 默认为default
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param Qualifier: SCF云函数版本及别名, 默认为$DEFAULT
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qualifier: str
+        :param BatchSize: 每批最大发送消息数, 默认为1000
+        :type BatchSize: int
+        :param MaxRetries: SCF调用失败后重试次数, 默认为5
+        :type MaxRetries: int
+        """
+        self.FunctionName = None
+        self.Namespace = None
+        self.Qualifier = None
+        self.BatchSize = None
+        self.MaxRetries = None
+
+
+    def _deserialize(self, params):
+        self.FunctionName = params.get("FunctionName")
+        self.Namespace = params.get("Namespace")
+        self.Qualifier = params.get("Qualifier")
+        self.BatchSize = params.get("BatchSize")
+        self.MaxRetries = params.get("MaxRetries")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecondaryAnalyseParam(AbstractModel):
     """数据处理——二次解析参数
 
@@ -10857,6 +10943,9 @@ class TopicParam(AbstractModel):
         :param UseAutoCreateTopic: 使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）
 注意：此字段可能返回 null，表示取不到有效值。
         :type UseAutoCreateTopic: bool
+        :param MsgMultiple: 源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgMultiple: int
         """
         self.Resource = None
         self.OffsetType = None
@@ -10864,6 +10953,7 @@ class TopicParam(AbstractModel):
         self.TopicId = None
         self.CompressionType = None
         self.UseAutoCreateTopic = None
+        self.MsgMultiple = None
 
 
     def _deserialize(self, params):
@@ -10873,6 +10963,7 @@ class TopicParam(AbstractModel):
         self.TopicId = params.get("TopicId")
         self.CompressionType = params.get("CompressionType")
         self.UseAutoCreateTopic = params.get("UseAutoCreateTopic")
+        self.MsgMultiple = params.get("MsgMultiple")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11147,6 +11238,9 @@ class TransformsParam(AbstractModel):
         :param KeepMetadata: 是否保留数据源Topic元数据信息（源Topic、Partition、Offset），默认为false
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeepMetadata: bool
+        :param BatchAnalyse: 数组解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchAnalyse: :class:`tencentcloud.ckafka.v20190819.models.BatchAnalyseParam`
         """
         self.Content = None
         self.FieldChain = None
@@ -11157,6 +11251,7 @@ class TransformsParam(AbstractModel):
         self.OutputFormat = None
         self.RowParam = None
         self.KeepMetadata = None
+        self.BatchAnalyse = None
 
 
     def _deserialize(self, params):
@@ -11183,6 +11278,9 @@ class TransformsParam(AbstractModel):
             self.RowParam = RowParam()
             self.RowParam._deserialize(params.get("RowParam"))
         self.KeepMetadata = params.get("KeepMetadata")
+        if params.get("BatchAnalyse") is not None:
+            self.BatchAnalyse = BatchAnalyseParam()
+            self.BatchAnalyse._deserialize(params.get("BatchAnalyse"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

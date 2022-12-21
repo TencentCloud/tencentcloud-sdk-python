@@ -11785,57 +11785,6 @@ class ModifyLoadBalancingResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyLoadBalancingStatusRequest(AbstractModel):
-    """ModifyLoadBalancingStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ZoneId: 站点ID。
-        :type ZoneId: str
-        :param LoadBalancingId: 负载均衡ID。
-        :type LoadBalancingId: str
-        :param Status: 负载均衡状态，取值有：
-<li>online：启用；</li>
-<li>offline：停用。</li>
-        :type Status: str
-        """
-        self.ZoneId = None
-        self.LoadBalancingId = None
-        self.Status = None
-
-
-    def _deserialize(self, params):
-        self.ZoneId = params.get("ZoneId")
-        self.LoadBalancingId = params.get("LoadBalancingId")
-        self.Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyLoadBalancingStatusResponse(AbstractModel):
-    """ModifyLoadBalancingStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyLogTopicTaskRequest(AbstractModel):
     """ModifyLogTopicTask请求参数结构体
 
