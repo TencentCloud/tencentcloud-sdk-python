@@ -709,12 +709,18 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
         :type FlowGroupName: str
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param ApproverVerifyType: 签署人校验方式
+VerifyCheck: 人脸识别（默认）
+MobileCheck：手机号验证
+参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
+        :type ApproverVerifyType: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self.FlowFileInfos = None
         self.FlowGroupName = None
         self.Agent = None
+        self.ApproverVerifyType = None
         self.Operator = None
 
 
@@ -729,6 +735,7 @@ class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
+        self.ApproverVerifyType = params.get("ApproverVerifyType")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
@@ -1460,6 +1467,9 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         :param ChannelComponentId: 渠道控件ID。
 如果不为空，属于渠道预设控件；
         :type ChannelComponentId: str
+        :param KeywordOrder: 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
+传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
+        :type KeywordOrder: str
         :param KeywordPage: 指定关键字页码，可选参数，指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
         :type KeywordPage: int
         :param RelativeLocation: 关键字位置模式，Middle-居中，Below-正下方，Right-正右方，LowerRight-右上角，UpperRight-右下角。示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
@@ -1487,6 +1497,7 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         self.OffsetX = None
         self.OffsetY = None
         self.ChannelComponentId = None
+        self.KeywordOrder = None
         self.KeywordPage = None
         self.RelativeLocation = None
         self.KeywordIndexes = None
@@ -1513,6 +1524,7 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         self.OffsetX = params.get("OffsetX")
         self.OffsetY = params.get("OffsetY")
         self.ChannelComponentId = params.get("ChannelComponentId")
+        self.KeywordOrder = params.get("KeywordOrder")
         self.KeywordPage = params.get("KeywordPage")
         self.RelativeLocation = params.get("RelativeLocation")
         self.KeywordIndexes = params.get("KeywordIndexes")

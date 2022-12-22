@@ -59,6 +59,11 @@ def test_import_ams():
     from tencentcloud.ams.v20201229 import models
 
 
+def test_import_anicloud():
+    from tencentcloud.anicloud.v20220923 import anicloud_client
+    from tencentcloud.anicloud.v20220923 import models
+
+
 def test_import_antiddos():
     from tencentcloud.antiddos.v20200309 import antiddos_client
     from tencentcloud.antiddos.v20200309 import models

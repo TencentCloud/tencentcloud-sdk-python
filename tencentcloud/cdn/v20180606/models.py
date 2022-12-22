@@ -11532,7 +11532,7 @@ class QueryStringKey(AbstractModel):
         :param Reorder: 是否重新排序
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reorder: str
-        :param Action: includeAll | excludeAll | includeCustom | excludeAll 使用/排除部分url参数
+        :param Action: includeAll | excludeAll | includeCustom | excludeCustom 使用/排除部分url参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         :param Value: 使用/排除的url参数数组，';' 分割

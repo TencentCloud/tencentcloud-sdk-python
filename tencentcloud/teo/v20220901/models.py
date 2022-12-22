@@ -10003,16 +10003,21 @@ class FollowOrigin(AbstractModel):
         :param DefaultCache: 源站未返回 Cache-Control 头时, 设置缓存/不缓存
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultCache: str
+        :param DefaultCacheStrategy: 源站未返回 Cache-Control 头时, 使用/不使用默认缓存策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultCacheStrategy: str
         """
         self.Switch = None
         self.DefaultCacheTime = None
         self.DefaultCache = None
+        self.DefaultCacheStrategy = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.DefaultCacheTime = params.get("DefaultCacheTime")
         self.DefaultCache = params.get("DefaultCache")
+        self.DefaultCacheStrategy = params.get("DefaultCacheStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
