@@ -986,6 +986,12 @@ class CloudBaseRunServerVersionItem(AbstractModel):
         
 
 
+class CloudBaseRunServiceVolumeHostPath(AbstractModel):
+    """主机路径挂载参数
+
+    """
+
+
 class CloudBaseRunServiceVolumeMount(AbstractModel):
     """对标 EKS VolumeMount
 
@@ -1495,12 +1501,16 @@ class CloudRunServiceVolume(AbstractModel):
         :param EmptyDir: emptydir数据卷详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmptyDir: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunEmptyDirVolumeSource`
+        :param HostPath: 主机路径挂载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostPath: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunServiceVolumeHostPath`
         """
         self.Name = None
         self.NFS = None
         self.SecretName = None
         self.EnableEmptyDirVolume = None
         self.EmptyDir = None
+        self.HostPath = None
 
 
     def _deserialize(self, params):
@@ -1513,6 +1523,9 @@ class CloudRunServiceVolume(AbstractModel):
         if params.get("EmptyDir") is not None:
             self.EmptyDir = CloudBaseRunEmptyDirVolumeSource()
             self.EmptyDir._deserialize(params.get("EmptyDir"))
+        if params.get("HostPath") is not None:
+            self.HostPath = CloudBaseRunServiceVolumeHostPath()
+            self.HostPath._deserialize(params.get("HostPath"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4061,6 +4074,12 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         :param PolicyDetail: 自动扩缩容策略组
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyDetail: list of HpaPolicy
+        :param TkeClusterInfo: Tke集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TkeClusterInfo: :class:`tencentcloud.tcb.v20180608.models.TkeClusterInfo`
+        :param TkeWorkloadType: 版本工作负载类型；deployment/deamonset
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TkeWorkloadType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4101,6 +4120,8 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
         self.EntryPoint = None
         self.RepoLanguage = None
         self.PolicyDetail = None
+        self.TkeClusterInfo = None
+        self.TkeWorkloadType = None
         self.RequestId = None
 
 
@@ -4147,6 +4168,10 @@ class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
                 obj = HpaPolicy()
                 obj._deserialize(item)
                 self.PolicyDetail.append(obj)
+        if params.get("TkeClusterInfo") is not None:
+            self.TkeClusterInfo = TkeClusterInfo()
+            self.TkeClusterInfo._deserialize(params.get("TkeClusterInfo"))
+        self.TkeWorkloadType = params.get("TkeWorkloadType")
         self.RequestId = params.get("RequestId")
 
 
@@ -8348,6 +8373,41 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeClusterInfo(AbstractModel):
+    """tke集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param VpcId: 集群的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param VersionClbSubnetId: 版本内网CLB所在子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionClbSubnetId: str
+        """
+        self.ClusterId = None
+        self.VpcId = None
+        self.VersionClbSubnetId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.VpcId = params.get("VpcId")
+        self.VersionClbSubnetId = params.get("VersionClbSubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

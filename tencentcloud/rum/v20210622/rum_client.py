@@ -1315,6 +1315,64 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRumLogList(self, request):
+        """获取项目下的日志列表（实例创建的项目下的日志列表）
+
+        :param request: Request instance for DescribeRumLogList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRumLogListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRumStatsLogList(self, request):
+        """获取项目下的日志列表，分钟级
+
+        :param request: Request instance for DescribeRumStatsLogList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumStatsLogListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumStatsLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumStatsLogList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRumStatsLogListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScores(self, request):
         """获取首页分数列表
 

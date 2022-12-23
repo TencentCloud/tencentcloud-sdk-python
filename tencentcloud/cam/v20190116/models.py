@@ -4818,14 +4818,19 @@ class SecretIdLastUsed(AbstractModel):
         :param LastUsedDate: 最后访问日期(有1天延迟)
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUsedDate: str
+        :param LastSecretUsedDate: 最后密钥访问日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastSecretUsedDate: int
         """
         self.SecretId = None
         self.LastUsedDate = None
+        self.LastSecretUsedDate = None
 
 
     def _deserialize(self, params):
         self.SecretId = params.get("SecretId")
         self.LastUsedDate = params.get("LastUsedDate")
+        self.LastSecretUsedDate = params.get("LastSecretUsedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

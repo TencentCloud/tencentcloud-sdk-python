@@ -1114,6 +1114,8 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type ParamTemplateId: int
         :param SlaveZone: 多可用区地址
         :type SlaveZone: str
+        :param InstanceInitInfos: 实例初始化配置信息，主要用于购买集群时选不同规格实例
+        :type InstanceInitInfos: list of InstanceInitInfo
         """
         self.Zone = None
         self.VpcId = None
@@ -1155,6 +1157,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self.DealMode = None
         self.ParamTemplateId = None
         self.SlaveZone = None
+        self.InstanceInitInfos = None
 
 
     def _deserialize(self, params):
@@ -1208,6 +1211,12 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self.DealMode = params.get("DealMode")
         self.ParamTemplateId = params.get("ParamTemplateId")
         self.SlaveZone = params.get("SlaveZone")
+        if params.get("InstanceInitInfos") is not None:
+            self.InstanceInitInfos = []
+            for item in params.get("InstanceInitInfos"):
+                obj = InstanceInitInfo()
+                obj._deserialize(item)
+                self.InstanceInitInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4333,6 +4342,42 @@ class InquirePriceRenewResponse(AbstractModel):
         self.InstanceRealTotalPrice = params.get("InstanceRealTotalPrice")
         self.StorageRealTotalPrice = params.get("StorageRealTotalPrice")
         self.RequestId = params.get("RequestId")
+
+
+class InstanceInitInfo(AbstractModel):
+    """实例初始化配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cpu: 实例cpu
+        :type Cpu: int
+        :param Memory: 实例内存
+        :type Memory: int
+        :param InstanceType: 实例类型 rw/ro
+        :type InstanceType: str
+        :param InstanceCount: 实例个数,范围[1,15]
+        :type InstanceCount: int
+        """
+        self.Cpu = None
+        self.Memory = None
+        self.InstanceType = None
+        self.InstanceCount = None
+
+
+    def _deserialize(self, params):
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceSpec(AbstractModel):

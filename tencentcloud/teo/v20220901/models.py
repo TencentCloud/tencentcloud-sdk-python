@@ -10096,6 +10096,32 @@ class GeoIp(AbstractModel):
         
 
 
+class Grpc(AbstractModel):
+    """Grpc配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 是否开启Grpc配置，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Header(AbstractModel):
     """刷新预热附带的头部信息
 
@@ -12381,6 +12407,9 @@ class ModifyZoneSettingRequest(AbstractModel):
         :param ClientIpCountry: 回源时是否携带客户端IP所属地域信息的配置。
 不填写表示保持原有配置。
         :type ClientIpCountry: :class:`tencentcloud.teo.v20220901.models.ClientIpCountry`
+        :param Grpc: Grpc协议支持配置。
+不填写表示保持原有配置。
+        :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
         """
         self.ZoneId = None
         self.CacheConfig = None
@@ -12400,6 +12429,7 @@ class ModifyZoneSettingRequest(AbstractModel):
         self.CachePrefresh = None
         self.Ipv6 = None
         self.ClientIpCountry = None
+        self.Grpc = None
 
 
     def _deserialize(self, params):
@@ -12455,6 +12485,9 @@ class ModifyZoneSettingRequest(AbstractModel):
         if params.get("ClientIpCountry") is not None:
             self.ClientIpCountry = ClientIpCountry()
             self.ClientIpCountry._deserialize(params.get("ClientIpCountry"))
+        if params.get("Grpc") is not None:
+            self.Grpc = Grpc()
+            self.Grpc._deserialize(params.get("Grpc"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16564,6 +16597,9 @@ class ZoneSetting(AbstractModel):
         :param ClientIpCountry: 回源时是否携带客户端IP所属地域信息的配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIpCountry: :class:`tencentcloud.teo.v20220901.models.ClientIpCountry`
+        :param Grpc: Grpc协议支持配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
         """
         self.ZoneName = None
         self.Area = None
@@ -16584,6 +16620,7 @@ class ZoneSetting(AbstractModel):
         self.Ipv6 = None
         self.Https = None
         self.ClientIpCountry = None
+        self.Grpc = None
 
 
     def _deserialize(self, params):
@@ -16640,6 +16677,9 @@ class ZoneSetting(AbstractModel):
         if params.get("ClientIpCountry") is not None:
             self.ClientIpCountry = ClientIpCountry()
             self.ClientIpCountry._deserialize(params.get("ClientIpCountry"))
+        if params.get("Grpc") is not None:
+            self.Grpc = Grpc()
+            self.Grpc._deserialize(params.get("Grpc"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

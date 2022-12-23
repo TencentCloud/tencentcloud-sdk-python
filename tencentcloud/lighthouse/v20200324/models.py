@@ -5646,16 +5646,27 @@ class PolicyDetail(AbstractModel):
         :type CommonDiscount: int
         :param FinalDiscount: 最终折扣。
         :type FinalDiscount: int
+        :param ActivityDiscount: 活动折扣。取值为null，表示无有效值，即没有折扣。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityDiscount: float
+        :param DiscountType: 折扣类型。
+user：用户折扣; common：官网折扣; activity：活动折扣。 取值为null，表示无有效值，即没有折扣。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountType: str
         """
         self.UserDiscount = None
         self.CommonDiscount = None
         self.FinalDiscount = None
+        self.ActivityDiscount = None
+        self.DiscountType = None
 
 
     def _deserialize(self, params):
         self.UserDiscount = params.get("UserDiscount")
         self.CommonDiscount = params.get("CommonDiscount")
         self.FinalDiscount = params.get("FinalDiscount")
+        self.ActivityDiscount = params.get("ActivityDiscount")
+        self.DiscountType = params.get("DiscountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

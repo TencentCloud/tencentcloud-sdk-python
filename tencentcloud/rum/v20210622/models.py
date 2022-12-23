@@ -3622,6 +3622,136 @@ class DescribeReleaseFilesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRumLogListRequest(AbstractModel):
+    """DescribeRumLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderBy: 排序方式  desc  asc（必填）
+        :type OrderBy: str
+        :param StartTime: 开始时间（必填）
+        :type StartTime: str
+        :param Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :type Limit: int
+        :param Page: 页数，第几页
+        :type Page: int
+        :param Query: 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        :type Query: str
+        :param EndTime: 结束时间（必填）
+        :type EndTime: str
+        :param ID: 项目ID（必填）
+        :type ID: int
+        """
+        self.OrderBy = None
+        self.StartTime = None
+        self.Limit = None
+        self.Page = None
+        self.Query = None
+        self.EndTime = None
+        self.ID = None
+
+
+    def _deserialize(self, params):
+        self.OrderBy = params.get("OrderBy")
+        self.StartTime = params.get("StartTime")
+        self.Limit = params.get("Limit")
+        self.Page = params.get("Page")
+        self.Query = params.get("Query")
+        self.EndTime = params.get("EndTime")
+        self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumLogListResponse(AbstractModel):
+    """DescribeRumLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回字符串
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRumStatsLogListRequest(AbstractModel):
+    """DescribeRumStatsLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间（必填）
+        :type StartTime: str
+        :param Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :type Limit: int
+        :param Query: 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        :type Query: str
+        :param EndTime: 结束时间（必填）
+        :type EndTime: str
+        :param ID: 项目ID（必填）
+        :type ID: int
+        """
+        self.StartTime = None
+        self.Limit = None
+        self.Query = None
+        self.EndTime = None
+        self.ID = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.Limit = params.get("Limit")
+        self.Query = params.get("Query")
+        self.EndTime = params.get("EndTime")
+        self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumStatsLogListResponse(AbstractModel):
+    """DescribeRumStatsLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回字符串
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScoresRequest(AbstractModel):
     """DescribeScores请求参数结构体
 

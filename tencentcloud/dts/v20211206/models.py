@@ -521,45 +521,45 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type JobId: str
         :param SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
         :type SrcAccessType: str
-        :param SrcInfo: 源端信息
-        :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
         :type DstAccessType: str
-        :param DstInfo: 目标端信息
-        :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param Options: 同步任务选项
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param Objects: 同步库表对象信息
         :type Objects: :class:`tencentcloud.dts.v20211206.models.Objects`
         :param JobName: 同步任务名称
         :type JobName: str
+        :param JobMode: 枚举值是 liteMode 和 fullMode ，分别对应精简模式或正常模式
+        :type JobMode: str
         :param RunMode: 运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
         :type RunMode: str
         :param ExpectRunTime: 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
         :type ExpectRunTime: str
+        :param SrcInfo: 源端信息，单节点数据库使用
+        :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param DstInfo: 目标端信息，单节点数据库使用
+        :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
+        :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.SrcAccessType = None
-        self.SrcInfo = None
         self.DstAccessType = None
-        self.DstInfo = None
         self.Options = None
         self.Objects = None
         self.JobName = None
+        self.JobMode = None
         self.RunMode = None
         self.ExpectRunTime = None
+        self.SrcInfo = None
+        self.DstInfo = None
+        self.AutoRetryTimeRangeMinutes = None
 
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.SrcAccessType = params.get("SrcAccessType")
-        if params.get("SrcInfo") is not None:
-            self.SrcInfo = Endpoint()
-            self.SrcInfo._deserialize(params.get("SrcInfo"))
         self.DstAccessType = params.get("DstAccessType")
-        if params.get("DstInfo") is not None:
-            self.DstInfo = Endpoint()
-            self.DstInfo._deserialize(params.get("DstInfo"))
         if params.get("Options") is not None:
             self.Options = Options()
             self.Options._deserialize(params.get("Options"))
@@ -567,8 +567,16 @@ class ConfigureSyncJobRequest(AbstractModel):
             self.Objects = Objects()
             self.Objects._deserialize(params.get("Objects"))
         self.JobName = params.get("JobName")
+        self.JobMode = params.get("JobMode")
         self.RunMode = params.get("RunMode")
         self.ExpectRunTime = params.get("ExpectRunTime")
+        if params.get("SrcInfo") is not None:
+            self.SrcInfo = Endpoint()
+            self.SrcInfo._deserialize(params.get("SrcInfo"))
+        if params.get("DstInfo") is not None:
+            self.DstInfo = Endpoint()
+            self.DstInfo._deserialize(params.get("DstInfo"))
+        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1337,6 +1345,18 @@ class Database(AbstractModel):
         :param Procedures: ProcedureMode取值为Partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Procedures: list of str
+        :param TriggerMode: 触发器迁移模式，all(为当前对象下的所有对象)，partial(部分对象)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerMode: str
+        :param Triggers: 当TriggerMode为partial，指定要迁移的触发器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Triggers: list of str
+        :param EventMode: 事件迁移模式，all(为当前对象下的所有对象)，partial(部分对象)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventMode: str
+        :param Events: 当EventMode为partial，指定要迁移的事件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Events: list of str
         """
         self.DbName = None
         self.NewDbName = None
@@ -1351,6 +1371,10 @@ class Database(AbstractModel):
         self.Functions = None
         self.ProcedureMode = None
         self.Procedures = None
+        self.TriggerMode = None
+        self.Triggers = None
+        self.EventMode = None
+        self.Events = None
 
 
     def _deserialize(self, params):
@@ -1377,6 +1401,10 @@ class Database(AbstractModel):
         self.Functions = params.get("Functions")
         self.ProcedureMode = params.get("ProcedureMode")
         self.Procedures = params.get("Procedures")
+        self.TriggerMode = params.get("TriggerMode")
+        self.Triggers = params.get("Triggers")
+        self.EventMode = params.get("EventMode")
+        self.Events = params.get("Events")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2530,6 +2558,9 @@ class Endpoint(AbstractModel):
         :param Region: 地域英文名，如：ap-guangzhou
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
+        :param Role: tdsql mysql版的节点类型，枚举值为proxy、set
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Role: str
         :param DbKernel: 数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbKernel: str
@@ -2575,15 +2606,18 @@ class Endpoint(AbstractModel):
         :param EngineVersion: 数据库版本，当实例为RDS实例时才有效，其他实例忽略，格式如：5.6或者5.7，默认为5.6
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineVersion: str
-        :param AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AccountMode: str
         :param Account: 实例所属账号，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Account: str
+        :param AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountMode: str
         :param AccountRole: 跨账号同步时的角色，只允许[a-zA-Z0-9\-\_]+，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountRole: str
+        :param RoleExternalId: 外部角色id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleExternalId: str
         :param TmpSecretId: 临时密钥Id，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
@@ -2593,11 +2627,12 @@ class Endpoint(AbstractModel):
         :param TmpToken: 临时Token，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
-        :param RoleExternalId: 外部角色id
+        :param EncryptConn: 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
 注意：此字段可能返回 null，表示取不到有效值。
-        :type RoleExternalId: str
+        :type EncryptConn: str
         """
         self.Region = None
+        self.Role = None
         self.DbKernel = None
         self.InstanceId = None
         self.Ip = None
@@ -2613,17 +2648,19 @@ class Endpoint(AbstractModel):
         self.CcnId = None
         self.Supplier = None
         self.EngineVersion = None
-        self.AccountMode = None
         self.Account = None
+        self.AccountMode = None
         self.AccountRole = None
+        self.RoleExternalId = None
         self.TmpSecretId = None
         self.TmpSecretKey = None
         self.TmpToken = None
-        self.RoleExternalId = None
+        self.EncryptConn = None
 
 
     def _deserialize(self, params):
         self.Region = params.get("Region")
+        self.Role = params.get("Role")
         self.DbKernel = params.get("DbKernel")
         self.InstanceId = params.get("InstanceId")
         self.Ip = params.get("Ip")
@@ -2639,13 +2676,14 @@ class Endpoint(AbstractModel):
         self.CcnId = params.get("CcnId")
         self.Supplier = params.get("Supplier")
         self.EngineVersion = params.get("EngineVersion")
-        self.AccountMode = params.get("AccountMode")
         self.Account = params.get("Account")
+        self.AccountMode = params.get("AccountMode")
         self.AccountRole = params.get("AccountRole")
+        self.RoleExternalId = params.get("RoleExternalId")
         self.TmpSecretId = params.get("TmpSecretId")
         self.TmpSecretKey = params.get("TmpSecretKey")
         self.TmpToken = params.get("TmpToken")
-        self.RoleExternalId = params.get("RoleExternalId")
+        self.EncryptConn = params.get("EncryptConn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2835,6 +2873,9 @@ class JobItem(AbstractModel):
         :param Tags: 标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
+        :param AutoRetryTimeRangeMinutes: 自动重试时间段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.JobName = None
@@ -2853,6 +2894,7 @@ class JobItem(AbstractModel):
         self.CompareTask = None
         self.TradeInfo = None
         self.Tags = None
+        self.AutoRetryTimeRangeMinutes = None
 
 
     def _deserialize(self, params):
@@ -2890,6 +2932,7 @@ class JobItem(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3339,6 +3382,8 @@ class ModifyMigrationJobRequest(AbstractModel):
         :type ExpectRunTime: str
         :param Tags: 标签信息
         :type Tags: list of TagItem
+        :param AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
+        :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.RunMode = None
@@ -3348,6 +3393,7 @@ class ModifyMigrationJobRequest(AbstractModel):
         self.JobName = None
         self.ExpectRunTime = None
         self.Tags = None
+        self.AutoRetryTimeRangeMinutes = None
 
 
     def _deserialize(self, params):
@@ -3370,6 +3416,7 @@ class ModifyMigrationJobRequest(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3412,10 +3459,14 @@ class Objects(AbstractModel):
         :param AdvancedObjects: 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即Options.InitType字段值为Structure或Full
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
+        :param OnlineDDL: OnlineDDL类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         """
         self.Mode = None
         self.Databases = None
         self.AdvancedObjects = None
+        self.OnlineDDL = None
 
 
     def _deserialize(self, params):
@@ -3427,6 +3478,9 @@ class Objects(AbstractModel):
                 obj._deserialize(item)
                 self.Databases.append(obj)
         self.AdvancedObjects = params.get("AdvancedObjects")
+        if params.get("OnlineDDL") is not None:
+            self.OnlineDDL = OnlineDDL()
+            self.OnlineDDL._deserialize(params.get("OnlineDDL"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3434,6 +3488,12 @@ class Objects(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OnlineDDL(AbstractModel):
+    """OnlineDDL类型
+
+    """
 
 
 class Options(AbstractModel):
@@ -4549,7 +4609,7 @@ class SyncJobInfo(AbstractModel):
         :param SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcAccessType: str
-        :param SrcInfo: 源端信息
+        :param SrcInfo: 源端信息，单节点数据库使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param DstRegion: 目标端地域，如：ap-guangzhou等
@@ -4561,7 +4621,7 @@ class SyncJobInfo(AbstractModel):
         :param DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstAccessType: str
-        :param DstInfo: 目标端信息
+        :param DstInfo: 目标端信息，单节点数据库使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param CreateTime: 创建时间，格式为 yyyy-mm-dd hh:mm:ss
@@ -4594,6 +4654,9 @@ class SyncJobInfo(AbstractModel):
         :param OfflineTime: 下线时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTime: str
+        :param AutoRetryTimeRangeMinutes: 自动重试时间段设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.JobName = None
@@ -4624,6 +4687,7 @@ class SyncJobInfo(AbstractModel):
         self.InstanceClass = None
         self.AutoRenew = None
         self.OfflineTime = None
+        self.AutoRetryTimeRangeMinutes = None
 
 
     def _deserialize(self, params):
@@ -4671,6 +4735,7 @@ class SyncJobInfo(AbstractModel):
         self.InstanceClass = params.get("InstanceClass")
         self.AutoRenew = params.get("AutoRenew")
         self.OfflineTime = params.get("OfflineTime")
+        self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
