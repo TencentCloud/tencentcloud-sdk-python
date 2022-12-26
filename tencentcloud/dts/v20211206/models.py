@@ -1165,7 +1165,7 @@ class DBInfo(AbstractModel):
 
 
 class DBItem(AbstractModel):
-    """迁移对象信息
+    """迁移对象信息，在配置库表视图等对象信息时大小写敏感
 
     """
 
@@ -4787,7 +4787,7 @@ class TableItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TableName: 迁移的表名
+        :param TableName: 迁移的表名，大小写敏感
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param NewTableName: 迁移后的表名，当TableEditMode为rename时此项必填

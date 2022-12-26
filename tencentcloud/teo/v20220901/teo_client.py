@@ -1505,6 +1505,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDistributionL4AccessData(self, request):
+        """本接口（DescribeDistributionL4AccessData）用于查询四层连接时长的时序数据。
+
+        :param request: Request instance for DescribeDistributionL4AccessData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDistributionL4AccessDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeDistributionL4AccessDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDistributionL4AccessData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDistributionL4AccessDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDnsData(self, request):
         """获取DNS请求数统计曲线
 
@@ -2245,6 +2274,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSpeedTestingQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTimingL4AccessData(self, request):
+        """本接口（DescribeTimingL4AccessData）用于查询四层连接数的时序数据列表。
+
+        :param request: Request instance for DescribeTimingL4AccessData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL4AccessDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL4AccessDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimingL4AccessData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTimingL4AccessDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -320,10 +320,14 @@ class DescribeTaskResponse(AbstractModel):
         r"""
         :param Task: 任务信息
         :type Task: :class:`tencentcloud.cfg.v20210820.models.Task`
+        :param ReportInfo: 任务对应的演练报告信息，null表示未导出报告
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportInfo: :class:`tencentcloud.cfg.v20210820.models.TaskReportInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Task = None
+        self.ReportInfo = None
         self.RequestId = None
 
 
@@ -331,6 +335,9 @@ class DescribeTaskResponse(AbstractModel):
         if params.get("Task") is not None:
             self.Task = Task()
             self.Task._deserialize(params.get("Task"))
+        if params.get("ReportInfo") is not None:
+            self.ReportInfo = TaskReportInfo()
+            self.ReportInfo._deserialize(params.get("ReportInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1281,6 +1288,52 @@ class TaskMonitor(AbstractModel):
         self.InstancesIds = params.get("InstancesIds")
         self.MetricChineseName = params.get("MetricChineseName")
         self.Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskReportInfo(AbstractModel):
+    """演练报告状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Stage: 0--未开始，1--正在导出，2--导出成功，3--导出失败
+        :type Stage: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ExpirationTime: 有效期截止时间
+        :type ExpirationTime: str
+        :param Expired: 是否有效
+        :type Expired: bool
+        :param CosUrl: 演练报告cos文件地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosUrl: str
+        :param Log: 演练报告导出日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Log: str
+        """
+        self.Stage = None
+        self.CreateTime = None
+        self.ExpirationTime = None
+        self.Expired = None
+        self.CosUrl = None
+        self.Log = None
+
+
+    def _deserialize(self, params):
+        self.Stage = params.get("Stage")
+        self.CreateTime = params.get("CreateTime")
+        self.ExpirationTime = params.get("ExpirationTime")
+        self.Expired = params.get("Expired")
+        self.CosUrl = params.get("CosUrl")
+        self.Log = params.get("Log")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
