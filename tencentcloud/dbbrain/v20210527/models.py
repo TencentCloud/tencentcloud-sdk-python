@@ -1635,6 +1635,77 @@ class DescribeNoPrimaryKeyTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProxyProcessStatisticsRequest(AbstractModel):
+    """DescribeProxyProcessStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param InstanceProxyId: 当前实例下的 ProxyID。
+        :type InstanceProxyId: str
+        :param Limit: 返回数量。
+        :type Limit: int
+        :param Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        :param Offset: 偏移量，默认0。
+        :type Offset: int
+        :param SortBy: 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+        :type SortBy: str
+        :param OrderDirection: 排序方向。支持值包括："DESC"，"ASC"。
+        :type OrderDirection: str
+        """
+        self.InstanceId = None
+        self.InstanceProxyId = None
+        self.Limit = None
+        self.Product = None
+        self.Offset = None
+        self.SortBy = None
+        self.OrderDirection = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceProxyId = params.get("InstanceProxyId")
+        self.Limit = params.get("Limit")
+        self.Product = params.get("Product")
+        self.Offset = params.get("Offset")
+        self.SortBy = params.get("SortBy")
+        self.OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProxyProcessStatisticsResponse(AbstractModel):
+    """DescribeProxyProcessStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProcessStatistics: 实时会话统计详情。
+        :type ProcessStatistics: :class:`tencentcloud.dbbrain.v20210527.models.ProcessStatistic`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProcessStatistics = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessStatistics") is not None:
+            self.ProcessStatistics = ProcessStatistic()
+            self.ProcessStatistics._deserialize(params.get("ProcessStatistics"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProxySessionKillTasksRequest(AbstractModel):
     """DescribeProxySessionKillTasks请求参数结构体
 
@@ -3620,6 +3691,12 @@ class MySqlProcess(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ProcessStatistic(AbstractModel):
+    """实时会话统计详情。
+
+    """
 
 
 class ProfileInfo(AbstractModel):

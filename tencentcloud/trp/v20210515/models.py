@@ -220,7 +220,7 @@ class CodePack(AbstractModel):
         :param Amount: 码数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: int
-        :param CodeLength: 码长度
+        :param CodeLength: 防伪码长度
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeLength: int
         :param CodeType: 码类型
@@ -410,7 +410,7 @@ class CreateCodeBatchRequest(AbstractModel):
         :type ProductId: str
         :param BatchType: 批次类型 0:溯源 1:营销
         :type BatchType: int
-        :param BatchId: 批次ID，系统自动生成
+        :param BatchId: 批次ID，留空时系统自动生成
         :type BatchId: str
         :param Remark: 备注
         :type Remark: str
@@ -418,6 +418,8 @@ class CreateCodeBatchRequest(AbstractModel):
         :type MpTpl: str
         :param CloneId: 克隆批次ID，同时会复制溯源信息
         :type CloneId: str
+        :param BatchCode: 批次编号，业务字段不判断唯一性
+        :type BatchCode: str
         """
         self.CorpId = None
         self.MerchantId = None
@@ -427,6 +429,7 @@ class CreateCodeBatchRequest(AbstractModel):
         self.Remark = None
         self.MpTpl = None
         self.CloneId = None
+        self.BatchCode = None
 
 
     def _deserialize(self, params):
@@ -438,6 +441,7 @@ class CreateCodeBatchRequest(AbstractModel):
         self.Remark = params.get("Remark")
         self.MpTpl = params.get("MpTpl")
         self.CloneId = params.get("CloneId")
+        self.BatchCode = params.get("BatchCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -493,6 +497,8 @@ class CreateCodePackRequest(AbstractModel):
         :type PackSpec: list of PackSpec
         :param BatchId: 批次ID，如果传了生码后会同时绑定批次，并激活码
         :type BatchId: str
+        :param SerialType: 是否有流水码 0:无 1:有
+        :type SerialType: int
         """
         self.MerchantId = None
         self.CodeLength = None
@@ -503,6 +509,7 @@ class CreateCodePackRequest(AbstractModel):
         self.PackLevel = None
         self.PackSpec = None
         self.BatchId = None
+        self.SerialType = None
 
 
     def _deserialize(self, params):
@@ -520,6 +527,7 @@ class CreateCodePackRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PackSpec.append(obj)
         self.BatchId = params.get("BatchId")
+        self.SerialType = params.get("SerialType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -653,6 +661,8 @@ class CreateCustomPackRequest(AbstractModel):
         :type CodeParts: list of CodePart
         :param BatchId: 批次ID，如果传了生码后会同时绑定批次，并激活码
         :type BatchId: str
+        :param SerialType: 是否有流水码 0:无 1:有
+        :type SerialType: int
         """
         self.MerchantId = None
         self.Amount = None
@@ -663,6 +673,7 @@ class CreateCustomPackRequest(AbstractModel):
         self.CustomId = None
         self.CodeParts = None
         self.BatchId = None
+        self.SerialType = None
 
 
     def _deserialize(self, params):
@@ -685,6 +696,7 @@ class CreateCustomPackRequest(AbstractModel):
                 obj._deserialize(item)
                 self.CodeParts.append(obj)
         self.BatchId = params.get("BatchId")
+        self.SerialType = params.get("SerialType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1700,11 +1712,14 @@ class DescribeCodePacksRequest(AbstractModel):
         :type Keyword: str
         :param CorpId: 企业ID
         :type CorpId: int
+        :param SerialType: 是否有流水码 0:无 1:有
+        :type SerialType: int
         """
         self.PageSize = None
         self.PageNumber = None
         self.Keyword = None
         self.CorpId = None
+        self.SerialType = None
 
 
     def _deserialize(self, params):
@@ -1712,6 +1727,7 @@ class DescribeCodePacksRequest(AbstractModel):
         self.PageNumber = params.get("PageNumber")
         self.Keyword = params.get("Keyword")
         self.CorpId = params.get("CorpId")
+        self.SerialType = params.get("SerialType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2662,6 +2678,8 @@ class ModifyCodeBatchRequest(AbstractModel):
         :type ProductId: str
         :param Remark: 备注
         :type Remark: str
+        :param BatchCode: 批次编码，业务字段不判断唯一性
+        :type BatchCode: str
         """
         self.BatchId = None
         self.CorpId = None
@@ -2670,6 +2688,7 @@ class ModifyCodeBatchRequest(AbstractModel):
         self.MerchantId = None
         self.ProductId = None
         self.Remark = None
+        self.BatchCode = None
 
 
     def _deserialize(self, params):
@@ -2680,6 +2699,7 @@ class ModifyCodeBatchRequest(AbstractModel):
         self.MerchantId = params.get("MerchantId")
         self.ProductId = params.get("ProductId")
         self.Remark = params.get("Remark")
+        self.BatchCode = params.get("BatchCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -41,6 +41,9 @@ INVALIDPARAMETERVALUE_TOOLARGE = 'InvalidParameterValue.TooLarge'
 # 参数长度过长。
 INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 
+# 无效参数值。参数值太短。
+INVALIDPARAMETERVALUE_TOOSHORT = 'InvalidParameterValue.TooShort'
+
 # 参数值过小。
 INVALIDPARAMETERVALUE_TOOSMALL = 'InvalidParameterValue.TooSmall'
 

@@ -150,7 +150,7 @@ class AddressInfo(AbstractModel):
 
 
 class AddressTemplateSpecification(AbstractModel):
-    """IP地址模版
+    """IP地址模板
 
     """
 
@@ -11339,7 +11339,7 @@ class SecurityGroupPolicySet(AbstractModel):
 
 
 class ServiceTemplateSpecification(AbstractModel):
-    """协议端口模版
+    """协议端口模板
 
     """
 
