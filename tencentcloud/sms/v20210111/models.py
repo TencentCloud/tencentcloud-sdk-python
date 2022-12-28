@@ -666,7 +666,7 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 0：表示国内短信。
 1：表示国际/港澳台短信。
         :type International: int
-        :param TemplateIdSet: 模板 ID 数组。数组为空时默认查询模板列表信息（仅允许主账号使用），请使用 Limit 和 Offset 字段设置查询范围。
+        :param TemplateIdSet: 模板 ID 数组。数组为空时默认查询模板列表信息，请使用 Limit 和 Offset 字段设置查询范围。
 <dx-alert infotype="notice" title="注意">默认数组长度最大100</dx-alert>
         :type TemplateIdSet: list of int non-negative
         :param Limit: 最大上限，最多100。

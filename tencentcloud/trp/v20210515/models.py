@@ -2670,7 +2670,7 @@ class ModifyCodeBatchRequest(AbstractModel):
         :type CorpId: int
         :param Status: 状态 0: 未激活 1: 已激活 -1: 已冻结
         :type Status: int
-        :param MpTpl: 模版ID，或者活动ID
+        :param MpTpl: 模板ID，或者活动ID
         :type MpTpl: str
         :param MerchantId: 商户ID
         :type MerchantId: str
@@ -3035,6 +3035,67 @@ class ModifyTraceCodeResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyTraceCodeUnlinkRequest(AbstractModel):
+    """ModifyTraceCodeUnlink请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchId: 批次ID
+        :type BatchId: str
+        :param Codes: 溯源码列表
+        :type Codes: list of str
+        :param CorpId: 企业ID
+        :type CorpId: int
+        """
+        self.BatchId = None
+        self.Codes = None
+        self.CorpId = None
+
+
+    def _deserialize(self, params):
+        self.BatchId = params.get("BatchId")
+        self.Codes = params.get("Codes")
+        self.CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTraceCodeUnlinkResponse(AbstractModel):
+    """ModifyTraceCodeUnlink返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnlinkCnt: 成功解绑溯源码的数量
+        :type UnlinkCnt: int
+        :param CodeCnt: 当前批次的码数量
+        :type CodeCnt: int
+        :param BatchId: 批次ID
+        :type BatchId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UnlinkCnt = None
+        self.CodeCnt = None
+        self.BatchId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UnlinkCnt = params.get("UnlinkCnt")
+        self.CodeCnt = params.get("CodeCnt")
+        self.BatchId = params.get("BatchId")
         self.RequestId = params.get("RequestId")
 
 

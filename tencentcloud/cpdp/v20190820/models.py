@@ -275,6 +275,91 @@ class AddContractResult(AbstractModel):
         
 
 
+class AddFlexFundingAccountRequest(AbstractModel):
+    """AddFlexFundingAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FundingAccountType: 资金账户类型
+PINGAN_BANK:平安银行
+        :type FundingAccountType: str
+        :param FundingAccountName: 收款资金账户姓名
+        :type FundingAccountName: str
+        :param FundingAccountNo: 收款资金账户号
+        :type FundingAccountNo: str
+        :param PhoneNo: 收款资金账户手机号
+        :type PhoneNo: str
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
+        :param BankBranchName: 开户支行名
+        :type BankBranchName: str
+        """
+        self.FundingAccountType = None
+        self.FundingAccountName = None
+        self.FundingAccountNo = None
+        self.PhoneNo = None
+        self.PayeeId = None
+        self.Environment = None
+        self.BankBranchName = None
+
+
+    def _deserialize(self, params):
+        self.FundingAccountType = params.get("FundingAccountType")
+        self.FundingAccountName = params.get("FundingAccountName")
+        self.FundingAccountNo = params.get("FundingAccountNo")
+        self.PhoneNo = params.get("PhoneNo")
+        self.PayeeId = params.get("PayeeId")
+        self.Environment = params.get("Environment")
+        self.BankBranchName = params.get("BankBranchName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddFlexFundingAccountResponse(AbstractModel):
+    """AddFlexFundingAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PayeeFundingAccountResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = PayeeFundingAccountResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class AddFlexIdInfoRequest(AbstractModel):
     """AddFlexIdInfo请求参数结构体
 
@@ -13278,6 +13363,93 @@ class ModifyBindedAccountResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyFlexFundingAccountRequest(AbstractModel):
+    """ModifyFlexFundingAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param FundingAccountBindSerialNo: 收款用户资金账户ID
+        :type FundingAccountBindSerialNo: str
+        :param FundingAccountType: 资金账户类型
+PINGAN_BANK:平安银行
+        :type FundingAccountType: str
+        :param PhoneNo: 收款资金账户手机号
+        :type PhoneNo: str
+        :param FundingAccountName: 收款资金账户姓名
+        :type FundingAccountName: str
+        :param FundingAccountNo: 收款资金账户号
+        :type FundingAccountNo: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
+        :param BankBranchName: 开户支行名
+        :type BankBranchName: str
+        """
+        self.PayeeId = None
+        self.FundingAccountBindSerialNo = None
+        self.FundingAccountType = None
+        self.PhoneNo = None
+        self.FundingAccountName = None
+        self.FundingAccountNo = None
+        self.Environment = None
+        self.BankBranchName = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.FundingAccountBindSerialNo = params.get("FundingAccountBindSerialNo")
+        self.FundingAccountType = params.get("FundingAccountType")
+        self.PhoneNo = params.get("PhoneNo")
+        self.FundingAccountName = params.get("FundingAccountName")
+        self.FundingAccountNo = params.get("FundingAccountNo")
+        self.Environment = params.get("Environment")
+        self.BankBranchName = params.get("BankBranchName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFlexFundingAccountResponse(AbstractModel):
+    """ModifyFlexFundingAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyFlexPayeeAccountRightStatusRequest(AbstractModel):
     """ModifyFlexPayeeAccountRightStatus请求参数结构体
 
@@ -15662,6 +15834,30 @@ class PayeeAccountUserInfo(AbstractModel):
         self.IdType = params.get("IdType")
         self.IdNo = params.get("IdNo")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayeeFundingAccountResult(AbstractModel):
+    """收款用户资金账户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FundingAccountBindSerialNo: 资金账户ID
+        :type FundingAccountBindSerialNo: str
+        """
+        self.FundingAccountBindSerialNo = None
+
+
+    def _deserialize(self, params):
+        self.FundingAccountBindSerialNo = params.get("FundingAccountBindSerialNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19832,6 +20028,70 @@ class QueryFlexPlatformAccountBalanceResponse(AbstractModel):
         self.ErrMessage = params.get("ErrMessage")
         if params.get("Result") is not None:
             self.Result = PlatformAccountBalanceResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexServiceProviderAccountBalanceRequest(AbstractModel):
+    """QueryFlexServiceProviderAccountBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceProviderId: 服务商ID
+        :type ServiceProviderId: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
+        """
+        self.ServiceProviderId = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ServiceProviderId = params.get("ServiceProviderId")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexServiceProviderAccountBalanceResponse(AbstractModel):
+    """QueryFlexServiceProviderAccountBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ServiceProviderAccountBalanceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = ServiceProviderAccountBalanceResult()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -28269,6 +28529,30 @@ class SceneInfo(AbstractModel):
         self.LocaleCode = params.get("LocaleCode")
         self.RegionCode = params.get("RegionCode")
         self.UserClientIp = params.get("UserClientIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceProviderAccountBalanceResult(AbstractModel):
+    """服务商账户余额返回信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Balance: 服务商账户余额
+        :type Balance: str
+        """
+        self.Balance = None
+
+
+    def _deserialize(self, params):
+        self.Balance = params.get("Balance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

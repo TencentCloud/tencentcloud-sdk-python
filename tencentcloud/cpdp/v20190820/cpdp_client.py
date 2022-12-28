@@ -55,6 +55,35 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddFlexFundingAccount(self, request):
+        """灵云V2-绑定收款用户资金账号信息
+
+        :param request: Request instance for AddFlexFundingAccount.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.AddFlexFundingAccountRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.AddFlexFundingAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddFlexFundingAccount", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddFlexFundingAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddFlexIdInfo(self, request):
         """灵云V2-补充证件信息
 
@@ -2588,6 +2617,35 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyFlexFundingAccount(self, request):
+        """灵云V2-修改收款用户资金账号信息
+
+        :param request: Request instance for ModifyFlexFundingAccount.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ModifyFlexFundingAccountRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ModifyFlexFundingAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFlexFundingAccount", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyFlexFundingAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyFlexPayeeAccountRightStatus(self, request):
         """灵云V2-收款用户账户权益状态修改
 
@@ -3821,6 +3879,35 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryFlexPlatformAccountBalanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexServiceProviderAccountBalance(self, request):
+        """灵云V2-查询服务商账户余额
+
+        :param request: Request instance for QueryFlexServiceProviderAccountBalance.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexServiceProviderAccountBalanceRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexServiceProviderAccountBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexServiceProviderAccountBalance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexServiceProviderAccountBalanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

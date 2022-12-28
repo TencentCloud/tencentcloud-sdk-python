@@ -1073,29 +1073,29 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReportId: 出证报告 ID
+        :param ReportId: 出证报告 ID，用于查询出证报告DescribeFlowEvidenceReport接口时用到
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
-        :param ReportUrl: 废除，字段无效
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReportUrl: str
         :param Status: 执行中：EvidenceStatusExecuting
 成功：EvidenceStatusSuccess
 失败：EvidenceStatusFailed
         :type Status: str
+        :param ReportUrl: 废除，字段无效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ReportId = None
-        self.ReportUrl = None
         self.Status = None
+        self.ReportUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ReportId = params.get("ReportId")
-        self.ReportUrl = params.get("ReportUrl")
         self.Status = params.get("Status")
+        self.ReportUrl = params.get("ReportUrl")
         self.RequestId = params.get("RequestId")
 
 

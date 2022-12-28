@@ -1646,29 +1646,29 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReportUrl: 废除，字段无效
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReportUrl: str
-        :param ReportId: 出证报告 ID
+        :param ReportId: 出证报告 ID，用于查询出证报告接口DescribeChannelFlowEvidenceReport时用到
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
         :param Status: 执行中：EvidenceStatusExecuting
 成功：EvidenceStatusSuccess
 失败：EvidenceStatusFailed
         :type Status: str
+        :param ReportUrl: 废除，字段无效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.ReportUrl = None
         self.ReportId = None
         self.Status = None
+        self.ReportUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.ReportUrl = params.get("ReportUrl")
         self.ReportId = params.get("ReportId")
         self.Status = params.get("Status")
+        self.ReportUrl = params.get("ReportUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -2080,23 +2080,23 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReportId: 出证报告编号
-        :type ReportId: str
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param ReportId: 出证报告编号
+        :type ReportId: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
-        self.ReportId = None
         self.Agent = None
+        self.ReportId = None
         self.Operator = None
 
 
     def _deserialize(self, params):
-        self.ReportId = params.get("ReportId")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
+        self.ReportId = params.get("ReportId")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))

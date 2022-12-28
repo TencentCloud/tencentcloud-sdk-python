@@ -1157,6 +1157,36 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyTraceCodeUnlink(self, request):
+        """解绑溯源码和批次的关系，让溯源码重置为未关联的状态，以便关联其他批次
+        注意：溯源码必须属于指定的批次才会解绑
+
+        :param request: Request instance for ModifyTraceCodeUnlink.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ModifyTraceCodeUnlinkRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ModifyTraceCodeUnlinkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTraceCodeUnlink", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTraceCodeUnlinkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyTraceData(self, request):
         """修改溯源信息
 

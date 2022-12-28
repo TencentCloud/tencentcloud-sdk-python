@@ -3849,6 +3849,32 @@ class HostItem(AbstractModel):
         
 
 
+class HostPriceInfo(AbstractModel):
+    """cdh相关价格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostPrice: 描述了cdh实例相关的价格信息
+        :type HostPrice: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
+        """
+        self.HostPrice = None
+
+
+    def _deserialize(self, params):
+        if params.get("HostPrice") is not None:
+            self.HostPrice = ItemPrice()
+            self.HostPrice._deserialize(params.get("HostPrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostResource(AbstractModel):
     """专用宿主机实例的资源信息
 
@@ -4397,6 +4423,63 @@ class InquiryPriceModifyInstancesChargeTypeResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Price") is not None:
             self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
+        self.RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewHostsRequest(AbstractModel):
+    """InquiryPriceRenewHosts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostIds: 一个或多个待操作的`CDH`实例`ID`。可通过[`DescribeHosts`](https://cloud.tencent.com/document/api/213/16474)接口返回值中的`HostId`获取。每次请求批量实例的上限为100。
+        :type HostIds: list of str
+        :param HostChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+        :type HostChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.ChargePrepaid`
+        :param DryRun: 试运行，测试使用，不执行具体逻辑。取值范围：<br><li>TRUE：跳过执行逻辑<br><li>FALSE：执行逻辑<br><br>默认取值：FALSE。
+        :type DryRun: bool
+        """
+        self.HostIds = None
+        self.HostChargePrepaid = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        self.HostIds = params.get("HostIds")
+        if params.get("HostChargePrepaid") is not None:
+            self.HostChargePrepaid = ChargePrepaid()
+            self.HostChargePrepaid._deserialize(params.get("HostChargePrepaid"))
+        self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceRenewHostsResponse(AbstractModel):
+    """InquiryPriceRenewHosts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Price: CDH实例续费价格信息
+        :type Price: :class:`tencentcloud.cvm.v20170312.models.HostPriceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Price = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self.Price = HostPriceInfo()
             self.Price._deserialize(params.get("Price"))
         self.RequestId = params.get("RequestId")
 

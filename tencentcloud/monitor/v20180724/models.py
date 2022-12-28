@@ -8458,10 +8458,10 @@ class GrafanaNotificationChannel(AbstractModel):
         :type ExtraOrgIds: list of str
         :param OrgIds: 生效组织，已废弃，请使用 OrganizationIds
 注意：此字段可能返回 null，表示取不到有效值。
-        :type OrgIds: str
+        :type OrgIds: list of str
         :param OrganizationIds: 告警渠道的所有生效组织
 注意：此字段可能返回 null，表示取不到有效值。
-        :type OrganizationIds: str
+        :type OrganizationIds: list of str
         """
         self.ChannelId = None
         self.ChannelName = None

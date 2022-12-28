@@ -1636,6 +1636,36 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquiryPriceRenewHosts(self, request):
+        """本接口 (InquiryPriceRenewHosts) 用于续费包年包月`CDH`实例询价。
+        * 只支持查询包年包月`CDH`实例的续费价格。
+
+        :param request: Request instance for InquiryPriceRenewHosts.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceRenewHostsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceRenewHostsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceRenewHosts", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquiryPriceRenewHostsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceRenewInstances(self, request):
         """本接口 (InquiryPriceRenewInstances) 用于续费包年包月实例询价。
 

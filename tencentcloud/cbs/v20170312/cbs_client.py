@@ -220,6 +220,35 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDiskBackup(self, request):
+        """为云硬盘创建一个备份点。
+
+        :param request: Request instance for CreateDiskBackup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.CreateDiskBackupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CreateDiskBackupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDiskBackup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDiskBackupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDisks(self, request):
         """本接口（CreateDisks）用于创建云硬盘。
 

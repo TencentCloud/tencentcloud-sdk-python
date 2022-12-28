@@ -575,6 +575,55 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDiskBackupRequest(AbstractModel):
+    """CreateDiskBackup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: 要创建备份点的云硬盘名称。
+        :type DiskId: str
+        :param DiskBackupName: 云硬盘备份点名称。长度不能超过100个字符。
+        :type DiskBackupName: str
+        """
+        self.DiskId = None
+        self.DiskBackupName = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.DiskBackupName = params.get("DiskBackupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDiskBackupResponse(AbstractModel):
+    """CreateDiskBackup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskBackupId: 云硬盘备份点的ID。
+        :type DiskBackupId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskBackupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupId = params.get("DiskBackupId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDisksRequest(AbstractModel):
     """CreateDisks请求参数结构体
 

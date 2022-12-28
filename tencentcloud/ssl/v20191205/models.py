@@ -362,6 +362,9 @@ class Certificates(AbstractModel):
         :param PreAuditInfo: 证书预审核信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreAuditInfo: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
+        :param AutoRenewFlag: 是否自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
         """
         self.OwnerUin = None
         self.ProjectId = None
@@ -400,6 +403,7 @@ class Certificates(AbstractModel):
         self.CAEndTimes = None
         self.CACommonNames = None
         self.PreAuditInfo = None
+        self.AutoRenewFlag = None
 
 
     def _deserialize(self, params):
@@ -451,6 +455,7 @@ class Certificates(AbstractModel):
         if params.get("PreAuditInfo") is not None:
             self.PreAuditInfo = PreAuditInfo()
             self.PreAuditInfo._deserialize(params.get("PreAuditInfo"))
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

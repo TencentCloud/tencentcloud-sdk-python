@@ -908,6 +908,8 @@ class CreateScenarioRequest(AbstractModel):
         :type Plugins: list of FileInfo
         :param DomainNameConfig: 域名解析配置
         :type DomainNameConfig: :class:`tencentcloud.pts.v20210728.models.DomainNameConfig`
+        :param Owner: 创建人名
+        :type Owner: str
         """
         self.Name = None
         self.Type = None
@@ -926,6 +928,7 @@ class CreateScenarioRequest(AbstractModel):
         self.SLAPolicy = None
         self.Plugins = None
         self.DomainNameConfig = None
+        self.Owner = None
 
 
     def _deserialize(self, params):
@@ -977,6 +980,7 @@ class CreateScenarioRequest(AbstractModel):
         if params.get("DomainNameConfig") is not None:
             self.DomainNameConfig = DomainNameConfig()
             self.DomainNameConfig._deserialize(params.get("DomainNameConfig"))
+        self.Owner = params.get("Owner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2891,6 +2895,10 @@ class DescribeScenarioWithJobsRequest(AbstractModel):
         :type IgnoreScript: bool
         :param IgnoreDataset: 是否需要返回测试数据文件信息
         :type IgnoreDataset: bool
+        :param ScenarioType: 场景类型，如pts-http, pts-js, pts-trpc, pts-jmeter	
+        :type ScenarioType: str
+        :param Owner: 创建人员
+        :type Owner: str
         """
         self.Offset = None
         self.Limit = None
@@ -2903,6 +2911,8 @@ class DescribeScenarioWithJobsRequest(AbstractModel):
         self.ScenarioRelatedJobsParams = None
         self.IgnoreScript = None
         self.IgnoreDataset = None
+        self.ScenarioType = None
+        self.Owner = None
 
 
     def _deserialize(self, params):
@@ -2919,6 +2929,8 @@ class DescribeScenarioWithJobsRequest(AbstractModel):
             self.ScenarioRelatedJobsParams._deserialize(params.get("ScenarioRelatedJobsParams"))
         self.IgnoreScript = params.get("IgnoreScript")
         self.IgnoreDataset = params.get("IgnoreDataset")
+        self.ScenarioType = params.get("ScenarioType")
+        self.Owner = params.get("Owner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4753,6 +4765,9 @@ class Scenario(AbstractModel):
         :param NotificationHooks: 通知事件回调
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotificationHooks: list of NotificationHook
+        :param Owner: 创建人员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
         """
         self.ScenarioId = None
         self.Name = None
@@ -4779,6 +4794,7 @@ class Scenario(AbstractModel):
         self.Plugins = None
         self.DomainNameConfig = None
         self.NotificationHooks = None
+        self.Owner = None
 
 
     def _deserialize(self, params):
@@ -4843,6 +4859,7 @@ class Scenario(AbstractModel):
                 obj = NotificationHook()
                 obj._deserialize(item)
                 self.NotificationHooks.append(obj)
+        self.Owner = params.get("Owner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5505,6 +5522,8 @@ class UpdateScenarioRequest(AbstractModel):
         :type DomainNameConfig: :class:`tencentcloud.pts.v20210728.models.DomainNameConfig`
         :param NotificationHooks: WebHook请求配置
         :type NotificationHooks: list of Notification
+        :param Owner: 创建人名
+        :type Owner: str
         """
         self.ScenarioId = None
         self.Name = None
@@ -5526,6 +5545,7 @@ class UpdateScenarioRequest(AbstractModel):
         self.Plugins = None
         self.DomainNameConfig = None
         self.NotificationHooks = None
+        self.Owner = None
 
 
     def _deserialize(self, params):
@@ -5585,6 +5605,7 @@ class UpdateScenarioRequest(AbstractModel):
                 obj = Notification()
                 obj._deserialize(item)
                 self.NotificationHooks.append(obj)
+        self.Owner = params.get("Owner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
