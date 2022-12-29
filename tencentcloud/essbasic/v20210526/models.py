@@ -2318,6 +2318,8 @@ class DescribeTemplatesRequest(AbstractModel):
         :type WithPreviewUrl: bool
         :param WithPdfUrl: 是否获取模板的PDF文件链接-渠道版需要开启白名单时才能使用。
         :type WithPdfUrl: bool
+        :param ChannelTemplateId: 渠道模板ID
+        :type ChannelTemplateId: str
         """
         self.Agent = None
         self.TemplateId = None
@@ -2329,6 +2331,7 @@ class DescribeTemplatesRequest(AbstractModel):
         self.Operator = None
         self.WithPreviewUrl = None
         self.WithPdfUrl = None
+        self.ChannelTemplateId = None
 
 
     def _deserialize(self, params):
@@ -2346,6 +2349,7 @@ class DescribeTemplatesRequest(AbstractModel):
             self.Operator._deserialize(params.get("Operator"))
         self.WithPreviewUrl = params.get("WithPreviewUrl")
         self.WithPdfUrl = params.get("WithPdfUrl")
+        self.ChannelTemplateId = params.get("ChannelTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

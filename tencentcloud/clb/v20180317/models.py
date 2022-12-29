@@ -2348,6 +2348,72 @@ class DeleteTargetGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeregisterFunctionTargetsRequest(AbstractModel):
+    """DeregisterFunctionTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: 负载均衡实例 ID。
+        :type LoadBalancerId: str
+        :param ListenerId: 负载均衡监听器 ID。
+        :type ListenerId: str
+        :param FunctionTargets: 待解绑的云函数列表。
+        :type FunctionTargets: list of FunctionTarget
+        :param LocationId: 目标转发规则的 ID，当将云函数从七层转发规则上解绑时，必须输入此参数或 Domain+Url 参数。
+        :type LocationId: str
+        :param Domain: 目标转发规则的域名，若已经输入 LocationId 参数，则本参数不生效。
+        :type Domain: str
+        :param Url: 目标转发规则的 URL，若已经输入 LocationId 参数，则本参数不生效。
+        :type Url: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.FunctionTargets = None
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        if params.get("FunctionTargets") is not None:
+            self.FunctionTargets = []
+            for item in params.get("FunctionTargets"):
+                obj = FunctionTarget()
+                obj._deserialize(item)
+                self.FunctionTargets.append(obj)
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeregisterFunctionTargetsResponse(AbstractModel):
+    """DeregisterFunctionTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeregisterTargetGroupInstancesRequest(AbstractModel):
     """DeregisterTargetGroupInstances请求参数结构体
 
@@ -4475,6 +4541,74 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionInfo(AbstractModel):
+    """SCF云函数（Serverless Cloud Function）相关信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FunctionNamespace: 函数命名空间
+        :type FunctionNamespace: str
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param FunctionQualifier: 函数的版本名称或别名
+        :type FunctionQualifier: str
+        :param FunctionQualifierType: 标识 FunctionQualifier 参数的类型，可取值： VERSION（版本）、ALIAS（别名）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FunctionQualifierType: str
+        """
+        self.FunctionNamespace = None
+        self.FunctionName = None
+        self.FunctionQualifier = None
+        self.FunctionQualifierType = None
+
+
+    def _deserialize(self, params):
+        self.FunctionNamespace = params.get("FunctionNamespace")
+        self.FunctionName = params.get("FunctionName")
+        self.FunctionQualifier = params.get("FunctionQualifier")
+        self.FunctionQualifierType = params.get("FunctionQualifierType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionTarget(AbstractModel):
+    """SCF云函数（Serverless Cloud Function）作为后端服务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Function: 云函数相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Function: :class:`tencentcloud.clb.v20180317.models.FunctionInfo`
+        :param Weight: 权重
+        :type Weight: int
+        """
+        self.Function = None
+        self.Weight = None
+
+
+    def _deserialize(self, params):
+        if params.get("Function") is not None:
+            self.Function = FunctionInfo()
+            self.Function._deserialize(params.get("Function"))
+        self.Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6725,6 +6859,29 @@ class Quota(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RegisterFunctionTargetsRequest(AbstractModel):
+    """RegisterFunctionTargets请求参数结构体
+
+    """
+
+
+class RegisterFunctionTargetsResponse(AbstractModel):
+    """RegisterFunctionTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RegisterTargetGroupInstancesRequest(AbstractModel):

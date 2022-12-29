@@ -1774,6 +1774,9 @@ class CCN(AbstractModel):
         :param RouteTableFlag: 是否开启云联网多路由表特性。False：未开启，True：开启。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableFlag: bool
+        :param RouteBroadcastPolicyFlag: 是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteBroadcastPolicyFlag: bool
         """
         self.CcnId = None
         self.CcnName = None
@@ -1788,6 +1791,7 @@ class CCN(AbstractModel):
         self.RoutePriorityFlag = None
         self.RouteTableCount = None
         self.RouteTableFlag = None
+        self.RouteBroadcastPolicyFlag = None
 
 
     def _deserialize(self, params):
@@ -1809,6 +1813,7 @@ class CCN(AbstractModel):
         self.RoutePriorityFlag = params.get("RoutePriorityFlag")
         self.RouteTableCount = params.get("RouteTableCount")
         self.RouteTableFlag = params.get("RouteTableFlag")
+        self.RouteBroadcastPolicyFlag = params.get("RouteBroadcastPolicyFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

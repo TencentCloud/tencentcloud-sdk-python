@@ -18,6 +18,44 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Ability(AbstractModel):
+    """集群支持的功能
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsSupportSlaveZone: 是否支持从可用区
+        :type IsSupportSlaveZone: str
+        :param NonsupportSlaveZoneReason: 不支持从可用区的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NonsupportSlaveZoneReason: str
+        :param IsSupportRo: 是否支持RO实例
+        :type IsSupportRo: str
+        :param NonsupportRoReason: 不支持RO实例的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NonsupportRoReason: str
+        """
+        self.IsSupportSlaveZone = None
+        self.NonsupportSlaveZoneReason = None
+        self.IsSupportRo = None
+        self.NonsupportRoReason = None
+
+
+    def _deserialize(self, params):
+        self.IsSupportSlaveZone = params.get("IsSupportSlaveZone")
+        self.NonsupportSlaveZoneReason = params.get("NonsupportSlaveZoneReason")
+        self.IsSupportRo = params.get("IsSupportRo")
+        self.NonsupportRoReason = params.get("NonsupportRoReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Account(AbstractModel):
     """数据库账号信息
 
@@ -739,6 +777,8 @@ class ClusterInstanceDetail(AbstractModel):
         :type InstanceMemory: int
         :param InstanceStorage: 硬盘
         :type InstanceStorage: int
+        :param InstanceRole: 实例角色
+        :type InstanceRole: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -748,6 +788,7 @@ class ClusterInstanceDetail(AbstractModel):
         self.InstanceCpu = None
         self.InstanceMemory = None
         self.InstanceStorage = None
+        self.InstanceRole = None
 
 
     def _deserialize(self, params):
@@ -759,6 +800,7 @@ class ClusterInstanceDetail(AbstractModel):
         self.InstanceCpu = params.get("InstanceCpu")
         self.InstanceMemory = params.get("InstanceMemory")
         self.InstanceStorage = params.get("InstanceStorage")
+        self.InstanceRole = params.get("InstanceRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1301,59 +1343,109 @@ deleted:已删除
         :param InstanceNum: 实例数
         :type InstanceNum: int
         :param Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
         :param DbType: 引擎类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type DbType: str
         :param AppId: 用户appid
+注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param StatusDesc: 集群状态描述
+注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
         :param CreateTime: 集群创建时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         :param PayMode: 付费模式。0-按量计费，1-包年包月
+注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
         :param PeriodEndTime: 截止时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodEndTime: str
         :param Vip: 集群读写vip
+注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
         :param Vport: 集群读写vport
+注意：此字段可能返回 null，表示取不到有效值。
         :type Vport: int
         :param ProjectID: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectID: int
         :param VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
         :param CynosVersion: cynos内核版本
+注意：此字段可能返回 null，表示取不到有效值。
         :type CynosVersion: str
         :param StorageLimit: 存储容量
+注意：此字段可能返回 null，表示取不到有效值。
         :type StorageLimit: int
         :param RenewFlag: 续费标志
+注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param ProcessingTask: 正在处理的任务
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessingTask: str
         :param Tasks: 集群的任务数组
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of ObjectTask
         :param ResourceTags: 集群绑定的tag数组
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
         :param DbMode: Db类型(NORMAL, SERVERLESS)
+注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
         :param ServerlessStatus: 当Db类型为SERVERLESS时，serverless集群状态，可选值:
 resume
 pause
+注意：此字段可能返回 null，表示取不到有效值。
         :type ServerlessStatus: str
         :param Storage: 集群预付费存储值大小
+注意：此字段可能返回 null，表示取不到有效值。
         :type Storage: int
         :param StorageId: 集群存储为预付费时的存储ID，用于预付费存储变配
+注意：此字段可能返回 null，表示取不到有效值。
         :type StorageId: str
         :param StoragePayMode: 集群存储付费模式。0-按量计费，1-包年包月
+注意：此字段可能返回 null，表示取不到有效值。
         :type StoragePayMode: int
         :param MinStorageSize: 集群计算规格对应的最小存储值
+注意：此字段可能返回 null，表示取不到有效值。
         :type MinStorageSize: int
         :param MaxStorageSize: 集群计算规格对应的最大存储值
+注意：此字段可能返回 null，表示取不到有效值。
         :type MaxStorageSize: int
         :param NetAddrs: 集群网络信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type NetAddrs: list of NetAddr
+        :param PhysicalZone: 物理可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhysicalZone: str
+        :param MasterZone: 主可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterZone: str
+        :param HasSlaveZone: 是否有从可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasSlaveZone: str
+        :param SlaveZones: 从可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZones: list of str
+        :param BusinessType: 商业类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessType: str
+        :param IsFreeze: 是否冻结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFreeze: str
+        :param OrderSource: 订单来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderSource: str
+        :param Ability: 能力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
         """
         self.Status = None
         self.UpdateTime = None
@@ -1389,6 +1481,14 @@ pause
         self.MinStorageSize = None
         self.MaxStorageSize = None
         self.NetAddrs = None
+        self.PhysicalZone = None
+        self.MasterZone = None
+        self.HasSlaveZone = None
+        self.SlaveZones = None
+        self.BusinessType = None
+        self.IsFreeze = None
+        self.OrderSource = None
+        self.Ability = None
 
 
     def _deserialize(self, params):
@@ -1441,6 +1541,16 @@ pause
                 obj = NetAddr()
                 obj._deserialize(item)
                 self.NetAddrs.append(obj)
+        self.PhysicalZone = params.get("PhysicalZone")
+        self.MasterZone = params.get("MasterZone")
+        self.HasSlaveZone = params.get("HasSlaveZone")
+        self.SlaveZones = params.get("SlaveZones")
+        self.BusinessType = params.get("BusinessType")
+        self.IsFreeze = params.get("IsFreeze")
+        self.OrderSource = params.get("OrderSource")
+        if params.get("Ability") is not None:
+            self.Ability = Ability()
+            self.Ability._deserialize(params.get("Ability"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1509,6 +1619,72 @@ resuming
 pause
 pausing
         :type ServerlessStatus: str
+        :param LogBin: binlog开关，可选值：ON, OFF
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogBin: str
+        :param PitrType: pitr类型，可选值：normal, redo_pitr
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PitrType: str
+        :param PhysicalZone: 物理可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhysicalZone: str
+        :param StorageId: 存储Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageId: str
+        :param Storage: 存储大小，单位为G
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Storage: int
+        :param MaxStorageSize: 最大存储规格，单位为G
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxStorageSize: int
+        :param MinStorageSize: 最小存储规格，单位为G
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinStorageSize: int
+        :param StoragePayMode: 存储付费类型，1为包年包月，0为按量计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoragePayMode: int
+        :param DbMode: 数据库类型，normal，serverless
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbMode: str
+        :param StorageLimit: 存储空间上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageLimit: int
+        :param Ability: 集群支持的功能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ability: :class:`tencentcloud.cynosdb.v20190107.models.Ability`
+        :param CynosVersion: cynos版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CynosVersion: str
+        :param BusinessType: 商业类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessType: str
+        :param HasSlaveZone: 是否有从可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasSlaveZone: str
+        :param IsFreeze: 是否冻结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFreeze: str
+        :param Tasks: 任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of ObjectTask
+        :param MasterZone: 主可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterZone: str
+        :param SlaveZones: 从可用区列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZones: list of str
+        :param ProxyStatus: Proxy状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyStatus: str
+        :param IsSkipTrade: 是否跳过交易
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSkipTrade: str
+        :param IsOpenPasswordComplexity: 是否打开密码复杂度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOpenPasswordComplexity: str
+        :param NetworkStatus: 网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkStatus: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -1534,6 +1710,28 @@ pausing
         self.Zone = None
         self.ResourceTags = None
         self.ServerlessStatus = None
+        self.LogBin = None
+        self.PitrType = None
+        self.PhysicalZone = None
+        self.StorageId = None
+        self.Storage = None
+        self.MaxStorageSize = None
+        self.MinStorageSize = None
+        self.StoragePayMode = None
+        self.DbMode = None
+        self.StorageLimit = None
+        self.Ability = None
+        self.CynosVersion = None
+        self.BusinessType = None
+        self.HasSlaveZone = None
+        self.IsFreeze = None
+        self.Tasks = None
+        self.MasterZone = None
+        self.SlaveZones = None
+        self.ProxyStatus = None
+        self.IsSkipTrade = None
+        self.IsOpenPasswordComplexity = None
+        self.NetworkStatus = None
 
 
     def _deserialize(self, params):
@@ -1576,6 +1774,35 @@ pausing
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.ServerlessStatus = params.get("ServerlessStatus")
+        self.LogBin = params.get("LogBin")
+        self.PitrType = params.get("PitrType")
+        self.PhysicalZone = params.get("PhysicalZone")
+        self.StorageId = params.get("StorageId")
+        self.Storage = params.get("Storage")
+        self.MaxStorageSize = params.get("MaxStorageSize")
+        self.MinStorageSize = params.get("MinStorageSize")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.DbMode = params.get("DbMode")
+        self.StorageLimit = params.get("StorageLimit")
+        if params.get("Ability") is not None:
+            self.Ability = Ability()
+            self.Ability._deserialize(params.get("Ability"))
+        self.CynosVersion = params.get("CynosVersion")
+        self.BusinessType = params.get("BusinessType")
+        self.HasSlaveZone = params.get("HasSlaveZone")
+        self.IsFreeze = params.get("IsFreeze")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZones = params.get("SlaveZones")
+        self.ProxyStatus = params.get("ProxyStatus")
+        self.IsSkipTrade = params.get("IsSkipTrade")
+        self.IsOpenPasswordComplexity = params.get("IsOpenPasswordComplexity")
+        self.NetworkStatus = params.get("NetworkStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5129,6 +5356,12 @@ class NetAddr(AbstractModel):
         :param Description: 描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param WanIP: 外网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanIP: str
+        :param WanStatus: 外网状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanStatus: str
         """
         self.Vip = None
         self.Vport = None
@@ -5138,6 +5371,8 @@ class NetAddr(AbstractModel):
         self.UniqSubnetId = None
         self.UniqVpcId = None
         self.Description = None
+        self.WanIP = None
+        self.WanStatus = None
 
 
     def _deserialize(self, params):
@@ -5149,6 +5384,8 @@ class NetAddr(AbstractModel):
         self.UniqSubnetId = params.get("UniqSubnetId")
         self.UniqVpcId = params.get("UniqVpcId")
         self.Description = params.get("Description")
+        self.WanIP = params.get("WanIP")
+        self.WanStatus = params.get("WanStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5159,25 +5396,28 @@ class NetAddr(AbstractModel):
 
 
 class NewAccount(AbstractModel):
-    """新创建的账号
+    """x08新创建的账号
 
     """
 
     def __init__(self):
         r"""
-        :param AccountName: 账户名
+        :param AccountName: 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-16
         :type AccountName: str
-        :param AccountPassword: 密码
+        :param AccountPassword: 密码，密码长度范围为8到64个字符
         :type AccountPassword: str
         :param Host: 主机
         :type Host: str
         :param Description: 描述
         :type Description: str
+        :param MaxUserConnections: 用户最大连接数，不能大于10240
+        :type MaxUserConnections: int
         """
         self.AccountName = None
         self.AccountPassword = None
         self.Host = None
         self.Description = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -5185,6 +5425,7 @@ class NewAccount(AbstractModel):
         self.AccountPassword = params.get("AccountPassword")
         self.Host = params.get("Host")
         self.Description = params.get("Description")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
