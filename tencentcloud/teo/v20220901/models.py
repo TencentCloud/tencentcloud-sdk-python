@@ -6201,6 +6201,73 @@ class DescribeOriginGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOriginProtectionRequest(AbstractModel):
+    """DescribeOriginProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneIds: 查询的站点集合，不填默认查询所有站点。
+        :type ZoneIds: list of str
+        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+<li>need-update<br>   按照【<strong>站点是否需要更新源站防护IP白名单</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：需要更新<br>   false：无需更新<br></li>
+<li>plan-support<br>   按照【<strong>站点套餐是否支持源站防护</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：支持<br>   false：不支持<br></li>
+        :type Filters: :class:`tencentcloud.teo.v20220901.models.Filter`
+        :param Offset: 分页查询偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 分页查询限制数目。默认值：20，最大值：1000。
+        :type Limit: int
+        """
+        self.ZoneIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ZoneIds = params.get("ZoneIds")
+        if params.get("Filters") is not None:
+            self.Filters = Filter()
+            self.Filters._deserialize(params.get("Filters"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOriginProtectionResponse(AbstractModel):
+    """DescribeOriginProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginProtectionInfo: 源站防护信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginProtectionInfo: list of OriginProtectionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OriginProtectionInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("OriginProtectionInfo") is not None:
+            self.OriginProtectionInfo = []
+            for item in params.get("OriginProtectionInfo"):
+                obj = OriginProtectionInfo()
+                obj._deserialize(item)
+                self.OriginProtectionInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOverviewL7DataRequest(AbstractModel):
     """DescribeOverviewL7Data请求参数结构体
 
@@ -8990,6 +9057,50 @@ class DetailHost(AbstractModel):
         
 
 
+class DiffIPWhitelist(AbstractModel):
+    """最新IP白名单列表相比于当前IP白名单列表的区别
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LatestIPWhitelist: 最新IP白名单列表。
+        :type LatestIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        :param AddedIPWhitelist: 最新IP白名单列表相比于当前IP白名单列表，新增部分。
+        :type AddedIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        :param RemovedIPWhitelist: 最新IP白名单列表相比于当前IP白名单列表，删减部分。
+        :type RemovedIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        :param NoChangeIPWhitelist: 最新IP白名单列表相比于当前IP白名单列表，不变部分。
+        :type NoChangeIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        """
+        self.LatestIPWhitelist = None
+        self.AddedIPWhitelist = None
+        self.RemovedIPWhitelist = None
+        self.NoChangeIPWhitelist = None
+
+
+    def _deserialize(self, params):
+        if params.get("LatestIPWhitelist") is not None:
+            self.LatestIPWhitelist = IPWhitelist()
+            self.LatestIPWhitelist._deserialize(params.get("LatestIPWhitelist"))
+        if params.get("AddedIPWhitelist") is not None:
+            self.AddedIPWhitelist = IPWhitelist()
+            self.AddedIPWhitelist._deserialize(params.get("AddedIPWhitelist"))
+        if params.get("RemovedIPWhitelist") is not None:
+            self.RemovedIPWhitelist = IPWhitelist()
+            self.RemovedIPWhitelist._deserialize(params.get("RemovedIPWhitelist"))
+        if params.get("NoChangeIPWhitelist") is not None:
+            self.NoChangeIPWhitelist = IPWhitelist()
+            self.NoChangeIPWhitelist._deserialize(params.get("NoChangeIPWhitelist"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DistrictStatistics(AbstractModel):
     """拨测分地域统计数据
 
@@ -9901,6 +10012,34 @@ class Https(AbstractModel):
                 obj._deserialize(item)
                 self.CertInfo.append(obj)
         self.ApplyType = params.get("ApplyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPWhitelist(AbstractModel):
+    """源站防护IP白名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IPv4: IPv4列表。
+        :type IPv4: list of str
+        :param IPv6: IPv6列表。
+        :type IPv6: list of str
+        """
+        self.IPv4 = None
+        self.IPv6 = None
+
+
+    def _deserialize(self, params):
+        self.IPv4 = params.get("IPv4")
+        self.IPv6 = params.get("IPv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12198,6 +12337,71 @@ class OriginGroup(AbstractModel):
                 self.OriginRecords.append(obj)
         self.UpdateTime = params.get("UpdateTime")
         self.HostHeader = params.get("HostHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginProtectionInfo(AbstractModel):
+    """源站防护信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点ID。
+        :type ZoneId: str
+        :param Hosts: 域名列表。
+        :type Hosts: list of str
+        :param ProxyIds: 代理ID列表。
+        :type ProxyIds: list of str
+        :param CurrentIPWhitelist: 当前版本的IP白名单。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentIPWhitelist: :class:`tencentcloud.teo.v20220901.models.IPWhitelist`
+        :param NeedUpdate: 该站点是否需要更新源站白名单，取值有：
+<li>true ：需要更新IP白名单 ；</li>
+<li>false ：无需更新IP白名单。</li>
+        :type NeedUpdate: bool
+        :param Status: 源站防护状态，取值有：
+<li>online ：源站防护启用中 ；</li>
+<li>offline ：源站防护已停用 ；</li>
+<li>nonactivate ：源站防护未激活，仅在从未使用过源站防护功能的站点调用中返回。</li>
+        :type Status: str
+        :param PlanSupport: 站点套餐是否支持源站防护，取值有：
+<li>true ：支持 ；</li>
+<li>false ：不支持。</li>
+        :type PlanSupport: bool
+        :param DiffIPWhitelist: 最新IP白名单与当前IP白名单的对比。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiffIPWhitelist: :class:`tencentcloud.teo.v20220901.models.DiffIPWhitelist`
+        """
+        self.ZoneId = None
+        self.Hosts = None
+        self.ProxyIds = None
+        self.CurrentIPWhitelist = None
+        self.NeedUpdate = None
+        self.Status = None
+        self.PlanSupport = None
+        self.DiffIPWhitelist = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Hosts = params.get("Hosts")
+        self.ProxyIds = params.get("ProxyIds")
+        if params.get("CurrentIPWhitelist") is not None:
+            self.CurrentIPWhitelist = IPWhitelist()
+            self.CurrentIPWhitelist._deserialize(params.get("CurrentIPWhitelist"))
+        self.NeedUpdate = params.get("NeedUpdate")
+        self.Status = params.get("Status")
+        self.PlanSupport = params.get("PlanSupport")
+        if params.get("DiffIPWhitelist") is not None:
+            self.DiffIPWhitelist = DiffIPWhitelist()
+            self.DiffIPWhitelist._deserialize(params.get("DiffIPWhitelist"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15269,6 +15473,47 @@ class TopEntryValue(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateOriginProtectionIPWhitelistRequest(AbstractModel):
+    """UpdateOriginProtectionIPWhitelist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点ID。
+        :type ZoneId: str
+        """
+        self.ZoneId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOriginProtectionIPWhitelistResponse(AbstractModel):
+    """UpdateOriginProtectionIPWhitelist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpstreamHttp2(AbstractModel):

@@ -461,8 +461,10 @@ class CallBackRuleInfo(AbstractModel):
     def __init__(self):
         r"""
         :param CreateTime: 规则创建时间。
+注：此字段为北京时间（UTC+8时区）。
         :type CreateTime: str
         :param UpdateTime: 规则更新时间。
+注：此字段为北京时间（UTC+8时区）。
         :type UpdateTime: str
         :param TemplateId: 模板 ID。
         :type TemplateId: int
@@ -702,6 +704,7 @@ class CertInfo(AbstractModel):
         :param Description: 描述信息。
         :type Description: str
         :param CreateTime: 创建时间，UTC 格式。
+注：此字段为北京时间（UTC+8时区）。
         :type CreateTime: str
         :param HttpsCrt: 证书内容。
         :type HttpsCrt: str
@@ -710,6 +713,7 @@ class CertInfo(AbstractModel):
 1：腾讯云托管证书。
         :type CertType: int
         :param CertExpireTime: 证书过期时间，UTC 格式。
+注：此字段为北京时间（UTC+8时区）。
         :type CertExpireTime: str
         :param DomainList: 使用此证书的域名列表。
         :type DomainList: list of str
@@ -7347,6 +7351,7 @@ class DomainCertInfo(AbstractModel):
         :param Description: 描述信息。
         :type Description: str
         :param CreateTime: 创建时间，UTC格式。
+注：此字段为北京时间（UTC+8时区）。
         :type CreateTime: str
         :param HttpsCrt: 证书内容。
         :type HttpsCrt: str
@@ -7355,6 +7360,7 @@ class DomainCertInfo(AbstractModel):
 1：腾讯云托管证书。
         :type CertType: int
         :param CertExpireTime: 证书过期时间，UTC格式。
+注：此字段为北京时间（UTC+8时区）。
         :type CertExpireTime: str
         :param DomainName: 使用此证书的域名名称。
         :type DomainName: str
@@ -7462,6 +7468,7 @@ class DomainInfo(AbstractModel):
 1: 启用。
         :type Status: int
         :param CreateTime: 添加时间。
+注：此字段为北京时间（UTC+8时区）。
         :type CreateTime: str
         :param BCName: 是否有 CName 到固定规则域名:
 0: 否。
@@ -7483,6 +7490,7 @@ class DomainInfo(AbstractModel):
         :param RentTag: 失效参数，可忽略。
         :type RentTag: int
         :param RentExpireTime: 失效参数，可忽略。
+注：此字段为北京时间（UTC+8时区）。
         :type RentExpireTime: str
         :param IsMiniProgramLive: 0: 标准直播。
 1: 小程序直播。
@@ -7785,8 +7793,10 @@ class ForbidStreamInfo(AbstractModel):
         :param StreamName: 流名称。
         :type StreamName: str
         :param CreateTime: 创建时间。
+注：此字段为北京时间（UTC+8时区）。
         :type CreateTime: str
         :param ExpireTime: 禁推过期时间。
+注：此字段为北京时间（UTC+8时区）。
         :type ExpireTime: str
         :param AppName: 推流路径。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -8058,12 +8068,14 @@ class LiveDomainCertBindings(AbstractModel):
 0：已关闭。
         :type Status: int
         :param CertExpireTime: 证书过期时间。
+注：此字段为北京时间（UTC+8时区）。
         :type CertExpireTime: str
         :param CertId: 证书Id。
         :type CertId: int
         :param CloudCertId: 腾讯云ssl的证书Id。
         :type CloudCertId: str
         :param UpdateTime: 规则最后更新时间。
+注：此字段为北京时间（UTC+8时区）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
@@ -8119,8 +8131,10 @@ class LivePackageInfo(AbstractModel):
 当为连麦包时单位为小时。
         :type Left: int
         :param BuyTime: 购买时间。
+注：此字段为北京时间（UTC+8时区）。
         :type BuyTime: str
         :param ExpireTime: 过期时间。
+注：此字段为北京时间（UTC+8时区）。
         :type ExpireTime: str
         :param Type: 包类型，可选值:
 0: 流量包。
@@ -8177,6 +8191,7 @@ class LogInfo(AbstractModel):
         :param LogUrl: 日志 URL。
         :type LogUrl: str
         :param LogTime: 日志生成时间。
+注：此字段为北京时间（UTC+8时区）。
         :type LogTime: str
         :param FileSize: 文件大小。
         :type FileSize: int
@@ -10490,8 +10505,10 @@ class RuleInfo(AbstractModel):
     def __init__(self):
         r"""
         :param CreateTime: 规则创建时间。
+注：此字段为北京时间（UTC+8时区）。
         :type CreateTime: str
         :param UpdateTime: 规则更新时间。
+注：此字段为北京时间（UTC+8时区）。
         :type UpdateTime: str
         :param TemplateId: 模板 ID。
         :type TemplateId: int
@@ -11422,6 +11439,7 @@ class WatermarkInfo(AbstractModel):
         :param Status: 当前状态。0：未使用，1:使用中。
         :type Status: int
         :param CreateTime: 添加时间。
+注：此字段为北京时间（UTC+8时区）。
         :type CreateTime: str
         :param Width: 水印宽。
         :type Width: int

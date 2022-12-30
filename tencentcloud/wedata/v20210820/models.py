@@ -3240,6 +3240,36 @@ class CreateWorkflowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CvmAgentStatus(AbstractModel):
+    """采集器状态统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: agent状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Count: 对应状态的agent总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.Status = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DailyScoreInfo(AbstractModel):
     """日评分信息
 
@@ -5559,7 +5589,7 @@ class DescribeInLongAgentListRequest(AbstractModel):
         :type AgentId: str
         :param AgentName: Agent Name
         :type AgentName: str
-        :param AgentType: 集群类型，1：TKE Agent，2：BOSS SDK，默认：1
+        :param AgentType: 集群类型，1：TKE Agent，2：BOSS SDK，默认：1，3：CVM，4：自建服务器 【传多个用逗号分割】
         :type AgentType: int
         :param Status: Agent状态(running运行中，initializing 操作中，failed心跳异常)
         :type Status: str
@@ -5571,6 +5601,8 @@ class DescribeInLongAgentListRequest(AbstractModel):
         :type PageSize: int
         :param Like: 名称搜索是否开启模糊匹配，1：开启，0：不开启（精确匹配）
         :type Like: int
+        :param AgentTypes: agent类型【多个用逗号分隔】
+        :type AgentTypes: str
         """
         self.ProjectId = None
         self.AgentId = None
@@ -5581,6 +5613,7 @@ class DescribeInLongAgentListRequest(AbstractModel):
         self.PageIndex = None
         self.PageSize = None
         self.Like = None
+        self.AgentTypes = None
 
 
     def _deserialize(self, params):
@@ -5593,6 +5626,7 @@ class DescribeInLongAgentListRequest(AbstractModel):
         self.PageIndex = params.get("PageIndex")
         self.PageSize = params.get("PageSize")
         self.Like = params.get("Like")
+        self.AgentTypes = params.get("AgentTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11470,6 +11504,15 @@ class InLongAgentDetail(AbstractModel):
         :type ExecutorGroupName: str
         :param TaskCount: 关联任务数
         :type TaskCount: int
+        :param AgentGroupId: 采集器组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentGroupId: str
+        :param CvmAgentStatusList: agent状态统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvmAgentStatusList: list of CvmAgentStatus
+        :param AgentTotal: agent数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentTotal: int
         """
         self.AgentId = None
         self.AgentName = None
@@ -11481,6 +11524,9 @@ class InLongAgentDetail(AbstractModel):
         self.ExecutorGroupId = None
         self.ExecutorGroupName = None
         self.TaskCount = None
+        self.AgentGroupId = None
+        self.CvmAgentStatusList = None
+        self.AgentTotal = None
 
 
     def _deserialize(self, params):
@@ -11494,6 +11540,14 @@ class InLongAgentDetail(AbstractModel):
         self.ExecutorGroupId = params.get("ExecutorGroupId")
         self.ExecutorGroupName = params.get("ExecutorGroupName")
         self.TaskCount = params.get("TaskCount")
+        self.AgentGroupId = params.get("AgentGroupId")
+        if params.get("CvmAgentStatusList") is not None:
+            self.CvmAgentStatusList = []
+            for item in params.get("CvmAgentStatusList"):
+                obj = CvmAgentStatus()
+                obj._deserialize(item)
+                self.CvmAgentStatusList.append(obj)
+        self.AgentTotal = params.get("AgentTotal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

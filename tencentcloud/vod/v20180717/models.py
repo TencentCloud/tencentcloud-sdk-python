@@ -6910,12 +6910,15 @@ class CreateProcedureTemplateRequest(AbstractModel):
         :type Comment: str
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: AI 内容审核类型任务参数。
+        :param AiContentReviewTask: AI 内容审核类型任务参数 \*。
+<font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: AI 内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: AI 内容识别类型任务参数。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
+        :param ReviewAudioVideoTask: 音视频审核类型任务参数。
+        :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
         """
         self.Name = None
         self.SubAppId = None
@@ -6924,6 +6927,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
         self.AiRecognitionTask = None
+        self.ReviewAudioVideoTask = None
 
 
     def _deserialize(self, params):
@@ -6942,6 +6946,9 @@ class CreateProcedureTemplateRequest(AbstractModel):
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        if params.get("ReviewAudioVideoTask") is not None:
+            self.ReviewAudioVideoTask = ProcedureReviewAudioVideoTaskInput()
+            self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10678,6 +10685,8 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Names: 任务流模板名字过滤条件，数组长度限制：100。
         :type Names: list of str
         :param Type: 任务流模板类型过滤条件，可选值：
@@ -10688,22 +10697,20 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Names = None
         self.Type = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Names = params.get("Names")
         self.Type = params.get("Type")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19960,6 +19967,36 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class ProcedureReviewAudioVideoTaskInput(AbstractModel):
+    """任务流模板音视频审核输入参数类型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 审核模板。
+        :type Definition: int
+        :param ReviewContents: 审核的内容，可选值：
+<li>Media：原始音视频。</li>
+不填或填空数组时，默认为审核 Media。
+        :type ReviewContents: list of str
+        """
+        self.Definition = None
+        self.ReviewContents = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.ReviewContents = params.get("ReviewContents")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProcedureTask(AbstractModel):
     """音视频处理任务信息
 
@@ -20106,7 +20143,8 @@ class ProcedureTemplate(AbstractModel):
         :param MediaProcessTask: 视频处理类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: AI 智能审核类型任务参数。
+        :param AiContentReviewTask: AI 智能审核类型任务参数 \*。
+<font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: AI 智能内容分析类型任务参数。
@@ -20118,6 +20156,9 @@ class ProcedureTemplate(AbstractModel):
         :param MiniProgramPublishTask: 微信小程序发布任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTaskInput`
+        :param ReviewAudioVideoTask: 音视频审核类型任务参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
         :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -20131,6 +20172,7 @@ class ProcedureTemplate(AbstractModel):
         self.AiAnalysisTask = None
         self.AiRecognitionTask = None
         self.MiniProgramPublishTask = None
+        self.ReviewAudioVideoTask = None
         self.CreateTime = None
         self.UpdateTime = None
 
@@ -20154,6 +20196,9 @@ class ProcedureTemplate(AbstractModel):
         if params.get("MiniProgramPublishTask") is not None:
             self.MiniProgramPublishTask = WechatMiniProgramPublishTaskInput()
             self.MiniProgramPublishTask._deserialize(params.get("MiniProgramPublishTask"))
+        if params.get("ReviewAudioVideoTask") is not None:
+            self.ReviewAudioVideoTask = ProcedureReviewAudioVideoTaskInput()
+            self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
@@ -21584,30 +21629,35 @@ class ResetProcedureTemplateRequest(AbstractModel):
         r"""
         :param Name: 任务流名字
         :type Name: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: AI 智能内容审核类型任务参数。
+        :param AiContentReviewTask: AI 智能内容审核类型任务参数 \*。
+<font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: AI 智能内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: AI 内容识别类型任务参数。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
+        :param ReviewAudioVideoTask: 音视频审核类型任务参数。
+        :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
         """
         self.Name = None
+        self.SubAppId = None
         self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
         self.AiRecognitionTask = None
-        self.SubAppId = None
+        self.ReviewAudioVideoTask = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
         self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
@@ -21621,7 +21671,9 @@ class ResetProcedureTemplateRequest(AbstractModel):
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
-        self.SubAppId = params.get("SubAppId")
+        if params.get("ReviewAudioVideoTask") is not None:
+            self.ReviewAudioVideoTask = ProcedureReviewAudioVideoTaskInput()
+            self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

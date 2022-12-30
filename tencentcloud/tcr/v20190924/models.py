@@ -1115,59 +1115,6 @@ class CreateRepositoryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateSecurityPoliciesRequest(AbstractModel):
-    """CreateSecurityPolicies请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RegistryId: 实例Id
-        :type RegistryId: str
-        :param CidrBlock: 192.168.0.0/24
-        :type CidrBlock: str
-        :param Description: 描述
-        :type Description: str
-        """
-        self.RegistryId = None
-        self.CidrBlock = None
-        self.Description = None
-
-
-    def _deserialize(self, params):
-        self.RegistryId = params.get("RegistryId")
-        self.CidrBlock = params.get("CidrBlock")
-        self.Description = params.get("Description")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateSecurityPoliciesResponse(AbstractModel):
-    """CreateSecurityPolicies返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RegistryId: 实例Id
-        :type RegistryId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RegistryId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RegistryId = params.get("RegistryId")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateSecurityPolicyRequest(AbstractModel):
     """CreateSecurityPolicy请求参数结构体
 

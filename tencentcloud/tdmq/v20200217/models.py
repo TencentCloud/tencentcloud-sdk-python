@@ -8189,6 +8189,10 @@ class RocketMQTopic(AbstractModel):
         r"""
         :param Name: 主题名称
         :type Name: str
+        :param Type: 主题的类别，为枚举类型，Normal，GlobalOrder，PartitionedOrder，Transaction，Retry及DeadLetter
+        :type Type: str
+        :param GroupNum: 订阅组数量
+        :type GroupNum: int
         :param Remark: 说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
@@ -8200,6 +8204,8 @@ class RocketMQTopic(AbstractModel):
         :type UpdateTime: int
         """
         self.Name = None
+        self.Type = None
+        self.GroupNum = None
         self.Remark = None
         self.PartitionNum = None
         self.CreateTime = None
@@ -8208,6 +8214,8 @@ class RocketMQTopic(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.GroupNum = params.get("GroupNum")
         self.Remark = params.get("Remark")
         self.PartitionNum = params.get("PartitionNum")
         self.CreateTime = params.get("CreateTime")

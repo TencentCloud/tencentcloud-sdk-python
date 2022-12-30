@@ -230,7 +230,7 @@ INVALIDPARAMETER_INVALIDRESOURCEIDS = 'InvalidParameter.InvalidResourceIds'
 # 无效的资源规格。
 INVALIDPARAMETER_INVALIDRESOURCESPEC = 'InvalidParameter.InvalidResourceSpec'
 
-# 不合法的引导脚步执行参数。
+# 不合法的引导脚本执行参数。
 INVALIDPARAMETER_INVALIDSCRIPTBOOTSTRAPACTIONCONFIG = 'InvalidParameter.InvalidScriptBootstrapActionConfig'
 
 # 该EMR版本不支持开启安全模式。

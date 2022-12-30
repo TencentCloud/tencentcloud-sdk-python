@@ -260,6 +260,10 @@ class AddInstancesRequest(AbstractModel):
         :type OrderSource: str
         :param DealMode: 交易模式 0-下单并支付 1-下单
         :type DealMode: int
+        :param ParamTemplateId: 参数模版ID
+        :type ParamTemplateId: int
+        :param InstanceParams: 参数列表，ParamTemplateId 传入时InstanceParams才有效
+        :type InstanceParams: list of ModifyParamItem
         """
         self.ClusterId = None
         self.Cpu = None
@@ -274,6 +278,8 @@ class AddInstancesRequest(AbstractModel):
         self.DbType = None
         self.OrderSource = None
         self.DealMode = None
+        self.ParamTemplateId = None
+        self.InstanceParams = None
 
 
     def _deserialize(self, params):
@@ -290,6 +296,13 @@ class AddInstancesRequest(AbstractModel):
         self.DbType = params.get("DbType")
         self.OrderSource = params.get("OrderSource")
         self.DealMode = params.get("DealMode")
+        self.ParamTemplateId = params.get("ParamTemplateId")
+        if params.get("InstanceParams") is not None:
+            self.InstanceParams = []
+            for item in params.get("InstanceParams"):
+                obj = ModifyParamItem()
+                obj._deserialize(item)
+                self.InstanceParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2420,16 +2433,20 @@ class DeleteBackupRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
-        :param SnapshotIdList: 备份文件ID
+        :param SnapshotIdList: 备份文件ID，旧版本使用的字段，不推荐使用
         :type SnapshotIdList: list of int
+        :param BackupIds: 备份文件ID，推荐使用
+        :type BackupIds: list of int
         """
         self.ClusterId = None
         self.SnapshotIdList = None
+        self.BackupIds = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.SnapshotIdList = params.get("SnapshotIdList")
+        self.BackupIds = params.get("BackupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5325,6 +5342,39 @@ class ModifyMaintainPeriodConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyParamItem(AbstractModel):
+    """修改的实例参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParamName: 参数名
+        :type ParamName: str
+        :param CurrentValue: 参数当前值
+        :type CurrentValue: str
+        :param OldValue: 参数旧值（只在出参时有用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldValue: str
+        """
+        self.ParamName = None
+        self.CurrentValue = None
+        self.OldValue = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.CurrentValue = params.get("CurrentValue")
+        self.OldValue = params.get("OldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetAddr(AbstractModel):
     """网络信息
 
@@ -6112,6 +6162,8 @@ class RollBackClusterRequest(AbstractModel):
         :type RollbackDatabases: list of RollbackDatabase
         :param RollbackTables: 回档数据库表列表
         :type RollbackTables: list of RollbackTable
+        :param RollbackMode: 按时间点回档模式，full: 普通; db: 快速; table: 极速  （默认是普通）
+        :type RollbackMode: str
         """
         self.ClusterId = None
         self.RollbackStrategy = None
@@ -6120,6 +6172,7 @@ class RollBackClusterRequest(AbstractModel):
         self.ExpectTimeThresh = None
         self.RollbackDatabases = None
         self.RollbackTables = None
+        self.RollbackMode = None
 
 
     def _deserialize(self, params):
@@ -6140,6 +6193,7 @@ class RollBackClusterRequest(AbstractModel):
                 obj = RollbackTable()
                 obj._deserialize(item)
                 self.RollbackTables.append(obj)
+        self.RollbackMode = params.get("RollbackMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

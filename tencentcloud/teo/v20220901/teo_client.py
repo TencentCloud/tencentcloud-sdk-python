@@ -1650,6 +1650,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOriginProtection(self, request):
+        """查询源站防护信息
+
+        :param request: Request instance for DescribeOriginProtection.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginProtectionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeOriginProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginProtection", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOriginProtectionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOverviewL7Data(self, request):
         """本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
 
@@ -3434,6 +3463,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchLogTopicTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateOriginProtectionIPWhitelist(self, request):
+        """更新源站防护IP白名单
+
+        :param request: Request instance for UpdateOriginProtectionIPWhitelist.
+        :type request: :class:`tencentcloud.teo.v20220901.models.UpdateOriginProtectionIPWhitelistRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpdateOriginProtectionIPWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOriginProtectionIPWhitelist", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateOriginProtectionIPWhitelistResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -607,7 +607,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeClusterDetail(self, request):
-        """显示集群详情
+        """该接口（DescribeClusterDetail）显示集群详情
 
         :param request: Request instance for DescribeClusterDetail.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDetailRequest`
