@@ -624,6 +624,81 @@ class AuditLogFilter(AbstractModel):
         
 
 
+class AuditRuleFilters(AbstractModel):
+    """规则审计的过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleFilters: 单条审计规则。
+        :type RuleFilters: list of RuleFilters
+        """
+        self.RuleFilters = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditRuleTemplateInfo(AbstractModel):
+    """审计规则模版的详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateId: 规则模版ID。
+        :type RuleTemplateId: str
+        :param RuleTemplateName: 规则模版名称。
+        :type RuleTemplateName: str
+        :param RuleFilters: 规则模版的过滤条件
+        :type RuleFilters: list of RuleFilters
+        :param Description: 规则模版描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreateAt: 规则模版创建时间。
+        :type CreateAt: str
+        """
+        self.RuleTemplateId = None
+        self.RuleTemplateName = None
+        self.RuleFilters = None
+        self.Description = None
+        self.CreateAt = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateId = params.get("RuleTemplateId")
+        self.RuleTemplateName = params.get("RuleTemplateName")
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.Description = params.get("Description")
+        self.CreateAt = params.get("CreateAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupFileInfo(AbstractModel):
     """备份文件信息
 
@@ -765,6 +840,47 @@ class BinlogItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CloseAuditServiceRequest(AbstractModel):
+    """CloseAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAuditServiceResponse(AbstractModel):
+    """CloseAuditService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ClusterInstanceDetail(AbstractModel):
@@ -992,6 +1108,65 @@ class CreateAuditLogFileResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FileName = params.get("FileName")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAuditRuleTemplateRequest(AbstractModel):
+    """CreateAuditRuleTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleFilters: 审计规则。
+        :type RuleFilters: list of RuleFilters
+        :param RuleTemplateName: 规则模版名称。
+        :type RuleTemplateName: str
+        :param Description: 规则模版描述。
+        :type Description: str
+        """
+        self.RuleFilters = None
+        self.RuleTemplateName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.RuleTemplateName = params.get("RuleTemplateName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditRuleTemplateResponse(AbstractModel):
+    """CreateAuditRuleTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateId: 生成的规则模版ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleTemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateId = params.get("RuleTemplateId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2215,7 +2390,7 @@ class CynosdbInstanceGrp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: appId
+        :param AppId: 用户appId
         :type AppId: int
         :param ClusterId: 集群ID
         :type ClusterId: str
@@ -2245,6 +2420,21 @@ class CynosdbInstanceGrp(AbstractModel):
         :type WanStatus: str
         :param InstanceSet: 实例组包含实例信息
         :type InstanceSet: list of CynosdbInstance
+        :param UniqVpcId: VPC的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UniqSubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqSubnetId: str
+        :param OldAddrInfo: 正在回收IP信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldAddrInfo: :class:`tencentcloud.cynosdb.v20190107.models.OldAddrInfo`
+        :param ProcessingTasks: 正在进行的任务
+        :type ProcessingTasks: list of str
+        :param Tasks: 任务列表
+        :type Tasks: list of ObjectTask
+        :param NetServiceId: biz_net_service表id
+        :type NetServiceId: int
         """
         self.AppId = None
         self.ClusterId = None
@@ -2261,6 +2451,12 @@ class CynosdbInstanceGrp(AbstractModel):
         self.WanPort = None
         self.WanStatus = None
         self.InstanceSet = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.OldAddrInfo = None
+        self.ProcessingTasks = None
+        self.Tasks = None
+        self.NetServiceId = None
 
 
     def _deserialize(self, params):
@@ -2284,6 +2480,19 @@ class CynosdbInstanceGrp(AbstractModel):
                 obj = CynosdbInstance()
                 obj._deserialize(item)
                 self.InstanceSet.append(obj)
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        if params.get("OldAddrInfo") is not None:
+            self.OldAddrInfo = OldAddrInfo()
+            self.OldAddrInfo._deserialize(params.get("OldAddrInfo"))
+        self.ProcessingTasks = params.get("ProcessingTasks")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.NetServiceId = params.get("NetServiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2409,6 +2618,47 @@ class DeleteAuditLogFileRequest(AbstractModel):
 
 class DeleteAuditLogFileResponse(AbstractModel):
     """DeleteAuditLogFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAuditRuleTemplatesRequest(AbstractModel):
+    """DeleteAuditRuleTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateIds: 审计规则模版ID。
+        :type RuleTemplateIds: list of str
+        """
+        self.RuleTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditRuleTemplatesResponse(AbstractModel):
+    """DeleteAuditRuleTemplates返回参数结构体
 
     """
 
@@ -2776,6 +3026,128 @@ class DescribeAuditLogsResponse(AbstractModel):
             self.Items = []
             for item in params.get("Items"):
                 obj = AuditLog()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditRuleTemplatesRequest(AbstractModel):
+    """DescribeAuditRuleTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateIds: 规则模版ID。
+        :type RuleTemplateIds: list of str
+        :param RuleTemplateNames: 规则模版名称
+        :type RuleTemplateNames: list of str
+        :param Limit: 单次请求返回的数量。默认值20。
+        :type Limit: int
+        :param Offset: 偏移量，默认值为 0。
+        :type Offset: int
+        """
+        self.RuleTemplateIds = None
+        self.RuleTemplateNames = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        self.RuleTemplateNames = params.get("RuleTemplateNames")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditRuleTemplatesResponse(AbstractModel):
+    """DescribeAuditRuleTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合查询条件的实例总数。
+        :type TotalCount: int
+        :param Items: 规则模版详细信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditRuleTemplateInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditRuleTemplateInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditRuleWithInstanceIdsRequest(AbstractModel):
+    """DescribeAuditRuleWithInstanceIds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID。目前仅支持单个实例的查询。
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditRuleWithInstanceIdsResponse(AbstractModel):
+    """DescribeAuditRuleWithInstanceIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 无
+        :type TotalCount: int
+        :param Items: 实例审计规则信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of InstanceAuditRule
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = InstanceAuditRule()
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.RequestId = params.get("RequestId")
@@ -4588,6 +4960,45 @@ class InquirePriceRenewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InstanceAuditRule(AbstractModel):
+    """实例的审计规则详情，DescribeAuditRuleWithInstanceIds接口的出参。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param AuditRule: 是否是规则审计。true-规则审计，false-全审计。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuditRule: bool
+        :param AuditRuleFilters: 审计规则详情。仅当AuditRule=true时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuditRuleFilters: list of AuditRuleFilters
+        """
+        self.InstanceId = None
+        self.AuditRule = None
+        self.AuditRuleFilters = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AuditRule = params.get("AuditRule")
+        if params.get("AuditRuleFilters") is not None:
+            self.AuditRuleFilters = []
+            for item in params.get("AuditRuleFilters"):
+                obj = AuditRuleFilters()
+                obj._deserialize(item)
+                self.AuditRuleFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInitInfo(AbstractModel):
     """实例初始化配置信息
 
@@ -4650,6 +5061,9 @@ class InstanceSpec(AbstractModel):
         :param ZoneStockInfos: 地域库存信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneStockInfos: list of ZoneStockInfo
+        :param StockCount: 库存数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StockCount: int
         """
         self.Cpu = None
         self.Memory = None
@@ -4660,6 +5074,7 @@ class InstanceSpec(AbstractModel):
         self.MaxIops = None
         self.MaxIoBandWidth = None
         self.ZoneStockInfos = None
+        self.StockCount = None
 
 
     def _deserialize(self, params):
@@ -4677,6 +5092,7 @@ class InstanceSpec(AbstractModel):
                 obj = ZoneStockInfo()
                 obj._deserialize(item)
                 self.ZoneStockInfos.append(obj)
+        self.StockCount = params.get("StockCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4846,6 +5262,130 @@ class ModifyAccountParamsRequest(AbstractModel):
 
 class ModifyAccountParamsResponse(AbstractModel):
     """ModifyAccountParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAuditRuleTemplatesRequest(AbstractModel):
+    """ModifyAuditRuleTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleTemplateIds: 审计规则模版ID。
+        :type RuleTemplateIds: list of str
+        :param RuleFilters: 修改后的审计规则。
+        :type RuleFilters: list of RuleFilters
+        :param RuleTemplateName: 修改后的规则模版名称。
+        :type RuleTemplateName: str
+        :param Description: 修改后的规则模版描述。
+        :type Description: str
+        """
+        self.RuleTemplateIds = None
+        self.RuleFilters = None
+        self.RuleTemplateName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
+        self.RuleTemplateName = params.get("RuleTemplateName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditRuleTemplatesResponse(AbstractModel):
+    """ModifyAuditRuleTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAuditServiceRequest(AbstractModel):
+    """ModifyAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param LogExpireDay: 日志保留时长。
+        :type LogExpireDay: int
+        :param HighLogExpireDay: 高频日志保留时长。
+        :type HighLogExpireDay: int
+        :param AuditAll: 修改实例审计规则为全审计。
+        :type AuditAll: bool
+        :param AuditRuleFilters: 规则审计。
+        :type AuditRuleFilters: list of AuditRuleFilters
+        :param RuleTemplateIds: 规则模版ID。
+        :type RuleTemplateIds: list of str
+        """
+        self.InstanceId = None
+        self.LogExpireDay = None
+        self.HighLogExpireDay = None
+        self.AuditAll = None
+        self.AuditRuleFilters = None
+        self.RuleTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LogExpireDay = params.get("LogExpireDay")
+        self.HighLogExpireDay = params.get("HighLogExpireDay")
+        self.AuditAll = params.get("AuditAll")
+        if params.get("AuditRuleFilters") is not None:
+            self.AuditRuleFilters = []
+            for item in params.get("AuditRuleFilters"):
+                obj = AuditRuleFilters()
+                obj._deserialize(item)
+                self.AuditRuleFilters.append(obj)
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditServiceResponse(AbstractModel):
+    """ModifyAuditService返回参数结构体
 
     """
 
@@ -5624,6 +6164,103 @@ class OfflineInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OldAddrInfo(AbstractModel):
+    """数据库地址
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vip: IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param Vport: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        :param ReturnTime: 期望执行回收时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnTime: str
+        """
+        self.Vip = None
+        self.Vport = None
+        self.ReturnTime = None
+
+
+    def _deserialize(self, params):
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.ReturnTime = params.get("ReturnTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAuditServiceRequest(AbstractModel):
+    """OpenAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param LogExpireDay: 日志保留时长。
+        :type LogExpireDay: int
+        :param HighLogExpireDay: 高频日志保留时长。
+        :type HighLogExpireDay: int
+        :param AuditRuleFilters: 审计规则。同RuleTemplateIds都不填是全审计。
+        :type AuditRuleFilters: list of AuditRuleFilters
+        :param RuleTemplateIds: 规则模版ID。同AuditRuleFilters都不填是全审计。
+        :type RuleTemplateIds: list of str
+        """
+        self.InstanceId = None
+        self.LogExpireDay = None
+        self.HighLogExpireDay = None
+        self.AuditRuleFilters = None
+        self.RuleTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LogExpireDay = params.get("LogExpireDay")
+        self.HighLogExpireDay = params.get("HighLogExpireDay")
+        if params.get("AuditRuleFilters") is not None:
+            self.AuditRuleFilters = []
+            for item in params.get("AuditRuleFilters"):
+                obj = AuditRuleFilters()
+                obj._deserialize(item)
+                self.AuditRuleFilters.append(obj)
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAuditServiceResponse(AbstractModel):
+    """OpenAuditService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ParamInfo(AbstractModel):
     """参数信息
 
@@ -6341,6 +6978,38 @@ class RollbackTimeRange(AbstractModel):
         
 
 
+class RuleFilters(AbstractModel):
+    """审计规则的规则过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 审计规则过滤条件的参数名称。可选值：host – 客户端 IP；user – 数据库账户；dbName – 数据库名称；sqlType-SQL类型；sql-sql语句。
+        :type Type: str
+        :param Compare: 审计规则过滤条件的匹配类型。可选值：INC – 包含；EXC – 不包含；EQS – 等于；NEQ – 不等于。
+        :type Compare: str
+        :param Value: 审计规则过滤条件的匹配值。
+        :type Value: list of str
+        """
+        self.Type = None
+        self.Compare = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Compare = params.get("Compare")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchClusterDatabasesRequest(AbstractModel):
     """SearchClusterDatabases请求参数结构体
 
@@ -7017,14 +7686,18 @@ class ZoneStockInfo(AbstractModel):
         :type Zone: str
         :param HasStock: 是否有库存
         :type HasStock: bool
+        :param StockCount: 库存数量
+        :type StockCount: int
         """
         self.Zone = None
         self.HasStock = None
+        self.StockCount = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
         self.HasStock = params.get("HasStock")
+        self.StockCount = params.get("StockCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

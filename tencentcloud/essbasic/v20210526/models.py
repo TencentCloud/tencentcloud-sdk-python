@@ -2615,7 +2615,7 @@ class FlowApproverInfo(AbstractModel):
     非单C、单B、B2C合同，ApproverType、RecipientId（模板发起合同时）必传，建议都传。其他身份标识
     1-个人：Name、Mobile必传
     2-渠道子客企业指定经办人：OpenId必传，OrgName必传、OrgOpenId必传；
-    3-渠道合作企业不指定经办人：（暂不支持）
+    3-渠道合作企业不指定经办人：OrgName必传、OrgOpenId必传；
     4-非渠道合作企业：Name、Mobile必传，OrgName必传，且NotChannelOrganization=True。
 
     RecipientId参数：

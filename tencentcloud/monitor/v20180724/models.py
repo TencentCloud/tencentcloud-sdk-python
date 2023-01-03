@@ -964,12 +964,18 @@ class BindingPolicyObjectRequest(AbstractModel):
         :type InstanceGroupId: int
         :param Dimensions: 需要绑定的对象维度信息
         :type Dimensions: list of BindingPolicyObjectDimension
+        :param EbSubject: 事件配置的告警
+        :type EbSubject: str
+        :param EbEventFlag: 是否配置了事件告警
+        :type EbEventFlag: int
         """
         self.Module = None
         self.GroupId = None
         self.PolicyId = None
         self.InstanceGroupId = None
         self.Dimensions = None
+        self.EbSubject = None
+        self.EbEventFlag = None
 
 
     def _deserialize(self, params):
@@ -983,6 +989,8 @@ class BindingPolicyObjectRequest(AbstractModel):
                 obj = BindingPolicyObjectDimension()
                 obj._deserialize(item)
                 self.Dimensions.append(obj)
+        self.EbSubject = params.get("EbSubject")
+        self.EbEventFlag = params.get("EbEventFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1502,6 +1510,8 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type HierarchicalNotices: list of AlarmHierarchicalNotice
         :param MigrateFlag: 迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
         :type MigrateFlag: int
+        :param EbSubject: 事件配置的告警
+        :type EbSubject: str
         """
         self.Module = None
         self.PolicyName = None
@@ -1521,6 +1531,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.LogAlarmReqInfo = None
         self.HierarchicalNotices = None
         self.MigrateFlag = None
+        self.EbSubject = None
 
 
     def _deserialize(self, params):
@@ -1565,6 +1576,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
                 obj._deserialize(item)
                 self.HierarchicalNotices.append(obj)
         self.MigrateFlag = params.get("MigrateFlag")
+        self.EbSubject = params.get("EbSubject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2547,14 +2559,23 @@ class DeleteAlarmNoticesRequest(AbstractModel):
         :type Module: str
         :param NoticeIds: 告警通知模板id列表
         :type NoticeIds: list of str
+        :param NoticeBindPolicys: 通知模版与策略绑定关系
+        :type NoticeBindPolicys: list of NoticeBindPolicys
         """
         self.Module = None
         self.NoticeIds = None
+        self.NoticeBindPolicys = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.NoticeIds = params.get("NoticeIds")
+        if params.get("NoticeBindPolicys") is not None:
+            self.NoticeBindPolicys = []
+            for item in params.get("NoticeBindPolicys"):
+                obj = NoticeBindPolicys()
+                obj._deserialize(item)
+                self.NoticeBindPolicys.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9188,6 +9209,8 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         :type URLNotices: list of URLNotice
         :param CLSNotices: 告警通知推送到CLS服务 最多1个
         :type CLSNotices: list of CLSNotice
+        :param PolicyIds: 告警通知模板绑定的告警策略ID列表
+        :type PolicyIds: list of str
         """
         self.Module = None
         self.Name = None
@@ -9197,6 +9220,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         self.UserNotices = None
         self.URLNotices = None
         self.CLSNotices = None
+        self.PolicyIds = None
 
 
     def _deserialize(self, params):
@@ -9223,6 +9247,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
                 obj = CLSNotice()
                 obj._deserialize(item)
                 self.CLSNotices.append(obj)
+        self.PolicyIds = params.get("PolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9272,6 +9297,14 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         :type GroupBy: list of str
         :param LogAlarmReqInfo: 日志告警创建请求参数信息
         :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
+        :param NoticeIds: 模版id，专供prom使用
+        :type NoticeIds: list of str
+        :param Enable: 启停状态，0=停用，1=启用
+        :type Enable: int
+        :param PolicyName: 专供prom策略名称
+        :type PolicyName: str
+        :param EbSubject: 事件配置的告警
+        :type EbSubject: str
         """
         self.Module = None
         self.PolicyId = None
@@ -9281,6 +9314,10 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         self.Filter = None
         self.GroupBy = None
         self.LogAlarmReqInfo = None
+        self.NoticeIds = None
+        self.Enable = None
+        self.PolicyName = None
+        self.EbSubject = None
 
 
     def _deserialize(self, params):
@@ -9300,6 +9337,10 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         if params.get("LogAlarmReqInfo") is not None:
             self.LogAlarmReqInfo = LogAlarmReq()
             self.LogAlarmReqInfo._deserialize(params.get("LogAlarmReqInfo"))
+        self.NoticeIds = params.get("NoticeIds")
+        self.Enable = params.get("Enable")
+        self.PolicyName = params.get("PolicyName")
+        self.EbSubject = params.get("EbSubject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9905,6 +9946,34 @@ class MonitorTypeNamespace(AbstractModel):
     def _deserialize(self, params):
         self.MonitorType = params.get("MonitorType")
         self.Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeBindPolicys(AbstractModel):
+    """通知模版与策略绑定关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NoticeId: 告警通知模板 ID
+        :type NoticeId: str
+        :param PolicyIds: 告警通知模板绑定的告警策略ID列表
+        :type PolicyIds: list of str
+        """
+        self.NoticeId = None
+        self.PolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.NoticeId = params.get("NoticeId")
+        self.PolicyIds = params.get("PolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11454,16 +11523,24 @@ class UnBindingAllPolicyObjectRequest(AbstractModel):
         :type GroupId: int
         :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略
         :type PolicyId: str
+        :param EbSubject: 事件配置的告警
+        :type EbSubject: str
+        :param EbEventFlag: 是否配置了事件告警
+        :type EbEventFlag: int
         """
         self.Module = None
         self.GroupId = None
         self.PolicyId = None
+        self.EbSubject = None
+        self.EbEventFlag = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.GroupId = params.get("GroupId")
         self.PolicyId = params.get("PolicyId")
+        self.EbSubject = params.get("EbSubject")
+        self.EbEventFlag = params.get("EbEventFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11507,12 +11584,18 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         :type InstanceGroupId: int
         :param PolicyId: 告警策略ID，使用此字段时 GroupId 会被忽略
         :type PolicyId: str
+        :param EbSubject: 事件配置的告警
+        :type EbSubject: str
+        :param EbEventFlag: 是否配置了事件告警
+        :type EbEventFlag: int
         """
         self.Module = None
         self.GroupId = None
         self.UniqueId = None
         self.InstanceGroupId = None
         self.PolicyId = None
+        self.EbSubject = None
+        self.EbEventFlag = None
 
 
     def _deserialize(self, params):
@@ -11521,6 +11604,8 @@ class UnBindingPolicyObjectRequest(AbstractModel):
         self.UniqueId = params.get("UniqueId")
         self.InstanceGroupId = params.get("InstanceGroupId")
         self.PolicyId = params.get("PolicyId")
+        self.EbSubject = params.get("EbSubject")
+        self.EbEventFlag = params.get("EbEventFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

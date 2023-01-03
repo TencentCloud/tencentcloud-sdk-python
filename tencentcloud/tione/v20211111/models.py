@@ -584,9 +584,9 @@ class CreateBatchModelAccTasksRequest(AbstractModel):
         :type ModelOutputPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param Tags: 标签
         :type Tags: list of Tag
-        :param OptimizationLevel: 优化级别(NO_LOSS/FP16)，默认FP16
+        :param OptimizationLevel: 优化级别(NO_LOSS/FP16/INT8)，默认FP16
         :type OptimizationLevel: str
-        :param GPUType: GPU卡类型(T4/V100)，默认T4
+        :param GPUType: GPU卡类型(T4/V100/A10)，默认T4
         :type GPUType: str
         :param HyperParameter: 专业参数设置
         :type HyperParameter: :class:`tencentcloud.tione.v20211111.models.HyperParameter`
@@ -1239,6 +1239,8 @@ EXIST：导入现有版本
         :type MaxReservedModels: int
         :param ModelCleanPeriod: 模型清理周期(默认值为1分钟，上限为1440，下限为1分钟，步长为1)
         :type ModelCleanPeriod: int
+        :param IsQAT: 是否QAT模型
+        :type IsQAT: bool
         """
         self.ImportMethod = None
         self.TrainingModelCosPath = None
@@ -1265,6 +1267,7 @@ EXIST：导入现有版本
         self.AutoClean = None
         self.MaxReservedModels = None
         self.ModelCleanPeriod = None
+        self.IsQAT = None
 
 
     def _deserialize(self, params):
@@ -1304,6 +1307,7 @@ EXIST：导入现有版本
         self.AutoClean = params.get("AutoClean")
         self.MaxReservedModels = params.get("MaxReservedModels")
         self.ModelCleanPeriod = params.get("ModelCleanPeriod")
+        self.IsQAT = params.get("IsQAT")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5466,6 +5470,9 @@ class ModelAccelerateTask(AbstractModel):
         :param ModelSignature: SAVED_MODEL保存时配置的签名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelSignature: str
+        :param QATModel: 是否是QAT模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QATModel: bool
         """
         self.ModelAccTaskId = None
         self.ModelAccTaskName = None
@@ -5494,6 +5501,7 @@ class ModelAccelerateTask(AbstractModel):
         self.Tags = None
         self.IsSaved = None
         self.ModelSignature = None
+        self.QATModel = None
 
 
     def _deserialize(self, params):
@@ -5540,6 +5548,7 @@ class ModelAccelerateTask(AbstractModel):
                 self.Tags.append(obj)
         self.IsSaved = params.get("IsSaved")
         self.ModelSignature = params.get("ModelSignature")
+        self.QATModel = params.get("QATModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6335,7 +6344,7 @@ class RestartModelAccelerateTaskRequest(AbstractModel):
         :type ModelVersion: str
         :param ModelInputPath: 模型输入cos路径
         :type ModelInputPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param OptimizationLevel: 优化级别（NO_LOSS/FP16），默认FP16
+        :param OptimizationLevel: 优化级别（NO_LOSS/FP16/INT8），默认FP16
         :type OptimizationLevel: str
         :param ModelInputNum: input节点个数（废弃）
         :type ModelInputNum: int
@@ -6347,7 +6356,7 @@ class RestartModelAccelerateTaskRequest(AbstractModel):
         :type ModelFormat: str
         :param TensorInfos: 模型Tensor信息
         :type TensorInfos: list of str
-        :param GPUType: GPU类型（T4/V100），默认T4
+        :param GPUType: GPU类型（T4/V100/A10），默认T4
         :type GPUType: str
         :param HyperParameter: 模型专业参数
         :type HyperParameter: :class:`tencentcloud.tione.v20211111.models.HyperParameter`

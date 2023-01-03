@@ -12412,8 +12412,10 @@ class EditMediaTask(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
         :param MetaData: 输出视频的元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param ProcedureTaskId: 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
+        :param ProcedureTaskId: 任务类型为 Procedure 的任务 ID。若发起[编辑视频](https://cloud.tencent.com/document/api/266/34783)任务时指定了任务流模板(ProcedureName)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
         :type ProcedureTaskId: str
+        :param ReviewAudioVideoTaskId: 任务类型为 ReviewAudioVideo 的任务 ID。若发起[编辑视频](https://cloud.tencent.com/document/api/266/34783)任务时指定了任务流模板(ProcedureName)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+        :type ReviewAudioVideoTaskId: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
@@ -12429,6 +12431,7 @@ class EditMediaTask(AbstractModel):
         self.Output = None
         self.MetaData = None
         self.ProcedureTaskId = None
+        self.ReviewAudioVideoTaskId = None
         self.SessionId = None
         self.SessionContext = None
 
@@ -12450,6 +12453,7 @@ class EditMediaTask(AbstractModel):
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())
@@ -13266,8 +13270,10 @@ class FileUploadTask(AbstractModel):
         :type FileId: str
         :param MediaBasicInfo: 上传完成后生成的媒体文件基础信息。
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param ProcedureTaskId: 若视频上传时指定了视频处理流程，则该字段为流程任务 ID。
+        :param ProcedureTaskId: 任务类型为 Procedure 的任务 ID。若视频[上传时指定要执行的任务(procedure)](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E5.8F.91.E8.B5.B7)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
         :type ProcedureTaskId: str
+        :param ReviewAudioVideoTaskId: 任务类型为 ReviewAudioVideo 的任务 ID。若视频[上传时指定要执行的任务(procedure)](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E5.8F.91.E8.B5.B7)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+        :type ReviewAudioVideoTaskId: str
         :param MetaData: 元信息。包括大小、时长、视频流信息、音频流信息等。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
@@ -13275,6 +13281,7 @@ class FileUploadTask(AbstractModel):
         self.FileId = None
         self.MediaBasicInfo = None
         self.ProcedureTaskId = None
+        self.ReviewAudioVideoTaskId = None
         self.MetaData = None
 
 
@@ -13284,6 +13291,7 @@ class FileUploadTask(AbstractModel):
             self.MediaBasicInfo = MediaBasicInfo()
             self.MediaBasicInfo._deserialize(params.get("MediaBasicInfo"))
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
@@ -20333,17 +20341,21 @@ class ProcessMediaByProcedureResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务 ID。
+        :param TaskId: 任务类型为 Procedure 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
         :type TaskId: str
+        :param ReviewAudioVideoTaskId: 任务类型为 ReviewAudioVideo 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+        :type ReviewAudioVideoTaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskId = None
+        self.ReviewAudioVideoTaskId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -20451,7 +20463,8 @@ class ProcessMediaRequest(AbstractModel):
         :type SubAppId: int
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: 音视频内容审核类型任务参数。
+        :param AiContentReviewTask: 音视频内容审核类型任务参数 \*。
+<font color=red>\* 不建议使用</font>，推荐使用 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217)。
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: 音视频内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
@@ -21006,13 +21019,13 @@ class PullUploadResponse(AbstractModel):
 
 
 class PullUploadTask(AbstractModel):
-    """视频转拉任务信息
+    """拉取上传任务信息
 
     """
 
     def __init__(self):
         r"""
-        :param TaskId: 转拉上传任务 ID。
+        :param TaskId: 拉取上传任务 ID。
         :type TaskId: str
         :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
@@ -21025,22 +21038,24 @@ class PullUploadTask(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param FileId: 转拉上传完成后生成的视频 ID。
+        :param FileId: 拉取上传完成后生成的视频 ID。
         :type FileId: str
-        :param MediaBasicInfo: 转拉完成后生成的媒体文件基础信息。
+        :param MediaBasicInfo: 拉取上传完成后生成的媒体文件基础信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
         :param MetaData: 输出视频的元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param FileUrl: 转拉上传完成后生成的播放地址。
+        :param FileUrl: 拉取上传完成后生成的播放地址。
         :type FileUrl: str
-        :param ProcedureTaskId: 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
+        :param ProcedureTaskId: 任务类型为 Procedure 的任务 ID。若[拉取上传](https://cloud.tencent.com/document/api/266/35575)时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
         :type ProcedureTaskId: str
-        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param ReviewAudioVideoTaskId: 任务类型为 ReviewAudioVideo 的任务 ID。若[拉取上传](https://cloud.tencent.com/document/api/266/35575)时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+        :type ReviewAudioVideoTaskId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，[URL 拉取视频上传完成](https://cloud.tencent.com/document/product/266/7831)将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
-        :param Progress: 转拉任务进度，取值范围 [0-100] 。
+        :param Progress: 拉取上传进度，取值范围 [0-100] 。
         :type Progress: int
         """
         self.TaskId = None
@@ -21052,6 +21067,7 @@ class PullUploadTask(AbstractModel):
         self.MetaData = None
         self.FileUrl = None
         self.ProcedureTaskId = None
+        self.ReviewAudioVideoTaskId = None
         self.SessionContext = None
         self.SessionId = None
         self.Progress = None
@@ -21071,6 +21087,7 @@ class PullUploadTask(AbstractModel):
             self.MetaData._deserialize(params.get("MetaData"))
         self.FileUrl = params.get("FileUrl")
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.Progress = params.get("Progress")
@@ -22090,14 +22107,20 @@ class ReviewAudioVideoTaskInput(AbstractModel):
         :type FileId: str
         :param Definition: 音视频审核模板 ID。
         :type Definition: int
+        :param ReviewContents: 审核的内容，可选值：
+<li>Media：原始音视频；</li>
+<li>Cover：封面。</li>
+        :type ReviewContents: list of str
         """
         self.FileId = None
         self.Definition = None
+        self.ReviewContents = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
         self.Definition = params.get("Definition")
+        self.ReviewContents = params.get("ReviewContents")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -23606,12 +23629,15 @@ class SplitMediaTaskSegmentInfo(AbstractModel):
         :param Output: 视频拆条任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.TaskOutputMediaInfo`
-        :param ProcedureTaskId: 若发起视频拆条任务时指定了视频处理流程，则该字段为流程任务 ID。
+        :param ProcedureTaskId: 任务类型为 Procedure 的任务 ID。若发起[视频拆条](https://cloud.tencent.com/document/api/266/51098)任务时，视频拆条任务信息列表指定了任务流模板(ProcedureName)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
         :type ProcedureTaskId: str
+        :param ReviewAudioVideoTaskId: 任务类型为 ReviewAudioVideo 的任务 ID。若发起[视频拆条](https://cloud.tencent.com/document/api/266/51098)任务时，视频拆条任务信息列表指定了任务流模板(ProcedureName)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+        :type ReviewAudioVideoTaskId: str
         """
         self.Input = None
         self.Output = None
         self.ProcedureTaskId = None
+        self.ReviewAudioVideoTaskId = None
 
 
     def _deserialize(self, params):
@@ -23622,6 +23648,7 @@ class SplitMediaTaskSegmentInfo(AbstractModel):
             self.Output = TaskOutputMediaInfo()
             self.Output._deserialize(params.get("Output"))
         self.ProcedureTaskId = params.get("ProcedureTaskId")
+        self.ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

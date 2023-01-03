@@ -433,7 +433,9 @@ class TdidClient(AbstractClient):
 
 
     def GetAgencyTDid(self, request):
-        """本机构DID详情
+        """该接口已废弃
+
+        本机构DID详情
 
         :param request: Request instance for GetAgencyTDid.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetAgencyTDidRequest`
@@ -1419,7 +1421,9 @@ class TdidClient(AbstractClient):
 
 
     def VerifyPurchase(self, request):
-        """验证购买
+        """该接口已废弃
+
+        验证购买
 
         :param request: Request instance for VerifyPurchase.
         :type request: :class:`tencentcloud.tdid.v20210519.models.VerifyPurchaseRequest`

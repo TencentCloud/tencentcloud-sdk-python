@@ -95,6 +95,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 未找到该接口。
 INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = 'InvalidParameter.ControllerNotFoundError'
 
+# 参数传参错误。
+INVALIDPARAMETER_EXCEPTIONPARAM = 'InvalidParameter.ExceptionParam'
+
 # 未知参数，请检查参数是否有效。
 INVALIDPARAMETER_INVALIDPARAMETERERROR = 'InvalidParameter.InvalidParameterError'
 

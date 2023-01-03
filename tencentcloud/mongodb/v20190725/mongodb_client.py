@@ -55,6 +55,35 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAccountUser(self, request):
+        """创建实例账号。
+
+        :param request: Request instance for CreateAccountUser.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateAccountUserRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CreateAccountUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccountUser", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAccountUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBackupDBInstance(self, request):
         """备份实例接口
 
