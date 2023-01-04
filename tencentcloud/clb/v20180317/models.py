@@ -614,9 +614,9 @@ class CertInfo(AbstractModel):
         :type CertId: str
         :param CertName: 上传证书的名称，如果没有 CertId，则此项必传。
         :type CertName: str
-        :param CertContent: 上传证书的公钥，如果没有 CertId，则此项必传。
+        :param CertContent: 上传证书的公钥；如果没有 CertId，则此项必传。
         :type CertContent: str
-        :param CertKey: 上传服务端证书的私钥，如果没有 CertId，则此项必传。
+        :param CertKey: 上传服务端证书的私钥；如果没有 CertId，则此项必传。
         :type CertKey: str
         """
         self.CertId = None
@@ -1486,6 +1486,10 @@ class CreateListenerRequest(AbstractModel):
         :type DeregisterTargetRst: bool
         :param MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
+        :param MaxConn: 监听器最大连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+        :type MaxConn: int
+        :param MaxCps: 监听器最大新增连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+        :type MaxCps: int
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -1502,6 +1506,8 @@ class CreateListenerRequest(AbstractModel):
         self.EndPort = None
         self.DeregisterTargetRst = None
         self.MultiCertInfo = None
+        self.MaxConn = None
+        self.MaxCps = None
 
 
     def _deserialize(self, params):
@@ -1526,6 +1532,8 @@ class CreateListenerRequest(AbstractModel):
         if params.get("MultiCertInfo") is not None:
             self.MultiCertInfo = MultiCertInfo()
             self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
+        self.MaxConn = params.get("MaxConn")
+        self.MaxCps = params.get("MaxCps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5014,6 +5022,12 @@ class Listener(AbstractModel):
         :param TargetGroupList: 绑定的目标组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetGroupList: list of BasicTargetGroupInfo
+        :param MaxConn: 监听器最大连接数，-1表示监听器维度不限速。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxConn: int
+        :param MaxCps: 监听器最大新增连接数，-1表示监听器维度不限速。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxCps: int
         """
         self.ListenerId = None
         self.Protocol = None
@@ -5035,6 +5049,8 @@ class Listener(AbstractModel):
         self.DeregisterTargetRst = None
         self.AttrFlags = None
         self.TargetGroupList = None
+        self.MaxConn = None
+        self.MaxCps = None
 
 
     def _deserialize(self, params):
@@ -5074,6 +5090,8 @@ class Listener(AbstractModel):
                 obj = BasicTargetGroupInfo()
                 obj._deserialize(item)
                 self.TargetGroupList.append(obj)
+        self.MaxConn = params.get("MaxConn")
+        self.MaxCps = params.get("MaxCps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6192,6 +6210,10 @@ class ModifyListenerRequest(AbstractModel):
         :type SessionType: str
         :param MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
+        :param MaxConn: 监听器最大连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+        :type MaxConn: int
+        :param MaxCps: 监听器最大连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+        :type MaxCps: int
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -6206,6 +6228,8 @@ class ModifyListenerRequest(AbstractModel):
         self.DeregisterTargetRst = None
         self.SessionType = None
         self.MultiCertInfo = None
+        self.MaxConn = None
+        self.MaxCps = None
 
 
     def _deserialize(self, params):
@@ -6228,6 +6252,8 @@ class ModifyListenerRequest(AbstractModel):
         if params.get("MultiCertInfo") is not None:
             self.MultiCertInfo = MultiCertInfo()
             self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
+        self.MaxConn = params.get("MaxConn")
+        self.MaxCps = params.get("MaxCps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

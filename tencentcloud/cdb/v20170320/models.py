@@ -9533,7 +9533,7 @@ class ModifyRemoteBackupConfigRequest(AbstractModel):
         :type RemoteBinlogSave: str
         :param RemoteRegion: 用户设置异地备份地域列表
         :type RemoteRegion: list of str
-        :param ExpireDays: 异地备份保留天时间，单位为天
+        :param ExpireDays: 异地备份保留时间，单位为天
         :type ExpireDays: int
         """
         self.InstanceId = None

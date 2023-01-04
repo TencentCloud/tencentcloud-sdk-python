@@ -632,6 +632,8 @@ class CreateNatFwInstanceRequest(AbstractModel):
         :type ZoneBak: str
         :param CrossAZone: 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
         :type CrossAZone: int
+        :param FwCidrInfo: 指定防火墙使用网段信息
+        :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self.Name = None
         self.Width = None
@@ -641,6 +643,7 @@ class CreateNatFwInstanceRequest(AbstractModel):
         self.Zone = None
         self.ZoneBak = None
         self.CrossAZone = None
+        self.FwCidrInfo = None
 
 
     def _deserialize(self, params):
@@ -654,6 +657,9 @@ class CreateNatFwInstanceRequest(AbstractModel):
         self.Zone = params.get("Zone")
         self.ZoneBak = params.get("ZoneBak")
         self.CrossAZone = params.get("CrossAZone")
+        if params.get("FwCidrInfo") is not None:
+            self.FwCidrInfo = FwCidrInfo()
+            self.FwCidrInfo._deserialize(params.get("FwCidrInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -711,6 +717,8 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
         :type IsCreateDomain: int
         :param Domain: 如果要创建域名则必填
         :type Domain: str
+        :param FwCidrInfo: 指定防火墙使用网段信息
+        :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self.Name = None
         self.Width = None
@@ -722,6 +730,7 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
         self.CrossAZone = None
         self.IsCreateDomain = None
         self.Domain = None
+        self.FwCidrInfo = None
 
 
     def _deserialize(self, params):
@@ -737,6 +746,9 @@ class CreateNatFwInstanceWithDomainRequest(AbstractModel):
         self.CrossAZone = params.get("CrossAZone")
         self.IsCreateDomain = params.get("IsCreateDomain")
         self.Domain = params.get("Domain")
+        if params.get("FwCidrInfo") is not None:
+            self.FwCidrInfo = FwCidrInfo()
+            self.FwCidrInfo._deserialize(params.get("FwCidrInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2853,6 +2865,71 @@ class ExpandCfwVerticalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FwCidrInfo(AbstractModel):
+    """防火墙网段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FwCidrType: 防火墙使用的网段类型，值VpcSelf/Assis/Custom分别代表自有网段优先/扩展网段优先/自定义
+        :type FwCidrType: str
+        :param FwCidrLst: 为每个vpc指定防火墙的网段
+        :type FwCidrLst: list of FwVpcCidr
+        :param ComFwCidr: 其他防火墙占用网段，一般是防火墙需要独占vpc时指定的网段
+        :type ComFwCidr: str
+        """
+        self.FwCidrType = None
+        self.FwCidrLst = None
+        self.ComFwCidr = None
+
+
+    def _deserialize(self, params):
+        self.FwCidrType = params.get("FwCidrType")
+        if params.get("FwCidrLst") is not None:
+            self.FwCidrLst = []
+            for item in params.get("FwCidrLst"):
+                obj = FwVpcCidr()
+                obj._deserialize(item)
+                self.FwCidrLst.append(obj)
+        self.ComFwCidr = params.get("ComFwCidr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FwVpcCidr(AbstractModel):
+    """vpc的防火墙网段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: vpc的id
+        :type VpcId: str
+        :param FwCidr: 防火墙网段，最少/24的网段
+        :type FwCidr: str
+        """
+        self.VpcId = None
+        self.FwCidr = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.FwCidr = params.get("FwCidr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IPDefendStatus(AbstractModel):
     """ip防护状态
 
@@ -3467,11 +3544,14 @@ class ModifyNatFwReSelectRequest(AbstractModel):
         :type NatGwList: list of str
         :param VpcList: 新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。
         :type VpcList: list of str
+        :param FwCidrInfo: 指定防火墙使用网段信息
+        :type FwCidrInfo: :class:`tencentcloud.cfw.v20190904.models.FwCidrInfo`
         """
         self.Mode = None
         self.CfwInstance = None
         self.NatGwList = None
         self.VpcList = None
+        self.FwCidrInfo = None
 
 
     def _deserialize(self, params):
@@ -3479,6 +3559,9 @@ class ModifyNatFwReSelectRequest(AbstractModel):
         self.CfwInstance = params.get("CfwInstance")
         self.NatGwList = params.get("NatGwList")
         self.VpcList = params.get("VpcList")
+        if params.get("FwCidrInfo") is not None:
+            self.FwCidrInfo = FwCidrInfo()
+            self.FwCidrInfo._deserialize(params.get("FwCidrInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

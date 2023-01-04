@@ -6927,6 +6927,9 @@ off：不支持
         :param QnPrivateAccess: 七牛云对象存储回源鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
+        :param HttpsBilling: https 请求计费开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         self.ResourceId = None
         self.AppId = None
@@ -6992,6 +6995,7 @@ off：不支持
         self.ParentHost = None
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
+        self.HttpsBilling = None
 
 
     def _deserialize(self, params):
@@ -7163,6 +7167,9 @@ off：不支持
         if params.get("QnPrivateAccess") is not None:
             self.QnPrivateAccess = QnPrivateAccess()
             self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
+        if params.get("HttpsBilling") is not None:
+            self.HttpsBilling = HttpsBilling()
+            self.HttpsBilling._deserialize(params.get("HttpsBilling"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8513,6 +8520,30 @@ failed：部署失败
         
 
 
+class HttpsBilling(AbstractModel):
+    """支持 https 请求开关，若关闭，下发配置拦截https请求
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: https请求计费开关
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HwPrivateAccess(AbstractModel):
     """华为云对象存储回源鉴权
 
@@ -8624,8 +8655,7 @@ blacklist：黑名单
         :param FilterRules: IP 黑白名单分路径配置，白名单功能
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterRules: list of IpFilterPathRule
-        :param ReturnCode: IP 黑白名单验证失败时返回的 HTTP Code
-合法值: 400~499
+        :param ReturnCode: IP 黑白名单验证失败时返回的 code（即将下线）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnCode: int
         """

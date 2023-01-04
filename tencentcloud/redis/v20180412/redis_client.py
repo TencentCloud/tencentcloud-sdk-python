@@ -1390,7 +1390,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeReplicationGroup(self, request):
-        """查询复制组
+        """本接口（DescribeReplicationGroup）查询复制组。
 
         :param request: Request instance for DescribeReplicationGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupRequest`

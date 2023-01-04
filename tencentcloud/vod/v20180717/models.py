@@ -21894,7 +21894,12 @@ class ReviewAudioVideoRequest(AbstractModel):
         :type FileId: str
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Definition: 音视频审核模板 ID，默认值为 10。取值范围：
+        :param ReviewContents: 审核的内容，可选值有：
+<li>Media：原始音视频；</li>
+<li>Cover：封面。</li>
+不填或填空数组时，默认为审核 Media。
+        :type ReviewContents: list of str
+        :param Definition: 审核模板 ID，默认值为 10。取值范围：
 <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴恐（Terror）和不适宜的信息（Polity）。</li>
         :type Definition: int
         :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
@@ -21908,6 +21913,7 @@ class ReviewAudioVideoRequest(AbstractModel):
         """
         self.FileId = None
         self.SubAppId = None
+        self.ReviewContents = None
         self.Definition = None
         self.TasksPriority = None
         self.SessionContext = None
@@ -21918,6 +21924,7 @@ class ReviewAudioVideoRequest(AbstractModel):
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
         self.SubAppId = params.get("SubAppId")
+        self.ReviewContents = params.get("ReviewContents")
         self.Definition = params.get("Definition")
         self.TasksPriority = params.get("TasksPriority")
         self.SessionContext = params.get("SessionContext")
@@ -22165,6 +22172,9 @@ class ReviewAudioVideoTaskOutput(AbstractModel):
         :type SegmentSetFileUrl: str
         :param SegmentSetFileUrlExpireTime: 涉及违规信息的嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type SegmentSetFileUrlExpireTime: str
+        :param CoverReviewResult: 封面审核结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoverReviewResult: :class:`tencentcloud.vod.v20180717.models.ReviewImageResult`
         """
         self.Suggestion = None
         self.Label = None
@@ -22172,6 +22182,7 @@ class ReviewAudioVideoTaskOutput(AbstractModel):
         self.SegmentSet = None
         self.SegmentSetFileUrl = None
         self.SegmentSetFileUrlExpireTime = None
+        self.CoverReviewResult = None
 
 
     def _deserialize(self, params):
@@ -22186,6 +22197,9 @@ class ReviewAudioVideoTaskOutput(AbstractModel):
                 self.SegmentSet.append(obj)
         self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
         self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
+        if params.get("CoverReviewResult") is not None:
+            self.CoverReviewResult = ReviewImageResult()
+            self.CoverReviewResult._deserialize(params.get("CoverReviewResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22236,7 +22250,7 @@ class ReviewImageResponse(AbstractModel):
     def __init__(self):
         r"""
         :param ReviewResultSet: 图片审核任务结果。
-<font color=red>注意：该字段已废弃，建议使用 ReviewResult。</font> 
+<font color=red>注意：该字段已废弃，建议使用 MediaReviewResult。</font> 
         :type ReviewResultSet: list of ContentReviewResult
         :param MediaReviewResult: 图片审核任务结果。
 注意：此字段可能返回 null，表示取不到有效值。

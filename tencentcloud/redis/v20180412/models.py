@@ -3266,13 +3266,13 @@ class DescribeReplicationGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 实例列表的大小，参数默认值20
+        :param Limit: 每页输出实例列表的大小，参数默认值20。
         :type Limit: int
-        :param Offset: 偏移量，取Limit整数倍
+        :param Offset: 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
         :type Offset: int
-        :param GroupId: 复制组ID
+        :param GroupId: 复制组ID。
         :type GroupId: str
-        :param SearchKey: 实例ID和实例名称，支持模糊查询
+        :param SearchKey: 设置模糊查询的关键字，可以设置为实例ID或实例名称进行模糊查询。
         :type SearchKey: str
         """
         self.Limit = None
@@ -3302,9 +3302,9 @@ class DescribeReplicationGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 复制组数
+        :param TotalCount: 复制组数量。
         :type TotalCount: int
-        :param Groups: 复制组信息
+        :param Groups: 复制组信息。
         :type Groups: list of Groups
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5357,13 +5357,13 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param WeekDays: 日期 Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday，该参数暂不支持修改。
+        :param WeekDays: 设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
         :type WeekDays: list of str
-        :param TimePeriod: 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
+        :param TimePeriod: 备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
         :type TimePeriod: str
-        :param AutoBackupType: 自动备份类型： 1 “定时回档”
+        :param AutoBackupType: 自动备份类型： 1 “定时回档”。
         :type AutoBackupType: int
         """
         self.InstanceId = None
@@ -5395,11 +5395,11 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         r"""
         :param AutoBackupType: 自动备份类型： 1 “定时回档”
         :type AutoBackupType: int
-        :param WeekDays: 日期Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
+        :param WeekDays: 自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
         :type WeekDays: list of str
-        :param TimePeriod: 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
+        :param TimePeriod: 自动备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
         :type TimePeriod: str
-        :param BackupStorageDays: 全量备份文件保存天数,单位：天
+        :param BackupStorageDays: 全量备份文件保存天数,单位：天。
         :type BackupStorageDays: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

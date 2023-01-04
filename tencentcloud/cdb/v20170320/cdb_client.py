@@ -3189,7 +3189,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyRemoteBackupConfig(self, request):
-        """本接口(ModifyRemoteBackupConfig)用于查询数据库异地备份配置信息。
+        """本接口(ModifyRemoteBackupConfig)用于修改数据库异地备份配置信息。
 
         :param request: Request instance for ModifyRemoteBackupConfig.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyRemoteBackupConfigRequest`

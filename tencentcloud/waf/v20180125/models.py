@@ -2263,6 +2263,9 @@ class DomainInfo(AbstractModel):
         :type PostCLSStatus: int
         :param PostCKafkaStatus: 是否开启投递CKafka功能
         :type PostCKafkaStatus: int
+        :param AlbType: 应用型负载均衡类型: clb或者apisix，默认clb
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlbType: str
         """
         self.Domain = None
         self.DomainId = None
@@ -2288,6 +2291,7 @@ class DomainInfo(AbstractModel):
         self.Level = None
         self.PostCLSStatus = None
         self.PostCKafkaStatus = None
+        self.AlbType = None
 
 
     def _deserialize(self, params):
@@ -2325,6 +2329,7 @@ class DomainInfo(AbstractModel):
         self.Level = params.get("Level")
         self.PostCLSStatus = params.get("PostCLSStatus")
         self.PostCKafkaStatus = params.get("PostCKafkaStatus")
+        self.AlbType = params.get("AlbType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2315,6 +2315,9 @@ class EmrListInstance(AbstractModel):
         :param IsHandsCluster: 是否手戳集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsHandsCluster: bool
+        :param OutSideSoftInfo: 体外客户端组件信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutSideSoftInfo: list of SoftDependInfo
         """
         self.ClusterId = None
         self.StatusDesc = None
@@ -2344,6 +2347,7 @@ class EmrListInstance(AbstractModel):
         self.ClusterClass = None
         self.IsMultiZoneCluster = None
         self.IsHandsCluster = None
+        self.OutSideSoftInfo = None
 
 
     def _deserialize(self, params):
@@ -2380,6 +2384,59 @@ class EmrListInstance(AbstractModel):
         self.ClusterClass = params.get("ClusterClass")
         self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
         self.IsHandsCluster = params.get("IsHandsCluster")
+        if params.get("OutSideSoftInfo") is not None:
+            self.OutSideSoftInfo = []
+            for item in params.get("OutSideSoftInfo"):
+                obj = SoftDependInfo()
+                obj._deserialize(item)
+                self.OutSideSoftInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmrPrice(AbstractModel):
+    """Emr询价描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalCost: 刊例价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalCost: str
+        :param DiscountCost: 折扣价格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountCost: str
+        :param Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param PriceSpec: 询价配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
+        :param SupportSpotPaid: 是否支持竞价实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportSpotPaid: bool
+        """
+        self.OriginalCost = None
+        self.DiscountCost = None
+        self.Unit = None
+        self.PriceSpec = None
+        self.SupportSpotPaid = None
+
+
+    def _deserialize(self, params):
+        self.OriginalCost = params.get("OriginalCost")
+        self.DiscountCost = params.get("DiscountCost")
+        self.Unit = params.get("Unit")
+        if params.get("PriceSpec") is not None:
+            self.PriceSpec = PriceResource()
+            self.PriceSpec._deserialize(params.get("PriceSpec"))
+        self.SupportSpotPaid = params.get("SupportSpotPaid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2874,6 +2931,9 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
         :param TimeSpan: 购买实例的时长。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
+        :param PriceList: 价格清单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceList: list of ZoneDetailPriceResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2881,6 +2941,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
         self.DiscountCost = None
         self.TimeUnit = None
         self.TimeSpan = None
+        self.PriceList = None
         self.RequestId = None
 
 
@@ -2889,6 +2950,12 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
         self.DiscountCost = params.get("DiscountCost")
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
+        if params.get("PriceList") is not None:
+            self.PriceList = []
+            for item in params.get("PriceList"):
+                obj = ZoneDetailPriceResult()
+                obj._deserialize(item)
+                self.PriceList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3070,6 +3137,9 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
         :param PriceSpec: 询价的节点规格。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
+        :param MultipleEmrPrice: 对应入参MultipleResources中多个规格的询价结果，其它出参返回的是第一个规格的询价结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultipleEmrPrice: list of EmrPrice
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3077,6 +3147,7 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
         self.DiscountCost = None
         self.Unit = None
         self.PriceSpec = None
+        self.MultipleEmrPrice = None
         self.RequestId = None
 
 
@@ -3087,6 +3158,12 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
         if params.get("PriceSpec") is not None:
             self.PriceSpec = PriceResource()
             self.PriceSpec._deserialize(params.get("PriceSpec"))
+        if params.get("MultipleEmrPrice") is not None:
+            self.MultipleEmrPrice = []
+            for item in params.get("MultipleEmrPrice"):
+                obj = EmrPrice()
+                obj._deserialize(item)
+                self.MultipleEmrPrice.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3785,6 +3862,40 @@ class NewResourceSpec(AbstractModel):
         
 
 
+class NodeDetailPriceResult(AbstractModel):
+    """用于创建集群价格清单 节点价格详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeType: 节点类型 master core task common router mysql
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeType: str
+        :param PartDetailPrice: 节点组成部分价格详情
+        :type PartDetailPrice: list of PartDetailPriceItem
+        """
+        self.NodeType = None
+        self.PartDetailPrice = None
+
+
+    def _deserialize(self, params):
+        self.NodeType = params.get("NodeType")
+        if params.get("PartDetailPrice") is not None:
+            self.PartDetailPrice = []
+            for item in params.get("PartDetailPrice"):
+                obj = PartDetailPriceItem()
+                obj._deserialize(item)
+                self.PartDetailPrice.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodeHardwareInfo(AbstractModel):
     """节点硬件信息
 
@@ -4191,6 +4302,56 @@ class OutterResource(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.DiskSize = params.get("DiskSize")
         self.InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PartDetailPriceItem(AbstractModel):
+    """用于创建集群价格清单-节点组成部分价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceType: 类型包括：节点->node、系统盘->rootDisk、云数据盘->dataDisk、metaDB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param Price: 单价（原价）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Price: float
+        :param RealCost: 单价（折扣价）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealCost: float
+        :param RealTotalCost: 总价（折扣价）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: float
+        :param Policy: 折扣
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policy: float
+        :param GoodsNum: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsNum: int
+        """
+        self.InstanceType = None
+        self.Price = None
+        self.RealCost = None
+        self.RealTotalCost = None
+        self.Policy = None
+        self.GoodsNum = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        self.Price = params.get("Price")
+        self.RealCost = params.get("RealCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.Policy = params.get("Policy")
+        self.GoodsNum = params.get("GoodsNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5878,6 +6039,34 @@ class ShortNodeInfo(AbstractModel):
         
 
 
+class SoftDependInfo(AbstractModel):
+    """体外客户端组件依赖信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SoftName: 组件名称
+        :type SoftName: str
+        :param Required: 是否必选
+        :type Required: bool
+        """
+        self.SoftName = None
+        self.Required = None
+
+
+    def _deserialize(self, params):
+        self.SoftName = params.get("SoftName")
+        self.Required = params.get("Required")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Step(AbstractModel):
     """执行步骤
 
@@ -6349,6 +6538,40 @@ class VirtualPrivateCloud(AbstractModel):
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneDetailPriceResult(AbstractModel):
+    """用于创建集群价格清单 不同可用区下价格详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 可用区Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: str
+        :param NodeDetailPrice: 不同节点的价格详情
+        :type NodeDetailPrice: list of NodeDetailPriceResult
+        """
+        self.ZoneId = None
+        self.NodeDetailPrice = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        if params.get("NodeDetailPrice") is not None:
+            self.NodeDetailPrice = []
+            for item in params.get("NodeDetailPrice"):
+                obj = NodeDetailPriceResult()
+                obj._deserialize(item)
+                self.NodeDetailPrice.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
