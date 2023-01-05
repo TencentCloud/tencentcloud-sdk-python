@@ -338,6 +338,19 @@ class AbstractClient(object):
             endpoint = self._get_service_domain()
         return endpoint
 
+    def _handle_response(self, data):
+        resp = json.loads(data)
+        if "ERROR" in resp["Response"]:
+            code = resp["Response"]["Error"]["Code"]
+            message = resp["Response"]["Error"]["Message"]
+            reqid = resp["Response"]["RequestId"]
+            raise TencentCloudSDKException(code, message, reqid)
+        if "DeprecatedWarning" in resp["Response"]:
+            import warnings
+            warnings.filterwarnings("default")
+            warnings.warn("This action is deprecated, detail: %s" % resp["Response"]["DeprecatedWarning"],
+                          DeprecationWarning)
+
     def call(self, action, params, options=None, headers=None):
         req = RequestInternal(self._get_endpoint(),
                               self.profile.httpProfile.reqMethod,
@@ -348,6 +361,7 @@ class AbstractClient(object):
         resp_inter = self.request.send_request(req)
         self._check_status(resp_inter)
         data = resp_inter.data
+        self._handle_response(data)
         return data
 
     def call_octet_stream(self, action, headers, body):
@@ -383,13 +397,9 @@ class AbstractClient(object):
         resp = self.request.send_request(req)
         self._check_status(resp)
         data = resp.data
+        self._handle_response(data)
 
         json_rsp = json.loads(data)
-        if "Error" in json_rsp["Response"]:
-            code = json_rsp["Response"]["Error"]["Code"]
-            message = json_rsp["Response"]["Error"]["Message"]
-            reqid = json_rsp["Response"]["RequestId"]
-            raise TencentCloudSDKException(code, message, reqid)
         return json_rsp
 
     def call_json(self, action, params, headers=None, options=None):
@@ -407,13 +417,7 @@ class AbstractClient(object):
         """
         body = self.call(action, params, options, headers)
         response = json.loads(body)
-        if "Error" not in response["Response"]:
-            return response
-        else:
-            code = response["Response"]["Error"]["Code"]
-            message = response["Response"]["Error"]["Message"]
-            reqid = response["Response"]["RequestId"]
-            raise TencentCloudSDKException(code, message, reqid)
+        return response
 
     def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
         """
