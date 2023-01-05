@@ -1598,6 +1598,93 @@ class DataEvent(AbstractModel):
         
 
 
+class DescribeAssetDetailListRequest(AbstractModel):
+    """DescribeAssetDetailList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filter: 查询条件，可支持的查询字段：AssetUniqid,AssetName,AssetIpAll,AssetVpcid,Tag
+        :type Filter: list of AssetQueryFilter
+        :param Sorter: 排序条件，可支持的排序字段：
+AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
+        :type Sorter: list of QuerySort
+        :param RiskTags: 风险标签
+        :type RiskTags: list of str
+        :param Tags: 标签
+        :type Tags: list of str
+        :param PageIndex: 页
+        :type PageIndex: int
+        :param PageSize: 页大小
+        :type PageSize: int
+        """
+        self.Filter = None
+        self.Sorter = None
+        self.RiskTags = None
+        self.Tags = None
+        self.PageIndex = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = AssetQueryFilter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        if params.get("Sorter") is not None:
+            self.Sorter = []
+            for item in params.get("Sorter"):
+                obj = QuerySort()
+                obj._deserialize(item)
+                self.Sorter.append(obj)
+        self.RiskTags = params.get("RiskTags")
+        self.Tags = params.get("Tags")
+        self.PageIndex = params.get("PageIndex")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetDetailListResponse(AbstractModel):
+    """DescribeAssetDetailList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 业务数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of AssetDetail
+        :param Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = AssetDetail()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAssetDetailRequest(AbstractModel):
     """DescribeAssetDetail请求参数结构体
 

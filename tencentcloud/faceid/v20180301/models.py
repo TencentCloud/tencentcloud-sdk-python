@@ -2116,63 +2116,6 @@ class GetRealNameAuthResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class GetRealNameAuthTokenRequest(AbstractModel):
-    """GetRealNameAuthToken请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Name: 姓名
-        :type Name: str
-        :param IDCard: 身份证号
-        :type IDCard: str
-        :param CallbackURL: 回调地址。实名认证完成后，将会重定向到这个地址通知认证发起方。仅支持http或https协议。
-        :type CallbackURL: str
-        """
-        self.Name = None
-        self.IDCard = None
-        self.CallbackURL = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.IDCard = params.get("IDCard")
-        self.CallbackURL = params.get("CallbackURL")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetRealNameAuthTokenResponse(AbstractModel):
-    """GetRealNameAuthToken返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AuthToken: 查询实名认证结果的唯一凭证
-        :type AuthToken: str
-        :param RedirectURL: 实名认证授权地址，认证发起方需要重定向到这个地址获取认证用户的授权，仅能在微信环境下打开。
-        :type RedirectURL: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.AuthToken = None
-        self.RedirectURL = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AuthToken = params.get("AuthToken")
-        self.RedirectURL = params.get("RedirectURL")
-        self.RequestId = params.get("RequestId")
-
-
 class GetWeChatBillDetailsRequest(AbstractModel):
     """GetWeChatBillDetails请求参数结构体
 

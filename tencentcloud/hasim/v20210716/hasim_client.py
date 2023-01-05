@@ -17,30 +17,30 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.ssa.v20180608 import models
+from tencentcloud.hasim.v20210716 import models
 
 
-class SsaClient(AbstractClient):
-    _apiVersion = '2018-06-08'
-    _endpoint = 'ssa.tencentcloudapi.com'
-    _service = 'ssa'
+class HasimClient(AbstractClient):
+    _apiVersion = '2021-07-16'
+    _endpoint = 'hasim.tencentcloudapi.com'
+    _service = 'hasim'
 
 
-    def DescribeAssetDetail(self, request):
-        """资产安全页资产详情
+    def CreateRule(self, request):
+        """创建自动化规则
 
-        :param request: Request instance for DescribeAssetDetail.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetDetailRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetDetailResponse`
+        :param request: Request instance for CreateRule.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.CreateRuleRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.CreateRuleResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAssetDetail", params, headers=headers)
+            body = self.call("CreateRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAssetDetailResponse()
+                model = models.CreateRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -55,21 +55,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAssetDetailList(self, request):
-        """资产条件查询
+    def CreateTactic(self, request):
+        """创建云兔切换策略
 
-        :param request: Request instance for DescribeAssetDetailList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetDetailListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetDetailListResponse`
+        :param request: Request instance for CreateTactic.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.CreateTacticRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.CreateTacticResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAssetDetailList", params, headers=headers)
+            body = self.call("CreateTactic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAssetDetailListResponse()
+                model = models.CreateTacticResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -84,21 +84,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAssetList(self, request):
-        """资产安全资产列表
+    def CreateTag(self, request):
+        """创建标签
 
-        :param request: Request instance for DescribeAssetList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetListResponse`
+        :param request: Request instance for CreateTag.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.CreateTagRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.CreateTagResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAssetList", params, headers=headers)
+            body = self.call("CreateTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAssetListResponse()
+                model = models.CreateTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -113,21 +113,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAssetsMappingList(self, request):
-        """资产测绘-测绘列表
+    def DeleteRule(self, request):
+        """删除自动化规则
 
-        :param request: Request instance for DescribeAssetsMappingList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetsMappingListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetsMappingListResponse`
+        :param request: Request instance for DeleteRule.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DeleteRuleRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DeleteRuleResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAssetsMappingList", params, headers=headers)
+            body = self.call("DeleteRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAssetsMappingListResponse()
+                model = models.DeleteRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -142,21 +142,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCheckConfigAssetList(self, request):
-        """云安全配置管理资产组列表
+    def DeleteTactic(self, request):
+        """删除策略
 
-        :param request: Request instance for DescribeCheckConfigAssetList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeCheckConfigAssetListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeCheckConfigAssetListResponse`
+        :param request: Request instance for DeleteTactic.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DeleteTacticRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DeleteTacticResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeCheckConfigAssetList", params, headers=headers)
+            body = self.call("DeleteTactic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeCheckConfigAssetListResponse()
+                model = models.DeleteTacticResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -171,21 +171,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCheckConfigDetail(self, request):
-        """云安全配置检查项详情
+    def DeleteTag(self, request):
+        """删除标签
 
-        :param request: Request instance for DescribeCheckConfigDetail.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeCheckConfigDetailRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeCheckConfigDetailResponse`
+        :param request: Request instance for DeleteTag.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DeleteTagRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DeleteTagResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeCheckConfigDetail", params, headers=headers)
+            body = self.call("DeleteTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeCheckConfigDetailResponse()
+                model = models.DeleteTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -200,21 +200,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeComplianceAssetList(self, request):
-        """合规管理-资产列表
+    def DescribeLink(self, request):
+        """查询云兔连接详细信息
 
-        :param request: Request instance for DescribeComplianceAssetList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceAssetListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceAssetListResponse`
+        :param request: Request instance for DescribeLink.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeLinkRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DescribeLinkResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeComplianceAssetList", params, headers=headers)
+            body = self.call("DescribeLink", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeComplianceAssetListResponse()
+                model = models.DescribeLinkResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -229,21 +229,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeComplianceDetail(self, request):
-        """合规管理检查项详情
+    def DescribeLinks(self, request):
+        """查询云兔连接列表
 
-        :param request: Request instance for DescribeComplianceDetail.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceDetailRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceDetailResponse`
+        :param request: Request instance for DescribeLinks.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeLinksRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DescribeLinksResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeComplianceDetail", params, headers=headers)
+            body = self.call("DescribeLinks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeComplianceDetailResponse()
+                model = models.DescribeLinksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -258,21 +258,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeComplianceList(self, request):
-        """合规管理总览页检查项列表
+    def DescribeOrders(self, request):
+        """查询订单列表
 
-        :param request: Request instance for DescribeComplianceList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeComplianceListResponse`
+        :param request: Request instance for DescribeOrders.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeOrdersRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DescribeOrdersResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeComplianceList", params, headers=headers)
+            body = self.call("DescribeOrders", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeComplianceListResponse()
+                model = models.DescribeOrdersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -287,21 +287,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeConfigList(self, request):
-        """云配置检查项总览页检查项列表
+    def DescribeRule(self, request):
+        """查询自动化规则
 
-        :param request: Request instance for DescribeConfigList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeConfigListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeConfigListResponse`
+        :param request: Request instance for DescribeRule.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeRuleRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DescribeRuleResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeConfigList", params, headers=headers)
+            body = self.call("DescribeRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeConfigListResponse()
+                model = models.DescribeRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -316,21 +316,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeEventDetail(self, request):
-        """获取安全事件详情
+    def DescribeRules(self, request):
+        """查询自动化规则列表
 
-        :param request: Request instance for DescribeEventDetail.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeEventDetailRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeEventDetailResponse`
+        :param request: Request instance for DescribeRules.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeRulesRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DescribeRulesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeEventDetail", params, headers=headers)
+            body = self.call("DescribeRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeEventDetailResponse()
+                model = models.DescribeRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -345,21 +345,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeLeakDetectionList(self, request):
-        """获取泄露列表
+    def DescribeTactic(self, request):
+        """查询云兔切换策略信息
 
-        :param request: Request instance for DescribeLeakDetectionList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeLeakDetectionListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeLeakDetectionListResponse`
+        :param request: Request instance for DescribeTactic.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeTacticRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DescribeTacticResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeLeakDetectionList", params, headers=headers)
+            body = self.call("DescribeTactic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeLeakDetectionListResponse()
+                model = models.DescribeTacticResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -374,21 +374,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeMappingResults(self, request):
-        """获取测绘列表
+    def DescribeTactics(self, request):
+        """查询云兔切换策略列表
 
-        :param request: Request instance for DescribeMappingResults.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeMappingResultsRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeMappingResultsResponse`
+        :param request: Request instance for DescribeTactics.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeTacticsRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DescribeTacticsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeMappingResults", params, headers=headers)
+            body = self.call("DescribeTactics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeMappingResultsResponse()
+                model = models.DescribeTacticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -403,21 +403,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSafetyEventList(self, request):
-        """获取安全事件列表
+    def DescribeTags(self, request):
+        """查询标签列表
 
-        :param request: Request instance for DescribeSafetyEventList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSafetyEventListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSafetyEventListResponse`
+        :param request: Request instance for DescribeTags.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.DescribeTagsRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.DescribeTagsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeSafetyEventList", params, headers=headers)
+            body = self.call("DescribeTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSafetyEventListResponse()
+                model = models.DescribeTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -432,21 +432,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSocAlertDetails(self, request):
-        """返回告警详情
+    def ModifyLinkAdvancedLog(self, request):
+        """编辑云兔高级日志状态
 
-        :param request: Request instance for DescribeSocAlertDetails.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocAlertDetailsRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSocAlertDetailsResponse`
+        :param request: Request instance for ModifyLinkAdvancedLog.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyLinkAdvancedLogRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.ModifyLinkAdvancedLogResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeSocAlertDetails", params, headers=headers)
+            body = self.call("ModifyLinkAdvancedLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSocAlertDetailsResponse()
+                model = models.ModifyLinkAdvancedLogResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -461,21 +461,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSocAlertList(self, request):
-        """拉取告警列表
+    def ModifyLinkTactic(self, request):
+        """编辑云兔策略
 
-        :param request: Request instance for DescribeSocAlertList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocAlertListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSocAlertListResponse`
+        :param request: Request instance for ModifyLinkTactic.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyLinkTacticRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.ModifyLinkTacticResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeSocAlertList", params, headers=headers)
+            body = self.call("ModifyLinkTactic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSocAlertListResponse()
+                model = models.ModifyLinkTacticResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -490,21 +490,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSocCheckItemList(self, request):
-        """云安全配置检查项列表
+    def ModifyLinkTele(self, request):
+        """修改云兔运营商
 
-        :param request: Request instance for DescribeSocCheckItemList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckItemListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckItemListResponse`
+        :param request: Request instance for ModifyLinkTele.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyLinkTeleRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.ModifyLinkTeleResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeSocCheckItemList", params, headers=headers)
+            body = self.call("ModifyLinkTele", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSocCheckItemListResponse()
+                model = models.ModifyLinkTeleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -519,21 +519,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSocCheckResultList(self, request):
-        """云安全配置检查项结果列表
+    def ModifyRule(self, request):
+        """编辑自动化规则
 
-        :param request: Request instance for DescribeSocCheckResultList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckResultListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckResultListResponse`
+        :param request: Request instance for ModifyRule.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyRuleRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.ModifyRuleResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeSocCheckResultList", params, headers=headers)
+            body = self.call("ModifyRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSocCheckResultListResponse()
+                model = models.ModifyRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -548,21 +548,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSocCspmCompliance(self, request):
-        """合规详情项
+    def ModifyRuleStatus(self, request):
+        """编辑自动化规则状态
 
-        :param request: Request instance for DescribeSocCspmCompliance.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCspmComplianceRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCspmComplianceResponse`
+        :param request: Request instance for ModifyRuleStatus.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyRuleStatusRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.ModifyRuleStatusResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeSocCspmCompliance", params, headers=headers)
+            body = self.call("ModifyRuleStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSocCspmComplianceResponse()
+                model = models.ModifyRuleStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -577,21 +577,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeVulDetail(self, request):
-        """漏洞列表页，获取漏洞详情信息
+    def ModifyTactic(self, request):
+        """修改云兔切换策略
 
-        :param request: Request instance for DescribeVulDetail.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeVulDetailRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeVulDetailResponse`
+        :param request: Request instance for ModifyTactic.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyTacticRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.ModifyTacticResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeVulDetail", params, headers=headers)
+            body = self.call("ModifyTactic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeVulDetailResponse()
+                model = models.ModifyTacticResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -606,21 +606,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeVulList(self, request):
-        """漏洞管理页，获取漏洞列表
+    def ModifyTag(self, request):
+        """编辑标签
 
-        :param request: Request instance for DescribeVulList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeVulListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeVulListResponse`
+        :param request: Request instance for ModifyTag.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.ModifyTagRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.ModifyTagResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeVulList", params, headers=headers)
+            body = self.call("ModifyTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeVulListResponse()
+                model = models.ModifyTagResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -635,21 +635,21 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SaDivulgeDataQueryPub(self, request):
-        """查询【通用字段】【泄露监测数据列表】
+    def RenewLinkInfo(self, request):
+        """刷新云兔连接信息同步
 
-        :param request: Request instance for SaDivulgeDataQueryPub.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeDataQueryPubRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeDataQueryPubResponse`
+        :param request: Request instance for RenewLinkInfo.
+        :type request: :class:`tencentcloud.hasim.v20210716.models.RenewLinkInfoRequest`
+        :rtype: :class:`tencentcloud.hasim.v20210716.models.RenewLinkInfoResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("SaDivulgeDataQueryPub", params, headers=headers)
+            body = self.call("RenewLinkInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SaDivulgeDataQueryPubResponse()
+                model = models.RenewLinkInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -646,6 +646,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachSnapshotInstances(self, request):
+        """本接口（AttachSnapshotInstances）用于快照策略关联实例。
+
+        :param request: Request instance for AttachSnapshotInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AttachSnapshotInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AttachSnapshotInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachSnapshotInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachSnapshotInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AuditCrossBorderCompliance(self, request):
         """本接口（AuditCrossBorderCompliance）用于服务商操作合规化资质审批。
         * 服务商只能操作提交到本服务商的审批单，后台会校验身份。即只授权给服务商的`APPID` 调用本接口。
@@ -1715,6 +1744,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceTemplateGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSnapshotPolicies(self, request):
+        """本接口（CreateSnapshotPolicies）用于创建快照策略。
+
+        :param request: Request instance for CreateSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSnapshotPoliciesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2823,6 +2881,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceTemplateGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSnapshotPolicies(self, request):
+        """本接口（DeleteSnapshotPolicies）用于删除快照策略。
+
+        :param request: Request instance for DeleteSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSnapshotPoliciesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4734,6 +4821,122 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSgSnapshotFileContent(self, request):
+        """本接口（DescribeSgSnapshotFileContent）用于查询安全组快照文件内容。
+
+        :param request: Request instance for DescribeSgSnapshotFileContent.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSgSnapshotFileContentRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSgSnapshotFileContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSgSnapshotFileContent", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSgSnapshotFileContentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSnapshotAttachedInstances(self, request):
+        """本接口（DescribeSnapshotAttachedInstances）用于查询快照策略关联实例列表。
+
+        :param request: Request instance for DescribeSnapshotAttachedInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotAttachedInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotAttachedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotAttachedInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSnapshotAttachedInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSnapshotFiles(self, request):
+        """本接口（DescribeSnapshotFiles）用于查询快照文件。
+
+        :param request: Request instance for DescribeSnapshotFiles.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotFilesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotFiles", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSnapshotFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSnapshotPolicies(self, request):
+        """本接口（DescribeSnapshotPolicies）用于查询快照策略。
+
+        :param request: Request instance for DescribeSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSnapshotPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubnets(self, request):
         """本接口（DescribeSubnets）用于查询子网列表。
 
@@ -5467,6 +5670,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachSnapshotInstances(self, request):
+        """本接口（DetachSnapshotInstances）用于快照策略解关联实例。
+
+        :param request: Request instance for DetachSnapshotInstances.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DetachSnapshotInstancesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DetachSnapshotInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetachSnapshotInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachSnapshotInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableCcnRoutes(self, request):
         """本接口（DisableCcnRoutes）用于禁用已经启用的云联网（CCN）路由
 
@@ -5569,6 +5801,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableSnapshotPolicies(self, request):
+        """本接口（DisableSnapshotPolicies）用于停用快照策略。
+
+        :param request: Request instance for DisableSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableSnapshotPoliciesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5983,6 +6244,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableSnapshotPolicies(self, request):
+        """本接口（EnableSnapshotPolicies）用于启用快照策略。
+
+        :param request: Request instance for EnableSnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableSnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableSnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableSnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableSnapshotPoliciesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -7451,6 +7741,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifySnapshotPolicies(self, request):
+        """本接口（ModifySnapshotPolicies）用于修改快照策略。
+
+        :param request: Request instance for ModifySnapshotPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifySnapshotPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifySnapshotPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySnapshotPolicies", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySnapshotPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySubnetAttribute(self, request):
         """本接口（ModifySubnetAttribute）用于修改子网属性。
 
@@ -8256,6 +8575,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetVpnGatewayInternetMaxBandwidthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResumeSnapshotInstance(self, request):
+        """本接口（ResumeSnapshotInstance）用于根据备份内容恢复安全组策略。
+
+        :param request: Request instance for ResumeSnapshotInstance.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ResumeSnapshotInstanceRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ResumeSnapshotInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeSnapshotInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResumeSnapshotInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

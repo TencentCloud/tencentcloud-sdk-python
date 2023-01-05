@@ -86,6 +86,64 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ContinueMigrateJob(self, request):
+        """恢复一个暂停中的迁移任务。
+
+        :param request: Request instance for ContinueMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ContinueMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ContinueMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ContinueMigrateJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ContinueMigrateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ContinueSyncJob(self, request):
+        """恢复处于暂停中中的数据同步任务。
+
+        :param request: Request instance for ContinueSyncJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ContinueSyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ContinueSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ContinueSyncJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ContinueSyncJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCheckSyncJob(self, request):
         """校验同步任务，检查必要参数和周边配置。
 
@@ -743,6 +801,35 @@ class DtsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMigrationJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PauseMigrateJob(self, request):
+        """暂停一个迁移任务。
+
+        :param request: Request instance for PauseMigrateJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.PauseMigrateJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.PauseMigrateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseMigrateJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PauseMigrateJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

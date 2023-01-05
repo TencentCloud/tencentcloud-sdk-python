@@ -197,16 +197,36 @@ class RegionInfo(AbstractModel):
         :type RegionName: str
         :param RegionState: 地域是否可用状态
         :type RegionState: str
+        :param RegionTypeMC: 控制台类型，api调用时默认null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionTypeMC: int
+        :param LocationMC: 不同语言的地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocationMC: str
+        :param RegionNameMC: 控制台展示的地域描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionNameMC: str
+        :param RegionIdMC: 控制台展示的RegionId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionIdMC: str
         """
         self.Region = None
         self.RegionName = None
         self.RegionState = None
+        self.RegionTypeMC = None
+        self.LocationMC = None
+        self.RegionNameMC = None
+        self.RegionIdMC = None
 
 
     def _deserialize(self, params):
         self.Region = params.get("Region")
         self.RegionName = params.get("RegionName")
         self.RegionState = params.get("RegionState")
+        self.RegionTypeMC = params.get("RegionTypeMC")
+        self.LocationMC = params.get("LocationMC")
+        self.RegionNameMC = params.get("RegionNameMC")
+        self.RegionIdMC = params.get("RegionIdMC")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -299,11 +319,35 @@ class ZoneInfo(AbstractModel):
         :type ZoneId: str
         :param ZoneState: 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
         :type ZoneState: str
+        :param ParentZone: 父级zone
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentZone: str
+        :param ParentZoneId: 父级可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentZoneId: str
+        :param ParentZoneName: 父级可用区描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentZoneName: str
+        :param ZoneType: zone类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneType: str
+        :param MachineRoomTypeMC: 控制台类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineRoomTypeMC: str
+        :param ZoneIdMC: 和ZoneId一样，适用于控制台调用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneIdMC: str
         """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None
         self.ZoneState = None
+        self.ParentZone = None
+        self.ParentZoneId = None
+        self.ParentZoneName = None
+        self.ZoneType = None
+        self.MachineRoomTypeMC = None
+        self.ZoneIdMC = None
 
 
     def _deserialize(self, params):
@@ -311,6 +355,12 @@ class ZoneInfo(AbstractModel):
         self.ZoneName = params.get("ZoneName")
         self.ZoneId = params.get("ZoneId")
         self.ZoneState = params.get("ZoneState")
+        self.ParentZone = params.get("ParentZone")
+        self.ParentZoneId = params.get("ParentZoneId")
+        self.ParentZoneName = params.get("ParentZoneName")
+        self.ZoneType = params.get("ZoneType")
+        self.MachineRoomTypeMC = params.get("MachineRoomTypeMC")
+        self.ZoneIdMC = params.get("ZoneIdMC")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

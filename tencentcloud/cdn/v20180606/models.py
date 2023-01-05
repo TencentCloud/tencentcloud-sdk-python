@@ -250,6 +250,8 @@ global：全球加速
         :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         :param QnPrivateAccess: 七牛云对象存储回源鉴权
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
+        :param HttpsBilling: HTTPS服务
+        :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         self.Domain = None
         self.ServiceType = None
@@ -289,6 +291,7 @@ global：全球加速
         self.OssPrivateAccess = None
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
+        self.HttpsBilling = None
 
 
     def _deserialize(self, params):
@@ -401,6 +404,9 @@ global：全球加速
         if params.get("QnPrivateAccess") is not None:
             self.QnPrivateAccess = QnPrivateAccess()
             self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
+        if params.get("HttpsBilling") is not None:
+            self.HttpsBilling = HttpsBilling()
+            self.HttpsBilling._deserialize(params.get("HttpsBilling"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6927,7 +6933,7 @@ off：不支持
         :param QnPrivateAccess: 七牛云对象存储回源鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
-        :param HttpsBilling: https 请求计费开关
+        :param HttpsBilling: HTTPS服务
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
@@ -8527,7 +8533,7 @@ class HttpsBilling(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: https请求计费开关
+        :param Switch: HTTPS服务
         :type Switch: str
         """
         self.Switch = None
@@ -14604,6 +14610,8 @@ global：全球加速
         :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         :param QnPrivateAccess: 七牛云对象存储回源鉴权
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
+        :param HttpsBilling: HTTPS服务
+        :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         self.Domain = None
         self.ProjectId = None
@@ -14652,6 +14660,7 @@ global：全球加速
         self.ShareCname = None
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
+        self.HttpsBilling = None
 
 
     def _deserialize(self, params):
@@ -14786,6 +14795,9 @@ global：全球加速
         if params.get("QnPrivateAccess") is not None:
             self.QnPrivateAccess = QnPrivateAccess()
             self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
+        if params.get("HttpsBilling") is not None:
+            self.HttpsBilling = HttpsBilling()
+            self.HttpsBilling._deserialize(params.get("HttpsBilling"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

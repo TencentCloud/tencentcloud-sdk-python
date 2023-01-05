@@ -1607,6 +1607,56 @@ class AttachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttachSnapshotInstancesRequest(AbstractModel):
+    """AttachSnapshotInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param Instances: 关联实例信息。
+        :type Instances: list of SnapshotInstance
+        """
+        self.SnapshotPolicyId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = SnapshotInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachSnapshotInstancesResponse(AbstractModel):
+    """AttachSnapshotInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AuditCrossBorderComplianceRequest(AbstractModel):
     """AuditCrossBorderCompliance请求参数结构体
 
@@ -1654,6 +1704,34 @@ class AuditCrossBorderComplianceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class BackupPolicy(AbstractModel):
+    """时间备份策略详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupDay: 备份周期时间，取值为monday, tuesday, wednesday, thursday, friday, saturday, sunday。
+        :type BackupDay: str
+        :param BackupTime: 备份时间点，格式：HH:mm:ss。
+        :type BackupTime: str
+        """
+        self.BackupDay = None
+        self.BackupTime = None
+
+
+    def _deserialize(self, params):
+        self.BackupDay = params.get("BackupDay")
+        self.BackupTime = params.get("BackupTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class BandwidthPackage(AbstractModel):
@@ -1728,6 +1806,47 @@ class BandwidthPackageBillBandwidth(AbstractModel):
 
     def _deserialize(self, params):
         self.BandwidthUsage = params.get("BandwidthUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchModifySnapshotPolicy(AbstractModel):
+    """批量修改快照策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param SnapshotPolicyName: 快照策略名称。
+        :type SnapshotPolicyName: str
+        :param BackupPolicies: 备份策略。
+        :type BackupPolicies: list of BackupPolicy
+        :param KeepTime: 快照保留时间，支持1～365天。
+        :type KeepTime: int
+        """
+        self.SnapshotPolicyId = None
+        self.SnapshotPolicyName = None
+        self.BackupPolicies = None
+        self.KeepTime = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.SnapshotPolicyName = params.get("SnapshotPolicyName")
+        if params.get("BackupPolicies") is not None:
+            self.BackupPolicies = []
+            for item in params.get("BackupPolicies"):
+                obj = BackupPolicy()
+                obj._deserialize(item)
+                self.BackupPolicies.append(obj)
+        self.KeepTime = params.get("KeepTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4418,6 +4537,61 @@ class CreateServiceTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSnapshotPoliciesRequest(AbstractModel):
+    """CreateSnapshotPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicies: 快照策略详情。
+        :type SnapshotPolicies: list of SnapshotPolicy
+        """
+        self.SnapshotPolicies = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotPolicies") is not None:
+            self.SnapshotPolicies = []
+            for item in params.get("SnapshotPolicies"):
+                obj = SnapshotPolicy()
+                obj._deserialize(item)
+                self.SnapshotPolicies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSnapshotPoliciesResponse(AbstractModel):
+    """CreateSnapshotPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicies: 快照策略。
+        :type SnapshotPolicies: list of SnapshotPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SnapshotPolicies = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotPolicies") is not None:
+            self.SnapshotPolicies = []
+            for item in params.get("SnapshotPolicies"):
+                obj = SnapshotPolicy()
+                obj._deserialize(item)
+                self.SnapshotPolicies.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSubnetRequest(AbstractModel):
     """CreateSubnet请求参数结构体
 
@@ -6660,6 +6834,47 @@ class DeleteServiceTemplateRequest(AbstractModel):
 
 class DeleteServiceTemplateResponse(AbstractModel):
     """DeleteServiceTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSnapshotPoliciesRequest(AbstractModel):
+    """DeleteSnapshotPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyIds: 快照策略Id。
+        :type SnapshotPolicyIds: list of str
+        """
+        self.SnapshotPolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyIds = params.get("SnapshotPolicyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSnapshotPoliciesResponse(AbstractModel):
+    """DeleteSnapshotPolicies返回参数结构体
 
     """
 
@@ -10788,6 +11003,314 @@ class DescribeServiceTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSgSnapshotFileContentRequest(AbstractModel):
+    """DescribeSgSnapshotFileContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param SnapshotFileId: 快照文件Id。
+        :type SnapshotFileId: str
+        :param SecurityGroupId: 安全组Id。
+        :type SecurityGroupId: str
+        """
+        self.SnapshotPolicyId = None
+        self.SnapshotFileId = None
+        self.SecurityGroupId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.SnapshotFileId = params.get("SnapshotFileId")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSgSnapshotFileContentResponse(AbstractModel):
+    """DescribeSgSnapshotFileContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id，即安全组Id。
+        :type InstanceId: str
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param SnapshotFileId: 快照文件Id。
+        :type SnapshotFileId: str
+        :param BackupTime: 备份时间。
+        :type BackupTime: str
+        :param Operator: 操作者。
+        :type Operator: str
+        :param OriginalData: 原始数据。
+        :type OriginalData: list of SecurityGroupPolicy
+        :param BackupData: 备份数据。
+        :type BackupData: list of SecurityGroupPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.SnapshotPolicyId = None
+        self.SnapshotFileId = None
+        self.BackupTime = None
+        self.Operator = None
+        self.OriginalData = None
+        self.BackupData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.SnapshotFileId = params.get("SnapshotFileId")
+        self.BackupTime = params.get("BackupTime")
+        self.Operator = params.get("Operator")
+        if params.get("OriginalData") is not None:
+            self.OriginalData = []
+            for item in params.get("OriginalData"):
+                obj = SecurityGroupPolicy()
+                obj._deserialize(item)
+                self.OriginalData.append(obj)
+        if params.get("BackupData") is not None:
+            self.BackupData = []
+            for item in params.get("BackupData"):
+                obj = SecurityGroupPolicy()
+                obj._deserialize(item)
+                self.BackupData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotAttachedInstancesRequest(AbstractModel):
+    """DescribeSnapshotAttachedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param Filters: 过滤条件。
+支持的过滤条件如下：
+<li>instance-id：实例ID。</li>
+<li>instance-region：实例所在地域。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大为200。
+        :type Limit: int
+        """
+        self.SnapshotPolicyId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotAttachedInstancesResponse(AbstractModel):
+    """DescribeSnapshotAttachedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceSet: 实例列表
+        :type InstanceSet: list of SnapshotInstance
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = SnapshotInstance()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotFilesRequest(AbstractModel):
+    """DescribeSnapshotFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessType: 业务类型，目前支持安全组：securitygroup。
+        :type BusinessType: str
+        :param InstanceId: 实例Id。
+        :type InstanceId: str
+        :param StartDate: 开始日期，格式%Y-%m-%d %H:%M:%S。
+        :type StartDate: str
+        :param EndDate: 结束日期，格式%Y-%m-%d %H:%M:%S。
+        :type EndDate: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大为200。
+        :type Limit: int
+        """
+        self.BusinessType = None
+        self.InstanceId = None
+        self.StartDate = None
+        self.EndDate = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BusinessType = params.get("BusinessType")
+        self.InstanceId = params.get("InstanceId")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotFilesResponse(AbstractModel):
+    """DescribeSnapshotFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotFileSet: 快照文件集合。
+        :type SnapshotFileSet: list of SnapshotFileInfo
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SnapshotFileSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotFileSet") is not None:
+            self.SnapshotFileSet = []
+            for item in params.get("SnapshotFileSet"):
+                obj = SnapshotFileInfo()
+                obj._deserialize(item)
+                self.SnapshotFileSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSnapshotPoliciesRequest(AbstractModel):
+    """DescribeSnapshotPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyIds: 快照策略Id。
+        :type SnapshotPolicyIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定SnapshotPolicyIds和Filters。
+<li>snapshot-policy-id - String -（过滤条件）快照策略ID。</li>
+<li>snapshot-policy-name - String -（过滤条件）快照策略名称。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大为200。
+        :type Limit: int
+        """
+        self.SnapshotPolicyIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyIds = params.get("SnapshotPolicyIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSnapshotPoliciesResponse(AbstractModel):
+    """DescribeSnapshotPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicySet: 快照策略。
+        :type SnapshotPolicySet: list of SnapshotPolicy
+        :param TotalCount: 符合条件的对象数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SnapshotPolicySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotPolicySet") is not None:
+            self.SnapshotPolicySet = []
+            for item in params.get("SnapshotPolicySet"):
+                obj = SnapshotPolicy()
+                obj._deserialize(item)
+                self.SnapshotPolicySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSubnetsRequest(AbstractModel):
     """DescribeSubnets请求参数结构体
 
@@ -12312,6 +12835,56 @@ class DetachNetworkInterfaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetachSnapshotInstancesRequest(AbstractModel):
+    """DetachSnapshotInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param Instances: 实例信息。
+        :type Instances: list of SnapshotInstance
+        """
+        self.SnapshotPolicyId = None
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = SnapshotInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachSnapshotInstancesResponse(AbstractModel):
+    """DetachSnapshotInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DhcpIp(AbstractModel):
     """描述 DhcpIp 信息
 
@@ -12740,6 +13313,47 @@ class DisableRoutesRequest(AbstractModel):
 
 class DisableRoutesResponse(AbstractModel):
     """DisableRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableSnapshotPoliciesRequest(AbstractModel):
+    """DisableSnapshotPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyIds: 快照策略Id。
+        :type SnapshotPolicyIds: list of str
+        """
+        self.SnapshotPolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyIds = params.get("SnapshotPolicyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableSnapshotPoliciesResponse(AbstractModel):
+    """DisableSnapshotPolicies返回参数结构体
 
     """
 
@@ -13408,6 +14022,47 @@ class EnableRoutesRequest(AbstractModel):
 
 class EnableRoutesResponse(AbstractModel):
     """EnableRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableSnapshotPoliciesRequest(AbstractModel):
+    """EnableSnapshotPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyIds: 快照策略Id。
+        :type SnapshotPolicyIds: list of str
+        """
+        self.SnapshotPolicyIds = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyIds = params.get("SnapshotPolicyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableSnapshotPoliciesResponse(AbstractModel):
+    """EnableSnapshotPolicies返回参数结构体
 
     """
 
@@ -16966,6 +17621,52 @@ class ModifyServiceTemplateGroupAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySnapshotPoliciesRequest(AbstractModel):
+    """ModifySnapshotPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPoliciesInfo: 快照策略修改信息。
+        :type SnapshotPoliciesInfo: list of BatchModifySnapshotPolicy
+        """
+        self.SnapshotPoliciesInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotPoliciesInfo") is not None:
+            self.SnapshotPoliciesInfo = []
+            for item in params.get("SnapshotPoliciesInfo"):
+                obj = BatchModifySnapshotPolicy()
+                obj._deserialize(item)
+                self.SnapshotPoliciesInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySnapshotPoliciesResponse(AbstractModel):
+    """ModifySnapshotPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySubnetAttributeRequest(AbstractModel):
     """ModifySubnetAttribute请求参数结构体
 
@@ -19695,6 +20396,55 @@ class ResourceDashboard(AbstractModel):
         
 
 
+class ResumeSnapshotInstanceRequest(AbstractModel):
+    """ResumeSnapshotInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param SnapshotFileId: 快照文件Id。
+        :type SnapshotFileId: str
+        :param InstanceId: 实例Id。
+        :type InstanceId: str
+        """
+        self.SnapshotPolicyId = None
+        self.SnapshotFileId = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.SnapshotFileId = params.get("SnapshotFileId")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeSnapshotInstanceResponse(AbstractModel):
+    """ResumeSnapshotInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ReturnNormalAddressesRequest(AbstractModel):
     """ReturnNormalAddresses请求参数结构体
 
@@ -19702,7 +20452,7 @@ class ReturnNormalAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressIps: 1
+        :param AddressIps: EIP 的 IP 地址,示例：101.35.139.183
         :type AddressIps: list of str
         """
         self.AddressIps = None
@@ -20504,6 +21254,154 @@ class SetVpnGatewaysRenewFlagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SnapshotFileInfo(AbstractModel):
+    """快照文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param InstanceId: 实例Id。
+        :type InstanceId: str
+        :param SnapshotFileId: 快照文件Id。
+        :type SnapshotFileId: str
+        :param BackupTime: 备份时间。
+        :type BackupTime: str
+        :param Operator: 操作者Uin。
+        :type Operator: str
+        """
+        self.SnapshotPolicyId = None
+        self.InstanceId = None
+        self.SnapshotFileId = None
+        self.BackupTime = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.InstanceId = params.get("InstanceId")
+        self.SnapshotFileId = params.get("SnapshotFileId")
+        self.BackupTime = params.get("BackupTime")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotInstance(AbstractModel):
+    """快照策略关联实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id。
+        :type InstanceId: str
+        :param InstanceType: 实例类型，目前支持安全组：securitygroup。
+        :type InstanceType: str
+        :param InstanceRegion: 实例所在地域。
+        :type InstanceRegion: str
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param InstanceName: 实例名称。
+        :type InstanceName: str
+        """
+        self.InstanceId = None
+        self.InstanceType = None
+        self.InstanceRegion = None
+        self.SnapshotPolicyId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceType = params.get("InstanceType")
+        self.InstanceRegion = params.get("InstanceRegion")
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotPolicy(AbstractModel):
+    """快照策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotPolicyName: 快照策略名称。
+        :type SnapshotPolicyName: str
+        :param BackupType: 备份策略类型，operate-操作备份，time-定时备份。
+        :type BackupType: str
+        :param KeepTime: 保留时间，支持1～365天。
+        :type KeepTime: int
+        :param CreateNewCos: 是否创建新的cos桶，默认为False。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateNewCos: bool
+        :param CosRegion: cos桶所在地域。
+        :type CosRegion: str
+        :param CosBucket: cos桶。
+        :type CosBucket: str
+        :param SnapshotPolicyId: 快照策略Id。
+        :type SnapshotPolicyId: str
+        :param BackupPolicies: 时间备份策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupPolicies: list of BackupPolicy
+        :param Enable: 启用状态，True-启用，False-停用，默认为True。
+        :type Enable: bool
+        :param CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self.SnapshotPolicyName = None
+        self.BackupType = None
+        self.KeepTime = None
+        self.CreateNewCos = None
+        self.CosRegion = None
+        self.CosBucket = None
+        self.SnapshotPolicyId = None
+        self.BackupPolicies = None
+        self.Enable = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotPolicyName = params.get("SnapshotPolicyName")
+        self.BackupType = params.get("BackupType")
+        self.KeepTime = params.get("KeepTime")
+        self.CreateNewCos = params.get("CreateNewCos")
+        self.CosRegion = params.get("CosRegion")
+        self.CosBucket = params.get("CosBucket")
+        self.SnapshotPolicyId = params.get("SnapshotPolicyId")
+        if params.get("BackupPolicies") is not None:
+            self.BackupPolicies = []
+            for item in params.get("BackupPolicies"):
+                obj = BackupPolicy()
+                obj._deserialize(item)
+                self.BackupPolicies.append(obj)
+        self.Enable = params.get("Enable")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SourceIpTranslationNatRule(AbstractModel):

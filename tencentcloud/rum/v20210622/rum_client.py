@@ -1315,6 +1315,35 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRumGroupLog(self, request):
+        """获取项目下的日志聚合信息
+
+        :param request: Request instance for DescribeRumGroupLog.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumGroupLogRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumGroupLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumGroupLog", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRumGroupLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRumLogList(self, request):
         """获取项目下的日志列表（实例创建的项目下的日志列表）
 

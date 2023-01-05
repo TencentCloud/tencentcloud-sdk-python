@@ -564,6 +564,11 @@ def test_import_habo():
     from tencentcloud.habo.v20181203 import models
 
 
+def test_import_hasim():
+    from tencentcloud.hasim.v20210716 import hasim_client
+    from tencentcloud.hasim.v20210716 import models
+
+
 def test_import_hcm():
     from tencentcloud.hcm.v20181106 import hcm_client
     from tencentcloud.hcm.v20181106 import models

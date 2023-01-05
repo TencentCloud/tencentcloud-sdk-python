@@ -3406,11 +3406,11 @@ class SetAccountUserPrivilegeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param UserName: 账号名称
+        :param UserName: 账号名称。
         :type UserName: str
-        :param AuthRole: 权限信息
+        :param AuthRole: 权限信息。
         :type AuthRole: list of Auth
         """
         self.InstanceId = None

@@ -122,6 +122,12 @@ class CompareAbstractInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Options: 校验配置参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        :param Objects: 一致性校验对比对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         :param Conclusion: 对比结论: same,different
 注意：此字段可能返回 null，表示取不到有效值。
         :type Conclusion: str
@@ -140,27 +146,60 @@ class CompareAbstractInfo(AbstractModel):
         :param SkippedTables: 跳过校验的表数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkippedTables: int
+        :param NearlyTableCount: 预估表总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NearlyTableCount: int
         :param DifferentRows: 不一致的数据行数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type DifferentRows: int
+        :param SrcSampleRows: 源库行数，当对比类型为**行数对比**时此项有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcSampleRows: int
+        :param DstSampleRows: 目标库行数，当对比类型为**行数对比**时此项有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstSampleRows: int
+        :param StartedAt: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartedAt: str
+        :param FinishedAt: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishedAt: str
         """
+        self.Options = None
+        self.Objects = None
         self.Conclusion = None
         self.Status = None
         self.TotalTables = None
         self.CheckedTables = None
         self.DifferentTables = None
         self.SkippedTables = None
+        self.NearlyTableCount = None
         self.DifferentRows = None
+        self.SrcSampleRows = None
+        self.DstSampleRows = None
+        self.StartedAt = None
+        self.FinishedAt = None
 
 
     def _deserialize(self, params):
+        if params.get("Options") is not None:
+            self.Options = CompareOptions()
+            self.Options._deserialize(params.get("Options"))
+        if params.get("Objects") is not None:
+            self.Objects = CompareObject()
+            self.Objects._deserialize(params.get("Objects"))
         self.Conclusion = params.get("Conclusion")
         self.Status = params.get("Status")
         self.TotalTables = params.get("TotalTables")
         self.CheckedTables = params.get("CheckedTables")
         self.DifferentTables = params.get("DifferentTables")
         self.SkippedTables = params.get("SkippedTables")
+        self.NearlyTableCount = params.get("NearlyTableCount")
         self.DifferentRows = params.get("DifferentRows")
+        self.SrcSampleRows = params.get("SrcSampleRows")
+        self.DstSampleRows = params.get("DstSampleRows")
+        self.StartedAt = params.get("StartedAt")
+        self.FinishedAt = params.get("FinishedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -211,15 +250,19 @@ class CompareObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ObjectMode: 迁移对象模式 all(所有迁移对象)，partial(部分对象迁移)
+        :param ObjectMode: 对象模式 整实例-all,部分对象-partial
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectMode: str
-        :param ObjectItems: 迁移对象库表配置
+        :param ObjectItems: 对象列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectItems: list of CompareObjectItem
+        :param AdvancedObjects: 高级对象类型，如account(账号),index(索引),shardkey(片建，后面可能会调整),schema(库表结构)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedObjects: list of str
         """
         self.ObjectMode = None
         self.ObjectItems = None
+        self.AdvancedObjects = None
 
 
     def _deserialize(self, params):
@@ -230,6 +273,7 @@ class CompareObject(AbstractModel):
                 obj = CompareObjectItem()
                 obj._deserialize(item)
                 self.ObjectItems.append(obj)
+        self.AdvancedObjects = params.get("AdvancedObjects")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -246,13 +290,13 @@ class CompareObjectItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DbName: 迁移的库
+        :param DbName: 数据库名
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbName: str
         :param DbMode: 数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
-        :param SchemaName: 迁移的 schema
+        :param SchemaName: schema名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaName: str
         :param TableMode: 表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象
@@ -295,6 +339,41 @@ class CompareObjectItem(AbstractModel):
                 obj = CompareViewItem()
                 obj._deserialize(item)
                 self.Views.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareOptions(AbstractModel):
+    """一致性校验选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Method: 对比类型：dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param SampleRate: 抽样比例;范围0,100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SampleRate: int
+        :param ThreadCount: 线程数，取值1-5，默认为1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThreadCount: int
+        """
+        self.Method = None
+        self.SampleRate = None
+        self.ThreadCount = None
+
+
+    def _deserialize(self, params):
+        self.Method = params.get("Method")
+        self.SampleRate = params.get("SampleRate")
+        self.ThreadCount = params.get("ThreadCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -366,7 +445,7 @@ class CompareTaskItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务id
+        :param JobId: 任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
         :param CompareTaskId: 对比任务 Id
@@ -399,6 +478,15 @@ class CompareTaskItem(AbstractModel):
         :param FinishedAt: 对比结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedAt: str
+        :param Method: 对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param Options: 对比配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        :param Message: 一致性校验提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
         """
         self.JobId = None
         self.CompareTaskId = None
@@ -411,6 +499,9 @@ class CompareTaskItem(AbstractModel):
         self.CreatedAt = None
         self.StartedAt = None
         self.FinishedAt = None
+        self.Method = None
+        self.Options = None
+        self.Message = None
 
 
     def _deserialize(self, params):
@@ -431,6 +522,11 @@ class CompareTaskItem(AbstractModel):
         self.CreatedAt = params.get("CreatedAt")
         self.StartedAt = params.get("StartedAt")
         self.FinishedAt = params.get("FinishedAt")
+        self.Method = params.get("Method")
+        if params.get("Options") is not None:
+            self.Options = CompareOptions()
+            self.Options._deserialize(params.get("Options"))
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -663,6 +759,88 @@ class ConsistencyOption(AbstractModel):
         
 
 
+class ContinueMigrateJobRequest(AbstractModel):
+    """ContinueMigrateJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 数据迁移任务ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContinueMigrateJobResponse(AbstractModel):
+    """ContinueMigrateJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ContinueSyncJobRequest(AbstractModel):
+    """ContinueSyncJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 同步任务id
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContinueSyncJobResponse(AbstractModel):
+    """ContinueSyncJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCheckSyncJobRequest(AbstractModel):
     """CreateCheckSyncJob请求参数结构体
 
@@ -711,7 +889,7 @@ class CreateCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务 Id
+        :param JobId: 任务 Id
         :type JobId: str
         :param TaskName: 数据对比任务名称，若为空则默认给CompareTaskId相同值
         :type TaskName: str
@@ -719,11 +897,14 @@ class CreateCompareTaskRequest(AbstractModel):
         :type ObjectMode: str
         :param Objects: 一致性对比对象配置
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        :param Options: 一致性校验选项
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         self.JobId = None
         self.TaskName = None
         self.ObjectMode = None
         self.Objects = None
+        self.Options = None
 
 
     def _deserialize(self, params):
@@ -733,6 +914,9 @@ class CreateCompareTaskRequest(AbstractModel):
         if params.get("Objects") is not None:
             self.Objects = CompareObject()
             self.Objects._deserialize(params.get("Objects"))
+        if params.get("Options") is not None:
+            self.Options = CompareOptions()
+            self.Options._deserialize(params.get("Options"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1704,16 +1888,24 @@ class DescribeCompareTasksRequest(AbstractModel):
         :type Limit: int
         :param Offset: 分页偏移量
         :type Offset: int
+        :param CompareTaskId: 校验任务 ID
+        :type CompareTaskId: str
+        :param Status: 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        :type Status: list of str
         """
         self.JobId = None
         self.Limit = None
         self.Offset = None
+        self.CompareTaskId = None
+        self.Status = None
 
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.CompareTaskId = params.get("CompareTaskId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3217,22 +3409,25 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: 迁移任务 Id
+        :param JobId: 任务 Id
         :type JobId: str
         :param CompareTaskId: 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
         :type CompareTaskId: str
         :param TaskName: 任务名称
         :type TaskName: str
-        :param ObjectMode: 数据对比对象模式，sameAsMigrate(全部迁移对象， **默认为此项配置**)，custom(自定义模式)
+        :param ObjectMode: 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)、custom(自定义)，注意自定义对比对象必须是迁移对象的子集
         :type ObjectMode: str
         :param Objects: 对比对象，若CompareObjectMode取值为custom，则此项必填
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        :param Options: 一致性校验选项
+        :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         self.JobId = None
         self.CompareTaskId = None
         self.TaskName = None
         self.ObjectMode = None
         self.Objects = None
+        self.Options = None
 
 
     def _deserialize(self, params):
@@ -3243,6 +3438,9 @@ class ModifyCompareTaskRequest(AbstractModel):
         if params.get("Objects") is not None:
             self.Objects = CompareObject()
             self.Objects._deserialize(params.get("Objects"))
+        if params.get("Options") is not None:
+            self.Options = CompareOptions()
+            self.Options._deserialize(params.get("Options"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3556,6 +3754,47 @@ class Options(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PauseMigrateJobRequest(AbstractModel):
+    """PauseMigrateJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 数据迁移任务ID
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseMigrateJobResponse(AbstractModel):
+    """PauseMigrateJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class PauseSyncJobRequest(AbstractModel):
