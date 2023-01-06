@@ -491,6 +491,9 @@ LIMITEXCEEDED_TAGQUOTAEXCEEDED = 'LimitExceeded.TagQuotaExceeded'
 # 标签键的数目已达到上限。
 LIMITEXCEEDED_TAGTAGSEXCEEDED = 'LimitExceeded.TagTagsExceeded'
 
+# 流量包配额超过限制。
+LIMITEXCEEDED_TRAFFICPACKAGEQUOTA = 'LimitExceeded.TrafficPackageQuota'
+
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 

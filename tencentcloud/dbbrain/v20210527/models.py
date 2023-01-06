@@ -1644,7 +1644,7 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param InstanceProxyId: 当前实例下的 ProxyID。
+        :param InstanceProxyId: 该实例下需要查询的某一个 ProxyID 。
         :type InstanceProxyId: str
         :param Limit: 返回数量。
         :type Limit: int

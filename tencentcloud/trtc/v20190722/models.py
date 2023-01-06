@@ -2090,6 +2090,8 @@ class LayoutParams(AbstractModel):
         :type PureAudioHoldPlaceMode: int
         :param WaterMarkParams: 水印参数。
         :type WaterMarkParams: :class:`tencentcloud.trtc.v20190722.models.WaterMarkParams`
+        :param RenderMode: 屏幕分享模板、悬浮模板、九宫格模板、画中画模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底，不填采用后台的默认渲染方式（屏幕分享大画面为缩放，其他为裁剪）。
+        :type RenderMode: int
         """
         self.Template = None
         self.MainVideoUserId = None
@@ -2101,6 +2103,7 @@ class LayoutParams(AbstractModel):
         self.PlaceHolderMode = None
         self.PureAudioHoldPlaceMode = None
         self.WaterMarkParams = None
+        self.RenderMode = None
 
 
     def _deserialize(self, params):
@@ -2123,6 +2126,7 @@ class LayoutParams(AbstractModel):
         if params.get("WaterMarkParams") is not None:
             self.WaterMarkParams = WaterMarkParams()
             self.WaterMarkParams._deserialize(params.get("WaterMarkParams"))
+        self.RenderMode = params.get("RenderMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

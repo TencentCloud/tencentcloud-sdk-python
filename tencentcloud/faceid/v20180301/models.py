@@ -2063,59 +2063,6 @@ class GetLiveCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class GetRealNameAuthResultRequest(AbstractModel):
-    """GetRealNameAuthResult请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AuthToken: 实名认证凭证
-        :type AuthToken: str
-        """
-        self.AuthToken = None
-
-
-    def _deserialize(self, params):
-        self.AuthToken = params.get("AuthToken")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetRealNameAuthResultResponse(AbstractModel):
-    """GetRealNameAuthResult返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ResultType: 认证结果码，收费情况如下：
-
-收费码：
-0:  姓名和身份证号一致
--1: 姓名和身份证号不一致
--2: 姓名和微信实名姓名不一致
-
-不收费码：
--3: 微信号未实名
-        :type ResultType: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.ResultType = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ResultType = params.get("ResultType")
-        self.RequestId = params.get("RequestId")
-
-
 class GetWeChatBillDetailsRequest(AbstractModel):
     """GetWeChatBillDetails请求参数结构体
 

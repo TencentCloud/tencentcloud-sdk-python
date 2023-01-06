@@ -1410,15 +1410,15 @@ class DescribeChatMessagesRequest(AbstractModel):
         :type InstanceId: int
         :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
-        :param CdrId: 服务记录ID
+        :param CdrId: 服务记录ID（废弃）
         :type CdrId: str
-        :param Limit: 返回记录条数 最大为100默认20
+        :param Limit: 返回记录条数，最大为100 默认20
         :type Limit: int
-        :param Offset: 返回记录偏移 默认为0
+        :param Offset: 返回记录偏移，默认为 0
         :type Offset: int
         :param Order: 1为从早到晚，2为从晚到早，默认为2
         :type Order: int
-        :param SessionId: 服务记录SessionID
+        :param SessionId: 服务记录 SessionID（必填）
         :type SessionId: str
         """
         self.InstanceId = None
@@ -1624,17 +1624,17 @@ class DescribeIMCdrsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTimestamp: 起始时间
+        :param StartTimestamp: 起始时间（必填），Unix 秒级时间戳
         :type StartTimestamp: int
-        :param EndTimestamp: 结束时间
+        :param EndTimestamp: 结束时间（必填），Unix 秒级时间戳
         :type EndTimestamp: int
         :param InstanceId: 实例 ID（废弃）
         :type InstanceId: int
         :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
-        :param Limit: 返回记录条数 最大为100默认20
+        :param Limit: 返回记录条数，最大为100默认20
         :type Limit: int
-        :param Offset: 返回记录偏移 默认为0
+        :param Offset: 返回记录偏移，默认为 0
         :type Offset: int
         :param Type: 1为全媒体，2为文本客服，不填则查询全部
         :type Type: int

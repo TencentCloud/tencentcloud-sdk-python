@@ -333,6 +333,12 @@ class BGPIPInstance(AbstractModel):
         :param ConvoyId: 重保实例
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConvoyId: str
+        :param ElasticBandwidth: 带宽后付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticBandwidth: int
+        :param EOFlag: 是否为EO代播的ip: 1是，0不是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EOFlag: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -358,6 +364,8 @@ class BGPIPInstance(AbstractModel):
         self.AnycastOutPackRelation = None
         self.InstanceVersion = None
         self.ConvoyId = None
+        self.ElasticBandwidth = None
+        self.EOFlag = None
 
 
     def _deserialize(self, params):
@@ -408,6 +416,8 @@ class BGPIPInstance(AbstractModel):
             self.AnycastOutPackRelation._deserialize(params.get("AnycastOutPackRelation"))
         self.InstanceVersion = params.get("InstanceVersion")
         self.ConvoyId = params.get("ConvoyId")
+        self.ElasticBandwidth = params.get("ElasticBandwidth")
+        self.EOFlag = params.get("EOFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8044,6 +8054,9 @@ class NewL7RuleEntry(AbstractModel):
         :type RewriteHttps: int
         :param ErrCode: 规则配置失败时的详细错误原因(仅当Status=2时有效)，1001证书不存在，1002证书获取失败，1003证书上传失败，1004证书已过期
         :type ErrCode: int
+        :param Version: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: int
         """
         self.Protocol = None
         self.Domain = None
@@ -8071,6 +8084,7 @@ class NewL7RuleEntry(AbstractModel):
         self.VirtualPort = None
         self.RewriteHttps = None
         self.ErrCode = None
+        self.Version = None
 
 
     def _deserialize(self, params):
@@ -8105,6 +8119,7 @@ class NewL7RuleEntry(AbstractModel):
         self.VirtualPort = params.get("VirtualPort")
         self.RewriteHttps = params.get("RewriteHttps")
         self.ErrCode = params.get("ErrCode")
+        self.Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -12882,6 +12882,9 @@ class ExtractTraceWatermarkRequest(AbstractModel):
         r"""
         :param Url: 需要提取水印的媒体 URL。
         :type Url: str
+        :param FileId: 媒体文件 ID。Url 对应的原始媒体文件 ID。
+<li><font color=red>注意</font>：此字段必填。</li>
+        :type FileId: str
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         :param SessionContext: 标识来源上下文，用于透传用户请求信息，在ExtractTraceWatermarkComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
@@ -12894,6 +12897,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
         :type ExtInfo: str
         """
         self.Url = None
+        self.FileId = None
         self.SubAppId = None
         self.SessionContext = None
         self.SessionId = None
@@ -12903,6 +12907,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
+        self.FileId = params.get("FileId")
         self.SubAppId = params.get("SubAppId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")

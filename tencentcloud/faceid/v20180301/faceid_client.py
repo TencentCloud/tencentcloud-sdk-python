@@ -548,35 +548,6 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetRealNameAuthResult(self, request):
-        """获取微信实名认证结果
-
-        :param request: Request instance for GetRealNameAuthResult.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.GetRealNameAuthResultRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetRealNameAuthResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetRealNameAuthResult", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetRealNameAuthResultResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def GetWeChatBillDetails(self, request):
         """查询微信渠道服务（微信小程序、微信原生H5、微信普通H5）的账单明细及计费状态。
 

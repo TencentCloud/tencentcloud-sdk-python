@@ -520,7 +520,9 @@ class CccClient(AbstractClient):
 
 
     def DescribeChatMessages(self, request):
-        """包括具体聊天内容
+        """获取指定服务记录文本聊天内容，需要先使用查询在线客服记录（DescribeIMCdrs） API 获取服务记录 SessionId。
+
+        文本聊天记录只保存了 1 年内的，1 年之前会自动清理。
 
         :param request: Request instance for DescribeChatMessages.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeChatMessagesRequest`
@@ -607,7 +609,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeIMCdrs(self, request):
-        """包括全媒体和文本两种类型
+        """获取包括全媒体和文本会话两种类型的服务记录。
 
         :param request: Request instance for DescribeIMCdrs.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeIMCdrsRequest`

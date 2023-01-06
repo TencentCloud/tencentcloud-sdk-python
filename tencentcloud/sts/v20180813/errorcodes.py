@@ -83,6 +83,9 @@ INVALIDPARAMETER_TEMPCODENOTAVALIABLE = 'InvalidParameter.TempCodeNotAvaliable'
 # WebIdentityToken参数错误。
 INVALIDPARAMETER_WEBIDENTITYTOKENERROR = 'InvalidParameter.WebIdentityTokenError'
 
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
 # 账号对应的角色不存在。
 RESOURCENOTFOUND_ROLENOTFOUND = 'ResourceNotFound.RoleNotFound'
 

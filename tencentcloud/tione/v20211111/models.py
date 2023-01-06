@@ -7191,16 +7191,24 @@ class Spec(AbstractModel):
         :type SpecName: str
         :param SpecAlias: 计费项显示名称
         :type SpecAlias: str
+        :param Available: 是否售罄
+        :type Available: bool
+        :param AvailableRegion: 当前资源售罄时，可用的区域有哪些
+        :type AvailableRegion: list of str
         """
         self.SpecId = None
         self.SpecName = None
         self.SpecAlias = None
+        self.Available = None
+        self.AvailableRegion = None
 
 
     def _deserialize(self, params):
         self.SpecId = params.get("SpecId")
         self.SpecName = params.get("SpecName")
         self.SpecAlias = params.get("SpecAlias")
+        self.Available = params.get("Available")
+        self.AvailableRegion = params.get("AvailableRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

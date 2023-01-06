@@ -3879,6 +3879,41 @@ class DescribeCkafkaZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeConnectInfoResultDTO(AbstractModel):
+    """topic链接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IpAddr: ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpAddr: str
+        :param Time: 连结时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: str
+        :param IsUnSupportVersion: 是否支持的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUnSupportVersion: bool
+        """
+        self.IpAddr = None
+        self.Time = None
+        self.IsUnSupportVersion = None
+
+
+    def _deserialize(self, params):
+        self.IpAddr = params.get("IpAddr")
+        self.Time = params.get("Time")
+        self.IsUnSupportVersion = params.get("IsUnSupportVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeConnectResource(AbstractModel):
     """查询连接源具体数据的返参
 
@@ -5309,6 +5344,60 @@ class DescribeTopicDetailResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = TopicDetailResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopicProduceConnectionRequest(AbstractModel):
+    """DescribeTopicProduceConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param TopicName: topic名称
+        :type TopicName: str
+        """
+        self.InstanceId = None
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicProduceConnectionResponse(AbstractModel):
+    """DescribeTopicProduceConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 链接信息返回结果集
+        :type Result: list of DescribeConnectInfoResultDTO
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = DescribeConnectInfoResultDTO()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 

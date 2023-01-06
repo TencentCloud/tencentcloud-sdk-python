@@ -723,7 +723,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeProxyProcessStatistics(self, request):
-        """获取当前实例会话统计详情信息。【注意】该接口仅限部分环境调用。
+        """获取当前实例下的单个proxy的会话统计详情信息， 返回数据为单个 proxy 的会话统计信息。【注意】该接口仅限部分环境调用。
 
         :param request: Request instance for DescribeProxyProcessStatistics.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeProxyProcessStatisticsRequest`
