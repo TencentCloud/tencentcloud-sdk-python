@@ -6933,7 +6933,7 @@ off：不支持
         :param QnPrivateAccess: 七牛云对象存储回源鉴权
 注意：此字段可能返回 null，表示取不到有效值。
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
-        :param HttpsBilling: HTTPS服务
+        :param HttpsBilling: HTTPS服务，缺省时默认开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
@@ -8527,13 +8527,13 @@ failed：部署失败
 
 
 class HttpsBilling(AbstractModel):
-    """支持 https 请求开关，若关闭，下发配置拦截https请求
+    """HTTPS服务，若关闭，下发配置拦截https请求，开启时会产生计费
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: HTTPS服务
+        :param Switch: HTTPS服务，缺省时默认开启【会产生计费】
         :type Switch: str
         """
         self.Switch = None

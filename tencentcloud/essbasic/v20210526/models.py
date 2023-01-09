@@ -517,7 +517,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
         :type ResourceName: str
         :param ResourceId: 资源Id，通过UploadFiles获取
         :type ResourceId: str
-        :param Operator: 操作者信息
+        :param Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param Organization: 暂未开放
         :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`

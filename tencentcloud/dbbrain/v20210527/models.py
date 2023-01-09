@@ -3698,6 +3698,37 @@ class ProcessStatistic(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Items: 会话详情数组。
+        :type Items: list of SessionItem
+        :param AllConnSum: 总连接数。
+        :type AllConnSum: int
+        :param ActiveConnSum: 总活跃连接数。
+        :type ActiveConnSum: int
+        """
+        self.Items = None
+        self.AllConnSum = None
+        self.ActiveConnSum = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SessionItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.AllConnSum = params.get("AllConnSum")
+        self.ActiveConnSum = params.get("ActiveConnSum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ProfileInfo(AbstractModel):
     """用户配置的信息
@@ -4131,6 +4162,38 @@ class SecLogExportTaskInfo(AbstractModel):
         self.LogEndTime = params.get("LogEndTime")
         self.TotalSize = params.get("TotalSize")
         self.DangerLevels = params.get("DangerLevels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionItem(AbstractModel):
+    """实时会话访问来源详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: 访问来源。
+        :type Ip: str
+        :param ActiveConn: 当前访问来源活跃连接数
+        :type ActiveConn: str
+        :param AllConn: 当前访问来源总连接数
+        :type AllConn: int
+        """
+        self.Ip = None
+        self.ActiveConn = None
+        self.AllConn = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.ActiveConn = params.get("ActiveConn")
+        self.AllConn = params.get("AllConn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -26,6 +26,35 @@ class YinsudaClient(AbstractClient):
     _service = 'yinsuda'
 
 
+    def ApplyChorus(self, request):
+        """申请合唱相关信息，用于标记用户的演唱是在合唱场景下。
+
+        :param request: Request instance for ApplyChorus.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.ApplyChorusRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.ApplyChorusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyChorus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyChorusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BatchDescribeKTVMusicDetails(self, request):
         """批量获取歌曲详细信息，包括：歌词下载链接、播放凭证、音高数据下载链接信息等。
 

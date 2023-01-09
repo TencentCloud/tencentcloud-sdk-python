@@ -33,11 +33,14 @@ class ApplyConcurrentRequest(AbstractModel):
         :type ProjectId: str
         :param ApplicationVersionId: 应用版本ID
         :type ApplicationVersionId: str
+        :param ApplicationId: 应用ID。如果是独享项目，将忽略该参数，使用项目绑定的应用。如果是共享项目，使用该参数来指定应用。
+        :type ApplicationId: str
         """
         self.UserId = None
         self.UserIp = None
         self.ProjectId = None
         self.ApplicationVersionId = None
+        self.ApplicationId = None
 
 
     def _deserialize(self, params):
@@ -45,6 +48,7 @@ class ApplyConcurrentRequest(AbstractModel):
         self.UserIp = params.get("UserIp")
         self.ProjectId = params.get("ProjectId")
         self.ApplicationVersionId = params.get("ApplicationVersionId")
+        self.ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

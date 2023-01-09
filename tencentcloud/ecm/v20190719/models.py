@@ -1379,6 +1379,10 @@ class CreateLoadBalancerRequest(AbstractModel):
         :type Tags: list of TagInfo
         :param SecurityGroups: 安全组。
         :type SecurityGroups: list of str
+        :param AddressIPVersion: 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPv6FullChain，默认值 IPV4。说明：取值为IPv6FullChain，表示为IPv6版本。
+        :type AddressIPVersion: str
+        :param SubnetId: 在购买IPV6负载均衡实例的情况下，必须指定子网 ID, 此参数必填。
+        :type SubnetId: str
         """
         self.EcmRegion = None
         self.LoadBalancerType = None
@@ -1389,6 +1393,8 @@ class CreateLoadBalancerRequest(AbstractModel):
         self.InternetAccessible = None
         self.Tags = None
         self.SecurityGroups = None
+        self.AddressIPVersion = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -1408,6 +1414,8 @@ class CreateLoadBalancerRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.SecurityGroups = params.get("SecurityGroups")
+        self.AddressIPVersion = params.get("AddressIPVersion")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7322,6 +7330,9 @@ class LoadBalancer(AbstractModel):
         :param LoadBalancerPassToTarget: 后端机器是否放通来自ELB的流量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerPassToTarget: bool
+        :param AddressIPv6: 负载均衡实例的IPv6地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIPv6: str
         """
         self.Region = None
         self.Position = None
@@ -7338,6 +7349,7 @@ class LoadBalancer(AbstractModel):
         self.NetworkAttributes = None
         self.SecureGroups = None
         self.LoadBalancerPassToTarget = None
+        self.AddressIPv6 = None
 
 
     def _deserialize(self, params):
@@ -7365,6 +7377,7 @@ class LoadBalancer(AbstractModel):
             self.NetworkAttributes._deserialize(params.get("NetworkAttributes"))
         self.SecureGroups = params.get("SecureGroups")
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self.AddressIPv6 = params.get("AddressIPv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

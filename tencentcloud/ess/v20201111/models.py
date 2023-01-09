@@ -675,7 +675,7 @@ class CreateConvertTaskApiRequest(AbstractModel):
         :type ResourceName: str
         :param ResourceId: 资源Id，通过UploadFiles获取
         :type ResourceId: str
-        :param Operator: 操作者信息
+        :param Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param Agent: 应用号信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -3989,11 +3989,14 @@ class VerifyPdfResponse(AbstractModel):
         :param PdfVerifyResults: 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域
 ；5-文件签名格式错误
         :type PdfVerifyResults: list of PdfVerifyResult
+        :param VerifySerialNo: 验签序列号
+        :type VerifySerialNo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.VerifyResult = None
         self.PdfVerifyResults = None
+        self.VerifySerialNo = None
         self.RequestId = None
 
 
@@ -4005,4 +4008,5 @@ class VerifyPdfResponse(AbstractModel):
                 obj = PdfVerifyResult()
                 obj._deserialize(item)
                 self.PdfVerifyResults.append(obj)
+        self.VerifySerialNo = params.get("VerifySerialNo")
         self.RequestId = params.get("RequestId")

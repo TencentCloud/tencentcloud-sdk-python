@@ -246,13 +246,23 @@ class CreateAccessRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param AccessRules: 权限规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessRules: list of AccessRule
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.AccessRules = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("AccessRules") is not None:
+            self.AccessRules = []
+            for item in params.get("AccessRules"):
+                obj = AccessRule()
+                obj._deserialize(item)
+                self.AccessRules.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -901,6 +911,12 @@ class DescribeFileSystemResponse(AbstractModel):
         :param DegradeCapacityUsed: 已使用COS低频存储容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DegradeCapacityUsed: int
+        :param DeepArchiveCapacityUsed: 已使用COS深度归档存储容量（byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeepArchiveCapacityUsed: int
+        :param IntelligentCapacityUsed: 已使用COS智能分层存储容量（byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntelligentCapacityUsed: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -909,6 +925,8 @@ class DescribeFileSystemResponse(AbstractModel):
         self.ArchiveCapacityUsed = None
         self.StandardCapacityUsed = None
         self.DegradeCapacityUsed = None
+        self.DeepArchiveCapacityUsed = None
+        self.IntelligentCapacityUsed = None
         self.RequestId = None
 
 
@@ -920,6 +938,8 @@ class DescribeFileSystemResponse(AbstractModel):
         self.ArchiveCapacityUsed = params.get("ArchiveCapacityUsed")
         self.StandardCapacityUsed = params.get("StandardCapacityUsed")
         self.DegradeCapacityUsed = params.get("DegradeCapacityUsed")
+        self.DeepArchiveCapacityUsed = params.get("DeepArchiveCapacityUsed")
+        self.IntelligentCapacityUsed = params.get("IntelligentCapacityUsed")
         self.RequestId = params.get("RequestId")
 
 
@@ -1814,7 +1834,7 @@ class Transition(AbstractModel):
         r"""
         :param Days: 触发时间（单位天）
         :type Days: int
-        :param Type: 转换类型（1：归档；2：删除；3：低频）
+        :param Type: 转换类型（1：归档；2：删除；3：低频；4：深度归档；5：智能分层）
         :type Type: int
         """
         self.Days = None

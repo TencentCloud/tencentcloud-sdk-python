@@ -25,7 +25,7 @@ class CreateTaskFromTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 从经验库中查询到的经验模版ID
+        :param TemplateId: 从经验库中查询到的经验模板ID
         :type TemplateId: int
         :param TaskConfig: 演练的配置参数
         :type TaskConfig: :class:`tencentcloud.cfg.v20210820.models.TaskConfig`

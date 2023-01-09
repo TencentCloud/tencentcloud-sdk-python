@@ -3746,6 +3746,9 @@ notInService       不在服务区
         :param Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param QueuedSkillGroupName: 排队技能组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueuedSkillGroupName: str
         """
         self.Caller = None
         self.Callee = None
@@ -3778,6 +3781,7 @@ notInService       不在服务区
         self.AsrUrl = None
         self.CustomRecordURL = None
         self.Remark = None
+        self.QueuedSkillGroupName = None
 
 
     def _deserialize(self, params):
@@ -3829,6 +3833,7 @@ notInService       不在服务区
         self.AsrUrl = params.get("AsrUrl")
         self.CustomRecordURL = params.get("CustomRecordURL")
         self.Remark = params.get("Remark")
+        self.QueuedSkillGroupName = params.get("QueuedSkillGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

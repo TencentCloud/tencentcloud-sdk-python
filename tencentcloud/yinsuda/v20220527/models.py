@@ -50,6 +50,71 @@ class AMEMusicBaseInfo(AbstractModel):
         
 
 
+class ApplyChorusRequest(AbstractModel):
+    """ApplyChorus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param UserId: 用户标识。
+        :type UserId: str
+        :param RoomId: 房间号。
+        :type RoomId: str
+        :param MusicId: 歌曲 Id。
+        :type MusicId: str
+        :param MaxChorusNum: 最大合唱人数，默认值为 8，最大值为 20。
+        :type MaxChorusNum: int
+        :param ChorusUserIds: 合唱用户标识列表。
+        :type ChorusUserIds: list of str
+        """
+        self.AppName = None
+        self.UserId = None
+        self.RoomId = None
+        self.MusicId = None
+        self.MaxChorusNum = None
+        self.ChorusUserIds = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.UserId = params.get("UserId")
+        self.RoomId = params.get("RoomId")
+        self.MusicId = params.get("MusicId")
+        self.MaxChorusNum = params.get("MaxChorusNum")
+        self.ChorusUserIds = params.get("ChorusUserIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyChorusResponse(AbstractModel):
+    """ApplyChorus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChorusToken: 合唱 Token。
+        :type ChorusToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ChorusToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ChorusToken = params.get("ChorusToken")
+        self.RequestId = params.get("RequestId")
+
+
 class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
     """BatchDescribeKTVMusicDetails请求参数结构体
 

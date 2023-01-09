@@ -2539,6 +2539,162 @@ class CreateClusterRouteTableResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateClusterVirtualNodePoolRequest(AbstractModel):
+    """CreateClusterVirtualNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param Name: 节点池名称
+        :type Name: str
+        :param SubnetIds: 子网ID列表
+        :type SubnetIds: list of str
+        :param Labels: 虚拟节点label
+        :type Labels: list of Label
+        :param Taints: 虚拟节点taint
+        :type Taints: list of Taint
+        :param VirtualNodes: 节点列表
+        :type VirtualNodes: list of VirtualNodeSpec
+        :param DeletionProtection: 删除保护开关
+        :type DeletionProtection: bool
+        :param OS: 节点池操作系统：
+- linux（默认）
+- windows
+        :type OS: str
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.SubnetIds = None
+        self.Labels = None
+        self.Taints = None
+        self.VirtualNodes = None
+        self.DeletionProtection = None
+        self.OS = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.SubnetIds = params.get("SubnetIds")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        if params.get("VirtualNodes") is not None:
+            self.VirtualNodes = []
+            for item in params.get("VirtualNodes"):
+                obj = VirtualNodeSpec()
+                obj._deserialize(item)
+                self.VirtualNodes.append(obj)
+        self.DeletionProtection = params.get("DeletionProtection")
+        self.OS = params.get("OS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterVirtualNodePoolResponse(AbstractModel):
+    """CreateClusterVirtualNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NodePoolId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClusterVirtualNodeRequest(AbstractModel):
+    """CreateClusterVirtualNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NodePoolId: 虚拟节点所属节点池
+        :type NodePoolId: str
+        :param SubnetId: 虚拟节点所属子网
+        :type SubnetId: str
+        :param SubnetIds: 虚拟节点子网ID列表，和参数SubnetId互斥
+        :type SubnetIds: list of str
+        :param VirtualNodes: 虚拟节点列表
+        :type VirtualNodes: list of VirtualNodeSpec
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.SubnetId = None
+        self.SubnetIds = None
+        self.VirtualNodes = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.SubnetId = params.get("SubnetId")
+        self.SubnetIds = params.get("SubnetIds")
+        if params.get("VirtualNodes") is not None:
+            self.VirtualNodes = []
+            for item in params.get("VirtualNodes"):
+                obj = VirtualNodeSpec()
+                obj._deserialize(item)
+                self.VirtualNodes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterVirtualNodeResponse(AbstractModel):
+    """CreateClusterVirtualNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeName: 虚拟节点名称
+        :type NodeName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NodeName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NodeName = params.get("NodeName")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateECMInstancesRequest(AbstractModel):
     """CreateECMInstances请求参数结构体
 
@@ -4208,6 +4364,104 @@ class DeleteClusterRouteTableRequest(AbstractModel):
 
 class DeleteClusterRouteTableResponse(AbstractModel):
     """DeleteClusterRouteTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClusterVirtualNodePoolRequest(AbstractModel):
+    """DeleteClusterVirtualNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NodePoolIds: 虚拟节点池ID列表
+        :type NodePoolIds: list of str
+        :param Force: 是否强制删除，在虚拟节点上有pod的情况下，如果选择非强制删除，则删除会失败
+        :type Force: bool
+        """
+        self.ClusterId = None
+        self.NodePoolIds = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolIds = params.get("NodePoolIds")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterVirtualNodePoolResponse(AbstractModel):
+    """DeleteClusterVirtualNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteClusterVirtualNodeRequest(AbstractModel):
+    """DeleteClusterVirtualNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NodeNames: 虚拟节点列表
+        :type NodeNames: list of str
+        :param Force: 是否强制删除：如果虚拟节点上有运行中Pod，则非强制删除状态下不会进行删除
+        :type Force: bool
+        """
+        self.ClusterId = None
+        self.NodeNames = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodeNames = params.get("NodeNames")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterVirtualNodeResponse(AbstractModel):
+    """DeleteClusterVirtualNode返回参数结构体
 
     """
 
@@ -6444,6 +6698,126 @@ class DescribeClusterStatusResponse(AbstractModel):
                 obj = ClusterStatus()
                 obj._deserialize(item)
                 self.ClusterStatusSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterVirtualNodePoolsRequest(AbstractModel):
+    """DescribeClusterVirtualNodePools请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterVirtualNodePoolsResponse(AbstractModel):
+    """DescribeClusterVirtualNodePools返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 节点池总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param NodePoolSet: 虚拟节点池列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePoolSet: list of VirtualNodePool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NodePoolSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NodePoolSet") is not None:
+            self.NodePoolSet = []
+            for item in params.get("NodePoolSet"):
+                obj = VirtualNodePool()
+                obj._deserialize(item)
+                self.NodePoolSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterVirtualNodeRequest(AbstractModel):
+    """DescribeClusterVirtualNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param NodeNames: 节点名称
+        :type NodeNames: list of str
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.NodeNames = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.NodeNames = params.get("NodeNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterVirtualNodeResponse(AbstractModel):
+    """DescribeClusterVirtualNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Nodes: 节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nodes: list of VirtualNode
+        :param TotalCount: 节点总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Nodes = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = VirtualNode()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -9736,6 +10110,51 @@ class DnsServerConf(AbstractModel):
         
 
 
+class DrainClusterVirtualNodeRequest(AbstractModel):
+    """DrainClusterVirtualNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NodeName: 节点名
+        :type NodeName: str
+        """
+        self.ClusterId = None
+        self.NodeName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodeName = params.get("NodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DrainClusterVirtualNodeResponse(AbstractModel):
+    """DrainClusterVirtualNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DriverVersion(AbstractModel):
     """GPU驱动和CUDA的版本信息
 
@@ -12837,6 +13256,77 @@ class ModifyClusterNodePoolRequest(AbstractModel):
 
 class ModifyClusterNodePoolResponse(AbstractModel):
     """ModifyClusterNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyClusterVirtualNodePoolRequest(AbstractModel):
+    """ModifyClusterVirtualNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param Name: 节点池名称
+        :type Name: str
+        :param Labels: 虚拟节点label
+        :type Labels: list of Label
+        :param Taints: 虚拟节点taint
+        :type Taints: list of Taint
+        :param DeletionProtection: 删除保护开关
+        :type DeletionProtection: bool
+        """
+        self.ClusterId = None
+        self.NodePoolId = None
+        self.Name = None
+        self.Labels = None
+        self.Taints = None
+        self.DeletionProtection = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodePoolId = params.get("NodePoolId")
+        self.Name = params.get("Name")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        self.DeletionProtection = params.get("DeletionProtection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterVirtualNodePoolResponse(AbstractModel):
+    """ModifyClusterVirtualNodePool返回参数结构体
 
     """
 
@@ -17564,6 +18054,128 @@ class VersionInstance(AbstractModel):
         self.Name = params.get("Name")
         self.Version = params.get("Version")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirtualNode(AbstractModel):
+    """虚拟节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 虚拟节点名称
+        :type Name: str
+        :param SubnetId: 虚拟节点所属子网
+        :type SubnetId: str
+        :param Phase: 虚拟节点状态
+        :type Phase: str
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        """
+        self.Name = None
+        self.SubnetId = None
+        self.Phase = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.SubnetId = params.get("SubnetId")
+        self.Phase = params.get("Phase")
+        self.CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirtualNodePool(AbstractModel):
+    """虚拟节点池
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param SubnetIds: 子网列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetIds: list of str
+        :param Name: 节点池名称
+        :type Name: str
+        :param LifeState: 节点池生命周期
+        :type LifeState: str
+        :param Labels: 虚拟节点label
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of Label
+        :param Taints: 虚拟节点taint
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Taints: list of Taint
+        """
+        self.NodePoolId = None
+        self.SubnetIds = None
+        self.Name = None
+        self.LifeState = None
+        self.Labels = None
+        self.Taints = None
+
+
+    def _deserialize(self, params):
+        self.NodePoolId = params.get("NodePoolId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.Name = params.get("Name")
+        self.LifeState = params.get("LifeState")
+        if params.get("Labels") is not None:
+            self.Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.Labels.append(obj)
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirtualNodeSpec(AbstractModel):
+    """虚拟节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DisplayName: 节点展示名称
+        :type DisplayName: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        """
+        self.DisplayName = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.DisplayName = params.get("DisplayName")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
