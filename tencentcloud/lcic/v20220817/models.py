@@ -215,17 +215,18 @@ coteaching 双师
         :type SubType: str
         :param TeacherId: 老师ID。通过[注册用户]接口获取的UserId。
         :type TeacherId: str
-        :param AutoMic: 进入房间时是否自动连麦。可以有以下取值：
-0 不自动连麦（默认值）
+        :param AutoMic: 进入课堂时是否自动连麦。可以有以下取值：
+0 不自动连麦（需要手动申请上麦，默认值）
 1 自动连麦
         :type AutoMic: int
         :param AudioQuality: 高音质模式。可以有以下取值：
 0 不开启高音质（默认值）
 1 开启高音质
         :type AudioQuality: int
-        :param DisableRecord: 禁止录制。可以有以下取值：
-0 不禁止录制（默认值）
+        :param DisableRecord: 上课后是否禁止自动录制。可以有以下取值：
+0 不禁止录制（自动开启录制，默认值）
 1 禁止录制
+注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
         :type DisableRecord: int
         :param Assistants: 助教Id列表。通过[注册用户]接口获取的UserId。
         :type Assistants: list of str
@@ -403,8 +404,8 @@ class DescribeRoomResponse(AbstractModel):
         :type Resolution: int
         :param MaxMicNumber: 最大连麦人数（不包括老师）。取值范围[0, 16]
         :type MaxMicNumber: int
-        :param AutoMic: 进入房间时是否自动连麦。可以有以下取值：
-0 不自动连麦（默认值）
+        :param AutoMic: 进入课堂时是否自动连麦。可以有以下取值：
+0 不自动连麦（需要手动申请上麦，默认值）
 1 自动连麦
         :type AutoMic: int
         :param AudioQuality: 高音质模式。可以有以下取值：
@@ -416,9 +417,10 @@ videodoc 文档+视频
 video 纯视频
 coteaching 双师
         :type SubType: str
-        :param DisableRecord: 禁止录制。可以有以下取值：
-0 不禁止录制（默认值）
+        :param DisableRecord: 上课后是否禁止自动录制。可以有以下取值：
+0 不禁止录制（自动开启录制，默认值）
 1 禁止录制
+注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
         :type DisableRecord: int
         :param Assistants: 助教Id列表。
 注意：此字段可能返回 null，表示取不到有效值。

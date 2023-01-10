@@ -1766,6 +1766,35 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SuspendResumeDataEngine(self, request):
+        """本接口用于控制暂停或恢复数据引擎
+
+        :param request: Request instance for SuspendResumeDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.SuspendResumeDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SuspendResumeDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SuspendResumeDataEngine", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SuspendResumeDataEngineResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnbindWorkGroupsFromUser(self, request):
         """解绑用户上的用户组
 

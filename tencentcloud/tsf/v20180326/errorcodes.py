@@ -161,6 +161,9 @@ FAILEDOPERATION_TSFAPMBUSILOGCFGSCHEMAQUERYERROR = 'FailedOperation.TsfApmBusiLo
 # TSF应用性能管理业务日志配置数据库写入失败。
 FAILEDOPERATION_TSFAPMBUSILOGCFGWRITEERROR = 'FailedOperation.TsfApmBusiLogCfgWriteError'
 
+# TSF应用性能管理调用tsf-ms模块失败。
+FAILEDOPERATION_TSFAPMCALLTSFMSFAILED = 'FailedOperation.TsfApmCallTsfMsFailed'
+
 # TSF应用性能管理CTSDB客户端调用失败。
 FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = 'FailedOperation.TsfApmCtsdbClientRequestError'
 

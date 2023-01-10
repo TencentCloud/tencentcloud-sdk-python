@@ -12144,6 +12144,38 @@ class DrmStreamingsInfoForUpdate(AbstractModel):
         
 
 
+class DynamicRangeInfo(AbstractModel):
+    """画面动态范围信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 画面动态范围信息。可取值：
+<li>SDR：Standard Dynamic Range 标准动态范围；</li>
+<li>HDR：High Dynamic Range 高动态范围。</li>
+        :type Type: str
+        :param HDRType: 高动态范围类型，当 Type 为 HDR 时有效。目前支持的可取值：
+<li>hdr10：表示 hdr10 标准；</li>
+<li>hlg：表示 hlg 标准。</li>
+        :type HDRType: str
+        """
+        self.Type = None
+        self.HDRType = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.HDRType = params.get("HDRType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EditMediaFileInfo(AbstractModel):
     """编辑点播视频文件信息
 
@@ -16835,6 +16867,9 @@ class MediaVideoStreamItem(AbstractModel):
         :type Fps: int
         :param CodecTag: 编码标签，仅当 Codec 为 hevc 时有效。
         :type CodecTag: str
+        :param DynamicRangeInfo: 画面动态范围信息。
+<li><font color=red>注意</font>：在 2023-01-10T00:00:00Z 后处理的转码文件，此字段有效。</li>
+        :type DynamicRangeInfo: :class:`tencentcloud.vod.v20180717.models.DynamicRangeInfo`
         """
         self.Bitrate = None
         self.Height = None
@@ -16842,6 +16877,7 @@ class MediaVideoStreamItem(AbstractModel):
         self.Codec = None
         self.Fps = None
         self.CodecTag = None
+        self.DynamicRangeInfo = None
 
 
     def _deserialize(self, params):
@@ -16851,6 +16887,9 @@ class MediaVideoStreamItem(AbstractModel):
         self.Codec = params.get("Codec")
         self.Fps = params.get("Fps")
         self.CodecTag = params.get("CodecTag")
+        if params.get("DynamicRangeInfo") is not None:
+            self.DynamicRangeInfo = DynamicRangeInfo()
+            self.DynamicRangeInfo._deserialize(params.get("DynamicRangeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19990,7 +20029,8 @@ class ProcedureReviewAudioVideoTaskInput(AbstractModel):
         :param Definition: 审核模板。
         :type Definition: int
         :param ReviewContents: 审核的内容，可选值：
-<li>Media：原始音视频。</li>
+<li>Media：原始音视频；</li>
+<li>Cover：封面。</li>
 不填或填空数组时，默认为审核 Media。
         :type ReviewContents: list of str
         """

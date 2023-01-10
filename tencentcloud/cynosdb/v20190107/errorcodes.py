@@ -197,6 +197,9 @@ LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 权限校验失败。
+OPERATIONDENIED_CAMDENIEDERROR = 'OperationDenied.CamDeniedError'
+
 # 由于操作禁止，当前集群不允许该操作。
 OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = 'OperationDenied.ClusterOpNotAllowedError'
 

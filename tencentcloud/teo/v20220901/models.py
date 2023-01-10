@@ -2902,6 +2902,96 @@ class DescribeContentQuotaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDDoSAttackDataRequest(AbstractModel):
+    """DescribeDDoSAttackData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        :param MetricNames: 统计指标列表，取值有：
+<li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
+<li>ddos_attackMaxPackageRate：攻击包速率峰值 ；</li>
+<li>ddos_attackBandwidth：攻击带宽曲线；</li>
+<li>ddos_attackPackageRate：攻击包速率曲线。</li>
+        :type MetricNames: list of str
+        :param ZoneIds: 站点集合，不填默认选择全部站点。
+        :type ZoneIds: list of str
+        :param PolicyIds: DDoS策略组ID列表，不填默认选择全部策略ID。
+        :type PolicyIds: list of int
+        :param Interval: 查询时间粒度，取值有：
+<li>min：1分钟；</li>
+<li>5min：5分钟；</li>
+<li>hour：1小时；</li>
+<li>day：1天。</li>不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+        :type Interval: str
+        :param Area: 数据归属地区，取值有：
+<li>overseas：全球（除中国大陆地区）数据；</li>
+<li>mainland：中国大陆地区数据；</li>
+<li>global：全球数据。</li>不填默认取值为global。
+        :type Area: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricNames = None
+        self.ZoneIds = None
+        self.PolicyIds = None
+        self.Interval = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricNames = params.get("MetricNames")
+        self.ZoneIds = params.get("ZoneIds")
+        self.PolicyIds = params.get("PolicyIds")
+        self.Interval = params.get("Interval")
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSAttackDataResponse(AbstractModel):
+    """DescribeDDoSAttackData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 查询结果的总条数。
+        :type TotalCount: int
+        :param Data: DDoS攻击数据内容列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of SecEntry
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SecEntry()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDDoSAttackTopDataRequest(AbstractModel):
     """DescribeDDoSAttackTopData请求参数结构体
 

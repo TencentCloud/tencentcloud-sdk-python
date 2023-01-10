@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 创建服务失败。
+FAILEDOPERATION_CREATESERVICEERROR = 'FailedOperation.CreateServiceError'
+
 # 服务器繁忙,请稍后再试。
 FAILEDOPERATION_DEFAULTINTERNALERROR = 'FailedOperation.DefaultInternalError'
 

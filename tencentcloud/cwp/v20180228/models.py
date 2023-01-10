@@ -14621,12 +14621,15 @@ class DescribeVersionStatisticsResponse(AbstractModel):
         :type ProVersionNum: int
         :param UltimateVersionNum: 旗舰版数量
         :type UltimateVersionNum: int
+        :param GeneralVersionNum: 普惠版数量
+        :type GeneralVersionNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BasicVersionNum = None
         self.ProVersionNum = None
         self.UltimateVersionNum = None
+        self.GeneralVersionNum = None
         self.RequestId = None
 
 
@@ -14634,6 +14637,7 @@ class DescribeVersionStatisticsResponse(AbstractModel):
         self.BasicVersionNum = params.get("BasicVersionNum")
         self.ProVersionNum = params.get("ProVersionNum")
         self.UltimateVersionNum = params.get("UltimateVersionNum")
+        self.GeneralVersionNum = params.get("GeneralVersionNum")
         self.RequestId = params.get("RequestId")
 
 

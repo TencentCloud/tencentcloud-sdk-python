@@ -5598,6 +5598,55 @@ class StreamingStatistics(AbstractModel):
         
 
 
+class SuspendResumeDataEngineRequest(AbstractModel):
+    """SuspendResumeDataEngine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineName: 虚拟集群名称
+        :type DataEngineName: str
+        :param Operate: 操作类型 suspend/resume
+        :type Operate: str
+        """
+        self.DataEngineName = None
+        self.Operate = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineName = params.get("DataEngineName")
+        self.Operate = params.get("Operate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SuspendResumeDataEngineResponse(AbstractModel):
+    """SuspendResumeDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineName: 虚拟集群详细信息
+        :type DataEngineName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataEngineName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineName = params.get("DataEngineName")
+        self.RequestId = params.get("RequestId")
+
+
 class TableBaseInfo(AbstractModel):
     """数据表配置信息
 

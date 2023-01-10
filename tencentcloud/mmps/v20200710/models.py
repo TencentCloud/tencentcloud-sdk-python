@@ -50,6 +50,15 @@ class AppInfoItem(AbstractModel):
         :param HighRiskCount: 诊断风险项数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type HighRiskCount: int
+        :param PrivacyTextName: 隐私申明文件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivacyTextName: str
+        :param SoftwareMD5: 软件MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoftwareMD5: str
+        :param PrivacyTextMD5: 隐私文本MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivacyTextMD5: str
         """
         self.AppPackage = None
         self.AppName = None
@@ -60,6 +69,9 @@ class AppInfoItem(AbstractModel):
         self.BehaviorUrl = None
         self.BehaviorTitle = None
         self.HighRiskCount = None
+        self.PrivacyTextName = None
+        self.SoftwareMD5 = None
+        self.PrivacyTextMD5 = None
 
 
     def _deserialize(self, params):
@@ -72,6 +84,9 @@ class AppInfoItem(AbstractModel):
         self.BehaviorUrl = params.get("BehaviorUrl")
         self.BehaviorTitle = params.get("BehaviorTitle")
         self.HighRiskCount = params.get("HighRiskCount")
+        self.PrivacyTextName = params.get("PrivacyTextName")
+        self.SoftwareMD5 = params.get("SoftwareMD5")
+        self.PrivacyTextMD5 = params.get("PrivacyTextMD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -105,6 +120,9 @@ class AppTaskData(AbstractModel):
         :type StartTime: str
         :param EndTime: 任务完成时间(更新时间)
         :type EndTime: str
+        :param ContactName: 联系人信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContactName: str
         """
         self.TaskID = None
         self.TaskType = None
@@ -114,6 +132,7 @@ class AppTaskData(AbstractModel):
         self.AppInfo = None
         self.StartTime = None
         self.EndTime = None
+        self.ContactName = None
 
 
     def _deserialize(self, params):
@@ -127,6 +146,7 @@ class AppTaskData(AbstractModel):
             self.AppInfo._deserialize(params.get("AppInfo"))
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.ContactName = params.get("ContactName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

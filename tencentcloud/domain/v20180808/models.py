@@ -1240,6 +1240,8 @@ serverDeleteProhibited：注册局禁止删除
 clientTransferProhibited：注册商禁止转移
 clientUpdateProhibited：注册商禁止更新
 clientDeleteProhibited：注册商禁止删除
+serverRenewProhibited: 注册局禁止续费
+clientRenewProhobited: 注册商禁止续费
         :type DomainStatus: list of str
         :param BuyStatus: 域名购买状态。
 ok：正常

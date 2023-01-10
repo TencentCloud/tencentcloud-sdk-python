@@ -316,6 +316,45 @@ class CFSOption(AbstractModel):
         
 
 
+class CFSOptionOverview(AbstractModel):
+    """CFS存储选项概览信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalPath: 文件系统本地挂载路径。
+        :type LocalPath: str
+        :param RemotePath: 文件系统远程挂载ip及路径。
+        :type RemotePath: str
+        :param Protocol: 文件系统协议类型。
+<li>NFS 3.0。
+<li>NFS 4.0。
+<li>TURBO。
+        :type Protocol: str
+        :param StorageType: 文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
+        :type StorageType: str
+        """
+        self.LocalPath = None
+        self.RemotePath = None
+        self.Protocol = None
+        self.StorageType = None
+
+
+    def _deserialize(self, params):
+        self.LocalPath = params.get("LocalPath")
+        self.RemotePath = params.get("RemotePath")
+        self.Protocol = params.get("Protocol")
+        self.StorageType = params.get("StorageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterActivity(AbstractModel):
     """符合条件的集群活动信息。
 
@@ -959,13 +998,19 @@ class DescribeClusterStorageOptionResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param StorageOption: 集群存储选项信息概览。
+        :type StorageOption: :class:`tencentcloud.thpc.v20220401.models.StorageOptionOverview`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.StorageOption = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("StorageOption") is not None:
+            self.StorageOption = StorageOptionOverview()
+            self.StorageOption._deserialize(params.get("StorageOption"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1080,6 +1125,38 @@ class ExpansionNodeConfig(AbstractModel):
 
 class GooseFSOption(AbstractModel):
     """描述GooseFS挂载信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalPath: 文件系统本地挂载路径。
+        :type LocalPath: str
+        :param RemotePath: 文件系统远程挂载路径。
+        :type RemotePath: str
+        :param Masters: 文件系统master的ip和端口。
+        :type Masters: list of str
+        """
+        self.LocalPath = None
+        self.RemotePath = None
+        self.Masters = None
+
+
+    def _deserialize(self, params):
+        self.LocalPath = params.get("LocalPath")
+        self.RemotePath = params.get("RemotePath")
+        self.Masters = params.get("Masters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GooseFSOptionOverview(AbstractModel):
+    """GooseFS存储选项概览信息。
 
     """
 
@@ -1611,6 +1688,44 @@ class StorageOption(AbstractModel):
             self.GooseFSOptions = []
             for item in params.get("GooseFSOptions"):
                 obj = GooseFSOption()
+                obj._deserialize(item)
+                self.GooseFSOptions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageOptionOverview(AbstractModel):
+    """集群存储选项概览信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CFSOptions: CFS存储选项概览信息列表。
+        :type CFSOptions: list of CFSOptionOverview
+        :param GooseFSOptions: GooseFS存储选项概览信息列表。
+        :type GooseFSOptions: list of GooseFSOptionOverview
+        """
+        self.CFSOptions = None
+        self.GooseFSOptions = None
+
+
+    def _deserialize(self, params):
+        if params.get("CFSOptions") is not None:
+            self.CFSOptions = []
+            for item in params.get("CFSOptions"):
+                obj = CFSOptionOverview()
+                obj._deserialize(item)
+                self.CFSOptions.append(obj)
+        if params.get("GooseFSOptions") is not None:
+            self.GooseFSOptions = []
+            for item in params.get("GooseFSOptions"):
+                obj = GooseFSOptionOverview()
                 obj._deserialize(item)
                 self.GooseFSOptions.append(obj)
         memeber_set = set(params.keys())

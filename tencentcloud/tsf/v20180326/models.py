@@ -381,6 +381,9 @@ class ApiDetailInfo(AbstractModel):
         :param Description: Api描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param ApiMatchType: API路径匹配类型。normal：普通API；wildcard：通配API。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiMatchType: str
         """
         self.ApiId = None
         self.NamespaceId = None
@@ -403,6 +406,7 @@ class ApiDetailInfo(AbstractModel):
         self.Host = None
         self.ApiType = None
         self.Description = None
+        self.ApiMatchType = None
 
 
     def _deserialize(self, params):
@@ -427,6 +431,7 @@ class ApiDetailInfo(AbstractModel):
         self.Host = params.get("Host")
         self.ApiType = params.get("ApiType")
         self.Description = params.get("Description")
+        self.ApiMatchType = params.get("ApiMatchType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5287,6 +5292,48 @@ class DeliveryConfigBindGroups(AbstractModel):
                 obj = DeliveryConfigBindGroup()
                 obj._deserialize(item)
                 self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeliveryKafkaInfo(AbstractModel):
+    """kafka投递的topic和path的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Topic: 投递kafka的topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param Path: 采集日志的path
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: list of str
+        :param LineRule: default，默认换行符分行
+time，按时间分行
+custom, 选了custom那么CustomRule就要填入具体的自定义值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LineRule: str
+        :param CustomRule: 自定义的分行值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRule: str
+        """
+        self.Topic = None
+        self.Path = None
+        self.LineRule = None
+        self.CustomRule = None
+
+
+    def _deserialize(self, params):
+        self.Topic = params.get("Topic")
+        self.Path = params.get("Path")
+        self.LineRule = params.get("LineRule")
+        self.CustomRule = params.get("CustomRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13917,6 +13964,24 @@ class KafkaDeliveryConfig(AbstractModel):
         :param LineRule: 换行规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type LineRule: str
+        :param EnableAuth: 是否需要认证
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableAuth: bool
+        :param Username: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param Password: 密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param KafkaInfos: 投递的topic和path
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaInfos: list of DeliveryKafkaInfo
+        :param EnableGlobalLineRule: 是否应用单行规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableGlobalLineRule: bool
+        :param CustomRule: 自定义分行规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRule: str
         """
         self.ConfigId = None
         self.ConfigName = None
@@ -13925,6 +13990,12 @@ class KafkaDeliveryConfig(AbstractModel):
         self.KafkaVPort = None
         self.Topic = None
         self.LineRule = None
+        self.EnableAuth = None
+        self.Username = None
+        self.Password = None
+        self.KafkaInfos = None
+        self.EnableGlobalLineRule = None
+        self.CustomRule = None
 
 
     def _deserialize(self, params):
@@ -13935,6 +14006,17 @@ class KafkaDeliveryConfig(AbstractModel):
         self.KafkaVPort = params.get("KafkaVPort")
         self.Topic = params.get("Topic")
         self.LineRule = params.get("LineRule")
+        self.EnableAuth = params.get("EnableAuth")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        if params.get("KafkaInfos") is not None:
+            self.KafkaInfos = []
+            for item in params.get("KafkaInfos"):
+                obj = DeliveryKafkaInfo()
+                obj._deserialize(item)
+                self.KafkaInfos.append(obj)
+        self.EnableGlobalLineRule = params.get("EnableGlobalLineRule")
+        self.CustomRule = params.get("CustomRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
