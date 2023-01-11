@@ -229,6 +229,35 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAutoScalingConfiguration(self, request):
+        """本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
+
+        :param request: Request instance for DescribeAutoScalingConfiguration.
+        :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeAutoScalingConfigurationRequest`
+        :rtype: :class:`tencentcloud.thpc.v20220401.models.DescribeAutoScalingConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoScalingConfiguration", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAutoScalingConfigurationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterActivities(self, request):
         """本接口（DescribeClusterActivities）用于查询集群活动历史记录列表。
 

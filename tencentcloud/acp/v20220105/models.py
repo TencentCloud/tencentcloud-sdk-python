@@ -371,6 +371,79 @@ class CreateAppScanTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeChannelTaskReportUrlRequest(AbstractModel):
+    """DescribeChannelTaskReportUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :type Source: int
+        :param Platform: 应用平台, 0:android, 1: iOS，2:小程序
+        :type Platform: int
+        :param TaskID: 任务id
+        :type TaskID: str
+        :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
+        :type TaskType: int
+        :param ReportType: 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
+        :type ReportType: int
+        :param AppMD5: 子渠道APP MD5值
+        :type AppMD5: str
+        """
+        self.Source = None
+        self.Platform = None
+        self.TaskID = None
+        self.TaskType = None
+        self.ReportType = None
+        self.AppMD5 = None
+
+
+    def _deserialize(self, params):
+        self.Source = params.get("Source")
+        self.Platform = params.get("Platform")
+        self.TaskID = params.get("TaskID")
+        self.TaskType = params.get("TaskType")
+        self.ReportType = params.get("ReportType")
+        self.AppMD5 = params.get("AppMD5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelTaskReportUrlResponse(AbstractModel):
+    """DescribeChannelTaskReportUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :type Result: int
+        :param ReportUrl: 诊断报告/堆栈信息/报告json结果下载链接
+        :type ReportUrl: str
+        :param ReportTitle: 诊断报告/堆栈/报告json结果的名称
+        :type ReportTitle: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.ReportUrl = None
+        self.ReportTitle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.ReportUrl = params.get("ReportUrl")
+        self.ReportTitle = params.get("ReportTitle")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFileTicketRequest(AbstractModel):
     """DescribeFileTicket请求参数结构体
 

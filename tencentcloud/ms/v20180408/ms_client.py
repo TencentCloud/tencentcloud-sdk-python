@@ -56,7 +56,7 @@ class MsClient(AbstractClient):
 
 
     def CreateCosSecKeyInstance(self, request):
-        """获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性。
+        """获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性，请保管好临时密钥。
 
         :param request: Request instance for CreateCosSecKeyInstance.
         :type request: :class:`tencentcloud.ms.v20180408.models.CreateCosSecKeyInstanceRequest`

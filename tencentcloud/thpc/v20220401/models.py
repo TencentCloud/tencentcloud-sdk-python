@@ -905,6 +905,68 @@ class DeleteNodesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAutoScalingConfigurationRequest(AbstractModel):
+    """DescribeAutoScalingConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。	
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoScalingConfigurationResponse(AbstractModel):
+    """DescribeAutoScalingConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param ExpansionBusyTime: 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。
+        :type ExpansionBusyTime: int
+        :param ShrinkIdleTime: 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。
+        :type ShrinkIdleTime: int
+        :param QueueConfigs: 扩容队列配置概览列表。
+        :type QueueConfigs: list of QueueConfigOverview
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterId = None
+        self.ExpansionBusyTime = None
+        self.ShrinkIdleTime = None
+        self.QueueConfigs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ExpansionBusyTime = params.get("ExpansionBusyTime")
+        self.ShrinkIdleTime = params.get("ShrinkIdleTime")
+        if params.get("QueueConfigs") is not None:
+            self.QueueConfigs = []
+            for item in params.get("QueueConfigs"):
+                obj = QueueConfigOverview()
+                obj._deserialize(item)
+                self.QueueConfigs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterActivitiesRequest(AbstractModel):
     """DescribeClusterActivities请求参数结构体
 
@@ -1114,6 +1176,86 @@ class ExpansionNodeConfig(AbstractModel):
         if params.get("VirtualPrivateCloud") is not None:
             self.VirtualPrivateCloud = VirtualPrivateCloud()
             self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExpansionNodeConfigOverview(AbstractModel):
+    """扩容节点配置信息概览。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceType: 节点机型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param Placement: 扩容实例所在的位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Placement: :class:`tencentcloud.thpc.v20220401.models.Placement`
+        :param InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20220401.models.InstanceChargePrepaid`
+        :param VirtualPrivateCloud: 私有网络相关信息配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20220401.models.VirtualPrivateCloud`
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
+        :param InternetAccessible: 公网带宽相关信息设置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetAccessible: :class:`tencentcloud.thpc.v20220401.models.InternetAccessible`
+        :param SystemDisk: 节点系统盘配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemDisk: :class:`tencentcloud.thpc.v20220401.models.SystemDisk`
+        :param DataDisks: 节点数据盘配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDisks: list of DataDisk
+        """
+        self.InstanceType = None
+        self.Placement = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+        self.VirtualPrivateCloud = None
+        self.ImageId = None
+        self.InternetAccessible = None
+        self.SystemDisk = None
+        self.DataDisks = None
+
+
+    def _deserialize(self, params):
+        self.InstanceType = params.get("InstanceType")
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        self.ImageId = params.get("ImageId")
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = SystemDisk()
+            self.SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1584,6 +1726,55 @@ class QueueConfig(AbstractModel):
             self.ExpansionNodeConfigs = []
             for item in params.get("ExpansionNodeConfigs"):
                 obj = ExpansionNodeConfig()
+                obj._deserialize(item)
+                self.ExpansionNodeConfigs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueueConfigOverview(AbstractModel):
+    """扩容队列配置概览。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueueName: 队列名称。
+        :type QueueName: str
+        :param MinSize: 队列中弹性节点数量最小值。取值范围0～200。
+        :type MinSize: int
+        :param MaxSize: 队列中弹性节点数量最大值。取值范围0～200。
+        :type MaxSize: int
+        :param EnableAutoExpansion: 是否开启自动扩容。
+        :type EnableAutoExpansion: bool
+        :param EnableAutoShrink: 是否开启自动缩容。
+        :type EnableAutoShrink: bool
+        :param ExpansionNodeConfigs: 扩容节点配置信息。
+        :type ExpansionNodeConfigs: list of ExpansionNodeConfigOverview
+        """
+        self.QueueName = None
+        self.MinSize = None
+        self.MaxSize = None
+        self.EnableAutoExpansion = None
+        self.EnableAutoShrink = None
+        self.ExpansionNodeConfigs = None
+
+
+    def _deserialize(self, params):
+        self.QueueName = params.get("QueueName")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
+        self.EnableAutoExpansion = params.get("EnableAutoExpansion")
+        self.EnableAutoShrink = params.get("EnableAutoShrink")
+        if params.get("ExpansionNodeConfigs") is not None:
+            self.ExpansionNodeConfigs = []
+            for item in params.get("ExpansionNodeConfigs"):
+                obj = ExpansionNodeConfigOverview()
                 obj._deserialize(item)
                 self.ExpansionNodeConfigs.append(obj)
         memeber_set = set(params.keys())

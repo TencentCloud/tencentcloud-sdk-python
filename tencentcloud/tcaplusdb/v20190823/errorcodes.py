@@ -56,6 +56,9 @@ INVALIDPARAMETERVALUE_INVALIDTABLEGROUPNAME = 'InvalidParameterValue.InvalidTabl
 # 非法的时间格式。
 INVALIDPARAMETERVALUE_INVALIDTIMEVALUE = 'InvalidParameterValue.InvalidTimeValue'
 
+# 非法的大区名称。
+INVALIDPARAMETERVALUE_INVALIDZONENAME = 'InvalidParameterValue.InvalidZoneName'
+
 # 不支持的应用数据描述类型。
 INVALIDPARAMETERVALUE_UNSUPPORTIDLTYPE = 'InvalidParameterValue.UnsupportIdlType'
 

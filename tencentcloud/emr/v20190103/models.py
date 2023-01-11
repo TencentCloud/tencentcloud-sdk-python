@@ -1209,8 +1209,8 @@ class CustomMetaDBInfo(AbstractModel):
         :param MetaDataPass: 自定义MetaDB密码
         :type MetaDataPass: str
         :param MetaType: hive共享元数据库类型。取值范围：
-<li>EMR_NEW_META：表示集群默认创建</li>
-<li>EMR_EXIT_META：表示集群使用指定EMR-MetaDB。</li>
+<li>EMR_DEFAULT_META：表示集群默认创建</li>
+<li>EMR_EXIST_META：表示集群使用指定EMR-MetaDB。</li>
 <li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
         :type MetaType: str
         :param UnifyMetaInstanceId: EMR-MetaDB实例

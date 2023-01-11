@@ -624,6 +624,8 @@ class CreateInstanceRequest(AbstractModel):
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         :param RegistryChargeType: 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
         :type RegistryChargeType: int
+        :param RegistryChargePrepaid: 预付费自动续费标识和购买时长
+        :type RegistryChargePrepaid: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
         :param SyncTag: 是否同步TCR云标签至生成的COS Bucket
         :type SyncTag: bool
         """
@@ -631,6 +633,7 @@ class CreateInstanceRequest(AbstractModel):
         self.RegistryType = None
         self.TagSpecification = None
         self.RegistryChargeType = None
+        self.RegistryChargePrepaid = None
         self.SyncTag = None
 
 
@@ -641,6 +644,9 @@ class CreateInstanceRequest(AbstractModel):
             self.TagSpecification = TagSpecification()
             self.TagSpecification._deserialize(params.get("TagSpecification"))
         self.RegistryChargeType = params.get("RegistryChargeType")
+        if params.get("RegistryChargePrepaid") is not None:
+            self.RegistryChargePrepaid = RegistryChargePrepaid()
+            self.RegistryChargePrepaid._deserialize(params.get("RegistryChargePrepaid"))
         self.SyncTag = params.get("SyncTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

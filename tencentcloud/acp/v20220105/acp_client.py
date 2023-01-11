@@ -84,6 +84,35 @@ class AcpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeChannelTaskReportUrl(self, request):
+        """获取子渠道的App合规诊断任务报告url
+
+        :param request: Request instance for DescribeChannelTaskReportUrl.
+        :type request: :class:`tencentcloud.acp.v20220105.models.DescribeChannelTaskReportUrlRequest`
+        :rtype: :class:`tencentcloud.acp.v20220105.models.DescribeChannelTaskReportUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChannelTaskReportUrl", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeChannelTaskReportUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFileTicket(self, request):
         """获取应用合规文件上传凭证，用于上传诊断文件
 

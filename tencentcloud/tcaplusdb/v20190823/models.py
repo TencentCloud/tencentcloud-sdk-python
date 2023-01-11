@@ -1725,11 +1725,14 @@ class DescribeSnapshotsRequest(AbstractModel):
         :type TableName: str
         :param SnapshotName: 快照名称
         :type SnapshotName: str
+        :param SelectedTables: 批量拉取快照的表格列表
+        :type SelectedTables: list of SelectedTableInfoNew
         """
         self.ClusterId = None
         self.TableGroupId = None
         self.TableName = None
         self.SnapshotName = None
+        self.SelectedTables = None
 
 
     def _deserialize(self, params):
@@ -1737,6 +1740,12 @@ class DescribeSnapshotsRequest(AbstractModel):
         self.TableGroupId = params.get("TableGroupId")
         self.TableName = params.get("TableName")
         self.SnapshotName = params.get("SnapshotName")
+        if params.get("SelectedTables") is not None:
+            self.SelectedTables = []
+            for item in params.get("SelectedTables"):
+                obj = SelectedTableInfoNew()
+                obj._deserialize(item)
+                self.SelectedTables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

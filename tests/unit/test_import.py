@@ -519,6 +519,11 @@ def test_import_facefusion():
     from tencentcloud.facefusion.v20181201 import models
 
 
+def test_import_facefusion():
+    from tencentcloud.facefusion.v20220927 import facefusion_client
+    from tencentcloud.facefusion.v20220927 import models
+
+
 def test_import_faceid():
     from tencentcloud.faceid.v20180301 import faceid_client
     from tencentcloud.faceid.v20180301 import models

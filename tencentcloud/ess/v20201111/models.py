@@ -1141,6 +1141,9 @@ false：有序签
         :type CallbackUrl: str
         :param Agent: 应用相关信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param CcInfos: 被抄送人的信息列表。
+注: 此功能为白名单功能，若有需要，请联系电子签客服开白使用。
+        :type CcInfos: list of CcInfo
         """
         self.Operator = None
         self.FlowName = None
@@ -1156,6 +1159,7 @@ false：有序签
         self.NeedSignReview = None
         self.CallbackUrl = None
         self.Agent = None
+        self.CcInfos = None
 
 
     def _deserialize(self, params):
@@ -1182,6 +1186,12 @@ false：有序签
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
+        if params.get("CcInfos") is not None:
+            self.CcInfos = []
+            for item in params.get("CcInfos"):
+                obj = CcInfo()
+                obj._deserialize(item)
+                self.CcInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
