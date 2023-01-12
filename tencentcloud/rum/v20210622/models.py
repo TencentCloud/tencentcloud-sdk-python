@@ -4881,6 +4881,9 @@ class ScoreInfo(AbstractModel):
         :type RecordNum: int
         :param PageDuration: Duration
         :type PageDuration: str
+        :param CreateTime: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self.StaticDuration = None
         self.PagePv = None
@@ -4895,6 +4898,7 @@ class ScoreInfo(AbstractModel):
         self.StaticNum = None
         self.RecordNum = None
         self.PageDuration = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -4911,6 +4915,7 @@ class ScoreInfo(AbstractModel):
         self.StaticNum = params.get("StaticNum")
         self.RecordNum = params.get("RecordNum")
         self.PageDuration = params.get("PageDuration")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

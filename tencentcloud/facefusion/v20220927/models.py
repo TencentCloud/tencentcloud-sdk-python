@@ -163,9 +163,9 @@ class FuseFaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 活动 ID，请在人脸融合控制台查看。
+        :param ProjectId: 活动 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
         :type ProjectId: str
-        :param ModelId: 素材 ID，请在人脸融合控制台查看。
+        :param ModelId: 素材 ID，请在<a href="https://console.cloud.tencent.com/facefusion" target="_blank">人脸融合控制台</a>查看。
         :type ModelId: str
         :param RspImgType: 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
         :type RspImgType: str

@@ -2020,8 +2020,12 @@ class CompareRule(AbstractModel):
         :param Items: 比较条件列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of CompareRuleItem
+        :param CycleStep: 周期性模板默认周期，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleStep: int
         """
         self.Items = None
+        self.CycleStep = None
 
 
     def _deserialize(self, params):
@@ -2031,6 +2035,7 @@ class CompareRule(AbstractModel):
                 obj = CompareRuleItem()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.CycleStep = params.get("CycleStep")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

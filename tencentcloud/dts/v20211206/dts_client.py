@@ -116,7 +116,7 @@ class DtsClient(AbstractClient):
 
 
     def ContinueSyncJob(self, request):
-        """恢复处于暂停中的数据同步任务。
+        """恢复处于已暂停状态的数据同步任务。
 
         :param request: Request instance for ContinueSyncJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.ContinueSyncJobRequest`

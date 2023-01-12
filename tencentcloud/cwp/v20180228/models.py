@@ -3644,6 +3644,120 @@ class BashEvent(AbstractModel):
         
 
 
+class BashEventNew(AbstractModel):
+    """高危命令数据(新)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 数据ID
+        :type Id: int
+        :param Uuid: 云镜ID
+        :type Uuid: str
+        :param Quuid: 主机ID
+        :type Quuid: str
+        :param HostIp: 主机内网IP
+        :type HostIp: str
+        :param User: 执行用户名
+        :type User: str
+        :param Platform: 平台类型
+        :type Platform: int
+        :param BashCmd: 执行命令
+        :type BashCmd: str
+        :param RuleId: 规则ID
+        :type RuleId: int
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param RuleLevel: 规则等级：1-高 2-中 3-低
+        :type RuleLevel: int
+        :param Status: 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略
+        :type Status: int
+        :param CreateTime: 发生时间
+        :type CreateTime: str
+        :param MachineName: 主机名
+        :type MachineName: str
+        :param DetectBy: 0: bash日志 1: 实时监控(雷霆版)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectBy: int
+        :param Pid: 进程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pid: str
+        :param Exe: 进程名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exe: str
+        :param ModifyTime: 处理时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param RuleCategory: 规则类别  0=系统规则，1=用户规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleCategory: int
+        :param RegexBashCmd: 自动生成的正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegexBashCmd: str
+        :param MachineType: 0:普通 1:专业版 2:旗舰版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineType: int
+        :param MachineExtraInfo: 机器额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        """
+        self.Id = None
+        self.Uuid = None
+        self.Quuid = None
+        self.HostIp = None
+        self.User = None
+        self.Platform = None
+        self.BashCmd = None
+        self.RuleId = None
+        self.RuleName = None
+        self.RuleLevel = None
+        self.Status = None
+        self.CreateTime = None
+        self.MachineName = None
+        self.DetectBy = None
+        self.Pid = None
+        self.Exe = None
+        self.ModifyTime = None
+        self.RuleCategory = None
+        self.RegexBashCmd = None
+        self.MachineType = None
+        self.MachineExtraInfo = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        self.HostIp = params.get("HostIp")
+        self.User = params.get("User")
+        self.Platform = params.get("Platform")
+        self.BashCmd = params.get("BashCmd")
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.RuleLevel = params.get("RuleLevel")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.MachineName = params.get("MachineName")
+        self.DetectBy = params.get("DetectBy")
+        self.Pid = params.get("Pid")
+        self.Exe = params.get("Exe")
+        self.ModifyTime = params.get("ModifyTime")
+        self.RuleCategory = params.get("RuleCategory")
+        self.RegexBashCmd = params.get("RegexBashCmd")
+        self.MachineType = params.get("MachineType")
+        if params.get("MachineExtraInfo") is not None:
+            self.MachineExtraInfo = MachineExtraInfo()
+            self.MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BashRule(AbstractModel):
     """高危命令规则
 
@@ -9436,6 +9550,91 @@ class DescribeBaselineTopResponse(AbstractModel):
                 obj = BaselineRuleTopInfo()
                 obj._deserialize(item)
                 self.RuleTopList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBashEventsNewRequest(AbstractModel):
+    """DescribeBashEventsNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param Filters: 过滤条件。
+<li>HostName - String - 是否必填：否 - 主机名</li>
+<li>Hostip - String - 是否必填：否 - 主机内网IP</li>
+<li>HostIp - String - 是否必填：否 - 主机内网IP</li>
+<li>RuleCategory - Int - 是否必填：否 - 策略类型,全部或者单选(0:系统 1:用户)</li>
+<li>RuleName - String - 是否必填：否 - 策略名称</li>
+<li>RuleLevel - Int - 是否必填：否 - 威胁等级,可以多选</li>
+<li>Status - Int - 是否必填：否 - 处理状态,可多选(0:待处理 1:已处理 2:已加白  3:已忽略 4:已删除 5:已拦截)</li>
+<li>DetectBy - Int - 是否必填：否 - 数据来源,可多选(0:bash日志 1:实时监控)</li>
+<li>StartTime - String - 是否必填：否 - 开始时间</li>
+<li>EndTime - String - 是否必填：否 - 结束时间</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
+        :type Order: str
+        :param By: 排序字段：CreateTime-发生时间。ModifyTime-处理时间
+        :type By: str
+        """
+        self.Limit = None
+        self.Filters = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBashEventsNewResponse(AbstractModel):
+    """DescribeBashEventsNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param List: 高危命令事件列表
+        :type List: list of BashEventNew
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = BashEventNew()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 

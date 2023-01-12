@@ -35,6 +35,9 @@ INVALIDPARAMETER_IMAGESIZETOOSMALL = 'InvalidParameter.ImageSizeTooSmall'
 # 图片内容错误。
 INVALIDPARAMETER_INVALIDIMAGECONTENT = 'InvalidParameter.InvalidImageContent'
 
+# 参数不合法。
+INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -94,6 +97,9 @@ RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 未开通权限/无有效套餐包/账号已欠费。
+UNAUTHORIZEDOPERATION_UNAUTHORIZED = 'UnauthorizedOperation.Unauthorized'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

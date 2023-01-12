@@ -2523,6 +2523,35 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBashEventsNew(self, request):
+        """获取高危命令列表(新)
+
+        :param request: Request instance for DescribeBashEventsNew.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsNewRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeBashEventsNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBashEventsNew", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBashEventsNewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBashRules(self, request):
         """获取高危命令规则列表
 

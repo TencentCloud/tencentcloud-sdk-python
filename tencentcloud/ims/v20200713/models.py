@@ -18,149 +18,6 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class DescribeImageStatRequest(AbstractModel):
-    """DescribeImageStat请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AuditType: 审核类型 1: 机器审核; 2: 人工审核
-        :type AuditType: int
-        :param Filters: 查询条件
-        :type Filters: list of Filters
-        """
-        self.AuditType = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.AuditType = params.get("AuditType")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filters()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeImageStatResponse(AbstractModel):
-    """DescribeImageStat返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Overview: 识别结果统计
-        :type Overview: :class:`tencentcloud.ims.v20200713.models.Overview`
-        :param TrendCount: 识别量统计
-        :type TrendCount: list of TrendCount
-        :param EvilCount: 违规数据分布
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EvilCount: list of EvilCount
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Overview = None
-        self.TrendCount = None
-        self.EvilCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Overview") is not None:
-            self.Overview = Overview()
-            self.Overview._deserialize(params.get("Overview"))
-        if params.get("TrendCount") is not None:
-            self.TrendCount = []
-            for item in params.get("TrendCount"):
-                obj = TrendCount()
-                obj._deserialize(item)
-                self.TrendCount.append(obj)
-        if params.get("EvilCount") is not None:
-            self.EvilCount = []
-            for item in params.get("EvilCount"):
-                obj = EvilCount()
-                obj._deserialize(item)
-                self.EvilCount.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeImsListRequest(AbstractModel):
-    """DescribeImsList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param PageIndex: 分页 页索引
-        :type PageIndex: int
-        :param PageSize: 分页条数
-        :type PageSize: int
-        :param Filters: 过滤条件
-        :type Filters: list of Filter
-        """
-        self.PageIndex = None
-        self.PageSize = None
-        self.Filters = None
-
-
-    def _deserialize(self, params):
-        self.PageIndex = params.get("PageIndex")
-        self.PageSize = params.get("PageSize")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeImsListResponse(AbstractModel):
-    """DescribeImsList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ImsDetailSet: 返回列表数据----非必选，该参数暂未对外开放
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ImsDetailSet: list of ImsDetail
-        :param TotalCount: 总条数
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.ImsDetailSet = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("ImsDetailSet") is not None:
-            self.ImsDetailSet = []
-            for item in params.get("ImsDetailSet"):
-                obj = ImsDetail()
-                obj._deserialize(item)
-                self.ImsDetailSet.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
 class Device(AbstractModel):
     """Device结果
 
@@ -204,93 +61,6 @@ class Device(AbstractModel):
         self.IDFA = params.get("IDFA")
         self.IDFV = params.get("IDFV")
         self.IpType = params.get("IpType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EvilCount(AbstractModel):
-    """违规数据分布
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EvilType: ----非必选，该参数功能暂未对外开放
-        :type EvilType: str
-        :param Count: 分布类型总量
-        :type Count: int
-        """
-        self.EvilType = None
-        self.Count = None
-
-
-    def _deserialize(self, params):
-        self.EvilType = params.get("EvilType")
-        self.Count = params.get("Count")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class Filter(AbstractModel):
-    """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Name: 过滤键的名称。
-        :type Name: str
-        :param Values: 一个或者多个过滤值。
-        :type Values: list of str
-        """
-        self.Name = None
-        self.Values = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class Filters(AbstractModel):
-    """图片过滤条件
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Name: 查询字段：
-策略BizType
-子账号SubUin
-日期区间DateRange
-        :type Name: str
-        :param Values: 查询值
-        :type Values: list of str
-        """
-        self.Name = None
-        self.Values = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -450,58 +220,6 @@ class ImageModerationResponse(AbstractModel):
         self.BizType = params.get("BizType")
         self.Extra = params.get("Extra")
         self.RequestId = params.get("RequestId")
-
-
-class ImsDetail(AbstractModel):
-    """机器审核详情列表数据项
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Content: 文本内容
-        :type Content: str
-        :param DataSource: 数据方式， 0：我审，1：人审
-        :type DataSource: int
-        :param UpdateTime: 最后更新时间
-        :type UpdateTime: str
-        :param EvilType: ----非必选，该参数暂未对外开放
-        :type EvilType: int
-        :param ModerationTime: 机器审核时间
-        :type ModerationTime: str
-        :param UpdateUser: 最后更新人
-        :type UpdateUser: str
-        :param ContentId: 内容RequestId
-        :type ContentId: str
-        :param OperEvilType: 自主审核结果
-        :type OperEvilType: int
-        """
-        self.Content = None
-        self.DataSource = None
-        self.UpdateTime = None
-        self.EvilType = None
-        self.ModerationTime = None
-        self.UpdateUser = None
-        self.ContentId = None
-        self.OperEvilType = None
-
-
-    def _deserialize(self, params):
-        self.Content = params.get("Content")
-        self.DataSource = params.get("DataSource")
-        self.UpdateTime = params.get("UpdateTime")
-        self.EvilType = params.get("EvilType")
-        self.ModerationTime = params.get("ModerationTime")
-        self.UpdateUser = params.get("UpdateUser")
-        self.ContentId = params.get("ContentId")
-        self.OperEvilType = params.get("OperEvilType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class LabelDetailItem(AbstractModel):
@@ -754,12 +472,15 @@ class ObjectDetail(AbstractModel):
         :type Score: int
         :param Location: 检测框坐标
         :type Location: :class:`tencentcloud.ims.v20200713.models.Location`
+        :param SubLabel: 二级标签名称
+        :type SubLabel: str
         """
         self.Id = None
         self.Name = None
         self.Value = None
         self.Score = None
         self.Location = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
@@ -770,6 +491,7 @@ class ObjectDetail(AbstractModel):
         if params.get("Location") is not None:
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -860,6 +582,8 @@ class OcrResult(AbstractModel):
         :type Details: list of OcrTextDetail
         :param Text: ocr识别出的文本结果
         :type Text: str
+        :param HitFlag: 是否命中结果，0 未命中 1命中
+        :type HitFlag: int
         """
         self.Scene = None
         self.Suggestion = None
@@ -868,6 +592,7 @@ class OcrResult(AbstractModel):
         self.Score = None
         self.Details = None
         self.Text = None
+        self.HitFlag = None
 
 
     def _deserialize(self, params):
@@ -883,6 +608,7 @@ class OcrResult(AbstractModel):
                 obj._deserialize(item)
                 self.Details.append(obj)
         self.Text = params.get("Text")
+        self.HitFlag = params.get("HitFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -916,6 +642,8 @@ class OcrTextDetail(AbstractModel):
         :type Location: :class:`tencentcloud.ims.v20200713.models.Location`
         :param Rate: OCR文本识别置信度
         :type Rate: int
+        :param SubLabel: OCR文本命中的二级标签
+        :type SubLabel: str
         """
         self.Text = None
         self.Label = None
@@ -925,6 +653,7 @@ class OcrTextDetail(AbstractModel):
         self.Score = None
         self.Location = None
         self.Rate = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
@@ -938,123 +667,7 @@ class OcrTextDetail(AbstractModel):
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
         self.Rate = params.get("Rate")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class Overview(AbstractModel):
-    """识别结果统计
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: 总调用量
-        :type TotalCount: int
-        :param TotalHour: 总调用时长
-        :type TotalHour: int
-        :param PassCount: 通过量
-        :type PassCount: int
-        :param PassHour: 通过时长
-        :type PassHour: int
-        :param EvilCount: 违规量
-        :type EvilCount: int
-        :param EvilHour: 违规时长
-        :type EvilHour: int
-        :param SuspectCount: 疑似违规量
-        :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
-        :type SuspectHour: int
-        """
-        self.TotalCount = None
-        self.TotalHour = None
-        self.PassCount = None
-        self.PassHour = None
-        self.EvilCount = None
-        self.EvilHour = None
-        self.SuspectCount = None
-        self.SuspectHour = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.TotalHour = params.get("TotalHour")
-        self.PassCount = params.get("PassCount")
-        self.PassHour = params.get("PassHour")
-        self.EvilCount = params.get("EvilCount")
-        self.EvilHour = params.get("EvilHour")
-        self.SuspectCount = params.get("SuspectCount")
-        self.SuspectHour = params.get("SuspectHour")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class TrendCount(AbstractModel):
-    """识别量统计
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: 总调用量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalCount: int
-        :param TotalHour: 总调用时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TotalHour: int
-        :param PassCount: 通过量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PassCount: int
-        :param PassHour: 通过时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PassHour: int
-        :param EvilCount: 违规量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EvilCount: int
-        :param EvilHour: 违规时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EvilHour: int
-        :param SuspectCount: 疑似违规量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SuspectCount: int
-        :param SuspectHour: 疑似违规时长
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SuspectHour: int
-        :param Date: 日期
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Date: str
-        """
-        self.TotalCount = None
-        self.TotalHour = None
-        self.PassCount = None
-        self.PassHour = None
-        self.EvilCount = None
-        self.EvilHour = None
-        self.SuspectCount = None
-        self.SuspectHour = None
-        self.Date = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        self.TotalHour = params.get("TotalHour")
-        self.PassCount = params.get("PassCount")
-        self.PassHour = params.get("PassHour")
-        self.EvilCount = params.get("EvilCount")
-        self.EvilHour = params.get("EvilHour")
-        self.SuspectCount = params.get("SuspectCount")
-        self.SuspectHour = params.get("SuspectHour")
-        self.Date = params.get("Date")
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

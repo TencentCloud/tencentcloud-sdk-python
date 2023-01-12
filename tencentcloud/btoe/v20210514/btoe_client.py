@@ -230,7 +230,7 @@ class BtoeClient(AbstractClient):
 
 
     def CreateVideoDeposit(self, request):
-        """用户通过本接口向BTOE写入待存证的视频的原文件或下载URL，BTOE对视频原文件存储后，将其Hash值存证上链，并生成含有电子签章的区块链存证电子凭证。视频文件支持格式：mp4、avi、mkv、mov、flv,wmv,rmvb,3gp；文件大小限制：直接上传原文件不大于5MB，下载URL文件大小不大于200 MB。
+        """用户通过本接口向BTOE写入待存证的视频的原文件或下载URL，BTOE对视频原文件存储后，将其Hash值存证上链，并生成含有电子签章的区块链存证电子凭证。视频文件支持格式：mp4、avi、mkv、mov、flv,wmv,rmvb,3gp；文件大小限制：直接上传原文件不大于5MB。
 
         :param request: Request instance for CreateVideoDeposit.
         :type request: :class:`tencentcloud.btoe.v20210514.models.CreateVideoDepositRequest`

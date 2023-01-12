@@ -2137,6 +2137,59 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeExtendedServiceAuthInfoRequest(AbstractModel):
+    """DescribeExtendedServiceAuthInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        self.Agent = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExtendedServiceAuthInfoResponse(AbstractModel):
+    """DescribeExtendedServiceAuthInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AuthInfo: 企业扩展服务授权信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthInfo: list of ExtentServiceAuthInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AuthInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AuthInfo") is not None:
+            self.AuthInfo = []
+            for item in params.get("AuthInfo"):
+                obj = ExtentServiceAuthInfo()
+                obj._deserialize(item)
+                self.AuthInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlowDetailInfoRequest(AbstractModel):
     """DescribeFlowDetailInfo请求参数结构体
 
@@ -2502,6 +2555,55 @@ class DownloadFlowInfo(AbstractModel):
     def _deserialize(self, params):
         self.FileName = params.get("FileName")
         self.FlowIdList = params.get("FlowIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtentServiceAuthInfo(AbstractModel):
+    """企业扩展服务授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 扩展服务类型
+  AUTO_SIGN             企业静默签（自动签署）
+  OVERSEA_SIGN          企业与港澳台居民*签署合同
+  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
+  PAGING_SEAL           骑缝章
+  DOWNLOAD_FLOW         授权渠道下载合同 
+        :type Type: str
+        :param Name: 扩展服务名称 
+        :type Name: str
+        :param Status: 服务状态 
+ENABLE 开启 
+DISABLE 关闭
+        :type Status: str
+        :param OperatorOpenId: 最近操作人openid（经办人openid）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorOpenId: str
+        :param OperateOn: 最近操作时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateOn: int
+        """
+        self.Type = None
+        self.Name = None
+        self.Status = None
+        self.OperatorOpenId = None
+        self.OperateOn = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Status = params.get("Status")
+        self.OperatorOpenId = params.get("OperatorOpenId")
+        self.OperateOn = params.get("OperateOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3190,6 +3292,71 @@ class GetDownloadFlowUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DownLoadUrl = params.get("DownLoadUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyExtendedServiceRequest(AbstractModel):
+    """ModifyExtendedService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param ServiceType:   扩展服务类型
+  AUTO_SIGN             企业静默签（自动签署）
+  OVERSEA_SIGN          企业与港澳台居民*签署合同
+  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
+  PAGING_SEAL           骑缝章
+  DOWNLOAD_FLOW         授权渠道下载合同 
+        :type ServiceType: str
+        :param Operate: 操作类型 
+OPEN:开通 
+CLOSE:关闭
+        :type Operate: str
+        """
+        self.Agent = None
+        self.ServiceType = None
+        self.Operate = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.ServiceType = params.get("ServiceType")
+        self.Operate = params.get("Operate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyExtendedServiceResponse(AbstractModel):
+    """ModifyExtendedService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OperateUrl: 操作跳转链接，有效期24小时
+仅当操作类型是 OPEN 且 扩展服务类型是  AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回 ，此时需要经办人(操作人)点击链接完成服务开通操作。若开通操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通服务
+
+操作类型是CLOSE时，不会返回此链接，会直接关闭企业该扩展服务
+        :type OperateUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OperateUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OperateUrl = params.get("OperateUrl")
         self.RequestId = params.get("RequestId")
 
 

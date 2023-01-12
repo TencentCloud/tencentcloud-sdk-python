@@ -2743,6 +2743,9 @@ RESULT_PASSED: 通过
         :param VerifyInfo: 检查项验证信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyInfo: str
+        :param InstanceId: 主机实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self.CustomerAssetId = None
         self.AssetName = None
@@ -2754,6 +2757,7 @@ RESULT_PASSED: 通过
         self.HostIP = None
         self.ImageTag = None
         self.VerifyInfo = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -2767,6 +2771,7 @@ RESULT_PASSED: 通过
         self.HostIP = params.get("HostIP")
         self.ImageTag = params.get("ImageTag")
         self.VerifyInfo = params.get("VerifyInfo")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2904,6 +2909,9 @@ RESULT_FAILED: 未通过。
 RESULT_PASSED: 通过。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckResult: str
+        :param InstanceId: 主机节点的实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self.CustomerAssetId = None
         self.AssetType = None
@@ -2916,6 +2924,7 @@ RESULT_PASSED: 通过。
         self.FailedPolicyItemCount = None
         self.LastCheckTime = None
         self.CheckResult = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -2930,6 +2939,7 @@ RESULT_PASSED: 通过。
         self.FailedPolicyItemCount = params.get("FailedPolicyItemCount")
         self.LastCheckTime = params.get("LastCheckTime")
         self.CheckResult = params.get("CheckResult")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

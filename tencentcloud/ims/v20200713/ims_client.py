@@ -26,64 +26,6 @@ class ImsClient(AbstractClient):
     _service = 'ims'
 
 
-    def DescribeImageStat(self, request):
-        """控制台识别统计
-
-        :param request: Request instance for DescribeImageStat.
-        :type request: :class:`tencentcloud.ims.v20200713.models.DescribeImageStatRequest`
-        :rtype: :class:`tencentcloud.ims.v20200713.models.DescribeImageStatResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeImageStat", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeImageStatResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeImsList(self, request):
-        """图片机器审核明细
-
-        :param request: Request instance for DescribeImsList.
-        :type request: :class:`tencentcloud.ims.v20200713.models.DescribeImsListRequest`
-        :rtype: :class:`tencentcloud.ims.v20200713.models.DescribeImsListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeImsList", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeImsListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ImageModeration(self, request):
         """图片内容检测服务（Image Moderation, IM）能自动扫描图片，识别可能令人反感、不安全或不适宜的内容，同时支持用户配置图片黑名单，打击自定义识别类型的图片。
 

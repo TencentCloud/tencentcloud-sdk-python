@@ -1595,7 +1595,7 @@ class GetCustomizationListResponse(AbstractModel):
 
 
 class InOutTimeInfo(AbstractModel):
-    """用户进出房间信息
+    """房间内的事件
 
     """
 
@@ -2014,16 +2014,21 @@ class RoomUser(AbstractModel):
         :param StrRoomId: 字符串房间id
 注意：此字段可能返回 null，表示取不到有效值。
         :type StrRoomId: str
+        :param StrUins: 房间里用户字符串uin列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrUins: list of str
         """
         self.RoomId = None
         self.Uins = None
         self.StrRoomId = None
+        self.StrUins = None
 
 
     def _deserialize(self, params):
         self.RoomId = params.get("RoomId")
         self.Uins = params.get("Uins")
         self.StrRoomId = params.get("StrRoomId")
+        self.StrUins = params.get("StrUins")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

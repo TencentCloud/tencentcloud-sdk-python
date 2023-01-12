@@ -673,6 +673,35 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeExtendedServiceAuthInfo(self, request):
+        """查询企业扩展服务授权信息，企业经办人需要时企业超管或者法人
+
+        :param request: Request instance for DescribeExtendedServiceAuthInfo.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeExtendedServiceAuthInfoRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeExtendedServiceAuthInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExtendedServiceAuthInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExtendedServiceAuthInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFlowDetailInfo(self, request):
         """此接口（DescribeFlowDetailInfo）用于查询合同(签署流程)的详细信息。
 
@@ -807,6 +836,35 @@ class EssbasicClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDownloadFlowUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyExtendedService(self, request):
+        """修改（操作）企业扩展服务 ，企业经办人需要时企业超管或者法人
+
+        :param request: Request instance for ModifyExtendedService.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ModifyExtendedServiceRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ModifyExtendedServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyExtendedService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyExtendedServiceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

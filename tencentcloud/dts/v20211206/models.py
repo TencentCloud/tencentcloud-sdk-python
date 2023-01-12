@@ -4182,14 +4182,18 @@ class SkipCheckItemRequest(AbstractModel):
         :type JobId: str
         :param StepIds: 需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
         :type StepIds: list of str
+        :param ForeignKeyFlag: 当出现外键依赖检查导致校验不通过时、可以通过该字段选择是否迁移外键依赖，当StepIds包含ConstraintCheck且该字段值为shield时表示不迁移外键依赖、当StepIds包含ConstraintCheck且值为migrate时表示迁移外键依赖
+        :type ForeignKeyFlag: str
         """
         self.JobId = None
         self.StepIds = None
+        self.ForeignKeyFlag = None
 
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.StepIds = params.get("StepIds")
+        self.ForeignKeyFlag = params.get("ForeignKeyFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4206,13 +4210,18 @@ class SkipCheckItemResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Message: 跳过的提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Message = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Message = params.get("Message")
         self.RequestId = params.get("RequestId")
 
 

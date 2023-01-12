@@ -2193,7 +2193,7 @@ class InvokeChainMakerContractRequest(AbstractModel):
         r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChainId: 业务链编号，可在业务链列表中获取
+        :param ChainId: 业务链ID，可在网络概览页获取
         :type ChainId: str
         :param ContractName: 合约名称，可在合约管理中获取
         :type ContractName: str
@@ -2261,7 +2261,7 @@ class InvokeChainMakerDemoContractRequest(AbstractModel):
         r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChainId: 业务链编号，可在业务链列表中获取
+        :param ChainId: 业务链ID，可在网络概览页获取
         :type ChainId: str
         :param ContractName: 合约名称，可在合约管理中获取
         :type ContractName: str
@@ -2499,7 +2499,7 @@ class QueryChainMakerBlockTransactionRequest(AbstractModel):
         r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChainId: 业务链编号，可在业务链列表中获取
+        :param ChainId: 业务链ID，可在网络概览页获取
         :type ChainId: str
         :param BlockHeight: 区块高度
         :type BlockHeight: int
@@ -2571,7 +2571,7 @@ class QueryChainMakerContractRequest(AbstractModel):
         r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChainId: 业务链编号，可在业务链列表中获取
+        :param ChainId: 业务链ID，可在网络概览页获取
         :type ChainId: str
         :param ContractName: 合约名称，可在合约管理中获取
         :type ContractName: str
@@ -2635,7 +2635,7 @@ class QueryChainMakerDemoBlockTransactionRequest(AbstractModel):
         r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChainId: 业务链编号，可在业务链列表中获取
+        :param ChainId: 业务链ID，可在网络概览页获取
         :type ChainId: str
         :param BlockHeight: 区块高度
         :type BlockHeight: int
@@ -2707,7 +2707,7 @@ class QueryChainMakerDemoContractRequest(AbstractModel):
         r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChainId: 业务链编号，可在业务链列表中获取
+        :param ChainId: 业务链ID，可在网络概览页获取
         :type ChainId: str
         :param ContractName: 合约名称，可在合约管理中获取
         :type ContractName: str
@@ -2771,7 +2771,7 @@ class QueryChainMakerDemoTransactionRequest(AbstractModel):
         r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChainId: 业务链编号，可在业务链列表中获取
+        :param ChainId: 业务链ID，可在网络概览页获取
         :type ChainId: str
         :param TxID: 交易ID，通过调用合约的返回值获取
         :type TxID: str
@@ -2827,7 +2827,7 @@ class QueryChainMakerTransactionRequest(AbstractModel):
         r"""
         :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
         :type ClusterId: str
-        :param ChainId: 业务链编号，可在业务链列表中获取
+        :param ChainId: 业务链ID，可在网络概览页获取
         :type ChainId: str
         :param TxID: 交易ID，通过调用合约的返回值获取
         :type TxID: str
