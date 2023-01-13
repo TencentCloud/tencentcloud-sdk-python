@@ -6833,12 +6833,15 @@ class IpBlockData(AbstractModel):
         :type UnBlockTime: str
         :param ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
         :type ActionType: str
+        :param ProtectFlag: 高防标记，0：非高防，1：高防
+        :type ProtectFlag: int
         """
         self.Ip = None
         self.Status = None
         self.BlockTime = None
         self.UnBlockTime = None
         self.ActionType = None
+        self.ProtectFlag = None
 
 
     def _deserialize(self, params):
@@ -6847,6 +6850,7 @@ class IpBlockData(AbstractModel):
         self.BlockTime = params.get("BlockTime")
         self.UnBlockTime = params.get("UnBlockTime")
         self.ActionType = params.get("ActionType")
+        self.ProtectFlag = params.get("ProtectFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -771,6 +771,7 @@ class TiiaClient(AbstractClient):
         >
         - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
 
+
         :param request: Request instance for SearchImage.
         :type request: :class:`tencentcloud.tiia.v20190529.models.SearchImageRequest`
         :rtype: :class:`tencentcloud.tiia.v20190529.models.SearchImageResponse`
@@ -783,6 +784,39 @@ class TiiaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateImage(self, request):
+        """本接口支持根据图库ID、物品ID、图片名称来修改图片信息（暂仅支持修改Tags）
+
+        >
+        - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
+
+
+        :param request: Request instance for UpdateImage.
+        :type request: :class:`tencentcloud.tiia.v20190529.models.UpdateImageRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.UpdateImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateImage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateImageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

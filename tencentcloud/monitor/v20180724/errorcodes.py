@@ -68,6 +68,15 @@ FAILEDOPERATION_ALERTTRIGGERRULEDELETEFAILED = 'FailedOperation.AlertTriggerRule
 # Yaml 格式不正确。
 FAILEDOPERATION_BADYAMLFORMAT = 'FailedOperation.BadYamlFormat'
 
+# FailedOperation.ComponentClientCommon
+FAILEDOPERATION_COMPONENTCLIENTCOMMON = 'FailedOperation.ComponentClientCommon'
+
+# FailedOperation.ComponentClientHttp
+FAILEDOPERATION_COMPONENTCLIENTHTTP = 'FailedOperation.ComponentClientHttp'
+
+# FailedOperation.ComponentClientUnpack
+FAILEDOPERATION_COMPONENTCLIENTUNPACK = 'FailedOperation.ComponentClientUnpack'
+
 # 创建实例失败。
 FAILEDOPERATION_CREATEINSTANCE = 'FailedOperation.CreateInstance'
 
@@ -83,6 +92,9 @@ FAILEDOPERATION_DATAQUERYFAILED = 'FailedOperation.DataQueryFailed'
 # 数据表不存在。
 FAILEDOPERATION_DATATABLENOTFOUND = 'FailedOperation.DataTableNotFound'
 
+# FailedOperation.Db
+FAILEDOPERATION_DB = 'FailedOperation.Db'
+
 # 数据库查询失败。
 FAILEDOPERATION_DBQUERYFAILED = 'FailedOperation.DbQueryFailed'
 
@@ -91,6 +103,9 @@ FAILEDOPERATION_DBRECORDCREATEFAILED = 'FailedOperation.DbRecordCreateFailed'
 
 # 数据库记录删除失败。
 FAILEDOPERATION_DBRECORDDELETEFAILED = 'FailedOperation.DbRecordDeleteFailed'
+
+# FailedOperation.DbRecordNotFound
+FAILEDOPERATION_DBRECORDNOTFOUND = 'FailedOperation.DbRecordNotFound'
 
 # 数据库记录更新失败。
 FAILEDOPERATION_DBRECORDUPDATEFAILED = 'FailedOperation.DbRecordUpdateFailed'
@@ -134,6 +149,12 @@ FAILEDOPERATION_INSTANCENOTRUNNING = 'FailedOperation.InstanceNotRunning'
 # 内部服务错误。
 FAILEDOPERATION_INTERNALERROR = 'FailedOperation.InternalError'
 
+# FailedOperation.KubeClientConf
+FAILEDOPERATION_KUBECLIENTCONF = 'FailedOperation.KubeClientConf'
+
+# FailedOperation.KubeCommon
+FAILEDOPERATION_KUBECOMMON = 'FailedOperation.KubeCommon'
+
 # 地区不可用。
 FAILEDOPERATION_REGIONUNAVAILABLE = 'FailedOperation.RegionUnavailable'
 
@@ -170,6 +191,12 @@ INTERNALERROR = 'InternalError'
 # 回调出错。
 INTERNALERROR_CALLBACKFAIL = 'InternalError.CallbackFail'
 
+# InternalError.Db
+INTERNALERROR_DB = 'InternalError.Db'
+
+# InternalError.DbRecordNotFound
+INTERNALERROR_DBRECORDNOTFOUND = 'InternalError.DbRecordNotFound'
+
 # 依赖的其他api出错。
 INTERNALERROR_DEPENDSAPI = 'InternalError.DependsApi'
 
@@ -182,14 +209,26 @@ INTERNALERROR_DEPENDSMQ = 'InternalError.DependsMq'
 # 执行超时。
 INTERNALERROR_EXETIMEOUT = 'InternalError.ExeTimeout'
 
+# InternalError.Param
+INTERNALERROR_PARAM = 'InternalError.Param'
+
 # 系统错误。
 INTERNALERROR_SYSTEM = 'InternalError.System'
+
+# InternalError.TaskNotFound
+INTERNALERROR_TASKNOTFOUND = 'InternalError.TaskNotFound'
 
 # 任务结果解析错误。
 INTERNALERROR_TASKRESULTFORMAT = 'InternalError.TaskResultFormat'
 
+# InternalError.UnexpectedInternal
+INTERNALERROR_UNEXPECTEDINTERNAL = 'InternalError.UnexpectedInternal'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
+
+# InvalidParameter.ClusterNotFound
+INVALIDPARAMETER_CLUSTERNOTFOUND = 'InvalidParameter.ClusterNotFound'
 
 # 重复提交任务。
 INVALIDPARAMETER_DUPTASK = 'InvalidParameter.DupTask'
@@ -203,8 +242,20 @@ INVALIDPARAMETER_INVALIDPARAMETERPARAM = 'InvalidParameter.InvalidParameterParam
 # 缺少平台配置。
 INVALIDPARAMETER_MISSAKSK = 'InvalidParameter.MissAKSK'
 
+# InvalidParameter.Param
+INVALIDPARAMETER_PARAM = 'InvalidParameter.Param'
+
 # 参数错误。
 INVALIDPARAMETER_PARAMERROR = 'InvalidParameter.ParamError'
+
+# InvalidParameter.PromClusterNotFound
+INVALIDPARAMETER_PROMCLUSTERNOTFOUND = 'InvalidParameter.PromClusterNotFound'
+
+# InvalidParameter.PromInstanceNotFound
+INVALIDPARAMETER_PROMINSTANCENOTFOUND = 'InvalidParameter.PromInstanceNotFound'
+
+# InvalidParameter.ResourceNotFound
+INVALIDPARAMETER_RESOURCENOTFOUND = 'InvalidParameter.ResourceNotFound'
 
 # 平台配置错误。
 INVALIDPARAMETER_SECRETIDORSECRETKEYERROR = 'InvalidParameter.SecretIdOrSecretKeyError'

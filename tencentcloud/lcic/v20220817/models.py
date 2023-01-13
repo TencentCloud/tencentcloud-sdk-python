@@ -356,6 +356,29 @@ class DeleteRoomResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAppDetailRequest(AbstractModel):
+    """DescribeAppDetail请求参数结构体
+
+    """
+
+
+class DescribeAppDetailResponse(AbstractModel):
+    """DescribeAppDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRoomRequest(AbstractModel):
     """DescribeRoom请求参数结构体
 
@@ -766,16 +789,20 @@ class ModifyAppRequest(AbstractModel):
         r"""
         :param SdkAppId: 低代码互动课堂的SdkAppId。
         :type SdkAppId: int
-        :param Callback: 回调地址。端口目前仅支持80、443
+        :param Callback: 回调地址。
         :type Callback: str
+        :param CallbackKey: 回调key。
+        :type CallbackKey: str
         """
         self.SdkAppId = None
         self.Callback = None
+        self.CallbackKey = None
 
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.Callback = params.get("Callback")
+        self.CallbackKey = params.get("CallbackKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

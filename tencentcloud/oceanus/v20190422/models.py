@@ -2599,6 +2599,12 @@ class Savepoint(AbstractModel):
         :param SerialId: 快照 serialId
 注意：此字段可能返回 null，表示取不到有效值。
         :type SerialId: str
+        :param TimeConsuming: 耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeConsuming: int
+        :param PathStatus: 快照路径状态 1：可用；2：不可用；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathStatus: int
         """
         self.Id = None
         self.VersionId = None
@@ -2612,6 +2618,8 @@ class Savepoint(AbstractModel):
         self.Description = None
         self.Timeout = None
         self.SerialId = None
+        self.TimeConsuming = None
+        self.PathStatus = None
 
 
     def _deserialize(self, params):
@@ -2627,6 +2635,8 @@ class Savepoint(AbstractModel):
         self.Description = params.get("Description")
         self.Timeout = params.get("Timeout")
         self.SerialId = params.get("SerialId")
+        self.TimeConsuming = params.get("TimeConsuming")
+        self.PathStatus = params.get("PathStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

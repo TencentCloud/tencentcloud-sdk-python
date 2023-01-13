@@ -903,12 +903,18 @@ class AiAnalysisTaskInput(AbstractModel):
         r"""
         :param Definition: 视频内容分析模板 ID。
         :type Definition: int
+        :param ExtendedParameter: 扩展参数，其值为序列化的 json字符串。
+注意：此参数为定制需求参数，需要线下对接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtendedParameter: str
         """
         self.Definition = None
+        self.ExtendedParameter = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

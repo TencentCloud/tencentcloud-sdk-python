@@ -4958,6 +4958,10 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type UniqSubnetIds: list of str
         :param Tags: 标签键值
         :type Tags: list of Tag
+        :param ProxyVips: 数据库代理 IP 。
+        :type ProxyVips: list of str
+        :param ProxyIds: 数据库代理 ID 。
+        :type ProxyIds: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -4991,6 +4995,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.UniqueVpcIds = None
         self.UniqSubnetIds = None
         self.Tags = None
+        self.ProxyVips = None
+        self.ProxyIds = None
 
 
     def _deserialize(self, params):
@@ -5031,6 +5037,8 @@ class DescribeDBInstancesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.ProxyVips = params.get("ProxyVips")
+        self.ProxyIds = params.get("ProxyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2552,6 +2552,8 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
         :type Name: str
         :param SubnetIds: 子网ID列表
         :type SubnetIds: list of str
+        :param SecurityGroupIds: 安全组ID列表
+        :type SecurityGroupIds: list of str
         :param Labels: 虚拟节点label
         :type Labels: list of Label
         :param Taints: 虚拟节点taint
@@ -2568,6 +2570,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
         self.ClusterId = None
         self.Name = None
         self.SubnetIds = None
+        self.SecurityGroupIds = None
         self.Labels = None
         self.Taints = None
         self.VirtualNodes = None
@@ -2579,6 +2582,7 @@ class CreateClusterVirtualNodePoolRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.Name = params.get("Name")
         self.SubnetIds = params.get("SubnetIds")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("Labels") is not None:
             self.Labels = []
             for item in params.get("Labels"):
@@ -17846,6 +17850,8 @@ major 大版本原地升级
         :type SkipPreCheck: bool
         :param MaxNotReadyPercent: 最大可容忍的不可用Pod比例
         :type MaxNotReadyPercent: float
+        :param UpgradeRunTime: 是否升级节点运行时，默认false不升级
+        :type UpgradeRunTime: bool
         """
         self.ClusterId = None
         self.Operation = None
@@ -17854,6 +17860,7 @@ major 大版本原地升级
         self.ResetParam = None
         self.SkipPreCheck = None
         self.MaxNotReadyPercent = None
+        self.UpgradeRunTime = None
 
 
     def _deserialize(self, params):
@@ -17866,6 +17873,7 @@ major 大版本原地升级
             self.ResetParam._deserialize(params.get("ResetParam"))
         self.SkipPreCheck = params.get("SkipPreCheck")
         self.MaxNotReadyPercent = params.get("MaxNotReadyPercent")
+        self.UpgradeRunTime = params.get("UpgradeRunTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

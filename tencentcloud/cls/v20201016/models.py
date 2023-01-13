@@ -1551,9 +1551,14 @@ class CreateIndexRequest(AbstractModel):
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         :param Status: 是否生效，默认为true
         :type Status: bool
-        :param IncludeInternalFields: 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+        :param IncludeInternalFields: 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
+* false:不包含
+* true:包含
         :type IncludeInternalFields: bool
-        :param MetadataFlag: 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+        :param MetadataFlag: 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
+* 0:仅包含开启键值索引的元数据字段
+* 1:包含所有元数据字段
+* 2:不包含任何元数据字段
         :type MetadataFlag: int
         """
         self.TopicId = None
@@ -3046,10 +3051,15 @@ class DescribeIndexResponse(AbstractModel):
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         :param ModifyTime: 索引修改时间，初始值为索引创建时间。
         :type ModifyTime: str
-        :param IncludeInternalFields: 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+        :param IncludeInternalFields: 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
+* false:不包含
+* true:包含
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeInternalFields: bool
-        :param MetadataFlag: 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+        :param MetadataFlag: 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引
+* 0:仅包含开启键值索引的元数据字段
+* 1:包含所有元数据字段
+* 2:不包含任何元数据字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetadataFlag: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3161,29 +3171,29 @@ class DescribeLogHistogramRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicId: 要查询的日志主题ID
-        :type TopicId: str
         :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
         :type From: int
         :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
         :type To: int
         :param Query: 查询语句
         :type Query: str
+        :param TopicId: 要查询的日志主题ID
+        :type TopicId: str
         :param Interval: 时间间隔: 单位ms  限制性条件：(To-From) / interval <= 200
         :type Interval: int
         """
-        self.TopicId = None
         self.From = None
         self.To = None
         self.Query = None
+        self.TopicId = None
         self.Interval = None
 
 
     def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
         self.From = params.get("From")
         self.To = params.get("To")
         self.Query = params.get("Query")
+        self.TopicId = params.get("TopicId")
         self.Interval = params.get("Interval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5243,9 +5253,14 @@ class ModifyIndexRequest(AbstractModel):
         :type Status: bool
         :param Rule: 索引规则
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
-        :param IncludeInternalFields: 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+        :param IncludeInternalFields: 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
+* false:不包含
+* true:包含
         :type IncludeInternalFields: bool
-        :param MetadataFlag: 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+        :param MetadataFlag: 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
+* 0:仅包含开启键值索引的元数据字段
+* 1:包含所有元数据字段
+* 2:不包含任何元数据字段
         :type MetadataFlag: int
         """
         self.TopicId = None
@@ -5979,15 +5994,16 @@ class SearchLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicId: 要检索分析的日志主题ID
-        :type TopicId: str
         :param From: 要检索分析的日志的起始时间，Unix时间戳（毫秒）
         :type From: int
         :param To: 要检索分析的日志的结束时间，Unix时间戳（毫秒）
         :type To: int
         :param Query: 检索分析语句，最大长度为12KB
 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
+使用*或空字符串可查询所有日志
         :type Query: str
+        :param TopicId: 要检索分析的日志主题ID
+        :type TopicId: str
         :param Limit: 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
 注意：
 * 仅当检索分析语句(Query)不包含SQL时有效
@@ -6015,10 +6031,10 @@ class SearchLogRequest(AbstractModel):
 默认值为1
         :type SamplingRate: float
         """
-        self.TopicId = None
         self.From = None
         self.To = None
         self.Query = None
+        self.TopicId = None
         self.Limit = None
         self.Context = None
         self.Sort = None
@@ -6027,10 +6043,10 @@ class SearchLogRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
         self.From = params.get("From")
         self.To = params.get("To")
         self.Query = params.get("Query")
+        self.TopicId = params.get("TopicId")
         self.Limit = params.get("Limit")
         self.Context = params.get("Context")
         self.Sort = params.get("Sort")

@@ -4881,7 +4881,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterBoundStatus: str
         :param FilterInstanceIdList: 实例id数组
         :type FilterInstanceIdList: list of str
-        :param FilterEnterpriseFlag: 企业版搜索
+        :param FilterEnterpriseFlag: 企业版搜索,  1：包含重保护航套餐下的企业版列表, 2: 不包含重保护航套餐的企业版列表
         :type FilterEnterpriseFlag: int
         :param FilterLightFlag: 轻量版搜索
         :type FilterLightFlag: int
@@ -4893,6 +4893,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterTrialFlag: int
         :param FilterConvoy: 重保护航搜索
         :type FilterConvoy: int
+        :param ExcludeAdvancedInfo: 默认false；接口传true，返回数据中不包含高级信息，高级信息包含：InstanceList[0].Usage。
+        :type ExcludeAdvancedInfo: bool
         """
         self.Offset = None
         self.Limit = None
@@ -4910,6 +4912,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterTag = None
         self.FilterTrialFlag = None
         self.FilterConvoy = None
+        self.ExcludeAdvancedInfo = None
 
 
     def _deserialize(self, params):
@@ -4931,6 +4934,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
             self.FilterTag._deserialize(params.get("FilterTag"))
         self.FilterTrialFlag = params.get("FilterTrialFlag")
         self.FilterConvoy = params.get("FilterConvoy")
+        self.ExcludeAdvancedInfo = params.get("ExcludeAdvancedInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6994,6 +6998,8 @@ class L7RuleHealth(AbstractModel):
         :type FailedThreshold: int
         :param PassiveStatusCode: 被动探测判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
         :type PassiveStatusCode: int
+        :param PassiveStatus: 被动探测配置状态，0： 正常，1：配置中，2：配置失败
+        :type PassiveStatus: int
         """
         self.Status = None
         self.Enable = None
@@ -7010,6 +7016,7 @@ class L7RuleHealth(AbstractModel):
         self.FailedCountInter = None
         self.FailedThreshold = None
         self.PassiveStatusCode = None
+        self.PassiveStatus = None
 
 
     def _deserialize(self, params):
@@ -7028,6 +7035,7 @@ class L7RuleHealth(AbstractModel):
         self.FailedCountInter = params.get("FailedCountInter")
         self.FailedThreshold = params.get("FailedThreshold")
         self.PassiveStatusCode = params.get("PassiveStatusCode")
+        self.PassiveStatus = params.get("PassiveStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

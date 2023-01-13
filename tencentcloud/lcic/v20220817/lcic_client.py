@@ -171,6 +171,35 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAppDetail(self, request):
+        """获取应用详情
+
+        :param request: Request instance for DescribeAppDetail.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeAppDetailRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeAppDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAppDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRoom(self, request):
         """获取房间信息
 

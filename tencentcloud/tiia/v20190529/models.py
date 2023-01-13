@@ -2642,3 +2642,56 @@ class SearchImageResponse(AbstractModel):
             self.Object = ObjectInfo()
             self.Object._deserialize(params.get("Object"))
         self.RequestId = params.get("RequestId")
+
+
+class UpdateImageRequest(AbstractModel):
+    """UpdateImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 图库ID。
+        :type GroupId: str
+        :param EntityId: 物品ID，最多支持64个字符。
+        :type EntityId: str
+        :param PicName: 图片名称，最多支持64个字符。
+        :type PicName: str
+        :param Tags: 新的自定义标签，最多不超过10个，格式为JSON。
+        :type Tags: str
+        """
+        self.GroupId = None
+        self.EntityId = None
+        self.PicName = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.EntityId = params.get("EntityId")
+        self.PicName = params.get("PicName")
+        self.Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateImageResponse(AbstractModel):
+    """UpdateImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
