@@ -1286,6 +1286,77 @@ class CreateFlowSignReviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateFlowSignUrlRequest(AbstractModel):
+    """CreateFlowSignUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程编号
+        :type FlowId: str
+        :param FlowApproverInfos: 流程签署人，其中ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+        :type FlowApproverInfos: list of FlowCreateApprover
+        :param Organization: 机构信息，暂未开放
+        :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
+        :param Operator: 用户信息，此结构体UserId必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        self.FlowId = None
+        self.FlowApproverInfos = None
+        self.Organization = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("FlowApproverInfos") is not None:
+            self.FlowApproverInfos = []
+            for item in params.get("FlowApproverInfos"):
+                obj = FlowCreateApprover()
+                obj._deserialize(item)
+                self.FlowApproverInfos.append(obj)
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlowSignUrlResponse(AbstractModel):
+    """CreateFlowSignUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowApproverUrlInfos: 签署人签署链接信息
+        :type FlowApproverUrlInfos: list of FlowApproverUrlInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowApproverUrlInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowApproverUrlInfos") is not None:
+            self.FlowApproverUrlInfos = []
+            for item in params.get("FlowApproverUrlInfos"):
+                obj = FlowApproverUrlInfo()
+                obj._deserialize(item)
+                self.FlowApproverUrlInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateIntegrationEmployeesRequest(AbstractModel):
     """CreateIntegrationEmployees请求参数结构体
 
@@ -2636,6 +2707,46 @@ class FlowApproverDetail(AbstractModel):
         self.CustomApproverTag = params.get("CustomApproverTag")
         self.OrganizationId = params.get("OrganizationId")
         self.OrganizationName = params.get("OrganizationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowApproverUrlInfo(AbstractModel):
+    """签署链接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SignUrl: 签署链接，注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignUrl: str
+        :param ApproverMobile: 签署人手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverMobile: str
+        :param ApproverName: 签署人姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverName: str
+        :param ApproverType: 签署人类型 1-个人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverType: int
+        """
+        self.SignUrl = None
+        self.ApproverMobile = None
+        self.ApproverName = None
+        self.ApproverType = None
+
+
+    def _deserialize(self, params):
+        self.SignUrl = params.get("SignUrl")
+        self.ApproverMobile = params.get("ApproverMobile")
+        self.ApproverName = params.get("ApproverName")
+        self.ApproverType = params.get("ApproverType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

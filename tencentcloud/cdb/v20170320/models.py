@@ -1468,6 +1468,12 @@ class CommonTimeWindow(AbstractModel):
         :type Saturday: str
         :param Sunday: 周日的时间窗，格式如： 02:00-06:00
         :type Sunday: str
+        :param BackupPeriodStrategy: 常规备份保留策略，weekly-按周备份，monthly-按月备份，默认为weekly
+        :type BackupPeriodStrategy: str
+        :param Days: 如果设置为按月备份，需填入每月具体备份日期，相邻备份天数不得超过两天。例[1,4,7,9,11,14,17,19,22,25,28,30,31]
+        :type Days: list of int
+        :param BackupPeriodTime: 月度备份时间窗，BackupPeriodStrategy为monthly时必填。格式如： 02:00-06:00
+        :type BackupPeriodTime: str
         """
         self.Monday = None
         self.Tuesday = None
@@ -1476,6 +1482,9 @@ class CommonTimeWindow(AbstractModel):
         self.Friday = None
         self.Saturday = None
         self.Sunday = None
+        self.BackupPeriodStrategy = None
+        self.Days = None
+        self.BackupPeriodTime = None
 
 
     def _deserialize(self, params):
@@ -1486,6 +1495,9 @@ class CommonTimeWindow(AbstractModel):
         self.Friday = params.get("Friday")
         self.Saturday = params.get("Saturday")
         self.Sunday = params.get("Sunday")
+        self.BackupPeriodStrategy = params.get("BackupPeriodStrategy")
+        self.Days = params.get("Days")
+        self.BackupPeriodTime = params.get("BackupPeriodTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

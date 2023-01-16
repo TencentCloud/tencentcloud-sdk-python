@@ -3587,7 +3587,7 @@ class DescribeOriginProtectionRequest(AbstractModel):
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
 <li>need-update<br>   按照【<strong>站点是否需要更新源站防护IP白名单</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：需要更新<br>   false：无需更新<br></li>
 <li>plan-support<br>   按照【<strong>站点套餐是否支持源站防护</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：支持<br>   false：不支持<br></li>
-        :type Filters: :class:`tencentcloud.teo.v20220901.models.Filter`
+        :type Filters: list of Filter
         :param Offset: 分页查询偏移量，默认为0。
         :type Offset: int
         :param Limit: 分页查询限制数目。默认值：20，最大值：1000。
@@ -3602,8 +3602,11 @@ class DescribeOriginProtectionRequest(AbstractModel):
     def _deserialize(self, params):
         self.ZoneIds = params.get("ZoneIds")
         if params.get("Filters") is not None:
-            self.Filters = Filter()
-            self.Filters._deserialize(params.get("Filters"))
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         memeber_set = set(params.keys())

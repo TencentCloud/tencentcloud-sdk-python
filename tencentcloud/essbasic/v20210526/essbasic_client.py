@@ -300,6 +300,35 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCreateFlowSignUrl(self, request):
+        """渠道版创建签署链接，需要联系运营人员开白后才可使用
+
+        :param request: Request instance for ChannelCreateFlowSignUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowSignUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowSignUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateFlowSignUrl", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChannelCreateFlowSignUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelCreateMultiFlowSignQRCode(self, request):
         """此接口（ChannelCreateMultiFlowSignQRCode）用于创建一码多扫签署流程二维码。
         适用的模版仅限于B2C（1、无序签署，2、顺序签署时B静默签署，3、顺序签署时B非首位签署）、单C的模版，且模版中发起方没有填写控件。

@@ -3554,6 +3554,10 @@ class TraceCode(AbstractModel):
         :type MerchantName: str
         :param ProductName: 产品名称
         :type ProductName: str
+        :param AgentId: 渠道商ID
+        :type AgentId: int
+        :param Level: 码层级 0: 最小级, 1: 一级, 2: 二级
+        :type Level: int
         """
         self.Code = None
         self.CorpId = None
@@ -3566,6 +3570,8 @@ class TraceCode(AbstractModel):
         self.UpdateTime = None
         self.MerchantName = None
         self.ProductName = None
+        self.AgentId = None
+        self.Level = None
 
 
     def _deserialize(self, params):
@@ -3580,6 +3586,8 @@ class TraceCode(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.MerchantName = params.get("MerchantName")
         self.ProductName = params.get("ProductName")
+        self.AgentId = params.get("AgentId")
+        self.Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -838,6 +838,83 @@ class ChannelCreateFlowSignReviewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreateFlowSignUrlRequest(AbstractModel):
+    """ChannelCreateFlowSignUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param FlowId: 流程编号
+        :type FlowId: str
+        :param FlowApproverInfos: 流程签署人，其中Name和Mobile必传，其他可不传，ApproverType目前只支持PERSON类型的签署人，如果不传默认为该值。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+        :type FlowApproverInfos: list of FlowApproverInfo
+        :param Operator: 用户信息，暂未开放
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Organization: 机构信息，暂未开放
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        """
+        self.Agent = None
+        self.FlowId = None
+        self.FlowApproverInfos = None
+        self.Operator = None
+        self.Organization = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.FlowId = params.get("FlowId")
+        if params.get("FlowApproverInfos") is not None:
+            self.FlowApproverInfos = []
+            for item in params.get("FlowApproverInfos"):
+                obj = FlowApproverInfo()
+                obj._deserialize(item)
+                self.FlowApproverInfos.append(obj)
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateFlowSignUrlResponse(AbstractModel):
+    """ChannelCreateFlowSignUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowApproverUrlInfos: 签署人签署链接信息
+        :type FlowApproverUrlInfos: list of FlowApproverUrlInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowApproverUrlInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowApproverUrlInfos") is not None:
+            self.FlowApproverUrlInfos = []
+            for item in params.get("FlowApproverUrlInfos"):
+                obj = FlowApproverUrlInfo()
+                obj._deserialize(item)
+                self.FlowApproverUrlInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
     """ChannelCreateMultiFlowSignQRCode请求参数结构体
 
@@ -2819,6 +2896,42 @@ ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
             self.ApproverOption = ApproverOption()
             self.ApproverOption._deserialize(params.get("ApproverOption"))
         self.ApproverNeedSignReview = params.get("ApproverNeedSignReview")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowApproverUrlInfo(AbstractModel):
+    """签署人签署链接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SignUrl: 签署链接，注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+        :type SignUrl: str
+        :param Mobile: 签署人手机号
+        :type Mobile: str
+        :param Name: 签署人姓名
+        :type Name: str
+        :param ApproverType: 签署人类型 PERSON-个人
+        :type ApproverType: str
+        """
+        self.SignUrl = None
+        self.Mobile = None
+        self.Name = None
+        self.ApproverType = None
+
+
+    def _deserialize(self, params):
+        self.SignUrl = params.get("SignUrl")
+        self.Mobile = params.get("Mobile")
+        self.Name = params.get("Name")
+        self.ApproverType = params.get("ApproverType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

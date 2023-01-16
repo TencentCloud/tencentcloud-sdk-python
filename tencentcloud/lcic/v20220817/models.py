@@ -18,6 +18,12 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AppConfig(AbstractModel):
+    """应用配置信息
+
+    """
+
+
 class AppCustomContent(AbstractModel):
     """应用自定义内容
 
@@ -361,6 +367,28 @@ class DescribeAppDetailRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param DeveloperId: 开发商ID
+        :type DeveloperId: str
+        """
+        self.ApplicationId = None
+        self.DeveloperId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.DeveloperId = params.get("DeveloperId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAppDetailResponse(AbstractModel):
     """DescribeAppDetail返回参数结构体
@@ -369,13 +397,32 @@ class DescribeAppDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SdkAppId: SdkAppId 
+        :type SdkAppId: str
+        :param AppConfig: 应用配置
+        :type AppConfig: :class:`tencentcloud.lcic.v20220817.models.AppConfig`
+        :param SceneConfig: 场景配置
+        :type SceneConfig: list of SceneItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SdkAppId = None
+        self.AppConfig = None
+        self.SceneConfig = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        if params.get("AppConfig") is not None:
+            self.AppConfig = AppConfig()
+            self.AppConfig._deserialize(params.get("AppConfig"))
+        if params.get("SceneConfig") is not None:
+            self.SceneConfig = []
+            for item in params.get("SceneConfig"):
+                obj = SceneItem()
+                obj._deserialize(item)
+                self.SceneConfig.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -888,6 +935,12 @@ class RegisterUserResponse(AbstractModel):
         self.UserId = params.get("UserId")
         self.Token = params.get("Token")
         self.RequestId = params.get("RequestId")
+
+
+class SceneItem(AbstractModel):
+    """场景配置
+
+    """
 
 
 class SetAppCustomContentRequest(AbstractModel):
