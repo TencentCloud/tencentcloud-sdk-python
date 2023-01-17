@@ -432,6 +432,35 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConfigTemplate(self, request):
+        """创建参数模板
+
+        :param request: Request instance for CreateConfigTemplate.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateConfigTemplateRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateConfigTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConfigTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConfigTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateContainGroup(self, request):
         """创建容器部署组
 
@@ -621,6 +650,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMicroserviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateMicroserviceWithDetailResp(self, request):
+        """新增微服务返回id
+
+        :param request: Request instance for CreateMicroserviceWithDetailResp.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateMicroserviceWithDetailRespRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateMicroserviceWithDetailRespResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMicroserviceWithDetailResp", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMicroserviceWithDetailRespResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -896,6 +954,35 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteCluster(self, request):
+        """删除集群
+
+        :param request: Request instance for DeleteCluster.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteClusterRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCluster", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteConfig(self, request):
         """删除配置项
 
@@ -911,6 +998,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteConfigTemplate(self, request):
+        """删除模板
+
+        :param request: Request instance for DeleteConfigTemplate.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteConfigTemplateRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteConfigTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConfigTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteConfigTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1825,6 +1941,35 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusters(self, request):
+        """获取集群列表
+
+        :param request: Request instance for DescribeClusters.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeClustersRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusters", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeConfig(self, request):
         """查询配置
 
@@ -1927,6 +2072,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigSummaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfigTemplate(self, request):
+        """导入配置
+
+        :param request: Request instance for DescribeConfigTemplate.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigTemplateRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeConfigTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2247,6 +2421,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnabledUnitRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFileConfigReleases(self, request):
+        """查询文件配置项发布信息
+
+        :param request: Request instance for DescribeFileConfigReleases.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeFileConfigReleasesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeFileConfigReleasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFileConfigReleases", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFileConfigReleasesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4350,6 +4553,64 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyApplication(self, request):
+        """修改应用
+
+        :param request: Request instance for ModifyApplication.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyApplicationRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApplication", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyApplicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCluster(self, request):
+        """修改集群信息
+
+        :param request: Request instance for ModifyCluster.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyClusterRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCluster", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyContainerGroup(self, request):
         """修改容器部署组
 
@@ -4394,6 +4655,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyContainerReplicasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyGroup(self, request):
+        """更新部署组信息
+
+        :param request: Request instance for ModifyGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4481,6 +4771,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMicroserviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyNamespace(self, request):
+        """修改命名空间
+
+        :param request: Request instance for ModifyNamespace.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ModifyNamespaceRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ModifyNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNamespace", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyNamespaceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4946,6 +5265,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevocationPublicConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RevokeFileConfig(self, request):
+        """撤回已发布的文件配置
+
+        :param request: Request instance for RevokeFileConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.RevokeFileConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.RevokeFileConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RevokeFileConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RevokeFileConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5439,6 +5787,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateApiTimeoutsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateConfigTemplate(self, request):
+        """更新参数模板
+
+        :param request: Request instance for UpdateConfigTemplate.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.UpdateConfigTemplateRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.UpdateConfigTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateConfigTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateConfigTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

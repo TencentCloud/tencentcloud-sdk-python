@@ -38,6 +38,9 @@ FAILEDOPERATION_GRANTPOLICYFAILED = 'FailedOperation.GrantPolicyFailed'
 # HTTP客户端请求失败。
 FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = 'FailedOperation.HttpClientDoRequestFailed'
 
+# 没有操作权限。
+FAILEDOPERATION_NOPERMISSION = 'FailedOperation.NoPermission'
+
 # 取消授权失败。
 FAILEDOPERATION_REVOKEPOLICYFAILED = 'FailedOperation.RevokePolicyFailed'
 

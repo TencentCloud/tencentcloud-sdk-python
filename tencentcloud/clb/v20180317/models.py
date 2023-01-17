@@ -5629,7 +5629,7 @@ Public：公网属性， Private：内网属性。
         :param ExtraInfo: 暂做保留，一般用户无需关注。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: :class:`tencentcloud.clb.v20180317.models.ExtraInfo`
-        :param ConfigId: 负载均衡维度的个性化配置ID。
+        :param ConfigId: 负载均衡维度的个性化配置ID，多个配置用逗号隔开。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigId: str
         :param Tags: 负载均衡实例的标签信息。

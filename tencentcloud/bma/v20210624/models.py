@@ -1009,6 +1009,8 @@ class CreateCRWorkRequest(AbstractModel):
         :type ApplierId: str
         :param ApplierName: 申请人姓名，用于存证和取证
         :type ApplierName: str
+        :param IsAutoRenew: 是否自动续期
+        :type IsAutoRenew: str
         """
         self.WorkName = None
         self.WorkCategory = None
@@ -1041,6 +1043,7 @@ class CreateCRWorkRequest(AbstractModel):
         self.MonitorEndTime = None
         self.ApplierId = None
         self.ApplierName = None
+        self.IsAutoRenew = None
 
 
     def _deserialize(self, params):
@@ -1075,6 +1078,7 @@ class CreateCRWorkRequest(AbstractModel):
         self.MonitorEndTime = params.get("MonitorEndTime")
         self.ApplierId = params.get("ApplierId")
         self.ApplierName = params.get("ApplierName")
+        self.IsAutoRenew = params.get("IsAutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2232,6 +2236,10 @@ class Monitor(AbstractModel):
         :type EvidenceNote: str
         :param TortSiteNum: 侵权站点数量
         :type TortSiteNum: int
+        :param MonitorEndTime: 监测截止时间
+        :type MonitorEndTime: str
+        :param AutoRenew: 是否自动续费
+        :type AutoRenew: int
         """
         self.WorkId = None
         self.WorkName = None
@@ -2247,6 +2255,8 @@ class Monitor(AbstractModel):
         self.EvidenceStatus = None
         self.EvidenceNote = None
         self.TortSiteNum = None
+        self.MonitorEndTime = None
+        self.AutoRenew = None
 
 
     def _deserialize(self, params):
@@ -2264,6 +2274,8 @@ class Monitor(AbstractModel):
         self.EvidenceStatus = params.get("EvidenceStatus")
         self.EvidenceNote = params.get("EvidenceNote")
         self.TortSiteNum = params.get("TortSiteNum")
+        self.MonitorEndTime = params.get("MonitorEndTime")
+        self.AutoRenew = params.get("AutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

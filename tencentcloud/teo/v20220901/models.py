@@ -121,9 +121,13 @@ class AclConfig(AbstractModel):
         :type Switch: str
         :param AclUserRules: 用户自定义规则。
         :type AclUserRules: list of AclUserRule
+        :param Customizes: 托管定制规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Customizes: list of AclUserRule
         """
         self.Switch = None
         self.AclUserRules = None
+        self.Customizes = None
 
 
     def _deserialize(self, params):
@@ -134,6 +138,12 @@ class AclConfig(AbstractModel):
                 obj = AclUserRule()
                 obj._deserialize(item)
                 self.AclUserRules.append(obj)
+        if params.get("Customizes") is not None:
+            self.Customizes = []
+            for item in params.get("Customizes"):
+                obj = AclUserRule()
+                obj._deserialize(item)
+                self.Customizes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6411,6 +6421,38 @@ class Filter(AbstractModel):
         
 
 
+class FirstPartConfig(AbstractModel):
+    """慢速攻击的首段包配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param StatTime: 首段包的统计时长，单位是秒，即期望首段包的统计时长是多少，默认5秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatTime: int
+        """
+        self.Switch = None
+        self.StatTime = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.StatTime = params.get("StatTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FollowOrigin(AbstractModel):
     """缓存遵循源站配置
 
@@ -8933,7 +8975,7 @@ class Quota(AbstractModel):
 
 
 class RateLimitConfig(AbstractModel):
-    """RateLimit配置
+    """速率限制规则
 
     """
 
@@ -8951,11 +8993,15 @@ class RateLimitConfig(AbstractModel):
         :param RateLimitIntelligence: 智能客户端过滤。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitIntelligence: :class:`tencentcloud.teo.v20220901.models.RateLimitIntelligence`
+        :param RateLimitCustomizes: 速率限制-托管定制规则。如果为null，默认使用历史配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RateLimitCustomizes: list of RateLimitUserRule
         """
         self.Switch = None
         self.RateLimitUserRules = None
         self.RateLimitTemplate = None
         self.RateLimitIntelligence = None
+        self.RateLimitCustomizes = None
 
 
     def _deserialize(self, params):
@@ -8972,6 +9018,12 @@ class RateLimitConfig(AbstractModel):
         if params.get("RateLimitIntelligence") is not None:
             self.RateLimitIntelligence = RateLimitIntelligence()
             self.RateLimitIntelligence._deserialize(params.get("RateLimitIntelligence"))
+        if params.get("RateLimitCustomizes") is not None:
+            self.RateLimitCustomizes = []
+            for item in params.get("RateLimitCustomizes"):
+                obj = RateLimitUserRule()
+                obj._deserialize(item)
+                self.RateLimitCustomizes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10230,6 +10282,9 @@ class SecurityConfig(AbstractModel):
         :param TemplateConfig: 模板配置。此处仅出参数使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateConfig: :class:`tencentcloud.teo.v20220901.models.TemplateConfig`
+        :param SlowPostConfig: 慢速攻击配置。如果为null，默认使用历史配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlowPostConfig: :class:`tencentcloud.teo.v20220901.models.SlowPostConfig`
         """
         self.WafConfig = None
         self.RateLimitConfig = None
@@ -10240,6 +10295,7 @@ class SecurityConfig(AbstractModel):
         self.ExceptConfig = None
         self.DropPageConfig = None
         self.TemplateConfig = None
+        self.SlowPostConfig = None
 
 
     def _deserialize(self, params):
@@ -10270,6 +10326,9 @@ class SecurityConfig(AbstractModel):
         if params.get("TemplateConfig") is not None:
             self.TemplateConfig = TemplateConfig()
             self.TemplateConfig._deserialize(params.get("TemplateConfig"))
+        if params.get("SlowPostConfig") is not None:
+            self.SlowPostConfig = SlowPostConfig()
+            self.SlowPostConfig._deserialize(params.get("SlowPostConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10478,6 +10537,94 @@ class SkipCondition(AbstractModel):
         self.MatchFrom = params.get("MatchFrom")
         self.MatchContentType = params.get("MatchContentType")
         self.MatchContent = params.get("MatchContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowPostConfig(AbstractModel):
+    """慢速攻击配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param FirstPartConfig: 首包配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstPartConfig: :class:`tencentcloud.teo.v20220901.models.FirstPartConfig`
+        :param SlowRateConfig: 基础配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlowRateConfig: :class:`tencentcloud.teo.v20220901.models.SlowRateConfig`
+        :param Action: 慢速攻击的处置动作，取值有：
+<li>monitor：观察；</li>
+<li>drop：拦截。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param RuleId: 本规则的Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        """
+        self.Switch = None
+        self.FirstPartConfig = None
+        self.SlowRateConfig = None
+        self.Action = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("FirstPartConfig") is not None:
+            self.FirstPartConfig = FirstPartConfig()
+            self.FirstPartConfig._deserialize(params.get("FirstPartConfig"))
+        if params.get("SlowRateConfig") is not None:
+            self.SlowRateConfig = SlowRateConfig()
+            self.SlowRateConfig._deserialize(params.get("SlowRateConfig"))
+        self.Action = params.get("Action")
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowRateConfig(AbstractModel):
+    """慢速攻击的基础配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        :param Interval: 统计的间隔，单位是秒，即在首段包传输结束后，将数据传输轴按照本参数切分，每个分片独立计算慢速攻击。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interval: int
+        :param Threshold: 统计时应用的速率阈值，单位是bps，即如果本分片中的传输速率没达到本参数的值，则判定为慢速攻击，应用慢速攻击的处置方式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: int
+        """
+        self.Switch = None
+        self.Interval = None
+        self.Threshold = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Interval = params.get("Interval")
+        self.Threshold = params.get("Threshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

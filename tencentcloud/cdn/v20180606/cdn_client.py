@@ -736,6 +736,35 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEdgePackTaskStatus(self, request):
+        """DescribeEdgePackTaskStatus 用于查询动态打包任务状态列表
+
+        :param request: Request instance for DescribeEdgePackTaskStatus.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeEdgePackTaskStatusRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeEdgePackTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgePackTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEdgePackTaskStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEventLogData(self, request):
         """DescribeEventLogData 用于查询事件日志统计曲线
 

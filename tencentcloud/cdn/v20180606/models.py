@@ -4917,6 +4917,81 @@ class DescribeDomainsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEdgePackTaskStatusRequest(AbstractModel):
+    """DescribeEdgePackTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Limit: 分页查询限制数目，默认为 100，最大可设置为 1000
+        :type Limit: int
+        :param Offset: 分页查询偏移量，默认为 0
+        :type Offset: int
+        :param Filters: 查询条件过滤器
+        :type Filters: list of EdgePackTaskFilter
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = EdgePackTaskFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgePackTaskStatusResponse(AbstractModel):
+    """DescribeEdgePackTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EdgePackTaskStatusSet: 动态打包任务状态列表
+        :type EdgePackTaskStatusSet: list of EdgePackTaskStatus
+        :param TotalCount: 总数，用于分页查询
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EdgePackTaskStatusSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EdgePackTaskStatusSet") is not None:
+            self.EdgePackTaskStatusSet = []
+            for item in params.get("EdgePackTaskStatusSet"):
+                obj = EdgePackTaskStatus()
+                obj._deserialize(item)
+                self.EdgePackTaskStatusSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEventLogDataRequest(AbstractModel):
     """DescribeEventLogData请求参数结构体
 
@@ -7790,6 +7865,89 @@ class DuplicateDomainConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EdgePackTaskFilter(AbstractModel):
+    """动态打包任务过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 过滤字段名
+apk: apk名称
+status: 母包处理进度 done, failed, processing
+        :type Name: str
+        :param Value: 过滤字段值
+        :type Value: list of str
+        :param Fuzzy: 是否启用模糊查询，仅支持过滤字段名为 apk。
+模糊查询时，Value长度最大为1。
+        :type Fuzzy: bool
+        """
+        self.Name = None
+        self.Value = None
+        self.Fuzzy = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        self.Fuzzy = params.get("Fuzzy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgePackTaskStatus(AbstractModel):
+    """动态打包任务状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Apk: APK 名称
+        :type Apk: str
+        :param DstDir: 输出目录
+        :type DstDir: str
+        :param UploadTime: 上传时间
+        :type UploadTime: str
+        :param Status: 任务状态
+created: 创建成功
+processing: 处理中
+done: 处理完成
+failed: 处理失败
+        :type Status: str
+        :param SrcDir: 上传目录
+        :type SrcDir: list of str
+        :param StatusDesc: 失败任务状态详情
+        :type StatusDesc: str
+        """
+        self.Apk = None
+        self.DstDir = None
+        self.UploadTime = None
+        self.Status = None
+        self.SrcDir = None
+        self.StatusDesc = None
+
+
+    def _deserialize(self, params):
+        self.Apk = params.get("Apk")
+        self.DstDir = params.get("DstDir")
+        self.UploadTime = params.get("UploadTime")
+        self.Status = params.get("Status")
+        self.SrcDir = params.get("SrcDir")
+        self.StatusDesc = params.get("StatusDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EnableCachesRequest(AbstractModel):
