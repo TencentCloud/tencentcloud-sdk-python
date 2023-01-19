@@ -1055,7 +1055,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeLogList(self, request):
-        """获取项目下的日志列表（实例创建的项目下的日志列表）
+        """(已下线，请用DescribeRumLogList)
 
         :param request: Request instance for DescribeLogList.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLogListRequest`

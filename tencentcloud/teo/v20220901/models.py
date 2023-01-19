@@ -4572,6 +4572,106 @@ class DescribeTimingL7CacheDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTimingL7SourceDataRequest(AbstractModel):
+    """DescribeTimingL7SourceData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        :param MetricNames: 指标列表，取值有:
+<li>l7Flow_outFlux_hy: Edgeone请求流量；</li>
+<li>l7Flow_outBandwidth_hy: Edgeone请求带宽；</li>
+<li>l7Flow_inFlux_hy: 源站响应流量；</li>
+<li>l7Flow_inBandwidth_hy: 源站响应带宽；</li>
+<li>l7Flow_request_hy: 回源请求数；</li>
+        :type MetricNames: list of str
+        :param ZoneIds: 站点集合，不填默认选择全部站点。
+        :type ZoneIds: list of str
+        :param Interval: 查询时间粒度，取值有：
+<li>min: 1分钟；</li>
+<li>5min: 5分钟；</li>
+<li>hour: 1小时；</li>
+<li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：一小时范围内以min粒度查询，两天范围内以5min粒度查询，七天范围内以hour粒度查询，超过七天以day粒度查询。
+        :type Interval: str
+        :param Filters: 过滤条件，详细的过滤条件如下：
+<li>domain<br>   按照【<strong>回源Host</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+<li>origin<br>   按照【<strong>源站</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+<li>originGroup<br>   按照【<strong>源站组</strong>】进行过滤，源站组形如：origin-xxxxx。<br>   类型：String<br>   必选：否</li>
+<li>flowType<br>   按照【<strong>源站响应类型</strong>】进行过滤，优先级高于 MetricNames.N 参数。<br>   类型：String<br>   必选：否<br>   可选项：<br>   inFlow：源站响应流量，对应MetricNames中l7Flow_inFlux_hy、l7Flow_inBandwidth_hy、l7Flow_request_hy三个指标；<br>   outFlow：EdgeOne请求流量，对应MetricNames中l7Flow_outFlux_hy、l7Flow_outBandwidth_hy、l7Flow_request_hy三个指标。</li>
+        :type Filters: list of QueryCondition
+        :param Area: 数据归属地区，取值有：
+<li>overseas：全球（除中国大陆地区）数据；</li>
+<li>mainland：中国大陆地区数据；</li>
+<li>global：全球数据。</li>不填默认取值为global。
+        :type Area: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricNames = None
+        self.ZoneIds = None
+        self.Interval = None
+        self.Filters = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricNames = params.get("MetricNames")
+        self.ZoneIds = params.get("ZoneIds")
+        self.Interval = params.get("Interval")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimingL7SourceDataResponse(AbstractModel):
+    """DescribeTimingL7SourceData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 查询结果的总条数。
+        :type TotalCount: int
+        :param TimingDataRecords: 时序流量数据列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimingDataRecords: list of TimingDataRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TimingDataRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TimingDataRecords") is not None:
+            self.TimingDataRecords = []
+            for item in params.get("TimingDataRecords"):
+                obj = TimingDataRecord()
+                obj._deserialize(item)
+                self.TimingDataRecords.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopL7AnalysisDataRequest(AbstractModel):
     """DescribeTopL7AnalysisData请求参数结构体
 

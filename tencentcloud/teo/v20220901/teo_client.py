@@ -1418,6 +1418,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTimingL7SourceData(self, request):
+        """本接口（DescribeTimingL7SourceData）查询七层回源分析时序数据。
+
+        :param request: Request instance for DescribeTimingL7SourceData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7SourceDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7SourceDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimingL7SourceData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTimingL7SourceDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopL7AnalysisData(self, request):
         """本接口（DescribeTopL7AnalysisData）用于查询七层流量前topN的数据。
 
