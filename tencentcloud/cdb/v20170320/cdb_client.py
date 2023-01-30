@@ -1325,6 +1325,35 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBFeatures(self, request):
+        """本接口(DescribeDBFeatures)用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
+
+        :param request: Request instance for DescribeDBFeatures.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBFeaturesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBFeaturesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBFeatures", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBFeaturesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBImportRecords(self, request):
         """本接口(DescribeDBImportRecords)用于查询云数据库导入任务操作日志。
 

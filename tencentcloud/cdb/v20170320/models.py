@@ -4546,6 +4546,83 @@ class DescribeCloneListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBFeaturesRequest(AbstractModel):
+    """DescribeDBFeatures请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBFeaturesResponse(AbstractModel):
+    """DescribeDBFeatures返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsSupportAudit: 是否支持数据库审计功能。
+        :type IsSupportAudit: bool
+        :param AuditNeedUpgrade: 开启审计是否需要升级内核版本。
+        :type AuditNeedUpgrade: bool
+        :param IsSupportEncryption: 是否支持数据库加密功能。
+        :type IsSupportEncryption: bool
+        :param EncryptionNeedUpgrade: 开启加密是否需要升级内核版本。
+        :type EncryptionNeedUpgrade: bool
+        :param IsRemoteRo: 是否为异地只读实例。
+        :type IsRemoteRo: bool
+        :param MasterRegion: 主实例所在地域。
+        :type MasterRegion: str
+        :param IsSupportUpdateSubVersion: 是否支持小版本升级。
+        :type IsSupportUpdateSubVersion: bool
+        :param CurrentSubVersion: 当前内核版本。
+        :type CurrentSubVersion: str
+        :param TargetSubVersion: 可供升级的内核版本。
+        :type TargetSubVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsSupportAudit = None
+        self.AuditNeedUpgrade = None
+        self.IsSupportEncryption = None
+        self.EncryptionNeedUpgrade = None
+        self.IsRemoteRo = None
+        self.MasterRegion = None
+        self.IsSupportUpdateSubVersion = None
+        self.CurrentSubVersion = None
+        self.TargetSubVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsSupportAudit = params.get("IsSupportAudit")
+        self.AuditNeedUpgrade = params.get("AuditNeedUpgrade")
+        self.IsSupportEncryption = params.get("IsSupportEncryption")
+        self.EncryptionNeedUpgrade = params.get("EncryptionNeedUpgrade")
+        self.IsRemoteRo = params.get("IsRemoteRo")
+        self.MasterRegion = params.get("MasterRegion")
+        self.IsSupportUpdateSubVersion = params.get("IsSupportUpdateSubVersion")
+        self.CurrentSubVersion = params.get("CurrentSubVersion")
+        self.TargetSubVersion = params.get("TargetSubVersion")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBImportRecordsRequest(AbstractModel):
     """DescribeDBImportRecords请求参数结构体
 

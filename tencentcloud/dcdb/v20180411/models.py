@@ -5681,6 +5681,88 @@ class UpgradeDCDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpgradeHourDCDBInstanceRequest(AbstractModel):
+    """UpgradeHourDCDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 待升级的实例ID。形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
+        :type InstanceId: str
+        :param UpgradeType: 升级类型，取值范围: 
+<li> ADD: 新增分片 </li> 
+ <li> EXPAND: 升级实例中的已有分片 </li> 
+ <li> SPLIT: 将已有分片中的数据切分到新增分片上</li>
+        :type UpgradeType: str
+        :param AddShardConfig: 新增分片配置，当UpgradeType为ADD时生效。
+        :type AddShardConfig: :class:`tencentcloud.dcdb.v20180411.models.AddShardConfig`
+        :param ExpandShardConfig: 扩容分片配置，当UpgradeType为EXPAND时生效。
+        :type ExpandShardConfig: :class:`tencentcloud.dcdb.v20180411.models.ExpandShardConfig`
+        :param SplitShardConfig: 切分分片配置，当UpgradeType为SPLIT时生效。
+        :type SplitShardConfig: :class:`tencentcloud.dcdb.v20180411.models.SplitShardConfig`
+        :param SwitchStartTime: 切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+        :type SwitchStartTime: str
+        :param SwitchEndTime: 切换结束时间,  格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+        :type SwitchEndTime: str
+        :param SwitchAutoRetry: 是否自动重试。 0：不自动重试  1：自动重试
+        :type SwitchAutoRetry: int
+        :param Zones: 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+        :type Zones: list of str
+        """
+        self.InstanceId = None
+        self.UpgradeType = None
+        self.AddShardConfig = None
+        self.ExpandShardConfig = None
+        self.SplitShardConfig = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+        self.SwitchAutoRetry = None
+        self.Zones = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UpgradeType = params.get("UpgradeType")
+        if params.get("AddShardConfig") is not None:
+            self.AddShardConfig = AddShardConfig()
+            self.AddShardConfig._deserialize(params.get("AddShardConfig"))
+        if params.get("ExpandShardConfig") is not None:
+            self.ExpandShardConfig = ExpandShardConfig()
+            self.ExpandShardConfig._deserialize(params.get("ExpandShardConfig"))
+        if params.get("SplitShardConfig") is not None:
+            self.SplitShardConfig = SplitShardConfig()
+            self.SplitShardConfig._deserialize(params.get("SplitShardConfig"))
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        self.SwitchAutoRetry = params.get("SwitchAutoRetry")
+        self.Zones = params.get("Zones")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeHourDCDBInstanceResponse(AbstractModel):
+    """UpgradeHourDCDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UserTaskInfo(AbstractModel):
     """用户任务信息
 

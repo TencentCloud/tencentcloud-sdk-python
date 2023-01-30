@@ -5207,7 +5207,7 @@ class DescribeGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: Grafana 实例 ID，例如：Grafana 实例 ID，例如：grafana-abcdefghGrafana 实例 ID，例如：grafana-abcdefgh
+        :param InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
         """
         self.InstanceId = None
