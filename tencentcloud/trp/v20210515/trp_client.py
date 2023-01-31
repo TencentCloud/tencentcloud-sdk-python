@@ -867,6 +867,64 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeScanLogs(self, request):
+        """查询扫码日志明细
+
+        :param request: Request instance for DescribeScanLogs.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeScanLogsRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeScanLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScanLogs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScanLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScanStats(self, request):
+        """查询某个批次被扫码的统计列表，没有被扫过的不会返回
+
+        :param request: Request instance for DescribeScanStats.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeScanStatsRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeScanStatsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScanStats", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScanStatsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTmpToken(self, request):
         """查询临时Token，主要用于上传接口
 

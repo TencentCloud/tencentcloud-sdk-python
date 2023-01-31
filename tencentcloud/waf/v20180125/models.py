@@ -383,10 +383,12 @@ class AddCustomRuleRequest(AbstractModel):
         :type ActionType: str
         :param Redirect: 如果动作是重定向，则表示重定向的地址；其他情况可以为空
         :type Redirect: str
-        :param Edition: "clb-waf"或者"sparta-waf"
+        :param Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
         :type Edition: str
         :param Bypass: 放行的详情
         :type Bypass: str
+        :param EventId: 添加规则的来源，默认为空
+        :type EventId: str
         """
         self.Name = None
         self.SortId = None
@@ -397,6 +399,7 @@ class AddCustomRuleRequest(AbstractModel):
         self.Redirect = None
         self.Edition = None
         self.Bypass = None
+        self.EventId = None
 
 
     def _deserialize(self, params):
@@ -414,6 +417,7 @@ class AddCustomRuleRequest(AbstractModel):
         self.Redirect = params.get("Redirect")
         self.Edition = params.get("Edition")
         self.Bypass = params.get("Bypass")
+        self.EventId = params.get("EventId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1409,7 +1413,7 @@ class DescribeAccessIndexResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 是否生效
+        :param Status: 是否生效，true表示生效，false表示未生效
         :type Status: bool
         :param Rule: 索引配置信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3835,7 +3839,7 @@ class UpsertIpAccessControlRequest(AbstractModel):
         :type Domain: str
         :param Items: ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳
         :type Items: list of str
-        :param Edition: clb-waf或者sparta-waf
+        :param Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
         :type Edition: str
         :param SourceType: 是否为多域名黑白名单
         :type SourceType: str

@@ -1418,34 +1418,3 @@ class TdidClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
-
-
-    def VerifyPurchase(self, request):
-        """该接口已废弃
-
-        验证购买
-
-        :param request: Request instance for VerifyPurchase.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.VerifyPurchaseRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.VerifyPurchaseResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("VerifyPurchase", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.VerifyPurchaseResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)

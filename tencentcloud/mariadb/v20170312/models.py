@@ -1975,6 +1975,59 @@ class DescribeBackupTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBEncryptAttributesRequest(AbstractModel):
+    """DescribeDBEncryptAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id，形如：tdsql-ow728lmc。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBEncryptAttributesResponse(AbstractModel):
+    """DescribeDBEncryptAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EncryptStatus: 是否启用加密，1-已开启；0-未开启。
+        :type EncryptStatus: int
+        :param CipherText: DEK密钥
+        :type CipherText: str
+        :param ExpireDate: DEK密钥过期日期。
+        :type ExpireDate: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EncryptStatus = None
+        self.CipherText = None
+        self.ExpireDate = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EncryptStatus = params.get("EncryptStatus")
+        self.CipherText = params.get("CipherText")
+        self.ExpireDate = params.get("ExpireDate")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceSpecsRequest(AbstractModel):
     """DescribeDBInstanceSpecs请求参数结构体
 

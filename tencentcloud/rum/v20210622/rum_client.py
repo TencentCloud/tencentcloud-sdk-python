@@ -89,7 +89,7 @@ class RumClient(AbstractClient):
 
 
     def CreateProject(self, request):
-        """创建项目（归属于某个团队）
+        """创建 RUM 应用（归属于某个团队）
 
         :param request: Request instance for CreateProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateProjectRequest`
@@ -176,7 +176,7 @@ class RumClient(AbstractClient):
 
 
     def CreateTawInstance(self, request):
-        """创建Rum实例
+        """创建 RUM 业务系统
 
         :param request: Request instance for CreateTawInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceRequest`
@@ -1171,7 +1171,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeProjectLimits(self, request):
-        """获取项目上报率列表
+        """获取应用上报抽样信息
 
         :param request: Request instance for DescribeProjectLimits.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeProjectLimitsRequest`
@@ -1287,7 +1287,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeReleaseFiles(self, request):
-        """获取项目对应sourcemap文件列表
+        """获取应用对应sourcemap文件列表
 
         :param request: Request instance for DescribeReleaseFiles.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFilesRequest`
@@ -1548,7 +1548,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyInstance(self, request):
-        """修改实例信息
+        """修改 RUM 业务系统
 
         :param request: Request instance for ModifyInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyInstanceRequest`
@@ -1577,7 +1577,7 @@ class RumClient(AbstractClient):
 
 
     def ModifyProject(self, request):
-        """修改 rum 项目信息
+        """修改 RUM 应用信息
 
         :param request: Request instance for ModifyProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.ModifyProjectRequest`
@@ -1635,7 +1635,7 @@ class RumClient(AbstractClient):
 
 
     def ResumeInstance(self, request):
-        """恢复实例
+        """恢复 RUM 业务系统，恢复后，用户可以正常使用和上报数据
 
         :param request: Request instance for ResumeInstance.
         :type request: :class:`tencentcloud.rum.v20210622.models.ResumeInstanceRequest`

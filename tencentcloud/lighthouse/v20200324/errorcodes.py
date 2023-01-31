@@ -32,6 +32,9 @@ FAILEDOPERATION_DELETEKEYPAIRFAILED = 'FailedOperation.DeleteKeyPairFailed'
 # 查询实例状态错误。
 FAILEDOPERATION_DESCRIBEINSTANCESTATUS = 'FailedOperation.DescribeInstanceStatus'
 
+# 查询实例变配套餐失败。
+FAILEDOPERATION_DESCRIBEINSTANCESMODIFICATIONERROR = 'FailedOperation.DescribeInstancesModificationError'
+
 # 查询实例退还错误。
 FAILEDOPERATION_DESCRIBEINSTANCESRETURNABLEERROR = 'FailedOperation.DescribeInstancesReturnableError'
 

@@ -163,6 +163,9 @@ class ImageModerationResponse(AbstractModel):
         :type Extra: str
         :param FileMD5: 该字段用于返回检测对象对应的MD5校验值，以方便校验文件完整性。
         :type FileMD5: str
+        :param RecognitionResults: 该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecognitionResults: list of RecognitionResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -178,6 +181,7 @@ class ImageModerationResponse(AbstractModel):
         self.BizType = None
         self.Extra = None
         self.FileMD5 = None
+        self.RecognitionResults = None
         self.RequestId = None
 
 
@@ -214,6 +218,12 @@ class ImageModerationResponse(AbstractModel):
         self.BizType = params.get("BizType")
         self.Extra = params.get("Extra")
         self.FileMD5 = params.get("FileMD5")
+        if params.get("RecognitionResults") is not None:
+            self.RecognitionResults = []
+            for item in params.get("RecognitionResults"):
+                obj = RecognitionResult()
+                obj._deserialize(item)
+                self.RecognitionResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -648,6 +658,78 @@ class OcrTextDetail(AbstractModel):
             self.Location._deserialize(params.get("Location"))
         self.Rate = params.get("Rate")
         self.SubLabel = params.get("SubLabel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognitionResult(AbstractModel):
+    """识别类型标签结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: 当前可能的取值：Scene（图片场景模型）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param Tags: Label对应模型下的识别标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of RecognitionTag
+        """
+        self.Label = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = RecognitionTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognitionTag(AbstractModel):
+    """识别类型标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Score: 置信分：0～100，数值越大表示置信度越高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        :param Location: 标签位置信息，若模型无位置信息，则可能为零值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: :class:`tencentcloud.ims.v20201229.models.Location`
+        """
+        self.Name = None
+        self.Score = None
+        self.Location = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Score = params.get("Score")
+        if params.get("Location") is not None:
+            self.Location = Location()
+            self.Location._deserialize(params.get("Location"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

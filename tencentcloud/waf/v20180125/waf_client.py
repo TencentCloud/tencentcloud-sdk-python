@@ -27,7 +27,7 @@ class WafClient(AbstractClient):
 
 
     def AddCustomRule(self, request):
-        """增加自定义策略
+        """增加访问控制（自定义策略）
 
         :param request: Request instance for AddCustomRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddCustomRuleRequest`
@@ -841,7 +841,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyCustomRuleStatus(self, request):
-        """开启或禁用自定义策略
+        """开启或禁用访问控制（自定义策略）
 
         :param request: Request instance for ModifyCustomRuleStatus.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomRuleStatusRequest`

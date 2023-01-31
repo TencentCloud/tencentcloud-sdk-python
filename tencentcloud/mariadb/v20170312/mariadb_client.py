@@ -463,6 +463,35 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBEncryptAttributes(self, request):
+        """本接口(DescribeDBEncryptAttributes)用于查询实例数据加密状态。
+
+        :param request: Request instance for DescribeDBEncryptAttributes.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBEncryptAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstanceSpecs(self, request):
         """本接口(DescribeDBInstanceSpecs)用于查询可创建的云数据库可售卖的规格配置。
 
