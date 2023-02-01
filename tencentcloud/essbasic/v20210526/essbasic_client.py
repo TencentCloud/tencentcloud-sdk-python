@@ -268,6 +268,39 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCreateFlowReminds(self, request):
+        """指定需要批量撤销的签署流程Id，批量催办合同
+        客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+        注意:
+        能撤回合同的只能是合同的发起人或者签署人
+        该接口需要开白后使用
+
+        :param request: Request instance for ChannelCreateFlowReminds.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowRemindsRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowRemindsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateFlowReminds", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChannelCreateFlowRemindsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelCreateFlowSignReview(self, request):
         """提交企业签署流程审批结果
 
@@ -703,7 +736,7 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeExtendedServiceAuthInfo(self, request):
-        """查询企业扩展服务授权信息，企业经办人需要时企业超管或者法人
+        """查询企业扩展服务授权信息，企业经办人需要是企业超管或者法人
 
         :param request: Request instance for DescribeExtendedServiceAuthInfo.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeExtendedServiceAuthInfoRequest`
@@ -880,7 +913,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ModifyExtendedService(self, request):
-        """修改（操作）企业扩展服务 ，企业经办人需要时企业超管或者法人
+        """修改（操作）企业扩展服务 ，企业经办人需要是企业超管或者法人
 
         :param request: Request instance for ModifyExtendedService.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ModifyExtendedServiceRequest`

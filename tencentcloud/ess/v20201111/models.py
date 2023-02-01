@@ -1099,6 +1099,62 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateFlowRemindsRequest(AbstractModel):
+    """CreateFlowReminds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param FlowIds: 需要执行撤回的签署流程id数组，最多100个
+        :type FlowIds: list of str
+        """
+        self.Operator = None
+        self.FlowIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.FlowIds = params.get("FlowIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlowRemindsResponse(AbstractModel):
+    """CreateFlowReminds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RemindFlowRecords: 签署连接过期时间字符串：年月日-时分秒
+        :type RemindFlowRecords: list of RemindFlowRecords
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RemindFlowRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RemindFlowRecords") is not None:
+            self.RemindFlowRecords = []
+            for item in params.get("RemindFlowRecords"):
+                obj = RemindFlowRecords()
+                obj._deserialize(item)
+                self.RemindFlowRecords.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateFlowRequest(AbstractModel):
     """CreateFlow请求参数结构体
 
@@ -3492,6 +3548,38 @@ class RegisterInfo(AbstractModel):
     def _deserialize(self, params):
         self.LegalName = params.get("LegalName")
         self.Uscc = params.get("Uscc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemindFlowRecords(AbstractModel):
+    """催办接口返回详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CanRemind: 是否能够催办
+        :type CanRemind: bool
+        :param FlowId: 合同id
+        :type FlowId: str
+        :param RemindMessage: 催办详情
+        :type RemindMessage: str
+        """
+        self.CanRemind = None
+        self.FlowId = None
+        self.RemindMessage = None
+
+
+    def _deserialize(self, params):
+        self.CanRemind = params.get("CanRemind")
+        self.FlowId = params.get("FlowId")
+        self.RemindMessage = params.get("RemindMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

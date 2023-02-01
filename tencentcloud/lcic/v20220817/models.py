@@ -369,7 +369,8 @@ class DescribeAppDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: 应用ID
+        :param ApplicationId: 应用ID。低代码互动课堂的SdkAppId。
+
         :type ApplicationId: str
         :param DeveloperId: 开发商ID
         :type DeveloperId: str
@@ -397,7 +398,7 @@ class DescribeAppDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: SdkAppId 
+        :param SdkAppId: SDK 对应的AppId 
         :type SdkAppId: str
         :param AppConfig: 应用配置
         :type AppConfig: :class:`tencentcloud.lcic.v20220817.models.AppConfig`

@@ -343,6 +343,8 @@ class CreateInstanceRequest(AbstractModel):
         :type EnableHybridStorage: bool
         :param DiskEnhance: 是否开启essd 增强型云盘
         :type DiskEnhance: int
+        :param EnableDiagnose: 是否开启智能巡检
+        :type EnableDiagnose: bool
         """
         self.Zone = None
         self.EsVersion = None
@@ -377,6 +379,7 @@ class CreateInstanceRequest(AbstractModel):
         self.OperationDuration = None
         self.EnableHybridStorage = None
         self.DiskEnhance = None
+        self.EnableDiagnose = None
 
 
     def _deserialize(self, params):
@@ -432,6 +435,7 @@ class CreateInstanceRequest(AbstractModel):
             self.OperationDuration._deserialize(params.get("OperationDuration"))
         self.EnableHybridStorage = params.get("EnableHybridStorage")
         self.DiskEnhance = params.get("DiskEnhance")
+        self.EnableDiagnose = params.get("EnableDiagnose")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

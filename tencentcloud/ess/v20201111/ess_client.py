@@ -303,6 +303,39 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateFlowReminds(self, request):
+        """指定需要批量撤销的签署流程Id，批量催办合同
+        客户指定需要撤销的签署流程Id，最多100个；接口失败后返回错误信息
+        注意:
+        能撤回合同的只能是合同的发起人或者签署人
+        该接口需要开白后使用
+
+        :param request: Request instance for CreateFlowReminds.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowRemindsRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateFlowRemindsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFlowReminds", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFlowRemindsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateFlowSignReview(self, request):
         """提交企业签署流程审批结果
         适用场景:

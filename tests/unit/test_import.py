@@ -549,6 +549,11 @@ def test_import_gme():
     from tencentcloud.gme.v20180711 import models
 
 
+def test_import_goosefs():
+    from tencentcloud.goosefs.v20220519 import goosefs_client
+    from tencentcloud.goosefs.v20220519 import models
+
+
 def test_import_gpm():
     from tencentcloud.gpm.v20200820 import gpm_client
     from tencentcloud.gpm.v20200820 import models

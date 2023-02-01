@@ -2081,7 +2081,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用[查询子网列表](/document/api/215/15784)。
         :type UniqSubnetId: str
-        :param ProjectId: 项目 ID，不填为默认项目。请使用 [查询项目列表](https://cloud.tencent.com/document/product/378/4400) 接口获取项目 ID。
+        :param ProjectId: 项目 ID，不填为默认项目。
         :type ProjectId: int
         :param Zone: 可用区信息，该参数缺省时，系统会自动选择一个可用区，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的可用区。
         :type Zone: str
@@ -2288,7 +2288,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type UniqVpcId: str
         :param UniqSubnetId: 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
         :type UniqSubnetId: str
-        :param ProjectId: 项目 ID，不填为默认项目。请使用 [查询项目列表](https://cloud.tencent.com/document/product/378/4400) 接口获取项目 ID。购买只读实例和灾备实例时，项目 ID 默认和主实例保持一致。
+        :param ProjectId: 项目 ID，不填为默认项目。购买只读实例和灾备实例时，项目 ID 默认和主实例保持一致。
         :type ProjectId: int
         :param Port: 自定义端口，端口支持范围：[ 1024-65535 ]。
         :type Port: int

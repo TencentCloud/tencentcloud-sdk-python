@@ -775,6 +775,62 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreateFlowRemindsRequest(AbstractModel):
+    """ChannelCreateFlowReminds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param FlowIds: 签署流程Id数组，最多100个，超过100不处理
+        :type FlowIds: list of str
+        """
+        self.Agent = None
+        self.FlowIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.FlowIds = params.get("FlowIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateFlowRemindsResponse(AbstractModel):
+    """ChannelCreateFlowReminds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RemindFlowRecords: 合同催办详情信息
+        :type RemindFlowRecords: list of RemindFlowRecords
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RemindFlowRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RemindFlowRecords") is not None:
+            self.RemindFlowRecords = []
+            for item in params.get("RemindFlowRecords"):
+                obj = RemindFlowRecords()
+                obj._deserialize(item)
+                self.RemindFlowRecords.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelCreateFlowSignReviewRequest(AbstractModel):
     """ChannelCreateFlowSignReview请求参数结构体
 
@@ -2222,6 +2278,9 @@ class DescribeExtendedServiceAuthInfoRequest(AbstractModel):
     def __init__(self):
         r"""
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+
+注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
+
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         self.Agent = None
@@ -3415,7 +3474,9 @@ class ModifyExtendedServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+
+注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param ServiceType:   扩展服务类型
   AUTO_SIGN             企业静默签（自动签署）
@@ -3457,9 +3518,10 @@ class ModifyExtendedServiceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param OperateUrl: 操作跳转链接，有效期24小时
-仅当操作类型是 OPEN 且 扩展服务类型是  AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回 ，此时需要经办人(操作人)点击链接完成服务开通操作。若开通操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通服务
+若操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通/关闭服务。
 
-操作类型是CLOSE时，不会返回此链接，会直接关闭企业该扩展服务
+当操作类型是 OPEN 且 扩展服务类型是  AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回操作链接，
+返回的链接需要平台方自行触达超管或法人，超管或法人点击链接完成服务开通操作。
         :type OperateUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4023,6 +4085,38 @@ class RelieveInfo(AbstractModel):
         self.OriginalExpenseSettlement = params.get("OriginalExpenseSettlement")
         self.OriginalOtherSettlement = params.get("OriginalOtherSettlement")
         self.OtherDeals = params.get("OtherDeals")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemindFlowRecords(AbstractModel):
+    """催办接口返回详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CanRemind: 是否能够催办
+        :type CanRemind: bool
+        :param FlowId: 合同id
+        :type FlowId: str
+        :param RemindMessage: 催办详情
+        :type RemindMessage: str
+        """
+        self.CanRemind = None
+        self.FlowId = None
+        self.RemindMessage = None
+
+
+    def _deserialize(self, params):
+        self.CanRemind = params.get("CanRemind")
+        self.FlowId = params.get("FlowId")
+        self.RemindMessage = params.get("RemindMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

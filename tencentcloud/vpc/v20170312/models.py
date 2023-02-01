@@ -2089,6 +2089,41 @@ class CcnBandwidthInfo(AbstractModel):
         
 
 
+class CcnFlowLock(AbstractModel):
+    """云联网限速实例锁对象，该对象特用于运营端使用，用于封禁实例流量。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CcnId: 带宽所属的云联网ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnId: str
+        :param UserAccountID: 实例所属用户主账号ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAccountID: str
+        :param RegionFlowControlId: 带宽实例的唯一ID。作为`UnlockCcnBandwidths`接口和`LockCcnBandwidths`接口的入参时，该字段必传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionFlowControlId: str
+        """
+        self.CcnId = None
+        self.UserAccountID = None
+        self.RegionFlowControlId = None
+
+
+    def _deserialize(self, params):
+        self.CcnId = params.get("CcnId")
+        self.UserAccountID = params.get("UserAccountID")
+        self.RegionFlowControlId = params.get("RegionFlowControlId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CcnInstance(AbstractModel):
     """云联网（CCN）关联实例（Instance）对象。
 
@@ -15658,6 +15693,29 @@ class LockCcnBandwidthsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Instances: 带宽实例的唯一ID数组。
+        :type Instances: list of CcnFlowLock
+        """
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = CcnFlowLock()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class LockCcnBandwidthsResponse(AbstractModel):
     """LockCcnBandwidths返回参数结构体
@@ -22254,6 +22312,29 @@ class UnlockCcnBandwidthsRequest(AbstractModel):
     """UnlockCcnBandwidths请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param Instances: 带宽实例对象数组。
+        :type Instances: list of CcnFlowLock
+        """
+        self.Instances = None
+
+
+    def _deserialize(self, params):
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = CcnFlowLock()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UnlockCcnBandwidthsResponse(AbstractModel):

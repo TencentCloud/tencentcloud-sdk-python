@@ -29,6 +29,9 @@ FAILEDOPERATION_CREATEKEYPAIRFAILED = 'FailedOperation.CreateKeyPairFailed'
 # 对密钥对的删除操作失败。
 FAILEDOPERATION_DELETEKEYPAIRFAILED = 'FailedOperation.DeleteKeyPairFailed'
 
+# 查询镜像失败，请稍后再试。
+FAILEDOPERATION_DESCRIBEBLUEPRINTSFAILED = 'FailedOperation.DescribeBlueprintsFailed'
+
 # 查询实例状态错误。
 FAILEDOPERATION_DESCRIBEINSTANCESTATUS = 'FailedOperation.DescribeInstanceStatus'
 
@@ -403,6 +406,9 @@ RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = 'ResourceNotFound.PrivateBlueprintNo
 
 # 服务角色不存在, 请为账号添加这个角色。
 RESOURCENOTFOUND_ROLENOTFOUND = 'ResourceNotFound.RoleNotFound'
+
+# 未查询到场景ID
+RESOURCENOTFOUND_SCENEIDNOTFOUND = 'ResourceNotFound.SceneIdNotFound'
 
 # 快照 ID 不存在。
 RESOURCENOTFOUND_SNAPSHOTIDNOTFOUND = 'ResourceNotFound.SnapshotIdNotFound'
