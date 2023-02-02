@@ -340,7 +340,7 @@ class AbstractClient(object):
 
     def _handle_response(self, data):
         resp = json.loads(data)
-        if "ERROR" in resp["Response"]:
+        if "Error" in resp["Response"]:
             code = resp["Response"]["Error"]["Code"]
             message = resp["Response"]["Error"]["Message"]
             reqid = resp["Response"]["RequestId"]
