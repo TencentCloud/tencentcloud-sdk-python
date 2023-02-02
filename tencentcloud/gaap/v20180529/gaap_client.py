@@ -39,15 +39,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("AddRealServers", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.AddRealServersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.AddRealServersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -68,15 +62,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("BanAndRecoverProxy", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.BanAndRecoverProxyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.BanAndRecoverProxyResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -98,15 +86,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("BindListenerRealServers", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.BindListenerRealServersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.BindListenerRealServersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -127,15 +109,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("BindRuleRealServers", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.BindRuleRealServersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.BindRuleRealServersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -156,15 +132,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CheckProxyCreate", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CheckProxyCreateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CheckProxyCreateResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -185,15 +155,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CloseProxies", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CloseProxiesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CloseProxiesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -214,15 +178,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CloseProxyGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CloseProxyGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CloseProxyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -243,15 +201,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CloseSecurityPolicy", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CloseSecurityPolicyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CloseSecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -272,15 +224,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateCertificate", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateCertificateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -301,15 +247,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateCustomHeader", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateCustomHeaderResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateCustomHeaderResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -331,15 +271,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateDomain", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateDomainResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateDomainResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -360,15 +294,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateDomainErrorPageInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateDomainErrorPageInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateDomainErrorPageInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -389,15 +317,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateFirstLinkSession", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateFirstLinkSessionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateFirstLinkSessionResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -418,15 +340,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateGlobalDomain", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateGlobalDomainResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateGlobalDomainResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -447,15 +363,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateGlobalDomainDns", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateGlobalDomainDnsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateGlobalDomainDnsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -476,15 +386,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateHTTPListener", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateHTTPListenerResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateHTTPListenerResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -505,15 +409,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateHTTPSListener", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateHTTPSListenerResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateHTTPSListenerResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -534,15 +432,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateProxy", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateProxyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateProxyResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -563,15 +455,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateProxyGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateProxyGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateProxyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -592,15 +478,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateProxyGroupDomain", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateProxyGroupDomainResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateProxyGroupDomainResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -621,15 +501,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateRule", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateRuleResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateRuleResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -650,15 +524,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateSecurityPolicy", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateSecurityPolicyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateSecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -679,15 +547,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateSecurityRules", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateSecurityRulesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateSecurityRulesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -708,15 +570,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateTCPListeners", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateTCPListenersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateTCPListenersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -737,15 +593,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateUDPListeners", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateUDPListenersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateUDPListenersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -766,15 +616,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteCertificate", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteCertificateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -795,15 +639,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteDomain", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteDomainResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteDomainResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -824,15 +662,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteDomainErrorPageInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteDomainErrorPageInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteDomainErrorPageInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -853,15 +685,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteFirstLinkSession", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteFirstLinkSessionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteFirstLinkSessionResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -882,15 +708,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteGlobalDomain", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteGlobalDomainResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteGlobalDomainResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -911,15 +731,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteGlobalDomainDns", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteGlobalDomainDnsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteGlobalDomainDnsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -940,15 +754,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteListeners", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteListenersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteListenersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -969,15 +777,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteProxyGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteProxyGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteProxyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -998,15 +800,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteRule", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteRuleResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1027,15 +823,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteSecurityPolicy", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteSecurityPolicyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteSecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1056,15 +846,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteSecurityRules", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteSecurityRulesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteSecurityRulesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1085,15 +869,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeAccessRegions", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAccessRegionsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeAccessRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1114,15 +892,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeAccessRegionsByDestRegion", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAccessRegionsByDestRegionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeAccessRegionsByDestRegionResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1143,15 +915,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeBlackHeader", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBlackHeaderResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeBlackHeaderResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1172,15 +938,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeCertificateDetail", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeCertificateDetailResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeCertificateDetailResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1201,15 +961,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeCertificates", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeCertificatesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeCertificatesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1230,15 +984,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeCountryAreaMapping", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeCountryAreaMappingResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeCountryAreaMappingResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1259,15 +1007,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeCrossBorderProxies", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeCrossBorderProxiesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeCrossBorderProxiesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1288,15 +1030,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeCustomHeader", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeCustomHeaderResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeCustomHeaderResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1317,15 +1053,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDestRegions", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDestRegionsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDestRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1346,15 +1076,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDomainErrorPageInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDomainErrorPageInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDomainErrorPageInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1375,15 +1099,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDomainErrorPageInfoByIds", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDomainErrorPageInfoByIdsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDomainErrorPageInfoByIdsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1404,15 +1122,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeFirstLinkSession", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeFirstLinkSessionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeFirstLinkSessionResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1433,15 +1145,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeGlobalDomainDns", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeGlobalDomainDnsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeGlobalDomainDnsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1462,15 +1168,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeGlobalDomains", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeGlobalDomainsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeGlobalDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1491,15 +1191,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeGroupAndStatisticsProxy", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeGroupAndStatisticsProxyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeGroupAndStatisticsProxyResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1520,15 +1214,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeGroupDomainConfig", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeGroupDomainConfigResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeGroupDomainConfigResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1549,15 +1237,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeHTTPListeners", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeHTTPListenersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeHTTPListenersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1578,15 +1260,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeHTTPSListeners", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeHTTPSListenersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeHTTPSListenersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1607,15 +1283,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeListenerRealServers", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeListenerRealServersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeListenerRealServersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1636,15 +1306,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeListenerStatistics", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeListenerStatisticsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeListenerStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1665,15 +1329,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeProxies", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProxiesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeProxiesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1694,15 +1352,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeProxiesStatus", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProxiesStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeProxiesStatusResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1723,15 +1375,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeProxyAndStatisticsListeners", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProxyAndStatisticsListenersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeProxyAndStatisticsListenersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1752,15 +1398,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeProxyDetail", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProxyDetailResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeProxyDetailResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1781,15 +1421,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeProxyGroupDetails", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProxyGroupDetailsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeProxyGroupDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1810,15 +1444,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeProxyGroupList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProxyGroupListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeProxyGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1839,15 +1467,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeProxyGroupStatistics", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProxyGroupStatisticsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeProxyGroupStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1868,15 +1490,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeProxyStatistics", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProxyStatisticsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeProxyStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1897,15 +1513,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRealServerStatistics", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRealServerStatisticsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRealServerStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1926,15 +1536,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRealServers", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRealServersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRealServersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1955,15 +1559,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRealServersStatus", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRealServersStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRealServersStatusResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1984,15 +1582,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRegionAndPrice", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRegionAndPriceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRegionAndPriceResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2013,15 +1605,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeResourcesByTag", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeResourcesByTagResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeResourcesByTagResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2042,15 +1628,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRuleRealServers", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRuleRealServersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRuleRealServersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2071,15 +1651,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRules", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRulesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRulesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2100,15 +1674,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRulesByRuleIds", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRulesByRuleIdsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRulesByRuleIdsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2129,15 +1697,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeSecurityPolicyDetail", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeSecurityPolicyDetailResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeSecurityPolicyDetailResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2158,15 +1720,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeSecurityRules", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeSecurityRulesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeSecurityRulesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2187,15 +1743,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeTCPListeners", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeTCPListenersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeTCPListenersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2216,15 +1766,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeUDPListeners", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeUDPListenersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeUDPListenersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2245,15 +1789,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DestroyProxies", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DestroyProxiesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DestroyProxiesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2274,15 +1812,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("DisableGlobalDomain", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DisableGlobalDomainResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DisableGlobalDomainResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2303,15 +1835,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("EnableGlobalDomain", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.EnableGlobalDomainResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.EnableGlobalDomainResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2332,15 +1858,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("InquiryPriceCreateProxy", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.InquiryPriceCreateProxyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.InquiryPriceCreateProxyResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2361,15 +1881,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyCertificate", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyCertificateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2390,15 +1904,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyCertificateAttributes", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyCertificateAttributesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyCertificateAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2419,15 +1927,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyDomain", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDomainResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyDomainResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2448,15 +1950,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyGlobalDomainAttribute", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyGlobalDomainAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyGlobalDomainAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2477,15 +1973,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyGlobalDomainDns", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyGlobalDomainDnsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyGlobalDomainDnsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2506,15 +1996,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyGroupDomainConfig", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyGroupDomainConfigResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyGroupDomainConfigResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2536,15 +2020,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyHTTPListenerAttribute", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyHTTPListenerAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyHTTPListenerAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2565,15 +2043,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyHTTPSListenerAttribute", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyHTTPSListenerAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyHTTPSListenerAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2594,15 +2066,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyProxiesAttribute", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyProxiesAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyProxiesAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2623,15 +2089,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyProxiesProject", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyProxiesProjectResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyProxiesProjectResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2652,15 +2112,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyProxyConfiguration", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyProxyConfigurationResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyProxyConfigurationResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2681,15 +2135,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyProxyGroupAttribute", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyProxyGroupAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyProxyGroupAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2710,15 +2158,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyRealServerName", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyRealServerNameResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyRealServerNameResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2739,15 +2181,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyRuleAttribute", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyRuleAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyRuleAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2768,15 +2204,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifySecurityRule", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifySecurityRuleResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifySecurityRuleResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2797,15 +2227,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyTCPListenerAttribute", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyTCPListenerAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyTCPListenerAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2826,15 +2250,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyUDPListenerAttribute", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyUDPListenerAttributeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyUDPListenerAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2855,15 +2273,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("OpenProxies", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.OpenProxiesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.OpenProxiesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2884,15 +2296,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("OpenProxyGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.OpenProxyGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.OpenProxyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2913,15 +2319,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("OpenSecurityPolicy", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.OpenSecurityPolicyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.OpenSecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2942,15 +2342,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("RemoveRealServers", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.RemoveRealServersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.RemoveRealServersResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2971,15 +2365,9 @@ class GaapClient(AbstractClient):
             headers = request.headers
             body = self.call("SetAuthentication", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SetAuthenticationResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.SetAuthenticationResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise

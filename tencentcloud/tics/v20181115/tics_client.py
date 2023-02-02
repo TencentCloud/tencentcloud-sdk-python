@@ -39,15 +39,9 @@ class TicsClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDomainInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDomainInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDomainInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -68,15 +62,9 @@ class TicsClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeFileInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeFileInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeFileInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -97,15 +85,9 @@ class TicsClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeIpInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeIpInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeIpInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -126,15 +108,9 @@ class TicsClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeThreatInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeThreatInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeThreatInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise

@@ -39,15 +39,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("BindGroupDevices", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.BindGroupDevicesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.BindGroupDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -68,15 +62,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ControlChannelLocalRecord", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ControlChannelLocalRecordResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ControlChannelLocalRecordResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -97,15 +85,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ControlChannelPTZ", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ControlChannelPTZResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ControlChannelPTZResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -127,15 +109,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ControlDevicePTZ", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ControlDevicePTZResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ControlDevicePTZResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -156,15 +132,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ControlHomePosition", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ControlHomePositionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ControlHomePositionResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -185,15 +155,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ControlPreset", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ControlPresetResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ControlPresetResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -215,15 +179,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ControlRecordStream", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ControlRecordStreamResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ControlRecordStreamResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -244,15 +202,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateDevice", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateDeviceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -273,15 +225,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateDeviceGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateDeviceGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateDeviceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -302,15 +248,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateLiveChannel", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateLiveChannelResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateLiveChannelResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -331,15 +271,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateLiveRecordPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateLiveRecordPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateLiveRecordPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -360,15 +294,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateMessageForward", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateMessageForwardResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateMessageForwardResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -390,15 +318,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateRecordPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateRecordPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateRecordPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -419,15 +341,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateRecordingPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateRecordingPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateRecordingPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -448,15 +364,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateScene", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateSceneResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateSceneResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -477,15 +387,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateTimeTemplate", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateTimeTemplateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateTimeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -507,15 +411,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteChannel", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteChannelResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteChannelResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -536,15 +434,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteDevice", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteDeviceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -565,15 +457,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteDeviceGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteDeviceGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteDeviceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -594,15 +480,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteLiveChannel", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteLiveChannelResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteLiveChannelResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -623,15 +503,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteLiveRecordPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteLiveRecordPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteLiveRecordPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -652,15 +526,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteLiveVideoList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteLiveVideoListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteLiveVideoListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -681,15 +549,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteMessageForward", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteMessageForwardResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteMessageForwardResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -712,15 +574,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteRecordPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteRecordPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteRecordPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -742,15 +598,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteRecordingPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteRecordingPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteRecordingPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -771,15 +621,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteScene", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteSceneResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteSceneResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -800,15 +644,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteTimeTemplate", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteTimeTemplateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteTimeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -829,15 +667,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteVideoList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteVideoListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteVideoListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -858,15 +690,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteWarning", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteWarningResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteWarningResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -887,15 +713,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeAbnormalEvents", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAbnormalEventsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeAbnormalEventsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -917,15 +737,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeAllDeviceList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeAllDeviceListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeAllDeviceListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -946,15 +760,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeBindSceneChannels", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBindSceneChannelsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeBindSceneChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -975,15 +783,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeBindSceneDevices", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBindSceneDevicesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeBindSceneDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1005,15 +807,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeChannelLiveStreamURL", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeChannelLiveStreamURLResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeChannelLiveStreamURLResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1035,15 +831,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeChannelLocalRecordURL", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeChannelLocalRecordURLResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeChannelLocalRecordURLResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1065,15 +855,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeChannelStreamURL", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeChannelStreamURLResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeChannelStreamURLResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1094,15 +878,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeChannels", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeChannelsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1123,15 +901,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeChannelsByLiveRecordPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeChannelsByLiveRecordPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeChannelsByLiveRecordPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1152,15 +924,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeCurrentDeviceData", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeCurrentDeviceDataResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeCurrentDeviceDataResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1181,15 +947,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDevice", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDeviceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1210,15 +970,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDeviceEvent", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDeviceEventResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDeviceEventResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1239,15 +993,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDeviceGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDeviceGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDeviceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1268,15 +1016,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDeviceList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDeviceListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDeviceListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1297,15 +1039,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDeviceMonitorData", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDeviceMonitorDataResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDeviceMonitorDataResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1326,15 +1062,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDevicePassWord", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDevicePassWordResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDevicePassWordResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1356,15 +1086,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeDeviceStreams", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDeviceStreamsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeDeviceStreamsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1385,15 +1109,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeGroupById", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeGroupByIdResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeGroupByIdResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1414,15 +1132,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeGroupByPath", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeGroupByPathResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeGroupByPathResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1443,15 +1155,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeGroupDevices", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeGroupDevicesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeGroupDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1472,15 +1178,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeGroups", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeGroupsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1502,15 +1202,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeIPCChannels", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeIPCChannelsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeIPCChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1531,15 +1225,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeLiveChannel", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLiveChannelResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeLiveChannelResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1560,15 +1248,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeLiveChannelList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLiveChannelListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeLiveChannelListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1589,15 +1271,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeLiveRecordPlanById", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLiveRecordPlanByIdResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeLiveRecordPlanByIdResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1618,15 +1294,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeLiveRecordPlanIds", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLiveRecordPlanIdsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeLiveRecordPlanIdsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1647,15 +1317,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeLiveStream", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLiveStreamResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeLiveStreamResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1676,15 +1340,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeLiveVideoList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeLiveVideoListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeLiveVideoListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1705,15 +1363,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeMessageForward", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeMessageForwardResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeMessageForwardResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1734,15 +1386,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeMessageForwards", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeMessageForwardsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeMessageForwardsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1763,15 +1409,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeMonitorDataByDate", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeMonitorDataByDateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeMonitorDataByDateResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1792,15 +1432,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribePresetList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribePresetListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribePresetListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1821,15 +1455,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRecordDatesByChannel", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRecordDatesByChannelResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRecordDatesByChannelResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1850,15 +1478,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRecordDatesByLive", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRecordDatesByLiveResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRecordDatesByLiveResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1884,15 +1506,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRecordStream", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRecordStreamResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRecordStreamResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1913,15 +1529,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRecordingPlanById", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRecordingPlanByIdResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRecordingPlanByIdResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1942,15 +1552,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeRecordingPlans", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeRecordingPlansResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeRecordingPlansResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -1971,15 +1575,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeSIPServer", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeSIPServerResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeSIPServerResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2000,15 +1598,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeScene", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeSceneResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeSceneResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2029,15 +1621,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeScenes", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeScenesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeScenesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2058,15 +1644,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeStatisticDetails", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeStatisticDetailsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeStatisticDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2087,15 +1667,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeStatisticSummary", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeStatisticSummaryResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeStatisticSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2116,15 +1690,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeSubGroups", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeSubGroupsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeSubGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2145,15 +1713,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeSubscriptionStatus", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeSubscriptionStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeSubscriptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2174,15 +1736,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeVideoList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeVideoListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeVideoListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2203,15 +1759,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeVideoListByChannel", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeVideoListByChannelResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeVideoListByChannelResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2232,15 +1782,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeWarnMod", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeWarnModResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeWarnModResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2261,15 +1805,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeWarnings", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeWarningsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeWarningsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2290,15 +1828,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeXP2PData", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeXP2PDataResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeXP2PDataResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2320,15 +1852,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("GetRecordDatesByDev", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetRecordDatesByDevResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetRecordDatesByDevResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2349,15 +1875,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("GetRecordPlanByDev", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetRecordPlanByDevResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetRecordPlanByDevResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2379,15 +1899,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("GetRecordPlanById", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetRecordPlanByIdResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetRecordPlanByIdResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2409,15 +1923,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("GetRecordPlans", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetRecordPlansResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetRecordPlansResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2438,15 +1946,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("GetTimeTemplateById", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetTimeTemplateByIdResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetTimeTemplateByIdResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2467,15 +1969,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("GetTimeTemplates", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetTimeTemplatesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetTimeTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2497,15 +1993,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("GetVideoListByCon", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetVideoListByConResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetVideoListByConResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2526,15 +2016,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyBindPlanLiveChannel", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyBindPlanLiveChannelResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyBindPlanLiveChannelResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2555,15 +2039,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyBindRecordingPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyBindRecordingPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyBindRecordingPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2584,15 +2062,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyBindSceneChannels", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyBindSceneChannelsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyBindSceneChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2613,15 +2085,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyBindSceneDevice", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyBindSceneDeviceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyBindSceneDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2642,15 +2108,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyDeviceData", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDeviceDataResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyDeviceDataResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2671,15 +2131,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyLiveChannel", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyLiveChannelResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyLiveChannelResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2700,15 +2154,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyLiveRecordPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyLiveRecordPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyLiveRecordPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2729,15 +2177,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyLiveVideo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyLiveVideoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyLiveVideoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2758,15 +2200,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyMessageForward", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyMessageForwardResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyMessageForwardResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2787,15 +2223,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyPreset", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyPresetResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyPresetResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2816,15 +2246,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyRecordingPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyRecordingPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyRecordingPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2845,15 +2269,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyScene", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifySceneResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifySceneResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2874,15 +2292,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifySubscriptionStatus", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifySubscriptionStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifySubscriptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2903,15 +2315,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyVideoInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyVideoInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyVideoInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2932,15 +2338,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("ResetWarning", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ResetWarningResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ResetWarningResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2961,15 +2361,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("UpdateDeviceGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpdateDeviceGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.UpdateDeviceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -2990,15 +2384,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("UpdateDevicePassWord", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpdateDevicePassWordResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.UpdateDevicePassWordResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -3020,15 +2408,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("UpdateRecordPlan", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpdateRecordPlanResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.UpdateRecordPlanResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -3049,15 +2431,9 @@ class IotvideoindustryClient(AbstractClient):
             headers = request.headers
             body = self.call("UpdateTimeTemplate", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UpdateTimeTemplateResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.UpdateTimeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise

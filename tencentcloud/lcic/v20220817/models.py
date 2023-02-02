@@ -64,6 +64,141 @@ class AppCustomContent(AbstractModel):
         
 
 
+class BatchRegisterRequest(AbstractModel):
+    """BatchRegister请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Users: 批量注册用户信息列表
+        :type Users: list of BatchUserRequest
+        """
+        self.Users = None
+
+
+    def _deserialize(self, params):
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = BatchUserRequest()
+                obj._deserialize(item)
+                self.Users.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchRegisterResponse(AbstractModel):
+    """BatchRegister返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Users: 注册成功的用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Users: list of BatchUserInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Users = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = BatchUserInfo()
+                obj._deserialize(item)
+                self.Users.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class BatchUserInfo(AbstractModel):
+    """批量注册用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 低代码互动课堂的SdkAppId。
+
+        :type SdkAppId: int
+        :param UserId: 用户ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param OriginId: 用户在客户系统的Id。 若用户注册时该字段为空，则默认为 UserId 值一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginId: str
+        """
+        self.SdkAppId = None
+        self.UserId = None
+        self.OriginId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.UserId = params.get("UserId")
+        self.OriginId = params.get("OriginId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchUserRequest(AbstractModel):
+    """用户注册请求信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 低代码互动课堂的SdkAppId。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SdkAppId: int
+        :param Name: 用户名称。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param OriginId: 用户在客户系统的Id，需要在同一应用下唯一。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginId: str
+        :param Avatar: 用户头像。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Avatar: str
+        """
+        self.SdkAppId = None
+        self.Name = None
+        self.OriginId = None
+        self.Avatar = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Name = params.get("Name")
+        self.OriginId = params.get("OriginId")
+        self.Avatar = params.get("Avatar")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindDocumentToRoomRequest(AbstractModel):
     """BindDocumentToRoom请求参数结构体
 
@@ -219,7 +354,7 @@ videodoc 文档+视频
 video 纯视频
 coteaching 双师
         :type SubType: str
-        :param TeacherId: 老师ID。通过[注册用户]接口获取的UserId。
+        :param TeacherId: 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
         :type TeacherId: str
         :param AutoMic: 进入课堂时是否自动连麦。可以有以下取值：
 0 不自动连麦（需要手动申请上麦，默认值）
@@ -234,7 +369,7 @@ coteaching 双师
 1 禁止录制
 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
         :type DisableRecord: int
-        :param Assistants: 助教Id列表。通过[注册用户]接口获取的UserId。
+        :param Assistants: 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
         :type Assistants: list of str
         :param RecordLayout: 录制布局。
         :type RecordLayout: int
@@ -464,7 +599,7 @@ class DescribeRoomResponse(AbstractModel):
         :type StartTime: int
         :param EndTime: 预定的房间结束时间，unix时间戳。
         :type EndTime: int
-        :param TeacherId: 老师ID。
+        :param TeacherId: 老师的UserId。
         :type TeacherId: str
         :param SdkAppId: 低代码互动课堂的SdkAppId。
         :type SdkAppId: int
@@ -493,7 +628,7 @@ coteaching 双师
 1 禁止录制
 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
         :type DisableRecord: int
-        :param Assistants: 助教Id列表。
+        :param Assistants: 助教UserId列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Assistants: list of str
         :param RecordUrl: 录制地址。仅在房间结束后存在。
@@ -862,6 +997,113 @@ class ModifyAppRequest(AbstractModel):
 
 class ModifyAppResponse(AbstractModel):
     """ModifyApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRoomRequest(AbstractModel):
+    """ModifyRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 房间ID。
+        :type RoomId: int
+        :param SdkAppId: 低代码互动课堂的SdkAppId
+        :type SdkAppId: int
+        :param StartTime: 预定的房间开始时间，unix时间戳。直播开始后不允许修改。
+        :type StartTime: int
+        :param EndTime: 预定的房间结束时间，unix时间戳。直播开始后不允许修改。
+        :type EndTime: int
+        :param TeacherId: 老师ID。直播开始后不允许修改。
+        :type TeacherId: str
+        :param Name: 房间名称。
+        :type Name: str
+        :param Resolution: 分辨率。可以有如下取值：
+1 标清
+2 高清
+3 全高清
+直播开始后不允许修改。
+        :type Resolution: int
+        :param MaxMicNumber: 最大连麦人数（不包括老师）。取值范围[0, 17)
+直播开始后不允许修改。
+        :type MaxMicNumber: int
+        :param AutoMic: 进入房间时是否自动连麦。可以有以下取值：
+0 不自动连麦（默认值）
+1 自动连麦
+直播开始后不允许修改。
+        :type AutoMic: int
+        :param AudioQuality: 高音质模式。可以有以下取值：
+0 不开启高音质（默认值）
+1 开启高音质
+直播开始后不允许修改。
+        :type AudioQuality: int
+        :param SubType: 房间子类型，可以有以下取值：
+videodoc 文档+视频
+video 纯视频
+coteaching 双师
+直播开始后不允许修改。
+        :type SubType: str
+        :param DisableRecord: 禁止录制。可以有以下取值：
+0 不禁止录制（默认值）
+1 禁止录制
+直播开始后不允许修改。
+        :type DisableRecord: int
+        :param Assistants: 助教Id列表。直播开始后不允许修改。
+        :type Assistants: list of str
+        """
+        self.RoomId = None
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.TeacherId = None
+        self.Name = None
+        self.Resolution = None
+        self.MaxMicNumber = None
+        self.AutoMic = None
+        self.AudioQuality = None
+        self.SubType = None
+        self.DisableRecord = None
+        self.Assistants = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TeacherId = params.get("TeacherId")
+        self.Name = params.get("Name")
+        self.Resolution = params.get("Resolution")
+        self.MaxMicNumber = params.get("MaxMicNumber")
+        self.AutoMic = params.get("AutoMic")
+        self.AudioQuality = params.get("AudioQuality")
+        self.SubType = params.get("SubType")
+        self.DisableRecord = params.get("DisableRecord")
+        self.Assistants = params.get("Assistants")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoomResponse(AbstractModel):
+    """ModifyRoom返回参数结构体
 
     """
 

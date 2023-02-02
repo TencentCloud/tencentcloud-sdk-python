@@ -39,15 +39,9 @@ class MspClient(AbstractClient):
             headers = request.headers
             body = self.call("DeregisterMigrationTask", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeregisterMigrationTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeregisterMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -68,15 +62,9 @@ class MspClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeMigrationTask", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeMigrationTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -97,15 +85,9 @@ class MspClient(AbstractClient):
             headers = request.headers
             body = self.call("ListMigrationProject", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ListMigrationProjectResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ListMigrationProjectResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -126,15 +108,9 @@ class MspClient(AbstractClient):
             headers = request.headers
             body = self.call("ListMigrationTask", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ListMigrationTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ListMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -155,15 +131,9 @@ class MspClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyMigrationTaskBelongToProject", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyMigrationTaskBelongToProjectResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyMigrationTaskBelongToProjectResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -184,15 +154,9 @@ class MspClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyMigrationTaskStatus", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyMigrationTaskStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyMigrationTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -213,15 +177,9 @@ class MspClient(AbstractClient):
             headers = request.headers
             body = self.call("RegisterMigrationTask", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.RegisterMigrationTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.RegisterMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise

@@ -45,15 +45,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -81,15 +75,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("CreatePerson", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreatePersonResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreatePersonResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -110,15 +98,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateSegmentationTask", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateSegmentationTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateSegmentationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -146,15 +128,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("CreateTrace", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateTraceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.CreateTraceResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -175,15 +151,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("DeleteGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeleteGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -204,15 +174,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("DeletePerson", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeletePersonResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DeletePersonResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -233,15 +197,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("DescribeSegmentationTask", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeSegmentationTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DescribeSegmentationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -262,15 +220,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("DetectBody", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DetectBodyResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DetectBodyResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -291,15 +243,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("DetectBodyJoints", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DetectBodyJointsResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.DetectBodyJointsResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -320,15 +266,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("GetGroupList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetGroupListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -349,15 +289,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("GetPersonList", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetPersonListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetPersonListResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -378,15 +312,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("GetSummaryInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetSummaryInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.GetSummaryInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -407,15 +335,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyGroup", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -436,15 +358,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("ModifyPersonInfo", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyPersonInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.ModifyPersonInfoResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -472,15 +388,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("SearchTrace", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SearchTraceResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.SearchTraceResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -501,15 +411,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("SegmentCustomizedPortraitPic", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SegmentCustomizedPortraitPicResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.SegmentCustomizedPortraitPicResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -530,15 +434,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("SegmentPortraitPic", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SegmentPortraitPicResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.SegmentPortraitPicResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise
@@ -559,15 +457,9 @@ class BdaClient(AbstractClient):
             headers = request.headers
             body = self.call("TerminateSegmentationTask", params, headers=headers)
             response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.TerminateSegmentationTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
+            model = models.TerminateSegmentationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
         except Exception as e:
             if isinstance(e, TencentCloudSDKException):
                 raise

@@ -4297,6 +4297,15 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
         :param MemSize: MEM 大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemSize: float
+        :param PolicyDetail: 扩缩容策略详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDetail: list of HpaPolicy
+        :param Cpu: Cpu的Request值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: float
+        :param Mem: Mem的Request值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mem: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4330,6 +4339,9 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
         self.ImageUrl = None
         self.CpuSize = None
         self.MemSize = None
+        self.PolicyDetail = None
+        self.Cpu = None
+        self.Mem = None
         self.RequestId = None
 
 
@@ -4364,6 +4376,14 @@ class DescribeCloudBaseRunVersionResponse(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.CpuSize = params.get("CpuSize")
         self.MemSize = params.get("MemSize")
+        if params.get("PolicyDetail") is not None:
+            self.PolicyDetail = []
+            for item in params.get("PolicyDetail"):
+                obj = HpaPolicy()
+                obj._deserialize(item)
+                self.PolicyDetail.append(obj)
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
         self.RequestId = params.get("RequestId")
 
 
@@ -6517,13 +6537,18 @@ class EstablishCloudBaseRunServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Result: 创建服务是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 

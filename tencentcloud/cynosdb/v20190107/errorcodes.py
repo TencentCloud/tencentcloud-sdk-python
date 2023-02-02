@@ -191,6 +191,9 @@ INVALIDPARAMETERVALUE_VPCNOTFOUND = 'InvalidParameterValue.VpcNotFound'
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
+# 集群中节点数超过最大限制。
+LIMITEXCEEDED_CLUSTERINSTANCELIMIT = 'LimitExceeded.ClusterInstanceLimit'
+
 # 用户实例个数超出限制。
 LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
 

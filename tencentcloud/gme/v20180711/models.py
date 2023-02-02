@@ -783,24 +783,24 @@ class DeleteRoomMemberRequest(AbstractModel):
         r"""
         :param RoomId: 要操作的房间id
         :type RoomId: str
-        :param Uids: 要剔除的用户列表
-        :type Uids: list of str
         :param DeleteType: 剔除类型 1-删除房间 2-剔除用户
         :type DeleteType: int
         :param BizId: 应用id
         :type BizId: int
+        :param Uids: 要剔除的用户列表
+        :type Uids: list of str
         """
         self.RoomId = None
-        self.Uids = None
         self.DeleteType = None
         self.BizId = None
+        self.Uids = None
 
 
     def _deserialize(self, params):
         self.RoomId = params.get("RoomId")
-        self.Uids = params.get("Uids")
         self.DeleteType = params.get("DeleteType")
         self.BizId = params.get("BizId")
+        self.Uids = params.get("Uids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2569,18 +2569,23 @@ class UserMicStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uid: 客户端用于标识用户的Openid。
-        :type Uid: int
         :param EnableMic: 开麦状态。1表示关闭麦克风，2表示打开麦克风。
         :type EnableMic: int
+        :param Uid: 客户端用于标识用户的Openid。（Uid、StrUid必须填一个，优先处理StrUid。）
+        :type Uid: int
+        :param StrUid: 客户端用于标识字符串型用户的Openid。（Uid、StrUid必须填一个，优先处理StrUid。）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrUid: str
         """
-        self.Uid = None
         self.EnableMic = None
+        self.Uid = None
+        self.StrUid = None
 
 
     def _deserialize(self, params):
-        self.Uid = params.get("Uid")
         self.EnableMic = params.get("EnableMic")
+        self.Uid = params.get("Uid")
+        self.StrUid = params.get("StrUid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

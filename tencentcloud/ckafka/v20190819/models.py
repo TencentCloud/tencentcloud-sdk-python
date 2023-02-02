@@ -7028,9 +7028,13 @@ class GroupResponse(AbstractModel):
         :param GroupList: GroupList
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupList: list of DescribeGroup
+        :param GroupCountQuota: 消费分组配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupCountQuota: int
         """
         self.TotalCount = None
         self.GroupList = None
+        self.GroupCountQuota = None
 
 
     def _deserialize(self, params):
@@ -7041,6 +7045,7 @@ class GroupResponse(AbstractModel):
                 obj = DescribeGroup()
                 obj._deserialize(item)
                 self.GroupList.append(obj)
+        self.GroupCountQuota = params.get("GroupCountQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

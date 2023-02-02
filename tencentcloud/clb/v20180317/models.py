@@ -6891,6 +6891,49 @@ class RegisterFunctionTargetsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: 负载均衡实例 ID。
+        :type LoadBalancerId: str
+        :param ListenerId: 负载均衡监听器 ID。
+        :type ListenerId: str
+        :param FunctionTargets: 待绑定的云函数列表。
+        :type FunctionTargets: list of FunctionTarget
+        :param LocationId: 目标转发规则的 ID，当将云函数绑定到七层转发规则时，必须输入此参数或 Domain+Url 参数。
+        :type LocationId: str
+        :param Domain: 目标转发规则的域名，若已经输入 LocationId 参数，则本参数不生效。
+        :type Domain: str
+        :param Url: 目标转发规则的 URL，若已经输入 LocationId 参数，则本参数不生效。
+        :type Url: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.FunctionTargets = None
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        if params.get("FunctionTargets") is not None:
+            self.FunctionTargets = []
+            for item in params.get("FunctionTargets"):
+                obj = FunctionTarget()
+                obj._deserialize(item)
+                self.FunctionTargets.append(obj)
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class RegisterFunctionTargetsResponse(AbstractModel):
     """RegisterFunctionTargets返回参数结构体

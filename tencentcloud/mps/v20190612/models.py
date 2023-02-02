@@ -5751,10 +5751,13 @@ class CreateStreamLinkFlowRequest(AbstractModel):
         :type MaxBandwidth: int
         :param InputGroup: 流的输入组。
         :type InputGroup: list of CreateInput
+        :param EventId: 该Flow关联的媒体传输事件ID，每个flow只能关联一个Event。
+        :type EventId: str
         """
         self.FlowName = None
         self.MaxBandwidth = None
         self.InputGroup = None
+        self.EventId = None
 
 
     def _deserialize(self, params):
@@ -5766,6 +5769,7 @@ class CreateStreamLinkFlowRequest(AbstractModel):
                 obj = CreateInput()
                 obj._deserialize(item)
                 self.InputGroup.append(obj)
+        self.EventId = params.get("EventId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7175,6 +7179,10 @@ class DescribeFlow(AbstractModel):
         :param OutputGroup: 输出组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputGroup: list of DescribeOutput
+        :param EventId: 该Flow关联的媒体传输事件EventId。
+        :type EventId: str
+        :param Region: 媒体传输输入流所属的区域，取值和InputRegion相同。
+        :type Region: str
         """
         self.FlowId = None
         self.FlowName = None
@@ -7182,6 +7190,8 @@ class DescribeFlow(AbstractModel):
         self.MaxBandwidth = None
         self.InputGroup = None
         self.OutputGroup = None
+        self.EventId = None
+        self.Region = None
 
 
     def _deserialize(self, params):
@@ -7201,6 +7211,8 @@ class DescribeFlow(AbstractModel):
                 obj = DescribeOutput()
                 obj._deserialize(item)
                 self.OutputGroup.append(obj)
+        self.EventId = params.get("EventId")
+        self.Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
