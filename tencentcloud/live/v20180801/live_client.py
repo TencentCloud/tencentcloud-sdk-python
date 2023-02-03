@@ -2284,6 +2284,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTimeShiftRecordDetail(self, request):
+        """前提调用 DescribeTimeShiftStreamList 获得请求必要参数。查询指定范围内的时移流录制详情，最大支持24小时范围查询。
+
+        :param request: Request instance for DescribeTimeShiftRecordDetail.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeTimeShiftRecordDetailRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeTimeShiftRecordDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimeShiftRecordDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTimeShiftRecordDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTimeShiftStreamList(self, request):
+        """查询某个时间范围内所有时移流列表。最大支持查询24小时内的数据。
+
+        :param request: Request instance for DescribeTimeShiftStreamList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeTimeShiftStreamListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeTimeShiftStreamListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimeShiftStreamList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTimeShiftStreamListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopClientIpSumInfoList(self, request):
         """查询某段时间top n客户端ip汇总信息（暂支持top 1000）
 

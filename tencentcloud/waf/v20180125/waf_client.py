@@ -375,7 +375,6 @@ class WafClient(AbstractClient):
     def DescribeDomainWhiteRules(self, request):
         """获取域名的规则白名单
 
-
         :param request: Request instance for DescribeDomainWhiteRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainWhiteRulesRequest`
         :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeDomainWhiteRulesResponse`

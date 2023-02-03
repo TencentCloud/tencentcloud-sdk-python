@@ -5189,10 +5189,13 @@ class DescribeEnvsResponse(AbstractModel):
         r"""
         :param EnvList: 环境信息列表
         :type EnvList: list of EnvInfo
+        :param Total: 环境个数
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EnvList = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -5203,6 +5206,7 @@ class DescribeEnvsResponse(AbstractModel):
                 obj = EnvInfo()
                 obj._deserialize(item)
                 self.EnvList.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 

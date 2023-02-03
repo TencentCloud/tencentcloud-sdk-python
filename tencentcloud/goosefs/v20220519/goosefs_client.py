@@ -47,3 +47,26 @@ class GoosefsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataRepositoryTaskStatus(self, request):
+        """获取数据流通任务实时状态，用作客户端控制
+
+        :param request: Request instance for DescribeDataRepositoryTaskStatus.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeDataRepositoryTaskStatusRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DescribeDataRepositoryTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataRepositoryTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataRepositoryTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

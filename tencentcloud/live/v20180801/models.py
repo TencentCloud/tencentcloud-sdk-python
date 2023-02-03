@@ -7010,6 +7010,161 @@ class DescribeStreamPushInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTimeShiftRecordDetailRequest(AbstractModel):
+    """DescribeTimeShiftRecordDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 推流域名。
+        :type Domain: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param StartTime: 查询范围起始时间，Unix 时间戳。
+        :type StartTime: int
+        :param EndTime: 查询范围终止时间，Unix 时间戳。 
+        :type EndTime: int
+        :param DomainGroup: 推流域名所属组，没有域名组或者域名组为空字符串可不填。
+        :type DomainGroup: str
+        :param TransCodeId: 转码模板ID，转码模板ID为0可不填。
+        :type TransCodeId: int
+        """
+        self.Domain = None
+        self.AppName = None
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.DomainGroup = None
+        self.TransCodeId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DomainGroup = params.get("DomainGroup")
+        self.TransCodeId = params.get("TransCodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimeShiftRecordDetailResponse(AbstractModel):
+    """DescribeTimeShiftRecordDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordList: 时移录制会话数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordList: list of TimeShiftRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RecordList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RecordList") is not None:
+            self.RecordList = []
+            for item in params.get("RecordList"):
+                obj = TimeShiftRecord()
+                obj._deserialize(item)
+                self.RecordList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTimeShiftStreamListRequest(AbstractModel):
+    """DescribeTimeShiftStreamList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询范围起始时间，Unix 时间戳。
+        :type StartTime: int
+        :param EndTime: 查询范围结束时间，Unix 时间戳。
+        :type EndTime: int
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param Domain: 推流域名。
+        :type Domain: str
+        :param DomainGroup: 推流域名所属域名组。
+        :type DomainGroup: str
+        :param PageSize: 用户指定要返回的最大结果数，取值范围[0,100]，不指定或者指定为0时，API 
+默认值为100。指定超过100时，API 强制使用100。指定值为负数时，接口返回错误。
+        :type PageSize: int
+        :param PageNum: 指定拉取的页码，不传时默认为1。
+        :type PageNum: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.StreamName = None
+        self.Domain = None
+        self.DomainGroup = None
+        self.PageSize = None
+        self.PageNum = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.StreamName = params.get("StreamName")
+        self.Domain = params.get("Domain")
+        self.DomainGroup = params.get("DomainGroup")
+        self.PageSize = params.get("PageSize")
+        self.PageNum = params.get("PageNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimeShiftStreamListResponse(AbstractModel):
+    """DescribeTimeShiftStreamList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalSize: 时间段内所有的数据量。
+        :type TotalSize: int
+        :param StreamList: 流列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamList: list of TimeShiftStreamInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalSize = None
+        self.StreamList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalSize = params.get("TotalSize")
+        if params.get("StreamList") is not None:
+            self.StreamList = []
+            for item in params.get("StreamList"):
+                obj = TimeShiftStreamInfo()
+                obj._deserialize(item)
+                self.StreamList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopClientIpSumInfoListRequest(AbstractModel):
     """DescribeTopClientIpSumInfoList请求参数结构体
 
@@ -11121,6 +11276,97 @@ class TimeShiftBillData(AbstractModel):
         self.StoragePeriod = params.get("StoragePeriod")
         self.Time = params.get("Time")
         self.TotalDuration = params.get("TotalDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftRecord(AbstractModel):
+    """时移录制段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Sid: 时移录制会话标识。
+        :type Sid: str
+        :param StartTime: 录制会话开始时间，Unix 时间戳。
+        :type StartTime: int
+        :param EndTime: 录制会话结束时间，Unix 时间戳。
+        :type EndTime: int
+        """
+        self.Sid = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Sid = params.get("Sid")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftStreamInfo(AbstractModel):
+    """时移流。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainGroup: 推流域名所属组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainGroup: str
+        :param Domain: 推流域名。
+        :type Domain: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param StartTime: 流起始时间，Unix 时间戳。
+        :type StartTime: int
+        :param EndTime: 截止查询时流结束时间，Unix 时间戳。
+        :type EndTime: int
+        :param TransCodeId: 转码模板ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransCodeId: int
+        :param StreamType: 流类型，取值0为原始流，1为水印流，2为转码流。
+        :type StreamType: int
+        :param Duration: 时移数据存储时长，单位秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        """
+        self.DomainGroup = None
+        self.Domain = None
+        self.AppName = None
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.TransCodeId = None
+        self.StreamType = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.DomainGroup = params.get("DomainGroup")
+        self.Domain = params.get("Domain")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TransCodeId = params.get("TransCodeId")
+        self.StreamType = params.get("StreamType")
+        self.Duration = params.get("Duration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
