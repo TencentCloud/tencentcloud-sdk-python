@@ -671,6 +671,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAreaBanStatus(self, request):
+        """修改防护域名的地域封禁状态
+
+        :param request: Request instance for ModifyAreaBanStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAreaBanStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyAreaBanStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAreaBanStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAreaBanStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCustomRuleStatus(self, request):
         """开启或禁用访问控制（自定义策略）
 
@@ -823,6 +846,52 @@ class WafClient(AbstractClient):
             body = self.call("SearchAccessLog", params, headers=headers)
             response = json.loads(body)
             model = models.SearchAccessLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchAttackLog(self, request):
+        """新版本CLS接口存在参数变化，query改成了query_string支持lucence语法接口搜索查询。
+
+        :param request: Request instance for SearchAttackLog.
+        :type request: :class:`tencentcloud.waf.v20180125.models.SearchAttackLogRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.SearchAttackLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchAttackLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchAttackLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchDomainRules(self, request):
+        """切换域名的规则开关
+
+        :param request: Request instance for SwitchDomainRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.SwitchDomainRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.SwitchDomainRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchDomainRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchDomainRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

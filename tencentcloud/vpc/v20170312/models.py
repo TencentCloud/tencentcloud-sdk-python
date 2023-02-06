@@ -22968,14 +22968,18 @@ class VpngwCcnRoutes(AbstractModel):
 ENABLE：启用该路由
 DISABLE：不启用该路由
         :type Status: str
+        :param DestinationCidrBlock: 路由CIDR
+        :type DestinationCidrBlock: str
         """
         self.RouteId = None
         self.Status = None
+        self.DestinationCidrBlock = None
 
 
     def _deserialize(self, params):
         self.RouteId = params.get("RouteId")
         self.Status = params.get("Status")
+        self.DestinationCidrBlock = params.get("DestinationCidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

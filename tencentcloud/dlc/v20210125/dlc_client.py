@@ -371,6 +371,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateNotebookSession(self, request):
+        """本接口（CreateNotebookSession）用于创建notebook livy session
+
+        :param request: Request instance for CreateNotebookSession.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNotebookSession", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNotebookSessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateResultDownload(self, request):
         """创建查询结果下载任务
 
@@ -845,6 +868,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeDatabases", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDatabasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNotebookSession(self, request):
+        """本接口（DescribeNotebookSession）用于获取notebook livy session详情信息
+
+        :param request: Request instance for DescribeNotebookSession.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotebookSession", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotebookSessionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

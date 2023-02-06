@@ -18,6 +18,36 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Admin(AbstractModel):
+    """企业超管信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 超管名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Mobile: 超管手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mobile: str
+        """
+        self.Name = None
+        self.Mobile = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Mobile = params.get("Mobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Agent(AbstractModel):
     """应用相关信息
 
@@ -1108,7 +1138,7 @@ class CreateFlowRemindsRequest(AbstractModel):
         r"""
         :param Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param FlowIds: 需要执行撤回的签署流程id数组，最多100个
+        :param FlowIds: 需要执行催办的签署流程id数组，最多100个
         :type FlowIds: list of str
         """
         self.Operator = None
@@ -2139,9 +2169,12 @@ class DescribeFlowInfoRequest(AbstractModel):
         :type FlowIds: list of str
         :param Operator: 调用方用户信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param Agent: 应用信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.FlowIds = None
         self.Operator = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
@@ -2149,6 +2182,9 @@ class DescribeFlowInfoRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2370,6 +2406,153 @@ class DescribeIntegrationEmployeesResponse(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIntegrationMainOrganizationUserRequest(AbstractModel):
+    """DescribeIntegrationMainOrganizationUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息，userId必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIntegrationMainOrganizationUserResponse(AbstractModel):
+    """DescribeIntegrationMainOrganizationUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntegrationMainOrganizationUser: 主企业员工账号信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntegrationMainOrganizationUser: :class:`tencentcloud.ess.v20201111.models.IntegrationMainOrganizationUser`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IntegrationMainOrganizationUser = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IntegrationMainOrganizationUser") is not None:
+            self.IntegrationMainOrganizationUser = IntegrationMainOrganizationUser()
+            self.IntegrationMainOrganizationUser._deserialize(params.get("IntegrationMainOrganizationUser"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
+    """DescribeOrganizationGroupOrganizations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息，userId必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param Limit: 单次查询成员企业最大返回数量
+        :type Limit: int
+        :param Offset: 页面偏移量
+        :type Offset: int
+        :param Name: 查询成员企业的企业名，模糊匹配
+        :type Name: str
+        :param Status: 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
+        :type Status: int
+        :param Export: 是否到处当前成员企业数据
+        :type Export: bool
+        :param Id: 成员企业id
+        :type Id: str
+        """
+        self.Operator = None
+        self.Limit = None
+        self.Offset = None
+        self.Name = None
+        self.Status = None
+        self.Export = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Name = params.get("Name")
+        self.Status = params.get("Status")
+        self.Export = params.get("Export")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
+    """DescribeOrganizationGroupOrganizations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 查询到的符合条件的成员企业总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param JoinedTotal: 已授权待激活的企业数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinedTotal: int
+        :param ActivedTotal: 已加入的企业数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivedTotal: int
+        :param ExportUrl: 导出文件的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExportUrl: str
+        :param List: 成员企业信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of GroupOrganization
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.JoinedTotal = None
+        self.ActivedTotal = None
+        self.ExportUrl = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.JoinedTotal = params.get("JoinedTotal")
+        self.ActivedTotal = params.get("ActivedTotal")
+        self.ExportUrl = params.get("ExportUrl")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = GroupOrganization()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3272,6 +3455,123 @@ ProcessTimeout - 转换文件超时
         self.TaskMessage = params.get("TaskMessage")
         self.ResourceId = params.get("ResourceId")
         self.RequestId = params.get("RequestId")
+
+
+class GroupOrganization(AbstractModel):
+    """成员企业信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 成员企业名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Alias: 成员企业别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
+        :param OrganizationId: 成员企业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationId: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param Status: 成员企业状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param IsMainOrganization: 是否为集团主企业
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsMainOrganization: bool
+        :param IdCardNumber: 企业社会信用代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdCardNumber: str
+        :param AdminInfo: 企业超管信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminInfo: :class:`tencentcloud.ess.v20201111.models.Admin`
+        :param License: 企业许可证
+注意：此字段可能返回 null，表示取不到有效值。
+        :type License: str
+        :param LicenseExpireTime: 企业许可证过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseExpireTime: int
+        :param JoinTime: 成员企业加入集团时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinTime: int
+        :param FlowEngineEnable: 是否可以使用审批流引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowEngineEnable: bool
+        """
+        self.Name = None
+        self.Alias = None
+        self.OrganizationId = None
+        self.UpdateTime = None
+        self.Status = None
+        self.IsMainOrganization = None
+        self.IdCardNumber = None
+        self.AdminInfo = None
+        self.License = None
+        self.LicenseExpireTime = None
+        self.JoinTime = None
+        self.FlowEngineEnable = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Alias = params.get("Alias")
+        self.OrganizationId = params.get("OrganizationId")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Status = params.get("Status")
+        self.IsMainOrganization = params.get("IsMainOrganization")
+        self.IdCardNumber = params.get("IdCardNumber")
+        if params.get("AdminInfo") is not None:
+            self.AdminInfo = Admin()
+            self.AdminInfo._deserialize(params.get("AdminInfo"))
+        self.License = params.get("License")
+        self.LicenseExpireTime = params.get("LicenseExpireTime")
+        self.JoinTime = params.get("JoinTime")
+        self.FlowEngineEnable = params.get("FlowEngineEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntegrationMainOrganizationUser(AbstractModel):
+    """主企业员工账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MainOrganizationId: 主企业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainOrganizationId: str
+        :param MainUserId: 主企业员工UserId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainUserId: str
+        :param UserName: 主企业员工名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        """
+        self.MainOrganizationId = None
+        self.MainUserId = None
+        self.UserName = None
+
+
+    def _deserialize(self, params):
+        self.MainOrganizationId = params.get("MainOrganizationId")
+        self.MainUserId = params.get("MainUserId")
+        self.UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OccupiedSeal(AbstractModel):

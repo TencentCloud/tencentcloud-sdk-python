@@ -594,6 +594,52 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIntegrationMainOrganizationUser(self, request):
+        """通过子企业影子账号查询主企业员工账号
+
+        :param request: Request instance for DescribeIntegrationMainOrganizationUser.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeIntegrationMainOrganizationUserRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeIntegrationMainOrganizationUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIntegrationMainOrganizationUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIntegrationMainOrganizationUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOrganizationGroupOrganizations(self, request):
+        """此API接口用户查询加入集团的成员企业
+
+        :param request: Request instance for DescribeOrganizationGroupOrganizations.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeOrganizationGroupOrganizationsRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeOrganizationGroupOrganizationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationGroupOrganizations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationGroupOrganizationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOrganizationSeals(self, request):
         """查询企业印章的列表，需要操作者具有查询印章权限
         客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数。

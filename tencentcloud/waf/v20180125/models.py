@@ -678,6 +678,42 @@ class AddSpartaProtectionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttackLogInfo(AbstractModel):
+    """攻击日志详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: 攻击日志的详情内容
+        :type Content: str
+        :param FileName: CLS返回内容
+        :type FileName: str
+        :param Source: CLS返回内容
+        :type Source: str
+        :param TimeStamp: CLS返回内容
+        :type TimeStamp: str
+        """
+        self.Content = None
+        self.FileName = None
+        self.Source = None
+        self.TimeStamp = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        self.FileName = params.get("FileName")
+        self.Source = params.get("Source")
+        self.TimeStamp = params.get("TimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoDenyDetail(AbstractModel):
     """Waf 攻击自动封禁详情
 
@@ -3183,6 +3219,51 @@ class ModifyAccessPeriodResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAreaBanStatusRequest(AbstractModel):
+    """ModifyAreaBanStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 修要修改的域名
+        :type Domain: str
+        :param Status: 状态值，0表示关闭，1表示开启
+        :type Status: int
+        """
+        self.Domain = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAreaBanStatusResponse(AbstractModel):
+    """ModifyAreaBanStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyCustomRuleStatusRequest(AbstractModel):
     """ModifyCustomRuleStatus请求参数结构体
 
@@ -3792,6 +3873,96 @@ class SearchAccessLogResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SearchAttackLogRequest(AbstractModel):
+    """SearchAttackLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 查询的域名，所有域名使用all
+        :type Domain: str
+        :param StartTime: 查询起始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        :param Context: 查询的游标。第一次请求使用空字符串即可，后续请求使用上一次请求返回的最后一条记录的context的值即可。
+        :type Context: str
+        :param QueryString: Lucene语法
+        :type QueryString: str
+        :param Count: 查询的数量，默认10条，最多100条
+        :type Count: int
+        :param Sort: 默认为desc，可以取值desc和asc
+        :type Sort: str
+        """
+        self.Domain = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Context = None
+        self.QueryString = None
+        self.Count = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Context = params.get("Context")
+        self.QueryString = params.get("QueryString")
+        self.Count = params.get("Count")
+        self.Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchAttackLogResponse(AbstractModel):
+    """SearchAttackLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 当前返回的攻击日志条数
+        :type Count: int
+        :param Context: 翻页游标，如果没有下一页了，这个参数为空""
+        :type Context: str
+        :param Data: 攻击日志数组条目内容
+        :type Data: list of AttackLogInfo
+        :param ListOver: CLS接口返回内容
+        :type ListOver: bool
+        :param SqlFlag: CLS接口返回内容，标志是否启动新版本索引
+        :type SqlFlag: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.Context = None
+        self.Data = None
+        self.ListOver = None
+        self.SqlFlag = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Context = params.get("Context")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = AttackLogInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.ListOver = params.get("ListOver")
+        self.SqlFlag = params.get("SqlFlag")
+        self.RequestId = params.get("RequestId")
+
+
 class Strategy(AbstractModel):
     """自定义规则的匹配条件结构体
 
@@ -3826,6 +3997,59 @@ class Strategy(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SwitchDomainRulesRequest(AbstractModel):
+    """SwitchDomainRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Ids: 规则列表
+        :type Ids: list of int non-negative
+        :param Status: 开关状态
+        :type Status: int
+        :param Reason: 设置为观察模式原因
+        :type Reason: int
+        """
+        self.Domain = None
+        self.Ids = None
+        self.Status = None
+        self.Reason = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Ids = params.get("Ids")
+        self.Status = params.get("Status")
+        self.Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchDomainRulesResponse(AbstractModel):
+    """SwitchDomainRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpsertIpAccessControlRequest(AbstractModel):

@@ -1201,6 +1201,117 @@ class CreateImportTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNotebookSessionRequest(AbstractModel):
+    """CreateNotebookSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Session名称
+        :type Name: str
+        :param Kind: 类型，当前支持：spark、pyspark、sparkr、sql
+        :type Kind: str
+        :param DataEngineName: DLC Spark作业引擎名称
+        :type DataEngineName: str
+        :param ProgramDependentFiles: session文件地址，当前支持：cosn://和lakefs://两种路径
+        :type ProgramDependentFiles: list of str
+        :param ProgramDependentJars: 依赖的jar程序地址，当前支持：cosn://和lakefs://两种路径
+        :type ProgramDependentJars: list of str
+        :param ProgramDependentPython: 依赖的python程序地址，当前支持：cosn://和lakefs://两种路径
+        :type ProgramDependentPython: list of str
+        :param ProgramArchives: 依赖的pyspark虚拟环境地址，当前支持：cosn://和lakefs://两种路径
+        :type ProgramArchives: list of str
+        :param DriverSize: 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        :type DriverSize: str
+        :param ExecutorSize: 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+        :type ExecutorSize: str
+        :param ExecutorNumbers: 指定的Executor数量，默认为1
+        :type ExecutorNumbers: int
+        :param Arguments: Session相关配置，当前支持：dlc.eni、dlc.role.arn、dlc.sql.set.config以及用户指定的配置，注：roleArn必填；
+        :type Arguments: list of KVPair
+        :param ProxyUser: 代理用户，默认为root
+        :type ProxyUser: str
+        :param TimeoutInSecond: 指定的Session超时时间，单位秒，默认3600秒
+        :type TimeoutInSecond: int
+        :param ExecutorMaxNumbers: 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+        :type ExecutorMaxNumbers: int
+        """
+        self.Name = None
+        self.Kind = None
+        self.DataEngineName = None
+        self.ProgramDependentFiles = None
+        self.ProgramDependentJars = None
+        self.ProgramDependentPython = None
+        self.ProgramArchives = None
+        self.DriverSize = None
+        self.ExecutorSize = None
+        self.ExecutorNumbers = None
+        self.Arguments = None
+        self.ProxyUser = None
+        self.TimeoutInSecond = None
+        self.ExecutorMaxNumbers = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Kind = params.get("Kind")
+        self.DataEngineName = params.get("DataEngineName")
+        self.ProgramDependentFiles = params.get("ProgramDependentFiles")
+        self.ProgramDependentJars = params.get("ProgramDependentJars")
+        self.ProgramDependentPython = params.get("ProgramDependentPython")
+        self.ProgramArchives = params.get("ProgramArchives")
+        self.DriverSize = params.get("DriverSize")
+        self.ExecutorSize = params.get("ExecutorSize")
+        self.ExecutorNumbers = params.get("ExecutorNumbers")
+        if params.get("Arguments") is not None:
+            self.Arguments = []
+            for item in params.get("Arguments"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Arguments.append(obj)
+        self.ProxyUser = params.get("ProxyUser")
+        self.TimeoutInSecond = params.get("TimeoutInSecond")
+        self.ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNotebookSessionResponse(AbstractModel):
+    """CreateNotebookSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param SparkAppId: Spark任务返回的AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkAppId: str
+        :param State: Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+        :type State: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SessionId = None
+        self.SparkAppId = None
+        self.State = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.SparkAppId = params.get("SparkAppId")
+        self.State = params.get("State")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateResultDownloadRequest(AbstractModel):
     """CreateResultDownload请求参数结构体
 
@@ -3251,6 +3362,53 @@ class DescribeDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNotebookSessionRequest(AbstractModel):
+    """DescribeNotebookSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        """
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNotebookSessionResponse(AbstractModel):
+    """DescribeNotebookSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Session: Session详情信息
+        :type Session: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Session = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Session") is not None:
+            self.Session = NotebookSessionInfo()
+            self.Session._deserialize(params.get("Session"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResultDownloadRequest(AbstractModel):
     """DescribeResultDownload请求参数结构体
 
@@ -5043,6 +5201,130 @@ class ModifyWorkGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class NotebookSessionInfo(AbstractModel):
+    """Notebook Session详细信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Session名称
+        :type Name: str
+        :param Kind: 类型，当前支持：spark、pyspark、sparkr、sql
+        :type Kind: str
+        :param DataEngineName: DLC Spark作业引擎名称
+        :type DataEngineName: str
+        :param Arguments: Session相关配置，当前支持：eni、roleArn以及用户指定的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Arguments: list of KVPair
+        :param ProgramDependentFiles: 运行程序地址，当前支持：cosn://和lakefs://两种路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramDependentFiles: list of str
+        :param ProgramDependentJars: 依赖的jar程序地址，当前支持：cosn://和lakefs://两种路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramDependentJars: list of str
+        :param ProgramDependentPython: 依赖的python程序地址，当前支持：cosn://和lakefs://两种路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramDependentPython: list of str
+        :param ProgramArchives: 依赖的pyspark虚拟环境地址，当前支持：cosn://和lakefs://两种路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramArchives: list of str
+        :param DriverSize: 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DriverSize: str
+        :param ExecutorSize: 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorSize: str
+        :param ExecutorNumbers: 指定的Executor数量，默认为1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorNumbers: int
+        :param ProxyUser: 代理用户，默认为root
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyUser: str
+        :param TimeoutInSecond: 指定的Session超时时间，单位秒，默认3600秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeoutInSecond: int
+        :param SparkAppId: Spark任务返回的AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkAppId: str
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param State: Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+        :type State: str
+        :param CreateTime: Session创建时间
+        :type CreateTime: str
+        :param AppInfo: 其它信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppInfo: list of KVPair
+        :param SparkUiUrl: Spark ui地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkUiUrl: str
+        :param ExecutorMaxNumbers: 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorMaxNumbers: int
+        """
+        self.Name = None
+        self.Kind = None
+        self.DataEngineName = None
+        self.Arguments = None
+        self.ProgramDependentFiles = None
+        self.ProgramDependentJars = None
+        self.ProgramDependentPython = None
+        self.ProgramArchives = None
+        self.DriverSize = None
+        self.ExecutorSize = None
+        self.ExecutorNumbers = None
+        self.ProxyUser = None
+        self.TimeoutInSecond = None
+        self.SparkAppId = None
+        self.SessionId = None
+        self.State = None
+        self.CreateTime = None
+        self.AppInfo = None
+        self.SparkUiUrl = None
+        self.ExecutorMaxNumbers = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Kind = params.get("Kind")
+        self.DataEngineName = params.get("DataEngineName")
+        if params.get("Arguments") is not None:
+            self.Arguments = []
+            for item in params.get("Arguments"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Arguments.append(obj)
+        self.ProgramDependentFiles = params.get("ProgramDependentFiles")
+        self.ProgramDependentJars = params.get("ProgramDependentJars")
+        self.ProgramDependentPython = params.get("ProgramDependentPython")
+        self.ProgramArchives = params.get("ProgramArchives")
+        self.DriverSize = params.get("DriverSize")
+        self.ExecutorSize = params.get("ExecutorSize")
+        self.ExecutorNumbers = params.get("ExecutorNumbers")
+        self.ProxyUser = params.get("ProxyUser")
+        self.TimeoutInSecond = params.get("TimeoutInSecond")
+        self.SparkAppId = params.get("SparkAppId")
+        self.SessionId = params.get("SessionId")
+        self.State = params.get("State")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("AppInfo") is not None:
+            self.AppInfo = []
+            for item in params.get("AppInfo"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.AppInfo.append(obj)
+        self.SparkUiUrl = params.get("SparkUiUrl")
+        self.ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Other(AbstractModel):
