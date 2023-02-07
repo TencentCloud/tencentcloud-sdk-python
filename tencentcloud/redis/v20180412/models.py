@@ -4788,7 +4788,7 @@ class InstanceSet(AbstractModel):
         :param DiskSize: Redis实例请忽略该参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
-        :param MonitorVersion: 监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul>
+        :param MonitorVersion: 监控版本。<ul><li>1m：1分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorVersion: str
         :param ClientLimitMin: 客户端最大连接数可设置的最小值。

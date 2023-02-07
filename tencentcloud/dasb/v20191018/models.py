@@ -1259,6 +1259,9 @@ class DescribeDevicesRequest(AbstractModel):
         :type DepartmentId: str
         :param TagFilters: 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
         :type TagFilters: list of TagFilter
+        :param Filters: 过滤数组。支持的Name：
+BindingStatus 绑定状态
+        :type Filters: list of Filter
         """
         self.IdSet = None
         self.Name = None
@@ -1272,6 +1275,7 @@ class DescribeDevicesRequest(AbstractModel):
         self.KindSet = None
         self.DepartmentId = None
         self.TagFilters = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -1292,6 +1296,12 @@ class DescribeDevicesRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1711,6 +1721,36 @@ class Device(AbstractModel):
         
 
 
+class Filter(AbstractModel):
+    """描述键值对过滤器，用于条件过滤查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 需要过滤的字段。
+        :type Name: str
+        :param Values: 字段的过滤值。
+若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Group(AbstractModel):
     """组信息，用于用户组、主机组
 
@@ -1725,10 +1765,14 @@ class Group(AbstractModel):
         :param Department: 所属部门信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Department: :class:`tencentcloud.dasb.v20191018.models.Department`
+        :param Count: 个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
         """
         self.Id = None
         self.Name = None
         self.Department = None
+        self.Count = None
 
 
     def _deserialize(self, params):
@@ -1737,6 +1781,7 @@ class Group(AbstractModel):
         if params.get("Department") is not None:
             self.Department = Department()
             self.Department._deserialize(params.get("Department"))
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

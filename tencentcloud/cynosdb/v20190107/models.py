@@ -3901,6 +3901,51 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFlowRequest(AbstractModel):
+    """DescribeFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlowResponse(AbstractModel):
+    """DescribeFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 任务流状态。0-成功，1-失败，2-处理中
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceDetailRequest(AbstractModel):
     """DescribeInstanceDetail请求参数结构体
 

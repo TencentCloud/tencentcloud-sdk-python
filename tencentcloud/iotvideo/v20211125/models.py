@@ -6745,16 +6745,20 @@ class TransferCloudStorageRequest(AbstractModel):
         :type DeviceName: str
         :param ToDeviceName: 未开通云存的设备名称
         :type ToDeviceName: str
+        :param ToProductId: 未开通云存的设备产品ID
+        :type ToProductId: str
         """
         self.ProductId = None
         self.DeviceName = None
         self.ToDeviceName = None
+        self.ToProductId = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
         self.DeviceName = params.get("DeviceName")
         self.ToDeviceName = params.get("ToDeviceName")
+        self.ToProductId = params.get("ToProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

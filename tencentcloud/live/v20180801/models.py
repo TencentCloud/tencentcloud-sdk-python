@@ -1893,6 +1893,142 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLiveTimeShiftRuleRequest(AbstractModel):
+    """CreateLiveTimeShiftRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param StreamName: 流名称。
+注：如果本参数设置为非空字符串，规则将只对此推流起作用。
+        :type StreamName: str
+        :param TemplateId: 模板 ID。
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveTimeShiftRuleResponse(AbstractModel):
+    """CreateLiveTimeShiftRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveTimeShiftTemplateRequest(AbstractModel):
+    """CreateLiveTimeShiftTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateName: 模板名称。
+长度上限：255字节。
+仅支持中文、英文、数字、_、-。
+        :type TemplateName: str
+        :param Duration: 时移时长。
+单位：s。
+        :type Duration: int
+        :param Description: 描述信息。
+仅支持中文、英文、数字、_、-。
+        :type Description: str
+        :param Area: 地域。
+Mainland：中国大陆。
+Overseas：海外及港澳台地区。
+默认值：Mainland。
+        :type Area: str
+        :param ItemDuration: 分片时长。
+可取3-10。
+单位：s。
+默认值：5。
+        :type ItemDuration: int
+        :param RemoveWatermark: 是否去除水印。
+传true则将录制原始流。
+默认值：false。
+        :type RemoveWatermark: bool
+        :param TranscodeTemplateIds: 转码流id列表。
+此参数仅在 RemoveWatermark为false时生效。
+        :type TranscodeTemplateIds: list of int
+        """
+        self.TemplateName = None
+        self.Duration = None
+        self.Description = None
+        self.Area = None
+        self.ItemDuration = None
+        self.RemoveWatermark = None
+        self.TranscodeTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.Duration = params.get("Duration")
+        self.Description = params.get("Description")
+        self.Area = params.get("Area")
+        self.ItemDuration = params.get("ItemDuration")
+        self.RemoveWatermark = params.get("RemoveWatermark")
+        self.TranscodeTemplateIds = params.get("TranscodeTemplateIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveTimeShiftTemplateResponse(AbstractModel):
+    """CreateLiveTimeShiftTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLiveTranscodeRuleRequest(AbstractModel):
     """CreateLiveTranscodeRule请求参数结构体
 
@@ -2885,6 +3021,99 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
 
 class DeleteLiveSnapshotTemplateResponse(AbstractModel):
     """DeleteLiveSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveTimeShiftRuleRequest(AbstractModel):
+    """DeleteLiveTimeShiftRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: 推流域名。
+域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+        :type DomainName: str
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+        :type AppName: str
+        :param StreamName: 流名称。
+域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+        :type StreamName: str
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveTimeShiftRuleResponse(AbstractModel):
+    """DeleteLiveTimeShiftRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveTimeShiftTemplateRequest(AbstractModel):
+    """DeleteLiveTimeShiftTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板 ID。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveTimeShiftTemplateResponse(AbstractModel):
+    """DeleteLiveTimeShiftTemplate返回参数结构体
 
     """
 
@@ -5505,6 +5734,70 @@ class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
                 obj = TimeShiftBillData()
                 obj._deserialize(item)
                 self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveTimeShiftRulesRequest(AbstractModel):
+    """DescribeLiveTimeShiftRules请求参数结构体
+
+    """
+
+
+class DescribeLiveTimeShiftRulesResponse(AbstractModel):
+    """DescribeLiveTimeShiftRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: 规则信息列表。
+        :type Rules: list of RuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveTimeShiftTemplatesRequest(AbstractModel):
+    """DescribeLiveTimeShiftTemplates请求参数结构体
+
+    """
+
+
+class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
+    """DescribeLiveTimeShiftTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Templates: 直播时移模板信息。
+        :type Templates: list of TimeShiftTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = TimeShiftTemplate()
+                obj._deserialize(item)
+                self.Templates.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9099,6 +9392,88 @@ class ModifyLiveSnapshotTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLiveTimeShiftTemplateRequest(AbstractModel):
+    """ModifyLiveTimeShiftTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 时移模板id。
+        :type TemplateId: int
+        :param TemplateName: 模板名称。
+仅支持中文、英文、数字、_、-。
+        :type TemplateName: str
+        :param Description: 描述信息。
+长度上限：1024字节。
+仅支持中文、英文、数字、_、-。
+        :type Description: str
+        :param Duration: 时移时长。
+单位：s。
+        :type Duration: int
+        :param ItemDuration: 分片时长。
+可取3-10。
+单位：s。
+默认值：5。
+        :type ItemDuration: int
+        :param RemoveWatermark: 是否去除水印。
+传true则将录制原始流。
+默认值：false。
+        :type RemoveWatermark: bool
+        :param TranscodeTemplateIds: 转码流id列表。
+此参数仅在 RemoveWatermark为false时生效。
+        :type TranscodeTemplateIds: list of int
+        :param Area: 地域。
+Mainland：中国大陆。
+Overseas：海外及港澳台地区。
+默认值：Mainland。
+        :type Area: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Description = None
+        self.Duration = None
+        self.ItemDuration = None
+        self.RemoveWatermark = None
+        self.TranscodeTemplateIds = None
+        self.Area = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.Duration = params.get("Duration")
+        self.ItemDuration = params.get("ItemDuration")
+        self.RemoveWatermark = params.get("RemoveWatermark")
+        self.TranscodeTemplateIds = params.get("TranscodeTemplateIds")
+        self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLiveTimeShiftTemplateResponse(AbstractModel):
+    """ModifyLiveTimeShiftTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLiveTranscodeTemplateRequest(AbstractModel):
     """ModifyLiveTranscodeTemplate请求参数结构体
 
@@ -11367,6 +11742,68 @@ class TimeShiftStreamInfo(AbstractModel):
         self.TransCodeId = params.get("TransCodeId")
         self.StreamType = params.get("StreamType")
         self.Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftTemplate(AbstractModel):
+    """直播时移模板配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param Duration: 时移时长。
+单位：秒。
+        :type Duration: int
+        :param ItemDuration: 分片时长。
+可取3-10。
+单位：s。
+默认值：5。
+        :type ItemDuration: int
+        :param TemplateId: 模板id。
+        :type TemplateId: int
+        :param Description: 模板描述。
+        :type Description: str
+        :param Area: 地域：
+Mainland：中国大陆；
+Overseas：海外及港澳台地区；
+默认值：Mainland。
+        :type Area: str
+        :param RemoveWatermark: 是否去除水印。
+为true则将录制原始流。
+默认值：false。
+        :type RemoveWatermark: bool
+        :param TranscodeTemplateIds: 转码流id列表。
+此参数仅在 RemoveWatermark为false时生效。
+        :type TranscodeTemplateIds: list of int non-negative
+        """
+        self.TemplateName = None
+        self.Duration = None
+        self.ItemDuration = None
+        self.TemplateId = None
+        self.Description = None
+        self.Area = None
+        self.RemoveWatermark = None
+        self.TranscodeTemplateIds = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.Duration = params.get("Duration")
+        self.ItemDuration = params.get("ItemDuration")
+        self.TemplateId = params.get("TemplateId")
+        self.Description = params.get("Description")
+        self.Area = params.get("Area")
+        self.RemoveWatermark = params.get("RemoveWatermark")
+        self.TranscodeTemplateIds = params.get("TranscodeTemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

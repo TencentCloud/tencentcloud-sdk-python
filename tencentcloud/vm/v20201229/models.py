@@ -1187,6 +1187,9 @@ class TaskData(AbstractModel):
         :param UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
+        :param InputInfo: 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputInfo: :class:`tencentcloud.vm.v20201229.models.InputInfo`
         """
         self.DataId = None
         self.TaskId = None
@@ -1199,6 +1202,7 @@ class TaskData(AbstractModel):
         self.MediaInfo = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.InputInfo = None
 
 
     def _deserialize(self, params):
@@ -1220,6 +1224,9 @@ class TaskData(AbstractModel):
             self.MediaInfo._deserialize(params.get("MediaInfo"))
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        if params.get("InputInfo") is not None:
+            self.InputInfo = InputInfo()
+            self.InputInfo._deserialize(params.get("InputInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

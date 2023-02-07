@@ -281,7 +281,8 @@ class Action(AbstractModel):
 <li> TlsVersion；</li>
 <li> OcspStapling；</li>
 <li> HTTP/2 访问（Http2）；</li>
-<li> 回源跟随重定向(UpstreamFollowRedirect)。</li>
+<li> 回源跟随重定向(UpstreamFollowRedirect)；</li>
+<li> 修改源站(Origin)。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NormalAction: :class:`tencentcloud.teo.v20220901.models.NormalAction`
         :param RewriteAction: 带有请求头/响应头的功能操作，选择该类型的功能项有：

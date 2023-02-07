@@ -739,6 +739,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFlow(self, request):
+        """本接口（DescribeFlow）用于查询任务流信息
+
+        :param request: Request instance for DescribeFlow.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeFlowRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceDetail(self, request):
         """本接口(DescribeInstanceDetail)用于查询实例详情。
 

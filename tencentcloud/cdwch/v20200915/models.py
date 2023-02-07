@@ -179,6 +179,51 @@ class CkUserAlterInfo(AbstractModel):
         
 
 
+class ClusterConfigsInfoFromEMR(AbstractModel):
+    """用于返回XML格式的配置文件和内容以及其他配置文件有关的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileName: 配置文件名称
+        :type FileName: str
+        :param FileConf: 配置文件对应的相关属性信息
+        :type FileConf: str
+        :param KeyConf: 配置文件对应的其他属性信息
+        :type KeyConf: str
+        :param OriParam: 配置文件的内容，base64编码
+        :type OriParam: str
+        :param NeedRestart: 用于表示当前配置文件是不是有过修改后没有重启，提醒用户需要重启
+        :type NeedRestart: int
+        :param FilePath: 保存配置文件的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilePath: str
+        """
+        self.FileName = None
+        self.FileConf = None
+        self.KeyConf = None
+        self.OriParam = None
+        self.NeedRestart = None
+        self.FilePath = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.FileConf = params.get("FileConf")
+        self.KeyConf = params.get("KeyConf")
+        self.OriParam = params.get("OriParam")
+        self.NeedRestart = params.get("NeedRestart")
+        self.FilePath = params.get("FilePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigSubmitContext(AbstractModel):
     """配置文件修改信息
 
@@ -389,6 +434,79 @@ class CreateInstanceNewResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackUpScheduleRequest(AbstractModel):
+    """DescribeBackUpSchedule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群id
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpScheduleResponse(AbstractModel):
+    """DescribeBackUpSchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackUpOpened: 备份是否开启
+        :type BackUpOpened: bool
+        :param MetaStrategy: 元数据备份策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaStrategy: :class:`tencentcloud.cdwch.v20200915.models.ScheduleStrategy`
+        :param DataStrategy: 表数据备份策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataStrategy: :class:`tencentcloud.cdwch.v20200915.models.ScheduleStrategy`
+        :param BackUpContents: 备份表列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackUpContents: list of BackupTableContent
+        :param BackUpStatus: 备份的状态
+        :type BackUpStatus: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BackUpOpened = None
+        self.MetaStrategy = None
+        self.DataStrategy = None
+        self.BackUpContents = None
+        self.BackUpStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BackUpOpened = params.get("BackUpOpened")
+        if params.get("MetaStrategy") is not None:
+            self.MetaStrategy = ScheduleStrategy()
+            self.MetaStrategy._deserialize(params.get("MetaStrategy"))
+        if params.get("DataStrategy") is not None:
+            self.DataStrategy = ScheduleStrategy()
+            self.DataStrategy._deserialize(params.get("DataStrategy"))
+        if params.get("BackUpContents") is not None:
+            self.BackUpContents = []
+            for item in params.get("BackUpContents"):
+                obj = BackupTableContent()
+                obj._deserialize(item)
+                self.BackUpContents.append(obj)
+        self.BackUpStatus = params.get("BackUpStatus")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCkSqlApisRequest(AbstractModel):
     """DescribeCkSqlApis请求参数结构体
 
@@ -455,6 +573,135 @@ class DescribeCkSqlApisResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ReturnData = params.get("ReturnData")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterConfigsRequest(AbstractModel):
+    """DescribeClusterConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterConfigsResponse(AbstractModel):
+    """DescribeClusterConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterConfList: 返回实例的配置文件相关的信息
+        :type ClusterConfList: list of ClusterConfigsInfoFromEMR
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterConfList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterConfList") is not None:
+            self.ClusterConfList = []
+            for item in params.get("ClusterConfList"):
+                obj = ClusterConfigsInfoFromEMR()
+                obj._deserialize(item)
+                self.ClusterConfList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceKeyValConfigsRequest(AbstractModel):
+    """DescribeInstanceKeyValConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例ID
+        :type InstanceId: str
+        :param SearchConfigName: 搜索的配置项名称
+        :type SearchConfigName: str
+        """
+        self.InstanceId = None
+        self.SearchConfigName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SearchConfigName = params.get("SearchConfigName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceKeyValConfigsResponse(AbstractModel):
+    """DescribeInstanceKeyValConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigItems: 参数列表
+        :type ConfigItems: list of InstanceConfigInfo
+        :param UnConfigItems: 未配置的参数列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnConfigItems: list of InstanceConfigInfo
+        :param MapConfigItems: 配置的多层级参数列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MapConfigItems: list of MapConfigItem
+        :param ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ConfigItems = None
+        self.UnConfigItems = None
+        self.MapConfigItems = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigItems") is not None:
+            self.ConfigItems = []
+            for item in params.get("ConfigItems"):
+                obj = InstanceConfigInfo()
+                obj._deserialize(item)
+                self.ConfigItems.append(obj)
+        if params.get("UnConfigItems") is not None:
+            self.UnConfigItems = []
+            for item in params.get("UnConfigItems"):
+                obj = InstanceConfigInfo()
+                obj._deserialize(item)
+                self.UnConfigItems.append(obj)
+        if params.get("MapConfigItems") is not None:
+            self.MapConfigItems = []
+            for item in params.get("MapConfigItems"):
+                obj = MapConfigItem()
+                obj._deserialize(item)
+                self.MapConfigItems.append(obj)
+        self.ErrorMsg = params.get("ErrorMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -668,6 +915,98 @@ class DiskSpec(AbstractModel):
         
 
 
+class InstanceConfigInfo(AbstractModel):
+    """集群配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfKey: 配置项名称
+        :type ConfKey: str
+        :param ConfValue: 配置项内容
+        :type ConfValue: str
+        :param DefaultValue: 默认值
+        :type DefaultValue: str
+        :param NeedRestart: 是否需要重启
+        :type NeedRestart: bool
+        :param Editable: 是否可编辑
+        :type Editable: bool
+        :param ConfDesc: 配置项解释
+        :type ConfDesc: str
+        :param FileName: 文件名称
+        :type FileName: str
+        :param ModifyRuleType: 规则名称类型
+        :type ModifyRuleType: str
+        :param ModifyRuleValue: 规则名称内容
+        :type ModifyRuleValue: str
+        :param Uin: 修改人的uin
+        :type Uin: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.ConfKey = None
+        self.ConfValue = None
+        self.DefaultValue = None
+        self.NeedRestart = None
+        self.Editable = None
+        self.ConfDesc = None
+        self.FileName = None
+        self.ModifyRuleType = None
+        self.ModifyRuleValue = None
+        self.Uin = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.ConfKey = params.get("ConfKey")
+        self.ConfValue = params.get("ConfValue")
+        self.DefaultValue = params.get("DefaultValue")
+        self.NeedRestart = params.get("NeedRestart")
+        self.Editable = params.get("Editable")
+        self.ConfDesc = params.get("ConfDesc")
+        self.FileName = params.get("FileName")
+        self.ModifyRuleType = params.get("ModifyRuleType")
+        self.ModifyRuleValue = params.get("ModifyRuleValue")
+        self.Uin = params.get("Uin")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceConfigItem(AbstractModel):
+    """KV配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfKey: key
+        :type ConfKey: str
+        :param ConfValue: value
+        :type ConfValue: str
+        """
+        self.ConfKey = None
+        self.ConfValue = None
+
+
+    def _deserialize(self, params):
+        self.ConfKey = params.get("ConfKey")
+        self.ConfValue = params.get("ConfValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInfo(AbstractModel):
     """实例描述信息
 
@@ -850,6 +1189,39 @@ Modify 集群变更中；
         
 
 
+class MapConfigItem(AbstractModel):
+    """kv配置，多层级item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfKey: key
+        :type ConfKey: str
+        :param Items: 列表
+        :type Items: list of InstanceConfigInfo
+        """
+        self.ConfKey = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.ConfKey = params.get("ConfKey")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = InstanceConfigInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyClusterConfigsRequest(AbstractModel):
     """ModifyClusterConfigs请求参数结构体
 
@@ -909,6 +1281,93 @@ class ModifyClusterConfigsResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstanceKeyValConfigsRequest(AbstractModel):
+    """ModifyInstanceKeyValConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param AddItems: 新增配置列表
+        :type AddItems: list of InstanceConfigItem
+        :param UpdateItems: 更新配置列表
+        :type UpdateItems: list of InstanceConfigItem
+        :param DeleteItems: 删除配置列表
+        :type DeleteItems: :class:`tencentcloud.cdwch.v20200915.models.InstanceConfigItem`
+        :param DelItems: 删除配置列表
+        :type DelItems: list of InstanceConfigItem
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.InstanceId = None
+        self.AddItems = None
+        self.UpdateItems = None
+        self.DeleteItems = None
+        self.DelItems = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("AddItems") is not None:
+            self.AddItems = []
+            for item in params.get("AddItems"):
+                obj = InstanceConfigItem()
+                obj._deserialize(item)
+                self.AddItems.append(obj)
+        if params.get("UpdateItems") is not None:
+            self.UpdateItems = []
+            for item in params.get("UpdateItems"):
+                obj = InstanceConfigItem()
+                obj._deserialize(item)
+                self.UpdateItems.append(obj)
+        if params.get("DeleteItems") is not None:
+            self.DeleteItems = InstanceConfigItem()
+            self.DeleteItems._deserialize(params.get("DeleteItems"))
+        if params.get("DelItems") is not None:
+            self.DelItems = []
+            for item in params.get("DelItems"):
+                obj = InstanceConfigItem()
+                obj._deserialize(item)
+                self.DelItems.append(obj)
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceKeyValConfigsResponse(AbstractModel):
+    """ModifyInstanceKeyValConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param FlowId: ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorMsg = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1064,6 +1523,70 @@ class OpenBackUpResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResizeDiskRequest(AbstractModel):
+    """ResizeDisk请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例唯一ID
+        :type InstanceId: str
+        :param Type: 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
+        :type Type: str
+        :param DiskSize: 磁盘扩容后容量，不能小于原有用量。clickhouse最小200，且为100的整数倍。 zk最小100，且为10的整数倍；
+        :type DiskSize: int
+        """
+        self.InstanceId = None
+        self.Type = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Type = params.get("Type")
+        self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResizeDiskResponse(AbstractModel):
+    """ResizeDisk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.InstanceId = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.InstanceId = params.get("InstanceId")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class ResourceSpec(AbstractModel):
     """资源规格描述信息
 
@@ -1127,6 +1650,192 @@ class ResourceSpec(AbstractModel):
         self.ComputeSpecDesc = params.get("ComputeSpecDesc")
         self.DisplayName = params.get("DisplayName")
         self.InstanceQuota = params.get("InstanceQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOutInstanceRequest(AbstractModel):
+    """ScaleOutInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例唯一ID
+        :type InstanceId: str
+        :param Type: 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
+        :type Type: str
+        :param NodeCount: 调整clickhouse节点数量
+        :type NodeCount: int
+        :param ScaleOutCluster: v_cluster分组，	
+新增扩容节点将加入到已选择的v_cluster分组中，提交同步VIP生效.
+        :type ScaleOutCluster: str
+        :param UserSubnetIPNum: 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
+        :type UserSubnetIPNum: int
+        :param ScaleOutNodeIp: 节点同步ip
+        :type ScaleOutNodeIp: str
+        """
+        self.InstanceId = None
+        self.Type = None
+        self.NodeCount = None
+        self.ScaleOutCluster = None
+        self.UserSubnetIPNum = None
+        self.ScaleOutNodeIp = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Type = params.get("Type")
+        self.NodeCount = params.get("NodeCount")
+        self.ScaleOutCluster = params.get("ScaleOutCluster")
+        self.UserSubnetIPNum = params.get("UserSubnetIPNum")
+        self.ScaleOutNodeIp = params.get("ScaleOutNodeIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOutInstanceResponse(AbstractModel):
+    """ScaleOutInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.InstanceId = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.InstanceId = params.get("InstanceId")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class ScaleUpInstanceRequest(AbstractModel):
+    """ScaleUpInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例唯一ID
+        :type InstanceId: str
+        :param Type: 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
+        :type Type: str
+        :param SpecName: clickhouse节点规格。
+        :type SpecName: str
+        :param ScaleUpEnableRolling: 是否滚动重启，false为不滚动重启，true为滚动重启
+        :type ScaleUpEnableRolling: bool
+        """
+        self.InstanceId = None
+        self.Type = None
+        self.SpecName = None
+        self.ScaleUpEnableRolling = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Type = params.get("Type")
+        self.SpecName = params.get("SpecName")
+        self.ScaleUpEnableRolling = params.get("ScaleUpEnableRolling")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleUpInstanceResponse(AbstractModel):
+    """ScaleUpInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.InstanceId = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.InstanceId = params.get("InstanceId")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class ScheduleStrategy(AbstractModel):
+    """策略详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CosBucketName: 备份桶列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosBucketName: str
+        :param RetainDays: 备份保留天数
+        :type RetainDays: int
+        :param WeekDays: 备份的天
+        :type WeekDays: str
+        :param ExecuteHour: 备份小时
+        :type ExecuteHour: int
+        :param ScheduleId: 策略id
+        :type ScheduleId: int
+        """
+        self.CosBucketName = None
+        self.RetainDays = None
+        self.WeekDays = None
+        self.ExecuteHour = None
+        self.ScheduleId = None
+
+
+    def _deserialize(self, params):
+        self.CosBucketName = params.get("CosBucketName")
+        self.RetainDays = params.get("RetainDays")
+        self.WeekDays = params.get("WeekDays")
+        self.ExecuteHour = params.get("ExecuteHour")
+        self.ScheduleId = params.get("ScheduleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1360,6 +1360,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyGovernEventRule(self, request):
+        """修改数据治理事件阈值
+
+        :param request: Request instance for ModifyGovernEventRule.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyGovernEventRuleRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyGovernEventRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGovernEventRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGovernEventRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySparkApp(self, request):
         """更新spark应用
 

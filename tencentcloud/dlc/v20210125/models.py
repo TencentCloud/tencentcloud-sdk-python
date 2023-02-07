@@ -1471,6 +1471,12 @@ class CreateSparkAppRequest(AbstractModel):
         :type IsLocalArchives: str
         :param AppArchives: archives：依赖资源
         :type AppArchives: str
+        :param SparkImage: Spark Image 版本
+        :type SparkImage: str
+        :param SparkImageVersion: Spark Image 版本名称
+        :type SparkImageVersion: str
+        :param AppExecutorMaxNumbers: 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
+        :type AppExecutorMaxNumbers: int
         """
         self.AppName = None
         self.AppType = None
@@ -1495,6 +1501,9 @@ class CreateSparkAppRequest(AbstractModel):
         self.AppPythonFiles = None
         self.IsLocalArchives = None
         self.AppArchives = None
+        self.SparkImage = None
+        self.SparkImageVersion = None
+        self.AppExecutorMaxNumbers = None
 
 
     def _deserialize(self, params):
@@ -1521,6 +1530,9 @@ class CreateSparkAppRequest(AbstractModel):
         self.AppPythonFiles = params.get("AppPythonFiles")
         self.IsLocalArchives = params.get("IsLocalArchives")
         self.AppArchives = params.get("AppArchives")
+        self.SparkImage = params.get("SparkImage")
+        self.SparkImageVersion = params.get("SparkImageVersion")
+        self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1537,13 +1549,18 @@ class CreateSparkAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SparkAppId: App唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkAppId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SparkAppId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SparkAppId = params.get("SparkAppId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4980,6 +4997,29 @@ class LockMetaDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyGovernEventRuleRequest(AbstractModel):
+    """ModifyGovernEventRule请求参数结构体
+
+    """
+
+
+class ModifyGovernEventRuleResponse(AbstractModel):
+    """ModifyGovernEventRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySparkAppRequest(AbstractModel):
     """ModifySparkApp请求参数结构体
 
@@ -5035,6 +5075,12 @@ class ModifySparkAppRequest(AbstractModel):
         :type IsLocalArchives: str
         :param AppArchives: archives：依赖资源
         :type AppArchives: str
+        :param SparkImage: Spark Image 版本
+        :type SparkImage: str
+        :param SparkImageVersion: Spark Image 版本名称
+        :type SparkImageVersion: str
+        :param AppExecutorMaxNumbers: 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
+        :type AppExecutorMaxNumbers: int
         """
         self.AppName = None
         self.AppType = None
@@ -5060,6 +5106,9 @@ class ModifySparkAppRequest(AbstractModel):
         self.DataSource = None
         self.IsLocalArchives = None
         self.AppArchives = None
+        self.SparkImage = None
+        self.SparkImageVersion = None
+        self.AppExecutorMaxNumbers = None
 
 
     def _deserialize(self, params):
@@ -5087,6 +5136,9 @@ class ModifySparkAppRequest(AbstractModel):
         self.DataSource = params.get("DataSource")
         self.IsLocalArchives = params.get("IsLocalArchives")
         self.AppArchives = params.get("AppArchives")
+        self.SparkImage = params.get("SparkImage")
+        self.SparkImageVersion = params.get("SparkImageVersion")
+        self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5654,7 +5706,7 @@ class Script(AbstractModel):
 
 
 class SparkJobInfo(AbstractModel):
-    """spark作业详情
+    """spark作业详情。
 
     """
 
@@ -5726,6 +5778,9 @@ class SparkJobInfo(AbstractModel):
         :param JobArchives: archives：依赖资源
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobArchives: str
+        :param SparkImage: Spark Image 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkImage: str
         :param JobPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobPythonFiles: str
@@ -5735,6 +5790,9 @@ class SparkJobInfo(AbstractModel):
         :param DataEngineStatus: 引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineStatus: int
+        :param JobExecutorMaxNumbers: 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobExecutorMaxNumbers: int
         """
         self.JobId = None
         self.JobName = None
@@ -5766,9 +5824,11 @@ class SparkJobInfo(AbstractModel):
         self.AppPythonFiles = None
         self.IsLocalArchives = None
         self.JobArchives = None
+        self.SparkImage = None
         self.JobPythonFiles = None
         self.TaskNum = None
         self.DataEngineStatus = None
+        self.JobExecutorMaxNumbers = None
 
 
     def _deserialize(self, params):
@@ -5804,9 +5864,11 @@ class SparkJobInfo(AbstractModel):
         self.AppPythonFiles = params.get("AppPythonFiles")
         self.IsLocalArchives = params.get("IsLocalArchives")
         self.JobArchives = params.get("JobArchives")
+        self.SparkImage = params.get("SparkImage")
         self.JobPythonFiles = params.get("JobPythonFiles")
         self.TaskNum = params.get("TaskNum")
         self.DataEngineStatus = params.get("DataEngineStatus")
+        self.JobExecutorMaxNumbers = params.get("JobExecutorMaxNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

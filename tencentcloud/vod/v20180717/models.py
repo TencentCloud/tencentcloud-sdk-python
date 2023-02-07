@@ -7040,6 +7040,77 @@ class CreateReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRoundPlayRequest(AbstractModel):
+    """CreateRoundPlay请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type StartTime: str
+        :param RoundPlaylist: 轮播列表。
+<li>数组长度限制：100。</li>
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Name: 轮播播单名称，长度限制：64 个字符。
+        :type Name: str
+        :param Desc: 轮播播单描述信息，长度限制：256 个字符。
+        :type Desc: str
+        """
+        self.StartTime = None
+        self.RoundPlaylist = None
+        self.SubAppId = None
+        self.Name = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        if params.get("RoundPlaylist") is not None:
+            self.RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self.RoundPlaylist.append(obj)
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRoundPlayResponse(AbstractModel):
+    """CreateRoundPlay返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoundPlayId: 轮播播单唯一标识。
+        :type RoundPlayId: str
+        :param Url: 轮播播放地址。
+        :type Url: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoundPlayId = None
+        self.Url = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoundPlayId = params.get("RoundPlayId")
+        self.Url = params.get("Url")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSampleSnapshotTemplateRequest(AbstractModel):
     """CreateSampleSnapshotTemplate请求参数结构体
 
@@ -8374,6 +8445,51 @@ class DeleteReviewTemplateRequest(AbstractModel):
 
 class DeleteReviewTemplateResponse(AbstractModel):
     """DeleteReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRoundPlayRequest(AbstractModel):
+    """DeleteRoundPlay请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoundPlayId: 轮播播单唯一标识。
+        :type RoundPlayId: str
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        """
+        self.RoundPlayId = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.RoundPlayId = params.get("RoundPlayId")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoundPlayResponse(AbstractModel):
+    """DeleteRoundPlay返回参数结构体
 
     """
 
@@ -10885,6 +11001,72 @@ class DescribeReviewTemplatesResponse(AbstractModel):
                 obj = ReviewTemplate()
                 obj._deserialize(item)
                 self.ReviewTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRoundPlaysRequest(AbstractModel):
+    """DescribeRoundPlays请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param RoundPlayIds: 轮播播单标识过滤条件，数组长度限制：100。
+        :type RoundPlayIds: list of str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        """
+        self.SubAppId = None
+        self.RoundPlayIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.RoundPlayIds = params.get("RoundPlayIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoundPlaysResponse(AbstractModel):
+    """DescribeRoundPlays返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合过滤条件的轮播播单总数。
+        :type TotalCount: int
+        :param RoundPlaySet: 轮播播单详情列表。
+        :type RoundPlaySet: list of RoundPlayInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RoundPlaySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RoundPlaySet") is not None:
+            self.RoundPlaySet = []
+            for item in params.get("RoundPlaySet"):
+                obj = RoundPlayInfo()
+                obj._deserialize(item)
+                self.RoundPlaySet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -18032,6 +18214,73 @@ class ModifyReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRoundPlayRequest(AbstractModel):
+    """ModifyRoundPlay请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoundPlayId: 轮播播单唯一标识。
+        :type RoundPlayId: str
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param StartTime: 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type StartTime: str
+        :param RoundPlaylist: 轮播列表。
+<li>数组长度限制：100。</li>
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        :param Name: 轮播播单名称，长度限制：64 个字符。
+        :type Name: str
+        :param Desc: 轮播播单描述信息，长度限制：256 个字符。
+        :type Desc: str
+        """
+        self.RoundPlayId = None
+        self.SubAppId = None
+        self.StartTime = None
+        self.RoundPlaylist = None
+        self.Name = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.RoundPlayId = params.get("RoundPlayId")
+        self.SubAppId = params.get("SubAppId")
+        self.StartTime = params.get("StartTime")
+        if params.get("RoundPlaylist") is not None:
+            self.RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self.RoundPlaylist.append(obj)
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoundPlayResponse(AbstractModel):
+    """ModifyRoundPlay返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySampleSnapshotTemplateRequest(AbstractModel):
     """ModifySampleSnapshotTemplate请求参数结构体
 
@@ -22540,6 +22789,86 @@ class ReviewTemplate(AbstractModel):
         self.Labels = params.get("Labels")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoundPlayInfo(AbstractModel):
+    """轮播任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoundPlayId: 轮播播单标识。
+        :type RoundPlayId: str
+        :param StartTime: 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type StartTime: str
+        :param RoundPlaylist: 轮播列表。
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        :param Name: 轮播播单名称，长度限制：64 个字符。
+        :type Name: str
+        :param Desc: 轮播播单描述信息，长度限制：256 个字符。
+        :type Desc: str
+        """
+        self.RoundPlayId = None
+        self.StartTime = None
+        self.RoundPlaylist = None
+        self.Name = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.RoundPlayId = params.get("RoundPlayId")
+        self.StartTime = params.get("StartTime")
+        if params.get("RoundPlaylist") is not None:
+            self.RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self.RoundPlaylist.append(obj)
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoundPlayListItemInfo(AbstractModel):
+    """加权轮播媒体文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件标识。
+        :type FileId: str
+        :param AudioVideoType: 播放的音视频类型，可选值：
+<li>Transcode：转码输出；转码输出会有多个模版，必须指定 Definition 字段</li>
+<li>Original：原始音视频。</li>
+Type 对应的格式必须为 HLS 格式。
+        :type AudioVideoType: str
+        :param Definition: 指定播放的转码模版，当 AudioVideoType 为 Transcode 时必须指定。
+        :type Definition: int
+        """
+        self.FileId = None
+        self.AudioVideoType = None
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.AudioVideoType = params.get("AudioVideoType")
+        self.Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

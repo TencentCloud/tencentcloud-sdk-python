@@ -473,6 +473,9 @@ INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = 'InvalidParameterValue.MustDhcpEnable
 # 子网不属于该cdc集群。
 INVALIDPARAMETERVALUE_NOTCDCSUBNET = 'InvalidParameterValue.NotCdcSubnet'
 
+# 输入参数值不能为空。
+INVALIDPARAMETERVALUE_NOTEMPTY = 'InvalidParameterValue.NotEmpty'
+
 # 不支持的操作。
 INVALIDPARAMETERVALUE_NOTSUPPORTED = 'InvalidParameterValue.NotSupported'
 

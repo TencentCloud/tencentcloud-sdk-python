@@ -95,6 +95,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackUpSchedule(self, request):
+        """查询备份策略信息
+
+        :param request: Request instance for DescribeBackUpSchedule.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeBackUpScheduleRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeBackUpScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackUpSchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackUpScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCkSqlApis(self, request):
         """查询集群用户、集群表，数据库等相关信息
 
@@ -118,6 +141,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterConfigs(self, request):
+        """获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
+
+        :param request: Request instance for DescribeClusterConfigs.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeClusterConfigsRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeClusterConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstance(self, request):
         """根据实例ID查询某个实例的具体信息
 
@@ -132,6 +178,29 @@ class CdwchClient(AbstractClient):
             body = self.call("DescribeInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceKeyValConfigs(self, request):
+        """在集群详情页面获取所有参数列表
+
+        :param request: Request instance for DescribeInstanceKeyValConfigs.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceKeyValConfigsRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceKeyValConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceKeyValConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceKeyValConfigsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -210,6 +279,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInstanceKeyValConfigs(self, request):
+        """KV模式修改配置接口
+
+        :param request: Request instance for ModifyInstanceKeyValConfigs.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.ModifyInstanceKeyValConfigsRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.ModifyInstanceKeyValConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceKeyValConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceKeyValConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyUserNewPrivilege(self, request):
         """针对ck账号的权限做管控（新版）
 
@@ -247,6 +339,75 @@ class CdwchClient(AbstractClient):
             body = self.call("OpenBackUp", params, headers=headers)
             response = json.loads(body)
             model = models.OpenBackUpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResizeDisk(self, request):
+        """扩容磁盘，包含扩容数据节点，zk节点
+
+        :param request: Request instance for ResizeDisk.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.ResizeDiskRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.ResizeDiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResizeDisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResizeDiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScaleOutInstance(self, request):
+        """调整clickhouse节点数量
+
+        :param request: Request instance for ScaleOutInstance.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.ScaleOutInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.ScaleOutInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleOutInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleOutInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ScaleUpInstance(self, request):
+        """垂直扩缩容节点规格，修改节点cvm的规格cpu，内存。 规格变化阶段，服务不可用。
+
+        :param request: Request instance for ScaleUpInstance.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.ScaleUpInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.ScaleUpInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleUpInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleUpInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
