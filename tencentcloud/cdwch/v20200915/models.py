@@ -875,6 +875,60 @@ class DescribeSpecResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DestroyInstanceRequest(AbstractModel):
+    """DestroyInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群id
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyInstanceResponse(AbstractModel):
+    """DestroyInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowID: 作业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowID: str
+        :param InstanceID: 集群id
+        :type InstanceID: str
+        :param ErrorMsg: 错误信息
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowID = None
+        self.InstanceID = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowID = params.get("FlowID")
+        self.InstanceID = params.get("InstanceID")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class DiskSpec(AbstractModel):
     """磁盘规格描述
 
@@ -1677,8 +1731,10 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type ScaleOutCluster: str
         :param UserSubnetIPNum: 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
         :type UserSubnetIPNum: int
-        :param ScaleOutNodeIp: 节点同步ip
+        :param ScaleOutNodeIp: 同步元数据节点IP （uip）
         :type ScaleOutNodeIp: str
+        :param ReduceShardInfo: 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔
+        :type ReduceShardInfo: list of str
         """
         self.InstanceId = None
         self.Type = None
@@ -1686,6 +1742,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ScaleOutCluster = None
         self.UserSubnetIPNum = None
         self.ScaleOutNodeIp = None
+        self.ReduceShardInfo = None
 
 
     def _deserialize(self, params):
@@ -1695,6 +1752,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.ScaleOutCluster = params.get("ScaleOutCluster")
         self.UserSubnetIPNum = params.get("UserSubnetIPNum")
         self.ScaleOutNodeIp = params.get("ScaleOutNodeIp")
+        self.ReduceShardInfo = params.get("ReduceShardInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

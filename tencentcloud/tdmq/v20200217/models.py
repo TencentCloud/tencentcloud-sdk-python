@@ -5158,16 +5158,43 @@ class DescribeRabbitMQNodeListRequest(AbstractModel):
         :type Offset: int
         :param Limit: 一页限制
         :type Limit: int
+        :param NodeName: 模糊搜索节点名字
+        :type NodeName: str
+        :param Filters: 过滤参数的名字和数值
+现在只有一个nodeStatus
+running/down
+数组类型，兼容后续添加过滤参数
+
+        :type Filters: list of Filter
+        :param SortElement: 按指定元素排序，现在只有2个
+cpuUsage/diskUsage
+        :type SortElement: str
+        :param SortOrder: 升序/降序
+ascend/descend
+        :type SortOrder: str
         """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
+        self.NodeName = None
+        self.Filters = None
+        self.SortElement = None
+        self.SortOrder = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.NodeName = params.get("NodeName")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.SortElement = params.get("SortElement")
+        self.SortOrder = params.get("SortOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7439,12 +7466,37 @@ class RabbitMQPrivateNode(AbstractModel):
         :param NodeName: 节点名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
+        :param NodeStatus: 节点状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeStatus: str
+        :param CPUUsage: CPU使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CPUUsage: str
+        :param Memory: 内存使用情况，单位MB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: int
+        :param DiskUsage: 磁盘使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskUsage: str
+        :param ProcessNumber: Rabbitmq的Erlang进程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessNumber: int
         """
         self.NodeName = None
+        self.NodeStatus = None
+        self.CPUUsage = None
+        self.Memory = None
+        self.DiskUsage = None
+        self.ProcessNumber = None
 
 
     def _deserialize(self, params):
         self.NodeName = params.get("NodeName")
+        self.NodeStatus = params.get("NodeStatus")
+        self.CPUUsage = params.get("CPUUsage")
+        self.Memory = params.get("Memory")
+        self.DiskUsage = params.get("DiskUsage")
+        self.ProcessNumber = params.get("ProcessNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7491,6 +7543,9 @@ class RabbitMQVipInstance(AbstractModel):
         :type Remark: str
         :param SpecName: 实例配置ID
         :type SpecName: str
+        :param ExceptionInformation: 集群异常。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceptionInformation: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -7506,6 +7561,7 @@ class RabbitMQVipInstance(AbstractModel):
         self.PayMode = None
         self.Remark = None
         self.SpecName = None
+        self.ExceptionInformation = None
 
 
     def _deserialize(self, params):
@@ -7523,6 +7579,7 @@ class RabbitMQVipInstance(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.Remark = params.get("Remark")
         self.SpecName = params.get("SpecName")
+        self.ExceptionInformation = params.get("ExceptionInformation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

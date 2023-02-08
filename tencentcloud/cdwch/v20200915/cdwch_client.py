@@ -256,6 +256,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DestroyInstance(self, request):
+        """销毁集群 open api
+
+        :param request: Request instance for DestroyInstance.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DestroyInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DestroyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClusterConfigs(self, request):
         """在集群配置页面修改集群配置文件接口，xml模式
 

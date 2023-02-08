@@ -12213,17 +12213,27 @@ class DescribeVpcTaskResultResponse(AbstractModel):
         :type Status: str
         :param Output: 异步任务执行输出。
         :type Output: str
+        :param Result: 异步任务详细结果。只用于特殊场景，如批量删除弹性网卡时查询成功的网卡列表和失败的列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of VpcTaskResultDetailInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
         self.Output = None
+        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Output = params.get("Output")
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = VpcTaskResultDetailInfo()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -22591,6 +22601,36 @@ class VpcPrivateIpAddress(AbstractModel):
         self.CidrBlock = params.get("CidrBlock")
         self.PrivateIpAddressType = params.get("PrivateIpAddressType")
         self.CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcTaskResultDetailInfo(AbstractModel):
+    """Vpc任务结果详细信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param Status: 状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.ResourceId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

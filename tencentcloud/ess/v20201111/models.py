@@ -1769,6 +1769,84 @@ class CreateSchemeUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSealPolicyRequest(AbstractModel):
+    """CreateSealPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 授权发起人在平台信息，具体参考UserInfo结构体
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param Users: 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
+        :type Users: list of UserInfo
+        :param SealId: 印章ID
+        :type SealId: str
+        :param Expired: 授权有效期。时间戳秒级
+        :type Expired: int
+        :param Policy: 印章授权内容
+        :type Policy: str
+        :param Agent: 应用相关
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param UserIds: 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+        :type UserIds: list of str
+        """
+        self.Operator = None
+        self.Users = None
+        self.SealId = None
+        self.Expired = None
+        self.Policy = None
+        self.Agent = None
+        self.UserIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = UserInfo()
+                obj._deserialize(item)
+                self.Users.append(obj)
+        self.SealId = params.get("SealId")
+        self.Expired = params.get("Expired")
+        self.Policy = params.get("Policy")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.UserIds = params.get("UserIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSealPolicyResponse(AbstractModel):
+    """CreateSealPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserIds: 最终授权成功的。其他的跳过的是已经授权了的
+        :type UserIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UserIds = params.get("UserIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateStaffResult(AbstractModel):
     """创建员工的结果
 
@@ -1864,6 +1942,67 @@ class DeleteIntegrationEmployeesResponse(AbstractModel):
         if params.get("DeleteEmployeeResult") is not None:
             self.DeleteEmployeeResult = DeleteStaffsResult()
             self.DeleteEmployeeResult._deserialize(params.get("DeleteEmployeeResult"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSealPoliciesRequest(AbstractModel):
+    """DeleteSealPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作撤销的用户信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param PolicyIds: 印章授权编码数组。这个参数跟下面的SealId其中一个必填，另外一个可选填
+        :type PolicyIds: list of str
+        :param Agent: 应用相关
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param SealId: 印章ID。这个参数跟上面的PolicyIds其中一个必填，另外一个可选填
+        :type SealId: str
+        :param UserIds: 待授权的员工ID
+        :type UserIds: list of str
+        """
+        self.Operator = None
+        self.PolicyIds = None
+        self.Agent = None
+        self.SealId = None
+        self.UserIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.PolicyIds = params.get("PolicyIds")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.SealId = params.get("SealId")
+        self.UserIds = params.get("UserIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSealPoliciesResponse(AbstractModel):
+    """DeleteSealPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

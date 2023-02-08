@@ -342,6 +342,52 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCreateSealPolicy(self, request):
+        """将指定印章授权给企业下的某些员工
+
+        :param request: Request instance for ChannelCreateSealPolicy.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateSealPolicyRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateSealPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateSealPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateSealPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChannelDeleteSealPolicies(self, request):
+        """删除指定印章下多个授权信息
+
+        :param request: Request instance for ChannelDeleteSealPolicies.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDeleteSealPoliciesRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelDeleteSealPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelDeleteSealPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelDeleteSealPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelDescribeEmployees(self, request):
         """查询企业员工列表
 

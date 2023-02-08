@@ -689,6 +689,11 @@ def test_import_ivld():
     from tencentcloud.ivld.v20210903 import models
 
 
+def test_import_keewidb():
+    from tencentcloud.keewidb.v20220308 import keewidb_client
+    from tencentcloud.keewidb.v20220308 import models
+
+
 def test_import_kms():
     from tencentcloud.kms.v20190118 import kms_client
     from tencentcloud.kms.v20190118 import models

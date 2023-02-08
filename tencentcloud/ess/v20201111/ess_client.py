@@ -429,6 +429,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSealPolicy(self, request):
+        """对企业员工进行印章授权
+
+        :param request: Request instance for CreateSealPolicy.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateSealPolicyRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateSealPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSealPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSealPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteIntegrationEmployees(self, request):
         """移除员工
 
@@ -443,6 +466,29 @@ class EssClient(AbstractClient):
             body = self.call("DeleteIntegrationEmployees", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteIntegrationEmployeesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSealPolicies(self, request):
+        """撤销员工持有的印章权限
+
+        :param request: Request instance for DeleteSealPolicies.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DeleteSealPoliciesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DeleteSealPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSealPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSealPoliciesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

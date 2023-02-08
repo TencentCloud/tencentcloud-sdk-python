@@ -4616,15 +4616,15 @@ class InstanceProxySlowlogDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Duration: 慢查询耗时
+        :param Duration: 慢查询耗时（单位：毫秒）。
         :type Duration: int
-        :param Client: 客户端地址
+        :param Client: 客户端地址。
         :type Client: str
-        :param Command: 命令
+        :param Command: 命令。
         :type Command: str
-        :param CommandLine: 详细命令行信息
+        :param CommandLine: 详细命令行信息。
         :type CommandLine: str
-        :param ExecuteTime: 执行时间
+        :param ExecuteTime: 执行时间。
         :type ExecuteTime: str
         """
         self.Duration = None

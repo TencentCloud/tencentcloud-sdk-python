@@ -1201,6 +1201,80 @@ class CreateImportTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateInternalTableRequest(AbstractModel):
+    """CreateInternalTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableBaseInfo: 表基本信息
+        :type TableBaseInfo: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        :param Columns: 表字段信息
+        :type Columns: list of TColumn
+        :param Partitions: 表分区信息
+        :type Partitions: list of TPartition
+        :param Properties: 表属性信息
+        :type Properties: list of Property
+        """
+        self.TableBaseInfo = None
+        self.Columns = None
+        self.Partitions = None
+        self.Properties = None
+
+
+    def _deserialize(self, params):
+        if params.get("TableBaseInfo") is not None:
+            self.TableBaseInfo = TableBaseInfo()
+            self.TableBaseInfo._deserialize(params.get("TableBaseInfo"))
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = TColumn()
+                obj._deserialize(item)
+                self.Columns.append(obj)
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = TPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        if params.get("Properties") is not None:
+            self.Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self.Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInternalTableResponse(AbstractModel):
+    """CreateInternalTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Execution: 创建托管存储内表sql语句描述
+        :type Execution: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Execution = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Execution = params.get("Execution")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNotebookSessionRequest(AbstractModel):
     """CreateNotebookSession请求参数结构体
 
@@ -5989,6 +6063,98 @@ class SuspendResumeDataEngineResponse(AbstractModel):
     def _deserialize(self, params):
         self.DataEngineName = params.get("DataEngineName")
         self.RequestId = params.get("RequestId")
+
+
+class TColumn(AbstractModel):
+    """表字段描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 字段名称
+        :type Name: str
+        :param Type: 字段类型
+        :type Type: str
+        :param Comment: 字段描述
+        :type Comment: str
+        :param Default: 字段默认值
+        :type Default: str
+        :param NotNull: 字段是否是非空
+        :type NotNull: bool
+        """
+        self.Name = None
+        self.Type = None
+        self.Comment = None
+        self.Default = None
+        self.NotNull = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Comment = params.get("Comment")
+        self.Default = params.get("Default")
+        self.NotNull = params.get("NotNull")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TPartition(AbstractModel):
+    """表分区字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 字段名称
+        :type Name: str
+        :param Type: 字段类型
+        :type Type: str
+        :param Comment: 字段描述
+        :type Comment: str
+        :param PartitionType: 分区类型
+        :type PartitionType: str
+        :param PartitionFormat: 分区格式
+        :type PartitionFormat: str
+        :param PartitionDot: 分区分隔数
+        :type PartitionDot: int
+        :param Transform: 分区转换策略
+        :type Transform: str
+        :param TransformArgs: 策略参数
+        :type TransformArgs: list of str
+        """
+        self.Name = None
+        self.Type = None
+        self.Comment = None
+        self.PartitionType = None
+        self.PartitionFormat = None
+        self.PartitionDot = None
+        self.Transform = None
+        self.TransformArgs = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Comment = params.get("Comment")
+        self.PartitionType = params.get("PartitionType")
+        self.PartitionFormat = params.get("PartitionFormat")
+        self.PartitionDot = params.get("PartitionDot")
+        self.Transform = params.get("Transform")
+        self.TransformArgs = params.get("TransformArgs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TableBaseInfo(AbstractModel):

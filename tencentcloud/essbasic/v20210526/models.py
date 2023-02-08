@@ -1156,6 +1156,136 @@ class ChannelCreateReleaseFlowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreateSealPolicyRequest(AbstractModel):
+    """ChannelCreateSealPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 用户渠道信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param SealId: 指定印章
+        :type SealId: str
+        :param UserIds: 指定待授权的用户ID数组
+        :type UserIds: list of str
+        :param Organization: 企业机构信息
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        :param Operator: 操作人（用户）信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.Agent = None
+        self.SealId = None
+        self.UserIds = None
+        self.Organization = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.SealId = params.get("SealId")
+        self.UserIds = params.get("UserIds")
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateSealPolicyResponse(AbstractModel):
+    """ChannelCreateSealPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserIds: 最终授权成功的用户ID数组。其他的跳过的是已经授权了的
+        :type UserIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UserIds = params.get("UserIds")
+        self.RequestId = params.get("RequestId")
+
+
+class ChannelDeleteSealPoliciesRequest(AbstractModel):
+    """ChannelDeleteSealPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param SealId: 指定印章ID
+        :type SealId: str
+        :param UserIds: 指定用户ID数组
+        :type UserIds: list of str
+        :param Operator: 操作人（用户）信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Organization: 组织机构信息
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        """
+        self.Agent = None
+        self.SealId = None
+        self.UserIds = None
+        self.Operator = None
+        self.Organization = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.SealId = params.get("SealId")
+        self.UserIds = params.get("UserIds")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDeleteSealPoliciesResponse(AbstractModel):
+    """ChannelDeleteSealPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelDescribeEmployeesRequest(AbstractModel):
     """ChannelDescribeEmployees请求参数结构体
 

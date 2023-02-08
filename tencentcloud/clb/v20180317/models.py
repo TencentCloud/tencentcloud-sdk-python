@@ -7651,11 +7651,15 @@ class RuleTargets(AbstractModel):
         :param Targets: 后端服务的信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of Backend
+        :param FunctionTargets: 后端云函数的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FunctionTargets: list of FunctionTarget
         """
         self.LocationId = None
         self.Domain = None
         self.Url = None
         self.Targets = None
+        self.FunctionTargets = None
 
 
     def _deserialize(self, params):
@@ -7668,6 +7672,12 @@ class RuleTargets(AbstractModel):
                 obj = Backend()
                 obj._deserialize(item)
                 self.Targets.append(obj)
+        if params.get("FunctionTargets") is not None:
+            self.FunctionTargets = []
+            for item in params.get("FunctionTargets"):
+                obj = FunctionTarget()
+                obj._deserialize(item)
+                self.FunctionTargets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

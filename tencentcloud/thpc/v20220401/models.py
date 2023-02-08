@@ -76,12 +76,12 @@ class AddNodesRequest(AbstractModel):
         :type Placement: :class:`tencentcloud.thpc.v20220401.models.Placement`
         :param ClusterId: 集群ID。
         :type ClusterId: str
-        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜。
-        :type ImageId: str
         :param VirtualPrivateCloud: 私有网络相关信息配置。
         :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20220401.models.VirtualPrivateCloud`
         :param Count: 添加节点数量。
         :type Count: int
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
+        :type ImageId: str
         :param InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
@@ -104,7 +104,9 @@ class AddNodesRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param QueueName: 队列名称。
+        :param QueueName: 队列名称。不指定则为默认队列。<br><li>SLURM默认队列为：compute。<br>
+<li>SGE默认队列为：all.q。<br>
+
         :type QueueName: str
         :param NodeRole: 添加节点类型。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
         :type NodeRole: str
@@ -117,9 +119,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         """
         self.Placement = None
         self.ClusterId = None
-        self.ImageId = None
         self.VirtualPrivateCloud = None
         self.Count = None
+        self.ImageId = None
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
         self.InstanceType = None
@@ -140,11 +142,11 @@ false（默认）：发送正常请求，通过检查后直接创建实例
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
         self.ClusterId = params.get("ClusterId")
-        self.ImageId = params.get("ImageId")
         if params.get("VirtualPrivateCloud") is not None:
             self.VirtualPrivateCloud = VirtualPrivateCloud()
             self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
         self.Count = params.get("Count")
+        self.ImageId = params.get("ImageId")
         self.InstanceChargeType = params.get("InstanceChargeType")
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()

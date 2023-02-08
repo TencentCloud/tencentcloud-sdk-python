@@ -5121,6 +5121,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 <li>ruleId：规则id；</li>
 <li>sipCountryCode：ip所在国家；</li>
 <li>attackIp：攻击ip；</li>
+<li>realClientIp：真实客户端ip；</li>
 <li>oriDomain：被攻击的子域名；</li>
 <li>eventId：事件id；</li>
 <li>ua：用户代理；</li>
@@ -11862,60 +11863,68 @@ class WebLogs(AbstractModel):
         r"""
         :param EventId: 请求（事件）ID。
         :type EventId: str
-        :param AttackIp: 攻击源（客户端）Ip。
-        :type AttackIp: str
-        :param Domain: 受攻击子域名。
-        :type Domain: str
         :param HttpLog: http 日志内容。
         :type HttpLog: str
+        :param Domain: 受攻击子域名。
+        :type Domain: str
+        :param AttackIp: 攻击源（客户端）Ip。
+        :type AttackIp: str
         :param SipCountryCode: IP所在国家iso-3166中alpha-2编码，编码信息请参考[ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json)
         :type SipCountryCode: str
+        :param RealClientIp: 真实客户端Ip。
+        :type RealClientIp: str
+        :param RealClientIpCountryCode: 真实客户端Ip所在国家iso-3166中alpha-2编码。
+        :type RealClientIpCountryCode: str
         :param AttackTime: 攻击时间，采用unix秒级时间戳。
         :type AttackTime: int
         :param RequestUri: 请求地址。
         :type RequestUri: str
-        :param AttackContent: 攻击内容。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AttackContent: str
-        :param RuleDetailList: 规则相关信息列表。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RuleDetailList: list of SecRuleRelatedInfo
         :param ReqMethod: 请求类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReqMethod: str
+        :param RuleDetailList: 规则相关信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleDetailList: list of SecRuleRelatedInfo
+        :param AttackContent: 攻击内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackContent: str
         :param Area: 日志所属区域。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Area: str
         """
         self.EventId = None
-        self.AttackIp = None
-        self.Domain = None
         self.HttpLog = None
+        self.Domain = None
+        self.AttackIp = None
         self.SipCountryCode = None
+        self.RealClientIp = None
+        self.RealClientIpCountryCode = None
         self.AttackTime = None
         self.RequestUri = None
-        self.AttackContent = None
-        self.RuleDetailList = None
         self.ReqMethod = None
+        self.RuleDetailList = None
+        self.AttackContent = None
         self.Area = None
 
 
     def _deserialize(self, params):
         self.EventId = params.get("EventId")
-        self.AttackIp = params.get("AttackIp")
-        self.Domain = params.get("Domain")
         self.HttpLog = params.get("HttpLog")
+        self.Domain = params.get("Domain")
+        self.AttackIp = params.get("AttackIp")
         self.SipCountryCode = params.get("SipCountryCode")
+        self.RealClientIp = params.get("RealClientIp")
+        self.RealClientIpCountryCode = params.get("RealClientIpCountryCode")
         self.AttackTime = params.get("AttackTime")
         self.RequestUri = params.get("RequestUri")
-        self.AttackContent = params.get("AttackContent")
+        self.ReqMethod = params.get("ReqMethod")
         if params.get("RuleDetailList") is not None:
             self.RuleDetailList = []
             for item in params.get("RuleDetailList"):
                 obj = SecRuleRelatedInfo()
                 obj._deserialize(item)
                 self.RuleDetailList.append(obj)
-        self.ReqMethod = params.get("ReqMethod")
+        self.AttackContent = params.get("AttackContent")
         self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

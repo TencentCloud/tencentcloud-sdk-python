@@ -371,6 +371,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInternalTable(self, request):
+        """创建托管存储内表
+
+        :param request: Request instance for CreateInternalTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateInternalTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateInternalTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInternalTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInternalTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateNotebookSession(self, request):
         """本接口（CreateNotebookSession）用于创建notebook livy session
 
