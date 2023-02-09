@@ -1001,7 +1001,7 @@ class CommonMixOutputParams(AbstractModel):
 当期望生成的混流结果成为一条新流时，该值填为1。
 该值为1时，output_stream_id 不能出现在 input_stram_list 中，且直播后台中，不能存在相同 ID 的流。
         :type OutputStreamType: int
-        :param OutputStreamBitRate: 输出流比特率。取值范围[1，50000]。
+        :param OutputStreamBitRate: 输出流比特率。取值范围[1，10000]。
 不填的情况下，系统会自动判断。
         :type OutputStreamBitRate: int
         :param OutputStreamGop: 输出流GOP大小。取值范围[1,10]。

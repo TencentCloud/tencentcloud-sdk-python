@@ -139,6 +139,55 @@ class AutoCalloutTaskInfo(AbstractModel):
         
 
 
+class BindNumberCallOutSkillGroupRequest(AbstractModel):
+    """BindNumberCallOutSkillGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param Number: 待绑定的号码
+        :type Number: str
+        :param SkillGroupIds: 待绑定的技能组Id列表
+        :type SkillGroupIds: list of int non-negative
+        """
+        self.SdkAppId = None
+        self.Number = None
+        self.SkillGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Number = params.get("Number")
+        self.SkillGroupIds = params.get("SkillGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindNumberCallOutSkillGroupResponse(AbstractModel):
+    """BindNumberCallOutSkillGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BindStaffSkillGroupListRequest(AbstractModel):
     """BindStaffSkillGroupList请求参数结构体
 
@@ -1695,6 +1744,68 @@ class DescribeIMCdrsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNumbersRequest(AbstractModel):
+    """DescribeNumbers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param PageNumber: 页数，从0开始
+        :type PageNumber: int
+        :param PageSize: 分页大小，默认20
+        :type PageSize: int
+        """
+        self.SdkAppId = None
+        self.PageNumber = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNumbersResponse(AbstractModel):
+    """DescribeNumbers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+        :type TotalCount: int
+        :param Numbers: 号码列表
+        :type Numbers: list of NumberInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Numbers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Numbers") is not None:
+            self.Numbers = []
+            for item in params.get("Numbers"):
+                obj = NumberInfo()
+                obj._deserialize(item)
+                self.Numbers.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePSTNActiveSessionListRequest(AbstractModel):
     """DescribePSTNActiveSessionList请求参数结构体
 
@@ -2780,6 +2891,34 @@ class ModifyStaffResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NumberInfo(AbstractModel):
+    """号码信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Number: 号码
+        :type Number: str
+        :param CallOutSkillGroupIds: 绑定的外呼技能组
+        :type CallOutSkillGroupIds: list of int non-negative
+        """
+        self.Number = None
+        self.CallOutSkillGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.Number = params.get("Number")
+        self.CallOutSkillGroupIds = params.get("CallOutSkillGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PSTNSession(AbstractModel):
     """PSTN 会话类型。
 
@@ -3749,6 +3888,9 @@ notInService       不在服务区
         :param QueuedSkillGroupName: 排队技能组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueuedSkillGroupName: str
+        :param VoicemailRecordURL: 通话中语音留言录音URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoicemailRecordURL: list of str
         """
         self.Caller = None
         self.Callee = None
@@ -3782,6 +3924,7 @@ notInService       不在服务区
         self.CustomRecordURL = None
         self.Remark = None
         self.QueuedSkillGroupName = None
+        self.VoicemailRecordURL = None
 
 
     def _deserialize(self, params):
@@ -3834,6 +3977,7 @@ notInService       不在服务区
         self.CustomRecordURL = params.get("CustomRecordURL")
         self.Remark = params.get("Remark")
         self.QueuedSkillGroupName = params.get("QueuedSkillGroupName")
+        self.VoicemailRecordURL = params.get("VoicemailRecordURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3841,6 +3985,55 @@ notInService       不在服务区
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
+    """UnbindNumberCallOutSkillGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param Number: 待解绑的号码
+        :type Number: str
+        :param SkillGroupIds: 待解绑的技能组Id列表
+        :type SkillGroupIds: list of int non-negative
+        """
+        self.SdkAppId = None
+        self.Number = None
+        self.SkillGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Number = params.get("Number")
+        self.SkillGroupIds = params.get("SkillGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindNumberCallOutSkillGroupResponse(AbstractModel):
+    """UnbindNumberCallOutSkillGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UnbindStaffSkillGroupListRequest(AbstractModel):

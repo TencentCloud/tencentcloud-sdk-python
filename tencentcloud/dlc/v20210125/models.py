@@ -668,6 +668,96 @@ class CSVSerde(AbstractModel):
         
 
 
+class CancelNotebookSessionStatementBatchRequest(AbstractModel):
+    """CancelNotebookSessionStatementBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param BatchId: 批任务唯一标识
+        :type BatchId: str
+        """
+        self.SessionId = None
+        self.BatchId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.BatchId = params.get("BatchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelNotebookSessionStatementBatchResponse(AbstractModel):
+    """CancelNotebookSessionStatementBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CancelNotebookSessionStatementRequest(AbstractModel):
+    """CancelNotebookSessionStatement请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param StatementId: Session Statement唯一标识
+        :type StatementId: str
+        """
+        self.SessionId = None
+        self.StatementId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.StatementId = params.get("StatementId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelNotebookSessionStatementResponse(AbstractModel):
+    """CancelNotebookSessionStatement返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CancelTaskRequest(AbstractModel):
     """CancelTask请求参数结构体
 
@@ -1386,6 +1476,120 @@ class CreateNotebookSessionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateNotebookSessionStatementRequest(AbstractModel):
+    """CreateNotebookSessionStatement请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param Code: 执行的代码
+        :type Code: str
+        :param Kind: 类型，当前支持：spark、pyspark、sparkr、sql
+        :type Kind: str
+        """
+        self.SessionId = None
+        self.Code = None
+        self.Kind = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.Code = params.get("Code")
+        self.Kind = params.get("Kind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNotebookSessionStatementResponse(AbstractModel):
+    """CreateNotebookSessionStatement返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotebookSessionStatement: Session Statement详情
+        :type NotebookSessionStatement: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionStatementInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotebookSessionStatement = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotebookSessionStatement") is not None:
+            self.NotebookSessionStatement = NotebookSessionStatementInfo()
+            self.NotebookSessionStatement._deserialize(params.get("NotebookSessionStatement"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateNotebookSessionStatementSupportBatchSQLRequest(AbstractModel):
+    """CreateNotebookSessionStatementSupportBatchSQL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param Code: 执行的代码
+        :type Code: str
+        :param Kind: 类型，当前支持：spark、pyspark、sparkr、sql
+        :type Kind: str
+        :param SaveResult: 是否保存运行结果
+        :type SaveResult: bool
+        """
+        self.SessionId = None
+        self.Code = None
+        self.Kind = None
+        self.SaveResult = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.Code = params.get("Code")
+        self.Kind = params.get("Kind")
+        self.SaveResult = params.get("SaveResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNotebookSessionStatementSupportBatchSQLResponse(AbstractModel):
+    """CreateNotebookSessionStatementSupportBatchSQL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotebookSessionStatementBatches: Session Statement详情
+        :type NotebookSessionStatementBatches: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionStatementBatchInformation`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotebookSessionStatementBatches = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotebookSessionStatementBatches") is not None:
+            self.NotebookSessionStatementBatches = NotebookSessionStatementBatchInformation()
+            self.NotebookSessionStatementBatches._deserialize(params.get("NotebookSessionStatementBatches"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateResultDownloadRequest(AbstractModel):
     """CreateResultDownload请求参数结构体
 
@@ -2091,6 +2295,41 @@ class CreateWorkGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CrontabResumeSuspendStrategy(AbstractModel):
+    """定时启停策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResumeTime: 定时拉起时间：如：周一8点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResumeTime: str
+        :param SuspendTime: 定时挂起时间：如：周一20点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuspendTime: str
+        :param SuspendStrategy: 挂起配置：0（默认）：等待任务结束后挂起、1：强制挂起
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuspendStrategy: int
+        """
+        self.ResumeTime = None
+        self.SuspendTime = None
+        self.SuspendStrategy = None
+
+
+    def _deserialize(self, params):
+        self.ResumeTime = params.get("ResumeTime")
+        self.SuspendTime = params.get("SuspendTime")
+        self.SuspendStrategy = params.get("SuspendStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DMSColumn(AbstractModel):
     """迁移列对象
 
@@ -2533,6 +2772,185 @@ class DMSTableInfo(AbstractModel):
         
 
 
+class DataEngineInfo(AbstractModel):
+    """DataEngine详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineName: DataEngine名称
+        :type DataEngineName: str
+        :param EngineType: 引擎类型 spark/presto
+        :type EngineType: str
+        :param ClusterType: 集群资源类型 spark_private/presto_private/presto_cu/spark_cu
+        :type ClusterType: str
+        :param QuotaId: 引用ID
+        :type QuotaId: str
+        :param State: 数据引擎状态  -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中
+        :type State: int
+        :param CreateTime: 创建时间
+        :type CreateTime: int
+        :param UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param Size: 集群规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param Mode: 计费模式 0共享模式 1按量计费 2包年包月
+        :type Mode: int
+        :param MinClusters: 最小集群数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinClusters: int
+        :param MaxClusters: 最大集群数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxClusters: int
+        :param AutoResume: 是否自动恢复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoResume: bool
+        :param SpendAfter: 自动恢复时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpendAfter: int
+        :param CidrBlock: 集群网段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CidrBlock: str
+        :param DefaultDataEngine: 是否为默认引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultDataEngine: bool
+        :param Message: 返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param DataEngineId: 引擎id
+        :type DataEngineId: str
+        :param SubAccountUin: 操作者
+        :type SubAccountUin: str
+        :param ExpireTime: 到期时间
+        :type ExpireTime: str
+        :param IsolatedTime: 隔离时间
+        :type IsolatedTime: str
+        :param ReversalTime: 冲正时间
+        :type ReversalTime: str
+        :param UserAlias: 用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAlias: str
+        :param TagList: 标签对集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of TagInfo
+        :param Permissions: 引擎拥有的权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permissions: list of str
+        :param AutoSuspend: 是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoSuspend: bool
+        :param CrontabResumeSuspend: 定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrontabResumeSuspend: int
+        :param CrontabResumeSuspendStrategy: 定时启停策略，复杂类型：包含启停时间、挂起集群策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrontabResumeSuspendStrategy: :class:`tencentcloud.dlc.v20210125.models.CrontabResumeSuspendStrategy`
+        :param EngineExecType: 引擎执行任务类型，有效值：SQL/BATCH
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineExecType: str
+        :param RenewFlag: 自动续费标志，0，初始状态，默认不自动续费，若用户有预付费不停服特权，自动续费。1：自动续费。2：明确不自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        :param AutoSuspendTime: 集群自动挂起时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoSuspendTime: int
+        :param NetworkConnectionSet: 网络连接配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkConnectionSet: list of NetworkConnection
+        :param UiURL: ui的跳转地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UiURL: str
+        """
+        self.DataEngineName = None
+        self.EngineType = None
+        self.ClusterType = None
+        self.QuotaId = None
+        self.State = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Size = None
+        self.Mode = None
+        self.MinClusters = None
+        self.MaxClusters = None
+        self.AutoResume = None
+        self.SpendAfter = None
+        self.CidrBlock = None
+        self.DefaultDataEngine = None
+        self.Message = None
+        self.DataEngineId = None
+        self.SubAccountUin = None
+        self.ExpireTime = None
+        self.IsolatedTime = None
+        self.ReversalTime = None
+        self.UserAlias = None
+        self.TagList = None
+        self.Permissions = None
+        self.AutoSuspend = None
+        self.CrontabResumeSuspend = None
+        self.CrontabResumeSuspendStrategy = None
+        self.EngineExecType = None
+        self.RenewFlag = None
+        self.AutoSuspendTime = None
+        self.NetworkConnectionSet = None
+        self.UiURL = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineName = params.get("DataEngineName")
+        self.EngineType = params.get("EngineType")
+        self.ClusterType = params.get("ClusterType")
+        self.QuotaId = params.get("QuotaId")
+        self.State = params.get("State")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Size = params.get("Size")
+        self.Mode = params.get("Mode")
+        self.MinClusters = params.get("MinClusters")
+        self.MaxClusters = params.get("MaxClusters")
+        self.AutoResume = params.get("AutoResume")
+        self.SpendAfter = params.get("SpendAfter")
+        self.CidrBlock = params.get("CidrBlock")
+        self.DefaultDataEngine = params.get("DefaultDataEngine")
+        self.Message = params.get("Message")
+        self.DataEngineId = params.get("DataEngineId")
+        self.SubAccountUin = params.get("SubAccountUin")
+        self.ExpireTime = params.get("ExpireTime")
+        self.IsolatedTime = params.get("IsolatedTime")
+        self.ReversalTime = params.get("ReversalTime")
+        self.UserAlias = params.get("UserAlias")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        self.Permissions = params.get("Permissions")
+        self.AutoSuspend = params.get("AutoSuspend")
+        self.CrontabResumeSuspend = params.get("CrontabResumeSuspend")
+        if params.get("CrontabResumeSuspendStrategy") is not None:
+            self.CrontabResumeSuspendStrategy = CrontabResumeSuspendStrategy()
+            self.CrontabResumeSuspendStrategy._deserialize(params.get("CrontabResumeSuspendStrategy"))
+        self.EngineExecType = params.get("EngineExecType")
+        self.RenewFlag = params.get("RenewFlag")
+        self.AutoSuspendTime = params.get("AutoSuspendTime")
+        if params.get("NetworkConnectionSet") is not None:
+            self.NetworkConnectionSet = []
+            for item in params.get("NetworkConnectionSet"):
+                obj = NetworkConnection()
+                obj._deserialize(item)
+                self.NetworkConnectionSet.append(obj)
+        self.UiURL = params.get("UiURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataFormat(AbstractModel):
     """数据表数据格式。
 
@@ -2719,6 +3137,47 @@ class DatabaseResponseInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteNotebookSessionRequest(AbstractModel):
+    """DeleteNotebookSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        """
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNotebookSessionResponse(AbstractModel):
+    """DeleteNotebookSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteScriptRequest(AbstractModel):
@@ -3379,6 +3838,113 @@ class DescribeDMSTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDataEnginesRequest(AbstractModel):
+    """DescribeDataEngines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 滤类型，传参Name应为以下其中一个,
+data-engine-name - String 
+engine-type - String
+state - String 
+mode - String 
+create-time - String 
+message - String
+        :type Filters: list of Filter
+        :param SortBy: 排序字段，支持如下字段类型，create-time
+        :type SortBy: str
+        :param Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc。
+        :type Sorting: str
+        :param Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param DatasourceConnectionName: 已废弃，请使用DatasourceConnectionNameSet
+        :type DatasourceConnectionName: str
+        :param ExcludePublicEngine: 是否不返回共享引擎，true不返回共享引擎，false可以返回共享引擎
+        :type ExcludePublicEngine: bool
+        :param AccessTypes: 参数应该为引擎权限类型，有效类型："USE", "MODIFY", "OPERATE", "MONITOR", "DELETE"
+        :type AccessTypes: list of str
+        :param EngineExecType: 引擎执行任务类型，有效值：SQL/BATCH
+        :type EngineExecType: str
+        :param EngineType: 引擎类型，有效值：spark/presto
+        :type EngineType: str
+        :param DatasourceConnectionNameSet: 网络配置列表，若传入该参数，则返回网络配置关联的计算引擎
+        :type DatasourceConnectionNameSet: list of str
+        """
+        self.Offset = None
+        self.Filters = None
+        self.SortBy = None
+        self.Sorting = None
+        self.Limit = None
+        self.DatasourceConnectionName = None
+        self.ExcludePublicEngine = None
+        self.AccessTypes = None
+        self.EngineExecType = None
+        self.EngineType = None
+        self.DatasourceConnectionNameSet = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.SortBy = params.get("SortBy")
+        self.Sorting = params.get("Sorting")
+        self.Limit = params.get("Limit")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.ExcludePublicEngine = params.get("ExcludePublicEngine")
+        self.AccessTypes = params.get("AccessTypes")
+        self.EngineExecType = params.get("EngineExecType")
+        self.EngineType = params.get("EngineType")
+        self.DatasourceConnectionNameSet = params.get("DatasourceConnectionNameSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataEnginesResponse(AbstractModel):
+    """DescribeDataEngines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngines: 数据引擎列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngines: list of DataEngineInfo
+        :param TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataEngines = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataEngines") is not None:
+            self.DataEngines = []
+            for item in params.get("DataEngines"):
+                obj = DataEngineInfo()
+                obj._deserialize(item)
+                self.DataEngines.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDatabasesRequest(AbstractModel):
     """DescribeDatabases请求参数结构体
 
@@ -3453,6 +4019,67 @@ class DescribeDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNotebookSessionLogRequest(AbstractModel):
+    """DescribeNotebookSessionLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param Limit: 分页参数，默认200
+        :type Limit: int
+        :param Offset: 分页参数，默认0
+        :type Offset: int
+        """
+        self.SessionId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNotebookSessionLogResponse(AbstractModel):
+    """DescribeNotebookSessionLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Logs: 日志信息，默认获取最新的200条
+        :type Logs: list of str
+        :param Limit: 分页参数，默认200
+        :type Limit: int
+        :param Offset: 分页参数，默认0
+        :type Offset: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Logs = None
+        self.Limit = None
+        self.Offset = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Logs = params.get("Logs")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNotebookSessionRequest(AbstractModel):
     """DescribeNotebookSession请求参数结构体
 
@@ -3497,6 +4124,270 @@ class DescribeNotebookSessionResponse(AbstractModel):
         if params.get("Session") is not None:
             self.Session = NotebookSessionInfo()
             self.Session._deserialize(params.get("Session"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNotebookSessionStatementRequest(AbstractModel):
+    """DescribeNotebookSessionStatement请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param StatementId: Session Statement唯一标识
+        :type StatementId: str
+        """
+        self.SessionId = None
+        self.StatementId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.StatementId = params.get("StatementId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNotebookSessionStatementResponse(AbstractModel):
+    """DescribeNotebookSessionStatement返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotebookSessionStatement: Session Statement详情
+        :type NotebookSessionStatement: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionStatementInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotebookSessionStatement = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotebookSessionStatement") is not None:
+            self.NotebookSessionStatement = NotebookSessionStatementInfo()
+            self.NotebookSessionStatement._deserialize(params.get("NotebookSessionStatement"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNotebookSessionStatementSqlResultRequest(AbstractModel):
+    """DescribeNotebookSessionStatementSqlResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务唯一ID
+        :type TaskId: str
+        :param MaxResults: 返回结果的最大行数，范围0~1000，默认为1000.
+        :type MaxResults: int
+        :param NextToken: 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
+        :type NextToken: str
+        """
+        self.TaskId = None
+        self.MaxResults = None
+        self.NextToken = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.MaxResults = params.get("MaxResults")
+        self.NextToken = params.get("NextToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNotebookSessionStatementSqlResultResponse(AbstractModel):
+    """DescribeNotebookSessionStatementSqlResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务Id
+        :type TaskId: str
+        :param ResultSet: 结果数据
+        :type ResultSet: str
+        :param ResultSchema: schema
+        :type ResultSchema: list of Column
+        :param NextToken: 分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextToken: str
+        :param OutputPath: 存储结果地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputPath: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.ResultSet = None
+        self.ResultSchema = None
+        self.NextToken = None
+        self.OutputPath = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.ResultSet = params.get("ResultSet")
+        if params.get("ResultSchema") is not None:
+            self.ResultSchema = []
+            for item in params.get("ResultSchema"):
+                obj = Column()
+                obj._deserialize(item)
+                self.ResultSchema.append(obj)
+        self.NextToken = params.get("NextToken")
+        self.OutputPath = params.get("OutputPath")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNotebookSessionStatementsRequest(AbstractModel):
+    """DescribeNotebookSessionStatements请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param BatchId: 批任务id
+        :type BatchId: str
+        """
+        self.SessionId = None
+        self.BatchId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.BatchId = params.get("BatchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNotebookSessionStatementsResponse(AbstractModel):
+    """DescribeNotebookSessionStatements返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotebookSessionStatements: Session Statement详情
+        :type NotebookSessionStatements: :class:`tencentcloud.dlc.v20210125.models.NotebookSessionStatementBatchInformation`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotebookSessionStatements = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotebookSessionStatements") is not None:
+            self.NotebookSessionStatements = NotebookSessionStatementBatchInformation()
+            self.NotebookSessionStatements._deserialize(params.get("NotebookSessionStatements"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNotebookSessionsRequest(AbstractModel):
+    """DescribeNotebookSessions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineName: DLC Spark作业引擎名称
+        :type DataEngineName: str
+        :param State: Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+        :type State: list of str
+        :param SortFields: 排序字段（默认按创建时间）
+        :type SortFields: list of str
+        :param Asc: 排序字段：true：升序、false：降序（默认）
+        :type Asc: bool
+        :param Limit: 分页字段
+        :type Limit: int
+        :param Offset: 分页字段
+        :type Offset: int
+        """
+        self.DataEngineName = None
+        self.State = None
+        self.SortFields = None
+        self.Asc = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineName = params.get("DataEngineName")
+        self.State = params.get("State")
+        self.SortFields = params.get("SortFields")
+        self.Asc = params.get("Asc")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNotebookSessionsResponse(AbstractModel):
+    """DescribeNotebookSessions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalElements: session总数量
+        :type TotalElements: int
+        :param TotalPages: 总页数
+        :type TotalPages: int
+        :param Page: 当前页码
+        :type Page: int
+        :param Size: 当前页数量
+        :type Size: int
+        :param Sessions: session列表信息
+        :type Sessions: list of NotebookSessions
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalElements = None
+        self.TotalPages = None
+        self.Page = None
+        self.Size = None
+        self.Sessions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalElements = params.get("TotalElements")
+        self.TotalPages = params.get("TotalPages")
+        self.Page = params.get("Page")
+        self.Size = params.get("Size")
+        if params.get("Sessions") is not None:
+            self.Sessions = []
+            for item in params.get("Sessions"):
+                obj = NotebookSessions()
+                obj._deserialize(item)
+                self.Sessions.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4789,6 +5680,29 @@ class Filter(AbstractModel):
         
 
 
+class GenerateCreateMangedTableSqlRequest(AbstractModel):
+    """GenerateCreateMangedTableSql请求参数结构体
+
+    """
+
+
+class GenerateCreateMangedTableSqlResponse(AbstractModel):
+    """GenerateCreateMangedTableSql返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class JobLogResult(AbstractModel):
     """日志详情
 
@@ -5329,6 +6243,116 @@ class ModifyWorkGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NetworkConnection(AbstractModel):
+    """网络配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 网络配置id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param AssociateId: 网络配置唯一标志符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociateId: str
+        :param HouseId: 计算引擎id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HouseId: str
+        :param DatasourceConnectionId: 数据源id(已废弃)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceConnectionId: str
+        :param State: 网络配置状态（0-初始化，1-正常）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param Appid: 创建用户Appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Appid: int
+        :param HouseName: 计算引擎名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HouseName: str
+        :param DatasourceConnectionName: 网络配置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceConnectionName: str
+        :param NetworkConnectionType: 网络配置类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkConnectionType: int
+        :param Uin: 创建用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param SubAccountUin: 创建用户SubAccountUin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
+        :param NetworkConnectionDesc: 网络配置描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkConnectionDesc: str
+        :param DatasourceConnectionVpcId: 数据源vpcid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceConnectionVpcId: str
+        :param DatasourceConnectionSubnetId: 数据源SubnetId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceConnectionSubnetId: str
+        :param DatasourceConnectionCidrBlock: 数据源SubnetId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceConnectionCidrBlock: str
+        :param DatasourceConnectionSubnetCidrBlock: 数据源SubnetCidrBlock
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceConnectionSubnetCidrBlock: str
+        """
+        self.Id = None
+        self.AssociateId = None
+        self.HouseId = None
+        self.DatasourceConnectionId = None
+        self.State = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Appid = None
+        self.HouseName = None
+        self.DatasourceConnectionName = None
+        self.NetworkConnectionType = None
+        self.Uin = None
+        self.SubAccountUin = None
+        self.NetworkConnectionDesc = None
+        self.DatasourceConnectionVpcId = None
+        self.DatasourceConnectionSubnetId = None
+        self.DatasourceConnectionCidrBlock = None
+        self.DatasourceConnectionSubnetCidrBlock = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.AssociateId = params.get("AssociateId")
+        self.HouseId = params.get("HouseId")
+        self.DatasourceConnectionId = params.get("DatasourceConnectionId")
+        self.State = params.get("State")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Appid = params.get("Appid")
+        self.HouseName = params.get("HouseName")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.NetworkConnectionType = params.get("NetworkConnectionType")
+        self.Uin = params.get("Uin")
+        self.SubAccountUin = params.get("SubAccountUin")
+        self.NetworkConnectionDesc = params.get("NetworkConnectionDesc")
+        self.DatasourceConnectionVpcId = params.get("DatasourceConnectionVpcId")
+        self.DatasourceConnectionSubnetId = params.get("DatasourceConnectionSubnetId")
+        self.DatasourceConnectionCidrBlock = params.get("DatasourceConnectionCidrBlock")
+        self.DatasourceConnectionSubnetCidrBlock = params.get("DatasourceConnectionSubnetCidrBlock")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NotebookSessionInfo(AbstractModel):
     """Notebook Session详细信息。
 
@@ -5444,6 +6468,184 @@ class NotebookSessionInfo(AbstractModel):
                 self.AppInfo.append(obj)
         self.SparkUiUrl = params.get("SparkUiUrl")
         self.ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NotebookSessionStatementBatchInformation(AbstractModel):
+    """按批提交Statement运行SQL任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotebookSessionStatementBatch: 任务详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotebookSessionStatementBatch: list of NotebookSessionStatementInfo
+        :param IsAvailable: 当前批任务是否运行完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAvailable: bool
+        :param SessionId: Session唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param BatchId: Batch唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchId: str
+        """
+        self.NotebookSessionStatementBatch = None
+        self.IsAvailable = None
+        self.SessionId = None
+        self.BatchId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotebookSessionStatementBatch") is not None:
+            self.NotebookSessionStatementBatch = []
+            for item in params.get("NotebookSessionStatementBatch"):
+                obj = NotebookSessionStatementInfo()
+                obj._deserialize(item)
+                self.NotebookSessionStatementBatch.append(obj)
+        self.IsAvailable = params.get("IsAvailable")
+        self.SessionId = params.get("SessionId")
+        self.BatchId = params.get("BatchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NotebookSessionStatementInfo(AbstractModel):
+    """NotebookSessionStatement详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Completed: 完成时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Completed: int
+        :param Started: 开始时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Started: int
+        :param Progress: 完成进度，百分制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: float
+        :param StatementId: Session Statement唯一标识
+        :type StatementId: str
+        :param State: Session Statement状态，包含：waiting（排队中）、running（运行中）、available（正常）、error（异常）、cancelling（取消中）、cancelled（已取消）
+        :type State: str
+        :param OutPut: Statement输出信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutPut: :class:`tencentcloud.dlc.v20210125.models.StatementOutput`
+        :param BatchId: 批任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchId: str
+        :param Code: 运行语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self.Completed = None
+        self.Started = None
+        self.Progress = None
+        self.StatementId = None
+        self.State = None
+        self.OutPut = None
+        self.BatchId = None
+        self.Code = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.Completed = params.get("Completed")
+        self.Started = params.get("Started")
+        self.Progress = params.get("Progress")
+        self.StatementId = params.get("StatementId")
+        self.State = params.get("State")
+        if params.get("OutPut") is not None:
+            self.OutPut = StatementOutput()
+            self.OutPut._deserialize(params.get("OutPut"))
+        self.BatchId = params.get("BatchId")
+        self.Code = params.get("Code")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NotebookSessions(AbstractModel):
+    """notebook session列表信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Kind: 类型，当前支持：spark、pyspark、sparkr、sql
+        :type Kind: str
+        :param SessionId: Session唯一标识
+        :type SessionId: str
+        :param ProxyUser: 代理用户，默认为root
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyUser: str
+        :param State: Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+        :type State: str
+        :param SparkAppId: Spark任务返回的AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkAppId: str
+        :param Name: Session名称
+        :type Name: str
+        :param CreateTime: Session创建时间
+        :type CreateTime: str
+        :param DataEngineName: 引擎名称
+        :type DataEngineName: str
+        :param LastRunningTime: 最新的运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastRunningTime: str
+        :param Creator: 创建者
+        :type Creator: str
+        :param SparkUiUrl: spark ui地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkUiUrl: str
+        """
+        self.Kind = None
+        self.SessionId = None
+        self.ProxyUser = None
+        self.State = None
+        self.SparkAppId = None
+        self.Name = None
+        self.CreateTime = None
+        self.DataEngineName = None
+        self.LastRunningTime = None
+        self.Creator = None
+        self.SparkUiUrl = None
+
+
+    def _deserialize(self, params):
+        self.Kind = params.get("Kind")
+        self.SessionId = params.get("SessionId")
+        self.ProxyUser = params.get("ProxyUser")
+        self.State = params.get("State")
+        self.SparkAppId = params.get("SparkAppId")
+        self.Name = params.get("Name")
+        self.CreateTime = params.get("CreateTime")
+        self.DataEngineName = params.get("DataEngineName")
+        self.LastRunningTime = params.get("LastRunningTime")
+        self.Creator = params.get("Creator")
+        self.SparkUiUrl = params.get("SparkUiUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5952,6 +7154,66 @@ class SparkJobInfo(AbstractModel):
         
 
 
+class StatementOutput(AbstractModel):
+    """notebook session statement输出信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExecutionCount: 执行总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionCount: int
+        :param Data: Statement数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of KVPair
+        :param Status: Statement状态:ok,error
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param ErrorName: 错误名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorName: str
+        :param ErrorValue: 错误类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorValue: str
+        :param ErrorMessage: 错误堆栈信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: list of str
+        :param SQLResult: SQL类型任务结果返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SQLResult: str
+        """
+        self.ExecutionCount = None
+        self.Data = None
+        self.Status = None
+        self.ErrorName = None
+        self.ErrorValue = None
+        self.ErrorMessage = None
+        self.SQLResult = None
+
+
+    def _deserialize(self, params):
+        self.ExecutionCount = params.get("ExecutionCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Status = params.get("Status")
+        self.ErrorName = params.get("ErrorName")
+        self.ErrorValue = params.get("ErrorValue")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.SQLResult = params.get("SQLResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StreamingStatistics(AbstractModel):
     """spark流任务统计信息
 
@@ -6353,6 +7615,36 @@ class TableResponseInfo(AbstractModel):
         self.InputFormat = params.get("InputFormat")
         self.StorageSize = params.get("StorageSize")
         self.RecordCount = params.get("RecordCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagInfo(AbstractModel):
+    """标签对信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

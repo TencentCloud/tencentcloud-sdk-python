@@ -210,6 +210,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelNotebookSessionStatement(self, request):
+        """本接口（CancelNotebookSessionStatement）用于取消session statement
+
+        :param request: Request instance for CancelNotebookSessionStatement.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CancelNotebookSessionStatementRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CancelNotebookSessionStatementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelNotebookSessionStatement", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelNotebookSessionStatementResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CancelNotebookSessionStatementBatch(self, request):
+        """本接口（CancelNotebookSessionStatementBatch）用于按批取消Session statement。
+
+        :param request: Request instance for CancelNotebookSessionStatementBatch.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CancelNotebookSessionStatementBatchRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CancelNotebookSessionStatementBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelNotebookSessionStatementBatch", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelNotebookSessionStatementBatchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelTask(self, request):
         """本接口（CancelTask），用于取消任务执行
 
@@ -372,7 +418,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateInternalTable(self, request):
-        """创建托管存储内表
+        """创建托管存储内表（该接口已废弃）
 
         :param request: Request instance for CreateInternalTable.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateInternalTableRequest`
@@ -408,6 +454,52 @@ class DlcClient(AbstractClient):
             body = self.call("CreateNotebookSession", params, headers=headers)
             response = json.loads(body)
             model = models.CreateNotebookSessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNotebookSessionStatement(self, request):
+        """本接口（CreateNotebookSessionStatement）用于创建session statement
+
+        :param request: Request instance for CreateNotebookSessionStatement.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionStatementRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionStatementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNotebookSessionStatement", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNotebookSessionStatementResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateNotebookSessionStatementSupportBatchSQL(self, request):
+        """本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建Statement批量运行SQL任务。
+
+        :param request: Request instance for CreateNotebookSessionStatementSupportBatchSQL.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionStatementSupportBatchSQLRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionStatementSupportBatchSQLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNotebookSessionStatementSupportBatchSQL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNotebookSessionStatementSupportBatchSQLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -670,6 +762,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteNotebookSession(self, request):
+        """本接口（DeleteNotebookSession）用于删除notebook livy session
+
+        :param request: Request instance for DeleteNotebookSession.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteNotebookSessionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteNotebookSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNotebookSession", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteNotebookSessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteScript(self, request):
         """该接口（DeleteScript）用于删除sql脚本。
 
@@ -877,6 +992,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDataEngines(self, request):
+        """本接口（DescribeDataEngines）用于获取DataEngines信息列表
+
+        :param request: Request instance for DescribeDataEngines.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEngines", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEnginesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDatabases(self, request):
         """本接口（DescribeDatabases）用于查询数据库列表。
 
@@ -914,6 +1052,121 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeNotebookSession", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNotebookSessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNotebookSessionLog(self, request):
+        """本接口（DescribeNotebookSessionLog）用于获取notebook livy session日志
+
+        :param request: Request instance for DescribeNotebookSessionLog.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionLogRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotebookSessionLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotebookSessionLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNotebookSessionStatement(self, request):
+        """本接口（DescribeNotebookSessionStatement）用于获取session statement信息
+
+        :param request: Request instance for DescribeNotebookSessionStatement.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotebookSessionStatement", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotebookSessionStatementResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNotebookSessionStatementSqlResult(self, request):
+        """本接口（DescribeNotebookSessionStatementSqlResult）用于获取statement运行结果。
+
+        :param request: Request instance for DescribeNotebookSessionStatementSqlResult.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementSqlResultRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementSqlResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotebookSessionStatementSqlResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotebookSessionStatementSqlResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNotebookSessionStatements(self, request):
+        """本接口（DescribeNotebookSessionStatements）用于获取Session Statement列表。
+
+        :param request: Request instance for DescribeNotebookSessionStatements.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotebookSessionStatements", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotebookSessionStatementsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNotebookSessions(self, request):
+        """本接口（DescribeNotebookSessions）用于获取notebook livy session列表
+
+        :param request: Request instance for DescribeNotebookSessions.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNotebookSessions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNotebookSessionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1328,6 +1581,29 @@ class DlcClient(AbstractClient):
             body = self.call("DropDMSTable", params, headers=headers)
             response = json.loads(body)
             model = models.DropDMSTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GenerateCreateMangedTableSql(self, request):
+        """生成创建托管表语句
+
+        :param request: Request instance for GenerateCreateMangedTableSql.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GenerateCreateMangedTableSqlRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GenerateCreateMangedTableSqlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateCreateMangedTableSql", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateCreateMangedTableSqlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

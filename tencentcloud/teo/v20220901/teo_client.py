@@ -72,6 +72,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAccelerationDomain(self, request):
+        """创建加速域名
+
+        :param request: Request instance for CreateAccelerationDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateAccelerationDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateAccelerationDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccelerationDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAccelerationDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAliasDomain(self, request):
         """创建别称域名。
 
@@ -348,6 +371,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAccelerationDomains(self, request):
+        """批量删除加速域名
+
+        :param request: Request instance for DeleteAccelerationDomains.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteAccelerationDomainsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteAccelerationDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccelerationDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAccelerationDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAliasDomain(self, request):
         """删除别称域名。
 
@@ -477,6 +523,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteZone", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccelerationDomains(self, request):
+        """查询加速域名列表，支持搜索、分页、排序、过滤。
+
+        :param request: Request instance for DescribeAccelerationDomains.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAccelerationDomainsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeAccelerationDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccelerationDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccelerationDomainsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1466,6 +1535,52 @@ class TeoClient(AbstractClient):
             body = self.call("IdentifyZone", params, headers=headers)
             response = json.loads(body)
             model = models.IdentifyZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAccelerationDomain(self, request):
+        """修改加速域名信息
+
+        :param request: Request instance for ModifyAccelerationDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAccelerationDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyAccelerationDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccelerationDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccelerationDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAccelerationDomainStatuses(self, request):
+        """批量修改加速域名状态
+
+        :param request: Request instance for ModifyAccelerationDomainStatuses.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAccelerationDomainStatusesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyAccelerationDomainStatusesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccelerationDomainStatuses", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccelerationDomainStatusesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

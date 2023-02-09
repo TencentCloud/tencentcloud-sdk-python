@@ -44,6 +44,62 @@ class AccelerateType(AbstractModel):
         
 
 
+class AccelerationDomain(AbstractModel):
+    """加速域名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginDetail: 源站信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
+        :param CreatedOn: 创建时间。
+        :type CreatedOn: str
+        :param DomainName: 加速域名名称。
+        :type DomainName: str
+        :param ModifiedOn: 修改时间。
+        :type ModifiedOn: str
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param DomainStatus: 加速域名状态，取值有：
+<li>online：已生效；</li>
+<li>process：部署中；</li>
+<li>offline：已停用；</li>
+<li>forbidden：已封禁；</li>
+<li>init：未生效，待激活站点；</li>
+        :type DomainStatus: str
+        :param Cname: CNAME 地址。
+        :type Cname: str
+        """
+        self.OriginDetail = None
+        self.CreatedOn = None
+        self.DomainName = None
+        self.ModifiedOn = None
+        self.ZoneId = None
+        self.DomainStatus = None
+        self.Cname = None
+
+
+    def _deserialize(self, params):
+        if params.get("OriginDetail") is not None:
+            self.OriginDetail = OriginDetail()
+            self.OriginDetail._deserialize(params.get("OriginDetail"))
+        self.CreatedOn = params.get("CreatedOn")
+        self.DomainName = params.get("DomainName")
+        self.ModifiedOn = params.get("ModifiedOn")
+        self.ZoneId = params.get("ZoneId")
+        self.DomainStatus = params.get("DomainStatus")
+        self.Cname = params.get("Cname")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AclCondition(AbstractModel):
     """精准防护条件
 
@@ -1352,6 +1408,57 @@ class Compression(AbstractModel):
         
 
 
+class CreateAccelerationDomainRequest(AbstractModel):
+    """CreateAccelerationDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 加速域名所属站点ID。
+        :type ZoneId: str
+        :param DomainName: 加速域名名称。
+        :type DomainName: str
+        :param OriginInfo: 源站信息。
+        :type OriginInfo: :class:`tencentcloud.teo.v20220901.models.OriginInfo`
+        """
+        self.ZoneId = None
+        self.DomainName = None
+        self.OriginInfo = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.DomainName = params.get("DomainName")
+        if params.get("OriginInfo") is not None:
+            self.OriginInfo = OriginInfo()
+            self.OriginInfo._deserialize(params.get("OriginInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccelerationDomainResponse(AbstractModel):
+    """CreateAccelerationDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateAliasDomainRequest(AbstractModel):
     """CreateAliasDomain请求参数结构体
 
@@ -2263,6 +2370,57 @@ class DefaultServerCertInfo(AbstractModel):
         
 
 
+class DeleteAccelerationDomainsRequest(AbstractModel):
+    """DeleteAccelerationDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 加速域名所属站点ID。
+        :type ZoneId: str
+        :param DomainNames: 需要删除的加速域名ID列表。
+        :type DomainNames: list of str
+        :param Force: 是否强制删除。当域名存在关联资源（如马甲域名、流量调度功能）时，是否强制删除该域名，取值有：
+<li> true：删除该域名及所有关联资源；</li>
+<li> false：当该加速域名存在关联资源时，不允许删除。</li>不填写，默认值为：false。
+        :type Force: bool
+        """
+        self.ZoneId = None
+        self.DomainNames = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.DomainNames = params.get("DomainNames")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccelerationDomainsResponse(AbstractModel):
+    """DeleteAccelerationDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAliasDomainRequest(AbstractModel):
     """DeleteAliasDomain请求参数结构体
 
@@ -2530,6 +2688,100 @@ class DeleteZoneResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccelerationDomainsRequest(AbstractModel):
+    """DescribeAccelerationDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 加速域名所属站点ID。不填写该参数默认返回所有站点下的加速域名。
+        :type ZoneId: str
+        :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+<li>domain-name<br>   按照【<strong>加速域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否
+<li>origin-type<br>   按照【<strong>源站类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
+<li>origin<br>   按照【<strong>主源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
+<li>backup-origin<br>   按照【<strong>备用源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
+        :type Filters: list of AdvancedFilter
+        :param Direction: 列表排序方式，取值有：
+<li>asc：升序排列；</li>
+<li>desc：降序排列。</li>默认值为asc。
+        :type Direction: str
+        :param Match: 匹配方式，取值有：
+<li>all：返回匹配所有查询条件的加速域名；</li>
+<li>any：返回匹配任意一个查询条件的加速域名。</li>默认值为all。
+        :type Match: str
+        :param Limit: 分页查询限制数目，默认值：20，上限：200。
+        :type Limit: int
+        :param Offset: 分页查询偏移量，默认为 0。
+        :type Offset: int
+        :param Order: 排序依据，取值有：
+<li>created_on：加速域名创建时间；</li>
+<li>domain-name：加速域名名称；</li>
+</li>默认根据domain-name属性排序。
+        :type Order: str
+        """
+        self.ZoneId = None
+        self.Filters = None
+        self.Direction = None
+        self.Match = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Direction = params.get("Direction")
+        self.Match = params.get("Match")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccelerationDomainsResponse(AbstractModel):
+    """DescribeAccelerationDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 加速域名总数。
+        :type TotalCount: int
+        :param AccelerationDomains: 加速域名列表。
+        :type AccelerationDomains: list of AccelerationDomain
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.AccelerationDomains = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AccelerationDomains") is not None:
+            self.AccelerationDomains = []
+            for item in params.get("AccelerationDomains"):
+                obj = AccelerationDomain()
+                obj._deserialize(item)
+                self.AccelerationDomains.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7291,6 +7543,114 @@ class MaxAge(AbstractModel):
         
 
 
+class ModifyAccelerationDomainRequest(AbstractModel):
+    """ModifyAccelerationDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 加速域名所属站点ID。
+        :type ZoneId: str
+        :param DomainName: 加速域名名称。
+        :type DomainName: str
+        :param OriginInfo: 源站信息。
+        :type OriginInfo: :class:`tencentcloud.teo.v20220901.models.OriginInfo`
+        """
+        self.ZoneId = None
+        self.DomainName = None
+        self.OriginInfo = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.DomainName = params.get("DomainName")
+        if params.get("OriginInfo") is not None:
+            self.OriginInfo = OriginInfo()
+            self.OriginInfo._deserialize(params.get("OriginInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccelerationDomainResponse(AbstractModel):
+    """ModifyAccelerationDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAccelerationDomainStatusesRequest(AbstractModel):
+    """ModifyAccelerationDomainStatuses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 加速域名所属站点ID。
+        :type ZoneId: str
+        :param DomainNames: 要执行状态变更的加速域名列表。
+        :type DomainNames: list of str
+        :param Status: 加速域名状态，取值有：
+<li>online：启用；</li>
+<li>offline：停用。</li>
+        :type Status: str
+        :param Force: 是否强制停用。当域名存在关联资源（如马甲域名、流量调度功能）时，是否强制停用该域名，取值有：
+<li> true：停用该域名及所有关联资源；</li>
+<li> false：当该加速域名存在关联资源时，不允许停用。</li>不填写，默认值为：false。
+        :type Force: bool
+        """
+        self.ZoneId = None
+        self.DomainNames = None
+        self.Status = None
+        self.Force = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.DomainNames = params.get("DomainNames")
+        self.Status = params.get("Status")
+        self.Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccelerationDomainStatusesResponse(AbstractModel):
+    """ModifyAccelerationDomainStatuses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAliasDomainRequest(AbstractModel):
     """ModifyAliasDomain请求参数结构体
 
@@ -8561,6 +8921,67 @@ class Origin(AbstractModel):
         
 
 
+class OriginDetail(AbstractModel):
+    """加速域名源站信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginType: 源站类型，取值有：
+<li>IP_DOMAIN：IPV4、IPV6或域名类型源站；</li>
+<li>COS：COS源。</li>
+<li>ORIGIN_GROUP：源站组类型源站。</li>
+<li>AWS_S3：AWS S3对象存储源站。</li>
+        :type OriginType: str
+        :param Origin: 源站地址，当OriginType参数指定为ORIGIN_GROUP时，该参数填写源站组ID，其他情况下填写源站地址。
+        :type Origin: str
+        :param BackupOrigin: 备用源站组ID，该参数在OriginType参数指定为ORIGIN_GROUP时生效，为空表示不使用备用源站。
+        :type BackupOrigin: str
+        :param OriginGroupName: 主源源站组名称，当OriginType参数指定为ORIGIN_GROUP时该参数生效。
+        :type OriginGroupName: str
+        :param BackOriginGroupName: 备用源站源站组名称，当OriginType参数指定为ORIGIN_GROUP，且用户指定了被用源站时该参数生效。
+        :type BackOriginGroupName: str
+        :param PrivateAccess: 指定是否允许访问私有对象存储源站。当源站类型OriginType=COS或AWS_S3时有效 取值有：
+<li>on：使用私有鉴权；</li>
+<li>off：不使用私有鉴权。</li>
+不填写，默认值为off。
+        :type PrivateAccess: str
+        :param PrivateParameters: 私有鉴权使用参数，当源站类型PrivateAccess=on时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateParameters: list of PrivateParameter
+        """
+        self.OriginType = None
+        self.Origin = None
+        self.BackupOrigin = None
+        self.OriginGroupName = None
+        self.BackOriginGroupName = None
+        self.PrivateAccess = None
+        self.PrivateParameters = None
+
+
+    def _deserialize(self, params):
+        self.OriginType = params.get("OriginType")
+        self.Origin = params.get("Origin")
+        self.BackupOrigin = params.get("BackupOrigin")
+        self.OriginGroupName = params.get("OriginGroupName")
+        self.BackOriginGroupName = params.get("BackOriginGroupName")
+        self.PrivateAccess = params.get("PrivateAccess")
+        if params.get("PrivateParameters") is not None:
+            self.PrivateParameters = []
+            for item in params.get("PrivateParameters"):
+                obj = PrivateParameter()
+                obj._deserialize(item)
+                self.PrivateParameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OriginGroup(AbstractModel):
     """源站组信息
 
@@ -8620,6 +9041,62 @@ class OriginGroup(AbstractModel):
                 self.OriginRecords.append(obj)
         self.UpdateTime = params.get("UpdateTime")
         self.HostHeader = params.get("HostHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginInfo(AbstractModel):
+    """加速域名源站信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginType: 源站类型，取值有：
+<li>IP_DOMAIN：IPV4、IPV6或域名类型源站；</li>
+<li>COS：COS源。</li>
+<li>ORIGIN_GROUP：源站组类型源站。</li>
+<li>AWS_S3：AWS S3对象存储源站。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginType: str
+        :param Origin: 源站地址，当OriginType参数指定为ORIGIN_GROUP时，该参数填写源站组ID，其他情况下填写源站地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Origin: str
+        :param BackupOrigin: 备用源站组ID，该参数在OriginType参数指定为ORIGIN_GROUP时生效，为空表示不使用备用源站。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupOrigin: str
+        :param PrivateAccess: 指定是否允许访问私有对象存储源站，当源站类型OriginType=COS或AWS_S3时有效，取值有：
+<li>on：使用私有鉴权；</li>
+<li>off：不使用私有鉴权。</li>不填写，默认值为：off。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateAccess: str
+        :param PrivateParameters: 私有鉴权使用参数，当源站类型PrivateAccess=on时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateParameters: list of PrivateParameter
+        """
+        self.OriginType = None
+        self.Origin = None
+        self.BackupOrigin = None
+        self.PrivateAccess = None
+        self.PrivateParameters = None
+
+
+    def _deserialize(self, params):
+        self.OriginType = params.get("OriginType")
+        self.Origin = params.get("Origin")
+        self.BackupOrigin = params.get("BackupOrigin")
+        self.PrivateAccess = params.get("PrivateAccess")
+        if params.get("PrivateParameters") is not None:
+            self.PrivateParameters = []
+            for item in params.get("PrivateParameters"):
+                obj = PrivateParameter()
+                obj._deserialize(item)
+                self.PrivateParameters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

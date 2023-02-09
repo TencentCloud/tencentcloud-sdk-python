@@ -26,6 +26,29 @@ class CccClient(AbstractClient):
     _service = 'ccc'
 
 
+    def BindNumberCallOutSkillGroup(self, request):
+        """绑定号码外呼技能组
+
+        :param request: Request instance for BindNumberCallOutSkillGroup.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallOutSkillGroupRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallOutSkillGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindNumberCallOutSkillGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindNumberCallOutSkillGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindStaffSkillGroupList(self, request):
         """绑定坐席所属技能组
 
@@ -511,6 +534,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNumbers(self, request):
+        """查询号码列表
+
+        :param request: Request instance for DescribeNumbers.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeNumbersRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeNumbersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNumbers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNumbersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePSTNActiveSessionList(self, request):
         """获取当前正在通话的会话列表
 
@@ -824,6 +870,29 @@ class CccClient(AbstractClient):
             body = self.call("StopAutoCalloutTask", params, headers=headers)
             response = json.loads(body)
             model = models.StopAutoCalloutTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindNumberCallOutSkillGroup(self, request):
+        """解绑号码外呼技能组
+
+        :param request: Request instance for UnbindNumberCallOutSkillGroup.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.UnbindNumberCallOutSkillGroupRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.UnbindNumberCallOutSkillGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindNumberCallOutSkillGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindNumberCallOutSkillGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -384,7 +384,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTimeShiftRule(self, request):
-        """创建直播时移规则，需要先调用[CreateLiveTimeShiftTemplate](/document/product/267/84589)接口创建录制模板，将返回的模板id绑定到流使用。
+        """创建直播时移规则，需要先调用[CreateLiveTimeShiftTemplate](/document/product/267/86169)接口创建直播时移模板，将返回的模板id绑定到流使用。
         <br>直播时移相关文档：[直播时移](/document/product/267/86134)。
 
         :param request: Request instance for CreateLiveTimeShiftRule.

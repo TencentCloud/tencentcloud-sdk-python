@@ -33,10 +33,12 @@ class AccountCreateInfo(AbstractModel):
         :type DBPrivileges: list of DBPrivilege
         :param Remark: 账号备注信息
         :type Remark: str
-        :param IsAdmin: 是否为管理员账户，默认为否
+        :param IsAdmin: 是否为管理员账户，当值为true 等价于基础版AccountType=L0，高可用AccountType=L1，当值为false，等价于AccountType=L3
         :type IsAdmin: bool
         :param Authentication: win-windows鉴权,sql-sqlserver鉴权，不填默认值为sql-sqlserver鉴权
         :type Authentication: str
+        :param AccountType: 账号类型，IsAdmin的扩展字段。 L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限，默认L3
+        :type AccountType: str
         """
         self.UserName = None
         self.Password = None
@@ -44,6 +46,7 @@ class AccountCreateInfo(AbstractModel):
         self.Remark = None
         self.IsAdmin = None
         self.Authentication = None
+        self.AccountType = None
 
 
     def _deserialize(self, params):
@@ -58,6 +61,7 @@ class AccountCreateInfo(AbstractModel):
         self.Remark = params.get("Remark")
         self.IsAdmin = params.get("IsAdmin")
         self.Authentication = params.get("Authentication")
+        self.AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -96,6 +100,8 @@ class AccountDetail(AbstractModel):
         :type Authentication: str
         :param Host: win-windows鉴权账户需要host
         :type Host: str
+        :param AccountType: 账号类型。L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限
+        :type AccountType: str
         """
         self.Name = None
         self.Remark = None
@@ -108,6 +114,7 @@ class AccountDetail(AbstractModel):
         self.IsAdmin = None
         self.Authentication = None
         self.Host = None
+        self.AccountType = None
 
 
     def _deserialize(self, params):
@@ -127,6 +134,7 @@ class AccountDetail(AbstractModel):
         self.IsAdmin = params.get("IsAdmin")
         self.Authentication = params.get("Authentication")
         self.Host = params.get("Host")
+        self.AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -173,16 +181,20 @@ class AccountPrivilege(AbstractModel):
         r"""
         :param UserName: 数据库用户名
         :type UserName: str
-        :param Privilege: 数据库权限。ReadWrite表示可读写，ReadOnly表示只读
+        :param Privilege: 数据库权限。ReadWrite表示可读写，ReadOnly表示只读,Delete表示删除DB对该账户的权限，DBOwner所有者
         :type Privilege: str
+        :param AccountType: 账户名称，L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限
+        :type AccountType: str
         """
         self.UserName = None
         self.Privilege = None
+        self.AccountType = None
 
 
     def _deserialize(self, params):
         self.UserName = params.get("UserName")
         self.Privilege = params.get("Privilege")
+        self.AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -203,12 +215,15 @@ class AccountPrivilegeModifyInfo(AbstractModel):
         :type UserName: str
         :param DBPrivileges: 账号权限变更信息
         :type DBPrivileges: list of DBPrivilegeModifyInfo
-        :param IsAdmin: 是否为管理员账户
+        :param IsAdmin: 是否为管理员账户,当值为true 等价于基础版AccountType=L0，高可用AccountType=L1，当值为false时，表示删除管理员权限，默认false
         :type IsAdmin: bool
+        :param AccountType: 账号类型，IsAdmin字段的扩展字段。 L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限，默认L3
+        :type AccountType: str
         """
         self.UserName = None
         self.DBPrivileges = None
         self.IsAdmin = None
+        self.AccountType = None
 
 
     def _deserialize(self, params):
@@ -220,6 +235,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
                 obj._deserialize(item)
                 self.DBPrivileges.append(obj)
         self.IsAdmin = params.get("IsAdmin")
+        self.AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2156,7 +2172,7 @@ class DBPrivilege(AbstractModel):
         r"""
         :param DBName: 数据库名
         :type DBName: str
-        :param Privilege: 数据库权限，ReadWrite表示可读写，ReadOnly表示只读
+        :param Privilege: 数据库权限，ReadWrite表示可读写，ReadOnly表示只读，DBOwner所有者
         :type Privilege: str
         """
         self.DBName = None
@@ -2184,7 +2200,7 @@ class DBPrivilegeModifyInfo(AbstractModel):
         r"""
         :param DBName: 数据库名
         :type DBName: str
-        :param Privilege: 权限变更信息。ReadWrite表示可读写，ReadOnly表示只读，Delete表示删除账号对该DB的权限
+        :param Privilege: 权限变更信息。ReadWrite表示可读写，ReadOnly表示只读，Delete表示删除账号对该DB的权限，DBOwner所有者
         :type Privilege: str
         """
         self.DBName = None
@@ -2222,6 +2238,34 @@ class DBRemark(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBRenameRes(AbstractModel):
+    """数据库重命名返回参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NewName: 新数据库名称
+        :type NewName: str
+        :param OldName: 老数据库名称
+        :type OldName: str
+        """
+        self.NewName = None
+        self.OldName = None
+
+
+    def _deserialize(self, params):
+        self.NewName = params.get("NewName")
+        self.OldName = params.get("OldName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2338,6 +2382,8 @@ class DbNormalDetail(AbstractModel):
         :type StateDesc: str
         :param UserAccessDesc: 用户类型
         :type UserAccessDesc: str
+        :param CreateTime: 数据库创建时间
+        :type CreateTime: str
         """
         self.IsSubscribed = None
         self.CollationName = None
@@ -2357,6 +2403,7 @@ class DbNormalDetail(AbstractModel):
         self.RetentionPeriod = None
         self.StateDesc = None
         self.UserAccessDesc = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -2378,6 +2425,7 @@ class DbNormalDetail(AbstractModel):
         self.RetentionPeriod = params.get("RetentionPeriod")
         self.StateDesc = params.get("StateDesc")
         self.UserAccessDesc = params.get("UserAccessDesc")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6019,6 +6067,9 @@ class Migration(AbstractModel):
         :param IsRecovery: 是否是最终恢复，全量导入任务该字段为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsRecovery: str
+        :param DBRename: 重命名的数据库名称集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBRename: list of DBRenameRes
         """
         self.MigrationId = None
         self.MigrationName = None
@@ -6036,6 +6087,7 @@ class Migration(AbstractModel):
         self.Detail = None
         self.Action = None
         self.IsRecovery = None
+        self.DBRename = None
 
 
     def _deserialize(self, params):
@@ -6059,6 +6111,12 @@ class Migration(AbstractModel):
             self.Action = MigrationAction()
             self.Action._deserialize(params.get("Action"))
         self.IsRecovery = params.get("IsRecovery")
+        if params.get("DBRename") is not None:
+            self.DBRename = []
+            for item in params.get("DBRename"):
+                obj = DBRenameRes()
+                obj._deserialize(item)
+                self.DBRename.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6297,6 +6355,8 @@ class ModifyBackupMigrationRequest(AbstractModel):
         :type UploadType: str
         :param BackupFiles: UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
         :type BackupFiles: list of str
+        :param DBRename: 需要重命名的数据库名称集合
+        :type DBRename: list of RenameRestoreDatabase
         """
         self.InstanceId = None
         self.BackupMigrationId = None
@@ -6304,6 +6364,7 @@ class ModifyBackupMigrationRequest(AbstractModel):
         self.RecoveryType = None
         self.UploadType = None
         self.BackupFiles = None
+        self.DBRename = None
 
 
     def _deserialize(self, params):
@@ -6313,6 +6374,12 @@ class ModifyBackupMigrationRequest(AbstractModel):
         self.RecoveryType = params.get("RecoveryType")
         self.UploadType = params.get("UploadType")
         self.BackupFiles = params.get("BackupFiles")
+        if params.get("DBRename") is not None:
+            self.DBRename = []
+            for item in params.get("DBRename"):
+                obj = RenameRestoreDatabase()
+                obj._deserialize(item)
+                self.DBRename.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8095,7 +8162,7 @@ class RemoveBackupsResponse(AbstractModel):
 
 
 class RenameRestoreDatabase(AbstractModel):
-    """用于RestoreInstance，RollbackInstance，CreateMigration、CloneDB 等接口；对恢复的库进行重命名，且支持选择要恢复的库。
+    """用于RestoreInstance，RollbackInstance，CreateMigration、CloneDB、ModifyBackupMigration 等接口；对恢复的库进行重命名，且支持选择要恢复的库。
 
     """
 

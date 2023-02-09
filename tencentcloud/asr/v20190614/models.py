@@ -390,8 +390,11 @@ class CreateRecTaskRequest(AbstractModel):
         :type EmotionalEnergy: int
         :param ReinforceHotword: 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
         :type ReinforceHotword: int
-        :param SentenceMaxLength: 单标点最多字数，取值范围：[6，40]。默认为0，不开启该功能。该参数可用于字幕生成场景，控制单行字幕最大字数。
+        :param SentenceMaxLength: 单标点最多字数，取值范围：[6，40]。默认为0，不开启该功能。该参数可用于字幕生成场景，控制单行字幕最大字数（设置ResTextFormat为3，解析返回的ResultDetail列表，通过结构中FinalSentence获取单个标点断句结果）。
         :type SentenceMaxLength: int
+        :param EmotionRecognition: 情绪识别能力(目前支持16k_zh) 默认为0，不开启。 1：开启情绪识别但是不会在文本展示“情绪标签”， 2：开启情绪识别并且在文本展示“情绪标签”。（该功能需要设置ResTextFormat 大于0）
+注意：本功能为增值服务，购买对应套餐包后，将参数设置为1或2时方可按对应方式生效，并消耗套餐包对应资源。参数设置为0时无需购买套餐包，也不会消耗对应资源。
+        :type EmotionRecognition: int
         """
         self.EngineModelType = None
         self.ChannelNum = None
@@ -413,6 +416,7 @@ class CreateRecTaskRequest(AbstractModel):
         self.EmotionalEnergy = None
         self.ReinforceHotword = None
         self.SentenceMaxLength = None
+        self.EmotionRecognition = None
 
 
     def _deserialize(self, params):
@@ -436,6 +440,7 @@ class CreateRecTaskRequest(AbstractModel):
         self.EmotionalEnergy = params.get("EmotionalEnergy")
         self.ReinforceHotword = params.get("ReinforceHotword")
         self.SentenceMaxLength = params.get("SentenceMaxLength")
+        self.EmotionRecognition = params.get("EmotionRecognition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1141,6 +1146,9 @@ class SentenceDetail(AbstractModel):
         :param SilenceTime: 本句与上一句之间的静音时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type SilenceTime: int
+        :param EmotionType: 情绪类型（可能为空）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmotionType: list of str
         """
         self.FinalSentence = None
         self.SliceSentence = None
@@ -1152,6 +1160,7 @@ class SentenceDetail(AbstractModel):
         self.SpeakerId = None
         self.EmotionalEnergy = None
         self.SilenceTime = None
+        self.EmotionType = None
 
 
     def _deserialize(self, params):
@@ -1170,6 +1179,7 @@ class SentenceDetail(AbstractModel):
         self.SpeakerId = params.get("SpeakerId")
         self.EmotionalEnergy = params.get("EmotionalEnergy")
         self.SilenceTime = params.get("SilenceTime")
+        self.EmotionType = params.get("EmotionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
