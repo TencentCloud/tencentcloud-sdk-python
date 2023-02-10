@@ -6220,6 +6220,9 @@ class InternalTenant(AbstractModel):
         :param MaxRetentionSizeInMB: 消息最大保留空间，MB为单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetentionSizeInMB: int
+        :param PublicAccessEnabled: public Access Enabled
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAccessEnabled: bool
         """
         self.TenantId = None
         self.TenantName = None
@@ -6242,6 +6245,7 @@ class InternalTenant(AbstractModel):
         self.MaxDispatchRateInBytes = None
         self.MaxPublishRateInBytes = None
         self.MaxRetentionSizeInMB = None
+        self.PublicAccessEnabled = None
 
 
     def _deserialize(self, params):
@@ -6266,6 +6270,7 @@ class InternalTenant(AbstractModel):
         self.MaxDispatchRateInBytes = params.get("MaxDispatchRateInBytes")
         self.MaxPublishRateInBytes = params.get("MaxPublishRateInBytes")
         self.MaxRetentionSizeInMB = params.get("MaxRetentionSizeInMB")
+        self.PublicAccessEnabled = params.get("PublicAccessEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7907,6 +7912,9 @@ class RocketMQClusterConfig(AbstractModel):
         :type MaxRetentionTime: int
         :param MaxLatencyTime: 消息最长延时，以毫秒为单位
         :type MaxLatencyTime: int
+        :param MaxQueuesPerTopic: 单个主题最大队列数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxQueuesPerTopic: int
         """
         self.MaxTpsPerNamespace = None
         self.MaxNamespaceNum = None
@@ -7917,6 +7925,7 @@ class RocketMQClusterConfig(AbstractModel):
         self.UsedGroupNum = None
         self.MaxRetentionTime = None
         self.MaxLatencyTime = None
+        self.MaxQueuesPerTopic = None
 
 
     def _deserialize(self, params):
@@ -7929,6 +7938,7 @@ class RocketMQClusterConfig(AbstractModel):
         self.UsedGroupNum = params.get("UsedGroupNum")
         self.MaxRetentionTime = params.get("MaxRetentionTime")
         self.MaxLatencyTime = params.get("MaxLatencyTime")
+        self.MaxQueuesPerTopic = params.get("MaxQueuesPerTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8300,7 +8310,7 @@ class RocketMQVipInstance(AbstractModel):
         :param InstanceVersion: 实例版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: str
-        :param Status: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常
+        :param Status: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
         :type Status: int
         :param NodeCount: 节点数量
         :type NodeCount: int

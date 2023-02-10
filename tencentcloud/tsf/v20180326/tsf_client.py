@@ -854,6 +854,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteFileConfig(self, request):
+        """删除文件配置项
+
+        :param request: Request instance for DeleteFileConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteFileConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteFileConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFileConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFileConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteGroup(self, request):
         """删除容器部署组
 

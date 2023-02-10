@@ -1880,19 +1880,22 @@ class CCN(AbstractModel):
         :param InstanceChargeType: 付费类型，PREPAID为预付费，POSTPAID为后付费。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceChargeType: str
-        :param BandwidthLimitType: 限速类型，INTER_REGION_LIMIT为地域间限速；OUTER_REGION_LIMIT为地域出口限速。
+        :param BandwidthLimitType: 限速类型，`INTER_REGION_LIMIT` 为地域间限速；`OUTER_REGION_LIMIT` 为地域出口限速。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthLimitType: str
         :param TagSet: 标签键值对。
         :type TagSet: list of Tag
-        :param RoutePriorityFlag: 是否支持云联网路由优先级的功能。False：不支持，True：支持。
+        :param RoutePriorityFlag: 是否支持云联网路由优先级的功能。`False`：不支持，`True`：支持。
         :type RoutePriorityFlag: bool
         :param RouteTableCount: 实例关联的路由表个数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableCount: int
-        :param RouteTableFlag: 是否开启云联网多路由表特性。False：未开启，True：开启。
+        :param RouteTableFlag: 是否开启云联网多路由表特性。`False`：未开启，`True`：开启。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteTableFlag: bool
+        :param IsSecurityLock: `true`：实例已被封禁，流量不通，`false`:解封禁。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSecurityLock: bool
         :param RouteBroadcastPolicyFlag: 是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RouteBroadcastPolicyFlag: bool
@@ -1910,6 +1913,7 @@ class CCN(AbstractModel):
         self.RoutePriorityFlag = None
         self.RouteTableCount = None
         self.RouteTableFlag = None
+        self.IsSecurityLock = None
         self.RouteBroadcastPolicyFlag = None
 
 
@@ -1932,6 +1936,7 @@ class CCN(AbstractModel):
         self.RoutePriorityFlag = params.get("RoutePriorityFlag")
         self.RouteTableCount = params.get("RouteTableCount")
         self.RouteTableFlag = params.get("RouteTableFlag")
+        self.IsSecurityLock = params.get("IsSecurityLock")
         self.RouteBroadcastPolicyFlag = params.get("RouteBroadcastPolicyFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3009,11 +3014,11 @@ class CreateCcnRequest(AbstractModel):
         :type CcnName: str
         :param CcnDescription: CCN描述信息，最大长度不能超过100个字节。
         :type CcnDescription: str
-        :param QosLevel: CCN服务质量，'PT'：白金，'AU'：金，'AG'：银，默认为‘AU’。
+        :param QosLevel: CCN服务质量，`PT`：白金，`AU`：金，`AG`：银，默认为`AU`。
         :type QosLevel: str
-        :param InstanceChargeType: 计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。
+        :param InstanceChargeType: 计费模式，`PREPAID`：表示预付费，即包年包月，`POSTPAID`：表示后付费，即按量计费。默认：`POSTPAID`。
         :type InstanceChargeType: str
-        :param BandwidthLimitType: 限速类型，OUTER_REGION_LIMIT表示地域出口限速，INTER_REGION_LIMIT为地域间限速，默认为OUTER_REGION_LIMIT。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
+        :param BandwidthLimitType: 限速类型，`OUTER_REGION_LIMIT`表示地域出口限速，`INTER_REGION_LIMIT`为地域间限速，默认为`OUTER_REGION_LIMIT`。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
         :type BandwidthLimitType: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
@@ -5625,13 +5630,13 @@ class CrossBorderFlowMonitorData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InBandwidth: 入带宽
+        :param InBandwidth: 入带宽，单位：`bps`。
         :type InBandwidth: list of int
-        :param OutBandwidth: 出带宽
+        :param OutBandwidth: 出带宽，单位：`bps`。
         :type OutBandwidth: list of int
-        :param InPkg: 入包
+        :param InPkg: 入包，单位：`pps`。
         :type InPkg: list of int
-        :param OutPkg: 出包
+        :param OutPkg: 出包，单位：`pps`。
         :type OutPkg: list of int
         """
         self.InBandwidth = None
@@ -8205,9 +8210,9 @@ class DescribeCcnRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CcnId: CCN实例ID，形如：ccn-gree226l。
+        :param CcnId: CCN实例ID，形如：`ccn-gree226l`。
         :type CcnId: str
-        :param RouteIds: CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+        :param RouteIds: CCN路由策略唯一ID，形如：`ccnr-f49l6u0z`。
         :type RouteIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定RouteIds和Filters。
 <li>route-id - String -（过滤条件）路由策略ID。</li>
@@ -8289,7 +8294,7 @@ class DescribeCcnsRequest(AbstractModel):
         :param CcnIds: CCN实例ID。形如：ccn-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定CcnIds和Filters。
         :type CcnIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定CcnIds和Filters。
-<li>ccn-id - String - （过滤条件）CCN唯一ID，形如：vpc-f49l6u0z。</li>
+<li>ccn-id - String - （过滤条件）CCN唯一ID，形如：`ccn-f49l6u0z`。</li>
 <li>ccn-name - String - （过滤条件）CCN名称。</li>
 <li>ccn-description - String - （过滤条件）CCN描述。</li>
 <li>state - String - （过滤条件）实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。</li>

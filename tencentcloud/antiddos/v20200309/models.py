@@ -7124,12 +7124,18 @@ class Layer7Rule(AbstractModel):
         :type InstanceDetails: list of InstanceRelation
         :param InstanceDetailRule: 规则所属的资源实例
         :type InstanceDetailRule: list of RuleInstanceRelation
+        :param Protocol: 协议
+        :type Protocol: str
+        :param Vport: 端口号
+        :type Vport: int
         """
         self.Domain = None
         self.ProxyTypeList = None
         self.RealServers = None
         self.InstanceDetails = None
         self.InstanceDetailRule = None
+        self.Protocol = None
+        self.Vport = None
 
 
     def _deserialize(self, params):
@@ -7158,6 +7164,8 @@ class Layer7Rule(AbstractModel):
                 obj = RuleInstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetailRule.append(obj)
+        self.Protocol = params.get("Protocol")
+        self.Vport = params.get("Vport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8841,16 +8849,20 @@ class SourceServer(AbstractModel):
         :type RsType: int
         :param Weight: 源站的回源权重，取值1~100
         :type Weight: int
+        :param Port: 端口号：0~65535
+        :type Port: int
         """
         self.RealServer = None
         self.RsType = None
         self.Weight = None
+        self.Port = None
 
 
     def _deserialize(self, params):
         self.RealServer = params.get("RealServer")
         self.RsType = params.get("RsType")
         self.Weight = params.get("Weight")
+        self.Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

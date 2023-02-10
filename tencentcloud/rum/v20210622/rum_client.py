@@ -1074,6 +1074,52 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRumLogExport(self, request):
+        """获取项目下的日志列表（实例创建的项目下的日志列表）
+
+        :param request: Request instance for DescribeRumLogExport.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogExport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumLogExportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRumLogExports(self, request):
+        """获取项目下的日志导出列表
+
+        :param request: Request instance for DescribeRumLogExports.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogExports", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumLogExportsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRumLogList(self, request):
         """获取项目下的日志列表（实例创建的项目下的日志列表）
 
@@ -1318,6 +1364,29 @@ class RumClient(AbstractClient):
             body = self.call("ResumeInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ResumeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResumeProject(self, request):
+        """恢复应用使用与上报数据
+
+        :param request: Request instance for ResumeProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.ResumeProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.ResumeProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

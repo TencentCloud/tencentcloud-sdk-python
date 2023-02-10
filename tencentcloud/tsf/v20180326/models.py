@@ -2771,6 +2771,18 @@ class ContainerGroupDetail(AbstractModel):
         :param HealthCheckSettings: 部署组健康检查设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        :param AllowPlainYamlDeploy: 允许PlainYamlDeploy
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowPlainYamlDeploy: bool
+        :param IsNotEqualServiceConfig: 是否不等于ServiceConfig
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNotEqualServiceConfig: bool
+        :param RepoName: 仓库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoName: str
+        :param Alias: 别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -2809,6 +2821,10 @@ class ContainerGroupDetail(AbstractModel):
         self.MaxSurge = None
         self.MaxUnavailable = None
         self.HealthCheckSettings = None
+        self.AllowPlainYamlDeploy = None
+        self.IsNotEqualServiceConfig = None
+        self.RepoName = None
+        self.Alias = None
 
 
     def _deserialize(self, params):
@@ -2861,6 +2877,10 @@ class ContainerGroupDetail(AbstractModel):
         if params.get("HealthCheckSettings") is not None:
             self.HealthCheckSettings = HealthCheckSettings()
             self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+        self.AllowPlainYamlDeploy = params.get("AllowPlainYamlDeploy")
+        self.IsNotEqualServiceConfig = params.get("IsNotEqualServiceConfig")
+        self.RepoName = params.get("RepoName")
+        self.Alias = params.get("Alias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4975,6 +4995,52 @@ class DeleteContainerGroupResponse(AbstractModel):
         :param Result: 删除操作是否成功：
 true：成功
 false：失败
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteFileConfigRequest(AbstractModel):
+    """DeleteFileConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 文件配置项ID
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFileConfigResponse(AbstractModel):
+    """DeleteFileConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 删除结果
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

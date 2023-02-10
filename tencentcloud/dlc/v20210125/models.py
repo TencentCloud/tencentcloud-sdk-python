@@ -5685,6 +5685,53 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param TableBaseInfo: 表基本信息
+        :type TableBaseInfo: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        :param Columns: 表字段信息
+        :type Columns: list of TColumn
+        :param Partitions: 表分区信息
+        :type Partitions: list of TPartition
+        :param Properties: 表属性信息
+        :type Properties: list of Property
+        """
+        self.TableBaseInfo = None
+        self.Columns = None
+        self.Partitions = None
+        self.Properties = None
+
+
+    def _deserialize(self, params):
+        if params.get("TableBaseInfo") is not None:
+            self.TableBaseInfo = TableBaseInfo()
+            self.TableBaseInfo._deserialize(params.get("TableBaseInfo"))
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = TColumn()
+                obj._deserialize(item)
+                self.Columns.append(obj)
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = TPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        if params.get("Properties") is not None:
+            self.Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self.Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class GenerateCreateMangedTableSqlResponse(AbstractModel):
     """GenerateCreateMangedTableSql返回参数结构体
@@ -5693,13 +5740,19 @@ class GenerateCreateMangedTableSqlResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Execution: 创建托管存储内表sql语句描述
+        :type Execution: :class:`tencentcloud.dlc.v20210125.models.Execution`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Execution = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Execution") is not None:
+            self.Execution = Execution()
+            self.Execution._deserialize(params.get("Execution"))
         self.RequestId = params.get("RequestId")
 
 

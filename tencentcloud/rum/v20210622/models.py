@@ -3695,6 +3695,124 @@ class DescribeRumGroupLogResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRumLogExportRequest(AbstractModel):
+    """DescribeRumLogExport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 导出标识name
+        :type Name: str
+        :param StartTime: 开始时间（必填）
+        :type StartTime: str
+        :param Query: 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+        :type Query: str
+        :param EndTime: 结束时间（必填）
+        :type EndTime: str
+        :param ID: 项目ID（必填）
+        :type ID: int
+        :param Fields: field条件
+        :type Fields: list of str
+        """
+        self.Name = None
+        self.StartTime = None
+        self.Query = None
+        self.EndTime = None
+        self.ID = None
+        self.Fields = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.StartTime = params.get("StartTime")
+        self.Query = params.get("Query")
+        self.EndTime = params.get("EndTime")
+        self.ID = params.get("ID")
+        self.Fields = params.get("Fields")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumLogExportResponse(AbstractModel):
+    """DescribeRumLogExport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回字符串
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRumLogExportsRequest(AbstractModel):
+    """DescribeRumLogExports请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageSize: 页面大小
+        :type PageSize: int
+        :param PageNum: 页数，第几页
+        :type PageNum: int
+        :param ID: 项目ID（必填）
+        :type ID: int
+        """
+        self.PageSize = None
+        self.PageNum = None
+        self.ID = None
+
+
+    def _deserialize(self, params):
+        self.PageSize = params.get("PageSize")
+        self.PageNum = params.get("PageNum")
+        self.ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumLogExportsResponse(AbstractModel):
+    """DescribeRumLogExports返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回字符串
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRumLogListRequest(AbstractModel):
     """DescribeRumLogList请求参数结构体
 
@@ -4558,6 +4676,47 @@ class ResumeInstanceRequest(AbstractModel):
 
 class ResumeInstanceResponse(AbstractModel):
     """ResumeInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResumeProjectRequest(AbstractModel):
+    """ResumeProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目 id
+        :type ProjectId: int
+        """
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeProjectResponse(AbstractModel):
+    """ResumeProject返回参数结构体
 
     """
 

@@ -3657,7 +3657,7 @@ class Objects(AbstractModel):
         :param AdvancedObjects: 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即Options.InitType字段值为Structure或Full
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
-        :param OnlineDDL: OnlineDDL类型
+        :param OnlineDDL: OnlineDDL类型，冗余字段不做配置用途
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         """
@@ -3692,6 +3692,25 @@ class OnlineDDL(AbstractModel):
     """OnlineDDL类型
 
     """
+
+    def __init__(self):
+        r"""
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Options(AbstractModel):
@@ -4064,7 +4083,7 @@ class ResumeMigrateJobRequest(AbstractModel):
         r"""
         :param JobId: 数据迁移任务ID
         :type JobId: str
-        :param ResumeOption: 恢复任务的模式，目前的取值有：clearData 清空目标实例数据，overwrite 以覆盖写的方式执行任务，normal 跟正常流程一样，不做额外动作
+        :param ResumeOption: 恢复任务的模式，目前的取值有：clearData 清空目标实例数据，overwrite 以覆盖写的方式执行任务，normal 跟正常流程一样，不做额外动作；注意，clearData、overwrite仅对redis生效，normal仅针对非redis链路生效
         :type ResumeOption: str
         """
         self.JobId = None
@@ -5050,16 +5069,26 @@ class Table(AbstractModel):
         :param FilterCondition: 过滤条件
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterCondition: str
+        :param TmpTables: 同步临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在同步过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["_t1_new","_t1_old"]；如要对t1进行gh-ost操作，此项配置应该为["_t1_ghc","_t1_gho","_t1_del"]，pt-osc与gh-ost产生的临时表可同时配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TmpTables: list of str
+        :param TableEditMode: 编辑表类型，rename(表映射)，pt(同步附加表)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableEditMode: str
         """
         self.TableName = None
         self.NewTableName = None
         self.FilterCondition = None
+        self.TmpTables = None
+        self.TableEditMode = None
 
 
     def _deserialize(self, params):
         self.TableName = params.get("TableName")
         self.NewTableName = params.get("NewTableName")
         self.FilterCondition = params.get("FilterCondition")
+        self.TmpTables = params.get("TmpTables")
+        self.TableEditMode = params.get("TableEditMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5079,10 +5108,10 @@ class TableItem(AbstractModel):
         :param TableName: 迁移的表名，大小写敏感
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param NewTableName: 迁移后的表名，当TableEditMode为rename时此项必填
+        :param NewTableName: 迁移后的表名，当TableEditMode为rename时此项必填，注意此配置与TmpTables互斥，只能使用其中一种
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewTableName: str
-        :param TmpTables: 迁移临时表，针对pt-osc等工具在迁移过程中产生的临时表同步，需要提前将可能的临时表配置在这里，当TableEditMode为pt时此项必填
+        :param TmpTables: 迁移临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在迁移过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["_t1_new","_t1_old"]；如要对t1进行gh-ost操作，此项配置应该为["_t1_ghc","_t1_gho","_t1_del"]，pt-osc与gh-ost产生的临时表可同时配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpTables: list of str
         :param TableEditMode: 编辑表类型，rename(表映射)，pt(同步附加表)

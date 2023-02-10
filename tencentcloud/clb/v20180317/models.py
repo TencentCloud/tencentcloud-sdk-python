@@ -1459,7 +1459,7 @@ class CreateListenerRequest(AbstractModel):
         :type LoadBalancerId: str
         :param Ports: 要将监听器创建到哪些端口，每个端口对应一个新的监听器。
         :type Ports: list of int
-        :param Protocol: 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL（TCP_SSL 正在内测中，如需使用请通过工单申请）。
+        :param Protocol: 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC。
         :type Protocol: str
         :param ListenerNames: 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数。
         :type ListenerNames: list of str
