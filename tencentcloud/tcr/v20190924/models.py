@@ -218,6 +218,31 @@ class BatchDeleteRepositoryPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CVEWhitelistItem(AbstractModel):
+    """命名空间漏洞白名单列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CVEID: 漏洞白名单 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVEID: str
+        """
+        self.CVEID = None
+
+
+    def _deserialize(self, params):
+        self.CVEID = params.get("CVEID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckInstanceNameRequest(AbstractModel):
     """CheckInstanceName请求参数结构体
 
@@ -918,11 +943,23 @@ class CreateNamespaceRequest(AbstractModel):
         :type IsPublic: bool
         :param TagSpecification: 云标签描述
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        :param IsAutoScan: 自动扫描级别，true为自动，false为手动
+        :type IsAutoScan: bool
+        :param IsPreventVUL: 安全阻断级别，true为自动，false为手动
+        :type IsPreventVUL: bool
+        :param Severity: 阻断漏洞等级，目前仅支持low、medium、high
+        :type Severity: str
+        :param CVEWhitelistItems: 漏洞白名单列表
+        :type CVEWhitelistItems: list of CVEWhitelistItem
         """
         self.RegistryId = None
         self.NamespaceName = None
         self.IsPublic = None
         self.TagSpecification = None
+        self.IsAutoScan = None
+        self.IsPreventVUL = None
+        self.Severity = None
+        self.CVEWhitelistItems = None
 
 
     def _deserialize(self, params):
@@ -932,6 +969,15 @@ class CreateNamespaceRequest(AbstractModel):
         if params.get("TagSpecification") is not None:
             self.TagSpecification = TagSpecification()
             self.TagSpecification._deserialize(params.get("TagSpecification"))
+        self.IsAutoScan = params.get("IsAutoScan")
+        self.IsPreventVUL = params.get("IsPreventVUL")
+        self.Severity = params.get("Severity")
+        if params.get("CVEWhitelistItems") is not None:
+            self.CVEWhitelistItems = []
+            for item in params.get("CVEWhitelistItems"):
+                obj = CVEWhitelistItem()
+                obj._deserialize(item)
+                self.CVEWhitelistItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5850,16 +5896,37 @@ class ModifyNamespaceRequest(AbstractModel):
         :type NamespaceName: str
         :param IsPublic: 访问级别，True为公开，False为私有
         :type IsPublic: bool
+        :param IsAutoScan: 扫描级别，True为自动，False为手动
+        :type IsAutoScan: bool
+        :param IsPreventVUL: 阻断开关，True为开放，False为关闭
+        :type IsPreventVUL: bool
+        :param Severity: 阻断漏洞等级，目前仅支持 low、medium、high
+        :type Severity: str
+        :param CVEWhitelistItems: 漏洞白名单列表
+        :type CVEWhitelistItems: list of CVEWhitelistItem
         """
         self.RegistryId = None
         self.NamespaceName = None
         self.IsPublic = None
+        self.IsAutoScan = None
+        self.IsPreventVUL = None
+        self.Severity = None
+        self.CVEWhitelistItems = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
         self.NamespaceName = params.get("NamespaceName")
         self.IsPublic = params.get("IsPublic")
+        self.IsAutoScan = params.get("IsAutoScan")
+        self.IsPreventVUL = params.get("IsPreventVUL")
+        self.Severity = params.get("Severity")
+        if params.get("CVEWhitelistItems") is not None:
+            self.CVEWhitelistItems = []
+            for item in params.get("CVEWhitelistItems"):
+                obj = CVEWhitelistItem()
+                obj._deserialize(item)
+                self.CVEWhitelistItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7677,6 +7744,14 @@ class TcrNamespaceInfo(AbstractModel):
         :param Metadata: 命名空间元数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metadata: list of KeyValueString
+        :param CVEWhitelistItems: 漏洞白名单列表
+        :type CVEWhitelistItems: list of CVEWhitelistItem
+        :param AutoScan: 扫描级别，true为自动，false为手动
+        :type AutoScan: bool
+        :param PreventVUL: 安全阻断级别，true为开启，false为关闭
+        :type PreventVUL: bool
+        :param Severity: 阻断漏洞等级，目前仅支持low、medium、high, 为""时表示没有设置
+        :type Severity: str
         """
         self.Name = None
         self.CreationTime = None
@@ -7684,6 +7759,10 @@ class TcrNamespaceInfo(AbstractModel):
         self.NamespaceId = None
         self.TagSpecification = None
         self.Metadata = None
+        self.CVEWhitelistItems = None
+        self.AutoScan = None
+        self.PreventVUL = None
+        self.Severity = None
 
 
     def _deserialize(self, params):
@@ -7700,6 +7779,15 @@ class TcrNamespaceInfo(AbstractModel):
                 obj = KeyValueString()
                 obj._deserialize(item)
                 self.Metadata.append(obj)
+        if params.get("CVEWhitelistItems") is not None:
+            self.CVEWhitelistItems = []
+            for item in params.get("CVEWhitelistItems"):
+                obj = CVEWhitelistItem()
+                obj._deserialize(item)
+                self.CVEWhitelistItems.append(obj)
+        self.AutoScan = params.get("AutoScan")
+        self.PreventVUL = params.get("PreventVUL")
+        self.Severity = params.get("Severity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

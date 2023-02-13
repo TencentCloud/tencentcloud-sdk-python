@@ -8940,14 +8940,18 @@ class DescribePrometheusZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionId: 地域 ID
+        :param RegionId: 地域 ID（RegionId 和 RegionName 只需要填一个）
         :type RegionId: int
+        :param RegionName: 地域名（RegionId 和 RegionName 只需要填一个）
+        :type RegionName: str
         """
         self.RegionId = None
+        self.RegionName = None
 
 
     def _deserialize(self, params):
         self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

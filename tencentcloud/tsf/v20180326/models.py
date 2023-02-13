@@ -384,6 +384,18 @@ class ApiDetailInfo(AbstractModel):
         :param ApiMatchType: API路径匹配类型。normal：普通API；wildcard：通配API。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiMatchType: str
+        :param RpcExt: RPC 额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RpcExt: str
+        :param GatewayDeployGroupId: 部署组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayDeployGroupId: str
+        :param Md5: md5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5: str
+        :param RpcType: RPC 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RpcType: str
         """
         self.ApiId = None
         self.NamespaceId = None
@@ -407,6 +419,10 @@ class ApiDetailInfo(AbstractModel):
         self.ApiType = None
         self.Description = None
         self.ApiMatchType = None
+        self.RpcExt = None
+        self.GatewayDeployGroupId = None
+        self.Md5 = None
+        self.RpcType = None
 
 
     def _deserialize(self, params):
@@ -432,6 +448,10 @@ class ApiDetailInfo(AbstractModel):
         self.ApiType = params.get("ApiType")
         self.Description = params.get("Description")
         self.ApiMatchType = params.get("ApiMatchType")
+        self.RpcExt = params.get("RpcExt")
+        self.GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        self.Md5 = params.get("Md5")
+        self.RpcType = params.get("RpcType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

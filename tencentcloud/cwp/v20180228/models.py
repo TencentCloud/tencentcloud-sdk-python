@@ -4749,12 +4749,16 @@ class DeleteAttackLogsRequest(AbstractModel):
         r"""
         :param Ids: 日志ID数组，最大100条。
         :type Ids: list of int non-negative
+        :param IsAll: 是否全部删除
+        :type IsAll: bool
         """
         self.Ids = None
+        self.IsAll = None
 
 
     def _deserialize(self, params):
         self.Ids = params.get("Ids")
+        self.IsAll = params.get("IsAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

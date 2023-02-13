@@ -2174,6 +2174,12 @@ class CcnInstance(AbstractModel):
         
 
 
+class CcnInstanceInfo(AbstractModel):
+    """云联网实例对象，该对象特用于运营端使用，不建议给租户的接口中提供该复杂类型。
+
+    """
+
+
 class CcnRegionBandwidthLimit(AbstractModel):
     """云联网（CCN）地域出带宽上限
 
@@ -8160,7 +8166,7 @@ class DescribeCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :param CcnId: CCN实例ID，形如：ccn-f49l6u0z。
         :type CcnId: str
         """
         self.CcnId = None
@@ -8590,19 +8596,19 @@ class DescribeCrossBorderFlowMonitorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceRegion: 源地域
+        :param SourceRegion: 源地域。
         :type SourceRegion: str
-        :param DestinationRegion: 目的地域
+        :param DestinationRegion: 目的地域。
         :type DestinationRegion: str
-        :param CcnId: 云联网Id
+        :param CcnId: 云联网ID。
         :type CcnId: str
-        :param CcnUin: 云联网所属账号
+        :param CcnUin: 云联网所属账号。
         :type CcnUin: str
-        :param Period: 时间粒度
+        :param Period: 时间粒度。
         :type Period: int
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
         """
         self.SourceRegion = None
@@ -11583,6 +11589,39 @@ class DescribeTenantCcnsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件，目前`value`值个数只支持一个，允许可支持的字段有：
+<li>`ccn-ids` 云联网ID数组，值形如：`["ccn-12345678"]`</li> 
+<li>`user-account-id` 用户账号ID，值形如：`["12345678"]`</li><li>`is-security-lock` 是否锁定，值形如：`["true"]`</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认0。
+        :type Offset: int
+        :param Limit: 单页返回数据量，可选值0到100之间的整数，默认20。
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeTenantCcnsResponse(AbstractModel):
     """DescribeTenantCcns返回参数结构体
@@ -11591,13 +11630,27 @@ class DescribeTenantCcnsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param CcnSet: 云联网（CCN）对象。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnSet: list of CcnInstanceInfo
+        :param TotalCount: 符合条件的对象总数。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.CcnSet = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("CcnSet") is not None:
+            self.CcnSet = []
+            for item in params.get("CcnSet"):
+                obj = CcnInstanceInfo()
+                obj._deserialize(item)
+                self.CcnSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -21295,7 +21348,7 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CcnId: CCN实例ID。形如：ccn-f49l6u0z。
+        :param CcnId: CCN实例ID，形如：ccn-f49l6u0z。
         :type CcnId: str
         :param CcnRegionBandwidthLimits: 云联网（CCN）各地域出带宽上限。
         :type CcnRegionBandwidthLimits: list of CcnRegionBandwidthLimit

@@ -1971,6 +1971,8 @@ class TemplateInfo(AbstractModel):
         :type IsValidTemplate: int
         :param InvalidReason: 不符合规范原因
         :type InvalidReason: str
+        :param IsBlack: 是包含黑名单手机或邮箱
+        :type IsBlack: bool
         """
         self.TemplateId = None
         self.AuditStatus = None
@@ -1983,6 +1985,7 @@ class TemplateInfo(AbstractModel):
         self.ContactInfo = None
         self.IsValidTemplate = None
         self.InvalidReason = None
+        self.IsBlack = None
 
 
     def _deserialize(self, params):
@@ -2001,6 +2004,7 @@ class TemplateInfo(AbstractModel):
             self.ContactInfo._deserialize(params.get("ContactInfo"))
         self.IsValidTemplate = params.get("IsValidTemplate")
         self.InvalidReason = params.get("InvalidReason")
+        self.IsBlack = params.get("IsBlack")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

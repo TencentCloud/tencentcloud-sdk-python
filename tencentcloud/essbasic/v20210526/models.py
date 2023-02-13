@@ -1394,12 +1394,21 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
         :type InfoType: int
         :param SealId: 印章id（没有输入返回所有）
         :type SealId: str
+        :param SealTypes: 印章类型列表（都是组织机构印章）。
+为空时查询所有类型的印章。
+目前支持以下类型：
+OFFICIAL：企业公章；
+CONTRACT：合同专用章；
+ORGANIZATION_SEAL：企业印章(图片上传创建)；
+LEGAL_PERSON_SEAL：法定代表人章
+        :type SealTypes: list of str
         """
         self.Agent = None
         self.Limit = None
         self.Offset = None
         self.InfoType = None
         self.SealId = None
+        self.SealTypes = None
 
 
     def _deserialize(self, params):
@@ -1410,6 +1419,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.InfoType = params.get("InfoType")
         self.SealId = params.get("SealId")
+        self.SealTypes = params.get("SealTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1652,7 +1662,8 @@ SIGN_DATE - 签署日期控件；
 SIGN_SIGNATURE - 用户签名控件；
 SIGN_PERSONAL_SEAL - 个人签署印章控件（使用文件发起暂不支持此类型）；
 SIGN_PAGING_SEAL - 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight
-SIGN_OPINION - 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认
+SIGN_OPINION - 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认;
+SIGN_LEGAL_PERSON_SEAL - 企业法定代表人控件。
 
 表单域的控件不能作为印章和签名控件
         :type ComponentType: str

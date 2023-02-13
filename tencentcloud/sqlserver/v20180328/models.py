@@ -3627,7 +3627,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
         :type Limit: int
         :param InstanceId: 按照实例ID筛选
         :type InstanceId: str
-        :param Status: 按照状态筛选 1-互通ip prot打开中；2-互通ip prot已经打开；3-加入到互通组中；4-已加入到互通组；5-互通ip prot回收中；6-互通ip prot已回收；7-从互通组移除中；8-已从互通组中移除
+        :param Status: 按照状态筛选 1-互通IP打开中；2-互通IP已经打开；3-加入到互通组中；4-已加入到互通组；5-互通IP回收中；6-互通IP已回收；7-从互通组移除中；8-已从互通组中移除
         :type Status: int
         :param VersionSet: 实例版本代号列表
         :type VersionSet: list of str
