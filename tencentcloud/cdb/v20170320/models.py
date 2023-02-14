@@ -3947,6 +3947,51 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupEncryptionStatusRequest(AbstractModel):
+    """DescribeBackupEncryptionStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupEncryptionStatusResponse(AbstractModel):
+    """DescribeBackupEncryptionStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EncryptionStatus: 实例是否开启了物理备份加密。可能的值有 on, off 。
+        :type EncryptionStatus: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EncryptionStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EncryptionStatus = params.get("EncryptionStatus")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupOverviewRequest(AbstractModel):
     """DescribeBackupOverview请求参数结构体
 
@@ -8886,6 +8931,51 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
 class ModifyBackupDownloadRestrictionResponse(AbstractModel):
     """ModifyBackupDownloadRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupEncryptionStatusRequest(AbstractModel):
+    """ModifyBackupEncryptionStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param EncryptionStatus: 设置实例新增的自动物理备份文件默认加密状态。可选值为 on或者off。
+        :type EncryptionStatus: str
+        """
+        self.InstanceId = None
+        self.EncryptionStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.EncryptionStatus = params.get("EncryptionStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupEncryptionStatusResponse(AbstractModel):
+    """ModifyBackupEncryptionStatus返回参数结构体
 
     """
 

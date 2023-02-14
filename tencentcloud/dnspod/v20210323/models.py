@@ -4864,6 +4864,8 @@ class RecordListItem(AbstractModel):
         :param MX: MX值，只有MX记录有
 注意：此字段可能返回 null，表示取不到有效值。
         :type MX: int
+        :param DefaultNS: 是否是默认的ns记录
+        :type DefaultNS: bool
         """
         self.RecordId = None
         self.Value = None
@@ -4878,6 +4880,7 @@ class RecordListItem(AbstractModel):
         self.Remark = None
         self.TTL = None
         self.MX = None
+        self.DefaultNS = None
 
 
     def _deserialize(self, params):
@@ -4894,6 +4897,7 @@ class RecordListItem(AbstractModel):
         self.Remark = params.get("Remark")
         self.TTL = params.get("TTL")
         self.MX = params.get("MX")
+        self.DefaultNS = params.get("DefaultNS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

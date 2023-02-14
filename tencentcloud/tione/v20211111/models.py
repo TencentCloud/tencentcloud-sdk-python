@@ -4514,14 +4514,19 @@ class EngineVersion(AbstractModel):
         :param Image: 运行镜像
 注意：此字段可能返回 null，表示取不到有效值。
         :type Image: str
+        :param IsSupportIntEightQuantization: 是否支持int8量化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportIntEightQuantization: bool
         """
         self.Version = None
         self.Image = None
+        self.IsSupportIntEightQuantization = None
 
 
     def _deserialize(self, params):
         self.Version = params.get("Version")
         self.Image = params.get("Image")
+        self.IsSupportIntEightQuantization = params.get("IsSupportIntEightQuantization")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

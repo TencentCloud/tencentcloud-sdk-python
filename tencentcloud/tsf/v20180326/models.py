@@ -13818,6 +13818,9 @@ class ImageRepository(AbstractModel):
         :param ApplicationNameReal: ApplicationName值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationNameReal: str
+        :param Public: 是否公共,1:公有,0:私有
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Public: int
         """
         self.Reponame = None
         self.Repotype = None
@@ -13835,6 +13838,7 @@ class ImageRepository(AbstractModel):
         self.ApplicationId = None
         self.ApplicationName = None
         self.ApplicationNameReal = None
+        self.Public = None
 
 
     def _deserialize(self, params):
@@ -13858,6 +13862,7 @@ class ImageRepository(AbstractModel):
             self.ApplicationName = ScalableRule()
             self.ApplicationName._deserialize(params.get("ApplicationName"))
         self.ApplicationNameReal = params.get("ApplicationNameReal")
+        self.Public = params.get("Public")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14731,6 +14736,9 @@ class KafkaDeliveryConfig(AbstractModel):
         :param CustomRule: 自定义分行规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRule: str
+        :param KafkaAddress: KafkaAddress
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaAddress: str
         """
         self.ConfigId = None
         self.ConfigName = None
@@ -14745,6 +14753,7 @@ class KafkaDeliveryConfig(AbstractModel):
         self.KafkaInfos = None
         self.EnableGlobalLineRule = None
         self.CustomRule = None
+        self.KafkaAddress = None
 
 
     def _deserialize(self, params):
@@ -14766,6 +14775,7 @@ class KafkaDeliveryConfig(AbstractModel):
                 self.KafkaInfos.append(obj)
         self.EnableGlobalLineRule = params.get("EnableGlobalLineRule")
         self.CustomRule = params.get("CustomRule")
+        self.KafkaAddress = params.get("KafkaAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18327,6 +18337,12 @@ class ScalableRule(AbstractModel):
         :param Description: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param DisableMetricAS: 是否关闭指标伸缩, 默认0, 0:打开指标伸缩 1:关闭指标伸缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableMetricAS: int
+        :param EnableCronAS: 开启定时伸缩规则, 默认0, 0:关闭定时伸缩 1:开启定时伸缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableCronAS: int
         """
         self.RuleId = None
         self.Name = None
@@ -18335,6 +18351,8 @@ class ScalableRule(AbstractModel):
         self.GroupCount = None
         self.Desc = None
         self.Description = None
+        self.DisableMetricAS = None
+        self.EnableCronAS = None
 
 
     def _deserialize(self, params):
@@ -18345,6 +18363,8 @@ class ScalableRule(AbstractModel):
         self.GroupCount = params.get("GroupCount")
         self.Desc = params.get("Desc")
         self.Description = params.get("Description")
+        self.DisableMetricAS = params.get("DisableMetricAS")
+        self.EnableCronAS = params.get("EnableCronAS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21035,16 +21055,31 @@ class UnitNamespace(AbstractModel):
         :param Id: 单元化命名空间ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
+        :param GatewayInstanceId: 网关实体ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayInstanceId: str
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param UpdatedTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
         """
         self.NamespaceId = None
         self.NamespaceName = None
         self.Id = None
+        self.GatewayInstanceId = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
 
 
     def _deserialize(self, params):
         self.NamespaceId = params.get("NamespaceId")
         self.NamespaceName = params.get("NamespaceName")
         self.Id = params.get("Id")
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

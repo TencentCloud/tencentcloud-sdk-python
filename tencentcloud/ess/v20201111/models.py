@@ -49,9 +49,42 @@ class Admin(AbstractModel):
 
 
 class Agent(AbstractModel):
-    """应用相关信息
+    """主企业代子企业操作 或 渠道子客应用相关信息
 
     """
+
+    def __init__(self):
+        r"""
+        :param AppId: 应用编号,32位字符串
+        :type AppId: str
+        :param ProxyAppId: 主组织的应用号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyAppId: str
+        :param ProxyOrganizationId: 主组织在平台的机构编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyOrganizationId: str
+        :param ProxyOperator: 主组织的操作人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyOperator: str
+        """
+        self.AppId = None
+        self.ProxyAppId = None
+        self.ProxyOrganizationId = None
+        self.ProxyOperator = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.ProxyAppId = params.get("ProxyAppId")
+        self.ProxyOrganizationId = params.get("ProxyOrganizationId")
+        self.ProxyOperator = params.get("ProxyOperator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ApproverInfo(AbstractModel):
@@ -2721,6 +2754,8 @@ CONTRACT：合同专用章；
 ORGANIZATION_SEAL：企业印章(图片上传创建)；
 LEGAL_PERSON_SEAL：法定代表人章
         :type SealTypes: list of str
+        :param Agent: 主企业代子企业操作 或 渠道子客应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
         self.Limit = None
@@ -2728,6 +2763,7 @@ LEGAL_PERSON_SEAL：法定代表人章
         self.InfoType = None
         self.SealId = None
         self.SealTypes = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
@@ -2739,6 +2775,9 @@ LEGAL_PERSON_SEAL：法定代表人章
         self.InfoType = params.get("InfoType")
         self.SealId = params.get("SealId")
         self.SealTypes = params.get("SealTypes")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

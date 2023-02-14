@@ -557,6 +557,9 @@ class ClusterInstancesInfo(AbstractModel):
         :param IsMultiZoneCluster: 是否是跨AZ集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsMultiZoneCluster: bool
+        :param IsCvmReplace: 是否开通异常节点自动补偿
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCvmReplace: bool
         """
         self.Id = None
         self.ClusterId = None
@@ -599,6 +602,7 @@ class ClusterInstancesInfo(AbstractModel):
         self.UniqSubnetId = None
         self.TopologyInfoList = None
         self.IsMultiZoneCluster = None
+        self.IsCvmReplace = None
 
 
     def _deserialize(self, params):
@@ -660,6 +664,7 @@ class ClusterInstancesInfo(AbstractModel):
                 obj._deserialize(item)
                 self.TopologyInfoList.append(obj)
         self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
+        self.IsCvmReplace = params.get("IsCvmReplace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

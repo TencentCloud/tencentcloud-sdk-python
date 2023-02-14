@@ -852,6 +852,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupEncryptionStatus(self, request):
+        """本接口(DescribeBackupEncryptionStatus)用于查询实例默认备份加密状态。
+
+        :param request: Request instance for DescribeBackupEncryptionStatus.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupEncryptionStatusRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupEncryptionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupEncryptionStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupEncryptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupOverview(self, request):
         """本接口(DescribeBackupOverview)用于查询用户的备份概览。返回用户当前备份总个数、备份总的占用容量、赠送的免费容量、计费容量（容量单位为字节）。
 
@@ -2264,6 +2287,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyBackupEncryptionStatus(self, request):
+        """本接口(ModifyBackupEncryptionStatus)用于设置实例备份文件是否加密。
+
+        :param request: Request instance for ModifyBackupEncryptionStatus.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupEncryptionStatusRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupEncryptionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupEncryptionStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupEncryptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCDBProxyConnectionPool(self, request):
         """请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
 
@@ -3080,7 +3126,9 @@ class CdbClient(AbstractClient):
 
 
     def UpgradeCDBProxy(self, request):
-        """调整数据库代理配置
+        """接口已经废弃，请使用AdjustCdbProxy进行数据库代理的配置
+
+        调整数据库代理配置
 
         :param request: Request instance for UpgradeCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyRequest`

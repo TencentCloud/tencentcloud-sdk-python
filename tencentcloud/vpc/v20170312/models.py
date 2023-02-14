@@ -888,7 +888,7 @@ class AssignIpv6AddressesRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param Ipv6Addresses: 指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。与Ipv6AddressCount必填一个。
         :type Ipv6Addresses: list of Ipv6Address
-        :param Ipv6AddressCount: 自动分配`IPv6`地址个数，内网IP地址个数总和不能超过配数。与入参`Ipv6Addresses`合并计算配额。与Ipv6Addresses必填一个。
+        :param Ipv6AddressCount: 自动分配`IPv6`地址个数，内网IP地址个数总和不能超过配额数。与入参`Ipv6Addresses`合并计算配额。与Ipv6Addresses必填一个。
         :type Ipv6AddressCount: int
         """
         self.NetworkInterfaceId = None
@@ -971,7 +971,7 @@ class AssignIpv6CidrBlockResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ipv6CidrBlock: 分配的 `IPv6` 网段。形如：`3402:4e00:20:1000::/56`
+        :param Ipv6CidrBlock: 分配的 `IPv6` 网段。形如：`3402:4e00:20:1000::/56`。
         :type Ipv6CidrBlock: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1378,7 +1378,7 @@ class AssociateNetworkAclSubnetsRequest(AbstractModel):
         r"""
         :param NetworkAclId: 网络ACL实例ID。例如：acl-12345678。
         :type NetworkAclId: str
-        :param SubnetIds: 子网实例ID数组。例如：[subnet-12345678]
+        :param SubnetIds: 子网实例ID数组。例如：[subnet-12345678]。
         :type SubnetIds: list of str
         """
         self.NetworkAclId = None
@@ -2302,9 +2302,9 @@ class CheckAssistantCidrRequest(AbstractModel):
         r"""
         :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
         :type VpcId: str
-        :param NewCidrBlocks: 待添加的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]。入参NewCidrBlocks和OldCidrBlocks至少需要其一。
+        :param NewCidrBlocks: 待添加的辅助CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]。入参NewCidrBlocks和OldCidrBlocks至少需要其一。
         :type NewCidrBlocks: list of str
-        :param OldCidrBlocks: 待删除的负载CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]。入参NewCidrBlocks和OldCidrBlocks至少需要其一。
+        :param OldCidrBlocks: 待删除的辅助CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]。入参NewCidrBlocks和OldCidrBlocks至少需要其一。
         :type OldCidrBlocks: list of str
         """
         self.VpcId = None
@@ -2405,20 +2405,6 @@ class CheckNetDetectStateRequest(AbstractModel):
         r"""
         :param DetectDestinationIp: 探测目的IPv4地址数组，最多两个。
         :type DetectDestinationIp: list of str
-        :param NextHopType: 下一跳类型，目前我们支持的类型有：
-VPN：VPN网关；
-DIRECTCONNECT：专线网关；
-PEERCONNECTION：对等连接；
-NAT：NAT网关；
-NORMAL_CVM：普通云服务器；
-        :type NextHopType: str
-        :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
-下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
-下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
-下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
-下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
-下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-        :type NextHopDestination: str
         :param NetDetectId: 网络探测实例ID。形如：netd-12345678。该参数与（VpcId，SubnetId，NetDetectName），至少要有一个。当NetDetectId存在时，使用NetDetectId。
         :type NetDetectId: str
         :param VpcId: `VPC`实例`ID`。形如：`vpc-12345678`。该参数与（SubnetId，NetDetectName）配合使用，与NetDetectId至少要有一个。当NetDetectId存在时，使用NetDetectId。
@@ -2427,24 +2413,42 @@ NORMAL_CVM：普通云服务器；
         :type SubnetId: str
         :param NetDetectName: 网络探测名称，最大长度不能超过60个字节。该参数与（VpcId，SubnetId）配合使用，与NetDetectId至少要有一个。当NetDetectId存在时，使用NetDetectId。
         :type NetDetectName: str
+        :param NextHopType: 下一跳类型，目前我们支持的类型有：
+VPN：VPN网关；
+DIRECTCONNECT：专线网关；
+PEERCONNECTION：对等连接；
+NAT：NAT网关；
+NORMAL_CVM：普通云服务器；
+CCN：云联网网关；
+NONEXTHOP：无下一跳；
+        :type NextHopType: str
+        :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
+下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
+下一跳类型为DIRECTCONNECT，取值专线网关ID，形如：dcg-12345678；
+下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
+下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
+下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
+下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
+下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
+        :type NextHopDestination: str
         """
         self.DetectDestinationIp = None
-        self.NextHopType = None
-        self.NextHopDestination = None
         self.NetDetectId = None
         self.VpcId = None
         self.SubnetId = None
         self.NetDetectName = None
+        self.NextHopType = None
+        self.NextHopDestination = None
 
 
     def _deserialize(self, params):
         self.DetectDestinationIp = params.get("DetectDestinationIp")
-        self.NextHopType = params.get("NextHopType")
-        self.NextHopDestination = params.get("NextHopDestination")
         self.NetDetectId = params.get("NetDetectId")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.NetDetectName = params.get("NetDetectName")
+        self.NextHopType = params.get("NextHopType")
+        self.NextHopDestination = params.get("NextHopDestination")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3252,7 +3256,7 @@ class CreateDhcpIpRequest(AbstractModel):
         :type SubnetId: str
         :param DhcpIpName: `DhcpIp`名称。
         :type DhcpIpName: str
-        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数。总数不能超过64个。
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数。总数不能超过64个，为了兼容性，当前参数必填。
         :type SecondaryPrivateIpAddressCount: int
         """
         self.VpcId = None
@@ -3282,7 +3286,7 @@ class CreateDhcpIpResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DhcpIpSet: 新创建的`DhcpIp`信息
+        :param DhcpIpSet: 新创建的`DhcpIp`信息。
         :type DhcpIpSet: list of DhcpIp
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3643,11 +3647,11 @@ class CreateLocalGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LocalGatewayName: 本地网关名称
+        :param LocalGatewayName: 本地网关名称。
         :type LocalGatewayName: str
-        :param VpcId: VPC实例ID
+        :param VpcId: VPC实例ID。
         :type VpcId: str
-        :param CdcId: CDC实例ID
+        :param CdcId: CDC实例ID。
         :type CdcId: str
         """
         self.LocalGatewayName = None
@@ -3675,7 +3679,7 @@ class CreateLocalGatewayResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LocalGateway: 本地网关信息
+        :param LocalGateway: 本地网关信息。
         :type LocalGateway: :class:`tencentcloud.vpc.v20170312.models.LocalGateway`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4035,7 +4039,7 @@ class CreateNetworkAclRequest(AbstractModel):
         :type VpcId: str
         :param NetworkAclName: 网络ACL名称，最大长度不能超过60个字节。
         :type NetworkAclName: str
-        :param NetworkAclType: 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)
+        :param NetworkAclType: 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)。
         :type NetworkAclType: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
@@ -4479,7 +4483,7 @@ class CreateServiceTemplateGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceTemplateGroupName: 协议端口模板集合名称
+        :param ServiceTemplateGroupName: 协议端口模板集合名称。
         :type ServiceTemplateGroupName: str
         :param ServiceTemplateIds: 协议端口模板实例ID，例如：ppm-4dw6agho。
         :type ServiceTemplateIds: list of str
@@ -4530,7 +4534,7 @@ class CreateServiceTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ServiceTemplateName: 协议端口模板名称
+        :param ServiceTemplateName: 协议端口模板名称。
         :type ServiceTemplateName: str
         :param Services: 支持单个端口、多个端口、连续端口及所有端口，协议支持：TCP、UDP、ICMP、GRE 协议。Services与ServicesExtra必填其一。
         :type Services: list of str
@@ -4717,11 +4721,11 @@ class CreateSubnetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`。
         :type VpcId: str
         :param Subnets: 子网对象列表。
         :type Subnets: list of SubnetInput
-        :param Tags: 指定绑定的标签列表，注意这里的标签集合为列表中所有子网对象所共享，不能为每个子网对象单独指定标签，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param Tags: 指定绑定的标签列表，注意这里的标签集合为列表中所有子网对象所共享，不能为每个子网对象单独指定标签，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
         :param CdcId: 需要增加到的CDC实例ID。
         :type CdcId: str
@@ -5918,9 +5922,9 @@ class DeleteAssistantCidrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`。
         :type VpcId: str
-        :param CidrBlocks: CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]
+        :param CidrBlocks: CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]。
         :type CidrBlocks: list of str
         """
         self.VpcId = None
@@ -6340,11 +6344,11 @@ class DeleteLocalGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LocalGatewayId: 本地网关实例ID
+        :param LocalGatewayId: 本地网关实例ID。
         :type LocalGatewayId: str
-        :param CdcId: CDC实例ID
+        :param CdcId: CDC实例ID。
         :type CdcId: str
-        :param VpcId: VPC实例ID
+        :param VpcId: VPC实例ID。
         :type VpcId: str
         """
         self.LocalGatewayId = None
@@ -7492,7 +7496,7 @@ class DescribeAccountAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AccountAttributeSet: 用户账号属性对象
+        :param AccountAttributeSet: 用户账号属性对象。
         :type AccountAttributeSet: list of AccountAttribute
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8386,9 +8390,9 @@ class DescribeClassicLinkInstancesRequest(AbstractModel):
 <li>vpc-id - String - （过滤条件）VPC实例ID。</li>
 <li>vm-ip - String - （过滤条件）基础网络云服务器IP。</li>
         :type Filters: list of FilterObject
-        :param Offset: 偏移量
+        :param Offset: 偏移量，默认值0。
         :type Offset: str
-        :param Limit: 返回数量
+        :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
         """
         self.Filters = None
@@ -9173,9 +9177,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
         :type PeeringConnectionId: str
         :param NatId: NAT网关实例ID，形如：`nat-ltjahce6`。
         :type NatId: str
-        :param Offset: 偏移量。
+        :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 返回数量。
+        :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         :param OrderField: 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。
         :type OrderField: str
@@ -9328,9 +9332,11 @@ class DescribeHaVipsRequest(AbstractModel):
 <li>vip - String - `HAVIP`的地址`VIP`。</li>
 <li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li>
         :type Filters: list of Filter
-        :param Offset: 偏移量
+        :param Offset: 偏移量，默认为0。
+
         :type Offset: int
-        :param Limit: 返回数量
+        :param Limit: 返回数量，默认为20，最大值为100。
+
         :type Limit: int
         """
         self.HaVipIds = None
@@ -9741,9 +9747,9 @@ class DescribeLocalGatewayResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LocalGatewaySet: 本地网关信息集合
+        :param LocalGatewaySet: 本地网关信息集合。
         :type LocalGatewaySet: list of LocalGateway
-        :param TotalCount: 本地网关总数
+        :param TotalCount: 本地网关总数。
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10210,6 +10216,33 @@ class DescribeNetDetectsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNetworkAccountTypeRequest(AbstractModel):
+    """DescribeNetworkAccountType请求参数结构体
+
+    """
+
+
+class DescribeNetworkAccountTypeResponse(AbstractModel):
+    """DescribeNetworkAccountType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkAccountType: 用户账号的网络类型，STANDARD为标准用户，LEGACY为传统用户
+        :type NetworkAccountType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetworkAccountType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAccountType = params.get("NetworkAccountType")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
     """DescribeNetworkAclQuintupleEntries请求参数结构体
 
@@ -10369,7 +10402,7 @@ class DescribeNetworkInterfaceLimitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 要查询的CVM实例ID或弹性网卡ID
+        :param InstanceId: 要查询的CVM实例ID或弹性网卡ID。
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -10393,20 +10426,20 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EniQuantity: 标准型弹性网卡配额
+        :param EniQuantity: 标准型弹性网卡配额。
         :type EniQuantity: int
-        :param EniPrivateIpAddressQuantity: 每个标准型弹性网卡可以分配的IP配额
+        :param EniPrivateIpAddressQuantity: 每个标准型弹性网卡可以分配的IP配额。
         :type EniPrivateIpAddressQuantity: int
-        :param ExtendEniQuantity: 扩展型网卡配额
+        :param ExtendEniQuantity: 扩展型网卡配额。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendEniQuantity: int
-        :param ExtendEniPrivateIpAddressQuantity: 每个扩展型弹性网卡可以分配的IP配额
+        :param ExtendEniPrivateIpAddressQuantity: 每个扩展型弹性网卡可以分配的IP配额。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendEniPrivateIpAddressQuantity: int
-        :param SubEniQuantity: 中继网卡配额
+        :param SubEniQuantity: 中继网卡配额。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubEniQuantity: int
-        :param SubEniPrivateIpAddressQuantity: 每个中继网卡可以分配的IP配额
+        :param SubEniPrivateIpAddressQuantity: 每个中继网卡可以分配的IP配额。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubEniPrivateIpAddressQuantity: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -10548,9 +10581,9 @@ class DescribeProductQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductQuotaSet: ProductQuota对象数组
+        :param ProductQuotaSet: ProductQuota对象数组。
         :type ProductQuotaSet: list of ProductQuota
-        :param TotalCount: 符合条件的产品类型个数
+        :param TotalCount: 符合条件的产品类型个数。
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10580,7 +10613,7 @@ class DescribeRouteConflictsRequest(AbstractModel):
         r"""
         :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
-        :param DestinationCidrBlocks: 要检查的与之冲突的目的端列表
+        :param DestinationCidrBlocks: 要检查的与之冲突的目的端列表。
         :type DestinationCidrBlocks: list of str
         """
         self.RouteTableId = None
@@ -10606,7 +10639,7 @@ class DescribeRouteConflictsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RouteConflictSet: 路由策略冲突列表
+        :param RouteConflictSet: 路由策略冲突列表。
         :type RouteConflictSet: list of RouteConflict
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10853,7 +10886,7 @@ class DescribeSecurityGroupReferencesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecurityGroupIds: 安全组实例ID数组。格式如：['sg-12345678']
+        :param SecurityGroupIds: 安全组实例ID数组。格式如：['sg-12345678']。
         :type SecurityGroupIds: list of str
         """
         self.SecurityGroupIds = None
@@ -11958,9 +11991,9 @@ class DescribeVpcInstancesRequest(AbstractModel):
 <li>instance-id - String - （过滤条件）云主机实例ID。</li>
 <li>instance-name - String - （过滤条件）云主机名称。</li>
         :type Filters: list of Filter
-        :param Offset: 偏移量。
+        :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 请求对象个数。
+        :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         """
         self.Filters = None
@@ -12027,15 +12060,18 @@ class DescribeVpcIpv6AddressesRequest(AbstractModel):
         :type VpcId: str
         :param Ipv6Addresses: `IP`地址列表，批量查询单次请求最多支持`10`个。
         :type Ipv6Addresses: list of str
-        :param Offset: 偏移量。
+        :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 返回数量。
+        :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
+        :param SubnetId: VPC下的子网ID。
+        :type SubnetId: str
         """
         self.VpcId = None
         self.Ipv6Addresses = None
         self.Offset = None
         self.Limit = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -12043,6 +12079,7 @@ class DescribeVpcIpv6AddressesRequest(AbstractModel):
         self.Ipv6Addresses = params.get("Ipv6Addresses")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13773,7 +13810,7 @@ class DisassociateNetworkAclSubnetsRequest(AbstractModel):
         r"""
         :param NetworkAclId: 网络ACL实例ID。例如：acl-12345678。
         :type NetworkAclId: str
-        :param SubnetIds: 子网实例ID数组。例如：[subnet-12345678]
+        :param SubnetIds: 子网实例ID数组。例如：[subnet-12345678]。
         :type SubnetIds: list of str
         """
         self.NetworkAclId = None
@@ -14889,9 +14926,9 @@ class HaVipAssociateAddressIpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HaVipId: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。必须是没有绑定`EIP`的`HAVIP`
+        :param HaVipId: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。必须是没有绑定`EIP`的`HAVIP`。
         :type HaVipId: str
-        :param AddressIp: 弹性公网`IP`。必须是没有绑定`HAVIP`的`EIP`
+        :param AddressIp: 弹性公网`IP`。必须是没有绑定`HAVIP`的`EIP`。
         :type AddressIp: str
         """
         self.HaVipId = None
@@ -16230,7 +16267,7 @@ class ModifyAssistantCidrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-6v2ht8q5`。
         :type VpcId: str
         :param NewCidrBlocks: 待添加的辅助CIDR。CIDR数组，格式如["10.0.0.0/16", "172.16.0.0/16"]，入参NewCidrBlocks和OldCidrBlocks至少需要其一。
         :type NewCidrBlocks: list of str
@@ -16933,7 +16970,7 @@ class ModifyIpv6AddressesAttributeRequest(AbstractModel):
         r"""
         :param NetworkInterfaceId: 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
         :type NetworkInterfaceId: str
-        :param Ipv6Addresses: 指定的内网IPv6`地址信息。
+        :param Ipv6Addresses: 指定的内网IPv6地址信息。
         :type Ipv6Addresses: list of Ipv6Address
         """
         self.NetworkInterfaceId = None
@@ -16981,13 +17018,13 @@ class ModifyLocalGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LocalGatewayName: 本地网关名称
+        :param LocalGatewayName: 本地网关名称。
         :type LocalGatewayName: str
-        :param CdcId: CDC实例ID
+        :param CdcId: CDC实例ID。
         :type CdcId: str
-        :param LocalGatewayId: 本地网关实例ID
+        :param LocalGatewayId: 本地网关实例ID。
         :type LocalGatewayId: str
-        :param VpcId: VPC实例ID
+        :param VpcId: VPC实例ID。
         :type VpcId: str
         """
         self.LocalGatewayName = None
@@ -17977,9 +18014,9 @@ class ModifyVpcAttributeRequest(AbstractModel):
         :type VpcName: str
         :param EnableMulticast: 是否开启组播。true: 开启, false: 关闭。
         :type EnableMulticast: str
-        :param DnsServers: DNS地址，最多支持4个，第1个默认为主，其余为备
+        :param DnsServers: DNS地址，最多支持4个，第1个默认为主，其余为备。
         :type DnsServers: list of str
-        :param DomainName: 域名
+        :param DomainName: 域名。
         :type DomainName: str
         """
         self.VpcId = None
@@ -22236,7 +22273,7 @@ class UnassignIpv6CidrBlockRequest(AbstractModel):
         r"""
         :param VpcId: `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
         :type VpcId: str
-        :param Ipv6CidrBlock: `IPv6`网段。形如：`3402:4e00:20:1000::/56`
+        :param Ipv6CidrBlock: `IPv6`网段。形如：`3402:4e00:20:1000::/56`。
         :type Ipv6CidrBlock: str
         """
         self.VpcId = None

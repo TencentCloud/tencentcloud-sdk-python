@@ -1027,6 +1027,9 @@ coteaching 双师
         :param RecordUrl: 录制地址。仅在房间结束后存在。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordUrl: str
+        :param Status: 课堂状态。0为未开始，1为正在上课，2为已结束，3为已过期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1043,6 +1046,7 @@ coteaching 双师
         self.DisableRecord = None
         self.Assistants = None
         self.RecordUrl = None
+        self.Status = None
         self.RequestId = None
 
 
@@ -1060,6 +1064,7 @@ coteaching 双师
         self.DisableRecord = params.get("DisableRecord")
         self.Assistants = params.get("Assistants")
         self.RecordUrl = params.get("RecordUrl")
+        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -1110,6 +1115,12 @@ class DescribeRoomStatisticsResponse(AbstractModel):
         :type Total: int
         :param MemberRecords: 成员记录列表。
         :type MemberRecords: list of MemberRecord
+        :param RealStartTime: 秒级unix时间戳，实际房间开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealStartTime: int
+        :param RealEndTime: 秒级unix时间戳，实际房间结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealEndTime: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1117,6 +1128,8 @@ class DescribeRoomStatisticsResponse(AbstractModel):
         self.MemberNumber = None
         self.Total = None
         self.MemberRecords = None
+        self.RealStartTime = None
+        self.RealEndTime = None
         self.RequestId = None
 
 
@@ -1130,6 +1143,8 @@ class DescribeRoomStatisticsResponse(AbstractModel):
                 obj = MemberRecord()
                 obj._deserialize(item)
                 self.MemberRecords.append(obj)
+        self.RealStartTime = params.get("RealStartTime")
+        self.RealEndTime = params.get("RealEndTime")
         self.RequestId = params.get("RequestId")
 
 
