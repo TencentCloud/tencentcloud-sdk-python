@@ -50,7 +50,7 @@ FAILEDOPERATION_IMAGEGRAYNOTSUPPORT = 'FailedOperation.ImageGrayNotSupport'
 # 不支持的图片文件。
 FAILEDOPERATION_IMAGENOTSUPPORTED = 'FailedOperation.ImageNotSupported'
 
-# 图片分辨率过大。
+# 图片分辨率过大，超过2000*2000。
 FAILEDOPERATION_IMAGERESOLUTIONEXCEED = 'FailedOperation.ImageResolutionExceed'
 
 # 图片短边分辨率小于64。

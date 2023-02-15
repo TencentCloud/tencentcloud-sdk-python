@@ -22777,6 +22777,12 @@ class WarningInfoObj(AbstractModel):
         :type ControlBit: int
         :param ControlBits: 漏洞等级控制位二进制，每一位对应页面漏洞等级的开启关闭：低中高（0:关闭；1：开启），例如：101 → 同时勾选低+高
         :type ControlBits: str
+        :param HostRange: 告警主机范围类型，0:全部主机，1:按所属项目选，2:按腾讯云标签选，3:按主机安全标签选，4:自选主机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostRange: int
+        :param Count: 配置的告警范围主机个数，前端用此判断展示提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
         """
         self.Type = None
         self.DisablePhoneWarning = None
@@ -22785,6 +22791,8 @@ class WarningInfoObj(AbstractModel):
         self.TimeZone = None
         self.ControlBit = None
         self.ControlBits = None
+        self.HostRange = None
+        self.Count = None
 
 
     def _deserialize(self, params):
@@ -22795,6 +22803,8 @@ class WarningInfoObj(AbstractModel):
         self.TimeZone = params.get("TimeZone")
         self.ControlBit = params.get("ControlBit")
         self.ControlBits = params.get("ControlBits")
+        self.HostRange = params.get("HostRange")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22811,7 +22821,7 @@ class WarningObject(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高位命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线
+        :param Type: 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高位命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线，14：恶意请求，15: 网络攻击，16：Windows系统漏洞，17：Linux软件漏洞
         :type Type: int
         :param DisablePhoneWarning: 1: 关闭告警 0: 开启告警
         :type DisablePhoneWarning: int
@@ -22821,12 +22831,16 @@ class WarningObject(AbstractModel):
         :type EndTime: str
         :param ControlBits: 漏洞等级控制位二进制，每一位对应页面漏洞等级的开启关闭：低中高（0:关闭；1：开启），例如：101 → 同时勾选低+高；01→(登录审计)疑似不告警，高危告警
         :type ControlBits: str
+        :param HostRange: 告警主机范围类型，0:全部主机，1:按所属项目选，2:按腾讯云标签选，3:按主机安全标签选，4:自选主机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostRange: int
         """
         self.Type = None
         self.DisablePhoneWarning = None
         self.BeginTime = None
         self.EndTime = None
         self.ControlBits = None
+        self.HostRange = None
 
 
     def _deserialize(self, params):
@@ -22835,6 +22849,7 @@ class WarningObject(AbstractModel):
         self.BeginTime = params.get("BeginTime")
         self.EndTime = params.get("EndTime")
         self.ControlBits = params.get("ControlBits")
+        self.HostRange = params.get("HostRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

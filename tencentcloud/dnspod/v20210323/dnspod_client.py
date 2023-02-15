@@ -325,6 +325,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDomainBatch(self, request):
+        """批量删除域名
+
+        :param request: Request instance for DeleteDomainBatch.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteDomainBatchRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DeleteDomainBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDomainBatch", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDomainBatchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteRecord(self, request):
         """删除记录
 
@@ -578,6 +601,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDomainPreview(self, request):
+        """获取域名概览信息
+
+        :param request: Request instance for DescribeDomainPreview.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainPreviewRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainPreviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainPreview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainPreviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDomainPurview(self, request):
         """获取域名权限
 
@@ -624,6 +670,52 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDomainWhois(self, request):
+        """获取域名Whois信息
+
+        :param request: Request instance for DescribeDomainWhois.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainWhoisRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainWhoisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainWhois", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainWhoisResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePackageDetail(self, request):
+        """获取各套餐配置详情
+
+        :param request: Request instance for DescribePackageDetail.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribePackageDetailRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribePackageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePackageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePackageDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRecord(self, request):
         """获取记录信息
 
@@ -638,6 +730,29 @@ class DnspodClient(AbstractClient):
             body = self.call("DescribeRecord", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRecordExistExceptDefaultNS(self, request):
+        """判断是否有除系统默认的@-NS记录之外的记录存在
+
+        :param request: Request instance for DescribeRecordExistExceptDefaultNS.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordExistExceptDefaultNSRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordExistExceptDefaultNSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordExistExceptDefaultNS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordExistExceptDefaultNSResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -891,6 +1006,29 @@ class DnspodClient(AbstractClient):
             body = self.call("DescribeUserDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVASStatistic(self, request):
+        """获取域名增值服务用量
+
+        :param request: Request instance for DescribeVASStatistic.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeVASStatisticRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeVASStatisticResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVASStatistic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVASStatisticResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

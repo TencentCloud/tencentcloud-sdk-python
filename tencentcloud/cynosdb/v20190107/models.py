@@ -4628,6 +4628,60 @@ class DescribeRollbackTimeValidityResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeZonesRequest(AbstractModel):
+    """DescribeZones请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IncludeVirtualZones: 是否包含虚拟区
+        :type IncludeVirtualZones: bool
+        :param ShowPermission: 是否展示地域下所有可用区，并显示用户每个可用区权限
+        :type ShowPermission: bool
+        """
+        self.IncludeVirtualZones = None
+        self.ShowPermission = None
+
+
+    def _deserialize(self, params):
+        self.IncludeVirtualZones = params.get("IncludeVirtualZones")
+        self.ShowPermission = params.get("ShowPermission")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeZonesResponse(AbstractModel):
+    """DescribeZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionSet: 地域信息
+        :type RegionSet: list of SaleRegion
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RegionSet") is not None:
+            self.RegionSet = []
+            for item in params.get("RegionSet"):
+                obj = SaleRegion()
+                obj._deserialize(item)
+                self.RegionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateSecurityGroupsRequest(AbstractModel):
     """DisassociateSecurityGroups请求参数结构体
 
@@ -5960,6 +6014,34 @@ class ModifyParamItem(AbstractModel):
         
 
 
+class Module(AbstractModel):
+    """系统支持的模块
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsDisable: 是否支持，可选值:yes,no
+        :type IsDisable: str
+        :param ModuleName: 模块名
+        :type ModuleName: str
+        """
+        self.IsDisable = None
+        self.ModuleName = None
+
+
+    def _deserialize(self, params):
+        self.IsDisable = params.get("IsDisable")
+        self.ModuleName = params.get("ModuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetAddr(AbstractModel):
     """网络信息
 
@@ -7091,6 +7173,117 @@ class RuleFilters(AbstractModel):
         self.Type = params.get("Type")
         self.Compare = params.get("Compare")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaleRegion(AbstractModel):
+    """售卖地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 地域英文名
+        :type Region: str
+        :param RegionId: 地域数字ID
+        :type RegionId: int
+        :param RegionZh: 地域中文名
+        :type RegionZh: str
+        :param ZoneSet: 可售卖可用区列表
+        :type ZoneSet: list of SaleZone
+        :param DbType: 引擎类型
+        :type DbType: str
+        :param Modules: 地域模块支持情况
+        :type Modules: list of Module
+        """
+        self.Region = None
+        self.RegionId = None
+        self.RegionZh = None
+        self.ZoneSet = None
+        self.DbType = None
+        self.Modules = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.RegionId = params.get("RegionId")
+        self.RegionZh = params.get("RegionZh")
+        if params.get("ZoneSet") is not None:
+            self.ZoneSet = []
+            for item in params.get("ZoneSet"):
+                obj = SaleZone()
+                obj._deserialize(item)
+                self.ZoneSet.append(obj)
+        self.DbType = params.get("DbType")
+        if params.get("Modules") is not None:
+            self.Modules = []
+            for item in params.get("Modules"):
+                obj = Module()
+                obj._deserialize(item)
+                self.Modules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaleZone(AbstractModel):
+    """售卖可用区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 可用区英文名
+        :type Zone: str
+        :param ZoneId: 可用区数字ID
+        :type ZoneId: int
+        :param ZoneZh: 可用区中文名
+        :type ZoneZh: str
+        :param IsSupportServerless: 是否支持serverless集群<br>
+0:不支持<br>
+1:支持
+        :type IsSupportServerless: int
+        :param IsSupportNormal: 是否支持普通集群<br>
+0:不支持<br>
+1:支持
+        :type IsSupportNormal: int
+        :param PhysicalZone: 物理区
+        :type PhysicalZone: str
+        :param HasPermission: 用户是否有可用区权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasPermission: bool
+        :param IsWholeRdmaZone: 是否为全链路RDMA可用区
+        :type IsWholeRdmaZone: str
+        """
+        self.Zone = None
+        self.ZoneId = None
+        self.ZoneZh = None
+        self.IsSupportServerless = None
+        self.IsSupportNormal = None
+        self.PhysicalZone = None
+        self.HasPermission = None
+        self.IsWholeRdmaZone = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.ZoneId = params.get("ZoneId")
+        self.ZoneZh = params.get("ZoneZh")
+        self.IsSupportServerless = params.get("IsSupportServerless")
+        self.IsSupportNormal = params.get("IsSupportNormal")
+        self.PhysicalZone = params.get("PhysicalZone")
+        self.HasPermission = params.get("HasPermission")
+        self.IsWholeRdmaZone = params.get("IsWholeRdmaZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

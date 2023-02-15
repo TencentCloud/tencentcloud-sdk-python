@@ -6984,10 +6984,9 @@ class CreateReviewTemplateRequest(AbstractModel):
         r"""
         :param Labels: 需要返回的违规标签列表，可选值为：
 <li>Porn：色情；</li>
-<li>Terror：暴恐；</li>
+<li>Terror：暴力；</li>
 <li>Polity：不适宜的信息；</li>
 <li>Illegal：违法；</li>
-<li>Religion：宗教；</li>
 <li>Abuse：谩骂；</li>
 <li>Ad：广告；</li>
 <li>Moan：娇喘。</li>
@@ -18165,10 +18164,9 @@ class ModifyReviewTemplateRequest(AbstractModel):
         :type Comment: str
         :param Labels: 需要返回的违规标签列表，可选值为：
 <li>Porn：色情；</li>
-<li>Terror：暴恐；</li>
+<li>Terror：暴力；</li>
 <li>Polity：不适宜的信息；</li>
 <li>Illegal：违法；</li>
-<li>Religion：宗教；</li>
 <li>Abuse：谩骂；</li>
 <li>Ad：广告；</li>
 <li>Moan：娇喘。</li>
@@ -22195,7 +22193,7 @@ class ReviewAudioVideoRequest(AbstractModel):
 不填或填空数组时，默认为审核 Media。
         :type ReviewContents: list of str
         :param Definition: 审核模板 ID，默认值为 10。取值范围：
-<li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴恐（Terror）和不适宜的信息（Polity）。</li>
+<li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
         :type Definition: int
         :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TasksPriority: int
@@ -22274,11 +22272,10 @@ class ReviewAudioVideoSegmentItem(AbstractModel):
         :type Suggestion: str
         :param Label: 嫌疑片段最可能的违规的标签，取值范围：
 <li>Porn：色情；</li>
-<li>Terror：暴恐；</li>
+<li>Terror：暴力；</li>
 <li>Polity：不适宜的信息；</li>
 <li>Ad：广告；</li>
 <li>Illegal：违法；</li>
-<li>Religion：宗教；</li>
 <li>Abuse：谩骂；</li>
 <li>Moan：娇喘。</li>
         :type Label: str
@@ -22446,11 +22443,10 @@ class ReviewAudioVideoTaskOutput(AbstractModel):
         :type Suggestion: str
         :param Label: 当 Suggestion 为 review 或 block 时有效，表示音视频最可能的违规的标签，取值范围：
 <li>Porn：色情；</li>
-<li>Terror：暴恐；</li>
+<li>Terror：暴力；</li>
 <li>Polity：不适宜的信息；</li>
 <li>Ad：广告；</li>
 <li>Illegal：违法；</li>
-<li>Religion：宗教；</li>
 <li>Abuse：谩骂；</li>
 <li>Moan：娇喘。</li>
         :type Label: str
@@ -22514,7 +22510,7 @@ class ReviewImageRequest(AbstractModel):
         :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
         :type FileId: str
         :param Definition: 图片审核模板 ID，取值范围：
-<li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴恐（Terror）和不适宜的信息（Polity）。</li>
+<li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -22585,11 +22581,10 @@ class ReviewImageResult(AbstractModel):
         :type Suggestion: str
         :param Label: 当 Suggestion 为 review 或 block 时有效，表示最可能的违规的标签，取值范围：
 <li>Porn：色情；</li>
-<li>Terror：暴恐；</li>
+<li>Terror：暴力；</li>
 <li>Polity：不适宜的信息；</li>
 <li>Ad：广告；</li>
 <li>Illegal：违法；</li>
-<li>Religion：宗教；</li>
 <li>Abuse：谩骂。</li>
         :type Label: str
         :param Form: 当 Suggestion 为 review 或 block 时有效，表示最可能的违禁的形式，取值范围：
@@ -22648,11 +22643,10 @@ class ReviewImageSegmentItem(AbstractModel):
         :type Suggestion: str
         :param Label: 嫌疑片段最可能的违规的标签，取值范围：
 <li>Porn：色情；</li>
-<li>Terror：暴恐；</li>
+<li>Terror：暴力；</li>
 <li>Polity：不适宜的信息；</li>
 <li>Ad：广告；</li>
 <li>Illegal：违法；</li>
-<li>Religion：宗教；</li>
 <li>Abuse：谩骂。</li>
         :type Label: str
         :param SubLabel: 违规子标签。
@@ -22718,11 +22712,10 @@ Form 表示违禁的形式，取值范围：
 <li>Voice：声音。</li>
 Label 表示违禁的标签，取值范围：
 <li>Porn：色情；</li>
-<li>Terror：暴恐；</li>
+<li>Terror：暴力；</li>
 <li>Polity：不适宜的信息；</li>
 <li>Ad：广告；</li>
 <li>Illegal：违法；</li>
-<li>Religion：宗教；</li>
 <li>Abuse：谩骂；</li>
 <li>Moan：娇喘。</li>
         :type TypeSet: list of str

@@ -96,7 +96,7 @@ class BmeipClient(AbstractClient):
 
 
     def BindVpcIp(self, request):
-        """黑石EIP绑定VPCIP
+        """黑石EIP绑定VPC IP
 
         :param request: Request instance for BindVpcIp.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.BindVpcIpRequest`
@@ -142,7 +142,7 @@ class BmeipClient(AbstractClient):
 
 
     def CreateEipAcl(self, request):
-        """创建黑石弹性公网 EIPACL
+        """创建黑石弹性公网 EIP ACL
 
         :param request: Request instance for CreateEipAcl.
         :type request: :class:`tencentcloud.bmeip.v20180625.models.CreateEipAclRequest`

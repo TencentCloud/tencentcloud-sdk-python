@@ -1189,6 +1189,101 @@ class DeleteDomainAliasResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDomainBatchDetail(AbstractModel):
+    """批量删除域名详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名 ID
+        :type DomainId: int
+        :param Domain: 域名
+        :type Domain: str
+        :param Error: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
+        :param Status: 删除状态
+        :type Status: str
+        :param Operation: 操作
+        :type Operation: str
+        """
+        self.DomainId = None
+        self.Domain = None
+        self.Error = None
+        self.Status = None
+        self.Operation = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        self.Domain = params.get("Domain")
+        self.Error = params.get("Error")
+        self.Status = params.get("Status")
+        self.Operation = params.get("Operation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDomainBatchRequest(AbstractModel):
+    """DeleteDomainBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainList: 域名数组
+        :type DomainList: list of str
+        """
+        self.DomainList = None
+
+
+    def _deserialize(self, params):
+        self.DomainList = params.get("DomainList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDomainBatchResponse(AbstractModel):
+    """DeleteDomainBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 任务 ID
+        :type JobId: int
+        :param DetailList: 任务详情数组
+        :type DetailList: list of DeleteDomainBatchDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.DetailList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        if params.get("DetailList") is not None:
+            self.DetailList = []
+            for item in params.get("DetailList"):
+                obj = DeleteDomainBatchDetail()
+                obj._deserialize(item)
+                self.DetailList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDomainRequest(AbstractModel):
     """DeleteDomain请求参数结构体
 
@@ -1869,6 +1964,57 @@ class DescribeDomainLogListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainPreviewRequest(AbstractModel):
+    """DescribeDomainPreview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :type DomainId: int
+        """
+        self.Domain = None
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainPreviewResponse(AbstractModel):
+    """DescribeDomainPreview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名概览信息
+        :type Domain: :class:`tencentcloud.dnspod.v20210323.models.PreviewDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Domain = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Domain") is not None:
+            self.Domain = PreviewDetail()
+            self.Domain._deserialize(params.get("Domain"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainPurviewRequest(AbstractModel):
     """DescribeDomainPurview请求参数结构体
 
@@ -2029,6 +2175,138 @@ class DescribeDomainShareInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ShareList.append(obj)
         self.Owner = params.get("Owner")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDomainWhoisRequest(AbstractModel):
+    """DescribeDomainWhois请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainWhoisResponse(AbstractModel):
+    """DescribeDomainWhois返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 域名Whois信息
+        :type Info: :class:`tencentcloud.dnspod.v20210323.models.WhoisInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = WhoisInfo()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePackageDetailRequest(AbstractModel):
+    """DescribePackageDetail请求参数结构体
+
+    """
+
+
+class DescribePackageDetailResponse(AbstractModel):
+    """DescribePackageDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 套餐配置详情
+        :type Info: list of PackageDetailItem
+        :param LevelMap: 套餐代码列表
+        :type LevelMap: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.LevelMap = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = []
+            for item in params.get("Info"):
+                obj = PackageDetailItem()
+                obj._deserialize(item)
+                self.Info.append(obj)
+        self.LevelMap = params.get("LevelMap")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRecordExistExceptDefaultNSRequest(AbstractModel):
+    """DescribeRecordExistExceptDefaultNS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :type DomainId: int
+        """
+        self.Domain = None
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordExistExceptDefaultNSResponse(AbstractModel):
+    """DescribeRecordExistExceptDefaultNS返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Exist: true 是 false 否
+        :type Exist: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Exist = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Exist = params.get("Exist")
         self.RequestId = params.get("RequestId")
 
 
@@ -2861,6 +3139,56 @@ class DescribeUserDetailResponse(AbstractModel):
         if params.get("UserInfo") is not None:
             self.UserInfo = UserInfo()
             self.UserInfo._deserialize(params.get("UserInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVASStatisticRequest(AbstractModel):
+    """DescribeVASStatistic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名ID
+        :type DomainId: int
+        """
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVASStatisticResponse(AbstractModel):
+    """DescribeVASStatistic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VASList: 增值服务用量列表
+        :type VASList: list of VASStatisticItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VASList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VASList") is not None:
+            self.VASList = []
+            for item in params.get("VASList"):
+                obj = VASStatisticItem()
+                obj._deserialize(item)
+                self.VASList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4598,6 +4926,70 @@ class ModifyVasAutoRenewStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PackageDetailItem(AbstractModel):
+    """套餐配置明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RealPrice: 套餐原价
+        :type RealPrice: int
+        :param ChangedTimes: 可更换域名次数
+        :type ChangedTimes: int
+        :param MinTtl: 允许设置的最小 TTL 值
+        :type MinTtl: int
+        :param RecordRoll: 负载均衡数量
+        :type RecordRoll: int
+        :param SubDomainLevel: 子域名级数
+        :type SubDomainLevel: int
+        :param MaxWildcard: 泛解析级数
+        :type MaxWildcard: int
+        :param DnsServerRegion: DNS 服务集群个数
+        :type DnsServerRegion: str
+        :param DomainGradeCn: 套餐名称
+        :type DomainGradeCn: str
+        :param GradeLevel: 套餐代号
+        :type GradeLevel: int
+        :param Ns: 套餐对应的 NS
+        :type Ns: list of str
+        :param DomainGrade: 套餐代码
+        :type DomainGrade: str
+        """
+        self.RealPrice = None
+        self.ChangedTimes = None
+        self.MinTtl = None
+        self.RecordRoll = None
+        self.SubDomainLevel = None
+        self.MaxWildcard = None
+        self.DnsServerRegion = None
+        self.DomainGradeCn = None
+        self.GradeLevel = None
+        self.Ns = None
+        self.DomainGrade = None
+
+
+    def _deserialize(self, params):
+        self.RealPrice = params.get("RealPrice")
+        self.ChangedTimes = params.get("ChangedTimes")
+        self.MinTtl = params.get("MinTtl")
+        self.RecordRoll = params.get("RecordRoll")
+        self.SubDomainLevel = params.get("SubDomainLevel")
+        self.MaxWildcard = params.get("MaxWildcard")
+        self.DnsServerRegion = params.get("DnsServerRegion")
+        self.DomainGradeCn = params.get("DomainGradeCn")
+        self.GradeLevel = params.get("GradeLevel")
+        self.Ns = params.get("Ns")
+        self.DomainGrade = params.get("DomainGrade")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PayOrderWithBalanceRequest(AbstractModel):
     """PayOrderWithBalance请求参数结构体
 
@@ -4653,6 +5045,70 @@ class PayOrderWithBalanceResponse(AbstractModel):
         self.BigDealIdList = params.get("BigDealIdList")
         self.DealNameList = params.get("DealNameList")
         self.RequestId = params.get("RequestId")
+
+
+class PreviewDetail(AbstractModel):
+    """域名概览明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 域名
+        :type Name: str
+        :param Grade: 域名套餐代码
+        :type Grade: str
+        :param GradeTitle: 域名套餐名称
+        :type GradeTitle: str
+        :param Records: 域名记录数
+        :type Records: int
+        :param DomainParkingStatus: 域名停靠状态。0 未开启 1 已开启 2 已暂停
+        :type DomainParkingStatus: int
+        :param LineCount: 自定义线路数量
+        :type LineCount: int
+        :param LineGroupCount: 自定义线路分组数量
+        :type LineGroupCount: int
+        :param AliasCount: 域名别名数量
+        :type AliasCount: int
+        :param MaxAliasCount: 允许添加的最大域名别名数量
+        :type MaxAliasCount: int
+        :param ResolveCount: 昨天的解析量
+        :type ResolveCount: int
+        :param VASCount: 增值服务数量
+        :type VASCount: int
+        """
+        self.Name = None
+        self.Grade = None
+        self.GradeTitle = None
+        self.Records = None
+        self.DomainParkingStatus = None
+        self.LineCount = None
+        self.LineGroupCount = None
+        self.AliasCount = None
+        self.MaxAliasCount = None
+        self.ResolveCount = None
+        self.VASCount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Grade = params.get("Grade")
+        self.GradeTitle = params.get("GradeTitle")
+        self.Records = params.get("Records")
+        self.DomainParkingStatus = params.get("DomainParkingStatus")
+        self.LineCount = params.get("LineCount")
+        self.LineGroupCount = params.get("LineGroupCount")
+        self.AliasCount = params.get("AliasCount")
+        self.MaxAliasCount = params.get("MaxAliasCount")
+        self.ResolveCount = params.get("ResolveCount")
+        self.VASCount = params.get("VASCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PurviewInfo(AbstractModel):
@@ -5329,6 +5785,242 @@ class UserInfo(AbstractModel):
         self.WechatBinded = params.get("WechatBinded")
         self.Uin = params.get("Uin")
         self.FreeNs = params.get("FreeNs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VASStatisticItem(AbstractModel):
+    """域名增值服务用量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 增值服务名称
+        :type Name: str
+        :param Key: 增值服务标识
+        :type Key: str
+        :param LimitCount: 增值服务最大用量
+        :type LimitCount: int
+        :param UseCount: 增值服务已使用的用量
+        :type UseCount: int
+        """
+        self.Name = None
+        self.Key = None
+        self.LimitCount = None
+        self.UseCount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Key = params.get("Key")
+        self.LimitCount = params.get("LimitCount")
+        self.UseCount = params.get("UseCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WhoisContact(AbstractModel):
+    """Whois联系信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Admin: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Admin: :class:`tencentcloud.dnspod.v20210323.models.WhoisContactAddress`
+        :param Billing: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Billing: :class:`tencentcloud.dnspod.v20210323.models.WhoisContactAddress`
+        :param Registrant: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Registrant: :class:`tencentcloud.dnspod.v20210323.models.WhoisContactAddress`
+        :param Tech: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tech: :class:`tencentcloud.dnspod.v20210323.models.WhoisContactAddress`
+        """
+        self.Admin = None
+        self.Billing = None
+        self.Registrant = None
+        self.Tech = None
+
+
+    def _deserialize(self, params):
+        if params.get("Admin") is not None:
+            self.Admin = WhoisContactAddress()
+            self.Admin._deserialize(params.get("Admin"))
+        if params.get("Billing") is not None:
+            self.Billing = WhoisContactAddress()
+            self.Billing._deserialize(params.get("Billing"))
+        if params.get("Registrant") is not None:
+            self.Registrant = WhoisContactAddress()
+            self.Registrant._deserialize(params.get("Registrant"))
+        if params.get("Tech") is not None:
+            self.Tech = WhoisContactAddress()
+            self.Tech._deserialize(params.get("Tech"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WhoisContactAddress(AbstractModel):
+    """Whois联系信息地址
+
+    """
+
+    def __init__(self):
+        r"""
+        :param City: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: str
+        :param Country: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Country: str
+        :param Email: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param Fax: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fax: str
+        :param FaxExt: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaxExt: str
+        :param Handle: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Handle: str
+        :param Name: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Organization: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Organization: str
+        :param Phone: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param PostalCode: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostalCode: str
+        :param State: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param Street: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Street: str
+        """
+        self.City = None
+        self.Country = None
+        self.Email = None
+        self.Fax = None
+        self.FaxExt = None
+        self.Handle = None
+        self.Name = None
+        self.Organization = None
+        self.Phone = None
+        self.PostalCode = None
+        self.State = None
+        self.Street = None
+
+
+    def _deserialize(self, params):
+        self.City = params.get("City")
+        self.Country = params.get("Country")
+        self.Email = params.get("Email")
+        self.Fax = params.get("Fax")
+        self.FaxExt = params.get("FaxExt")
+        self.Handle = params.get("Handle")
+        self.Name = params.get("Name")
+        self.Organization = params.get("Organization")
+        self.Phone = params.get("Phone")
+        self.PostalCode = params.get("PostalCode")
+        self.State = params.get("State")
+        self.Street = params.get("Street")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WhoisInfo(AbstractModel):
+    """Whois信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Contacts: 联系信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Contacts: :class:`tencentcloud.dnspod.v20210323.models.WhoisContact`
+        :param CreationDate: 域名注册时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationDate: str
+        :param ExpirationDate: 域名到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpirationDate: str
+        :param IsQcloud: 是否是在腾讯云注册的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsQcloud: bool
+        :param IsQcloudOwner: 是否当前操作帐号注册的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsQcloudOwner: bool
+        :param NameServers: 域名配置的NS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameServers: list of str
+        :param Raw: Whois原始信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Raw: list of str
+        :param Registrar: 域名注册商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Registrar: list of str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: list of str
+        :param UpdatedDate: 更新日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedDate: str
+        """
+        self.Contacts = None
+        self.CreationDate = None
+        self.ExpirationDate = None
+        self.IsQcloud = None
+        self.IsQcloudOwner = None
+        self.NameServers = None
+        self.Raw = None
+        self.Registrar = None
+        self.Status = None
+        self.UpdatedDate = None
+
+
+    def _deserialize(self, params):
+        if params.get("Contacts") is not None:
+            self.Contacts = WhoisContact()
+            self.Contacts._deserialize(params.get("Contacts"))
+        self.CreationDate = params.get("CreationDate")
+        self.ExpirationDate = params.get("ExpirationDate")
+        self.IsQcloud = params.get("IsQcloud")
+        self.IsQcloudOwner = params.get("IsQcloudOwner")
+        self.NameServers = params.get("NameServers")
+        self.Raw = params.get("Raw")
+        self.Registrar = params.get("Registrar")
+        self.Status = params.get("Status")
+        self.UpdatedDate = params.get("UpdatedDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

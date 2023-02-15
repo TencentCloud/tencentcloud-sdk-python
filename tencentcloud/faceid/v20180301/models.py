@@ -374,7 +374,7 @@ class CheckBankCardInformationResponse(AbstractModel):
 收费结果码：
 0: 查询成功
 -1: 未查到信息
-不收费结果码
+不收费结果码：
 -2：验证中心服务繁忙
 -3：银行卡不存在
         :type Result: str

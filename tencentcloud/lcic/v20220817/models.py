@@ -778,6 +778,68 @@ class DescribeAppDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCurrentMemberListRequest(AbstractModel):
+    """DescribeCurrentMemberList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 房间Id。
+        :type RoomId: int
+        :param Page: 分页查询当前页数，从1开始递增。
+        :type Page: int
+        :param Limit: 每页数据量，最大1000。
+        :type Limit: int
+        """
+        self.RoomId = None
+        self.Page = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCurrentMemberListResponse(AbstractModel):
+    """DescribeCurrentMemberList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 记录总数。当前房间的总人数。
+        :type Total: int
+        :param MemberRecords: 成员记录列表。
+        :type MemberRecords: list of MemberRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.MemberRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("MemberRecords") is not None:
+            self.MemberRecords = []
+            for item in params.get("MemberRecords"):
+                obj = MemberRecord()
+                obj._deserialize(item)
+                self.MemberRecords.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDocumentRequest(AbstractModel):
     """DescribeDocument请求参数结构体
 

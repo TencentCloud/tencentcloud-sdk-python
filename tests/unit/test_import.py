@@ -149,6 +149,11 @@ def test_import_bma():
     from tencentcloud.bma.v20210624 import models
 
 
+def test_import_bma():
+    from tencentcloud.bma.v20221115 import bma_client
+    from tencentcloud.bma.v20221115 import models
+
+
 def test_import_bmeip():
     from tencentcloud.bmeip.v20180625 import bmeip_client
     from tencentcloud.bmeip.v20180625 import models

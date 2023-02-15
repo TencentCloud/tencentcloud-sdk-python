@@ -279,6 +279,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCurrentMemberList(self, request):
+        """获取当前房间的成员列表，房间结束或过期后无法使用。
+
+        :param request: Request instance for DescribeCurrentMemberList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeCurrentMemberListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeCurrentMemberListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCurrentMemberList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCurrentMemberListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDocument(self, request):
         """获取文档信息
 

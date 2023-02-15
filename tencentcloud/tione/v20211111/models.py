@@ -1861,6 +1861,15 @@ class DatasetGroup(AbstractModel):
         :param DatasetScope: 数据集范围
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasetScope: str
+        :param OcrScene: 数据集OCR子场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrScene: str
+        :param AnnotationKeyStatus: 数据集字典修改状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnnotationKeyStatus: str
+        :param ContentType: 文本数据集导入方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentType: str
         """
         self.DatasetId = None
         self.DatasetName = None
@@ -1885,6 +1894,9 @@ class DatasetGroup(AbstractModel):
         self.AnnotationType = None
         self.AnnotationFormat = None
         self.DatasetScope = None
+        self.OcrScene = None
+        self.AnnotationKeyStatus = None
+        self.ContentType = None
 
 
     def _deserialize(self, params):
@@ -1925,6 +1937,9 @@ class DatasetGroup(AbstractModel):
         self.AnnotationType = params.get("AnnotationType")
         self.AnnotationFormat = params.get("AnnotationFormat")
         self.DatasetScope = params.get("DatasetScope")
+        self.OcrScene = params.get("OcrScene")
+        self.AnnotationKeyStatus = params.get("AnnotationKeyStatus")
+        self.ContentType = params.get("ContentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2007,6 +2022,12 @@ class DatasetInfo(AbstractModel):
         :param DatasetScope: 数据集范围
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasetScope: str
+        :param OcrScene: 数据集OCR子场景
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrScene: str
+        :param AnnotationKeyStatus: 数据集字典修改状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnnotationKeyStatus: str
         """
         self.DatasetId = None
         self.DatasetName = None
@@ -2030,6 +2051,8 @@ class DatasetInfo(AbstractModel):
         self.AnnotationType = None
         self.AnnotationFormat = None
         self.DatasetScope = None
+        self.OcrScene = None
+        self.AnnotationKeyStatus = None
 
 
     def _deserialize(self, params):
@@ -2064,6 +2087,8 @@ class DatasetInfo(AbstractModel):
         self.AnnotationType = params.get("AnnotationType")
         self.AnnotationFormat = params.get("AnnotationFormat")
         self.DatasetScope = params.get("DatasetScope")
+        self.OcrScene = params.get("OcrScene")
+        self.AnnotationKeyStatus = params.get("AnnotationKeyStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7236,16 +7261,20 @@ class SpecPrice(AbstractModel):
         :type TotalCost: int
         :param RealTotalCost: 优惠后的价格，单位：分
         :type RealTotalCost: int
+        :param SpecCount: 计费项数量
+        :type SpecCount: int
         """
         self.SpecName = None
         self.TotalCost = None
         self.RealTotalCost = None
+        self.SpecCount = None
 
 
     def _deserialize(self, params):
         self.SpecName = params.get("SpecName")
         self.TotalCost = params.get("TotalCost")
         self.RealTotalCost = params.get("RealTotalCost")
+        self.SpecCount = params.get("SpecCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

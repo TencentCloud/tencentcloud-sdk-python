@@ -16019,13 +16019,18 @@ class ModifyNamespaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Result: Result
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -22078,6 +22083,9 @@ class VmGroupOther(AbstractModel):
         :param IsNotEqualServiceConfig: 服务配置信息是否匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNotEqualServiceConfig: bool
+        :param HealthCheckSettings: HealthCheckSettings
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         """
         self.GroupId = None
         self.PackageId = None
@@ -22088,6 +22096,7 @@ class VmGroupOther(AbstractModel):
         self.OffInstanceCount = None
         self.GroupStatus = None
         self.IsNotEqualServiceConfig = None
+        self.HealthCheckSettings = None
 
 
     def _deserialize(self, params):
@@ -22100,6 +22109,9 @@ class VmGroupOther(AbstractModel):
         self.OffInstanceCount = params.get("OffInstanceCount")
         self.GroupStatus = params.get("GroupStatus")
         self.IsNotEqualServiceConfig = params.get("IsNotEqualServiceConfig")
+        if params.get("HealthCheckSettings") is not None:
+            self.HealthCheckSettings = HealthCheckSettings()
+            self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
