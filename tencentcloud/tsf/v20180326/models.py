@@ -175,6 +175,8 @@ class AddInstancesRequest(AbstractModel):
         :type SgId: str
         :param InstanceImportMode: 云主机导入方式，虚拟机集群必填，容器集群不填写此字段，R：重装TSF系统镜像，M：手动安装agent
         :type InstanceImportMode: str
+        :param SecurityGroupIds: 安全组id
+        :type SecurityGroupIds: str
         """
         self.ClusterId = None
         self.InstanceIdList = None
@@ -184,6 +186,7 @@ class AddInstancesRequest(AbstractModel):
         self.KeyId = None
         self.SgId = None
         self.InstanceImportMode = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -195,6 +198,7 @@ class AddInstancesRequest(AbstractModel):
         self.KeyId = params.get("KeyId")
         self.SgId = params.get("SgId")
         self.InstanceImportMode = params.get("InstanceImportMode")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

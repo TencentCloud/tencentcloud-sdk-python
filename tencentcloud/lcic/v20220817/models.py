@@ -1621,6 +1621,12 @@ class MemberRecord(AbstractModel):
         :type LastQuitTimestamp: int
         :param Rewords: 奖励次数。
         :type Rewords: int
+        :param IPAddress: 用户IP。
+        :type IPAddress: str
+        :param Location: 用户位置信息。
+        :type Location: str
+        :param Device: 用户设备平台信息。0:unknown  1:windows  2:mac  3:android  4:ios  5:web   6:h5   7:miniprogram （小程序）
+        :type Device: int
         """
         self.UserId = None
         self.UserName = None
@@ -1633,6 +1639,9 @@ class MemberRecord(AbstractModel):
         self.FirstJoinTimestamp = None
         self.LastQuitTimestamp = None
         self.Rewords = None
+        self.IPAddress = None
+        self.Location = None
+        self.Device = None
 
 
     def _deserialize(self, params):
@@ -1647,6 +1656,9 @@ class MemberRecord(AbstractModel):
         self.FirstJoinTimestamp = params.get("FirstJoinTimestamp")
         self.LastQuitTimestamp = params.get("LastQuitTimestamp")
         self.Rewords = params.get("Rewords")
+        self.IPAddress = params.get("IPAddress")
+        self.Location = params.get("Location")
+        self.Device = params.get("Device")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

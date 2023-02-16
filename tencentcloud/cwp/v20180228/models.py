@@ -18546,6 +18546,9 @@ class Machine(AbstractModel):
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         :param InstanceId: 实例ID
         :type InstanceId: str
+        :param Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         """
         self.MachineName = None
         self.MachineOs = None
@@ -18577,6 +18580,7 @@ class Machine(AbstractModel):
         self.VpcId = None
         self.MachineExtraInfo = None
         self.InstanceId = None
+        self.Remark = None
 
 
     def _deserialize(self, params):
@@ -18624,6 +18628,7 @@ class Machine(AbstractModel):
             self.MachineExtraInfo = MachineExtraInfo()
             self.MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self.InstanceId = params.get("InstanceId")
+        self.Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19407,6 +19412,51 @@ class ModifyLicenseUnBindsResponse(AbstractModel):
                 obj = LicenseUnBindRsp()
                 obj._deserialize(item)
                 self.ErrMsg.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyMachineRemarkRequest(AbstractModel):
+    """ModifyMachineRemark请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 主机Quuid
+        :type Quuid: str
+        :param Remark: 备注信息
+        :type Remark: str
+        """
+        self.Quuid = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMachineRemarkResponse(AbstractModel):
+    """ModifyMachineRemark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

@@ -387,14 +387,18 @@ class CreateEventBusRequest(AbstractModel):
         :type EventBusName: str
         :param Description: 事件集描述，不限字符类型，200字符描述以内
         :type Description: str
+        :param SaveDays: EB存储时长
+        :type SaveDays: int
         """
         self.EventBusName = None
         self.Description = None
+        self.SaveDays = None
 
 
     def _deserialize(self, params):
         self.EventBusName = params.get("EventBusName")
         self.Description = params.get("Description")
+        self.SaveDays = params.get("SaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2140,16 +2144,24 @@ class UpdateEventBusRequest(AbstractModel):
         :type Description: str
         :param EventBusName: 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
         :type EventBusName: str
+        :param SaveDays: EB日志存储时长
+        :type SaveDays: int
+        :param LogTopicId: EB日志主题ID
+        :type LogTopicId: str
         """
         self.EventBusId = None
         self.Description = None
         self.EventBusName = None
+        self.SaveDays = None
+        self.LogTopicId = None
 
 
     def _deserialize(self, params):
         self.EventBusId = params.get("EventBusId")
         self.Description = params.get("Description")
         self.EventBusName = params.get("EventBusName")
+        self.SaveDays = params.get("SaveDays")
+        self.LogTopicId = params.get("LogTopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

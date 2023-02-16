@@ -3676,6 +3676,12 @@ class LogConfigExtractRule(AbstractModel):
         :param UnMatchedKey: 解析失败日志的键名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnMatchedKey: str
+        :param Backtracking: tracking
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Backtracking: str
+        :param Delimiter: 分隔符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Delimiter: str
         """
         self.BeginningRegex = None
         self.Keys = None
@@ -3686,6 +3692,8 @@ class LogConfigExtractRule(AbstractModel):
         self.TimeFormat = None
         self.UnMatchUpload = None
         self.UnMatchedKey = None
+        self.Backtracking = None
+        self.Delimiter = None
 
 
     def _deserialize(self, params):
@@ -3698,6 +3706,8 @@ class LogConfigExtractRule(AbstractModel):
         self.TimeFormat = params.get("TimeFormat")
         self.UnMatchUpload = params.get("UnMatchUpload")
         self.UnMatchedKey = params.get("UnMatchedKey")
+        self.Backtracking = params.get("Backtracking")
+        self.Delimiter = params.get("Delimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5254,6 +5264,9 @@ class ServiceVersionBrief(AbstractModel):
         :param CreateDate: 创建日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateDate: str
+        :param RegionId: 地域id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
         """
         self.VersionName = None
         self.Status = None
@@ -5275,6 +5288,7 @@ class ServiceVersionBrief(AbstractModel):
         self.PodList = None
         self.WorkloadInfo = None
         self.CreateDate = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
@@ -5309,6 +5323,7 @@ class ServiceVersionBrief(AbstractModel):
             self.WorkloadInfo = WorkloadInfo()
             self.WorkloadInfo._deserialize(params.get("WorkloadInfo"))
         self.CreateDate = params.get("CreateDate")
+        self.RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5604,14 +5619,19 @@ class TemEnvironmentStartingStatus(AbstractModel):
         :param StartedApplicationNum: 已经启动的应用数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartedApplicationNum: int
+        :param StartFailedApplicationNum: 启动失败的应用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartFailedApplicationNum: int
         """
         self.ApplicationNumNeedToStart = None
         self.StartedApplicationNum = None
+        self.StartFailedApplicationNum = None
 
 
     def _deserialize(self, params):
         self.ApplicationNumNeedToStart = params.get("ApplicationNumNeedToStart")
         self.StartedApplicationNum = params.get("StartedApplicationNum")
+        self.StartFailedApplicationNum = params.get("StartFailedApplicationNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5634,14 +5654,19 @@ class TemEnvironmentStoppingStatus(AbstractModel):
         :param StoppedApplicationNum: 已经停止的应用数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type StoppedApplicationNum: int
+        :param StopFailedApplicationNum: 停止失败的应用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StopFailedApplicationNum: int
         """
         self.ApplicationNumNeedToStop = None
         self.StoppedApplicationNum = None
+        self.StopFailedApplicationNum = None
 
 
     def _deserialize(self, params):
         self.ApplicationNumNeedToStop = params.get("ApplicationNumNeedToStop")
         self.StoppedApplicationNum = params.get("StoppedApplicationNum")
+        self.StopFailedApplicationNum = params.get("StopFailedApplicationNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6152,6 +6177,12 @@ class TemServiceVersionInfo(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param PreStopEncoded: 是否编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreStopEncoded: str
+        :param PostStartEncoded: 是否编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostStartEncoded: str
         """
         self.VersionId = None
         self.ApplicationId = None
@@ -6239,6 +6270,8 @@ class TemServiceVersionInfo(AbstractModel):
         self.PodList = None
         self.ConfEdited = None
         self.Tags = None
+        self.PreStopEncoded = None
+        self.PostStartEncoded = None
 
 
     def _deserialize(self, params):
@@ -6393,6 +6426,8 @@ class TemServiceVersionInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.PreStopEncoded = params.get("PreStopEncoded")
+        self.PostStartEncoded = params.get("PostStartEncoded")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

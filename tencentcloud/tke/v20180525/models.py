@@ -10973,16 +10973,20 @@ class EnableClusterAuditRequest(AbstractModel):
         :type LogsetId: str
         :param TopicId: CLS日志主题ID
         :type TopicId: str
+        :param TopicRegion: topic所在region，默认为集群当前region
+        :type TopicRegion: str
         """
         self.ClusterId = None
         self.LogsetId = None
         self.TopicId = None
+        self.TopicRegion = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.LogsetId = params.get("LogsetId")
         self.TopicId = params.get("TopicId")
+        self.TopicRegion = params.get("TopicRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11063,16 +11067,20 @@ class EnableEventPersistenceRequest(AbstractModel):
         :type LogsetId: str
         :param TopicId: cls服务的topicID
         :type TopicId: str
+        :param TopicRegion: topic所在地域，默认为集群所在地域
+        :type TopicRegion: str
         """
         self.ClusterId = None
         self.LogsetId = None
         self.TopicId = None
+        self.TopicRegion = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.LogsetId = params.get("LogsetId")
         self.TopicId = params.get("TopicId")
+        self.TopicRegion = params.get("TopicRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

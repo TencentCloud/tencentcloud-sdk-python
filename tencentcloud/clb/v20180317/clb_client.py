@@ -1427,6 +1427,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyFunctionTargets(self, request):
+        """修改负载均衡转发规则上所绑定的云函数。
+
+        :param request: Request instance for ModifyFunctionTargets.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyFunctionTargetsRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyFunctionTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFunctionTargets", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFunctionTargetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyListener(self, request):
         """ModifyListener接口用来修改负载均衡监听器的属性，包括监听器名称、健康检查参数、证书信息、转发策略等。本接口不支持传统型负载均衡。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。

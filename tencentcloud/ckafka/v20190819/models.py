@@ -1471,6 +1471,9 @@ class ConsumerRecord(AbstractModel):
         :param Timestamp: 消息时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
+        :param Headers: 消息headers
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: str
         """
         self.Topic = None
         self.Partition = None
@@ -1478,6 +1481,7 @@ class ConsumerRecord(AbstractModel):
         self.Key = None
         self.Value = None
         self.Timestamp = None
+        self.Headers = None
 
 
     def _deserialize(self, params):
@@ -1487,6 +1491,7 @@ class ConsumerRecord(AbstractModel):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
         self.Timestamp = params.get("Timestamp")
+        self.Headers = params.get("Headers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

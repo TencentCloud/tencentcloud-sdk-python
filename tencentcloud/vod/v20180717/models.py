@@ -4534,6 +4534,39 @@ class ApplyUploadResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ArtifactRepairInfo(AbstractModel):
+    """去伪影（毛刺）控制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 去伪影（毛刺）控制开关，可选值：
+<li>ON：开启去伪影（毛刺）；</li>
+<li>OFF：关闭去伪影（毛刺）。</li>
+        :type Switch: str
+        :param Type: 去伪影（毛刺）类型，仅当去伪影（毛刺）控制开关为 ON 时有效，可选值：
+<li>weak：轻去伪影（毛刺）；</li>
+<li>strong：强去伪影（毛刺）。</li>
+默认值：weak。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsrFullTextConfigureInfo(AbstractModel):
     """语音全文识别任务控制参数
 
@@ -4731,6 +4764,40 @@ class AttachMediaSubtitlesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class AudioDenoiseInfo(AbstractModel):
+    """音频降噪控制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 音频降噪控制开关，可选值：
+<li>ON：开启音频降噪；</li>
+<li>OFF：关闭音频降噪。</li>
+        :type Switch: str
+        :param Type: 音频降噪类型，仅当音频降噪控制开关为 ON 时有效，可选值：
+<li>weak：轻音频降噪；</li>
+<li>normal：正常音频降噪；</li>
+<li>strong：强音频降噪。</li>
+默认值：weak。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AudioTemplateInfo(AbstractModel):
@@ -5169,6 +5236,40 @@ class ClipTask2017(AbstractModel):
         if params.get("FileInfo") is not None:
             self.FileInfo = ClipFileInfo2017()
             self.FileInfo._deserialize(params.get("FileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ColorEnhanceInfo(AbstractModel):
+    """色彩增强控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 色彩增强控制开关，可选值：
+<li>ON：开启综合增强；</li>
+<li>OFF：关闭综合增强。</li>
+        :type Switch: str
+        :param Type: 色彩增强类型，仅当色彩增强控制开关为 ON 时有效，可选值：
+<li>weak：轻色彩增强；</li>
+<li>normal：正常色彩增强；</li>
+<li>strong：强色彩增强。</li>
+默认值：weak。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12848,13 +12949,14 @@ class EventContent(AbstractModel):
 <li>NewFileUpload：视频上传完成；</li>
 <li>ProcedureStateChanged：任务流状态变更；</li>
 <li>FileDeleted：视频删除完成；</li>
+<li>RestoreMediaComplete：视频取回完成；</li>
 <li>PullComplete：视频转拉完成；</li>
 <li>EditMediaComplete：视频编辑完成；</li>
 <li>SplitMediaComplete：视频拆分完成；</li>
-<li>WechatPublishComplete：微信发布完成；</li>
 <li>ComposeMediaComplete：制作媒体文件完成；</li>
 <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
-<li>FastClipMediaComplete：快速剪辑完成；</li>
+<li>RemoveWatermark：智能去除水印完成。</li>
+<li>RebuildMediaComplete：音画质重生完成事件。</li>
 <li>ReviewAudioVideoComplete：音视频审核完成；</li>
 <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
 <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
@@ -12880,7 +12982,7 @@ class EventContent(AbstractModel):
         :param EditMediaCompleteEvent: 视频编辑完成事件，当事件类型为 EditMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
-        :param SplitMediaCompleteEvent: 视频拆条完成事件，当事件类型为 SplitMediaComplete 时有效。
+        :param SplitMediaCompleteEvent: 视频拆分完成事件，当事件类型为 SplitMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SplitMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
         :param ComposeMediaCompleteEvent: 制作媒体文件任务完成事件，当事件类型为 ComposeMediaComplete 时有效。
@@ -12907,13 +13009,16 @@ class EventContent(AbstractModel):
         :param WechatMiniProgramPublishCompleteEvent: 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
-        :param RemoveWatermarkCompleteEvent: 智能去除水印任务完成事件，当事件类型为 RemoveWatermark 有效。
+        :param RemoveWatermarkCompleteEvent: 智能去除水印完成事件，当事件类型为 RemoveWatermark 有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoveWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
-        :param RestoreMediaCompleteEvent: 视频取回完成事件，当事件类型为RestoreMediaComplete 时有效。
+        :param RestoreMediaCompleteEvent: 视频取回完成事件，当事件类型为 RestoreMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
-        :param ExtractTraceWatermarkCompleteEvent: 溯源水印提取完成事件，当事件类型为ExtractTraceWatermarkComplete 时有效。
+        :param RebuildMediaCompleteEvent: 音画质重生完成事件，当事件类型为 RebuildMediaComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RebuildMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTask`
+        :param ExtractTraceWatermarkCompleteEvent: 溯源水印提取完成事件，当事件类型为 ExtractTraceWatermarkComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtractTraceWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
         :param ReviewAudioVideoCompleteEvent: 音视频审核完成事件，当事件类型为 ReviewAudioVideoComplete 时有效。
@@ -12944,6 +13049,7 @@ class EventContent(AbstractModel):
         self.WechatMiniProgramPublishCompleteEvent = None
         self.RemoveWatermarkCompleteEvent = None
         self.RestoreMediaCompleteEvent = None
+        self.RebuildMediaCompleteEvent = None
         self.ExtractTraceWatermarkCompleteEvent = None
         self.ReviewAudioVideoCompleteEvent = None
         self.ReduceMediaBitrateCompleteEvent = None
@@ -13001,6 +13107,9 @@ class EventContent(AbstractModel):
         if params.get("RestoreMediaCompleteEvent") is not None:
             self.RestoreMediaCompleteEvent = RestoreMediaTask()
             self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
+        if params.get("RebuildMediaCompleteEvent") is not None:
+            self.RebuildMediaCompleteEvent = RebuildMediaTask()
+            self.RebuildMediaCompleteEvent._deserialize(params.get("RebuildMediaCompleteEvent"))
         if params.get("ExtractTraceWatermarkCompleteEvent") is not None:
             self.ExtractTraceWatermarkCompleteEvent = ExtractTraceWatermarkTask()
             self.ExtractTraceWatermarkCompleteEvent._deserialize(params.get("ExtractTraceWatermarkCompleteEvent"))
@@ -13373,6 +13482,37 @@ class FaceConfigureInfoForUpdate(AbstractModel):
         
 
 
+class FaceEnhanceInfo(AbstractModel):
+    """人脸增强控制
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 人脸增强控制开关，可选值：
+<li>ON：开启人脸增强；</li>
+<li>OFF：关闭人脸增强。</li>
+        :type Switch: str
+        :param Intensity: 人脸增强强度，仅当人脸增强控制开关为 ON 时有效，取值范围：0.0~1.0。
+默认：0.0。
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileDeleteResultItem(AbstractModel):
     """文件删除结果信息
 
@@ -13627,6 +13767,42 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.ScreenshotInterval = params.get("ScreenshotInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HDRInfo(AbstractModel):
+    """高动态范围类型控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 高动态范围类型控制开关，可选值：
+<li>ON：开启高动态范围类型转换；</li>
+<li>OFF：关闭高动态范围类型转换。</li>
+        :type Switch: str
+        :param Type: 高动态范围类型，可选值：
+<li>hdr10：表示 hdr10 标准；</li>
+<li>hlg：表示 hlg 标准。</li>
+
+注意：
+<li> 仅当高动态范围类型控制开关为 ON 时有效；</li>
+<li>当画质重生目标参数中指定视频输出参数的视频流编码格式 Codec 为 libx265 时有效。</li>
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14586,6 +14762,38 @@ class LiveRealTimeClipStreamInfo(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LowLightEnhanceInfo(AbstractModel):
+    """低光照增强控制
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 低光照增强控制开关，可选值：
+<li>ON：开启低光照增强；</li>
+<li>OFF：关闭低光照增强。</li>
+        :type Switch: str
+        :param Type: 低光照增强类型，仅当低光照增强控制开关为 ON 时有效，可选值：
+<li>normal：正常低光照增强；</li>
+默认值：normal。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21438,6 +21646,448 @@ class PushUrlCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RebuildMediaTargetAudioStream(AbstractModel):
+    """画质重生输出的音频信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Codec: 音频流的编码格式。
+当外层参数 Container 为 mp3 时，可选值为：
+<li>libmp3lame。</li>
+当外层参数 Container 为 ogg 或 flac 时，可选值为：
+<li>flac。</li>
+当外层参数 Container 为 m4a 时，可选值为：
+<li>libfdk_aac；</li>
+<li>libmp3lame；</li>
+<li>ac3。</li>
+当外层参数 Container 为 mp4 或 flv 时，可选值为：
+<li>libfdk_aac：更适合 mp4；</li>
+<li>libmp3lame：更适合 flv；</li>
+<li>mp2。</li>
+当外层参数 Container 为 hls 时，可选值为：
+<li>libfdk_aac。</li>
+        :type Codec: str
+        :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
+当取值为 0，表示音频码率和原始音频保持一致。
+        :type Bitrate: int
+        :param SampleRate: 音频流的采样率，可选值：
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+
+单位：Hz。
+        :type SampleRate: int
+        :param AudioChannel: 音频通道方式，可选值：
+<li>1：单通道</li>
+<li>2：双通道</li>
+<li>6：立体声</li>
+
+当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
+默认值：2。
+        :type AudioChannel: int
+        """
+        self.Codec = None
+        self.Bitrate = None
+        self.SampleRate = None
+        self.AudioChannel = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Bitrate = params.get("Bitrate")
+        self.SampleRate = params.get("SampleRate")
+        self.AudioChannel = params.get("AudioChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTargetInfo(AbstractModel):
+    """画质重生目标参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :type MediaName: str
+        :param Description: 描述信息，最长 128 个字符。缺省描述信息为空。
+        :type Description: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ExpireTime: str
+        :param Container: 输出文件封装格式，可选值：mp4、flv、hls。默认mp4。
+        :type Container: str
+        :param VideoStream: 输出的视频信息。
+        :type VideoStream: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
+        :param AudioStream: 输出的音频信息。
+        :type AudioStream: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+
+默认值：0。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+
+默认值：0。
+        :type RemoveAudio: int
+        """
+        self.MediaName = None
+        self.Description = None
+        self.ClassId = None
+        self.ExpireTime = None
+        self.Container = None
+        self.VideoStream = None
+        self.AudioStream = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+
+
+    def _deserialize(self, params):
+        self.MediaName = params.get("MediaName")
+        self.Description = params.get("Description")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Container = params.get("Container")
+        if params.get("VideoStream") is not None:
+            self.VideoStream = RebuildMediaTargetVideoStream()
+            self.VideoStream._deserialize(params.get("VideoStream"))
+        if params.get("AudioStream") is not None:
+            self.AudioStream = RebuildMediaTargetAudioStream()
+            self.AudioStream._deserialize(params.get("AudioStream"))
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTargetVideoStream(AbstractModel):
+    """画质重生输出的视频信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Codec: 视频流的编码格式，可选值：
+<li>libx264：H.264 编码；</li>
+<li>libx265：H.265 编码；</li>
+<li>av1：AOMedia Video 1 编码。</li>
+默认视频流的编码格式为 H.264 编码。
+        :type Codec: str
+        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。
+        :type Bitrate: int
+        :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
+        :type Fps: int
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+
+默认值：open。
+        :type ResolutionAdaptive: str
+        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+
+默认值：0。
+        :type Width: int
+        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+
+默认值：0。
+        :type Height: int
+        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+<li>stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+
+默认值：stretch 。
+        :type FillType: str
+        :param Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
+当填 0 或不填时，系统将自动设置 gop 长度。
+        :type Gop: int
+        """
+        self.Codec = None
+        self.Bitrate = None
+        self.Fps = None
+        self.ResolutionAdaptive = None
+        self.Width = None
+        self.Height = None
+        self.FillType = None
+        self.Gop = None
+
+
+    def _deserialize(self, params):
+        self.Codec = params.get("Codec")
+        self.Bitrate = params.get("Bitrate")
+        self.Fps = params.get("Fps")
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.FillType = params.get("FillType")
+        self.Gop = params.get("Gop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTask(AbstractModel):
+    """音画质重生任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param Progress: 音画质重生任务进度，取值范围 [0-100] 。
+        :type Progress: int
+        :param Input: 音画质重生任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTaskInput`
+        :param Output: 音画质重生任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTaskOutput`
+        :param MetaData: 音画质重生输出视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.ErrCodeExt = None
+        self.Progress = None
+        self.Input = None
+        self.Output = None
+        self.MetaData = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self.Input = RebuildMediaTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = RebuildMediaTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTaskInput(AbstractModel):
+    """音画质重生任务的输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param StartTimeOffset: 起始偏移时间，单位：秒，不填表示从视频开始截取。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 结束偏移时间，单位：秒，不填表示截取到视频末尾。
+        :type EndTimeOffset: float
+        :param RepairInfo: 画质修复控制参数。
+        :type RepairInfo: :class:`tencentcloud.vod.v20180717.models.RepairInfo`
+        :param VideoFrameInterpolationInfo: 智能插帧控制参数。
+        :type VideoFrameInterpolationInfo: :class:`tencentcloud.vod.v20180717.models.VideoFrameInterpolationInfo`
+        :param SuperResolutionInfo: 画面超分控制参数。
+        :type SuperResolutionInfo: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        :param HDRInfo: 高动态范围类型控制参数。
+        :type HDRInfo: :class:`tencentcloud.vod.v20180717.models.HDRInfo`
+        :param VideoDenoiseInfo: 视频降噪控制参数。
+        :type VideoDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.VideoDenoiseInfo`
+        :param AudioDenoiseInfo: 音频降噪控制参数。
+        :type AudioDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
+        :param ColorInfo: 色彩增强控制参数。
+        :type ColorInfo: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        :param SharpInfo: 细节增强控制参数。
+        :type SharpInfo: :class:`tencentcloud.vod.v20180717.models.SharpEnhanceInfo`
+        :param FaceInfo: 人脸增强控制参数。
+        :type FaceInfo: :class:`tencentcloud.vod.v20180717.models.FaceEnhanceInfo`
+        :param LowLightInfo: 低光照控制参数。
+        :type LowLightInfo: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        :param ScratchRepairInfo: 去划痕控制参数。
+        :type ScratchRepairInfo: :class:`tencentcloud.vod.v20180717.models.ScratchRepairInfo`
+        :param ArtifactRepairInfo: 去伪影（毛刺）控制参数。
+        :type ArtifactRepairInfo: :class:`tencentcloud.vod.v20180717.models.ArtifactRepairInfo`
+        :param TargetInfo: 音画质重生输出目标参数。
+        :type TargetInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetInfo`
+        """
+        self.FileId = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.RepairInfo = None
+        self.VideoFrameInterpolationInfo = None
+        self.SuperResolutionInfo = None
+        self.HDRInfo = None
+        self.VideoDenoiseInfo = None
+        self.AudioDenoiseInfo = None
+        self.ColorInfo = None
+        self.SharpInfo = None
+        self.FaceInfo = None
+        self.LowLightInfo = None
+        self.ScratchRepairInfo = None
+        self.ArtifactRepairInfo = None
+        self.TargetInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("RepairInfo") is not None:
+            self.RepairInfo = RepairInfo()
+            self.RepairInfo._deserialize(params.get("RepairInfo"))
+        if params.get("VideoFrameInterpolationInfo") is not None:
+            self.VideoFrameInterpolationInfo = VideoFrameInterpolationInfo()
+            self.VideoFrameInterpolationInfo._deserialize(params.get("VideoFrameInterpolationInfo"))
+        if params.get("SuperResolutionInfo") is not None:
+            self.SuperResolutionInfo = SuperResolutionInfo()
+            self.SuperResolutionInfo._deserialize(params.get("SuperResolutionInfo"))
+        if params.get("HDRInfo") is not None:
+            self.HDRInfo = HDRInfo()
+            self.HDRInfo._deserialize(params.get("HDRInfo"))
+        if params.get("VideoDenoiseInfo") is not None:
+            self.VideoDenoiseInfo = VideoDenoiseInfo()
+            self.VideoDenoiseInfo._deserialize(params.get("VideoDenoiseInfo"))
+        if params.get("AudioDenoiseInfo") is not None:
+            self.AudioDenoiseInfo = AudioDenoiseInfo()
+            self.AudioDenoiseInfo._deserialize(params.get("AudioDenoiseInfo"))
+        if params.get("ColorInfo") is not None:
+            self.ColorInfo = ColorEnhanceInfo()
+            self.ColorInfo._deserialize(params.get("ColorInfo"))
+        if params.get("SharpInfo") is not None:
+            self.SharpInfo = SharpEnhanceInfo()
+            self.SharpInfo._deserialize(params.get("SharpInfo"))
+        if params.get("FaceInfo") is not None:
+            self.FaceInfo = FaceEnhanceInfo()
+            self.FaceInfo._deserialize(params.get("FaceInfo"))
+        if params.get("LowLightInfo") is not None:
+            self.LowLightInfo = LowLightEnhanceInfo()
+            self.LowLightInfo._deserialize(params.get("LowLightInfo"))
+        if params.get("ScratchRepairInfo") is not None:
+            self.ScratchRepairInfo = ScratchRepairInfo()
+            self.ScratchRepairInfo._deserialize(params.get("ScratchRepairInfo"))
+        if params.get("ArtifactRepairInfo") is not None:
+            self.ArtifactRepairInfo = ArtifactRepairInfo()
+            self.ArtifactRepairInfo._deserialize(params.get("ArtifactRepairInfo"))
+        if params.get("TargetInfo") is not None:
+            self.TargetInfo = RebuildMediaTargetInfo()
+            self.TargetInfo._deserialize(params.get("TargetInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaTaskOutput(AbstractModel):
+    """音画质重生任务输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileType: 文件类型，例如 mp4、flv 等。
+        :type FileType: str
+        :param FileUrl: 媒体文件播放地址。
+        :type FileUrl: str
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :type MediaName: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ExpireTime: str
+        """
+        self.FileType = None
+        self.FileUrl = None
+        self.FileId = None
+        self.MediaName = None
+        self.ClassId = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.FileType = params.get("FileType")
+        self.FileUrl = params.get("FileUrl")
+        self.FileId = params.get("FileId")
+        self.MediaName = params.get("MediaName")
+        self.ClassId = params.get("ClassId")
+        self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReduceMediaBitrateAdaptiveDynamicStreamingResult(AbstractModel):
     """降码率任务转自适应码流结果类型
 
@@ -21921,6 +22571,40 @@ class RemoveWatermarkTask(AbstractModel):
             self.Output._deserialize(params.get("Output"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RepairInfo(AbstractModel):
+    """画质修复控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 画质修复控制开关，可选值：
+<li>ON：开启画质修复；</li>
+<li>OFF：关闭画质修复。</li>
+        :type Switch: str
+        :param Type: 画质修复类型，仅当画质修复控制开关为 ON 时有效，可选值：
+<li>weak：轻画质修复；</li>
+<li>normal：正常画质修复；</li>
+<li>strong：强画质修复。</li>
+默认值：weak。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -23033,6 +23717,43 @@ class SampleSnapshotTemplate(AbstractModel):
         
 
 
+class ScratchRepairInfo(AbstractModel):
+    """去划痕控制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 去划痕控制开关，可选值：
+<li>ON：开启去划痕；</li>
+<li>OFF：关闭去划痕。</li>
+        :type Switch: str
+        :param Intensity: 去划痕强度，仅当去划痕控制开关为 ON 时有效，取值范围：0.0~1.0。
+默认：0.0。
+        :type Intensity: float
+        :param Type: 去划痕类型，仅当去划痕控制开关为 ON 时有效，可选值：
+<li>normal：正常去划痕；</li>
+默认值：normal。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Intensity = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchMediaRequest(AbstractModel):
     """SearchMedia请求参数结构体
 
@@ -23347,6 +24068,37 @@ class SetDrmKeyProviderInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SharpEnhanceInfo(AbstractModel):
+    """细节增强控制
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 细节增强控制开关，可选值：
+<li>ON：开启细节增强；</li>
+<li>OFF：关闭细节增强。</li>
+        :type Switch: str
+        :param Intensity: 细节增强强度，仅当细节增强控制开关为 ON 时有效，取值范围：0.0~1.0。
+默认：0.0。
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SimpleAesEdkPair(AbstractModel):
@@ -24318,6 +25070,45 @@ class SubtitleFormatsOperation(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Formats = params.get("Formats")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SuperResolutionInfo(AbstractModel):
+    """画面超分控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 画面超分控制开关，可选值：
+<li>ON：开启画面超分；</li>
+<li>OFF：关闭画面超分。</li>
+当开启画面超分时，默认2倍超分。
+        :type Switch: str
+        :param Type: 画面超分类型，仅当画面超分控制开关为 ON 时有效，可选值：
+<li>lq：针对低清晰度有较多噪声视频的超分；</li>
+<li>hq：针对高清晰度视频超分。</li>
+默认值：lq。
+        :type Type: str
+        :param Size: 超分倍数，可选值：2。
+默认值：2。
+        :type Size: int
+        """
+        self.Switch = None
+        self.Type = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -25919,6 +26710,69 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
         self.LabelSet = params.get("LabelSet")
         self.BlockConfidence = params.get("BlockConfidence")
         self.ReviewConfidence = params.get("ReviewConfidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDenoiseInfo(AbstractModel):
+    """视频降噪控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频降噪控制开关，可选值：
+<li>ON：开启视频降噪；</li>
+<li>OFF：关闭视频降噪。</li>
+        :type Switch: str
+        :param Type: 视频降噪类型，仅当视频降噪控制开关为 ON 时有效，可选值：
+<li>weak：轻视频降噪；</li>
+<li>strong：强视频降噪。</li>
+默认值：weak。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoFrameInterpolationInfo(AbstractModel):
+    """智能插帧控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 智能插帧控制开关，可选值：
+<li>ON：开启智能插帧；</li>
+<li>OFF：关闭智能插帧。</li>
+        :type Switch: str
+        :param Fps: 智能插帧帧率，帧率范围为 (0, 60]，仅当智能插帧控制开关为 ON 时有效。默认跟源文件帧率一致。
+        :type Fps: int
+        """
+        self.Switch = None
+        self.Fps = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Fps = params.get("Fps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

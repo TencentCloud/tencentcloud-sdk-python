@@ -26,6 +26,29 @@ class BmaClient(AbstractClient):
     _service = 'bma'
 
 
+    def CreateBPBrand(self, request):
+        """添加品牌
+
+        :param request: Request instance for CreateBPBrand.
+        :type request: :class:`tencentcloud.bma.v20221115.models.CreateBPBrandRequest`
+        :rtype: :class:`tencentcloud.bma.v20221115.models.CreateBPBrandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBPBrand", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBPBrandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBPFakeAPP(self, request):
         """仿冒应用举报
 
@@ -109,6 +132,144 @@ class BmaClient(AbstractClient):
             body = self.call("CreateBPFakeURLs", params, headers=headers)
             response = json.loads(body)
             model = models.CreateBPFakeURLsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBPWhiteList(self, request):
+        """添加白名单
+
+        :param request: Request instance for CreateBPWhiteList.
+        :type request: :class:`tencentcloud.bma.v20221115.models.CreateBPWhiteListRequest`
+        :rtype: :class:`tencentcloud.bma.v20221115.models.CreateBPWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBPWhiteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBPWhiteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteBPWhiteList(self, request):
+        """删除白名单
+
+        :param request: Request instance for DeleteBPWhiteList.
+        :type request: :class:`tencentcloud.bma.v20221115.models.DeleteBPWhiteListRequest`
+        :rtype: :class:`tencentcloud.bma.v20221115.models.DeleteBPWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBPWhiteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBPWhiteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBPBrands(self, request):
+        """查询品牌列表
+
+        :param request: Request instance for DescribeBPBrands.
+        :type request: :class:`tencentcloud.bma.v20221115.models.DescribeBPBrandsRequest`
+        :rtype: :class:`tencentcloud.bma.v20221115.models.DescribeBPBrandsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBPBrands", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBPBrandsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBPFakeAPPList(self, request):
+        """查询仿冒应用列表
+
+        :param request: Request instance for DescribeBPFakeAPPList.
+        :type request: :class:`tencentcloud.bma.v20221115.models.DescribeBPFakeAPPListRequest`
+        :rtype: :class:`tencentcloud.bma.v20221115.models.DescribeBPFakeAPPListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBPFakeAPPList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBPFakeAPPListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBPFakeURLs(self, request):
+        """查询仿冒网址列表
+
+        :param request: Request instance for DescribeBPFakeURLs.
+        :type request: :class:`tencentcloud.bma.v20221115.models.DescribeBPFakeURLsRequest`
+        :rtype: :class:`tencentcloud.bma.v20221115.models.DescribeBPFakeURLsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBPFakeURLs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBPFakeURLsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBPWhiteLists(self, request):
+        """查询白名单列表
+
+        :param request: Request instance for DescribeBPWhiteLists.
+        :type request: :class:`tencentcloud.bma.v20221115.models.DescribeBPWhiteListsRequest`
+        :rtype: :class:`tencentcloud.bma.v20221115.models.DescribeBPWhiteListsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBPWhiteLists", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBPWhiteListsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

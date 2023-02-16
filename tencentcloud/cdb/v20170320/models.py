@@ -9986,6 +9986,55 @@ class OpenAuditServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OpenDBInstanceEncryptionRequest(AbstractModel):
+    """OpenDBInstanceEncryption请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 云数据库实例 ID。
+        :type InstanceId: str
+        :param KeyId: 用户自定义密钥ID，CMK唯一标识符。该值为空时，将使用腾讯云自动生成的密钥KMS-CDB。
+        :type KeyId: str
+        :param KeyRegion: 用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId不为空时，该参数必填。
+        :type KeyRegion: str
+        """
+        self.InstanceId = None
+        self.KeyId = None
+        self.KeyRegion = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KeyId = params.get("KeyId")
+        self.KeyRegion = params.get("KeyRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenDBInstanceEncryptionResponse(AbstractModel):
+    """OpenDBInstanceEncryption返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class OpenDBInstanceGTIDRequest(AbstractModel):
     """OpenDBInstanceGTID请求参数结构体
 

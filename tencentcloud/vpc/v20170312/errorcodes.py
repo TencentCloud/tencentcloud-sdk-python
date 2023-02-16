@@ -776,6 +776,9 @@ UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = 'UnsupportedOperation.N
 # 该地址类型不支持释放操作。
 UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = 'UnsupportedOperation.NotSupportedAddressIpsChargeType'
 
+# 此地域没有上线出口二资源，请到北京/广州/南京购买。
+UNSUPPORTEDOPERATION_NOTSUPPORTEDPURCHASECENTEREGRESSRESOURCE = 'UnsupportedOperation.NotSupportedPurchaseCenterEgressResource'
+
 # 当前云联网不支持更新路由发布。
 UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = 'UnsupportedOperation.NotSupportedUpdateCcnRoutePublish'
 

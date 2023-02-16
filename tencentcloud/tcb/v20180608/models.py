@@ -2436,6 +2436,10 @@ Activity：活动来源
         :type SubNetIds: list of str
         :param IsOpenCloudInvoke: 是否打开云调用
         :type IsOpenCloudInvoke: bool
+        :param Source: 创建来源：wechat | cloud
+        :type Source: str
+        :param Channel: 渠道：wechat | cloud
+        :type Channel: str
         """
         self.WxAppId = None
         self.Alias = None
@@ -2444,6 +2448,8 @@ Activity：活动来源
         self.VpcId = None
         self.SubNetIds = None
         self.IsOpenCloudInvoke = None
+        self.Source = None
+        self.Channel = None
 
 
     def _deserialize(self, params):
@@ -2454,6 +2460,8 @@ Activity：活动来源
         self.VpcId = params.get("VpcId")
         self.SubNetIds = params.get("SubNetIds")
         self.IsOpenCloudInvoke = params.get("IsOpenCloudInvoke")
+        self.Source = params.get("Source")
+        self.Channel = params.get("Channel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

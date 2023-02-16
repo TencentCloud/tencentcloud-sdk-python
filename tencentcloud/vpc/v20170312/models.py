@@ -2956,6 +2956,8 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :type Tags: list of Tag
         :param Protocol: 带宽包协议类型。当前支持'ipv4'和'ipv6'协议带宽包，默认值是'ipv4'。
         :type Protocol: str
+        :param TimeSpan: 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
+        :type TimeSpan: int
         """
         self.NetworkType = None
         self.ChargeType = None
@@ -2964,6 +2966,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
         self.InternetMaxBandwidth = None
         self.Tags = None
         self.Protocol = None
+        self.TimeSpan = None
 
 
     def _deserialize(self, params):
@@ -2979,6 +2982,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Protocol = params.get("Protocol")
+        self.TimeSpan = params.get("TimeSpan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

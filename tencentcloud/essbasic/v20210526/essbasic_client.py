@@ -458,6 +458,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelUpdateSealStatus(self, request):
+        """本接口（ChannelUpdateSealStatus）由于渠道版更新印章状态
+
+        :param request: Request instance for ChannelUpdateSealStatus.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelUpdateSealStatusRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelUpdateSealStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelUpdateSealStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelUpdateSealStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelVerifyPdf(self, request):
         """合同文件验签
 

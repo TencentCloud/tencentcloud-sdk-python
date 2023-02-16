@@ -2862,6 +2862,18 @@ class DataEngineInfo(AbstractModel):
         :param UiURL: ui的跳转地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type UiURL: str
+        :param ResourceType: 引擎的资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param ImageVersionId: 集群镜像版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageVersionId: str
+        :param ChildImageVersionId: 集群镜像小版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildImageVersionId: str
+        :param ImageVersionName: 集群镜像版本名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageVersionName: str
         """
         self.DataEngineName = None
         self.EngineType = None
@@ -2895,6 +2907,10 @@ class DataEngineInfo(AbstractModel):
         self.AutoSuspendTime = None
         self.NetworkConnectionSet = None
         self.UiURL = None
+        self.ResourceType = None
+        self.ImageVersionId = None
+        self.ChildImageVersionId = None
+        self.ImageVersionName = None
 
 
     def _deserialize(self, params):
@@ -2942,6 +2958,10 @@ class DataEngineInfo(AbstractModel):
                 obj._deserialize(item)
                 self.NetworkConnectionSet.append(obj)
         self.UiURL = params.get("UiURL")
+        self.ResourceType = params.get("ResourceType")
+        self.ImageVersionId = params.get("ImageVersionId")
+        self.ChildImageVersionId = params.get("ChildImageVersionId")
+        self.ImageVersionName = params.get("ImageVersionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

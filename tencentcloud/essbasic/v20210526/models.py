@@ -1551,6 +1551,67 @@ ProcessTimeout - 转换文件超时
         self.RequestId = params.get("RequestId")
 
 
+class ChannelUpdateSealStatusRequest(AbstractModel):
+    """ChannelUpdateSealStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Status: 操作的印章状态，DISABLE-停用印章
+        :type Status: str
+        :param SealId: 印章ID
+        :type SealId: str
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Reason: 更新印章状态原因说明
+        :type Reason: str
+        """
+        self.Agent = None
+        self.Status = None
+        self.SealId = None
+        self.Operator = None
+        self.Reason = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.Status = params.get("Status")
+        self.SealId = params.get("SealId")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelUpdateSealStatusResponse(AbstractModel):
+    """ChannelUpdateSealStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelVerifyPdfRequest(AbstractModel):
     """ChannelVerifyPdf请求参数结构体
 

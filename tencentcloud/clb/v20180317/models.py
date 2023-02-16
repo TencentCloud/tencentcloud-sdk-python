@@ -6175,6 +6175,72 @@ class ModifyDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyFunctionTargetsRequest(AbstractModel):
+    """ModifyFunctionTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: 负载均衡实例ID。
+        :type LoadBalancerId: str
+        :param ListenerId: 负载均衡监听器ID。
+        :type ListenerId: str
+        :param FunctionTargets: 要修改的后端云函数服务列表。
+        :type FunctionTargets: list of FunctionTarget
+        :param LocationId: 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一。
+        :type LocationId: str
+        :param Domain: 目标规则的域名，提供LocationId参数时本参数不生效。
+        :type Domain: str
+        :param Url: 目标规则的URL，提供LocationId参数时本参数不生效。
+        :type Url: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.FunctionTargets = None
+        self.LocationId = None
+        self.Domain = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        if params.get("FunctionTargets") is not None:
+            self.FunctionTargets = []
+            for item in params.get("FunctionTargets"):
+                obj = FunctionTarget()
+                obj._deserialize(item)
+                self.FunctionTargets.append(obj)
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionTargetsResponse(AbstractModel):
+    """ModifyFunctionTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyListenerRequest(AbstractModel):
     """ModifyListener请求参数结构体
 

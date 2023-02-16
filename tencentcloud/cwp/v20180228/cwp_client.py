@@ -4836,6 +4836,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyMachineRemark(self, request):
+        """修改主机备注信息
+
+        :param request: Request instance for ModifyMachineRemark.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyMachineRemarkRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyMachineRemarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMachineRemark", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMachineRemarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyMalwareTimingScanSettings(self, request):
         """定时扫描设置
 

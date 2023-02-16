@@ -615,9 +615,9 @@ class ConfigureSyncJobRequest(AbstractModel):
         r"""
         :param JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23
         :type JobId: str
-        :param SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
+        :param SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
         :type SrcAccessType: str
-        :param DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
+        :param DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
         :type DstAccessType: str
         :param Options: 同步任务选项
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
@@ -631,7 +631,7 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type RunMode: str
         :param ExpectRunTime: 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
         :type ExpectRunTime: str
-        :param SrcInfo: 源端信息，单节点数据库使用
+        :param SrcInfo: 源端信息，单节点数据库使用，且SrcNodeType传single
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param DstInfo: 目标端信息，单节点数据库使用
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
@@ -2822,6 +2822,9 @@ class Endpoint(AbstractModel):
         :param EncryptConn: 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptConn: str
+        :param DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseNetEnv: str
         """
         self.Region = None
         self.Role = None
@@ -2848,6 +2851,7 @@ class Endpoint(AbstractModel):
         self.TmpSecretKey = None
         self.TmpToken = None
         self.EncryptConn = None
+        self.DatabaseNetEnv = None
 
 
     def _deserialize(self, params):
@@ -2876,6 +2880,7 @@ class Endpoint(AbstractModel):
         self.TmpSecretKey = params.get("TmpSecretKey")
         self.TmpToken = params.get("TmpToken")
         self.EncryptConn = params.get("EncryptConn")
+        self.DatabaseNetEnv = params.get("DatabaseNetEnv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4834,6 +4839,9 @@ class SyncDetailInfo(AbstractModel):
         :param StepInfos: 详细步骤信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepInfos: list of StepInfo
+        :param CauseOfCompareDisable: 不能发起一致性校验的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CauseOfCompareDisable: str
         """
         self.StepAll = None
         self.StepNow = None
@@ -4843,6 +4851,7 @@ class SyncDetailInfo(AbstractModel):
         self.SecondsBehindMaster = None
         self.Message = None
         self.StepInfos = None
+        self.CauseOfCompareDisable = None
 
 
     def _deserialize(self, params):
@@ -4859,6 +4868,7 @@ class SyncDetailInfo(AbstractModel):
                 obj = StepInfo()
                 obj._deserialize(item)
                 self.StepInfos.append(obj)
+        self.CauseOfCompareDisable = params.get("CauseOfCompareDisable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
