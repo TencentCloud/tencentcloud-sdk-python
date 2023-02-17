@@ -3130,6 +3130,70 @@ class Filter(AbstractModel):
         
 
 
+class ListDataSaEventPub(AbstractModel):
+    """DataSaEventPub
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 受影响资产
+        :type Time: str
+        :param EventType1: 安全事件名称
+        :type EventType1: int
+        :param EventType2: 安全事件1级分类
+        :type EventType2: int
+        :param EventName: 安全事件2级分类
+        :type EventName: str
+        :param Level: 风险等级
+        :type Level: int
+        :param Status: 安全事件状态
+        :type Status: int
+        :param SrcIp: 攻击源ip
+        :type SrcIp: str
+        :param DstIp: 攻击目标ip
+        :type DstIp: str
+        :param DstPort: 攻击目标端口
+        :type DstPort: int
+        :param Asset: 受影响资产
+        :type Asset: str
+        :param OldIdMd5: 私有字段和公有字段映射的原始采集数据唯一标识的MD5值
+        :type OldIdMd5: str
+        """
+        self.Time = None
+        self.EventType1 = None
+        self.EventType2 = None
+        self.EventName = None
+        self.Level = None
+        self.Status = None
+        self.SrcIp = None
+        self.DstIp = None
+        self.DstPort = None
+        self.Asset = None
+        self.OldIdMd5 = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.EventType1 = params.get("EventType1")
+        self.EventType2 = params.get("EventType2")
+        self.EventName = params.get("EventName")
+        self.Level = params.get("Level")
+        self.Status = params.get("Status")
+        self.SrcIp = params.get("SrcIp")
+        self.DstIp = params.get("DstIp")
+        self.DstPort = params.get("DstPort")
+        self.Asset = params.get("Asset")
+        self.OldIdMd5 = params.get("OldIdMd5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MappingResult(AbstractModel):
     """测绘记录
 
@@ -3236,6 +3300,39 @@ class MappingResult(AbstractModel):
                 obj = SecurityStatus()
                 obj._deserialize(item)
                 self.SecurityStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ObjDataSaEventPub(AbstractModel):
+    """DataSaEventPub
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: Count
+        :type Count: int
+        :param List: List
+        :type List: list of ListDataSaEventPub
+        """
+        self.Count = None
+        self.List = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ListDataSaEventPub()
+                obj._deserialize(item)
+                self.List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3560,6 +3657,93 @@ class SaDivulgeDataQueryPubResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = SaDivulgeDataQueryPubList()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class SaEventPubRequest(AbstractModel):
+    """SaEventPub请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Asset: 受影响资产
+        :type Asset: str
+        :param EventName: 安全事件名称
+        :type EventName: str
+        :param EventType1: 安全事件1级分类，-1:未知 0:全部 1:攻击事件 2:侦查事件 3:僵木蠕毒 4:违规策略
+        :type EventType1: int
+        :param EventType2: 安全事件2级分类，-1:未知 0:全部 1:DDOS事件 2:Web攻击 3:木马 4:异地登录 5:密码破解
+        :type EventType2: int
+        :param Level: 风险等级，-1:未知 0:全部 1:低危 2:中危 3:高危 4:严重，可多选，如：1,2
+        :type Level: str
+        :param Status: 安全事件状态，-1:未知 0:全部 1:待处理 2:已处理 3:误报 4:已忽略 5:已知晓 6:已信任
+        :type Status: int
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param Offset: 查询起始地址
+        :type Offset: int
+        :param Limit: 查询个数
+        :type Limit: int
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param OldIdMd5: 私有字段和公有字段映射的原始采集数据唯一标识的MD5值
+        :type OldIdMd5: str
+        """
+        self.Asset = None
+        self.EventName = None
+        self.EventType1 = None
+        self.EventType2 = None
+        self.Level = None
+        self.Status = None
+        self.StartTime = None
+        self.Offset = None
+        self.Limit = None
+        self.EndTime = None
+        self.OldIdMd5 = None
+
+
+    def _deserialize(self, params):
+        self.Asset = params.get("Asset")
+        self.EventName = params.get("EventName")
+        self.EventType1 = params.get("EventType1")
+        self.EventType2 = params.get("EventType2")
+        self.Level = params.get("Level")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.EndTime = params.get("EndTime")
+        self.OldIdMd5 = params.get("OldIdMd5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaEventPubResponse(AbstractModel):
+    """SaEventPub返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataSaEventPub: DataSaEventPub
+        :type DataSaEventPub: :class:`tencentcloud.ssa.v20180608.models.ObjDataSaEventPub`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataSaEventPub = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataSaEventPub") is not None:
+            self.DataSaEventPub = ObjDataSaEventPub()
+            self.DataSaEventPub._deserialize(params.get("DataSaEventPub"))
         self.RequestId = params.get("RequestId")
 
 

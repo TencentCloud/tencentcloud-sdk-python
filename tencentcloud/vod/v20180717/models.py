@@ -4824,11 +4824,14 @@ class AudioTemplateInfo(AbstractModel):
 <li>libfdk_aac。</li>
 当外层参数 Format 为 HLS 或 MPEG-DASH 时，可选值为：
 <li>libfdk_aac。</li>
+当外层参数 Container 为 wav 时，可选值为：
+<li>pcm16。</li>
         :type Codec: str
         :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
 当取值为 0，表示音频码率和原始音频保持一致。
         :type Bitrate: int
         :param SampleRate: 音频流的采样率，可选值：
+<li>16000，仅当 Codec 为 pcm16 时可选。</li>
 <li>32000</li>
 <li>44100</li>
 <li>48000</li>
@@ -4886,10 +4889,13 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 <li>libfdk_aac。</li>
 当外层参数 Format 为 HLS 或 MPEG-DASH 时，可选值为：
 <li>libfdk_aac。</li>
+当外层参数 Container 为 wav 时，可选值为：
+<li>pcm16。</li>
         :type Codec: str
         :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
         :type Bitrate: int
         :param SampleRate: 音频流的采样率，可选值：
+<li>16000，仅当 Codec 为 pcm16 时可选。</li>
 <li>32000</li>
 <li>44100</li>
 <li>48000</li>
@@ -7621,7 +7627,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
         :type Container: str
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -11719,7 +11725,8 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>FastClipMedia：快速剪辑任务；</li>
 <li>RemoveWatermarkTask：智能去除水印任务；</li>
 <li>DescribeFileAttributesTask：获取文件属性任务；</li>
-<li> ReviewAudioVideo：音视频审核任务。</li>
+<li>RebuildMedia：音画质重生任务；</li>
+<li>ReviewAudioVideo：音视频审核任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -11771,6 +11778,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param RemoveWatermarkTask: 智能去除水印任务信息，仅当 TaskType 为 RemoveWatermark，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoveWatermarkTask: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
+        :param RebuildMediaTask: 音画质重生任务信息，仅当 TaskType 为 RebuildMedia，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RebuildMediaTask: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTask`
         :param ExtractTraceWatermarkTask: 提取溯源水印任务信息，仅当 TaskType 为 ExtractTraceWatermark，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtractTraceWatermarkTask: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
@@ -11804,6 +11814,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.CreateImageSpriteTask = None
         self.SnapshotByTimeOffsetTask = None
         self.RemoveWatermarkTask = None
+        self.RebuildMediaTask = None
         self.ExtractTraceWatermarkTask = None
         self.ReviewAudioVideoTask = None
         self.ReduceMediaBitrateTask = None
@@ -11856,6 +11867,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("RemoveWatermarkTask") is not None:
             self.RemoveWatermarkTask = RemoveWatermarkTask()
             self.RemoveWatermarkTask._deserialize(params.get("RemoveWatermarkTask"))
+        if params.get("RebuildMediaTask") is not None:
+            self.RebuildMediaTask = RebuildMediaTask()
+            self.RebuildMediaTask._deserialize(params.get("RebuildMediaTask"))
         if params.get("ExtractTraceWatermarkTask") is not None:
             self.ExtractTraceWatermarkTask = ExtractTraceWatermarkTask()
             self.ExtractTraceWatermarkTask._deserialize(params.get("ExtractTraceWatermarkTask"))
@@ -18891,7 +18905,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
         :type Container: str
         :param Name: 转码模板名称，长度限制：64 个字符。
         :type Name: str
@@ -21643,6 +21657,157 @@ class PushUrlCacheResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RebuildMediaRequest(AbstractModel):
+    """RebuildMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param StartTimeOffset: 起始偏移时间，单位：秒，不填表示从视频开始截取。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 结束偏移时间，单位：秒，不填表示截取到视频末尾。
+        :type EndTimeOffset: float
+        :param RepairInfo: 画质修复控制参数。
+        :type RepairInfo: :class:`tencentcloud.vod.v20180717.models.RepairInfo`
+        :param VideoFrameInterpolationInfo: 智能插帧控制参数。
+        :type VideoFrameInterpolationInfo: :class:`tencentcloud.vod.v20180717.models.VideoFrameInterpolationInfo`
+        :param SuperResolutionInfo: 画面超分控制参数。
+        :type SuperResolutionInfo: :class:`tencentcloud.vod.v20180717.models.SuperResolutionInfo`
+        :param HDRInfo: 高动态范围类型控制参数。
+        :type HDRInfo: :class:`tencentcloud.vod.v20180717.models.HDRInfo`
+        :param VideoDenoiseInfo: 视频降噪控制参数。
+        :type VideoDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.VideoDenoiseInfo`
+        :param AudioDenoiseInfo: 音频降噪控制参数。
+        :type AudioDenoiseInfo: :class:`tencentcloud.vod.v20180717.models.AudioDenoiseInfo`
+        :param ColorInfo: 色彩增强控制参数。
+        :type ColorInfo: :class:`tencentcloud.vod.v20180717.models.ColorEnhanceInfo`
+        :param SharpInfo: 细节增强控制参数。
+        :type SharpInfo: :class:`tencentcloud.vod.v20180717.models.SharpEnhanceInfo`
+        :param FaceInfo: 人脸增强控制参数。
+        :type FaceInfo: :class:`tencentcloud.vod.v20180717.models.FaceEnhanceInfo`
+        :param LowLightInfo: 低光照控制参数。
+        :type LowLightInfo: :class:`tencentcloud.vod.v20180717.models.LowLightEnhanceInfo`
+        :param ScratchRepairInfo: 去划痕控制参数。
+        :type ScratchRepairInfo: :class:`tencentcloud.vod.v20180717.models.ScratchRepairInfo`
+        :param ArtifactRepairInfo: 去伪影（毛刺）控制参数。
+        :type ArtifactRepairInfo: :class:`tencentcloud.vod.v20180717.models.ArtifactRepairInfo`
+        :param TargetInfo: 音画质重生输出目标参数。
+        :type TargetInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetInfo`
+        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
+        """
+        self.FileId = None
+        self.SubAppId = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.RepairInfo = None
+        self.VideoFrameInterpolationInfo = None
+        self.SuperResolutionInfo = None
+        self.HDRInfo = None
+        self.VideoDenoiseInfo = None
+        self.AudioDenoiseInfo = None
+        self.ColorInfo = None
+        self.SharpInfo = None
+        self.FaceInfo = None
+        self.LowLightInfo = None
+        self.ScratchRepairInfo = None
+        self.ArtifactRepairInfo = None
+        self.TargetInfo = None
+        self.SessionId = None
+        self.SessionContext = None
+        self.TasksPriority = None
+        self.ExtInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("RepairInfo") is not None:
+            self.RepairInfo = RepairInfo()
+            self.RepairInfo._deserialize(params.get("RepairInfo"))
+        if params.get("VideoFrameInterpolationInfo") is not None:
+            self.VideoFrameInterpolationInfo = VideoFrameInterpolationInfo()
+            self.VideoFrameInterpolationInfo._deserialize(params.get("VideoFrameInterpolationInfo"))
+        if params.get("SuperResolutionInfo") is not None:
+            self.SuperResolutionInfo = SuperResolutionInfo()
+            self.SuperResolutionInfo._deserialize(params.get("SuperResolutionInfo"))
+        if params.get("HDRInfo") is not None:
+            self.HDRInfo = HDRInfo()
+            self.HDRInfo._deserialize(params.get("HDRInfo"))
+        if params.get("VideoDenoiseInfo") is not None:
+            self.VideoDenoiseInfo = VideoDenoiseInfo()
+            self.VideoDenoiseInfo._deserialize(params.get("VideoDenoiseInfo"))
+        if params.get("AudioDenoiseInfo") is not None:
+            self.AudioDenoiseInfo = AudioDenoiseInfo()
+            self.AudioDenoiseInfo._deserialize(params.get("AudioDenoiseInfo"))
+        if params.get("ColorInfo") is not None:
+            self.ColorInfo = ColorEnhanceInfo()
+            self.ColorInfo._deserialize(params.get("ColorInfo"))
+        if params.get("SharpInfo") is not None:
+            self.SharpInfo = SharpEnhanceInfo()
+            self.SharpInfo._deserialize(params.get("SharpInfo"))
+        if params.get("FaceInfo") is not None:
+            self.FaceInfo = FaceEnhanceInfo()
+            self.FaceInfo._deserialize(params.get("FaceInfo"))
+        if params.get("LowLightInfo") is not None:
+            self.LowLightInfo = LowLightEnhanceInfo()
+            self.LowLightInfo._deserialize(params.get("LowLightInfo"))
+        if params.get("ScratchRepairInfo") is not None:
+            self.ScratchRepairInfo = ScratchRepairInfo()
+            self.ScratchRepairInfo._deserialize(params.get("ScratchRepairInfo"))
+        if params.get("ArtifactRepairInfo") is not None:
+            self.ArtifactRepairInfo = ArtifactRepairInfo()
+            self.ArtifactRepairInfo._deserialize(params.get("ArtifactRepairInfo"))
+        if params.get("TargetInfo") is not None:
+            self.TargetInfo = RebuildMediaTargetInfo()
+            self.TargetInfo._deserialize(params.get("TargetInfo"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        self.TasksPriority = params.get("TasksPriority")
+        self.ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebuildMediaResponse(AbstractModel):
+    """RebuildMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 

@@ -602,7 +602,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKey(self, request):
-        """查询实例大Key
+        """腾讯云数据库 Redis 已经于2022年10月31日下线查询实例大 Key 接口。具体公告，请参见[查询实例大 Key 接口下线公告](https://cloud.tencent.com/document/product/239/81005)。
 
         :param request: Request instance for DescribeInstanceMonitorBigKey.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyRequest`
@@ -625,7 +625,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKeySizeDist(self, request):
-        """查询实例大Key大小分布
+        """腾讯云数据库 Redis 已经于2022年10月31日下线查询实例大 Key 接口。具体公告，请参见 [查询实例大 Key 接口下线公告](https://cloud.tencent.com/document/product/239/81005)。
 
         :param request: Request instance for DescribeInstanceMonitorBigKeySizeDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeySizeDistRequest`
@@ -648,7 +648,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorBigKeyTypeDist(self, request):
-        """查询实例大Key类型分布
+        """腾讯云数据库 Redis 已经于2022年10月31日下线查询实例大 Key 接口。具体公告，请参见 [查询实例大 Key 接口下线公告](https://cloud.tencent.com/document/product/239/81005)。
 
         :param request: Request instance for DescribeInstanceMonitorBigKeyTypeDist.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorBigKeyTypeDistRequest`

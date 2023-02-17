@@ -3822,7 +3822,7 @@ class DescribeRumLogListRequest(AbstractModel):
         r"""
         :param OrderBy: 排序方式  desc  asc（必填）
         :type OrderBy: str
-        :param StartTime: 开始时间（必填）
+        :param StartTime: 开始时间（必填）格式为时间戳 毫秒
         :type StartTime: str
         :param Limit: 单次查询返回的原始日志条数，最大值为100（必填）
         :type Limit: int
@@ -3830,7 +3830,7 @@ class DescribeRumLogListRequest(AbstractModel):
         :type Page: int
         :param Query: 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
         :type Query: str
-        :param EndTime: 结束时间（必填）
+        :param EndTime: 结束时间（必填）格式为时间戳 毫秒
         :type EndTime: str
         :param ID: 项目ID（必填）
         :type ID: int

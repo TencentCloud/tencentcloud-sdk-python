@@ -3158,31 +3158,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UpgradeCDBProxy(self, request):
-        """接口已经废弃，请使用AdjustCdbProxy进行数据库代理的配置
-
-        调整数据库代理配置
-
-        :param request: Request instance for UpgradeCDBProxy.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpgradeCDBProxy", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpgradeCDBProxyResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def UpgradeCDBProxyVersion(self, request):
         """升级数据库代理版本
 

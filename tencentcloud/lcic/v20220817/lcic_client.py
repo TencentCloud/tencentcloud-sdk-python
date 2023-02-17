@@ -26,6 +26,75 @@ class LcicClient(AbstractClient):
     _service = 'lcic'
 
 
+    def AddGroupMember(self, request):
+        """此接口用于添加成员列表到指定群组
+
+        :param request: Request instance for AddGroupMember.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.AddGroupMemberRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.AddGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddGroupMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchAddGroupMember(self, request):
+        """此接口用于批量添加成员列表到指定群组
+
+        :param request: Request instance for BatchAddGroupMember.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchAddGroupMemberRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchAddGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchAddGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchAddGroupMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchCreateGroupWithMembers(self, request):
+        """此接口用于批量创建群组
+
+        :param request: Request instance for BatchCreateGroupWithMembers.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchCreateGroupWithMembersRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchCreateGroupWithMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchCreateGroupWithMembers", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchCreateGroupWithMembersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BatchCreateRoom(self, request):
         """批量创建房间接口
 
@@ -40,6 +109,29 @@ class LcicClient(AbstractClient):
             body = self.call("BatchCreateRoom", params, headers=headers)
             response = json.loads(body)
             model = models.BatchCreateRoomResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchDeleteGroupMember(self, request):
+        """此接口用于批量删除成员列表到指定群组列表
+
+        :param request: Request instance for BatchDeleteGroupMember.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteGroupMemberRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchDeleteGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDeleteGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDeleteGroupMemberResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -141,6 +233,52 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateGroupWithMembers(self, request):
+        """此接口根据成员列表创建群组
+
+        :param request: Request instance for CreateGroupWithMembers.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithMembersRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGroupWithMembers", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGroupWithMembersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateGroupWithSubGroup(self, request):
+        """此接口会聚合子群组创建联合群组
+
+        :param request: Request instance for CreateGroupWithSubGroup.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithSubGroupRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.CreateGroupWithSubGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGroupWithSubGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGroupWithSubGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRoom(self, request):
         """创建房间
 
@@ -201,6 +339,52 @@ class LcicClient(AbstractClient):
             body = self.call("DeleteDocument", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDocumentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteGroup(self, request):
+        """此接口用于删除指定群组，支持批量操作。
+
+        :param request: Request instance for DeleteGroup.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteGroupMember(self, request):
+        """此接口用于删除群组中指定成员
+
+        :param request: Request instance for DeleteGroupMember.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupMemberRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGroupMemberResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -339,6 +523,75 @@ class LcicClient(AbstractClient):
             body = self.call("DescribeDocumentsByRoom", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDocumentsByRoomResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroup(self, request):
+        """此接口用于获取群组详情
+
+        :param request: Request instance for DescribeGroup.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupList(self, request):
+        """获取群组列表
+
+        :param request: Request instance for DescribeGroupList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupMemberList(self, request):
+        """此接口用于获取群组成员列表
+
+        :param request: Request instance for DescribeGroupMemberList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupMemberListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeGroupMemberListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroupMemberList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGroupMemberListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -523,6 +776,29 @@ class LcicClient(AbstractClient):
             body = self.call("ModifyApp", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyGroup(self, request):
+        """此接口修改群组信息
+
+        :param request: Request instance for ModifyGroup.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyGroupRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.ModifyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1376,6 +1376,29 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetRequestStatisticsRequest(AbstractModel):
+    """GetRequestStatistics请求参数结构体
+
+    """
+
+
+class GetRequestStatisticsResponse(AbstractModel):
+    """GetRequestStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class GetTicketStatisticsRequest(AbstractModel):
     """GetTicketStatistics请求参数结构体
 
@@ -1441,6 +1464,29 @@ class GetTicketStatisticsResponse(AbstractModel):
             self.Data._deserialize(params.get("Data"))
         self.CaptchaCode = params.get("CaptchaCode")
         self.CaptchaMsg = params.get("CaptchaMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class GetTotalRequestStatisticsRequest(AbstractModel):
+    """GetTotalRequestStatistics请求参数结构体
+
+    """
+
+
+class GetTotalRequestStatisticsResponse(AbstractModel):
+    """GetTotalRequestStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

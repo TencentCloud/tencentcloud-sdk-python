@@ -530,3 +530,26 @@ class SsaClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SaEventPub(self, request):
+        """安全事件通用字段
+
+        :param request: Request instance for SaEventPub.
+        :type request: :class:`tencentcloud.ssa.v20180608.models.SaEventPubRequest`
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.SaEventPubResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SaEventPub", params, headers=headers)
+            response = json.loads(body)
+            model = models.SaEventPubResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

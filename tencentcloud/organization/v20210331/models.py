@@ -72,26 +72,33 @@ class AddOrganizationNodeResponse(AbstractModel):
 
 
 class AuthNode(AbstractModel):
-    """认证主体主要信息
+    """互信主体主要信息
 
     """
 
     def __init__(self):
         r"""
-        :param RelationId: 主体关系ID
+        :param RelationId: 互信主体关系ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelationId: int
-        :param AuthName: 主体名称
+        :param AuthName: 互信主体名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthName: str
+        :param Manager: 主体管理员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Manager: :class:`tencentcloud.organization.v20210331.models.MemberMainInfo`
         """
         self.RelationId = None
         self.AuthName = None
+        self.Manager = None
 
 
     def _deserialize(self, params):
         self.RelationId = params.get("RelationId")
         self.AuthName = params.get("AuthName")
+        if params.get("Manager") is not None:
+            self.Manager = MemberMainInfo()
+            self.Manager._deserialize(params.get("Manager"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -432,14 +439,18 @@ class DescribeOrganizationAuthNodeRequest(AbstractModel):
         :type Offset: int
         :param Limit: 限制数目。最大50
         :type Limit: int
+        :param AuthName: 互信主体名称。
+        :type AuthName: str
         """
         self.Offset = None
         self.Limit = None
+        self.AuthName = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.AuthName = params.get("AuthName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1062,6 +1073,36 @@ class MemberIdentity(AbstractModel):
     def _deserialize(self, params):
         self.IdentityId = params.get("IdentityId")
         self.IdentityAliasName = params.get("IdentityAliasName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MemberMainInfo(AbstractModel):
+    """成员主要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 成员uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberUin: int
+        :param MemberName: 成员名称j
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberName: str
+        """
+        self.MemberUin = None
+        self.MemberName = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        self.MemberName = params.get("MemberName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

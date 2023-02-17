@@ -324,6 +324,9 @@ class Blueprint(AbstractModel):
         :param SceneIdSet: 镜像关联使用场景Id列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SceneIdSet: list of str
+        :param DockerVersion: Docker版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DockerVersion: str
         """
         self.BlueprintId = None
         self.DisplayTitle = None
@@ -344,6 +347,7 @@ class Blueprint(AbstractModel):
         self.CommunityUrl = None
         self.GuideUrl = None
         self.SceneIdSet = None
+        self.DockerVersion = None
 
 
     def _deserialize(self, params):
@@ -366,6 +370,7 @@ class Blueprint(AbstractModel):
         self.CommunityUrl = params.get("CommunityUrl")
         self.GuideUrl = params.get("GuideUrl")
         self.SceneIdSet = params.get("SceneIdSet")
+        self.DockerVersion = params.get("DockerVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

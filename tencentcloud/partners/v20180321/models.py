@@ -703,6 +703,69 @@ class AgentTransferMoneyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssignClientsToSalesRequest(AbstractModel):
+    """AssignClientsToSales请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClientUins: 代客/申请中代客uin列表，最大50条
+        :type ClientUins: list of str
+        :param SalesUin: 业务员uin
+        :type SalesUin: str
+        :param AssignClientStatus: 代客类型:normal-代客 apply-申请中代客
+        :type AssignClientStatus: str
+        :param AssignActionType: 操作类型:assign-执行分派 cancel-取消分派
+        :type AssignActionType: str
+        """
+        self.ClientUins = None
+        self.SalesUin = None
+        self.AssignClientStatus = None
+        self.AssignActionType = None
+
+
+    def _deserialize(self, params):
+        self.ClientUins = params.get("ClientUins")
+        self.SalesUin = params.get("SalesUin")
+        self.AssignClientStatus = params.get("AssignClientStatus")
+        self.AssignActionType = params.get("AssignActionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssignClientsToSalesResponse(AbstractModel):
+    """AssignClientsToSales返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SucceedUins: 处理成功的代客uin列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SucceedUins: list of str
+        :param FailedUins: 处理失败的代客uin列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedUins: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SucceedUins = None
+        self.FailedUins = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SucceedUins = params.get("SucceedUins")
+        self.FailedUins = params.get("FailedUins")
+        self.RequestId = params.get("RequestId")
+
+
 class AuditApplyClientRequest(AbstractModel):
     """AuditApplyClient请求参数结构体
 

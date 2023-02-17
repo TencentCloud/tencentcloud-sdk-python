@@ -3269,6 +3269,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RebuildMedia(self, request):
+        """发起音画质重生
+
+        :param request: Request instance for RebuildMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.RebuildMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.RebuildMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RebuildMedia", params, headers=headers)
+            response = json.loads(body)
+            model = models.RebuildMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RefreshUrlCache(self, request):
         """1. 刷新指定的 URL 列表。
         2. URL 的域名必须已在云点播中注册。

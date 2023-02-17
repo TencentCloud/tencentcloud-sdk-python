@@ -991,6 +991,9 @@ class ApplicationForPage(AbstractModel):
         :param ServiceConfigList: 服务配置信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceConfigList: list of ServiceConfig
+        :param IgnoreCreateImageRepository: IgnoreCreateImageRepository
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreCreateImageRepository: bool
         """
         self.ApplicationId = None
         self.ApplicationName = None
@@ -1005,6 +1008,7 @@ class ApplicationForPage(AbstractModel):
         self.ApigatewayServiceId = None
         self.ApplicationRemarkName = None
         self.ServiceConfigList = None
+        self.IgnoreCreateImageRepository = None
 
 
     def _deserialize(self, params):
@@ -1026,6 +1030,7 @@ class ApplicationForPage(AbstractModel):
                 obj = ServiceConfig()
                 obj._deserialize(item)
                 self.ServiceConfigList.append(obj)
+        self.IgnoreCreateImageRepository = params.get("IgnoreCreateImageRepository")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2300,6 +2305,9 @@ class ContainGroup(AbstractModel):
         :param KubeInjectEnable: KubeInjectEnable值
 注意：此字段可能返回 null，表示取不到有效值。
         :type KubeInjectEnable: bool
+        :param UpdatedTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -2317,6 +2325,7 @@ class ContainGroup(AbstractModel):
         self.MemLimit = None
         self.Alias = None
         self.KubeInjectEnable = None
+        self.UpdatedTime = None
 
 
     def _deserialize(self, params):
@@ -2336,6 +2345,7 @@ class ContainGroup(AbstractModel):
         self.MemLimit = params.get("MemLimit")
         self.Alias = params.get("Alias")
         self.KubeInjectEnable = params.get("KubeInjectEnable")
+        self.UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5795,12 +5805,56 @@ class DeliveryConfigBindGroup(AbstractModel):
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param KafkaVIp: KafkaVIp
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaVIp: str
+        :param KafkaAddress: KafkaAddress
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaAddress: str
+        :param KafkaVPort: KafkaVPort
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaVPort: str
+        :param Topic: Topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param LineRule: LineRule
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LineRule: str
+        :param CustomRule: CustomRule
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRule: str
+        :param EnableGlobalLineRule: EnableGlobalLineRule
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableGlobalLineRule: bool
+        :param EnableAuth: EnableAuth
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableAuth: bool
+        :param Username: Username
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param Password: Password
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param KafkaInfos: KafkaInfos
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaInfos: list of DeliveryKafkaInfo
         """
         self.ConfigId = None
         self.ConfigName = None
         self.CollectPath = None
         self.Groups = None
         self.CreateTime = None
+        self.KafkaVIp = None
+        self.KafkaAddress = None
+        self.KafkaVPort = None
+        self.Topic = None
+        self.LineRule = None
+        self.CustomRule = None
+        self.EnableGlobalLineRule = None
+        self.EnableAuth = None
+        self.Username = None
+        self.Password = None
+        self.KafkaInfos = None
 
 
     def _deserialize(self, params):
@@ -5814,6 +5868,22 @@ class DeliveryConfigBindGroup(AbstractModel):
                 obj._deserialize(item)
                 self.Groups.append(obj)
         self.CreateTime = params.get("CreateTime")
+        self.KafkaVIp = params.get("KafkaVIp")
+        self.KafkaAddress = params.get("KafkaAddress")
+        self.KafkaVPort = params.get("KafkaVPort")
+        self.Topic = params.get("Topic")
+        self.LineRule = params.get("LineRule")
+        self.CustomRule = params.get("CustomRule")
+        self.EnableGlobalLineRule = params.get("EnableGlobalLineRule")
+        self.EnableAuth = params.get("EnableAuth")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        if params.get("KafkaInfos") is not None:
+            self.KafkaInfos = []
+            for item in params.get("KafkaInfos"):
+                obj = DeliveryKafkaInfo()
+                obj._deserialize(item)
+                self.KafkaInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21122,6 +21192,12 @@ class UnitRule(AbstractModel):
         :param UnitRuleItemList: 规则项列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitRuleItemList: list of UnitRuleItem
+        :param CreatedTime: CreatedTime
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param UpdatedTime: UpdatedTime
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
         """
         self.Name = None
         self.Id = None
@@ -21129,6 +21205,8 @@ class UnitRule(AbstractModel):
         self.Description = None
         self.Status = None
         self.UnitRuleItemList = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
 
 
     def _deserialize(self, params):
@@ -21143,6 +21221,8 @@ class UnitRule(AbstractModel):
                 obj = UnitRuleItem()
                 obj._deserialize(item)
                 self.UnitRuleItemList.append(obj)
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -20908,7 +20908,7 @@ class RiskDnsList(AbstractModel):
         :param MachineWanIp: 外网ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineWanIp: str
-        :param MachineStatus: 主机在线状态 OFFLINE  ONLINE
+        :param MachineStatus: 主机在线状态[OFFLINE:离线|ONLINE:在线|UNKNOWN:未知]
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineStatus: str
         """

@@ -72,6 +72,32 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssignClientsToSales(self, request):
+        """为代客or申请中代客分派跟进人（业务员）
+        - 代客列表获取API： [DescribeAgentAuditedClients](https://cloud.tencent.com/document/product/563/19184)
+        - 申请中代客列表获取API：[DescribeAgentClients](https://cloud.tencent.com/document/product/563/16046)
+        - 业务员列表获取API：[DescribeSalesmans](https://cloud.tencent.com/document/product/563/35196)
+
+        :param request: Request instance for AssignClientsToSales.
+        :type request: :class:`tencentcloud.partners.v20180321.models.AssignClientsToSalesRequest`
+        :rtype: :class:`tencentcloud.partners.v20180321.models.AssignClientsToSalesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssignClientsToSales", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssignClientsToSalesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AuditApplyClient(self, request):
         """代理商可以审核其名下申请中代客
 

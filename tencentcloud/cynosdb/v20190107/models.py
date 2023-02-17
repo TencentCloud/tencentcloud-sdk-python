@@ -7586,6 +7586,63 @@ class SlowQueriesItem(AbstractModel):
         
 
 
+class SwitchClusterVpcRequest(AbstractModel):
+    """SwitchClusterVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param UniqVpcId: 字符串vpc id
+        :type UniqVpcId: str
+        :param UniqSubnetId: 字符串子网id
+        :type UniqSubnetId: str
+        :param OldIpReserveHours: 旧地址回收时间
+        :type OldIpReserveHours: int
+        """
+        self.ClusterId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.OldIpReserveHours = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.OldIpReserveHours = params.get("OldIpReserveHours")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchClusterVpcResponse(AbstractModel):
+    """SwitchClusterVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步任务id。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class SwitchClusterZoneRequest(AbstractModel):
     """SwitchClusterZone请求参数结构体
 

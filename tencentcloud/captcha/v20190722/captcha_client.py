@@ -302,6 +302,29 @@ class CaptchaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRequestStatistics(self, request):
+        """查询单个CaptchaAppID验证的统计数据，包括：请求量、验证量、验证通过量、验证拦截量。
+
+        :param request: Request instance for GetRequestStatistics.
+        :type request: :class:`tencentcloud.captcha.v20190722.models.GetRequestStatisticsRequest`
+        :rtype: :class:`tencentcloud.captcha.v20190722.models.GetRequestStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRequestStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRequestStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetTicketStatistics(self, request):
         """查询单个CaptchaAppID票据校验数据，包括：票据校验量、票据校验通过量、票据校验拦截量。
 
@@ -316,6 +339,29 @@ class CaptchaClient(AbstractClient):
             body = self.call("GetTicketStatistics", params, headers=headers)
             response = json.loads(body)
             model = models.GetTicketStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTotalRequestStatistics(self, request):
+        """查询全部验证的统计数据，包括：总请求量、总验证量、总验证通过量、总验证拦截量等数据。
+
+        :param request: Request instance for GetTotalRequestStatistics.
+        :type request: :class:`tencentcloud.captcha.v20190722.models.GetTotalRequestStatisticsRequest`
+        :rtype: :class:`tencentcloud.captcha.v20190722.models.GetTotalRequestStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTotalRequestStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTotalRequestStatisticsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

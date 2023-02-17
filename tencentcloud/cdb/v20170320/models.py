@@ -5791,9 +5791,9 @@ class DescribeErrorLogDataRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID 。
         :type InstanceId: str
-        :param StartTime: 开始时间戳。
+        :param StartTime: 开始时间戳。例如 1585142640 。
         :type StartTime: int
-        :param EndTime: 结束时间戳。
+        :param EndTime: 结束时间戳。例如 1585142640 。
         :type EndTime: int
         :param KeyWords: 要匹配的关键字列表，最多支持15个关键字。
         :type KeyWords: list of str
@@ -6647,9 +6647,9 @@ class DescribeSlowLogDataRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
-        :param StartTime: 开始时间戳。
+        :param StartTime: 开始时间戳。例如 1585142640 。
         :type StartTime: int
-        :param EndTime: 结束时间戳。
+        :param EndTime: 结束时间戳。例如 1585142640 。
         :type EndTime: int
         :param UserHosts: 客户端 Host 列表。
         :type UserHosts: list of str
@@ -12679,76 +12679,6 @@ class TaskDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class UpgradeCDBProxyRequest(AbstractModel):
-    """UpgradeCDBProxy请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param ProxyGroupId: 数据库代理ID
-        :type ProxyGroupId: str
-        :param ProxyCount: 代理节点个数
-        :type ProxyCount: int
-        :param Cpu: 代理节点核数
-        :type Cpu: int
-        :param Mem: 代理节点内存大小
-        :type Mem: int
-        :param ReloadBalance: 重新负载均衡：auto（自动），manual（手动）
-        :type ReloadBalance: str
-        :param UpgradeTime: 升级时间 nowTime（升级完成时）timeWindow（实例维护时间）
-        :type UpgradeTime: str
-        """
-        self.InstanceId = None
-        self.ProxyGroupId = None
-        self.ProxyCount = None
-        self.Cpu = None
-        self.Mem = None
-        self.ReloadBalance = None
-        self.UpgradeTime = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.ProxyGroupId = params.get("ProxyGroupId")
-        self.ProxyCount = params.get("ProxyCount")
-        self.Cpu = params.get("Cpu")
-        self.Mem = params.get("Mem")
-        self.ReloadBalance = params.get("ReloadBalance")
-        self.UpgradeTime = params.get("UpgradeTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UpgradeCDBProxyResponse(AbstractModel):
-    """UpgradeCDBProxy返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param AsyncRequestId: 异步处理ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AsyncRequestId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.AsyncRequestId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.AsyncRequestId = params.get("AsyncRequestId")
-        self.RequestId = params.get("RequestId")
 
 
 class UpgradeCDBProxyVersionRequest(AbstractModel):

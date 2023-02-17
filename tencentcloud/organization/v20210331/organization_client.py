@@ -211,7 +211,7 @@ class OrganizationClient(AbstractClient):
 
 
     def DescribeOrganizationAuthNode(self, request):
-        """获取可创建组织成员的认证主体关系列表
+        """获取已设置管理员的互信主体关系列表
 
         :param request: Request instance for DescribeOrganizationAuthNode.
         :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationAuthNodeRequest`

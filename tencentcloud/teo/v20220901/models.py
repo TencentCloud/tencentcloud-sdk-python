@@ -12504,6 +12504,11 @@ class Zone(AbstractModel):
         :param AliasZoneName: 站点别名。数字、英文、-和_组合，限制20个字符。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AliasZoneName: str
+        :param IsFake: 是否伪站点，取值有：
+<li> 0：非伪站点；</li>
+<li> 1：伪站点。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFake: int
         """
         self.ZoneId = None
         self.ZoneName = None
@@ -12523,6 +12528,7 @@ class Zone(AbstractModel):
         self.VanityNameServersIps = None
         self.ActiveStatus = None
         self.AliasZoneName = None
+        self.IsFake = None
 
 
     def _deserialize(self, params):
@@ -12561,6 +12567,7 @@ class Zone(AbstractModel):
                 self.VanityNameServersIps.append(obj)
         self.ActiveStatus = params.get("ActiveStatus")
         self.AliasZoneName = params.get("AliasZoneName")
+        self.IsFake = params.get("IsFake")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
