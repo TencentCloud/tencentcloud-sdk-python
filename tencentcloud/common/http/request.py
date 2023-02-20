@@ -29,7 +29,7 @@ class ProxyConnection(object):
     def __init__(self, host, timeout=60, proxy=None, certification=None, is_http=False):
         self.request_host = host
         self.certification = certification
-        if not certification:
+        if certification is None:
             self.certification = certifi.where()
         self.timeout = timeout
         self.proxy = None
