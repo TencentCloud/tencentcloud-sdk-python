@@ -408,7 +408,7 @@ class LiveClient(AbstractClient):
 
 
     def CreateLiveTimeShiftTemplate(self, request):
-        """创建直播垫片模板。
+        """创建直播时移模板。
 
         :param request: Request instance for CreateLiveTimeShiftTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveTimeShiftTemplateRequest`
@@ -2870,7 +2870,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyLiveTimeShiftTemplate(self, request):
-        """修改直播垫片模板。
+        """修改直播时移模板。
 
         :param request: Request instance for ModifyLiveTimeShiftTemplate.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveTimeShiftTemplateRequest`

@@ -73,10 +73,10 @@ class PartnersClient(AbstractClient):
 
 
     def AssignClientsToSales(self, request):
-        """为代客or申请中代客分派跟进人（业务员）
+        """为代客or申请中代客分派跟进人（业务员），入参可从以下API获取
         - 代客列表获取API： [DescribeAgentAuditedClients](https://cloud.tencent.com/document/product/563/19184)
         - 申请中代客列表获取API：[DescribeAgentClients](https://cloud.tencent.com/document/product/563/16046)
-        - 业务员列表获取API：[DescribeSalesmans](https://cloud.tencent.com/document/product/563/35196)
+        - 业务员列表获取API：[DescribeSalesmans](https://cloud.tencent.com/document/product/563/35196) <br><br>
 
         :param request: Request instance for AssignClientsToSales.
         :type request: :class:`tencentcloud.partners.v20180321.models.AssignClientsToSalesRequest`

@@ -3189,13 +3189,17 @@ class SetPlaylistCommandInput(AbstractModel):
         :type Index: int
         :param ChangedIndex: 当 Type 取 Move 时，必填，表示移动歌曲的目标位置。
         :type ChangedIndex: int
-        :param MusicIds: 歌曲 ID 列表，当 Type 取 Add 时，必填。
+        :param MusicIds: 歌曲 ID 列表，当 Type 取 Add 时，与MusicURLs必填其中一项。
         :type MusicIds: list of str
+        :param MusicURLs: 歌曲 URL 列表，当 Type 取 Add 时，与MusicIds必填其中一项。
+注：URL必须以.mp3结尾且必须是mp3编码文件。
+        :type MusicURLs: list of str
         """
         self.Type = None
         self.Index = None
         self.ChangedIndex = None
         self.MusicIds = None
+        self.MusicURLs = None
 
 
     def _deserialize(self, params):
@@ -3203,6 +3207,7 @@ class SetPlaylistCommandInput(AbstractModel):
         self.Index = params.get("Index")
         self.ChangedIndex = params.get("ChangedIndex")
         self.MusicIds = params.get("MusicIds")
+        self.MusicURLs = params.get("MusicURLs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3515,11 +3520,20 @@ class TRTCJoinRoomInput(AbstractModel):
         :type SdkAppId: str
         :param UserId: 用户唯一标识。
         :type UserId: str
+        :param PrivateMapKey: 进房钥匙，若需要权限控制请携带该参数。
+ [privateMapKey 权限设置](/document/product/647/32240) 
+        :type PrivateMapKey: str
+        :param Role: 用户角色，目前支持两种角色：
+<li>anchor：主播</li>
+<li>audience：观众</li>
+        :type Role: str
         """
         self.Sign = None
         self.RoomId = None
         self.SdkAppId = None
         self.UserId = None
+        self.PrivateMapKey = None
+        self.Role = None
 
 
     def _deserialize(self, params):
@@ -3527,6 +3541,8 @@ class TRTCJoinRoomInput(AbstractModel):
         self.RoomId = params.get("RoomId")
         self.SdkAppId = params.get("SdkAppId")
         self.UserId = params.get("UserId")
+        self.PrivateMapKey = params.get("PrivateMapKey")
+        self.Role = params.get("Role")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

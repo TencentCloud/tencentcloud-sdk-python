@@ -3190,7 +3190,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeFlowLogs(self, request):
-        """本接口（DescribeFlowLogs）用于查询获取流日志集合
+        """本接口（DescribeFlowLogs）用于查询获取流日志集合。
 
         :param request: Request instance for DescribeFlowLogs.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogsRequest`
@@ -4116,7 +4116,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpcEndPoint(self, request):
-        """查询终端节点列表。
+        """本接口（DescribeVpcEndPoint）用于查询终端节点列表。
 
         :param request: Request instance for DescribeVpcEndPoint.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcEndPointRequest`

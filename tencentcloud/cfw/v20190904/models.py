@@ -382,6 +382,101 @@ class AssociatedInstanceInfo(AbstractModel):
         
 
 
+class BlockIgnoreRule(AbstractModel):
+    """入侵防御放通封禁规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param Ioc: 规则ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ioc: str
+        :param Level: 危险等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
+        :param EventName: 来源事件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventName: str
+        :param Direction: 方向：1入站，0出站
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Direction: int
+        :param Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Address: 地理位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param Action: 规则类型：1封禁，2放通
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: int
+        :param StartTime: 规则生效开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 规则生效结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param IgnoreReason: 忽略原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreReason: str
+        :param Source: 安全事件来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param UniqueId: 规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqueId: str
+        :param MatchTimes: 规则命中次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchTimes: int
+        :param Country: 国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Country: str
+        """
+        self.Domain = None
+        self.Ioc = None
+        self.Level = None
+        self.EventName = None
+        self.Direction = None
+        self.Protocol = None
+        self.Address = None
+        self.Action = None
+        self.StartTime = None
+        self.EndTime = None
+        self.IgnoreReason = None
+        self.Source = None
+        self.UniqueId = None
+        self.MatchTimes = None
+        self.Country = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Ioc = params.get("Ioc")
+        self.Level = params.get("Level")
+        self.EventName = params.get("EventName")
+        self.Direction = params.get("Direction")
+        self.Protocol = params.get("Protocol")
+        self.Address = params.get("Address")
+        self.Action = params.get("Action")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.IgnoreReason = params.get("IgnoreReason")
+        self.Source = params.get("Source")
+        self.UniqueId = params.get("UniqueId")
+        self.MatchTimes = params.get("MatchTimes")
+        self.Country = params.get("Country")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CfwNatDnatRule(AbstractModel):
     """NAT防火墙Dnat规则
 
@@ -1459,6 +1554,92 @@ class DescribeBlockByIpTimesListResponse(AbstractModel):
                 obj = IpStatic()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBlockIgnoreListRequest(AbstractModel):
+    """DescribeBlockIgnoreList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 单页数量
+        :type Limit: int
+        :param Offset: 页偏移量
+        :type Offset: int
+        :param Direction: 方向：1互联网入站，0互联网出站，3内网，空 全部方向
+        :type Direction: str
+        :param RuleType: 规则类型：1封禁，2放通
+        :type RuleType: int
+        :param Order: 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
+        :type Order: str
+        :param By: 排序类型：desc降序，asc正序
+        :type By: str
+        :param SearchValue: 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
+        :type SearchValue: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Direction = None
+        self.RuleType = None
+        self.Order = None
+        self.By = None
+        self.SearchValue = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Direction = params.get("Direction")
+        self.RuleType = params.get("RuleType")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.SearchValue = params.get("SearchValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlockIgnoreListResponse(AbstractModel):
+    """DescribeBlockIgnoreList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 列表数据
+        :type Data: list of BlockIgnoreRule
+        :param Total: 查询结果总数，用于分页
+        :type Total: int
+        :param ReturnCode: 状态值，0：查询成功，非0：查询失败
+        :type ReturnCode: int
+        :param ReturnMsg: 状态信息，success：查询成功，fail：查询失败
+        :type ReturnMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Total = None
+        self.ReturnCode = None
+        self.ReturnMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = BlockIgnoreRule()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Total = params.get("Total")
+        self.ReturnCode = params.get("ReturnCode")
+        self.ReturnMsg = params.get("ReturnMsg")
         self.RequestId = params.get("RequestId")
 
 

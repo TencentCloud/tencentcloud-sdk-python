@@ -1163,6 +1163,29 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDBEncryptAttributes(self, request):
+        """本接口(ModifyDBEncryptAttributes)用于修改实例数据加密。
+
+        :param request: Request instance for ModifyDBEncryptAttributes.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ModifyDBEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBEncryptAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBInstanceName(self, request):
         """本接口（ModifyDBInstanceName）用于修改云数据库实例的名称。
 

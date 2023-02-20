@@ -417,6 +417,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBlockIgnoreList(self, request):
+        """查询入侵防御放通封禁列表
+
+        :param request: Request instance for DescribeBlockIgnoreList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockIgnoreListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockIgnoreListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBlockIgnoreList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBlockIgnoreListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBlockStaticList(self, request):
         """DescribeBlockStaticList 告警中心柱形图
 

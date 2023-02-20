@@ -1496,7 +1496,7 @@ class Database(AbstractModel):
         :param NewDbName: 迁移或同步后的库名，默认与源库相同
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewDbName: str
-        :param DbMode: DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值。
+        :param DbMode: DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbMode: str
         :param SchemaName: 迁移或同步的 schema
@@ -1505,37 +1505,37 @@ class Database(AbstractModel):
         :param NewSchemaName: 迁移或同步后的 schema name
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewSchemaName: str
-        :param TableMode: 表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填
+        :param TableMode: 表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableMode: str
         :param Tables: 表图对象集合，当 TableMode 为 Partial 时，此项需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of Table
-        :param ViewMode: 视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象
+        :param ViewMode: 视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ViewMode: str
         :param Views: 视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Views: list of View
-        :param FunctionMode: 选择要同步的模式，Partial为部分，all为整选
+        :param FunctionMode: 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FunctionMode: str
         :param Functions: FunctionMode取值为Partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Functions: list of str
-        :param ProcedureMode: 选择要同步的模式，Partial为部分，All为整选
+        :param ProcedureMode: 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcedureMode: str
         :param Procedures: ProcedureMode取值为Partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Procedures: list of str
-        :param TriggerMode: 触发器迁移模式，all(为当前对象下的所有对象)，partial(部分对象)
+        :param TriggerMode: 触发器迁移模式，All(为当前对象下的所有对象)，partial(部分对象)，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMode: str
         :param Triggers: 当TriggerMode为partial，指定要迁移的触发器名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Triggers: list of str
-        :param EventMode: 事件迁移模式，all(为当前对象下的所有对象)，partial(部分对象)
+        :param EventMode: 事件迁移模式，All(为当前对象下的所有对象)，partial(部分对象)，如果整库同步此处应该为All。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventMode: str
         :param Events: 当EventMode为partial，指定要迁移的事件名称
