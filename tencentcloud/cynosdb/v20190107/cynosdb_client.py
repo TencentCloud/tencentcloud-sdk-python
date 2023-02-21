@@ -1452,6 +1452,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyVipVport(self, request):
+        """修改实例组ip，端口
+
+        :param request: Request instance for ModifyVipVport.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyVipVportRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyVipVportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVipVport", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVipVportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def OfflineCluster(self, request):
         """下线集群
 

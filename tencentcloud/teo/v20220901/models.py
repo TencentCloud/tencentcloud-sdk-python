@@ -2802,14 +2802,20 @@ class DescribeAddableEntityListRequest(AbstractModel):
 <li>web-rule：自定义规则日志；</li>
 <li>web-bot：Bot管理日志。</li>
         :type EntityType: str
+        :param Area: 服务区域，取值有：
+<li>mainland：中国大陆境内；</li>
+<li>overseas：全球（不含中国大陆）。</li>若为国内站账号，则默认取值为mainland；若为国际站账号，则默认取值为overseas。
+        :type Area: str
         """
         self.ZoneId = None
         self.EntityType = None
+        self.Area = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.EntityType = params.get("EntityType")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

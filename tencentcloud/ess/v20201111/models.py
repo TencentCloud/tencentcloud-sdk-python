@@ -804,7 +804,7 @@ class CreateDocumentRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowId: 签署流程编号,由CreateFlow接口返回
         :type FlowId: str
@@ -952,7 +952,7 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowName: 签署流程名称,最大长度200个字符
         :type FlowName: str
@@ -1226,7 +1226,7 @@ class CreateFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowName: 签署流程名称,最大长度200个字符
         :type FlowName: str
@@ -4256,7 +4256,7 @@ class StartFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，userId 必填
+        :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowId: 签署流程编号，由CreateFlow接口返回
         :type FlowId: str

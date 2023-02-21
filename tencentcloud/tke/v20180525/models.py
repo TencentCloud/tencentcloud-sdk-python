@@ -721,6 +721,9 @@ class CheckInstancesUpgradeAbleResponse(AbstractModel):
         :param Total: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
+        :param UnavailableVersionReason: 不可升级原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnavailableVersionReason: list of UnavailableReason
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -728,6 +731,7 @@ class CheckInstancesUpgradeAbleResponse(AbstractModel):
         self.LatestVersion = None
         self.UpgradeAbleInstances = None
         self.Total = None
+        self.UnavailableVersionReason = None
         self.RequestId = None
 
 
@@ -741,6 +745,12 @@ class CheckInstancesUpgradeAbleResponse(AbstractModel):
                 obj._deserialize(item)
                 self.UpgradeAbleInstances.append(obj)
         self.Total = params.get("Total")
+        if params.get("UnavailableVersionReason") is not None:
+            self.UnavailableVersionReason = []
+            for item in params.get("UnavailableVersionReason"):
+                obj = UnavailableReason()
+                obj._deserialize(item)
+                self.UnavailableVersionReason.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -12395,6 +12405,18 @@ class InstanceAdvancedSettings(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DesiredPodNumber: 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DesiredPodNumber: int
+        :param GPUArgs: GPU驱动相关参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
+        :param PreStartUserScript: base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreStartUserScript: str
+        :param Taints: 节点污点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Taints: list of Taint
         :param MountTarget: 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
 注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12416,19 +12438,11 @@ class InstanceAdvancedSettings(AbstractModel):
         :param ExtraArgs: 节点相关的自定义参数信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
-        :param DesiredPodNumber: 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DesiredPodNumber: int
-        :param GPUArgs: GPU驱动相关参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
-        :param PreStartUserScript: base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PreStartUserScript: str
-        :param Taints: 节点污点
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Taints: list of Taint
         """
+        self.DesiredPodNumber = None
+        self.GPUArgs = None
+        self.PreStartUserScript = None
+        self.Taints = None
         self.MountTarget = None
         self.DockerGraphPath = None
         self.UserScript = None
@@ -12436,13 +12450,20 @@ class InstanceAdvancedSettings(AbstractModel):
         self.Labels = None
         self.DataDisks = None
         self.ExtraArgs = None
-        self.DesiredPodNumber = None
-        self.GPUArgs = None
-        self.PreStartUserScript = None
-        self.Taints = None
 
 
     def _deserialize(self, params):
+        self.DesiredPodNumber = params.get("DesiredPodNumber")
+        if params.get("GPUArgs") is not None:
+            self.GPUArgs = GPUArgs()
+            self.GPUArgs._deserialize(params.get("GPUArgs"))
+        self.PreStartUserScript = params.get("PreStartUserScript")
+        if params.get("Taints") is not None:
+            self.Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self.Taints.append(obj)
         self.MountTarget = params.get("MountTarget")
         self.DockerGraphPath = params.get("DockerGraphPath")
         self.UserScript = params.get("UserScript")
@@ -12462,17 +12483,6 @@ class InstanceAdvancedSettings(AbstractModel):
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
-        self.DesiredPodNumber = params.get("DesiredPodNumber")
-        if params.get("GPUArgs") is not None:
-            self.GPUArgs = GPUArgs()
-            self.GPUArgs._deserialize(params.get("GPUArgs"))
-        self.PreStartUserScript = params.get("PreStartUserScript")
-        if params.get("Taints") is not None:
-            self.Taints = []
-            for item in params.get("Taints"):
-                obj = Taint()
-                obj._deserialize(item)
-                self.Taints.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17200,6 +17210,36 @@ class Toleration(AbstractModel):
         
 
 
+class UnavailableReason(AbstractModel):
+    """不可用原因
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Reason: 原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        """
+        self.InstanceId = None
+        self.Reason = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UninstallClusterReleaseRequest(AbstractModel):
     """UninstallClusterRelease请求参数结构体
 
@@ -17812,16 +17852,24 @@ class UpgradeAbleInstancesItem(AbstractModel):
         :param LatestVersion: 当前版本的最新小版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestVersion: str
+        :param RuntimeVersion: RuntimeVersion
+        :type RuntimeVersion: str
+        :param RuntimeLatestVersion: RuntimeLatestVersion
+        :type RuntimeLatestVersion: str
         """
         self.InstanceId = None
         self.Version = None
         self.LatestVersion = None
+        self.RuntimeVersion = None
+        self.RuntimeLatestVersion = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Version = params.get("Version")
         self.LatestVersion = params.get("LatestVersion")
+        self.RuntimeVersion = params.get("RuntimeVersion")
+        self.RuntimeLatestVersion = params.get("RuntimeLatestVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

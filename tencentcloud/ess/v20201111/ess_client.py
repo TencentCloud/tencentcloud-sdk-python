@@ -123,8 +123,7 @@ class EssClient(AbstractClient):
 
     def CreateDocument(self, request):
         """创建签署流程电子文档
-        适用场景：见创建签署流程接口。
-
+        适用场景：见创建签署流程接口。x0b
         注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。是“发起流程”接口的前置接口。
 
         :param request: Request instance for CreateDocument.

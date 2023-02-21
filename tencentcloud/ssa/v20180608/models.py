@@ -3137,13 +3137,13 @@ class ListDataSaEventPub(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: 受影响资产
+        :param Time: 时间
         :type Time: str
-        :param EventType1: 安全事件名称
+        :param EventType1: 安全事件1级分类
         :type EventType1: int
-        :param EventType2: 安全事件1级分类
+        :param EventType2: 安全事件2级分类
         :type EventType2: int
-        :param EventName: 安全事件2级分类
+        :param EventName: 安全事件名称
         :type EventName: str
         :param Level: 风险等级
         :type Level: int

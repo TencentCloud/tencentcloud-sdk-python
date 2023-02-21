@@ -6014,6 +6014,72 @@ class ModifyParamItem(AbstractModel):
         
 
 
+class ModifyVipVportRequest(AbstractModel):
+    """ModifyVipVport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param InstanceGrpId: 实例组id
+        :type InstanceGrpId: str
+        :param Vip: 需要修改的目的ip
+        :type Vip: str
+        :param Vport: 需要修改的目的端口
+        :type Vport: int
+        :param DbType: 数据库类型，取值范围: 
+<li> MYSQL </li>
+        :type DbType: str
+        :param OldIpReserveHours: 旧ip回收前的保留时间，单位小时，0表示立即回收
+        :type OldIpReserveHours: int
+        """
+        self.ClusterId = None
+        self.InstanceGrpId = None
+        self.Vip = None
+        self.Vport = None
+        self.DbType = None
+        self.OldIpReserveHours = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceGrpId = params.get("InstanceGrpId")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.DbType = params.get("DbType")
+        self.OldIpReserveHours = params.get("OldIpReserveHours")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVipVportResponse(AbstractModel):
+    """ModifyVipVport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步任务id
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class Module(AbstractModel):
     """系统支持的模块
 

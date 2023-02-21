@@ -1712,14 +1712,111 @@ class DescribeTreeResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param ParentId: 父节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: str
+        :param Id: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param Name: 文件夹名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Items: 文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TreeResourceItem
+        :param Children: 子目录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of DescribeTreeResourcesRsp
+        :param TotalCount: 资源总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ParentId = None
+        self.Id = None
+        self.Name = None
+        self.Items = None
+        self.Children = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ParentId = params.get("ParentId")
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = TreeResourceItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        if params.get("Children") is not None:
+            self.Children = []
+            for item in params.get("Children"):
+                obj = DescribeTreeResourcesRsp()
+                obj._deserialize(item)
+                self.Children.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
+
+
+class DescribeTreeResourcesRsp(AbstractModel):
+    """树状结构资源列表对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParentId: 父节点ID
+        :type ParentId: str
+        :param Id: 文件夹ID
+        :type Id: str
+        :param Name: 文件夹名称
+        :type Name: str
+        :param Items: 文件夹下资源数字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of TreeResourceItem
+        :param Children: 子节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of DescribeTreeResourcesRsp
+        :param TotalCount: 资源总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self.ParentId = None
+        self.Id = None
+        self.Name = None
+        self.Items = None
+        self.Children = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        self.ParentId = params.get("ParentId")
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = TreeResourceItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        if params.get("Children") is not None:
+            self.Children = []
+            for item in params.get("Children"):
+                obj = DescribeTreeResourcesRsp()
+                obj._deserialize(item)
+                self.Children.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Filter(AbstractModel):
@@ -2789,6 +2886,54 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TreeResourceItem(AbstractModel):
+    """树状结构资源对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Name: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param ResourceType: 资源类型
+        :type ResourceType: int
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param FileName: 文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param FolderId: 目录ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        """
+        self.ResourceId = None
+        self.Name = None
+        self.ResourceType = None
+        self.Remark = None
+        self.FileName = None
+        self.FolderId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.Name = params.get("Name")
+        self.ResourceType = params.get("ResourceType")
+        self.Remark = params.get("Remark")
+        self.FileName = params.get("FileName")
+        self.FolderId = params.get("FolderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

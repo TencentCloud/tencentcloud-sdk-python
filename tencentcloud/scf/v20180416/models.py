@@ -4507,6 +4507,9 @@ class TriggerCount(AbstractModel):
         :type Cm: int
         :param Vod: Vod触发器数量
         :type Vod: int
+        :param Eb: Eb触发器数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Eb: int
         """
         self.Cos = None
         self.Timer = None
@@ -4519,6 +4522,7 @@ class TriggerCount(AbstractModel):
         self.Mps = None
         self.Cm = None
         self.Vod = None
+        self.Eb = None
 
 
     def _deserialize(self, params):
@@ -4533,6 +4537,7 @@ class TriggerCount(AbstractModel):
         self.Mps = params.get("Mps")
         self.Cm = params.get("Cm")
         self.Vod = params.get("Vod")
+        self.Eb = params.get("Eb")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

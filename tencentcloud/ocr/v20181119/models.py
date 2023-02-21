@@ -1111,6 +1111,70 @@ class Coord(AbstractModel):
         
 
 
+class CreateAIFormTaskRequest(AbstractModel):
+    """CreateAIFormTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileList: 多个文件的URL列表
+        :type FileList: list of SmartFormFileUrl
+        :param FirstNotes: 备注信息1
+        :type FirstNotes: str
+        :param SecondNotes: 备注信息2
+        :type SecondNotes: str
+        """
+        self.FileList = None
+        self.FirstNotes = None
+        self.SecondNotes = None
+
+
+    def _deserialize(self, params):
+        if params.get("FileList") is not None:
+            self.FileList = []
+            for item in params.get("FileList"):
+                obj = SmartFormFileUrl()
+                obj._deserialize(item)
+                self.FileList.append(obj)
+        self.FirstNotes = params.get("FirstNotes")
+        self.SecondNotes = params.get("SecondNotes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAIFormTaskResponse(AbstractModel):
+    """CreateAIFormTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 本次识别任务的唯一身份ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param OperateUrl: 本次识别任务的操作URL，有效期自生成之时起共24小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.OperateUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.OperateUrl = params.get("OperateUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class Detail(AbstractModel):
     """企业四要素核验结果
 
@@ -2555,6 +2619,56 @@ class GeneralHandwritingOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TextDetections.append(obj)
         self.Angel = params.get("Angel")
+        self.RequestId = params.get("RequestId")
+
+
+class GetTaskStateRequest(AbstractModel):
+    """GetTaskState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 智慧表单任务唯一身份ID
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTaskStateResponse(AbstractModel):
+    """GetTaskState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskState: 1:任务识别完成，还未提交
+2:任务已手动关闭
+3:任务已提交
+4:任务识别中
+5:超时：任务超过了可操作的24H时限
+6:任务识别失败
+        :type TaskState: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskState = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskState = params.get("TaskState")
         self.RequestId = params.get("RequestId")
 
 
@@ -5759,6 +5873,83 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecognizeTableAccurateOCRRequest(AbstractModel):
+    """RecognizeTableAccurateOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: 图片/PDF的 Base64 值。
+要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片/PDF的 Url 地址。
+要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :type PdfPageNumber: int
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.PdfPageNumber = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.PdfPageNumber = params.get("PdfPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeTableAccurateOCRResponse(AbstractModel):
+    """RecognizeTableAccurateOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableDetections: 检测到的文本信息，具体内容请点击左侧链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableDetections: list of TableInfo
+        :param Data: Base64 编码后的 Excel 数据。
+        :type Data: str
+        :param PdfPageSize: 图片为PDF时，返回PDF的总页数，默认为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PdfPageSize: int
+        :param Angle: 图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Angle: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TableDetections = None
+        self.Data = None
+        self.PdfPageSize = None
+        self.Angle = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TableDetections") is not None:
+            self.TableDetections = []
+            for item in params.get("TableDetections"):
+                obj = TableInfo()
+                obj._deserialize(item)
+                self.TableDetections.append(obj)
+        self.Data = params.get("Data")
+        self.PdfPageSize = params.get("PdfPageSize")
+        self.Angle = params.get("Angle")
+        self.RequestId = params.get("RequestId")
+
+
 class RecognizeTableOCRRequest(AbstractModel):
     """RecognizeTableOCR请求参数结构体
 
@@ -5854,14 +6045,19 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
         :param ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
         :type ImageUrl: str
+        :param CropPortrait: 图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
+设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码
+        :type CropPortrait: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.CropPortrait = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.CropPortrait = params.get("CropPortrait")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5894,6 +6090,8 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type ExpirationDate: str
         :param EnLastName: 英文姓名
         :type EnLastName: str
+        :param PortraitImage: 证件人像照片抠取
+        :type PortraitImage: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5905,6 +6103,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self.IssueDate = None
         self.ExpirationDate = None
         self.EnLastName = None
+        self.PortraitImage = None
         self.RequestId = None
 
 
@@ -5917,6 +6116,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self.IssueDate = params.get("IssueDate")
         self.ExpirationDate = params.get("ExpirationDate")
         self.EnLastName = params.get("EnLastName")
+        self.PortraitImage = params.get("PortraitImage")
         self.RequestId = params.get("RequestId")
 
 
@@ -6592,6 +6792,12 @@ class SingleInvoiceInfo(AbstractModel):
         
 
 
+class SmartFormFileUrl(AbstractModel):
+    """智慧表单上传文件信息
+
+    """
+
+
 class SmartStructuralOCRRequest(AbstractModel):
     """SmartStructuralOCR请求参数结构体
 
@@ -6790,6 +6996,63 @@ class TableCell(AbstractModel):
         
 
 
+class TableCellInfo(AbstractModel):
+    """单元格数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ColTl: 单元格左上角的列索引
+        :type ColTl: int
+        :param RowTl: 单元格左上角的行索引
+        :type RowTl: int
+        :param ColBr: 单元格右下角的列索引
+        :type ColBr: int
+        :param RowBr: 单元格右下角的行索引
+        :type RowBr: int
+        :param Text: 单元格内识别出的字符串文本，若文本存在多行，以换行符"\n"隔开
+        :type Text: str
+        :param Type: 单元格类型
+        :type Type: str
+        :param Confidence: 单元格置信度
+        :type Confidence: float
+        :param Polygon: 单元格在图像中的四点坐标
+        :type Polygon: list of Coord
+        """
+        self.ColTl = None
+        self.RowTl = None
+        self.ColBr = None
+        self.RowBr = None
+        self.Text = None
+        self.Type = None
+        self.Confidence = None
+        self.Polygon = None
+
+
+    def _deserialize(self, params):
+        self.ColTl = params.get("ColTl")
+        self.RowTl = params.get("RowTl")
+        self.ColBr = params.get("ColBr")
+        self.RowBr = params.get("RowBr")
+        self.Text = params.get("Text")
+        self.Type = params.get("Type")
+        self.Confidence = params.get("Confidence")
+        if params.get("Polygon") is not None:
+            self.Polygon = []
+            for item in params.get("Polygon"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.Polygon.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TableDetectInfo(AbstractModel):
     """表格内容检测
 
@@ -6832,6 +7095,53 @@ class TableDetectInfo(AbstractModel):
                 obj = TableTitle()
                 obj._deserialize(item)
                 self.Titles.append(obj)
+        self.Type = params.get("Type")
+        if params.get("TableCoordPoint") is not None:
+            self.TableCoordPoint = []
+            for item in params.get("TableCoordPoint"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.TableCoordPoint.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableInfo(AbstractModel):
+    """表格内容检测
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cells: 单元格内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cells: list of TableCellInfo
+        :param Type: 图像中的文本块类型，0 为非表格文本，
+1 为有线表格，2 为无线表格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param TableCoordPoint: 表格主体四个顶点坐标（依次为左上角，
+右上角，右下角，左下角）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableCoordPoint: list of Coord
+        """
+        self.Cells = None
+        self.Type = None
+        self.TableCoordPoint = None
+
+
+    def _deserialize(self, params):
+        if params.get("Cells") is not None:
+            self.Cells = []
+            for item in params.get("Cells"):
+                obj = TableCellInfo()
+                obj._deserialize(item)
+                self.Cells.append(obj)
         self.Type = params.get("Type")
         if params.get("TableCoordPoint") is not None:
             self.TableCoordPoint = []

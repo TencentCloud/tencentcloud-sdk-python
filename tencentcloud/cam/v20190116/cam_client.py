@@ -718,7 +718,7 @@ class CamClient(AbstractClient):
 
 
     def DescribeSafeAuthFlagColl(self, request):
-        """查询安全设置
+        """获取子账号安全设置
 
         :param request: Request instance for DescribeSafeAuthFlagColl.
         :type request: :class:`tencentcloud.cam.v20190116.models.DescribeSafeAuthFlagCollRequest`

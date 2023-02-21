@@ -3293,6 +3293,9 @@ class RecordParams(AbstractModel):
         :param MaxMediaFileDuration: 如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】
 Hls 格式录制此参数不生效。
         :type MaxMediaFileDuration: int
+        :param MediaId: 指定录制主辅流，0：主流+辅流（默认）；1:主流；2:辅流。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaId: int
         """
         self.RecordMode = None
         self.MaxIdleTime = None
@@ -3301,6 +3304,7 @@ Hls 格式录制此参数不生效。
         self.OutputFormat = None
         self.AvMerge = None
         self.MaxMediaFileDuration = None
+        self.MediaId = None
 
 
     def _deserialize(self, params):
@@ -3313,6 +3317,7 @@ Hls 格式录制此参数不生效。
         self.OutputFormat = params.get("OutputFormat")
         self.AvMerge = params.get("AvMerge")
         self.MaxMediaFileDuration = params.get("MaxMediaFileDuration")
+        self.MediaId = params.get("MediaId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

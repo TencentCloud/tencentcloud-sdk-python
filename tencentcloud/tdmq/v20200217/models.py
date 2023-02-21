@@ -5676,6 +5676,59 @@ class DescribeRocketMQTopicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQVipInstanceDetailRequest(AbstractModel):
+    """DescribeRocketMQVipInstanceDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQVipInstanceDetailResponse(AbstractModel):
+    """DescribeRocketMQVipInstanceDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterInfo: 集群信息
+        :type ClusterInfo: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterInfo`
+        :param InstanceConfig: 集群配置
+        :type InstanceConfig: :class:`tencentcloud.tdmq.v20200217.models.RocketMQInstanceConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterInfo = None
+        self.InstanceConfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterInfo") is not None:
+            self.ClusterInfo = RocketMQClusterInfo()
+            self.ClusterInfo._deserialize(params.get("ClusterInfo"))
+        if params.get("InstanceConfig") is not None:
+            self.InstanceConfig = RocketMQInstanceConfig()
+            self.InstanceConfig._deserialize(params.get("InstanceConfig"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQVipInstancesRequest(AbstractModel):
     """DescribeRocketMQVipInstances请求参数结构体
 
@@ -6159,6 +6212,38 @@ class FilterSubscription(AbstractModel):
         self.ConsumerHasBacklog = params.get("ConsumerHasBacklog")
         self.ConsumerHasExpired = params.get("ConsumerHasExpired")
         self.SubscriptionNames = params.get("SubscriptionNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceNodeDistribution(AbstractModel):
+    """实例节点分布信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneName: 可用区
+        :type ZoneName: str
+        :param ZoneId: 可用区id
+        :type ZoneId: str
+        :param NodeCount: 节点数
+        :type NodeCount: int
+        """
+        self.ZoneName = None
+        self.ZoneId = None
+        self.NodeCount = None
+
+
+    def _deserialize(self, params):
+        self.ZoneName = params.get("ZoneName")
+        self.ZoneId = params.get("ZoneId")
+        self.NodeCount = params.get("NodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8200,6 +8285,80 @@ class RocketMQGroup(AbstractModel):
         
 
 
+class RocketMQInstanceConfig(AbstractModel):
+    """RocketMQ专享集群实例配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxTpsPerNamespace: 单命名空间TPS上线
+        :type MaxTpsPerNamespace: int
+        :param MaxNamespaceNum: 最大命名空间数量
+        :type MaxNamespaceNum: int
+        :param UsedNamespaceNum: 已使用命名空间数量
+        :type UsedNamespaceNum: int
+        :param MaxTopicNum: 最大Topic数量
+        :type MaxTopicNum: int
+        :param UsedTopicNum: 已使用Topic数量
+        :type UsedTopicNum: int
+        :param MaxGroupNum: 最大Group数量
+        :type MaxGroupNum: int
+        :param UsedGroupNum: 已使用Group数量
+        :type UsedGroupNum: int
+        :param ConfigDisplay: 集群类型
+        :type ConfigDisplay: str
+        :param NodeCount: 集群节点数
+        :type NodeCount: int
+        :param NodeDistribution: 节点分布情况
+        :type NodeDistribution: list of InstanceNodeDistribution
+        :param TopicDistribution: topic分布情况
+        :type TopicDistribution: list of RocketMQTopicDistribution
+        """
+        self.MaxTpsPerNamespace = None
+        self.MaxNamespaceNum = None
+        self.UsedNamespaceNum = None
+        self.MaxTopicNum = None
+        self.UsedTopicNum = None
+        self.MaxGroupNum = None
+        self.UsedGroupNum = None
+        self.ConfigDisplay = None
+        self.NodeCount = None
+        self.NodeDistribution = None
+        self.TopicDistribution = None
+
+
+    def _deserialize(self, params):
+        self.MaxTpsPerNamespace = params.get("MaxTpsPerNamespace")
+        self.MaxNamespaceNum = params.get("MaxNamespaceNum")
+        self.UsedNamespaceNum = params.get("UsedNamespaceNum")
+        self.MaxTopicNum = params.get("MaxTopicNum")
+        self.UsedTopicNum = params.get("UsedTopicNum")
+        self.MaxGroupNum = params.get("MaxGroupNum")
+        self.UsedGroupNum = params.get("UsedGroupNum")
+        self.ConfigDisplay = params.get("ConfigDisplay")
+        self.NodeCount = params.get("NodeCount")
+        if params.get("NodeDistribution") is not None:
+            self.NodeDistribution = []
+            for item in params.get("NodeDistribution"):
+                obj = InstanceNodeDistribution()
+                obj._deserialize(item)
+                self.NodeDistribution.append(obj)
+        if params.get("TopicDistribution") is not None:
+            self.TopicDistribution = []
+            for item in params.get("TopicDistribution"):
+                obj = RocketMQTopicDistribution()
+                obj._deserialize(item)
+                self.TopicDistribution.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RocketMQNamespace(AbstractModel):
     """RocketMQ命名空间信息
 
@@ -8287,6 +8446,34 @@ class RocketMQTopic(AbstractModel):
         self.PartitionNum = params.get("PartitionNum")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQTopicDistribution(AbstractModel):
+    """RocketMQtopic分布情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicType: topic类型
+        :type TopicType: str
+        :param Count: topic数量
+        :type Count: int
+        """
+        self.TopicType = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.TopicType = params.get("TopicType")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

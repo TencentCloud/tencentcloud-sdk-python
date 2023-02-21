@@ -800,7 +800,6 @@ class CreateRoomRequest(AbstractModel):
         :param SubType: 房间子类型，可以有以下取值：
 videodoc 文档+视频
 video 纯视频
-coteaching 双师
         :type SubType: str
         :param TeacherId: 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
         :type TeacherId: str
@@ -1695,7 +1694,6 @@ class DescribeRoomResponse(AbstractModel):
         :param SubType: 房间子类型，可以有以下取值：
 videodoc 文档+视频
 video 纯视频
-coteaching 双师
         :type SubType: str
         :param DisableRecord: 上课后是否禁止自动录制。可以有以下取值：
 0 不禁止录制（自动开启录制，默认值）
@@ -2714,7 +2712,7 @@ class RoomInfo(AbstractModel):
         :param MaxMicNumber: 最大连麦人数（不包括老师）。取值范围[0, 16]
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMicNumber: int
-        :param SubType: 房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频 coteaching 双师
+        :param SubType: 房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubType: str
         :param TeacherId: 老师ID。通过[注册用户]接口获取的UserId。

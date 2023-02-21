@@ -1659,6 +1659,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRocketMQVipInstanceDetail(self, request):
+        """获取单个RocketMQ专享集群信息
+
+        :param request: Request instance for DescribeRocketMQVipInstanceDetail.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQVipInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQVipInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQVipInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRocketMQVipInstances(self, request):
         """查询用户已购的RocketMQ专享实例列表
 

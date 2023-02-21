@@ -240,6 +240,31 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAIFormTask(self, request):
+        """本接口可创建智能表单录入任务，支持多个识别图片和PDF的URL上传，返回含有识别内容的操作页面URL。
+
+        智能表单录入产品提供高准确率的表单识别技术和人工核对工具，支持自定义字段，将识别结果自动填入到自定义条目中，并提供人工操作工具，完成整个表单识别过程。适用性强，可对票据、合同、货单等文件的识别，适用于金融、货代、保险、档案等领域。本产品免费公测中，您可以点击demo（超连接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
+
+        :param request: Request instance for CreateAIFormTask.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.CreateAIFormTaskRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.CreateAIFormTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAIFormTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAIFormTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DriverLicenseOCR(self, request):
         """本接口支持驾驶证主页和副页所有字段的自动定位与识别，重点字段的识别准确度达到99%以上。
 
@@ -780,6 +805,29 @@ class OcrClient(AbstractClient):
             body = self.call("GeneralHandwritingOCR", params, headers=headers)
             response = json.loads(body)
             model = models.GeneralHandwritingOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTaskState(self, request):
+        """支持查询智能表单录入任务的状态。本产品免费公测中，您可以点击demo（超连接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
+
+        :param request: Request instance for GetTaskState.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.GetTaskStateRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GetTaskStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTaskState", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTaskStateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1462,6 +1510,31 @@ class OcrClient(AbstractClient):
             body = self.call("RecognizePhilippinesVoteIDOCR", params, headers=headers)
             response = json.loads(body)
             model = models.RecognizePhilippinesVoteIDOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizeTableAccurateOCR(self, request):
+        """本接口支持中英文图片/PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。识别效果比表格识别V2更好，覆盖场景更加广泛，对表格难例场景，如无线表格、嵌套表格（有线表格中包含无线表格）的识别效果均优于表格识别V2。
+
+        默认接口请求频率限制：2次/秒。
+
+        :param request: Request instance for RecognizeTableAccurateOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableAccurateOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableAccurateOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeTableAccurateOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeTableAccurateOCRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
