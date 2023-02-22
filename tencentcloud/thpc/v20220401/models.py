@@ -104,11 +104,10 @@ class AddNodesRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param QueueName: 队列名称。不指定则为默认队列。<br><li>SLURM默认队列为：compute。<br>
-<li>SGE默认队列为：all.q。<br>
+        :param QueueName: 队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。<li>SGE默认队列为：all.q。
 
         :type QueueName: str
-        :param NodeRole: 添加节点类型。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
+        :param NodeRole: 添加节点角色。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
         :type NodeRole: str
         :param DryRun: 是否只预检此次请求。
 true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
@@ -116,6 +115,8 @@ true：发送检查请求，不会创建实例。检查项包括是否填写了�
 如果检查通过，则返回RequestId.
 false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
+        :param NodeType: 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。<li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。
+        :type NodeType: str
         """
         self.Placement = None
         self.ClusterId = None
@@ -135,6 +136,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.QueueName = None
         self.NodeRole = None
         self.DryRun = None
+        self.NodeType = None
 
 
     def _deserialize(self, params):
@@ -176,6 +178,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.QueueName = params.get("QueueName")
         self.NodeRole = params.get("NodeRole")
         self.DryRun = params.get("DryRun")
+        self.NodeType = params.get("NodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

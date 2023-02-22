@@ -3763,6 +3763,29 @@ class IntegrationMainOrganizationUser(AbstractModel):
         
 
 
+class ModifyApplicationCallbackInfoRequest(AbstractModel):
+    """ModifyApplicationCallbackInfo请求参数结构体
+
+    """
+
+
+class ModifyApplicationCallbackInfoResponse(AbstractModel):
+    """ModifyApplicationCallbackInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class OccupiedSeal(AbstractModel):
     """持有的电子印章信息
 

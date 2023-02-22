@@ -5509,30 +5509,30 @@ class ModifyBackupConfigRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
+        :param ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+        :type ReserveDuration: int
         :param BackupTimeBeg: 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
         :type BackupTimeBeg: int
         :param BackupTimeEnd: 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
         :type BackupTimeEnd: int
-        :param ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
-        :type ReserveDuration: int
         :param BackupFreq: 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
         :type BackupFreq: list of str
         :param BackupType: 该参数目前不支持修改，无需填写。备份方式，logic-逻辑备份，snapshot-快照备份
         :type BackupType: str
         """
         self.ClusterId = None
+        self.ReserveDuration = None
         self.BackupTimeBeg = None
         self.BackupTimeEnd = None
-        self.ReserveDuration = None
         self.BackupFreq = None
         self.BackupType = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        self.ReserveDuration = params.get("ReserveDuration")
         self.BackupTimeBeg = params.get("BackupTimeBeg")
         self.BackupTimeEnd = params.get("BackupTimeEnd")
-        self.ReserveDuration = params.get("ReserveDuration")
         self.BackupFreq = params.get("BackupFreq")
         self.BackupType = params.get("BackupType")
         memeber_set = set(params.keys())

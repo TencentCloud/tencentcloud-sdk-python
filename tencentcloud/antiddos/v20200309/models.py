@@ -572,6 +572,8 @@ class BGPInstance(AbstractModel):
         :type Line: int
         :param ElasticServiceBandwidth: 弹性业务带宽开关
         :type ElasticServiceBandwidth: int
+        :param GiftServiceBandWidth: 赠送的业务带宽
+        :type GiftServiceBandWidth: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -591,6 +593,7 @@ class BGPInstance(AbstractModel):
         self.VitalityVersion = None
         self.Line = None
         self.ElasticServiceBandwidth = None
+        self.GiftServiceBandWidth = None
 
 
     def _deserialize(self, params):
@@ -632,6 +635,7 @@ class BGPInstance(AbstractModel):
         self.VitalityVersion = params.get("VitalityVersion")
         self.Line = params.get("Line")
         self.ElasticServiceBandwidth = params.get("ElasticServiceBandwidth")
+        self.GiftServiceBandWidth = params.get("GiftServiceBandWidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

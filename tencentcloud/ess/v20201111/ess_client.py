@@ -755,6 +755,31 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyApplicationCallbackInfo(self, request):
+        """新增/删除应用callbackinfo
+        callbackinfo包含： 回调地址和签名key
+        操作：新增/删除
+
+        :param request: Request instance for ModifyApplicationCallbackInfo.
+        :type request: :class:`tencentcloud.ess.v20201111.models.ModifyApplicationCallbackInfoRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ModifyApplicationCallbackInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApplicationCallbackInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApplicationCallbackInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StartFlow(self, request):
         """此接口用于发起流程
         适用场景：见创建签署流程接口。

@@ -7068,15 +7068,20 @@ class DescribeOfflineTaskTokenResponse(AbstractModel):
         r"""
         :param Token: 长连接临时token
         :type Token: str
+        :param Data: 长连接临时token。与Token相同含义，优先取Data，Data为空时，取Token。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Token = None
+        self.Data = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Token = params.get("Token")
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 
@@ -7581,11 +7586,14 @@ class DescribeRealTimeTaskSpeedResponse(AbstractModel):
         :type RecordsSpeedList: list of RecordsSpeed
         :param BytesSpeedList: 同步速度字节/s列表
         :type BytesSpeedList: list of BytesSpeed
+        :param Data: 同步速度，包括了RecordsSpeedList和BytesSpeedList
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.RealTimeTaskSpeed`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.RecordsSpeedList = None
         self.BytesSpeedList = None
+        self.Data = None
         self.RequestId = None
 
 
@@ -7602,6 +7610,9 @@ class DescribeRealTimeTaskSpeedResponse(AbstractModel):
                 obj = BytesSpeed()
                 obj._deserialize(item)
                 self.BytesSpeedList.append(obj)
+        if params.get("Data") is not None:
+            self.Data = RealTimeTaskSpeed()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
 
@@ -9802,10 +9813,14 @@ class DescribeTaskInstanceResponse(AbstractModel):
         r"""
         :param TaskInstanceDetail: 任务实例详情
         :type TaskInstanceDetail: :class:`tencentcloud.wedata.v20210820.models.TaskInstanceDetail`
+        :param Data: 任务实例详情。与TaskInstanceDetail相同含义，优先取Data，Data为空时，取TaskInstanceDetail
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.TaskInstanceDetail`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskInstanceDetail = None
+        self.Data = None
         self.RequestId = None
 
 
@@ -9813,6 +9828,9 @@ class DescribeTaskInstanceResponse(AbstractModel):
         if params.get("TaskInstanceDetail") is not None:
             self.TaskInstanceDetail = TaskInstanceDetail()
             self.TaskInstanceDetail._deserialize(params.get("TaskInstanceDetail"))
+        if params.get("Data") is not None:
+            self.Data = TaskInstanceDetail()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
 
@@ -11299,15 +11317,20 @@ class GenHiveTableDDLSqlResponse(AbstractModel):
         r"""
         :param DDLSql: 生成的ddl语句
         :type DDLSql: str
+        :param Data: 生成的ddl语句。与DDLSql相同含义，优先取Data，如果Data为空，则取DDLSql。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DDLSql = None
+        self.Data = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DDLSql = params.get("DDLSql")
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 
@@ -14946,6 +14969,44 @@ class RealTimeTaskInstanceNodeInfo(AbstractModel):
                 obj = InstanceNodeInfo()
                 obj._deserialize(item)
                 self.InstanceNodeInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RealTimeTaskSpeed(AbstractModel):
+    """实时任务同步速度趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordsSpeedList: 同步速度条/s列表
+        :type RecordsSpeedList: list of RecordsSpeed
+        :param BytesSpeedList: 同步速度字节/s列表
+        :type BytesSpeedList: list of BytesSpeed
+        """
+        self.RecordsSpeedList = None
+        self.BytesSpeedList = None
+
+
+    def _deserialize(self, params):
+        if params.get("RecordsSpeedList") is not None:
+            self.RecordsSpeedList = []
+            for item in params.get("RecordsSpeedList"):
+                obj = RecordsSpeed()
+                obj._deserialize(item)
+                self.RecordsSpeedList.append(obj)
+        if params.get("BytesSpeedList") is not None:
+            self.BytesSpeedList = []
+            for item in params.get("BytesSpeedList"):
+                obj = BytesSpeed()
+                obj._deserialize(item)
+                self.BytesSpeedList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

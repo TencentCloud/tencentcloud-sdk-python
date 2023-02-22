@@ -4261,6 +4261,29 @@ class ModifySequenceRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyStorageSettingRequest(AbstractModel):
+    """ModifyStorageSetting请求参数结构体
+
+    """
+
+
+class ModifyStorageSettingResponse(AbstractModel):
+    """ModifyStorageSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyTableStatusRequest(AbstractModel):
     """ModifyTableStatus请求参数结构体
 
@@ -4473,6 +4496,12 @@ class NatInstanceInfo(AbstractModel):
         :param ZoneZhBak: 实例所在可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneZhBak: str
+        :param RuleUsed: 已使用规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleUsed: int
+        :param RuleMax: 实例的规则限制最大规格数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleMax: int
         """
         self.NatinsId = None
         self.NatinsName = None
@@ -4489,6 +4518,8 @@ class NatInstanceInfo(AbstractModel):
         self.RegionDetail = None
         self.ZoneZh = None
         self.ZoneZhBak = None
+        self.RuleUsed = None
+        self.RuleMax = None
 
 
     def _deserialize(self, params):
@@ -4507,6 +4538,8 @@ class NatInstanceInfo(AbstractModel):
         self.RegionDetail = params.get("RegionDetail")
         self.ZoneZh = params.get("ZoneZh")
         self.ZoneZhBak = params.get("ZoneZhBak")
+        self.RuleUsed = params.get("RuleUsed")
+        self.RuleMax = params.get("RuleMax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -18,6 +18,46 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AdvancedRetentionPolicy(AbstractModel):
+    """定期快照高级保留策略，四个参数都为必选参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Days: 保留最新快照Days天内的每天最新的一个快照，取值范围：[0, 100]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Days: int
+        :param Weeks: 保留最新快照Weeks周内的每周最新的一个快照，取值范围：[0, 100]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weeks: int
+        :param Months: 保留最新快照Months月内的每月最新的一个快照， 取值范围：[0, 100]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Months: int
+        :param Years: 保留最新快照Years年内的每年最新的一个快照，取值范围：[0, 100]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Years: int
+        """
+        self.Days = None
+        self.Weeks = None
+        self.Months = None
+        self.Years = None
+
+
+    def _deserialize(self, params):
+        self.Days = params.get("Days")
+        self.Weeks = params.get("Weeks")
+        self.Months = params.get("Months")
+        self.Years = params.get("Years")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyDiskBackupRequest(AbstractModel):
     """ApplyDiskBackup请求参数结构体
 
@@ -269,6 +309,15 @@ class AutoSnapshotPolicy(AbstractModel):
         :param InstanceIdSet: 已绑定当前定期快照策略的实例ID列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIdSet: list of str
+        :param RetentionMonths: 该定期快照创建的快照可以保留的月数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionMonths: int
+        :param RetentionAmount: 该定期快照创建的快照最大保留数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionAmount: int
+        :param AdvancedRetentionPolicy: 定期快照高级保留策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedRetentionPolicy: :class:`tencentcloud.cbs.v20170312.models.AdvancedRetentionPolicy`
         """
         self.DiskIdSet = None
         self.IsActivated = None
@@ -283,6 +332,9 @@ class AutoSnapshotPolicy(AbstractModel):
         self.RetentionDays = None
         self.CopyToAccountUin = None
         self.InstanceIdSet = None
+        self.RetentionMonths = None
+        self.RetentionAmount = None
+        self.AdvancedRetentionPolicy = None
 
 
     def _deserialize(self, params):
@@ -304,6 +356,11 @@ class AutoSnapshotPolicy(AbstractModel):
         self.RetentionDays = params.get("RetentionDays")
         self.CopyToAccountUin = params.get("CopyToAccountUin")
         self.InstanceIdSet = params.get("InstanceIdSet")
+        self.RetentionMonths = params.get("RetentionMonths")
+        self.RetentionAmount = params.get("RetentionAmount")
+        if params.get("AdvancedRetentionPolicy") is not None:
+            self.AdvancedRetentionPolicy = AdvancedRetentionPolicy()
+            self.AdvancedRetentionPolicy._deserialize(params.get("AdvancedRetentionPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3038,7 +3095,7 @@ class Placement(AbstractModel):
 
 
 class Policy(AbstractModel):
-    """描述了定期快照的执行策略。可理解为在DayOfWeek/DayOfMonth指定的几天中，或者是IntervalDays设定的间隔的几天，在Hour指定的小时执行该条定期快照策略。注：DayOfWeek/DayOfMonth/IntervalDays为互斥规则，仅可设置其中一条策略规则。
+    """描述了定期快照的执行策略。可理解为在DayOfWeek/DayOfMonth指定的几天中，或者是IntervalDays设定的间隔的几天，在Hour指定的时刻点执行该条定期快照策。注：DayOfWeek/DayOfMonth/IntervalDays为互斥规则，仅可设置其中一条策略规则。
 
     """
 
@@ -3048,14 +3105,22 @@ class Policy(AbstractModel):
         :type Hour: list of int non-negative
         :param DayOfWeek: 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
         :type DayOfWeek: list of int non-negative
+        :param DayOfMonth: 指定每月从月初到月底需要触发定期快照的日期,取值范围：[1, 31]，1-31分别表示每月的具体日期，比如5表示每月的5号。注：若设置29、30、31等部分月份不存在的日期，则对应不存在日期的月份会跳过不打定期快照。
+        :type DayOfMonth: list of int non-negative
+        :param IntervalDays: 指定创建定期快照的间隔天数，取值范围：[1, 365]，例如设置为5，则间隔5天即触发定期快照创建。注：当选择按天备份时，理论上第一次备份的时间为备份策略创建当天。如果当天备份策略创建的时间已经晚于设置的备份时间，那么将会等到第二个备份周期再进行第一次备份。
+        :type IntervalDays: int
         """
         self.Hour = None
         self.DayOfWeek = None
+        self.DayOfMonth = None
+        self.IntervalDays = None
 
 
     def _deserialize(self, params):
         self.Hour = params.get("Hour")
         self.DayOfWeek = params.get("DayOfWeek")
+        self.DayOfMonth = params.get("DayOfMonth")
+        self.IntervalDays = params.get("IntervalDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2196,75 +2196,75 @@ class InstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param InstanceName: 实例名称
+        :param InstanceName: 实例名称。
         :type InstanceName: str
         :param PayMode: 付费类型，可能的返回值：1-包年包月；0-按量计费
         :type PayMode: int
-        :param ProjectId: 项目ID
+        :param ProjectId: 项目ID。
         :type ProjectId: int
-        :param ClusterType: 集群类型，可能的返回值：0-副本集实例，1-分片实例，
+        :param ClusterType: 集群类型，可能的返回值：0-副本集实例，1-分片实例。
         :type ClusterType: int
-        :param Region: 地域信息
+        :param Region: 地域信息。
         :type Region: str
-        :param Zone: 可用区信息
+        :param Zone: 可用区信息。
         :type Zone: str
         :param NetType: 网络类型，可能的返回值：0-基础网络，1-私有网络
         :type NetType: int
-        :param VpcId: 私有网络的ID
+        :param VpcId: 私有网络的ID。
         :type VpcId: str
-        :param SubnetId: 私有网络的子网ID
+        :param SubnetId: 私有网络的子网ID。
         :type SubnetId: str
-        :param Status: 实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期
+        :param Status: 实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期。
         :type Status: int
-        :param Vip: 实例IP
+        :param Vip: 实例IP。
         :type Vip: str
-        :param Vport: 端口号
+        :param Vport: 端口号。
         :type Vport: int
-        :param CreateTime: 实例创建时间
+        :param CreateTime: 实例创建时间。
         :type CreateTime: str
-        :param DeadLine: 实例到期时间
+        :param DeadLine: 实例到期时间。
         :type DeadLine: str
-        :param MongoVersion: 实例版本信息
+        :param MongoVersion: 实例版本信息。
         :type MongoVersion: str
-        :param Memory: 实例内存规格，单位为MB
+        :param Memory: 实例内存规格，单位为MB。
         :type Memory: int
-        :param Volume: 实例磁盘规格，单位为MB
+        :param Volume: 实例磁盘规格，单位为MB。
         :type Volume: int
-        :param CpuNum: 实例CPU核心数
+        :param CpuNum: 实例CPU核心数。
         :type CpuNum: int
-        :param MachineType: 实例机器类型
+        :param MachineType: 实例机器类型。
         :type MachineType: str
-        :param SecondaryNum: 实例从节点数
+        :param SecondaryNum: 实例从节点数。
         :type SecondaryNum: int
-        :param ReplicationSetNum: 实例分片数
+        :param ReplicationSetNum: 实例分片数。
         :type ReplicationSetNum: int
-        :param AutoRenewFlag: 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费
+        :param AutoRenewFlag: 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费。
         :type AutoRenewFlag: int
-        :param UsedVolume: 已用容量，单位MB
+        :param UsedVolume: 已用容量，单位MB。
         :type UsedVolume: int
-        :param MaintenanceStart: 维护窗口起始时间
+        :param MaintenanceStart: 维护窗口起始时间。
         :type MaintenanceStart: str
-        :param MaintenanceEnd: 维护窗口结束时间
+        :param MaintenanceEnd: 维护窗口结束时间。
         :type MaintenanceEnd: str
-        :param ReplicaSets: 分片信息
+        :param ReplicaSets: 分片信息。
         :type ReplicaSets: list of ShardInfo
-        :param ReadonlyInstances: 只读实例信息
+        :param ReadonlyInstances: 只读实例信息。
         :type ReadonlyInstances: list of DBInstanceInfo
-        :param StandbyInstances: 灾备实例信息
+        :param StandbyInstances: 灾备实例信息。
         :type StandbyInstances: list of DBInstanceInfo
-        :param CloneInstances: 临时实例信息
+        :param CloneInstances: 临时实例信息。
         :type CloneInstances: list of DBInstanceInfo
-        :param RelatedInstance: 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
+        :param RelatedInstance: 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息。
         :type RelatedInstance: :class:`tencentcloud.mongodb.v20190725.models.DBInstanceInfo`
-        :param Tags: 实例标签信息集合
+        :param Tags: 实例标签信息集合。
         :type Tags: list of TagInfo
-        :param InstanceVer: 实例版本标记
+        :param InstanceVer: 实例版本标记。
         :type InstanceVer: int
-        :param ClusterVer: 实例版本标记
+        :param ClusterVer: 实例版本标记。
         :type ClusterVer: int
-        :param Protocol: 协议信息，可能的返回值：1-mongodb，2-dynamodb
+        :param Protocol: 协议信息，可能的返回值：1-mongodb，2-dynamodb。
         :type Protocol: int
         :param InstanceType: 实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
         :type InstanceType: int
@@ -2272,6 +2272,30 @@ class InstanceDetail(AbstractModel):
         :type InstanceStatusDesc: str
         :param RealInstanceId: 实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
         :type RealInstanceId: str
+        :param MongosNodeNum: mongos节点个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MongosNodeNum: int
+        :param MongosMemory: mongos节点内存。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MongosMemory: int
+        :param MongosCpuNum: mongos节点CPU核数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MongosCpuNum: int
+        :param ConfigServerNodeNum: Config Server节点个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigServerNodeNum: int
+        :param ConfigServerMemory: Config Server节点内存。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigServerMemory: int
+        :param ConfigServerVolume: Config Server节点磁盘大小。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigServerVolume: int
+        :param ConfigServerCpuNum: Config Server节点CPU核数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigServerCpuNum: int
+        :param ReadonlyNodeNum: readonly节点个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadonlyNodeNum: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2311,6 +2335,14 @@ class InstanceDetail(AbstractModel):
         self.InstanceType = None
         self.InstanceStatusDesc = None
         self.RealInstanceId = None
+        self.MongosNodeNum = None
+        self.MongosMemory = None
+        self.MongosCpuNum = None
+        self.ConfigServerNodeNum = None
+        self.ConfigServerMemory = None
+        self.ConfigServerVolume = None
+        self.ConfigServerCpuNum = None
+        self.ReadonlyNodeNum = None
 
 
     def _deserialize(self, params):
@@ -2379,6 +2411,14 @@ class InstanceDetail(AbstractModel):
         self.InstanceType = params.get("InstanceType")
         self.InstanceStatusDesc = params.get("InstanceStatusDesc")
         self.RealInstanceId = params.get("RealInstanceId")
+        self.MongosNodeNum = params.get("MongosNodeNum")
+        self.MongosMemory = params.get("MongosMemory")
+        self.MongosCpuNum = params.get("MongosCpuNum")
+        self.ConfigServerNodeNum = params.get("ConfigServerNodeNum")
+        self.ConfigServerMemory = params.get("ConfigServerMemory")
+        self.ConfigServerVolume = params.get("ConfigServerVolume")
+        self.ConfigServerCpuNum = params.get("ConfigServerCpuNum")
+        self.ReadonlyNodeNum = params.get("ReadonlyNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

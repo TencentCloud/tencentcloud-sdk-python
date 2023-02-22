@@ -425,6 +425,12 @@ class CreateDomainBatchRequest(AbstractModel):
         :type UpdateProhibition: int
         :param TransferProhibition: 是否开启转移锁：0=默认不开启，1=开启
         :type TransferProhibition: int
+        :param ChannelFrom: 渠道来源，pc/miniprogram/h5等
+        :type ChannelFrom: str
+        :param OrderFrom: 订单来源，common正常/dianshi_active点石活动等
+        :type OrderFrom: str
+        :param ActivityId: 活动id
+        :type ActivityId: str
         """
         self.TemplateId = None
         self.Period = None
@@ -434,6 +440,9 @@ class CreateDomainBatchRequest(AbstractModel):
         self.PackageResourceId = None
         self.UpdateProhibition = None
         self.TransferProhibition = None
+        self.ChannelFrom = None
+        self.OrderFrom = None
+        self.ActivityId = None
 
 
     def _deserialize(self, params):
@@ -445,6 +454,9 @@ class CreateDomainBatchRequest(AbstractModel):
         self.PackageResourceId = params.get("PackageResourceId")
         self.UpdateProhibition = params.get("UpdateProhibition")
         self.TransferProhibition = params.get("TransferProhibition")
+        self.ChannelFrom = params.get("ChannelFrom")
+        self.OrderFrom = params.get("OrderFrom")
+        self.ActivityId = params.get("ActivityId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1801,18 +1813,30 @@ class RenewDomainBatchRequest(AbstractModel):
         :type Period: int
         :param Domains: 批量续费的域名。
         :type Domains: list of str
-        :param PayMode: 付费模式 0手动在线付费，1使用余额付费。
+        :param PayMode: 付费模式 0手动在线付费，1使用余额付费，2使用特惠包。
         :type PayMode: int
         :param AutoRenewFlag: 自动续费开关。有三个可选值：
 0 表示关闭，不自动续费
 1 表示开启，将自动续费
 2 表示不处理，保留域名原有状态（默认值）
         :type AutoRenewFlag: int
+        :param PackageResourceId: 特惠包ID
+        :type PackageResourceId: str
+        :param ChannelFrom: 渠道来源，pc/miniprogram/h5等
+        :type ChannelFrom: str
+        :param OrderFrom: 订单来源，common正常/dianshi_active点石活动等
+        :type OrderFrom: str
+        :param ActivityId: 活动id
+        :type ActivityId: str
         """
         self.Period = None
         self.Domains = None
         self.PayMode = None
         self.AutoRenewFlag = None
+        self.PackageResourceId = None
+        self.ChannelFrom = None
+        self.OrderFrom = None
+        self.ActivityId = None
 
 
     def _deserialize(self, params):
@@ -1820,6 +1844,10 @@ class RenewDomainBatchRequest(AbstractModel):
         self.Domains = params.get("Domains")
         self.PayMode = params.get("PayMode")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.PackageResourceId = params.get("PackageResourceId")
+        self.ChannelFrom = params.get("ChannelFrom")
+        self.OrderFrom = params.get("OrderFrom")
+        self.ActivityId = params.get("ActivityId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2042,6 +2070,12 @@ false：关闭60天内禁止转移注册商锁定
         :type UpdateProhibition: int
         :param TransferProhibition: 是否开启转移锁：0=默认不开启，1=开启
         :type TransferProhibition: int
+        :param ChannelFrom: 渠道来源，pc/miniprogram/h5等
+        :type ChannelFrom: str
+        :param OrderFrom: 订单来源，common正常/dianshi_active点石活动等
+        :type OrderFrom: str
+        :param ActivityId: 活动id
+        :type ActivityId: str
         """
         self.Domains = None
         self.PassWords = None
@@ -2051,6 +2085,9 @@ false：关闭60天内禁止转移注册商锁定
         self.LockTransfer = None
         self.UpdateProhibition = None
         self.TransferProhibition = None
+        self.ChannelFrom = None
+        self.OrderFrom = None
+        self.ActivityId = None
 
 
     def _deserialize(self, params):
@@ -2062,6 +2099,9 @@ false：关闭60天内禁止转移注册商锁定
         self.LockTransfer = params.get("LockTransfer")
         self.UpdateProhibition = params.get("UpdateProhibition")
         self.TransferProhibition = params.get("TransferProhibition")
+        self.ChannelFrom = params.get("ChannelFrom")
+        self.OrderFrom = params.get("OrderFrom")
+        self.ActivityId = params.get("ActivityId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

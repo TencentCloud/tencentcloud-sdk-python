@@ -1191,6 +1191,9 @@ class DBEndpointInfo(AbstractModel):
 'AuthFlag': "1",	'AuthMechanism':"SCRAM-SHA-1"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
+        :param DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseNetEnv: str
         """
         self.Region = None
         self.AccessType = None
@@ -1199,6 +1202,7 @@ class DBEndpointInfo(AbstractModel):
         self.Info = None
         self.Supplier = None
         self.ExtraAttr = None
+        self.DatabaseNetEnv = None
 
 
     def _deserialize(self, params):
@@ -1219,6 +1223,7 @@ class DBEndpointInfo(AbstractModel):
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
                 self.ExtraAttr.append(obj)
+        self.DatabaseNetEnv = params.get("DatabaseNetEnv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3653,7 +3658,7 @@ class Objects(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: 迁移对象类型 Partial(部分对象)
+        :param Mode: 迁移对象类型 Partial(部分对象)，默认为Partial
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         :param Databases: 同步对象，当 Mode 为 Partial 时，不为空

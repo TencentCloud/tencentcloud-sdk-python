@@ -243,6 +243,9 @@ class BatchTaskDetail(AbstractModel):
         :param BillingInfo: 计费金额信息，eg：2.00元/小时 (for后付费)
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingInfo: str
+        :param PodList: 运行中的Pod的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodList: list of str
         """
         self.BatchTaskId = None
         self.BatchTaskName = None
@@ -275,6 +278,7 @@ class BatchTaskDetail(AbstractModel):
         self.Remark = None
         self.FailureReason = None
         self.BillingInfo = None
+        self.PodList = None
 
 
     def _deserialize(self, params):
@@ -334,6 +338,7 @@ class BatchTaskDetail(AbstractModel):
         self.Remark = params.get("Remark")
         self.FailureReason = params.get("FailureReason")
         self.BillingInfo = params.get("BillingInfo")
+        self.PodList = params.get("PodList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -525,6 +530,93 @@ class CFSConfig(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Container(AbstractModel):
+    """容器信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param ContainerId: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerId: str
+        :param Image: 镜像地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Image: str
+        :param Status: 容器状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: :class:`tencentcloud.tione.v20211111.models.ContainerStatus`
+        """
+        self.Name = None
+        self.ContainerId = None
+        self.Image = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ContainerId = params.get("ContainerId")
+        self.Image = params.get("Image")
+        if params.get("Status") is not None:
+            self.Status = ContainerStatus()
+            self.Status._deserialize(params.get("Status"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerStatus(AbstractModel):
+    """容器状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RestartCount: 重启次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartCount: int
+        :param State: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param Ready: 是否就绪
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ready: bool
+        :param Reason: 状态原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param Message: 容器的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self.RestartCount = None
+        self.State = None
+        self.Ready = None
+        self.Reason = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.RestartCount = params.get("RestartCount")
+        self.State = params.get("State")
+        self.Ready = params.get("Ready")
+        self.Reason = params.get("Reason")
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2098,6 +2190,31 @@ class DatasetInfo(AbstractModel):
         
 
 
+class DefaultNginxGatewayCallInfo(AbstractModel):
+    """默认Nginx网关结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Host: host
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        """
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteBatchTaskRequest(AbstractModel):
     """DeleteBatchTask请求参数结构体
 
@@ -3605,11 +3722,15 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
         :param InferGatewayCallInfo: 升级网关调用信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type InferGatewayCallInfo: :class:`tencentcloud.tione.v20211111.models.InferGatewayCallInfo`
+        :param DefaultNginxGatewayCallInfo: 默认nginx网关的调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultNginxGatewayCallInfo: :class:`tencentcloud.tione.v20211111.models.DefaultNginxGatewayCallInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ServiceCallInfo = None
         self.InferGatewayCallInfo = None
+        self.DefaultNginxGatewayCallInfo = None
         self.RequestId = None
 
 
@@ -3620,6 +3741,9 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
         if params.get("InferGatewayCallInfo") is not None:
             self.InferGatewayCallInfo = InferGatewayCallInfo()
             self.InferGatewayCallInfo._deserialize(params.get("InferGatewayCallInfo"))
+        if params.get("DefaultNginxGatewayCallInfo") is not None:
+            self.DefaultNginxGatewayCallInfo = DefaultNginxGatewayCallInfo()
+            self.DefaultNginxGatewayCallInfo._deserialize(params.get("DefaultNginxGatewayCallInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -6059,6 +6183,63 @@ class Option(AbstractModel):
         
 
 
+class Pod(AbstractModel):
+    """Pod信息展示
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: pod名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Uid: pod的唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uid: str
+        :param ChargeType: 服务付费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: str
+        :param Phase: pod的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phase: str
+        :param IP: pod的IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IP: str
+        :param CreateTime: pod的创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Containers: 容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Containers: :class:`tencentcloud.tione.v20211111.models.Container`
+        """
+        self.Name = None
+        self.Uid = None
+        self.ChargeType = None
+        self.Phase = None
+        self.IP = None
+        self.CreateTime = None
+        self.Containers = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Uid = params.get("Uid")
+        self.ChargeType = params.get("ChargeType")
+        self.Phase = params.get("Phase")
+        self.IP = params.get("IP")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("Containers") is not None:
+            self.Containers = Container()
+            self.Containers._deserialize(params.get("Containers"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PointInfo(AbstractModel):
     """点信息描述
 
@@ -7112,6 +7293,9 @@ HYBRID_PAID:
         :param ModelHotUpdateEnable: 是否开启模型的热更新。默认不开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelHotUpdateEnable: bool
+        :param Pods: Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pods: :class:`tencentcloud.tione.v20211111.models.Pod`
         """
         self.Replicas = None
         self.ImageInfo = None
@@ -7131,6 +7315,7 @@ HYBRID_PAID:
         self.HybridBillingPrepaidReplicas = None
         self.OldHybridBillingPrepaidReplicas = None
         self.ModelHotUpdateEnable = None
+        self.Pods = None
 
 
     def _deserialize(self, params):
@@ -7171,6 +7356,9 @@ HYBRID_PAID:
         self.HybridBillingPrepaidReplicas = params.get("HybridBillingPrepaidReplicas")
         self.OldHybridBillingPrepaidReplicas = params.get("OldHybridBillingPrepaidReplicas")
         self.ModelHotUpdateEnable = params.get("ModelHotUpdateEnable")
+        if params.get("Pods") is not None:
+            self.Pods = Pod()
+            self.Pods._deserialize(params.get("Pods"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8054,6 +8242,21 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
         :param ModelHotUpdatePath: 模型热更新目录
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelHotUpdatePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param ReasoningEnvironmentId: 推理环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReasoningEnvironmentId: str
+        :param TrainingJobVersion: 训练任务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainingJobVersion: str
+        :param TrainingPreference: 训练偏好
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainingPreference: str
+        :param AutoMLTaskId: 自动学习任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoMLTaskId: str
+        :param IsQAT: 是否QAT模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsQAT: bool
         """
         self.TrainingModelId = None
         self.TrainingModelVersionId = None
@@ -8081,6 +8284,11 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
         self.ModelCleanPeriod = None
         self.MaxReservedModels = None
         self.ModelHotUpdatePath = None
+        self.ReasoningEnvironmentId = None
+        self.TrainingJobVersion = None
+        self.TrainingPreference = None
+        self.AutoMLTaskId = None
+        self.IsQAT = None
 
 
     def _deserialize(self, params):
@@ -8116,6 +8324,11 @@ STATUS_SUCCESS：导入成功，STATUS_FAILED：导入失败 ，STATUS_RUNNING�
         if params.get("ModelHotUpdatePath") is not None:
             self.ModelHotUpdatePath = CosPathInfo()
             self.ModelHotUpdatePath._deserialize(params.get("ModelHotUpdatePath"))
+        self.ReasoningEnvironmentId = params.get("ReasoningEnvironmentId")
+        self.TrainingJobVersion = params.get("TrainingJobVersion")
+        self.TrainingPreference = params.get("TrainingPreference")
+        self.AutoMLTaskId = params.get("AutoMLTaskId")
+        self.IsQAT = params.get("IsQAT")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1582,6 +1582,9 @@ class HostInfo(AbstractModel):
         :type RunTime: str
         :param ExpireTime: 到期时间
         :type ExpireTime: str
+        :param HostId: 宿主机id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostId: str
         """
         self.HostIp = None
         self.ServiceType = None
@@ -1593,6 +1596,7 @@ class HostInfo(AbstractModel):
         self.MemTotal = None
         self.RunTime = None
         self.ExpireTime = None
+        self.HostId = None
 
 
     def _deserialize(self, params):
@@ -1606,6 +1610,7 @@ class HostInfo(AbstractModel):
         self.MemTotal = params.get("MemTotal")
         self.RunTime = params.get("RunTime")
         self.ExpireTime = params.get("ExpireTime")
+        self.HostId = params.get("HostId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

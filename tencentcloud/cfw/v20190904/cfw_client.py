@@ -1341,6 +1341,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyStorageSetting(self, request):
+        """日志存储设置，可以修改存储时间和清空日志
+
+        :param request: Request instance for ModifyStorageSetting.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyStorageSettingRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyStorageSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStorageSetting", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStorageSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyTableStatus(self, request):
         """修改规则表状态
 

@@ -1430,7 +1430,9 @@ class TcrClient(AbstractClient):
 
 
     def DescribeInstanceAll(self, request):
-        """查询全部实例信息
+        """内部替换接口+DescribeInstanceAllForCoding
+
+        查询全部实例信息
 
         :param request: Request instance for DescribeInstanceAll.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllRequest`
