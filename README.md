@@ -172,6 +172,15 @@ Common Client参考[example](https://github.com/TencentCloud/tencentcloud-sdk-py
 
 虽然 Python 2 版本不应该有同样的问题，但是在个别用户环境上确实也观察到有类似的情况，也一样可以通过 `sudo /Applications/Python 2.7/Install Certificates.command` 解决。
 
+python sdk默认使用 certifi 库提供的证书，如需要指定证书可以进行如下设置，若想跳过证书则传入 False
+```python
+# 指定证书
+httpProfile.certification = "/path/to/certification"
+
+# 跳过证书校验
+httpProfile.certification = False
+```
+
 # 凭证管理
 
 腾讯云 Python SDK 目前支持以下几种方式进行凭证管理：
