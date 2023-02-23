@@ -1454,16 +1454,21 @@ class LoadBalancerStatus(AbstractModel):
         :type LoadBalancerName: str
         :param LoadBalancerVip: 负载均衡实例 VIP
         :type LoadBalancerVip: str
+        :param LoadBalancerHostname: 负载均衡实例 Hostname
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerHostname: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
         self.LoadBalancerVip = None
+        self.LoadBalancerHostname = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerId = params.get("LoadBalancerId")
         self.LoadBalancerName = params.get("LoadBalancerName")
         self.LoadBalancerVip = params.get("LoadBalancerVip")
+        self.LoadBalancerHostname = params.get("LoadBalancerHostname")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -8218,6 +8218,12 @@ class KafkaParam(AbstractModel):
         
 
 
+class LowercaseParam(AbstractModel):
+    """小写字符解析
+
+    """
+
+
 class MapParam(AbstractModel):
     """Map参数
 
@@ -11520,6 +11526,9 @@ class ValueParam(AbstractModel):
         :param UrlDecode: Url解析
 注意：此字段可能返回 null，表示取不到有效值。
         :type UrlDecode: :class:`tencentcloud.ckafka.v20190819.models.UrlDecodeParam`
+        :param Lowercase: 小写字符解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lowercase: :class:`tencentcloud.ckafka.v20190819.models.LowercaseParam`
         """
         self.Type = None
         self.Replace = None
@@ -11531,6 +11540,7 @@ class ValueParam(AbstractModel):
         self.Result = None
         self.JsonPathReplace = None
         self.UrlDecode = None
+        self.Lowercase = None
 
 
     def _deserialize(self, params):
@@ -11560,6 +11570,9 @@ class ValueParam(AbstractModel):
         if params.get("UrlDecode") is not None:
             self.UrlDecode = UrlDecodeParam()
             self.UrlDecode._deserialize(params.get("UrlDecode"))
+        if params.get("Lowercase") is not None:
+            self.Lowercase = LowercaseParam()
+            self.Lowercase._deserialize(params.get("Lowercase"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

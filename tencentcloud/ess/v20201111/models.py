@@ -1557,6 +1557,8 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type QrEffectiveDay: int
         :param Restrictions: 限制二维码用户条件
         :type Restrictions: list of ApproverRestriction
+        :param UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+        :type UserData: str
         :param CallbackUrl: 回调地址,最大长度1000字符串
 回调时机：
 用户通过签署二维码发起签署流程时，企业额度不足导致失败
@@ -1573,6 +1575,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         self.FlowEffectiveDay = None
         self.QrEffectiveDay = None
         self.Restrictions = None
+        self.UserData = None
         self.CallbackUrl = None
         self.Agent = None
         self.ApproverRestrictions = None
@@ -1593,6 +1596,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
                 obj = ApproverRestriction()
                 obj._deserialize(item)
                 self.Restrictions.append(obj)
+        self.UserData = params.get("UserData")
         self.CallbackUrl = params.get("CallbackUrl")
         if params.get("Agent") is not None:
             self.Agent = Agent()

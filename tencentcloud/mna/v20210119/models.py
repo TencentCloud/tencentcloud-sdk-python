@@ -516,9 +516,21 @@ class DeviceDetails(AbstractModel):
         :param DeviceNetInfo: 设备网络信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceNetInfo: list of DeviceNetInfo
+        :param GatewaySite: 聚合服务器地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewaySite: str
+        :param BusinessDownRate: 业务下行速率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessDownRate: float
+        :param BusinessUpRate: 业务上行速率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessUpRate: float
         """
         self.DeviceBaseInfo = None
         self.DeviceNetInfo = None
+        self.GatewaySite = None
+        self.BusinessDownRate = None
+        self.BusinessUpRate = None
 
 
     def _deserialize(self, params):
@@ -531,6 +543,9 @@ class DeviceDetails(AbstractModel):
                 obj = DeviceNetInfo()
                 obj._deserialize(item)
                 self.DeviceNetInfo.append(obj)
+        self.GatewaySite = params.get("GatewaySite")
+        self.BusinessDownRate = params.get("BusinessDownRate")
+        self.BusinessUpRate = params.get("BusinessUpRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -651,6 +666,12 @@ class DeviceNetInfo(AbstractModel):
         :param NetInfoName: 网卡名
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetInfoName: str
+        :param DownRate: 下行实时速率（浮点数类型代替上一版本DataRx的整型）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownRate: float
+        :param UpRate: 上行实时速率（浮点数类型代替上一版本TxRate的整型）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpRate: float
         """
         self.Type = None
         self.DataEnable = None
@@ -664,6 +685,8 @@ class DeviceNetInfo(AbstractModel):
         self.SignalStrength = None
         self.Rat = None
         self.NetInfoName = None
+        self.DownRate = None
+        self.UpRate = None
 
 
     def _deserialize(self, params):
@@ -679,6 +702,8 @@ class DeviceNetInfo(AbstractModel):
         self.SignalStrength = params.get("SignalStrength")
         self.Rat = params.get("Rat")
         self.NetInfoName = params.get("NetInfoName")
+        self.DownRate = params.get("DownRate")
+        self.UpRate = params.get("UpRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -840,7 +865,7 @@ class GetFlowStatisticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceId: 设备ID，ID="-1"时默认查找所有设备
+        :param DeviceId: 设备ID
         :type DeviceId: str
         :param BeginTime: 开始查找时间
         :type BeginTime: int
@@ -945,7 +970,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceId: 设备ID，设备ID="-1"获取所有设备流量统计
+        :param DeviceId: 设备ID
         :type DeviceId: str
         :param BeginTime: 统计开始时间，单位：s
         :type BeginTime: int
@@ -1004,18 +1029,18 @@ class NetDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: 时间点，单位：s
-        :type Time: str
         :param Current: 流量值（bit）
         :type Current: float
+        :param Time: 时间点，单位：s
+        :type Time: str
         """
-        self.Time = None
         self.Current = None
+        self.Time = None
 
 
     def _deserialize(self, params):
-        self.Time = params.get("Time")
         self.Current = params.get("Current")
+        self.Time = params.get("Time")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

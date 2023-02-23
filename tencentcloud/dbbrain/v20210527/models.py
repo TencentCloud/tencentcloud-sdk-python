@@ -1568,7 +1568,7 @@ class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL，默认为"mysql"。
         :type Product: str
         """
         self.InstanceId = None

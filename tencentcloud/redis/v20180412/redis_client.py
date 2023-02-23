@@ -533,7 +533,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceBackups(self, request):
-        """查询 CRS 实例备份列表
+        """本接口（DescribeInstanceBackups）用于查询实例备份列表。
 
         :param request: Request instance for DescribeInstanceBackups.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceBackupsRequest`
@@ -1660,7 +1660,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyNetworkConfig(self, request):
-        """修改实例网络配置
+        """本接口（ModifyNetworkConfig）用于修改实例网络配置。
 
         :param request: Request instance for ModifyNetworkConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyNetworkConfigRequest`

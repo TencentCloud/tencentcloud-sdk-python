@@ -372,7 +372,7 @@ class TsfClient(AbstractClient):
 
 
     def CreateContainGroup(self, request):
-        """创建容器部署组
+        """（已废弃，请使用 CreateGroup 和 DeployContainerGroup 创建和部署容器部署组）创建容器部署组
 
         :param request: Request instance for CreateContainGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.CreateContainGroupRequest`
