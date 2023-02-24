@@ -4303,11 +4303,16 @@ class DescribeTargetsRequest(AbstractModel):
         :type Protocol: str
         :param Port: 监听器端口。
         :type Port: int
+        :param Filters: 查询负载均衡绑定的后端服务列表，过滤条件如下：
+<li> location-id - String - 是否必填：否 - （过滤条件）按照 规则ID 过滤，如："loc-12345678"。</li>
+<li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 后端服务内网IP 过滤，如："172.16.1.1"。</li>
+        :type Filters: list of Filter
         """
         self.LoadBalancerId = None
         self.ListenerIds = None
         self.Protocol = None
         self.Port = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -4315,6 +4320,12 @@ class DescribeTargetsRequest(AbstractModel):
         self.ListenerIds = params.get("ListenerIds")
         self.Protocol = params.get("Protocol")
         self.Port = params.get("Port")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6356,13 +6367,13 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type LoadBalancerId: str
         :param LoadBalancerName: 负载均衡实例名称
         :type LoadBalancerName: str
-        :param TargetRegionInfo: 负载均衡绑定的后端服务的地域信息
+        :param TargetRegionInfo: 设置负载均衡跨地域绑定1.0的后端服务信息
         :type TargetRegionInfo: :class:`tencentcloud.clb.v20180317.models.TargetRegionInfo`
         :param InternetChargeInfo: 网络计费相关参数
         :type InternetChargeInfo: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param LoadBalancerPassToTarget: Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
         :type LoadBalancerPassToTarget: bool
-        :param SnatPro: 是否开启SnatPro
+        :param SnatPro: 是否开启跨地域绑定2.0功能
         :type SnatPro: bool
         :param DeleteProtect: 是否开启删除保护
         :type DeleteProtect: bool

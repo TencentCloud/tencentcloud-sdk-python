@@ -2967,6 +2967,9 @@ class EksService(AbstractModel):
         :param AllIpDone: 所有服务IP是否已经ready
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllIpDone: bool
+        :param ExternalDomain: clb 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalDomain: str
         """
         self.Name = None
         self.Ports = None
@@ -2984,6 +2987,7 @@ class EksService(AbstractModel):
         self.EnableRegistryNextDeploy = None
         self.ApplicationId = None
         self.AllIpDone = None
+        self.ExternalDomain = None
 
 
     def _deserialize(self, params):
@@ -3013,6 +3017,7 @@ class EksService(AbstractModel):
         self.EnableRegistryNextDeploy = params.get("EnableRegistryNextDeploy")
         self.ApplicationId = params.get("ApplicationId")
         self.AllIpDone = params.get("AllIpDone")
+        self.ExternalDomain = params.get("ExternalDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3357,6 +3362,9 @@ class IngressInfo(AbstractModel):
 - NONE（不使用重定向）
 注意：此字段可能返回 null，表示取不到有效值。
         :type RewriteType: str
+        :param Domain: clb 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
         """
         self.EnvironmentId = None
         self.ClusterNamespace = None
@@ -3370,6 +3378,7 @@ class IngressInfo(AbstractModel):
         self.CreateTime = None
         self.Mixed = None
         self.RewriteType = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -3395,6 +3404,7 @@ class IngressInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Mixed = params.get("Mixed")
         self.RewriteType = params.get("RewriteType")
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5129,6 +5139,9 @@ class ServicePortMapping(AbstractModel):
         :param PortMappingItemList: 端口映射数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type PortMappingItemList: list of ServicePortMappingItem
+        :param ExternalDomain: clb domain
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalDomain: str
         """
         self.Type = None
         self.ServiceName = None
@@ -5140,6 +5153,7 @@ class ServicePortMapping(AbstractModel):
         self.Yaml = None
         self.Ports = None
         self.PortMappingItemList = None
+        self.ExternalDomain = None
 
 
     def _deserialize(self, params):
@@ -5158,6 +5172,7 @@ class ServicePortMapping(AbstractModel):
                 obj = ServicePortMappingItem()
                 obj._deserialize(item)
                 self.PortMappingItemList.append(obj)
+        self.ExternalDomain = params.get("ExternalDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

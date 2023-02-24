@@ -294,6 +294,60 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddNatAcRuleRequest(AbstractModel):
+    """AddNatAcRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: 需要添加的nat访问控制规则列表
+        :type Rules: list of CreateNatRuleItem
+        :param From: 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+        :type From: str
+        """
+        self.Rules = None
+        self.From = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = CreateNatRuleItem()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.From = params.get("From")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddNatAcRuleResponse(AbstractModel):
+    """AddNatAcRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 创建成功后返回新策略ID列表
+        :type RuleUuid: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.RequestId = params.get("RequestId")
+
+
 class AssetZone(AbstractModel):
     """AssetZone
 
@@ -512,6 +566,66 @@ class CfwNatDnatRule(AbstractModel):
         self.PrivateIpAddress = params.get("PrivateIpAddress")
         self.PrivatePort = params.get("PrivatePort")
         self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonFilter(AbstractModel):
+    """通用的列表检索过滤选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 检索的键值
+        :type Name: str
+        :param Values: 检索的值
+        :type Values: list of str
+        :param OperatorType: 枚举类型，代表name与values之间的匹配关系
+enum FilterOperatorType {
+    //INVALID
+    FILTER_OPERATOR_TYPE_INVALID = 0;
+    //等于
+    FILTER_OPERATOR_TYPE_EQUAL = 1;
+    //大于
+    FILTER_OPERATOR_TYPE_GREATER = 2;
+    //小于
+    FILTER_OPERATOR_TYPE_LESS = 3;
+    //大于等于
+    FILTER_OPERATOR_TYPE_GREATER_EQ = 4;
+    //小于等于
+    FILTER_OPERATOR_TYPE_LESS_EQ = 5;
+    //不等于
+    FILTER_OPERATOR_TYPE_NO_EQ = 6;
+    //in，数组中包含
+    FILTER_OPERATOR_TYPE_IN = 7;
+    //not in
+    FILTER_OPERATOR_TYPE_NOT_IN = 8;
+    //模糊匹配
+    FILTER_OPERATOR_TYPE_FUZZINESS = 9;
+    //存在
+    FILTER_OPERATOR_TYPE_EXIST = 10;
+    //不存在
+    FILTER_OPERATOR_TYPE_NOT_EXIST = 11;
+    //正则
+    FILTER_OPERATOR_TYPE_REGULAR = 12;
+}
+        :type OperatorType: int
+        """
+        self.Name = None
+        self.Values = None
+        self.OperatorType = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        self.OperatorType = params.get("OperatorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -873,6 +987,86 @@ class CreateNatFwInstanceWithDomainResponse(AbstractModel):
     def _deserialize(self, params):
         self.CfwInsId = params.get("CfwInsId")
         self.RequestId = params.get("RequestId")
+
+
+class CreateNatRuleItem(AbstractModel):
+    """创建NAT ACL规则参数结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceContent: 访问源示例： net：IP/CIDR(192.168.0.2)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceContent: str
+        :param SourceType: 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: str
+        :param TargetContent: 访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetContent: str
+        :param TargetType: 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetType: str
+        :param Protocol: 协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param RuleAction: 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleAction: str
+        :param Port: 访问控制策略的端口。取值： -1/-1：全部端口 80：80端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
+        :param Direction: 规则方向：1，入站；0，出站
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Direction: int
+        :param OrderIndex: 规则序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderIndex: int
+        :param Enable: 规则状态，true表示启用，false表示禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: str
+        :param Uuid: 规则对应的唯一id，创建规则时无需填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: int
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.SourceContent = None
+        self.SourceType = None
+        self.TargetContent = None
+        self.TargetType = None
+        self.Protocol = None
+        self.RuleAction = None
+        self.Port = None
+        self.Direction = None
+        self.OrderIndex = None
+        self.Enable = None
+        self.Uuid = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.SourceContent = params.get("SourceContent")
+        self.SourceType = params.get("SourceType")
+        self.TargetContent = params.get("TargetContent")
+        self.TargetType = params.get("TargetType")
+        self.Protocol = params.get("Protocol")
+        self.RuleAction = params.get("RuleAction")
+        self.Port = params.get("Port")
+        self.Direction = params.get("Direction")
+        self.OrderIndex = params.get("OrderIndex")
+        self.Enable = params.get("Enable")
+        self.Uuid = params.get("Uuid")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateSecurityGroupRulesRequest(AbstractModel):
@@ -1294,6 +1488,144 @@ class DeleteVpcInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DescAcItem(AbstractModel):
+    """访问控制列表对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceContent: 访问源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceContent: str
+        :param TargetContent: 访问目的
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetContent: str
+        :param Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
+        :param RuleAction: 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleAction: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Count: 命中次数
+        :type Count: int
+        :param OrderIndex: 执行顺序
+        :type OrderIndex: int
+        :param SourceType: 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: str
+        :param TargetType: 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为 ip,net,domain,template,location
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetType: str
+        :param Uuid: 规则对应的唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: int
+        :param Invalid: 规则有效性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Invalid: int
+        :param IsRegion: 0为正常规则,1为地域规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsRegion: int
+        :param CountryCode: 国家id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CountryCode: int
+        :param CityCode: 城市id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CityCode: int
+        :param CountryName: 国家名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CountryName: str
+        :param CityName: 省名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CityName: str
+        :param CloudCode: 云厂商code
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudCode: str
+        :param IsCloud: 0为正常规则,1为云厂商规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCloud: int
+        :param Enable: 规则状态，true表示启用，false表示禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: str
+        :param Direction: 规则方向：1，入向；0，出向
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Direction: int
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param InternalUuid: 内部使用的uuid，一般情况下不会使用到该字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalUuid: int
+        :param Status: 规则状态，查询规则命中详情时该字段有效，0：新增，1: 已删除, 2: 编辑删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self.SourceContent = None
+        self.TargetContent = None
+        self.Protocol = None
+        self.Port = None
+        self.RuleAction = None
+        self.Description = None
+        self.Count = None
+        self.OrderIndex = None
+        self.SourceType = None
+        self.TargetType = None
+        self.Uuid = None
+        self.Invalid = None
+        self.IsRegion = None
+        self.CountryCode = None
+        self.CityCode = None
+        self.CountryName = None
+        self.CityName = None
+        self.CloudCode = None
+        self.IsCloud = None
+        self.Enable = None
+        self.Direction = None
+        self.InstanceName = None
+        self.InternalUuid = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.SourceContent = params.get("SourceContent")
+        self.TargetContent = params.get("TargetContent")
+        self.Protocol = params.get("Protocol")
+        self.Port = params.get("Port")
+        self.RuleAction = params.get("RuleAction")
+        self.Description = params.get("Description")
+        self.Count = params.get("Count")
+        self.OrderIndex = params.get("OrderIndex")
+        self.SourceType = params.get("SourceType")
+        self.TargetType = params.get("TargetType")
+        self.Uuid = params.get("Uuid")
+        self.Invalid = params.get("Invalid")
+        self.IsRegion = params.get("IsRegion")
+        self.CountryCode = params.get("CountryCode")
+        self.CityCode = params.get("CityCode")
+        self.CountryName = params.get("CountryName")
+        self.CityName = params.get("CityName")
+        self.CloudCode = params.get("CloudCode")
+        self.IsCloud = params.get("IsCloud")
+        self.Enable = params.get("Enable")
+        self.Direction = params.get("Direction")
+        self.InstanceName = params.get("InstanceName")
+        self.InternalUuid = params.get("InternalUuid")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAcListsRequest(AbstractModel):
@@ -2023,6 +2355,98 @@ class DescribeIPStatusListResponse(AbstractModel):
                 self.StatusList.append(obj)
         self.ReturnCode = params.get("ReturnCode")
         self.ReturnMsg = params.get("ReturnMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeNatAcRuleRequest(AbstractModel):
+    """DescribeNatAcRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 每页条数
+        :type Limit: int
+        :param Offset: 偏移值
+        :type Offset: int
+        :param Index: 需要查询的索引，特定场景使用，可不填
+        :type Index: str
+        :param Filters: 过滤条件组合
+        :type Filters: list of CommonFilter
+        :param StartTime: 检索的起始时间，可不传
+        :type StartTime: str
+        :param EndTime: 检索的截止时间，可不传
+        :type EndTime: str
+        :param Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :type Order: str
+        :param By: 排序所用到的字段
+        :type By: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Index = None
+        self.Filters = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Index = params.get("Index")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNatAcRuleResponse(AbstractModel):
+    """DescribeNatAcRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总条数
+        :type Total: int
+        :param Data: nat访问控制列表数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DescAcItem
+        :param AllTotal: 未过滤的总条数
+        :type AllTotal: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Data = None
+        self.AllTotal = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DescAcItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.AllTotal = params.get("AllTotal")
         self.RequestId = params.get("RequestId")
 
 
@@ -3710,6 +4134,56 @@ class ModifyBlockTopResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyNatAcRuleRequest(AbstractModel):
+    """ModifyNatAcRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: 需要编辑的规则数组
+        :type Rules: list of CreateNatRuleItem
+        """
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = CreateNatRuleItem()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatAcRuleResponse(AbstractModel):
+    """ModifyNatAcRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 编辑成功后返回新策略ID列表
+        :type RuleUuid: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNatFwReSelectRequest(AbstractModel):
     """ModifyNatFwReSelect请求参数结构体
 
@@ -4687,6 +5161,55 @@ class RemoveEnterpriseSecurityGroupRuleResponse(AbstractModel):
     def _deserialize(self, params):
         self.RuleUuid = params.get("RuleUuid")
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class RemoveNatAcRuleRequest(AbstractModel):
+    """RemoveNatAcRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+        :type RuleUuid: list of int
+        :param Direction: 规则方向：1，入站；0，出站
+        :type Direction: int
+        """
+        self.RuleUuid = None
+        self.Direction = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveNatAcRuleResponse(AbstractModel):
+    """RemoveNatAcRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 删除成功后返回被删除策略的uuid列表
+        :type RuleUuid: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
         self.RequestId = params.get("RequestId")
 
 

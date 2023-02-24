@@ -72,6 +72,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddNatAcRule(self, request):
+        """添加nat访问控制规则
+
+        :param request: Request instance for AddNatAcRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.AddNatAcRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.AddNatAcRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddNatAcRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddNatAcRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAcRules(self, request):
         """创建访问控制规则
 
@@ -569,6 +592,29 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeIPStatusList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIPStatusListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNatAcRule(self, request):
+        """查询NAT访问控制列表
+
+        :param request: Request instance for DescribeNatAcRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatAcRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNatAcRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNatAcRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNatAcRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1110,6 +1156,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyNatAcRule(self, request):
+        """修改NAT访问控制规则
+
+        :param request: Request instance for ModifyNatAcRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyNatAcRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyNatAcRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNatAcRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNatAcRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyNatFwReSelect(self, request):
         """防火墙实例重新选择vpc或nat
 
@@ -1424,6 +1493,29 @@ class CfwClient(AbstractClient):
             body = self.call("RemoveEnterpriseSecurityGroupRule", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveEnterpriseSecurityGroupRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveNatAcRule(self, request):
+        """删除NAT访问控制规则
+
+        :param request: Request instance for RemoveNatAcRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.RemoveNatAcRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.RemoveNatAcRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveNatAcRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveNatAcRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

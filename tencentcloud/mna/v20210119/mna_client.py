@@ -233,6 +233,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetMultiFlowStatistic(self, request):
+        """批量获取设备流量统计曲线
+
+        :param request: Request instance for GetMultiFlowStatistic.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetMultiFlowStatisticRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetMultiFlowStatisticResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetMultiFlowStatistic", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetMultiFlowStatisticResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetPublicKey(self, request):
         """获取公钥用于验签
 

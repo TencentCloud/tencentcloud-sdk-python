@@ -1211,17 +1211,46 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
         :type CvmCount: int
         :param HostCount: 宿主机数量
         :type HostCount: int
+        :param VpnConnectionState: vpn通道状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpnConnectionState: str
+        :param VpngwBandwidthData: vpn网关监控数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpngwBandwidthData: :class:`tencentcloud.cdc.v20201214.models.VpngwBandwidthData`
+        :param LocalNetInfo: 本地网关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalNetInfo: :class:`tencentcloud.cdc.v20201214.models.LocalNetInfo`
+        :param VpnConnectionBandwidthData: vpn网关通道监控数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpnConnectionBandwidthData: list of VpngwBandwidthData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CvmCount = None
         self.HostCount = None
+        self.VpnConnectionState = None
+        self.VpngwBandwidthData = None
+        self.LocalNetInfo = None
+        self.VpnConnectionBandwidthData = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.CvmCount = params.get("CvmCount")
         self.HostCount = params.get("HostCount")
+        self.VpnConnectionState = params.get("VpnConnectionState")
+        if params.get("VpngwBandwidthData") is not None:
+            self.VpngwBandwidthData = VpngwBandwidthData()
+            self.VpngwBandwidthData._deserialize(params.get("VpngwBandwidthData"))
+        if params.get("LocalNetInfo") is not None:
+            self.LocalNetInfo = LocalNetInfo()
+            self.LocalNetInfo._deserialize(params.get("LocalNetInfo"))
+        if params.get("VpnConnectionBandwidthData") is not None:
+            self.VpnConnectionBandwidthData = []
+            for item in params.get("VpnConnectionBandwidthData"):
+                obj = VpngwBandwidthData()
+                obj._deserialize(item)
+                self.VpnConnectionBandwidthData.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1660,6 +1689,76 @@ class HostStatistic(AbstractModel):
         
 
 
+class InBandwidth(AbstractModel):
+    """入带宽数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamps: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamps: list of float
+        :param Values: 时间对应的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of float
+        """
+        self.Timestamps = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Timestamps = params.get("Timestamps")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LocalNetInfo(AbstractModel):
+    """本地网络信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param VpcId: 网络id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param BGPRoute: 路由信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BGPRoute: str
+        :param LocalIp: 本地IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalIp: str
+        """
+        self.Protocol = None
+        self.VpcId = None
+        self.BGPRoute = None
+        self.LocalIp = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.VpcId = params.get("VpcId")
+        self.BGPRoute = params.get("BGPRoute")
+        self.LocalIp = params.get("LocalIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyDedicatedClusterInfoRequest(AbstractModel):
     """ModifyDedicatedClusterInfo请求参数结构体
 
@@ -1944,6 +2043,36 @@ class ModifySiteInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OutBandwidth(AbstractModel):
+    """出带宽数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamps: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamps: list of float
+        :param Values: 对应时间的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of float
+        """
+        self.Timestamps = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Timestamps = params.get("Timestamps")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegionZoneInfo(AbstractModel):
     """RegionZoneInfo信息
 
@@ -2129,6 +2258,39 @@ class SiteDetail(AbstractModel):
         self.Province = params.get("Province")
         self.City = params.get("City")
         self.PostalCode = params.get("PostalCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpngwBandwidthData(AbstractModel):
+    """VPN网关的流量监控数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutBandwidth: 出带宽流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutBandwidth: :class:`tencentcloud.cdc.v20201214.models.OutBandwidth`
+        :param InBandwidth: 入带宽流量
+        :type InBandwidth: :class:`tencentcloud.cdc.v20201214.models.InBandwidth`
+        """
+        self.OutBandwidth = None
+        self.InBandwidth = None
+
+
+    def _deserialize(self, params):
+        if params.get("OutBandwidth") is not None:
+            self.OutBandwidth = OutBandwidth()
+            self.OutBandwidth._deserialize(params.get("OutBandwidth"))
+        if params.get("InBandwidth") is not None:
+            self.InBandwidth = InBandwidth()
+            self.InBandwidth._deserialize(params.get("InBandwidth"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

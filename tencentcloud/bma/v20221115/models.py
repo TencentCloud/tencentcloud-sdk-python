@@ -840,6 +840,9 @@ class FakeURLData(AbstractModel):
         :param FakeURL: 仿冒网址
 注意：此字段可能返回 null，表示取不到有效值。
         :type FakeURL: str
+        :param FakeDomain: 仿冒域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FakeDomain: str
         :param Heat: 热度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Heat: int
@@ -890,6 +893,7 @@ class FakeURLData(AbstractModel):
         self.BrandName = None
         self.Origin = None
         self.FakeURL = None
+        self.FakeDomain = None
         self.Heat = None
         self.BlockStatus = None
         self.BlockNote = None
@@ -912,6 +916,7 @@ class FakeURLData(AbstractModel):
         self.BrandName = params.get("BrandName")
         self.Origin = params.get("Origin")
         self.FakeURL = params.get("FakeURL")
+        self.FakeDomain = params.get("FakeDomain")
         self.Heat = params.get("Heat")
         self.BlockStatus = params.get("BlockStatus")
         self.BlockNote = params.get("BlockNote")

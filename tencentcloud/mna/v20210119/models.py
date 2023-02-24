@@ -745,6 +745,56 @@ class ExpectedThreshold(AbstractModel):
         
 
 
+class FlowDetails(AbstractModel):
+    """设备流量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetDetails: 流量数据点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetDetails: list of NetDetails
+        :param DeviceId: 设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param MaxValue: 流量最大值（单位：bytes）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxValue: float
+        :param AvgValue: 流量平均值（单位：bytes）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvgValue: float
+        :param TotalValue: 流量总值（单位：bytes）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalValue: float
+        """
+        self.NetDetails = None
+        self.DeviceId = None
+        self.MaxValue = None
+        self.AvgValue = None
+        self.TotalValue = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self.NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self.NetDetails.append(obj)
+        self.DeviceId = params.get("DeviceId")
+        self.MaxValue = params.get("MaxValue")
+        self.AvgValue = params.get("AvgValue")
+        self.TotalValue = params.get("TotalValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetDeviceRequest(AbstractModel):
     """GetDevice请求参数结构体
 
@@ -933,6 +983,72 @@ class GetFlowStatisticResponse(AbstractModel):
         self.MaxValue = params.get("MaxValue")
         self.AvgValue = params.get("AvgValue")
         self.TotalValue = params.get("TotalValue")
+        self.RequestId = params.get("RequestId")
+
+
+class GetMultiFlowStatisticRequest(AbstractModel):
+    """GetMultiFlowStatistic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceIds: 设备id列表，单次最多请求10个设备
+        :type DeviceIds: list of str
+        :param BeginTime: 1659514436
+        :type BeginTime: int
+        :param EndTime: 1659515000
+        :type EndTime: int
+        :param Type: 统计流量类型（1：上行流量，2：下行流量）
+        :type Type: int
+        :param TimeGranularity: 统计时间粒度（1：按小时统计，2：按天统计）
+        :type TimeGranularity: int
+        """
+        self.DeviceIds = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Type = None
+        self.TimeGranularity = None
+
+
+    def _deserialize(self, params):
+        self.DeviceIds = params.get("DeviceIds")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Type = params.get("Type")
+        self.TimeGranularity = params.get("TimeGranularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetMultiFlowStatisticResponse(AbstractModel):
+    """GetMultiFlowStatistic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowDetails: 批量设备流量信息
+        :type FlowDetails: list of FlowDetails
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowDetails") is not None:
+            self.FlowDetails = []
+            for item in params.get("FlowDetails"):
+                obj = FlowDetails()
+                obj._deserialize(item)
+                self.FlowDetails.append(obj)
         self.RequestId = params.get("RequestId")
 
 

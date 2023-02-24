@@ -289,6 +289,7 @@ class Blueprint(AbstractModel):
         :param DisplayVersion: 镜像对外展示版本。
         :type DisplayVersion: str
         :param Description: 镜像描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param OsName: 操作系统名称。
         :type OsName: str
@@ -431,7 +432,7 @@ class BlueprintPrice(AbstractModel):
         :param OriginalPrice: 镜像总价，原价。单位元。
         :type OriginalPrice: float
         :param Discount: 折扣。
-        :type Discount: int
+        :type Discount: float
         :param DiscountPrice: 镜像折扣后总价。单位元。
         :type DiscountPrice: float
         """
@@ -3433,7 +3434,7 @@ class DiscountDetail(AbstractModel):
         :param RealTotalCost: 折后总价。
         :type RealTotalCost: float
         :param Discount: 折扣。
-        :type Discount: int
+        :type Discount: float
         :param PolicyDetail: 具体折扣详情。
         :type PolicyDetail: :class:`tencentcloud.lighthouse.v20200324.models.PolicyDetail`
         """
@@ -3512,6 +3513,7 @@ class Disk(AbstractModel):
         :type LatestOperationRequestId: str
         :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param ExpiredTime: 到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 格式为： YYYY-MM-DDThh:mm:ssZ。
@@ -4746,7 +4748,7 @@ class InstancePrice(AbstractModel):
         :param OriginalPrice: 原价。
         :type OriginalPrice: float
         :param Discount: 折扣。
-        :type Discount: int
+        :type Discount: float
         :param DiscountPrice: 折后价。
         :type DiscountPrice: float
         :param Currency: 价格货币单位。取值范围CNY:人民币。USD:美元。
@@ -6155,6 +6157,7 @@ class Snapshot(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationRequestId: str
         :param CreatedTime: 快照的创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         """
         self.SnapshotId = None

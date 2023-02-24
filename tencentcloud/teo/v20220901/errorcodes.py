@@ -365,6 +365,9 @@ LIMITEXCEEDED_BATCHQUOTA = 'LimitExceeded.BatchQuota'
 # 当天提交的资源数超过上限。
 LIMITEXCEEDED_DAILYQUOTA = 'LimitExceeded.DailyQuota'
 
+# 查询时间范围超出限制。
+LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = 'LimitExceeded.QueryTimeLimitExceeded'
+
 # 单位时间内接口请求频率达到限制。
 LIMITEXCEEDED_RATELIMITEXCEEDED = 'LimitExceeded.RateLimitExceeded'
 

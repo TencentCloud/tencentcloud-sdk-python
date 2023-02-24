@@ -946,6 +946,52 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDatahubTopic(self, request):
+        """获取Datahub主题属性
+
+        :param request: Request instance for DescribeDatahubTopic.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatahubTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatahubTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDatahubTopics(self, request):
+        """查询DIP主题列表
+
+        :param request: Request instance for DescribeDatahubTopics.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatahubTopics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatahubTopicsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGroup(self, request):
         """枚举消费分组(精简版)
 

@@ -49,21 +49,21 @@ class Admin(AbstractModel):
 
 
 class Agent(AbstractModel):
-    """主企业代子企业操作 或 渠道子客应用相关信息
+    """代理相关应用信息，如集团主企业代子企业操作
 
     """
 
     def __init__(self):
         r"""
-        :param AppId: 应用编号,32位字符串
+        :param AppId: 代理机构的应用编号,32位字符串，一般不用传
         :type AppId: str
-        :param ProxyAppId: 主组织的应用号
+        :param ProxyAppId: 被代理机构的应用号，一般不用传
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyAppId: str
-        :param ProxyOrganizationId: 主组织在平台的机构编号
+        :param ProxyOrganizationId: 被代理机构在电子签平台的机构编号，集团代理下场景必传
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOrganizationId: str
-        :param ProxyOperator: 主组织的操作人
+        :param ProxyOperator: 被代理机构的经办人，一般不用传
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOperator: str
         """
@@ -819,7 +819,7 @@ class CreateDocumentRequest(AbstractModel):
         :type NeedPreview: bool
         :param PreviewType: 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
         :type PreviewType: int
-        :param Agent: 应用相关信息
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
         :type ClientToken: str
@@ -991,8 +991,6 @@ false：有序签
         :type NeedSignReview: bool
         :param UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
         :type UserData: str
-        :param Agent: 应用号信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param ApproverVerifyType: 签署人校验方式
 VerifyCheck: 人脸识别（默认）
 MobileCheck：手机号验证
@@ -1002,6 +1000,8 @@ MobileCheck：手机号验证
         :type FlowDescription: str
         :param SignBeanTag: 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
         :type SignBeanTag: int
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
         self.FlowName = None
@@ -1017,10 +1017,10 @@ MobileCheck：手机号验证
         self.CustomShowMap = None
         self.NeedSignReview = None
         self.UserData = None
-        self.Agent = None
         self.ApproverVerifyType = None
         self.FlowDescription = None
         self.SignBeanTag = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
@@ -1055,12 +1055,12 @@ MobileCheck：手机号验证
         self.CustomShowMap = params.get("CustomShowMap")
         self.NeedSignReview = params.get("NeedSignReview")
         self.UserData = params.get("UserData")
-        if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
         self.ApproverVerifyType = params.get("ApproverVerifyType")
         self.FlowDescription = params.get("FlowDescription")
         self.SignBeanTag = params.get("SignBeanTag")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1259,7 +1259,7 @@ false：有序签
         :type NeedSignReview: bool
         :param CallbackUrl: 暂未开放
         :type CallbackUrl: str
-        :param Agent: 应用相关信息
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param CcInfos: 被抄送人的信息列表。
 注: 此功能为白名单功能，若有需要，请联系电子签客服开白使用。
@@ -1749,7 +1749,7 @@ APP：第三方APP或小程序跳转电子签小程序的path。
         :type PathType: int
         :param AutoJumpBack: 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
         :type AutoJumpBack: bool
-        :param Agent: 应用相关信息
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
@@ -2346,7 +2346,7 @@ class DescribeFlowInfoRequest(AbstractModel):
         :type FlowIds: list of str
         :param Operator: 调用方用户信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用信息
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.FlowIds = None
@@ -2406,9 +2406,9 @@ class DescribeFlowTemplatesRequest(AbstractModel):
         r"""
         :param Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Organization: 企业组织相关信息
+        :param Organization: 企业组织相关信息，一般不用填
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
-        :param Agent: 应用相关信息
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param Offset: 查询偏移位置，默认0
         :type Offset: int
@@ -2758,7 +2758,7 @@ CONTRACT：合同专用章；
 ORGANIZATION_SEAL：企业印章(图片上传创建)；
 LEGAL_PERSON_SEAL：法定代表人章
         :type SealTypes: list of str
-        :param Agent: 主企业代子企业操作 或 渠道子客应用相关信息
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
@@ -4289,7 +4289,7 @@ class StartFlowRequest(AbstractModel):
         :type FlowId: str
         :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
         :type ClientToken: str
-        :param Agent: 应用相关信息
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None

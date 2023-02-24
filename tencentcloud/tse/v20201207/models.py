@@ -963,12 +963,16 @@ class EnvAddressInfo(AbstractModel):
         :param EnableConfigIntranet: 是否开启config内网clb
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableConfigIntranet: bool
+        :param InternetBandWidth: 客户端公网带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetBandWidth: int
         """
         self.EnvName = None
         self.EnableConfigInternet = None
         self.ConfigInternetServiceIp = None
         self.ConfigIntranetAddress = None
         self.EnableConfigIntranet = None
+        self.InternetBandWidth = None
 
 
     def _deserialize(self, params):
@@ -977,6 +981,7 @@ class EnvAddressInfo(AbstractModel):
         self.ConfigInternetServiceIp = params.get("ConfigInternetServiceIp")
         self.ConfigIntranetAddress = params.get("ConfigIntranetAddress")
         self.EnableConfigIntranet = params.get("EnableConfigIntranet")
+        self.InternetBandWidth = params.get("InternetBandWidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1173,6 +1178,9 @@ class NacosReplica(AbstractModel):
         :param ZoneId: 可用区ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: str
+        :param VpcId: VPC ID	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
         """
         self.Name = None
         self.Role = None
@@ -1180,6 +1188,7 @@ class NacosReplica(AbstractModel):
         self.SubnetId = None
         self.Zone = None
         self.ZoneId = None
+        self.VpcId = None
 
 
     def _deserialize(self, params):
@@ -1189,6 +1198,7 @@ class NacosReplica(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.Zone = params.get("Zone")
         self.ZoneId = params.get("ZoneId")
+        self.VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1337,6 +1347,15 @@ class SREInstance(AbstractModel):
         :param RegionInfos: 实例地域相关的描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionInfos: list of DescribeInstanceRegionInfo
+        :param EKSType: 所在EKS环境，分为common和yunti
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EKSType: str
+        :param FeatureVersion: 引擎的产品版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureVersion: str
+        :param EnableClientIntranet: 引擎实例是否开启客户端内网访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableClientIntranet: bool
         """
         self.InstanceId = None
         self.Name = None
@@ -1368,6 +1387,9 @@ class SREInstance(AbstractModel):
         self.CurDeadline = None
         self.IsolateTime = None
         self.RegionInfos = None
+        self.EKSType = None
+        self.FeatureVersion = None
+        self.EnableClientIntranet = None
 
 
     def _deserialize(self, params):
@@ -1426,6 +1448,9 @@ class SREInstance(AbstractModel):
                 obj = DescribeInstanceRegionInfo()
                 obj._deserialize(item)
                 self.RegionInfos.append(obj)
+        self.EKSType = params.get("EKSType")
+        self.FeatureVersion = params.get("FeatureVersion")
+        self.EnableClientIntranet = params.get("EnableClientIntranet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1614,6 +1639,9 @@ class ZookeeperReplica(AbstractModel):
         :param AliasName: 别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type AliasName: str
+        :param VpcId: VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
         """
         self.Name = None
         self.Role = None
@@ -1622,6 +1650,7 @@ class ZookeeperReplica(AbstractModel):
         self.Zone = None
         self.ZoneId = None
         self.AliasName = None
+        self.VpcId = None
 
 
     def _deserialize(self, params):
@@ -1632,6 +1661,7 @@ class ZookeeperReplica(AbstractModel):
         self.Zone = params.get("Zone")
         self.ZoneId = params.get("ZoneId")
         self.AliasName = params.get("AliasName")
+        self.VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
