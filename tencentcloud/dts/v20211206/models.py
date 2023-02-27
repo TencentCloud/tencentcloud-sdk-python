@@ -619,8 +619,6 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type SrcAccessType: str
         :param DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
         :type DstAccessType: str
-        :param Options: 同步任务选项
-        :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param Objects: 同步库表对象信息
         :type Objects: :class:`tencentcloud.dts.v20211206.models.Objects`
         :param JobName: 同步任务名称
@@ -635,13 +633,14 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         :param DstInfo: 目标端信息，单节点数据库使用
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param Options: 同步任务选项
+        :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
         :type AutoRetryTimeRangeMinutes: int
         """
         self.JobId = None
         self.SrcAccessType = None
         self.DstAccessType = None
-        self.Options = None
         self.Objects = None
         self.JobName = None
         self.JobMode = None
@@ -649,6 +648,7 @@ class ConfigureSyncJobRequest(AbstractModel):
         self.ExpectRunTime = None
         self.SrcInfo = None
         self.DstInfo = None
+        self.Options = None
         self.AutoRetryTimeRangeMinutes = None
 
 
@@ -656,9 +656,6 @@ class ConfigureSyncJobRequest(AbstractModel):
         self.JobId = params.get("JobId")
         self.SrcAccessType = params.get("SrcAccessType")
         self.DstAccessType = params.get("DstAccessType")
-        if params.get("Options") is not None:
-            self.Options = Options()
-            self.Options._deserialize(params.get("Options"))
         if params.get("Objects") is not None:
             self.Objects = Objects()
             self.Objects._deserialize(params.get("Objects"))
@@ -672,6 +669,9 @@ class ConfigureSyncJobRequest(AbstractModel):
         if params.get("DstInfo") is not None:
             self.DstInfo = Endpoint()
             self.DstInfo._deserialize(params.get("DstInfo"))
+        if params.get("Options") is not None:
+            self.Options = Options()
+            self.Options._deserialize(params.get("Options"))
         self.AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1534,13 +1534,13 @@ class Database(AbstractModel):
         :param Procedures: ProcedureMode取值为Partial时需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Procedures: list of str
-        :param TriggerMode: 触发器迁移模式，All(为当前对象下的所有对象)，partial(部分对象)，如果整库同步此处应该为All。
+        :param TriggerMode: 触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMode: str
         :param Triggers: 当TriggerMode为partial，指定要迁移的触发器名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Triggers: list of str
-        :param EventMode: 事件迁移模式，All(为当前对象下的所有对象)，partial(部分对象)，如果整库同步此处应该为All。
+        :param EventMode: 事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventMode: str
         :param Events: 当EventMode为partial，指定要迁移的事件名称

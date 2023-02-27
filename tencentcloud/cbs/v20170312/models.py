@@ -318,6 +318,12 @@ class AutoSnapshotPolicy(AbstractModel):
         :param AdvancedRetentionPolicy: 定期快照高级保留策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedRetentionPolicy: :class:`tencentcloud.cbs.v20170312.models.AdvancedRetentionPolicy`
+        :param CopyFromAccountUin: 该复制快照策略的源端账户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CopyFromAccountUin: str
+        :param Tags: 标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.DiskIdSet = None
         self.IsActivated = None
@@ -335,6 +341,8 @@ class AutoSnapshotPolicy(AbstractModel):
         self.RetentionMonths = None
         self.RetentionAmount = None
         self.AdvancedRetentionPolicy = None
+        self.CopyFromAccountUin = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -361,6 +369,13 @@ class AutoSnapshotPolicy(AbstractModel):
         if params.get("AdvancedRetentionPolicy") is not None:
             self.AdvancedRetentionPolicy = AdvancedRetentionPolicy()
             self.AdvancedRetentionPolicy._deserialize(params.get("AdvancedRetentionPolicy"))
+        self.CopyFromAccountUin = params.get("CopyFromAccountUin")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -441,6 +456,10 @@ class Cdc(AbstractModel):
         :type DiskType: str
         :param ExpiredTime: 独享集群到期时间。
         :type ExpiredTime: str
+        :param CreatedTime: 存储池创建时间。
+        :type CreatedTime: str
+        :param DiskNumber: 当前集群中已创建的云盘数量。
+        :type DiskNumber: int
         """
         self.CageId = None
         self.CdcState = None
@@ -450,6 +469,8 @@ class Cdc(AbstractModel):
         self.CdcId = None
         self.DiskType = None
         self.ExpiredTime = None
+        self.CreatedTime = None
+        self.DiskNumber = None
 
 
     def _deserialize(self, params):
@@ -463,6 +484,8 @@ class Cdc(AbstractModel):
         self.CdcId = params.get("CdcId")
         self.DiskType = params.get("DiskType")
         self.ExpiredTime = params.get("ExpiredTime")
+        self.CreatedTime = params.get("CreatedTime")
+        self.DiskNumber = params.get("DiskNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1396,18 +1419,27 @@ class DescribeDiskStoragePoolResponse(AbstractModel):
         r"""
         :param TotalCount: 符合条件的独享集群的数量
         :type TotalCount: int
+        :param CdcSet: 独享集群的详细信息列表
+        :type CdcSet: list of Cdc
         :param DiskStoragePoolSet: 独享集群的详细信息列表
         :type DiskStoragePoolSet: list of Cdc
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
+        self.CdcSet = None
         self.DiskStoragePoolSet = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
+        if params.get("CdcSet") is not None:
+            self.CdcSet = []
+            for item in params.get("CdcSet"):
+                obj = Cdc()
+                obj._deserialize(item)
+                self.CdcSet.append(obj)
         if params.get("DiskStoragePoolSet") is not None:
             self.DiskStoragePoolSet = []
             for item in params.get("DiskStoragePoolSet"):
@@ -1790,6 +1822,80 @@ class DetachDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetailPrice(AbstractModel):
+    """描述购买云盘时的费用明细。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PriceTitle: 描述计费项目名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceTitle: str
+        :param PriceName: 描述计费项目显示名称，用户控制台展示。
+        :type PriceName: str
+        :param OriginalPrice: 预付费云盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPrice: float
+        :param DiscountPrice: 预付费云盘预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPrice: float
+        :param UnitPrice: 后付费云盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: float
+        :param UnitPriceDiscount: 后付费云盘折扣单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscount: float
+        :param ChargeUnit: 后付费云盘的计价单元，取值范围：HOUR：表示后付费云盘的计价单元是按小时计算。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeUnit: str
+        :param OriginalPriceHigh: 高精度预付费云盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPriceHigh: str
+        :param DiscountPriceHigh: 高精度预付费云盘预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPriceHigh: str
+        :param UnitPriceHigh: 高精度后付费云盘原单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceHigh: str
+        :param UnitPriceDiscountHigh: 高精度后付费云盘折扣单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscountHigh: str
+        """
+        self.PriceTitle = None
+        self.PriceName = None
+        self.OriginalPrice = None
+        self.DiscountPrice = None
+        self.UnitPrice = None
+        self.UnitPriceDiscount = None
+        self.ChargeUnit = None
+        self.OriginalPriceHigh = None
+        self.DiscountPriceHigh = None
+        self.UnitPriceHigh = None
+        self.UnitPriceDiscountHigh = None
+
+
+    def _deserialize(self, params):
+        self.PriceTitle = params.get("PriceTitle")
+        self.PriceName = params.get("PriceName")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPrice = params.get("DiscountPrice")
+        self.UnitPrice = params.get("UnitPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.ChargeUnit = params.get("ChargeUnit")
+        self.OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self.DiscountPriceHigh = params.get("DiscountPriceHigh")
+        self.UnitPriceHigh = params.get("UnitPriceHigh")
+        self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Disk(AbstractModel):
     """描述了云硬盘的详细信息
 
@@ -1888,6 +1994,12 @@ class Disk(AbstractModel):
         :type DiskBackupCount: int
         :param InstanceType: 云硬盘挂载实例的类型。取值范围：<br><li>CVM<br><li>EKS
         :type InstanceType: str
+        :param LastAttachInsId: 云硬盘最后一次挂载的实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastAttachInsId: str
+        :param ErrorPrompt: 云硬盘最后一次操作错误提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorPrompt: str
         """
         self.DeleteWithInstance = None
         self.RenewFlag = None
@@ -1928,6 +2040,8 @@ class Disk(AbstractModel):
         self.DiskBackupQuota = None
         self.DiskBackupCount = None
         self.InstanceType = None
+        self.LastAttachInsId = None
+        self.ErrorPrompt = None
 
 
     def _deserialize(self, params):
@@ -1977,6 +2091,8 @@ class Disk(AbstractModel):
         self.DiskBackupQuota = params.get("DiskBackupQuota")
         self.DiskBackupCount = params.get("DiskBackupCount")
         self.InstanceType = params.get("InstanceType")
+        self.LastAttachInsId = params.get("LastAttachInsId")
+        self.ErrorPrompt = params.get("ErrorPrompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2107,6 +2223,9 @@ class DiskConfig(AbstractModel):
         :type MinDiskSize: int
         :param MaxDiskSize: 最大可配置云盘大小，单位GB。
         :type MaxDiskSize: int
+        :param Price: 描述预付费或后付费云盘的价格。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Price: :class:`tencentcloud.cbs.v20170312.models.Price`
         """
         self.Available = None
         self.DiskChargeType = None
@@ -2119,6 +2238,7 @@ class DiskConfig(AbstractModel):
         self.DiskUsage = None
         self.MinDiskSize = None
         self.MaxDiskSize = None
+        self.Price = None
 
 
     def _deserialize(self, params):
@@ -2133,6 +2253,9 @@ class DiskConfig(AbstractModel):
         self.DiskUsage = params.get("DiskUsage")
         self.MinDiskSize = params.get("MinDiskSize")
         self.MaxDiskSize = params.get("MaxDiskSize")
+        if params.get("Price") is not None:
+            self.Price = Price()
+            self.Price._deserialize(params.get("Price"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2392,18 +2515,18 @@ class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-        :type DiskId: str
         :param ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。
         :type ThroughputPerformance: int
+        :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :type DiskId: str
         """
-        self.DiskId = None
         self.ThroughputPerformance = None
+        self.DiskId = None
 
 
     def _deserialize(self, params):
-        self.DiskId = params.get("DiskId")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        self.DiskId = params.get("DiskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2584,21 +2707,21 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-        :type DiskId: str
         :param DiskSize: 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :type DiskSize: int
+        :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :type DiskId: str
         :param ProjectId: 云盘所属项目ID。 如传入则仅用于鉴权。
         :type ProjectId: int
         """
-        self.DiskId = None
         self.DiskSize = None
+        self.DiskId = None
         self.ProjectId = None
 
 
     def _deserialize(self, params):
-        self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
+        self.DiskId = params.get("DiskId")
         self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3061,6 +3184,9 @@ class Placement(AbstractModel):
         :type CageId: str
         :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
+        :param ProjectName: 实例所属项目名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
         :param CdcName: 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcName: str
@@ -3073,6 +3199,7 @@ class Placement(AbstractModel):
         self.Zone = None
         self.CageId = None
         self.ProjectId = None
+        self.ProjectName = None
         self.CdcName = None
         self.CdcId = None
         self.DedicatedClusterId = None
@@ -3082,6 +3209,7 @@ class Placement(AbstractModel):
         self.Zone = params.get("Zone")
         self.CageId = params.get("CageId")
         self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
         self.CdcName = params.get("CdcName")
         self.CdcId = params.get("CdcId")
         self.DedicatedClusterId = params.get("DedicatedClusterId")
@@ -3164,6 +3292,9 @@ class PrepayPrice(AbstractModel):
         :param UnitPrice: 后付费云盘原单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
+        :param DetailPrices: 计费项目明细列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetailPrices: list of DetailPrice
         """
         self.DiscountPrice = None
         self.ChargeUnit = None
@@ -3174,6 +3305,7 @@ class PrepayPrice(AbstractModel):
         self.UnitPriceDiscountHigh = None
         self.DiscountPriceHigh = None
         self.UnitPrice = None
+        self.DetailPrices = None
 
 
     def _deserialize(self, params):
@@ -3186,6 +3318,12 @@ class PrepayPrice(AbstractModel):
         self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
         self.DiscountPriceHigh = params.get("DiscountPriceHigh")
         self.UnitPrice = params.get("UnitPrice")
+        if params.get("DetailPrices") is not None:
+            self.DetailPrices = []
+            for item in params.get("DetailPrices"):
+                obj = DetailPrice()
+                obj._deserialize(item)
+                self.DetailPrices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

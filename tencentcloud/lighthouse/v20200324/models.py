@@ -4325,25 +4325,25 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
         r"""
         :param BundleId: 实例的套餐 ID。
         :type BundleId: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param InstanceCount: 创建数量，默认为 1。
         :type InstanceCount: int
-        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
-        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param BlueprintId: 应用镜像 ID，使用收费应用镜像时必填。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
         :type BlueprintId: str
         """
         self.BundleId = None
-        self.InstanceCount = None
         self.InstanceChargePrepaid = None
+        self.InstanceCount = None
         self.BlueprintId = None
 
 
     def _deserialize(self, params):
         self.BundleId = params.get("BundleId")
-        self.InstanceCount = params.get("InstanceCount")
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.InstanceCount = params.get("InstanceCount")
         self.BlueprintId = params.get("BlueprintId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4439,7 +4439,7 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
         r"""
         :param InstanceIds: 待续费的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573 )接口返回值中的InstanceId获取。每次请求批量实例的上限为50。
         :type InstanceIds: list of str
-        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
         :param RenewDataDisk: 是否续费数据盘。默认值: false, 即不续费。
         :type RenewDataDisk: bool

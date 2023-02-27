@@ -2148,12 +2148,15 @@ class UpdateEventBusRequest(AbstractModel):
         :type SaveDays: int
         :param LogTopicId: EB日志主题ID
         :type LogTopicId: str
+        :param EnableStore: 是否开启存储
+        :type EnableStore: bool
         """
         self.EventBusId = None
         self.Description = None
         self.EventBusName = None
         self.SaveDays = None
         self.LogTopicId = None
+        self.EnableStore = None
 
 
     def _deserialize(self, params):
@@ -2162,6 +2165,7 @@ class UpdateEventBusRequest(AbstractModel):
         self.EventBusName = params.get("EventBusName")
         self.SaveDays = params.get("SaveDays")
         self.LogTopicId = params.get("LogTopicId")
+        self.EnableStore = params.get("EnableStore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

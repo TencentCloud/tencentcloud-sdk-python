@@ -25,8 +25,6 @@ class CreateSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClientSession: 客户端session信息，从JSSDK请求中获得
-        :type ClientSession: str
         :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
         :param GameId: 游戏ID
@@ -35,6 +33,8 @@ class CreateSessionRequest(AbstractModel):
         :type GameRegion: str
         :param GameParas: 游戏参数
         :type GameParas: str
+        :param ClientSession: 客户端session信息，从JSSDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
+        :type ClientSession: str
         :param Resolution: 分辨率,，可设置为1080p或720p或1920x1080格式
         :type Resolution: str
         :param ImageUrl: 背景图url，格式为png或jpeg，宽高1920*1080
@@ -64,11 +64,11 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
         :type RunMode: str
         """
-        self.ClientSession = None
         self.UserId = None
         self.GameId = None
         self.GameRegion = None
         self.GameParas = None
+        self.ClientSession = None
         self.Resolution = None
         self.ImageUrl = None
         self.SetNo = None
@@ -85,11 +85,11 @@ RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运�
 
 
     def _deserialize(self, params):
-        self.ClientSession = params.get("ClientSession")
         self.UserId = params.get("UserId")
         self.GameId = params.get("GameId")
         self.GameRegion = params.get("GameRegion")
         self.GameParas = params.get("GameParas")
+        self.ClientSession = params.get("ClientSession")
         self.Resolution = params.get("Resolution")
         self.ImageUrl = params.get("ImageUrl")
         self.SetNo = params.get("SetNo")

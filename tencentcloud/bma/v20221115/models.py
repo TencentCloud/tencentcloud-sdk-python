@@ -197,7 +197,7 @@ class CreateBPFakeAPPListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeAPPs: 批量模版
+        :param FakeAPPs: 批量模板
         :type FakeAPPs: str
         """
         self.FakeAPPs = None
@@ -360,7 +360,7 @@ class CreateBPFakeURLsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FakeURLs: 批量模版
+        :param FakeURLs: 批量模板
         :type FakeURLs: str
         """
         self.FakeURLs = None

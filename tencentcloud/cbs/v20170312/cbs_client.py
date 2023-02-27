@@ -786,8 +786,6 @@ class CbsClient(AbstractClient):
     def InquiryPriceResizeDisk(self, request):
         """本接口（InquiryPriceResizeDisk）用于扩容云硬盘询价。
 
-        * 只支持预付费模式的云硬盘扩容询价。
-
         :param request: Request instance for InquiryPriceResizeDisk.
         :type request: :class:`tencentcloud.cbs.v20170312.models.InquiryPriceResizeDiskRequest`
         :rtype: :class:`tencentcloud.cbs.v20170312.models.InquiryPriceResizeDiskResponse`

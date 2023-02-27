@@ -72,6 +72,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddQueue(self, request):
+        """本接口(AddQueue)用于添加队列到指定集群。
+
+        :param request: Request instance for AddQueue.
+        :type request: :class:`tencentcloud.thpc.v20220401.models.AddQueueRequest`
+        :rtype: :class:`tencentcloud.thpc.v20220401.models.AddQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddQueue", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddQueueResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindAutoScalingGroup(self, request):
         """本接口(BindAutoScalingGroup)用于为集群队列绑定弹性伸缩组
 
@@ -187,6 +210,31 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteQueue(self, request):
+        """本接口(DeleteQueue)用于从指定集群删除队列。
+
+        * 删除队列时，需要保证队列内不存在节点。
+
+        :param request: Request instance for DeleteQueue.
+        :type request: :class:`tencentcloud.thpc.v20220401.models.DeleteQueueRequest`
+        :rtype: :class:`tencentcloud.thpc.v20220401.models.DeleteQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteQueue", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteQueueResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAutoScalingConfiguration(self, request):
         """本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
 
@@ -270,6 +318,52 @@ class ThpcClient(AbstractClient):
             body = self.call("DescribeClusters", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeNodes(self, request):
+        """本接口 (DescribeNodes) 用于查询指定集群节点概览信息列表。
+
+        :param request: Request instance for DescribeNodes.
+        :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeNodesRequest`
+        :rtype: :class:`tencentcloud.thpc.v20220401.models.DescribeNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeQueues(self, request):
+        """本接口(DescribeQueues)用于查询指定集群队列概览信息列表。
+
+        :param request: Request instance for DescribeQueues.
+        :type request: :class:`tencentcloud.thpc.v20220401.models.DescribeQueuesRequest`
+        :rtype: :class:`tencentcloud.thpc.v20220401.models.DescribeQueuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQueues", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQueuesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -205,6 +205,51 @@ class AddNodesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddQueueRequest(AbstractModel):
+    """AddQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param QueueName: 队列名称。<br><li>最多支持32个字符。
+        :type QueueName: str
+        """
+        self.ClusterId = None
+        self.QueueName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.QueueName = params.get("QueueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddQueueResponse(AbstractModel):
+    """AddQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BindAutoScalingGroupRequest(AbstractModel):
     """BindAutoScalingGroup请求参数结构体
 
@@ -910,6 +955,51 @@ class DeleteNodesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteQueueRequest(AbstractModel):
+    """DeleteQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param QueueName: 队列名称。<br><li>最多支持32个字符。
+        :type QueueName: str
+        """
+        self.ClusterId = None
+        self.QueueName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.QueueName = params.get("QueueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteQueueResponse(AbstractModel):
+    """DeleteQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAutoScalingConfigurationRequest(AbstractModel):
     """DescribeAutoScalingConfiguration请求参数结构体
 
@@ -1143,6 +1233,139 @@ class DescribeClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNodesRequest(AbstractModel):
+    """DescribeNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param Filters: <li><strong>queue-name</strong></li> <p style="padding-left: 30px;">按照【<strong>队列名称</strong>】进行过滤。队列名称形如：compute。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"><li><strong>node-role</strong></li> <p style="padding-left: 30px;">按照【<strong>节点角色</strong>】进行过滤。节点角色形如：Manager。（Manager：管控节点。Compute：计算节点。Login：登录节点。ManagerBackup：备用管控节点。）</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"><li><strong>node-type</strong></li> <p style="padding-left: 30px;">按照【<strong>节点类型</strong>】进行过滤。节点类型形如：STATIC。(STATIC：静态节点。DYNAMIC：弹性节点。)</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        """
+        self.ClusterId = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodesResponse(AbstractModel):
+    """DescribeNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeSet: 节点概览信息列表。
+        :type NodeSet: list of NodeOverview
+        :param TotalCount: 符合条件的节点数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NodeSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NodeSet") is not None:
+            self.NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = NodeOverview()
+                obj._deserialize(item)
+                self.NodeSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeQueuesRequest(AbstractModel):
+    """DescribeQueues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+        :type Limit: int
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQueuesResponse(AbstractModel):
+    """DescribeQueues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueueSet: 队列概览信息列表。
+        :type QueueSet: list of QueueOverview
+        :param TotalCount: 符合条件的节点数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QueueSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QueueSet") is not None:
+            self.QueueSet = []
+            for item in params.get("QueueSet"):
+                obj = QueueOverview()
+                obj._deserialize(item)
+                self.QueueSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class ExpansionNodeConfig(AbstractModel):
     """弹性扩容节点配置信息。
 
@@ -1261,6 +1484,38 @@ class ExpansionNodeConfigOverview(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filter(AbstractModel):
+    """>描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
+    > * 若同一个`Filter`存在多个`Values`，同一`Filter`下`Values`间的关系为逻辑或（`OR`）关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 需要过滤的字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Values: 字段的过滤值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1644,6 +1899,61 @@ class NodeActivity(AbstractModel):
         
 
 
+class NodeOverview(AbstractModel):
+    """节点概览信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 节点实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Zone: 节点所在可用区信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param NodeState: 节点状态。<br><li>SUBMITTED：已完成提交。<br><li>CREATING：创建中。<br><li>CREATED：完成创建。<br><li>INITING：初始化中。<br><li>INIT_FAILED：初始化失败。<br><li>RUNNING：运行中。<br><li>DELETING：销毁中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeState: str
+        :param ImageId: 镜像ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
+        :param QueueName: 节点所属队列名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueName: str
+        :param NodeRole: 节点角色。<br><li>Manager：管控节点。<br><li>Compute：计算节点。<br><li>Login：登录节点。<br><li>ManagerBackup：备用管控节点。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeRole: str
+        :param NodeType: 节点类型。<br><li>STATIC：静态节点。<br><li>DYNAMIC：弹性节点。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeType: str
+        """
+        self.InstanceId = None
+        self.Zone = None
+        self.NodeState = None
+        self.ImageId = None
+        self.QueueName = None
+        self.NodeRole = None
+        self.NodeType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Zone = params.get("Zone")
+        self.NodeState = params.get("NodeState")
+        self.ImageId = params.get("ImageId")
+        self.QueueName = params.get("QueueName")
+        self.NodeRole = params.get("NodeRole")
+        self.NodeType = params.get("NodeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Placement(AbstractModel):
     """描述了实例的抽象位置
 
@@ -1782,6 +2092,31 @@ class QueueConfigOverview(AbstractModel):
                 obj = ExpansionNodeConfigOverview()
                 obj._deserialize(item)
                 self.ExpansionNodeConfigs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueueOverview(AbstractModel):
+    """队列信息概览。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueueName: 队列名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueName: str
+        """
+        self.QueueName = None
+
+
+    def _deserialize(self, params):
+        self.QueueName = params.get("QueueName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
