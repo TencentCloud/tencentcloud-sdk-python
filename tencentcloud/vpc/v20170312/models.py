@@ -571,16 +571,24 @@ class AddressTemplateItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param From: 起始地址。
+        :param AddressTemplateId: ipm-xxxxxxxx
+        :type AddressTemplateId: str
+        :param AddressTemplateName: IP模板名称
+        :type AddressTemplateName: str
+        :param From: 废弃字段
         :type From: str
-        :param To: 结束地址。
+        :param To: 废弃字段
         :type To: str
         """
+        self.AddressTemplateId = None
+        self.AddressTemplateName = None
         self.From = None
         self.To = None
 
 
     def _deserialize(self, params):
+        self.AddressTemplateId = params.get("AddressTemplateId")
+        self.AddressTemplateName = params.get("AddressTemplateName")
         self.From = params.get("From")
         self.To = params.get("To")
         memeber_set = set(params.keys())

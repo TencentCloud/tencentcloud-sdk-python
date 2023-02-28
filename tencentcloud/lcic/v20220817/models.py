@@ -1805,6 +1805,10 @@ class DescribeRoomStatisticsResponse(AbstractModel):
         :param RealEndTime: 秒级unix时间戳，实际房间结束时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealEndTime: int
+        :param MessageCount: 房间消息总数。
+        :type MessageCount: int
+        :param MicCount: 房间连麦总数。
+        :type MicCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1814,6 +1818,8 @@ class DescribeRoomStatisticsResponse(AbstractModel):
         self.MemberRecords = None
         self.RealStartTime = None
         self.RealEndTime = None
+        self.MessageCount = None
+        self.MicCount = None
         self.RequestId = None
 
 
@@ -1829,6 +1835,8 @@ class DescribeRoomStatisticsResponse(AbstractModel):
                 self.MemberRecords.append(obj)
         self.RealStartTime = params.get("RealStartTime")
         self.RealEndTime = params.get("RealEndTime")
+        self.MessageCount = params.get("MessageCount")
+        self.MicCount = params.get("MicCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2040,6 +2048,68 @@ class DocumentInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetRoomMessageRequest(AbstractModel):
+    """GetRoomMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 低代码互动课堂的SdkAppId。
+        :type SdkAppId: int
+        :param RoomId: 房间Id。	
+        :type RoomId: int
+        :param Seq: 消息序列。获取该序列以前前的消息(不包含该seq消息)
+        :type Seq: int
+        :param Limit: 消息拉取的条数。最大数量不能超过套餐包限制。
+        :type Limit: int
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.Seq = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.Seq = params.get("Seq")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRoomMessageResponse(AbstractModel):
+    """GetRoomMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Messages: 消息列表
+        :type Messages: list of MessageList
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Messages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Messages") is not None:
+            self.Messages = []
+            for item in params.get("Messages"):
+                obj = MessageList()
+                obj._deserialize(item)
+                self.Messages.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class GetWatermarkRequest(AbstractModel):
@@ -2326,6 +2396,11 @@ class MemberRecord(AbstractModel):
         :type Location: str
         :param Device: 用户设备平台信息。0:unknown  1:windows  2:mac  3:android  4:ios  5:web   6:h5   7:miniprogram （小程序）
         :type Device: int
+        :param PerMemberMicCount: 每个成员上麦次数。
+        :type PerMemberMicCount: int
+        :param PerMemberMessageCount: 每个成员发送消息数量。
+
+        :type PerMemberMessageCount: int
         """
         self.UserId = None
         self.UserName = None
@@ -2341,6 +2416,8 @@ class MemberRecord(AbstractModel):
         self.IPAddress = None
         self.Location = None
         self.Device = None
+        self.PerMemberMicCount = None
+        self.PerMemberMessageCount = None
 
 
     def _deserialize(self, params):
@@ -2358,6 +2435,88 @@ class MemberRecord(AbstractModel):
         self.IPAddress = params.get("IPAddress")
         self.Location = params.get("Location")
         self.Device = params.get("Device")
+        self.PerMemberMicCount = params.get("PerMemberMicCount")
+        self.PerMemberMessageCount = params.get("PerMemberMessageCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MessageItem(AbstractModel):
+    """单条消息体内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MessageType: 消息类型。0表示文本消息，1表示图片消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageType: int
+        :param TextMessage: 文本消息内容。message type为0时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextMessage: str
+        :param ImageMessage: 图片消息URL。 message type为1时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageMessage: str
+        """
+        self.MessageType = None
+        self.TextMessage = None
+        self.ImageMessage = None
+
+
+    def _deserialize(self, params):
+        self.MessageType = params.get("MessageType")
+        self.TextMessage = params.get("TextMessage")
+        self.ImageMessage = params.get("ImageMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MessageList(AbstractModel):
+    """历史消息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 消息时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param FromAccount: 消息发送者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromAccount: str
+        :param Seq: 消息序列号，当前课堂内唯一且单调递增
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Seq: int
+        :param MessageBody: 历史消息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageBody: list of MessageItem
+        """
+        self.Timestamp = None
+        self.FromAccount = None
+        self.Seq = None
+        self.MessageBody = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.FromAccount = params.get("FromAccount")
+        self.Seq = params.get("Seq")
+        if params.get("MessageBody") is not None:
+            self.MessageBody = []
+            for item in params.get("MessageBody"):
+                obj = MessageItem()
+                obj._deserialize(item)
+                self.MessageBody.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

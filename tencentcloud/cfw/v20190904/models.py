@@ -4134,6 +4134,115 @@ class ModifyBlockTopResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyEnterpriseSecurityDispatchStatusRequest(AbstractModel):
+    """ModifyEnterpriseSecurityDispatchStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 状态，0：立即下发，1：停止下发
+        :type Status: int
+        """
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEnterpriseSecurityDispatchStatusResponse(AbstractModel):
+    """ModifyEnterpriseSecurityDispatchStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 0: 修改成功, 其他: 修改失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
+    """ModifyEnterpriseSecurityGroupRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleUuid: 规则的uuid，可通过查询规则列表获取
+        :type RuleUuid: int
+        :param ModifyType: 修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态
+        :type ModifyType: int
+        :param Data: 编辑后的企业安全组规则数据；修改规则状态不用填该字段
+        :type Data: :class:`tencentcloud.cfw.v20190904.models.SecurityGroupRule`
+        :param Enable: 0是关闭,1是开启
+        :type Enable: int
+        """
+        self.RuleUuid = None
+        self.ModifyType = None
+        self.Data = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.RuleUuid = params.get("RuleUuid")
+        self.ModifyType = params.get("ModifyType")
+        if params.get("Data") is not None:
+            self.Data = SecurityGroupRule()
+            self.Data._deserialize(params.get("Data"))
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
+    """ModifyEnterpriseSecurityGroupRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 状态值，0：编辑成功，非0：编辑失败
+        :type Status: int
+        :param NewRuleUuid: 编辑后新生成规则的Id
+        :type NewRuleUuid: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.NewRuleUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.NewRuleUuid = params.get("NewRuleUuid")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNatAcRuleRequest(AbstractModel):
     """ModifyNatAcRule请求参数结构体
 
@@ -4348,6 +4457,56 @@ class ModifyNatFwVpcDnsSwitchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ReturnMsg = params.get("ReturnMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyNatSequenceRulesRequest(AbstractModel):
+    """ModifyNatSequenceRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleChangeItems: 规则快速排序：OrderIndex，原始序号；NewOrderIndex：新序号
+        :type RuleChangeItems: list of RuleChangeItem
+        :param Direction: 规则方向：1，入站；0，出站
+        :type Direction: int
+        """
+        self.RuleChangeItems = None
+        self.Direction = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleChangeItems") is not None:
+            self.RuleChangeItems = []
+            for item in params.get("RuleChangeItems"):
+                obj = RuleChangeItem()
+                obj._deserialize(item)
+                self.RuleChangeItems.append(obj)
+        self.Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatSequenceRulesResponse(AbstractModel):
+    """ModifyNatSequenceRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -5211,6 +5370,34 @@ class RemoveNatAcRuleResponse(AbstractModel):
     def _deserialize(self, params):
         self.RuleUuid = params.get("RuleUuid")
         self.RequestId = params.get("RequestId")
+
+
+class RuleChangeItem(AbstractModel):
+    """规则顺序变更项，由原始id值变为新的id值。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderIndex: 原始sequence 值
+        :type OrderIndex: int
+        :param NewOrderIndex: 新的sequence 值
+        :type NewOrderIndex: int
+        """
+        self.OrderIndex = None
+        self.NewOrderIndex = None
+
+
+    def _deserialize(self, params):
+        self.OrderIndex = params.get("OrderIndex")
+        self.NewOrderIndex = params.get("NewOrderIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RuleInfoData(AbstractModel):

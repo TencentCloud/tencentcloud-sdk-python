@@ -103,3 +103,6 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 请先配置不少于一个规则。
+UNSUPPORTEDOPERATION_NORULEINRULEGROUP = 'UnsupportedOperation.NoRuleInRuleGroup'

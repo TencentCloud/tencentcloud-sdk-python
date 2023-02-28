@@ -98,6 +98,9 @@ RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = 'ResourceNotFound.LaunchConfigurationId
 # 无法找到ID对应节点。
 RESOURCENOTFOUND_NODEID = 'ResourceNotFound.NodeId'
 
+# 无法找到指定队列。
+RESOURCENOTFOUND_QUEUE = 'ResourceNotFound.Queue'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 

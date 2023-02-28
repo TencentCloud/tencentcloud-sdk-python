@@ -32,6 +32,9 @@ FAILEDOPERATION_ASYNCEVENTSTATUS = 'FailedOperation.AsyncEventStatus'
 # 登录信息验证失败，token 验证失败。
 FAILEDOPERATION_AUTHFAILURE = 'FailedOperation.AuthFailure'
 
+# 调用 NetDeploy 失败。
+FAILEDOPERATION_CALLNETDEPLOYFAILED = 'FailedOperation.CallNetDeployFailed'
+
 # 请求role信息失败。
 FAILEDOPERATION_CALLROLEFAILED = 'FailedOperation.CallRoleFailed'
 

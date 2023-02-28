@@ -72,6 +72,52 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindDeviceAccountPassword(self, request):
+        """绑定主机账号密码
+
+        :param request: Request instance for BindDeviceAccountPassword.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.BindDeviceAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.BindDeviceAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindDeviceAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindDeviceAccountPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BindDeviceAccountPrivateKey(self, request):
+        """绑定主机账号私钥
+
+        :param request: Request instance for BindDeviceAccountPrivateKey.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.BindDeviceAccountPrivateKeyRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.BindDeviceAccountPrivateKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindDeviceAccountPrivateKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindDeviceAccountPrivateKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindDeviceResource(self, request):
         """修改资产绑定的堡垒机服务
 
@@ -109,6 +155,75 @@ class DasbClient(AbstractClient):
             body = self.call("CreateAcl", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAclResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateAssetSyncJob(self, request):
+        """创建手工资产同步任务
+
+        :param request: Request instance for CreateAssetSyncJob.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.CreateAssetSyncJobRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.CreateAssetSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAssetSyncJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAssetSyncJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCmdTemplate(self, request):
+        """新建高危命令模板
+
+        :param request: Request instance for CreateCmdTemplate.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.CreateCmdTemplateRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.CreateCmdTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCmdTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCmdTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDeviceAccount(self, request):
+        """新建主机账号
+
+        :param request: Request instance for CreateDeviceAccount.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.CreateDeviceAccountRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.CreateDeviceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeviceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDeviceAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -210,6 +325,52 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteCmdTemplates(self, request):
+        """删除高危命令模板
+
+        :param request: Request instance for DeleteCmdTemplates.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteCmdTemplatesRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DeleteCmdTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCmdTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCmdTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDeviceAccounts(self, request):
+        """删除主机账号
+
+        :param request: Request instance for DeleteDeviceAccounts.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteDeviceAccountsRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DeleteDeviceAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeviceAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDeviceAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDeviceGroupMembers(self, request):
         """删除资产组成员
 
@@ -247,6 +408,29 @@ class DasbClient(AbstractClient):
             body = self.call("DeleteDeviceGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDeviceGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDevices(self, request):
+        """删除主机
+
+        :param request: Request instance for DeleteDevices.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteDevicesRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DeleteDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDevices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDevicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -325,6 +509,29 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeployResource(self, request):
+        """开通服务，初始化资源，只针对新购资源
+
+        :param request: Request instance for DeployResource.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DeployResourceRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DeployResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAcls(self, request):
         """查询访问权限列表
 
@@ -348,6 +555,52 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAssetSyncStatus(self, request):
+        """查询资产同步状态
+
+        :param request: Request instance for DescribeAssetSyncStatus.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeAssetSyncStatusRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeAssetSyncStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAssetSyncStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAssetSyncStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCmdTemplates(self, request):
+        """查询命令模板列表
+
+        :param request: Request instance for DescribeCmdTemplates.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeCmdTemplatesRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeCmdTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCmdTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCmdTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDasbImageIds(self, request):
         """获取镜像列表
 
@@ -362,6 +615,29 @@ class DasbClient(AbstractClient):
             body = self.call("DescribeDasbImageIds", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDasbImageIdsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeviceAccounts(self, request):
+        """查询主机账号列表
+
+        :param request: Request instance for DescribeDeviceAccounts.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDeviceAccountsRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeDeviceAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -532,6 +808,29 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ImportExternalDevice(self, request):
+        """导入外部资产信息
+
+        :param request: Request instance for ImportExternalDevice.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ImportExternalDeviceRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ImportExternalDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportExternalDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportExternalDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAcl(self, request):
         """修改访问权限
 
@@ -555,6 +854,52 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDevice(self, request):
+        """修改资产信息
+
+        :param request: Request instance for ModifyDevice.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyDeviceRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ModifyDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDeviceGroup(self, request):
+        """修改资产组
+
+        :param request: Request instance for ModifyDeviceGroup.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyDeviceGroupRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ModifyDeviceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeviceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeviceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyUser(self, request):
         """修改用户信息
 
@@ -569,6 +914,75 @@ class DasbClient(AbstractClient):
             body = self.call("ModifyUser", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetDeviceAccountPassword(self, request):
+        """清除设备账号绑定密码
+
+        :param request: Request instance for ResetDeviceAccountPassword.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ResetDeviceAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ResetDeviceAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetDeviceAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetDeviceAccountPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetDeviceAccountPrivateKey(self, request):
+        """清除设备账号绑定的密钥
+
+        :param request: Request instance for ResetDeviceAccountPrivateKey.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ResetDeviceAccountPrivateKeyRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ResetDeviceAccountPrivateKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetDeviceAccountPrivateKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetDeviceAccountPrivateKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetUser(self, request):
+        """重置用户
+
+        :param request: Request instance for ResetUser.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ResetUserRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ResetUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

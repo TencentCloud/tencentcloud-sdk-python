@@ -638,6 +638,29 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeHttpsPackages(self, request):
+        """DescribeHttpsPackages 用于查询 CDN HTTPS请求包详情。
+
+        :param request: Request instance for DescribeHttpsPackages.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeHttpsPackagesRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.DescribeHttpsPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHttpsPackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHttpsPackagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageConfig(self, request):
         """DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。
 

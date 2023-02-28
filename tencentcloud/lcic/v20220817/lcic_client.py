@@ -693,6 +693,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRoomMessage(self, request):
+        """获取房间历史消息(房间历史消息保存7天)
+
+        :param request: Request instance for GetRoomMessage.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.GetRoomMessageRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.GetRoomMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRoomMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRoomMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetWatermark(self, request):
         """获取水印设置
 

@@ -271,6 +271,36 @@ class Connection(AbstractModel):
         
 
 
+class ConnectionBrief(AbstractModel):
+    """连接器基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 连接器类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Status: 连接器状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.Type = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConnectionDescription(AbstractModel):
     """ConnectionDescription描述
 
@@ -286,10 +316,14 @@ class ConnectionDescription(AbstractModel):
         :param CkafkaParams: ckafka参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CkafkaParams: :class:`tencentcloud.eb.v20210416.models.CkafkaParams`
+        :param DTSParams: data transfer service (DTS)参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DTSParams: :class:`tencentcloud.eb.v20210416.models.DTSParams`
         """
         self.ResourceDescription = None
         self.APIGWParams = None
         self.CkafkaParams = None
+        self.DTSParams = None
 
 
     def _deserialize(self, params):
@@ -300,6 +334,9 @@ class ConnectionDescription(AbstractModel):
         if params.get("CkafkaParams") is not None:
             self.CkafkaParams = CkafkaParams()
             self.CkafkaParams._deserialize(params.get("CkafkaParams"))
+        if params.get("DTSParams") is not None:
+            self.DTSParams = DTSParams()
+            self.DTSParams._deserialize(params.get("DTSParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -389,16 +426,20 @@ class CreateEventBusRequest(AbstractModel):
         :type Description: str
         :param SaveDays: EB存储时长
         :type SaveDays: int
+        :param EnableStore: EB是否开启存储
+        :type EnableStore: bool
         """
         self.EventBusName = None
         self.Description = None
         self.SaveDays = None
+        self.EnableStore = None
 
 
     def _deserialize(self, params):
         self.EventBusName = params.get("EventBusName")
         self.Description = params.get("Description")
         self.SaveDays = params.get("SaveDays")
+        self.EnableStore = params.get("EnableStore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -605,6 +646,12 @@ class CreateTransformationResponse(AbstractModel):
     def _deserialize(self, params):
         self.TransformationId = params.get("TransformationId")
         self.RequestId = params.get("RequestId")
+
+
+class DTSParams(AbstractModel):
+    """Data Transfer Service参数
+
+    """
 
 
 class DeadLetterConfig(AbstractModel):
@@ -995,6 +1042,15 @@ class EventBus(AbstractModel):
         :type EventBusId: str
         :param Type: 事件集类型
         :type Type: str
+        :param PayMode: 计费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param ConnectionBriefs: 连接器基础信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionBriefs: list of ConnectionBrief
+        :param TargetBriefs: 目标简要信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetBriefs: list of TargetBrief
         """
         self.ModTime = None
         self.Description = None
@@ -1002,6 +1058,9 @@ class EventBus(AbstractModel):
         self.EventBusName = None
         self.EventBusId = None
         self.Type = None
+        self.PayMode = None
+        self.ConnectionBriefs = None
+        self.TargetBriefs = None
 
 
     def _deserialize(self, params):
@@ -1011,6 +1070,19 @@ class EventBus(AbstractModel):
         self.EventBusName = params.get("EventBusName")
         self.EventBusId = params.get("EventBusId")
         self.Type = params.get("Type")
+        self.PayMode = params.get("PayMode")
+        if params.get("ConnectionBriefs") is not None:
+            self.ConnectionBriefs = []
+            for item in params.get("ConnectionBriefs"):
+                obj = ConnectionBrief()
+                obj._deserialize(item)
+                self.ConnectionBriefs.append(obj)
+        if params.get("TargetBriefs") is not None:
+            self.TargetBriefs = []
+            for item in params.get("TargetBriefs"):
+                obj = TargetBrief()
+                obj._deserialize(item)
+                self.TargetBriefs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1132,6 +1204,20 @@ class GetEventBusResponse(AbstractModel):
         :type EventBusId: str
         :param Type: （已废弃）事件集类型
         :type Type: str
+        :param PayMode: 计费模式
+        :type PayMode: str
+        :param SaveDays: EB日志存储时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SaveDays: int
+        :param LogTopicId: EB日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTopicId: str
+        :param EnableStore: 是否开启存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableStore: bool
+        :param LinkMode: 消息序列，是否有序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkMode: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1143,6 +1229,11 @@ class GetEventBusResponse(AbstractModel):
         self.EventBusName = None
         self.EventBusId = None
         self.Type = None
+        self.PayMode = None
+        self.SaveDays = None
+        self.LogTopicId = None
+        self.EnableStore = None
+        self.LinkMode = None
         self.RequestId = None
 
 
@@ -1155,6 +1246,11 @@ class GetEventBusResponse(AbstractModel):
         self.EventBusName = params.get("EventBusName")
         self.EventBusId = params.get("EventBusId")
         self.Type = params.get("Type")
+        self.PayMode = params.get("PayMode")
+        self.SaveDays = params.get("SaveDays")
+        self.LogTopicId = params.get("LogTopicId")
+        self.EnableStore = params.get("EnableStore")
+        self.LinkMode = params.get("LinkMode")
         self.RequestId = params.get("RequestId")
 
 

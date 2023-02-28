@@ -3355,6 +3355,7 @@ class VpcClient(AbstractClient):
 
     def DescribeIpGeolocationDatabaseUrl(self, request):
         """本接口（DescribeIpGeolocationDatabaseUrl）用于获取IP地理位置库下载链接。
+        <font color="#FF0000">本接口即将下线，仅供存量用户使用，暂停新增用户。</font>
 
         :param request: Request instance for DescribeIpGeolocationDatabaseUrl.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIpGeolocationDatabaseUrlRequest`
@@ -3378,7 +3379,7 @@ class VpcClient(AbstractClient):
 
     def DescribeIpGeolocationInfos(self, request):
         """本接口（DescribeIpGeolocationInfos）用于查询IP地址信息，包括地理位置信息和网络信息。
-        本接口仅供存量客户使用，如有疑问，请提交[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2)。
+        <font color="#FF0000">本接口即将下线，仅供存量客户使用，暂停新增用户。</font>
 
         :param request: Request instance for DescribeIpGeolocationInfos.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIpGeolocationInfosRequest`

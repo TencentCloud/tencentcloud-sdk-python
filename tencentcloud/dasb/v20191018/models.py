@@ -266,6 +266,132 @@ class AddUserGroupMembersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssetSyncStatus(AbstractModel):
+    """资产同步状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LastTime: 上一次同步完成的时间
+        :type LastTime: str
+        :param LastStatus: 上一次同步的结果。 0 - 从未进行, 1 - 成功， 2 - 失败
+        :type LastStatus: int
+        :param InProcess: 同步任务是否正在进行中
+        :type InProcess: bool
+        """
+        self.LastTime = None
+        self.LastStatus = None
+        self.InProcess = None
+
+
+    def _deserialize(self, params):
+        self.LastTime = params.get("LastTime")
+        self.LastStatus = params.get("LastStatus")
+        self.InProcess = params.get("InProcess")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindDeviceAccountPasswordRequest(AbstractModel):
+    """BindDeviceAccountPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 主机账号ID
+        :type Id: int
+        :param Password: 主机账号密码
+        :type Password: str
+        """
+        self.Id = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindDeviceAccountPasswordResponse(AbstractModel):
+    """BindDeviceAccountPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class BindDeviceAccountPrivateKeyRequest(AbstractModel):
+    """BindDeviceAccountPrivateKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 主机账号ID
+        :type Id: int
+        :param PrivateKey: 主机账号私钥，最新长度128字节，最大长度8192字节
+        :type PrivateKey: str
+        :param PrivateKeyPassword: 主机账号私钥口令，最大长度256字节
+        :type PrivateKeyPassword: str
+        """
+        self.Id = None
+        self.PrivateKey = None
+        self.PrivateKeyPassword = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.PrivateKey = params.get("PrivateKey")
+        self.PrivateKeyPassword = params.get("PrivateKeyPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindDeviceAccountPrivateKeyResponse(AbstractModel):
+    """BindDeviceAccountPrivateKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BindDeviceResourceRequest(AbstractModel):
     """BindDeviceResource请求参数结构体
 
@@ -473,6 +599,145 @@ class CreateAclResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Id: 新建成功的访问权限ID
+        :type Id: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAssetSyncJobRequest(AbstractModel):
+    """CreateAssetSyncJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Category: 同步资产类别，1 - 主机资产, 2 - 数据库资产
+        :type Category: int
+        """
+        self.Category = None
+
+
+    def _deserialize(self, params):
+        self.Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAssetSyncJobResponse(AbstractModel):
+    """CreateAssetSyncJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCmdTemplateRequest(AbstractModel):
+    """CreateCmdTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 模板名，最大长度32字符，不能包含空白字符
+        :type Name: str
+        :param CmdList: 命令列表，\n分隔，最大长度32768字节
+        :type CmdList: str
+        """
+        self.Name = None
+        self.CmdList = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CmdList = params.get("CmdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCmdTemplateResponse(AbstractModel):
+    """CreateCmdTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 新建成功后返回的记录ID
+        :type Id: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDeviceAccountRequest(AbstractModel):
+    """CreateDeviceAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 主机记录ID
+        :type DeviceId: int
+        :param Account: 账号名
+        :type Account: str
+        """
+        self.DeviceId = None
+        self.Account = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.Account = params.get("Account")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDeviceAccountResponse(AbstractModel):
+    """CreateDeviceAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 新建成功后返回的记录ID
         :type Id: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -708,6 +973,88 @@ class DeleteAclsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteCmdTemplatesRequest(AbstractModel):
+    """DeleteCmdTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 待删除的ID集合
+        :type IdSet: list of int non-negative
+        """
+        self.IdSet = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCmdTemplatesResponse(AbstractModel):
+    """DeleteCmdTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDeviceAccountsRequest(AbstractModel):
+    """DeleteDeviceAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 待删除的ID集合
+        :type IdSet: list of int non-negative
+        """
+        self.IdSet = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceAccountsResponse(AbstractModel):
+    """DeleteDeviceAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDeviceGroupMembersRequest(AbstractModel):
     """DeleteDeviceGroupMembers请求参数结构体
 
@@ -779,6 +1126,47 @@ class DeleteDeviceGroupsRequest(AbstractModel):
 
 class DeleteDeviceGroupsResponse(AbstractModel):
     """DeleteDeviceGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDevicesRequest(AbstractModel):
+    """DeleteDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 待删除的ID集合
+        :type IdSet: list of int non-negative
+        """
+        self.IdSet = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDevicesResponse(AbstractModel):
+    """DeleteDevices返回参数结构体
 
     """
 
@@ -954,6 +1342,79 @@ class Department(AbstractModel):
         
 
 
+class DeployResourceRequest(AbstractModel):
+    """DeployResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 需要开通服务的资源ID
+        :type ResourceId: str
+        :param ApCode: 需要开通服务的地域
+        :type ApCode: str
+        :param Zone: 子网所在可用区
+        :type Zone: str
+        :param VpcId: 需要开通服务的VPC
+        :type VpcId: str
+        :param SubnetId: 需要开通服务的子网ID
+        :type SubnetId: str
+        :param CidrBlock: 需要开通服务的子网网段
+        :type CidrBlock: str
+        :param VpcName: 需要开通服务的VPC名称
+        :type VpcName: str
+        :param VpcCidrBlock: 需要开通服务的VPC对应的网段
+        :type VpcCidrBlock: str
+        :param SubnetName: 需要开通服务的子网名称
+        :type SubnetName: str
+        """
+        self.ResourceId = None
+        self.ApCode = None
+        self.Zone = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.CidrBlock = None
+        self.VpcName = None
+        self.VpcCidrBlock = None
+        self.SubnetName = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ApCode = params.get("ApCode")
+        self.Zone = params.get("Zone")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.VpcName = params.get("VpcName")
+        self.VpcCidrBlock = params.get("VpcCidrBlock")
+        self.SubnetName = params.get("SubnetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployResourceResponse(AbstractModel):
+    """DeployResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAclsRequest(AbstractModel):
     """DescribeAcls请求参数结构体
 
@@ -1040,6 +1501,119 @@ class DescribeAclsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAssetSyncStatusRequest(AbstractModel):
+    """DescribeAssetSyncStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Category: 查询的资产同步类型。1 -主机资产， 2 - 数据库资产
+        :type Category: int
+        """
+        self.Category = None
+
+
+    def _deserialize(self, params):
+        self.Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetSyncStatusResponse(AbstractModel):
+    """DescribeAssetSyncStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 资产同步结果
+        :type Status: :class:`tencentcloud.dasb.v20191018.models.AssetSyncStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Status") is not None:
+            self.Status = AssetSyncStatus()
+            self.Status._deserialize(params.get("Status"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCmdTemplatesRequest(AbstractModel):
+    """DescribeCmdTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 命令模板ID集合，非必需
+        :type IdSet: list of int non-negative
+        :param Name: 命令模板名，模糊查询，最大长度64字符
+        :type Name: str
+        :param Offset: 分页偏移位置，默认值为0
+        :type Offset: int
+        :param Limit: 每页条目数量，默认20
+        :type Limit: int
+        """
+        self.IdSet = None
+        self.Name = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        self.Name = params.get("Name")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCmdTemplatesResponse(AbstractModel):
+    """DescribeCmdTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CmdTemplateSet: 命令模板列表
+        :type CmdTemplateSet: list of CmdTemplate
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CmdTemplateSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CmdTemplateSet") is not None:
+            self.CmdTemplateSet = []
+            for item in params.get("CmdTemplateSet"):
+                obj = CmdTemplate()
+                obj._deserialize(item)
+                self.CmdTemplateSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDasbImageIdsRequest(AbstractModel):
     """DescribeDasbImageIds请求参数结构体
 
@@ -1068,6 +1642,76 @@ class DescribeDasbImageIdsResponse(AbstractModel):
     def _deserialize(self, params):
         self.BaseImageId = params.get("BaseImageId")
         self.AiImageId = params.get("AiImageId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceAccountsRequest(AbstractModel):
+    """DescribeDeviceAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 主机账号ID集合，非必需，如果使用IdSet则忽略其他过滤参数
+        :type IdSet: list of int non-negative
+        :param Account: 主机账号名，模糊查询，不能单独出现，必须于DeviceId一起提交
+        :type Account: str
+        :param DeviceId: 主机ID，未使用IdSet时必须携带
+        :type DeviceId: int
+        :param Offset: 分页偏移位置，默认值为0
+        :type Offset: int
+        :param Limit: 每页条目数量，默认20
+        :type Limit: int
+        """
+        self.IdSet = None
+        self.Account = None
+        self.DeviceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        self.Account = params.get("Account")
+        self.DeviceId = params.get("DeviceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceAccountsResponse(AbstractModel):
+    """DescribeDeviceAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录总数
+        :type TotalCount: int
+        :param DeviceAccountSet: 账号信息列表
+        :type DeviceAccountSet: list of DeviceAccount
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DeviceAccountSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DeviceAccountSet") is not None:
+            self.DeviceAccountSet = []
+            for item in params.get("DeviceAccountSet"):
+                obj = DeviceAccount()
+                obj._deserialize(item)
+                self.DeviceAccountSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1721,6 +2365,86 @@ class Device(AbstractModel):
         
 
 
+class DeviceAccount(AbstractModel):
+    """主机账号
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 账号ID
+        :type Id: int
+        :param DeviceId: 主机ID
+        :type DeviceId: int
+        :param Account: 账号名
+        :type Account: str
+        :param BoundPassword: true-已托管密码，false-未托管密码
+        :type BoundPassword: bool
+        :param BoundPrivateKey: true-已托管私钥，false-未托管私钥
+        :type BoundPrivateKey: bool
+        """
+        self.Id = None
+        self.DeviceId = None
+        self.Account = None
+        self.BoundPassword = None
+        self.BoundPrivateKey = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.DeviceId = params.get("DeviceId")
+        self.Account = params.get("Account")
+        self.BoundPassword = params.get("BoundPassword")
+        self.BoundPrivateKey = params.get("BoundPrivateKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExternalDevice(AbstractModel):
+    """主机参数，导入外部主机时使用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OsName: 操作系统名称，只能是Linux、Windows或MySQL
+        :type OsName: str
+        :param Ip: IP地址
+        :type Ip: str
+        :param Port: 管理端口
+        :type Port: int
+        :param Name: 主机名，可为空
+        :type Name: str
+        :param DepartmentId: 资产所属的部门ID
+        :type DepartmentId: str
+        """
+        self.OsName = None
+        self.Ip = None
+        self.Port = None
+        self.Name = None
+        self.DepartmentId = None
+
+
+    def _deserialize(self, params):
+        self.OsName = params.get("OsName")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.Name = params.get("Name")
+        self.DepartmentId = params.get("DepartmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """描述键值对过滤器，用于条件过滤查询
 
@@ -1789,6 +2513,52 @@ class Group(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ImportExternalDeviceRequest(AbstractModel):
+    """ImportExternalDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceSet: 资产参数列表
+        :type DeviceSet: list of ExternalDevice
+        """
+        self.DeviceSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceSet") is not None:
+            self.DeviceSet = []
+            for item in params.get("DeviceSet"):
+                obj = ExternalDevice()
+                obj._deserialize(item)
+                self.DeviceSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportExternalDeviceResponse(AbstractModel):
+    """ImportExternalDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyAclRequest(AbstractModel):
@@ -1934,6 +2704,108 @@ class ModifyAclResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDeviceGroupRequest(AbstractModel):
+    """ModifyDeviceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 资产组名，最大长度32字符，不能为空
+        :type Name: str
+        :param Id: 资产组ID
+        :type Id: int
+        :param DepartmentId: 资产组所属部门ID，如：1.2.3
+        :type DepartmentId: str
+        """
+        self.Name = None
+        self.Id = None
+        self.DepartmentId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Id = params.get("Id")
+        self.DepartmentId = params.get("DepartmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceGroupResponse(AbstractModel):
+    """ModifyDeviceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDeviceRequest(AbstractModel):
+    """ModifyDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 资产记录ID
+        :type Id: int
+        :param Port: 管理端口
+        :type Port: int
+        :param GroupIdSet: 资产所属组ID集合
+        :type GroupIdSet: list of int non-negative
+        :param DepartmentId: 资产所属部门ID
+        :type DepartmentId: str
+        """
+        self.Id = None
+        self.Port = None
+        self.GroupIdSet = None
+        self.DepartmentId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Port = params.get("Port")
+        self.GroupIdSet = params.get("GroupIdSet")
+        self.DepartmentId = params.get("DepartmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceResponse(AbstractModel):
+    """ModifyDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyUserRequest(AbstractModel):
     """ModifyUser请求参数结构体
 
@@ -1998,6 +2870,129 @@ class ModifyUserRequest(AbstractModel):
 
 class ModifyUserResponse(AbstractModel):
     """ModifyUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetDeviceAccountPasswordRequest(AbstractModel):
+    """ResetDeviceAccountPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: ID集合
+        :type IdSet: list of int non-negative
+        """
+        self.IdSet = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetDeviceAccountPasswordResponse(AbstractModel):
+    """ResetDeviceAccountPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetDeviceAccountPrivateKeyRequest(AbstractModel):
+    """ResetDeviceAccountPrivateKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: ID集合
+        :type IdSet: list of int non-negative
+        """
+        self.IdSet = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetDeviceAccountPrivateKeyResponse(AbstractModel):
+    """ResetDeviceAccountPrivateKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ResetUserRequest(AbstractModel):
+    """ResetUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 用户ID集合
+        :type IdSet: list of int non-negative
+        """
+        self.IdSet = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetUserResponse(AbstractModel):
+    """ResetUser返回参数结构体
 
     """
 

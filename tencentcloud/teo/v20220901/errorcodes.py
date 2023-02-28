@@ -395,6 +395,9 @@ OPERATIONDENIED_MULTIPLECNAMEZONE = 'OperationDenied.MultipleCnameZone'
 # NS接入模式不支持域名流量调度功能。
 OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = 'OperationDenied.NSNotAllowTrafficStrategy'
 
+# DNS 记录不允许添加。
+OPERATIONDENIED_RECORDISFORBIDDEN = 'OperationDenied.RecordIsForbidden'
+
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
@@ -469,6 +472,9 @@ RESOURCEUNAVAILABLE_PROXYZONENOTFOUND = 'ResourceUnavailable.ProxyZoneNotFound'
 
 # 站点不存在或不属于该账号。
 RESOURCEUNAVAILABLE_ZONENOTFOUND = 'ResourceUnavailable.ZoneNotFound'
+
+# 资源售卖火爆，已售罄，正在加紧补货中，当前无法新增域名，请您耐心等待。
+RESOURCESSOLDOUT_L7LACKOFRESOURCES = 'ResourcesSoldOut.L7LackOfResources'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

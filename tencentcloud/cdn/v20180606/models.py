@@ -5078,6 +5078,76 @@ class DescribeEventLogDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeHttpsPackagesRequest(AbstractModel):
+    """DescribeHttpsPackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 分页查询起始地址，默认 0
+        :type Offset: int
+        :param Limit: 分页查询记录个数，默认100，最大1000
+        :type Limit: int
+        """
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHttpsPackagesResponse(AbstractModel):
+    """DescribeHttpsPackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: HTTPS请求包总个数
+        :type TotalCount: int
+        :param HttpsPackages: HTTPS请求包详情
+        :type HttpsPackages: list of HttpsPackage
+        :param ExpiringCount: 即将过期的HTTPS请求包个数（7天内）
+        :type ExpiringCount: int
+        :param EnabledCount: 有效HTTPS请求包个数
+        :type EnabledCount: int
+        :param PaidCount: 付费HTTPS请求包个数
+        :type PaidCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.HttpsPackages = None
+        self.ExpiringCount = None
+        self.EnabledCount = None
+        self.PaidCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("HttpsPackages") is not None:
+            self.HttpsPackages = []
+            for item in params.get("HttpsPackages"):
+                obj = HttpsPackage()
+                obj._deserialize(item)
+                self.HttpsPackages.append(obj)
+        self.ExpiringCount = params.get("ExpiringCount")
+        self.EnabledCount = params.get("EnabledCount")
+        self.PaidCount = params.get("PaidCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageConfigRequest(AbstractModel):
     """DescribeImageConfig请求参数结构体
 
@@ -8701,6 +8771,106 @@ class HttpsBilling(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HttpsPackage(AbstractModel):
+    """CDN HTTPS请求包。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: HTTPS请求包 Id
+        :type Id: int
+        :param Type: HTTPS请求包类型
+        :type Type: str
+        :param Size: HTTPS请求包大小（单位为：次）
+        :type Size: int
+        :param SizeUsed: 已消耗HTTPS请求包（单位为：次）
+        :type SizeUsed: int
+        :param Status: HTTPS请求包状态
+enabled：已启用
+expired：已过期
+disabled：未启用
+        :type Status: str
+        :param CreateTime: HTTPS请求包发放时间
+        :type CreateTime: str
+        :param EnableTime: HTTPS请求包生效时间
+        :type EnableTime: str
+        :param ExpireTime: HTTPS请求包过期时间
+        :type ExpireTime: str
+        :param Channel: HTTPS请求包来源
+        :type Channel: str
+        :param LifeTimeMonth: HTTPS请求包生命周期月数
+        :type LifeTimeMonth: int
+        :param RefundAvailable: HTTPS请求包是否支持退费
+        :type RefundAvailable: bool
+        :param ConfigId: HTTPS请求包类型id
+        :type ConfigId: int
+        :param TrueEnableTime: HTTPS请求包实际生效时间
+        :type TrueEnableTime: str
+        :param TrueExpireTime: HTTPS请求包实际过期时间
+        :type TrueExpireTime: str
+        :param Area: HTTPS请求包生效区域 
+global：全球
+        :type Area: str
+        :param ContractExtension: HTTPS请求包是否续订
+        :type ContractExtension: bool
+        :param ExtensionAvailable: HTTPS请求包是否支持续订
+        :type ExtensionAvailable: bool
+        :param ExtensionMode: HTTPS请求包当前续订模式
+0：未续订
+1：到期续订
+2：用完续订
+3：到期或用完续订
+        :type ExtensionMode: int
+        """
+        self.Id = None
+        self.Type = None
+        self.Size = None
+        self.SizeUsed = None
+        self.Status = None
+        self.CreateTime = None
+        self.EnableTime = None
+        self.ExpireTime = None
+        self.Channel = None
+        self.LifeTimeMonth = None
+        self.RefundAvailable = None
+        self.ConfigId = None
+        self.TrueEnableTime = None
+        self.TrueExpireTime = None
+        self.Area = None
+        self.ContractExtension = None
+        self.ExtensionAvailable = None
+        self.ExtensionMode = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Type = params.get("Type")
+        self.Size = params.get("Size")
+        self.SizeUsed = params.get("SizeUsed")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.EnableTime = params.get("EnableTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Channel = params.get("Channel")
+        self.LifeTimeMonth = params.get("LifeTimeMonth")
+        self.RefundAvailable = params.get("RefundAvailable")
+        self.ConfigId = params.get("ConfigId")
+        self.TrueEnableTime = params.get("TrueEnableTime")
+        self.TrueExpireTime = params.get("TrueExpireTime")
+        self.Area = params.get("Area")
+        self.ContractExtension = params.get("ContractExtension")
+        self.ExtensionAvailable = params.get("ExtensionAvailable")
+        self.ExtensionMode = params.get("ExtensionMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
