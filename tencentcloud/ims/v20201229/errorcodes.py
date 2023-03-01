@@ -47,6 +47,9 @@ INVALIDPARAMETERVALUE_EMPTYIMAGECONTENT = 'InvalidParameterValue.EmptyImageConte
 # 图片分辨率太低。
 INVALIDPARAMETERVALUE_IMAGESIZETOOSMALL = 'InvalidParameterValue.ImageSizeTooSmall'
 
+# 回调地址错误。
+INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = 'InvalidParameterValue.InvalidCallbackUrl'
+
 # FileContent和FileUrl为空。
 INVALIDPARAMETERVALUE_INVALIDCONTENT = 'InvalidParameterValue.InvalidContent'
 

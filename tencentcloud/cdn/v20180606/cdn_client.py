@@ -96,7 +96,7 @@ class CdnClient(AbstractClient):
 
 
     def CreateDiagnoseUrl(self, request):
-        """CreateDiagnoseUrl 用于添加域名诊断任务URL
+        """CreateDiagnoseUrl 用于添加域名诊断任务URL， <font color=red>将于 **2023年5月31日** 下线</font><br>
 
         :param request: Request instance for CreateDiagnoseUrl.
         :type request: :class:`tencentcloud.cdn.v20180606.models.CreateDiagnoseUrlRequest`
@@ -500,7 +500,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeDiagnoseReport(self, request):
-        """DescribeDiagnoseReport 用于获取指定报告id的内容
+        """DescribeDiagnoseReport 用于获取指定报告id的内容， <font color=red>将于 **2023年5月31日** 下线</font><br>
 
         :param request: Request instance for DescribeDiagnoseReport.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeDiagnoseReportRequest`
@@ -1332,7 +1332,7 @@ class CdnClient(AbstractClient):
 
 
     def ListDiagnoseReport(self, request):
-        """ListDiagnoseReport 用于获取用户诊断URL访问后各个子任务的简要详情。
+        """ListDiagnoseReport 用于获取用户诊断URL访问后各个子任务的简要详情， <font color=red>将于 **2023年5月31日** 下线</font><br>
 
         :param request: Request instance for ListDiagnoseReport.
         :type request: :class:`tencentcloud.cdn.v20180606.models.ListDiagnoseReportRequest`

@@ -472,52 +472,87 @@ class CreateDBInstanceHourRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Memory: 实例内存大小，单位：GB
+        :param Memory: 实例内存大小，单位：GB。
         :type Memory: int
-        :param Volume: 实例硬盘大小，单位：GB
+        :param Volume: 实例硬盘大小，单位：GB。
         :type Volume: int
-        :param ReplicateSetNum: 副本集个数，创建副本集实例时，该参数必须设置为1；创建分片实例时，具体参照查询云数据库的售卖规格返回参数
+        :param ReplicateSetNum: 指副本集数量。
+- 创建副本集实例，该参数只能为1。
+- 创建分片实例，指分片的数量。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :type ReplicateSetNum: int
-        :param NodeNum: 每个副本集内节点个数，具体参照查询云数据库的售卖规格返回参数
+        :param NodeNum: 指每个副本集内节点个数。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
         :type NodeNum: int
-        :param MongoVersion: 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本，MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本
+        :param MongoVersion: 指版本信息。具体售卖规格，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+- MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本。
+- MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本。
+- MONGO_42_WT：MongoDB 4.2 WiredTiger存储引擎版本。
+- MONGO_44_WT：MongoDB 4.4 WiredTiger存储引擎版本。
         :type MongoVersion: str
-        :param MachineCode: 机器类型，HIO：高IO型；HIO10G：高IO万兆
+        :param MachineCode: 机器类型。
+- HIO：高IO型。
+- HIO10G：高IO万兆。
         :type MachineCode: str
-        :param GoodsNum: 实例数量，最小值1，最大值为10
+        :param GoodsNum: 实例数量，最小值1，最大值为10。
         :type GoodsNum: int
-        :param Zone: 可用区信息，格式如：ap-guangzhou-2。注：此参数填写的是主可用区，如果选择多可用区部署，Zone必须是AvailabilityZoneList中的一个
+        :param Zone: 可用区信息，输入格式如：ap-guangzhou-2。
+- 具体信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567) 获取。
+- 该参数为主可用区，如果多可用区部署，Zone必须是AvailabilityZoneList中的一个。
         :type Zone: str
-        :param ClusterType: 实例类型，REPLSET-副本集，SHARD-分片集群
+        :param ClusterType: 实例架构类型。
+- REPLSET：副本集。
+- SHARD：分片集群。
         :type ClusterType: str
-        :param VpcId: 私有网络ID，如果不设置该参数则默认选择基础网络
+        :param VpcId: 私有网络ID，如果不设置该参数，则默认选择基础网络。
         :type VpcId: str
-        :param SubnetId: 私有网络下的子网ID，如果设置了 VpcId，则 SubnetId必填
+        :param SubnetId: 私有网络下的子网 ID，如果配置参数 VpcId，则 SubnetId必须配置。
         :type SubnetId: str
-        :param Password: 实例密码，不设置该参数则默认密码规则为 实例ID+"@"+主账户uin。举例实例id为cmgo-higv73ed，uin为100000001，则默认密码为"cmgo-higv73ed@100000001"。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
+        :param Password: 实例密码。
+- 不设置该参数，则默认密码格式为：实例ID+@+主账户uin。例如：实例 ID 为cmgo-higv73ed，UIN 为100000001，则默认密码为：cmgo-higv73ed@100000001。 
+- 自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
         :type Password: str
-        :param ProjectId: 项目ID，不设置为默认项目
+        :param ProjectId: 项目ID。若不设置该参数，则为默认项目。
         :type ProjectId: int
-        :param Tags: 实例标签信息
+        :param Tags: 实例标签信息。
         :type Tags: list of TagInfo
-        :param Clone: 1:正式实例,2:临时实例,3:只读实例,4:灾备实例,5:克隆实例
+        :param Clone: 实例类型。
+- 1：正式实例。
+- 3：只读实例。
+- 4：灾备实例。
         :type Clone: int
-        :param Father: 父实例Id，当Clone为3或者4时，这个必须填
+        :param Father: 父实例 ID。当参数**Clone**为3或者4时，即实例为只读或灾备实例时，该参数必须配置。
         :type Father: str
-        :param SecurityGroup: 安全组
+        :param SecurityGroup: 安全组。
         :type SecurityGroup: list of str
-        :param RestoreTime: 克隆实例回档时间。若是克隆实例，则必须填写，示例：2021-08-13 16:30:00。注：只能回档7天内的时间点
+        :param RestoreTime: 克隆实例回档时间。
+- 若为克隆实例，则必须配置该参数。输入格式示例：2021-08-13 16:30:00。
+- 回档时间范围：仅能回档7天内时间点的数据。
         :type RestoreTime: str
-        :param InstanceName: 实例名称。注：名称只支持长度为60个字符的中文、英文、数字、下划线_、分隔符-
+        :param InstanceName: 实例名称。仅支持长度为60个字符的中文、英文、数字、下划线_、分隔符- 。
         :type InstanceName: str
-        :param AvailabilityZoneList: 多可用区部署的节点列表，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。注：1、多可用区部署节点只能部署在3个不同可用区；2、为了保障跨可用区切换，不支持将集群的大多数节点部署在同一个可用区（如3节点集群不支持2个节点部署在同一个区）；3、不支持4.2及以上版本；4、不支持只读灾备实例；5、不能选择基础网络
+        :param AvailabilityZoneList: 多可用区部署的节点列表。具体信息，请通过接口 [DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)获取。
+- 多可用区部署节点只能部署在3个不同可用区。不支持将集群的大多数节点部署在同一个可用区。例如：3节点集群不支持2个节点部署在同一个区。
+- 不支持4.2及以上版本。
+- 不支持只读灾备实例。
+- 不能选择基础网络。
         :type AvailabilityZoneList: list of str
-        :param MongosCpu: mongos cpu数量，购买MongoDB 4.2 WiredTiger存储引擎版本的分片集群时必须填写，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果
+        :param MongosCpu: Mongos CPU 核数。
+- 购买MongoDB 3.6 WiredTiger存储引擎版本以上的分片集群时，可选择性配置该参数。
+- 若不配置该参数，则根据Mongod节点规格默认适配 Mongos 规格，默认规格免费。
         :type MongosCpu: int
-        :param MongosMemory: mongos 内存大小，购买MongoDB 4.2 WiredTiger存储引擎版本的分片集群时必须填写，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果
+        :param MongosMemory: Mongos 内存大小。
+- 购买MongoDB 3.6 WiredTiger存储引擎版本以上的分片集群时，可选择性配置该参数。
+- 若不配置该参数，则根据Mongod节点规格默认适配 Mongos 规格，默认规格免费。
         :type MongosMemory: int
-        :param MongosNodeNum: mongos 数量，购买MongoDB 4.2 WiredTiger存储引擎版本的分片集群时必须填写，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。注：为了保障高可用，最低需要购买3个mongos，上限为32个
+        :param MongosNodeNum: Mongos 数量。
+- 购买MongoDB 3.6 WiredTiger存储引擎版本以上的分片集群时，可选择性配置该参数。
+- 若不配置该参数，则根据Mongod节点规格默认适配 Mongos 规格，默认规格免费。
         :type MongosNodeNum: int
+        :param ReadonlyNodeNum: 只读节点数量，最大不超过7个。
+        :type ReadonlyNodeNum: int
+        :param ReadonlyNodeAvailabilityZoneList: 指只读节点所属可用区。跨可用区部署实例，参数**ReadonlyNodeNum**不为**0**时，必须配置该参数。
+        :type ReadonlyNodeAvailabilityZoneList: list of str
+        :param HiddenZone: Hidden节点所属可用区。跨可用区部署实例，必须配置该参数。
+        :type HiddenZone: str
         """
         self.Memory = None
         self.Volume = None
@@ -542,6 +577,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.MongosCpu = None
         self.MongosMemory = None
         self.MongosNodeNum = None
+        self.ReadonlyNodeNum = None
+        self.ReadonlyNodeAvailabilityZoneList = None
+        self.HiddenZone = None
 
 
     def _deserialize(self, params):
@@ -573,6 +611,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.MongosCpu = params.get("MongosCpu")
         self.MongosMemory = params.get("MongosMemory")
         self.MongosNodeNum = params.get("MongosNodeNum")
+        self.ReadonlyNodeNum = params.get("ReadonlyNodeNum")
+        self.ReadonlyNodeAvailabilityZoneList = params.get("ReadonlyNodeAvailabilityZoneList")
+        self.HiddenZone = params.get("HiddenZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -589,9 +630,9 @@ class CreateDBInstanceHourResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 订单ID
+        :param DealId: 订单ID。
         :type DealId: str
-        :param InstanceIds: 创建的实例ID列表
+        :param InstanceIds: 创建的实例ID列表。
         :type InstanceIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

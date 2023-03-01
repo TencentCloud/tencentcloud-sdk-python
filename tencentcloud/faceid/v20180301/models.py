@@ -1051,30 +1051,34 @@ class DetectInfoText(AbstractModel):
         :param Name: 本次验证使用的姓名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param OcrNation: Ocr识别结果。民族。
+        :param OcrNation: 身份校验环节识别结果：民族。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrNation: str
-        :param OcrAddress: Ocr识别结果。家庭住址。
+        :param OcrAddress: 身份校验环节识别结果：家庭住址。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrAddress: str
-        :param OcrBirth: Ocr识别结果。生日。
+        :param OcrBirth: 身份校验环节识别结果：生日。格式为：YYYY/M/D
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrBirth: str
-        :param OcrAuthority: Ocr识别结果。签发机关。
+        :param OcrAuthority: 身份校验环节识别结果：签发机关。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrAuthority: str
-        :param OcrValidDate: Ocr识别结果。有效日期。
+        :param OcrValidDate: 身份校验环节识别结果：有效日期。格式为：YYYY.MM.DD-YYYY.MM.DD
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrValidDate: str
-        :param OcrName: Ocr识别结果。姓名。
+        :param OcrName: 身份校验环节识别结果：姓名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrName: str
-        :param OcrIdCard: Ocr识别结果。身份证号。
+        :param OcrIdCard: 身份校验环节识别结果：身份证号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrIdCard: str
-        :param OcrGender: Ocr识别结果。性别。
+        :param OcrGender: 身份校验环节识别结果：性别。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrGender: str
+        :param IdInfoFrom: 身份校验环节采用的信息上传方式。
+取值有"NFC"、"OCR"、"手动输入"、"其他"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdInfoFrom: str
         :param LiveStatus: 本次流程最终活体结果。0为成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveStatus: int
@@ -1130,6 +1134,7 @@ class DetectInfoText(AbstractModel):
         self.OcrName = None
         self.OcrIdCard = None
         self.OcrGender = None
+        self.IdInfoFrom = None
         self.LiveStatus = None
         self.LiveMsg = None
         self.Comparestatus = None
@@ -1156,6 +1161,7 @@ class DetectInfoText(AbstractModel):
         self.OcrName = params.get("OcrName")
         self.OcrIdCard = params.get("OcrIdCard")
         self.OcrGender = params.get("OcrGender")
+        self.IdInfoFrom = params.get("IdInfoFrom")
         self.LiveStatus = params.get("LiveStatus")
         self.LiveMsg = params.get("LiveMsg")
         self.Comparestatus = params.get("Comparestatus")

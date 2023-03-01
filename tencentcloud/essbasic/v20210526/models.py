@@ -3100,7 +3100,8 @@ ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
         :type CallbackUrl: str
         :param SignComponents: 使用PDF文件直接发起合同时，签署人指定的签署控件
         :type SignComponents: list of Component
-        :param ComponentLimitType: 个人签署方指定签署控件类型，目前仅支持：OCR_ESIGN(AI智慧手写签名)
+        :param ComponentLimitType: 个人签署方指定签署控件类型，目前支持：OCR_ESIGN -AI智慧手写签名
+HANDWRITE -手写签名
         :type ComponentLimitType: list of str
         :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int

@@ -10454,6 +10454,12 @@ class EdgeCluster(AbstractModel):
         :param Level: 边缘容器集群级别
 注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
+        :param AutoUpgradeClusterLevel: 是否支持自动提升集群配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoUpgradeClusterLevel: bool
+        :param ChargeType: 集群付费模式，支持POSTPAID_BY_HOUR或者PREPAID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -10468,6 +10474,8 @@ class EdgeCluster(AbstractModel):
         self.MaxNodePodNum = None
         self.ClusterAdvancedSettings = None
         self.Level = None
+        self.AutoUpgradeClusterLevel = None
+        self.ChargeType = None
 
 
     def _deserialize(self, params):
@@ -10486,6 +10494,8 @@ class EdgeCluster(AbstractModel):
             self.ClusterAdvancedSettings = EdgeClusterAdvancedSettings()
             self.ClusterAdvancedSettings._deserialize(params.get("ClusterAdvancedSettings"))
         self.Level = params.get("Level")
+        self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
+        self.ChargeType = params.get("ChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

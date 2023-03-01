@@ -83,7 +83,7 @@ class ImageModerationRequest(AbstractModel):
         :type DataId: str
         :param FileContent: 数据Base64编码，图片检测接口为图片文件内容，大小不能超过5M
         :type FileContent: str
-        :param FileUrl: 图片资源访问链接，__与FileContent参数必须二选一输入__
+        :param FileUrl: 图片资源访问链接，__与FileContent参数必须二选一输入__ 。由于网络安全策略，送审带重定向的链接，可能引起下载失败，请尽量避免，比如Http返回302状态码的链接，可能导致接口返回ResourceUnavailable.ImageDownloadError
         :type FileUrl: str
         :param Interval: 截帧频率，GIF图/长图检测专用，默认值为0，表示只会检测GIF图/长图的第一帧
         :type Interval: int

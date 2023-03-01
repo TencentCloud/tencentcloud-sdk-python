@@ -2281,7 +2281,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeEdgeLogSwitches(self, request):
-        """获取事件、审计和日志的状态接口
+        """获取事件、审计和日志的状态
 
         :param request: Request instance for DescribeEdgeLogSwitches.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEdgeLogSwitchesRequest`

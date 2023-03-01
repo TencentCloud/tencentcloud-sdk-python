@@ -3042,6 +3042,12 @@ class GetUserResponse(AbstractModel):
         :type CountryCode: str
         :param Email: 邮箱
         :type Email: str
+        :param RecentlyLoginIP: 最近一次登录ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecentlyLoginIP: str
+        :param RecentlyLoginTime: 最近一次登录时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecentlyLoginTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3053,6 +3059,8 @@ class GetUserResponse(AbstractModel):
         self.PhoneNum = None
         self.CountryCode = None
         self.Email = None
+        self.RecentlyLoginIP = None
+        self.RecentlyLoginTime = None
         self.RequestId = None
 
 
@@ -3065,6 +3073,8 @@ class GetUserResponse(AbstractModel):
         self.PhoneNum = params.get("PhoneNum")
         self.CountryCode = params.get("CountryCode")
         self.Email = params.get("Email")
+        self.RecentlyLoginIP = params.get("RecentlyLoginIP")
+        self.RecentlyLoginTime = params.get("RecentlyLoginTime")
         self.RequestId = params.get("RequestId")
 
 
