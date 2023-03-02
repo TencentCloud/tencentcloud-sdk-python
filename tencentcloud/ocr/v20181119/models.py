@@ -4078,12 +4078,15 @@ FailedOperation.UnKnowError：表示识别失败；
         :type Angle: float
         :param SingleInvoiceInfos: 识别到的内容。
         :type SingleInvoiceInfos: list of SingleInvoiceInfo
+        :param Page: 发票处于识别图片或PDF文件中的页教，默认从1开始。
+        :type Page: int
         """
         self.Code = None
         self.Type = None
         self.Rect = None
         self.Angle = None
         self.SingleInvoiceInfos = None
+        self.Page = None
 
 
     def _deserialize(self, params):
@@ -4099,6 +4102,7 @@ FailedOperation.UnKnowError：表示识别失败；
                 obj = SingleInvoiceInfo()
                 obj._deserialize(item)
                 self.SingleInvoiceInfos.append(obj)
+        self.Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4141,7 +4145,7 @@ class MixedInvoiceOCRRequest(AbstractModel):
 15：非税发票
 16：全电发票
 ----------------------
--1：其他发票,（仅返回，本参数不支持传入-1，请在ReturnOther中控制是否返回）
+-1：其他发票,（只传入此类型时，图片均采用其他票类型进行识别）
         :type Types: list of int
         :param ReturnOther: 是否识别其他类型发票，默认为Yes
 Yes：识别其他类型发票
@@ -4151,6 +4155,8 @@ No：不识别其他类型发票
         :type IsPdf: bool
         :param PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :type PdfPageNumber: int
+        :param ReturnMultiplePage: 是否开启PDF多页识别，默认值为false，开启后可同时支持多页PDF的识别返回，仅支持返回文件前30页。开启后IsPDF和PdfPageNumber入参不进行控制。
+        :type ReturnMultiplePage: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
@@ -4158,6 +4164,7 @@ No：不识别其他类型发票
         self.ReturnOther = None
         self.IsPdf = None
         self.PdfPageNumber = None
+        self.ReturnMultiplePage = None
 
 
     def _deserialize(self, params):
@@ -4167,6 +4174,7 @@ No：不识别其他类型发票
         self.ReturnOther = params.get("ReturnOther")
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
+        self.ReturnMultiplePage = params.get("ReturnMultiplePage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

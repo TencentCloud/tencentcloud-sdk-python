@@ -902,10 +902,13 @@ class CreateFlowApproversRequest(AbstractModel):
         :type FlowId: str
         :param Approvers: 补充签署人信息
         :type Approvers: list of FillApproverInfo
+        :param Initiator: 企微消息中的发起人
+        :type Initiator: str
         """
         self.Operator = None
         self.FlowId = None
         self.Approvers = None
+        self.Initiator = None
 
 
     def _deserialize(self, params):
@@ -919,6 +922,7 @@ class CreateFlowApproversRequest(AbstractModel):
                 obj = FillApproverInfo()
                 obj._deserialize(item)
                 self.Approvers.append(obj)
+        self.Initiator = params.get("Initiator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

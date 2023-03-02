@@ -53,7 +53,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCancelFlow(self, request):
-        """渠道版撤销签署流程接口，可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
+        """撤销签署流程接口，可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
         注意:
         能撤回合同的只能是合同的发起人或者发起企业的超管、法人
 
@@ -129,7 +129,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateBoundFlows(self, request):
-        """此接口（ChannelCreateBoundFlows）用于渠道子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取。
+        """此接口（ChannelCreateBoundFlows）用于子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取。
 
         :param request: Request instance for ChannelCreateBoundFlows.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateBoundFlowsRequest`
@@ -152,7 +152,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateConvertTaskApi(self, request):
-        """渠道创建文件转换任务
+        """创建文件转换任务
 
         :param request: Request instance for ChannelCreateConvertTaskApi.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateConvertTaskApiRequest`
@@ -175,7 +175,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowByFiles(self, request):
-        """接口（ChannelCreateFlowByFiles）用于渠道版通过文件创建签署流程。此接口静默签能力不可直接使用，需要运营申请
+        """接口（ChannelCreateFlowByFiles）用于通过文件创建签署流程。此接口静默签能力不可直接使用，需要运营申请
 
         :param request: Request instance for ChannelCreateFlowByFiles.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowByFilesRequest`
@@ -272,7 +272,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowSignUrl(self, request):
-        """渠道版创建签署链接，需要联系运营人员开白后才可使用
+        """创建签署链接，需要联系运营人员开白后才可使用
 
         :param request: Request instance for ChannelCreateFlowSignUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowSignUrlRequest`
@@ -319,7 +319,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateReleaseFlow(self, request):
-        """渠道版发起解除协议，主要应用场景为：基于一份已经签署的合同，进行解除操作。
+        """发起解除协议，主要应用场景为：基于一份已经签署的合同，进行解除操作。
         合同发起人必须在电子签已经进行实名。
 
         :param request: Request instance for ChannelCreateReleaseFlow.
@@ -343,7 +343,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateSealPolicy(self, request):
-        """将指定印章授权给企业下的某些员工
+        """将指定印章授权给子客企业下的某些员工
 
         :param request: Request instance for ChannelCreateSealPolicy.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateSealPolicyRequest`
@@ -412,7 +412,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeOrganizationSeals(self, request):
-        """查询渠道子客企业电子印章，需要操作者具有管理印章权限
+        """查询子客企业电子印章，需要操作者具有管理印章权限
         客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数。
 
         :param request: Request instance for ChannelDescribeOrganizationSeals.
@@ -436,7 +436,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelGetTaskResultApi(self, request):
-        """渠道版查询转换任务状态
+        """查询转换任务状态
 
         :param request: Request instance for ChannelGetTaskResultApi.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelGetTaskResultApiRequest`
@@ -459,7 +459,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelUpdateSealStatus(self, request):
-        """本接口（ChannelUpdateSealStatus）由于渠道版更新印章状态
+        """本接口（ChannelUpdateSealStatus）用于渠道为子客企业更新印章状态
 
         :param request: Request instance for ChannelUpdateSealStatus.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelUpdateSealStatusRequest`

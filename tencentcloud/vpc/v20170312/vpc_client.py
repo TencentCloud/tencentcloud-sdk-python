@@ -874,7 +874,7 @@ class VpcClient(AbstractClient):
         * 支持基础网络、VPC，返回VpcId为0
         * 只支持VPC，返回默认VPC信息
 
-        您也可以通过 Force 参数，强制返回默认VPC
+        您也可以通过 Force 参数，强制返回默认VPC。
 
         :param request: Request instance for CreateDefaultVpc.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateDefaultVpcRequest`
@@ -1129,7 +1129,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateNetDetect(self, request):
-        """本接口(CreateNetDetect)用于创建网络探测。
+        """本接口（CreateNetDetect）用于创建网络探测。
 
         :param request: Request instance for CreateNetDetect.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetDetectRequest`
@@ -2117,7 +2117,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteNetDetect(self, request):
-        """本接口(DeleteNetDetect)用于删除网络探测实例。
+        """本接口（DeleteNetDetect）用于删除网络探测实例。
 
         :param request: Request instance for DeleteNetDetect.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetDetectRequest`
@@ -2213,7 +2213,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteRouteTable(self, request):
-        """删除路由表
+        """本接口（DeleteRouteTable）用于删除路由表。
 
         :param request: Request instance for DeleteRouteTable.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteRouteTableRequest`

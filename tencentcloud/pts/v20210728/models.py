@@ -3599,6 +3599,12 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         :param Message: 任务状态描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
+        :param ProjectName: test-project
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param ScenarioName: test-scenario
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScenarioName: str
         """
         self.JobId = None
         self.ScenarioId = None
@@ -3641,6 +3647,8 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         self.NetworkReceiveRate = None
         self.NetworkSendRate = None
         self.Message = None
+        self.ProjectName = None
+        self.ScenarioName = None
 
 
     def _deserialize(self, params):
@@ -3726,6 +3734,8 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         self.NetworkReceiveRate = params.get("NetworkReceiveRate")
         self.NetworkSendRate = params.get("NetworkSendRate")
         self.Message = params.get("Message")
+        self.ProjectName = params.get("ProjectName")
+        self.ScenarioName = params.get("ScenarioName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4768,6 +4778,9 @@ class Scenario(AbstractModel):
         :param Owner: 创建人员
 注意：此字段可能返回 null，表示取不到有效值。
         :type Owner: str
+        :param ProjectName: 场景所在的项目的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
         """
         self.ScenarioId = None
         self.Name = None
@@ -4795,6 +4808,7 @@ class Scenario(AbstractModel):
         self.DomainNameConfig = None
         self.NotificationHooks = None
         self.Owner = None
+        self.ProjectName = None
 
 
     def _deserialize(self, params):
@@ -4860,6 +4874,7 @@ class Scenario(AbstractModel):
                 obj._deserialize(item)
                 self.NotificationHooks.append(obj)
         self.Owner = params.get("Owner")
+        self.ProjectName = params.get("ProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -118,6 +118,29 @@ class CloudstudioClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateWorkspaceTemporaryToken(self, request):
+        """为工作空间创建临时访问凭证，重复调用会创建新的 Token，旧的 Token 将会自动失效
+
+        :param request: Request instance for CreateWorkspaceTemporaryToken.
+        :type request: :class:`tencentcloud.cloudstudio.v20210524.models.CreateWorkspaceTemporaryTokenRequest`
+        :rtype: :class:`tencentcloud.cloudstudio.v20210524.models.CreateWorkspaceTemporaryTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWorkspaceTemporaryToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWorkspaceTemporaryTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCustomizeTemplatesById(self, request):
         """删除自定义模板
 

@@ -3239,7 +3239,7 @@ class CreateDefaultVpcResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Vpc: 默认VPC和子网ID
+        :param Vpc: 默认VPC和子网ID。
         :type Vpc: :class:`tencentcloud.vpc.v20170312.models.DefaultVpcSubnet`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3917,7 +3917,7 @@ class CreateNetDetectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: `VPC`实例`ID`。形如：`vpc-12345678`
+        :param VpcId: `VPC`实例`ID`。形如：`vpc-12345678`。
         :type VpcId: str
         :param SubnetId: 子网实例ID。形如：subnet-12345678。
         :type SubnetId: str
@@ -3932,6 +3932,7 @@ PEERCONNECTION：对等连接；
 NAT：NAT网关；
 NORMAL_CVM：普通云服务器；
 CCN：云联网网关；
+NONEXTHOP：无下一跳；
         :type NextHopType: str
         :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
 下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
@@ -3939,7 +3940,8 @@ CCN：云联网网关；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
+下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
         :type NextHopDestination: str
         :param NetDetectDescription: 网络探测描述。
         :type NetDetectDescription: str
@@ -4376,7 +4378,7 @@ class CreateSecurityGroupRequest(AbstractModel):
         :type GroupDescription: str
         :param ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
         :type ProjectId: str
-        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
         """
         self.GroupName = None
@@ -5824,18 +5826,30 @@ class DefaultVpcSubnet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 默认VpcId
+        :param VpcId: 默认VpcId。
         :type VpcId: str
-        :param SubnetId: 默认SubnetId
+        :param SubnetId: 默认SubnetId。
         :type SubnetId: str
+        :param VpcName: 默认Vpc名字。
+        :type VpcName: str
+        :param SubnetName: 默认Subnet名字。
+        :type SubnetName: str
+        :param CidrBlock: 默认子网网段。
+        :type CidrBlock: str
         """
         self.VpcId = None
         self.SubnetId = None
+        self.VpcName = None
+        self.SubnetName = None
+        self.CidrBlock = None
 
 
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.VpcName = params.get("VpcName")
+        self.SubnetName = params.get("SubnetName")
+        self.CidrBlock = params.get("CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6541,7 +6555,7 @@ class DeleteNetDetectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetDetectId: 网络探测实例`ID`。形如：`netd-12345678`
+        :param NetDetectId: 网络探测实例`ID`。形如：`netd-12345678`。
         :type NetDetectId: str
         """
         self.NetDetectId = None
@@ -10084,10 +10098,10 @@ class DescribeNetDetectStatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetDetectIds: 网络探测实例`ID`数组。形如：[`netd-12345678`]
+        :param NetDetectIds: 网络探测实例`ID`数组。形如：[`netd-12345678`]。
         :type NetDetectIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定NetDetectIds和Filters。
-<li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678</li>
+<li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: int
@@ -10158,7 +10172,7 @@ class DescribeNetDetectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NetDetectIds: 网络探测实例`ID`数组。形如：[`netd-12345678`]
+        :param NetDetectIds: 网络探测实例`ID`数组。形如：[`netd-12345678`]。
         :type NetDetectIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定NetDetectIds和Filters。
 <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678</li>
@@ -17272,6 +17286,7 @@ PEERCONNECTION：对等连接；
 NAT：NAT网关；
 NORMAL_CVM：普通云服务器；
 CCN：云联网网关；
+NONEXTHOP：无下一跳；
         :type NextHopType: str
         :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
 下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
@@ -17279,7 +17294,8 @@ CCN：云联网网关；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-下一跳类型为CCN，取值云联网ID，形如：ccn-44csczop；
+下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
         :type NextHopDestination: str
         :param NetDetectDescription: 网络探测描述。
         :type NetDetectDescription: str
@@ -18788,6 +18804,7 @@ PEERCONNECTION：对等连接；
 NAT：NAT网关；
 NORMAL_CVM：普通云服务器；
 CCN：云联网网关；
+NONEXTHOP：无下一跳；
         :type NextHopType: str
         :param NextHopDestination: 下一跳目的网关，取值与“下一跳类型”相关：
 下一跳类型为VPN，取值VPN网关ID，形如：vpngw-12345678；
@@ -18795,7 +18812,8 @@ CCN：云联网网关；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-下一跳类型为CCN，取值云联网网关，形如：ccn-12345678；
+下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
         :type NextHopDestination: str
         :param NextHopName: 下一跳网关名称。
 注意：此字段可能返回 null，表示取不到有效值。

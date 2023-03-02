@@ -77,6 +77,9 @@ INVALIDPARAMETERVALUE_IMAGEISNOTEXT = 'InvalidParameterValue.ImageIsNoText'
 # 图片URL无效。
 INVALIDPARAMETERVALUE_IMAGEURLINVALID = 'InvalidParameterValue.ImageURLInvalid'
 
+# 文本大小超过限制。
+LIMITEXCEEDED_TEXTSIZELIMITEXCEEDED = 'LimitExceeded.TextSizeLimitExceeded'
+
 # 不支持的报告类型。
 OPERATIONDENIED_UNSUPPORTTHISTYPE = 'OperationDenied.UnSupportThisType'
 

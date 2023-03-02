@@ -293,6 +293,55 @@ class CreateWorkspaceByVersionControlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateWorkspaceTemporaryTokenRequest(AbstractModel):
+    """CreateWorkspaceTemporaryToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkspaceTokenDTO: 创建工作空间凭证 DTO
+        :type WorkspaceTokenDTO: :class:`tencentcloud.cloudstudio.v20210524.models.WorkspaceTokenDTO`
+        """
+        self.WorkspaceTokenDTO = None
+
+
+    def _deserialize(self, params):
+        if params.get("WorkspaceTokenDTO") is not None:
+            self.WorkspaceTokenDTO = WorkspaceTokenDTO()
+            self.WorkspaceTokenDTO._deserialize(params.get("WorkspaceTokenDTO"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWorkspaceTemporaryTokenResponse(AbstractModel):
+    """CreateWorkspaceTemporaryToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 工作空间临时访问 token 信息
+        :type Data: :class:`tencentcloud.cloudstudio.v20210524.models.WorkspaceTokenInfoV0`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = WorkspaceTokenInfoV0()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class CustomizeTemplatesPresetsInfo(AbstractModel):
     """模板的预置参数
 
@@ -1919,6 +1968,65 @@ class WorkspaceTemplateInfo(AbstractModel):
         self.Author = params.get("Author")
         self.Me = params.get("Me")
         self.AuthorAvatar = params.get("AuthorAvatar")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkspaceTokenDTO(AbstractModel):
+    """创建临时工作空间凭证 DTO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceKey: 工作空间 SpaceKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpaceKey: str
+        :param TokenExpiredLimitSec: token过期时间，单位是秒，默认 3600
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenExpiredLimitSec: int
+        """
+        self.SpaceKey = None
+        self.TokenExpiredLimitSec = None
+
+
+    def _deserialize(self, params):
+        self.SpaceKey = params.get("SpaceKey")
+        self.TokenExpiredLimitSec = params.get("TokenExpiredLimitSec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkspaceTokenInfoV0(AbstractModel):
+    """获取工作空间临时访问 token 出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Token: 访问工作空间临时凭证
+        :type Token: str
+        :param ExpiredTime: token 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: str
+        """
+        self.Token = None
+        self.ExpiredTime = None
+
+
+    def _deserialize(self, params):
+        self.Token = params.get("Token")
+        self.ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

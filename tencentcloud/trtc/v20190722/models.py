@@ -2704,7 +2704,7 @@ class MixLayout(AbstractModel):
         :type MediaId: int
         :param ImageLayer: 该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。
         :type ImageLayer: int
-        :param SubBackgroundImage: 下载的url地址， 只支持jpg， png，大小限制不超过5M，宽高比不一致的处理方案同 RenderMode。
+        :param SubBackgroundImage: 图片的url地址， 只支持jpg， png，大小限制不超过5M，宽高比不一致的处理方案同 RenderMode。
         :type SubBackgroundImage: str
         """
         self.Top = None
@@ -2771,7 +2771,7 @@ class MixLayoutParams(AbstractModel):
 1：辅流（屏幕分享）；
 这个位置的MediaId代表的是对应MaxResolutionUserId的主辅路，MixLayoutList内代表的是自定义用户的主辅路。
         :type MediaId: int
-        :param BackgroundImageUrl: 下载的url地址， 只支持jpg， png，大小限制不超过5M。
+        :param BackgroundImageUrl: 图片的url地址， 只支持jpg， png，大小限制不超过5M，url不可包含中文。
         :type BackgroundImageUrl: str
         :param PlaceHolderMode: 设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
         :type PlaceHolderMode: int
