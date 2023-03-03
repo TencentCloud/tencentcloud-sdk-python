@@ -2406,14 +2406,24 @@ class McuLayoutVolume(AbstractModel):
         :type AppData: str
         :param PayloadType: SEI消息的payload_type，默认值100，取值范围100-254（244除外，244为我们内部自定义的时间戳SEI）
         :type PayloadType: int
+        :param Interval: SEI发送间隔，单位毫秒，默认值为1000。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interval: int
+        :param FollowIdr: 取值范围[0,1]，填1：发送关键帧时会确保带SEI；填0：发送关键帧时不确保带SEI。默认值为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowIdr: int
         """
         self.AppData = None
         self.PayloadType = None
+        self.Interval = None
+        self.FollowIdr = None
 
 
     def _deserialize(self, params):
         self.AppData = params.get("AppData")
         self.PayloadType = params.get("PayloadType")
+        self.Interval = params.get("Interval")
+        self.FollowIdr = params.get("FollowIdr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2436,16 +2446,26 @@ class McuPassThrough(AbstractModel):
         :type PayloadType: int
         :param PayloadUuid: PayloadType为5，PayloadUuid必须填写。PayloadType不是5时，不需要填写，填写会被后台忽略。该值必须是32长度的十六进制。
         :type PayloadUuid: str
+        :param Interval: SEI发送间隔，单位毫秒，默认值为1000。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interval: int
+        :param FollowIdr: 取值范围[0,1]，填1：发送关键帧时会确保带SEI；填0：发送关键帧时不确保带SEI。默认值为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowIdr: int
         """
         self.PayloadContent = None
         self.PayloadType = None
         self.PayloadUuid = None
+        self.Interval = None
+        self.FollowIdr = None
 
 
     def _deserialize(self, params):
         self.PayloadContent = params.get("PayloadContent")
         self.PayloadType = params.get("PayloadType")
         self.PayloadUuid = params.get("PayloadUuid")
+        self.Interval = params.get("Interval")
+        self.FollowIdr = params.get("FollowIdr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

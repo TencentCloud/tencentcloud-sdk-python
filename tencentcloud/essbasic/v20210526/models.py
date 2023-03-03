@@ -2017,15 +2017,15 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :param Agent: 应用信息
 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param ProxyOrganizationName: 渠道子客企业名称，最大长度64个字符
+        :param ProxyOrganizationName: 子客企业名称，最大长度64个字符
         :type ProxyOrganizationName: str
-        :param ProxyOperatorName: 渠道子客企业经办人的姓名，最大长度50个字符
+        :param ProxyOperatorName: 子客企业经办人的姓名，最大长度50个字符
         :type ProxyOperatorName: str
         :param Module: PC控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"。 EndPoint为"CHANNEL"/"APP"只支持"SEAL"-印章管理
         :type Module: str
         :param ModuleId: 控制台指定模块Id
         :type ModuleId: str
-        :param UniformSocialCreditCode: 渠道子客企业统一社会信用代码，最大长度200个字符
+        :param UniformSocialCreditCode: 子客企业统一社会信用代码，最大长度200个字符
         :type UniformSocialCreditCode: str
         :param MenuStatus: 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
         :type MenuStatus: str
@@ -2083,14 +2083,14 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConsoleUrl: 子客Web控制台url注意事项：
+        :param ConsoleUrl: 子客企业Web控制台url注意事项：
 1. 所有类型的链接在企业未认证/员工未认证完成时，只要在有效期内（一年）都可以访问
 2. 若企业认证完成且员工认证完成后，重新获取pc端的链接5分钟之内有效，且只能访问一次
 3. 若企业认证完成且员工认证完成后，重新获取H5/APP的链接只要在有效期内（一年）都可以访问
 4. 此链接仅单次有效，使用后需要再次创建新的链接（部分聊天软件，如企业微信默认会对链接进行解析，此时需要使用类似“代码片段”的方式或者放到txt文件里发送链接）
 5. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
         :type ConsoleUrl: str
-        :param IsActivated: 渠道子客企业是否已开通腾讯电子签
+        :param IsActivated: 子客企业是否已开通腾讯电子签
         :type IsActivated: bool
         :param ProxyOperatorIsVerified: 当前经办人是否已认证（false:未认证 true:已认证）
         :type ProxyOperatorIsVerified: bool

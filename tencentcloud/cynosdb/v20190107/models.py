@@ -2108,6 +2108,12 @@ pause
         :param ResourceTags: 资源标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
+        :param MasterZone: 主可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterZone: str
+        :param SlaveZones: 备可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZones: list of str
         """
         self.Uin = None
         self.AppId = None
@@ -2156,6 +2162,8 @@ pause
         self.Tasks = None
         self.IsFreeze = None
         self.ResourceTags = None
+        self.MasterZone = None
+        self.SlaveZones = None
 
 
     def _deserialize(self, params):
@@ -2216,6 +2224,8 @@ pause
                 obj = Tag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZones = params.get("SlaveZones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

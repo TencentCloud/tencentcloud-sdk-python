@@ -237,7 +237,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         r"""
         :param Definition: 转自适应码流规格。
         :type Definition: int
-        :param Package: 打包格式，只能为 HLS。
+        :param Package: 打包格式，取值范围：
+<li>HLS；</li>
+<li>DASH。</li>
         :type Package: str
         :param DrmType: 加密类型。
         :type DrmType: str
@@ -252,6 +254,8 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 <li>Trace 表示经过溯源水印处理；</li>
 <li>None 表示没有经过数字水印处理。</li>
         :type DigitalWatermarkType: str
+        :param SubStreamSet: 子流信息列表。
+        :type SubStreamSet: list of MediaSubStreamInfoItem
         """
         self.Definition = None
         self.Package = None
@@ -259,6 +263,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self.Url = None
         self.Size = None
         self.DigitalWatermarkType = None
+        self.SubStreamSet = None
 
 
     def _deserialize(self, params):
@@ -268,6 +273,12 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self.Url = params.get("Url")
         self.Size = params.get("Size")
         self.DigitalWatermarkType = params.get("DigitalWatermarkType")
+        if params.get("SubStreamSet") is not None:
+            self.SubStreamSet = []
+            for item in params.get("SubStreamSet"):
+                obj = MediaSubStreamInfoItem()
+                obj._deserialize(item)
+                self.SubStreamSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11726,7 +11737,8 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>RemoveWatermarkTask：智能去除水印任务；</li>
 <li>DescribeFileAttributesTask：获取文件属性任务；</li>
 <li>RebuildMedia：音画质重生任务；</li>
-<li>ReviewAudioVideo：音视频审核任务。</li>
+<li>ReviewAudioVideo：音视频审核任务；</li>
+<li>ExtractTraceWatermark：提取溯源水印任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -15261,7 +15273,7 @@ class MediaBasicInfo(AbstractModel):
         :type Category: str
         :param Status: 文件状态：Normal：正常，Forbidden：封禁。
 
-*注意：此字段暂不支持。
+*注意：此字段暂不支持。	
         :type Status: str
         :param StorageClass: 媒体文件的存储类别：
 <li> STANDARD：标准存储。</li>
@@ -16878,6 +16890,45 @@ class MediaSourceData(AbstractModel):
         if params.get("TrtcRecordInfo") is not None:
             self.TrtcRecordInfo = TrtcRecordInfo()
             self.TrtcRecordInfo._deserialize(params.get("TrtcRecordInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaSubStreamInfoItem(AbstractModel):
+    """转自适应码流子流信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 子流类型，取值范围：
+<li>audio：纯音频；</li>
+<li>video：视频（可能包含音频流）。</li>
+        :type Type: str
+        :param Width: 当子流为视频流时，视频画面宽度，单位：px。
+        :type Width: int
+        :param Height: 当子流为视频流时，视频画面高度，单位：px。
+        :type Height: int
+        :param Size: 子流媒体文件大小，单位：Byte。
+<font color=red>注意：</font>在 2023-02-09T16:00:00Z 前处理生成的自适应码流文件此字段为0。
+        :type Size: int
+        """
+        self.Type = None
+        self.Width = None
+        self.Height = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

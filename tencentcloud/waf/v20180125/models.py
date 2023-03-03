@@ -1475,6 +1475,49 @@ class DescribeAccessIndexResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAttackOverviewRequest(AbstractModel):
+    """DescribeAttackOverview请求参数结构体
+
+    """
+
+
+class DescribeAttackOverviewResponse(AbstractModel):
+    """DescribeAttackOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccessCount: 访问请求总数
+        :type AccessCount: int
+        :param AttackCount: Web攻击总数
+        :type AttackCount: int
+        :param ACLCount: 访问控制总数
+        :type ACLCount: int
+        :param CCCount: CC攻击总数
+        :type CCCount: int
+        :param BotCount: Bot攻击总数
+        :type BotCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccessCount = None
+        self.AttackCount = None
+        self.ACLCount = None
+        self.CCCount = None
+        self.BotCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AccessCount = params.get("AccessCount")
+        self.AttackCount = params.get("AttackCount")
+        self.ACLCount = params.get("ACLCount")
+        self.CCCount = params.get("CCCount")
+        self.BotCount = params.get("BotCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAutoDenyIPRequest(AbstractModel):
     """DescribeAutoDenyIP请求参数结构体
 

@@ -1904,6 +1904,9 @@ class GetServiceStatusResponse(AbstractModel):
         :param ExclusiveHSMEnabled: 是否开通 KMS 独享版
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusiveHSMEnabled: bool
+        :param SubscriptionInfo: KMS 订阅信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionInfo: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1915,6 +1918,7 @@ class GetServiceStatusResponse(AbstractModel):
         self.ProResourceId = None
         self.ExclusiveVSMEnabled = None
         self.ExclusiveHSMEnabled = None
+        self.SubscriptionInfo = None
         self.RequestId = None
 
 
@@ -1927,6 +1931,7 @@ class GetServiceStatusResponse(AbstractModel):
         self.ProResourceId = params.get("ProResourceId")
         self.ExclusiveVSMEnabled = params.get("ExclusiveVSMEnabled")
         self.ExclusiveHSMEnabled = params.get("ExclusiveHSMEnabled")
+        self.SubscriptionInfo = params.get("SubscriptionInfo")
         self.RequestId = params.get("RequestId")
 
 

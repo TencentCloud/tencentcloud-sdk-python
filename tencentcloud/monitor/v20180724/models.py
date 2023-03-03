@@ -51,7 +51,7 @@ class AlarmEvent(AbstractModel):
 
 
 class AlarmHierarchicalNotice(AbstractModel):
-    """通知模版ID及通知等级列表，["Remind","Serious"]表示该通知模板仅接收提醒和严重类别的告警
+    """通知模板ID及通知等级列表，["Remind","Serious"]表示该通知模板仅接收提醒和严重类别的告警
 
     """
 
@@ -326,7 +326,7 @@ class AlarmNotice(AbstractModel):
         :param CLSNotices: 推送cls渠道
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSNotices: list of CLSNotice
-        :param Tags: 通知模版绑定的标签
+        :param Tags: 通知模板绑定的标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
@@ -619,15 +619,19 @@ class AlarmPolicyCondition(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsUnionRule: 指标触发与或条件，0=或，1=与
+        :param IsUnionRule: 告警触发条件的判断方式. 0: 任意; 1: 全部; 2: 复合. 当取值为2的时候为复合告警，与参数 ComplexExpression 配合使用.
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsUnionRule: int
         :param Rules: 告警触发条件列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of AlarmPolicyRule
+        :param ComplexExpression: 复合告警触发条件的判断表达式，当 IsUnionRule 取值为2的时候有效. 其作用是描述多个触发条件需要满足表达式求值为True时才算是满足告警条件.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplexExpression: str
         """
         self.IsUnionRule = None
         self.Rules = None
+        self.ComplexExpression = None
 
 
     def _deserialize(self, params):
@@ -638,6 +642,7 @@ class AlarmPolicyCondition(AbstractModel):
                 obj = AlarmPolicyRule()
                 obj._deserialize(item)
                 self.Rules.append(obj)
+        self.ComplexExpression = params.get("ComplexExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1418,7 +1423,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
         :type URLNotices: list of URLNotice
         :param CLSNotices: 推送CLS日志服务的操作 最多1个
         :type CLSNotices: list of CLSNotice
-        :param Tags: 模版绑定的标签
+        :param Tags: 模板绑定的标签
         :type Tags: list of Tag
         """
         self.Module = None
@@ -1525,7 +1530,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
         :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
         :type GroupBy: list of str
-        :param Tags: 模版绑定的标签
+        :param Tags: 模板绑定的标签
         :type Tags: list of Tag
         :param LogAlarmReqInfo: 日志告警信息
         :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
@@ -2001,7 +2006,7 @@ class CreatePolicyGroupCondition(AbstractModel):
         :type CalcPeriod: int
         :param ContinuePeriod: 持续几个检测周期触发规则会告警
         :type ContinuePeriod: int
-        :param RuleId: 如果通过模版创建，需要传入模版中该指标的对应RuleId
+        :param RuleId: 如果通过模板创建，需要传入模板中该指标的对应RuleId
         :type RuleId: int
         """
         self.MetricId = None
@@ -2045,7 +2050,7 @@ class CreatePolicyGroupEventCondition(AbstractModel):
         :type AlarmNotifyType: int
         :param AlarmNotifyPeriod: 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
         :type AlarmNotifyPeriod: int
-        :param RuleId: 如果通过模版创建，需要传入模版中该指标的对应RuleId
+        :param RuleId: 如果通过模板创建，需要传入模板中该指标的对应RuleId
         :type RuleId: int
         """
         self.EventId = None
@@ -2079,11 +2084,11 @@ class CreatePolicyGroupRequest(AbstractModel):
         :type GroupName: str
         :param Module: 固定值，为"monitor"
         :type Module: str
-        :param ViewName: 策略组所属视图的名称，若通过模版创建，可不传入
+        :param ViewName: 策略组所属视图的名称，若通过模板创建，可不传入
         :type ViewName: str
         :param ProjectId: 策略组所属项目Id，会进行鉴权操作
         :type ProjectId: int
-        :param ConditionTempGroupId: 模版策略组Id, 通过模版创建时才需要传
+        :param ConditionTempGroupId: 模板策略组Id, 通过模板创建时才需要传
         :type ConditionTempGroupId: int
         :param IsShielded: 是否屏蔽策略组，0表示不屏蔽，1表示屏蔽。不填默认为0
         :type IsShielded: int
@@ -2095,7 +2100,7 @@ class CreatePolicyGroupRequest(AbstractModel):
         :type Conditions: list of CreatePolicyGroupCondition
         :param EventConditions: 策略组中的事件告警规则
         :type EventConditions: list of CreatePolicyGroupEventCondition
-        :param BackEndCall: 是否为后端调用。当且仅当值为1时，后台拉取策略模版中的规则填充入Conditions以及EventConditions字段
+        :param BackEndCall: 是否为后端调用。当且仅当值为1时，后台拉取策略模板中的规则填充入Conditions以及EventConditions字段
         :type BackEndCall: int
         :param IsUnionRule: 指标告警规则的且或关系，0表示或规则(满足任意规则就告警)，1表示且规则(满足所有规则才告警)
         :type IsUnionRule: int
@@ -4302,7 +4307,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :type GroupIds: list of int
         :param NoticeIds: 根据通知模板 id 过滤，空数组/不传则不过滤
         :type NoticeIds: list of str
-        :param Tags: 模版根据标签过滤
+        :param Tags: 模板根据标签过滤
         :type Tags: list of Tag
         """
         self.Module = None
@@ -6061,6 +6066,9 @@ class DescribePolicyConditionListCondition(AbstractModel):
         :param SupportRegions: 支持该策略类型的地域列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportRegions: list of str
+        :param DeprecatingInfo: 弃用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeprecatingInfo: :class:`tencentcloud.monitor.v20180724.models.DescribePolicyConditionListResponseDeprecatingInfo`
         """
         self.PolicyViewName = None
         self.EventMetrics = None
@@ -6070,6 +6078,7 @@ class DescribePolicyConditionListCondition(AbstractModel):
         self.SortId = None
         self.SupportDefault = None
         self.SupportRegions = None
+        self.DeprecatingInfo = None
 
 
     def _deserialize(self, params):
@@ -6091,6 +6100,9 @@ class DescribePolicyConditionListCondition(AbstractModel):
         self.SortId = params.get("SortId")
         self.SupportDefault = params.get("SupportDefault")
         self.SupportRegions = params.get("SupportRegions")
+        if params.get("DeprecatingInfo") is not None:
+            self.DeprecatingInfo = DescribePolicyConditionListResponseDeprecatingInfo()
+            self.DeprecatingInfo._deserialize(params.get("DeprecatingInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6520,6 +6532,41 @@ class DescribePolicyConditionListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Conditions.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribePolicyConditionListResponseDeprecatingInfo(AbstractModel):
+    """DescribePolicyConditionListResponseDeprecatingInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Hidden: 是否隐藏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hidden: bool
+        :param NewViewNames: 新视图名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewViewNames: list of str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.Hidden = None
+        self.NewViewNames = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Hidden = params.get("Hidden")
+        self.NewViewNames = params.get("NewViewNames")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribePolicyGroupInfoCallback(AbstractModel):
@@ -7504,15 +7551,15 @@ class DescribeProductEventListRequest(AbstractModel):
         r"""
         :param Module: 接口模块名，固定值"monitor"
         :type Module: str
-        :param ProductName: 产品类型过滤，比如"cvm"表示云服务器
+        :param ProductName: 产品类型过滤，例如"cvm"表示云服务器
         :type ProductName: list of str
-        :param EventName: 事件名称过滤，比如"guest_reboot"表示机器重启
+        :param EventName: 事件名称过滤，例如"guest_reboot"表示机器重启
         :type EventName: list of str
-        :param InstanceId: 影响对象，比如"ins-19708ino"
+        :param InstanceId: 影响对象，例如"ins-19708ino"
         :type InstanceId: list of str
-        :param Dimensions: 维度过滤，比如外网IP:10.0.0.1
+        :param Dimensions: 维度过滤，例如外网IP:10.0.0.1
         :type Dimensions: list of DescribeProductEventListDimensions
-        :param RegionList: 产品事件地域过滤参数，比如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)
+        :param RegionList: 产品事件地域过滤参数，例如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)
         :type RegionList: list of str
         :param Type: 事件类型过滤，取值范围["status_change","abnormal"]，分别表示状态变更、异常事件
         :type Type: list of str
@@ -7978,13 +8025,44 @@ class DescribePrometheusConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Config: 全局配置
+        :type Config: str
+        :param ServiceMonitors: ServiceMonitor配置
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: PodMonitor配置
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: 原生Job
+        :type RawJobs: list of PrometheusConfigItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Config = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Config = params.get("Config")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -11896,7 +11974,7 @@ class MonitorTypeNamespace(AbstractModel):
 
 
 class NoticeBindPolicys(AbstractModel):
-    """通知模版与策略绑定关系
+    """通知模板与策略绑定关系
 
     """
 

@@ -553,7 +553,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type SubnetId: str
         :param ProjectId: 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
         :type ProjectId: int
-        :param DbVersionId: 数据库引擎版本，当前可选：8.0.18，10.1.9，5.7.17。如果不传的话，默认为 Percona 5.7.17。
+        :param DbVersionId: 数据库引擎版本，当前可选：8.0，5.7，10.1，10.0。
         :type DbVersionId: str
         :param InstanceName: 实例名称， 可以通过该字段自主的设置实例的名字
         :type InstanceName: str
@@ -839,8 +839,7 @@ class CreateHourDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 统一子网ID，VpcId有值时需填写
         :type SubnetId: str
-        :param DbVersionId: 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。
-如果不填的话，默认为10.1.9，表示Mariadb 10.1.9。
+        :param DbVersionId: 数据库引擎版本，当前可选：8.0，5.7，10.1，10.0。
         :type DbVersionId: str
         :param InstanceName: 自定义实例名称
         :type InstanceName: str

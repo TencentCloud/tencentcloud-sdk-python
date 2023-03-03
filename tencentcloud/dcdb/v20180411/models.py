@@ -617,11 +617,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 虚拟私有网络子网 ID，VpcId不为空时必填
         :type SubnetId: str
-        :param DbVersionId: 数据库引擎版本，当前可选：8.0.18，10.1.9，5.7.17。
-8.0.18 - MySQL 8.0.18；
-10.1.9 - Mariadb 10.1.9；
-5.7.17 - Percona 5.7.17。
-如果不填的话，默认为5.7.17，表示Percona 5.7.17。
+        :param DbVersionId: 数据库引擎版本，当前可选：8.0，5.7，10.1，10.0。
         :type DbVersionId: str
         :param AutoVoucher: 是否自动使用代金券进行支付，默认不使用。
         :type AutoVoucher: bool
@@ -768,11 +764,7 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         :param ShardCpu: 分片cpu大小，单位：核，可以通过 DescribeShardSpec
  查询实例规格获得。
         :type ShardCpu: int
-        :param DbVersionId: 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。
-10.0.10 - Mariadb 10.0.10；
-10.1.9 - Mariadb 10.1.9；
-5.7.17 - Percona 5.7.17。
-如果不填的话，默认为10.1.9，表示Mariadb 10.1.9。
+        :param DbVersionId: 数据库引擎版本，当前可选：8.0，5.7，10.1，10.0。
         :type DbVersionId: str
         :param Zones: 分片节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
         :type Zones: list of str

@@ -1429,31 +1429,6 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstanceAll(self, request):
-        """内部替换接口+DescribeInstanceAllForCoding
-
-        查询全部实例信息
-
-        :param request: Request instance for DescribeInstanceAll.
-        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllRequest`
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeInstanceAll", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeInstanceAllResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeInstanceAllNamespaces(self, request):
         """查询所有实例命名空间列表
 

@@ -5853,12 +5853,16 @@ class LoadBalancerTraffic(AbstractModel):
         :type Vip: str
         :param OutBandwidth: 最大出带宽，单位：Mbps
         :type OutBandwidth: float
+        :param Domain: CLB域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
         self.Region = None
         self.Vip = None
         self.OutBandwidth = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -5867,6 +5871,7 @@ class LoadBalancerTraffic(AbstractModel):
         self.Region = params.get("Region")
         self.Vip = params.get("Vip")
         self.OutBandwidth = params.get("OutBandwidth")
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

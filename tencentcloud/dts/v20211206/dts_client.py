@@ -261,7 +261,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeCheckSyncJobResult(self, request):
-        """查询同步校验任务结果
+        """查询同步校验任务结果，检查必要参数和周边配置
 
         :param request: Request instance for DescribeCheckSyncJobResult.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeCheckSyncJobResultRequest`

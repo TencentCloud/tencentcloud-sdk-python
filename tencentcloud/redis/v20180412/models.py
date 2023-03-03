@@ -1316,6 +1316,61 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupDownloadRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadRestriction请求参数结构体
+
+    """
+
+
+class DescribeBackupDownloadRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LimitType: 下载备份文件的网络限制类型：
+
+- NoLimit：不限制，腾讯云内外网均可以下载备份文件。
+-  LimitOnlyIntranet：仅腾讯云自动分配的内网地址可下载备份文件。
+- Customize：指用户自定义的私有网络可下载备份文件。
+        :type LimitType: str
+        :param VpcComparisonSymbol: 该参数仅支持输入 In，表示自定义的**LimitVpc**可以下载备份文件。
+        :type VpcComparisonSymbol: str
+        :param IpComparisonSymbol: 标识自定义的 LimitIp 地址是否可下载备份文件。
+
+- In: 自定义的 IP 地址可以下载。
+- NotIn: 自定义的 IP 不可以下载。
+        :type IpComparisonSymbol: str
+        :param LimitVpc: 自定义的可下载备份文件的 VPC ID。当参数**LimitType**为**Customize **时，显示该参数。
+        :type LimitVpc: list of BackupLimitVpcItem
+        :param LimitIp: 自定义的可下载备份文件的 VPC ID。当参数**LimitType**为**Customize **时，显示该参数。
+        :type LimitIp: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LimitType = None
+        self.VpcComparisonSymbol = None
+        self.IpComparisonSymbol = None
+        self.LimitVpc = None
+        self.LimitIp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LimitType = params.get("LimitType")
+        self.VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self.IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpc") is not None:
+            self.LimitVpc = []
+            for item in params.get("LimitVpc"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self.LimitVpc.append(obj)
+        self.LimitIp = params.get("LimitIp")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupUrlRequest(AbstractModel):
     """DescribeBackupUrl请求参数结构体
 
@@ -5486,6 +5541,76 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         self.WeekDays = params.get("WeekDays")
         self.TimePeriod = params.get("TimePeriod")
         self.BackupStorageDays = params.get("BackupStorageDays")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupDownloadRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LimitType: 下载备份文件的网络限制类型：
+
+- NoLimit：不限制，腾讯云内外网均可以下载备份文件。
+-  LimitOnlyIntranet：仅腾讯云自动分配的内网地址可下载备份文件。
+- Customize：指用户自定义的私有网络可下载备份文件。
+        :type LimitType: str
+        :param VpcComparisonSymbol: 该参数仅支持输入 In，表示自定义的**LimitVpc**可以下载备份文件。
+        :type VpcComparisonSymbol: str
+        :param IpComparisonSymbol: 标识自定义的 LimitIp 地址是否可下载备份文件。
+
+- In: 自定义的 IP 地址可以下载。
+- NotIn: 自定义的 IP 不可以下载。
+        :type IpComparisonSymbol: str
+        :param LimitVpc: 自定义的可下载备份文件的 VPC ID。当参数**LimitType**为**Customize **时，需配置该参数。
+        :type LimitVpc: list of BackupLimitVpcItem
+        :param LimitIp: 自定义的可下载备份文件的 VPC IP 地址。当参数**LimitType**为**Customize **时，需配置该参数。
+
+        :type LimitIp: list of str
+        """
+        self.LimitType = None
+        self.VpcComparisonSymbol = None
+        self.IpComparisonSymbol = None
+        self.LimitVpc = None
+        self.LimitIp = None
+
+
+    def _deserialize(self, params):
+        self.LimitType = params.get("LimitType")
+        self.VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self.IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpc") is not None:
+            self.LimitVpc = []
+            for item in params.get("LimitVpc"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self.LimitVpc.append(obj)
+        self.LimitIp = params.get("LimitIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

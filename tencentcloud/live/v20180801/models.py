@@ -11348,6 +11348,7 @@ UTC 格式时间，例如：2019-01-07T15:00:00Z。
         :param Duration: 推流持续时长，单位：秒。
         :type Duration: int
         :param ClientIp: 主播 IP。
+当客户端为内网推流时，展示为: - 。
         :type ClientIp: str
         :param Resolution: 分辨率。
         :type Resolution: str
