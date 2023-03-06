@@ -888,6 +888,9 @@ class FakeURLData(AbstractModel):
         :param CertificationStatus: 资质证明状态：0-不可用 1-可用
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificationStatus: int
+        :param Snapshot: 网址截图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Snapshot: str
         """
         self.FakeURLId = None
         self.BrandName = None
@@ -909,6 +912,7 @@ class FakeURLData(AbstractModel):
         self.WebExpireTime = None
         self.InsertTime = None
         self.CertificationStatus = None
+        self.Snapshot = None
 
 
     def _deserialize(self, params):
@@ -932,6 +936,7 @@ class FakeURLData(AbstractModel):
         self.WebExpireTime = params.get("WebExpireTime")
         self.InsertTime = params.get("InsertTime")
         self.CertificationStatus = params.get("CertificationStatus")
+        self.Snapshot = params.get("Snapshot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

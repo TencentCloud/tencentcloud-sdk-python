@@ -2118,7 +2118,7 @@ class CreateInstancePreRequest(AbstractModel):
         :param Period: 预付费购买时长，例如 "1m",就是一个月
         :type Period: str
         :param InstanceType: 实例规格说明 专业版实例[所有规格]填写1.
-标准版实例 ([入门型]填写1，[标准型]填写2，[进阶型]填写3，[容量型]填写4，[高阶型1]填写5，[高阶性2]填写6,[高阶型3]填写7,[高阶型4]填写8，[独占型]填写9。
+标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶性2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
         :type InstanceType: int
         :param VpcId: vpcId，不填默认基础网络
         :type VpcId: str

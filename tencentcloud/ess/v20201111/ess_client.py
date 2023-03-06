@@ -451,6 +451,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUserAutoSignEnableUrl(self, request):
+        """企业方可以通过此接口获取个人用户开启自动签的跳转链接
+
+        :param request: Request instance for CreateUserAutoSignEnableUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateUserAutoSignEnableUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateUserAutoSignEnableUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserAutoSignEnableUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserAutoSignEnableUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteIntegrationEmployees(self, request):
         """移除员工
 
@@ -723,6 +746,52 @@ class EssClient(AbstractClient):
             body = self.call("DescribeThirdPartyAuthCode", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeThirdPartyAuthCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserAutoSignStatus(self, request):
+        """企业方可以通过此接口查询个人用户自动签开启状态
+
+        :param request: Request instance for DescribeUserAutoSignStatus.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeUserAutoSignStatusRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeUserAutoSignStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserAutoSignStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserAutoSignStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableUserAutoSign(self, request):
+        """企业方可以通过此接口关闭个人的自动签功能
+
+        :param request: Request instance for DisableUserAutoSign.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DisableUserAutoSignRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DisableUserAutoSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableUserAutoSign", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableUserAutoSignResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

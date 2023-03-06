@@ -269,6 +269,58 @@ class AuthorizedUser(AbstractModel):
         
 
 
+class AutoSignConfig(AbstractModel):
+    """自动签开启、签署相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserInfo: 自动签开通个人用户的三要素
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
+        :param CallbackUrl: 回调链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackUrl: str
+        :param CertInfoCallback: 是否回调证书信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertInfoCallback: bool
+        :param UserDefineSeal: 是否支持用户自定义签名印章
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDefineSeal: bool
+        :param SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SealImgCallback: bool
+        :param VerifyChannels: 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyChannels: list of str
+        """
+        self.UserInfo = None
+        self.CallbackUrl = None
+        self.CertInfoCallback = None
+        self.UserDefineSeal = None
+        self.SealImgCallback = None
+        self.VerifyChannels = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self.UserInfo = UserThreeFactor()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.CertInfoCallback = params.get("CertInfoCallback")
+        self.UserDefineSeal = params.get("UserDefineSeal")
+        self.SealImgCallback = params.get("SealImgCallback")
+        self.VerifyChannels = params.get("VerifyChannels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Caller(AbstractModel):
     """此结构体 (Caller) 用于描述调用方属性。
 
@@ -1929,6 +1981,88 @@ class CreateStaffResult(AbstractModel):
         
 
 
+class CreateUserAutoSignEnableUrlRequest(AbstractModel):
+    """CreateUserAutoSignEnableUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param SceneKey: 自动签场景:
+E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :type SceneKey: str
+        :param AutoSignConfig: 自动签开通，签署相关配置
+        :type AutoSignConfig: :class:`tencentcloud.ess.v20201111.models.AutoSignConfig`
+        :param UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+        :type UrlType: str
+        """
+        self.Operator = None
+        self.SceneKey = None
+        self.AutoSignConfig = None
+        self.UrlType = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.SceneKey = params.get("SceneKey")
+        if params.get("AutoSignConfig") is not None:
+            self.AutoSignConfig = AutoSignConfig()
+            self.AutoSignConfig._deserialize(params.get("AutoSignConfig"))
+        self.UrlType = params.get("UrlType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserAutoSignEnableUrlResponse(AbstractModel):
+    """CreateUserAutoSignEnableUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 跳转短链
+        :type Url: str
+        :param AppId: 小程序AppId
+        :type AppId: str
+        :param AppOriginalId: 小程序 原始 Id
+        :type AppOriginalId: str
+        :param Path: 跳转路径
+        :type Path: str
+        :param QrCode: base64格式跳转二维码
+        :type QrCode: str
+        :param UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+        :type UrlType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.AppId = None
+        self.AppOriginalId = None
+        self.Path = None
+        self.QrCode = None
+        self.UrlType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.AppId = params.get("AppId")
+        self.AppOriginalId = params.get("AppOriginalId")
+        self.Path = params.get("Path")
+        self.QrCode = params.get("QrCode")
+        self.UrlType = params.get("UrlType")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteIntegrationEmployeesRequest(AbstractModel):
     """DeleteIntegrationEmployees请求参数结构体
 
@@ -2867,6 +3001,118 @@ class DescribeThirdPartyAuthCodeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.VerifyStatus = params.get("VerifyStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserAutoSignStatusRequest(AbstractModel):
+    """DescribeUserAutoSignStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param SceneKey: 自动签场景:
+E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :type SceneKey: str
+        :param UserInfo: 查询开启状态的用户信息
+        :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
+        """
+        self.Operator = None
+        self.SceneKey = None
+        self.UserInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.SceneKey = params.get("SceneKey")
+        if params.get("UserInfo") is not None:
+            self.UserInfo = UserThreeFactor()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserAutoSignStatusResponse(AbstractModel):
+    """DescribeUserAutoSignStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsOpen: 是否开通
+        :type IsOpen: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsOpen = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsOpen = params.get("IsOpen")
+        self.RequestId = params.get("RequestId")
+
+
+class DisableUserAutoSignRequest(AbstractModel):
+    """DisableUserAutoSign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param SceneKey: 自动签场景:
+E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :type SceneKey: str
+        :param UserInfo: 关闭自动签的个人的三要素
+        :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
+        """
+        self.Operator = None
+        self.SceneKey = None
+        self.UserInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.SceneKey = params.get("SceneKey")
+        if params.get("UserInfo") is not None:
+            self.UserInfo = UserThreeFactor()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableUserAutoSignResponse(AbstractModel):
+    """DisableUserAutoSign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4667,6 +4913,44 @@ class UserInfo(AbstractModel):
         self.OpenId = params.get("OpenId")
         self.ClientIp = params.get("ClientIp")
         self.ProxyIp = params.get("ProxyIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserThreeFactor(AbstractModel):
+    """用户的三要素：姓名，证件号，证件类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param IdCardType: 证件类型: 
+ID_CARD 身份证
+HONGKONG_AND_MACAO 港澳居民来往内地通行证
+HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdCardType: str
+        :param IdCardNumber: 证件号，如果有 X 请大写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdCardNumber: str
+        """
+        self.Name = None
+        self.IdCardType = None
+        self.IdCardNumber = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.IdCardType = params.get("IdCardType")
+        self.IdCardNumber = params.get("IdCardNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -27,11 +27,11 @@ class Agent(AbstractModel):
         r"""
         :param AppId: 应用的唯一标识。不同的业务系统可以采用不同的AppId，不同AppId下的数据是隔离的。可以由控制台开发者中心-应用集成自主生成。
         :type AppId: str
-        :param ProxyOrganizationOpenId: 渠道平台自定义，对于渠道子客企业的唯一标识。一个渠道子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要渠道平台保存），最大64位字符串
+        :param ProxyOrganizationOpenId: 第三方应用平台自定义，对应第三方平台子客企业的唯一标识。一个第三方平台子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要第三方应用平台保存），最大64位字符串
         :type ProxyOrganizationOpenId: str
-        :param ProxyOperator: 渠道子客企业中的员工/经办人，通过渠道平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
+        :param ProxyOperator: 第三方平台子客企业中的员工/经办人，通过第三方应用平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
         :type ProxyOperator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param ProxyAppId: 在子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
+        :param ProxyAppId: 在第三方平台子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
         :type ProxyAppId: str
         :param ProxyOrganizationId: 内部参数，暂未开放使用
         :type ProxyOrganizationId: str
@@ -602,7 +602,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type FlowDescription: str
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
-        :param CustomerData: 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :param CustomerData: 业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type CustomerData: str
         :param NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
         :type NeedSignReview: bool
@@ -994,7 +994,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         :param Restrictions: 限制二维码用户条件
         :type Restrictions: list of ApproverRestriction
         :param CallbackUrl: 回调地址，最大长度1000个字符
-不传默认使用渠道应用号配置的回调地址
+不传默认使用第三方应用号配置的回调地址
 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
         :type CallbackUrl: str
         :param ApproverRestrictions: 限制二维码用户条件（已弃用）
@@ -1865,8 +1865,8 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         :type OffsetX: float
         :param OffsetY: 指定关键字时纵坐标偏移量，单位pt
         :type OffsetY: float
-        :param ChannelComponentId: 渠道控件ID。
-如果不为空，属于渠道预设控件；
+        :param ChannelComponentId: 平台企业控件ID。
+如果不为空，属于平台企业预设控件；
         :type ChannelComponentId: str
         :param KeywordOrder: 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
@@ -2170,7 +2170,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         r"""
         :param FlowIds: 多个合同ID
         :type FlowIds: list of str
-        :param CustomerData: 渠道的业务信息，限制1024字符
+        :param CustomerData: 业务信息，限制1024字符
         :type CustomerData: list of str
         :param ErrorMessages: 创建消息，对应多个合同ID，
 成功为“”,创建失败则对应失败消息
@@ -2283,21 +2283,21 @@ class CreateSignUrlsRequest(AbstractModel):
         :type Endpoint: str
         :param GenerateType: 签署链接生成类型，默认是 "ALL"；
 "ALL"：全部签署方签署链接，此时不会给自动签署的签署方创建签署链接；
-"CHANNEL"：渠道合作企业；
-"NOT_CHANNEL"：非渠道合作企业；
+"CHANNEL"：第三方平台子客企业企业；
+"NOT_CHANNEL"：非第三方平台子客企业企业；
 "PERSON"：个人；
 "FOLLOWER"：关注方，目前是合同抄送方；
         :type GenerateType: str
-        :param OrganizationName: 非渠道合作企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
+        :param OrganizationName: 非第三方平台子客企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
         :type OrganizationName: str
         :param Name: 参与人姓名，GenerateType为"PERSON"时必填
         :type Name: str
         :param Mobile: 参与人手机号；
 GenerateType为"PERSON"或"FOLLOWER"时必填
         :type Mobile: str
-        :param OrganizationOpenId: 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
+        :param OrganizationOpenId: 第三方平台子客企业的企业OpenId，GenerateType为"CHANNEL"时必填
         :type OrganizationOpenId: str
-        :param OpenId: 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
+        :param OpenId: 第三方平台子客企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
         :type OpenId: str
         :param AutoJumpBack: Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
         :type AutoJumpBack: bool
@@ -2379,7 +2379,7 @@ class CreateSignUrlsResponse(AbstractModel):
 
 
 class Department(AbstractModel):
-    """渠道版员工部门信息
+    """第三方应用集成员工部门信息
 
     """
 
@@ -2576,9 +2576,9 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ApplicationId: 渠道侧应用号Id
+        :param ApplicationId: 第三方平台应用号Id
         :type ApplicationId: str
-        :param ProxyOrganizationOpenId: 渠道侧企业第三方Id
+        :param ProxyOrganizationOpenId: 第三方平台子客企业OpenId
         :type ProxyOrganizationOpenId: str
         :param FlowInfo: 合同(签署流程)的具体详细描述信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2707,9 +2707,9 @@ class DescribeTemplatesRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param WithPreviewUrl: 是否获取模板预览链接
         :type WithPreviewUrl: bool
-        :param WithPdfUrl: 是否获取模板的PDF文件链接-渠道版需要开启白名单时才能使用。
+        :param WithPdfUrl: 是否获取模板的PDF文件链接- 第三方应用集成需要开启白名单时才能使用。
         :type WithPdfUrl: bool
-        :param ChannelTemplateId: 渠道模板ID
+        :param ChannelTemplateId: 模板ID
         :type ChannelTemplateId: str
         """
         self.Agent = None
@@ -2803,8 +2803,8 @@ class DescribeUsageRequest(AbstractModel):
 开始时间到结束时间的区间长度小于等于90天。
         :type EndDate: str
         :param NeedAggregate: 是否汇总数据，默认不汇总。
-不汇总：返回在统计区间内渠道下所有企业的每日明细，即每个企业N条数据，N为统计天数；
-汇总：返回在统计区间内渠道下所有企业的汇总后数据，即每个企业一条数据；
+不汇总：返回在统计区间内第三方平台下所有企业的每日明细，即每个企业N条数据，N为统计天数；
+汇总：返回在统计区间内第三方平台下所有企业的汇总后数据，即每个企业一条数据；
         :type NeedAggregate: bool
         :param Limit: 单次返回的最多条目数量。默认为1000，且不能超过1000。
         :type Limit: int
@@ -2988,12 +2988,12 @@ class FlowApproverDetail(AbstractModel):
         r"""
         :param ReceiptId: 模板配置时候的签署人id,与控件绑定
         :type ReceiptId: str
-        :param ProxyOrganizationOpenId: 渠道侧企业的第三方id
+        :param ProxyOrganizationOpenId: 平台企业的第三方id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOrganizationOpenId: str
-        :param ProxyOperatorOpenId: 渠道侧企业操作人的第三方id
+        :param ProxyOperatorOpenId: 平台企业操作人的第三方id
         :type ProxyOperatorOpenId: str
-        :param ProxyOrganizationName: 渠道侧企业名称
+        :param ProxyOrganizationName: 平台企业名称
         :type ProxyOrganizationName: str
         :param Mobile: 签署人手机号
         :type Mobile: str
@@ -3054,9 +3054,9 @@ class FlowApproverInfo(AbstractModel):
     其中签署方FlowApproverInfo需要传递的参数
     非单C、单B、B2C合同，ApproverType、RecipientId（模板发起合同时）必传，建议都传。其他身份标识
     1-个人：Name、Mobile必传
-    2-渠道子客企业指定经办人：OpenId必传，OrgName必传、OrgOpenId必传；
-    3-渠道合作企业不指定经办人：OrgName必传、OrgOpenId必传；
-    4-非渠道合作企业：Name、Mobile必传，OrgName必传，且NotChannelOrganization=True。
+    2-第三方平台子客企业指定经办人：OpenId必传，OrgName必传、OrgOpenId必传；
+    3-第三方平台子客企业不指定经办人：OrgName必传、OrgOpenId必传；
+    4-非第三方平台子客企业：Name、Mobile必传，OrgName必传，且NotChannelOrganization=True。
 
     RecipientId参数：
     从DescribeTemplates接口中，可以得到模板下的签署方Recipient列表，根据模板自定义的Rolename在此结构体中确定其RecipientId
@@ -3078,13 +3078,13 @@ class FlowApproverInfo(AbstractModel):
         :type Mobile: str
         :param OrganizationName: 企业签署方工商营业执照上的企业名称，签署方为非发起方企业场景下必传，最大长度64个字符；
         :type OrganizationName: str
-        :param NotChannelOrganization: 指定签署人非渠道企业下员工，在ApproverType为ORGANIZATION时指定。
-默认为false，即签署人位于同一个渠道应用号下；
+        :param NotChannelOrganization: 指定签署人非第三方平台子客企业下员工，在ApproverType为ORGANIZATION时指定。
+默认为false，即签署人位于同一个第三方平台应用号下；默认为false，即签署人位于同一个第三方应用号下；
         :type NotChannelOrganization: bool
         :param OpenId: 用户侧第三方id，最大长度64个字符
-当签署方为同一渠道下的员工时，该字段若不指定，则发起【待领取】的流程
+当签署方为同一第三方平台下的员工时，该字段若不指定，则发起【待领取】的流程
         :type OpenId: str
-        :param OrganizationOpenId: 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
+        :param OrganizationOpenId: 企业签署方在同一第三方平台应用下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
         :type OrganizationOpenId: str
         :param ApproverType: 签署人类型
 PERSON-个人/自然人；
@@ -3285,7 +3285,7 @@ class FlowFileInfo(AbstractModel):
         :type FlowType: str
         :param CallbackUrl: 签署流程回调地址，长度不超过255个字符
         :type CallbackUrl: str
-        :param CustomerData: 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :param CustomerData: 第三方应用的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type CustomerData: str
         :param Unordered: 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
         :type Unordered: bool
@@ -3337,7 +3337,7 @@ class FlowInfo(AbstractModel):
     """此结构体 (FlowInfo) 用于描述签署流程信息。
 
     【数据表格传参说明】
-    当模板的 ComponentType='DYNAMIC_TABLE'时（渠道版或集成版），FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充数据表格（支持内容的单元格合并）
+    当模板的 ComponentType='DYNAMIC_TABLE'时（ 第三方应用集成或集成版），FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充数据表格（支持内容的单元格合并）
     输入示例1：
 
     ```
@@ -3469,7 +3469,7 @@ class FlowInfo(AbstractModel):
         :type FlowType: str
         :param FlowDescription: 合同描述，最大长度1000个字符
         :type FlowDescription: str
-        :param CustomerData: 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :param CustomerData:  第三方应用平台的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type CustomerData: str
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
@@ -3819,7 +3819,7 @@ class OperateChannelTemplateRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param OperateType: 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
         :type OperateType: str
-        :param TemplateId: 渠道方模板库模板唯一标识
+        :param TemplateId: 第三方应用平台模板库模板唯一标识
         :type TemplateId: str
         :param ProxyOrganizationOpenIds: 合作企业方第三方机构唯一标识数据，支持多个， 用","进行分隔
         :type ProxyOrganizationOpenIds: str
@@ -3863,10 +3863,10 @@ class OperateChannelTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppId: 腾讯电子签颁发给渠道的应用ID
+        :param AppId: 腾讯电子签颁发给第三方应用平台的应用ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
-        :param TemplateId: 渠道方模板库模板唯一标识
+        :param TemplateId: 第三方应用平台模板库模板唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
         :param OperateResult: 全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示
@@ -4097,7 +4097,7 @@ class ProxyOrganizationOperator(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 对应Agent-ProxyOperator-OpenId。渠道平台自定义，对渠道子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要渠道平台保存），最大64位字符串
+        :param Id: 对应Agent-ProxyOperator-OpenId。第三方应用平台自定义，对子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要第三方应用平台保存），最大64位字符串
         :type Id: str
         :param Name: 经办人姓名，最大长度50个字符
         :type Name: str
@@ -4110,12 +4110,19 @@ class ProxyOrganizationOperator(AbstractModel):
         :type IdCardNumber: str
         :param Mobile: 经办人手机号，大陆手机号输入11位，暂不支持海外手机号。
         :type Mobile: str
+        :param DefaultRole: 默认角色，值为以下三个对应的英文：
+业务管理员：admin
+经办人：channel-normal-operator
+业务员：channel-sales-man
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultRole: str
         """
         self.Id = None
         self.Name = None
         self.IdCardType = None
         self.IdCardNumber = None
         self.Mobile = None
+        self.DefaultRole = None
 
 
     def _deserialize(self, params):
@@ -4124,6 +4131,7 @@ class ProxyOrganizationOperator(AbstractModel):
         self.IdCardType = params.get("IdCardType")
         self.IdCardNumber = params.get("IdCardNumber")
         self.Mobile = params.get("Mobile")
+        self.DefaultRole = params.get("DefaultRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4591,7 +4599,7 @@ class Staff(AbstractModel):
 
 
 class StaffRole(AbstractModel):
-    """渠道版员工角色信息
+    """第三方应用集成员工角色信息
 
     """
 
@@ -4739,13 +4747,13 @@ class SyncProxyOrganizationRequest(AbstractModel):
         :param Agent: 应用信息
 此接口Agent.AppId、Agent.ProxyOrganizationOpenId必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param ProxyOrganizationName: 渠道侧合作企业名称，最大长度64个字符
+        :param ProxyOrganizationName: 第三方平台子客企业名称，最大长度64个字符
         :type ProxyOrganizationName: str
         :param BusinessLicense: 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
         :type BusinessLicense: str
-        :param UniformSocialCreditCode: 渠道侧合作企业统一社会信用代码，最大长度200个字符
+        :param UniformSocialCreditCode: 第三方平台子客企业统一社会信用代码，最大长度200个字符
         :type UniformSocialCreditCode: str
-        :param ProxyLegalName: 渠道侧合作企业法人/负责人姓名
+        :param ProxyLegalName: 第三方平台子客企业法人/负责人姓名
         :type ProxyLegalName: str
         :param Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -4855,15 +4863,15 @@ class TemplateInfo(AbstractModel):
         :param PreviewUrl: 模板的H5预览链接,可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
-        :param PdfUrl: 渠道版-模板PDF文件链接
+        :param PdfUrl: 第三方应用集成-模板PDF文件链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type PdfUrl: str
-        :param ChannelTemplateId: 关联的渠道模板ID
+        :param ChannelTemplateId: 关联的平台企业模板ID
         :type ChannelTemplateId: str
-        :param ChannelTemplateName: 关联的渠道模板名称
+        :param ChannelTemplateName: 关联的平台企业模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelTemplateName: str
-        :param ChannelAutoSave: 0-需要渠道子客手动领取渠道的模板(默认); 1-渠道自动设置子客模板
+        :param ChannelAutoSave: 0-需要子客企业手动领取平台企业的模板(默认); 1-平台自动设置子客模板
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelAutoSave: int
         :param TemplateVersion: 模板版本，全数字字符。默认为空，初始版本为yyyyMMdd001。
@@ -4964,7 +4972,7 @@ class UploadFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
+        :param Agent: 应用相关信息，若是第三方应用集成调用 appid 和proxyappid 必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param BusinessType: 文件对应业务类型
 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
@@ -5040,9 +5048,9 @@ class UsageDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyOrganizationOpenId: 渠道侧合作企业唯一标识
+        :param ProxyOrganizationOpenId: 子客企业唯一标识
         :type ProxyOrganizationOpenId: str
-        :param ProxyOrganizationName: 渠道侧合作企业名
+        :param ProxyOrganizationName: 子客企业名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOrganizationName: str
         :param Date: 日期，当需要汇总数据时日期为空
@@ -5088,7 +5096,7 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 渠道平台自定义，对渠道子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要渠道平台保存），最大64位字符串
+        :param OpenId: 第三方应用平台自定义，对应第三方平台子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要第三方应用平台保存），最大64位字符串
         :type OpenId: str
         :param Channel: 内部参数，暂未开放使用
         :type Channel: str

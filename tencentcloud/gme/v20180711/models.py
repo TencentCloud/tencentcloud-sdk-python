@@ -1240,6 +1240,69 @@ class DescribeRealtimeScanConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRecordInfoRequest(AbstractModel):
+    """DescribeRecordInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 进行中的任务taskid（StartRecord接口返回）。
+        :type TaskId: int
+        :param BizId: 应用ID。
+        :type BizId: int
+        """
+        self.TaskId = None
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordInfoResponse(AbstractModel):
+    """DescribeRecordInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordInfo: 录制信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordInfo: list of RecordInfo
+        :param RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+        :type RecordMode: int
+        :param RoomId: 房间ID。
+        :type RoomId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RecordInfo = None
+        self.RecordMode = None
+        self.RoomId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RecordInfo") is not None:
+            self.RecordInfo = []
+            for item in params.get("RecordInfo"):
+                obj = RecordInfo()
+                obj._deserialize(item)
+                self.RecordInfo.append(obj)
+        self.RecordMode = params.get("RecordMode")
+        self.RoomId = params.get("RoomId")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRoomInfoRequest(AbstractModel):
     """DescribeRoomInfo请求参数结构体
 
@@ -1442,6 +1505,68 @@ class DescribeScanResultListResponse(AbstractModel):
                 obj = DescribeScanResult()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTaskInfoRequest(AbstractModel):
+    """DescribeTaskInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID。
+        :type BizId: int
+        :param RoomId: 房间ID。
+        :type RoomId: str
+        """
+        self.BizId = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskInfoResponse(AbstractModel):
+    """DescribeTaskInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 进行中的任务taskid（StartRecord接口返回）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordMode: int
+        :param SubscribeRecordUserIds: 指定订阅流白名单或者黑名单。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RecordMode = None
+        self.SubscribeRecordUserIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RecordMode = params.get("RecordMode")
+        if params.get("SubscribeRecordUserIds") is not None:
+            self.SubscribeRecordUserIds = SubscribeRecordUserIds()
+            self.SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1815,6 +1940,61 @@ class ModifyCustomizationStateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRecordInfoRequest(AbstractModel):
+    """ModifyRecordInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 进行中的任务taskid（StartRecord接口返回）。
+        :type TaskId: int
+        :param RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+        :type RecordMode: int
+        :param BizId: 应用ID。
+        :type BizId: int
+        :param SubscribeRecordUserIds: 指定订阅流白名单或者黑名单。
+        :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
+        """
+        self.TaskId = None
+        self.RecordMode = None
+        self.BizId = None
+        self.SubscribeRecordUserIds = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RecordMode = params.get("RecordMode")
+        self.BizId = params.get("BizId")
+        if params.get("SubscribeRecordUserIds") is not None:
+            self.SubscribeRecordUserIds = SubscribeRecordUserIds()
+            self.SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordInfoResponse(AbstractModel):
+    """ModifyRecordInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyUserMicStatusRequest(AbstractModel):
     """ModifyUserMicStatus请求参数结构体
 
@@ -1990,6 +2170,43 @@ class RealtimeTextStatisticsItem(AbstractModel):
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordInfo(AbstractModel):
+    """房间内录制信息信息
+    注意：此字段可能返回 null，表示取不到有效值。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户ID（当混流模式时，取值为0）。
+        :type UserId: str
+        :param FileName: 录制文件名。
+        :type FileName: str
+        :param RecordBeginTime: 录制开始时间（unix时间戳如：1234567868）。
+        :type RecordBeginTime: int
+        :param RecordStatus: 录制状态：2代表正在录制  10代表等待转码  11代表正在转码  12正在上传  13代表上传完成  14代表通知用户完成。
+        :type RecordStatus: int
+        """
+        self.UserId = None
+        self.FileName = None
+        self.RecordBeginTime = None
+        self.RecordStatus = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.FileName = params.get("FileName")
+        self.RecordBeginTime = params.get("RecordBeginTime")
+        self.RecordStatus = params.get("RecordStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2312,6 +2529,65 @@ class ServiceStatus(AbstractModel):
         
 
 
+class StartRecordRequest(AbstractModel):
+    """StartRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID。
+        :type BizId: int
+        :param RoomId: 房间ID。
+        :type RoomId: str
+        :param RecordMode: 录制类型：1代表单流 2代表混流 3代表单流和混流。
+        :type RecordMode: int
+        :param SubscribeRecordUserIds: 指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。
+        :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
+        """
+        self.BizId = None
+        self.RoomId = None
+        self.RecordMode = None
+        self.SubscribeRecordUserIds = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.RoomId = params.get("RoomId")
+        self.RecordMode = params.get("RecordMode")
+        if params.get("SubscribeRecordUserIds") is not None:
+            self.SubscribeRecordUserIds = SubscribeRecordUserIds()
+            self.SubscribeRecordUserIds._deserialize(params.get("SubscribeRecordUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartRecordResponse(AbstractModel):
+    """StartRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务taskid。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class StatisticsItem(AbstractModel):
     """用量数据单元
 
@@ -2364,6 +2640,51 @@ class StatusInfo(AbstractModel):
         
 
 
+class StopRecordRequest(AbstractModel):
+    """StopRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID。
+        :type TaskId: int
+        :param BizId: 应用ID。
+        :type BizId: int
+        """
+        self.TaskId = None
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopRecordResponse(AbstractModel):
+    """StopRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StreamTextStatisticsItem(AbstractModel):
     """流式转文本用量数据
 
@@ -2380,6 +2701,36 @@ class StreamTextStatisticsItem(AbstractModel):
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeRecordUserIds(AbstractModel):
+    """指定订阅流白名单或者黑名单。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnSubscribeUserIds: 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过20。
+注意：只能同时设置UnSubscribeAudioUserIds、SubscribeAudioUserIds 其中1个参数
+        :type UnSubscribeUserIds: list of str
+        :param SubscribeUserIds: 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过20。
+注意：只能同时设置UnSubscribeAudioUserIds、SubscribeAudioUserIds 其中1个参数。
+        :type SubscribeUserIds: list of str
+        """
+        self.UnSubscribeUserIds = None
+        self.SubscribeUserIds = None
+
+
+    def _deserialize(self, params):
+        self.UnSubscribeUserIds = params.get("UnSubscribeUserIds")
+        self.SubscribeUserIds = params.get("SubscribeUserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -312,6 +312,29 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRecordInfo(self, request):
+        """查询录制任务信息。
+
+        :param request: Request instance for DescribeRecordInfo.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeRecordInfoRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeRecordInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRoomInfo(self, request):
         """获取房间内用户信息
 
@@ -350,6 +373,29 @@ class GmeClient(AbstractClient):
             body = self.call("DescribeScanResultList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeScanResultListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTaskInfo(self, request):
+        """查询房间录制的详细信息
+
+        :param request: Request instance for DescribeTaskInfo.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeTaskInfoRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeTaskInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -465,6 +511,29 @@ class GmeClient(AbstractClient):
             body = self.call("ModifyCustomizationState", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCustomizationStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRecordInfo(self, request):
+        """修改录制配置信息
+
+        :param request: Request instance for ModifyRecordInfo.
+        :type request: :class:`tencentcloud.gme.v20180711.models.ModifyRecordInfoRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.ModifyRecordInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRecordInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRecordInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -648,6 +717,52 @@ class GmeClient(AbstractClient):
             body = self.call("ScanVoice", params, headers=headers)
             response = json.loads(body)
             model = models.ScanVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartRecord(self, request):
+        """开启录制
+
+        :param request: Request instance for StartRecord.
+        :type request: :class:`tencentcloud.gme.v20180711.models.StartRecordRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.StartRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopRecord(self, request):
+        """停止录制
+
+        :param request: Request instance for StopRecord.
+        :type request: :class:`tencentcloud.gme.v20180711.models.StopRecordRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.StopRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopRecordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
