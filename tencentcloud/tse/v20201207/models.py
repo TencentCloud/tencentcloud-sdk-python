@@ -224,6 +224,8 @@ polarismesh - STANDARD版本
 - 0：不自动续费
 - 1：自动续费
         :type PrepaidRenewFlag: int
+        :param EngineRegionInfos: 跨地域部署的引擎地域配置详情
+        :type EngineRegionInfos: list of EngineRegionInfo
         """
         self.EngineType = None
         self.EngineVersion = None
@@ -240,6 +242,7 @@ polarismesh - STANDARD版本
         self.EngineAdmin = None
         self.PrepaidPeriod = None
         self.PrepaidRenewFlag = None
+        self.EngineRegionInfos = None
 
 
     def _deserialize(self, params):
@@ -270,6 +273,12 @@ polarismesh - STANDARD版本
             self.EngineAdmin._deserialize(params.get("EngineAdmin"))
         self.PrepaidPeriod = params.get("PrepaidPeriod")
         self.PrepaidRenewFlag = params.get("PrepaidRenewFlag")
+        if params.get("EngineRegionInfos") is not None:
+            self.EngineRegionInfos = []
+            for item in params.get("EngineRegionInfos"):
+                obj = EngineRegionInfo()
+                obj._deserialize(item)
+                self.EngineRegionInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -935,6 +944,46 @@ class EngineAdmin(AbstractModel):
         self.Name = params.get("Name")
         self.Password = params.get("Password")
         self.Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EngineRegionInfo(AbstractModel):
+    """引擎地域配置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EngineRegion: 引擎节点所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineRegion: str
+        :param Replica: 此地域节点分配数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replica: int
+        :param VpcInfos: 集群网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcInfos: list of VpcInfo
+        """
+        self.EngineRegion = None
+        self.Replica = None
+        self.VpcInfos = None
+
+
+    def _deserialize(self, params):
+        self.EngineRegion = params.get("EngineRegion")
+        self.Replica = params.get("Replica")
+        if params.get("VpcInfos") is not None:
+            self.VpcInfos = []
+            for item in params.get("VpcInfos"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self.VpcInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

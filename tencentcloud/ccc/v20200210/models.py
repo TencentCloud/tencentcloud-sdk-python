@@ -2185,12 +2185,15 @@ class DescribeTelCallInfoResponse(AbstractModel):
         :type TelCallInCount: int
         :param SeatUsedCount: 坐席使用统计个数
         :type SeatUsedCount: int
+        :param VoipCallInCount: 音频套餐包消耗分钟数
+        :type VoipCallInCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TelCallOutCount = None
         self.TelCallInCount = None
         self.SeatUsedCount = None
+        self.VoipCallInCount = None
         self.RequestId = None
 
 
@@ -2198,6 +2201,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
         self.TelCallOutCount = params.get("TelCallOutCount")
         self.TelCallInCount = params.get("TelCallInCount")
         self.SeatUsedCount = params.get("SeatUsedCount")
+        self.VoipCallInCount = params.get("VoipCallInCount")
         self.RequestId = params.get("RequestId")
 
 

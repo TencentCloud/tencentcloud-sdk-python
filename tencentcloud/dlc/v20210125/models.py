@@ -1104,6 +1104,167 @@ class CreateDMSTableResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDataEngineRequest(AbstractModel):
+    """CreateDataEngine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EngineType: 引擎类型spark/presto
+        :type EngineType: str
+        :param DataEngineName: 虚拟集群名称
+        :type DataEngineName: str
+        :param ClusterType: 集群类型 spark_private/presto_private/presto_cu/spark_cu
+        :type ClusterType: str
+        :param Mode: 计费模式 0=共享模式 1=按量计费 2=包年包月
+        :type Mode: int
+        :param AutoResume: 是否自动启动集群
+        :type AutoResume: bool
+        :param MinClusters: 最小资源
+        :type MinClusters: int
+        :param MaxClusters: 最大资源
+        :type MaxClusters: int
+        :param DefaultDataEngine: 是否为默虚拟集群
+        :type DefaultDataEngine: bool
+        :param CidrBlock: VPC网段
+        :type CidrBlock: str
+        :param Message: 描述信息
+        :type Message: str
+        :param Size: 集群规模
+        :type Size: int
+        :param PayMode: 计费类型，后付费：0，预付费：1。当前只支持后付费，不填默认为后付费。
+        :type PayMode: int
+        :param TimeSpan: 资源使用时长，后付费：固定填3600，预付费：最少填1，代表购买资源一个月，最长不超过120。默认3600
+        :type TimeSpan: int
+        :param TimeUnit: 资源使用时长的单位，后付费：s，预付费：m。默认为s
+        :type TimeUnit: str
+        :param AutoRenew: 资源的自动续费标志。后付费无需续费，固定填0；预付费下：0表示手动续费、1代表自动续费、2代表不续费，在0下如果是大客户，会自动帮大客户续费。默认为0
+        :type AutoRenew: int
+        :param Tags: 创建资源的时候需要绑定的标签信息
+        :type Tags: list of TagInfo
+        :param AutoSuspend: 是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
+        :type AutoSuspend: bool
+        :param CrontabResumeSuspend: 定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
+        :type CrontabResumeSuspend: int
+        :param CrontabResumeSuspendStrategy: 定时启停策略，复杂类型：包含启停时间、挂起集群策略
+        :type CrontabResumeSuspendStrategy: :class:`tencentcloud.dlc.v20210125.models.CrontabResumeSuspendStrategy`
+        :param EngineExecType: 引擎执行任务类型，默认为SQL
+        :type EngineExecType: str
+        :param MaxConcurrency: 单个集群最大并发任务数，默认5
+        :type MaxConcurrency: int
+        :param TolerableQueueTime: 可容忍的排队时间，默认0。当任务排队的时间超过可容忍的时间时可能会触发扩容。如果该参数为0，则表示一旦有任务排队就可能立即触发扩容。
+        :type TolerableQueueTime: int
+        :param AutoSuspendTime: 集群自动挂起时间，默认10分钟
+        :type AutoSuspendTime: int
+        :param ResourceType: 资源类型。Standard_CU：标准型；Memory_CU：内存型
+        :type ResourceType: str
+        :param DataEngineConfigPairs: 集群高级配置
+        :type DataEngineConfigPairs: list of DataEngineConfigPair
+        :param ImageVersionName: 集群镜像版本名字。如SuperSQL-P 1.1;SuperSQL-S 3.2等,不传，默认创建最新镜像版本的集群
+        :type ImageVersionName: str
+        :param MainClusterName: 主集群名称
+        :type MainClusterName: str
+        """
+        self.EngineType = None
+        self.DataEngineName = None
+        self.ClusterType = None
+        self.Mode = None
+        self.AutoResume = None
+        self.MinClusters = None
+        self.MaxClusters = None
+        self.DefaultDataEngine = None
+        self.CidrBlock = None
+        self.Message = None
+        self.Size = None
+        self.PayMode = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+        self.AutoRenew = None
+        self.Tags = None
+        self.AutoSuspend = None
+        self.CrontabResumeSuspend = None
+        self.CrontabResumeSuspendStrategy = None
+        self.EngineExecType = None
+        self.MaxConcurrency = None
+        self.TolerableQueueTime = None
+        self.AutoSuspendTime = None
+        self.ResourceType = None
+        self.DataEngineConfigPairs = None
+        self.ImageVersionName = None
+        self.MainClusterName = None
+
+
+    def _deserialize(self, params):
+        self.EngineType = params.get("EngineType")
+        self.DataEngineName = params.get("DataEngineName")
+        self.ClusterType = params.get("ClusterType")
+        self.Mode = params.get("Mode")
+        self.AutoResume = params.get("AutoResume")
+        self.MinClusters = params.get("MinClusters")
+        self.MaxClusters = params.get("MaxClusters")
+        self.DefaultDataEngine = params.get("DefaultDataEngine")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Message = params.get("Message")
+        self.Size = params.get("Size")
+        self.PayMode = params.get("PayMode")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        self.AutoRenew = params.get("AutoRenew")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AutoSuspend = params.get("AutoSuspend")
+        self.CrontabResumeSuspend = params.get("CrontabResumeSuspend")
+        if params.get("CrontabResumeSuspendStrategy") is not None:
+            self.CrontabResumeSuspendStrategy = CrontabResumeSuspendStrategy()
+            self.CrontabResumeSuspendStrategy._deserialize(params.get("CrontabResumeSuspendStrategy"))
+        self.EngineExecType = params.get("EngineExecType")
+        self.MaxConcurrency = params.get("MaxConcurrency")
+        self.TolerableQueueTime = params.get("TolerableQueueTime")
+        self.AutoSuspendTime = params.get("AutoSuspendTime")
+        self.ResourceType = params.get("ResourceType")
+        if params.get("DataEngineConfigPairs") is not None:
+            self.DataEngineConfigPairs = []
+            for item in params.get("DataEngineConfigPairs"):
+                obj = DataEngineConfigPair()
+                obj._deserialize(item)
+                self.DataEngineConfigPairs.append(obj)
+        self.ImageVersionName = params.get("ImageVersionName")
+        self.MainClusterName = params.get("MainClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataEngineResponse(AbstractModel):
+    """CreateDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineId: 虚拟引擎id
+        :type DataEngineId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataEngineId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineId = params.get("DataEngineId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDatabaseRequest(AbstractModel):
     """CreateDatabase请求参数结构体
 
@@ -2772,6 +2933,12 @@ class DMSTableInfo(AbstractModel):
         
 
 
+class DataEngineConfigPair(AbstractModel):
+    """引擎配置
+
+    """
+
+
 class DataEngineInfo(AbstractModel):
     """DataEngine详细信息
 
@@ -2874,6 +3041,9 @@ class DataEngineInfo(AbstractModel):
         :param ImageVersionName: 集群镜像版本名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageVersionName: str
+        :param StartStandbyCluster: 是否开启备集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartStandbyCluster: bool
         """
         self.DataEngineName = None
         self.EngineType = None
@@ -2911,6 +3081,7 @@ class DataEngineInfo(AbstractModel):
         self.ImageVersionId = None
         self.ChildImageVersionId = None
         self.ImageVersionName = None
+        self.StartStandbyCluster = None
 
 
     def _deserialize(self, params):
@@ -2962,6 +3133,7 @@ class DataEngineInfo(AbstractModel):
         self.ImageVersionId = params.get("ImageVersionId")
         self.ChildImageVersionId = params.get("ChildImageVersionId")
         self.ImageVersionName = params.get("ImageVersionName")
+        self.StartStandbyCluster = params.get("StartStandbyCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4036,6 +4208,105 @@ class DescribeDatabasesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DatabaseList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEngineUsageInfoRequest(AbstractModel):
+    """DescribeEngineUsageInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineId: House Id
+        :type DataEngineId: str
+        """
+        self.DataEngineId = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineId = params.get("DataEngineId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEngineUsageInfoResponse(AbstractModel):
+    """DescribeEngineUsageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 集群总规格
+        :type Total: int
+        :param Used: 已占用集群规格
+        :type Used: int
+        :param Available: 剩余集群规格
+        :type Available: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Used = None
+        self.Available = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Used = params.get("Used")
+        self.Available = params.get("Available")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLakeFsDirSummaryRequest(AbstractModel):
+    """DescribeLakeFsDirSummary请求参数结构体
+
+    """
+
+
+class DescribeLakeFsDirSummaryResponse(AbstractModel):
+    """DescribeLakeFsDirSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLakeFsInfoRequest(AbstractModel):
+    """DescribeLakeFsInfo请求参数结构体
+
+    """
+
+
+class DescribeLakeFsInfoResponse(AbstractModel):
+    """DescribeLakeFsInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -6849,6 +7120,9 @@ class Policy(AbstractModel):
         :param SourceName: 权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceName: str
+        :param Id: 策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
         """
         self.Database = None
         self.Catalog = None
@@ -6866,6 +7140,7 @@ class Policy(AbstractModel):
         self.CreateTime = None
         self.SourceId = None
         self.SourceName = None
+        self.Id = None
 
 
     def _deserialize(self, params):
@@ -6885,6 +7160,7 @@ class Policy(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.SourceId = params.get("SourceId")
         self.SourceName = params.get("SourceName")
+        self.Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7397,6 +7673,51 @@ class SuspendResumeDataEngineResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DataEngineName = params.get("DataEngineName")
+        self.RequestId = params.get("RequestId")
+
+
+class SwitchDataEngineRequest(AbstractModel):
+    """SwitchDataEngine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataEngineName: 主集群名称
+        :type DataEngineName: str
+        :param StartStandbyCluster: 是否开启备集群
+        :type StartStandbyCluster: bool
+        """
+        self.DataEngineName = None
+        self.StartStandbyCluster = None
+
+
+    def _deserialize(self, params):
+        self.DataEngineName = params.get("DataEngineName")
+        self.StartStandbyCluster = params.get("StartStandbyCluster")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchDataEngineResponse(AbstractModel):
+    """SwitchDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -8217,6 +8538,53 @@ class UnlockMetaDataRequest(AbstractModel):
 
 class UnlockMetaDataResponse(AbstractModel):
     """UnlockMetaData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateRowFilterRequest(AbstractModel):
+    """UpdateRowFilter请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 行过滤策略的id，此值可以通过DescribeUserInfo或者DescribeWorkGroupInfo接口获取
+        :type PolicyId: int
+        :param Policy: 新的过滤策略。
+        :type Policy: :class:`tencentcloud.dlc.v20210125.models.Policy`
+        """
+        self.PolicyId = None
+        self.Policy = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        if params.get("Policy") is not None:
+            self.Policy = Policy()
+            self.Policy._deserialize(params.get("Policy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRowFilterResponse(AbstractModel):
+    """UpdateRowFilter返回参数结构体
 
     """
 

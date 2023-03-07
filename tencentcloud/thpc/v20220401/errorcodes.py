@@ -38,6 +38,9 @@ INVALIDPARAMETER_MALFORMED = 'InvalidParameter.Malformed'
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# 不支持指定过滤器的键。
+INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = 'InvalidParameterValue.InvalidFilterNotSupportedName'
+
 # 参数值数量超过限制。
 INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 
@@ -64,6 +67,9 @@ INVALIDPARAMETERVALUE_VALUEDUPLICATED = 'InvalidParameterValue.ValueDuplicated'
 
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
+
+# 队列数量达到上限。
+LIMITEXCEEDED_QUEUENUMLIMIT = 'LimitExceeded.QueueNumLimit'
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
@@ -130,6 +136,9 @@ UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = 'UnsupportedOperation.ParameterTooLarge
 
 # 参数值过小，不支持此操作。
 UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = 'UnsupportedOperation.ParameterTooSmall'
+
+# 队列内存在节点，不支持此操作。
+UNSUPPORTEDOPERATION_QUEUENOTEMPTY = 'UnsupportedOperation.QueueNotEmpty'
 
 # vpc冲突，不支持当前操作。
 UNSUPPORTEDOPERATION_VPCIDCONFLICT = 'UnsupportedOperation.VpcIdConflict'

@@ -5736,7 +5736,9 @@ class DescribeRocketMQVipInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 查询条件过滤器
+        :param Filters: 查询条件过滤器，支持的查询条件如下：
+instanceIds - 实例ID
+instanceName - 实例名称
         :type Filters: list of Filter
         :param Limit: 查询数目上限，默认20
         :type Limit: int
@@ -8314,6 +8316,9 @@ class RocketMQInstanceConfig(AbstractModel):
         :type NodeDistribution: list of InstanceNodeDistribution
         :param TopicDistribution: topic分布情况
         :type TopicDistribution: list of RocketMQTopicDistribution
+        :param MaxQueuesPerTopic: 每个主题最大队列数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxQueuesPerTopic: int
         """
         self.MaxTpsPerNamespace = None
         self.MaxNamespaceNum = None
@@ -8326,6 +8331,7 @@ class RocketMQInstanceConfig(AbstractModel):
         self.NodeCount = None
         self.NodeDistribution = None
         self.TopicDistribution = None
+        self.MaxQueuesPerTopic = None
 
 
     def _deserialize(self, params):
@@ -8350,6 +8356,7 @@ class RocketMQInstanceConfig(AbstractModel):
                 obj = RocketMQTopicDistribution()
                 obj._deserialize(item)
                 self.TopicDistribution.append(obj)
+        self.MaxQueuesPerTopic = params.get("MaxQueuesPerTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8497,7 +8504,7 @@ class RocketMQVipInstance(AbstractModel):
         :param InstanceVersion: 实例版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: str
-        :param Status: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        :param Status: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
         :type Status: int
         :param NodeCount: 节点数量
         :type NodeCount: int

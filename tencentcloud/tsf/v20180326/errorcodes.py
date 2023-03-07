@@ -81,6 +81,9 @@ FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = 'FailedOperation.Contain
 FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = 'FailedOperation.ContainergroupKuberneteConnectError'
 
 # 调用 kube-api-server 失败。
+FAILEDOPERATION_CONTAINERGROUPKUBERNETESAPIINVOKEERROR = 'FailedOperation.ContainergroupKubernetesApiInvokeError'
+
+# 调用 kube-api-server 失败。
 FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = 'FailedOperation.ContainergroupKubernetesConnectError'
 
 # 健康检查配置失败。

@@ -348,6 +348,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDataEngine(self, request):
+        """为用户创建数据引擎
+
+        :param request: Request instance for CreateDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDatabase(self, request):
         """本接口（CreateDatabase）用于生成建库SQL语句。
 
@@ -1029,6 +1052,75 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeDatabases", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDatabasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEngineUsageInfo(self, request):
+        """本接口根据引擎ID获取数据引擎资源使用情况
+
+        :param request: Request instance for DescribeEngineUsageInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeEngineUsageInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeEngineUsageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEngineUsageInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEngineUsageInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLakeFsDirSummary(self, request):
+        """查询托管存储指定目录的Summary
+
+        :param request: Request instance for DescribeLakeFsDirSummary.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsDirSummaryRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsDirSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLakeFsDirSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLakeFsDirSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLakeFsInfo(self, request):
+        """查询用户的托管存储信息
+
+        :param request: Request instance for DescribeLakeFsInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLakeFsInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLakeFsInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1797,6 +1889,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SwitchDataEngine(self, request):
+        """切换主备集群
+
+        :param request: Request instance for SwitchDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnbindWorkGroupsFromUser(self, request):
         """解绑用户上的用户组
 
@@ -1834,6 +1949,29 @@ class DlcClient(AbstractClient):
             body = self.call("UnlockMetaData", params, headers=headers)
             response = json.loads(body)
             model = models.UnlockMetaDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRowFilter(self, request):
+        """此接口用于更新行过滤规则。注意只能更新过滤规则，不能更新规格对象catalog，database和table。
+
+        :param request: Request instance for UpdateRowFilter.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateRowFilterRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateRowFilterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateRowFilter", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateRowFilterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
