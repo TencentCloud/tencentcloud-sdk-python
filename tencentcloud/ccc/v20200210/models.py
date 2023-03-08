@@ -2353,22 +2353,22 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: TCCC 实例应用 ID
-        :type SdkAppId: int
         :param PhoneNumbers: 号码列表，0086开头
         :type PhoneNumbers: list of str
         :param Disabled: 停用开关，0启用 1停用
         :type Disabled: int
+        :param SdkAppId: TCCC 实例应用 ID
+        :type SdkAppId: int
         """
-        self.SdkAppId = None
         self.PhoneNumbers = None
         self.Disabled = None
+        self.SdkAppId = None
 
 
     def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
         self.PhoneNumbers = params.get("PhoneNumbers")
         self.Disabled = params.get("Disabled")
+        self.SdkAppId = params.get("SdkAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

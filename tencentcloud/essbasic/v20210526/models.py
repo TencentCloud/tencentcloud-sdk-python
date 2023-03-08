@@ -172,6 +172,71 @@ class AuthorizedUser(AbstractModel):
         
 
 
+class BaseFlowInfo(AbstractModel):
+    """基础流程信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowName: 合同流程名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowName: str
+        :param FlowType: 合同流程类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowType: str
+        :param FlowDescription: 合同流程描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowDescription: str
+        :param Deadline: 合同流程截止时间，unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deadline: int
+        :param Unordered: 是否顺序签署(true:无序签,false:顺序签)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unordered: bool
+        :param IntelligentStatus: 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntelligentStatus: str
+        :param FormFields: 填写控件内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormFields: list of FormField
+        :param NeedSignReview: 本企业(发起方企业)是否需要签署审批，true：开启本企业签署审批
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedSignReview: bool
+        """
+        self.FlowName = None
+        self.FlowType = None
+        self.FlowDescription = None
+        self.Deadline = None
+        self.Unordered = None
+        self.IntelligentStatus = None
+        self.FormFields = None
+        self.NeedSignReview = None
+
+
+    def _deserialize(self, params):
+        self.FlowName = params.get("FlowName")
+        self.FlowType = params.get("FlowType")
+        self.FlowDescription = params.get("FlowDescription")
+        self.Deadline = params.get("Deadline")
+        self.Unordered = params.get("Unordered")
+        self.IntelligentStatus = params.get("IntelligentStatus")
+        if params.get("FormFields") is not None:
+            self.FormFields = []
+            for item in params.get("FormFields"):
+                obj = FormField()
+                obj._deserialize(item)
+                self.FormFields.append(obj)
+        self.NeedSignReview = params.get("NeedSignReview")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CcInfo(AbstractModel):
     """抄送信息
 
@@ -1074,6 +1139,106 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreatePrepareFlowRequest(AbstractModel):
+    """ChannelCreatePrepareFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源id，与ResourceType对应
+        :type ResourceId: str
+        :param ResourceType: 资源类型，1：模版，目前仅支持模版，与ResourceId对应
+        :type ResourceType: int
+        :param FlowInfo: 合同流程基础信息
+        :type FlowInfo: :class:`tencentcloud.essbasic.v20210526.models.BaseFlowInfo`
+        :param FlowApproverList: 合同签署人信息
+        :type FlowApproverList: list of CommonFlowApprover
+        :param Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param FlowOption: 合同流程配置信息
+        :type FlowOption: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowOption`
+        :param FlowId: 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+        :type FlowId: str
+        :param NeedPreview: 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+        :type NeedPreview: bool
+        :param Organization: 企业机构信息，不用传
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        :param Operator: 操作人（用户）信息，不用传
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.FlowInfo = None
+        self.FlowApproverList = None
+        self.Agent = None
+        self.FlowOption = None
+        self.FlowId = None
+        self.NeedPreview = None
+        self.Organization = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        if params.get("FlowInfo") is not None:
+            self.FlowInfo = BaseFlowInfo()
+            self.FlowInfo._deserialize(params.get("FlowInfo"))
+        if params.get("FlowApproverList") is not None:
+            self.FlowApproverList = []
+            for item in params.get("FlowApproverList"):
+                obj = CommonFlowApprover()
+                obj._deserialize(item)
+                self.FlowApproverList.append(obj)
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("FlowOption") is not None:
+            self.FlowOption = CreateFlowOption()
+            self.FlowOption._deserialize(params.get("FlowOption"))
+        self.FlowId = params.get("FlowId")
+        self.NeedPreview = params.get("NeedPreview")
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreatePrepareFlowResponse(AbstractModel):
+    """ChannelCreatePrepareFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PrepareFlowUrl: 预发起的合同链接
+        :type PrepareFlowUrl: str
+        :param PreviewFlowUrl: 合同发起后预览链接
+        :type PreviewFlowUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PrepareFlowUrl = None
+        self.PreviewFlowUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PrepareFlowUrl = params.get("PrepareFlowUrl")
+        self.PreviewFlowUrl = params.get("PreviewFlowUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelCreateReleaseFlowRequest(AbstractModel):
     """ChannelCreateReleaseFlow请求参数结构体
 
@@ -1679,6 +1844,123 @@ class ChannelVerifyPdfResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CommonApproverOption(AbstractModel):
+    """签署人配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CanEditApprover: 是否允许修改签署人信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanEditApprover: bool
+        """
+        self.CanEditApprover = None
+
+
+    def _deserialize(self, params):
+        self.CanEditApprover = params.get("CanEditApprover")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonFlowApprover(AbstractModel):
+    """通用签署人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotChannelOrganization: 指定当前签署人为第三方应用集成子客，默认false：当前签署人为第三方应用集成子客，true：当前签署人为saas企业用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotChannelOrganization: bool
+        :param ApproverType: 签署人类型,目前支持：0-企业签署人，1-个人签署人，3-企业静默签署人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverType: int
+        :param OrganizationId: 企业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationId: str
+        :param OrganizationOpenId: 企业OpenId，第三方应用集成非静默签子客企业签署人发起合同毕传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationOpenId: str
+        :param OrganizationName: 企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationName: str
+        :param UserId: 用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param OpenId: 用户openId，第三方应用集成非静默签子客企业签署人必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenId: str
+        :param ApproverName: 签署人名称，saas企业签署人，个人签署人必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverName: str
+        :param ApproverMobile: 签署人手机号，saas企业签署人，个人签署人必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverMobile: str
+        :param RecipientId: 签署人Id，使用模版发起是，对应模版配置中的签署人RecipientId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecipientId: str
+        :param PreReadTime: 签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreReadTime: int
+        :param IsFullText: 签署前置条件：阅读全文限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFullText: bool
+        :param NotifyType: 通知类型：SMS（短信） NONE（不做通知）, 不传 默认SMS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyType: str
+        :param ApproverOption: 签署人配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverOption: :class:`tencentcloud.essbasic.v20210526.models.CommonApproverOption`
+        """
+        self.NotChannelOrganization = None
+        self.ApproverType = None
+        self.OrganizationId = None
+        self.OrganizationOpenId = None
+        self.OrganizationName = None
+        self.UserId = None
+        self.OpenId = None
+        self.ApproverName = None
+        self.ApproverMobile = None
+        self.RecipientId = None
+        self.PreReadTime = None
+        self.IsFullText = None
+        self.NotifyType = None
+        self.ApproverOption = None
+
+
+    def _deserialize(self, params):
+        self.NotChannelOrganization = params.get("NotChannelOrganization")
+        self.ApproverType = params.get("ApproverType")
+        self.OrganizationId = params.get("OrganizationId")
+        self.OrganizationOpenId = params.get("OrganizationOpenId")
+        self.OrganizationName = params.get("OrganizationName")
+        self.UserId = params.get("UserId")
+        self.OpenId = params.get("OpenId")
+        self.ApproverName = params.get("ApproverName")
+        self.ApproverMobile = params.get("ApproverMobile")
+        self.RecipientId = params.get("RecipientId")
+        self.PreReadTime = params.get("PreReadTime")
+        self.IsFullText = params.get("IsFullText")
+        self.NotifyType = params.get("NotifyType")
+        if params.get("ApproverOption") is not None:
+            self.ApproverOption = CommonApproverOption()
+            self.ApproverOption._deserialize(params.get("ApproverOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Component(AbstractModel):
     """此结构体 (Component) 用于描述控件属性。
 
@@ -2108,6 +2390,31 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
         self.IsActivated = params.get("IsActivated")
         self.ProxyOperatorIsVerified = params.get("ProxyOperatorIsVerified")
         self.RequestId = params.get("RequestId")
+
+
+class CreateFlowOption(AbstractModel):
+    """创建合同配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CanEditFlow: 是否允许修改合同信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanEditFlow: bool
+        """
+        self.CanEditFlow = None
+
+
+    def _deserialize(self, params):
+        self.CanEditFlow = params.get("CanEditFlow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateFlowsByTemplatesRequest(AbstractModel):

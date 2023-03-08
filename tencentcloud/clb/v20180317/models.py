@@ -5288,7 +5288,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type LoadBalancerType: str
         :param Forward: 负载均衡类型标识，1：负载均衡，0：传统型负载均衡。
         :type Forward: int
-        :param Domain: 负载均衡实例的域名，仅公网传统型负载均衡实例才提供该字段
+        :param Domain: 负载均衡实例的域名，仅公网传统型负载均衡实例才提供该字段。逐步下线中，建议用LoadBalancerDomain替代。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param LoadBalancerVips: 负载均衡实例的 VIP 列表。
@@ -5435,6 +5435,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param AttributeFlags: 负载均衡的属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttributeFlags: list of str
+        :param LoadBalancerDomain: 负载均衡实例的域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerDomain: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -5489,6 +5492,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.HealthLogTopicId = None
         self.ClusterIds = None
         self.AttributeFlags = None
+        self.LoadBalancerDomain = None
 
 
     def _deserialize(self, params):
@@ -5572,6 +5576,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.HealthLogTopicId = params.get("HealthLogTopicId")
         self.ClusterIds = params.get("ClusterIds")
         self.AttributeFlags = params.get("AttributeFlags")
+        self.LoadBalancerDomain = params.get("LoadBalancerDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5699,6 +5704,9 @@ Public：公网属性， Private：内网属性。
         :param SniSwitch: 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SniSwitch: int
+        :param LoadBalancerDomain: 负载均衡实例的域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerDomain: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -5737,6 +5745,7 @@ Public：公网属性， Private：内网属性。
         self.SlaveZone = None
         self.Zones = None
         self.SniSwitch = None
+        self.LoadBalancerDomain = None
 
 
     def _deserialize(self, params):
@@ -5788,6 +5797,7 @@ Public：公网属性， Private：内网属性。
         self.SlaveZone = params.get("SlaveZone")
         self.Zones = params.get("Zones")
         self.SniSwitch = params.get("SniSwitch")
+        self.LoadBalancerDomain = params.get("LoadBalancerDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

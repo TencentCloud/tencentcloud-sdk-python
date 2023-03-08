@@ -2668,13 +2668,17 @@ class McuWaterMarkParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WaterMarkType: 水印类型，0为图片（默认）。
+        :param WaterMarkType: 水印类型，0为图片（默认），1为文字。
         :type WaterMarkType: int
         :param WaterMarkImage: 图片水印参数。WaterMarkType为0指定。
         :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkImage`
+        :param WaterMarkText: 文字水印参数。WaterMarkType为1指定。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaterMarkText: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkText`
         """
         self.WaterMarkType = None
         self.WaterMarkImage = None
+        self.WaterMarkText = None
 
 
     def _deserialize(self, params):
@@ -2682,6 +2686,64 @@ class McuWaterMarkParams(AbstractModel):
         if params.get("WaterMarkImage") is not None:
             self.WaterMarkImage = McuWaterMarkImage()
             self.WaterMarkImage._deserialize(params.get("WaterMarkImage"))
+        if params.get("WaterMarkText") is not None:
+            self.WaterMarkText = McuWaterMarkText()
+            self.WaterMarkText._deserialize(params.get("WaterMarkText"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuWaterMarkText(AbstractModel):
+    """文字水印参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 文字水印内容。
+        :type Text: str
+        :param WaterMarkWidth: 水印在输出时的宽。单位为像素值。
+        :type WaterMarkWidth: int
+        :param WaterMarkHeight: 水印在输出时的高。单位为像素值。
+        :type WaterMarkHeight: int
+        :param LocationX: 水印在输出时的X偏移。单位为像素值。
+        :type LocationX: int
+        :param LocationY: 水印在输出时的Y偏移。单位为像素值。
+        :type LocationY: int
+        :param FontSize: 字体大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FontSize: int
+        :param FontColor: 字体颜色，默认为白色。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FontColor: str
+        :param BackGroundColor: 字体背景色，不配置默认为透明。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackGroundColor: str
+        """
+        self.Text = None
+        self.WaterMarkWidth = None
+        self.WaterMarkHeight = None
+        self.LocationX = None
+        self.LocationY = None
+        self.FontSize = None
+        self.FontColor = None
+        self.BackGroundColor = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.WaterMarkWidth = params.get("WaterMarkWidth")
+        self.WaterMarkHeight = params.get("WaterMarkHeight")
+        self.LocationX = params.get("LocationX")
+        self.LocationY = params.get("LocationY")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        self.BackGroundColor = params.get("BackGroundColor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

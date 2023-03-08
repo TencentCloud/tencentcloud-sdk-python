@@ -117,6 +117,8 @@ Activity：活动来源
         :type Source: str
         :param Channel: 渠道：wechat | cloud
         :type Channel: str
+        :param EnvId: 环境ID
+        :type EnvId: str
         """
         self.PackageType = None
         self.Alias = None
@@ -127,6 +129,7 @@ Activity：活动来源
         self.ReqKey = None
         self.Source = None
         self.Channel = None
+        self.EnvId = None
 
 
     def _deserialize(self, params):
@@ -139,6 +142,7 @@ Activity：活动来源
         self.ReqKey = params.get("ReqKey")
         self.Source = params.get("Source")
         self.Channel = params.get("Channel")
+        self.EnvId = params.get("EnvId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -421,6 +421,9 @@ class StatusNode(AbstractModel):
         :param ExternalUrl: 外部审批Url
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalUrl: str
+        :param ParallelNodes: 并行节点 3-4
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParallelNodes: str
         """
         self.NodeId = None
         self.NodeName = None
@@ -442,6 +445,7 @@ class StatusNode(AbstractModel):
         self.TaskName = None
         self.CKafkaRegion = None
         self.ExternalUrl = None
+        self.ParallelNodes = None
 
 
     def _deserialize(self, params):
@@ -469,6 +473,7 @@ class StatusNode(AbstractModel):
         self.TaskName = params.get("TaskName")
         self.CKafkaRegion = params.get("CKafkaRegion")
         self.ExternalUrl = params.get("ExternalUrl")
+        self.ParallelNodes = params.get("ParallelNodes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

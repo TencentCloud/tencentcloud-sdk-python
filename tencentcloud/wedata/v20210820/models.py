@@ -35,14 +35,14 @@ class AlarmEventInfo(AbstractModel):
         :type RegularName: str
         :param AlarmLevel: 告警级别,0表示普通，1表示重要，2表示紧急
         :type AlarmLevel: int
-        :param AlarmIndicator: 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
-        :type AlarmIndicator: int
         :param AlarmWay: 告警方式,多个用逗号隔开（1:邮件，2:短信，3:微信，4:语音，5:代表企业微信，6:http）
         :type AlarmWay: int
         :param AlarmRecipientId: 告警接收人Id，多个用逗号隔开
         :type AlarmRecipientId: str
         :param ProjectId: 项目ID
         :type ProjectId: str
+        :param AlarmIndicator: 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+        :type AlarmIndicator: int
         :param AlarmIndicatorDesc: 告警指标描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmIndicatorDesc: str
@@ -73,10 +73,10 @@ class AlarmEventInfo(AbstractModel):
         self.TaskId = None
         self.RegularName = None
         self.AlarmLevel = None
-        self.AlarmIndicator = None
         self.AlarmWay = None
         self.AlarmRecipientId = None
         self.ProjectId = None
+        self.AlarmIndicator = None
         self.AlarmIndicatorDesc = None
         self.TriggerType = None
         self.EstimatedTime = None
@@ -93,10 +93,10 @@ class AlarmEventInfo(AbstractModel):
         self.TaskId = params.get("TaskId")
         self.RegularName = params.get("RegularName")
         self.AlarmLevel = params.get("AlarmLevel")
-        self.AlarmIndicator = params.get("AlarmIndicator")
         self.AlarmWay = params.get("AlarmWay")
         self.AlarmRecipientId = params.get("AlarmRecipientId")
         self.ProjectId = params.get("ProjectId")
+        self.AlarmIndicator = params.get("AlarmIndicator")
         self.AlarmIndicatorDesc = params.get("AlarmIndicatorDesc")
         self.TriggerType = params.get("TriggerType")
         self.EstimatedTime = params.get("EstimatedTime")
@@ -104,6 +104,56 @@ class AlarmEventInfo(AbstractModel):
         self.TaskName = params.get("TaskName")
         self.IsSendSuccess = params.get("IsSendSuccess")
         self.MessageId = params.get("MessageId")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmIndicatorInfo(AbstractModel):
+    """告警指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 指标id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param AlarmIndicator: 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmIndicator: int
+        :param AlarmIndicatorDesc: 告警指标描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmIndicatorDesc: str
+        :param TriggerType: 指标阈值，1表示离线任务第一次运行失败，2表示离线任务所有重试完成后失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: int
+        :param EstimatedTime: 预计的超时时间，分钟级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EstimatedTime: int
+        :param Operator: 实时任务告警需要的参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: int
+        """
+        self.Id = None
+        self.AlarmIndicator = None
+        self.AlarmIndicatorDesc = None
+        self.TriggerType = None
+        self.EstimatedTime = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.AlarmIndicator = params.get("AlarmIndicator")
+        self.AlarmIndicatorDesc = params.get("AlarmIndicatorDesc")
+        self.TriggerType = params.get("TriggerType")
+        self.EstimatedTime = params.get("EstimatedTime")
         self.Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -197,6 +247,9 @@ class AlarmReceiverInfo(AbstractModel):
         :type Wecom: int
         :param Http: http，0：未设置，1：成功，2：失败
         :type Http: int
+        :param WecomGroup: 企业微信群，0：未设置，1：成功，2：失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WecomGroup: int
         """
         self.AlarmId = None
         self.AlarmReceiver = None
@@ -206,6 +259,7 @@ class AlarmReceiverInfo(AbstractModel):
         self.Voice = None
         self.Wecom = None
         self.Http = None
+        self.WecomGroup = None
 
 
     def _deserialize(self, params):
@@ -217,6 +271,7 @@ class AlarmReceiverInfo(AbstractModel):
         self.Voice = params.get("Voice")
         self.Wecom = params.get("Wecom")
         self.Http = params.get("Http")
+        self.WecomGroup = params.get("WecomGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12462,6 +12517,12 @@ class IntegrationTaskInfo(AbstractModel):
         :param InLongManagerVersion: version
 注意：此字段可能返回 null，表示取不到有效值。
         :type InLongManagerVersion: str
+        :param DataProxyUrl: dataproxy url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataProxyUrl: list of str
+        :param Submit: 任务版本是否已提交运维
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Submit: bool
         """
         self.TaskName = None
         self.Description = None
@@ -12490,6 +12551,8 @@ class IntegrationTaskInfo(AbstractModel):
         self.InLongManagerUrl = None
         self.InLongStreamId = None
         self.InLongManagerVersion = None
+        self.DataProxyUrl = None
+        self.Submit = None
 
 
     def _deserialize(self, params):
@@ -12547,6 +12610,8 @@ class IntegrationTaskInfo(AbstractModel):
         self.InLongManagerUrl = params.get("InLongManagerUrl")
         self.InLongStreamId = params.get("InLongStreamId")
         self.InLongManagerVersion = params.get("InLongManagerVersion")
+        self.DataProxyUrl = params.get("DataProxyUrl")
+        self.Submit = params.get("Submit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18412,14 +18477,24 @@ class TableInfo(AbstractModel):
         :param TableName: 表名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
+        :param OriginDatabaseName: 表databaseName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginDatabaseName: str
+        :param OriginSchemaName: 表schemaName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginSchemaName: str
         """
         self.TableId = None
         self.TableName = None
+        self.OriginDatabaseName = None
+        self.OriginSchemaName = None
 
 
     def _deserialize(self, params):
         self.TableId = params.get("TableId")
         self.TableName = params.get("TableName")
+        self.OriginDatabaseName = params.get("OriginDatabaseName")
+        self.OriginSchemaName = params.get("OriginSchemaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18579,35 +18654,35 @@ class TaskAlarmInfo(AbstractModel):
         :type RegularStatus: int
         :param AlarmLevel: 告警级别(0表示普通，1表示重要，2表示紧急)
         :type AlarmLevel: int
-        :param AlarmIndicator: 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
-，4写入速度，5读取速度，6读取吞吐，7写入吞吐, 8脏数据字节数，9脏数据条数
-        :type AlarmIndicator: int
         :param AlarmWay: 告警方式,多个用逗号隔开（1:邮件，2:短信，3:微信，4:语音，5:代表企业微信，6:http）
         :type AlarmWay: str
-        :param AlarmRecipientId: 告警接收人ID，多个用逗号隔开
-        :type AlarmRecipientId: str
         :param TaskType: 任务类型(201表示实时，202表示离线)
         :type TaskType: int
-        :param AlarmRecipientName: 告警接收人昵称，多个用逗号隔开
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlarmRecipientName: str
         :param Id: 主键ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param RegularId: 规则ID
         :type RegularId: str
+        :param AlarmIndicator: 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+，4写入速度，5读取速度，6读取吞吐，7写入吞吐, 8脏数据字节数，9脏数据条数
+        :type AlarmIndicator: int
         :param TriggerType: 指标阈值(1表示离线任务第一次运行失败，2表示离线任务所有重试完成后失败)
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: int
         :param EstimatedTime: 预计的超时时间(分钟级别)
 注意：此字段可能返回 null，表示取不到有效值。
         :type EstimatedTime: int
+        :param AlarmRecipientId: 告警接收人ID，多个用逗号隔开
+        :type AlarmRecipientId: str
         :param ProjectId: 项目ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
         :param Creater: 创建人
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creater: str
+        :param AlarmRecipientName: 告警接收人昵称，多个用逗号隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRecipientName: str
         :param AlarmIndicatorDesc: 告警指标描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmIndicatorDesc: str
@@ -18620,26 +18695,38 @@ class TaskAlarmInfo(AbstractModel):
         :param NodeName: 节点名称，多个逗号分隔
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
+        :param AlarmIndicatorInfos: 指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmIndicatorInfos: list of AlarmIndicatorInfo
+        :param AlarmRecipientType: 告警接收人类型，0指定人员；1任务责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRecipientType: int
+        :param WeComHook: 企业微信群Hook地址，多个hook地址使用,隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeComHook: str
         """
         self.TaskId = None
         self.RegularName = None
         self.RegularStatus = None
         self.AlarmLevel = None
-        self.AlarmIndicator = None
         self.AlarmWay = None
-        self.AlarmRecipientId = None
         self.TaskType = None
-        self.AlarmRecipientName = None
         self.Id = None
         self.RegularId = None
+        self.AlarmIndicator = None
         self.TriggerType = None
         self.EstimatedTime = None
+        self.AlarmRecipientId = None
         self.ProjectId = None
         self.Creater = None
+        self.AlarmRecipientName = None
         self.AlarmIndicatorDesc = None
         self.Operator = None
         self.NodeId = None
         self.NodeName = None
+        self.AlarmIndicatorInfos = None
+        self.AlarmRecipientType = None
+        self.WeComHook = None
 
 
     def _deserialize(self, params):
@@ -18647,21 +18734,29 @@ class TaskAlarmInfo(AbstractModel):
         self.RegularName = params.get("RegularName")
         self.RegularStatus = params.get("RegularStatus")
         self.AlarmLevel = params.get("AlarmLevel")
-        self.AlarmIndicator = params.get("AlarmIndicator")
         self.AlarmWay = params.get("AlarmWay")
-        self.AlarmRecipientId = params.get("AlarmRecipientId")
         self.TaskType = params.get("TaskType")
-        self.AlarmRecipientName = params.get("AlarmRecipientName")
         self.Id = params.get("Id")
         self.RegularId = params.get("RegularId")
+        self.AlarmIndicator = params.get("AlarmIndicator")
         self.TriggerType = params.get("TriggerType")
         self.EstimatedTime = params.get("EstimatedTime")
+        self.AlarmRecipientId = params.get("AlarmRecipientId")
         self.ProjectId = params.get("ProjectId")
         self.Creater = params.get("Creater")
+        self.AlarmRecipientName = params.get("AlarmRecipientName")
         self.AlarmIndicatorDesc = params.get("AlarmIndicatorDesc")
         self.Operator = params.get("Operator")
         self.NodeId = params.get("NodeId")
         self.NodeName = params.get("NodeName")
+        if params.get("AlarmIndicatorInfos") is not None:
+            self.AlarmIndicatorInfos = []
+            for item in params.get("AlarmIndicatorInfos"):
+                obj = AlarmIndicatorInfo()
+                obj._deserialize(item)
+                self.AlarmIndicatorInfos.append(obj)
+        self.AlarmRecipientType = params.get("AlarmRecipientType")
+        self.WeComHook = params.get("WeComHook")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

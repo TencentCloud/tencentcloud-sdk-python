@@ -10430,6 +10430,28 @@ class Label(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Name: map表中的Name
+        :type Name: str
+        :param Value: map表中的Value
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class LogAlarmReq(AbstractModel):
     """日志告警请求信息
@@ -12376,6 +12398,32 @@ class PrometheusAgentInfo(AbstractModel):
     """托管Prometheus agent信息
 
     """
+
+    def __init__(self):
+        r"""
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Describe: 备注
+        :type Describe: str
+        """
+        self.ClusterType = None
+        self.ClusterId = None
+        self.Describe = None
+
+
+    def _deserialize(self, params):
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.Describe = params.get("Describe")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PrometheusAgentOverview(AbstractModel):
