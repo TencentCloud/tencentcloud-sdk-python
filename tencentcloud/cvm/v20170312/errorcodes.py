@@ -371,6 +371,9 @@ INVALIDPARAMETERVALUE_INSUFFICIENTPRICE = 'InvalidParameterValue.InsufficientPri
 # 无效的appid。
 INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = 'InvalidParameterValue.InvalidAppIdFormat'
 
+# 不支持指定的启动模式。
+INVALIDPARAMETERVALUE_INVALIDBOOTMODE = 'InvalidParameterValue.InvalidBootMode'
+
 # 请检查存储桶的写入权限是否已放通。
 INVALIDPARAMETERVALUE_INVALIDBUCKETPERMISSIONFOREXPORT = 'InvalidParameterValue.InvalidBucketPermissionForExport'
 

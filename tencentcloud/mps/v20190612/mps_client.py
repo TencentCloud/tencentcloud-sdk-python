@@ -1970,3 +1970,26 @@ class MpsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def WithdrawsWatermark(self, request):
+        """提取视频中的盲水印。
+
+        :param request: Request instance for WithdrawsWatermark.
+        :type request: :class:`tencentcloud.mps.v20190612.models.WithdrawsWatermarkRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WithdrawsWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("WithdrawsWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.WithdrawsWatermarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

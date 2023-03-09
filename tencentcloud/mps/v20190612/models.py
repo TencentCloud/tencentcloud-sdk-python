@@ -4124,6 +4124,96 @@ class AudioTemplateInfoForUpdate(AbstractModel):
         
 
 
+class AwsS3FileUploadTrigger(AbstractModel):
+    """AWS S3 文件是上传触发器。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param S3Bucket: 工作流绑定的 AWS S3 存储桶。
+        :type S3Bucket: str
+        :param S3Region: 工作流绑定的桶所在 AWS 区域。
+        :type S3Region: str
+        :param Dir: 工作流绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。	
+        :type Dir: str
+        :param Formats: 工作流允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。	
+        :type Formats: list of str
+        :param S3SecretId: 工作流绑定的 AWS S3 存储桶的秘钥ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type S3SecretId: str
+        :param S3SecretKey: 工作流绑定的 AWS S3 存储桶的秘钥Key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type S3SecretKey: str
+        :param AwsSQS: 工作流绑定的 AWS S3 存储桶对应的 SQS事件队列。
+注意：队列和桶需要在同一区域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
+        """
+        self.S3Bucket = None
+        self.S3Region = None
+        self.Dir = None
+        self.Formats = None
+        self.S3SecretId = None
+        self.S3SecretKey = None
+        self.AwsSQS = None
+
+
+    def _deserialize(self, params):
+        self.S3Bucket = params.get("S3Bucket")
+        self.S3Region = params.get("S3Region")
+        self.Dir = params.get("Dir")
+        self.Formats = params.get("Formats")
+        self.S3SecretId = params.get("S3SecretId")
+        self.S3SecretKey = params.get("S3SecretKey")
+        if params.get("AwsSQS") is not None:
+            self.AwsSQS = AwsSQS()
+            self.AwsSQS._deserialize(params.get("AwsSQS"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AwsSQS(AbstractModel):
+    """Aws SQS 队列信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SQSRegion: SQS 队列区域。
+        :type SQSRegion: str
+        :param SQSQueueName: SQS 队列名称。
+        :type SQSQueueName: str
+        :param S3SecretId: 读写SQS的秘钥id。
+        :type S3SecretId: str
+        :param S3SecretKey: 读写SQS的秘钥key。
+        :type S3SecretKey: str
+        """
+        self.SQSRegion = None
+        self.SQSQueueName = None
+        self.S3SecretId = None
+        self.S3SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.SQSRegion = params.get("SQSRegion")
+        self.SQSQueueName = params.get("SQSQueueName")
+        self.S3SecretId = params.get("S3SecretId")
+        self.S3SecretKey = params.get("S3SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClassificationConfigureInfo(AbstractModel):
     """智能分类任务控制参数
 
@@ -12553,17 +12643,24 @@ class MediaInputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 输入来源对象的类型，支持 COS、URL 两种。
+        :param Type: 输入来源对象的类型，支持：
+<li> COS：COS源</li>
+<li> URL：URL源</li>
+<li> AWS-S3：AWS 源，目前只支持转码任务 </li>
         :type Type: str
         :param CosInputInfo: 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 对象信息。
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
         :param UrlInputInfo: 当 Type 为 URL 时有效，则该项为必填，表示媒体处理 URL 对象信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
+        :param S3InputInfo: 当 Type 为 AWS-S3 时有效，则该项为必填，表示媒体处理 AWS S3 对象信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type S3InputInfo: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
         """
         self.Type = None
         self.CosInputInfo = None
         self.UrlInputInfo = None
+        self.S3InputInfo = None
 
 
     def _deserialize(self, params):
@@ -12574,6 +12671,9 @@ class MediaInputInfo(AbstractModel):
         if params.get("UrlInputInfo") is not None:
             self.UrlInputInfo = UrlInputInfo()
             self.UrlInputInfo._deserialize(params.get("UrlInputInfo"))
+        if params.get("S3InputInfo") is not None:
+            self.S3InputInfo = S3InputInfo()
+            self.S3InputInfo._deserialize(params.get("S3InputInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16624,6 +16724,82 @@ class ResilientStreamConf(AbstractModel):
         
 
 
+class S3InputInfo(AbstractModel):
+    """AWS S3存储输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param S3Bucket: S3 bucket。
+        :type S3Bucket: str
+        :param S3Region: S3 bucket 对应的区域。
+        :type S3Region: str
+        :param S3Object: S3 bucket 中的媒体资源路径。
+        :type S3Object: str
+        :param S3SecretId: AWS 内网访问 媒体资源的秘钥id。
+        :type S3SecretId: str
+        :param S3SecretKey: AWS 内网访问 媒体资源的秘钥key。
+        :type S3SecretKey: str
+        """
+        self.S3Bucket = None
+        self.S3Region = None
+        self.S3Object = None
+        self.S3SecretId = None
+        self.S3SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.S3Bucket = params.get("S3Bucket")
+        self.S3Region = params.get("S3Region")
+        self.S3Object = params.get("S3Object")
+        self.S3SecretId = params.get("S3SecretId")
+        self.S3SecretKey = params.get("S3SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class S3OutputStorage(AbstractModel):
+    """AWS S3 输出位置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param S3Bucket: S3 bucket。
+        :type S3Bucket: str
+        :param S3Region: S3 bucket 对应的区域。
+        :type S3Region: str
+        :param S3SecretId: AWS 内网上传 媒体资源的秘钥id。
+        :type S3SecretId: str
+        :param S3SecretKey: AWS 内网上传 媒体资源的秘钥key。
+        :type S3SecretKey: str
+        """
+        self.S3Bucket = None
+        self.S3Region = None
+        self.S3SecretId = None
+        self.S3SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.S3Bucket = params.get("S3Bucket")
+        self.S3Region = params.get("S3Region")
+        self.S3SecretId = params.get("S3SecretId")
+        self.S3SecretKey = params.get("S3SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SRTAddressDestination(AbstractModel):
     """转推的目标地址信息。
 
@@ -17700,10 +17876,15 @@ class TaskNotifyConfig(AbstractModel):
 <li>TDMQ-CMQ：消息队列</li>
 <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
 <li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
+<li>AWS-SQS：AWS 队列，只适用于 AWS 任务，且要求同区域</li>
 <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
         :type NotifyType: str
         :param NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
         :type NotifyUrl: str
+        :param AwsSQS: AWS SQS 回调，NotifyType为 AWS-SQS 时必填。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         """
         self.CmqModel = None
         self.CmqRegion = None
@@ -17712,6 +17893,7 @@ class TaskNotifyConfig(AbstractModel):
         self.NotifyMode = None
         self.NotifyType = None
         self.NotifyUrl = None
+        self.AwsSQS = None
 
 
     def _deserialize(self, params):
@@ -17722,6 +17904,9 @@ class TaskNotifyConfig(AbstractModel):
         self.NotifyMode = params.get("NotifyMode")
         self.NotifyType = params.get("NotifyType")
         self.NotifyUrl = params.get("NotifyUrl")
+        if params.get("AwsSQS") is not None:
+            self.AwsSQS = AwsSQS()
+            self.AwsSQS._deserialize(params.get("AwsSQS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17738,14 +17923,20 @@ class TaskOutputStorage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 媒体处理输出对象存储位置的类型，现在仅支持 COS。
+        :param Type: 媒体处理输出对象存储位置的类型，支持：
+<li>COS：COS存储</li>
+<li>AWS-S3：AWS 存储，只适用于AWS任务，且要求同区域</li>
         :type Type: str
         :param CosOutputStorage: 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 输出位置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosOutputStorage: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
+        :param S3OutputStorage: 当 Type 为 AWS-S3 时有效，则该项为必填，表示媒体处理 AWS S3 输出位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type S3OutputStorage: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
         """
         self.Type = None
         self.CosOutputStorage = None
+        self.S3OutputStorage = None
 
 
     def _deserialize(self, params):
@@ -17753,6 +17944,9 @@ class TaskOutputStorage(AbstractModel):
         if params.get("CosOutputStorage") is not None:
             self.CosOutputStorage = CosOutputStorage()
             self.CosOutputStorage._deserialize(params.get("CosOutputStorage"))
+        if params.get("S3OutputStorage") is not None:
+            self.S3OutputStorage = S3OutputStorage()
+            self.S3OutputStorage._deserialize(params.get("S3OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19091,6 +19285,63 @@ class WatermarkTemplate(AbstractModel):
         
 
 
+class WithdrawsWatermarkRequest(AbstractModel):
+    """WithdrawsWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputInfo: 输入媒体文件存储信息。
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self.InputInfo = None
+        self.TaskNotifyConfig = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self.InputInfo = MediaInputInfo()
+            self.InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WithdrawsWatermarkResponse(AbstractModel):
+    """WithdrawsWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID，可以通过该 ID 查询任务状态和结果。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class WorkflowInfo(AbstractModel):
     """工作流信息详情。
 
@@ -19284,14 +19535,24 @@ class WorkflowTrigger(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 触发器的类型，目前仅支持 CosFileUpload。
+        :param Type: 触发器的类型，可选值：
+<li>CosFileUpload：COS触发</li>
+<li>AwsS3FileUpload：AWS触发，目前只支持转码任务。只有编排支持，工作流不支持。  </li>
+
+
         :type Type: str
         :param CosFileUploadTrigger: 当 Type 为 CosFileUpload 时必填且有效，为 COS 触发规则。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosFileUploadTrigger: :class:`tencentcloud.mps.v20190612.models.CosFileUploadTrigger`
+        :param AwsS3FileUploadTrigger: 当 Type 为 AwsS3FileUpload 时必填且有效，为 AWS S3 触发规则。
+
+注意：目前AWS的S3、对应触发队列SQS、回调队列SQS的秘钥需要一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AwsS3FileUploadTrigger: :class:`tencentcloud.mps.v20190612.models.AwsS3FileUploadTrigger`
         """
         self.Type = None
         self.CosFileUploadTrigger = None
+        self.AwsS3FileUploadTrigger = None
 
 
     def _deserialize(self, params):
@@ -19299,6 +19560,9 @@ class WorkflowTrigger(AbstractModel):
         if params.get("CosFileUploadTrigger") is not None:
             self.CosFileUploadTrigger = CosFileUploadTrigger()
             self.CosFileUploadTrigger._deserialize(params.get("CosFileUploadTrigger"))
+        if params.get("AwsS3FileUploadTrigger") is not None:
+            self.AwsS3FileUploadTrigger = AwsS3FileUploadTrigger()
+            self.AwsS3FileUploadTrigger._deserialize(params.get("AwsS3FileUploadTrigger"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -4853,14 +4853,18 @@ class CreateEmergencyVulScanRequest(AbstractModel):
         :type VulId: int
         :param Uuids: 自选服务器时生效，主机uuid的string数组
         :type Uuids: list of str
+        :param TimeoutPeriod: 扫描超时时长 ，单位秒
+        :type TimeoutPeriod: int
         """
         self.VulId = None
         self.Uuids = None
+        self.TimeoutPeriod = None
 
 
     def _deserialize(self, params):
         self.VulId = params.get("VulId")
         self.Uuids = params.get("Uuids")
+        self.TimeoutPeriod = params.get("TimeoutPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

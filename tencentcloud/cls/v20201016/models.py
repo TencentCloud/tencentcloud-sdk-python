@@ -6415,6 +6415,10 @@ class TopicInfo(AbstractModel):
         :param Describes: 日志主题描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Describes: str
+        :param HotPeriod: 开启日志沉降，热存储的生命周期， hotPeriod < Period。
+热存储为 hotPeriod, 冷存储则为 Period-hotPeriod。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HotPeriod: int
         """
         self.LogsetId = None
         self.TopicId = None
@@ -6431,6 +6435,7 @@ class TopicInfo(AbstractModel):
         self.Period = None
         self.SubAssumerName = None
         self.Describes = None
+        self.HotPeriod = None
 
 
     def _deserialize(self, params):
@@ -6454,6 +6459,7 @@ class TopicInfo(AbstractModel):
         self.Period = params.get("Period")
         self.SubAssumerName = params.get("SubAssumerName")
         self.Describes = params.get("Describes")
+        self.HotPeriod = params.get("HotPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

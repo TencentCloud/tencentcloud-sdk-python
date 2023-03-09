@@ -9107,7 +9107,7 @@ class DescribeFlowLogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页行数，默认为10。
         :type Limit: int
-        :param Filters: 过滤条件，参数不支持同时指定FlowLogIds和Filters。
+        :param Filters: 过滤条件，参数不支持同时指定FlowLogId和Filters。
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
         :type Filters: :class:`tencentcloud.vpc.v20170312.models.Filter`

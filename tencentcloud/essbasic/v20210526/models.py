@@ -638,6 +638,71 @@ class ChannelCreateConvertTaskApiResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreateEmbedWebUrlRequest(AbstractModel):
+    """ChannelCreateEmbedWebUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EmbedType: WEB嵌入资源类型，取值范围：CREATE_SEAL创建印章，CREATE_TEMPLATE创建模板，MODIFY_TEMPLATE修改模板，PREVIEW_TEMPLATE预览模板，PREVIEW_FLOW预览流程
+        :type EmbedType: str
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 渠道操作者信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param BusinessId: WEB嵌入的业务资源ID，EmbedType取值MODIFY_TEMPLATE或PREVIEW_TEMPLATE或 PREVIEW_FLOW时BusinessId必填
+        :type BusinessId: str
+        :param HiddenComponents: 是否隐藏控件，只有预览模板时生效
+        :type HiddenComponents: bool
+        """
+        self.EmbedType = None
+        self.Agent = None
+        self.Operator = None
+        self.BusinessId = None
+        self.HiddenComponents = None
+
+
+    def _deserialize(self, params):
+        self.EmbedType = params.get("EmbedType")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.BusinessId = params.get("BusinessId")
+        self.HiddenComponents = params.get("HiddenComponents")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateEmbedWebUrlResponse(AbstractModel):
+    """ChannelCreateEmbedWebUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WebUrl: 嵌入的web链接
+        :type WebUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WebUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WebUrl = params.get("WebUrl")
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelCreateFlowByFilesRequest(AbstractModel):
     """ChannelCreateFlowByFiles请求参数结构体
 

@@ -174,6 +174,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCreateEmbedWebUrl(self, request):
+        """本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
+
+        :param request: Request instance for ChannelCreateEmbedWebUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateEmbedWebUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateEmbedWebUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateEmbedWebUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateEmbedWebUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelCreateFlowByFiles(self, request):
         """接口（ChannelCreateFlowByFiles）用于通过文件创建签署流程。此接口静默签能力不可直接使用，需要运营申请
 
