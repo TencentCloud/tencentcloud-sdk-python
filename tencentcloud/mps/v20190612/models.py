@@ -196,6 +196,125 @@ class ActionConfigInfo(AbstractModel):
         
 
 
+class Activity(AbstractModel):
+    """编排原子任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityType: 原子任务类型：
+<li>input: 起始节点</li>
+<li>output：终止节点</li>
+<li>action-trans：转码</li>
+<li>action-samplesnapshot：采样截图</li>
+<li>action-AIAnalysis: 分析</li>
+<li>action-AIRecognition：识别</li>
+<li>action-aiReview：审核</li>
+<li>action-animated-graphics：转动图</li>
+<li>action-image-sprite：雪碧图</li>
+<li>action-snapshotByTimeOffset: 时间点截图</li>
+<li>action-adaptive-substream：自适应码流</li>
+        :type ActivityType: str
+        :param ReardriveIndex: 后驱节点索引数组
+        :type ReardriveIndex: list of int
+        :param ActivityPara: 原子任务参数
+        :type ActivityPara: :class:`tencentcloud.mps.v20190612.models.ActivityPara`
+        """
+        self.ActivityType = None
+        self.ReardriveIndex = None
+        self.ActivityPara = None
+
+
+    def _deserialize(self, params):
+        self.ActivityType = params.get("ActivityType")
+        self.ReardriveIndex = params.get("ReardriveIndex")
+        if params.get("ActivityPara") is not None:
+            self.ActivityPara = ActivityPara()
+            self.ActivityPara._deserialize(params.get("ActivityPara"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivityPara(AbstractModel):
+    """编排原子任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TranscodeTask: 视频转码任务
+        :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
+        :param AnimatedGraphicTask: 视频转动图任务
+        :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
+        :param SnapshotByTimeOffsetTask: 视频按时间点截图任务
+        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
+        :param SampleSnapshotTask: 视频采样截图任务
+        :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
+        :param ImageSpriteTask: 视频截雪碧图任务
+        :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
+        :param AdaptiveDynamicStreamingTask: 转自适应码流任务
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
+        :param AiContentReviewTask: 视频内容审核类型任务
+        :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param AiAnalysisTask: 视频内容分析类型任务
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param AiRecognitionTask: 视频内容识别类型任务
+        :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
+        self.TranscodeTask = None
+        self.AnimatedGraphicTask = None
+        self.SnapshotByTimeOffsetTask = None
+        self.SampleSnapshotTask = None
+        self.ImageSpriteTask = None
+        self.AdaptiveDynamicStreamingTask = None
+        self.AiContentReviewTask = None
+        self.AiAnalysisTask = None
+        self.AiRecognitionTask = None
+
+
+    def _deserialize(self, params):
+        if params.get("TranscodeTask") is not None:
+            self.TranscodeTask = TranscodeTaskInput()
+            self.TranscodeTask._deserialize(params.get("TranscodeTask"))
+        if params.get("AnimatedGraphicTask") is not None:
+            self.AnimatedGraphicTask = AnimatedGraphicTaskInput()
+            self.AnimatedGraphicTask._deserialize(params.get("AnimatedGraphicTask"))
+        if params.get("SnapshotByTimeOffsetTask") is not None:
+            self.SnapshotByTimeOffsetTask = SnapshotByTimeOffsetTaskInput()
+            self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
+        if params.get("SampleSnapshotTask") is not None:
+            self.SampleSnapshotTask = SampleSnapshotTaskInput()
+            self.SampleSnapshotTask._deserialize(params.get("SampleSnapshotTask"))
+        if params.get("ImageSpriteTask") is not None:
+            self.ImageSpriteTask = ImageSpriteTaskInput()
+            self.ImageSpriteTask._deserialize(params.get("ImageSpriteTask"))
+        if params.get("AdaptiveDynamicStreamingTask") is not None:
+            self.AdaptiveDynamicStreamingTask = AdaptiveDynamicStreamingTaskInput()
+            self.AdaptiveDynamicStreamingTask._deserialize(params.get("AdaptiveDynamicStreamingTask"))
+        if params.get("AiContentReviewTask") is not None:
+            self.AiContentReviewTask = AiContentReviewTaskInput()
+            self.AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self.AiAnalysisTask = AiAnalysisTaskInput()
+            self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTask") is not None:
+            self.AiRecognitionTask = AiRecognitionTaskInput()
+            self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ActivityResItem(AbstractModel):
     """编排子任务输出
 
@@ -5741,6 +5860,82 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateScheduleRequest(AbstractModel):
+    """CreateSchedule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleName: 编排名称，最多128字符。同一个用户该名称唯一。
+        :type ScheduleName: str
+        :param Trigger: 编排绑定的触发规则，当上传视频命中该规则到该对象时即触发工作流。
+        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        :param Activities: 编排任务列表。
+        :type Activities: list of Activity
+        :param OutputStorage: 媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致。
+        :type OutputDir: str
+        :param TaskNotifyConfig: 任务的事件通知配置，不填代表不获取事件通知。
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        self.ScheduleName = None
+        self.Trigger = None
+        self.Activities = None
+        self.OutputStorage = None
+        self.OutputDir = None
+        self.TaskNotifyConfig = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleName = params.get("ScheduleName")
+        if params.get("Trigger") is not None:
+            self.Trigger = WorkflowTrigger()
+            self.Trigger._deserialize(params.get("Trigger"))
+        if params.get("Activities") is not None:
+            self.Activities = []
+            for item in params.get("Activities"):
+                obj = Activity()
+                obj._deserialize(item)
+                self.Activities.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputDir = params.get("OutputDir")
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScheduleResponse(AbstractModel):
+    """CreateSchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: 编排 ID。
+        :type ScheduleId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScheduleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
     """CreateSnapshotByTimeOffsetTemplate请求参数结构体
 
@@ -6603,6 +6798,47 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
 
 class DeleteSampleSnapshotTemplateResponse(AbstractModel):
     """DeleteSampleSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteScheduleRequest(AbstractModel):
+    """DeleteSchedule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: 编排唯一标识。
+        :type ScheduleId: int
+        """
+        self.ScheduleId = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteScheduleResponse(AbstractModel):
+    """DeleteSchedule返回参数结构体
 
     """
 
@@ -8400,6 +8636,75 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSchedulesRequest(AbstractModel):
+    """DescribeSchedules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleIds: 编排 ID 过滤条件，数组长度限制：100。
+        :type ScheduleIds: list of int
+        :param Status: 状态，取值范围：
+<li>Enabled：已启用，</li>
+<li>Disabled：已禁用。</li>
+不填此参数，则不区分工作流状态。
+        :type Status: str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        """
+        self.ScheduleIds = None
+        self.Status = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleIds = params.get("ScheduleIds")
+        self.Status = params.get("Status")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSchedulesResponse(AbstractModel):
+    """DescribeSchedules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param ScheduleInfoSet: 编排信息数组。
+        :type ScheduleInfoSet: list of SchedulesInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ScheduleInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ScheduleInfoSet") is not None:
+            self.ScheduleInfoSet = []
+            for item in params.get("ScheduleInfoSet"):
+                obj = SchedulesInfo()
+                obj._deserialize(item)
+                self.ScheduleInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
     """DescribeSnapshotByTimeOffsetTemplates请求参数结构体
 
@@ -9519,6 +9824,47 @@ class DescribeWorkflowsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableScheduleRequest(AbstractModel):
+    """DisableSchedule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: 编排唯一表示。
+        :type ScheduleId: int
+        """
+        self.ScheduleId = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableScheduleResponse(AbstractModel):
+    """DisableSchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisableWorkflowRequest(AbstractModel):
     """DisableWorkflow请求参数结构体
 
@@ -9816,6 +10162,47 @@ class EditMediaTaskOutput(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EnableScheduleRequest(AbstractModel):
+    """EnableSchedule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: 编排唯一标识。
+        :type ScheduleId: int
+        """
+        self.ScheduleId = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableScheduleResponse(AbstractModel):
+    """EnableSchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class EnableWorkflowRequest(AbstractModel):
@@ -14291,6 +14678,84 @@ class ModifySampleSnapshotTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyScheduleRequest(AbstractModel):
+    """ModifySchedule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: 编排唯一标识。
+        :type ScheduleId: int
+        :param ScheduleName: 编排名称。
+        :type ScheduleName: str
+        :param Trigger: 编排绑定的触发规则。
+        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        :param Activities: 编排任务列表。
+注意：内部不允许部分更新，如果需要更新需全量提交编排任务列表。
+        :type Activities: list of Activity
+        :param OutputStorage: 媒体处理的文件输出存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: 媒体处理生成的文件输出的目标目录。
+注意：如果设置为空，则表示取消老配置的OutputDir值。
+        :type OutputDir: str
+        :param TaskNotifyConfig: 任务的事件通知配置。
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        self.ScheduleId = None
+        self.ScheduleName = None
+        self.Trigger = None
+        self.Activities = None
+        self.OutputStorage = None
+        self.OutputDir = None
+        self.TaskNotifyConfig = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        self.ScheduleName = params.get("ScheduleName")
+        if params.get("Trigger") is not None:
+            self.Trigger = WorkflowTrigger()
+            self.Trigger._deserialize(params.get("Trigger"))
+        if params.get("Activities") is not None:
+            self.Activities = []
+            for item in params.get("Activities"):
+                obj = Activity()
+                obj._deserialize(item)
+                self.Activities.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputDir = params.get("OutputDir")
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyScheduleResponse(AbstractModel):
+    """ModifySchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
     """ModifySnapshotByTimeOffsetTemplate请求参数结构体
 
@@ -17228,6 +17693,88 @@ class ScheduleTask(AbstractModel):
                 obj = ActivityResult()
                 obj._deserialize(item)
                 self.ActivityResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SchedulesInfo(AbstractModel):
+    """编排详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScheduleId: 编排唯一标识。
+        :type ScheduleId: int
+        :param ScheduleName: 编排名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleName: str
+        :param Status: 编排状态，取值范围：
+Enabled：已启用，
+Disabled：已禁用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: list of str
+        :param Trigger: 编排绑定的触发规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        :param Activities: 编排任务列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Activities: list of Activity
+        :param OutputStorage: 媒体处理的文件输出存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param OutputDir: 媒体处理生成的文件输出的目标目录。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputDir: str
+        :param TaskNotifyConfig: 任务的事件通知配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 最后编辑时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.ScheduleId = None
+        self.ScheduleName = None
+        self.Status = None
+        self.Trigger = None
+        self.Activities = None
+        self.OutputStorage = None
+        self.OutputDir = None
+        self.TaskNotifyConfig = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.ScheduleId = params.get("ScheduleId")
+        self.ScheduleName = params.get("ScheduleName")
+        self.Status = params.get("Status")
+        if params.get("Trigger") is not None:
+            self.Trigger = WorkflowTrigger()
+            self.Trigger._deserialize(params.get("Trigger"))
+        if params.get("Activities") is not None:
+            self.Activities = []
+            for item in params.get("Activities"):
+                obj = Activity()
+                obj._deserialize(item)
+                self.Activities.append(obj)
+        if params.get("OutputStorage") is not None:
+            self.OutputStorage = TaskOutputStorage()
+            self.OutputStorage._deserialize(params.get("OutputStorage"))
+        self.OutputDir = params.get("OutputDir")
+        if params.get("TaskNotifyConfig") is not None:
+            self.TaskNotifyConfig = TaskNotifyConfig()
+            self.TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

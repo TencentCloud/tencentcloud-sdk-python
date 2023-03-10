@@ -2908,7 +2908,7 @@ class DeleteAlarmNoticesRequest(AbstractModel):
         :type Module: str
         :param NoticeIds: 告警通知模板id列表
         :type NoticeIds: list of str
-        :param NoticeBindPolicys: 通知模版与策略绑定关系
+        :param NoticeBindPolicys: 通知模板与策略绑定关系
         :type NoticeBindPolicys: list of NoticeBindPolicys
         """
         self.Module = None

@@ -3312,9 +3312,9 @@ class DescribeTaskInfoRequest(AbstractModel):
         :type InstanceIds: list of str
         :param Aliases: 按照一个或者多个实例名称查询。
         :type Aliases: list of str
-        :param StartDate: 时间查询区间的起始位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当天`00:00:00`。
+        :param StartDate: 时间查询区间的起始位置，会根据任务创建时间`CreateTime`进行过滤。未传入时默认为当天`00:00:00`。
         :type StartDate: str
-        :param EndDate: 时间查询区间的终止位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当前时刻。
+        :param EndDate: 时间查询区间的终止位置，会根据任务创建时间`CreateTime`进行过滤。未传入时默认为当前时刻。
         :type EndDate: str
         :param OrderField: 指定返回维修任务列表的排序字段，目前支持：
 
@@ -7663,6 +7663,75 @@ class RenewInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RepairTaskControlRequest(AbstractModel):
+    """RepairTaskControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Product: 待授权任务实例对应的产品类型，支持取值：
+
+- `CVM`：云服务器
+- `CDH`：专用宿主机
+- `CPM2.0`：裸金属云服务器
+        :type Product: str
+        :param InstanceIds: 指定待操作的实例ID列表，仅允许对列表中的实例ID相关的维修任务发起授权。
+        :type InstanceIds: list of str
+        :param TaskId: 维修任务ID。
+        :type TaskId: str
+        :param Operate: 操作类型，当前只支持传入`AuthorizeRepair`。
+        :type Operate: str
+        :param OrderAuthTime: 预约授权时间，形如`2023-01-01 12:00:00`。预约时间需晚于当前时间至少5分钟，且在48小时之内。
+        :type OrderAuthTime: str
+        :param TaskSubMethod: 附加的授权处理策略。
+        :type TaskSubMethod: str
+        """
+        self.Product = None
+        self.InstanceIds = None
+        self.TaskId = None
+        self.Operate = None
+        self.OrderAuthTime = None
+        self.TaskSubMethod = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceIds = params.get("InstanceIds")
+        self.TaskId = params.get("TaskId")
+        self.Operate = params.get("Operate")
+        self.OrderAuthTime = params.get("OrderAuthTime")
+        self.TaskSubMethod = params.get("TaskSubMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RepairTaskControlResponse(AbstractModel):
+    """RepairTaskControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 已完成授权的维修任务ID。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class RepairTaskInfo(AbstractModel):
     """描述维修任务的相关信息
 
@@ -9246,12 +9315,16 @@ class TerminateInstancesRequest(AbstractModel):
         r"""
         :param InstanceIds: 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
         :type InstanceIds: list of str
+        :param ReleasePrepaidDataDisks: 释放实例挂载的包年包月数据盘。
+        :type ReleasePrepaidDataDisks: bool
         """
         self.InstanceIds = None
+        self.ReleasePrepaidDataDisks = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
+        self.ReleasePrepaidDataDisks = params.get("ReleasePrepaidDataDisks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

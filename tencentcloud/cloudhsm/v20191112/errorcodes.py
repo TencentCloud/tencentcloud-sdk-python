@@ -23,6 +23,9 @@ INTERNALERROR = 'InternalError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 参数取值错误。
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

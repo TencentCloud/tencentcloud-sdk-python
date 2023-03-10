@@ -210,6 +210,40 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSchedule(self, request):
+        """对 COS 中指定 Bucket 的目录下上传的媒体文件，设置处理规则，包括：
+        1. 视频转码（带水印）；
+        2. 视频转动图；
+        3. 对视频按指定时间点截图；
+        4. 对视频采样截图；
+        5. 对视频截图雪碧图；
+        6. 对视频转自适应码流；
+        7. 智能内容审核（鉴黄、敏感信息检测）；
+        8. 智能内容分析（标签、分类、封面、按帧标签）；
+        9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+
+        注意：创建编排成功后是禁用状态，需要手动启用。
+
+        :param request: Request instance for CreateSchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSnapshotByTimeOffsetTemplate(self, request):
         """创建用户自定义指定时间点截图模板，数量上限：16。
 
@@ -559,6 +593,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeleteSampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSampleSnapshotTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSchedule(self, request):
+        """删除编排
+
+        :param request: Request instance for DeleteSchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteScheduleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -927,6 +984,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeSampleSnapshotTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSampleSnapshotTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSchedules(self, request):
+        """查询编排。
+
+        :param request: Request instance for DescribeSchedules.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSchedulesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSchedulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSchedules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSchedulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1306,6 +1386,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableSchedule(self, request):
+        """禁用自动化触发编排任务。
+
+        :param request: Request instance for DisableSchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DisableScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DisableScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableSchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableWorkflow(self, request):
         """禁用工作流。
 
@@ -1347,6 +1450,29 @@ class MpsClient(AbstractClient):
             body = self.call("EditMedia", params, headers=headers)
             response = json.loads(body)
             model = models.EditMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableSchedule(self, request):
+        """启用自动化触发编排任务。
+
+        :param request: Request instance for EnableSchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.EnableScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnableScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableSchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableScheduleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1602,6 +1728,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifySampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySampleSnapshotTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySchedule(self, request):
+        """修改编排
+
+        :param request: Request instance for ModifySchedule.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyScheduleRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyScheduleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySchedule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyScheduleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

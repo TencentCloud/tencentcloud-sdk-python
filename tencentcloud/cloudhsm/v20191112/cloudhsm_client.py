@@ -233,6 +233,52 @@ class CloudhsmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetAlarmEvent(self, request):
+        """获取告警事件
+
+        :param request: Request instance for GetAlarmEvent.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.GetAlarmEventRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.GetAlarmEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAlarmEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAlarmEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetVsmMonitorInfo(self, request):
+        """获取VSM监控信息
+
+        :param request: Request instance for GetVsmMonitorInfo.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.GetVsmMonitorInfoRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.GetVsmMonitorInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetVsmMonitorInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetVsmMonitorInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquiryPriceBuyVsm(self, request):
         """购买询价接口
 
@@ -247,6 +293,29 @@ class CloudhsmClient(AbstractClient):
             body = self.call("InquiryPriceBuyVsm", params, headers=headers)
             response = json.loads(body)
             model = models.InquiryPriceBuyVsmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAlarmEvent(self, request):
+        """修改告警事件
+
+        :param request: Request instance for ModifyAlarmEvent.
+        :type request: :class:`tencentcloud.cloudhsm.v20191112.models.ModifyAlarmEventRequest`
+        :rtype: :class:`tencentcloud.cloudhsm.v20191112.models.ModifyAlarmEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAlarmEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAlarmEventResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

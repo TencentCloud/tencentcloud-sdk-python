@@ -395,6 +395,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateReleaseFlow(self, request):
+        """发起解除协议，主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
+
+        :param request: Request instance for CreateReleaseFlow.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateReleaseFlowRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateReleaseFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateReleaseFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateReleaseFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSchemeUrl(self, request):
         """获取小程序跳转链接
 

@@ -246,12 +246,30 @@ class CcInfo(AbstractModel):
         r"""
         :param Mobile: 被抄送人手机号，大陆11位手机号
         :type Mobile: str
+        :param Name: 被抄送人姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param CcType: 被抄送人类型
+0--个人. 1--员工
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcType: int
+        :param CcPermission: 被抄送人权限
+0--可查看
+1--可查看也可下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcPermission: int
         """
         self.Mobile = None
+        self.Name = None
+        self.CcType = None
+        self.CcPermission = None
 
 
     def _deserialize(self, params):
         self.Mobile = params.get("Mobile")
+        self.Name = params.get("Name")
+        self.CcType = params.get("CcType")
+        self.CcPermission = params.get("CcPermission")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -714,7 +732,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowName: 签署流程名称，长度不超过200个字符
         :type FlowName: str
-        :param FlowApprovers: 签署流程签约方列表，最多不超过5个参与方
+        :param FlowApprovers: 签署流程签约方列表，最多不超过50个参与方
         :type FlowApprovers: list of FlowApproverInfo
         :param FileIds: 签署文件资源Id列表，目前仅支持单个文件
         :type FileIds: list of str
@@ -745,6 +763,10 @@ MobileCheck：手机号验证
         :type SignBeanTag: int
         :param Operator: 操作者的信息，不用传
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param CcInfos: 被抄送人信息列表
+        :type CcInfos: list of CcInfo
+        :param CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+        :type CcNotifyType: int
         """
         self.Agent = None
         self.FlowName = None
@@ -762,6 +784,8 @@ MobileCheck：手机号验证
         self.ApproverVerifyType = None
         self.SignBeanTag = None
         self.Operator = None
+        self.CcInfos = None
+        self.CcNotifyType = None
 
 
     def _deserialize(self, params):
@@ -795,6 +819,13 @@ MobileCheck：手机号验证
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        if params.get("CcInfos") is not None:
+            self.CcInfos = []
+            for item in params.get("CcInfos"):
+                obj = CcInfo()
+                obj._deserialize(item)
+                self.CcInfos.append(obj)
+        self.CcNotifyType = params.get("CcNotifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3852,6 +3883,8 @@ class FlowInfo(AbstractModel):
 
 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
         :type NeedSignReview: bool
+        :param CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+        :type CcNotifyType: int
         """
         self.FlowName = None
         self.Deadline = None
@@ -3865,6 +3898,7 @@ class FlowInfo(AbstractModel):
         self.CustomShowMap = None
         self.CcInfos = None
         self.NeedSignReview = None
+        self.CcNotifyType = None
 
 
     def _deserialize(self, params):
@@ -3895,6 +3929,7 @@ class FlowInfo(AbstractModel):
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
         self.NeedSignReview = params.get("NeedSignReview")
+        self.CcNotifyType = params.get("CcNotifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

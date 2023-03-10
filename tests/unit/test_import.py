@@ -44,6 +44,11 @@ def test_import_afc():
     from tencentcloud.afc.v20200226 import models
 
 
+def test_import_aiart():
+    from tencentcloud.aiart.v20221229 import aiart_client
+    from tencentcloud.aiart.v20221229 import models
+
+
 def test_import_ame():
     from tencentcloud.ame.v20190916 import ame_client
     from tencentcloud.ame.v20190916 import models

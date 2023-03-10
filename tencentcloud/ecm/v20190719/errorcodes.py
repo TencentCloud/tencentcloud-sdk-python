@@ -467,6 +467,9 @@ RESOURCEINSUFFICIENT_INSTANCEQUOTANOTENOUGH = 'ResourceInsufficient.InstanceQuot
 # 私有镜像数量超出限制。
 RESOURCEINSUFFICIENT_INVAILDPRIVATEIMAGENUM = 'ResourceInsufficient.InvaildPrivateImageNum'
 
+# 当前子网中内网IP不足
+RESOURCEINSUFFICIENT_PRIVATEIPQUOTANOTENOUGH = 'ResourceInsufficient.PrivateIPQuotaNotEnough'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

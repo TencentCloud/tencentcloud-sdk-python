@@ -1084,6 +1084,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeForbiddenTablePro(self, request):
+        """本接口（DescribeForbiddenTablePro）用于获取被禁用的表属性列表
+
+        :param request: Request instance for DescribeForbiddenTablePro.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeForbiddenTableProRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeForbiddenTableProResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeForbiddenTablePro", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeForbiddenTableProResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLakeFsDirSummary(self, request):
         """查询托管存储指定目录的Summary
 

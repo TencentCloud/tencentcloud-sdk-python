@@ -18,6 +18,95 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class DescribeGoodsRecommendRequest(AbstractModel):
+    """DescribeGoodsRecommend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，在控制台获取
+        :type InstanceId: str
+        :param SceneId: 场景ID，在控制台创建场景后获取
+        :type SceneId: str
+        :param UserId: 用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识，需和行为数据上报接口中的UserId一致，否则影响特征关联
+        :type UserId: str
+        :param UserIdList: 用户设备ID数组，可传入用户的多个类型ID，用于关联画像信息
+        :type UserIdList: list of StrUserIdInfo
+        :param GoodsCnt: 推荐返回数量，默认10个，最多支持50个的内容返回。如果有更多数量要求，<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决
+        :type GoodsCnt: int
+        :param CurrentGoodsId: 当场景是相关推荐时该值必填，场景是非相关推荐时该值无效
+        :type CurrentGoodsId: str
+        :param UserPortraitInfo: 用户的实时特征信息，用作特征
+        :type UserPortraitInfo: :class:`tencentcloud.irp.v20220805.models.UserPortraitInfo`
+        :param BlackGoodsList: 本次请求针对该用户需要过滤的物品列表(不超过100个)
+        :type BlackGoodsList: list of str
+        :param Extension: json字符串，扩展字段
+        :type Extension: str
+        """
+        self.InstanceId = None
+        self.SceneId = None
+        self.UserId = None
+        self.UserIdList = None
+        self.GoodsCnt = None
+        self.CurrentGoodsId = None
+        self.UserPortraitInfo = None
+        self.BlackGoodsList = None
+        self.Extension = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SceneId = params.get("SceneId")
+        self.UserId = params.get("UserId")
+        if params.get("UserIdList") is not None:
+            self.UserIdList = []
+            for item in params.get("UserIdList"):
+                obj = StrUserIdInfo()
+                obj._deserialize(item)
+                self.UserIdList.append(obj)
+        self.GoodsCnt = params.get("GoodsCnt")
+        self.CurrentGoodsId = params.get("CurrentGoodsId")
+        if params.get("UserPortraitInfo") is not None:
+            self.UserPortraitInfo = UserPortraitInfo()
+            self.UserPortraitInfo._deserialize(params.get("UserPortraitInfo"))
+        self.BlackGoodsList = params.get("BlackGoodsList")
+        self.Extension = params.get("Extension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGoodsRecommendResponse(AbstractModel):
+    """DescribeGoodsRecommend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataList: 推荐返回的商品信息列表
+        :type DataList: list of RecGoodsData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataList") is not None:
+            self.DataList = []
+            for item in params.get("DataList"):
+                obj = RecGoodsData()
+                obj._deserialize(item)
+                self.DataList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DislikeInfo(AbstractModel):
     """不喜欢信息
 
@@ -465,6 +554,289 @@ class FeedUserInfo(AbstractModel):
         
 
 
+class GoodsBehaviorInfo(AbstractModel):
+    """电商行为
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户唯一ID，客户自定义用户ID，作为一个用户的唯一标识
+        :type UserId: str
+        :param GoodsId: 商品唯一ID，skuId或spuId，客户根据需求自行决定商品主键粒度
+        :type GoodsId: str
+        :param BehaviorType: 行为类型：<br> ● expose - 曝光，<b>必须</b><br> ● click - 点击，<b>必须</b><br/>  ● stay - 详情页停留时长，<b>强烈建议</b><br/>  ● videoover - 视频播放时长，<b>强烈建议</b><br/> ●  like - 点赞&喜欢，<b>正效果</b><br/> ● collect - 收藏，<b>正效果</b><br/> ●  share - 转发&分享，<b>正效果</b><br/> ● reward - 打赏，<b>正效果</b><br/> ● unlike - 踩&不喜欢，<b>负效果</b><br/> ●  comment - 评论<br/> ●  order - 下单<br/> ●  buy - 购买成功<br/> ●  addcart - 加入购物车<br/>   
+不支持的行为类型，可以映射到未被使用的其他行为类型。如实际业务数据中有私信行为，没有收藏行为，可以将私信行为映射到收藏行为
+        :type BehaviorType: str
+        :param BehaviorValue: 行为类型对应的行为值：<br/> ● expose - 曝光，固定填1<br/> ● click - 点击，固定填1<br/>  ● stay - 详情页停留时长，填停留秒数，取值[1-86400]<br/>  ● videoover - 视频播放时长，填播放结束的秒数，取值[1-86400]<br/> ●  like - 点赞&喜欢，固定填1<br/> ● collect - 收藏，固定填1<br/> ●  share - 转发&分享，固定填1<br/> ● reward - 打赏，填打赏金额，没有则填1<br/> ● unlike - 踩&不喜欢，填不喜欢的原因，没有则填1<br/> ●  comment - 评论，填评论内容，如“上海加油”<br/> ●  order - 下单，固定填1<br/> ●  buy - 购买成功，固定填1<br/> ●  addcart - 加入购物车，固定填1
+        :type BehaviorValue: str
+        :param BehaviorTimestamp: 行为发生的时间戳： 秒级时间戳，尽量实时上报，最长不超过半小时否则会影响推荐结果的准确性
+        :type BehaviorTimestamp: int
+        :param SceneId: 行为发生的场景ID，在控制台创建场景后获取
+        :type SceneId: str
+        :param Source: 算法来源： <br>● business 业务自己的算法对照组<br/> ● tencent 腾讯算法<br/> ● other 其他算法<br/>默认为tencent，区分行为来源于哪个算法，<b>用于Poc阶段的效果对比验证</b>
+        :type Source: str
+        :param Page: 标识行为发生在app内哪个页面，取值客户自定，可以是明文或id，建议传明文便于理解、分析，如首页，发现页，用户中心等
+<b>用作上下文特征，刻画不同场景用户行为分布的差异</b>
+        :type Page: str
+        :param Module: 标识行为发生在页面的哪一区块，取值客户自定，可以是明文或id，建议传明文便于理解、分析，如横幅、广告位、猜你喜欢等
+<b>用作上下文特征，刻画不同模块用户行为分布的差异</b>
+        :type Module: str
+        :param GoodsTraceId: 推荐追踪ID，使用推荐结果中返回的GoodsTraceId填入。 
+注意：如果和推荐结果中的GoodsTraceId不同，会影响行为特征归因，影响推荐算法效果。<b>强烈建议</b>
+        :type GoodsTraceId: str
+        :param ReferrerGoodsId: 相关推荐场景点击进入详情页的内容id，该字段用来注明行为发生于哪个内容的详情页推荐中，<b>相关推荐场景强烈建议</b>
+        :type ReferrerGoodsId: str
+        :param OrderGoodsCnt: 订单商品购买个数，当behaviorType=order，buy或addcart时有值，<b>用作特征</b>
+        :type OrderGoodsCnt: int
+        :param OrderAmount: 订单总金额，当behaviorType=order或buy时有值（单位：元，统一货币体系，如统一为RMB，美元等），<b>用作特征</b>
+        :type OrderAmount: float
+        :param UserIdList: 用户设备ID数组，可传入用户的多个类型ID，详见UserIdInfo结构体，建议补齐，<b>用于构建用户画像信息</b>
+        :type UserIdList: list of StrUserIdInfo
+        :param UserPortraitInfo: 行为发生时用户基础特征信息，<b>用作特征</b>
+        :type UserPortraitInfo: :class:`tencentcloud.irp.v20220805.models.UserPortraitInfo`
+        :param Position: 标识行为发生在模块内的具体位置，如1、2、...
+<b>用作上下文特征，刻画不同位置用户行为分布的差异</b>
+        :type Position: int
+        :param Extension: json字符串，<b>用于行为数据的扩展</b>
+        :type Extension: str
+        """
+        self.UserId = None
+        self.GoodsId = None
+        self.BehaviorType = None
+        self.BehaviorValue = None
+        self.BehaviorTimestamp = None
+        self.SceneId = None
+        self.Source = None
+        self.Page = None
+        self.Module = None
+        self.GoodsTraceId = None
+        self.ReferrerGoodsId = None
+        self.OrderGoodsCnt = None
+        self.OrderAmount = None
+        self.UserIdList = None
+        self.UserPortraitInfo = None
+        self.Position = None
+        self.Extension = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.GoodsId = params.get("GoodsId")
+        self.BehaviorType = params.get("BehaviorType")
+        self.BehaviorValue = params.get("BehaviorValue")
+        self.BehaviorTimestamp = params.get("BehaviorTimestamp")
+        self.SceneId = params.get("SceneId")
+        self.Source = params.get("Source")
+        self.Page = params.get("Page")
+        self.Module = params.get("Module")
+        self.GoodsTraceId = params.get("GoodsTraceId")
+        self.ReferrerGoodsId = params.get("ReferrerGoodsId")
+        self.OrderGoodsCnt = params.get("OrderGoodsCnt")
+        self.OrderAmount = params.get("OrderAmount")
+        if params.get("UserIdList") is not None:
+            self.UserIdList = []
+            for item in params.get("UserIdList"):
+                obj = StrUserIdInfo()
+                obj._deserialize(item)
+                self.UserIdList.append(obj)
+        if params.get("UserPortraitInfo") is not None:
+            self.UserPortraitInfo = UserPortraitInfo()
+            self.UserPortraitInfo._deserialize(params.get("UserPortraitInfo"))
+        self.Position = params.get("Position")
+        self.Extension = params.get("Extension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GoodsInfo(AbstractModel):
+    """电商物料内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GoodsId: 商品唯一ID，skuId或spuId，客户根据需求自行决定商品主键粒度。建议限制在128字符以内
+        :type GoodsId: str
+        :param GoodsType: 商品物料展示类型：<br/>● article -图文<br>● text -纯文本<br/>● video -视频<br/>● short_video -时长15秒以内的视频<br/>● mini_video -竖屏视频<br/>● image -纯图片<br/>（如当前类型不满足，请<a href="https://console.cloud.tencent.com/workorder/category" target="_blank">提单</a>沟通解决方案）
+        :type GoodsType: str
+        :param Status: 商品状态：
+● 1 - 上架 
+● 2 - 下架 
+Status=2的内容不会在推荐结果中出现 
+需要下架内容时，把Status的值修改为2即可
+        :type Status: int
+        :param PublishTimestamp: 商品生成时间，秒级时间戳（1639624786），需大于0，<b>用作特征和物料管理</b>
+        :type PublishTimestamp: int
+        :param ExpireTimestamp: 商品过期时间，秒级时间戳（1639624786），如未填，则默认PublishTimestamp往后延一年，<b>用作特征</b>，过期则不会被推荐，<b>强烈建议</b>
+        :type ExpireTimestamp: int
+        :param SpuId: spu((Standard Product Unit))维度id，商品聚合信息的最小单位，<b>强烈建议</b>
+        :type SpuId: str
+        :param CategoryLevel: 类目层级数，例如3级类目，则填3，和CategoryPath字段的类数据匹配，<b>强烈建议</b>
+        :type CategoryLevel: int
+        :param CategoryPath: 类目路径，一级二级三级等依次用英文冒号联接，和CategoryLevel字段值匹配，如体育：“女装:裙子:半身裙”。<b>用于物料池管理，强烈建议</b>
+        :type CategoryPath: str
+        :param Title: 商品标题，<b>主要用于语义分析</b>，<b>强烈建议</b>
+        :type Title: str
+        :param Tags: 商品标签，多个标签用英文冒号联接，<b>用作特征，强烈建议</b>
+        :type Tags: str
+        :param Brand: 商品对应的品牌，取值用户自定义，可以是品牌id或品牌明文，<b>用作特征以及打散/过滤规则，强烈建议</b>
+        :type Brand: str
+        :param ShopId: 商品所属店铺ID，取值客户自定义，<b>用作特征，强烈建议</b>
+        :type ShopId: str
+        :param OrgPrice: 商品原始价格（单位：元，统一货币体系，如统一为RMB或美元等），<b>用作特征，强烈建议</b>
+        :type OrgPrice: float
+        :param CurPrice: 商品当前价格（单位：元，统一货币体系，如统一为RMB或美元等），<b>用作特征，强烈建议</b>
+        :type CurPrice: float
+        :param SourceId: 商品来源类型，客户自定义，<b>用于物料池管理</b>
+        :type SourceId: str
+        :param Content: 商品正文关键片段，建议控制在500字符以内，<b>主要用于语义分析</b>
+        :type Content: str
+        :param ContentUrl: 商品正文详情，主要用于语义分析，当内容过大时建议用ContentUrl传递，<b>与Content可二选一</b>
+        :type ContentUrl: str
+        :param PicUrlList: 商品封面url，不超过10个，<b>用作特征</b>
+        :type PicUrlList: list of str
+        :param Country: 卖家所在国家，ISO 3166-1 alpha-2编码，参考<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a>，中国：“CN”，<b>用作特征</b>
+        :type Country: str
+        :param Province: 卖家所在省份，ISO 3166-2行政区编码，如中国参考<a href="https://zh.wikipedia.org/wiki/ISO_3166-2:CN" target="_blank">ISO_3166-2:CN</a>，广东省：“CN-GD”，<b>用作特征</b>
+        :type Province: str
+        :param City: 卖家所在城市地区，统一用国家最新标准地区行政编码，如：<a href="https://www.mca.gov.cn/article/sj/xzqh/2020/" target="_blank">2020年行政区编码</a>，其他国家统一用国际公认城市简称或者城市编码，<b>用作特征</b>
+        :type City: str
+        :param FreeShipping: 商品是否包邮；1:包邮；2:不包邮；3:满足条件包邮，<b>用作特征</b>
+        :type FreeShipping: int
+        :param ShippingPrice: 商品邮费（单位：元，统一货币体系，如统一为RMB或美元等），<b>用作特征</b>
+        :type ShippingPrice: float
+        :param PraiseCnt: 商品累计好评次数，<b>用作特征</b>
+        :type PraiseCnt: int
+        :param CommentCnt: 商品累计评论次数，<b>用作特征</b>
+        :type CommentCnt: int
+        :param ShareCnt: 商品累计分享次数，<b>用作特征</b>
+        :type ShareCnt: int
+        :param CollectCnt: 商品累计收藏次数，<b>用作特征</b>
+        :type CollectCnt: int
+        :param OrderCnt: 商品累积成交次数，<b>用作特征</b>
+        :type OrderCnt: int
+        :param Score: 商品平均客户评分，取值范围用户自定，<b>用作特征</b>
+        :type Score: float
+        :param Extension: json字符串，<b>用于物料池管理的自定义扩展</b>
+        :type Extension: str
+        """
+        self.GoodsId = None
+        self.GoodsType = None
+        self.Status = None
+        self.PublishTimestamp = None
+        self.ExpireTimestamp = None
+        self.SpuId = None
+        self.CategoryLevel = None
+        self.CategoryPath = None
+        self.Title = None
+        self.Tags = None
+        self.Brand = None
+        self.ShopId = None
+        self.OrgPrice = None
+        self.CurPrice = None
+        self.SourceId = None
+        self.Content = None
+        self.ContentUrl = None
+        self.PicUrlList = None
+        self.Country = None
+        self.Province = None
+        self.City = None
+        self.FreeShipping = None
+        self.ShippingPrice = None
+        self.PraiseCnt = None
+        self.CommentCnt = None
+        self.ShareCnt = None
+        self.CollectCnt = None
+        self.OrderCnt = None
+        self.Score = None
+        self.Extension = None
+
+
+    def _deserialize(self, params):
+        self.GoodsId = params.get("GoodsId")
+        self.GoodsType = params.get("GoodsType")
+        self.Status = params.get("Status")
+        self.PublishTimestamp = params.get("PublishTimestamp")
+        self.ExpireTimestamp = params.get("ExpireTimestamp")
+        self.SpuId = params.get("SpuId")
+        self.CategoryLevel = params.get("CategoryLevel")
+        self.CategoryPath = params.get("CategoryPath")
+        self.Title = params.get("Title")
+        self.Tags = params.get("Tags")
+        self.Brand = params.get("Brand")
+        self.ShopId = params.get("ShopId")
+        self.OrgPrice = params.get("OrgPrice")
+        self.CurPrice = params.get("CurPrice")
+        self.SourceId = params.get("SourceId")
+        self.Content = params.get("Content")
+        self.ContentUrl = params.get("ContentUrl")
+        self.PicUrlList = params.get("PicUrlList")
+        self.Country = params.get("Country")
+        self.Province = params.get("Province")
+        self.City = params.get("City")
+        self.FreeShipping = params.get("FreeShipping")
+        self.ShippingPrice = params.get("ShippingPrice")
+        self.PraiseCnt = params.get("PraiseCnt")
+        self.CommentCnt = params.get("CommentCnt")
+        self.ShareCnt = params.get("ShareCnt")
+        self.CollectCnt = params.get("CollectCnt")
+        self.OrderCnt = params.get("OrderCnt")
+        self.Score = params.get("Score")
+        self.Extension = params.get("Extension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecGoodsData(AbstractModel):
+    """推荐返回的内容信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GoodsId: 推荐返回的商品ID
+        :type GoodsId: str
+        :param Score: 推荐结果分，取值范围[0,1000000]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: float
+        :param GoodsTraceId: 推荐追踪id，本次推荐内容产生的后续行为上报均要用该GoodsTraceId上报。每次接口调用返回的GoodsTraceId不同
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsTraceId: str
+        :param Position: 商品所在位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: int
+        """
+        self.GoodsId = None
+        self.Score = None
+        self.GoodsTraceId = None
+        self.Position = None
+
+
+    def _deserialize(self, params):
+        self.GoodsId = params.get("GoodsId")
+        self.Score = params.get("Score")
+        self.GoodsTraceId = params.get("GoodsTraceId")
+        self.Position = params.get("Position")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecItemData(AbstractModel):
     """推荐返回的内容信息
 
@@ -654,6 +1026,112 @@ class ReportFeedUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReportGoodsBehaviorRequest(AbstractModel):
+    """ReportGoodsBehavior请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，在控制台获取
+        :type InstanceId: str
+        :param GoodsBehaviorList: 上报的商品对应的用户行为数据数组，数量不超过50
+        :type GoodsBehaviorList: list of GoodsBehaviorInfo
+        """
+        self.InstanceId = None
+        self.GoodsBehaviorList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("GoodsBehaviorList") is not None:
+            self.GoodsBehaviorList = []
+            for item in params.get("GoodsBehaviorList"):
+                obj = GoodsBehaviorInfo()
+                obj._deserialize(item)
+                self.GoodsBehaviorList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportGoodsBehaviorResponse(AbstractModel):
+    """ReportGoodsBehavior返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ReportGoodsInfoRequest(AbstractModel):
+    """ReportGoodsInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，在控制台获取
+        :type InstanceId: str
+        :param GoodsList: 上报的商品数组，一次数量不超过50
+        :type GoodsList: list of GoodsInfo
+        """
+        self.InstanceId = None
+        self.GoodsList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("GoodsList") is not None:
+            self.GoodsList = []
+            for item in params.get("GoodsList"):
+                obj = GoodsInfo()
+                obj._deserialize(item)
+                self.GoodsList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportGoodsInfoResponse(AbstractModel):
+    """ReportGoodsInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StrUserIdInfo(AbstractModel):
+    """用户信息
+
+    """
+
+
 class UserIdInfo(AbstractModel):
     """用户ID信息
 
@@ -680,3 +1158,9 @@ class UserIdInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UserPortraitInfo(AbstractModel):
+    """用户基础画像
+
+    """

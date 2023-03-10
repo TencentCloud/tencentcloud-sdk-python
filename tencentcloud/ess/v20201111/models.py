@@ -476,12 +476,31 @@ class CcInfo(AbstractModel):
         r"""
         :param Mobile: 被抄送人手机号
         :type Mobile: str
+        :param Name: 被抄送人姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param CcType: 被抄送人类型,
+0--个人
+1--员工
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcType: int
+        :param CcPermission: 被抄送人权限
+0--可查看
+1--可查看也可下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcPermission: int
         """
         self.Mobile = None
+        self.Name = None
+        self.CcType = None
+        self.CcPermission = None
 
 
     def _deserialize(self, params):
         self.Mobile = params.get("Mobile")
+        self.Name = params.get("Name")
+        self.CcType = params.get("CcType")
+        self.CcPermission = params.get("CcPermission")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1058,6 +1077,8 @@ MobileCheck：手机号验证
         :type SignBeanTag: int
         :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+        :type CcNotifyType: int
         """
         self.Operator = None
         self.FlowName = None
@@ -1077,6 +1098,7 @@ MobileCheck：手机号验证
         self.FlowDescription = None
         self.SignBeanTag = None
         self.Agent = None
+        self.CcNotifyType = None
 
 
     def _deserialize(self, params):
@@ -1117,6 +1139,7 @@ MobileCheck：手机号验证
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
+        self.CcNotifyType = params.get("CcNotifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1776,6 +1799,75 @@ class CreatePrepareFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReleaseFlowRequest(AbstractModel):
+    """CreateReleaseFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param NeedRelievedFlowId: 待解除的签署流程编号（即原签署流程的编号）
+        :type NeedRelievedFlowId: str
+        :param ReliveInfo: 解除协议内容
+        :type ReliveInfo: :class:`tencentcloud.ess.v20201111.models.RelieveInfo`
+        :param ReleasedApprovers: 非必须，解除协议的本企业签署人列表，
+默认使用原流程的签署人列表,当解除协议的签署人与原流程的签署人不能相同时（例如原流程签署人离职了），需要指定本企业其他已实名员工来替换原流程中的原签署人，注意需要指明原签署人的编号(ReceiptId,通过DescribeFlowInfo接口获取)来代表需要替换哪一个签署人
+解除协议的签署人数量不能多于原流程的签署人数量
+        :type ReleasedApprovers: list of ReleasedApprover
+        """
+        self.Operator = None
+        self.NeedRelievedFlowId = None
+        self.ReliveInfo = None
+        self.ReleasedApprovers = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.NeedRelievedFlowId = params.get("NeedRelievedFlowId")
+        if params.get("ReliveInfo") is not None:
+            self.ReliveInfo = RelieveInfo()
+            self.ReliveInfo._deserialize(params.get("ReliveInfo"))
+        if params.get("ReleasedApprovers") is not None:
+            self.ReleasedApprovers = []
+            for item in params.get("ReleasedApprovers"):
+                obj = ReleasedApprover()
+                obj._deserialize(item)
+                self.ReleasedApprovers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReleaseFlowResponse(AbstractModel):
+    """CreateReleaseFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 解除协议流程编号
+
+        :type FlowId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4323,6 +4415,92 @@ class RegisterInfo(AbstractModel):
         
 
 
+class ReleasedApprover(AbstractModel):
+    """解除协议的签署人，如不指定，默认使用待解除流程（即原流程）中的签署人。
+    注意：不支持更换C端（个人身份类型）签署人，如果原流程中含有C端签署人，默认使用原流程中的该C端签署人。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 签署人姓名，最大长度50个字符
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Mobile: 签署人手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mobile: str
+        :param RelievedApproverReceiptId: 要替换的参与人在原合同参与人列表中的签署人编号,通过DescribeFlowInfo 接口获取（即FlowDetailInfos. FlowApproverInfos 结构中的ReceiptId ）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelievedApproverReceiptId: str
+        """
+        self.Name = None
+        self.Mobile = None
+        self.RelievedApproverReceiptId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Mobile = params.get("Mobile")
+        self.RelievedApproverReceiptId = params.get("RelievedApproverReceiptId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RelieveInfo(AbstractModel):
+    """解除协议文档中内容信息，包括但不限于：解除理由、解除后仍然有效的条款-保留条款、原合同事项处理-费用结算、原合同事项处理-其他事项、其他约定等。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Reason: 解除理由，最大支持200个字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param RemainInForceItem: 解除后仍然有效的条款，保留条款，最大支持200个字
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainInForceItem: str
+        :param OriginalExpenseSettlement: 原合同事项处理-费用结算，最大支持200个字
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalExpenseSettlement: str
+        :param OriginalOtherSettlement: 原合同事项处理-其他事项，最大支持200个字
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalOtherSettlement: str
+        :param OtherDeals: 其他约定，最大支持200个字
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherDeals: str
+        """
+        self.Reason = None
+        self.RemainInForceItem = None
+        self.OriginalExpenseSettlement = None
+        self.OriginalOtherSettlement = None
+        self.OtherDeals = None
+
+
+    def _deserialize(self, params):
+        self.Reason = params.get("Reason")
+        self.RemainInForceItem = params.get("RemainInForceItem")
+        self.OriginalExpenseSettlement = params.get("OriginalExpenseSettlement")
+        self.OriginalOtherSettlement = params.get("OriginalOtherSettlement")
+        self.OtherDeals = params.get("OtherDeals")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RemindFlowRecords(AbstractModel):
     """催办接口返回详细信息
 
@@ -4541,11 +4719,14 @@ class StartFlowRequest(AbstractModel):
         :type ClientToken: str
         :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+        :type CcNotifyType: int
         """
         self.Operator = None
         self.FlowId = None
         self.ClientToken = None
         self.Agent = None
+        self.CcNotifyType = None
 
 
     def _deserialize(self, params):
@@ -4557,6 +4738,7 @@ class StartFlowRequest(AbstractModel):
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
+        self.CcNotifyType = params.get("CcNotifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -26,6 +26,29 @@ class IrpClient(AbstractClient):
     _service = 'irp'
 
 
+    def DescribeGoodsRecommend(self, request):
+        """获取电商类推荐结果
+
+        :param request: Request instance for DescribeGoodsRecommend.
+        :type request: :class:`tencentcloud.irp.v20220805.models.DescribeGoodsRecommendRequest`
+        :rtype: :class:`tencentcloud.irp.v20220805.models.DescribeGoodsRecommendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGoodsRecommend", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGoodsRecommendResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def FeedRecommend(self, request):
         """获取信息流推荐结果
 
@@ -109,6 +132,52 @@ class IrpClient(AbstractClient):
             body = self.call("ReportFeedUser", params, headers=headers)
             response = json.loads(body)
             model = models.ReportFeedUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReportGoodsBehavior(self, request):
+        """上报电商类行为数据
+
+        :param request: Request instance for ReportGoodsBehavior.
+        :type request: :class:`tencentcloud.irp.v20220805.models.ReportGoodsBehaviorRequest`
+        :rtype: :class:`tencentcloud.irp.v20220805.models.ReportGoodsBehaviorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReportGoodsBehavior", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReportGoodsBehaviorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReportGoodsInfo(self, request):
+        """上报电商类商品信息
+
+        :param request: Request instance for ReportGoodsInfo.
+        :type request: :class:`tencentcloud.irp.v20220805.models.ReportGoodsInfoRequest`
+        :rtype: :class:`tencentcloud.irp.v20220805.models.ReportGoodsInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReportGoodsInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReportGoodsInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

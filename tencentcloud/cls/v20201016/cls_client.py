@@ -210,6 +210,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCosRecharge(self, request):
+        """本接口用于创建cos导入任务
+
+        :param request: Request instance for CreateCosRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateCosRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateCosRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCosRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCosRechargeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateExport(self, request):
         """本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
 
@@ -785,6 +808,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCosRecharges(self, request):
+        """本接口用于获取cos导入配置
+
+        :param request: Request instance for DescribeCosRecharges.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeCosRechargesRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeCosRechargesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCosRecharges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCosRechargesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExports(self, request):
         """本接口用于获取日志下载任务列表
 
@@ -1213,6 +1259,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyConsumer", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyConsumerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCosRecharge(self, request):
+        """本接口用于修改cos导入任务
+
+        :param request: Request instance for ModifyCosRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyCosRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyCosRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCosRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCosRechargeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -296,10 +296,10 @@ class ClusterInfo(AbstractModel):
         :param ApiAccessIpv6: TcaplusDB SDK连接参数，接入ipv6地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiAccessIpv6: str
-        :param ClusterType: 集群类型
+        :param ClusterType: 集群类型，0,1:共享集群; 2:独立集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: int
-        :param ClusterStatus: 集群状态
+        :param ClusterStatus: 集群状态, 0：表示正常运行中，1：表示冻结隔离一般欠费进入此状态，2：表示待回收，一般用户主动触发删除进入这个状态，3：待释放，进入这个状态，表示可以释放此表占用的资源了，4：变更中
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStatus: int
         :param ReadCapacityUnit: 读CU
@@ -337,6 +337,9 @@ class ClusterInfo(AbstractModel):
         :param IsReadOnlyUlogBackupExpireDay: 集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsReadOnlyUlogBackupExpireDay: int
+        :param RestProxyStatus: restproxy状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestProxyStatus: int
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -367,6 +370,7 @@ class ClusterInfo(AbstractModel):
         self.TxhBackupExpireDay = None
         self.UlogBackupExpireDay = None
         self.IsReadOnlyUlogBackupExpireDay = None
+        self.RestProxyStatus = None
 
 
     def _deserialize(self, params):
@@ -411,6 +415,7 @@ class ClusterInfo(AbstractModel):
         self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
         self.UlogBackupExpireDay = params.get("UlogBackupExpireDay")
         self.IsReadOnlyUlogBackupExpireDay = params.get("IsReadOnlyUlogBackupExpireDay")
+        self.RestProxyStatus = params.get("RestProxyStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3783,12 +3788,16 @@ class ProxyDetailInfo(AbstractModel):
         :type AverageProcessDelay: int
         :param SlowProcessSpeed: 慢处理包速度
         :type SlowProcessSpeed: int
+        :param Version: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
         """
         self.ProxyUid = None
         self.MachineType = None
         self.ProcessSpeed = None
         self.AverageProcessDelay = None
         self.SlowProcessSpeed = None
+        self.Version = None
 
 
     def _deserialize(self, params):
@@ -3797,6 +3806,7 @@ class ProxyDetailInfo(AbstractModel):
         self.ProcessSpeed = params.get("ProcessSpeed")
         self.AverageProcessDelay = params.get("AverageProcessDelay")
         self.SlowProcessSpeed = params.get("SlowProcessSpeed")
+        self.Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4162,6 +4172,9 @@ class ServerDetailInfo(AbstractModel):
         :type ReadNum: int
         :param WriteNum: 写次数
         :type WriteNum: int
+        :param Version: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
         """
         self.ServerUid = None
         self.MachineType = None
@@ -4169,6 +4182,7 @@ class ServerDetailInfo(AbstractModel):
         self.DiskRate = None
         self.ReadNum = None
         self.WriteNum = None
+        self.Version = None
 
 
     def _deserialize(self, params):
@@ -4178,6 +4192,7 @@ class ServerDetailInfo(AbstractModel):
         self.DiskRate = params.get("DiskRate")
         self.ReadNum = params.get("ReadNum")
         self.WriteNum = params.get("WriteNum")
+        self.Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4608,12 +4623,27 @@ class TableGroupInfo(AbstractModel):
         :type TableCount: int
         :param TotalSize: 表格组包含的表格存储总量（MB）
         :type TotalSize: int
+        :param TxhBackupExpireDay: 表格Txh备份文件多少天后过期删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TxhBackupExpireDay: int
+        :param EnableMysql: 是否开启mysql负载均衡,0未开启 1开启中 2已开启
+        :type EnableMysql: int
+        :param MysqlConnIp: mysql负载均衡vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MysqlConnIp: str
+        :param MysqlConnPort: mysql负载均衡vport
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MysqlConnPort: int
         """
         self.TableGroupId = None
         self.TableGroupName = None
         self.CreatedTime = None
         self.TableCount = None
         self.TotalSize = None
+        self.TxhBackupExpireDay = None
+        self.EnableMysql = None
+        self.MysqlConnIp = None
+        self.MysqlConnPort = None
 
 
     def _deserialize(self, params):
@@ -4622,6 +4652,10 @@ class TableGroupInfo(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
         self.TableCount = params.get("TableCount")
         self.TotalSize = params.get("TotalSize")
+        self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
+        self.EnableMysql = params.get("EnableMysql")
+        self.MysqlConnIp = params.get("MysqlConnIp")
+        self.MysqlConnPort = params.get("MysqlConnPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

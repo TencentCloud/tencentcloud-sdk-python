@@ -20152,6 +20152,9 @@ class JavaMemShellInfo(AbstractModel):
         :param MachineExtraInfo: 主机额外信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param Uuid: 服务器uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
         """
         self.Id = None
         self.Alias = None
@@ -20163,6 +20166,7 @@ class JavaMemShellInfo(AbstractModel):
         self.Status = None
         self.Quuid = None
         self.MachineExtraInfo = None
+        self.Uuid = None
 
 
     def _deserialize(self, params):
@@ -20178,6 +20182,7 @@ class JavaMemShellInfo(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self.MachineExtraInfo = MachineExtraInfo()
             self.MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self.Uuid = params.get("Uuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

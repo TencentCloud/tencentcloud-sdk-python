@@ -1041,6 +1041,104 @@ class ContentInfo(AbstractModel):
         
 
 
+class CosRechargeInfo(AbstractModel):
+    """cos导入配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: COS导入配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param TopicId: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param LogsetId: 日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogsetId: str
+        :param Name: cos导入任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Bucket: cos存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        :param BucketRegion: cos存储桶地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketRegion: str
+        :param Prefix: cos存储桶前缀地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Prefix: str
+        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志；
+默认为minimalist_log
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogType: str
+        :param Status: 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Enable: 是否启用:   0： 未启用  ， 1：启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Progress: 进度条百分值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        :param Compress: supported: "", "gzip", "lzop", "snappy”; 默认空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compress: str
+        :param ExtractRuleInfo: 见： ExtractRuleInfo 结构描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
+        self.Id = None
+        self.TopicId = None
+        self.LogsetId = None
+        self.Name = None
+        self.Bucket = None
+        self.BucketRegion = None
+        self.Prefix = None
+        self.LogType = None
+        self.Status = None
+        self.Enable = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Progress = None
+        self.Compress = None
+        self.ExtractRuleInfo = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TopicId = params.get("TopicId")
+        self.LogsetId = params.get("LogsetId")
+        self.Name = params.get("Name")
+        self.Bucket = params.get("Bucket")
+        self.BucketRegion = params.get("BucketRegion")
+        self.Prefix = params.get("Prefix")
+        self.LogType = params.get("LogType")
+        self.Status = params.get("Status")
+        self.Enable = params.get("Enable")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Progress = params.get("Progress")
+        self.Compress = params.get("Compress")
+        if params.get("ExtractRuleInfo") is not None:
+            self.ExtractRuleInfo = ExtractRuleInfo()
+            self.ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAlarmNoticeRequest(AbstractModel):
     """CreateAlarmNotice请求参数结构体
 
@@ -1454,6 +1552,82 @@ class CreateConsumerRequest(AbstractModel):
 
 class CreateConsumerResponse(AbstractModel):
     """CreateConsumer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCosRechargeRequest(AbstractModel):
+    """CreateCosRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 日志主题 ID
+        :type TopicId: str
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param Name: 投递任务名称
+        :type Name: str
+        :param Bucket: COS存储桶
+        :type Bucket: str
+        :param BucketRegion: COS存储桶所在地域
+        :type BucketRegion: str
+        :param Prefix: COS文件所在文件夹的前缀
+        :type Prefix: str
+        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
+默认为minimalist_log
+        :type LogType: str
+        :param Compress: supported: "", "gzip", "lzop", "snappy”; 默认空
+        :type Compress: str
+        :param ExtractRuleInfo: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :type ExtractRuleInfo: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
+        """
+        self.TopicId = None
+        self.LogsetId = None
+        self.Name = None
+        self.Bucket = None
+        self.BucketRegion = None
+        self.Prefix = None
+        self.LogType = None
+        self.Compress = None
+        self.ExtractRuleInfo = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.LogsetId = params.get("LogsetId")
+        self.Name = params.get("Name")
+        self.Bucket = params.get("Bucket")
+        self.BucketRegion = params.get("BucketRegion")
+        self.Prefix = params.get("Prefix")
+        self.LogType = params.get("LogType")
+        self.Compress = params.get("Compress")
+        if params.get("ExtractRuleInfo") is not None:
+            self.ExtractRuleInfo = ExtractRuleInfo()
+            self.ExtractRuleInfo._deserialize(params.get("ExtractRuleInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosRechargeResponse(AbstractModel):
+    """CreateCosRecharge返回参数结构体
 
     """
 
@@ -2946,6 +3120,65 @@ class DescribeConsumerResponse(AbstractModel):
             self.Ckafka = Ckafka()
             self.Ckafka._deserialize(params.get("Ckafka"))
         self.Compression = params.get("Compression")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCosRechargesRequest(AbstractModel):
+    """DescribeCosRecharges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 日志主题 ID
+        :type TopicId: str
+        :param Status: 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
+        :type Status: int
+        :param Enable: 是否启用:   0： 未启用  ， 1：启用
+        :type Enable: int
+        """
+        self.TopicId = None
+        self.Status = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.Status = params.get("Status")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRechargesResponse(AbstractModel):
+    """DescribeCosRecharges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 见: CosRechargeInfo 结构描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of CosRechargeInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = CosRechargeInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5240,6 +5473,59 @@ class ModifyConsumerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCosRechargeRequest(AbstractModel):
+    """ModifyCosRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: COS导入配置ID
+        :type Id: str
+        :param TopicId: 日志主题Id
+        :type TopicId: str
+        :param Name: COS导入任务名称
+        :type Name: str
+        :param Enable: 是否启用:   0： 未启用  ， 1：启用
+        :type Enable: int
+        """
+        self.Id = None
+        self.TopicId = None
+        self.Name = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TopicId = params.get("TopicId")
+        self.Name = params.get("Name")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosRechargeResponse(AbstractModel):
+    """ModifyCosRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyIndexRequest(AbstractModel):
     """ModifyIndex请求参数结构体
 
@@ -6350,8 +6636,10 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param Key: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param Value: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self.Key = None

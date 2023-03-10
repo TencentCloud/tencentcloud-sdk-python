@@ -18,6 +18,50 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AlarmPolicy(AbstractModel):
+    """告警策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 用户账号
+        :type Uin: str
+        :param Event: 告警事件
+        :type Event: str
+        :param Limit: 告警阈值
+        :type Limit: int
+        :param Status: 告警策略是否生效，0：停用，1：启用
+        :type Status: int
+        :param BeginTime: 在这个时间后才允许发送告警
+        :type BeginTime: str
+        :param EndTime: 在这个时间前才允许发送告警
+        :type EndTime: str
+        """
+        self.Uin = None
+        self.Event = None
+        self.Limit = None
+        self.Status = None
+        self.BeginTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.Event = params.get("Event")
+        self.Limit = params.get("Limit")
+        self.Status = params.get("Status")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeHSMBySubnetIdRequest(AbstractModel):
     """DescribeHSMBySubnetId请求参数结构体
 
@@ -684,6 +728,88 @@ class DeviceInfo(AbstractModel):
         
 
 
+class GetAlarmEventRequest(AbstractModel):
+    """GetAlarmEvent请求参数结构体
+
+    """
+
+
+class GetAlarmEventResponse(AbstractModel):
+    """GetAlarmEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AlarmConfig: 用户所有的告警策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmConfig: list of AlarmPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AlarmConfig = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AlarmConfig") is not None:
+            self.AlarmConfig = []
+            for item in params.get("AlarmConfig"):
+                obj = AlarmPolicy()
+                obj._deserialize(item)
+                self.AlarmConfig.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetVsmMonitorInfoRequest(AbstractModel):
+    """GetVsmMonitorInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源Id
+        :type ResourceId: str
+        :param ResourceName: 资源名称
+        :type ResourceName: str
+        """
+        self.ResourceId = None
+        self.ResourceName = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceName = params.get("ResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetVsmMonitorInfoResponse(AbstractModel):
+    """GetVsmMonitorInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonitorInfo: VSM监控信息
+        :type MonitorInfo: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MonitorInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MonitorInfo = params.get("MonitorInfo")
+        self.RequestId = params.get("RequestId")
+
+
 class HsmInfo(AbstractModel):
     """支持的加密机类型信息
 
@@ -695,9 +821,12 @@ class HsmInfo(AbstractModel):
         :type Model: str
         :param VsmTypes: 此类型的加密机所支持的VSM类型列表
         :type VsmTypes: list of VsmInfo
+        :param HsmType: 加密机母机类型：virtualization、GHSM、EHSM、SHSM
+        :type HsmType: str
         """
         self.Model = None
         self.VsmTypes = None
+        self.HsmType = None
 
 
     def _deserialize(self, params):
@@ -708,6 +837,7 @@ class HsmInfo(AbstractModel):
                 obj = VsmInfo()
                 obj._deserialize(item)
                 self.VsmTypes.append(obj)
+        self.HsmType = params.get("HsmType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -807,6 +937,63 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyAlarmEventRequest(AbstractModel):
+    """ModifyAlarmEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Event: 告警事件，支持CPU、MEM、TCP
+        :type Event: str
+        :param Limit: 告警阈值
+        :type Limit: int
+        :param Status: 告警状态，0表示停用，1表示启动
+        :type Status: int
+        :param BeginTime: 告警开始时间，只有在这个时间后才会发送告警，当跟EndTime同时为空时表示全天告警
+        :type BeginTime: str
+        :param EndTime: 告警结束时间，只有在这个时间前才会发送告警，当跟BeginTime同时为空时表示全天告警
+        :type EndTime: str
+        """
+        self.Event = None
+        self.Limit = None
+        self.Status = None
+        self.BeginTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Event = params.get("Event")
+        self.Limit = params.get("Limit")
+        self.Status = params.get("Status")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAlarmEventResponse(AbstractModel):
+    """ModifyAlarmEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyVsmAttributesRequest(AbstractModel):
     """ModifyVsmAttributes请求参数结构体
 
@@ -829,6 +1016,8 @@ Default-默认不修改
         :type VpcId: str
         :param SubnetId: 子网Id
         :type SubnetId: str
+        :param AlarmStatus: 告警开关，0表示关闭告警，1表示启用告警
+        :type AlarmStatus: int
         """
         self.ResourceId = None
         self.Type = None
@@ -836,6 +1025,7 @@ Default-默认不修改
         self.SgIds = None
         self.VpcId = None
         self.SubnetId = None
+        self.AlarmStatus = None
 
 
     def _deserialize(self, params):
@@ -845,6 +1035,7 @@ Default-默认不修改
         self.SgIds = params.get("SgIds")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.AlarmStatus = params.get("AlarmStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -944,6 +1135,9 @@ class ResourceInfo(AbstractModel):
         :param Manufacturer: 厂商
 注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
+        :param AlarmStatus: 告警状态，0：停用，1：启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmStatus: int
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -967,6 +1161,7 @@ class ResourceInfo(AbstractModel):
         self.RenewFlag = None
         self.Tags = None
         self.Manufacturer = None
+        self.AlarmStatus = None
 
 
     def _deserialize(self, params):
@@ -1002,6 +1197,7 @@ class ResourceInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Manufacturer = params.get("Manufacturer")
+        self.AlarmStatus = params.get("AlarmStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
