@@ -8033,6 +8033,8 @@ class DescribePrometheusConfigResponse(AbstractModel):
         :type PodMonitors: list of PrometheusConfigItem
         :param RawJobs: 原生Job
         :type RawJobs: list of PrometheusConfigItem
+        :param Probes: Probes
+        :type Probes: list of PrometheusConfigItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8040,6 +8042,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
         self.ServiceMonitors = None
         self.PodMonitors = None
         self.RawJobs = None
+        self.Probes = None
         self.RequestId = None
 
 
@@ -8063,6 +8066,12 @@ class DescribePrometheusConfigResponse(AbstractModel):
                 obj = PrometheusConfigItem()
                 obj._deserialize(item)
                 self.RawJobs.append(obj)
+        if params.get("Probes") is not None:
+            self.Probes = []
+            for item in params.get("Probes"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.Probes.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -12456,6 +12465,9 @@ abnormal = 异常
         :param FailedReason: 记录关联等操作的失败信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedReason: str
+        :param Name: agent名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
         """
         self.ClusterType = None
         self.ClusterId = None
@@ -12465,6 +12477,7 @@ abnormal = 异常
         self.Region = None
         self.VpcId = None
         self.FailedReason = None
+        self.Name = None
 
 
     def _deserialize(self, params):
@@ -12481,6 +12494,7 @@ abnormal = 异常
         self.Region = params.get("Region")
         self.VpcId = params.get("VpcId")
         self.FailedReason = params.get("FailedReason")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

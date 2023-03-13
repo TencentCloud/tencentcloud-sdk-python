@@ -11023,6 +11023,9 @@ class TopicAttributesResponse(AbstractModel):
         :param QuotaConfig: topic 限流策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuotaConfig: :class:`tencentcloud.ckafka.v20190819.models.InstanceQuotaConfigResp`
+        :param ReplicaNum: 副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicaNum: int
         """
         self.TopicId = None
         self.CreateTime = None
@@ -11035,6 +11038,7 @@ class TopicAttributesResponse(AbstractModel):
         self.EnableAclRule = None
         self.AclRuleList = None
         self.QuotaConfig = None
+        self.ReplicaNum = None
 
 
     def _deserialize(self, params):
@@ -11063,6 +11067,7 @@ class TopicAttributesResponse(AbstractModel):
         if params.get("QuotaConfig") is not None:
             self.QuotaConfig = InstanceQuotaConfigResp()
             self.QuotaConfig._deserialize(params.get("QuotaConfig"))
+        self.ReplicaNum = params.get("ReplicaNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11112,6 +11117,9 @@ class TopicDetail(AbstractModel):
         :param Status: 0:正常，1：已删除，2：删除中
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param Tags: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.TopicName = None
         self.TopicId = None
@@ -11127,6 +11135,7 @@ class TopicDetail(AbstractModel):
         self.Config = None
         self.RetentionTimeConfig = None
         self.Status = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -11148,6 +11157,12 @@ class TopicDetail(AbstractModel):
             self.RetentionTimeConfig = TopicRetentionTimeConfigRsp()
             self.RetentionTimeConfig._deserialize(params.get("RetentionTimeConfig"))
         self.Status = params.get("Status")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

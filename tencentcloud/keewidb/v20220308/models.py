@@ -3190,7 +3190,7 @@ class RenewInstanceRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID。
         :type InstanceId: str
-        :param Period: 购买时长，单位：月。取值范围为 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
+        :param Period: 购买时长。单位：月。取值为 [1,2,3,4,5,6,7,8,9,10,11,12,24,36,48,60]。
         :type Period: int
         """
         self.InstanceId = None

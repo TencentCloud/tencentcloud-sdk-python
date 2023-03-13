@@ -2105,6 +2105,93 @@ class CreateEnvironmentRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRabbitMQVipInstanceRequest(AbstractModel):
+    """CreateRabbitMQVipInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneIds: 可用区
+        :type ZoneIds: list of int
+        :param VpcId: 私有网络VpcId
+        :type VpcId: str
+        :param SubnetId: 私有网络SubnetId
+        :type SubnetId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param NodeSpec: 节点规格,基础型rabbit-vip-basic-1,标准型rabbit-vip-basic-2,高阶1型rabbit-vip-basic-3,高阶2型rabbit-vip-basic-4。不传默认为基础型
+        :type NodeSpec: str
+        :param NodeNum: 节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
+        :type NodeNum: int
+        :param StorageSize: 单节点存储规格,不传默认为200G
+        :type StorageSize: int
+        :param EnableCreateDefaultHaMirrorQueue: 镜像队列,不传默认为false
+        :type EnableCreateDefaultHaMirrorQueue: bool
+        :param AutoRenewFlag: 自动续费,不传默认为true
+        :type AutoRenewFlag: bool
+        :param TimeSpan: 购买时长,不传默认为1(月)
+        :type TimeSpan: int
+        """
+        self.ZoneIds = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ClusterName = None
+        self.NodeSpec = None
+        self.NodeNum = None
+        self.StorageSize = None
+        self.EnableCreateDefaultHaMirrorQueue = None
+        self.AutoRenewFlag = None
+        self.TimeSpan = None
+
+
+    def _deserialize(self, params):
+        self.ZoneIds = params.get("ZoneIds")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.ClusterName = params.get("ClusterName")
+        self.NodeSpec = params.get("NodeSpec")
+        self.NodeNum = params.get("NodeNum")
+        self.StorageSize = params.get("StorageSize")
+        self.EnableCreateDefaultHaMirrorQueue = params.get("EnableCreateDefaultHaMirrorQueue")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.TimeSpan = params.get("TimeSpan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRabbitMQVipInstanceResponse(AbstractModel):
+    """CreateRabbitMQVipInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TranId: 订单号Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param InstanceId: 实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TranId = None
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TranId = params.get("TranId")
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRocketMQClusterRequest(AbstractModel):
     """CreateRocketMQCluster请求参数结构体
 

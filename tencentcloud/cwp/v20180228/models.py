@@ -9645,7 +9645,7 @@ class DescribeBaselineFixListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <li>ItemName- string - 是否必填：否 - 项名称</i>
+        :param Filters: <li>ItemName- string - 是否必填：否 - 项名称</li>
         :type Filters: list of Filter
         :param Limit: 限制条数,默认10,最大100
         :type Limit: int
@@ -10058,7 +10058,7 @@ class DescribeBaselineItemIgnoreListRequest(AbstractModel):
         :type Limit: int
         :param Offset: 请求偏移默认0
         :type Offset: int
-        :param Filters: <li>CatgoryId - int64 - 是否必填：否 - 规则Id</i>
+        :param Filters: <li>CatgoryId - int64 - 是否必填：否 - 规则Id</li>
         :type Filters: list of Filter
         :param Order: 排序方式 [ASC:升序|DESC:降序]
         :type Order: str

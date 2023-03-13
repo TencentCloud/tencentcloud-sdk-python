@@ -2000,6 +2000,7 @@ class CommonFlowApprover(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverMobile: str
         :param RecipientId: 签署人Id，使用模版发起是，对应模版配置中的签署人RecipientId
+注意：模版发起时该字段必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientId: str
         :param PreReadTime: 签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s

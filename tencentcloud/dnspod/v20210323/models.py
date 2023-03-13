@@ -121,6 +121,9 @@ class BatchRecordInfo(AbstractModel):
         :param MX: 记录的MX权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type MX: int
+        :param Weight: 记录权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
         """
         self.RecordId = None
         self.SubDomain = None
@@ -134,6 +137,7 @@ class BatchRecordInfo(AbstractModel):
         self.Id = None
         self.Enabled = None
         self.MX = None
+        self.Weight = None
 
 
     def _deserialize(self, params):
@@ -149,6 +153,7 @@ class BatchRecordInfo(AbstractModel):
         self.Id = params.get("Id")
         self.Enabled = params.get("Enabled")
         self.MX = params.get("MX")
+        self.Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

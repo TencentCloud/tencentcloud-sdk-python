@@ -907,6 +907,51 @@ class CreateSupervisorResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAppCustomContentRequest(AbstractModel):
+    """DeleteAppCustomContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用ID。
+        :type SdkAppId: int
+        :param Scenes: 指定需要删除的已设置的scene场景自定义元素，如果为空则删除应用下已设置的所有自定义元素。
+        :type Scenes: list of str
+        """
+        self.SdkAppId = None
+        self.Scenes = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAppCustomContentResponse(AbstractModel):
+    """DeleteAppCustomContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDocumentRequest(AbstractModel):
     """DeleteDocument请求参数结构体
 

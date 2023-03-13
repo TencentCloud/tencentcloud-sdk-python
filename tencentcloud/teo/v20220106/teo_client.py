@@ -763,7 +763,9 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDosMajorAttackEvent(self, request):
-        """查询DDos主攻击事件
+        """此接口已经做不兼容变更，所以此版本的接口已经无法调用，故作下线处理
+
+        查询DDos主攻击事件
 
         :param request: Request instance for DescribeDDosMajorAttackEvent.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDosMajorAttackEventRequest`
@@ -1039,7 +1041,9 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOverviewL7Data(self, request):
-        """本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
+        """接口已经不兼容升级，故作下线处理
+
+        本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
 
         :param request: Request instance for DescribeOverviewL7Data.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeOverviewL7DataRequest`
@@ -1292,7 +1296,9 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL4Data(self, request):
-        """四层时序流量数据查询
+        """旧版本的接口已经不兼容，故作下线处理
+
+        四层时序流量数据查询
 
         :param request: Request instance for DescribeTimingL4Data.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeTimingL4DataRequest`
@@ -1476,7 +1482,9 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebManagedRulesTopData(self, request):
-        """查询waf攻击top数据
+        """此版本的接口已经废弃
+
+        查询waf攻击top数据
 
         :param request: Request instance for DescribeWebManagedRulesTopData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebManagedRulesTopDataRequest`
