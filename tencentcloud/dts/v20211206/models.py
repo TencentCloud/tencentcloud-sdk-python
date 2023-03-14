@@ -631,8 +631,16 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type ExpectRunTime: str
         :param SrcInfo: 源端信息，单节点数据库使用，且SrcNodeType传single
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param SrcInfos: 源端信息，多节点数据库使用，且SrcNodeType传cluster
+        :type SrcInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
+        :param SrcNodeType: 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+        :type SrcNodeType: str
         :param DstInfo: 目标端信息，单节点数据库使用
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param DstInfos: 目标端信息，多节点数据库使用，且DstNodeType传cluster
+        :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
+        :param DstNodeType: 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+        :type DstNodeType: str
         :param Options: 同步任务选项
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
@@ -647,7 +655,11 @@ class ConfigureSyncJobRequest(AbstractModel):
         self.RunMode = None
         self.ExpectRunTime = None
         self.SrcInfo = None
+        self.SrcInfos = None
+        self.SrcNodeType = None
         self.DstInfo = None
+        self.DstInfos = None
+        self.DstNodeType = None
         self.Options = None
         self.AutoRetryTimeRangeMinutes = None
 
@@ -666,9 +678,17 @@ class ConfigureSyncJobRequest(AbstractModel):
         if params.get("SrcInfo") is not None:
             self.SrcInfo = Endpoint()
             self.SrcInfo._deserialize(params.get("SrcInfo"))
+        if params.get("SrcInfos") is not None:
+            self.SrcInfos = SyncDBEndpointInfos()
+            self.SrcInfos._deserialize(params.get("SrcInfos"))
+        self.SrcNodeType = params.get("SrcNodeType")
         if params.get("DstInfo") is not None:
             self.DstInfo = Endpoint()
             self.DstInfo._deserialize(params.get("DstInfo"))
+        if params.get("DstInfos") is not None:
+            self.DstInfos = SyncDBEndpointInfos()
+            self.DstInfos._deserialize(params.get("DstInfos"))
+        self.DstNodeType = params.get("DstNodeType")
         if params.get("Options") is not None:
             self.Options = Options()
             self.Options._deserialize(params.get("Options"))
@@ -1081,7 +1101,7 @@ class CreateSyncJobRequest(AbstractModel):
         :type SrcDatabaseType: str
         :param SrcRegion: 源端数据库所在地域,如ap-guangzhou
         :type SrcRegion: str
-        :param DstDatabaseType: 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+        :param DstDatabaseType: 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka等
         :type DstDatabaseType: str
         :param DstRegion: 目标端数据库所在地域,如ap-guangzhou
         :type DstRegion: str
@@ -3144,6 +3164,47 @@ class JobItem(AbstractModel):
         
 
 
+class KafkaOption(AbstractModel):
+    """目标端为kakfa时添加的同步选项字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataType: 投递到kafka的数据类型，如Avro,Json
+        :type DataType: str
+        :param TopicType: 同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)
+        :type TopicType: str
+        :param DDLTopicName: 用于存储ddl的topic
+        :type DDLTopicName: str
+        :param TopicRules: 单topic和自定义topic的描述
+        :type TopicRules: list of TopicRule
+        """
+        self.DataType = None
+        self.TopicType = None
+        self.DDLTopicName = None
+        self.TopicRules = None
+
+
+    def _deserialize(self, params):
+        self.DataType = params.get("DataType")
+        self.TopicType = params.get("TopicType")
+        self.DDLTopicName = params.get("DDLTopicName")
+        if params.get("TopicRules") is not None:
+            self.TopicRules = []
+            for item in params.get("TopicRules"):
+                obj = TopicRule()
+                obj._deserialize(item)
+                self.TopicRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KeyValuePairOption(AbstractModel):
     """存放配置时的额外信息
 
@@ -3751,6 +3812,9 @@ class Options(AbstractModel):
         :param DdlOptions: DDL同步选项，具体描述要同步那些DDL
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdlOptions: list of DdlOption
+        :param KafkaOption: kafka同步选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaOption: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
         """
         self.InitType = None
         self.DealOfExistSameTable = None
@@ -3759,6 +3823,7 @@ class Options(AbstractModel):
         self.OpTypes = None
         self.ConflictHandleOption = None
         self.DdlOptions = None
+        self.KafkaOption = None
 
 
     def _deserialize(self, params):
@@ -3776,6 +3841,9 @@ class Options(AbstractModel):
                 obj = DdlOption()
                 obj._deserialize(item)
                 self.DdlOptions.append(obj)
+        if params.get("KafkaOption") is not None:
+            self.KafkaOption = KafkaOption()
+            self.KafkaOption._deserialize(params.get("KafkaOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4813,6 +4881,51 @@ class StopSyncJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SyncDBEndpointInfos(AbstractModel):
+    """数据同步配置多节点数据库的节点信息。多节点数据库，如tdsqlmysql使用该结构；单节点数据库，如mysql使用Endpoint。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 数据库所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param AccessType: 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessType: str
+        :param DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseType: str
+        :param Info: 数据库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Info: list of Endpoint
+        """
+        self.Region = None
+        self.AccessType = None
+        self.DatabaseType = None
+        self.Info = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.AccessType = params.get("AccessType")
+        self.DatabaseType = params.get("DatabaseType")
+        if params.get("Info") is not None:
+            self.Info = []
+            for item in params.get("Info"):
+                obj = Endpoint()
+                obj._deserialize(item)
+                self.Info.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncDetailInfo(AbstractModel):
     """同步任务的步骤信息
 
@@ -5202,6 +5315,50 @@ class TagItem(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicRule(AbstractModel):
+    """单topic和自定义topic的描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: topic名
+        :type TopicName: str
+        :param PartitionType: topic分区策略，如 自定义topic：Random（随机投递），集中投递到单Topic：AllInPartitionZero（全部投递至partition0）、PartitionByTable(按表名分区)、PartitionByTableAndKey(按表名加主键分区)
+        :type PartitionType: str
+        :param DbMatchMode: 库名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余库)，数组中必须有一项为‘Default’
+        :type DbMatchMode: str
+        :param DbName: 库名，仅“自定义topic”时，DbMatchMode=Regular生效
+        :type DbName: str
+        :param TableMatchMode: 表名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余表)，数组中必须有一项为‘Default’
+        :type TableMatchMode: str
+        :param TableName: 表名，仅“自定义topic”时，TableMatchMode=Regular生效
+        :type TableName: str
+        """
+        self.TopicName = None
+        self.PartitionType = None
+        self.DbMatchMode = None
+        self.DbName = None
+        self.TableMatchMode = None
+        self.TableName = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.PartitionType = params.get("PartitionType")
+        self.DbMatchMode = params.get("DbMatchMode")
+        self.DbName = params.get("DbName")
+        self.TableMatchMode = params.get("TableMatchMode")
+        self.TableName = params.get("TableName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

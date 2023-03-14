@@ -1244,7 +1244,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         r"""
         :param ResourceId: 资源id，与ResourceType对应
         :type ResourceId: str
-        :param ResourceType: 资源类型，1：模版，目前仅支持模版，与ResourceId对应
+        :param ResourceType: 资源类型，1：模板，目前仅支持模板，与ResourceId对应
         :type ResourceType: int
         :param FlowInfo: 合同流程基础信息
         :type FlowInfo: :class:`tencentcloud.essbasic.v20210526.models.BaseFlowInfo`
@@ -1999,8 +1999,8 @@ class CommonFlowApprover(AbstractModel):
         :param ApproverMobile: 签署人手机号，saas企业签署人，个人签署人必传
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverMobile: str
-        :param RecipientId: 签署人Id，使用模版发起是，对应模版配置中的签署人RecipientId
-注意：模版发起时该字段必填
+        :param RecipientId: 签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
+注意：模板发起时该字段必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientId: str
         :param PreReadTime: 签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s

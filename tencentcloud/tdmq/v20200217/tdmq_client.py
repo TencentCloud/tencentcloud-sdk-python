@@ -2065,6 +2065,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRabbitMQVipInstance(self, request):
+        """修改RabbitMQ专享版实例
+
+        :param request: Request instance for ModifyRabbitMQVipInstance.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQVipInstanceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQVipInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRabbitMQVipInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRabbitMQVipInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyRocketMQCluster(self, request):
         """更新RocketMQ集群信息
 

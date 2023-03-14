@@ -191,6 +191,9 @@ INVALIDPARAMETER_GENERATETYPE = 'InvalidParameter.GenerateType'
 # 图片不正确。
 INVALIDPARAMETER_IMAGE = 'InvalidParameter.Image'
 
+# Id不存在或者符合规范。
+INVALIDPARAMETER_INVALIDID = 'InvalidParameter.InvalidId'
+
 # 印章名称长度超出。
 INVALIDPARAMETER_LIMITSEALNAME = 'InvalidParameter.LimitSealName'
 
@@ -220,6 +223,9 @@ INVALIDPARAMETER_ORGANIZATIONNAME = 'InvalidParameter.OrganizationName'
 
 # 参数错误。
 INVALIDPARAMETER_PARAMERROR = 'InvalidParameter.ParamError'
+
+# 资源类型错误。
+INVALIDPARAMETER_RESOURCETYPE = 'InvalidParameter.ResourceType'
 
 # 文件内容敏感信息。
 INVALIDPARAMETER_SENSITIVEFILECONTENT = 'InvalidParameter.SensitiveFileContent'
@@ -292,6 +298,9 @@ MISSINGPARAMETER_ORGANIZATIONID = 'MissingParameter.OrganizationId'
 
 # ProxyOperatorOpenId不存在。
 MISSINGPARAMETER_PROXYOPERATOROPENID = 'MissingParameter.ProxyOperatorOpenId'
+
+# 资源名称错误。
+MISSINGPARAMETER_RESOURCENAME = 'MissingParameter.ResourceName'
 
 # 印章ID为空。
 MISSINGPARAMETER_SEALID = 'MissingParameter.SealId'

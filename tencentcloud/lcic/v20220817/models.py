@@ -889,6 +889,28 @@ class CreateSupervisorRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用ID。
+        :type SdkAppId: int
+        :param Users: 用户ID列表。
+        :type Users: list of str
+        """
+        self.SdkAppId = None
+        self.Users = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Users = params.get("Users")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateSupervisorResponse(AbstractModel):
     """CreateSupervisor返回参数结构体

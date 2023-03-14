@@ -6775,6 +6775,30 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReplaceSecurityGroupPolicies(self, request):
+        """本接口（ReplaceSecurityGroupPolicies）用于批量修改安全组规则（SecurityGroupPolicy）。
+        单个请求中只能替换单个方向的一条或多条规则, 必须要指定索引（PolicyIndex）。
+
+        :param request: Request instance for ReplaceSecurityGroupPolicies.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReplaceSecurityGroupPoliciesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReplaceSecurityGroupPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplaceSecurityGroupPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplaceSecurityGroupPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReplaceSecurityGroupPolicy(self, request):
         """本接口（ReplaceSecurityGroupPolicy）用于替换单条安全组规则（SecurityGroupPolicy）。
         单个请求中只能替换单个方向的一条规则, 必须要指定索引（PolicyIndex）。

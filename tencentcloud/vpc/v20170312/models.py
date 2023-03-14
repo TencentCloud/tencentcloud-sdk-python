@@ -20155,6 +20155,59 @@ class ReplaceRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReplaceSecurityGroupPoliciesRequest(AbstractModel):
+    """ReplaceSecurityGroupPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :type SecurityGroupId: str
+        :param SecurityGroupPolicySet: 安全组规则集合对象。
+        :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        :param OriginalSecurityGroupPolicySet: 旧的安全组规则集合对象，可选，日志记录用。
+        :type OriginalSecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
+        self.SecurityGroupId = None
+        self.SecurityGroupPolicySet = None
+        self.OriginalSecurityGroupPolicySet = None
+
+
+    def _deserialize(self, params):
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        if params.get("SecurityGroupPolicySet") is not None:
+            self.SecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.SecurityGroupPolicySet._deserialize(params.get("SecurityGroupPolicySet"))
+        if params.get("OriginalSecurityGroupPolicySet") is not None:
+            self.OriginalSecurityGroupPolicySet = SecurityGroupPolicySet()
+            self.OriginalSecurityGroupPolicySet._deserialize(params.get("OriginalSecurityGroupPolicySet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceSecurityGroupPoliciesResponse(AbstractModel):
+    """ReplaceSecurityGroupPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ReplaceSecurityGroupPolicyRequest(AbstractModel):
     """ReplaceSecurityGroupPolicy请求参数结构体
 

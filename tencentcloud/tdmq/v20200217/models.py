@@ -7078,6 +7078,60 @@ class ModifyEnvironmentRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRabbitMQVipInstanceRequest(AbstractModel):
+    """ModifyRabbitMQVipInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.InstanceId = None
+        self.ClusterName = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterName = params.get("ClusterName")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRabbitMQVipInstanceResponse(AbstractModel):
+    """ModifyRabbitMQVipInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRocketMQClusterRequest(AbstractModel):
     """ModifyRocketMQCluster请求参数结构体
 

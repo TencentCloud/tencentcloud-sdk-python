@@ -1609,6 +1609,150 @@ class DescribeAutoDenyIPResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCustomRulesRspRuleListItem(AbstractModel):
+    """DescribeCustomRules接口回包中的复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActionType: 动作类型
+        :type ActionType: str
+        :param Bypass: 跳过的策略
+        :type Bypass: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param Name: 策略名称
+        :type Name: str
+        :param Redirect: 重定向地址
+        :type Redirect: str
+        :param RuleId: 策略ID
+        :type RuleId: str
+        :param SortId: 优先级
+        :type SortId: str
+        :param Status: 状态
+        :type Status: str
+        :param Strategies: 策略详情
+        :type Strategies: list of Strategy
+        """
+        self.ActionType = None
+        self.Bypass = None
+        self.CreateTime = None
+        self.ExpireTime = None
+        self.Name = None
+        self.Redirect = None
+        self.RuleId = None
+        self.SortId = None
+        self.Status = None
+        self.Strategies = None
+
+
+    def _deserialize(self, params):
+        self.ActionType = params.get("ActionType")
+        self.Bypass = params.get("Bypass")
+        self.CreateTime = params.get("CreateTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Name = params.get("Name")
+        self.Redirect = params.get("Redirect")
+        self.RuleId = params.get("RuleId")
+        self.SortId = params.get("SortId")
+        self.Status = params.get("Status")
+        if params.get("Strategies") is not None:
+            self.Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self.Strategies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomWhiteRuleRequest(AbstractModel):
+    """DescribeCustomWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Offset: 偏移
+        :type Offset: int
+        :param Limit: 容量
+        :type Limit: int
+        :param Filters: 过滤数组,name可以是如下的值： RuleID,RuleName,Match
+        :type Filters: list of FiltersItemNew
+        :param Order: asc或者desc
+        :type Order: str
+        :param By: exp_ts或者mod_ts
+        :type By: str
+        """
+        self.Domain = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomWhiteRuleResponse(AbstractModel):
+    """DescribeCustomWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleList: 规则详情
+        :type RuleList: list of DescribeCustomRulesRspRuleListItem
+        :param TotalCount: 规则条数
+        :type TotalCount: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleList") is not None:
+            self.RuleList = []
+            for item in params.get("RuleList"):
+                obj = DescribeCustomRulesRspRuleListItem()
+                obj._deserialize(item)
+                self.RuleList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainDetailsSaasRequest(AbstractModel):
     """DescribeDomainDetailsSaas请求参数结构体
 
@@ -2112,6 +2256,106 @@ class DescribeIpHitItemsResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = IpHitItemsData()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePolicyStatusRequest(AbstractModel):
+    """DescribePolicyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Edition: clb-waf或者saas-waf
+        :type Edition: str
+        """
+        self.Domain = None
+        self.Edition = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Edition = params.get("Edition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePolicyStatusResponse(AbstractModel):
+    """DescribePolicyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Status: 防护状态
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRuleLimitRequest(AbstractModel):
+    """DescribeRuleLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleLimitResponse(AbstractModel):
+    """DescribeRuleLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Res: waf模块的规格
+        :type Res: :class:`tencentcloud.waf.v20180125.models.WafRuleLimit`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Res = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Res") is not None:
+            self.Res = WafRuleLimit()
+            self.Res._deserialize(params.get("Res"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4156,6 +4400,78 @@ class UpsertIpAccessControlResponse(AbstractModel):
         self.FailedItems = params.get("FailedItems")
         self.FailedCount = params.get("FailedCount")
         self.RequestId = params.get("RequestId")
+
+
+class WafRuleLimit(AbstractModel):
+    """waf模块的规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CC: 自定义CC的规格
+        :type CC: int
+        :param CustomRule: 自定义策略的规格
+        :type CustomRule: int
+        :param IPControl: 黑白名单的规格
+        :type IPControl: int
+        :param AntiLeak: 信息防泄漏的规格
+        :type AntiLeak: int
+        :param AntiTamper: 防篡改的规格
+        :type AntiTamper: int
+        :param AutoCC: 紧急CC的规格
+        :type AutoCC: int
+        :param AreaBan: 地域封禁的规格
+        :type AreaBan: int
+        :param CCSession: 自定义CC中配置session
+        :type CCSession: int
+        :param AI: AI的规格
+        :type AI: int
+        :param CustomWhite: 精准白名单的规格
+        :type CustomWhite: int
+        :param ApiSecurity: api安全的规格
+        :type ApiSecurity: int
+        :param ClientMsg: 客户端流量标记的规格
+        :type ClientMsg: int
+        :param TrafficMarking: 流量标记的规格
+        :type TrafficMarking: int
+        """
+        self.CC = None
+        self.CustomRule = None
+        self.IPControl = None
+        self.AntiLeak = None
+        self.AntiTamper = None
+        self.AutoCC = None
+        self.AreaBan = None
+        self.CCSession = None
+        self.AI = None
+        self.CustomWhite = None
+        self.ApiSecurity = None
+        self.ClientMsg = None
+        self.TrafficMarking = None
+
+
+    def _deserialize(self, params):
+        self.CC = params.get("CC")
+        self.CustomRule = params.get("CustomRule")
+        self.IPControl = params.get("IPControl")
+        self.AntiLeak = params.get("AntiLeak")
+        self.AntiTamper = params.get("AntiTamper")
+        self.AutoCC = params.get("AutoCC")
+        self.AreaBan = params.get("AreaBan")
+        self.CCSession = params.get("CCSession")
+        self.AI = params.get("AI")
+        self.CustomWhite = params.get("CustomWhite")
+        self.ApiSecurity = params.get("ApiSecurity")
+        self.ClientMsg = params.get("ClientMsg")
+        self.TrafficMarking = params.get("TrafficMarking")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WafThreatenIntelligenceDetails(AbstractModel):
