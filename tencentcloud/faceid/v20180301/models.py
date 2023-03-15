@@ -1121,6 +1121,12 @@ class DetectInfoText(AbstractModel):
 4：一闪活体（动作+光线）
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessMode: int
+        :param NFCRequestIds: nfc重复计费requestId列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NFCRequestIds: list of str
+        :param NFCBillingCounts: nfc重复计费计数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NFCBillingCounts: int
         """
         self.ErrCode = None
         self.ErrMsg = None
@@ -1146,6 +1152,8 @@ class DetectInfoText(AbstractModel):
         self.Mobile = None
         self.CompareLibType = None
         self.LivenessMode = None
+        self.NFCRequestIds = None
+        self.NFCBillingCounts = None
 
 
     def _deserialize(self, params):
@@ -1178,6 +1186,8 @@ class DetectInfoText(AbstractModel):
         self.Mobile = params.get("Mobile")
         self.CompareLibType = params.get("CompareLibType")
         self.LivenessMode = params.get("LivenessMode")
+        self.NFCRequestIds = params.get("NFCRequestIds")
+        self.NFCBillingCounts = params.get("NFCBillingCounts")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

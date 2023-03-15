@@ -1576,6 +1576,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRabbitMQVipInstance(self, request):
+        """获取单个RabbitMQ专享实例信息
+
+        :param request: Request instance for DescribeRabbitMQVipInstance.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVipInstanceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVipInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRabbitMQVipInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRabbitMQVipInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRabbitMQVipInstances(self, request):
         """查询用户已购的RabbitMQ专享实例列表
 

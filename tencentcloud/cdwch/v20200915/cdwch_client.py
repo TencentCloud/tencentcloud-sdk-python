@@ -187,6 +187,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceClusters(self, request):
+        """集群vcluster列表
+
+        :param request: Request instance for DescribeInstanceClusters.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceClustersRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceKeyValConfigs(self, request):
         """在集群详情页面获取所有参数列表
 

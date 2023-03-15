@@ -224,6 +224,36 @@ class ClusterConfigsInfoFromEMR(AbstractModel):
         
 
 
+class ClusterInfo(AbstractModel):
+    """clickhouse vcluster信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterName: vcluster名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param NodeIps: 当前cluster的IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeIps: list of str
+        """
+        self.ClusterName = None
+        self.NodeIps = None
+
+
+    def _deserialize(self, params):
+        self.ClusterName = params.get("ClusterName")
+        self.NodeIps = params.get("NodeIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigSubmitContext(AbstractModel):
     """配置文件修改信息
 
@@ -623,6 +653,56 @@ class DescribeClusterConfigsResponse(AbstractModel):
                 obj = ClusterConfigsInfoFromEMR()
                 obj._deserialize(item)
                 self.ClusterConfList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceClustersRequest(AbstractModel):
+    """DescribeInstanceClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceClustersResponse(AbstractModel):
+    """DescribeInstanceClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Clusters: cluster列表
+        :type Clusters: list of ClusterInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Clusters = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Clusters") is not None:
+            self.Clusters = []
+            for item in params.get("Clusters"):
+                obj = ClusterInfo()
+                obj._deserialize(item)
+                self.Clusters.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1731,9 +1811,9 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type ScaleOutCluster: str
         :param UserSubnetIPNum: 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
         :type UserSubnetIPNum: int
-        :param ScaleOutNodeIp: 同步元数据节点IP （uip）
+        :param ScaleOutNodeIp: 同步元数据节点IP （uip），扩容的时候必填
         :type ScaleOutNodeIp: str
-        :param ReduceShardInfo: 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔
+        :param ReduceShardInfo: 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔，缩容的时候必填
         :type ReduceShardInfo: list of str
         """
         self.InstanceId = None

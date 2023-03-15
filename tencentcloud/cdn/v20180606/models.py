@@ -8991,7 +8991,7 @@ blacklist：黑名单
         :param FilterRules: IP 黑白名单分路径配置，白名单功能
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterRules: list of IpFilterPathRule
-        :param ReturnCode: IP 黑白名单验证失败时返回的 code（即将下线）
+        :param ReturnCode: IP 黑白名单验证失败时返回的 code <br><font color=red>已下线，参数失效，不支持自定义状态码，固定返回514</font>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnCode: int
         """

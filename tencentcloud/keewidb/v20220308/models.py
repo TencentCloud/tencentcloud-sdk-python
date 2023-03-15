@@ -769,6 +769,56 @@ class DescribeInstanceBinlogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceDealDetailRequest(AbstractModel):
+    """DescribeInstanceDealDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealIds: 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealId。
+        :type DealIds: list of str
+        """
+        self.DealIds = None
+
+
+    def _deserialize(self, params):
+        self.DealIds = params.get("DealIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceDealDetailResponse(AbstractModel):
+    """DescribeInstanceDealDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealDetails: 订单详细信息
+        :type DealDetails: list of TradeDealDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DealDetails") is not None:
+            self.DealDetails = []
+            for item in params.get("DealDetails"):
+                obj = TradeDealDetail()
+                obj._deserialize(item)
+                self.DealDetails.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceNodeInfoRequest(AbstractModel):
     """DescribeInstanceNodeInfo请求参数结构体
 
@@ -3558,6 +3608,74 @@ class TendisSlowLogDetail(AbstractModel):
         self.Command = params.get("Command")
         self.CommandLine = params.get("CommandLine")
         self.Node = params.get("Node")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TradeDealDetail(AbstractModel):
+    """订单交易信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealId: 订单号ID，调用云API时使用此ID	
+        :type DealId: str
+        :param DealName: 长订单ID，反馈订单问题给官方客服使用此ID	
+        :type DealName: str
+        :param ZoneId: 可用区id
+        :type ZoneId: int
+        :param GoodsNum: 订单关联的实例数
+        :type GoodsNum: int
+        :param Creater: 创建用户uin
+        :type Creater: str
+        :param CreatTime: 订单创建时间
+        :type CreatTime: str
+        :param OverdueTime: 订单超时时间
+        :type OverdueTime: str
+        :param EndTime: 订单完成时间
+        :type EndTime: str
+        :param Status: 订单状态 1：未支付 2:已支付，未发货 3:发货中 4:发货成功 5:发货失败 6:已退款 7:已关闭订单 8:订单过期 9:订单已失效 10:产品已失效 11:代付拒绝 12:支付中
+        :type Status: int
+        :param Description: 订单状态描述
+        :type Description: str
+        :param Price: 订单实际总价，单位：分
+        :type Price: float
+        :param InstanceIds: 实例ID
+        :type InstanceIds: list of str
+        """
+        self.DealId = None
+        self.DealName = None
+        self.ZoneId = None
+        self.GoodsNum = None
+        self.Creater = None
+        self.CreatTime = None
+        self.OverdueTime = None
+        self.EndTime = None
+        self.Status = None
+        self.Description = None
+        self.Price = None
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.DealId = params.get("DealId")
+        self.DealName = params.get("DealName")
+        self.ZoneId = params.get("ZoneId")
+        self.GoodsNum = params.get("GoodsNum")
+        self.Creater = params.get("Creater")
+        self.CreatTime = params.get("CreatTime")
+        self.OverdueTime = params.get("OverdueTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        self.Price = params.get("Price")
+        self.InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

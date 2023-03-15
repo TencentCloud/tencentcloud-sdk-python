@@ -22017,7 +22017,7 @@ class RebuildMediaTargetVideoStream(AbstractModel):
 
 默认值：open。
         :type ResolutionAdaptive: str
-        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
@@ -22025,7 +22025,7 @@ class RebuildMediaTargetVideoStream(AbstractModel):
 
 默认值：0。
         :type Width: int
-        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
@@ -24051,6 +24051,9 @@ class SearchMediaRequest(AbstractModel):
 <li> ARCHIVE：归档存储。</li>
 <li> DEEP_ARCHIVE：深度归档存储。</li>
         :type StorageClasses: list of str
+        :param MediaTypes: 媒体文件封装格式集合，匹配集合中任意元素。
+<li>数组长度限制：10。</li>
+        :type MediaTypes: list of str
         :param TrtcSdkAppIds: TRTC 应用 ID 集合。匹配集合中的任意元素。
 <li>数组长度限制：10。</li>
         :type TrtcSdkAppIds: list of int non-negative
@@ -24102,6 +24105,7 @@ class SearchMediaRequest(AbstractModel):
         self.Filters = None
         self.StorageRegions = None
         self.StorageClasses = None
+        self.MediaTypes = None
         self.TrtcSdkAppIds = None
         self.TrtcRoomIds = None
         self.Text = None
@@ -24138,6 +24142,7 @@ class SearchMediaRequest(AbstractModel):
         self.Filters = params.get("Filters")
         self.StorageRegions = params.get("StorageRegions")
         self.StorageClasses = params.get("StorageClasses")
+        self.MediaTypes = params.get("MediaTypes")
         self.TrtcSdkAppIds = params.get("TrtcSdkAppIds")
         self.TrtcRoomIds = params.get("TrtcRoomIds")
         self.Text = params.get("Text")
@@ -26979,7 +26984,7 @@ class VideoFrameInterpolationInfo(AbstractModel):
 <li>ON：开启智能插帧；</li>
 <li>OFF：关闭智能插帧。</li>
         :type Switch: str
-        :param Fps: 智能插帧帧率，帧率范围为 (0, 60]，仅当智能插帧控制开关为 ON 时有效。默认跟源文件帧率一致。
+        :param Fps: 智能插帧帧率，帧率范围为 (0, 100]，仅当智能插帧控制开关为 ON 时有效。默认跟源文件帧率一致。
         :type Fps: int
         """
         self.Switch = None

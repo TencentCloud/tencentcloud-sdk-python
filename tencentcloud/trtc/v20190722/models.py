@@ -167,12 +167,12 @@ class AudioParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SampleRate: 音频采样率:
+        :param SampleRate: 音频采样率枚举值:(注意1 代表48000HZ, 2 代表44100HZ, 3 代表16000HZ)
 1：48000Hz（默认）;
 2：44100Hz
 3：16000Hz。
         :type SampleRate: int
-        :param Channel: 声道数:
+        :param Channel: 声道数枚举值:
 1：单声道;
 2：双声道（默认）。
         :type Channel: int
@@ -4822,13 +4822,21 @@ class WaterMark(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WaterMarkType: 水印类型，0为图片（默认），1为文字（暂不支持）。
+        :param WaterMarkType: 水印类型，0为图片（默认），1为文字，2为时间戳。
         :type WaterMarkType: int
         :param WaterMarkImage: 水印为图片时的参数列表，水印为图片时校验必填。
         :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.WaterMarkImage`
+        :param WaterMarkChar: 水印为文字时的参数列表，水印为文字时校验必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaterMarkChar: :class:`tencentcloud.trtc.v20190722.models.WaterMarkChar`
+        :param WaterMarkTimestamp: 水印为时间戳时的参数列表，水印为时间戳时校验必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaterMarkTimestamp: :class:`tencentcloud.trtc.v20190722.models.WaterMarkTimestamp`
         """
         self.WaterMarkType = None
         self.WaterMarkImage = None
+        self.WaterMarkChar = None
+        self.WaterMarkTimestamp = None
 
 
     def _deserialize(self, params):
@@ -4836,6 +4844,72 @@ class WaterMark(AbstractModel):
         if params.get("WaterMarkImage") is not None:
             self.WaterMarkImage = WaterMarkImage()
             self.WaterMarkImage._deserialize(params.get("WaterMarkImage"))
+        if params.get("WaterMarkChar") is not None:
+            self.WaterMarkChar = WaterMarkChar()
+            self.WaterMarkChar._deserialize(params.get("WaterMarkChar"))
+        if params.get("WaterMarkTimestamp") is not None:
+            self.WaterMarkTimestamp = WaterMarkTimestamp()
+            self.WaterMarkTimestamp._deserialize(params.get("WaterMarkTimestamp"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WaterMarkChar(AbstractModel):
+    """自定义文字水印数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Top: 文字水印的起始坐标Y值，从左上角开始
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Top: int
+        :param Left: 文字水印的起始坐标X值，从左上角开始
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Left: int
+        :param Width: 文字水印的宽度，单位像素值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param Height: 文字水印的高度，单位像素值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        :param Chars: 水印文字的内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Chars: str
+        :param FontSize: 水印文字的大小，单位像素，默认14
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FontSize: int
+        :param FontColor: 水印文字的颜色，默认白色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FontColor: str
+        :param BackGroundColor: 水印文字的背景色，为空代表背景透明，默认为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackGroundColor: str
+        """
+        self.Top = None
+        self.Left = None
+        self.Width = None
+        self.Height = None
+        self.Chars = None
+        self.FontSize = None
+        self.FontColor = None
+        self.BackGroundColor = None
+
+
+    def _deserialize(self, params):
+        self.Top = params.get("Top")
+        self.Left = params.get("Left")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Chars = params.get("Chars")
+        self.FontSize = params.get("FontSize")
+        self.FontColor = params.get("FontColor")
+        self.BackGroundColor = params.get("BackGroundColor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4920,6 +4994,36 @@ class WaterMarkParams(AbstractModel):
         self.LocationX = params.get("LocationX")
         self.LocationY = params.get("LocationY")
         self.WaterMarkUrl = params.get("WaterMarkUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WaterMarkTimestamp(AbstractModel):
+    """时间戳水印数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Pos: 时间戳的位置，取值范围0-6，分别代表上左，上右，下左，下右，上居中，下居中，居中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pos: int
+        :param TimeZone: 显示时间戳的时区，默认东八区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeZone: int
+        """
+        self.Pos = None
+        self.TimeZone = None
+
+
+    def _deserialize(self, params):
+        self.Pos = params.get("Pos")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

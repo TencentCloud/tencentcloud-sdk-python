@@ -3765,6 +3765,12 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type CodeSet: str
         :param CodeCrc: 最下方第二行 MRZ Code 序列
         :type CodeCrc: str
+        :param Surname: 姓
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Surname: str
+        :param GivenName: 名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GivenName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3780,6 +3786,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.AdvancedInfo = None
         self.CodeSet = None
         self.CodeCrc = None
+        self.Surname = None
+        self.GivenName = None
         self.RequestId = None
 
 
@@ -3796,6 +3804,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.AdvancedInfo = params.get("AdvancedInfo")
         self.CodeSet = params.get("CodeSet")
         self.CodeCrc = params.get("CodeCrc")
+        self.Surname = params.get("Surname")
+        self.GivenName = params.get("GivenName")
         self.RequestId = params.get("RequestId")
 
 

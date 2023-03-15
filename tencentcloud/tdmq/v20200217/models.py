@@ -5322,6 +5322,91 @@ class DescribeRabbitMQNodeListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRabbitMQVipInstanceRequest(AbstractModel):
+    """DescribeRabbitMQVipInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQVipInstanceResponse(AbstractModel):
+    """DescribeRabbitMQVipInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterInfo: 集群信息
+        :type ClusterInfo: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQClusterInfo`
+        :param ClusterSpecInfo: 集群规格信息
+        :type ClusterSpecInfo: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQClusterSpecInfo`
+        :param ClusterNetInfo: 集群访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterNetInfo: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQClusterAccessInfo`
+        :param ClusterWhiteListInfo: 集群白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterWhiteListInfo: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQClusterWhiteListInfo`
+        :param VirtualHostQuota: vhost配额信息
+        :type VirtualHostQuota: :class:`tencentcloud.tdmq.v20200217.models.VirtualHostQuota`
+        :param ExchangeQuota: exchange配额信息
+        :type ExchangeQuota: :class:`tencentcloud.tdmq.v20200217.models.ExchangeQuota`
+        :param QueueQuota: queue配额信息
+        :type QueueQuota: :class:`tencentcloud.tdmq.v20200217.models.QueueQuota`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterInfo = None
+        self.ClusterSpecInfo = None
+        self.ClusterNetInfo = None
+        self.ClusterWhiteListInfo = None
+        self.VirtualHostQuota = None
+        self.ExchangeQuota = None
+        self.QueueQuota = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterInfo") is not None:
+            self.ClusterInfo = RabbitMQClusterInfo()
+            self.ClusterInfo._deserialize(params.get("ClusterInfo"))
+        if params.get("ClusterSpecInfo") is not None:
+            self.ClusterSpecInfo = RabbitMQClusterSpecInfo()
+            self.ClusterSpecInfo._deserialize(params.get("ClusterSpecInfo"))
+        if params.get("ClusterNetInfo") is not None:
+            self.ClusterNetInfo = RabbitMQClusterAccessInfo()
+            self.ClusterNetInfo._deserialize(params.get("ClusterNetInfo"))
+        if params.get("ClusterWhiteListInfo") is not None:
+            self.ClusterWhiteListInfo = RabbitMQClusterWhiteListInfo()
+            self.ClusterWhiteListInfo._deserialize(params.get("ClusterWhiteListInfo"))
+        if params.get("VirtualHostQuota") is not None:
+            self.VirtualHostQuota = VirtualHostQuota()
+            self.VirtualHostQuota._deserialize(params.get("VirtualHostQuota"))
+        if params.get("ExchangeQuota") is not None:
+            self.ExchangeQuota = ExchangeQuota()
+            self.ExchangeQuota._deserialize(params.get("ExchangeQuota"))
+        if params.get("QueueQuota") is not None:
+            self.QueueQuota = QueueQuota()
+            self.QueueQuota._deserialize(params.get("QueueQuota"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRabbitMQVipInstancesRequest(AbstractModel):
     """DescribeRabbitMQVipInstances请求参数结构体
 
@@ -6237,6 +6322,35 @@ class EnvironmentRole(AbstractModel):
         self.RoleDescribe = params.get("RoleDescribe")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExchangeQuota(AbstractModel):
+    """exchange使用配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxExchange: 可创建最大exchange数
+        :type MaxExchange: int
+        :param UsedExchange: 已创建exchange数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedExchange: int
+        """
+        self.MaxExchange = None
+        self.UsedExchange = None
+
+
+    def _deserialize(self, params):
+        self.MaxExchange = params.get("MaxExchange")
+        self.UsedExchange = params.get("UsedExchange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7567,6 +7681,48 @@ class PartitionsTopic(AbstractModel):
         
 
 
+class PrometheusEndpointInfo(AbstractModel):
+    """rabbitmq Prometheus信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PrometheusEndpointStatus: Prometheus开关的状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrometheusEndpointStatus: str
+        :param VpcPrometheusEndpoint: prometheus信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcPrometheusEndpoint: list of str
+        :param NodePrometheusAddress: 节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePrometheusAddress: list of str
+        :param VpcEndpointInfo: vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.VpcEndpointInfo`
+        """
+        self.PrometheusEndpointStatus = None
+        self.VpcPrometheusEndpoint = None
+        self.NodePrometheusAddress = None
+        self.VpcEndpointInfo = None
+
+
+    def _deserialize(self, params):
+        self.PrometheusEndpointStatus = params.get("PrometheusEndpointStatus")
+        self.VpcPrometheusEndpoint = params.get("VpcPrometheusEndpoint")
+        self.NodePrometheusAddress = params.get("NodePrometheusAddress")
+        if params.get("VpcEndpointInfo") is not None:
+            self.VpcEndpointInfo = VpcEndpointInfo()
+            self.VpcEndpointInfo._deserialize(params.get("VpcEndpointInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PublishCmqMsgRequest(AbstractModel):
     """PublishCmqMsg请求参数结构体
 
@@ -7680,6 +7836,296 @@ class Publisher(AbstractModel):
         self.AverageMsgSize = params.get("AverageMsgSize")
         self.ConnectedSince = params.get("ConnectedSince")
         self.Partition = params.get("Partition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueueQuota(AbstractModel):
+    """queue使用配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxQueue: 可创建最大Queue数
+        :type MaxQueue: int
+        :param UsedQueue: 已创建Queue数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedQueue: int
+        """
+        self.MaxQueue = None
+        self.UsedQueue = None
+
+
+    def _deserialize(self, params):
+        self.MaxQueue = params.get("MaxQueue")
+        self.UsedQueue = params.get("UsedQueue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQClusterAccessInfo(AbstractModel):
+    """RabbitMQ集群访问信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PublicAccessEndpoint: 集群公网接入地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAccessEndpoint: str
+        :param WebConsoleEndpoint: 集群控制台访问地址
+        :type WebConsoleEndpoint: str
+        :param WebConsoleUsername: 集群控制台登录用户名
+        :type WebConsoleUsername: str
+        :param WebConsolePassword: 集群控制台登录密码
+        :type WebConsolePassword: str
+        :param PublicAccessEndpointStatus: 已废弃
+        :type PublicAccessEndpointStatus: bool
+        :param PublicControlConsoleSwitchStatus: 已废弃
+        :type PublicControlConsoleSwitchStatus: bool
+        :param VpcControlConsoleSwitchStatus: 已废弃
+        :type VpcControlConsoleSwitchStatus: bool
+        :param VpcWebConsoleEndpoint: Vpc管控台访问地址，示例值，http://1.1.1.1:15672
+        :type VpcWebConsoleEndpoint: str
+        :param PublicWebConsoleSwitchStatus: 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicWebConsoleSwitchStatus: str
+        :param VpcWebConsoleSwitchStatus: Vpc管控台开关状态，示例值，
+OFF/ON/CREATING/DELETING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcWebConsoleSwitchStatus: str
+        :param PublicDataStreamStatus: 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicDataStreamStatus: str
+        :param PrometheusEndpointInfo: Prometheus信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrometheusEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.PrometheusEndpointInfo`
+        """
+        self.PublicAccessEndpoint = None
+        self.WebConsoleEndpoint = None
+        self.WebConsoleUsername = None
+        self.WebConsolePassword = None
+        self.PublicAccessEndpointStatus = None
+        self.PublicControlConsoleSwitchStatus = None
+        self.VpcControlConsoleSwitchStatus = None
+        self.VpcWebConsoleEndpoint = None
+        self.PublicWebConsoleSwitchStatus = None
+        self.VpcWebConsoleSwitchStatus = None
+        self.PublicDataStreamStatus = None
+        self.PrometheusEndpointInfo = None
+
+
+    def _deserialize(self, params):
+        self.PublicAccessEndpoint = params.get("PublicAccessEndpoint")
+        self.WebConsoleEndpoint = params.get("WebConsoleEndpoint")
+        self.WebConsoleUsername = params.get("WebConsoleUsername")
+        self.WebConsolePassword = params.get("WebConsolePassword")
+        self.PublicAccessEndpointStatus = params.get("PublicAccessEndpointStatus")
+        self.PublicControlConsoleSwitchStatus = params.get("PublicControlConsoleSwitchStatus")
+        self.VpcControlConsoleSwitchStatus = params.get("VpcControlConsoleSwitchStatus")
+        self.VpcWebConsoleEndpoint = params.get("VpcWebConsoleEndpoint")
+        self.PublicWebConsoleSwitchStatus = params.get("PublicWebConsoleSwitchStatus")
+        self.VpcWebConsoleSwitchStatus = params.get("VpcWebConsoleSwitchStatus")
+        self.PublicDataStreamStatus = params.get("PublicDataStreamStatus")
+        if params.get("PrometheusEndpointInfo") is not None:
+            self.PrometheusEndpointInfo = PrometheusEndpointInfo()
+            self.PrometheusEndpointInfo._deserialize(params.get("PrometheusEndpointInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQClusterInfo(AbstractModel):
+    """RabbiteMQ集群基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param Region: 地域信息
+        :type Region: str
+        :param CreateTime: 创建时间，毫秒为单位
+        :type CreateTime: int
+        :param Remark: 集群说明信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param Vpcs: VPC及网络信息
+        :type Vpcs: list of VpcEndpointInfo
+        :param VirtualHostNumber: 虚拟主机数量
+        :type VirtualHostNumber: int
+        :param QueueNumber: 队列数量
+        :type QueueNumber: int
+        :param MessagePublishRate: 每秒生产消息数 单位：条/秒
+        :type MessagePublishRate: float
+        :param MessageStackNumber: 堆积消息数 单位：条
+        :type MessageStackNumber: int
+        :param ExpireTime: 过期时间
+        :type ExpireTime: int
+        :param ChannelNumber: Channel数量
+        :type ChannelNumber: int
+        :param ConnectionNumber: Connection数量
+        :type ConnectionNumber: int
+        :param ConsumerNumber: Consumer数量
+        :type ConsumerNumber: int
+        :param ExchangeNumber: Exchang数量
+        :type ExchangeNumber: int
+        :param ExceptionInformation: 集群异常。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceptionInformation: str
+        :param ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStatus: int
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.Region = None
+        self.CreateTime = None
+        self.Remark = None
+        self.Vpcs = None
+        self.VirtualHostNumber = None
+        self.QueueNumber = None
+        self.MessagePublishRate = None
+        self.MessageStackNumber = None
+        self.ExpireTime = None
+        self.ChannelNumber = None
+        self.ConnectionNumber = None
+        self.ConsumerNumber = None
+        self.ExchangeNumber = None
+        self.ExceptionInformation = None
+        self.ClusterStatus = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.Region = params.get("Region")
+        self.CreateTime = params.get("CreateTime")
+        self.Remark = params.get("Remark")
+        if params.get("Vpcs") is not None:
+            self.Vpcs = []
+            for item in params.get("Vpcs"):
+                obj = VpcEndpointInfo()
+                obj._deserialize(item)
+                self.Vpcs.append(obj)
+        self.VirtualHostNumber = params.get("VirtualHostNumber")
+        self.QueueNumber = params.get("QueueNumber")
+        self.MessagePublishRate = params.get("MessagePublishRate")
+        self.MessageStackNumber = params.get("MessageStackNumber")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ChannelNumber = params.get("ChannelNumber")
+        self.ConnectionNumber = params.get("ConnectionNumber")
+        self.ConsumerNumber = params.get("ConsumerNumber")
+        self.ExchangeNumber = params.get("ExchangeNumber")
+        self.ExceptionInformation = params.get("ExceptionInformation")
+        self.ClusterStatus = params.get("ClusterStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQClusterSpecInfo(AbstractModel):
+    """RabbitMQ集群规格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpecName: 集群规格名称
+        :type SpecName: str
+        :param NodeCount: 节点数量
+        :type NodeCount: int
+        :param MaxTps: 峰值tps
+        :type MaxTps: int
+        :param MaxBandWidth: 峰值带宽。单位：mbps
+        :type MaxBandWidth: int
+        :param MaxStorage: 存储容量。单位：GB
+        :type MaxStorage: int
+        :param PublicNetworkTps: 公网带宽tps。单位：Mbps
+        :type PublicNetworkTps: int
+        """
+        self.SpecName = None
+        self.NodeCount = None
+        self.MaxTps = None
+        self.MaxBandWidth = None
+        self.MaxStorage = None
+        self.PublicNetworkTps = None
+
+
+    def _deserialize(self, params):
+        self.SpecName = params.get("SpecName")
+        self.NodeCount = params.get("NodeCount")
+        self.MaxTps = params.get("MaxTps")
+        self.MaxBandWidth = params.get("MaxBandWidth")
+        self.MaxStorage = params.get("MaxStorage")
+        self.PublicNetworkTps = params.get("PublicNetworkTps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQClusterWhiteListInfo(AbstractModel):
+    """RabbiteMQ集群白名单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WhiteList: 废弃
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhiteList: str
+        :param PublicControlConsoleWhiteList: 公网管控台白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicControlConsoleWhiteList: str
+        :param PublicDataStreamWhiteList: 公网数据流白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicDataStreamWhiteList: str
+        :param PublicControlConsoleWhiteListStatus: 公网管控台白名单状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicControlConsoleWhiteListStatus: str
+        :param PublicDataStreamWhiteListStatus: 公网数据流白名单状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicDataStreamWhiteListStatus: str
+        """
+        self.WhiteList = None
+        self.PublicControlConsoleWhiteList = None
+        self.PublicDataStreamWhiteList = None
+        self.PublicControlConsoleWhiteListStatus = None
+        self.PublicDataStreamWhiteListStatus = None
+
+
+    def _deserialize(self, params):
+        self.WhiteList = params.get("WhiteList")
+        self.PublicControlConsoleWhiteList = params.get("PublicControlConsoleWhiteList")
+        self.PublicDataStreamWhiteList = params.get("PublicDataStreamWhiteList")
+        self.PublicControlConsoleWhiteListStatus = params.get("PublicControlConsoleWhiteListStatus")
+        self.PublicDataStreamWhiteListStatus = params.get("PublicDataStreamWhiteListStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9443,6 +9889,35 @@ class UnbindCmqDeadLetterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class VirtualHostQuota(AbstractModel):
+    """vhost使用配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaxVirtualHost: 允许创建最大vhost数
+        :type MaxVirtualHost: int
+        :param UsedVirtualHost: 已创建vhost数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedVirtualHost: int
+        """
+        self.MaxVirtualHost = None
+        self.UsedVirtualHost = None
+
+
+    def _deserialize(self, params):
+        self.MaxVirtualHost = params.get("MaxVirtualHost")
+        self.UsedVirtualHost = params.get("UsedVirtualHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VpcBindRecord(AbstractModel):
     """vcp绑定记录
 
@@ -9507,6 +9982,44 @@ class VpcConfig(AbstractModel):
     def _deserialize(self, params):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VpcEndpointInfo(AbstractModel):
+    """VPC接入点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: vpc的id
+        :type VpcId: str
+        :param SubnetId: 子网id
+        :type SubnetId: str
+        :param VpcEndpoint: vpc接入点信息
+        :type VpcEndpoint: str
+        :param VpcDataStreamEndpointStatus: vpc接入点状态
+OFF/ON/CREATING/DELETING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcDataStreamEndpointStatus: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.VpcEndpoint = None
+        self.VpcDataStreamEndpointStatus = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcEndpoint = params.get("VpcEndpoint")
+        self.VpcDataStreamEndpointStatus = params.get("VpcDataStreamEndpointStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

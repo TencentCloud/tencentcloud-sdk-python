@@ -124,7 +124,12 @@ class AclCondition(AbstractModel):
 <li>method：请求方式；</li>
 <li>header：请求头部；</li>
 <li>app_proto：应用层协议；</li>
-<li>sip_proto：网络层协议。</li>
+<li>sip_proto：网络层协议；</li>
+<li>uabot：UA 特征规则，仅bot自定义规则可用；</li>
+<li>idcid：IDC 规则，仅bot自定义规则可用；</li>
+<li>sipbot：搜索引擎规则，仅bot自定义规则可用；</li>
+<li>portrait：画像分析，仅bot自定义规则可用；</li>
+<li>header_seq：请求头顺序，仅bot自定义规则可用。</li>
         :type MatchFrom: str
         :param MatchParam: 匹配字符串。当 MatchFrom 为 header 时，可以填入 header 的 key 作为参数。
         :type MatchParam: str
@@ -787,11 +792,18 @@ class BotConfig(AbstractModel):
         :param IntelligenceRule: Bot智能分析。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntelligenceRule: :class:`tencentcloud.teo.v20220901.models.IntelligenceRule`
+        :param BotUserRules: Bot自定义规则。如果为null，默认使用历史配置。
+        :type BotUserRules: list of BotUserRule
+        :param Customizes: Bot托管定制策略，入参可不填，仅出参使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Customizes: list of BotUserRule
         """
         self.Switch = None
         self.BotManagedRule = None
         self.BotPortraitRule = None
         self.IntelligenceRule = None
+        self.BotUserRules = None
+        self.Customizes = None
 
 
     def _deserialize(self, params):
@@ -805,6 +817,55 @@ class BotConfig(AbstractModel):
         if params.get("IntelligenceRule") is not None:
             self.IntelligenceRule = IntelligenceRule()
             self.IntelligenceRule._deserialize(params.get("IntelligenceRule"))
+        if params.get("BotUserRules") is not None:
+            self.BotUserRules = []
+            for item in params.get("BotUserRules"):
+                obj = BotUserRule()
+                obj._deserialize(item)
+                self.BotUserRules.append(obj)
+        if params.get("Customizes") is not None:
+            self.Customizes = []
+            for item in params.get("Customizes"):
+                obj = BotUserRule()
+                obj._deserialize(item)
+                self.Customizes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotExtendAction(AbstractModel):
+    """Bot扩展处置方式，多处置动作组合。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 处置动作，取值有：
+<li>monitor：观察；</li>
+<li>trans：放行；</li>
+<li>alg：JavaScript挑战；</li>
+<li>captcha：托管挑战；</li>
+<li>random：随机，按照ExtendActions分配处置动作和比例；</li>
+<li>silence：静默；</li>
+<li>shortdelay：短时响应；</li>
+<li>longdelay：长时响应。</li>
+        :type Action: str
+        :param Percent: 处置方式的触发概率，范围0-100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: int
+        """
+        self.Action = None
+        self.Percent = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.Percent = params.get("Percent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -912,6 +973,93 @@ class BotPortraitRule(AbstractModel):
         self.CapManagedIds = params.get("CapManagedIds")
         self.MonManagedIds = params.get("MonManagedIds")
         self.DropManagedIds = params.get("DropManagedIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotUserRule(AbstractModel):
+    """Bot自定义规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: 规则名，只能以英文字符，数字，下划线组合，且不能以下划线开头。
+        :type RuleName: str
+        :param Action: 处置动作，取值有：
+<li>drop：拦截；</li>
+<li>monitor：观察；</li>
+<li>trans：放行；</li>
+<li>alg：JavaScript挑战；</li>
+<li>captcha：托管挑战；</li>
+<li>silence：静默；</li>
+<li>shortdelay：短时响应；</li>
+<li>longdelay：长时响应。</li>
+        :type Action: str
+        :param RuleStatus: 规则状态，取值有：
+<li>on：生效；</li>
+<li>off：不生效。</li>默认on生效。
+        :type RuleStatus: str
+        :param AclConditions: 规则详情。
+        :type AclConditions: list of AclCondition
+        :param RulePriority: 规则权重，取值范围0-100。
+        :type RulePriority: int
+        :param RuleID: 规则id。仅出参使用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleID: int
+        :param ExtendActions: 随机处置的处置方式及占比，非随机处置可不填暂不支持。
+        :type ExtendActions: list of BotExtendAction
+        :param FreqFields: 过滤词，取值有：
+<li>sip：客户端ip。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreqFields: list of str
+        :param UpdateTime: 更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param FreqScope: 统计范围，字段为null时，代表source_to_eo。取值有：
+<li>source_to_eo：（响应）源站到EdgeOne。</li>
+<li>client_to_eo：（请求）客户端到EdgeOne；</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreqScope: list of str
+        """
+        self.RuleName = None
+        self.Action = None
+        self.RuleStatus = None
+        self.AclConditions = None
+        self.RulePriority = None
+        self.RuleID = None
+        self.ExtendActions = None
+        self.FreqFields = None
+        self.UpdateTime = None
+        self.FreqScope = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.Action = params.get("Action")
+        self.RuleStatus = params.get("RuleStatus")
+        if params.get("AclConditions") is not None:
+            self.AclConditions = []
+            for item in params.get("AclConditions"):
+                obj = AclCondition()
+                obj._deserialize(item)
+                self.AclConditions.append(obj)
+        self.RulePriority = params.get("RulePriority")
+        self.RuleID = params.get("RuleID")
+        if params.get("ExtendActions") is not None:
+            self.ExtendActions = []
+            for item in params.get("ExtendActions"):
+                obj = BotExtendAction()
+                obj._deserialize(item)
+                self.ExtendActions.append(obj)
+        self.FreqFields = params.get("FreqFields")
+        self.UpdateTime = params.get("UpdateTime")
+        self.FreqScope = params.get("FreqScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

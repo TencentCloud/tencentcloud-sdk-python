@@ -256,6 +256,29 @@ class KeewidbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceDealDetail(self, request):
+        """本接口（DescribeInstanceDealDetail）用于查询预付费订单信息。
+
+        :param request: Request instance for DescribeInstanceDealDetail.
+        :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceDealDetailRequest`
+        :rtype: :class:`tencentcloud.keewidb.v20220308.models.DescribeInstanceDealDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceDealDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceDealDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceNodeInfo(self, request):
         """本接口（DescribeInstanceNodeInfo）查询实例节点信息。
 

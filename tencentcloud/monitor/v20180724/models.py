@@ -9277,7 +9277,7 @@ class DescribeStatisticDataRequest(AbstractModel):
         r"""
         :param Module: 所属模块，固定值，为monitor
         :type Module: str
-        :param Namespace: 命名空间，目前只支持QCE/TKE
+        :param Namespace: 命名空间，目前只支持QCE/TKE2
         :type Namespace: str
         :param MetricNames: 指标名列表
         :type MetricNames: list of str

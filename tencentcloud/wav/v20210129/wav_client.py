@@ -279,6 +279,29 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryCustomerProfileList(self, request):
+        """通过接口拉取租户已有潜客客户档案列表信息
+
+        :param request: Request instance for QueryCustomerProfileList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryCustomerProfileListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryCustomerProfileListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryCustomerProfileList", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryCustomerProfileListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryDealerInfoList(self, request):
         """企业可通过此接口获取录入在企微SaaS平台上的经销商信息。
 
@@ -316,6 +339,29 @@ class WavClient(AbstractClient):
             body = self.call("QueryExternalContactDetail", params, headers=headers)
             response = json.loads(body)
             model = models.QueryExternalContactDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryExternalContactDetailByDate(self, request):
+        """企业可通过传入起始和结束时间，获取该时间段的外部联系人详情列表
+
+        :param request: Request instance for QueryExternalContactDetailByDate.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalContactDetailByDateRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryExternalContactDetailByDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryExternalContactDetailByDate", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryExternalContactDetailByDateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

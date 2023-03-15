@@ -277,6 +277,36 @@ class ChannelCodeInnerDetail(AbstractModel):
         
 
 
+class ChannelTag(AbstractModel):
+    """客户渠道标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagName: 该客户档案当前已成功关联的渠道标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param TagId: 该客户档案当前已成功关联的渠道标签的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagId: str
+        """
+        self.TagName = None
+        self.TagId = None
+
+
+    def _deserialize(self, params):
+        self.TagName = params.get("TagName")
+        self.TagId = params.get("TagId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChatArchivingDetail(AbstractModel):
     """会话存档数据详情
 
@@ -415,6 +445,33 @@ class ClueInfoDetail(AbstractModel):
         :param UserName: 客户姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
+        :param LeadUserType: 线索属性，0：个人，1：企业
+        :type LeadUserType: int
+        :param LeadType: 线索来源类型，1：线上，2：线下
+        :type LeadType: int
+        :param ChannelId: 线索渠道对应ID
+        :type ChannelId: int
+        :param ChannelName: 线索渠道类型，与线索来源对应的渠道名称
+        :type ChannelName: str
+        :param SourceChannelName: 线索渠道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceChannelName: str
+        :param Gender: 0：未知，1：男，2：女
+        :type Gender: int
+        :param CreateTime: 线索创建时间戳，单位：秒
+        :type CreateTime: str
+        :param LeadStatus: 线索所处状态，101-待分配 201-待建档 301-已建档 401-已邀约 501-跟进中 601-已下订单 701-已成交 801-战败申请中 901-已战败 1001-未知状态 1101-转移申请中 1201-已完成
+        :type LeadStatus: int
+        :param LevelCode: 线索意向等级
+        :type LevelCode: str
+        :param ImportAtTime: 线索成功导入的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportAtTime: int
+        :param DistributeTime: 完成线索分配的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DistributeTime: int
+        :param CreateAtTime: 获取线索的时间戳，单位：秒
+        :type CreateAtTime: int
         """
         self.ClueId = None
         self.DealerId = None
@@ -431,6 +488,18 @@ class ClueInfoDetail(AbstractModel):
         self.Remark = None
         self.TagList = None
         self.UserName = None
+        self.LeadUserType = None
+        self.LeadType = None
+        self.ChannelId = None
+        self.ChannelName = None
+        self.SourceChannelName = None
+        self.Gender = None
+        self.CreateTime = None
+        self.LeadStatus = None
+        self.LevelCode = None
+        self.ImportAtTime = None
+        self.DistributeTime = None
+        self.CreateAtTime = None
 
 
     def _deserialize(self, params):
@@ -449,6 +518,18 @@ class ClueInfoDetail(AbstractModel):
         self.Remark = params.get("Remark")
         self.TagList = params.get("TagList")
         self.UserName = params.get("UserName")
+        self.LeadUserType = params.get("LeadUserType")
+        self.LeadType = params.get("LeadType")
+        self.ChannelId = params.get("ChannelId")
+        self.ChannelName = params.get("ChannelName")
+        self.SourceChannelName = params.get("SourceChannelName")
+        self.Gender = params.get("Gender")
+        self.CreateTime = params.get("CreateTime")
+        self.LeadStatus = params.get("LeadStatus")
+        self.LevelCode = params.get("LevelCode")
+        self.ImportAtTime = params.get("ImportAtTime")
+        self.DistributeTime = params.get("DistributeTime")
+        self.CreateAtTime = params.get("CreateAtTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -885,6 +966,212 @@ class CustomerActionEventDetail(AbstractModel):
         
 
 
+class CustomerProfile(AbstractModel):
+    """潜客客户档案信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomerId: 客户档案id，客户唯一识别编码
+        :type CustomerId: int
+        :param DealerCode: 所属经销商id
+        :type DealerCode: str
+        :param UnionId: 客户在微信生态中唯一识别码
+        :type UnionId: str
+        :param CreateTime: 档案创建时间戳，单位：秒
+        :type CreateTime: str
+        :param UserName: 客户姓名
+        :type UserName: str
+        :param Gender: 0未知，1：男，2：女
+        :type Gender: int
+        :param Phone: 客户联系手机号
+        :type Phone: str
+        :param AgeRangeName: 客户年龄段名称
+        :type AgeRangeName: str
+        :param JobTypeName: 客户行业类型名称信息，如教师、医生
+        :type JobTypeName: str
+        :param Address: 客户居住地址
+        :type Address: str
+        :param LeadsProcessStatus: 客户所处状态
+ 0:已分配 1:未分配 1 待建档, 2 已建档， 3 已到店 4 已经试驾 5 战败申请中 6 已战败 7 已成交 
+        :type LeadsProcessStatus: int
+        :param LeadType: 客户来源类型，1：线上，2：线下
+        :type LeadType: int
+        :param SourceName: 与客户来源类型对应的渠道名称
+        :type SourceName: str
+        :param LeadsLevelCode: 客户购车的意向等级
+        :type LeadsLevelCode: str
+        :param VehicleBrandCode: 客户意向品牌编号
+        :type VehicleBrandCode: str
+        :param VehicleSeriesCode: 客户意向车系编号
+        :type VehicleSeriesCode: str
+        :param VehicleTypeCode: 客户意向车型编号
+        :type VehicleTypeCode: str
+        :param VehiclePurpose: 购车用途信息
+        :type VehiclePurpose: :class:`tencentcloud.wav.v20210129.models.VehiclePurpose`
+        :param PurchaseConcern: 购车关注点信息
+        :type PurchaseConcern: list of PurchaseConcern
+        :param SalesName: 客户所属顾问姓名
+        :type SalesName: str
+        :param SalesPhone: 客户所属顾问手机号
+        :type SalesPhone: str
+        :param RealArrivalTime: 客户实际到店时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealArrivalTime: int
+        :param CompleteTestDriveTime: 客户到店完成试乘试驾时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompleteTestDriveTime: str
+        :param OrderTime: 客户完成下订的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderTime: int
+        :param DeliveryTime: 客户成交的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliveryTime: int
+        :param InvoiceTime: 开票时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvoiceTime: int
+        :param LoseTime: 完成对此客户战败审批的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoseTime: int
+        :param CreatedAtTime: 线索成功获取的时间戳，单位：秒
+        :type CreatedAtTime: int
+        :param ImportAtTime: 线索成功导入的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportAtTime: int
+        :param DistributeTime: 完成线索分配的时间戳，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DistributeTime: int
+        :param LeadCreateTime: 线索成功创建的时间戳，单位：秒
+        :type LeadCreateTime: int
+        :param Nickname: 线索关联微信昵称
+        :type Nickname: str
+        :param OrgIdList: 线索归属部门节点
+        :type OrgIdList: list of str
+        :param Introducer: 客户的介绍人姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Introducer: str
+        :param IntroducerPhone: 客户的介绍人手机号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntroducerPhone: str
+        :param FollowTime: 最近一次完成跟进的时间戳，单位：秒
+        :type FollowTime: int
+        :param NextFollowTime: 最近一次计划跟进的时间戳，单位：秒
+        :type NextFollowTime: int
+        :param EnterpriseTags: 已为该客户添加的企业标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnterpriseTags: list of EnterpriseTag
+        :param ChannelTags: 已为该客户添加的渠道标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelTags: list of ChannelTag
+        """
+        self.CustomerId = None
+        self.DealerCode = None
+        self.UnionId = None
+        self.CreateTime = None
+        self.UserName = None
+        self.Gender = None
+        self.Phone = None
+        self.AgeRangeName = None
+        self.JobTypeName = None
+        self.Address = None
+        self.LeadsProcessStatus = None
+        self.LeadType = None
+        self.SourceName = None
+        self.LeadsLevelCode = None
+        self.VehicleBrandCode = None
+        self.VehicleSeriesCode = None
+        self.VehicleTypeCode = None
+        self.VehiclePurpose = None
+        self.PurchaseConcern = None
+        self.SalesName = None
+        self.SalesPhone = None
+        self.RealArrivalTime = None
+        self.CompleteTestDriveTime = None
+        self.OrderTime = None
+        self.DeliveryTime = None
+        self.InvoiceTime = None
+        self.LoseTime = None
+        self.CreatedAtTime = None
+        self.ImportAtTime = None
+        self.DistributeTime = None
+        self.LeadCreateTime = None
+        self.Nickname = None
+        self.OrgIdList = None
+        self.Introducer = None
+        self.IntroducerPhone = None
+        self.FollowTime = None
+        self.NextFollowTime = None
+        self.EnterpriseTags = None
+        self.ChannelTags = None
+
+
+    def _deserialize(self, params):
+        self.CustomerId = params.get("CustomerId")
+        self.DealerCode = params.get("DealerCode")
+        self.UnionId = params.get("UnionId")
+        self.CreateTime = params.get("CreateTime")
+        self.UserName = params.get("UserName")
+        self.Gender = params.get("Gender")
+        self.Phone = params.get("Phone")
+        self.AgeRangeName = params.get("AgeRangeName")
+        self.JobTypeName = params.get("JobTypeName")
+        self.Address = params.get("Address")
+        self.LeadsProcessStatus = params.get("LeadsProcessStatus")
+        self.LeadType = params.get("LeadType")
+        self.SourceName = params.get("SourceName")
+        self.LeadsLevelCode = params.get("LeadsLevelCode")
+        self.VehicleBrandCode = params.get("VehicleBrandCode")
+        self.VehicleSeriesCode = params.get("VehicleSeriesCode")
+        self.VehicleTypeCode = params.get("VehicleTypeCode")
+        if params.get("VehiclePurpose") is not None:
+            self.VehiclePurpose = VehiclePurpose()
+            self.VehiclePurpose._deserialize(params.get("VehiclePurpose"))
+        if params.get("PurchaseConcern") is not None:
+            self.PurchaseConcern = []
+            for item in params.get("PurchaseConcern"):
+                obj = PurchaseConcern()
+                obj._deserialize(item)
+                self.PurchaseConcern.append(obj)
+        self.SalesName = params.get("SalesName")
+        self.SalesPhone = params.get("SalesPhone")
+        self.RealArrivalTime = params.get("RealArrivalTime")
+        self.CompleteTestDriveTime = params.get("CompleteTestDriveTime")
+        self.OrderTime = params.get("OrderTime")
+        self.DeliveryTime = params.get("DeliveryTime")
+        self.InvoiceTime = params.get("InvoiceTime")
+        self.LoseTime = params.get("LoseTime")
+        self.CreatedAtTime = params.get("CreatedAtTime")
+        self.ImportAtTime = params.get("ImportAtTime")
+        self.DistributeTime = params.get("DistributeTime")
+        self.LeadCreateTime = params.get("LeadCreateTime")
+        self.Nickname = params.get("Nickname")
+        self.OrgIdList = params.get("OrgIdList")
+        self.Introducer = params.get("Introducer")
+        self.IntroducerPhone = params.get("IntroducerPhone")
+        self.FollowTime = params.get("FollowTime")
+        self.NextFollowTime = params.get("NextFollowTime")
+        if params.get("EnterpriseTags") is not None:
+            self.EnterpriseTags = []
+            for item in params.get("EnterpriseTags"):
+                obj = EnterpriseTag()
+                obj._deserialize(item)
+                self.EnterpriseTags.append(obj)
+        if params.get("ChannelTags") is not None:
+            self.ChannelTags = []
+            for item in params.get("ChannelTags"):
+                obj = ChannelTag()
+                obj._deserialize(item)
+                self.ChannelTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DealerInfo(AbstractModel):
     """经销商信息
 
@@ -896,14 +1183,64 @@ class DealerInfo(AbstractModel):
         :type DealerId: int
         :param DealerName: 经销商名称
         :type DealerName: str
+        :param ProvinceCode: 所属省份编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProvinceCode: str
+        :param CityCodeList: 所属城市编号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CityCodeList: list of str
+        :param BrandIdList: 业务覆盖品牌id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrandIdList: list of str
         """
         self.DealerId = None
         self.DealerName = None
+        self.ProvinceCode = None
+        self.CityCodeList = None
+        self.BrandIdList = None
 
 
     def _deserialize(self, params):
         self.DealerId = params.get("DealerId")
         self.DealerName = params.get("DealerName")
+        self.ProvinceCode = params.get("ProvinceCode")
+        self.CityCodeList = params.get("CityCodeList")
+        self.BrandIdList = params.get("BrandIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnterpriseTag(AbstractModel):
+    """客户企业标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupName: 该客户档案当前已成功关联的企业标签分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param TagName: 该客户档案当前已成功关联的企业标签名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param TagId: 该客户档案当前已成功关联的企业标签的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagId: str
+        """
+        self.GroupName = None
+        self.TagName = None
+        self.TagId = None
+
+
+    def _deserialize(self, params):
+        self.GroupName = params.get("GroupName")
+        self.TagName = params.get("TagName")
+        self.TagId = params.get("TagId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -950,6 +1287,43 @@ class ExternalContact(AbstractModel):
         self.Type = params.get("Type")
         self.UnionId = params.get("UnionId")
         self.Phone = params.get("Phone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExternalContactDetailPro(AbstractModel):
+    """具备更多信息的外部联系人详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Customer: 客户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Customer: :class:`tencentcloud.wav.v20210129.models.ExternalContact`
+        :param FollowUser: 添加了此外部联系人的企业成员信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowUser: list of FollowUserPro
+        """
+        self.Customer = None
+        self.FollowUser = None
+
+
+    def _deserialize(self, params):
+        if params.get("Customer") is not None:
+            self.Customer = ExternalContact()
+            self.Customer._deserialize(params.get("Customer"))
+        if params.get("FollowUser") is not None:
+            self.FollowUser = []
+            for item in params.get("FollowUser"):
+                obj = FollowUserPro()
+                obj._deserialize(item)
+                self.FollowUser.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1157,6 +1531,71 @@ class FollowUser(AbstractModel):
         
 
 
+class FollowUserPro(AbstractModel):
+    """具备更多信息的添加了此外部联系人的企业成员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 添加了此外部联系人的企业成员userid
+        :type UserId: str
+        :param Remark: 该成员对此外部联系人的备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param Description: 该成员对此外部联系人的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param CreateTime: 该成员添加此外部联系人的时间戳，单位为秒
+        :type CreateTime: int
+        :param AddWay: 该成员添加此客户的来源，具体含义详见<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>
+        :type AddWay: int
+        :param OperUserId: 发起添加的userid，如果成员主动添加，为成员的userid；如果是客户主动添加，则为客户的外部联系人userid；如果是内部成员共享/管理员分配，则为对应的成员/管理员userid
+        :type OperUserId: str
+        :param Tags: 该成员添加此外部联系人所打标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ExternalContactTag
+        :param SalesName: 添加了此外部联系人的企业成员的姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SalesName: str
+        :param DepartmentIdList: 企业成员的归属部门id列表
+        :type DepartmentIdList: list of int
+        """
+        self.UserId = None
+        self.Remark = None
+        self.Description = None
+        self.CreateTime = None
+        self.AddWay = None
+        self.OperUserId = None
+        self.Tags = None
+        self.SalesName = None
+        self.DepartmentIdList = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.Remark = params.get("Remark")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.AddWay = params.get("AddWay")
+        self.OperUserId = params.get("OperUserId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = ExternalContactTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.SalesName = params.get("SalesName")
+        self.DepartmentIdList = params.get("DepartmentIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LicenseInfo(AbstractModel):
     """license相关信息
 
@@ -1347,6 +1786,34 @@ class MiniAppCodeInfo(AbstractModel):
         self.State = params.get("State")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PurchaseConcern(AbstractModel):
+    """购车关注点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 购车关注点code
+        :type Code: str
+        :param Description: 购车关注点描述
+        :type Description: str
+        """
+        self.Code = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1671,14 +2138,22 @@ class QueryClueInfoListRequest(AbstractModel):
         :type Cursor: str
         :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
         :type Limit: int
+        :param BeginTime: 查询开始时间， 单位秒
+        :type BeginTime: int
+        :param EndTime: 查询结束时间， 单位秒
+        :type EndTime: int
         """
         self.Cursor = None
         self.Limit = None
+        self.BeginTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.Cursor = params.get("Cursor")
         self.Limit = params.get("Limit")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1869,6 +2344,74 @@ class QueryCustomerEventDetailStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryCustomerProfileListRequest(AbstractModel):
+    """QueryCustomerProfileList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 分页，预期请求的数据量，取值范围 1 ~ 1000
+        :type Limit: int
+        :param BeginTime: 查询开始时间， 单位秒
+        :type BeginTime: int
+        :param EndTime: 查询结束时间， 单位秒
+        :type EndTime: int
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        """
+        self.Limit = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Cursor = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Cursor = params.get("Cursor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryCustomerProfileListResponse(AbstractModel):
+    """QueryCustomerProfileList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NextCursor: 分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 潜客客户存档信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of CustomerProfile
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NextCursor = None
+        self.PageData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NextCursor = params.get("NextCursor")
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = CustomerProfile()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class QueryDealerInfoListRequest(AbstractModel):
     """QueryDealerInfoList请求参数结构体
 
@@ -1931,6 +2474,73 @@ class QueryDealerInfoListResponse(AbstractModel):
                 self.PageData.append(obj)
         self.NextCursor = params.get("NextCursor")
         self.HasMore = params.get("HasMore")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryExternalContactDetailByDateRequest(AbstractModel):
+    """QueryExternalContactDetailByDate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginTime: 查询结束时间， 单位秒
+        :type BeginTime: int
+        :param EndTime: 查询结束时间， 单位秒
+        :type EndTime: int
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        """
+        self.BeginTime = None
+        self.EndTime = None
+        self.Cursor = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryExternalContactDetailByDateResponse(AbstractModel):
+    """QueryExternalContactDetailByDate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 外部联系人详细信息
+        :type PageData: list of ExternalContactDetailPro
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NextCursor = None
+        self.PageData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NextCursor = params.get("NextCursor")
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = ExternalContactDetailPro()
+                obj._deserialize(item)
+                self.PageData.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2749,6 +3359,34 @@ class VehicleInfo(AbstractModel):
         self.SeriesName = params.get("SeriesName")
         self.ModelId = params.get("ModelId")
         self.ModelName = params.get("ModelName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VehiclePurpose(AbstractModel):
+    """购车用途详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VehiclePurposeCode: 购车用途code
+        :type VehiclePurposeCode: str
+        :param VehiclePurposeName: 购车用途名称
+        :type VehiclePurposeName: str
+        """
+        self.VehiclePurposeCode = None
+        self.VehiclePurposeName = None
+
+
+    def _deserialize(self, params):
+        self.VehiclePurposeCode = params.get("VehiclePurposeCode")
+        self.VehiclePurposeName = params.get("VehiclePurposeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

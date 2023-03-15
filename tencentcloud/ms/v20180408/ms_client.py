@@ -96,7 +96,9 @@ class MsClient(AbstractClient):
 
 
     def CreateScanInstances(self, request):
-        """用户通过该接口批量提交应用进行应用扫描，扫描后需通过DescribeScanResults接口查询扫描结果
+        """由于该产品是线上免费使用产品，无企业版用户，升级迭代成本高及人力安排等原因，安全测评产品不再接入新用户，故下线。
+
+        用户通过该接口批量提交应用进行应用扫描，扫描后需通过DescribeScanResults接口查询扫描结果
 
         :param request: Request instance for CreateScanInstances.
         :type request: :class:`tencentcloud.ms.v20180408.models.CreateScanInstancesRequest`
@@ -257,7 +259,9 @@ class MsClient(AbstractClient):
 
 
     def DescribeScanInstances(self, request):
-        """本接口用于查看app列表。
+        """由于该产品是线上免费使用产品，无企业版用户，升级迭代成本高及人力安排等原因，安全测评产品不再接入新用户，故下线。
+
+        本接口用于查看app列表。
         可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
 
         :param request: Request instance for DescribeScanInstances.
@@ -281,7 +285,9 @@ class MsClient(AbstractClient):
 
 
     def DescribeScanResults(self, request):
-        """用户通过CreateScanInstances接口提交应用进行风险批量扫描后，用此接口批量获取风险详细信息,包含漏洞信息，广告信息，插件信息和病毒信息
+        """由于该产品是线上免费使用产品，无企业版用户，升级迭代成本高及人力安排等原因，安全测评产品不再接入新用户，故下线。
+
+        用户通过CreateScanInstances接口提交应用进行风险批量扫描后，用此接口批量获取风险详细信息,包含漏洞信息，广告信息，插件信息和病毒信息
 
         :param request: Request instance for DescribeScanResults.
         :type request: :class:`tencentcloud.ms.v20180408.models.DescribeScanResultsRequest`

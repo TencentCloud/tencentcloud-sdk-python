@@ -2114,6 +2114,9 @@ pause
         :param SlaveZones: 备可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZones: list of str
+        :param InstanceNetInfo: 实例网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNetInfo: list of InstanceNetInfo
         """
         self.Uin = None
         self.AppId = None
@@ -2164,6 +2167,7 @@ pause
         self.ResourceTags = None
         self.MasterZone = None
         self.SlaveZones = None
+        self.InstanceNetInfo = None
 
 
     def _deserialize(self, params):
@@ -2226,6 +2230,12 @@ pause
                 self.ResourceTags.append(obj)
         self.MasterZone = params.get("MasterZone")
         self.SlaveZones = params.get("SlaveZones")
+        if params.get("InstanceNetInfo") is not None:
+            self.InstanceNetInfo = []
+            for item in params.get("InstanceNetInfo"):
+                obj = InstanceNetInfo()
+                obj._deserialize(item)
+                self.InstanceNetInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5135,6 +5145,81 @@ class InstanceInitInfo(AbstractModel):
         self.Memory = params.get("Memory")
         self.InstanceType = params.get("InstanceType")
         self.InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceNetInfo(AbstractModel):
+    """实例网络信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceGroupType: 网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupType: str
+        :param InstanceGroupId: 接入组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupId: str
+        :param VpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param NetType: 网络类型, 0-基础网络, 1-vpc网络, 2-黑石网络
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetType: int
+        :param Vip: 私有网络IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param Vport: 私有网络端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        :param WanDomain: 外网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanDomain: str
+        :param WanIP: 外网Ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanIP: str
+        :param WanPort: 外网端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanPort: int
+        :param WanStatus: 外网开启状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanStatus: str
+        """
+        self.InstanceGroupType = None
+        self.InstanceGroupId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.NetType = None
+        self.Vip = None
+        self.Vport = None
+        self.WanDomain = None
+        self.WanIP = None
+        self.WanPort = None
+        self.WanStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceGroupType = params.get("InstanceGroupType")
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.NetType = params.get("NetType")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.WanDomain = params.get("WanDomain")
+        self.WanIP = params.get("WanIP")
+        self.WanPort = params.get("WanPort")
+        self.WanStatus = params.get("WanStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -128,16 +128,21 @@ class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
         :type UserId: str
         :param MusicIds: 歌曲 Id 列表。
         :type MusicIds: list of str
+        :param PlayScene: 播放场景。默认为Chat
+<li>Live：直播</li><li>Chat：语聊</li>
+        :type PlayScene: str
         """
         self.AppName = None
         self.UserId = None
         self.MusicIds = None
+        self.PlayScene = None
 
 
     def _deserialize(self, params):
         self.AppName = params.get("AppName")
         self.UserId = params.get("UserId")
         self.MusicIds = params.get("MusicIds")
+        self.PlayScene = params.get("PlayScene")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

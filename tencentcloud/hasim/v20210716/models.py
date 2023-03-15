@@ -460,6 +460,10 @@ class DescribeLinksRequest(AbstractModel):
         :type LinkedState: int
         :param TagIDs: 标签ID 集合
         :type TagIDs: list of int
+        :param Limit: 翻页大小, 默认翻页大小为10，最大数量为500
+        :type Limit: int
+        :param Offset: 翻页起始
+        :type Offset: int
         """
         self.LinkID = None
         self.ICCID = None
@@ -470,6 +474,8 @@ class DescribeLinksRequest(AbstractModel):
         self.TacticID = None
         self.LinkedState = None
         self.TagIDs = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
@@ -482,6 +488,8 @@ class DescribeLinksRequest(AbstractModel):
         self.TacticID = params.get("TacticID")
         self.LinkedState = params.get("LinkedState")
         self.TagIDs = params.get("TagIDs")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
