@@ -3450,6 +3450,67 @@ class DescribeReplicationGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSSLStatusRequest(AbstractModel):
+    """DescribeSSLStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSSLStatusResponse(AbstractModel):
+    """DescribeSSLStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertDownloadUrl: 证书下载地址
+        :type CertDownloadUrl: str
+        :param UrlExpiredTime: 证书下载链接到期时间
+        :type UrlExpiredTime: str
+        :param SSLConfig: 实例SSL配置状态， true：开启 false：关闭
+        :type SSLConfig: bool
+        :param FeatureSupport: 实例SSL特性支持， true：支持 false：不支持（小版本升级后才能支持SSL特性）
+        :type FeatureSupport: bool
+        :param Status: SSL配置状态，1: 配置中 2：配置成功
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertDownloadUrl = None
+        self.UrlExpiredTime = None
+        self.SSLConfig = None
+        self.FeatureSupport = None
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertDownloadUrl = params.get("CertDownloadUrl")
+        self.UrlExpiredTime = params.get("UrlExpiredTime")
+        self.SSLConfig = params.get("SSLConfig")
+        self.FeatureSupport = params.get("FeatureSupport")
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogRequest(AbstractModel):
     """DescribeSlowLog请求参数结构体
 

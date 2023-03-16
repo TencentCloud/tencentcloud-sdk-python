@@ -1153,6 +1153,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSSLStatus(self, request):
+        """查询SSL状态
+
+        :param request: Request instance for DescribeSSLStatus.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSSLStatusRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeSSLStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSSLStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSSLStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSlowLog(self, request):
         """本接口（DescribeSlowLog）查询实例慢查询记录。
 

@@ -2807,13 +2807,13 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type InstanceId: str
         :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
         :type SecondaryPrivateIpAddressCount: int
         :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
         :type SecurityGroupIds: list of str
         :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
         :type NetworkInterfaceDescription: str
-        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
         :param AttachType: 绑定类型：0 标准型 1 扩展型。
         :type AttachType: int
@@ -3555,11 +3555,14 @@ class CreateHaVipRequest(AbstractModel):
         :type HaVipName: str
         :param Vip: 指定虚拟IP地址，必须在`VPC`网段内且未被占用。不指定则自动分配。
         :type Vip: str
+        :param NetworkInterfaceId: `HAVIP`所在弹性网卡`ID`。
+        :type NetworkInterfaceId: str
         """
         self.VpcId = None
         self.SubnetId = None
         self.HaVipName = None
         self.Vip = None
+        self.NetworkInterfaceId = None
 
 
     def _deserialize(self, params):
@@ -3567,6 +3570,7 @@ class CreateHaVipRequest(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.HaVipName = params.get("HaVipName")
         self.Vip = params.get("Vip")
+        self.NetworkInterfaceId = params.get("NetworkInterfaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4121,7 +4125,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type SubnetId: str
         :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
         :type NetworkInterfaceDescription: str
-        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+        :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
         :type SecondaryPrivateIpAddressCount: int
         :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
         :type SecurityGroupIds: list of str

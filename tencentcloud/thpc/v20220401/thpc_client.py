@@ -74,6 +74,8 @@ class ThpcClient(AbstractClient):
 
     def AddQueue(self, request):
         """本接口(AddQueue)用于添加队列到指定集群。
+        * 本接口为目前只支持SchedulerType为SLURM的集群。
+        * 单个集群中队列数量上限为10个。
 
         :param request: Request instance for AddQueue.
         :type request: :class:`tencentcloud.thpc.v20220401.models.AddQueueRequest`
@@ -212,6 +214,7 @@ class ThpcClient(AbstractClient):
 
     def DeleteQueue(self, request):
         """本接口(DeleteQueue)用于从指定集群删除队列。
+        * 本接口为目前只支持SchedulerType为SLURM的集群。
 
         * 删除队列时，需要保证队列内不存在节点。
 

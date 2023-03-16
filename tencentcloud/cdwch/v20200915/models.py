@@ -71,6 +71,42 @@ class ActionAlterCkUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttachCBSSpec(AbstractModel):
+    """集群内节点的规格磁盘规格描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskType: 节点磁盘类型，例如“CLOUD_SSD”\"CLOUD_PREMIUM"
+        :type DiskType: str
+        :param DiskSize: 磁盘容量，单位G
+        :type DiskSize: int
+        :param DiskCount: 磁盘总数
+        :type DiskCount: int
+        :param DiskDesc: 描述
+        :type DiskDesc: str
+        """
+        self.DiskType = None
+        self.DiskSize = None
+        self.DiskCount = None
+        self.DiskDesc = None
+
+
+    def _deserialize(self, params):
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskCount = params.get("DiskCount")
+        self.DiskDesc = params.get("DiskDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupTableContent(AbstractModel):
     """备份表信息
 
@@ -1241,6 +1277,42 @@ Modify 集群变更中；
         :param CosMoveFactor: 冷热分层系数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosMoveFactor: int
+        :param Kind: external/local/yunti
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kind: str
+        :param IsElastic: 是否弹性ck
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsElastic: bool
+        :param InstanceStateInfo: 集群详细状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStateInfo: :class:`tencentcloud.cdwch.v20200915.models.InstanceStateInfo`
+        :param HAZk: ZK高可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HAZk: bool
+        :param MountDiskType: 挂载盘,默认0:没有类型；1:裸盘;2:lvm
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountDiskType: int
+        :param CHProxyVip: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CHProxyVip: str
+        :param CosBucketName: cos buket的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosBucketName: str
+        :param CanAttachCbs: 是否可以挂载云盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanAttachCbs: bool
+        :param CanAttachCbsLvm: 是否可以挂载云盘阵列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanAttachCbsLvm: bool
+        :param CanAttachCos: 是否可以挂载cos
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanAttachCos: bool
+        :param Components: 服务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Components: list of ServiceInfo
+        :param UpgradeVersions: 可升级的内核版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpgradeVersions: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1272,6 +1344,18 @@ Modify 集群变更中；
         self.RegionDesc = None
         self.Eip = None
         self.CosMoveFactor = None
+        self.Kind = None
+        self.IsElastic = None
+        self.InstanceStateInfo = None
+        self.HAZk = None
+        self.MountDiskType = None
+        self.CHProxyVip = None
+        self.CosBucketName = None
+        self.CanAttachCbs = None
+        self.CanAttachCbsLvm = None
+        self.CanAttachCos = None
+        self.Components = None
+        self.UpgradeVersions = None
 
 
     def _deserialize(self, params):
@@ -1314,6 +1398,85 @@ Modify 集群变更中；
         self.RegionDesc = params.get("RegionDesc")
         self.Eip = params.get("Eip")
         self.CosMoveFactor = params.get("CosMoveFactor")
+        self.Kind = params.get("Kind")
+        self.IsElastic = params.get("IsElastic")
+        if params.get("InstanceStateInfo") is not None:
+            self.InstanceStateInfo = InstanceStateInfo()
+            self.InstanceStateInfo._deserialize(params.get("InstanceStateInfo"))
+        self.HAZk = params.get("HAZk")
+        self.MountDiskType = params.get("MountDiskType")
+        self.CHProxyVip = params.get("CHProxyVip")
+        self.CosBucketName = params.get("CosBucketName")
+        self.CanAttachCbs = params.get("CanAttachCbs")
+        self.CanAttachCbsLvm = params.get("CanAttachCbsLvm")
+        self.CanAttachCos = params.get("CanAttachCos")
+        if params.get("Components") is not None:
+            self.Components = []
+            for item in params.get("Components"):
+                obj = ServiceInfo()
+                obj._deserialize(item)
+                self.Components.append(obj)
+        self.UpgradeVersions = params.get("UpgradeVersions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceStateInfo(AbstractModel):
+    """集群状态抽象后的结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceState: 集群状态，例如：Serving
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceState: str
+        :param FlowCreateTime: 集群操作创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowCreateTime: str
+        :param FlowName: 集群操作名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowName: str
+        :param FlowProgress: 集群操作进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowProgress: int
+        :param InstanceStateDesc: 集群状态描述，例如：运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStateDesc: str
+        :param FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowMsg: str
+        :param ProcessName: 当前步骤的名称，例如：”购买资源中“
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessName: str
+        :param RequestId: 请求id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestId: str
+        """
+        self.InstanceState = None
+        self.FlowCreateTime = None
+        self.FlowName = None
+        self.FlowProgress = None
+        self.InstanceStateDesc = None
+        self.FlowMsg = None
+        self.ProcessName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceState = params.get("InstanceState")
+        self.FlowCreateTime = params.get("FlowCreateTime")
+        self.FlowName = params.get("FlowName")
+        self.FlowProgress = params.get("FlowProgress")
+        self.InstanceStateDesc = params.get("InstanceStateDesc")
+        self.FlowMsg = params.get("FlowMsg")
+        self.ProcessName = params.get("ProcessName")
+        self.RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1581,6 +1744,27 @@ class NodesSummary(AbstractModel):
         :type DiskType: str
         :param DiskDesc: 磁盘描述
         :type DiskDesc: str
+        :param AttachCBSSpec: 挂载云盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachCBSSpec: :class:`tencentcloud.cdwch.v20200915.models.AttachCBSSpec`
+        :param SubProductType: 子产品类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductType: str
+        :param SpecCore: 规格对应的核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecCore: int
+        :param SpecMemory: 规格对应的内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecMemory: int
+        :param DiskCount: 磁盘的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskCount: int
+        :param MaxDiskSize: 磁盘的最大大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDiskSize: int
+        :param Encrypt: 是否为加密云盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encrypt: int
         """
         self.Spec = None
         self.NodeSize = None
@@ -1589,6 +1773,13 @@ class NodesSummary(AbstractModel):
         self.Disk = None
         self.DiskType = None
         self.DiskDesc = None
+        self.AttachCBSSpec = None
+        self.SubProductType = None
+        self.SpecCore = None
+        self.SpecMemory = None
+        self.DiskCount = None
+        self.MaxDiskSize = None
+        self.Encrypt = None
 
 
     def _deserialize(self, params):
@@ -1599,6 +1790,15 @@ class NodesSummary(AbstractModel):
         self.Disk = params.get("Disk")
         self.DiskType = params.get("DiskType")
         self.DiskDesc = params.get("DiskDesc")
+        if params.get("AttachCBSSpec") is not None:
+            self.AttachCBSSpec = AttachCBSSpec()
+            self.AttachCBSSpec._deserialize(params.get("AttachCBSSpec"))
+        self.SubProductType = params.get("SubProductType")
+        self.SpecCore = params.get("SpecCore")
+        self.SpecMemory = params.get("SpecMemory")
+        self.DiskCount = params.get("DiskCount")
+        self.MaxDiskSize = params.get("MaxDiskSize")
+        self.Encrypt = params.get("Encrypt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1974,6 +2174,36 @@ class ScheduleStrategy(AbstractModel):
         self.WeekDays = params.get("WeekDays")
         self.ExecuteHour = params.get("ExecuteHour")
         self.ScheduleId = params.get("ScheduleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceInfo(AbstractModel):
+    """服务详细信息描述。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Version: 服务的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        """
+        self.Name = None
+        self.Version = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -256,6 +256,52 @@ class YinsudaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveVipTradeInfos(self, request):
+        """批量获取直播会员充值流水详细信息，包括：流水号，订单状态，下订单时间等
+
+        :param request: Request instance for DescribeLiveVipTradeInfos.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeLiveVipTradeInfosRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DescribeLiveVipTradeInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveVipTradeInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveVipTradeInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserInfo(self, request):
+        """获取用户信息，包括是否为直播会员，及直播会员信息等
+
+        :param request: Request instance for DescribeUserInfo.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeUserInfoRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DescribeUserInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DestroyKTVRobot(self, request):
         """销毁机器人，机器人退出 RTC 房间。
 
@@ -270,6 +316,29 @@ class YinsudaClient(AbstractClient):
             body = self.call("DestroyKTVRobot", params, headers=headers)
             response = json.loads(body)
             model = models.DestroyKTVRobotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RechargeLiveVip(self, request):
+        """充值直播会员，使该用户可以在直播场景使用
+
+        :param request: Request instance for RechargeLiveVip.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.RechargeLiveVipRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.RechargeLiveVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RechargeLiveVip", params, headers=headers)
+            response = json.loads(body)
+            model = models.RechargeLiveVipResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

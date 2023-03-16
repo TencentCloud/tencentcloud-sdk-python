@@ -15741,6 +15741,24 @@ class Rule(AbstractModel):
         :param WhereFlag: 是否where参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type WhereFlag: bool
+        :param TemplateSql: 模版原始SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateSql: str
+        :param SubQualityDim: 模版子维度：0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubQualityDim: int
+        :param TargetObjectType: 规则适用的目标数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectType: int
+        :param TargetObjectDataType: 规则适用的目标数据对象类型（1：数值，2：字符串）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectDataType: int
+        :param TargetObjectDataTypeName: 目标字段详细类型，INT、STRING
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectDataTypeName: str
+        :param TargetObjectValue: 目标字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetObjectValue: str
         """
         self.RuleId = None
         self.RuleGroupId = None
@@ -15770,6 +15788,12 @@ class Rule(AbstractModel):
         self.FieldConfig = None
         self.MultiSourceFlag = None
         self.WhereFlag = None
+        self.TemplateSql = None
+        self.SubQualityDim = None
+        self.TargetObjectType = None
+        self.TargetObjectDataType = None
+        self.TargetObjectDataTypeName = None
+        self.TargetObjectValue = None
 
 
     def _deserialize(self, params):
@@ -15805,6 +15829,12 @@ class Rule(AbstractModel):
             self.FieldConfig._deserialize(params.get("FieldConfig"))
         self.MultiSourceFlag = params.get("MultiSourceFlag")
         self.WhereFlag = params.get("WhereFlag")
+        self.TemplateSql = params.get("TemplateSql")
+        self.SubQualityDim = params.get("SubQualityDim")
+        self.TargetObjectType = params.get("TargetObjectType")
+        self.TargetObjectDataType = params.get("TargetObjectDataType")
+        self.TargetObjectDataTypeName = params.get("TargetObjectDataTypeName")
+        self.TargetObjectValue = params.get("TargetObjectValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -989,7 +989,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateHaVip(self, request):
-        """本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）
+        """本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）。
 
         :param request: Request instance for CreateHaVip.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateHaVipRequest`

@@ -772,6 +772,137 @@ class DescribeKTVTagsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveVipTradeInfosRequest(AbstractModel):
+    """DescribeLiveVipTradeInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param StartTime: 直播会员充值下单起始时间，格式为 ISO。默认为当前时间前一天。
+        :type StartTime: str
+        :param EndTime: 直播会员充值下单截止时间，格式为 ISO。默认为当前时间。 EndTime不能小于StartTime
+        :type EndTime: str
+        :param TradeSerialNos: 交易流水号集合，匹配集合指定所有流水号 。
+<li>数组长度限制：10。</li>
+        :type TradeSerialNos: list of str
+        :param UserIds: 用户标识集合，匹配集合指定所有用户标识 。
+<li>数组长度限制：10。</li>
+        :type UserIds: list of str
+        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Offset: int
+        :param Limit: 分页返回的记录条数，默认值：20，最大值：50。
+        :type Limit: int
+        """
+        self.AppName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.TradeSerialNos = None
+        self.UserIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TradeSerialNos = params.get("TradeSerialNos")
+        self.UserIds = params.get("UserIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveVipTradeInfosResponse(AbstractModel):
+    """DescribeLiveVipTradeInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LiveVipTradeInfoSet: 直播会员充值流水信息列表
+        :type LiveVipTradeInfoSet: list of LiveVipTradeInfo
+        :param TotalCount: 直播会员充值流水总数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LiveVipTradeInfoSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LiveVipTradeInfoSet") is not None:
+            self.LiveVipTradeInfoSet = []
+            for item in params.get("LiveVipTradeInfoSet"):
+                obj = LiveVipTradeInfo()
+                obj._deserialize(item)
+                self.LiveVipTradeInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserInfoRequest(AbstractModel):
+    """DescribeUserInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param UserId: 用户标识。
+        :type UserId: str
+        """
+        self.AppName = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserInfoResponse(AbstractModel):
+    """DescribeUserInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserInfo: 用户信息。
+        :type UserInfo: :class:`tencentcloud.yinsuda.v20220527.models.UserInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self.UserInfo = UserInfo()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        self.RequestId = params.get("RequestId")
+
+
 class DestroyKTVRobotRequest(AbstractModel):
     """DestroyKTVRobot请求参数结构体
 
@@ -1289,6 +1420,91 @@ class KTVTagInfo(AbstractModel):
         
 
 
+class LiveVipTradeInfo(AbstractModel):
+    """充值直播会员流水信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TradeSerialNo: 交易流水号。
+        :type TradeSerialNo: str
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param UserId: 用户标识。
+        :type UserId: str
+        :param RoomId: 房间标识。
+        :type RoomId: str
+        :param VipDays: 充值会员天数。
+取值有： 
+<li>31</li> <li>93</li><li>186</li> <li>372</li>
+        :type VipDays: int
+        :param Status: 订单状态。 
+取值有： 
+<li>Success：成功</li><li>Fail：失败</li><li>Processing：订单处理中</li>
+        :type Status: str
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        """
+        self.TradeSerialNo = None
+        self.AppName = None
+        self.UserId = None
+        self.RoomId = None
+        self.VipDays = None
+        self.Status = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.AppName = params.get("AppName")
+        self.UserId = params.get("UserId")
+        self.RoomId = params.get("RoomId")
+        self.VipDays = params.get("VipDays")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveVipUserInfo(AbstractModel):
+    """直播会员用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 房间标识。
+        :type RoomId: str
+        :param LiveVipEndTime: 直播会员结束时间。
+        :type LiveVipEndTime: str
+        :param LiveVipStatus: 会员生效状态
+<li>Valid：生效</li><li>Invalid：无效</li>
+        :type LiveVipStatus: str
+        """
+        self.RoomId = None
+        self.LiveVipEndTime = None
+        self.LiveVipStatus = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.LiveVipEndTime = params.get("LiveVipEndTime")
+        self.LiveVipStatus = params.get("LiveVipStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MusicAlbumCoverInfo(AbstractModel):
     """歌曲专辑封面信息。
 
@@ -1375,6 +1591,74 @@ class PlayCommandInput(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RechargeLiveVipRequest(AbstractModel):
+    """RechargeLiveVip请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param UserId: 用户标识。
+        :type UserId: str
+        :param TradeSerialNo: 交易流水号，用于标记此次充值记录，多次充值记录传入相同的 TradeSerialNo 会判断为失败，可用于防止重提提交造成重复计费。
+        :type TradeSerialNo: str
+        :param RoomId: 房间标识。
+        :type RoomId: str
+        :param VipDays: 充值会员天数。
+取值有：
+<li>31</li>
+<li>93</li>
+<li>186</li>
+<li>372</li>
+        :type VipDays: int
+        """
+        self.AppName = None
+        self.UserId = None
+        self.TradeSerialNo = None
+        self.RoomId = None
+        self.VipDays = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.UserId = params.get("UserId")
+        self.TradeSerialNo = params.get("TradeSerialNo")
+        self.RoomId = params.get("RoomId")
+        self.VipDays = params.get("VipDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RechargeLiveVipResponse(AbstractModel):
+    """RechargeLiveVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LiveVipUserInfo: 直播会员信息。
+        :type LiveVipUserInfo: :class:`tencentcloud.yinsuda.v20220527.models.LiveVipUserInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LiveVipUserInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LiveVipUserInfo") is not None:
+            self.LiveVipUserInfo = LiveVipUserInfo()
+            self.LiveVipUserInfo._deserialize(params.get("LiveVipUserInfo"))
+        self.RequestId = params.get("RequestId")
 
 
 class SearchKTVMusicsRequest(AbstractModel):
@@ -1824,6 +2108,47 @@ class TimeRange(AbstractModel):
     def _deserialize(self, params):
         self.Before = params.get("Before")
         self.After = params.get("After")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserInfo(AbstractModel):
+    """用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param UserId: 用户标识。
+        :type UserId: str
+        :param LiveVipUserInfo: 直播会员详细信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveVipUserInfo: :class:`tencentcloud.yinsuda.v20220527.models.LiveVipUserInfo`
+        :param UserType: 用户类型
+<li>Normal：普通用户</li>
+<li>LiveVip：直播会员用户</li>
+        :type UserType: str
+        """
+        self.AppName = None
+        self.UserId = None
+        self.LiveVipUserInfo = None
+        self.UserType = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.UserId = params.get("UserId")
+        if params.get("LiveVipUserInfo") is not None:
+            self.LiveVipUserInfo = LiveVipUserInfo()
+            self.LiveVipUserInfo._deserialize(params.get("LiveVipUserInfo"))
+        self.UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
