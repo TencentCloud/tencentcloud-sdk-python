@@ -241,11 +241,11 @@ class AddInstancesRequest(AbstractModel):
         :type Memory: int
         :param ReadOnlyCount: 新增只读实例数，取值范围为[0,4]
         :type ReadOnlyCount: int
-        :param InstanceGrpId: 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
+        :param InstanceGrpId: 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。当前版本已废弃。
         :type InstanceGrpId: str
-        :param VpcId: 所属VPC网络ID，该参数已废弃
+        :param VpcId: 所属VPC网络ID。
         :type VpcId: str
-        :param SubnetId: 所属子网ID，如果设置了VpcId，则SubnetId必填。该参数已废弃。
+        :param SubnetId: 所属子网ID，如果设置了VpcId，则SubnetId必填。
         :type SubnetId: str
         :param Port: 新增RO组时使用的Port，取值范围为[0,65535)
         :type Port: int
@@ -264,6 +264,8 @@ class AddInstancesRequest(AbstractModel):
         :type ParamTemplateId: int
         :param InstanceParams: 参数列表，ParamTemplateId 传入时InstanceParams才有效
         :type InstanceParams: list of ModifyParamItem
+        :param SecurityGroupIds: 安全组ID，新建只读实例时可以指定安全组。
+        :type SecurityGroupIds: list of str
         """
         self.ClusterId = None
         self.Cpu = None
@@ -280,6 +282,7 @@ class AddInstancesRequest(AbstractModel):
         self.DealMode = None
         self.ParamTemplateId = None
         self.InstanceParams = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -303,6 +306,7 @@ class AddInstancesRequest(AbstractModel):
                 obj = ModifyParamItem()
                 obj._deserialize(item)
                 self.InstanceParams.append(obj)
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

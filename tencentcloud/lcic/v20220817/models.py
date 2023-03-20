@@ -2117,6 +2117,148 @@ class DocumentInfo(AbstractModel):
         
 
 
+class EventDataInfo(AbstractModel):
+    """房间事件对应的信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 事件发生的房间号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomId: int
+        :param UserId: 事件发生的用户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        """
+        self.RoomId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventInfo(AbstractModel):
+    """房间事件信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 事件发生的秒级unix时间戳。
+        :type Timestamp: int
+        :param EventType: 事件类型,有以下值:
+RoomStart:房间开始 RoomEnd:房间结束 MemberJoin:成员加入 MemberQuit:成员退出 RecordFinish:录制结束
+        :type EventType: str
+        :param EventData: 事件详细内容，包含房间号,成员类型事件包含用户Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventData: :class:`tencentcloud.lcic.v20220817.models.EventDataInfo`
+        """
+        self.Timestamp = None
+        self.EventType = None
+        self.EventData = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.EventType = params.get("EventType")
+        if params.get("EventData") is not None:
+            self.EventData = EventDataInfo()
+            self.EventData._deserialize(params.get("EventData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRoomEventRequest(AbstractModel):
+    """GetRoomEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 房间Id。
+        :type RoomId: int
+        :param SdkAppId: 应用Id。
+        :type SdkAppId: int
+        :param Page: 起始页，1开始。keyword为空时有效。
+        :type Page: int
+        :param Limit: 每页个数。keyword为空时有效。一次性最多200条。
+        :type Limit: int
+        :param Keyword: 搜索事件类型。有以下事件类型:
+RoomStart:房间开始
+RoomEnd:房间结束
+MemberJoin:成员加入
+MemberQuit:成员退出
+RecordFinish:录制结束
+        :type Keyword: str
+        """
+        self.RoomId = None
+        self.SdkAppId = None
+        self.Page = None
+        self.Limit = None
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.SdkAppId = params.get("SdkAppId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRoomEventResponse(AbstractModel):
+    """GetRoomEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 该房间的事件总数，keyword搜索不影响该值。
+        :type Total: int
+        :param Events: 详细事件内容。包含相应的类型、发生的时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Events: list of EventInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Events = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = EventInfo()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetRoomMessageRequest(AbstractModel):
     """GetRoomMessage请求参数结构体
 

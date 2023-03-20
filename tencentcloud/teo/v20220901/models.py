@@ -344,7 +344,7 @@ class Action(AbstractModel):
 <li> 智能压缩（Compression）；</li>
 <li> Hsts；</li>
 <li> ClientIpHeader；</li>
-<li> TlsVersion；</li>
+<li> SslTlsSecureConf；</li>
 <li> OcspStapling；</li>
 <li> HTTP/2 访问（Http2）；</li>
 <li> 回源跟随重定向(UpstreamFollowRedirect)；</li>
@@ -2858,6 +2858,8 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 <li>origin-type<br>   按照【<strong>源站类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
 <li>origin<br>   按照【<strong>主源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
 <li>backup-origin<br>   按照【<strong>备用源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
+<li>domain-cname<br>   按照【<strong>加速CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
+<li>share-cname<br>   按照【<strong>共享CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
         :type Filters: list of AdvancedFilter
         :param Direction: 列表排序方式，取值有：
 <li>asc：升序排列；</li>
@@ -7354,6 +7356,32 @@ class IdentifyZoneResponse(AbstractModel):
             self.FileAscription = FileAscriptionInfo()
             self.FileAscription._deserialize(params.get("FileAscription"))
         self.RequestId = params.get("RequestId")
+
+
+class ImageOptimize(AbstractModel):
+    """图片优化配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IntelligenceRule(AbstractModel):
@@ -12825,6 +12853,9 @@ class ZoneSetting(AbstractModel):
         :param Grpc: Grpc协议支持配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
+        :param ImageOptimize: 图片优化相关配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
         """
         self.ZoneName = None
         self.Area = None
@@ -12846,6 +12877,7 @@ class ZoneSetting(AbstractModel):
         self.Https = None
         self.ClientIpCountry = None
         self.Grpc = None
+        self.ImageOptimize = None
 
 
     def _deserialize(self, params):
@@ -12905,6 +12937,9 @@ class ZoneSetting(AbstractModel):
         if params.get("Grpc") is not None:
             self.Grpc = Grpc()
             self.Grpc._deserialize(params.get("Grpc"))
+        if params.get("ImageOptimize") is not None:
+            self.ImageOptimize = ImageOptimize()
+            self.ImageOptimize._deserialize(params.get("ImageOptimize"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

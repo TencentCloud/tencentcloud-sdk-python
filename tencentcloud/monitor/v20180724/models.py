@@ -1808,18 +1808,18 @@ class CreateGrafanaInstanceRequest(AbstractModel):
         :type VpcId: str
         :param SubnetIds: 子网 ID 数组
         :type SubnetIds: list of str
-        :param GrafanaInitPassword: Grafana 初始密码
-        :type GrafanaInitPassword: str
         :param EnableInternet: 是否启用外网
         :type EnableInternet: bool
+        :param GrafanaInitPassword: Grafana 初始密码
+        :type GrafanaInitPassword: str
         :param TagSpecification: 标签
         :type TagSpecification: list of PrometheusTag
         """
         self.InstanceName = None
         self.VpcId = None
         self.SubnetIds = None
-        self.GrafanaInitPassword = None
         self.EnableInternet = None
+        self.GrafanaInitPassword = None
         self.TagSpecification = None
 
 
@@ -1827,8 +1827,8 @@ class CreateGrafanaInstanceRequest(AbstractModel):
         self.InstanceName = params.get("InstanceName")
         self.VpcId = params.get("VpcId")
         self.SubnetIds = params.get("SubnetIds")
-        self.GrafanaInitPassword = params.get("GrafanaInitPassword")
         self.EnableInternet = params.get("EnableInternet")
+        self.GrafanaInitPassword = params.get("GrafanaInitPassword")
         if params.get("TagSpecification") is not None:
             self.TagSpecification = []
             for item in params.get("TagSpecification"):
@@ -2535,14 +2535,18 @@ class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
         :type InstanceId: str
         :param Content: yaml的内容
         :type Content: str
+        :param Name: 规则名称
+        :type Name: str
         """
         self.InstanceId = None
         self.Content = None
+        self.Name = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Content = params.get("Content")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -567,9 +567,9 @@ class DescribeOrganizationMemberAuthIdentitiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量。
+        :param Offset: 偏移量。取值是limit的整数倍，默认值 : 0
         :type Offset: int
-        :param Limit: 限制数目。最大50
+        :param Limit: 限制数目。取值范围：1~50，默认值：10
         :type Limit: int
         :param MemberUin: 组织成员Uin。
         :type MemberUin: int
@@ -599,7 +599,7 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Items: 列表。
+        :param Items: 授权身份列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgMemberAuthIdentity
         :param Total: 总数目。
@@ -699,9 +699,9 @@ class DescribeOrganizationMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量。
+        :param Offset: 偏移量。取值是limit的整数倍，默认值 : 0
         :type Offset: int
-        :param Limit: 限制数目。最大50
+        :param Limit: 限制数目。取值范围：1~50，默认值：10
         :type Limit: int
         :param Lang: 国际站：en，国内站：zh
         :type Lang: str
@@ -1402,13 +1402,13 @@ class OrgMemberAuthIdentity(AbstractModel):
         :param IdentityId: 身份ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityId: int
-        :param IdentityRoleName: 身份角色名。
+        :param IdentityRoleName: 身份的角色名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityRoleName: str
-        :param IdentityRoleAliasName: 身份角色别名。
+        :param IdentityRoleAliasName: 身份的角色别名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityRoleAliasName: str
-        :param Description: 描述
+        :param Description: 描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param CreateTime: 创建时间。
@@ -1417,6 +1417,9 @@ class OrgMemberAuthIdentity(AbstractModel):
         :param UpdateTime: 更新时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param IdentityType: 身份类型。取值： 1-预设  2-自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityType: int
         """
         self.IdentityId = None
         self.IdentityRoleName = None
@@ -1424,6 +1427,7 @@ class OrgMemberAuthIdentity(AbstractModel):
         self.Description = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.IdentityType = None
 
 
     def _deserialize(self, params):
@@ -1433,6 +1437,7 @@ class OrgMemberAuthIdentity(AbstractModel):
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.IdentityType = params.get("IdentityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

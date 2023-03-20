@@ -716,6 +716,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRoomEvent(self, request):
+        """获取房间事件,仅在课堂结束1小时内有效。
+
+        :param request: Request instance for GetRoomEvent.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.GetRoomEventRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.GetRoomEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRoomEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRoomEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetRoomMessage(self, request):
         """获取房间历史消息(房间历史消息保存7天)
 

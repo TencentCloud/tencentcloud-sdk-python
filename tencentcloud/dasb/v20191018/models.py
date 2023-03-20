@@ -3071,6 +3071,9 @@ class Resource(AbstractModel):
         :type PackageBandwidth: int
         :param PackageNode: 授权点数扩展包个数(50点)
         :type PackageNode: int
+        :param LogDeliveryArgs: 日志投递规格信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogDeliveryArgs: str
         """
         self.ResourceId = None
         self.ApCode = None
@@ -3100,6 +3103,7 @@ class Resource(AbstractModel):
         self.ExtendPoints = None
         self.PackageBandwidth = None
         self.PackageNode = None
+        self.LogDeliveryArgs = None
 
 
     def _deserialize(self, params):
@@ -3131,6 +3135,7 @@ class Resource(AbstractModel):
         self.ExtendPoints = params.get("ExtendPoints")
         self.PackageBandwidth = params.get("PackageBandwidth")
         self.PackageNode = params.get("PackageNode")
+        self.LogDeliveryArgs = params.get("LogDeliveryArgs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

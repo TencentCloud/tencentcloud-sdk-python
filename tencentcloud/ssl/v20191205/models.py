@@ -3116,6 +3116,8 @@ class UploadCertificateRequest(AbstractModel):
         :type ProjectId: int
         :param CertificateUse: 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
         :type CertificateUse: str
+        :param Repeatable: 相同的证书是否允许重复上传
+        :type Repeatable: bool
         """
         self.CertificatePublicKey = None
         self.CertificatePrivateKey = None
@@ -3123,6 +3125,7 @@ class UploadCertificateRequest(AbstractModel):
         self.Alias = None
         self.ProjectId = None
         self.CertificateUse = None
+        self.Repeatable = None
 
 
     def _deserialize(self, params):
@@ -3132,6 +3135,7 @@ class UploadCertificateRequest(AbstractModel):
         self.Alias = params.get("Alias")
         self.ProjectId = params.get("ProjectId")
         self.CertificateUse = params.get("CertificateUse")
+        self.Repeatable = params.get("Repeatable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3150,15 +3154,20 @@ class UploadCertificateResponse(AbstractModel):
         r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
+        :param RepeatCertId: 重复证书的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepeatCertId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.CertificateId = None
+        self.RepeatCertId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
+        self.RepeatCertId = params.get("RepeatCertId")
         self.RequestId = params.get("RequestId")
 
 

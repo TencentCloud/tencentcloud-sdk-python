@@ -15528,6 +15528,9 @@ class OverrideTranscodeParameter(AbstractModel):
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         :param SubtitleTemplate: 字幕流配置参数。
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
+        :param AddonAudioStream: 外挂音轨参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddonAudioStream: list of MediaInputInfo
         """
         self.Container = None
         self.RemoveVideo = None
@@ -15536,6 +15539,7 @@ class OverrideTranscodeParameter(AbstractModel):
         self.AudioTemplate = None
         self.TEHDConfig = None
         self.SubtitleTemplate = None
+        self.AddonAudioStream = None
 
 
     def _deserialize(self, params):
@@ -15554,6 +15558,12 @@ class OverrideTranscodeParameter(AbstractModel):
         if params.get("SubtitleTemplate") is not None:
             self.SubtitleTemplate = SubtitleTemplate()
             self.SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
+        if params.get("AddonAudioStream") is not None:
+            self.AddonAudioStream = []
+            for item in params.get("AddonAudioStream"):
+                obj = MediaInputInfo()
+                obj._deserialize(item)
+                self.AddonAudioStream.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

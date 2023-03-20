@@ -1800,6 +1800,11 @@ class FileSystemInfo(AbstractModel):
         :type Capacity: int
         :param Tags: 文件系统标签列表
         :type Tags: list of TagInfo
+        :param TieringState: 文件系统声明周期管理状态
+        :type TieringState: str
+        :param TieringDetail: 分层存储详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TieringDetail: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
         """
         self.CreationTime = None
         self.CreationToken = None
@@ -1821,6 +1826,8 @@ class FileSystemInfo(AbstractModel):
         self.BandwidthLimit = None
         self.Capacity = None
         self.Tags = None
+        self.TieringState = None
+        self.TieringDetail = None
 
 
     def _deserialize(self, params):
@@ -1851,6 +1858,10 @@ class FileSystemInfo(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.TieringState = params.get("TieringState")
+        if params.get("TieringDetail") is not None:
+            self.TieringDetail = TieringDetailInfo()
+            self.TieringDetail._deserialize(params.get("TieringDetail"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2323,6 +2334,12 @@ class TagInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TieringDetailInfo(AbstractModel):
+    """分层存储详细信息
+
+    """
 
 
 class UnbindAutoSnapshotPolicyRequest(AbstractModel):

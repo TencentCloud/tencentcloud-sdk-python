@@ -6057,6 +6057,12 @@ class CreateVirusScanTaskRequest(AbstractModel):
         :type ScanIds: list of str
         :param ScanPath: 自选排除或扫描的地址
         :type ScanPath: list of str
+        :param ScanPathMode: 扫描路径模式：
+SCAN_PATH_ALL：全部路径
+SCAN_PATH_DEFAULT：默认路径
+SCAN_PATH_USER_DEFINE：用户自定义路径
+
+        :type ScanPathMode: str
         """
         self.ScanPathAll = None
         self.ScanRangeType = None
@@ -6065,6 +6071,7 @@ class CreateVirusScanTaskRequest(AbstractModel):
         self.ScanPathType = None
         self.ScanIds = None
         self.ScanPath = None
+        self.ScanPathMode = None
 
 
     def _deserialize(self, params):
@@ -6075,6 +6082,7 @@ class CreateVirusScanTaskRequest(AbstractModel):
         self.ScanPathType = params.get("ScanPathType")
         self.ScanIds = params.get("ScanIds")
         self.ScanPath = params.get("ScanPath")
+        self.ScanPathMode = params.get("ScanPathMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18715,6 +18723,12 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
 5: 威胁情报
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckPlatform: list of str
+        :param FileAccessTime: 文件访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileAccessTime: str
+        :param FileModifyTime: 文件修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileModifyTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -18765,6 +18779,8 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self.ContainerNetSubStatus = None
         self.ContainerIsolateOperationSrc = None
         self.CheckPlatform = None
+        self.FileAccessTime = None
+        self.FileModifyTime = None
         self.RequestId = None
 
 
@@ -18816,6 +18832,8 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         self.CheckPlatform = params.get("CheckPlatform")
+        self.FileAccessTime = params.get("FileAccessTime")
+        self.FileModifyTime = params.get("FileModifyTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -19039,6 +19057,12 @@ class DescribeVirusMonitorSettingResponse(AbstractModel):
         :param ScanPath: 自选排除或扫描的地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScanPath: list of str
+        :param ScanPathMode: 扫描路径模式：
+SCAN_PATH_ALL：全部路径
+SCAN_PATH_DEFAULT：默认路径
+SCAN_PATH_USER_DEFINE：用户自定义路径
+
+        :type ScanPathMode: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -19046,6 +19070,7 @@ class DescribeVirusMonitorSettingResponse(AbstractModel):
         self.ScanPathAll = None
         self.ScanPathType = None
         self.ScanPath = None
+        self.ScanPathMode = None
         self.RequestId = None
 
 
@@ -19054,6 +19079,7 @@ class DescribeVirusMonitorSettingResponse(AbstractModel):
         self.ScanPathAll = params.get("ScanPathAll")
         self.ScanPathType = params.get("ScanPathType")
         self.ScanPath = params.get("ScanPath")
+        self.ScanPathMode = params.get("ScanPathMode")
         self.RequestId = params.get("RequestId")
 
 
@@ -19138,6 +19164,12 @@ class DescribeVirusScanSettingResponse(AbstractModel):
         :param ClickTimeout: 一键检测的超时设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClickTimeout: int
+        :param ScanPathMode: 扫描路径模式：
+SCAN_PATH_ALL：全部路径
+SCAN_PATH_DEFAULT：默认路径
+SCAN_PATH_USER_DEFINE：用户自定义路径
+
+        :type ScanPathMode: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -19152,6 +19184,7 @@ class DescribeVirusScanSettingResponse(AbstractModel):
         self.ScanIds = None
         self.ScanPath = None
         self.ClickTimeout = None
+        self.ScanPathMode = None
         self.RequestId = None
 
 
@@ -19167,6 +19200,7 @@ class DescribeVirusScanSettingResponse(AbstractModel):
         self.ScanIds = params.get("ScanIds")
         self.ScanPath = params.get("ScanPath")
         self.ClickTimeout = params.get("ClickTimeout")
+        self.ScanPathMode = params.get("ScanPathMode")
         self.RequestId = params.get("RequestId")
 
 
@@ -24725,11 +24759,18 @@ class ModifyVirusMonitorSettingRequest(AbstractModel):
         :type ScanPathType: int
         :param ScanPath: 自选排除或扫描的地址
         :type ScanPath: list of str
+        :param ScanPathMode: 扫描路径模式：
+SCAN_PATH_ALL：全部路径
+SCAN_PATH_DEFAULT：默认路径
+SCAN_PATH_USER_DEFINE：用户自定义路径
+
+        :type ScanPathMode: str
         """
         self.EnableScan = None
         self.ScanPathAll = None
         self.ScanPathType = None
         self.ScanPath = None
+        self.ScanPathMode = None
 
 
     def _deserialize(self, params):
@@ -24737,6 +24778,7 @@ class ModifyVirusMonitorSettingRequest(AbstractModel):
         self.ScanPathAll = params.get("ScanPathAll")
         self.ScanPathType = params.get("ScanPathType")
         self.ScanPath = params.get("ScanPath")
+        self.ScanPathMode = params.get("ScanPathMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -24790,6 +24832,12 @@ class ModifyVirusScanSettingRequest(AbstractModel):
         :type ScanIds: list of str
         :param ScanPath: 扫描路径
         :type ScanPath: list of str
+        :param ScanPathMode: 扫描路径模式：
+SCAN_PATH_ALL：全部路径
+SCAN_PATH_DEFAULT：默认路径
+SCAN_PATH_USER_DEFINE：用户自定义路径
+
+        :type ScanPathMode: str
         """
         self.EnableScan = None
         self.Cycle = None
@@ -24801,6 +24849,7 @@ class ModifyVirusScanSettingRequest(AbstractModel):
         self.ScanRangeAll = None
         self.ScanIds = None
         self.ScanPath = None
+        self.ScanPathMode = None
 
 
     def _deserialize(self, params):
@@ -24814,6 +24863,7 @@ class ModifyVirusScanSettingRequest(AbstractModel):
         self.ScanRangeAll = params.get("ScanRangeAll")
         self.ScanIds = params.get("ScanIds")
         self.ScanPath = params.get("ScanPath")
+        self.ScanPathMode = params.get("ScanPathMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

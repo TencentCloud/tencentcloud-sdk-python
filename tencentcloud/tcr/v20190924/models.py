@@ -653,6 +653,8 @@ class CreateInstanceRequest(AbstractModel):
         :type RegistryChargePrepaid: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
         :param SyncTag: 是否同步TCR云标签至生成的COS Bucket
         :type SyncTag: bool
+        :param EnableCosMAZ: 是否开启Cos桶多AZ特性
+        :type EnableCosMAZ: bool
         """
         self.RegistryName = None
         self.RegistryType = None
@@ -660,6 +662,7 @@ class CreateInstanceRequest(AbstractModel):
         self.RegistryChargeType = None
         self.RegistryChargePrepaid = None
         self.SyncTag = None
+        self.EnableCosMAZ = None
 
 
     def _deserialize(self, params):
@@ -673,6 +676,7 @@ class CreateInstanceRequest(AbstractModel):
             self.RegistryChargePrepaid = RegistryChargePrepaid()
             self.RegistryChargePrepaid._deserialize(params.get("RegistryChargePrepaid"))
         self.SyncTag = params.get("SyncTag")
+        self.EnableCosMAZ = params.get("EnableCosMAZ")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
