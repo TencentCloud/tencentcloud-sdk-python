@@ -17744,10 +17744,8 @@ class SearchConditionInstance(AbstractModel):
         :param ExecutionSpace: 执行空间 "DRY_RUN"
         :type ExecutionSpace: int
         :param ProductName: 产品名称，可选
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: int
         :param ResourceGroup: 资源组
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroup: int
         """
         self.ExecutionSpace = None

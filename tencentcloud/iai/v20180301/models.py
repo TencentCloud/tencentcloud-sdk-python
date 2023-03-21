@@ -2600,7 +2600,6 @@ class GroupExDescriptionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param GroupExDescriptionIndex: 人员库自定义描述字段Index，从0开始
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupExDescriptionIndex: int
         :param GroupExDescription: 需要更新的人员库自定义描述字段内容
         :type GroupExDescription: str
@@ -2973,7 +2972,6 @@ class PersonExDescriptionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param PersonExDescriptionIndex: 人员描述字段Index，从0开始
-注意：此字段可能返回 null，表示取不到有效值。
         :type PersonExDescriptionIndex: int
         :param PersonExDescription: 需要更新的人员描述字段内容
         :type PersonExDescription: str

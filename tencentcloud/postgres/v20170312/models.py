@@ -219,6 +219,166 @@ class BackupPlan(AbstractModel):
         
 
 
+class BackupSummary(AbstractModel):
+    """实例备份统计项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param LogBackupCount: 实例日志备份数量。
+        :type LogBackupCount: int
+        :param LogBackupSize: 实例日志备份大小。
+        :type LogBackupSize: int
+        :param ManualBaseBackupCount: 手动创建的实例基础备份数量。
+        :type ManualBaseBackupCount: int
+        :param ManualBaseBackupSize: 手动创建的实例基础备份大小。
+        :type ManualBaseBackupSize: int
+        :param AutoBaseBackupCount: 自动创建的实例基础备份数量。
+        :type AutoBaseBackupCount: int
+        :param AutoBaseBackupSize: 自动创建的实例基础备份大小。
+        :type AutoBaseBackupSize: int
+        :param TotalBackupCount: 总备份数量
+        :type TotalBackupCount: int
+        :param TotalBackupSize: 总备份大小
+        :type TotalBackupSize: int
+        """
+        self.DBInstanceId = None
+        self.LogBackupCount = None
+        self.LogBackupSize = None
+        self.ManualBaseBackupCount = None
+        self.ManualBaseBackupSize = None
+        self.AutoBaseBackupCount = None
+        self.AutoBaseBackupSize = None
+        self.TotalBackupCount = None
+        self.TotalBackupSize = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.LogBackupCount = params.get("LogBackupCount")
+        self.LogBackupSize = params.get("LogBackupSize")
+        self.ManualBaseBackupCount = params.get("ManualBaseBackupCount")
+        self.ManualBaseBackupSize = params.get("ManualBaseBackupSize")
+        self.AutoBaseBackupCount = params.get("AutoBaseBackupCount")
+        self.AutoBaseBackupSize = params.get("AutoBaseBackupSize")
+        self.TotalBackupCount = params.get("TotalBackupCount")
+        self.TotalBackupSize = params.get("TotalBackupSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BaseBackup(AbstractModel):
+    """数据库基础备份信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param Id: 备份文件唯一标识。
+        :type Id: str
+        :param Name: 备份文件名称。
+        :type Name: str
+        :param BackupMethod: 备份方式：物理备份、逻辑备份。
+        :type BackupMethod: str
+        :param BackupMode: 备份模式：自动备份、手动备份。
+        :type BackupMode: str
+        :param State: 备份任务状态。
+        :type State: str
+        :param Size: 备份集大小，单位bytes。
+        :type Size: int
+        :param StartTime: 备份的开始时间。
+        :type StartTime: str
+        :param FinishTime: 备份的结束时间。
+        :type FinishTime: str
+        :param ExpireTime: 备份的过期时间。
+        :type ExpireTime: str
+        """
+        self.DBInstanceId = None
+        self.Id = None
+        self.Name = None
+        self.BackupMethod = None
+        self.BackupMode = None
+        self.State = None
+        self.Size = None
+        self.StartTime = None
+        self.FinishTime = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.BackupMethod = params.get("BackupMethod")
+        self.BackupMode = params.get("BackupMode")
+        self.State = params.get("State")
+        self.Size = params.get("Size")
+        self.StartTime = params.get("StartTime")
+        self.FinishTime = params.get("FinishTime")
+        self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClassInfo(AbstractModel):
+    """数据库实例规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpecCode: 规格ID
+        :type SpecCode: str
+        :param CPU: CPU核数
+        :type CPU: int
+        :param Memory: 内存大小，单位：MB
+        :type Memory: int
+        :param MaxStorage: 该规格所支持最大存储容量，单位：GB
+        :type MaxStorage: int
+        :param MinStorage: 该规格所支持最小存储容量，单位：GB
+        :type MinStorage: int
+        :param QPS: 该规格的预估QPS
+        :type QPS: int
+        """
+        self.SpecCode = None
+        self.CPU = None
+        self.Memory = None
+        self.MaxStorage = None
+        self.MinStorage = None
+        self.QPS = None
+
+
+    def _deserialize(self, params):
+        self.SpecCode = params.get("SpecCode")
+        self.CPU = params.get("CPU")
+        self.Memory = params.get("Memory")
+        self.MaxStorage = params.get("MaxStorage")
+        self.MinStorage = params.get("MinStorage")
+        self.QPS = params.get("QPS")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloneDBInstanceRequest(AbstractModel):
     """CloneDBInstance请求参数结构体
 
@@ -432,6 +592,47 @@ class CloseServerlessDBExtranetAccessRequest(AbstractModel):
 
 class CloseServerlessDBExtranetAccessResponse(AbstractModel):
     """CloseServerlessDBExtranetAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBaseBackupRequest(AbstractModel):
+    """CreateBaseBackup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBaseBackupResponse(AbstractModel):
+    """CreateBaseBackup返回参数结构体
 
     """
 
@@ -1612,6 +1813,51 @@ Standby，代表备节点。
         
 
 
+class DeleteBaseBackupRequest(AbstractModel):
+    """DeleteBaseBackup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param BaseBackupId: 基础备份ID。
+        :type BaseBackupId: str
+        """
+        self.DBInstanceId = None
+        self.BaseBackupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.BaseBackupId = params.get("BaseBackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBaseBackupResponse(AbstractModel):
+    """DeleteBaseBackup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
     """DeleteDBInstanceNetworkAccess请求参数结构体
 
@@ -1667,6 +1913,51 @@ class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLogBackupRequest(AbstractModel):
+    """DeleteLogBackup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param LogBackupId: 日志备份ID。
+        :type LogBackupId: str
+        """
+        self.DBInstanceId = None
+        self.LogBackupId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.LogBackupId = params.get("LogBackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLogBackupResponse(AbstractModel):
+    """DeleteLogBackup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1979,6 +2270,122 @@ class DescribeAvailableRecoveryTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupDownloadURLRequest(AbstractModel):
+    """DescribeBackupDownloadURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param BackupType: 备份类型，目前支持：LogBackup，BaseBackup。
+        :type BackupType: str
+        :param BackupId: 备份的唯一ID。
+        :type BackupId: str
+        :param URLExpireTime: 链接的有效时间，默认为12小时。
+        :type URLExpireTime: int
+        """
+        self.DBInstanceId = None
+        self.BackupType = None
+        self.BackupId = None
+        self.URLExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.BackupType = params.get("BackupType")
+        self.BackupId = params.get("BackupId")
+        self.URLExpireTime = params.get("URLExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDownloadURLResponse(AbstractModel):
+    """DescribeBackupDownloadURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupDownloadURL: 备份的下载地址。
+        :type BackupDownloadURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BackupDownloadURL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BackupDownloadURL = params.get("BackupDownloadURL")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupOverviewRequest(AbstractModel):
+    """DescribeBackupOverview请求参数结构体
+
+    """
+
+
+class DescribeBackupOverviewResponse(AbstractModel):
+    """DescribeBackupOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalFreeSize: 总免费空间大小，单位byte。
+        :type TotalFreeSize: int
+        :param UsedFreeSize: 已使用免费空间大小，单位byte。
+        :type UsedFreeSize: int
+        :param UsedBillingSize: 已使用收费空间大小，单位byte。
+        :type UsedBillingSize: int
+        :param LogBackupCount: 日志备份数量。
+        :type LogBackupCount: int
+        :param LogBackupSize: 日志备份大小，单位byte。
+        :type LogBackupSize: int
+        :param ManualBaseBackupCount: 手动创建的基础备份数量。
+        :type ManualBaseBackupCount: int
+        :param ManualBaseBackupSize: 手动创建的基础备份大小，单位byte。
+        :type ManualBaseBackupSize: int
+        :param AutoBaseBackupCount: 自动创建的基础备份数量。
+        :type AutoBaseBackupCount: int
+        :param AutoBaseBackupSize: 自动创建的基础备份大小，单位byte。
+        :type AutoBaseBackupSize: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalFreeSize = None
+        self.UsedFreeSize = None
+        self.UsedBillingSize = None
+        self.LogBackupCount = None
+        self.LogBackupSize = None
+        self.ManualBaseBackupCount = None
+        self.ManualBaseBackupSize = None
+        self.AutoBaseBackupCount = None
+        self.AutoBaseBackupSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalFreeSize = params.get("TotalFreeSize")
+        self.UsedFreeSize = params.get("UsedFreeSize")
+        self.UsedBillingSize = params.get("UsedBillingSize")
+        self.LogBackupCount = params.get("LogBackupCount")
+        self.LogBackupSize = params.get("LogBackupSize")
+        self.ManualBaseBackupCount = params.get("ManualBaseBackupCount")
+        self.ManualBaseBackupSize = params.get("ManualBaseBackupSize")
+        self.AutoBaseBackupCount = params.get("AutoBaseBackupCount")
+        self.AutoBaseBackupSize = params.get("AutoBaseBackupSize")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupPlansRequest(AbstractModel):
     """DescribeBackupPlans请求参数结构体
 
@@ -2026,6 +2433,230 @@ class DescribeBackupPlansResponse(AbstractModel):
                 obj = BackupPlan()
                 obj._deserialize(item)
                 self.Plans.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupSummariesRequest(AbstractModel):
+    """DescribeBackupSummaries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
+        :type Limit: int
+        :param Offset: 数据偏移量，从0开始。
+        :type Offset: int
+        :param Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+db-instance-id：按照实例ID过滤，类型为string。
+db-instance-name：按照实例名过滤，类型为string。
+db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
+        :type Filters: list of Filter
+        :param OrderBy: 排序字段，支持TotalBackupSize,LogBackupSize,ManualBaseBackupSize,AutoBaseBackupSize。
+        :type OrderBy: str
+        :param OrderByType: 排序方式，包括升序：asc，降序：desc。
+        :type OrderByType: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupSummariesResponse(AbstractModel):
+    """DescribeBackupSummaries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupSummarySet: 备份统计信息列表。
+        :type BackupSummarySet: list of BackupSummary
+        :param TotalCount: 查询到的所有备份信息数量。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BackupSummarySet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BackupSummarySet") is not None:
+            self.BackupSummarySet = []
+            for item in params.get("BackupSummarySet"):
+                obj = BackupSummary()
+                obj._deserialize(item)
+                self.BackupSummarySet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBaseBackupsRequest(AbstractModel):
+    """DescribeBaseBackups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinFinishTime: 备份的最小结束时间，形如2018-01-01 00:00:00。默认为7天前。
+        :type MinFinishTime: str
+        :param MaxFinishTime: 备份的最大结束时间，形如2018-01-01 00:00:00。默认为当前时间。
+        :type MaxFinishTime: str
+        :param Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+db-instance-id：按照实例ID过滤，类型为string。
+db-instance-name：按照实例名过滤，类型为string。
+db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
+        :type Filters: list of Filter
+        :param Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
+        :type Limit: int
+        :param Offset: 数据偏移量，从0开始。
+        :type Offset: int
+        :param OrderBy: 排序字段，支持StartTime,FinishTime,Size。
+        :type OrderBy: str
+        :param OrderByType: 排序方式，包括升序：asc，降序：desc。
+        :type OrderByType: str
+        """
+        self.MinFinishTime = None
+        self.MaxFinishTime = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.MinFinishTime = params.get("MinFinishTime")
+        self.MaxFinishTime = params.get("MaxFinishTime")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBaseBackupsResponse(AbstractModel):
+    """DescribeBaseBackups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 查询到的基础备份数量。
+        :type TotalCount: int
+        :param BaseBackupSet: 基础备份详细信息列表。
+        :type BaseBackupSet: list of BaseBackup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BaseBackupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BaseBackupSet") is not None:
+            self.BaseBackupSet = []
+            for item in params.get("BaseBackupSet"):
+                obj = BaseBackup()
+                obj._deserialize(item)
+                self.BaseBackupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClassesRequest(AbstractModel):
+    """DescribeClasses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 可用区ID。可以通过接口DescribeZones获取。
+        :type Zone: str
+        :param DBEngine: 数据库引擎，支持：
+1、postgresql（云数据库PostgreSQL）；
+2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+        :type DBEngine: str
+        :param DBMajorVersion: 数据库主版本号。例如12，13，可以通过接口DescribeDBVersions获取。
+        :type DBMajorVersion: str
+        """
+        self.Zone = None
+        self.DBEngine = None
+        self.DBMajorVersion = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.DBEngine = params.get("DBEngine")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClassesResponse(AbstractModel):
+    """DescribeClasses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClassInfoSet: 数据库规格列表
+        :type ClassInfoSet: list of ClassInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClassInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClassInfoSet") is not None:
+            self.ClassInfoSet = []
+            for item in params.get("ClassInfoSet"):
+                obj = ClassInfo()
+                obj._deserialize(item)
+                self.ClassInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2556,6 +3187,38 @@ class DescribeDBSlowlogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBVersionsRequest(AbstractModel):
+    """DescribeDBVersions请求参数结构体
+
+    """
+
+
+class DescribeDBVersionsResponse(AbstractModel):
+    """DescribeDBVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VersionSet: 数据库版本号信息列表
+        :type VersionSet: list of Version
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VersionSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VersionSet") is not None:
+            self.VersionSet = []
+            for item in params.get("VersionSet"):
+                obj = Version()
+                obj._deserialize(item)
+                self.VersionSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBXlogsRequest(AbstractModel):
     """DescribeDBXlogs请求参数结构体
 
@@ -2778,6 +3441,92 @@ class DescribeEncryptionKeysResponse(AbstractModel):
                 obj = EncryptionKey()
                 obj._deserialize(item)
                 self.EncryptionKeys.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogBackupsRequest(AbstractModel):
+    """DescribeLogBackups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinFinishTime: 备份的最小结束时间，形如2018-01-01 00:00:00。默认为7天前。
+        :type MinFinishTime: str
+        :param MaxFinishTime: 备份的最大结束时间，形如2018-01-01 00:00:00。默认为当前时间。
+        :type MaxFinishTime: str
+        :param Filters: 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+db-instance-id：按照实例ID过滤，类型为string。
+db-instance-name：按照实例名过滤，类型为string。
+db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
+        :type Filters: list of Filter
+        :param Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
+        :type Limit: int
+        :param Offset: 数据偏移量，从0开始。
+        :type Offset: int
+        :param OrderBy: 排序字段，支持StartTime,FinishTime,Size。
+        :type OrderBy: str
+        :param OrderByType: 排序方式，包括升序：asc，降序：desc。
+        :type OrderByType: str
+        """
+        self.MinFinishTime = None
+        self.MaxFinishTime = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.MinFinishTime = params.get("MinFinishTime")
+        self.MaxFinishTime = params.get("MaxFinishTime")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogBackupsResponse(AbstractModel):
+    """DescribeLogBackups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 查询到的日志备份数量。
+        :type TotalCount: int
+        :param LogBackupSet: 日志备份详细信息列表。
+        :type LogBackupSet: list of LogBackup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LogBackupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LogBackupSet") is not None:
+            self.LogBackupSet = []
+            for item in params.get("LogBackupSet"):
+                obj = LogBackup()
+                obj._deserialize(item)
+                self.LogBackupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4178,6 +4927,66 @@ class IsolateDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LogBackup(AbstractModel):
+    """数据库日志备份信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param Id: 备份文件唯一标识。
+        :type Id: str
+        :param Name: 备份文件名称。
+        :type Name: str
+        :param BackupMethod: 备份方式：物理备份、逻辑备份。
+        :type BackupMethod: str
+        :param BackupMode: 备份模式：自动备份、手动备份。
+        :type BackupMode: str
+        :param State: 备份任务状态。
+        :type State: str
+        :param Size: 备份集大小，单位bytes。
+        :type Size: int
+        :param StartTime: 备份的开始时间。
+        :type StartTime: str
+        :param FinishTime: 备份的结束时间。
+        :type FinishTime: str
+        :param ExpireTime: 备份的过期时间。
+        :type ExpireTime: str
+        """
+        self.DBInstanceId = None
+        self.Id = None
+        self.Name = None
+        self.BackupMethod = None
+        self.BackupMode = None
+        self.State = None
+        self.Size = None
+        self.StartTime = None
+        self.FinishTime = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.BackupMethod = params.get("BackupMethod")
+        self.BackupMode = params.get("BackupMode")
+        self.State = params.get("State")
+        self.Size = params.get("Size")
+        self.StartTime = params.get("StartTime")
+        self.FinishTime = params.get("FinishTime")
+        self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAccountRemarkRequest(AbstractModel):
     """ModifyAccountRemark请求参数结构体
 
@@ -4269,6 +5078,55 @@ class ModifyBackupPlanRequest(AbstractModel):
 
 class ModifyBackupPlanResponse(AbstractModel):
     """ModifyBackupPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBaseBackupExpireTimeRequest(AbstractModel):
+    """ModifyBaseBackupExpireTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param BaseBackupId: 基础备份ID。
+        :type BaseBackupId: str
+        :param NewExpireTime: 新过期时间。
+        :type NewExpireTime: str
+        """
+        self.DBInstanceId = None
+        self.BaseBackupId = None
+        self.NewExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.BaseBackupId = params.get("BaseBackupId")
+        self.NewExpireTime = params.get("NewExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBaseBackupExpireTimeResponse(AbstractModel):
+    """ModifyBaseBackupExpireTime返回参数结构体
 
     """
 
@@ -6407,6 +7265,72 @@ class Tag(AbstractModel):
         
 
 
+class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
+    """UpgradeDBInstanceKernelVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param TargetDBKernelVersion: 升级的目标内核版本号。可以通过接口DescribeDBVersions的返回字段AvailableUpgradeTarget获取。
+        :type TargetDBKernelVersion: str
+        :param SwitchTag: 指定实例升级内核版本号完成后的切换时间。可选值，
+0：立即切换（默认值）。
+1：指定时间切换。
+2：维护时间窗口内切换。
+        :type SwitchTag: int
+        :param SwitchStartTime: 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+        :type SwitchStartTime: str
+        :param SwitchEndTime: 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。SwitchStartTime和SwitchEndTime时间窗口不能小于30分钟。
+        :type SwitchEndTime: str
+        :param DryRun: 是否对本次升级实例内核版本号操作执行预检查。可选值，
+true：执行预检查操作，不升级内核版本号。检查项目包含请求参数、内核版本号兼容性、实例参数等。
+false：发送正常请求（默认值），通过检查后直接升级内核版本号。
+        :type DryRun: bool
+        """
+        self.DBInstanceId = None
+        self.TargetDBKernelVersion = None
+        self.SwitchTag = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.TargetDBKernelVersion = params.get("TargetDBKernelVersion")
+        self.SwitchTag = params.get("SwitchTag")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeDBInstanceKernelVersionResponse(AbstractModel):
+    """UpgradeDBInstanceKernelVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpgradeDBInstanceRequest(AbstractModel):
     """UpgradeDBInstance请求参数结构体
 
@@ -6486,6 +7410,59 @@ class UpgradeDBInstanceResponse(AbstractModel):
         self.DealName = params.get("DealName")
         self.BillId = params.get("BillId")
         self.RequestId = params.get("RequestId")
+
+
+class Version(AbstractModel):
+    """数据库版本号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBEngine: 数据库引擎，支持：
+1、postgresql（云数据库PostgreSQL）；
+2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+        :type DBEngine: str
+        :param DBVersion: 数据库版本，例如：12.4
+        :type DBVersion: str
+        :param DBMajorVersion: 数据库主要版本，例如：12
+        :type DBMajorVersion: str
+        :param DBKernelVersion: 数据库内核版本，例如：v12.4_r1.3
+        :type DBKernelVersion: str
+        :param SupportedFeatureNames: 数据库内核支持的特性列表。例如，
+TDE：支持数据加密。
+        :type SupportedFeatureNames: list of str
+        :param Status: 数据库版本状态，包括：
+AVAILABLE：可用；
+DEPRECATED：已弃用。
+        :type Status: str
+        :param AvailableUpgradeTarget: 该数据库版本（DBKernelVersion）可以升级到的版本号列表。
+        :type AvailableUpgradeTarget: list of str
+        """
+        self.DBEngine = None
+        self.DBVersion = None
+        self.DBMajorVersion = None
+        self.DBKernelVersion = None
+        self.SupportedFeatureNames = None
+        self.Status = None
+        self.AvailableUpgradeTarget = None
+
+
+    def _deserialize(self, params):
+        self.DBEngine = params.get("DBEngine")
+        self.DBVersion = params.get("DBVersion")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBKernelVersion = params.get("DBKernelVersion")
+        self.SupportedFeatureNames = params.get("SupportedFeatureNames")
+        self.Status = params.get("Status")
+        self.AvailableUpgradeTarget = params.get("AvailableUpgradeTarget")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Xlog(AbstractModel):

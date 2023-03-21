@@ -911,19 +911,14 @@ class BatchTarget(AbstractModel):
     def __init__(self):
         r"""
         :param ListenerId: 监听器ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerId: str
         :param Port: 绑定端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param InstanceId: 子机ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param EniIp: 弹性网卡ip
-注意：此字段可能返回 null，表示取不到有效值。
         :type EniIp: str
         :param Weight: 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         """
         self.ListenerId = None
@@ -12001,16 +11996,12 @@ class Target(AbstractModel):
     def __init__(self):
         r"""
         :param Port: 后端服务的监听端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param InstanceId: 子机ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param Weight: 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         :param EniIp: 绑定弹性网卡时需要传入此参数，代表弹性网卡的IP，弹性网卡必须先绑定至子机，然后才能绑定到负载均衡实例。注意：参数 InstanceId 和 EniIp 只能传入一个且必须传入一个。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EniIp: str
         """
         self.Port = None
@@ -12086,13 +12077,10 @@ class TargetsWeightRule(AbstractModel):
     def __init__(self):
         r"""
         :param ListenerId: 负载均衡监听器 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerId: str
         :param Targets: 要修改权重的后端机器列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of Target
         :param Weight: 后端服务新的转发权重，取值范围：0~100。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         """
         self.ListenerId = None

@@ -36,7 +36,6 @@ class AddRecordBatch(AbstractModel):
         :param RecordLineId: 解析记录的线路 ID，RecordLine和RecordLineId都有时，系统优先取 RecordLineId。
         :type RecordLineId: str
         :param Weight: 记录权重值(暂未支持)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         :param MX: 记录的 MX 记录值，非 MX 记录类型，默认为 0，MX记录则必选。
         :type MX: int

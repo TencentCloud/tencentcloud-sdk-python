@@ -997,40 +997,28 @@ class CreateNatRuleItem(AbstractModel):
     def __init__(self):
         r"""
         :param SourceContent: 访问源示例： net：IP/CIDR(192.168.0.2)
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceContent: str
         :param SourceType: 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
-注意：此字段可能返回 null，表示取不到有效值。
         :type SourceType: str
         :param TargetContent: 访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetContent: str
         :param TargetType: 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location
-注意：此字段可能返回 null，表示取不到有效值。
         :type TargetType: str
         :param Protocol: 协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS
-注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param RuleAction: 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleAction: str
         :param Port: 访问控制策略的端口。取值： -1/-1：全部端口 80：80端口
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: str
         :param Direction: 规则方向：1，入站；0，出站
-注意：此字段可能返回 null，表示取不到有效值。
         :type Direction: int
         :param OrderIndex: 规则序号
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrderIndex: int
         :param Enable: 规则状态，true表示启用，false表示禁用
-注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: str
         :param Uuid: 规则对应的唯一id，创建规则时无需填写
-注意：此字段可能返回 null，表示取不到有效值。
         :type Uuid: int
         :param Description: 描述
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """
         self.SourceContent = None

@@ -1092,15 +1092,12 @@ class ClsParam(AbstractModel):
     def __init__(self):
         r"""
         :param DecodeJson: 生产的信息是否为json格式
-注意：此字段可能返回 null，表示取不到有效值。
         :type DecodeJson: bool
         :param Resource: cls日志主题id
         :type Resource: str
         :param LogSet: cls日志集id
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogSet: str
         :param ContentKey: 当DecodeJson为false时必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type ContentKey: str
         :param TimeField: 指定消息中的某字段内容作为cls日志的时间。
 字段内容格式需要是秒级时间戳
@@ -1734,6 +1731,8 @@ class CreateConnectResourceRequest(AbstractModel):
         :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
         :param DorisConnectParam: Doris 配置，Type为 DORIS 时必填
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
+        :param KafkaConnectParam: Kafka配置，Type为 KAFKA 时必填
+        :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         """
         self.ResourceName = None
         self.Type = None
@@ -1747,6 +1746,7 @@ class CreateConnectResourceRequest(AbstractModel):
         self.MariaDBConnectParam = None
         self.SQLServerConnectParam = None
         self.DorisConnectParam = None
+        self.KafkaConnectParam = None
 
 
     def _deserialize(self, params):
@@ -1780,6 +1780,9 @@ class CreateConnectResourceRequest(AbstractModel):
         if params.get("DorisConnectParam") is not None:
             self.DorisConnectParam = DorisConnectParam()
             self.DorisConnectParam._deserialize(params.get("DorisConnectParam"))
+        if params.get("KafkaConnectParam") is not None:
+            self.KafkaConnectParam = KafkaConnectParam()
+            self.KafkaConnectParam._deserialize(params.get("KafkaConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1994,6 +1997,74 @@ class CreateDatahubTaskResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = CreateDatahubTaskRes()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDatahubTopicRequest(AbstractModel):
+    """CreateDatahubTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :type Name: str
+        :param PartitionNum: Partition个数，大于0
+        :type PartitionNum: int
+        :param RetentionMs: 消息保留时间，单位ms，当前最小值为60000ms
+        :type RetentionMs: int
+        :param Note: 主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :type Note: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
+        """
+        self.Name = None
+        self.PartitionNum = None
+        self.RetentionMs = None
+        self.Note = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.PartitionNum = params.get("PartitionNum")
+        self.RetentionMs = params.get("RetentionMs")
+        self.Note = params.get("Note")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatahubTopicResponse(AbstractModel):
+    """CreateDatahubTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回创建结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTopicResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DatahubTopicResp()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -3116,6 +3187,30 @@ class DatahubTopicDTO(AbstractModel):
         
 
 
+class DatahubTopicResp(AbstractModel):
+    """Datahub Topic 响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: Topic名称
+        :type TopicName: str
+        """
+        self.TopicName = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DateParam(AbstractModel):
     """数据处理——Value处理参数——转换时间格式参数
 
@@ -4031,6 +4126,9 @@ class DescribeConnectResource(AbstractModel):
         :param DorisConnectParam: Doris 配置，Type 为 DORIS 时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
+        :param KafkaConnectParam: Kafka配置，Type 为 KAFKA 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -4051,6 +4149,7 @@ class DescribeConnectResource(AbstractModel):
         self.SQLServerConnectParam = None
         self.CtsdbConnectParam = None
         self.DorisConnectParam = None
+        self.KafkaConnectParam = None
 
 
     def _deserialize(self, params):
@@ -4093,6 +4192,9 @@ class DescribeConnectResource(AbstractModel):
         if params.get("DorisConnectParam") is not None:
             self.DorisConnectParam = DorisConnectParam()
             self.DorisConnectParam._deserialize(params.get("DorisConnectParam"))
+        if params.get("KafkaConnectParam") is not None:
+            self.KafkaConnectParam = KafkaConnectParam()
+            self.KafkaConnectParam._deserialize(params.get("KafkaConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4190,6 +4292,9 @@ class DescribeConnectResourceResp(AbstractModel):
         :param DorisConnectParam: Doris 配置，Type 为 DORIS 时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
+        :param KafkaConnectParam: Kafka配置，Type 为 KAFKA 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -4210,6 +4315,7 @@ class DescribeConnectResourceResp(AbstractModel):
         self.SQLServerConnectParam = None
         self.CtsdbConnectParam = None
         self.DorisConnectParam = None
+        self.KafkaConnectParam = None
 
 
     def _deserialize(self, params):
@@ -4252,6 +4358,9 @@ class DescribeConnectResourceResp(AbstractModel):
         if params.get("DorisConnectParam") is not None:
             self.DorisConnectParam = DorisConnectParam()
             self.DorisConnectParam._deserialize(params.get("DorisConnectParam"))
+        if params.get("KafkaConnectParam") is not None:
+            self.KafkaConnectParam = KafkaConnectParam()
+            self.KafkaConnectParam._deserialize(params.get("KafkaConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6145,25 +6254,18 @@ class DtsModifyConnectParam(AbstractModel):
     def __init__(self):
         r"""
         :param Resource: Dts实例Id【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param Port: Dts的连接port【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param GroupId: Dts消费分组的Id
-注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
         :param UserName: Dts消费分组的账号
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param Password: Dts消费分组的密码
-注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param IsUpdate: 是否更新到关联的Datahub任务，默认为true
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdate: bool
         :param Topic: Dts订阅的topic【不支持修改】
-注意：此字段可能返回 null，表示取不到有效值。
         :type Topic: str
         """
         self.Resource = None
@@ -8363,6 +8465,51 @@ class KVParam(AbstractModel):
         self.Delimiter = params.get("Delimiter")
         self.Regex = params.get("Regex")
         self.KeepOriginalKey = params.get("KeepOriginalKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KafkaConnectParam(AbstractModel):
+    """Kafka连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: Kafka连接源的实例资源, 非自建时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param SelfBuilt: 是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        :param IsUpdate: 是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        :param BrokerAddress: Kafka连接的broker地址, 自建时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerAddress: str
+        :param Region: CKafka连接源的实例资源地域, 跨地域时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        """
+        self.Resource = None
+        self.SelfBuilt = None
+        self.IsUpdate = None
+        self.BrokerAddress = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.IsUpdate = params.get("IsUpdate")
+        self.BrokerAddress = params.get("BrokerAddress")
+        self.Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10644,13 +10791,10 @@ class ScfParam(AbstractModel):
     def __init__(self):
         r"""
         :param FunctionName: SCF云函数函数名
-注意：此字段可能返回 null，表示取不到有效值。
         :type FunctionName: str
         :param Namespace: SCF云函数命名空间, 默认为default
-注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param Qualifier: SCF云函数版本及别名, 默认为$DEFAULT
-注意：此字段可能返回 null，表示取不到有效值。
         :type Qualifier: str
         :param BatchSize: 每批最大发送消息数, 默认为1000
         :type BatchSize: int

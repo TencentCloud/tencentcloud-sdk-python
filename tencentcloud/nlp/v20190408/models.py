@@ -169,28 +169,20 @@ class ClassificationResult(AbstractModel):
         :param SecondClassName: 二级分类名称
         :type SecondClassName: str
         :param FirstClassProbability: 一级分类概率
-注意：此字段可能返回 null，表示取不到有效值。
         :type FirstClassProbability: float
         :param SecondClassProbability: 二级分类概率
-注意：此字段可能返回 null，表示取不到有效值。
         :type SecondClassProbability: float
         :param ThirdClassName: 三级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
-注意：此字段可能返回 null，表示取不到有效值。
         :type ThirdClassName: str
         :param ThirdClassProbability: 三级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
-注意：此字段可能返回 null，表示取不到有效值。
         :type ThirdClassProbability: float
         :param FourthClassName: 四级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
-注意：此字段可能返回 null，表示取不到有效值。
         :type FourthClassName: str
         :param FourthClassProbability: 四级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
-注意：此字段可能返回 null，表示取不到有效值。
         :type FourthClassProbability: float
         :param FifthClassName: 五级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
-注意：此字段可能返回 null，表示取不到有效值。
         :type FifthClassName: str
         :param FifthClassProbability: 五级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
-注意：此字段可能返回 null，表示取不到有效值。
         :type FifthClassProbability: float
         """
         self.FirstClassName = None
@@ -674,13 +666,10 @@ class DictInfo(AbstractModel):
         :param Id: 自定义词库ID。
         :type Id: str
         :param Description: 自定义词库描述信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param UpdateTime: 自定义词库修改时间，形式为:yyyy-mm-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param CreateTime: 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
         """
         self.Name = None
@@ -713,16 +702,12 @@ class DpToken(AbstractModel):
     def __init__(self):
         r"""
         :param Relation: 句法依存关系的类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type Relation: str
         :param HeadId: 当前词父节点的序号
-注意：此字段可能返回 null，表示取不到有效值。
         :type HeadId: int
         :param Word: 基础词
-注意：此字段可能返回 null，表示取不到有效值。
         :type Word: str
         :param Id: 基础词的序号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         """
         self.Relation = None
@@ -1100,10 +1085,8 @@ class SearchResult(AbstractModel):
         :param IsExist: 0表示词条不存在，1表示存在。
         :type IsExist: int
         :param MatchText: 匹配到的词条文本。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MatchText: str
         :param Pos: 词条的词性。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pos: str
         """
         self.Text = None
@@ -1771,7 +1754,6 @@ class WordItem(AbstractModel):
         :param CreateTime: 词条创建时间。
         :type CreateTime: str
         :param Pos: 词条的词性。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Pos: str
         """
         self.Text = None

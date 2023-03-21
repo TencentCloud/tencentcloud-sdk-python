@@ -2110,13 +2110,10 @@ class CcnFlowLock(AbstractModel):
     def __init__(self):
         r"""
         :param CcnId: 带宽所属的云联网ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcnId: str
         :param UserAccountID: 实例所属用户主账号ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserAccountID: str
         :param RegionFlowControlId: 带宽实例的唯一ID。作为`UnlockCcnBandwidths`接口和`LockCcnBandwidths`接口的入参时，该字段必传。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RegionFlowControlId: str
         """
         self.CcnId = None

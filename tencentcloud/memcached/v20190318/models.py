@@ -132,7 +132,6 @@ class InstanceListInfo(AbstractModel):
         :param CmemId: 实例内置ID
         :type CmemId: int
         :param Tags: 实例关联的标签信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfo
         :param InstanceId: 实例ID
         :type InstanceId: str

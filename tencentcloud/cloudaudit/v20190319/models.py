@@ -1202,10 +1202,8 @@ class LookupAttribute(AbstractModel):
     def __init__(self):
         r"""
         :param AttributeKey: AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttributeKey: str
         :param AttributeValue: AttributeValue的值
-注意：此字段可能返回 null，表示取不到有效值。
         :type AttributeValue: str
         """
         self.AttributeKey = None
@@ -1305,7 +1303,6 @@ class Resource(AbstractModel):
         :param ResourceType: 资源类型
         :type ResourceType: str
         :param ResourceName: 资源名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         """
         self.ResourceType = None

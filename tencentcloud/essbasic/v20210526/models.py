@@ -180,28 +180,20 @@ class BaseFlowInfo(AbstractModel):
     def __init__(self):
         r"""
         :param FlowName: 合同流程名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowName: str
         :param FlowType: 合同流程类型
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowType: str
         :param FlowDescription: 合同流程描述信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowDescription: str
         :param Deadline: 合同流程截止时间，unix时间戳
-注意：此字段可能返回 null，表示取不到有效值。
         :type Deadline: int
         :param Unordered: 是否顺序签署(true:无序签,false:顺序签)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Unordered: bool
         :param IntelligentStatus: 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
-注意：此字段可能返回 null，表示取不到有效值。
         :type IntelligentStatus: str
         :param FormFields: 填写控件内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type FormFields: list of FormField
         :param NeedSignReview: 本企业(发起方企业)是否需要签署审批，true：开启本企业签署审批
-注意：此字段可能返回 null，表示取不到有效值。
         :type NeedSignReview: bool
         """
         self.FlowName = None
@@ -247,16 +239,13 @@ class CcInfo(AbstractModel):
         :param Mobile: 被抄送人手机号，大陆11位手机号
         :type Mobile: str
         :param Name: 被抄送人姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param CcType: 被抄送人类型
 0--个人. 1--员工
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcType: int
         :param CcPermission: 被抄送人权限
 0--可查看
 1--可查看也可下载
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcPermission: int
         """
         self.Mobile = None
@@ -1948,7 +1937,6 @@ class CommonApproverOption(AbstractModel):
     def __init__(self):
         r"""
         :param CanEditApprover: 是否允许修改签署人信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanEditApprover: bool
         """
         self.CanEditApprover = None
@@ -1973,47 +1961,33 @@ class CommonFlowApprover(AbstractModel):
     def __init__(self):
         r"""
         :param NotChannelOrganization: 指定当前签署人为第三方应用集成子客，默认false：当前签署人为第三方应用集成子客，true：当前签署人为saas企业用户
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotChannelOrganization: bool
         :param ApproverType: 签署人类型,目前支持：0-企业签署人，1-个人签署人，3-企业静默签署人
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverType: int
         :param OrganizationId: 企业id
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationId: str
         :param OrganizationOpenId: 企业OpenId，第三方应用集成非静默签子客企业签署人发起合同毕传
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationOpenId: str
         :param OrganizationName: 企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
-注意：此字段可能返回 null，表示取不到有效值。
         :type OrganizationName: str
         :param UserId: 用户id
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
         :param OpenId: 用户openId，第三方应用集成非静默签子客企业签署人必传
-注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
         :param ApproverName: 签署人名称，saas企业签署人，个人签署人必传
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverName: str
         :param ApproverMobile: 签署人手机号，saas企业签署人，个人签署人必传
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverMobile: str
         :param RecipientId: 签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
 注意：模板发起时该字段必填
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientId: str
         :param PreReadTime: 签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s
-注意：此字段可能返回 null，表示取不到有效值。
         :type PreReadTime: int
         :param IsFullText: 签署前置条件：阅读全文限制
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsFullText: bool
         :param NotifyType: 通知类型：SMS（短信） NONE（不做通知）, 不传 默认SMS
-注意：此字段可能返回 null，表示取不到有效值。
         :type NotifyType: str
         :param ApproverOption: 签署人配置
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverOption: :class:`tencentcloud.essbasic.v20210526.models.CommonApproverOption`
         """
         self.NotChannelOrganization = None
@@ -2497,7 +2471,6 @@ class CreateFlowOption(AbstractModel):
     def __init__(self):
         r"""
         :param CanEditFlow: 是否允许修改合同信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CanEditFlow: bool
         """
         self.CanEditFlow = None
@@ -4522,7 +4495,6 @@ class ProxyOrganizationOperator(AbstractModel):
 业务管理员：admin
 经办人：channel-normal-operator
 业务员：channel-sales-man
-注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultRole: str
         """
         self.Id = None

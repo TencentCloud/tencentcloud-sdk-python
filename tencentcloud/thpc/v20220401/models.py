@@ -1504,10 +1504,8 @@ class Filter(AbstractModel):
     def __init__(self):
         r"""
         :param Name: 需要过滤的字段。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Values: 字段的过滤值。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
         """
         self.Name = None
@@ -2200,9 +2198,9 @@ class StorageOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CFSOptions: 集群挂载CFS文件系统选项
+        :param CFSOptions: 集群挂载CFS文件系统选项。
         :type CFSOptions: list of CFSOption
-        :param GooseFSOptions: 集群挂在GooseFS文件系统选项
+        :param GooseFSOptions: 集群挂载GooseFS文件系统选项。
         :type GooseFSOptions: list of GooseFSOption
         """
         self.CFSOptions = None

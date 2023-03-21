@@ -909,6 +909,11 @@ def test_import_smh():
     from tencentcloud.smh.v20210712 import models
 
 
+def test_import_smop():
+    from tencentcloud.smop.v20201203 import smop_client
+    from tencentcloud.smop.v20201203 import models
+
+
 def test_import_smpn():
     from tencentcloud.smpn.v20190822 import smpn_client
     from tencentcloud.smpn.v20190822 import models

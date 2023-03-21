@@ -58,13 +58,10 @@ class Agent(AbstractModel):
         :param AppId: 代理机构的应用编号,32位字符串，一般不用传
         :type AppId: str
         :param ProxyAppId: 被代理机构的应用号，一般不用传
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyAppId: str
         :param ProxyOrganizationId: 被代理机构在电子签平台的机构编号，集团代理下场景必传
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOrganizationId: str
         :param ProxyOperator: 被代理机构的经办人，一般不用传
-注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOperator: str
         """
         self.AppId = None
@@ -277,22 +274,16 @@ class AutoSignConfig(AbstractModel):
     def __init__(self):
         r"""
         :param UserInfo: 自动签开通个人用户的三要素
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         :param CallbackUrl: 回调链接
-注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackUrl: str
         :param CertInfoCallback: 是否回调证书信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type CertInfoCallback: bool
         :param UserDefineSeal: 是否支持用户自定义签名印章
-注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefineSeal: bool
         :param SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64
-注意：此字段可能返回 null，表示取不到有效值。
         :type SealImgCallback: bool
         :param VerifyChannels: 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
-注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyChannels: list of str
         """
         self.UserInfo = None
@@ -477,17 +468,14 @@ class CcInfo(AbstractModel):
         :param Mobile: 被抄送人手机号
         :type Mobile: str
         :param Name: 被抄送人姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param CcType: 被抄送人类型,
 0--个人
 1--员工
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcType: int
         :param CcPermission: 被抄送人权限
 0--可查看
 1--可查看也可下载
-注意：此字段可能返回 null，表示取不到有效值。
         :type CcPermission: int
         """
         self.Mobile = None
@@ -4425,13 +4413,10 @@ class ReleasedApprover(AbstractModel):
         r"""
         :param Name: 签署人姓名，最大长度50个字符
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Mobile: 签署人手机号
-注意：此字段可能返回 null，表示取不到有效值。
         :type Mobile: str
         :param RelievedApproverReceiptId: 要替换的参与人在原合同参与人列表中的签署人编号,通过DescribeFlowInfo 接口获取（即FlowDetailInfos. FlowApproverInfos 结构中的ReceiptId ）
-注意：此字段可能返回 null，表示取不到有效值。
         :type RelievedApproverReceiptId: str
         """
         self.Name = None
@@ -4460,23 +4445,18 @@ class RelieveInfo(AbstractModel):
     def __init__(self):
         r"""
         :param Reason: 解除理由，最大支持200个字
-注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
         :param RemainInForceItem: 解除后仍然有效的条款，保留条款，最大支持200个字
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type RemainInForceItem: str
         :param OriginalExpenseSettlement: 原合同事项处理-费用结算，最大支持200个字
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalExpenseSettlement: str
         :param OriginalOtherSettlement: 原合同事项处理-其他事项，最大支持200个字
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalOtherSettlement: str
         :param OtherDeals: 其他约定，最大支持200个字
 
-注意：此字段可能返回 null，表示取不到有效值。
         :type OtherDeals: str
         """
         self.Reason = None
@@ -5112,16 +5092,13 @@ class UserThreeFactor(AbstractModel):
     def __init__(self):
         r"""
         :param Name: 姓名
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param IdCardType: 证件类型: 
 ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdCardType: str
         :param IdCardNumber: 证件号，如果有 X 请大写
-注意：此字段可能返回 null，表示取不到有效值。
         :type IdCardNumber: str
         """
         self.Name = None

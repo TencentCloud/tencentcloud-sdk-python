@@ -286,16 +286,20 @@ class AddVpcCniSubnetsRequest(AbstractModel):
         :type SubnetIds: list of str
         :param VpcId: 集群所属的VPC的ID
         :type VpcId: str
+        :param SkipAddingNonMasqueradeCIDRs: 是否同步添加 vpc 网段到 ip-masq-agent-config 的 NonMasqueradeCIDRs 字段，默认 false 会同步添加
+        :type SkipAddingNonMasqueradeCIDRs: bool
         """
         self.ClusterId = None
         self.SubnetIds = None
         self.VpcId = None
+        self.SkipAddingNonMasqueradeCIDRs = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.SubnetIds = params.get("SubnetIds")
         self.VpcId = params.get("VpcId")
+        self.SkipAddingNonMasqueradeCIDRs = params.get("SkipAddingNonMasqueradeCIDRs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

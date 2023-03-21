@@ -961,13 +961,10 @@ class EngineRegionInfo(AbstractModel):
     def __init__(self):
         r"""
         :param EngineRegion: 引擎节点所在地域
-注意：此字段可能返回 null，表示取不到有效值。
         :type EngineRegion: str
         :param Replica: 此地域节点分配数量
-注意：此字段可能返回 null，表示取不到有效值。
         :type Replica: int
         :param VpcInfos: 集群网络信息
-注意：此字段可能返回 null，表示取不到有效值。
         :type VpcInfos: list of VpcInfo
         """
         self.EngineRegion = None

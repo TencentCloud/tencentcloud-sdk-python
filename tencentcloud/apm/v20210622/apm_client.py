@@ -163,3 +163,49 @@ class ApmClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyApmInstance(self, request):
+        """修改Apm实例接口
+
+        :param request: Request instance for ModifyApmInstance.
+        :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmInstanceRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ModifyApmInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApmInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApmInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateApmInstance(self, request):
+        """apm销毁实例
+
+        :param request: Request instance for TerminateApmInstance.
+        :type request: :class:`tencentcloud.apm.v20210622.models.TerminateApmInstanceRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.TerminateApmInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateApmInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateApmInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

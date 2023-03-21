@@ -2393,26 +2393,34 @@ class DescribeScanStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchId: 批次ID
-        :type BatchId: str
         :param CorpId: 企业ID
         :type CorpId: int
         :param PageSize: 分页数量
         :type PageSize: int
         :param PageNumber: 当前分页
         :type PageNumber: int
+        :param MerchantId: 商户ID
+        :type MerchantId: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param BatchId: 批次ID
+        :type BatchId: str
         """
-        self.BatchId = None
         self.CorpId = None
         self.PageSize = None
         self.PageNumber = None
+        self.MerchantId = None
+        self.ProductId = None
+        self.BatchId = None
 
 
     def _deserialize(self, params):
-        self.BatchId = params.get("BatchId")
         self.CorpId = params.get("CorpId")
         self.PageSize = params.get("PageSize")
         self.PageNumber = params.get("PageNumber")
+        self.MerchantId = params.get("MerchantId")
+        self.ProductId = params.get("ProductId")
+        self.BatchId = params.get("BatchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3780,6 +3788,10 @@ class ScanStat(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 更新时间
         :type UpdateTime: str
+        :param MerchantName: 商户名称
+        :type MerchantName: str
+        :param ProductName: 产品名称
+        :type ProductName: str
         """
         self.Code = None
         self.CorpId = None
@@ -3790,6 +3802,8 @@ class ScanStat(AbstractModel):
         self.Uv = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.MerchantName = None
+        self.ProductName = None
 
 
     def _deserialize(self, params):
@@ -3802,6 +3816,8 @@ class ScanStat(AbstractModel):
         self.Uv = params.get("Uv")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.MerchantName = params.get("MerchantName")
+        self.ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
