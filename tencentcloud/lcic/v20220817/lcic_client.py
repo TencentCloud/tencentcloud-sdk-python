@@ -509,6 +509,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDeveloper(self, request):
+        """服务商信息获取
+
+        :param request: Request instance for DescribeDeveloper.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDeveloperRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeDeveloperResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeveloper", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeveloperResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDocument(self, request):
         """获取文档信息
 

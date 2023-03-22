@@ -829,6 +829,11 @@ def test_import_ocr():
     from tencentcloud.ocr.v20181119 import models
 
 
+def test_import_omics():
+    from tencentcloud.omics.v20221128 import omics_client
+    from tencentcloud.omics.v20221128 import models
+
+
 def test_import_organization():
     from tencentcloud.organization.v20181225 import organization_client
     from tencentcloud.organization.v20181225 import models

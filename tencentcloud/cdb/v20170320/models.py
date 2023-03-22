@@ -212,6 +212,117 @@ class Address(AbstractModel):
         
 
 
+class AggregationCondition(AbstractModel):
+    """审计日志聚合条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AggregationField: 聚合字段。目前仅支持host-源IP、user-用户名、dbName-数据库名、sqlType-sql类型。
+        :type AggregationField: str
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 该聚合字段下要返回聚合桶的数量，最大100。
+        :type Limit: int
+        """
+        self.AggregationField = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.AggregationField = params.get("AggregationField")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyzeAuditLogsRequest(AbstractModel):
+    """AnalyzeAuditLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param StartTime: 要分析的日志开始时间，格式为："2023-02-16 00:00:20"。
+        :type StartTime: str
+        :param EndTime: 要分析的日志结束时间，格式为："2023-02-16 00:10:20"。
+        :type EndTime: str
+        :param AggregationConditions: 聚合维度的排序条件。
+        :type AggregationConditions: list of AggregationCondition
+        :param AuditLogFilter: 该过滤条件下的审计日志结果集作为分析日志。
+        :type AuditLogFilter: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.AggregationConditions = None
+        self.AuditLogFilter = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("AggregationConditions") is not None:
+            self.AggregationConditions = []
+            for item in params.get("AggregationConditions"):
+                obj = AggregationCondition()
+                obj._deserialize(item)
+                self.AggregationConditions.append(obj)
+        if params.get("AuditLogFilter") is not None:
+            self.AuditLogFilter = AuditLogFilter()
+            self.AuditLogFilter._deserialize(params.get("AuditLogFilter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyzeAuditLogsResponse(AbstractModel):
+    """AnalyzeAuditLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 返回的聚合桶信息集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditLogAggregationResult
+        :param TotalCount: 扫描的日志条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditLogAggregationResult()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups请求参数结构体
 
@@ -300,6 +411,41 @@ NEQ – 不等于；
         
 
 
+class AuditLogAggregationResult(AbstractModel):
+    """审计日志分析结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AggregationField: 聚合维度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AggregationField: str
+        :param Buckets: 聚合桶的结果集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Buckets: list of Bucket
+        """
+        self.AggregationField = None
+        self.Buckets = None
+
+
+    def _deserialize(self, params):
+        self.AggregationField = params.get("AggregationField")
+        if params.get("Buckets") is not None:
+            self.Buckets = []
+            for item in params.get("Buckets"):
+                obj = Bucket()
+                obj._deserialize(item)
+                self.Buckets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditLogFile(AbstractModel):
     """审计日志文件
 
@@ -379,6 +525,18 @@ class AuditLogFilter(AbstractModel):
         :type SqlTypes: list of str
         :param Sqls: SQL 语句。支持传递多个sql语句。
         :type Sqls: list of str
+        :param AffectRowsSection: 影响行数，格式为M-N，例如：10-200
+        :type AffectRowsSection: str
+        :param SentRowsSection: 返回行数，格式为M-N，例如：10-200
+        :type SentRowsSection: str
+        :param ExecTimeSection: 执行时间，格式为M-N，例如：10-200
+        :type ExecTimeSection: str
+        :param LockWaitTimeSection: 锁等待时间，格式为M-N，例如：10-200
+        :type LockWaitTimeSection: str
+        :param IoWaitTimeSection: IO等待时间，格式为M-N，例如：10-200
+        :type IoWaitTimeSection: str
+        :param TransactionLivingTimeSection: 事务持续时间，格式为M-N，例如：10-200
+        :type TransactionLivingTimeSection: str
         """
         self.Host = None
         self.User = None
@@ -391,6 +549,12 @@ class AuditLogFilter(AbstractModel):
         self.AffectRows = None
         self.SqlTypes = None
         self.Sqls = None
+        self.AffectRowsSection = None
+        self.SentRowsSection = None
+        self.ExecTimeSection = None
+        self.LockWaitTimeSection = None
+        self.IoWaitTimeSection = None
+        self.TransactionLivingTimeSection = None
 
 
     def _deserialize(self, params):
@@ -405,6 +569,12 @@ class AuditLogFilter(AbstractModel):
         self.AffectRows = params.get("AffectRows")
         self.SqlTypes = params.get("SqlTypes")
         self.Sqls = params.get("Sqls")
+        self.AffectRowsSection = params.get("AffectRowsSection")
+        self.SentRowsSection = params.get("SentRowsSection")
+        self.ExecTimeSection = params.get("ExecTimeSection")
+        self.LockWaitTimeSection = params.get("LockWaitTimeSection")
+        self.IoWaitTimeSection = params.get("IoWaitTimeSection")
+        self.TransactionLivingTimeSection = params.get("TransactionLivingTimeSection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -959,6 +1129,35 @@ class BinlogInfo(AbstractModel):
                 self.RemoteInfo.append(obj)
         self.CosStorageType = params.get("CosStorageType")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Bucket(AbstractModel):
+    """聚合桶的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Count: ip等于10.0.0.8访问了26次实例，即桶内文档数量。
+        :type Count: int
+        """
+        self.Key = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -123,6 +123,8 @@ class ThpcClient(AbstractClient):
     def CreateCluster(self, request):
         """本接口 (CreateCluster) 用于创建并启动集群。
 
+        * 本接口为异步接口， 当创建集群请求下发成功后会返回一个集群`ID`和一个`RequestId`，此时创建集群操作并未立即完成。在此期间集群的状态将会处于“PENDING”或者“INITING”，集群创建结果可以通过调用 [DescribeClusters](https://cloud.tencent.com/document/product/1527/72100)  接口查询，如果集群状态(ClusterStatus)变为“RUNNING(运行中)”，则代表集群创建成功，“ INIT_FAILED”代表集群创建失败。
+
         :param request: Request instance for CreateCluster.
         :type request: :class:`tencentcloud.thpc.v20220401.models.CreateClusterRequest`
         :rtype: :class:`tencentcloud.thpc.v20220401.models.CreateClusterResponse`

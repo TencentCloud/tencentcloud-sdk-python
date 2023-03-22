@@ -8571,6 +8571,12 @@ class KafkaParam(AbstractModel):
         :param MsgMultiple: 源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
 注意：此字段可能返回 null，表示取不到有效值。
         :type MsgMultiple: int
+        :param ConnectorSyncType: 数据同步专用参数, 正常数据处理可为空, 实例级别同步: 仅同步元数据填写"META_SYNC_INSTANCE_TYPE", 同步元数据及全部topic内消息的填写"META_AND_DATA_SYNC_INSTANCE_TYPE"; topic级别同步: 选中的源和目标topic中的消息(需要目标实例也包含该topic)填写"DATA_SYNC_TYPE"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectorSyncType: str
+        :param KeepPartition: 数据同步专用参数, 当通过时,希望下游的消息写入分区与上游的一致,则填true,但下游分区小于上游时,会报错; 不需要一致则为false, 默认为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeepPartition: bool
         """
         self.SelfBuilt = None
         self.Resource = None
@@ -8588,6 +8594,8 @@ class KafkaParam(AbstractModel):
         self.UseAutoCreateTopic = None
         self.CompressionType = None
         self.MsgMultiple = None
+        self.ConnectorSyncType = None
+        self.KeepPartition = None
 
 
     def _deserialize(self, params):
@@ -8612,6 +8620,8 @@ class KafkaParam(AbstractModel):
         self.UseAutoCreateTopic = params.get("UseAutoCreateTopic")
         self.CompressionType = params.get("CompressionType")
         self.MsgMultiple = params.get("MsgMultiple")
+        self.ConnectorSyncType = params.get("ConnectorSyncType")
+        self.KeepPartition = params.get("KeepPartition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

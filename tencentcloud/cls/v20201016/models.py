@@ -1057,19 +1057,19 @@ class CosRechargeInfo(AbstractModel):
         :param LogsetId: 日志集ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetId: str
-        :param Name: cos导入任务名称
+        :param Name: COS导入任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param Bucket: cos存储桶
+        :param Bucket: COS存储桶
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
-        :param BucketRegion: cos存储桶地域
+        :param BucketRegion: COS存储桶所在地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type BucketRegion: str
-        :param Prefix: cos存储桶前缀地址
+        :param Prefix: COS文件所在文件夹的前缀
 注意：此字段可能返回 null，表示取不到有效值。
         :type Prefix: str
-        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志；
+        :param LogType: 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 默认为minimalist_log
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogType: str

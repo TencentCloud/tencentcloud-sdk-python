@@ -5336,6 +5336,95 @@ class DescribeExtraPkgBillingInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGatewayCurveDataRequest(AbstractModel):
+    """DescribeGatewayCurveData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境id
+        :type EnvId: str
+        :param GatewayId: 网关id
+        :type GatewayId: str
+        :param MetricName: 监控类型 GWQps GWBandwidth GwHttpError GwHttp404 GwHttp502
+        :type MetricName: str
+        :param StartTime: 监控起始时间
+        :type StartTime: str
+        :param EndTime: 监控结束时间
+        :type EndTime: str
+        :param GatewayVersion: 网关版本
+        :type GatewayVersion: str
+        :param GatewayRoute: 网关路由名称
+        :type GatewayRoute: str
+        """
+        self.EnvId = None
+        self.GatewayId = None
+        self.MetricName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.GatewayVersion = None
+        self.GatewayRoute = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.GatewayId = params.get("GatewayId")
+        self.MetricName = params.get("MetricName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.GatewayVersion = params.get("GatewayVersion")
+        self.GatewayRoute = params.get("GatewayRoute")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatewayCurveDataResponse(AbstractModel):
+    """DescribeGatewayCurveData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MetricName: 监控类型
+        :type MetricName: str
+        :param StartTime: 监控起始时间
+        :type StartTime: str
+        :param EndTime: 监控结束时间
+        :type EndTime: str
+        :param Period: 监控数据间隔
+        :type Period: int
+        :param Values: 监控值
+        :type Values: list of float
+        :param Time: 监控时间
+        :type Time: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MetricName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Period = None
+        self.Values = None
+        self.Time = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
+        self.Values = params.get("Values")
+        self.Time = params.get("Time")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeHostingDomainTaskRequest(AbstractModel):
     """DescribeHostingDomainTask请求参数结构体
 

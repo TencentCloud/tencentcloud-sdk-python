@@ -1176,6 +1176,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGatewayCurveData(self, request):
+        """查询网关监控数据
+
+        :param request: Request instance for DescribeGatewayCurveData.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeGatewayCurveDataRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeGatewayCurveDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGatewayCurveData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGatewayCurveDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeHostingDomainTask(self, request):
         """查询静态托管域名任务状态
 

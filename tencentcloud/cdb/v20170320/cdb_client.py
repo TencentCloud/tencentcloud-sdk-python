@@ -49,6 +49,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AnalyzeAuditLogs(self, request):
+        """在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
+
+        :param request: Request instance for AnalyzeAuditLogs.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.AnalyzeAuditLogsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AnalyzeAuditLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AnalyzeAuditLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.AnalyzeAuditLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateSecurityGroups(self, request):
         """本接口(AssociateSecurityGroups)用于安全组批量绑定实例。
 
@@ -1986,7 +2009,9 @@ class CdbClient(AbstractClient):
 
 
     def InitDBInstances(self, request):
-        """本接口(InitDBInstances)用于初始化云数据库实例，包括初始化密码、默认字符集、实例端口号等。该接口已经废弃，在发货接口CreateDBInstance、CreateDBInstanceHour可以直接使用参数Password设置密码，使用参数ParamList设置字符集，使用参数Port设置端口号。
+        """该接口不再维护，参考CreateDBInstance+API文档，在发货时即可完成初始化。
+
+        本接口(InitDBInstances)用于初始化云数据库实例，包括初始化密码、默认字符集、实例端口号等。该接口已经废弃，在发货接口CreateDBInstance、CreateDBInstanceHour可以直接使用参数Password设置密码，使用参数ParamList设置字符集，使用参数Port设置端口号。
 
         :param request: Request instance for InitDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.InitDBInstancesRequest`
