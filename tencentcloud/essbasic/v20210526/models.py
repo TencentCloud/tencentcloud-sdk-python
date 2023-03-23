@@ -3488,6 +3488,12 @@ HANDWRITE -手写签名
         :type ApproverOption: :class:`tencentcloud.essbasic.v20210526.models.ApproverOption`
         :param ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要
         :type ApproverNeedSignReview: bool
+        :param ApproverVerifyTypes: 签署人查看合同时认证方式, 1-实名查看 2-短信验证码查看(企业签署方不支持该方式) 如果不传默认为1
+查看合同的签署方式 Flow层级的优先于approver层级的
+        :type ApproverVerifyTypes: list of int
+        :param ApproverSignTypes: 签署人签署合同时的认证方式
+1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
+        :type ApproverSignTypes: list of int
         """
         self.Name = None
         self.IdCardType = None
@@ -3507,6 +3513,8 @@ HANDWRITE -手写签名
         self.JumpUrl = None
         self.ApproverOption = None
         self.ApproverNeedSignReview = None
+        self.ApproverVerifyTypes = None
+        self.ApproverSignTypes = None
 
 
     def _deserialize(self, params):
@@ -3535,6 +3543,8 @@ HANDWRITE -手写签名
             self.ApproverOption = ApproverOption()
             self.ApproverOption._deserialize(params.get("ApproverOption"))
         self.ApproverNeedSignReview = params.get("ApproverNeedSignReview")
+        self.ApproverVerifyTypes = params.get("ApproverVerifyTypes")
+        self.ApproverSignTypes = params.get("ApproverSignTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3605,6 +3615,8 @@ class FlowDetailInfo(AbstractModel):
         :type CustomData: str
         :param FlowApproverInfos: 合同(流程)的签署人数组
         :type FlowApproverInfos: list of FlowApproverDetail
+        :param CcInfos: 合同(流程)关注方信息列表
+        :type CcInfos: list of FlowApproverDetail
         """
         self.FlowId = None
         self.FlowName = None
@@ -3615,6 +3627,7 @@ class FlowDetailInfo(AbstractModel):
         self.DeadLine = None
         self.CustomData = None
         self.FlowApproverInfos = None
+        self.CcInfos = None
 
 
     def _deserialize(self, params):
@@ -3632,6 +3645,12 @@ class FlowDetailInfo(AbstractModel):
                 obj = FlowApproverDetail()
                 obj._deserialize(item)
                 self.FlowApproverInfos.append(obj)
+        if params.get("CcInfos") is not None:
+            self.CcInfos = []
+            for item in params.get("CcInfos"):
+                obj = FlowApproverDetail()
+                obj._deserialize(item)
+                self.CcInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

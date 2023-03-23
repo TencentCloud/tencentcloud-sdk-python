@@ -799,7 +799,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         :type TerminationPolicies: list of str
         :param Zones: 可用区列表，基础网络场景下必须指定可用区。多个可用区以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
         :type Zones: list of str
-        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。
+        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。部分成功的伸缩活动判定为一次失败活动。
 <br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
 <br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。
 <br><li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。
@@ -1294,36 +1294,56 @@ class CreateScalingPolicyRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param ScalingPolicyName: 告警触发策略名称。
         :type ScalingPolicyName: str
-        :param AdjustmentType: 告警触发后，期望实例数修改方式。取值 ：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+        :param ScalingPolicyType: 告警触发策略类型，默认类型为SIMPLE。取值范围：<br><li>SIMPLE：简单策略</li><li>TARGET_TRACKING：目标追踪策略</li>
+        :type ScalingPolicyType: str
+        :param AdjustmentType: 告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
         :type AdjustmentType: str
-        :param AdjustmentValue: 告警触发后，期望实例数的调整值。取值：<br><li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。
+        :param AdjustmentValue: 告警触发后，期望实例数的调整值，仅适用于简单策略。<br><li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。
         :type AdjustmentValue: int
-        :param MetricAlarm: 告警监控指标。
-        :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
-        :param Cooldown: 冷却时间，单位为秒。默认冷却时间300秒。
+        :param Cooldown: 冷却时间，单位为秒，仅适用于简单策略。默认冷却时间300秒。
         :type Cooldown: int
+        :param MetricAlarm: 告警监控指标，仅适用于简单策略。
+        :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        :param PredefinedMetricType: 预定义监控项，仅适用于目标追踪策略。取值范围：<br><li>ASG_AVG_CPU_UTILIZATION：平均CPU使用率</li><li>ASG_AVG_LAN_TRAFFIC_OUT：平均内网出带宽</li><li>ASG_AVG_LAN_TRAFFIC_IN：平均内网入带宽</li><li>ASG_AVG_WAN_TRAFFIC_OUT：平均外网出带宽</li><li>ASG_AVG_WAN_TRAFFIC_IN：平均外网出带宽</li>
+        :type PredefinedMetricType: str
+        :param TargetValue: 目标值，仅适用于目标追踪策略。<br><li>ASG_AVG_CPU_UTILIZATION：[1, 100)，单位：%</li><li>ASG_AVG_LAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_IN：>0，单位：Mbps</li>
+        :type TargetValue: int
+        :param EstimatedInstanceWarmup: 实例预热时间，单位为秒，仅适用于目标追踪策略。取值范围为0-3600，默认预热时间300秒。
+        :type EstimatedInstanceWarmup: int
+        :param DisableScaleIn: 是否禁用缩容，仅适用于目标追踪策略，默认值为 false。取值范围：<br><li>true：目标追踪策略仅触发扩容</li><li>false：目标追踪策略触发扩容和缩容</li>
+        :type DisableScaleIn: bool
         :param NotificationUserGroupIds: 此参数已不再生效，请使用[创建通知](https://cloud.tencent.com/document/api/377/33185)。
 通知组ID，即为用户组ID集合。
         :type NotificationUserGroupIds: list of str
         """
         self.AutoScalingGroupId = None
         self.ScalingPolicyName = None
+        self.ScalingPolicyType = None
         self.AdjustmentType = None
         self.AdjustmentValue = None
-        self.MetricAlarm = None
         self.Cooldown = None
+        self.MetricAlarm = None
+        self.PredefinedMetricType = None
+        self.TargetValue = None
+        self.EstimatedInstanceWarmup = None
+        self.DisableScaleIn = None
         self.NotificationUserGroupIds = None
 
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.ScalingPolicyName = params.get("ScalingPolicyName")
+        self.ScalingPolicyType = params.get("ScalingPolicyType")
         self.AdjustmentType = params.get("AdjustmentType")
         self.AdjustmentValue = params.get("AdjustmentValue")
+        self.Cooldown = params.get("Cooldown")
         if params.get("MetricAlarm") is not None:
             self.MetricAlarm = MetricAlarm()
             self.MetricAlarm._deserialize(params.get("MetricAlarm"))
-        self.Cooldown = params.get("Cooldown")
+        self.PredefinedMetricType = params.get("PredefinedMetricType")
+        self.TargetValue = params.get("TargetValue")
+        self.EstimatedInstanceWarmup = params.get("EstimatedInstanceWarmup")
+        self.DisableScaleIn = params.get("DisableScaleIn")
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2342,6 +2362,7 @@ class DescribeScalingPoliciesRequest(AbstractModel):
 <li> auto-scaling-policy-id - String - 是否必填：否 -（过滤条件）按照告警策略ID过滤。</li>
 <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
 <li> scaling-policy-name - String - 是否必填：否 -（过滤条件）按照告警策略名称过滤。</li>
+<li> scaling-policy-type - String - 是否必填：否 -（过滤条件）按照告警策略类型过滤，取值范围为SIMPLE，TARGET_TRACKING。</li>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingPolicyIds`和`Filters`。
         :type Filters: list of Filter
         :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -2769,7 +2790,7 @@ class ExecuteScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AutoScalingPolicyId: 告警伸缩策略ID
+        :param AutoScalingPolicyId: 告警伸缩策略ID，不支持目标追踪策略。
         :type AutoScalingPolicyId: str
         :param HonorCooldown: 是否检查伸缩组活动处于冷却时间内，默认值为false
         :type HonorCooldown: bool
@@ -3055,6 +3076,12 @@ class Instance(AbstractModel):
         :type VersionNumber: int
         :param AutoScalingGroupName: 伸缩组名称
         :type AutoScalingGroupName: str
+        :param WarmupStatus: 预热状态，取值如下：
+<li>WAITING_ENTER_WARMUP：等待进入预热
+<li>NO_NEED_WARMUP：无需预热
+<li>IN_WARMUP：预热中
+<li>AFTER_WARMUP：完成预热
+        :type WarmupStatus: str
         """
         self.InstanceId = None
         self.AutoScalingGroupId = None
@@ -3069,6 +3096,7 @@ class Instance(AbstractModel):
         self.InstanceType = None
         self.VersionNumber = None
         self.AutoScalingGroupName = None
+        self.WarmupStatus = None
 
 
     def _deserialize(self, params):
@@ -3085,6 +3113,7 @@ class Instance(AbstractModel):
         self.InstanceType = params.get("InstanceType")
         self.VersionNumber = params.get("VersionNumber")
         self.AutoScalingGroupName = params.get("AutoScalingGroupName")
+        self.WarmupStatus = params.get("WarmupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3731,6 +3760,8 @@ class MetricAlarm(AbstractModel):
         :type ContinuousTime: int
         :param Statistic: 统计类型，可选字段如下：<br><li>AVERAGE：平均值</li><li>MAXIMUM：最大值<li>MINIMUM：最小值</li><br> 默认取值：AVERAGE
         :type Statistic: str
+        :param PreciseThreshold: 精确告警阈值，本参数不作为入参输入，仅用作查询接口出参：<br><li>CPU_UTILIZATION：(0, 100]，单位：%</li><li>MEM_UTILIZATION：(0, 100]，单位：%</li><li>LAN_TRAFFIC_OUT：>0，单位：Mbps </li><li>LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>WAN_TRAFFIC_IN：>0，单位：Mbps</li>
+        :type PreciseThreshold: float
         """
         self.ComparisonOperator = None
         self.MetricName = None
@@ -3738,6 +3769,7 @@ class MetricAlarm(AbstractModel):
         self.Period = None
         self.ContinuousTime = None
         self.Statistic = None
+        self.PreciseThreshold = None
 
 
     def _deserialize(self, params):
@@ -3747,6 +3779,7 @@ class MetricAlarm(AbstractModel):
         self.Period = params.get("Period")
         self.ContinuousTime = params.get("ContinuousTime")
         self.Statistic = params.get("Statistic")
+        self.PreciseThreshold = params.get("PreciseThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3789,9 +3822,11 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type VpcId: str
         :param Zones: 可用区列表
         :type Zones: list of str
-        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。
-<br><li> IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
-<br><li> INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。
+        :param RetryPolicy: 重试策略，取值包括 IMMEDIATE_RETRY、 INCREMENTAL_INTERVALS、NO_RETRY，默认取值为 IMMEDIATE_RETRY。部分成功的伸缩活动判定为一次失败活动。
+<br><li>
+IMMEDIATE_RETRY，立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。
+<br><li>
+INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大，重试间隔从秒级到1天不等。
 <br><li> NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。
         :type RetryPolicy: str
         :param ZonesCheckPolicy: 可用区校验策略，取值包括 ALL 和 ANY，默认取值为ANY。在伸缩组实际变更资源相关字段时（启动配置、可用区、子网）发挥作用。
@@ -4397,14 +4432,22 @@ class ModifyScalingPolicyRequest(AbstractModel):
         :type AutoScalingPolicyId: str
         :param ScalingPolicyName: 告警策略名称。
         :type ScalingPolicyName: str
-        :param AdjustmentType: 告警触发后，期望实例数修改方式。取值 ：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+        :param AdjustmentType: 告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
         :type AdjustmentType: str
-        :param AdjustmentValue: 告警触发后，期望实例数的调整值。取值：<br><li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。
+        :param AdjustmentValue: 告警触发后，期望实例数的调整值，仅适用于简单策略。<br><li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。
         :type AdjustmentValue: int
-        :param Cooldown: 冷却时间，单位为秒。
+        :param Cooldown: 冷却时间，仅适用于简单策略，单位为秒。
         :type Cooldown: int
-        :param MetricAlarm: 告警监控指标。
+        :param MetricAlarm: 告警监控指标，仅适用于简单策略。
         :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        :param PredefinedMetricType: 预定义监控项，仅适用于目标追踪策略。取值范围：<br><li>ASG_AVG_CPU_UTILIZATION：平均CPU使用率</li><li>ASG_AVG_LAN_TRAFFIC_OUT：平均内网出带宽</li><li>ASG_AVG_LAN_TRAFFIC_IN：平均内网入带宽</li><li>ASG_AVG_WAN_TRAFFIC_OUT：平均外网出带宽</li><li>ASG_AVG_WAN_TRAFFIC_IN：平均外网出带宽</li>
+        :type PredefinedMetricType: str
+        :param TargetValue: 目标值，仅适用于目标追踪策略。<br><li>ASG_AVG_CPU_UTILIZATION：[1, 100)，单位：%</li><li>ASG_AVG_LAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_IN：>0，单位：Mbps</li>
+        :type TargetValue: int
+        :param EstimatedInstanceWarmup: 实例预热时间，单位为秒，仅适用于目标追踪策略。取值范围为0-3600。
+        :type EstimatedInstanceWarmup: int
+        :param DisableScaleIn: 是否禁用缩容，仅适用于目标追踪策略。取值范围：<br><li>true：目标追踪策略仅触发扩容</li><li>false：目标追踪策略触发扩容和缩容</li>
+        :type DisableScaleIn: bool
         :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
 如果需要清空通知用户组，需要在列表中传入特定字符串 "NULL"。
         :type NotificationUserGroupIds: list of str
@@ -4415,6 +4458,10 @@ class ModifyScalingPolicyRequest(AbstractModel):
         self.AdjustmentValue = None
         self.Cooldown = None
         self.MetricAlarm = None
+        self.PredefinedMetricType = None
+        self.TargetValue = None
+        self.EstimatedInstanceWarmup = None
+        self.DisableScaleIn = None
         self.NotificationUserGroupIds = None
 
 
@@ -4427,6 +4474,10 @@ class ModifyScalingPolicyRequest(AbstractModel):
         if params.get("MetricAlarm") is not None:
             self.MetricAlarm = MetricAlarm()
             self.MetricAlarm._deserialize(params.get("MetricAlarm"))
+        self.PredefinedMetricType = params.get("PredefinedMetricType")
+        self.TargetValue = params.get("TargetValue")
+        self.EstimatedInstanceWarmup = params.get("EstimatedInstanceWarmup")
+        self.DisableScaleIn = params.get("DisableScaleIn")
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4792,32 +4843,58 @@ class ScalingPolicy(AbstractModel):
         :type AutoScalingGroupId: str
         :param AutoScalingPolicyId: 告警触发策略ID。
         :type AutoScalingPolicyId: str
+        :param ScalingPolicyType: 告警触发策略类型。取值：
+- SIMPLE：简单策略
+- TARGET_TRACKING：目标追踪策略
+        :type ScalingPolicyType: str
         :param ScalingPolicyName: 告警触发策略名称。
         :type ScalingPolicyName: str
-        :param AdjustmentType: 告警触发后，期望实例数修改方式。取值 ：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+        :param AdjustmentType: 告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
         :type AdjustmentType: str
-        :param AdjustmentValue: 告警触发后，期望实例数的调整值。
+        :param AdjustmentValue: 告警触发后，期望实例数的调整值，仅适用于简单策略。
         :type AdjustmentValue: int
-        :param Cooldown: 冷却时间。
+        :param Cooldown: 冷却时间，仅适用于简单策略。
         :type Cooldown: int
-        :param MetricAlarm: 告警监控指标。
+        :param MetricAlarm: 简单告警触发策略告警监控指标，仅适用于简单策略。
         :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        :param PredefinedMetricType: 预定义监控项，仅适用于目标追踪策略。取值范围：<br><li>ASG_AVG_CPU_UTILIZATION：平均CPU使用率</li><li>ASG_AVG_LAN_TRAFFIC_OUT：平均内网出带宽</li><li>ASG_AVG_LAN_TRAFFIC_IN：平均内网入带宽</li><li>ASG_AVG_WAN_TRAFFIC_OUT：平均外网出带宽</li><li>ASG_AVG_WAN_TRAFFIC_IN：平均外网出带宽</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PredefinedMetricType: str
+        :param TargetValue: 目标值，仅适用于目标追踪策略。<br><li>ASG_AVG_CPU_UTILIZATION：[1, 100)，单位：%</li><li>ASG_AVG_LAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_LAN_TRAFFIC_IN：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_OUT：>0，单位：Mbps</li><li>ASG_AVG_WAN_TRAFFIC_IN：>0，单位：Mbps</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetValue: int
+        :param EstimatedInstanceWarmup: 实例预热时间，单位为秒，仅适用于目标追踪策略。取值范围为0-3600。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EstimatedInstanceWarmup: int
+        :param DisableScaleIn: 是否禁用缩容，仅适用于目标追踪策略。取值范围：<br><li>true：目标追踪策略仅触发扩容</li><li>false：目标追踪策略触发扩容和缩容</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableScaleIn: bool
+        :param MetricAlarms: 告警监控指标列表，仅适用于目标追踪策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricAlarms: list of MetricAlarm
         :param NotificationUserGroupIds: 通知组ID，即为用户组ID集合。
         :type NotificationUserGroupIds: list of str
         """
         self.AutoScalingGroupId = None
         self.AutoScalingPolicyId = None
+        self.ScalingPolicyType = None
         self.ScalingPolicyName = None
         self.AdjustmentType = None
         self.AdjustmentValue = None
         self.Cooldown = None
         self.MetricAlarm = None
+        self.PredefinedMetricType = None
+        self.TargetValue = None
+        self.EstimatedInstanceWarmup = None
+        self.DisableScaleIn = None
+        self.MetricAlarms = None
         self.NotificationUserGroupIds = None
 
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.AutoScalingPolicyId = params.get("AutoScalingPolicyId")
+        self.ScalingPolicyType = params.get("ScalingPolicyType")
         self.ScalingPolicyName = params.get("ScalingPolicyName")
         self.AdjustmentType = params.get("AdjustmentType")
         self.AdjustmentValue = params.get("AdjustmentValue")
@@ -4825,6 +4902,16 @@ class ScalingPolicy(AbstractModel):
         if params.get("MetricAlarm") is not None:
             self.MetricAlarm = MetricAlarm()
             self.MetricAlarm._deserialize(params.get("MetricAlarm"))
+        self.PredefinedMetricType = params.get("PredefinedMetricType")
+        self.TargetValue = params.get("TargetValue")
+        self.EstimatedInstanceWarmup = params.get("EstimatedInstanceWarmup")
+        self.DisableScaleIn = params.get("DisableScaleIn")
+        if params.get("MetricAlarms") is not None:
+            self.MetricAlarms = []
+            for item in params.get("MetricAlarms"):
+                obj = MetricAlarm()
+                obj._deserialize(item)
+                self.MetricAlarms.append(obj)
         self.NotificationUserGroupIds = params.get("NotificationUserGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

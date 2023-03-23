@@ -2447,6 +2447,113 @@ class DDoS(AbstractModel):
         
 
 
+class DDoSAttackEvent(AbstractModel):
+    """DDoS攻击事件对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: 事件ID。
+        :type EventId: str
+        :param AttackType: 攻击类型(对应交互事件名称)。
+        :type AttackType: str
+        :param AttackStatus: 攻击状态。
+        :type AttackStatus: int
+        :param AttackMaxBandWidth: 攻击最大带宽。
+        :type AttackMaxBandWidth: int
+        :param AttackPacketMaxRate: 攻击包速率峰值。
+        :type AttackPacketMaxRate: int
+        :param AttackStartTime: 攻击开始时间，单位为s。
+        :type AttackStartTime: int
+        :param AttackEndTime: 攻击结束时间，单位为s。
+        :type AttackEndTime: int
+        :param PolicyId: DDoS策略组ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: int
+        :param ZoneId: 站点ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: str
+        :param Area: 攻击事件所属地区，取值有：
+<li>overseas：全球（除中国大陆地区）数据；</li>
+<li>mainland：中国大陆地区数据。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Area: str
+        :param DDoSBlockData: 封禁解封信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DDoSBlockData: list of DDoSBlockData
+        """
+        self.EventId = None
+        self.AttackType = None
+        self.AttackStatus = None
+        self.AttackMaxBandWidth = None
+        self.AttackPacketMaxRate = None
+        self.AttackStartTime = None
+        self.AttackEndTime = None
+        self.PolicyId = None
+        self.ZoneId = None
+        self.Area = None
+        self.DDoSBlockData = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.AttackType = params.get("AttackType")
+        self.AttackStatus = params.get("AttackStatus")
+        self.AttackMaxBandWidth = params.get("AttackMaxBandWidth")
+        self.AttackPacketMaxRate = params.get("AttackPacketMaxRate")
+        self.AttackStartTime = params.get("AttackStartTime")
+        self.AttackEndTime = params.get("AttackEndTime")
+        self.PolicyId = params.get("PolicyId")
+        self.ZoneId = params.get("ZoneId")
+        self.Area = params.get("Area")
+        if params.get("DDoSBlockData") is not None:
+            self.DDoSBlockData = []
+            for item in params.get("DDoSBlockData"):
+                obj = DDoSBlockData()
+                obj._deserialize(item)
+                self.DDoSBlockData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DDoSBlockData(AbstractModel):
+    """DDoS封禁解封信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间，采用unix时间戳。
+        :type StartTime: int
+        :param EndTime: 结束时间，采用unix时间戳, 为0表示还处于封禁中。
+        :type EndTime: int
+        :param BlockArea: 封禁受影响区域。
+        :type BlockArea: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.BlockArea = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.BlockArea = params.get("BlockArea")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DefaultServerCertInfo(AbstractModel):
     """https 服务端证书配置
 
@@ -3413,6 +3520,104 @@ class DescribeDDoSAttackDataResponse(AbstractModel):
                 obj = SecEntry()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDDoSAttackEventRequest(AbstractModel):
+    """DescribeDDoSAttackEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间。
+        :type StartTime: str
+        :param EndTime: 结束时间。
+        :type EndTime: str
+        :param PolicyIds: ddos策略组集合，不填默认选择全部策略。
+        :type PolicyIds: list of int
+        :param ZoneIds: 站点集合，此参数必填，不填默认查询为空。
+        :type ZoneIds: list of str
+        :param Limit: 分页查询的限制数目，默认值为20，最大查询条目为1000。
+        :type Limit: int
+        :param Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param ShowDetail: 是否展示详细信息。
+        :type ShowDetail: bool
+        :param Area: 数据归属地区，取值有：
+<li>overseas：全球（除中国大陆地区）数据；</li>
+<li>mainland：中国大陆地区数据；</li>
+<li>global：全球数据；</li>不填默认取值为global。
+        :type Area: str
+        :param OrderBy: 排序字段，取值有：
+<li>MaxBandWidth：带宽峰值；</li>
+<li>AttackStartTime：攻击开始时间。</li>不填默认值为：AttackStartTime。
+        :type OrderBy: str
+        :param OrderType: 排序方式，取值有：
+<li>asc：升序方式；</li>
+<li>desc：降序方式。</li>不填默认值为：desc。
+        :type OrderType: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PolicyIds = None
+        self.ZoneIds = None
+        self.Limit = None
+        self.Offset = None
+        self.ShowDetail = None
+        self.Area = None
+        self.OrderBy = None
+        self.OrderType = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PolicyIds = params.get("PolicyIds")
+        self.ZoneIds = params.get("ZoneIds")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ShowDetail = params.get("ShowDetail")
+        self.Area = params.get("Area")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSAttackEventResponse(AbstractModel):
+    """DescribeDDoSAttackEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: DDOS攻击事件数据列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DDoSAttackEvent
+        :param TotalCount: 查询结果的总条数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DDoSAttackEvent()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5101,18 +5306,29 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :param EndTime: 结束时间。
         :type EndTime: str
         :param MetricName: 查询的指标，取值有：
-<li> l7Flow_outFlux_country：请求的国家；</li>
-<li> l7Flow_outFlux_statusCode：请求的状态码；</li>
-<li> l7Flow_outFlux_domain：请求域名；</li>
-<li> l7Flow_outFlux_url：请求的URL; </li>
-<li> l7Flow_outFlux_resourceType：请求的资源类型；</li>
-<li> l7Flow_outFlux_sip：客户端的源IP；</li>
-<li> l7Flow_outFlux_referers：refer信息；</li>
-<li> l7Flow_outFlux_ua_device：设备类型; </li>
-<li> l7Flow_outFlux_ua_browser：浏览器类型；</li>
-<li> l7Flow_outFlux_us_os：操作系统类型。</li>
+<li> l7Flow_outFlux_country：按国家维度统计流量指标；</li>
+<li> l7Flow_outFlux_statusCode：按状态码维度统计流量指标；</li>
+<li> l7Flow_outFlux_domain：按域名维度统计流量指标；</li>
+<li> l7Flow_outFlux_url：按URL维度统计流量指标; </li>
+<li> l7Flow_outFlux_resourceType：按资源类型维度统计流量指标；</li>
+<li> l7Flow_outFlux_sip：按客户端的源IP维度统计流量指标；</li>
+<li> l7Flow_outFlux_referers：按refer信息维度统计流量指标；</li>
+<li> l7Flow_outFlux_ua_device：按设备类型维度统计流量指标; </li>
+<li> l7Flow_outFlux_ua_browser：按浏览器类型维度统计流量指标；</li>
+<li> l7Flow_outFlux_us_os：按操作系统类型维度统计流量指标；</li>
+<li> l7Flow_request_country：按国家维度统计请求数指标；</li>
+<li> l7Flow_request_statusCode：按状态码维度统计请求数指标；</li>
+<li> l7Flow_request_domain：按域名维度统计请求数指标；</li>
+<li> l7Flow_request_url：按URL维度统计请求数指标; </li>
+<li> l7Flow_request_resourceType：按资源类型维度统计请求数指标；</li>
+<li> l7Flow_request_sip：按客户端的源IP维度统计请求数指标；</li>
+<li> l7Flow_request_refere请求的rs：按refer信息维度统计请求数指标；</li>
+<li> l7Flow_request_ua_device：按设备类型维度统计请求数指标; </li>
+<li> l7Flow_request_ua_browser：按浏览器类型维度统计请求数指标；</li>
+<li> l7Flow_request_us_os：按操作系统类型维度统计请求数指标。</li>
+
         :type MetricName: str
-        :param ZoneIds: 站点集合，不填默认选择全部站点。
+        :param ZoneIds: 站点集合，此参数必填，不填默认查询为空。
         :type ZoneIds: list of str
         :param Limit: 查询前多少个数据，最大值为1000，不填默认默认为: 10， 表示查询前top10的数据。
         :type Limit: int

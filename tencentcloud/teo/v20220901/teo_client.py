@@ -716,6 +716,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDDoSAttackEvent(self, request):
+        """本接口（DescribeDDoSAttackEvent）用于查询DDoS攻击事件列表。
+
+        :param request: Request instance for DescribeDDoSAttackEvent.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackEventRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSAttackEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDDoSAttackEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDDoSAttackEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDDoSAttackTopData(self, request):
         """本接口（DescribeDDoSAttackTopData）用于查询DDoS攻击Top数据。
 

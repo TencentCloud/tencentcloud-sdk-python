@@ -60,7 +60,7 @@ Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
         :type LogoParam: :class:`tencentcloud.aiart.v20221229.models.LogoParam`
         :param Strength: 生成自由度。
-Strength 值越小，生成图和原图越接近。取值范围0~1，不传默认为0.6。
+Strength 值越小，生成图和原图越接近。取值范围0~1，不传默认为0.65。
         :type Strength: float
         """
         self.InputImage = None

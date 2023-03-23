@@ -11168,11 +11168,14 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
         :type NoticeIds: list of str
         :param PolicyIds: 告警策略ID数组，支持给多个告警策略批量绑定通知模板。最多30个。
         :type PolicyIds: list of str
+        :param HierarchicalNotices: 告警分级通知规则配置
+        :type HierarchicalNotices: list of AlarmHierarchicalNotice
         """
         self.Module = None
         self.PolicyId = None
         self.NoticeIds = None
         self.PolicyIds = None
+        self.HierarchicalNotices = None
 
 
     def _deserialize(self, params):
@@ -11180,6 +11183,12 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
         self.PolicyId = params.get("PolicyId")
         self.NoticeIds = params.get("NoticeIds")
         self.PolicyIds = params.get("PolicyIds")
+        if params.get("HierarchicalNotices") is not None:
+            self.HierarchicalNotices = []
+            for item in params.get("HierarchicalNotices"):
+                obj = AlarmHierarchicalNotice()
+                obj._deserialize(item)
+                self.HierarchicalNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14095,7 +14104,7 @@ class SendCustomAlarmMsgRequest(AbstractModel):
         r"""
         :param Module: 接口模块名，当前取值monitor
         :type Module: str
-        :param PolicyId: 消息策略ID，在云监控自定义消息页面配置
+        :param PolicyId: 消息策略ID，在自定义消息页面配置
         :type PolicyId: str
         :param Msg: 用户想要发送的自定义消息内容
         :type Msg: str

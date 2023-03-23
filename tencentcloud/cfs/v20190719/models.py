@@ -33,7 +33,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :type CreationTime: str
         :param FileSystemNums: 关联的文件系统个数
         :type FileSystemNums: int
-        :param DayOfWeek: 快照定期备份在一星期哪一天
+        :param DayOfWeek: 快照定期备份在一星期哪一天，该参数与DayOfMonth,IntervalDays互斥
         :type DayOfWeek: str
         :param Hour: 快照定期备份在一天的哪一小时
         :type Hour: str
@@ -51,6 +51,12 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :type RegionName: str
         :param FileSystems: 文件系统信息
         :type FileSystems: list of FileSystemByPolicy
+        :param DayOfMonth: 快照定期备份在一个月的某个时间；该参数与DayOfWeek,IntervalDays互斥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DayOfMonth: str
+        :param IntervalDays: 快照定期间隔天数，1-365 天；该参数与DayOfMonth,DayOfWeek互斥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntervalDays: int
         """
         self.AutoSnapshotPolicyId = None
         self.PolicyName = None
@@ -65,6 +71,8 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         self.AliveDays = None
         self.RegionName = None
         self.FileSystems = None
+        self.DayOfMonth = None
+        self.IntervalDays = None
 
 
     def _deserialize(self, params):
@@ -86,6 +94,8 @@ class AutoSnapshotPolicyInfo(AbstractModel):
                 obj = FileSystemByPolicy()
                 obj._deserialize(item)
                 self.FileSystems.append(obj)
+        self.DayOfMonth = params.get("DayOfMonth")
+        self.IntervalDays = params.get("IntervalDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -306,26 +316,34 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DayOfWeek: 快照重复日期，星期一到星期日
-        :type DayOfWeek: str
         :param Hour: 快照重复时间点
         :type Hour: str
         :param PolicyName: 策略名称
         :type PolicyName: str
+        :param DayOfWeek: 快照重复日期，星期一到星期日
+        :type DayOfWeek: str
         :param AliveDays: 快照保留时长
         :type AliveDays: int
+        :param DayOfMonth: 快照按月重复，每月1-31号，选择一天，每月这一天打快照。
+        :type DayOfMonth: str
+        :param IntervalDays: 间隔天数
+        :type IntervalDays: int
         """
-        self.DayOfWeek = None
         self.Hour = None
         self.PolicyName = None
+        self.DayOfWeek = None
         self.AliveDays = None
+        self.DayOfMonth = None
+        self.IntervalDays = None
 
 
     def _deserialize(self, params):
-        self.DayOfWeek = params.get("DayOfWeek")
         self.Hour = params.get("Hour")
         self.PolicyName = params.get("PolicyName")
+        self.DayOfWeek = params.get("DayOfWeek")
         self.AliveDays = params.get("AliveDays")
+        self.DayOfMonth = params.get("DayOfMonth")
+        self.IntervalDays = params.get("IntervalDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2410,6 +2428,10 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
         :type AliveDays: int
         :param IsActivated: 是否激活定期快照功能
         :type IsActivated: int
+        :param DayOfMonth: 定期快照在月的某几天天，该参数与DayOfWeek互斥
+        :type DayOfMonth: str
+        :param IntervalDays: 间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 互斥
+        :type IntervalDays: int
         """
         self.AutoSnapshotPolicyId = None
         self.PolicyName = None
@@ -2417,6 +2439,8 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
         self.Hour = None
         self.AliveDays = None
         self.IsActivated = None
+        self.DayOfMonth = None
+        self.IntervalDays = None
 
 
     def _deserialize(self, params):
@@ -2426,6 +2450,8 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
         self.Hour = params.get("Hour")
         self.AliveDays = params.get("AliveDays")
         self.IsActivated = params.get("IsActivated")
+        self.DayOfMonth = params.get("DayOfMonth")
+        self.IntervalDays = params.get("IntervalDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

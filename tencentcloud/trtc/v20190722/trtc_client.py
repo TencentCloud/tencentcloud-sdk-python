@@ -533,6 +533,32 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTrtcRoomUsage(self, request):
+        """查询TRTC音视频房间维度用量。
+        - 单次只能查询一天数据，返回查询时间段内的汇总数据；通过多次查询可以查不同天数据。若查询跨天用量，由于统计延迟等原因，返回数据可能不够准确。
+        - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+        - 默认接口请求频率限制：1次/15秒。
+
+        :param request: Request instance for DescribeTrtcRoomUsage.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcRoomUsageRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTrtcRoomUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTrtcRoomUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTrtcRoomUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTrtcUsage(self, request):
         """获取TRTC音视频互动的用量明细。
         - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。

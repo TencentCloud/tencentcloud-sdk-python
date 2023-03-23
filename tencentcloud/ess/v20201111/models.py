@@ -128,6 +128,14 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type CustomApproverTag: str
         :param ApproverOption: 签署人个性化能力值
         :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
+        :param ApproverVerifyTypes: 签署人查看合同时认证方式, 
+1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
+如果不传默认为1
+        :type ApproverVerifyTypes: list of int
+        :param ApproverSignTypes: 签署人签署合同时的认证方式
+1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
+合同签署认证方式的优先级 verifyChannel>approverSignTypes
+        :type ApproverSignTypes: list of int
         """
         self.ApproverType = None
         self.ApproverName = None
@@ -144,6 +152,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.ApproverSource = None
         self.CustomApproverTag = None
         self.ApproverOption = None
+        self.ApproverVerifyTypes = None
+        self.ApproverSignTypes = None
 
 
     def _deserialize(self, params):
@@ -169,6 +179,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         if params.get("ApproverOption") is not None:
             self.ApproverOption = ApproverOption()
             self.ApproverOption._deserialize(params.get("ApproverOption"))
+        self.ApproverVerifyTypes = params.get("ApproverVerifyTypes")
+        self.ApproverSignTypes = params.get("ApproverSignTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -5433,6 +5433,8 @@ class CreateOutputInfo(AbstractModel):
         :param AllowIpList: IP白名单列表，格式为CIDR，如0.0.0.0/0。
 当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
         :type AllowIpList: list of str
+        :param MaxConcurrent: 最大拉流并发数，最大4，默认4。
+        :type MaxConcurrent: int
         """
         self.OutputName = None
         self.Description = None
@@ -5442,6 +5444,7 @@ class CreateOutputInfo(AbstractModel):
         self.RTMPSettings = None
         self.RTPSettings = None
         self.AllowIpList = None
+        self.MaxConcurrent = None
 
 
     def _deserialize(self, params):
@@ -5459,6 +5462,7 @@ class CreateOutputInfo(AbstractModel):
             self.RTPSettings = CreateOutputInfoRTPSettings()
             self.RTPSettings._deserialize(params.get("RTPSettings"))
         self.AllowIpList = params.get("AllowIpList")
+        self.MaxConcurrent = params.get("MaxConcurrent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8050,6 +8054,8 @@ class DescribeOutput(AbstractModel):
         :param HLSPullSettings: 输出的HLS拉流配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputHLSPullSettings`
+        :param MaxConcurrent: 最大拉流并发数，最大为4，默认4。
+        :type MaxConcurrent: int
         """
         self.OutputId = None
         self.OutputName = None
@@ -8065,6 +8071,7 @@ class DescribeOutput(AbstractModel):
         self.AllowIpList = None
         self.RTSPPullSettings = None
         self.HLSPullSettings = None
+        self.MaxConcurrent = None
 
 
     def _deserialize(self, params):
@@ -8099,6 +8106,7 @@ class DescribeOutput(AbstractModel):
         if params.get("HLSPullSettings") is not None:
             self.HLSPullSettings = DescribeOutputHLSPullSettings()
             self.HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        self.MaxConcurrent = params.get("MaxConcurrent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14460,6 +14468,8 @@ class ModifyOutputInfo(AbstractModel):
         :param AllowIpList: IP白名单列表，格式为CIDR，如0.0.0.0/0。
 当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
         :type AllowIpList: list of str
+        :param MaxConcurrent: 最大拉流并发数，最大4，默认4。
+        :type MaxConcurrent: int
         """
         self.OutputId = None
         self.OutputName = None
@@ -14469,6 +14479,7 @@ class ModifyOutputInfo(AbstractModel):
         self.RTPSettings = None
         self.RTMPSettings = None
         self.AllowIpList = None
+        self.MaxConcurrent = None
 
 
     def _deserialize(self, params):
@@ -14486,6 +14497,7 @@ class ModifyOutputInfo(AbstractModel):
             self.RTMPSettings = CreateOutputRTMPSettings()
             self.RTMPSettings._deserialize(params.get("RTMPSettings"))
         self.AllowIpList = params.get("AllowIpList")
+        self.MaxConcurrent = params.get("MaxConcurrent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

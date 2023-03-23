@@ -3666,6 +3666,12 @@ class StaffStatusMetrics(AbstractModel):
         :type UseMobileAccept: int
         :param UseMobileCallOut: 手机外呼开关
         :type UseMobileCallOut: bool
+        :param LastOnlineTimestamp: 最近一次上线时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOnlineTimestamp: int
+        :param LastStatusTimestamp: 最近一次状态时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastStatusTimestamp: int
         """
         self.Email = None
         self.Status = None
@@ -3681,6 +3687,8 @@ class StaffStatusMetrics(AbstractModel):
         self.ReserveNotReady = None
         self.UseMobileAccept = None
         self.UseMobileCallOut = None
+        self.LastOnlineTimestamp = None
+        self.LastStatusTimestamp = None
 
 
     def _deserialize(self, params):
@@ -3700,6 +3708,8 @@ class StaffStatusMetrics(AbstractModel):
         self.ReserveNotReady = params.get("ReserveNotReady")
         self.UseMobileAccept = params.get("UseMobileAccept")
         self.UseMobileCallOut = params.get("UseMobileCallOut")
+        self.LastOnlineTimestamp = params.get("LastOnlineTimestamp")
+        self.LastStatusTimestamp = params.get("LastStatusTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
