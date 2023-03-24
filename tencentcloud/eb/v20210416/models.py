@@ -914,6 +914,81 @@ class DeleteTransformationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLogTagValueRequest(AbstractModel):
+    """DescribeLogTagValue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 起始时间
+        :type StartTime: int
+        :param EndTime: 结束时间
+        :type EndTime: int
+        :param EventBusId: 事件集ID
+        :type EventBusId: str
+        :param GroupField: 聚合字段
+        :type GroupField: str
+        :param Page: 页数
+        :type Page: int
+        :param Limit: 每页数据大小
+        :type Limit: int
+        :param Filter: 筛选条件
+        :type Filter: list of LogFilter
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.EventBusId = None
+        self.GroupField = None
+        self.Page = None
+        self.Limit = None
+        self.Filter = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.EventBusId = params.get("EventBusId")
+        self.GroupField = params.get("GroupField")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = LogFilter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogTagValueResponse(AbstractModel):
+    """DescribeLogTagValue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Results: 索引检索维度值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Results = params.get("Results")
+        self.RequestId = params.get("RequestId")
+
+
 class ESTargetParams(AbstractModel):
     """描述Es规则目标
 
@@ -1682,6 +1757,85 @@ class ListTargetsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class LogFilter(AbstractModel):
+    """日志查询相关接口filter参数定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 过滤字段名称
+        :type Key: str
+        :param Operator: 运算符，全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
+        :type Operator: str
+        :param Value: 过滤值,范围运算需要同时输入两个值，以英文逗号分隔
+
+        :type Value: str
+        :param Type: 该层级filters逻辑关系，取值 "AND" 或 "OR"
+        :type Type: str
+        :param Filters: LogFilters数组
+        :type Filters: list of LogFilters
+        """
+        self.Key = None
+        self.Operator = None
+        self.Value = None
+        self.Type = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
+        self.Type = params.get("Type")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = LogFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogFilters(AbstractModel):
+    """日志存储过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 过滤字段名称
+        :type Key: str
+        :param Operator: 运算符, 全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
+        :type Operator: str
+        :param Value: 过滤值，范围运算需要同时输入两个值，以英文逗号分隔
+
+        :type Value: str
+        """
+        self.Key = None
+        self.Operator = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutputStructParam(AbstractModel):
     """Transform输出参数
 
@@ -1934,6 +2088,165 @@ class SCFParams(AbstractModel):
         self.BatchTimeout = params.get("BatchTimeout")
         self.BatchEventCount = params.get("BatchEventCount")
         self.EnableBatchDelivery = params.get("EnableBatchDelivery")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogRequest(AbstractModel):
+    """SearchLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 起始时间unix 毫秒时间戳
+        :type StartTime: int
+        :param EndTime: 结束时间unix 毫秒时间戳
+        :type EndTime: int
+        :param EventBusId: 事件集ID
+        :type EventBusId: str
+        :param Page: 页码
+        :type Page: int
+        :param Limit: 每页数据大小
+        :type Limit: int
+        :param Filter: 筛选条件
+        :type Filter: list of LogFilter
+        :param OrderFields: 排序数组
+        :type OrderFields: list of str
+        :param OrderBy: 排序方式，asc 从旧到新，desc 从新到旧
+        :type OrderBy: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.EventBusId = None
+        self.Page = None
+        self.Limit = None
+        self.Filter = None
+        self.OrderFields = None
+        self.OrderBy = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.EventBusId = params.get("EventBusId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = LogFilter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        self.OrderFields = params.get("OrderFields")
+        self.OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogResponse(AbstractModel):
+    """SearchLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 日志总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Limit: 每页日志条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Limit: int
+        :param Page: 页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
+        :param Results: 日志检索结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of SearchLogResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Limit = None
+        self.Page = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Limit = params.get("Limit")
+        self.Page = params.get("Page")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = SearchLogResult()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class SearchLogResult(AbstractModel):
+    """日志检索详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 单条日志上报时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: str
+        :param Message: 日志内容详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Source: 事件来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param Type: 事件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param RuleIds: 事件匹配规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleIds: str
+        :param Subject: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subject: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Status: 事件状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.Timestamp = None
+        self.Message = None
+        self.Source = None
+        self.Type = None
+        self.RuleIds = None
+        self.Subject = None
+        self.Region = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.Message = params.get("Message")
+        self.Source = params.get("Source")
+        self.Type = params.get("Type")
+        self.RuleIds = params.get("RuleIds")
+        self.Subject = params.get("Subject")
+        self.Region = params.get("Region")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -121,10 +121,13 @@ class ActionTimer(AbstractModel):
     def __init__(self):
         r"""
         :param TimerAction: 定时器名称，目前仅支持销毁一个值：TerminateInstances。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimerAction: str
         :param ActionTime: 执行时间，按照ISO8601标准表示，并且使用UTC时间。格式为 YYYY-MM-DDThh:mm:ssZ。例如 2018-05-29T11:26:40Z，执行时间必须大于当前时间5分钟。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTime: str
         :param Externals: 扩展数据
+注意：此字段可能返回 null，表示取不到有效值。
         :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
         """
         self.TimerAction = None
@@ -5346,8 +5349,10 @@ class InstanceChargePrepaid(AbstractModel):
     def __init__(self):
         r"""
         :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Period: int
         :param RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: str
         """
         self.Period = None
@@ -5403,8 +5408,10 @@ class InstanceMarketOptionsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param SpotOptions: 竞价相关选项
+注意：此字段可能返回 null，表示取不到有效值。
         :type SpotOptions: :class:`tencentcloud.cvm.v20170312.models.SpotMarketOptions`
         :param MarketType: 市场选项类型，当前只支持取值：spot
+注意：此字段可能返回 null，表示取不到有效值。
         :type MarketType: str
         """
         self.SpotOptions = None
@@ -6133,6 +6140,14 @@ class LaunchTemplateVersionData(AbstractModel):
         :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的云服务器、云硬盘实例。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: list of TagSpecification
+        :param DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：
+
+TRUE：表示开启实例保护，不允许通过api接口删除实例
+FALSE：表示关闭实例保护，允许通过api接口删除实例
+
+默认取值：FALSE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableApiTermination: bool
         """
         self.Placement = None
         self.InstanceType = None
@@ -6157,6 +6172,7 @@ class LaunchTemplateVersionData(AbstractModel):
         self.ClientToken = None
         self.InstanceChargePrepaid = None
         self.TagSpecification = None
+        self.DisableApiTermination = None
 
 
     def _deserialize(self, params):
@@ -6211,6 +6227,7 @@ class LaunchTemplateVersionData(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+        self.DisableApiTermination = params.get("DisableApiTermination")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9281,8 +9298,10 @@ class TagSpecification(AbstractModel):
     def __init__(self):
         r"""
         :param ResourceType: 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”，镜像为“image”，密钥为“keypair”
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param Tags: 标签对列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         """
         self.ResourceType = None

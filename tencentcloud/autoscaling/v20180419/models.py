@@ -608,11 +608,15 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         :param ClearInstanceNameSettings: 是否清空云服务器实例名相关设置信息，非必填，默认为 false。
 填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。
         :type ClearInstanceNameSettings: bool
+        :param ClearDisasterRecoverGroupIds: 是否清空置放群组信息，非必填，默认为 false。
+填 true 代表清空置放群组信息，清空后基于此新创建的云主机将不指定任何置放群组。
+        :type ClearDisasterRecoverGroupIds: bool
         """
         self.LaunchConfigurationId = None
         self.ClearDataDisks = None
         self.ClearHostNameSettings = None
         self.ClearInstanceNameSettings = None
+        self.ClearDisasterRecoverGroupIds = None
 
 
     def _deserialize(self, params):
@@ -620,6 +624,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         self.ClearDataDisks = params.get("ClearDataDisks")
         self.ClearHostNameSettings = params.get("ClearHostNameSettings")
         self.ClearInstanceNameSettings = params.get("ClearInstanceNameSettings")
+        self.ClearDisasterRecoverGroupIds = params.get("ClearDisasterRecoverGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1009,6 +1014,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type HpcClusterId: str
         :param IPv6InternetAccessible: IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        :param DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
+        :type DisasterRecoverGroupIds: list of str
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -1034,6 +1041,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.DiskTypePolicy = None
         self.HpcClusterId = None
         self.IPv6InternetAccessible = None
+        self.DisasterRecoverGroupIds = None
 
 
     def _deserialize(self, params):
@@ -1094,6 +1102,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         if params.get("IPv6InternetAccessible") is not None:
             self.IPv6InternetAccessible = IPv6InternetAccessible()
             self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3082,6 +3091,9 @@ class Instance(AbstractModel):
 <li>IN_WARMUP：预热中
 <li>AFTER_WARMUP：完成预热
         :type WarmupStatus: str
+        :param DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisasterRecoverGroupIds: list of str
         """
         self.InstanceId = None
         self.AutoScalingGroupId = None
@@ -3097,6 +3109,7 @@ class Instance(AbstractModel):
         self.VersionNumber = None
         self.AutoScalingGroupName = None
         self.WarmupStatus = None
+        self.DisasterRecoverGroupIds = None
 
 
     def _deserialize(self, params):
@@ -3114,6 +3127,7 @@ class Instance(AbstractModel):
         self.VersionNumber = params.get("VersionNumber")
         self.AutoScalingGroupName = params.get("AutoScalingGroupName")
         self.WarmupStatus = params.get("WarmupStatus")
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4068,6 +4082,8 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         :type HpcClusterId: str
         :param IPv6InternetAccessible: IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        :param DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
+        :type DisasterRecoverGroupIds: list of str
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -4089,6 +4105,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         self.CamRoleName = None
         self.HpcClusterId = None
         self.IPv6InternetAccessible = None
+        self.DisasterRecoverGroupIds = None
 
 
     def _deserialize(self, params):
@@ -4133,6 +4150,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         if params.get("IPv6InternetAccessible") is not None:
             self.IPv6InternetAccessible = IPv6InternetAccessible()
             self.IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
+        self.DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

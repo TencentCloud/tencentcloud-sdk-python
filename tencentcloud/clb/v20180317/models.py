@@ -6088,6 +6088,8 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type Http2: bool
         :param DefaultServer: 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
         :type DefaultServer: bool
+        :param Quic: 是否开启Quic，注意，只有HTTPS域名才能开启Quic
+        :type Quic: bool
         :param NewDefaultServerDomain: 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
         :type NewDefaultServerDomain: str
         :param NewDomains: 要修改的新域名列表。NewDomain和NewDomains只能传一个。
@@ -6102,6 +6104,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.Certificate = None
         self.Http2 = None
         self.DefaultServer = None
+        self.Quic = None
         self.NewDefaultServerDomain = None
         self.NewDomains = None
         self.MultiCertInfo = None
@@ -6117,6 +6120,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
             self.Certificate._deserialize(params.get("Certificate"))
         self.Http2 = params.get("Http2")
         self.DefaultServer = params.get("DefaultServer")
+        self.Quic = params.get("Quic")
         self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
         self.NewDomains = params.get("NewDomains")
         if params.get("MultiCertInfo") is not None:

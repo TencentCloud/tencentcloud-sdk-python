@@ -2805,8 +2805,10 @@ class InstanceMarketOptionsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param SpotOptions: 竞价相关选项
+注意：此字段可能返回 null，表示取不到有效值。
         :type SpotOptions: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
         :param MarketType: 市场选项类型，当前只支持取值：spot
+注意：此字段可能返回 null，表示取不到有效值。
         :type MarketType: str
         """
         self.SpotOptions = None

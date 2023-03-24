@@ -1959,7 +1959,7 @@ class DescribeInstanceDealDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealDetails: 订单详细信息
+        :param DealDetails: 订单详细信息。
         :type DealDetails: list of TradeDealDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3457,7 +3457,7 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例 ID。
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -3481,15 +3481,21 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertDownloadUrl: 证书下载地址
+        :param CertDownloadUrl: SSL 证书下载地址。
         :type CertDownloadUrl: str
-        :param UrlExpiredTime: 证书下载链接到期时间
+        :param UrlExpiredTime: 证书下载链接到期时间。
         :type UrlExpiredTime: str
-        :param SSLConfig: 实例SSL配置状态， true：开启 false：关闭
+        :param SSLConfig: 标识实例开启 SSL 功能。
+- true：开启 。
+- false：关闭。
         :type SSLConfig: bool
-        :param FeatureSupport: 实例SSL特性支持， true：支持 false：不支持（小版本升级后才能支持SSL特性）
+        :param FeatureSupport: 标识实例是否支持 SSL特性。
+- true：支持。
+- false：不支持。
         :type FeatureSupport: bool
-        :param Status: SSL配置状态，1: 配置中 2：配置成功
+        :param Status: 说明配置 SSL 的状态。
+- 1: 配置中。
+- 2：配置成功。
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5490,11 +5496,14 @@ class ModfiyInstancePasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例 ID。
         :type InstanceId: str
-        :param OldPassword: 实例旧密码
+        :param OldPassword: 实例旧密码。
         :type OldPassword: str
-        :param Password: 实例新密码
+        :param Password: 实例新密码。密码复杂度要求如下：
+- 长度8 - 30位, 推荐使用12位以上的密码。
+- 不能以"/"开头。
+- 至少包含小写字母a - z、大写字母A - Z、数字0 - 9、特殊字符 ()~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
         :type Password: str
         """
         self.InstanceId = None
@@ -5522,7 +5531,7 @@ class ModfiyInstancePasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param TaskId: 任务 ID。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

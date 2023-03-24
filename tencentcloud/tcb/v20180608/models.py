@@ -5347,7 +5347,7 @@ class DescribeGatewayCurveDataRequest(AbstractModel):
         :type EnvId: str
         :param GatewayId: 网关id
         :type GatewayId: str
-        :param MetricName: 监控类型 GWQps GWBandwidth GwHttpError GwHttp404 GwHttp502
+        :param MetricName: 监控类型 GWQps GWBandwidth GwHttpError GwHttp404 GwHttp502 GwConnect GwCircuit
         :type MetricName: str
         :param StartTime: 监控起始时间
         :type StartTime: str

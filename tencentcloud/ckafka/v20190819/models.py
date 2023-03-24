@@ -219,6 +219,40 @@ class AclRuleInfo(AbstractModel):
         
 
 
+class AclRuleResp(AbstractModel):
+    """AclRule列表接口返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数据条数
+        :type TotalCount: int
+        :param AclRuleList: AclRule列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclRuleList: list of AclRule
+        """
+        self.TotalCount = None
+        self.AclRuleList = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("AclRuleList") is not None:
+            self.AclRuleList = []
+            for item in params.get("AclRuleList"):
+                obj = AclRule()
+                obj._deserialize(item)
+                self.AclRuleList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnalyseParam(AbstractModel):
     """数据处理-解析参数
 
@@ -1622,6 +1656,84 @@ class CreateAclResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = JgwOperateResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateAclRuleRequest(AbstractModel):
+    """CreateAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id信息
+        :type InstanceId: str
+        :param ResourceType: Acl资源类型,目前只支持Topic,枚举值列表：Topic
+        :type ResourceType: str
+        :param PatternType: 匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
+        :type PatternType: str
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param RuleList: 设置的ACL规则列表
+        :type RuleList: list of AclRuleInfo
+        :param Pattern: 表示前缀匹配的前缀的值
+        :type Pattern: str
+        :param IsApplied: 预设ACL规则是否应用到新增的topic中
+        :type IsApplied: int
+        :param Comment: ACL规则的备注
+        :type Comment: str
+        """
+        self.InstanceId = None
+        self.ResourceType = None
+        self.PatternType = None
+        self.RuleName = None
+        self.RuleList = None
+        self.Pattern = None
+        self.IsApplied = None
+        self.Comment = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ResourceType = params.get("ResourceType")
+        self.PatternType = params.get("PatternType")
+        self.RuleName = params.get("RuleName")
+        if params.get("RuleList") is not None:
+            self.RuleList = []
+            for item in params.get("RuleList"):
+                obj = AclRuleInfo()
+                obj._deserialize(item)
+                self.RuleList.append(obj)
+        self.Pattern = params.get("Pattern")
+        self.IsApplied = params.get("IsApplied")
+        self.Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAclRuleResponse(AbstractModel):
+    """CreateAclRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 规则的唯一表示Key
+        :type Result: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -3929,6 +4041,65 @@ class DescribeACLResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAclRuleRequest(AbstractModel):
+    """DescribeAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param RuleName: ACL规则名
+        :type RuleName: str
+        :param PatternType: ACL规则匹配类型
+        :type PatternType: str
+        :param IsSimplified: 是否读取简略的ACL规则
+        :type IsSimplified: bool
+        """
+        self.InstanceId = None
+        self.RuleName = None
+        self.PatternType = None
+        self.IsSimplified = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RuleName = params.get("RuleName")
+        self.PatternType = params.get("PatternType")
+        self.IsSimplified = params.get("IsSimplified")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAclRuleResponse(AbstractModel):
+    """DescribeAclRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回的AclRule结果集对象
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.AclRuleResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = AclRuleResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAppInfoRequest(AbstractModel):
     """DescribeAppInfo请求参数结构体
 
@@ -4090,12 +4261,18 @@ class DescribeConnectResource(AbstractModel):
         :param ErrorMessage: 连接源的异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
-        :param CurrentStep: 连接源的当前所处步骤
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CurrentStep: str
         :param DatahubTaskCount: 该连接源关联的Datahub任务数
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatahubTaskCount: int
+        :param CurrentStep: 连接源的当前所处步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentStep: str
+        :param TaskProgress: 创建进度百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskProgress: float
+        :param StepList: 步骤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepList: list of str
         :param DtsConnectParam: Dts配置，Type为DTS时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type DtsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
@@ -4137,8 +4314,10 @@ class DescribeConnectResource(AbstractModel):
         self.Status = None
         self.CreateTime = None
         self.ErrorMessage = None
-        self.CurrentStep = None
         self.DatahubTaskCount = None
+        self.CurrentStep = None
+        self.TaskProgress = None
+        self.StepList = None
         self.DtsConnectParam = None
         self.MongoDBConnectParam = None
         self.EsConnectParam = None
@@ -4160,8 +4339,10 @@ class DescribeConnectResource(AbstractModel):
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
         self.ErrorMessage = params.get("ErrorMessage")
-        self.CurrentStep = params.get("CurrentStep")
         self.DatahubTaskCount = params.get("DatahubTaskCount")
+        self.CurrentStep = params.get("CurrentStep")
+        self.TaskProgress = params.get("TaskProgress")
+        self.StepList = params.get("StepList")
         if params.get("DtsConnectParam") is not None:
             self.DtsConnectParam = DtsConnectParam()
             self.DtsConnectParam._deserialize(params.get("DtsConnectParam"))
@@ -8837,6 +9018,59 @@ class MariaDBParam(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAclRuleRequest(AbstractModel):
+    """ModifyAclRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param RuleName: ACL策略名
+        :type RuleName: str
+        :param IsApplied: 是否应用到新增的Topic
+        :type IsApplied: int
+        """
+        self.InstanceId = None
+        self.RuleName = None
+        self.IsApplied = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RuleName = params.get("RuleName")
+        self.IsApplied = params.get("IsApplied")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAclRuleResponse(AbstractModel):
+    """ModifyAclRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 规则的唯一表示Key
+        :type Result: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyConnectResourceRequest(AbstractModel):

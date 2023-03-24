@@ -12699,6 +12699,8 @@ class PrometheusClusterAgentBasic(AbstractModel):
         :type NotInstallBasicScrape: bool
         :param NotScrape: 是否采集指标，true代表drop所有指标，false代表采集默认指标
         :type NotScrape: bool
+        :param OpenDefaultRecord: 是否开启默认预聚合规则
+        :type OpenDefaultRecord: bool
         """
         self.Region = None
         self.ClusterType = None
@@ -12708,6 +12710,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
         self.ExternalLabels = None
         self.NotInstallBasicScrape = None
         self.NotScrape = None
+        self.OpenDefaultRecord = None
 
 
     def _deserialize(self, params):
@@ -12726,6 +12729,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
                 self.ExternalLabels.append(obj)
         self.NotInstallBasicScrape = params.get("NotInstallBasicScrape")
         self.NotScrape = params.get("NotScrape")
+        self.OpenDefaultRecord = params.get("OpenDefaultRecord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

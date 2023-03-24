@@ -2482,6 +2482,12 @@ class ImageConfig(AbstractModel):
         :param ContainerImageAccelerate: 镜像加速开关，默认False
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerImageAccelerate: bool
+        :param ImagePort: 镜像函数端口设置
+-1: 无端口镜像函数
+0: 默认端口，当前默认端口是9000
+其他: 特殊端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImagePort: int
         """
         self.ImageType = None
         self.ImageUri = None
@@ -2490,6 +2496,7 @@ class ImageConfig(AbstractModel):
         self.Command = None
         self.Args = None
         self.ContainerImageAccelerate = None
+        self.ImagePort = None
 
 
     def _deserialize(self, params):
@@ -2500,6 +2507,7 @@ class ImageConfig(AbstractModel):
         self.Command = params.get("Command")
         self.Args = params.get("Args")
         self.ContainerImageAccelerate = params.get("ContainerImageAccelerate")
+        self.ImagePort = params.get("ImagePort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3275,6 +3275,9 @@ class SeatUserInfo(AbstractModel):
         :type Name: str
         :param Mail: 坐席邮箱
         :type Mail: str
+        :param StaffNumber: 工号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaffNumber: str
         :param Phone: 坐席电话号码（带0086前缀）
         :type Phone: str
         :param Nick: 坐席昵称
@@ -3284,27 +3287,24 @@ class SeatUserInfo(AbstractModel):
         :param SkillGroupNameList: 坐席关联的技能组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupNameList: list of str
-        :param StaffNumber: 工号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StaffNumber: str
         """
         self.Name = None
         self.Mail = None
+        self.StaffNumber = None
         self.Phone = None
         self.Nick = None
         self.UserId = None
         self.SkillGroupNameList = None
-        self.StaffNumber = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Mail = params.get("Mail")
+        self.StaffNumber = params.get("StaffNumber")
         self.Phone = params.get("Phone")
         self.Nick = params.get("Nick")
         self.UserId = params.get("UserId")
         self.SkillGroupNameList = params.get("SkillGroupNameList")
-        self.StaffNumber = params.get("StaffNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

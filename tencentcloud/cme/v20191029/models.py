@@ -780,6 +780,7 @@ class CreateProjectRequest(AbstractModel):
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
 <li>STREAM_CONNECT：云转推。</li>
 <li>RECORD_REPLAY：录制回放。</li>
+<li>MEDIA_CAST：点播转直播。</li>
         :type Category: str
         :param Mode: 项目模式，一个项目可以有多种模式并相互切换。
 当 Category 为 VIDEO_EDIT 时，可选模式有：
@@ -805,6 +806,8 @@ class CreateProjectRequest(AbstractModel):
         :type StreamConnectProjectInput: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInput`
         :param RecordReplayProjectInput: 录制回放项目输入信息，仅当项目类型为 RECORD_REPLAY 时必填。
         :type RecordReplayProjectInput: :class:`tencentcloud.cme.v20191029.models.RecordReplayProjectInput`
+        :param MediaCastProjectInput: 点播转直播项目输入信息，仅当项目类型为 MEDIA_CAST 时必填。
+        :type MediaCastProjectInput: :class:`tencentcloud.cme.v20191029.models.MediaCastProjectInput`
         """
         self.Platform = None
         self.Name = None
@@ -819,6 +822,7 @@ class CreateProjectRequest(AbstractModel):
         self.VideoSegmentationProjectInput = None
         self.StreamConnectProjectInput = None
         self.RecordReplayProjectInput = None
+        self.MediaCastProjectInput = None
 
 
     def _deserialize(self, params):
@@ -849,6 +853,9 @@ class CreateProjectRequest(AbstractModel):
         if params.get("RecordReplayProjectInput") is not None:
             self.RecordReplayProjectInput = RecordReplayProjectInput()
             self.RecordReplayProjectInput._deserialize(params.get("RecordReplayProjectInput"))
+        if params.get("MediaCastProjectInput") is not None:
+            self.MediaCastProjectInput = MediaCastProjectInput()
+            self.MediaCastProjectInput._deserialize(params.get("MediaCastProjectInput"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1773,6 +1780,7 @@ class DescribeProjectsRequest(AbstractModel):
 <li>VIDEO_SEGMENTATION：视频拆条。</li>
 <li>STREAM_CONNECT：云转推。</li>
 <li>RECORD_REPLAY：录制回放。</li>
+<li>MEDIA_CAST：点播转直播。</li>
 
 注：如果不填则不使用项目类型进行过滤。
         :type CategorySet: list of str
@@ -3148,6 +3156,125 @@ class GrantResourceAuthorizationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class HandleMediaCastProjectRequest(AbstractModel):
+    """HandleMediaCastProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Platform: 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+        :type Platform: str
+        :param ProjectId: 点播转直播项目 Id 。
+        :type ProjectId: str
+        :param Operation: 请参考 [操作类型](#Operation)。
+        :type Operation: str
+        :param SourceInfos: 输入源信息。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 AddSource、DeleteSource、SwitchSource 时必填。
+        :type SourceInfos: list of MediaCastSourceInfo
+        :param DestinationInfos: 输出源信息。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 AddDestination、DeleteDestination、EnableDestination、DisableDestination、ModifyDestination 时必填。
+        :type DestinationInfos: list of MediaCastDestinationInfo
+        :param OutputMediaSetting: 输出媒体配置。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 ModfiyOutputSetting 时必填。
+        :type OutputMediaSetting: :class:`tencentcloud.cme.v20191029.models.MediaCastOutputMediaSetting`
+        :param PlaySetting: 播放控制参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 ModifyPlaySetting 时必填。
+        :type PlaySetting: :class:`tencentcloud.cme.v20191029.models.MediaCastPlaySetting`
+        :param Position: 新添加的输入源位于输入源列表的位置，从0开始。默认加在输入源列表的后面。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+当 Operation 为 AddSource 时必填。
+        :type Position: int
+        :param Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有点播转直播项目。如果指定操作者，则操作者必须为项目所有者。
+        :type Operator: str
+        """
+        self.Platform = None
+        self.ProjectId = None
+        self.Operation = None
+        self.SourceInfos = None
+        self.DestinationInfos = None
+        self.OutputMediaSetting = None
+        self.PlaySetting = None
+        self.Position = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Platform = params.get("Platform")
+        self.ProjectId = params.get("ProjectId")
+        self.Operation = params.get("Operation")
+        if params.get("SourceInfos") is not None:
+            self.SourceInfos = []
+            for item in params.get("SourceInfos"):
+                obj = MediaCastSourceInfo()
+                obj._deserialize(item)
+                self.SourceInfos.append(obj)
+        if params.get("DestinationInfos") is not None:
+            self.DestinationInfos = []
+            for item in params.get("DestinationInfos"):
+                obj = MediaCastDestinationInfo()
+                obj._deserialize(item)
+                self.DestinationInfos.append(obj)
+        if params.get("OutputMediaSetting") is not None:
+            self.OutputMediaSetting = MediaCastOutputMediaSetting()
+            self.OutputMediaSetting._deserialize(params.get("OutputMediaSetting"))
+        if params.get("PlaySetting") is not None:
+            self.PlaySetting = MediaCastPlaySetting()
+            self.PlaySetting._deserialize(params.get("PlaySetting"))
+        self.Position = params.get("Position")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HandleMediaCastProjectResponse(AbstractModel):
+    """HandleMediaCastProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlayInfo: 播放信息，Operation 为 DescribePlayInfo 时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlayInfo: :class:`tencentcloud.cme.v20191029.models.MediaCastPlayInfo`
+        :param SourceInfoSet: 输入源信息， Operation 为 AddSource 时返回添加成功的输入源信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceInfoSet: list of MediaCastSourceInfo
+        :param DestinationInfoSet: 输出源信息， Operation 为 AddDestination 时返回添加成功的输出源信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestinationInfoSet: list of MediaCastDestinationInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PlayInfo = None
+        self.SourceInfoSet = None
+        self.DestinationInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlayInfo") is not None:
+            self.PlayInfo = MediaCastPlayInfo()
+            self.PlayInfo._deserialize(params.get("PlayInfo"))
+        if params.get("SourceInfoSet") is not None:
+            self.SourceInfoSet = []
+            for item in params.get("SourceInfoSet"):
+                obj = MediaCastSourceInfo()
+                obj._deserialize(item)
+                self.SourceInfoSet.append(obj)
+        if params.get("DestinationInfoSet") is not None:
+            self.DestinationInfoSet = []
+            for item in params.get("DestinationInfoSet"):
+                obj = MediaCastDestinationInfo()
+                obj._deserialize(item)
+                self.DestinationInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class HandleStreamConnectProjectRequest(AbstractModel):
     """HandleStreamConnectProject请求参数结构体
 
@@ -4228,22 +4355,22 @@ class MediaCastDestinationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Index: 输出源序号。由系统进行分配。
-        :type Index: int
-        :param Name: 输出源的名称。
-        :type Name: str
+        :param Id: 输出源 Id。由系统进行分配。
+        :type Id: str
         :param PushUrl: 输出直播流地址。支持的直播流类型为 RTMP 和 SRT。
         :type PushUrl: str
+        :param Name: 输出源的名称。
+        :type Name: str
         """
-        self.Index = None
-        self.Name = None
+        self.Id = None
         self.PushUrl = None
+        self.Name = None
 
 
     def _deserialize(self, params):
-        self.Index = params.get("Index")
-        self.Name = params.get("Name")
+        self.Id = params.get("Id")
         self.PushUrl = params.get("PushUrl")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4285,6 +4412,41 @@ class MediaCastDestinationInterruptInfo(AbstractModel):
         
 
 
+class MediaCastDestinationStatus(AbstractModel):
+    """点播转直播输出源状态信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 输出源 Id，由系统分配。
+        :type Id: str
+        :param PushUrl: 输出源直播地址。
+        :type PushUrl: str
+        :param Status: 输出源的状态。取值有：
+<li> Working ：运行中；</li>
+<li> Stopped：停止输出；</li>
+<li> Failed：输出失败。</li>
+        :type Status: str
+        """
+        self.Id = None
+        self.PushUrl = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.PushUrl = params.get("PushUrl")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MediaCastOutputMediaSetting(AbstractModel):
     """点播转直播输出媒体配置。
 
@@ -4302,6 +4464,57 @@ class MediaCastOutputMediaSetting(AbstractModel):
         if params.get("VideoSetting") is not None:
             self.VideoSetting = MediaCastVideoSetting()
             self.VideoSetting._deserialize(params.get("VideoSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCastPlayInfo(AbstractModel):
+    """点播转直播播放信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 点播转直播项目运行状态，取值有：
+<li> Working : 运行中；</li>
+<li> Idle: 空闲状态。</li>
+        :type Status: str
+        :param CurrentSourceId: 当前播放的输入源 Id。
+        :type CurrentSourceId: str
+        :param CurrentSourcePosition: 当前播放的输入源的播放位置，单位：秒。
+        :type CurrentSourcePosition: float
+        :param CurrentSourceDuration: 当前播放的输入源时长，单位：秒。
+        :type CurrentSourceDuration: float
+        :param DestinationStatusSet: 输出源状态信息。
+        :type DestinationStatusSet: list of MediaCastDestinationStatus
+        :param LoopCount: 已经循环播放的次数。
+        :type LoopCount: int
+        """
+        self.Status = None
+        self.CurrentSourceId = None
+        self.CurrentSourcePosition = None
+        self.CurrentSourceDuration = None
+        self.DestinationStatusSet = None
+        self.LoopCount = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.CurrentSourceId = params.get("CurrentSourceId")
+        self.CurrentSourcePosition = params.get("CurrentSourcePosition")
+        self.CurrentSourceDuration = params.get("CurrentSourceDuration")
+        if params.get("DestinationStatusSet") is not None:
+            self.DestinationStatusSet = []
+            for item in params.get("DestinationStatusSet"):
+                obj = MediaCastDestinationStatus()
+                obj._deserialize(item)
+                self.DestinationStatusSet.append(obj)
+        self.LoopCount = params.get("LoopCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4403,6 +4616,56 @@ class MediaCastProjectInfo(AbstractModel):
         
 
 
+class MediaCastProjectInput(AbstractModel):
+    """点播转直播项目输入信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceInfos: 输入源列表。输入源列表最大个数为100.
+        :type SourceInfos: list of MediaCastSourceInfo
+        :param DestinationInfos: 输出源列表。输出源列表最大个数为10.
+        :type DestinationInfos: list of MediaCastDestinationInfo
+        :param OutputMediaSetting: 输出媒体配置。
+        :type OutputMediaSetting: :class:`tencentcloud.cme.v20191029.models.MediaCastOutputMediaSetting`
+        :param PlaySetting: 播放控制参数。
+        :type PlaySetting: :class:`tencentcloud.cme.v20191029.models.MediaCastPlaySetting`
+        """
+        self.SourceInfos = None
+        self.DestinationInfos = None
+        self.OutputMediaSetting = None
+        self.PlaySetting = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceInfos") is not None:
+            self.SourceInfos = []
+            for item in params.get("SourceInfos"):
+                obj = MediaCastSourceInfo()
+                obj._deserialize(item)
+                self.SourceInfos.append(obj)
+        if params.get("DestinationInfos") is not None:
+            self.DestinationInfos = []
+            for item in params.get("DestinationInfos"):
+                obj = MediaCastDestinationInfo()
+                obj._deserialize(item)
+                self.DestinationInfos.append(obj)
+        if params.get("OutputMediaSetting") is not None:
+            self.OutputMediaSetting = MediaCastOutputMediaSetting()
+            self.OutputMediaSetting._deserialize(params.get("OutputMediaSetting"))
+        if params.get("PlaySetting") is not None:
+            self.PlaySetting = MediaCastPlaySetting()
+            self.PlaySetting._deserialize(params.get("PlaySetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MediaCastSourceInfo(AbstractModel):
     """点播转直播输入源信息。
 
@@ -4410,28 +4673,29 @@ class MediaCastSourceInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Id: 输入源 Id，由系统分配。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
         :param Type: 输入源的媒体类型，取值有：
 <li>CME：多媒体创作引擎的媒体文件；</li>
 <li>VOD：云点播的媒资文件。</li>
         :type Type: str
-        :param MaterialId: 多媒体创作引擎的媒体 ID。当 Type = CME  时必填。
-        :type MaterialId: str
         :param FileId: 云点播媒体文件 ID。当 Type = VOD 时必填。
         :type FileId: str
-        :param Index: 序号，位于输入源列表中的序号，由系统分配。
-        :type Index: int
+        :param MaterialId: 多媒体创作引擎的媒体 ID。当 Type = CME  时必填。
+        :type MaterialId: str
         """
+        self.Id = None
         self.Type = None
-        self.MaterialId = None
         self.FileId = None
-        self.Index = None
+        self.MaterialId = None
 
 
     def _deserialize(self, params):
+        self.Id = params.get("Id")
         self.Type = params.get("Type")
-        self.MaterialId = params.get("MaterialId")
         self.FileId = params.get("FileId")
-        self.Index = params.get("Index")
+        self.MaterialId = params.get("MaterialId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5720,7 +5984,6 @@ class ResourceInfo(AbstractModel):
     def __init__(self):
         r"""
         :param Resource: 媒资和分类资源。
-注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: :class:`tencentcloud.cme.v20191029.models.Resource`
         :param Owner: 资源归属，个人或团队。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
@@ -6763,10 +7026,8 @@ class TimeRange(AbstractModel):
     def __init__(self):
         r"""
         :param StartTime: 开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
         :param EndTime: 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
         """
         self.StartTime = None
@@ -6880,11 +7141,14 @@ class VideoEditProjectOutput(AbstractModel):
         :param MetaData: 元信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.cme.v20191029.models.MediaMetaData`
+        :param CoverURL: 导出视频的封面图片 URL。
+        :type CoverURL: str
         """
         self.MaterialId = None
         self.VodFileId = None
         self.URL = None
         self.MetaData = None
+        self.CoverURL = None
 
 
     def _deserialize(self, params):
@@ -6894,6 +7158,7 @@ class VideoEditProjectOutput(AbstractModel):
         if params.get("MetaData") is not None:
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
+        self.CoverURL = params.get("CoverURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
