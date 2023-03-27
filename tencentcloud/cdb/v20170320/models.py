@@ -5806,14 +5806,18 @@ class DescribeDefaultParamsRequest(AbstractModel):
         :type EngineVersion: str
         :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
         :type TemplateType: str
+        :param EngineType: 参数模板引擎，默认值：InnoDB
+        :type EngineType: str
         """
         self.EngineVersion = None
         self.TemplateType = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
         self.EngineVersion = params.get("EngineVersion")
         self.TemplateType = params.get("TemplateType")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

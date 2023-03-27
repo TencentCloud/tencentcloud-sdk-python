@@ -323,7 +323,7 @@ class EssClient(AbstractClient):
 
 
     def CreateIntegrationEmployees(self, request):
-        """创建员工
+        """创建员工,如需在此接口提醒员工实名，入参Employees的OpenId不传
 
         :param request: Request instance for CreateIntegrationEmployees.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateIntegrationEmployeesRequest`
@@ -386,6 +386,29 @@ class EssClient(AbstractClient):
             body = self.call("CreatePrepareFlow", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePrepareFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePreparedPersonalEsign(self, request):
+        """本接口（CreatePreparedPersonalEsign）由于创建导入个人印章。
+
+        :param request: Request instance for CreatePreparedPersonalEsign.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreatePreparedPersonalEsignRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreatePreparedPersonalEsignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePreparedPersonalEsign", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePreparedPersonalEsignResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

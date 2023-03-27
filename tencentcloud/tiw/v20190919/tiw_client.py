@@ -26,6 +26,75 @@ class TiwClient(AbstractClient):
     _service = 'tiw'
 
 
+    def ApplyTiwTrial(self, request):
+        """申请互动白板试用，默认15天
+
+        :param request: Request instance for ApplyTiwTrial.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.ApplyTiwTrialRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.ApplyTiwTrialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyTiwTrial", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApplyTiwTrialResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateApplication(self, request):
+        """创建白板应用
+
+        :param request: Request instance for CreateApplication.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.CreateApplicationRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.CreateApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateOfflineRecord(self, request):
+        """创建课后录制任务
+
+        :param request: Request instance for CreateOfflineRecord.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.CreateOfflineRecordRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.CreateOfflineRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOfflineRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOfflineRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSnapshotTask(self, request):
         """创建白板板书生成任务, 在任务结束后，如果提供了回调地址，将通过回调地址通知板书生成结果
 
@@ -95,6 +164,167 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAPIService(self, request):
+        """通过服务角色调用其他云产品API接口获取信息
+
+        :param request: Request instance for DescribeAPIService.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeAPIServiceRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeAPIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAPIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAPIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApplicationInfos(self, request):
+        """查询白板应用详情
+
+        :param request: Request instance for DescribeApplicationInfos.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeApplicationInfosRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeApplicationInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationInfosResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApplicationUsage(self, request):
+        """查询互动白板各个子产品用量
+
+        :param request: Request instance for DescribeApplicationUsage.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeApplicationUsageRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeApplicationUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBoardSDKLog(self, request):
+        """查询客户端白板日志
+
+        :param request: Request instance for DescribeBoardSDKLog.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeBoardSDKLogRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeBoardSDKLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBoardSDKLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBoardSDKLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIMApplications(self, request):
+        """查询可用于创建白板应用的IM应用列表
+
+        :param request: Request instance for DescribeIMApplications.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeIMApplicationsRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeIMApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIMApplications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIMApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOfflineRecord(self, request):
+        """查询课后录制任务的进度与录制结果等相关信息
+
+        :param request: Request instance for DescribeOfflineRecord.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOfflineRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOfflineRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOfflineRecordCallback(self, request):
+        """查询课后录制回调地址
+
+        :param request: Request instance for DescribeOfflineRecordCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOfflineRecordCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOfflineRecordCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOnlineRecord(self, request):
         """查询录制任务状态与结果
 
@@ -141,6 +371,29 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePostpaidUsage(self, request):
+        """查询用户后付费用量
+
+        :param request: Request instance for DescribePostpaidUsage.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribePostpaidUsageRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribePostpaidUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePostpaidUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePostpaidUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeQualityMetrics(self, request):
         """查询互动白板质量数据
 
@@ -155,6 +408,29 @@ class TiwClient(AbstractClient):
             body = self.call("DescribeQualityMetrics", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeQualityMetricsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRoomList(self, request):
+        """查询白板房间列表
+
+        :param request: Request instance for DescribeRoomList.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeRoomListRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeRoomListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRoomList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRoomListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -283,6 +559,121 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTranscodeSearch(self, request):
+        """按文档名称搜索转码任务
+
+        :param request: Request instance for DescribeTranscodeSearch.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeSearchRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeSearchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTranscodeSearch", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTranscodeSearchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUsageSummary(self, request):
+        """查询指定时间段内子产品的用量汇总
+
+        :param request: Request instance for DescribeUsageSummary.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeUsageSummaryRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeUsageSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsageSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUsageSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserList(self, request):
+        """查询白板用户列表
+
+        :param request: Request instance for DescribeUserList.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeUserListRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeUserListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserResources(self, request):
+        """查询客户资源列表
+
+        :param request: Request instance for DescribeUserResources.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeUserResourcesRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeUserResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserStatus(self, request):
+        """查询互动白板用户详情，包括是否开通了互动白板，当前互动白板服务有效期等信息
+
+        :param request: Request instance for DescribeUserStatus.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeUserStatusRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeUserStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVideoGenerationTask(self, request):
         """查询录制视频生成任务状态与结果
 
@@ -320,6 +711,52 @@ class TiwClient(AbstractClient):
             body = self.call("DescribeVideoGenerationTaskCallback", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVideoGenerationTaskCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWhiteboardApplicationConfig(self, request):
+        """查询白板应用任务相关的配置，包括存储桶、回调等
+
+        :param request: Request instance for DescribeWhiteboardApplicationConfig.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardApplicationConfigRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardApplicationConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWhiteboardApplicationConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWhiteboardApplicationConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWhiteboardBucketConfig(self, request):
+        """查询文档转码，实时录制存储桶的配置
+
+        :param request: Request instance for DescribeWhiteboardBucketConfig.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardBucketConfigRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardBucketConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWhiteboardBucketConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWhiteboardBucketConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -375,6 +812,121 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWhiteboardPushSearch(self, request):
+        """根据房间号搜索白板推流任务
+
+        :param request: Request instance for DescribeWhiteboardPushSearch.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushSearchRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeWhiteboardPushSearchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWhiteboardPushSearch", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWhiteboardPushSearchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyApplication(self, request):
+        """修改白板应用
+
+        :param request: Request instance for ModifyApplication.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.ModifyApplicationRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.ModifyApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAutoRenewFlag(self, request):
+        """设置白板月功能费自动续费
+
+        :param request: Request instance for ModifyAutoRenewFlag.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.ModifyAutoRenewFlagRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.ModifyAutoRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAutoRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAutoRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyWhiteboardApplicationConfig(self, request):
+        """修改白板应用任务相关的配置，包括存储桶、回调等
+
+        :param request: Request instance for ModifyWhiteboardApplicationConfig.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.ModifyWhiteboardApplicationConfigRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.ModifyWhiteboardApplicationConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWhiteboardApplicationConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWhiteboardApplicationConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyWhiteboardBucketConfig(self, request):
+        """设置文档转码，实时录制存储桶的配置
+
+        :param request: Request instance for ModifyWhiteboardBucketConfig.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.ModifyWhiteboardBucketConfigRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.ModifyWhiteboardBucketConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWhiteboardBucketConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWhiteboardBucketConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PauseOnlineRecord(self, request):
         """暂停实时录制
 
@@ -412,6 +964,29 @@ class TiwClient(AbstractClient):
             body = self.call("ResumeOnlineRecord", params, headers=headers)
             response = json.loads(body)
             model = models.ResumeOnlineRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetOfflineRecordCallback(self, request):
+        """设置课后录制回调地址
+
+        :param request: Request instance for SetOfflineRecordCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetOfflineRecordCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetOfflineRecordCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetOfflineRecordCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetOfflineRecordCallbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

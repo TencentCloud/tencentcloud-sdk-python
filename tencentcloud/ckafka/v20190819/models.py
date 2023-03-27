@@ -4590,11 +4590,14 @@ class DescribeConnectResourcesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100
         :type Limit: int
+        :param ResourceRegion: 连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)
+        :type ResourceRegion: str
         """
         self.Type = None
         self.SearchWord = None
         self.Offset = None
         self.Limit = None
+        self.ResourceRegion = None
 
 
     def _deserialize(self, params):
@@ -4602,6 +4605,7 @@ class DescribeConnectResourcesRequest(AbstractModel):
         self.SearchWord = params.get("SearchWord")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ResourceRegion = params.get("ResourceRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

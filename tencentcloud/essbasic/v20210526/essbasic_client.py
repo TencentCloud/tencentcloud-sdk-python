@@ -420,6 +420,52 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCreateUserRoles(self, request):
+        """渠道版绑定员工角色
+
+        :param request: Request instance for ChannelCreateUserRoles.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateUserRolesRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateUserRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateUserRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateUserRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChannelDeleteRoleUsers(self, request):
+        """渠道版删除员工绑定角色
+
+        :param request: Request instance for ChannelDeleteRoleUsers.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDeleteRoleUsersRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelDeleteRoleUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelDeleteRoleUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelDeleteRoleUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelDeleteSealPolicies(self, request):
         """删除指定印章下多个授权信息
 
@@ -481,6 +527,29 @@ class EssbasicClient(AbstractClient):
             body = self.call("ChannelDescribeOrganizationSeals", params, headers=headers)
             response = json.loads(body)
             model = models.ChannelDescribeOrganizationSealsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChannelDescribeRoles(self, request):
+        """渠道办查询用户角色
+
+        :param request: Request instance for ChannelDescribeRoles.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeRolesRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelDescribeRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelDescribeRolesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

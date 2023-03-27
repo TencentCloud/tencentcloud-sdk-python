@@ -419,6 +419,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDCDBInstanceDetail(self, request):
+        """本接口（DescribeDCDBInstanceDetail）用于获取DCDB实例详情
+
+        :param request: Request instance for DescribeDCDBInstanceDetail.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDCDBInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDCDBInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDCDBInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDCDBInstanceNodeInfo(self, request):
         """本接口（DescribeDCDBInstanceNodeInfo）用于获取实例节点信息
 

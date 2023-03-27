@@ -1835,9 +1835,9 @@ class DescribeBillListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 查询范围的起始时间（包含）
+        :param StartTime: 查询范围的起始时间（包含）时间格式 yyyy-MM-dd HH:mm:ss 开始时间和结束时间差值小于等于六个月
         :type StartTime: str
-        :param EndTime: 查询范围的结束时间（包含）
+        :param EndTime: 查询范围的结束时间（包含）时间格式 yyyy-MM-dd HH:mm:ss ，开始时间和结束时间差值小于等于六个月
         :type EndTime: str
         :param Offset: 翻页偏移量，初始值为0
         :type Offset: int

@@ -27,7 +27,9 @@ class TdidClient(AbstractClient):
 
 
     def AddLabel(self, request):
-        """DID添加标签
+        """下线已有内测接口，待上线正式版本的接口
+
+        DID添加标签
 
         :param request: Request instance for AddLabel.
         :type request: :class:`tencentcloud.tdid.v20210519.models.AddLabelRequest`
@@ -50,7 +52,9 @@ class TdidClient(AbstractClient):
 
 
     def CancelAuthorityIssuer(self, request):
-        """撤消权威机构认证
+        """下线已有内测接口，待上线正式版本的接口
+
+        撤消权威机构认证
 
         :param request: Request instance for CancelAuthorityIssuer.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CancelAuthorityIssuerRequest`
@@ -96,7 +100,9 @@ class TdidClient(AbstractClient):
 
 
     def CheckDidDeploy(self, request):
-        """检查部署情况
+        """下线已有内测接口，待上线正式版本的接口
+
+        检查部署情况
 
         :param request: Request instance for CheckDidDeploy.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CheckDidDeployRequest`
@@ -142,7 +148,9 @@ class TdidClient(AbstractClient):
 
 
     def CreateDidService(self, request):
-        """创建DID服务
+        """下线已有内测接口，待上线正式版本的接口
+
+        创建DID服务
 
         :param request: Request instance for CreateDidService.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateDidServiceRequest`
@@ -165,7 +173,9 @@ class TdidClient(AbstractClient):
 
 
     def CreateLabel(self, request):
-        """新建标签
+        """下线已有内测接口，待上线正式版本的接口
+
+        新建标签
 
         :param request: Request instance for CreateLabel.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateLabelRequest`
@@ -280,7 +290,9 @@ class TdidClient(AbstractClient):
 
 
     def DeployByName(self, request):
-        """通过Name部署TDID合约
+        """下线已有内测接口，待上线正式版本的接口
+
+        通过Name部署TDID合约
 
         :param request: Request instance for DeployByName.
         :type request: :class:`tencentcloud.tdid.v20210519.models.DeployByNameRequest`
@@ -303,7 +315,9 @@ class TdidClient(AbstractClient):
 
 
     def DownCpt(self, request):
-        """凭证模版下载
+        """下线已有内测接口，待上线正式版本的接口
+
+        凭证模版下载
 
         :param request: Request instance for DownCpt.
         :type request: :class:`tencentcloud.tdid.v20210519.models.DownCptRequest`
@@ -326,7 +340,9 @@ class TdidClient(AbstractClient):
 
 
     def EnableHash(self, request):
-        """启用合约
+        """下线已有内测接口，待上线正式版本的接口
+
+        启用合约
 
         :param request: Request instance for EnableHash.
         :type request: :class:`tencentcloud.tdid.v20210519.models.EnableHashRequest`
@@ -374,7 +390,9 @@ class TdidClient(AbstractClient):
 
 
     def GetAuthoritiesList(self, request):
-        """权威机构列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        权威机构列表
 
         :param request: Request instance for GetAuthoritiesList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetAuthoritiesListRequest`
@@ -420,7 +438,9 @@ class TdidClient(AbstractClient):
 
 
     def GetConsortiumClusterList(self, request):
-        """获取联盟bcos网络列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        获取联盟bcos网络列表
 
         :param request: Request instance for GetConsortiumClusterList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetConsortiumClusterListRequest`
@@ -443,7 +463,9 @@ class TdidClient(AbstractClient):
 
 
     def GetConsortiumList(self, request):
-        """获取联盟列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        获取联盟列表
 
         :param request: Request instance for GetConsortiumList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetConsortiumListRequest`
@@ -489,7 +511,9 @@ class TdidClient(AbstractClient):
 
 
     def GetCptList(self, request):
-        """凭证模版列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        凭证模版列表
 
         :param request: Request instance for GetCptList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCptListRequest`
@@ -512,7 +536,9 @@ class TdidClient(AbstractClient):
 
 
     def GetCredentialCptRank(self, request):
-        """凭证颁发按机构排行
+        """下线已有内测接口，待上线正式版本的接口
+
+        凭证颁发按机构排行
 
         :param request: Request instance for GetCredentialCptRank.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialCptRankRequest`
@@ -535,7 +561,9 @@ class TdidClient(AbstractClient):
 
 
     def GetCredentialIssueRank(self, request):
-        """凭证颁发按机构排行
+        """下线已有内测接口，待上线正式版本的接口
+
+        凭证颁发按机构排行
 
         :param request: Request instance for GetCredentialIssueRank.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialIssueRankRequest`
@@ -558,7 +586,9 @@ class TdidClient(AbstractClient):
 
 
     def GetCredentialIssueTrend(self, request):
-        """凭证颁发趋势
+        """下线已有内测接口，待上线正式版本的接口
+
+        凭证颁发趋势
 
         :param request: Request instance for GetCredentialIssueTrend.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialIssueTrendRequest`
@@ -604,7 +634,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDataPanel(self, request):
-        """概览
+        """下线已有内测接口，待上线正式版本的接口
+
+        概览
 
         :param request: Request instance for GetDataPanel.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDataPanelRequest`
@@ -627,7 +659,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDeployInfo(self, request):
-        """合约部署详情
+        """下线已有内测接口，待上线正式版本的接口
+
+        合约部署详情
 
         :param request: Request instance for GetDeployInfo.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDeployInfoRequest`
@@ -650,7 +684,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDeployList(self, request):
-        """合约部署列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        合约部署列表
 
         :param request: Request instance for GetDeployList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDeployListRequest`
@@ -673,7 +709,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDidClusterDetail(self, request):
-        """获取DID区块链网络详情
+        """下线已有内测接口，待上线正式版本的接口
+
+        获取DID区块链网络详情
 
         :param request: Request instance for GetDidClusterDetail.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidClusterDetailRequest`
@@ -696,7 +734,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDidClusterList(self, request):
-        """获取用户的DID网络列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        获取用户的DID网络列表
 
         :param request: Request instance for GetDidClusterList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidClusterListRequest`
@@ -719,7 +759,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDidDetail(self, request):
-        """DID详情
+        """下线已有内测接口，待上线正式版本的接口
+
+        DID详情
 
         :param request: Request instance for GetDidDetail.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidDetailRequest`
@@ -765,7 +807,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDidList(self, request):
-        """DID列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        DID列表
 
         :param request: Request instance for GetDidList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidListRequest`
@@ -788,7 +832,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDidRegisterTrend(self, request):
-        """DID注册趋势
+        """下线已有内测接口，待上线正式版本的接口
+
+        DID注册趋势
 
         :param request: Request instance for GetDidRegisterTrend.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidRegisterTrendRequest`
@@ -811,7 +857,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDidServiceDetail(self, request):
-        """获取DID服务详情
+        """下线已有内测接口，待上线正式版本的接口
+
+        获取DID服务详情
 
         :param request: Request instance for GetDidServiceDetail.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidServiceDetailRequest`
@@ -834,7 +882,9 @@ class TdidClient(AbstractClient):
 
 
     def GetDidServiceList(self, request):
-        """获取DID服务列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        获取DID服务列表
 
         :param request: Request instance for GetDidServiceList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidServiceListRequest`
@@ -857,7 +907,9 @@ class TdidClient(AbstractClient):
 
 
     def GetGroupList(self, request):
-        """主群组配置列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        主群组配置列表
 
         :param request: Request instance for GetGroupList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetGroupListRequest`
@@ -880,7 +932,9 @@ class TdidClient(AbstractClient):
 
 
     def GetLabelList(self, request):
-        """标签列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        标签列表
 
         :param request: Request instance for GetLabelList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetLabelListRequest`
@@ -903,7 +957,9 @@ class TdidClient(AbstractClient):
 
 
     def GetPolicyList(self, request):
-        """披露策略Policy管理列表
+        """下线已有内测接口，待上线正式版本的接口
+
+        披露策略Policy管理列表
 
         :param request: Request instance for GetPolicyList.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetPolicyListRequest`
@@ -926,7 +982,9 @@ class TdidClient(AbstractClient):
 
 
     def GetPublicKey(self, request):
-        """查看公钥
+        """下线已有内测接口，待上线正式版本的接口
+
+        查看公钥
 
         :param request: Request instance for GetPublicKey.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetPublicKeyRequest`
@@ -949,7 +1007,9 @@ class TdidClient(AbstractClient):
 
 
     def QueryPolicy(self, request):
-        """披露策略Policy查看
+        """下线已有内测接口，待上线正式版本的接口
+
+        披露策略Policy查看
 
         :param request: Request instance for QueryPolicy.
         :type request: :class:`tencentcloud.tdid.v20210519.models.QueryPolicyRequest`
@@ -972,7 +1032,9 @@ class TdidClient(AbstractClient):
 
 
     def RecognizeAuthorityIssuer(self, request):
-        """认证权威机构
+        """下线已有内测接口，待上线正式版本的接口
+
+        认证权威机构
 
         :param request: Request instance for RecognizeAuthorityIssuer.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RecognizeAuthorityIssuerRequest`
@@ -995,7 +1057,9 @@ class TdidClient(AbstractClient):
 
 
     def RegisterClaimPolicy(self, request):
-        """披露策略Policy注册
+        """下线已有内测接口，待上线正式版本的接口
+
+        披露策略Policy注册
 
         :param request: Request instance for RegisterClaimPolicy.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RegisterClaimPolicyRequest`
@@ -1041,7 +1105,9 @@ class TdidClient(AbstractClient):
 
 
     def RegisterIssuer(self, request):
-        """注册为权威机构
+        """下线已有内测接口，待上线正式版本的接口
+
+        注册为权威机构
 
         :param request: Request instance for RegisterIssuer.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RegisterIssuerRequest`
@@ -1064,7 +1130,9 @@ class TdidClient(AbstractClient):
 
 
     def RemoveHash(self, request):
-        """删除合约
+        """下线已有内测接口，待上线正式版本的接口
+
+        删除合约
 
         :param request: Request instance for RemoveHash.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RemoveHashRequest`

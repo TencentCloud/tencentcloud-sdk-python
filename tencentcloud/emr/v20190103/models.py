@@ -2323,6 +2323,9 @@ class EmrListInstance(AbstractModel):
         :param OutSideSoftInfo: 体外客户端组件信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutSideSoftInfo: list of SoftDependInfo
+        :param IsSupportOutsideCluster: 当前集群的应用场景是否支持体外客户端
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportOutsideCluster: bool
         """
         self.ClusterId = None
         self.StatusDesc = None
@@ -2353,6 +2356,7 @@ class EmrListInstance(AbstractModel):
         self.IsMultiZoneCluster = None
         self.IsHandsCluster = None
         self.OutSideSoftInfo = None
+        self.IsSupportOutsideCluster = None
 
 
     def _deserialize(self, params):
@@ -2395,6 +2399,7 @@ class EmrListInstance(AbstractModel):
                 obj = SoftDependInfo()
                 obj._deserialize(item)
                 self.OutSideSoftInfo.append(obj)
+        self.IsSupportOutsideCluster = params.get("IsSupportOutsideCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

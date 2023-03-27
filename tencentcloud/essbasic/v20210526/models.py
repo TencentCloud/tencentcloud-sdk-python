@@ -1473,6 +1473,133 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreateUserRolesRequest(AbstractModel):
+    """ChannelCreateUserRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作者信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param UserIds: 绑定角色的员工id列表
+        :type UserIds: list of str
+        :param RoleIds: 绑定角色的角色id列表
+        :type RoleIds: list of str
+        """
+        self.Operator = None
+        self.Agent = None
+        self.UserIds = None
+        self.RoleIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.UserIds = params.get("UserIds")
+        self.RoleIds = params.get("RoleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateUserRolesResponse(AbstractModel):
+    """ChannelCreateUserRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailedCreateRoleData: 绑定失败的用户角色列表
+        :type FailedCreateRoleData: list of FailedCreateRoleData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailedCreateRoleData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FailedCreateRoleData") is not None:
+            self.FailedCreateRoleData = []
+            for item in params.get("FailedCreateRoleData"):
+                obj = FailedCreateRoleData()
+                obj._deserialize(item)
+                self.FailedCreateRoleData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ChannelDeleteRoleUsersRequest(AbstractModel):
+    """ChannelDeleteRoleUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param RoleId: 角色Id
+        :type RoleId: str
+        :param UserIds: 用户列表
+        :type UserIds: list of str
+        :param Agent: 代理信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        self.Operator = None
+        self.RoleId = None
+        self.UserIds = None
+        self.Agent = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.RoleId = params.get("RoleId")
+        self.UserIds = params.get("UserIds")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDeleteRoleUsersResponse(AbstractModel):
+    """ChannelDeleteRoleUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleId: 角色id
+        :type RoleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelDeleteSealPoliciesRequest(AbstractModel):
     """ChannelDeleteSealPolicies请求参数结构体
 
@@ -1709,6 +1836,96 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelDescribeRolesRequest(AbstractModel):
+    """ChannelDescribeRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Offset: 查询起始偏移，最大2000
+        :type Offset: int
+        :param Limit: 查询数量，最大200
+        :type Limit: str
+        :param Filters: 查询的关键字段:
+Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
+        :type Filters: list of Filter
+        """
+        self.Operator = None
+        self.Agent = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDescribeRolesResponse(AbstractModel):
+    """ChannelDescribeRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 页面偏移量，最大2000
+        :type Offset: int
+        :param Limit: 查询数量，最大200
+        :type Limit: int
+        :param TotalCount: 查询角色的总数量
+        :type TotalCount: int
+        :param ChannelRoles: 角色信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelRoles: list of ChannelRole
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.TotalCount = None
+        self.ChannelRoles = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ChannelRoles") is not None:
+            self.ChannelRoles = []
+            for item in params.get("ChannelRoles"):
+                obj = ChannelRole()
+                obj._deserialize(item)
+                self.ChannelRoles.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelGetTaskResultApiRequest(AbstractModel):
     """ChannelGetTaskResultApi请求参数结构体
 
@@ -1801,6 +2018,41 @@ ProcessTimeout - 转换文件超时
         self.RequestId = params.get("RequestId")
 
 
+class ChannelRole(AbstractModel):
+    """渠道角色信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleId: 角色id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleId: str
+        :param RoleName: 角色名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        :param RoleStatus: 角色状态：1-启用；2-禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleStatus: int
+        """
+        self.RoleId = None
+        self.RoleName = None
+        self.RoleStatus = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+        self.RoleStatus = params.get("RoleStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChannelUpdateSealStatusRequest(AbstractModel):
     """ChannelUpdateSealStatus请求参数结构体
 
@@ -1869,7 +2121,7 @@ class ChannelVerifyPdfRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 合同Id，流程Id
+        :param FlowId: 流程ID
         :type FlowId: str
         :param Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
@@ -1907,8 +2159,7 @@ class ChannelVerifyPdfResponse(AbstractModel):
         r"""
         :param VerifyResult: 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
         :type VerifyResult: int
-        :param PdfVerifyResults: 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域
-；5-文件签名格式错误
+        :param PdfVerifyResults: 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域；5-文件签名格式错误
         :type PdfVerifyResults: list of PdfVerifyResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3319,6 +3570,36 @@ DISABLE 关闭
         self.Status = params.get("Status")
         self.OperatorOpenId = params.get("OperatorOpenId")
         self.OperateOn = params.get("OperateOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FailedCreateRoleData(AbstractModel):
+    """绑定失败的用户角色信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户userId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param RoleIds: 角色RoleId列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleIds: list of str
+        """
+        self.UserId = None
+        self.RoleIds = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.RoleIds = params.get("RoleIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

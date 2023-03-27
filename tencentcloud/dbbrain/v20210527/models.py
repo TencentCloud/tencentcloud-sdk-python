@@ -3103,14 +3103,19 @@ class InstanceConfs(AbstractModel):
         :type DailyInspection: str
         :param OverviewDisplay: 实例概览开关，Yes/No。
         :type OverviewDisplay: str
+        :param KeyDelimiters: redis大key分析的自定义分割符，仅redis使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyDelimiters: list of str
         """
         self.DailyInspection = None
         self.OverviewDisplay = None
+        self.KeyDelimiters = None
 
 
     def _deserialize(self, params):
         self.DailyInspection = params.get("DailyInspection")
         self.OverviewDisplay = params.get("OverviewDisplay")
+        self.KeyDelimiters = params.get("KeyDelimiters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3183,6 +3188,14 @@ class InstanceInfo(AbstractModel):
         :type AuditPolicyStatus: str
         :param AuditRunningStatus: 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
         :type AuditRunningStatus: str
+        :param InternalVip: 内网vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalVip: str
+        :param InternalVport: 内网port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalVport: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3212,6 +3225,9 @@ class InstanceInfo(AbstractModel):
         self.SecAuditStatus = None
         self.AuditPolicyStatus = None
         self.AuditRunningStatus = None
+        self.InternalVip = None
+        self.InternalVport = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -3245,6 +3261,9 @@ class InstanceInfo(AbstractModel):
         self.SecAuditStatus = params.get("SecAuditStatus")
         self.AuditPolicyStatus = params.get("AuditPolicyStatus")
         self.AuditRunningStatus = params.get("AuditRunningStatus")
+        self.InternalVip = params.get("InternalVip")
+        self.InternalVport = params.get("InternalVport")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

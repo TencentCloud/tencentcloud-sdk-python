@@ -2017,7 +2017,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribePrometheusInstancesOverview(self, request):
-        """获取与云监控融合实例列表
+        """获取与 Prometheus 监控融合实例列表
 
         :param request: Request instance for DescribePrometheusInstancesOverview.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePrometheusInstancesOverviewRequest`
@@ -2462,7 +2462,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmNotice(self, request):
-        """云监控告警编辑告警通知模板
+        """编辑告警通知模板
 
         :param request: Request instance for ModifyAlarmNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmNoticeRequest`

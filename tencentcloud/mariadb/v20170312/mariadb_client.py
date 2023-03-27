@@ -419,6 +419,29 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBInstanceDetail(self, request):
+        """本接口(DescribeDBInstanceDetail)用于查询指定实例的详细信息。
+
+        :param request: Request instance for DescribeDBInstanceDetail.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBInstanceSpecs(self, request):
         """本接口(DescribeDBInstanceSpecs)用于查询可创建的云数据库可售卖的规格配置。
 

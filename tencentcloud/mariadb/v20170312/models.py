@@ -2109,6 +2109,295 @@ class DescribeDBEncryptAttributesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceDetailRequest(AbstractModel):
+    """DescribeDBInstanceDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id形如：tdsql-ow728lmc。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceDetailResponse(AbstractModel):
+    """DescribeDBInstanceDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param Status: 实例状态
+        :type Status: int
+        :param StatusDesc: 实例目前运行状态描述
+        :type StatusDesc: str
+        :param Vip: 内网 IP 地址
+        :type Vip: str
+        :param Vport: 内网端口
+        :type Vport: int
+        :param IsTmp: 是否临时实例，0为否，非0为是
+        :type IsTmp: int
+        :param NodeCount: 节点数，2为一主一从，3为一主二从
+        :type NodeCount: int
+        :param Region: 实例所在地域名称，如 ap-shanghai
+        :type Region: str
+        :param Zone: 实例所在可用区名称，如 ap-shanghai-1
+        :type Zone: str
+        :param VpcId: 字符串型的私有网络Id
+        :type VpcId: str
+        :param SubnetId: 字符串型的私有网络子网Id
+        :type SubnetId: str
+        :param WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+        :type WanStatus: int
+        :param WanDomain: 外网访问的域名，公网可解析
+        :type WanDomain: str
+        :param WanVip: 外网 IP 地址，公网可访问
+        :type WanVip: str
+        :param WanPort: 外网端口
+        :type WanPort: int
+        :param ProjectId: 实例所属项目 Id
+        :type ProjectId: int
+        :param TdsqlVersion: TDSQL 版本信息
+        :type TdsqlVersion: str
+        :param Memory: 实例内存大小，单位 GB
+        :type Memory: int
+        :param Storage: 实例存储大小，单位 GB
+        :type Storage: int
+        :param MasterZone: 主可用区，如 ap-shanghai-1
+        :type MasterZone: str
+        :param SlaveZones: 从可用区列表，如 [ap-shanghai-2]
+        :type SlaveZones: list of str
+        :param AutoRenewFlag: 自动续费标志：0 否，1 是
+        :type AutoRenewFlag: int
+        :param ExclusterId: 独享集群Id，普通实例为空
+        :type ExclusterId: str
+        :param PayMode: 付费模式：prepaid 表示预付费
+        :type PayMode: str
+        :param CreateTime: 实例创建时间，格式为 2006-01-02 15:04:05
+        :type CreateTime: str
+        :param IsAuditSupported: 实例是否支持审计
+        :type IsAuditSupported: bool
+        :param PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05
+        :type PeriodEndTime: str
+        :param Machine: 机型信息
+        :type Machine: str
+        :param StorageUsage: 存储空间使用率
+        :type StorageUsage: str
+        :param LogStorage: 日志存储空间大小，单位 GB
+        :type LogStorage: int
+        :param IsEncryptSupported: 是否支持数据加密。1-支持；0-不支持
+        :type IsEncryptSupported: int
+        :param Vip6: 内网IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip6: str
+        :param Cpu: 实例Cpu核数
+        :type Cpu: int
+        :param Pid: 产品类型ID
+        :type Pid: int
+        :param Qps: 最大QPS
+        :type Qps: int
+        :param Ipv6Flag: 是否支持IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6Flag: int
+        :param WanVipv6: 外网IPv6地址，公网可访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanVipv6: str
+        :param WanStatusIpv6: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanStatusIpv6: int
+        :param WanPortIpv6: 外网IPv6端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanPortIpv6: int
+        :param DbEngine: 数据库引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbEngine: str
+        :param DbVersion: 数据库版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbVersion: str
+        :param ResourceTags: 标签信息
+        :type ResourceTags: list of ResourceTag
+        :param DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnFlag: int
+        :param DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnStatus: int
+        :param DcnDstNum: DCN灾备实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnDstNum: int
+        :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: int
+        :param NodesInfo: 实例的各个DB节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodesInfo: list of NodeInfo
+        :param IsMaxUserConnectionsSupported: 实例是否支持设置用户连接数限制，内核为10.1暂不支持。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsMaxUserConnectionsSupported: bool
+        :param DbVersionId: 对外显示的数据库版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbVersionId: str
+        :param EncryptStatus: 加密状态, 0-未开启，1-已开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptStatus: int
+        :param ReplicaConfig: DCN的配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicaConfig: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaConfig`
+        :param ReplicaStatus: DCN的运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicaStatus: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaStatus`
+        :param ExclusterType: 独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusterType: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Status = None
+        self.StatusDesc = None
+        self.Vip = None
+        self.Vport = None
+        self.IsTmp = None
+        self.NodeCount = None
+        self.Region = None
+        self.Zone = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.WanStatus = None
+        self.WanDomain = None
+        self.WanVip = None
+        self.WanPort = None
+        self.ProjectId = None
+        self.TdsqlVersion = None
+        self.Memory = None
+        self.Storage = None
+        self.MasterZone = None
+        self.SlaveZones = None
+        self.AutoRenewFlag = None
+        self.ExclusterId = None
+        self.PayMode = None
+        self.CreateTime = None
+        self.IsAuditSupported = None
+        self.PeriodEndTime = None
+        self.Machine = None
+        self.StorageUsage = None
+        self.LogStorage = None
+        self.IsEncryptSupported = None
+        self.Vip6 = None
+        self.Cpu = None
+        self.Pid = None
+        self.Qps = None
+        self.Ipv6Flag = None
+        self.WanVipv6 = None
+        self.WanStatusIpv6 = None
+        self.WanPortIpv6 = None
+        self.DbEngine = None
+        self.DbVersion = None
+        self.ResourceTags = None
+        self.DcnFlag = None
+        self.DcnStatus = None
+        self.DcnDstNum = None
+        self.InstanceType = None
+        self.NodesInfo = None
+        self.IsMaxUserConnectionsSupported = None
+        self.DbVersionId = None
+        self.EncryptStatus = None
+        self.ReplicaConfig = None
+        self.ReplicaStatus = None
+        self.ExclusterType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.IsTmp = params.get("IsTmp")
+        self.NodeCount = params.get("NodeCount")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.WanStatus = params.get("WanStatus")
+        self.WanDomain = params.get("WanDomain")
+        self.WanVip = params.get("WanVip")
+        self.WanPort = params.get("WanPort")
+        self.ProjectId = params.get("ProjectId")
+        self.TdsqlVersion = params.get("TdsqlVersion")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZones = params.get("SlaveZones")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.ExclusterId = params.get("ExclusterId")
+        self.PayMode = params.get("PayMode")
+        self.CreateTime = params.get("CreateTime")
+        self.IsAuditSupported = params.get("IsAuditSupported")
+        self.PeriodEndTime = params.get("PeriodEndTime")
+        self.Machine = params.get("Machine")
+        self.StorageUsage = params.get("StorageUsage")
+        self.LogStorage = params.get("LogStorage")
+        self.IsEncryptSupported = params.get("IsEncryptSupported")
+        self.Vip6 = params.get("Vip6")
+        self.Cpu = params.get("Cpu")
+        self.Pid = params.get("Pid")
+        self.Qps = params.get("Qps")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        self.WanVipv6 = params.get("WanVipv6")
+        self.WanStatusIpv6 = params.get("WanStatusIpv6")
+        self.WanPortIpv6 = params.get("WanPortIpv6")
+        self.DbEngine = params.get("DbEngine")
+        self.DbVersion = params.get("DbVersion")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DcnFlag = params.get("DcnFlag")
+        self.DcnStatus = params.get("DcnStatus")
+        self.DcnDstNum = params.get("DcnDstNum")
+        self.InstanceType = params.get("InstanceType")
+        if params.get("NodesInfo") is not None:
+            self.NodesInfo = []
+            for item in params.get("NodesInfo"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodesInfo.append(obj)
+        self.IsMaxUserConnectionsSupported = params.get("IsMaxUserConnectionsSupported")
+        self.DbVersionId = params.get("DbVersionId")
+        self.EncryptStatus = params.get("EncryptStatus")
+        if params.get("ReplicaConfig") is not None:
+            self.ReplicaConfig = DCNReplicaConfig()
+            self.ReplicaConfig._deserialize(params.get("ReplicaConfig"))
+        if params.get("ReplicaStatus") is not None:
+            self.ReplicaStatus = DCNReplicaStatus()
+            self.ReplicaStatus._deserialize(params.get("ReplicaStatus"))
+        self.ExclusterType = params.get("ExclusterType")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceSpecsRequest(AbstractModel):
     """DescribeDBInstanceSpecs请求参数结构体
 

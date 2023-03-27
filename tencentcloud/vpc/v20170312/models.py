@@ -3447,23 +3447,23 @@ class CreateFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowLogName: 流日志实例名字
+        :param FlowLogName: 流日志实例名字。
         :type FlowLogName: str
-        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG
+        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
         :type ResourceType: str
-        :param ResourceId: 资源唯一ID
+        :param ResourceId: 资源唯一ID。
         :type ResourceId: str
-        :param TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL
+        :param TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL。
         :type TrafficType: str
         :param VpcId: 私用网络ID或者统一ID，建议使用统一ID，当ResourceType为CCN时不填，其他类型必填。
         :type VpcId: str
-        :param FlowLogDescription: 流日志实例描述
+        :param FlowLogDescription: 流日志实例描述。
         :type FlowLogDescription: str
-        :param CloudLogId: 流日志存储ID
+        :param CloudLogId: 流日志存储ID。
         :type CloudLogId: str
-        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
-        :param StorageType: 消费端类型：cls、ckafka
+        :param StorageType: 消费端类型：cls、ckafka。默认值cls。
         :type StorageType: str
         :param FlowLogStorage: 流日志消费端信息，当消费端类型为ckafka时，必填。
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
@@ -3518,7 +3518,7 @@ class CreateFlowLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowLog: 创建的流日志信息
+        :param FlowLog: 创建的流日志信息。
         :type FlowLog: list of FlowLog
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4050,11 +4050,11 @@ class CreateNetworkAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param VpcId: VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口返回值中的VpcId获取。
         :type VpcId: str
         :param NetworkAclName: 网络ACL名称，最大长度不能超过60个字节。
         :type NetworkAclName: str
-        :param NetworkAclType: 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)。
+        :param NetworkAclType: 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)。默认值三元组(TRIPLE)。
         :type NetworkAclType: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
@@ -9208,9 +9208,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param OrderField: 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。
+        :param OrderField: 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。默认值`OutTraffic`。
         :type OrderField: str
-        :param OrderDirection: 排序方法。顺序：`ASC`，倒序：`DESC`。
+        :param OrderDirection: 排序方法。顺序：`ASC`，倒序：`DESC`。默认值`DESC`。
         :type OrderDirection: str
         """
         self.TimePoint = None
@@ -14339,6 +14339,7 @@ class EnableVpcEndPointConnectRequest(AbstractModel):
         :param EndPointId: 终端节点ID。
         :type EndPointId: list of str
         :param AcceptFlag: 是否接受终端节点连接请求。
+<li> true：自动接受。</li> <li> false：不自动接受。</li>
         :type AcceptFlag: bool
         """
         self.EndPointServiceId = None

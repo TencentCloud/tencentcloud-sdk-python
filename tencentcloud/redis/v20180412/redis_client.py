@@ -233,6 +233,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloneInstances(self, request):
+        """本接口（CloneInstances）可基于当前实例的备份文件克隆一个完整的新实例。
+
+        :param request: Request instance for CloneInstances.
+        :type request: :class:`tencentcloud.redis.v20180412.models.CloneInstancesRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CloneInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseSSL(self, request):
         """关闭SSL
 

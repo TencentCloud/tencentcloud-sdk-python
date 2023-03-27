@@ -966,7 +966,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateFlowLog(self, request):
-        """本接口（CreateFlowLog）用于创建流日志
+        """本接口（CreateFlowLog）用于创建网络流日志。
 
         :param request: Request instance for CreateFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateFlowLogRequest`

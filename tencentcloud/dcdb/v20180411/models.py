@@ -2158,6 +2158,269 @@ class DescribeDBSyncModeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDCDBInstanceDetailRequest(AbstractModel):
+    """DescribeDCDBInstanceDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，形如dcdbt-7oaxtcb7
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDCDBInstanceDetailResponse(AbstractModel):
+    """DescribeDCDBInstanceDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，形如dcdbt-7oaxtcb7
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param Status: 实例状态。0-实例创建中；1-异步任务处理中；2-运行中；3-实例未初始化；-1-实例已隔离
+        :type Status: int
+        :param StatusDesc: 实例目前运行状态描述
+        :type StatusDesc: str
+        :param Vip: 实例内网IP地址
+        :type Vip: str
+        :param Vport: 实例内网端口
+        :type Vport: int
+        :param NodeCount: 实例节点数。值为2时表示一主一从，值为3时表示一主二从
+        :type NodeCount: int
+        :param Region: 实例所在地域名称，形如ap-guangzhou
+        :type Region: str
+        :param VpcId: 实例私有网络ID，形如vpc-r9jr0de3
+        :type VpcId: str
+        :param SubnetId: 实例私有网络子网ID，形如subnet-6rqs61o2
+        :type SubnetId: str
+        :param WanStatus: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+        :type WanStatus: int
+        :param WanDomain: 外网访问的域名，公网可解析
+        :type WanDomain: str
+        :param WanVip: 外网IP地址，公网可访问
+        :type WanVip: str
+        :param WanPort: 外网访问端口
+        :type WanPort: int
+        :param ProjectId: 实例所属项目ID
+        :type ProjectId: int
+        :param AutoRenewFlag: 实例自动续费标志。0-正常续费；1-自动续费；2-到期不续费
+        :type AutoRenewFlag: int
+        :param ExclusterId: 独享集群ID
+        :type ExclusterId: str
+        :param PayMode: 付费模式。prepaid-预付费；postpaid-按量计费
+        :type PayMode: str
+        :param CreateTime: 实例创建时间，格式为 2006-01-02 15:04:05
+        :type CreateTime: str
+        :param PeriodEndTime: 实例到期时间，格式为 2006-01-02 15:04:05
+        :type PeriodEndTime: str
+        :param DbVersion: 数据库版本信息
+        :type DbVersion: str
+        :param IsAuditSupported: 实例是否支持审计。0-不支持；1-支持
+        :type IsAuditSupported: int
+        :param IsEncryptSupported: 实例是否支持数据加密。0-不支持；1-支持
+        :type IsEncryptSupported: int
+        :param Machine: 实例母机机器型号
+        :type Machine: str
+        :param Memory: 实例内存大小，单位 GB，各个分片的内存大小的和
+        :type Memory: int
+        :param Storage: 实例磁盘存储大小，单位 GB，各个分片的磁盘大小的和
+        :type Storage: int
+        :param StorageUsage: 实例存储空间使用率，计算方式为：各个分片已经使用的磁盘大小的和/各个分片的磁盘大小的和。
+        :type StorageUsage: float
+        :param LogStorage: 日志存储空间大小，单位GB
+        :type LogStorage: int
+        :param Pid: 产品类型ID
+        :type Pid: int
+        :param MasterZone: 主DB可用区
+        :type MasterZone: str
+        :param SlaveZones: 从DB可用区
+        :type SlaveZones: list of str
+        :param Shards: 分片信息
+        :type Shards: list of ShardBriefInfo
+        :param Vip6: 内网IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip6: str
+        :param Cpu: 实例Cpu核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param Qps: 实例QPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qps: int
+        :param DbEngine: DB引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbEngine: str
+        :param Ipv6Flag: 是否支持IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6Flag: int
+        :param WanVipv6: 外网IPv6地址，公网可访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanVipv6: str
+        :param WanStatusIpv6: 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanStatusIpv6: int
+        :param WanPortIpv6: 外网IPv6端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanPortIpv6: int
+        :param ResourceTags: 标签信息
+        :type ResourceTags: list of ResourceTag
+        :param DcnFlag: DCN标志，0-无，1-主实例，2-灾备实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnFlag: int
+        :param DcnStatus: DCN状态，0-无，1-创建中，2-同步中，3-已断开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnStatus: int
+        :param DcnDstNum: DCN灾备实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DcnDstNum: int
+        :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: int
+        :param IsMaxUserConnectionsSupported: 实例是否支持设置用户连接数限制，内核为10.1暂不支持。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsMaxUserConnectionsSupported: bool
+        :param DbVersionId: 对外显示的数据库版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbVersionId: str
+        :param EncryptStatus: 加密状态, 0-未开启，1-已开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptStatus: int
+        :param ExclusterType: 独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusterType: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Status = None
+        self.StatusDesc = None
+        self.Vip = None
+        self.Vport = None
+        self.NodeCount = None
+        self.Region = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.WanStatus = None
+        self.WanDomain = None
+        self.WanVip = None
+        self.WanPort = None
+        self.ProjectId = None
+        self.AutoRenewFlag = None
+        self.ExclusterId = None
+        self.PayMode = None
+        self.CreateTime = None
+        self.PeriodEndTime = None
+        self.DbVersion = None
+        self.IsAuditSupported = None
+        self.IsEncryptSupported = None
+        self.Machine = None
+        self.Memory = None
+        self.Storage = None
+        self.StorageUsage = None
+        self.LogStorage = None
+        self.Pid = None
+        self.MasterZone = None
+        self.SlaveZones = None
+        self.Shards = None
+        self.Vip6 = None
+        self.Cpu = None
+        self.Qps = None
+        self.DbEngine = None
+        self.Ipv6Flag = None
+        self.WanVipv6 = None
+        self.WanStatusIpv6 = None
+        self.WanPortIpv6 = None
+        self.ResourceTags = None
+        self.DcnFlag = None
+        self.DcnStatus = None
+        self.DcnDstNum = None
+        self.InstanceType = None
+        self.IsMaxUserConnectionsSupported = None
+        self.DbVersionId = None
+        self.EncryptStatus = None
+        self.ExclusterType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.NodeCount = params.get("NodeCount")
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.WanStatus = params.get("WanStatus")
+        self.WanDomain = params.get("WanDomain")
+        self.WanVip = params.get("WanVip")
+        self.WanPort = params.get("WanPort")
+        self.ProjectId = params.get("ProjectId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.ExclusterId = params.get("ExclusterId")
+        self.PayMode = params.get("PayMode")
+        self.CreateTime = params.get("CreateTime")
+        self.PeriodEndTime = params.get("PeriodEndTime")
+        self.DbVersion = params.get("DbVersion")
+        self.IsAuditSupported = params.get("IsAuditSupported")
+        self.IsEncryptSupported = params.get("IsEncryptSupported")
+        self.Machine = params.get("Machine")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.StorageUsage = params.get("StorageUsage")
+        self.LogStorage = params.get("LogStorage")
+        self.Pid = params.get("Pid")
+        self.MasterZone = params.get("MasterZone")
+        self.SlaveZones = params.get("SlaveZones")
+        if params.get("Shards") is not None:
+            self.Shards = []
+            for item in params.get("Shards"):
+                obj = ShardBriefInfo()
+                obj._deserialize(item)
+                self.Shards.append(obj)
+        self.Vip6 = params.get("Vip6")
+        self.Cpu = params.get("Cpu")
+        self.Qps = params.get("Qps")
+        self.DbEngine = params.get("DbEngine")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        self.WanVipv6 = params.get("WanVipv6")
+        self.WanStatusIpv6 = params.get("WanStatusIpv6")
+        self.WanPortIpv6 = params.get("WanPortIpv6")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DcnFlag = params.get("DcnFlag")
+        self.DcnStatus = params.get("DcnStatus")
+        self.DcnDstNum = params.get("DcnDstNum")
+        self.InstanceType = params.get("InstanceType")
+        self.IsMaxUserConnectionsSupported = params.get("IsMaxUserConnectionsSupported")
+        self.DbVersionId = params.get("DbVersionId")
+        self.EncryptStatus = params.get("EncryptStatus")
+        self.ExclusterType = params.get("ExclusterType")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDCDBInstanceNodeInfoRequest(AbstractModel):
     """DescribeDCDBInstanceNodeInfo请求参数结构体
 
@@ -4592,6 +4855,34 @@ class ModifyRealServerAccessStrategyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class NodeInfo(AbstractModel):
+    """描述DB节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: DB节点ID
+        :type NodeId: str
+        :param Role: DB节点角色，取值为master或者slave
+        :type Role: str
+        """
+        self.NodeId = None
+        self.Role = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OpenDBExtranetAccessRequest(AbstractModel):
     """OpenDBExtranetAccess请求参数结构体
 
@@ -5098,6 +5389,92 @@ class SecurityGroupBound(AbstractModel):
         self.Action = params.get("Action")
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShardBriefInfo(AbstractModel):
+    """DCDB分片信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShardSerialId: 分片SerialId
+        :type ShardSerialId: str
+        :param ShardInstanceId: 分片ID，形如shard-7vg1o339
+        :type ShardInstanceId: str
+        :param Status: 分片运行状态
+        :type Status: int
+        :param StatusDesc: 分片运行状态描述
+        :type StatusDesc: str
+        :param CreateTime: 分片创建时间
+        :type CreateTime: str
+        :param Memory: 分片内存大小，单位GB
+        :type Memory: int
+        :param Storage: 分片磁盘大小，单位GB
+        :type Storage: int
+        :param LogDisk: 分片日志磁盘空间大小，单位GB
+        :type LogDisk: int
+        :param NodeCount: 分片节点个数
+        :type NodeCount: int
+        :param StorageUsage: 分片磁盘空间使用率
+        :type StorageUsage: float
+        :param ProxyVersion: 分片Proxy版本信息
+        :type ProxyVersion: str
+        :param ShardMasterZone: 分片主DB可用区
+        :type ShardMasterZone: str
+        :param ShardSlaveZones: 分片从DB可用区
+        :type ShardSlaveZones: list of str
+        :param Cpu: 分片Cpu核数
+        :type Cpu: int
+        :param NodesInfo: DB节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodesInfo: list of NodeInfo
+        """
+        self.ShardSerialId = None
+        self.ShardInstanceId = None
+        self.Status = None
+        self.StatusDesc = None
+        self.CreateTime = None
+        self.Memory = None
+        self.Storage = None
+        self.LogDisk = None
+        self.NodeCount = None
+        self.StorageUsage = None
+        self.ProxyVersion = None
+        self.ShardMasterZone = None
+        self.ShardSlaveZones = None
+        self.Cpu = None
+        self.NodesInfo = None
+
+
+    def _deserialize(self, params):
+        self.ShardSerialId = params.get("ShardSerialId")
+        self.ShardInstanceId = params.get("ShardInstanceId")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.CreateTime = params.get("CreateTime")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.LogDisk = params.get("LogDisk")
+        self.NodeCount = params.get("NodeCount")
+        self.StorageUsage = params.get("StorageUsage")
+        self.ProxyVersion = params.get("ProxyVersion")
+        self.ShardMasterZone = params.get("ShardMasterZone")
+        self.ShardSlaveZones = params.get("ShardSlaveZones")
+        self.Cpu = params.get("Cpu")
+        if params.get("NodesInfo") is not None:
+            self.NodesInfo = []
+            for item in params.get("NodesInfo"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodesInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

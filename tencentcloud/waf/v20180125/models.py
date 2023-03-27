@@ -1480,6 +1480,44 @@ class DescribeAttackOverviewRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param FromTime: 查询开始时间
+        :type FromTime: str
+        :param ToTime: 查询结束时间
+        :type ToTime: str
+        :param Appid: 客户的Appid
+        :type Appid: int
+        :param Domain: 被查询的域名
+        :type Domain: str
+        :param Edition: 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+        :type Edition: str
+        :param InstanceID: WAF实例ID，不传则不过滤
+        :type InstanceID: str
+        """
+        self.FromTime = None
+        self.ToTime = None
+        self.Appid = None
+        self.Domain = None
+        self.Edition = None
+        self.InstanceID = None
+
+
+    def _deserialize(self, params):
+        self.FromTime = params.get("FromTime")
+        self.ToTime = params.get("ToTime")
+        self.Appid = params.get("Appid")
+        self.Domain = params.get("Domain")
+        self.Edition = params.get("Edition")
+        self.InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAttackOverviewResponse(AbstractModel):
     """DescribeAttackOverview返回参数结构体
