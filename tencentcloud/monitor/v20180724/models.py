@@ -7971,11 +7971,14 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
         :type Agents: list of PrometheusAgentOverview
         :param Total: 被关联集群总量
         :type Total: int
+        :param IsFirstBind: 是否为首次绑定，需要安装预聚合规则
+        :type IsFirstBind: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Agents = None
         self.Total = None
+        self.IsFirstBind = None
         self.RequestId = None
 
 
@@ -7987,6 +7990,7 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Agents.append(obj)
         self.Total = params.get("Total")
+        self.IsFirstBind = params.get("IsFirstBind")
         self.RequestId = params.get("RequestId")
 
 

@@ -212,8 +212,14 @@ INVALIDPARAMETER_INVALIDCACHECONFIGFOLLOWORIGIN = 'InvalidParameter.InvalidCache
 # 无效的缓存键。
 INVALIDPARAMETER_INVALIDCACHEKEY = 'InvalidParameter.InvalidCacheKey'
 
+# 无效的缓存键忽略大小写。
+INVALIDPARAMETER_INVALIDCACHEKEYIGNORECASE = 'InvalidParameter.InvalidCacheKeyIgnoreCase'
+
 # 无效的查询字符串。
 INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGVALUE = 'InvalidParameter.InvalidCacheKeyQueryStringValue'
+
+# 无效的自定义Cache Key Scheme无效。
+INVALIDPARAMETER_INVALIDCACHEKEYSCHEME = 'InvalidParameter.InvalidCacheKeyScheme'
 
 # 无效的节点缓存。
 INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = 'InvalidParameter.InvalidCacheOnlyOnSwitch'
@@ -310,6 +316,9 @@ INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = 'InvalidParameter.InvalidRuleEngi
 
 # 无效的回源Host。
 INVALIDPARAMETER_INVALIDSERVERNAME = 'InvalidParameter.InvalidServerName'
+
+# 无效的回源请求参数设置-无效查询字符串值。
+INVALIDPARAMETER_INVALIDUPSTREAMREQUESTQUERYSTRINGVALUE = 'InvalidParameter.InvalidUpstreamRequestQueryStringValue'
 
 # URL重写的目标HOST无效。
 INVALIDPARAMETER_INVALIDURLREDIRECTHOST = 'InvalidParameter.InvalidUrlRedirectHost'

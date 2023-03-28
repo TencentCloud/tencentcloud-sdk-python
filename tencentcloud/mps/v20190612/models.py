@@ -11950,7 +11950,7 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 <li>ImagePorn：图片鉴黄</li>
 <li>ImageTerrorism：图片涉敏</li>
 <li>ImagePolitical：图片涉敏</li>
-<li>PornVoice：声音鉴黄</li>
+<li>VoicePorn：声音违规</li>
         :type Type: str
         :param ImagePornResultSet: 图片鉴黄的结果，当 Type 为 ImagePorn 时有效。
         :type ImagePornResultSet: list of LiveStreamAiReviewImagePornResult
@@ -11958,7 +11958,7 @@ class LiveStreamAiReviewResultItem(AbstractModel):
         :type ImageTerrorismResultSet: list of LiveStreamAiReviewImageTerrorismResult
         :param ImagePoliticalResultSet: 图片涉敏的结果，当 Type 为 ImagePolitical 时有效。
         :type ImagePoliticalResultSet: list of LiveStreamAiReviewImagePoliticalResult
-        :param VoicePornResultSet: 声音鉴黄的结果，当 Type 为 PornVoice 时有效。
+        :param VoicePornResultSet: 声音违规的结果，当 Type 为 VoicePorn 时有效。
         :type VoicePornResultSet: list of LiveStreamAiReviewVoicePornResult
         """
         self.Type = None

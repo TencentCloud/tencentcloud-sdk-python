@@ -903,7 +903,7 @@ class TrtcClient(AbstractClient):
         其他使用说明如下：
         1、使用混流转推接口时，您需要先调用启动转推任务接口（StartPublishCdnStream），获取启动转推任务响应中的任务ID标识（TaskId）。后续传入任务ID标识（TaskId）来更新转推任务（UpdatePublishCdnStream）和停止转推任务（StopPublishCdnStream）。
         2、为了确保转推链接的稳定，同一个转推任务不支持纯音频、音视频、纯视频之间的切换。
-        3、为了确保转推链接的稳定，更新转推任务接口（UpdatePublishCdnStream）不支持时更改视频参数（codec）和音频参数（codec、采样率、码率、声道数），其余参数建议全量带齐。
+        3、为了确保转推链接的稳定，更新转推任务接口（UpdatePublishCdnStream）不支持时更改视频参数（codec）和音频参数（codec、采样率、码率、声道数），其余参数建议全量带齐，如您有转码/非转码切换，其余参数则必须全量带齐。
         4、发起单流旁路任务时，AudioParams和VideoParams都填写表示音视频旁路，如果仅填写AudioParams表示纯音频旁路，任务进行过程中不支持纯音频到音视频的切换。音视频旁路时，VideoParams中的Width、Height、Fps、BitRate、Gop需要按照真实上行参数填写。
         5、更新转推任务（UpdatePublishCdnStream）必须携带SequenceNumber参数，用于防止请求乱序。客户保证对同一个任务更新时的SequenceNumber参数递增：腾讯云返回InternalError错误码时，需重试请求（不换SequenceNumber）；腾讯云返回FailedOperation.OutdateRequest过期错误码时，无需处理即可。
         6、您可以在主播进房前，提前创建转推任务，结束转推任务时需要主动调用停止接口。如果您没有调用停止转推任务接口时，腾讯云后台会按照所有参与混流的用户没有任何数据上行的时间算起，直到超过启动转推任务时设置的超时时间（AgentParams.MaxIdleTime）为止，自动停止混流转推任务。

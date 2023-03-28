@@ -2187,6 +2187,10 @@ class DescribeTelCallInfoResponse(AbstractModel):
         :type SeatUsedCount: int
         :param VoipCallInCount: 音频套餐包消耗分钟数
         :type VoipCallInCount: int
+        :param AsrOfflineCount: 离线语音转文字套餐包消耗分钟数
+        :type AsrOfflineCount: int
+        :param AsrRealtimeCount: 实时语音转文字套餐包消耗分钟数
+        :type AsrRealtimeCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2194,6 +2198,8 @@ class DescribeTelCallInfoResponse(AbstractModel):
         self.TelCallInCount = None
         self.SeatUsedCount = None
         self.VoipCallInCount = None
+        self.AsrOfflineCount = None
+        self.AsrRealtimeCount = None
         self.RequestId = None
 
 
@@ -2202,6 +2208,8 @@ class DescribeTelCallInfoResponse(AbstractModel):
         self.TelCallInCount = params.get("TelCallInCount")
         self.SeatUsedCount = params.get("SeatUsedCount")
         self.VoipCallInCount = params.get("VoipCallInCount")
+        self.AsrOfflineCount = params.get("AsrOfflineCount")
+        self.AsrRealtimeCount = params.get("AsrRealtimeCount")
         self.RequestId = params.get("RequestId")
 
 

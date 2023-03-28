@@ -660,13 +660,13 @@ KEYWORD 关键字，使用ComponentId指定关键字
         :type GenerateMode: str
         :param ComponentDateFontSize: 日期签署控件的字号，默认为 12
         :type ComponentDateFontSize: int
-        :param ChannelComponentId: 渠道版控件 id 标识
+        :param ChannelComponentId: 平台模板控件 id 标识
         :type ChannelComponentId: str
         :param OffsetX: 指定关键字时横坐标偏移量，单位pt
         :type OffsetX: float
         :param OffsetY: 指定关键字时纵坐标偏移量，单位pt
         :type OffsetY: float
-        :param ChannelComponentSource: //渠道子客控件来源。0-渠道指定；1-用户自定义
+        :param ChannelComponentSource: //子客控件来源。0-平台指定；1-用户自定义
         :type ChannelComponentSource: int
         :param KeywordOrder: 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
@@ -1620,6 +1620,72 @@ class CreateIntegrationEmployeesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateIntegrationUserRolesRequest(AbstractModel):
+    """CreateIntegrationUserRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param UserIds: 绑定角色的用户id列表
+        :type UserIds: list of str
+        :param RoleIds: 绑定角色的角色id列表
+        :type RoleIds: list of str
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self.Operator = None
+        self.UserIds = None
+        self.RoleIds = None
+        self.Agent = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.UserIds = params.get("UserIds")
+        self.RoleIds = params.get("RoleIds")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIntegrationUserRolesResponse(AbstractModel):
+    """CreateIntegrationUserRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailedCreateRoleData: 绑定角色失败列表信息
+        :type FailedCreateRoleData: list of FailedCreateRoleData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailedCreateRoleData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FailedCreateRoleData") is not None:
+            self.FailedCreateRoleData = []
+            for item in params.get("FailedCreateRoleData"):
+                obj = FailedCreateRoleData()
+                obj._deserialize(item)
+                self.FailedCreateRoleData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMultiFlowSignQRCodeRequest(AbstractModel):
     """CreateMultiFlowSignQRCode请求参数结构体
 
@@ -2305,6 +2371,72 @@ class DeleteIntegrationEmployeesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteIntegrationRoleUsersRequest(AbstractModel):
+    """DeleteIntegrationRoleUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param RoleId: 角色id
+        :type RoleId: str
+        :param Users: 用户信息
+        :type Users: list of UserInfo
+        :param Agent: 代理信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self.Operator = None
+        self.RoleId = None
+        self.Users = None
+        self.Agent = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.RoleId = params.get("RoleId")
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = UserInfo()
+                obj._deserialize(item)
+                self.Users.append(obj)
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIntegrationRoleUsersResponse(AbstractModel):
+    """DeleteIntegrationRoleUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleId: 角色id
+        :type RoleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RoleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSealPoliciesRequest(AbstractModel):
     """DeleteSealPolicies请求参数结构体
 
@@ -2740,11 +2872,11 @@ class DescribeFlowTemplatesRequest(AbstractModel):
         :type Filters: list of Filter
         :param ApplicationId: 这个参数跟下面的IsChannel参数配合使用。
 IsChannel=false时，ApplicationId参数不起任何作用。
-IsChannel=true时，ApplicationId为空，查询所有渠道模板列表；ApplicationId不为空，查询指定渠道下的模板列表
-ApplicationId为空，查询渠道模板列表
+IsChannel=true时，ApplicationId为空，查询所有第三方应用集成平台企业模板列表；ApplicationId不为空，查询指定应用下的模板列表
+ApplicationId为空，查询所有应用下的模板列表
         :type ApplicationId: str
         :param IsChannel: 默认为false，查询SaaS模板库列表；
-为true，查询渠道模板库管理列表
+为true，查询第三方应用集成平台企业模板库管理列表
         :type IsChannel: bool
         :param GenerateSource: 暂未开放
         :type GenerateSource: int
@@ -2955,6 +3087,96 @@ class DescribeIntegrationMainOrganizationUserResponse(AbstractModel):
         if params.get("IntegrationMainOrganizationUser") is not None:
             self.IntegrationMainOrganizationUser = IntegrationMainOrganizationUser()
             self.IntegrationMainOrganizationUser._deserialize(params.get("IntegrationMainOrganizationUser"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIntegrationRolesRequest(AbstractModel):
+    """DescribeIntegrationRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param Limit: 返回最大数量，最大为200
+        :type Limit: int
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param Filters: 查询的关键字段:
+Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
+Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0，最大为2000
+        :type Offset: int
+        """
+        self.Operator = None
+        self.Limit = None
+        self.Agent = None
+        self.Filters = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.Limit = params.get("Limit")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIntegrationRolesResponse(AbstractModel):
+    """DescribeIntegrationRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0，最大为2000
+        :type Offset: int
+        :param Limit: 返回最大数量，最大为200
+        :type Limit: int
+        :param TotalCount: 符合查询条件的总的角色数
+        :type TotalCount: int
+        :param IntegrateRoles: 企业角色信息列表
+        :type IntegrateRoles: list of IntegrateRole
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.TotalCount = None
+        self.IntegrateRoles = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("IntegrateRoles") is not None:
+            self.IntegrateRoles = []
+            for item in params.get("IntegrateRoles"):
+                obj = IntegrateRole()
+                obj._deserialize(item)
+                self.IntegrateRoles.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3300,6 +3522,36 @@ class DisableUserAutoSignResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FailedCreateRoleData(AbstractModel):
+    """绑定角色失败信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户userId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param RoleIds: 角色id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleIds: list of str
+        """
+        self.UserId = None
+        self.RoleIds = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.RoleIds = params.get("RoleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FailedCreateStaffData(AbstractModel):
     """创建员工的失败数据
 
@@ -3357,6 +3609,46 @@ class FailedDeleteStaffData(AbstractModel):
         self.UserId = params.get("UserId")
         self.OpenId = params.get("OpenId")
         self.Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FailedUpdateStaffData(AbstractModel):
+    """更新员工信息失败返回的数据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DisplayName: 用户传入的名称
+        :type DisplayName: str
+        :param Mobile: 用户传入的手机号
+        :type Mobile: str
+        :param Reason: 失败原因
+        :type Reason: str
+        :param UserId: 用户Id
+        :type UserId: str
+        :param OpenId: 用户OpenId
+        :type OpenId: str
+        """
+        self.DisplayName = None
+        self.Mobile = None
+        self.Reason = None
+        self.UserId = None
+        self.OpenId = None
+
+
+    def _deserialize(self, params):
+        self.DisplayName = params.get("DisplayName")
+        self.Mobile = params.get("Mobile")
+        self.Reason = params.get("Reason")
+        self.UserId = params.get("UserId")
+        self.OpenId = params.get("OpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3853,7 +4145,7 @@ class FormField(AbstractModel):
     """电子文档的控件填充信息。按照控件类型进行相应的填充。
 
     【数据表格传参说明】
-    当模板的 ComponentType='DYNAMIC_TABLE'时（渠道版或集成版），FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充数据表格（支持内容的单元格合并）
+    当模板的 ComponentType='DYNAMIC_TABLE'时，FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充数据表格（支持内容的单元格合并）
     输入示例1：
 
     ```
@@ -4157,6 +4449,51 @@ class GroupOrganization(AbstractModel):
         self.LicenseExpireTime = params.get("LicenseExpireTime")
         self.JoinTime = params.get("JoinTime")
         self.FlowEngineEnable = params.get("FlowEngineEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntegrateRole(AbstractModel):
+    """企业角色数据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleId: 角色id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleId: str
+        :param RoleName: 角色名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        :param RoleStatus: 角色类型：1-系统角色，2-自定义角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleStatus: int
+        :param IsGroupRole: 是否是集团角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsGroupRole: bool
+        :param SubOrgIdList: 管辖的子企业列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubOrgIdList: list of str
+        """
+        self.RoleId = None
+        self.RoleName = None
+        self.RoleStatus = None
+        self.IsGroupRole = None
+        self.SubOrgIdList = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        self.RoleName = params.get("RoleName")
+        self.RoleStatus = params.get("RoleStatus")
+        self.IsGroupRole = params.get("IsGroupRole")
+        self.SubOrgIdList = params.get("SubOrgIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4930,6 +5267,38 @@ class SuccessDeleteStaffData(AbstractModel):
         
 
 
+class SuccessUpdateStaffData(AbstractModel):
+    """更新员工信息成功返回的数据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DisplayName: 传入的用户名称
+        :type DisplayName: str
+        :param Mobile: 传入的手机号
+        :type Mobile: str
+        :param UserId: 用户Id
+        :type UserId: str
+        """
+        self.DisplayName = None
+        self.Mobile = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.DisplayName = params.get("DisplayName")
+        self.Mobile = params.get("Mobile")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TemplateInfo(AbstractModel):
     """二期接口返回的模板的信息结构
 
@@ -5045,6 +5414,82 @@ class TemplateInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateIntegrationEmployeesRequest(AbstractModel):
+    """UpdateIntegrationEmployees请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param Agent: 代理信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param Employees: 员工信息
+        :type Employees: list of Staff
+        """
+        self.Operator = None
+        self.Agent = None
+        self.Employees = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Employees") is not None:
+            self.Employees = []
+            for item in params.get("Employees"):
+                obj = Staff()
+                obj._deserialize(item)
+                self.Employees.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateIntegrationEmployeesResponse(AbstractModel):
+    """UpdateIntegrationEmployees返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessEmployeeData: 更新成功的用户列表
+        :type SuccessEmployeeData: list of SuccessUpdateStaffData
+        :param FailedEmployeeData: 更新失败的用户列表
+        :type FailedEmployeeData: list of FailedUpdateStaffData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessEmployeeData = None
+        self.FailedEmployeeData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SuccessEmployeeData") is not None:
+            self.SuccessEmployeeData = []
+            for item in params.get("SuccessEmployeeData"):
+                obj = SuccessUpdateStaffData()
+                obj._deserialize(item)
+                self.SuccessEmployeeData.append(obj)
+        if params.get("FailedEmployeeData") is not None:
+            self.FailedEmployeeData = []
+            for item in params.get("FailedEmployeeData"):
+                obj = FailedUpdateStaffData()
+                obj._deserialize(item)
+                self.FailedEmployeeData.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class UploadFile(AbstractModel):

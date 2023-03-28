@@ -5303,6 +5303,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ProxyVips: list of str
         :param ProxyIds: 数据库代理 ID 。
         :type ProxyIds: list of str
+        :param EngineTypes: 数据库引擎类型。
+        :type EngineTypes: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -5338,6 +5340,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.Tags = None
         self.ProxyVips = None
         self.ProxyIds = None
+        self.EngineTypes = None
 
 
     def _deserialize(self, params):
@@ -5380,6 +5383,7 @@ class DescribeDBInstancesRequest(AbstractModel):
                 self.Tags.append(obj)
         self.ProxyVips = params.get("ProxyVips")
         self.ProxyIds = params.get("ProxyIds")
+        self.EngineTypes = params.get("EngineTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8091,6 +8095,8 @@ class InstanceInfo(AbstractModel):
         :param MaxDelayTime: 最大延迟阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDelayTime: int
+        :param DiskType: 实例磁盘类型，仅云盘版实例才返回该值。可能的值为 CLOUD_SSD：SSD云硬盘， CLOUD_HSSD：增强型SSD云硬盘
+        :type DiskType: str
         """
         self.WanStatus = None
         self.Zone = None
@@ -8137,6 +8143,7 @@ class InstanceInfo(AbstractModel):
         self.TagList = None
         self.EngineType = None
         self.MaxDelayTime = None
+        self.DiskType = None
 
 
     def _deserialize(self, params):
@@ -8206,6 +8213,7 @@ class InstanceInfo(AbstractModel):
                 self.TagList.append(obj)
         self.EngineType = params.get("EngineType")
         self.MaxDelayTime = params.get("MaxDelayTime")
+        self.DiskType = params.get("DiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

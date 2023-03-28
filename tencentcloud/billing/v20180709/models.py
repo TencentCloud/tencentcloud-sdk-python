@@ -3154,9 +3154,9 @@ class DescribeVoucherInfoRequest(AbstractModel):
         :type ActivityId: str
         :param VoucherName: 代金券名称
         :type VoucherName: str
-        :param TimeFrom: 发放开始时间
+        :param TimeFrom: 发放开始时间,例：2021-01-01
         :type TimeFrom: str
-        :param TimeTo: 发放结束时间
+        :param TimeTo: 发放结束时间，例：2021-01-01
         :type TimeTo: str
         :param SortField: 指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间
         :type SortField: str

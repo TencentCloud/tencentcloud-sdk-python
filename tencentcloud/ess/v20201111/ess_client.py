@@ -345,6 +345,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateIntegrationUserRoles(self, request):
+        """集成版绑定员工角色
+
+        :param request: Request instance for CreateIntegrationUserRoles.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateIntegrationUserRolesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateIntegrationUserRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIntegrationUserRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIntegrationUserRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateMultiFlowSignQRCode(self, request):
         """此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
         适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
@@ -543,6 +566,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteIntegrationRoleUsers(self, request):
+        """解绑用户角色绑定关系
+
+        :param request: Request instance for DeleteIntegrationRoleUsers.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DeleteIntegrationRoleUsersRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DeleteIntegrationRoleUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteIntegrationRoleUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteIntegrationRoleUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSealPolicies(self, request):
         """撤销员工持有的印章权限
 
@@ -722,6 +768,29 @@ class EssClient(AbstractClient):
             body = self.call("DescribeIntegrationMainOrganizationUser", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIntegrationMainOrganizationUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIntegrationRoles(self, request):
+        """查询集成版角色
+
+        :param request: Request instance for DescribeIntegrationRoles.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeIntegrationRolesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeIntegrationRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIntegrationRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIntegrationRolesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -911,6 +980,29 @@ class EssClient(AbstractClient):
             body = self.call("StartFlow", params, headers=headers)
             response = json.loads(body)
             model = models.StartFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateIntegrationEmployees(self, request):
+        """更新集成版员工信息(姓名，手机号，邮件)，用户实名后无法更改姓名与手机号
+
+        :param request: Request instance for UpdateIntegrationEmployees.
+        :type request: :class:`tencentcloud.ess.v20201111.models.UpdateIntegrationEmployeesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UpdateIntegrationEmployeesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateIntegrationEmployees", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateIntegrationEmployeesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

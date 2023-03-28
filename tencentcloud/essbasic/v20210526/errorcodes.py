@@ -233,6 +233,9 @@ INVALIDPARAMETER_SENSITIVEFILECONTENT = 'InvalidParameter.SensitiveFileContent'
 # 参数错误，不合法的签署控件类型，请修改后重试。
 INVALIDPARAMETER_SIGNCOMPONENTTYPE = 'InvalidParameter.SignComponentType'
 
+# 类型不支持。
+INVALIDPARAMETER_SIGNCOMPONENTS = 'InvalidParameter.SignComponents'
+
 # 状态异常。
 INVALIDPARAMETER_STATUS = 'InvalidParameter.Status'
 
