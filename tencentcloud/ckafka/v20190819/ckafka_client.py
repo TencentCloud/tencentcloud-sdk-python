@@ -1591,6 +1591,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDatahubTopic(self, request):
+        """修改Datahub主题属性
+
+        :param request: Request instance for ModifyDatahubTopic.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyDatahubTopicRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyDatahubTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDatahubTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDatahubTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyGroupOffsets(self, request):
         """设置Groups 消费分组offset
 

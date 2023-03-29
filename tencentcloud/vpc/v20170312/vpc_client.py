@@ -4919,7 +4919,7 @@ class VpcClient(AbstractClient):
 
 
     def DownloadCustomerGatewayConfiguration(self, request):
-        """本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
+        """本接口（DownloadCustomerGatewayConfiguration）用于下载VPN通道配置。
 
         :param request: Request instance for DownloadCustomerGatewayConfiguration.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DownloadCustomerGatewayConfigurationRequest`

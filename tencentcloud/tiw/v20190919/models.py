@@ -1300,6 +1300,42 @@ class DescribeQualityMetricsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRecordSearchRequest(AbstractModel):
+    """DescribeRecordSearch请求参数结构体
+
+    """
+
+
+class DescribeRecordSearchResponse(AbstractModel):
+    """DescribeRecordSearch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordTaskSet: 录制任务搜索结果集合
+        :type RecordTaskSet: list of RecordTaskSearchResult
+        :param TotalCount: 录制总任务数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RecordTaskSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RecordTaskSet") is not None:
+            self.RecordTaskSet = []
+            for item in params.get("RecordTaskSet"):
+                obj = RecordTaskSearchResult()
+                obj._deserialize(item)
+                self.RecordTaskSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRoomListRequest(AbstractModel):
     """DescribeRoomList请求参数结构体
 
@@ -2874,6 +2910,135 @@ false - 所有流都录制大画面，默认为false。
                 obj = StreamControl()
                 obj._deserialize(item)
                 self.StreamControls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordTaskResult(AbstractModel):
+    """实时录制结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FinishReason: AUTO - 自动停止录制， USER_CALL - 用户主动调用停止录制
+        :type FinishReason: str
+        :param ExceptionCnt: 异常数
+        :type ExceptionCnt: int
+        :param RoomId: 房间号
+        :type RoomId: int
+        :param GroupId: 分组
+        :type GroupId: str
+        :param RecordStartTime: 录制真实开始时间
+        :type RecordStartTime: int
+        :param RecordStopTime: 录制结束时间
+        :type RecordStopTime: int
+        :param TotalTime: 录制总时长
+        :type TotalTime: int
+        :param VideoInfos: 视频信息列表
+        :type VideoInfos: list of VideoInfo
+        :param OmittedDurations: 被忽略的视频时间段
+        :type OmittedDurations: list of OmittedDuration
+        :param Details: 详情
+        :type Details: str
+        :param ErrorCode: 任务失败错误码
+        :type ErrorCode: int
+        :param ErrorMsg: 错误信息
+        :type ErrorMsg: str
+        """
+        self.FinishReason = None
+        self.ExceptionCnt = None
+        self.RoomId = None
+        self.GroupId = None
+        self.RecordStartTime = None
+        self.RecordStopTime = None
+        self.TotalTime = None
+        self.VideoInfos = None
+        self.OmittedDurations = None
+        self.Details = None
+        self.ErrorCode = None
+        self.ErrorMsg = None
+
+
+    def _deserialize(self, params):
+        self.FinishReason = params.get("FinishReason")
+        self.ExceptionCnt = params.get("ExceptionCnt")
+        self.RoomId = params.get("RoomId")
+        self.GroupId = params.get("GroupId")
+        self.RecordStartTime = params.get("RecordStartTime")
+        self.RecordStopTime = params.get("RecordStopTime")
+        self.TotalTime = params.get("TotalTime")
+        if params.get("VideoInfos") is not None:
+            self.VideoInfos = []
+            for item in params.get("VideoInfos"):
+                obj = VideoInfo()
+                obj._deserialize(item)
+                self.VideoInfos.append(obj)
+        if params.get("OmittedDurations") is not None:
+            self.OmittedDurations = []
+            for item in params.get("OmittedDurations"):
+                obj = OmittedDuration()
+                obj._deserialize(item)
+                self.OmittedDurations.append(obj)
+        self.Details = params.get("Details")
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMsg = params.get("ErrorMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordTaskSearchResult(AbstractModel):
+    """实时录制任务搜索结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务唯一ID
+        :type TaskId: str
+        :param Status: 实时录制任务状态
+- PAUSED: 录制已暂停
+- PREPARED: 录制在准备阶段
+- RECORDING: 正在录制
+- STOPPED：录制已停止
+- FINISHED: 录制已结束
+        :type Status: str
+        :param RoomId: 实时录制房间号
+        :type RoomId: int
+        :param CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param SdkAppId: 用户应用SdkAppId
+        :type SdkAppId: int
+        :param Result: 实时录制结果
+        :type Result: :class:`tencentcloud.tiw.v20190919.models.RecordTaskResult`
+        """
+        self.TaskId = None
+        self.Status = None
+        self.RoomId = None
+        self.CreateTime = None
+        self.SdkAppId = None
+        self.Result = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.RoomId = params.get("RoomId")
+        self.CreateTime = params.get("CreateTime")
+        self.SdkAppId = params.get("SdkAppId")
+        if params.get("Result") is not None:
+            self.Result = RecordTaskResult()
+            self.Result._deserialize(params.get("Result"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2241,6 +2241,10 @@ class CreatePostpayPackageRequest(AbstractModel):
 <li>QuickStart：快速启动来源</li>
 <li>Activity：活动来源</li>
         :type Flag: str
+        :param EnvAlias: 环境别名，无字符类型限制
+        :type EnvAlias: str
+        :param Extra: 附加字段，用于透传额外的自定义信息
+        :type Extra: str
         """
         self.EnvId = None
         self.WxAppId = None
@@ -2251,6 +2255,8 @@ class CreatePostpayPackageRequest(AbstractModel):
         self.Channel = None
         self.ExtensionId = None
         self.Flag = None
+        self.EnvAlias = None
+        self.Extra = None
 
 
     def _deserialize(self, params):
@@ -2263,6 +2269,8 @@ class CreatePostpayPackageRequest(AbstractModel):
         self.Channel = params.get("Channel")
         self.ExtensionId = params.get("ExtensionId")
         self.Flag = params.get("Flag")
+        self.EnvAlias = params.get("EnvAlias")
+        self.Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -85,12 +85,16 @@ class DescribeRegionsRequest(AbstractModel):
         r"""
         :param Product: 待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
         :type Product: str
+        :param Scene: 不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
+        :type Scene: int
         """
         self.Product = None
+        self.Scene = None
 
 
     def _deserialize(self, params):
         self.Product = params.get("Product")
+        self.Scene = params.get("Scene")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -139,12 +143,16 @@ class DescribeZonesRequest(AbstractModel):
         r"""
         :param Product: 待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
         :type Product: str
+        :param Scene: 不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
+        :type Scene: int
         """
         self.Product = None
+        self.Scene = None
 
 
     def _deserialize(self, params):
         self.Product = params.get("Product")
+        self.Scene = params.get("Scene")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

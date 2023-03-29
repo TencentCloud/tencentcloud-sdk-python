@@ -237,12 +237,16 @@ class Subtitle(AbstractModel):
         :type BeginIndex: int
         :param EndIndex: 该字在整句中的结束位置，从0开始。
         :type EndIndex: int
+        :param Phoneme: 该字的音素
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phoneme: str
         """
         self.Text = None
         self.BeginTime = None
         self.EndTime = None
         self.BeginIndex = None
         self.EndIndex = None
+        self.Phoneme = None
 
 
     def _deserialize(self, params):
@@ -251,6 +255,7 @@ class Subtitle(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.BeginIndex = params.get("BeginIndex")
         self.EndIndex = params.get("EndIndex")
+        self.Phoneme = params.get("Phoneme")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

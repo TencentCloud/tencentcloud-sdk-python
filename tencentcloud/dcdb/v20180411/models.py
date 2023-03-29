@@ -2303,6 +2303,9 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         :param ExclusterType: 独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusterType: int
+        :param RsAccessStrategy: VPC就近访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RsAccessStrategy: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2355,6 +2358,7 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         self.DbVersionId = None
         self.EncryptStatus = None
         self.ExclusterType = None
+        self.RsAccessStrategy = None
         self.RequestId = None
 
 
@@ -2418,6 +2422,7 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         self.DbVersionId = params.get("DbVersionId")
         self.EncryptStatus = params.get("EncryptStatus")
         self.ExclusterType = params.get("ExclusterType")
+        self.RsAccessStrategy = params.get("RsAccessStrategy")
         self.RequestId = params.get("RequestId")
 
 

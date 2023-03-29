@@ -324,6 +324,34 @@ class AutoSignConfig(AbstractModel):
         
 
 
+class CallbackInfo(AbstractModel):
+    """应用回调信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CallbackUrl: 回调url
+        :type CallbackUrl: str
+        :param Token: 回调加密token
+        :type Token: str
+        """
+        self.CallbackUrl = None
+        self.Token = None
+
+
+    def _deserialize(self, params):
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Caller(AbstractModel):
     """此结构体 (Caller) 用于描述调用方属性。
 
@@ -4542,6 +4570,36 @@ class ModifyApplicationCallbackInfoRequest(AbstractModel):
     """ModifyApplicationCallbackInfo请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param OperateType: 操作类型：1-新增，2-删除
+        :type OperateType: int
+        :param CallbackInfo: 回调信息
+        :type CallbackInfo: :class:`tencentcloud.ess.v20201111.models.CallbackInfo`
+        """
+        self.Operator = None
+        self.OperateType = None
+        self.CallbackInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.OperateType = params.get("OperateType")
+        if params.get("CallbackInfo") is not None:
+            self.CallbackInfo = CallbackInfo()
+            self.CallbackInfo._deserialize(params.get("CallbackInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyApplicationCallbackInfoResponse(AbstractModel):

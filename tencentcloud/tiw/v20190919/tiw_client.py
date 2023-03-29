@@ -417,6 +417,29 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRecordSearch(self, request):
+        """根据房间号搜索实时录制任务
+
+        :param request: Request instance for DescribeRecordSearch.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeRecordSearchRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeRecordSearchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordSearch", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordSearchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRoomList(self, request):
         """查询白板房间列表
 

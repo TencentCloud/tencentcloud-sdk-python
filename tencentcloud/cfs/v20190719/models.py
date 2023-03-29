@@ -1784,7 +1784,13 @@ class FileSystemInfo(AbstractModel):
         :type CreationToken: str
         :param FileSystemId: 文件系统 ID
         :type FileSystemId: str
-        :param LifeCycleState: 文件系统状态
+        :param LifeCycleState: 文件系统状态。取值范围：
+- creating:创建中
+- mounting:挂载中
+- create_failed:创建失败
+- available:可使用
+- unserviced:停服中
+- upgrading:升级中
         :type LifeCycleState: str
         :param SizeByte: 文件系统已使用容量
         :type SizeByte: int
@@ -1818,7 +1824,7 @@ class FileSystemInfo(AbstractModel):
         :type Capacity: int
         :param Tags: 文件系统标签列表
         :type Tags: list of TagInfo
-        :param TieringState: 文件系统声明周期管理状态
+        :param TieringState: 文件系统生命周期管理状态
         :type TieringState: str
         :param TieringDetail: 分层存储详情
 注意：此字段可能返回 null，表示取不到有效值。

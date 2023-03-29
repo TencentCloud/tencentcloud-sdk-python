@@ -899,7 +899,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateType: str
-        :param PackageType: 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
+        :param PackageType: 证书套餐类型：null = 用户上传证书（没有套餐类型），1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param ProductZhName: 颁发者。
@@ -1628,6 +1628,8 @@ class DescribeManagerDetailResponse(AbstractModel):
         :type CompanyId: int
         :param ManagerId: 管理人ID
         :type ManagerId: int
+        :param StatusInfo: 审核状态详细信息
+        :type StatusInfo: list of ManagerStatusInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1649,6 +1651,7 @@ class DescribeManagerDetailResponse(AbstractModel):
         self.CompanyInfo = None
         self.CompanyId = None
         self.ManagerId = None
+        self.StatusInfo = None
         self.RequestId = None
 
 
@@ -1673,6 +1676,12 @@ class DescribeManagerDetailResponse(AbstractModel):
             self.CompanyInfo._deserialize(params.get("CompanyInfo"))
         self.CompanyId = params.get("CompanyId")
         self.ManagerId = params.get("ManagerId")
+        if params.get("StatusInfo") is not None:
+            self.StatusInfo = []
+            for item in params.get("StatusInfo"):
+                obj = ManagerStatusInfo()
+                obj._deserialize(item)
+                self.StatusInfo.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1689,9 +1698,9 @@ class DescribeManagersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页每页数量
         :type Limit: int
-        :param ManagerName: 管理人姓名
+        :param ManagerName: 管理人姓名（将废弃），请使用SearchKey
         :type ManagerName: str
-        :param ManagerMail: 模糊查询管理人邮箱
+        :param ManagerMail: 模糊查询管理人邮箱（将废弃），请使用SearchKey
         :type ManagerMail: str
         :param Status: 根据管理人状态进行筛选，取值有
 'none' 未提交审核
@@ -1702,7 +1711,7 @@ class DescribeManagersRequest(AbstractModel):
 'expiring'  即将过期
 'expired' 已过期
         :type Status: str
-        :param SearchKey: 管理人姓名/邮箱/部门精准匹配
+        :param SearchKey: 管理人姓/管理人名/邮箱/部门精准匹配
         :type SearchKey: str
         """
         self.CompanyId = None
@@ -3115,7 +3124,7 @@ class UploadCertificateRequest(AbstractModel):
         :type CertificatePublicKey: str
         :param CertificatePrivateKey: 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
         :type CertificatePrivateKey: str
-        :param CertificateType: 证书类型，默认 SVR。CA = 客户端证书，SVR = 服务器证书。
+        :param CertificateType: 证书类型，默认 SVR。CA = CA证书，SVR = 服务器证书。
         :type CertificateType: str
         :param Alias: 备注名称。
         :type Alias: str

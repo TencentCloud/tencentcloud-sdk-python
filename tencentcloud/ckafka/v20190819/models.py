@@ -9112,6 +9112,8 @@ class ModifyConnectResourceRequest(AbstractModel):
         :type CtsdbConnectParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbModifyConnectParam`
         :param DorisConnectParam: Doris配置，Type为DORIS
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisModifyConnectParam`
+        :param KafkaConnectParam: Kafka配置，Type为 KAFKA 时必填
+        :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -9127,6 +9129,7 @@ class ModifyConnectResourceRequest(AbstractModel):
         self.SQLServerConnectParam = None
         self.CtsdbConnectParam = None
         self.DorisConnectParam = None
+        self.KafkaConnectParam = None
 
 
     def _deserialize(self, params):
@@ -9164,6 +9167,9 @@ class ModifyConnectResourceRequest(AbstractModel):
         if params.get("DorisConnectParam") is not None:
             self.DorisConnectParam = DorisModifyConnectParam()
             self.DorisConnectParam._deserialize(params.get("DorisConnectParam"))
+        if params.get("KafkaConnectParam") is not None:
+            self.KafkaConnectParam = KafkaConnectParam()
+            self.KafkaConnectParam._deserialize(params.get("KafkaConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9244,6 +9250,70 @@ class ModifyDatahubTaskResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = DatahubTaskIdRes()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatahubTopicRequest(AbstractModel):
+    """ModifyDatahubTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param RetentionMs: 消息保留时间，单位：ms，当前最小值为60000ms。
+        :type RetentionMs: int
+        :param Note: 主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
+        :type Note: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
+        """
+        self.Name = None
+        self.RetentionMs = None
+        self.Note = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.RetentionMs = params.get("RetentionMs")
+        self.Note = params.get("Note")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatahubTopicResponse(AbstractModel):
+    """ModifyDatahubTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果集
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 

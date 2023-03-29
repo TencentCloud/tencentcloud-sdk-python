@@ -12079,7 +12079,7 @@ class DescribeExportMachinesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务id
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15520,9 +15520,9 @@ class DescribeSearchExportListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 导出的任务号
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: int
-        :param DownloadUrl: 下载地址
+        :param DownloadUrl: 该参数作废
         :type DownloadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18039,7 +18039,7 @@ class ExportAttackLogsResponse(AbstractModel):
         r"""
         :param DownloadUrl: 已废弃
         :type DownloadUrl: str
-        :param TaskId: 导出任务ID 可通过ExportTasks接口下载
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18108,10 +18108,10 @@ class ExportBaselineEffectHostListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 下载地址
+        :param DownloadUrl: 该参数已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
-        :param TaskId: 导出任务id 可通过 ExportTasks接口下载
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18392,7 +18392,7 @@ class ExportBaselineListResponse(AbstractModel):
         :param DownloadUrl: 导出文件下载地址（已弃用）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
-        :param TaskId: 导出文件Id 可通过ExportTasks接口下载
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18548,7 +18548,7 @@ class ExportBashEventsResponse(AbstractModel):
         r"""
         :param DownloadUrl: 导出文件下载链接地址。
         :type DownloadUrl: str
-        :param TaskId: 导出任务ID
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18600,9 +18600,9 @@ class ExportBruteAttacksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 导出文件下载链接地址。
+        :param DownloadUrl: 该参数已废弃
         :type DownloadUrl: str
-        :param TaskId: 导出任务ID
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18649,9 +18649,9 @@ class ExportIgnoreBaselineRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 文件下载地址
+        :param DownloadUrl: 该参数已废弃
         :type DownloadUrl: str
-        :param TaskId: 导出任务Id , 可通过ExportTasks 接口下载
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18708,9 +18708,9 @@ class ExportIgnoreRuleEffectHostListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 导出文件下载地址
+        :param DownloadUrl: 该参数已废弃
         :type DownloadUrl: str
-        :param TaskId: 导出任务Id , 可通过ExportTasks 接口下载
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18783,7 +18783,7 @@ class ExportLicenseDetailResponse(AbstractModel):
         r"""
         :param DownloadUrl: 下载地址,该字段废弃
         :type DownloadUrl: str
-        :param TaskId: 任务ID,可通过任务ID去查下载任务
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18835,9 +18835,9 @@ class ExportMaliciousRequestsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 导出文件下载链接地址。
+        :param DownloadUrl: 该参数已废弃
         :type DownloadUrl: str
-        :param TaskId: 导出任务Id , 可通过ExportTasks 接口下载
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18911,9 +18911,9 @@ class ExportMalwaresResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 导出文件下载链接地址。
+        :param DownloadUrl: 该参数已废弃
         :type DownloadUrl: str
-        :param TaskId: 任务id
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18965,9 +18965,9 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 导出文件下载链接地址。
+        :param DownloadUrl: 该参数已废弃
         :type DownloadUrl: str
-        :param TaskId: 导出任务ID
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19019,9 +19019,9 @@ class ExportPrivilegeEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 导出文件下载链接地址。
+        :param DownloadUrl: 该参数已废弃
         :type DownloadUrl: str
-        :param TaskId: 导出任务ID
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19082,7 +19082,7 @@ class ExportProtectDirListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19132,9 +19132,9 @@ class ExportReverseShellEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 导出文件下载链接地址。
+        :param DownloadUrl: 该参数已废弃
         :type DownloadUrl: str
-        :param TaskId: 任务id
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19194,7 +19194,7 @@ class ExportScanTaskDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 导出本次检测Excel的任务Id（不同于入参的本次检测任务id）
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址(不同于入参的本次检测任务id)
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19337,9 +19337,9 @@ class ExportVulDetectionExcelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownloadUrl: 导出文件下载链接地址
+        :param DownloadUrl: 该参数已废弃
         :type DownloadUrl: str
-        :param TaskId: 导出本次漏洞检测Excel的任务Id（不同于入参的本次漏洞检测任务id）
+        :param TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址（不同于入参的本次漏洞检测任务id）
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24633,24 +24633,24 @@ class UpdateMachineTagsRequest(AbstractModel):
         r"""
         :param Quuid: 机器 Quuid
         :type Quuid: str
+        :param TagIds: 标签ID，该操作会覆盖原有的标签列表
+        :type TagIds: list of int non-negative
         :param MachineRegion: 服务器地区 如: ap-guangzhou
         :type MachineRegion: str
         :param MachineArea: 服务器类型(CVM|BM|ECM|LH|Other)
         :type MachineArea: str
-        :param TagIds: 标签ID，该操作会覆盖原有的标签列表
-        :type TagIds: list of int non-negative
         """
         self.Quuid = None
+        self.TagIds = None
         self.MachineRegion = None
         self.MachineArea = None
-        self.TagIds = None
 
 
     def _deserialize(self, params):
         self.Quuid = params.get("Quuid")
+        self.TagIds = params.get("TagIds")
         self.MachineRegion = params.get("MachineRegion")
         self.MachineArea = params.get("MachineArea")
-        self.TagIds = params.get("TagIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
