@@ -3617,6 +3617,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRiskDnsEventList(self, request):
+        """获取恶意请求事件列表
+
+        :param request: Request instance for DescribeRiskDnsEventList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsEventListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskDnsEventList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskDnsEventListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRiskDnsList(self, request):
         """入侵检测，获取恶意请求列表
 

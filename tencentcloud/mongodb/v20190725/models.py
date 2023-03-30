@@ -1822,7 +1822,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小，最小值为1，最大值为100，默认值为20。
         :type Limit: int
-        :param Format: 慢日志返回格式，可设置为json，不传默认返回原生慢日志格式。
+        :param Format: 慢日志返回格式。默认返回原生慢日志格式，4.4及以上版本可设置为json。
         :type Format: str
         """
         self.InstanceId = None
@@ -2086,15 +2086,15 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :param InstanceId: 实例 ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
         :param Memory: 变更配置后实例内存大小，单位：GB。
         :type Memory: int
         :param Volume: 变更配置后实例磁盘大小，单位：GB。
         :type Volume: int
-        :param NodeNum: 实例变更后的节点数，取值范围具体参照查询云数据库的售卖规格返回参数。默认为不变更节点数
+        :param NodeNum: 实例节点数。默认为不变更节点数，暂不支持变更。
         :type NodeNum: int
-        :param ReplicateSetNum: 实例变更后的分片数，取值范围具体参照查询云数据库的售卖规格返回参数。只能增加不能减少，默认为不变更分片数
+        :param ReplicateSetNum: 实例分片数。默认为不变更分片数，暂不支持变更。
         :type ReplicateSetNum: int
         """
         self.InstanceId = None

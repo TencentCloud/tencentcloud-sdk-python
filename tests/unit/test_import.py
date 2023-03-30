@@ -1109,6 +1109,11 @@ def test_import_thpc():
     from tencentcloud.thpc.v20220401 import models
 
 
+def test_import_thpc():
+    from tencentcloud.thpc.v20230321 import thpc_client
+    from tencentcloud.thpc.v20230321 import models
+
+
 def test_import_tia():
     from tencentcloud.tia.v20180226 import tia_client
     from tencentcloud.tia.v20180226 import models

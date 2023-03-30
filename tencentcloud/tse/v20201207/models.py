@@ -114,14 +114,39 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         :type NodeId: str
         :param NodeIp: 节点 ip
         :type NodeIp: str
+        :param ZoneId: Zone id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: str
+        :param Zone: Zone
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param GroupId: 分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 分组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self.NodeId = None
         self.NodeIp = None
+        self.ZoneId = None
+        self.Zone = None
+        self.GroupId = None
+        self.GroupName = None
+        self.Status = None
 
 
     def _deserialize(self, params):
         self.NodeId = params.get("NodeId")
         self.NodeIp = params.get("NodeIp")
+        self.ZoneId = params.get("ZoneId")
+        self.Zone = params.get("Zone")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

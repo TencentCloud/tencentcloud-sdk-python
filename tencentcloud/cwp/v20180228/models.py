@@ -14944,6 +14944,89 @@ class DescribeReverseShellRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRiskDnsEventListRequest(AbstractModel):
+    """DescribeRiskDnsEventList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: <li>IpOrName - String - 是否必填：否 - 主机Ip或别名筛选</li>
+<li>HostId - String - 是否必填：否 - 主机Id</li>
+<li>AgentId - String - 是否必填：否 - 客户端Id</li>
+<li>PolicyType - String - 是否必填：否 - 策略类型,0:系统策略1:用户自定义策略</li>
+<li>Domain - String - 是否必填：否 - 域名(先对域名做urlencode,再base64)</li>
+<li>HandleStatus - String - 是否必填：否 - 状态筛选0:待处理；2:信任；3:不信任</li>
+<li>BeginTime - String - 是否必填：否 - 最近访问开始时间</li>
+<li>EndTime - String - 是否必填：否 - 最近访问结束时间</li>
+        :type Filters: list of Filter
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Order: 排序方式：根据请求次数排序：[asc:升序|desc:降序]
+        :type Order: str
+        :param By: 排序字段：[AccessCount:请求次数|LastTime:最近请求时间]
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskDnsEventListResponse(AbstractModel):
+    """DescribeRiskDnsEventList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 恶意请求事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of RiskDnsEvent
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = RiskDnsEvent()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRiskDnsListRequest(AbstractModel):
     """DescribeRiskDnsList请求参数结构体
 
@@ -23204,6 +23287,129 @@ class ReverseShellRule(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
         self.Hostip = params.get("Hostip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RiskDnsEvent(AbstractModel):
+    """恶意请求事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 事件Id
+        :type Id: int
+        :param PolicyId: 策略ID
+        :type PolicyId: int
+        :param PolicyType: 命中策略类型[-1:未知|0系统|1:用户]
+        :type PolicyType: int
+        :param PolicyName: 命中策略名称
+        :type PolicyName: str
+        :param ProtectLevel: 保护级别[0:基础版|1:专业版|2:旗舰版]
+        :type ProtectLevel: int
+        :param HostId: 主机ID
+        :type HostId: str
+        :param HostName: 主机名称
+        :type HostName: str
+        :param HostIp: 主机IP
+        :type HostIp: str
+        :param WanIp: 外网IP
+        :type WanIp: str
+        :param AgentId: 客户端ID
+        :type AgentId: str
+        :param Domain: 访问域名
+        :type Domain: str
+        :param Tags: 标签特性
+        :type Tags: list of str
+        :param AccessCount: 访问次数
+        :type AccessCount: int
+        :param ThreatDesc: 威胁描述
+        :type ThreatDesc: str
+        :param SuggestSolution: 修复方案
+        :type SuggestSolution: str
+        :param ReferenceLink: 参考链接
+        :type ReferenceLink: str
+        :param HandleStatus: 处理状态；[0:待处理|2:已加白|3:非信任状态|4:已处理|5:已忽略]
+        :type HandleStatus: int
+        :param Pid: 进程ID
+        :type Pid: int
+        :param ProcessName: 进程名
+        :type ProcessName: str
+        :param ProcessMd5: 进程MD5
+        :type ProcessMd5: str
+        :param CmdLine: 命令行
+        :type CmdLine: str
+        :param FirstTime: 首次访问时间
+        :type FirstTime: str
+        :param LastTime: 最近访问时间
+        :type LastTime: str
+        :param HostStatus: 主机在线状态[OFFLINE:离线|ONLINE:在线|UNKNOWN:未知]
+        :type HostStatus: str
+        :param MachineExtraInfo: 附加信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        """
+        self.Id = None
+        self.PolicyId = None
+        self.PolicyType = None
+        self.PolicyName = None
+        self.ProtectLevel = None
+        self.HostId = None
+        self.HostName = None
+        self.HostIp = None
+        self.WanIp = None
+        self.AgentId = None
+        self.Domain = None
+        self.Tags = None
+        self.AccessCount = None
+        self.ThreatDesc = None
+        self.SuggestSolution = None
+        self.ReferenceLink = None
+        self.HandleStatus = None
+        self.Pid = None
+        self.ProcessName = None
+        self.ProcessMd5 = None
+        self.CmdLine = None
+        self.FirstTime = None
+        self.LastTime = None
+        self.HostStatus = None
+        self.MachineExtraInfo = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyType = params.get("PolicyType")
+        self.PolicyName = params.get("PolicyName")
+        self.ProtectLevel = params.get("ProtectLevel")
+        self.HostId = params.get("HostId")
+        self.HostName = params.get("HostName")
+        self.HostIp = params.get("HostIp")
+        self.WanIp = params.get("WanIp")
+        self.AgentId = params.get("AgentId")
+        self.Domain = params.get("Domain")
+        self.Tags = params.get("Tags")
+        self.AccessCount = params.get("AccessCount")
+        self.ThreatDesc = params.get("ThreatDesc")
+        self.SuggestSolution = params.get("SuggestSolution")
+        self.ReferenceLink = params.get("ReferenceLink")
+        self.HandleStatus = params.get("HandleStatus")
+        self.Pid = params.get("Pid")
+        self.ProcessName = params.get("ProcessName")
+        self.ProcessMd5 = params.get("ProcessMd5")
+        self.CmdLine = params.get("CmdLine")
+        self.FirstTime = params.get("FirstTime")
+        self.LastTime = params.get("LastTime")
+        self.HostStatus = params.get("HostStatus")
+        if params.get("MachineExtraInfo") is not None:
+            self.MachineExtraInfo = MachineExtraInfo()
+            self.MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

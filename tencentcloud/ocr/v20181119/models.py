@@ -6816,6 +6816,28 @@ class SmartFormFileUrl(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param FileUrl: 文件url地址
+        :type FileUrl: str
+        :param FileOrderNumber: 文件的顺序，顺序从1开始
+        :type FileOrderNumber: int
+        """
+        self.FileUrl = None
+        self.FileOrderNumber = None
+
+
+    def _deserialize(self, params):
+        self.FileUrl = params.get("FileUrl")
+        self.FileOrderNumber = params.get("FileOrderNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class SmartStructuralOCRRequest(AbstractModel):
     """SmartStructuralOCR请求参数结构体
