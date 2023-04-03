@@ -22163,6 +22163,8 @@ class RebuildMediaTaskInput(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: 结束偏移时间，单位：秒，不填表示截取到视频末尾。
         :type EndTimeOffset: float
+        :param Definition: 音画质重生模版号。
+        :type Definition: int
         :param RepairInfo: 画质修复控制参数。
         :type RepairInfo: :class:`tencentcloud.vod.v20180717.models.RepairInfo`
         :param VideoFrameInterpolationInfo: 智能插帧控制参数。
@@ -22193,6 +22195,7 @@ class RebuildMediaTaskInput(AbstractModel):
         self.FileId = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
+        self.Definition = None
         self.RepairInfo = None
         self.VideoFrameInterpolationInfo = None
         self.SuperResolutionInfo = None
@@ -22212,6 +22215,7 @@ class RebuildMediaTaskInput(AbstractModel):
         self.FileId = params.get("FileId")
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Definition = params.get("Definition")
         if params.get("RepairInfo") is not None:
             self.RepairInfo = RepairInfo()
             self.RepairInfo._deserialize(params.get("RepairInfo"))

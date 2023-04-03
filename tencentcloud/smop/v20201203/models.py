@@ -33,7 +33,7 @@ class SubmitTaskEventRequest(AbstractModel):
         :type OrderId: str
         :param Code: 任务事件Code
         :type Code: str
-        :param Async: 同步异步方式
+        :param Async: 同步异步方式：0为同步、1位异步
         :type Async: int
         :param ProductId: 产品ID
         :type ProductId: int
@@ -136,7 +136,7 @@ class TaskEventData(AbstractModel):
         :param TaskType: 任务类型后台代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: int
-        :param TotalCoin: 当前积分/成长值
+        :param TotalCoin: 当前积分
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCoin: int
         :param Attach: 用户透传的代码块
@@ -151,6 +151,9 @@ class TaskEventData(AbstractModel):
         :param TaskName: 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
+        :param GrowScore: 当前成长值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrowScore: int
         """
         self.Code = None
         self.Message = None
@@ -164,6 +167,7 @@ class TaskEventData(AbstractModel):
         self.DoneTimes = None
         self.TotalTimes = None
         self.TaskName = None
+        self.GrowScore = None
 
 
     def _deserialize(self, params):
@@ -179,6 +183,7 @@ class TaskEventData(AbstractModel):
         self.DoneTimes = params.get("DoneTimes")
         self.TotalTimes = params.get("TotalTimes")
         self.TaskName = params.get("TaskName")
+        self.GrowScore = params.get("GrowScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

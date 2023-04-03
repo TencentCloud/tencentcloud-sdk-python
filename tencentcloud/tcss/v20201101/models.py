@@ -12171,6 +12171,8 @@ class DescribeClusterDetailResponse(AbstractModel):
         :type ServiceCount: int
         :param IngressCount: Ingress数量
         :type IngressCount: int
+        :param MasterIps: 主节点的ip列表
+        :type MasterIps: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12198,6 +12200,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self.PodCount = None
         self.ServiceCount = None
         self.IngressCount = None
+        self.MasterIps = None
         self.RequestId = None
 
 
@@ -12226,6 +12229,7 @@ class DescribeClusterDetailResponse(AbstractModel):
         self.PodCount = params.get("PodCount")
         self.ServiceCount = params.get("ServiceCount")
         self.IngressCount = params.get("IngressCount")
+        self.MasterIps = params.get("MasterIps")
         self.RequestId = params.get("RequestId")
 
 
@@ -12262,6 +12266,8 @@ class DescribeClusterSummaryResponse(AbstractModel):
         :type ManualCheckClusterCount: int
         :param FailedClusterCount: 检查失败集群数
         :type FailedClusterCount: int
+        :param NotImportedClusterCount: 未导入的集群数量
+        :type NotImportedClusterCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12275,6 +12281,7 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self.AutoCheckClusterCount = None
         self.ManualCheckClusterCount = None
         self.FailedClusterCount = None
+        self.NotImportedClusterCount = None
         self.RequestId = None
 
 
@@ -12289,6 +12296,7 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self.AutoCheckClusterCount = params.get("AutoCheckClusterCount")
         self.ManualCheckClusterCount = params.get("ManualCheckClusterCount")
         self.FailedClusterCount = params.get("FailedClusterCount")
+        self.NotImportedClusterCount = params.get("NotImportedClusterCount")
         self.RequestId = params.get("RequestId")
 
 

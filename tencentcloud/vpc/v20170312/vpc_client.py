@@ -2565,7 +2565,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpnGatewayRoutes(self, request):
-        """本接口（DeleteVpnGatewayCcnRoutes）用于删除VPN网关路由
+        """本接口（DeleteVpnGatewayRoutes）用于删除VPN网关路由
 
         :param request: Request instance for DeleteVpnGatewayRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewayRoutesRequest`
@@ -4403,7 +4403,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpnGatewayCcnRoutes(self, request):
-        """本接口（DescribeVpnGatewayCcnRoutes）用于查询VPN网关云联网路由
+        """本接口（DescribeVpnGatewayCcnRoutes）用于查询VPN网关云联网路由。
 
         :param request: Request instance for DescribeVpnGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewayCcnRoutesRequest`
@@ -4426,7 +4426,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpnGatewayRoutes(self, request):
-        """查询路由型VPN网关的目的路由
+        """本接口（DescribeVpnGatewayRoutes）用于查询VPN网关路由。
 
         :param request: Request instance for DescribeVpnGatewayRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewayRoutesRequest`
@@ -6450,7 +6450,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpnGatewayCcnRoutes(self, request):
-        """本接口（ModifyVpnGatewayCcnRoutes）用于修改VPN网关云联网路由
+        """本接口（ModifyVpnGatewayCcnRoutes）用于修改VPN网关云联网路由。
 
         :param request: Request instance for ModifyVpnGatewayCcnRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayCcnRoutesRequest`
@@ -6473,7 +6473,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyVpnGatewayRoutes(self, request):
-        """修改VPN路由是否启用
+        """本接口（ModifyVpnGatewayRoutes）用于修改VPN路由是否启用。
 
         :param request: Request instance for ModifyVpnGatewayRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewayRoutesRequest`
@@ -7010,7 +7010,7 @@ class VpcClient(AbstractClient):
 
 
     def SetVpnGatewaysRenewFlag(self, request):
-        """设置VPNGW续费标记
+        """本接口（SetVpnGatewaysRenewFlag）用于设置VPNGW续费标记。
 
         :param request: Request instance for SetVpnGatewaysRenewFlag.
         :type request: :class:`tencentcloud.vpc.v20170312.models.SetVpnGatewaysRenewFlagRequest`

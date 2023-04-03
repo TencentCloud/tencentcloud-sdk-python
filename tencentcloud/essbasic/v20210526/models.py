@@ -195,6 +195,8 @@ class BaseFlowInfo(AbstractModel):
         :type FormFields: list of FormField
         :param NeedSignReview: 本企业(发起方企业)是否需要签署审批，true：开启本企业签署审批
         :type NeedSignReview: bool
+        :param UserData: 用户流程自定义数据参数
+        :type UserData: str
         """
         self.FlowName = None
         self.FlowType = None
@@ -204,6 +206,7 @@ class BaseFlowInfo(AbstractModel):
         self.IntelligentStatus = None
         self.FormFields = None
         self.NeedSignReview = None
+        self.UserData = None
 
 
     def _deserialize(self, params):
@@ -220,6 +223,7 @@ class BaseFlowInfo(AbstractModel):
                 obj._deserialize(item)
                 self.FormFields.append(obj)
         self.NeedSignReview = params.get("NeedSignReview")
+        self.UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

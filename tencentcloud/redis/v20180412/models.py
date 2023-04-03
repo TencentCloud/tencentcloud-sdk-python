@@ -3528,7 +3528,7 @@ class DescribeReplicationGroupRequest(AbstractModel):
         :type Offset: int
         :param GroupId: 复制组ID。
         :type GroupId: str
-        :param SearchKey: 设置模糊查询的关键字，可以设置为实例ID或实例名称进行模糊查询。
+        :param SearchKey: 模糊查询的关键字，可以设置为复制组ID或复制组名称进行模糊查询。
         :type SearchKey: str
         """
         self.Limit = None
@@ -4208,21 +4208,44 @@ class Groups(AbstractModel):
         r"""
         :param AppId: 用户AppID
         :type AppId: int
-        :param RegionId: 地域ID 1--广州 4--上海 5-- 中国香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
+        :param RegionId: 地域ID 。
+- 1：广州 
+- 4：上海 
+- 5：中国香港 
+- 6：多伦多 
+- 7：上海金融 
+- 8：北京 
+- 9：新加坡
+- 11：深圳金融
+- 15：美西（硅谷）
+- 16：成都 
+- 17：德国 
+- 18：韩国 
+- 19：重庆 
+- 21：印度 
+- 22：美东（弗吉尼亚）
+- 23：泰国 
+- 24：俄罗斯 
+- 25：日本
         :type RegionId: int
-        :param GroupId: 复制组信息
+        :param GroupId: 复制组 ID。
         :type GroupId: str
-        :param GroupName: 复制组名称
+        :param GroupName: 复制组名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
-        :param Status: 复制组状态，37："绑定复制组中"，38："复制组重连中"，51："解绑复制组中"，52："复制组实例切主中"，53："角色变更中"
+        :param Status: 复制组状态。
+- 37：绑定复制组中。
+- 38：复制组重连中。
+- 51：解绑复制组中。
+- 52：复制组实例切主中。
+- 53：角色变更中。
         :type Status: int
-        :param InstanceCount: 复制组数量
+        :param InstanceCount: 复制组数量。
         :type InstanceCount: int
-        :param Instances: 复制组实例
+        :param Instances: 复制组中的实例信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Instances: list of Instances
-        :param Remark: 备注信息
+        :param Remark: 备注信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """

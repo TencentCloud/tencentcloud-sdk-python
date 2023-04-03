@@ -830,12 +830,16 @@ class DescribeInstanceRequest(AbstractModel):
         r"""
         :param InstanceId: 集群实例ID
         :type InstanceId: str
+        :param IsOpenApi: 是否是open api查询
+        :type IsOpenApi: bool
         """
         self.InstanceId = None
+        self.IsOpenApi = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.IsOpenApi = params.get("IsOpenApi")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -911,6 +915,76 @@ class DescribeInstanceShardsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceShardsList = params.get("InstanceShardsList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceStateRequest(AbstractModel):
+    """DescribeInstanceState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例名称
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceStateResponse(AbstractModel):
+    """DescribeInstanceState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceState: 集群状态，例如：Serving
+        :type InstanceState: str
+        :param FlowCreateTime: 集群操作创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowCreateTime: str
+        :param FlowName: 集群操作名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowName: str
+        :param FlowProgress: 集群操作进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowProgress: float
+        :param InstanceStateDesc: 集群状态描述，例如：运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStateDesc: str
+        :param FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceState = None
+        self.FlowCreateTime = None
+        self.FlowName = None
+        self.FlowProgress = None
+        self.InstanceStateDesc = None
+        self.FlowMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceState = params.get("InstanceState")
+        self.FlowCreateTime = params.get("FlowCreateTime")
+        self.FlowName = params.get("FlowName")
+        self.FlowProgress = params.get("FlowProgress")
+        self.InstanceStateDesc = params.get("InstanceStateDesc")
+        self.FlowMsg = params.get("FlowMsg")
         self.RequestId = params.get("RequestId")
 
 

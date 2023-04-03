@@ -11651,6 +11651,9 @@ class InLongAgentDetail(AbstractModel):
         :param AgentTotal: agent数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentTotal: int
+        :param LifeDays: 生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeDays: int
         """
         self.AgentId = None
         self.AgentName = None
@@ -11665,6 +11668,7 @@ class InLongAgentDetail(AbstractModel):
         self.AgentGroupId = None
         self.CvmAgentStatusList = None
         self.AgentTotal = None
+        self.LifeDays = None
 
 
     def _deserialize(self, params):
@@ -11686,6 +11690,7 @@ class InLongAgentDetail(AbstractModel):
                 obj._deserialize(item)
                 self.CvmAgentStatusList.append(obj)
         self.AgentTotal = params.get("AgentTotal")
+        self.LifeDays = params.get("LifeDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

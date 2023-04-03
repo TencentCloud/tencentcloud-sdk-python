@@ -4289,6 +4289,149 @@ class BashEventNew(AbstractModel):
         
 
 
+class BashEventsInfoNew(AbstractModel):
+    """高危命令数据详情(新)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 数据ID
+        :type Id: int
+        :param Uuid: 云镜ID
+        :type Uuid: str
+        :param Quuid: 主机ID
+        :type Quuid: str
+        :param HostIp: 主机内网IP
+        :type HostIp: str
+        :param Platform: 平台类型
+        :type Platform: int
+        :param BashCmd: 执行命令
+        :type BashCmd: str
+        :param RuleId: 规则ID,等于0表示已规则已被删除或生效范围已修改
+        :type RuleId: int
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param RuleLevel: 规则等级：1-高 2-中 3-低
+        :type RuleLevel: int
+        :param Status: 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3= 已忽略
+        :type Status: int
+        :param CreateTime: 发生时间
+        :type CreateTime: str
+        :param MachineName: 主机名
+        :type MachineName: str
+        :param Exe: 进程名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exe: str
+        :param ModifyTime: 处理时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param RuleCategory: 规则类别  0=系统规则，1=用户规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleCategory: int
+        :param RegexBashCmd: 自动生成的正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegexBashCmd: str
+        :param PsTree: 进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PsTree: str
+        :param SuggestScheme: 建议方案
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuggestScheme: str
+        :param HarmDescribe: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HarmDescribe: str
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param References: 参考链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type References: list of str
+        :param MachineWanIp: 主机外网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineWanIp: str
+        :param MachineStatus: 主机在线状态 OFFLINE  ONLINE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineStatus: str
+        :param User: 登录用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param Pid: 进程号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pid: str
+        :param MachineType: 0:普通 1:专业版 2:旗舰版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineType: int
+        :param DetectBy: 检测来源 0:bash日志 1:实时监控
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectBy: int
+        """
+        self.Id = None
+        self.Uuid = None
+        self.Quuid = None
+        self.HostIp = None
+        self.Platform = None
+        self.BashCmd = None
+        self.RuleId = None
+        self.RuleName = None
+        self.RuleLevel = None
+        self.Status = None
+        self.CreateTime = None
+        self.MachineName = None
+        self.Exe = None
+        self.ModifyTime = None
+        self.RuleCategory = None
+        self.RegexBashCmd = None
+        self.PsTree = None
+        self.SuggestScheme = None
+        self.HarmDescribe = None
+        self.Tags = None
+        self.References = None
+        self.MachineWanIp = None
+        self.MachineStatus = None
+        self.User = None
+        self.Pid = None
+        self.MachineType = None
+        self.DetectBy = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
+        self.HostIp = params.get("HostIp")
+        self.Platform = params.get("Platform")
+        self.BashCmd = params.get("BashCmd")
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.RuleLevel = params.get("RuleLevel")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.MachineName = params.get("MachineName")
+        self.Exe = params.get("Exe")
+        self.ModifyTime = params.get("ModifyTime")
+        self.RuleCategory = params.get("RuleCategory")
+        self.RegexBashCmd = params.get("RegexBashCmd")
+        self.PsTree = params.get("PsTree")
+        self.SuggestScheme = params.get("SuggestScheme")
+        self.HarmDescribe = params.get("HarmDescribe")
+        self.Tags = params.get("Tags")
+        self.References = params.get("References")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.MachineStatus = params.get("MachineStatus")
+        self.User = params.get("User")
+        self.Pid = params.get("Pid")
+        self.MachineType = params.get("MachineType")
+        self.DetectBy = params.get("DetectBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BashRule(AbstractModel):
     """高危命令规则
 
@@ -11170,6 +11313,54 @@ class DescribeBaselineWeakPasswordListResponse(AbstractModel):
                 obj = BaselineWeakPassword()
                 obj._deserialize(item)
                 self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBashEventsInfoNewRequest(AbstractModel):
+    """DescribeBashEventsInfoNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 事件id
+        :type Id: int
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBashEventsInfoNewResponse(AbstractModel):
+    """DescribeBashEventsInfoNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BashEventsInfo: 事件详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BashEventsInfo: :class:`tencentcloud.cwp.v20180228.models.BashEventsInfoNew`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BashEventsInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BashEventsInfo") is not None:
+            self.BashEventsInfo = BashEventsInfoNew()
+            self.BashEventsInfo._deserialize(params.get("BashEventsInfo"))
         self.RequestId = params.get("RequestId")
 
 

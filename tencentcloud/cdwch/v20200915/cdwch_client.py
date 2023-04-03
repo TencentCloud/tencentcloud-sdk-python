@@ -256,6 +256,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceState(self, request):
+        """集群详情页中显示集群状态、流程进度等
+
+        :param request: Request instance for DescribeInstanceState.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceStateRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceState", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSpec(self, request):
         """购买页拉取集群的数据节点和zookeeper节点的规格列表
 

@@ -5462,6 +5462,10 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         :type IssuedDate: str
         :param Photo: 人像截图
         :type Photo: str
+        :param Provinsi: 省份，Scene为V2时支持识别
+        :type Provinsi: str
+        :param Kota: 城市，Scene为V2时支持识别
+        :type Kota: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5481,6 +5485,8 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         self.BerlakuHingga = None
         self.IssuedDate = None
         self.Photo = None
+        self.Provinsi = None
+        self.Kota = None
         self.RequestId = None
 
 
@@ -5501,6 +5507,8 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         self.BerlakuHingga = params.get("BerlakuHingga")
         self.IssuedDate = params.get("IssuedDate")
         self.Photo = params.get("Photo")
+        self.Provinsi = params.get("Provinsi")
+        self.Kota = params.get("Kota")
         self.RequestId = params.get("RequestId")
 
 

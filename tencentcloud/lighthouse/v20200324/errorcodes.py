@@ -47,6 +47,9 @@ FAILEDOPERATION_DESCRIBEINSTANCESRETURNABLEERROR = 'FailedOperation.DescribeInst
 # 查询流量包失败。
 FAILEDOPERATION_DESCRIBEINSTANCESTRAFFICPACKAGESFAILED = 'FailedOperation.DescribeInstancesTrafficPackagesFailed'
 
+# 销毁资源失败，请稍后重新操作。
+FAILEDOPERATION_DESTROYRESOURCESFAILED = 'FailedOperation.DestroyResourcesFailed'
+
 # 对防火墙规则的操作失败。
 FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = 'FailedOperation.FirewallRulesOperationFailed'
 

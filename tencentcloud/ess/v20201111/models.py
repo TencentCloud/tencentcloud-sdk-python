@@ -4135,6 +4135,8 @@ class FlowDetailInfo(AbstractModel):
         :type CreatedOn: int
         :param FlowApproverInfos: 合同(流程)的签署人数组
         :type FlowApproverInfos: list of FlowApproverDetail
+        :param CcInfos: 合同(流程)的关注方信息列表
+        :type CcInfos: list of FlowApproverDetail
         """
         self.FlowId = None
         self.FlowName = None
@@ -4144,6 +4146,7 @@ class FlowDetailInfo(AbstractModel):
         self.FlowDescription = None
         self.CreatedOn = None
         self.FlowApproverInfos = None
+        self.CcInfos = None
 
 
     def _deserialize(self, params):
@@ -4160,6 +4163,12 @@ class FlowDetailInfo(AbstractModel):
                 obj = FlowApproverDetail()
                 obj._deserialize(item)
                 self.FlowApproverInfos.append(obj)
+        if params.get("CcInfos") is not None:
+            self.CcInfos = []
+            for item in params.get("CcInfos"):
+                obj = FlowApproverDetail()
+                obj._deserialize(item)
+                self.CcInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

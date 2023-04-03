@@ -119,5 +119,11 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 扫描机器不存在。
+RESOURCENOTFOUND_MACHINENOTFOUND = 'ResourceNotFound.MachineNotFound'
+
+# 资源不可用。
+RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

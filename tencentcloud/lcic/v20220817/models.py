@@ -67,6 +67,74 @@ class AddGroupMemberResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AnswerInfo(AbstractModel):
+    """房间问答问题详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 用户名
+        :type Name: str
+        :param Answer: 答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
+        :type Answer: int
+        :param CostTime: 答题用时
+        :type CostTime: int
+        :param UserId: 用户ID
+        :type UserId: str
+        :param IsCorrect: 答案是否正确（1正确0错误）
+        :type IsCorrect: int
+        """
+        self.Name = None
+        self.Answer = None
+        self.CostTime = None
+        self.UserId = None
+        self.IsCorrect = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Answer = params.get("Answer")
+        self.CostTime = params.get("CostTime")
+        self.UserId = params.get("UserId")
+        self.IsCorrect = params.get("IsCorrect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnswerStat(AbstractModel):
+    """每个选项答题人数统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Answer: 选项（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
+        :type Answer: int
+        :param Count: 答题人数
+        :type Count: int
+        """
+        self.Answer = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Answer = params.get("Answer")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppConfig(AbstractModel):
     """应用配置信息
 
@@ -1192,6 +1260,69 @@ class DeleteRoomResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAnswerListRequest(AbstractModel):
+    """DescribeAnswerList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QuestionId: 问题ID
+        :type QuestionId: str
+        :param Page: 1
+        :type Page: int
+        :param Limit: 100
+        :type Limit: int
+        """
+        self.QuestionId = None
+        self.Page = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.QuestionId = params.get("QuestionId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAnswerListResponse(AbstractModel):
+    """DescribeAnswerList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 符合查询条件的房间答案总数
+        :type Total: int
+        :param AnswerInfo: 房间提问答案列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnswerInfo: list of AnswerInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.AnswerInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("AnswerInfo") is not None:
+            self.AnswerInfo = []
+            for item in params.get("AnswerInfo"):
+                obj = AnswerInfo()
+                obj._deserialize(item)
+                self.AnswerInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAppDetailRequest(AbstractModel):
     """DescribeAppDetail请求参数结构体
 
@@ -1332,13 +1463,17 @@ class DescribeDeveloperResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DeveloperId: 服务商ID
+        :type DeveloperId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.DeveloperId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.DeveloperId = params.get("DeveloperId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1721,6 +1856,69 @@ class DescribeGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeQuestionListRequest(AbstractModel):
+    """DescribeQuestionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 房间ID
+        :type RoomId: int
+        :param Page: 分页查询当前页数，从1开始递增，默认值为1
+        :type Page: int
+        :param Limit: 分页查询当前页数，从1开始递增，默认值为1
+        :type Limit: int
+        """
+        self.RoomId = None
+        self.Page = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQuestionListResponse(AbstractModel):
+    """DescribeQuestionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 符合查询条件的房间问答问题总数
+        :type Total: int
+        :param QuestionInfo: 房间问答问题列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuestionInfo: list of QuestionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.QuestionInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("QuestionInfo") is not None:
+            self.QuestionInfo = []
+            for item in params.get("QuestionInfo"):
+                obj = QuestionInfo()
+                obj._deserialize(item)
+                self.QuestionInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRoomRequest(AbstractModel):
     """DescribeRoom请求参数结构体
 
@@ -1986,6 +2184,72 @@ class DescribeSdkAppIdUsersResponse(AbstractModel):
                 obj = UserInfo()
                 obj._deserialize(item)
                 self.Users.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSupervisorsRequest(AbstractModel):
+    """DescribeSupervisors请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 低代码互动课堂的SdkAppId。
+
+        :type SdkAppId: int
+        :param Limit: 每页数据量，最大100。 不填默认20.
+        :type Limit: int
+        :param Page: 分页查询当前页数，从1开始递增，不填默认为1。
+        :type Page: int
+        """
+        self.SdkAppId = None
+        self.Limit = None
+        self.Page = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Limit = params.get("Limit")
+        self.Page = params.get("Page")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSupervisorsResponse(AbstractModel):
+    """DescribeSupervisors返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 数据总量
+        :type Total: int
+        :param Page: 分页查询当前页数
+        :type Page: int
+        :param Limit: 当前页数据量
+        :type Limit: int
+        :param UserIds: 巡课列表
+        :type UserIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Page = None
+        self.Limit = None
+        self.UserIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        self.UserIds = params.get("UserIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -3012,6 +3276,52 @@ class ModifyUserProfileResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class QuestionInfo(AbstractModel):
+    """房间问答答案详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QuestionId: 问题ID
+        :type QuestionId: str
+        :param QuestionContent: 问题内容
+        :type QuestionContent: str
+        :param Duration: 倒计时答题设置的秒数（0 表示不计时）
+        :type Duration: int
+        :param CorrectAnswer: 正确答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
+        :type CorrectAnswer: int
+        :param AnswerStats: 每个选项答题人数统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnswerStats: list of AnswerStat
+        """
+        self.QuestionId = None
+        self.QuestionContent = None
+        self.Duration = None
+        self.CorrectAnswer = None
+        self.AnswerStats = None
+
+
+    def _deserialize(self, params):
+        self.QuestionId = params.get("QuestionId")
+        self.QuestionContent = params.get("QuestionContent")
+        self.Duration = params.get("Duration")
+        self.CorrectAnswer = params.get("CorrectAnswer")
+        if params.get("AnswerStats") is not None:
+            self.AnswerStats = []
+            for item in params.get("AnswerStats"):
+                obj = AnswerStat()
+                obj._deserialize(item)
+                self.AnswerStats.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RegisterUserRequest(AbstractModel):

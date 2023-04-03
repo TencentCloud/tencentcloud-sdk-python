@@ -93,3 +93,49 @@ class CarClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartPublishStream(self, request):
+        """开始云端推流
+
+        :param request: Request instance for StartPublishStream.
+        :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.StartPublishStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartPublishStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartPublishStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopPublishStream(self, request):
+        """停止云端推流
+
+        :param request: Request instance for StopPublishStream.
+        :type request: :class:`tencentcloud.car.v20220110.models.StopPublishStreamRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.StopPublishStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopPublishStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopPublishStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

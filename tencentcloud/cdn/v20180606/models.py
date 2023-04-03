@@ -250,7 +250,9 @@ global：全球加速
         :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         :param QnPrivateAccess: 七牛云对象存储回源鉴权
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
-        :param HttpsBilling: HTTPS服务
+        :param OthersPrivateAccess: 其他厂商对象存储回源鉴权
+        :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
+        :param HttpsBilling: HTTPS服务，默认开启（收费服务，详见计费说明和产品文档）
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         self.Domain = None
@@ -291,6 +293,7 @@ global：全球加速
         self.OssPrivateAccess = None
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
+        self.OthersPrivateAccess = None
         self.HttpsBilling = None
 
 
@@ -404,6 +407,9 @@ global：全球加速
         if params.get("QnPrivateAccess") is not None:
             self.QnPrivateAccess = QnPrivateAccess()
             self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
+        if params.get("OthersPrivateAccess") is not None:
+            self.OthersPrivateAccess = OthersPrivateAccess()
+            self.OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
         if params.get("HttpsBilling") is not None:
             self.HttpsBilling = HttpsBilling()
             self.HttpsBilling._deserialize(params.get("HttpsBilling"))
@@ -7090,6 +7096,9 @@ off：不支持
         :param HttpsBilling: HTTPS服务，缺省时默认开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
+        :param OthersPrivateAccess: 其他厂商对象存储回源鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
         """
         self.ResourceId = None
         self.AppId = None
@@ -7156,6 +7165,7 @@ off：不支持
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
         self.HttpsBilling = None
+        self.OthersPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -7330,6 +7340,9 @@ off：不支持
         if params.get("HttpsBilling") is not None:
             self.HttpsBilling = HttpsBilling()
             self.HttpsBilling._deserialize(params.get("HttpsBilling"))
+        if params.get("OthersPrivateAccess") is not None:
+            self.OthersPrivateAccess = OthersPrivateAccess()
+            self.OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11180,6 +11193,50 @@ class OssPrivateAccess(AbstractModel):
         
 
 
+class OthersPrivateAccess(AbstractModel):
+    """其他厂商对象存储回源鉴权
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关， on/off。
+        :type Switch: str
+        :param AccessKey: 访问ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param SecretKey: 密钥。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param Region: 地域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Bucket: 存储桶名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+        self.Region = None
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OverseaConfig(AbstractModel):
     """域名海外地区特殊配置。UpdateDomainConfig接口只支持修改部分分地区配置，为了兼容旧版本配置，本类型会列出旧版本所有可能存在差异的配置列表，支持修改的配置列表如下：
     + Authentication
@@ -14947,7 +15004,9 @@ global：全球加速
         :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         :param QnPrivateAccess: 七牛云对象存储回源鉴权
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
-        :param HttpsBilling: HTTPS服务
+        :param OthersPrivateAccess: 其他厂商对象存储回源鉴权
+        :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
+        :param HttpsBilling: HTTPS服务（收费服务，详见计费说明和产品文档）
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
         self.Domain = None
@@ -14997,6 +15056,7 @@ global：全球加速
         self.ShareCname = None
         self.HwPrivateAccess = None
         self.QnPrivateAccess = None
+        self.OthersPrivateAccess = None
         self.HttpsBilling = None
 
 
@@ -15132,6 +15192,9 @@ global：全球加速
         if params.get("QnPrivateAccess") is not None:
             self.QnPrivateAccess = QnPrivateAccess()
             self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
+        if params.get("OthersPrivateAccess") is not None:
+            self.OthersPrivateAccess = OthersPrivateAccess()
+            self.OthersPrivateAccess._deserialize(params.get("OthersPrivateAccess"))
         if params.get("HttpsBilling") is not None:
             self.HttpsBilling = HttpsBilling()
             self.HttpsBilling._deserialize(params.get("HttpsBilling"))
