@@ -16794,6 +16794,9 @@ class ServiceAccountAuthenticationOptions(AbstractModel):
 
     def __init__(self):
         r"""
+        :param UseTKEDefault: 使用TKE默认issuer和jwksuri
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseTKEDefault: bool
         :param Issuer: service-account-issuer
 注意：此字段可能返回 null，表示取不到有效值。
         :type Issuer: str
@@ -16804,12 +16807,14 @@ class ServiceAccountAuthenticationOptions(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoCreateDiscoveryAnonymousAuth: bool
         """
+        self.UseTKEDefault = None
         self.Issuer = None
         self.JWKSURI = None
         self.AutoCreateDiscoveryAnonymousAuth = None
 
 
     def _deserialize(self, params):
+        self.UseTKEDefault = params.get("UseTKEDefault")
         self.Issuer = params.get("Issuer")
         self.JWKSURI = params.get("JWKSURI")
         self.AutoCreateDiscoveryAnonymousAuth = params.get("AutoCreateDiscoveryAnonymousAuth")

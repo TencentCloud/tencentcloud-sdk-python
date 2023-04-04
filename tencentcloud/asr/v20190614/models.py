@@ -1487,7 +1487,7 @@ class TaskStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务标识。
+        :param TaskId: 任务标识。注意：TaskId数据类型为uint64。
         :type TaskId: int
         :param Status: 任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。
         :type Status: int

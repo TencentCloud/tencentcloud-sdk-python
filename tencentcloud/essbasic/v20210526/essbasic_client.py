@@ -421,7 +421,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateUserRoles(self, request):
-        """渠道版绑定员工角色
+        """绑定员工角色
 
         :param request: Request instance for ChannelCreateUserRoles.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateUserRolesRequest`
@@ -444,7 +444,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDeleteRoleUsers(self, request):
-        """渠道版删除员工绑定角色
+        """删除员工绑定角色
 
         :param request: Request instance for ChannelDeleteRoleUsers.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDeleteRoleUsersRequest`
@@ -537,7 +537,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeRoles(self, request):
-        """渠道办查询用户角色
+        """查询用户角色
 
         :param request: Request instance for ChannelDescribeRoles.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeRolesRequest`

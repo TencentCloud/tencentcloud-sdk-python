@@ -29,6 +29,9 @@ INTERNALERROR_GETCREDENTIAL = 'InternalError.GetCredential'
 # 角色获取错误。
 INTERNALERROR_GETROLEERROR = 'InternalError.GetRoleError'
 
+# 状态码错误。
+INTERNALERROR_HTTPSTATUSCODEERROR = 'InternalError.HttpStatusCodeError'
+
 # 内部服务调用异常。
 INTERNALERROR_IOERROR = 'InternalError.IOError'
 

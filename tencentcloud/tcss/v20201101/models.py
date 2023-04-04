@@ -9169,7 +9169,7 @@ class DescribeAssetHostDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UUID: 云镜uuid
+        :param UUID: 容器安全uuid
         :type UUID: str
         :param UpdateTime: 更新时间
         :type UpdateTime: str

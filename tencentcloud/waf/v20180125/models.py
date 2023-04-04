@@ -2458,6 +2458,56 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVipInfoRequest(AbstractModel):
+    """DescribeVipInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: waf实例id列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVipInfoResponse(AbstractModel):
+    """DescribeVipInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VipInfo: VIP信息
+        :type VipInfo: list of VipInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VipInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VipInfo") is not None:
+            self.VipInfo = []
+            for item in params.get("VipInfo"):
+                obj = VipInfo()
+                obj._deserialize(item)
+                self.VipInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWafAutoDenyRulesRequest(AbstractModel):
     """DescribeWafAutoDenyRules请求参数结构体
 
@@ -4438,6 +4488,36 @@ class UpsertIpAccessControlResponse(AbstractModel):
         self.FailedItems = params.get("FailedItems")
         self.FailedCount = params.get("FailedCount")
         self.RequestId = params.get("RequestId")
+
+
+class VipInfo(AbstractModel):
+    """Vip信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vip: Virtual IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param InstanceId: waf实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        """
+        self.Vip = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Vip = params.get("Vip")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WafRuleLimit(AbstractModel):

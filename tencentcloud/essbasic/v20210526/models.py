@@ -1484,30 +1484,30 @@ class ChannelCreateUserRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作者信息
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param UserIds: 绑定角色的员工id列表
         :type UserIds: list of str
         :param RoleIds: 绑定角色的角色id列表
         :type RoleIds: list of str
+        :param Operator: 操作者信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
-        self.Operator = None
         self.Agent = None
         self.UserIds = None
         self.RoleIds = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
-        if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
         self.UserIds = params.get("UserIds")
         self.RoleIds = params.get("RoleIds")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1550,30 +1550,30 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Agent: 代理信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param RoleId: 角色Id
         :type RoleId: str
         :param UserIds: 用户列表
         :type UserIds: list of str
-        :param Agent: 代理信息
-        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
-        self.Operator = None
+        self.Agent = None
         self.RoleId = None
         self.UserIds = None
-        self.Agent = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
-        if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        self.RoleId = params.get("RoleId")
-        self.UserIds = params.get("UserIds")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
+        self.RoleId = params.get("RoleId")
+        self.UserIds = params.get("UserIds")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1847,35 +1847,35 @@ class ChannelDescribeRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param Offset: 查询起始偏移，最大2000
         :type Offset: int
         :param Limit: 查询数量，最大200
         :type Limit: str
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param Filters: 查询的关键字段:
 Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
 Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
         :type Filters: list of Filter
         """
-        self.Operator = None
         self.Agent = None
         self.Offset = None
         self.Limit = None
+        self.Operator = None
         self.Filters = None
 
 
     def _deserialize(self, params):
-        if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):

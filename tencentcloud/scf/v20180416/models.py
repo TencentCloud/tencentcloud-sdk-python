@@ -5007,6 +5007,71 @@ class UpdateNamespaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateTriggerStatusRequest(AbstractModel):
+    """UpdateTriggerStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enable: 触发器的初始是能状态OPEN表示开启 CLOSE表示关闭
+        :type Enable: str
+        :param FunctionName: 函数名称
+        :type FunctionName: str
+        :param TriggerName: 触发器名称
+        :type TriggerName: str
+        :param Type: 触发器类型
+        :type Type: str
+        :param Qualifier: 函数的版本，默认为 $LATEST，建议填写 [$DEFAULT](https://cloud.tencent.com/document/product/583/36149#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)方便后续进行版本的灰度发布。
+        :type Qualifier: str
+        :param Namespace: 函数的命名空间
+        :type Namespace: str
+        :param TriggerDesc: 如果更新的触发器类型为 COS 触发器，该字段为必填值，存放 JSON 格式的数据 {"event":"cos:ObjectCreated:*"}，数据内容和 SetTrigger 接口中该字段的格式相同；如果更新的触发器类型为定时触发器或 CMQ 触发器，可以不指定该字段
+        :type TriggerDesc: str
+        """
+        self.Enable = None
+        self.FunctionName = None
+        self.TriggerName = None
+        self.Type = None
+        self.Qualifier = None
+        self.Namespace = None
+        self.TriggerDesc = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.FunctionName = params.get("FunctionName")
+        self.TriggerName = params.get("TriggerName")
+        self.Type = params.get("Type")
+        self.Qualifier = params.get("Qualifier")
+        self.Namespace = params.get("Namespace")
+        self.TriggerDesc = params.get("TriggerDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerStatusResponse(AbstractModel):
+    """UpdateTriggerStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UsageInfo(AbstractModel):
     """已使用的信息
 

@@ -1148,7 +1148,7 @@ class Bucket(AbstractModel):
         :param Key: 无
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
-        :param Count: ip等于10.0.0.8访问了26次实例，即桶内文档数量。
+        :param Count: key值出现的次数。
         :type Count: int
         """
         self.Key = None

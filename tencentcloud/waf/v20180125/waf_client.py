@@ -648,6 +648,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVipInfo(self, request):
+        """根据过滤条件查询VIP信息
+
+        :param request: Request instance for DescribeVipInfo.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeVipInfoRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeVipInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVipInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVipInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeWafAutoDenyRules(self, request):
         """返回ip惩罚规则详细信息
 

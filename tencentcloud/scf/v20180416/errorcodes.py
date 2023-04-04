@@ -170,6 +170,12 @@ FAILEDOPERATION_UPDATEFUNCTIONCODE = 'FailedOperation.UpdateFunctionCode'
 # UpdateFunctionConfiguration操作失败。
 FAILEDOPERATION_UPDATEFUNCTIONCONFIGURATION = 'FailedOperation.UpdateFunctionConfiguration'
 
+# 更新状态操作失败。
+FAILEDOPERATION_UPDATESTATUS = 'FailedOperation.UpdateStatus'
+
+# 与原状态一致，无需更改。
+FAILEDOPERATION_UPDATETRIGGERSTATUS = 'FailedOperation.UpdateTriggerStatus'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -832,6 +838,9 @@ UNAUTHORIZEDOPERATION_TEMPCOSAPPID = 'UnauthorizedOperation.TempCosAppid'
 
 # 无法进行此操作。
 UNAUTHORIZEDOPERATION_UPDATEFUNCTIONCODE = 'UnauthorizedOperation.UpdateFunctionCode'
+
+# 没有权限。
+UNAUTHORIZEDOPERATION_UPDATETRIGGERSTATUS = 'UnauthorizedOperation.UpdateTriggerStatus'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'

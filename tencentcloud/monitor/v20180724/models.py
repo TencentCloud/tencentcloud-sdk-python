@@ -9733,16 +9733,24 @@ class Filter(AbstractModel):
         :type Key: str
         :param Value: 过滤值，in过滤方式用逗号分割多个值
         :type Value: str
+        :param Name: 过滤条件名称
+        :type Name: str
+        :param Values: 过滤条件取值范围
+        :type Values: list of str
         """
         self.Type = None
         self.Key = None
         self.Value = None
+        self.Name = None
+        self.Values = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13159,6 +13167,12 @@ class PrometheusInstancesOverview(AbstractModel):
         :type BoundTotal: int
         :param BoundNormal: 绑定集群正常状态总数
         :type BoundNormal: int
+        :param ResourcePackageStatus: 资源包状态，0-无可用资源包，1-有可用资源包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourcePackageStatus: int
+        :param ResourcePackageSpecName: 资源包规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourcePackageSpecName: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -13175,6 +13189,8 @@ class PrometheusInstancesOverview(AbstractModel):
         self.AutoRenewFlag = None
         self.BoundTotal = None
         self.BoundNormal = None
+        self.ResourcePackageStatus = None
+        self.ResourcePackageSpecName = None
 
 
     def _deserialize(self, params):
@@ -13193,6 +13209,8 @@ class PrometheusInstancesOverview(AbstractModel):
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.BoundTotal = params.get("BoundTotal")
         self.BoundNormal = params.get("BoundNormal")
+        self.ResourcePackageStatus = params.get("ResourcePackageStatus")
+        self.ResourcePackageSpecName = params.get("ResourcePackageSpecName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

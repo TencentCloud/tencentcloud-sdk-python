@@ -1043,3 +1043,26 @@ class ScfClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateTriggerStatus(self, request):
+        """更新触发器状态的值
+
+        :param request: Request instance for UpdateTriggerStatus.
+        :type request: :class:`tencentcloud.scf.v20180416.models.UpdateTriggerStatusRequest`
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UpdateTriggerStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTriggerStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTriggerStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

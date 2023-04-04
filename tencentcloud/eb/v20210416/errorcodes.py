@@ -80,6 +80,9 @@ INTERNALERROR_OSSEXCEPTION = 'InternalError.OssException'
 # 服务处理出错，请稍后重试。若无法解决，请联系智能客服或提交工单。
 INTERNALERROR_SYSTEM = 'InternalError.System'
 
+# 未知错误。
+INTERNALERROR_UNKNOWNINTERNALERROR = 'InternalError.UnknownInternalError'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 

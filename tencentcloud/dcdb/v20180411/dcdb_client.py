@@ -304,6 +304,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupFiles(self, request):
+        """本接口(DescribeBackupFiles)用于查看备份文件列表。
+
+        :param request: Request instance for DescribeBackupFiles.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeBackupFilesRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeBackupFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBLogFiles(self, request):
         """本接口(DescribeDBLogFiles)用于获取数据库的各种日志列表，包括冷备、binlog、errlog和slowlog。
 

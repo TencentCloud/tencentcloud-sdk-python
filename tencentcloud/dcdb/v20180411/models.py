@@ -1803,6 +1803,92 @@ class DescribeAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupFilesRequest(AbstractModel):
+    """DescribeBackupFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 按实例ID查询
+        :type InstanceId: str
+        :param ShardId: 按分片ID查询
+        :type ShardId: str
+        :param BackupType: 备份类型，Data:数据备份，Binlog:Binlog备份，Errlog:错误日志，Slowlog:慢日志
+        :type BackupType: str
+        :param StartTime: 按开始时间查询
+        :type StartTime: str
+        :param EndTime: 按结束时间查询
+        :type EndTime: str
+        :param Limit: 分页参数
+        :type Limit: int
+        :param Offset: 分页参数
+        :type Offset: int
+        :param OrderBy: 排序参数，可选值：Time,Size
+        :type OrderBy: str
+        :param OrderType: 排序参数，可选值：DESC,ASC
+        :type OrderType: str
+        """
+        self.InstanceId = None
+        self.ShardId = None
+        self.BackupType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ShardId = params.get("ShardId")
+        self.BackupType = params.get("BackupType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupFilesResponse(AbstractModel):
+    """DescribeBackupFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Files: 备份文件列表
+        :type Files: list of InstanceBackupFileItem
+        :param TotalCount: 总条目数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Files = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Files") is not None:
+            self.Files = []
+            for item in params.get("Files"):
+                obj = InstanceBackupFileItem()
+                obj._deserialize(item)
+                self.Files.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBLogFilesRequest(AbstractModel):
     """DescribeDBLogFiles请求参数结构体
 
@@ -4011,6 +4097,70 @@ class InitDCDBInstancesResponse(AbstractModel):
         self.FlowIds = params.get("FlowIds")
         self.InstanceIds = params.get("InstanceIds")
         self.RequestId = params.get("RequestId")
+
+
+class InstanceBackupFileItem(AbstractModel):
+    """实例备份文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param InstanceStatus: 实例状态
+        :type InstanceStatus: int
+        :param ShardId: 分片ID
+        :type ShardId: str
+        :param FilePath: 文件路径
+        :type FilePath: str
+        :param FileName: 文件名
+        :type FileName: str
+        :param FileSize: 文件大小
+        :type FileSize: int
+        :param BackupType: 备份类型，Data:数据备份，Binlog:Binlog备份，Errlog:错误日志，Slowlog:慢日志
+        :type BackupType: str
+        :param ManualBackup: 手动备份，0:否，1:是
+        :type ManualBackup: int
+        :param StartTime: 备份开始时间
+        :type StartTime: str
+        :param EndTime: 备份结束时间
+        :type EndTime: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceStatus = None
+        self.ShardId = None
+        self.FilePath = None
+        self.FileName = None
+        self.FileSize = None
+        self.BackupType = None
+        self.ManualBackup = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.ShardId = params.get("ShardId")
+        self.FilePath = params.get("FilePath")
+        self.FileName = params.get("FileName")
+        self.FileSize = params.get("FileSize")
+        self.BackupType = params.get("BackupType")
+        self.ManualBackup = params.get("ManualBackup")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IsolateDedicatedDBInstanceRequest(AbstractModel):
