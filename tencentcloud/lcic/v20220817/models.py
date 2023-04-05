@@ -882,7 +882,7 @@ video 纯视频
         :type DisableRecord: int
         :param Assistants: 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
         :type Assistants: list of str
-        :param RecordLayout: 录制布局。
+        :param RecordLayout: 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
         :param GroupId: 房间绑定的群组ID,非空时限制组成员进入
         :type GroupId: str
@@ -2553,7 +2553,7 @@ class GetRoomMessageRequest(AbstractModel):
         :type SdkAppId: int
         :param RoomId: 房间Id。	
         :type RoomId: int
-        :param Seq: 消息序列。获取该序列以前前的消息(不包含该seq消息)
+        :param Seq: 消息序列。获取该序列以前的消息(不包含该seq消息)
         :type Seq: int
         :param Limit: 消息拉取的条数。最大数量不能超过套餐包限制。
         :type Limit: int

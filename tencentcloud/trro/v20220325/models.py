@@ -121,6 +121,55 @@ class BatchDeletePolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BoundLicensesRequest(AbstractModel):
+    """BoundLicenses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: license数量
+        :type Count: int
+        :param DeviceId: 设备id
+        :type DeviceId: str
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        """
+        self.Count = None
+        self.DeviceId = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.DeviceId = params.get("DeviceId")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BoundLicensesResponse(AbstractModel):
+    """BoundLicenses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDeviceRequest(AbstractModel):
     """CreateDevice请求参数结构体
 
@@ -744,6 +793,84 @@ class DescribeProjectListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRecentSessionListRequest(AbstractModel):
+    """DescribeRecentSessionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param PageNumber: 页码，从1开始
+        :type PageNumber: int
+        :param PageSize: 每页个数
+        :type PageSize: int
+        :param DeviceId: 设备ID，支持过滤远端设备或现场设备
+        :type DeviceId: str
+        :param StartTime: 时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算
+        :type StartTime: int
+        :param EndTime: 时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算
+        :type EndTime: int
+        """
+        self.ProjectId = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.DeviceId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.DeviceId = params.get("DeviceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecentSessionListResponse(AbstractModel):
+    """DescribeRecentSessionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总个数
+        :type Total: int
+        :param RecentSessionList: 会话列表
+        :type RecentSessionList: list of RecentSessionInfo
+        :param Num: 本页数量
+        :type Num: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.RecentSessionList = None
+        self.Num = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("RecentSessionList") is not None:
+            self.RecentSessionList = []
+            for item in params.get("RecentSessionList"):
+                obj = RecentSessionInfo()
+                obj._deserialize(item)
+                self.RecentSessionList.append(obj)
+        self.Num = params.get("Num")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
     """DescribeSessionStatisticsByInterval请求参数结构体
 
@@ -883,6 +1010,61 @@ class DescribeSessionStatisticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Device(AbstractModel):
+    """查询用户设备的授权绑定情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param DeviceName: 设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param LicenseCount: 已经绑定license数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseCount: int
+        :param RemainDay: 剩余天数：天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainDay: int
+        :param ExpireTime: 过期时间：s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param Duration: 服务时长：s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: str
+        :param LicenseIds: 已经绑定licenseId列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseIds: list of str
+        """
+        self.DeviceId = None
+        self.DeviceName = None
+        self.LicenseCount = None
+        self.RemainDay = None
+        self.ExpireTime = None
+        self.Duration = None
+        self.LicenseIds = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.DeviceName = params.get("DeviceName")
+        self.LicenseCount = params.get("LicenseCount")
+        self.RemainDay = params.get("RemainDay")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Duration = params.get("Duration")
+        self.LicenseIds = params.get("LicenseIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeviceInfo(AbstractModel):
     """设备信息
 
@@ -922,6 +1104,276 @@ class DeviceInfo(AbstractModel):
         self.ModifyTime = params.get("ModifyTime")
         self.LastReportTime = params.get("LastReportTime")
         self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDeviceLicenseRequest(AbstractModel):
+    """GetDeviceLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 目标设备所属项目ID
+        :type ProjectId: str
+        :param DeviceId: 目标设备ID
+        :type DeviceId: str
+        """
+        self.ProjectId = None
+        self.DeviceId = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDeviceLicenseResponse(AbstractModel):
+    """GetDeviceLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AvailableCount: 指定设备已经绑定的可用license数量
+        :type AvailableCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AvailableCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AvailableCount = params.get("AvailableCount")
+        self.RequestId = params.get("RequestId")
+
+
+class GetDevicesRequest(AbstractModel):
+    """GetDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNum: 页码
+        :type PageNum: int
+        :param PageSize: 页面数量
+        :type PageSize: int
+        :param ProjectId: 项目 ID
+        :type ProjectId: str
+        :param DeviceId: 设备ID
+        :type DeviceId: str
+        """
+        self.PageNum = None
+        self.PageSize = None
+        self.ProjectId = None
+        self.DeviceId = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.ProjectId = params.get("ProjectId")
+        self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDevicesResponse(AbstractModel):
+    """GetDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Devices: 设备授权列表
+        :type Devices: list of Device
+        :param TotalCount: 列表数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Devices = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = Device()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class GetLicenseStatRequest(AbstractModel):
+    """GetLicenseStat请求参数结构体
+
+    """
+
+
+class GetLicenseStatResponse(AbstractModel):
+    """GetLicenseStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Valid: 有效授权
+        :type Valid: int
+        :param Bound: 已绑定授权
+        :type Bound: int
+        :param UnBound: 未绑定授权
+        :type UnBound: int
+        :param Expire: 过期授权
+        :type Expire: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Valid = None
+        self.Bound = None
+        self.UnBound = None
+        self.Expire = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Valid = params.get("Valid")
+        self.Bound = params.get("Bound")
+        self.UnBound = params.get("UnBound")
+        self.Expire = params.get("Expire")
+        self.RequestId = params.get("RequestId")
+
+
+class GetLicensesRequest(AbstractModel):
+    """GetLicenses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNum: 页码
+        :type PageNum: int
+        :param PageSize: 页面数量
+        :type PageSize: int
+        :param ProjectId: projectId
+        :type ProjectId: str
+        :param DeviceId: DeviceId
+        :type DeviceId: str
+        """
+        self.PageNum = None
+        self.PageSize = None
+        self.ProjectId = None
+        self.DeviceId = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.ProjectId = params.get("ProjectId")
+        self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLicensesResponse(AbstractModel):
+    """GetLicenses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Licenses: license列表
+        :type Licenses: list of License
+        :param TotalCount: license列表项数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Licenses = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Licenses") is not None:
+            self.Licenses = []
+            for item in params.get("Licenses"):
+                obj = License()
+                obj._deserialize(item)
+                self.Licenses.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class License(AbstractModel):
+    """按授权查看的license列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 该类型的license个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param Status: license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param ExpireTime: 到期时间戳：s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param Duration: 服务时长：s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: str
+        :param RemainDay: 剩余天数：天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainDay: int
+        :param LicenseIds: 该类型的licenseId列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseIds: list of str
+        """
+        self.Count = None
+        self.Status = None
+        self.ExpireTime = None
+        self.Duration = None
+        self.RemainDay = None
+        self.LicenseIds = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Status = params.get("Status")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Duration = params.get("Duration")
+        self.RemainDay = params.get("RemainDay")
+        self.LicenseIds = params.get("LicenseIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1167,6 +1619,50 @@ class ProjectInfo(AbstractModel):
         self.ProjectDescription = params.get("ProjectDescription")
         self.PolicyMode = params.get("PolicyMode")
         self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecentSessionInfo(AbstractModel):
+    """最新会话信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: 会话ID
+        :type SessionId: str
+        :param RemoteDeviceId: 远端设备ID
+        :type RemoteDeviceId: str
+        :param FieldDeviceId: 现场设备ID
+        :type FieldDeviceId: str
+        :param Resolution: 分辨率
+        :type Resolution: str
+        :param StartTime: 会话开始时间
+        :type StartTime: int
+        :param LatestUpdateTime: 最后更新时间
+        :type LatestUpdateTime: int
+        """
+        self.SessionId = None
+        self.RemoteDeviceId = None
+        self.FieldDeviceId = None
+        self.Resolution = None
+        self.StartTime = None
+        self.LatestUpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.RemoteDeviceId = params.get("RemoteDeviceId")
+        self.FieldDeviceId = params.get("FieldDeviceId")
+        self.Resolution = params.get("Resolution")
+        self.StartTime = params.get("StartTime")
+        self.LatestUpdateTime = params.get("LatestUpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

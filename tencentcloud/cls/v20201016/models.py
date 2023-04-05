@@ -357,12 +357,16 @@ class AnalysisDimensional(AbstractModel):
     def __init__(self):
         r"""
         :param Name: 分析名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Type: 分析类型：query，field ，original
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param Content: 分析内容
+注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param ConfigInfo: 配置
+注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigInfo: list of AlarmAnalysisConfig
         """
         self.Name = None

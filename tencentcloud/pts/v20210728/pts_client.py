@@ -486,6 +486,29 @@ class PtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeErrorSummary(self, request):
+        """查询错误详情汇总信息
+
+        :param request: Request instance for DescribeErrorSummary.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeErrorSummaryRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeErrorSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeErrorSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeErrorSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFiles(self, request):
         """查询文件列表
 

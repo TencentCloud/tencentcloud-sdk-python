@@ -2885,9 +2885,9 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间 2016-01-01 00:00:00
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间 2016-02-01 00:00:00 建议跨度不超过3个月
         :type EndTime: str
         :param Limit: 一页多少条数据，默认是20条，最大不超过1000
         :type Limit: int

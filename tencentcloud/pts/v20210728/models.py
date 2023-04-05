@@ -514,11 +514,15 @@ class Concurrency(AbstractModel):
         :param GracefulStopSeconds: 优雅终止任务的等待时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type GracefulStopSeconds: int
+        :param Resources: 资源数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: int
         """
         self.Stages = None
         self.IterationCount = None
         self.MaxRequestsPerSecond = None
         self.GracefulStopSeconds = None
+        self.Resources = None
 
 
     def _deserialize(self, params):
@@ -531,6 +535,7 @@ class Concurrency(AbstractModel):
         self.IterationCount = params.get("IterationCount")
         self.MaxRequestsPerSecond = params.get("MaxRequestsPerSecond")
         self.GracefulStopSeconds = params.get("GracefulStopSeconds")
+        self.Resources = params.get("Resources")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1893,6 +1898,74 @@ class DescribeCronJobsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeErrorSummaryRequest(AbstractModel):
+    """DescribeErrorSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 任务ID
+        :type JobId: str
+        :param ScenarioId: 场景ID
+        :type ScenarioId: str
+        :param ProjectId: 项目ID
+        :type ProjectId: str
+        :param Filters: 过滤参数
+        :type Filters: list of Filter
+        """
+        self.JobId = None
+        self.ScenarioId = None
+        self.ProjectId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.ScenarioId = params.get("ScenarioId")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeErrorSummaryResponse(AbstractModel):
+    """DescribeErrorSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorSummarySet: 错误汇总信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorSummarySet: list of ErrorSummary
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorSummarySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorSummarySet") is not None:
+            self.ErrorSummarySet = []
+            for item in params.get("ErrorSummarySet"):
+                obj = ErrorSummary()
+                obj._deserialize(item)
+                self.ErrorSummarySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFilesRequest(AbstractModel):
     """DescribeFiles请求参数结构体
 
@@ -3086,6 +3159,56 @@ class DomainNameConfig(AbstractModel):
         if params.get("DNSConfig") is not None:
             self.DNSConfig = DNSConfig()
             self.DNSConfig._deserialize(params.get("DNSConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ErrorSummary(AbstractModel):
+    """错误信息汇总
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Result: 结果码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param Count: 错误出现次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param Rate: 错误率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rate: float
+        :param Message: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Proto: 请求协议类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Proto: str
+        """
+        self.Status = None
+        self.Result = None
+        self.Count = None
+        self.Rate = None
+        self.Message = None
+        self.Proto = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Result = params.get("Result")
+        self.Count = params.get("Count")
+        self.Rate = params.get("Rate")
+        self.Message = params.get("Message")
+        self.Proto = params.get("Proto")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

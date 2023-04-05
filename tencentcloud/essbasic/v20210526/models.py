@@ -3664,7 +3664,21 @@ class FlowApproverDetail(AbstractModel):
         :param ApproveName: 签署人姓名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveName: str
-        :param ApproveStatus: 当前签署人的状态
+        :param ApproveStatus: 当前签署人的状态, 状态如下
+
+PENDING 流程等待中 
+FILLPENDING 待填写状态
+FILLACCEPT 参与人已经填写
+FILLREJECT 参与人解决填写
+WAITPICKUP 待签收
+ACCEPT 签收 
+REJECT 拒签 
+DEADLINE 过期没有处理 
+CANCEL 取消
+FORWARD 已经转他人处理
+STOP 流程因为其他原因终止
+RELIEVED 已经解除
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveStatus: str
         :param ApproveMessage: 签署人信息
@@ -3888,7 +3902,16 @@ class FlowDetailInfo(AbstractModel):
         :type FlowName: str
         :param FlowType: 合同(流程)的类型
         :type FlowType: str
-        :param FlowStatus: 合同(流程)的状态
+        :param FlowStatus: 合同(流程)的状态, 状态如下
+
+INIT 还没发起
+PART 部分签署
+REJECT 拒签
+ALL 全部签署
+DEADLINE 流签
+CANCEL 取消
+RELIEVED 解除
+ 
         :type FlowStatus: str
         :param FlowMessage: 合同(流程)的信息
         :type FlowMessage: str

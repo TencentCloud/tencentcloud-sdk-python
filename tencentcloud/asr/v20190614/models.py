@@ -1202,10 +1202,6 @@ class SentenceRecognitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProjectId: 腾讯云项目 ID，废弃参数，填写0即可。
-        :type ProjectId: int
-        :param SubServiceType: 子服务类型。2： 一句话识别。
-        :type SubServiceType: int
         :param EngSerViceType: 引擎模型类型。
 电话场景：
 • 8k_zh：中文电话通用；
@@ -1223,16 +1219,21 @@ class SentenceRecognitionRequest(AbstractModel):
 • 16k_ms：马来语；
 • 16k_id：印度尼西亚语；
 • 16k_fil：菲律宾语；
+• 16k_th：泰语；
 • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
         :type EngSerViceType: str
         :param SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。
         :type SourceType: int
         :param VoiceFormat: 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
         :type VoiceFormat: str
-        :param UsrAudioKey: 废弃参数，填写任意字符串即可。
-        :type UsrAudioKey: str
+        :param ProjectId: 腾讯云项目 ID，废弃参数，填写0即可。
+        :type ProjectId: int
+        :param SubServiceType: 子服务类型。2： 一句话识别。
+        :type SubServiceType: int
         :param Url: 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
         :type Url: str
+        :param UsrAudioKey: 废弃参数，填写任意字符串即可。
+        :type UsrAudioKey: str
         :param Data: 语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频时长不能超过60s，音频文件大小不能超过3MB（Base64后）。
         :type Data: str
         :param DataLen: 数据长度，单位为字节。当 SourceType 值为1（本地语音数据上传）时必须填写，当 SourceType 值为0（语音 URL上传）可不写（此数据长度为数据未进行base64编码时的数据长度）。
@@ -1254,13 +1255,13 @@ class SentenceRecognitionRequest(AbstractModel):
         :param ReinforceHotword: 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”、“蜜汁”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
         :type ReinforceHotword: int
         """
-        self.ProjectId = None
-        self.SubServiceType = None
         self.EngSerViceType = None
         self.SourceType = None
         self.VoiceFormat = None
-        self.UsrAudioKey = None
+        self.ProjectId = None
+        self.SubServiceType = None
         self.Url = None
+        self.UsrAudioKey = None
         self.Data = None
         self.DataLen = None
         self.WordInfo = None
@@ -1274,13 +1275,13 @@ class SentenceRecognitionRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.ProjectId = params.get("ProjectId")
-        self.SubServiceType = params.get("SubServiceType")
         self.EngSerViceType = params.get("EngSerViceType")
         self.SourceType = params.get("SourceType")
         self.VoiceFormat = params.get("VoiceFormat")
-        self.UsrAudioKey = params.get("UsrAudioKey")
+        self.ProjectId = params.get("ProjectId")
+        self.SubServiceType = params.get("SubServiceType")
         self.Url = params.get("Url")
+        self.UsrAudioKey = params.get("UsrAudioKey")
         self.Data = params.get("Data")
         self.DataLen = params.get("DataLen")
         self.WordInfo = params.get("WordInfo")

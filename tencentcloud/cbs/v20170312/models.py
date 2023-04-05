@@ -2934,18 +2934,18 @@ class ModifyDiskExtraPerformanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskId: 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
-        :type DiskId: str
         :param ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。
         :type ThroughputPerformance: int
+        :param DiskId: 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :type DiskId: str
         """
-        self.DiskId = None
         self.ThroughputPerformance = None
+        self.DiskId = None
 
 
     def _deserialize(self, params):
-        self.DiskId = params.get("DiskId")
         self.ThroughputPerformance = params.get("ThroughputPerformance")
+        self.DiskId = params.get("DiskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

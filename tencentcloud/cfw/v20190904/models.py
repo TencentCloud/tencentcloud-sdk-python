@@ -436,6 +436,41 @@ class AssociatedInstanceInfo(AbstractModel):
         
 
 
+class BetaInfoByACL(AbstractModel):
+    """规则关联的beta任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param LastTime: 上次执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTime: str
+        """
+        self.TaskId = None
+        self.TaskName = None
+        self.LastTime = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskName = params.get("TaskName")
+        self.LastTime = params.get("LastTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlockIgnoreRule(AbstractModel):
     """入侵防御放通封禁规则
 
@@ -1555,6 +1590,9 @@ class DescAcItem(AbstractModel):
         :param Status: 规则状态，查询规则命中详情时该字段有效，0：新增，1: 已删除, 2: 编辑删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param BetaList: 关联任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BetaList: list of BetaInfoByACL
         """
         self.SourceContent = None
         self.TargetContent = None
@@ -1580,6 +1618,7 @@ class DescAcItem(AbstractModel):
         self.InstanceName = None
         self.InternalUuid = None
         self.Status = None
+        self.BetaList = None
 
 
     def _deserialize(self, params):
@@ -1607,6 +1646,12 @@ class DescAcItem(AbstractModel):
         self.InstanceName = params.get("InstanceName")
         self.InternalUuid = params.get("InternalUuid")
         self.Status = params.get("Status")
+        if params.get("BetaList") is not None:
+            self.BetaList = []
+            for item in params.get("BetaList"):
+                obj = BetaInfoByACL()
+                obj._deserialize(item)
+                self.BetaList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3177,7 +3222,12 @@ class DescribeTLogInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 无
+        :param Data: "NetworkNum":网络扫描探测
+ "HandleNum": 待处理事件
+"BanNum": 
+  "VulNum": 漏洞利用
+  "OutNum": 失陷主机
+"BruteForceNum": 0
         :type Data: :class:`tencentcloud.cfw.v20190904.models.TLogInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

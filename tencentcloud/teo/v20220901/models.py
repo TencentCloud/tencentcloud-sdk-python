@@ -447,6 +447,223 @@ class AiRule(AbstractModel):
         
 
 
+class AlgDetectJS(AbstractModel):
+    """Bot主动特征识别客户端行为校验。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 操作名称。
+        :type Name: str
+        :param WorkLevel: 工作量证明 (proof_Of-Work)校验强度，默认low，取值有：
+<li>low：低；</li>
+<li>middle：中；</li>
+<li>high：高。</li>
+        :type WorkLevel: str
+        :param ExecuteMode: 执行方式，js延迟执行的时间。单位为ms，默认500，取值：0～1000。
+        :type ExecuteMode: int
+        :param InvalidStatTime: 客户端末启用JS（末完成检测）统计周期。单位为秒，默认10，取值：5～3600。
+        :type InvalidStatTime: int
+        :param InvalidThreshold: 客户端末启用JS（末完成检测）触发阈值。单位为次，默认300，取值：1～100000000。
+        :type InvalidThreshold: int
+        :param AlgDetectResults: Bot主动特征识别客户端行为校验结果。
+        :type AlgDetectResults: list of AlgDetectResult
+        """
+        self.Name = None
+        self.WorkLevel = None
+        self.ExecuteMode = None
+        self.InvalidStatTime = None
+        self.InvalidThreshold = None
+        self.AlgDetectResults = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.WorkLevel = params.get("WorkLevel")
+        self.ExecuteMode = params.get("ExecuteMode")
+        self.InvalidStatTime = params.get("InvalidStatTime")
+        self.InvalidThreshold = params.get("InvalidThreshold")
+        if params.get("AlgDetectResults") is not None:
+            self.AlgDetectResults = []
+            for item in params.get("AlgDetectResults"):
+                obj = AlgDetectResult()
+                obj._deserialize(item)
+                self.AlgDetectResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlgDetectResult(AbstractModel):
+    """Bot主动特征识别校验结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 校验结果，取值有：
+<li>invalid：不合法Cookie；</li>
+<li>cookie_empty：末携带Cookie或Cookie己过期；</li>
+<li>js_empty：客户端末启用JS（末完成检测）；</li>
+<li>low：会话速率和周期特征校验低风险；</li>
+<li>middle：会话速率和周期特征校验中风险；</li>
+<li>high：会话速率和周期特征校验高风险；</li>
+<li>timeout：检测超时时长；</li>
+<li>not_browser：不合法浏览器；</li>
+<li>is_bot：Bot客户端。</li>
+        :type Result: str
+        :param Action: 处罚动作，取值有：
+<li>drop：拦截；</li>
+<li>monitor：观察；</li>
+<li>silence：静默；</li>
+<li>shortdelay：（短时间）等待后响应；</li>
+<li>longdelay：（长时间）等待后响应。</li>
+        :type Action: str
+        """
+        self.Result = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlgDetectRule(AbstractModel):
+    """Bot主动特征识别规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleID: 规则id。
+        :type RuleID: int
+        :param RuleName: 规则名。
+        :type RuleName: str
+        :param Switch: 规则开关。
+        :type Switch: str
+        :param AlgConditions: 自定义规则。
+        :type AlgConditions: list of AclCondition
+        :param AlgDetectSession: Cookie校验和会话行为分析。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlgDetectSession: :class:`tencentcloud.teo.v20220901.models.AlgDetectSession`
+        :param AlgDetectJS: 客户端行为校验。
+        :type AlgDetectJS: list of AlgDetectJS
+        :param UpdateTime: 更新时间。仅出参使用。
+        :type UpdateTime: str
+        """
+        self.RuleID = None
+        self.RuleName = None
+        self.Switch = None
+        self.AlgConditions = None
+        self.AlgDetectSession = None
+        self.AlgDetectJS = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.RuleID = params.get("RuleID")
+        self.RuleName = params.get("RuleName")
+        self.Switch = params.get("Switch")
+        if params.get("AlgConditions") is not None:
+            self.AlgConditions = []
+            for item in params.get("AlgConditions"):
+                obj = AclCondition()
+                obj._deserialize(item)
+                self.AlgConditions.append(obj)
+        if params.get("AlgDetectSession") is not None:
+            self.AlgDetectSession = AlgDetectSession()
+            self.AlgDetectSession._deserialize(params.get("AlgDetectSession"))
+        if params.get("AlgDetectJS") is not None:
+            self.AlgDetectJS = []
+            for item in params.get("AlgDetectJS"):
+                obj = AlgDetectJS()
+                obj._deserialize(item)
+                self.AlgDetectJS.append(obj)
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlgDetectSession(AbstractModel):
+    """Cookie校验与会话跟踪。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 操作名称。
+        :type Name: str
+        :param DetectMode: 校验方式，默认update_detect，取值有：
+<li>detect：仅校验；</li>
+<li>update_detect：更新Cookie并校验。</li>
+        :type DetectMode: str
+        :param SessionAnalyzeSwitch: 会话速率和周期特征校验开关，默认off，取值有：
+<li>off：关闭；</li>
+<li>on：打开。</li>
+        :type SessionAnalyzeSwitch: str
+        :param InvalidStatTime: 校验结果为未携带Cookie或Cookie已过期的统计周期。单位为秒，默认10，取值：5～3600。
+        :type InvalidStatTime: int
+        :param InvalidThreshold: 校验结果为未携带Cookie或Cookie已过期的触发阈值。单位为次，默认300，取值：1～100000000。
+        :type InvalidThreshold: int
+        :param AlgDetectResults: Cookie校验校验结果。
+        :type AlgDetectResults: list of AlgDetectResult
+        :param SessionBehaviors: 会话速率和周期特征校验结果。
+        :type SessionBehaviors: list of AlgDetectResult
+        """
+        self.Name = None
+        self.DetectMode = None
+        self.SessionAnalyzeSwitch = None
+        self.InvalidStatTime = None
+        self.InvalidThreshold = None
+        self.AlgDetectResults = None
+        self.SessionBehaviors = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DetectMode = params.get("DetectMode")
+        self.SessionAnalyzeSwitch = params.get("SessionAnalyzeSwitch")
+        self.InvalidStatTime = params.get("InvalidStatTime")
+        self.InvalidThreshold = params.get("InvalidThreshold")
+        if params.get("AlgDetectResults") is not None:
+            self.AlgDetectResults = []
+            for item in params.get("AlgDetectResults"):
+                obj = AlgDetectResult()
+                obj._deserialize(item)
+                self.AlgDetectResults.append(obj)
+        if params.get("SessionBehaviors") is not None:
+            self.SessionBehaviors = []
+            for item in params.get("SessionBehaviors"):
+                obj = AlgDetectResult()
+                obj._deserialize(item)
+                self.SessionBehaviors.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AliasDomain(AbstractModel):
     """别称域名信息。
 
@@ -794,6 +1011,8 @@ class BotConfig(AbstractModel):
         :type IntelligenceRule: :class:`tencentcloud.teo.v20220901.models.IntelligenceRule`
         :param BotUserRules: Bot自定义规则。如果为null，默认使用历史配置。
         :type BotUserRules: list of BotUserRule
+        :param AlgDetectRule: Bot主动特征识别规则。
+        :type AlgDetectRule: list of AlgDetectRule
         :param Customizes: Bot托管定制策略，入参可不填，仅出参使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Customizes: list of BotUserRule
@@ -803,6 +1022,7 @@ class BotConfig(AbstractModel):
         self.BotPortraitRule = None
         self.IntelligenceRule = None
         self.BotUserRules = None
+        self.AlgDetectRule = None
         self.Customizes = None
 
 
@@ -823,6 +1043,12 @@ class BotConfig(AbstractModel):
                 obj = BotUserRule()
                 obj._deserialize(item)
                 self.BotUserRules.append(obj)
+        if params.get("AlgDetectRule") is not None:
+            self.AlgDetectRule = []
+            for item in params.get("AlgDetectRule"):
+                obj = AlgDetectRule()
+                obj._deserialize(item)
+                self.AlgDetectRule.append(obj)
         if params.get("Customizes") is not None:
             self.Customizes = []
             for item in params.get("Customizes"):

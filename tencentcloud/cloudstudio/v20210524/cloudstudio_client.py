@@ -256,6 +256,29 @@ class CloudstudioClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWorkspaceIsReady(self, request):
+        """获取工作空间是否已经启动就绪
+
+        :param request: Request instance for DescribeWorkspaceIsReady.
+        :type request: :class:`tencentcloud.cloudstudio.v20210524.models.DescribeWorkspaceIsReadyRequest`
+        :rtype: :class:`tencentcloud.cloudstudio.v20210524.models.DescribeWorkspaceIsReadyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkspaceIsReady", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkspaceIsReadyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeWorkspaceNameExist(self, request):
         """检查工作空间是否存在
 

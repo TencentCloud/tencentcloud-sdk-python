@@ -6414,6 +6414,8 @@ class DescribeClusterReleasesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 页偏移量
         :type Offset: int
+        :param ClusterType: 集群类型, 目前支持传入 tke, eks, tkeedge, external 
+        :type ClusterType: str
         :param Namespace: helm Release 安装的namespace
         :type Namespace: str
         :param ReleaseName: helm Release 的名字
@@ -6424,6 +6426,7 @@ class DescribeClusterReleasesRequest(AbstractModel):
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
+        self.ClusterType = None
         self.Namespace = None
         self.ReleaseName = None
         self.ChartName = None
@@ -6433,6 +6436,7 @@ class DescribeClusterReleasesRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.ClusterType = params.get("ClusterType")
         self.Namespace = params.get("Namespace")
         self.ReleaseName = params.get("ReleaseName")
         self.ChartName = params.get("ChartName")

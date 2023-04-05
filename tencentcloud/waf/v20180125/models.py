@@ -1026,6 +1026,57 @@ class CreateAccessExportResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateHostRequest(AbstractModel):
+    """CreateHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Host: 防护域名配置信息
+        :type Host: :class:`tencentcloud.waf.v20180125.models.HostRecord`
+        :param InstanceID: 实例id
+        :type InstanceID: str
+        """
+        self.Host = None
+        self.InstanceID = None
+
+
+    def _deserialize(self, params):
+        if params.get("Host") is not None:
+            self.Host = HostRecord()
+            self.Host._deserialize(params.get("Host"))
+        self.InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHostResponse(AbstractModel):
+    """CreateHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 新增防护域名ID
+        :type DomainId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAccessExportRequest(AbstractModel):
     """DeleteAccessExport请求参数结构体
 
@@ -3182,6 +3233,98 @@ class GetAttackDownloadRecordsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class HostRecord(AbstractModel):
+    """clb-waf防护域名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param DomainId: 域名ID
+        :type DomainId: str
+        :param MainDomain: 主域名，入参时为空
+        :type MainDomain: str
+        :param Mode: waf模式，同saas waf保持一致
+        :type Mode: int
+        :param Status: waf和LD的绑定，0：没有绑定，1：绑定
+        :type Status: int
+        :param State: 域名状态，0：正常，1：未检测到流量，2：即将过期，3：过期
+        :type State: int
+        :param Engine: 使用的规则，同saas waf保持一致
+        :type Engine: int
+        :param IsCdn: 是否开启代理，0：不开启，1：开启
+        :type IsCdn: int
+        :param LoadBalancerSet: 绑定的LB列表
+        :type LoadBalancerSet: list of LoadBalancer
+        :param Region: 域名绑定的LB的地域，以,分割多个地域
+        :type Region: str
+        :param Edition: 产品分类，取值为：sparta-waf、clb-waf、cdn-waf
+        :type Edition: str
+        :param FlowMode: WAF的流量模式，1：清洗模式，0：镜像模式
+        :type FlowMode: int
+        :param ClsStatus: 是否开启访问日志，1：开启，0：关闭
+        :type ClsStatus: int
+        :param Level: 防护等级，可选值100,200,300
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param CdcClusters: 域名需要下发到的cdc集群列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcClusters: list of str
+        :param AlbType: 应用型负载均衡类型: clb或者apisix，默认clb
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlbType: str
+        """
+        self.Domain = None
+        self.DomainId = None
+        self.MainDomain = None
+        self.Mode = None
+        self.Status = None
+        self.State = None
+        self.Engine = None
+        self.IsCdn = None
+        self.LoadBalancerSet = None
+        self.Region = None
+        self.Edition = None
+        self.FlowMode = None
+        self.ClsStatus = None
+        self.Level = None
+        self.CdcClusters = None
+        self.AlbType = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.DomainId = params.get("DomainId")
+        self.MainDomain = params.get("MainDomain")
+        self.Mode = params.get("Mode")
+        self.Status = params.get("Status")
+        self.State = params.get("State")
+        self.Engine = params.get("Engine")
+        self.IsCdn = params.get("IsCdn")
+        if params.get("LoadBalancerSet") is not None:
+            self.LoadBalancerSet = []
+            for item in params.get("LoadBalancerSet"):
+                obj = LoadBalancer()
+                obj._deserialize(item)
+                self.LoadBalancerSet.append(obj)
+        self.Region = params.get("Region")
+        self.Edition = params.get("Edition")
+        self.FlowMode = params.get("FlowMode")
+        self.ClsStatus = params.get("ClsStatus")
+        self.Level = params.get("Level")
+        self.CdcClusters = params.get("CdcClusters")
+        self.AlbType = params.get("AlbType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInfo(AbstractModel):
     """一个实例的详细信息
 
@@ -3465,6 +3608,72 @@ class IpHitItemsData(AbstractModel):
                 obj._deserialize(item)
                 self.Res.append(obj)
         self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoadBalancer(AbstractModel):
+    """负载均衡的监听器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: 负载均衡LD的ID
+        :type LoadBalancerId: str
+        :param LoadBalancerName: 负载均衡LD的名称
+        :type LoadBalancerName: str
+        :param ListenerId: 负载均衡监听器的ID
+        :type ListenerId: str
+        :param ListenerName: 负载均衡监听器的名称
+        :type ListenerName: str
+        :param Vip: 负载均衡实例的IP
+        :type Vip: str
+        :param Vport: 负载均衡实例的端口
+        :type Vport: int
+        :param Region: 负载均衡LD的地域
+        :type Region: str
+        :param Protocol: 监听器协议，http、https
+        :type Protocol: str
+        :param Zone: 负载均衡监听器所在的zone
+        :type Zone: str
+        :param NumericalVpcId: 负载均衡的VPCID，公网为-1，内网按实际填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumericalVpcId: int
+        :param LoadBalancerType: 负载均衡的网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerType: str
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.ListenerId = None
+        self.ListenerName = None
+        self.Vip = None
+        self.Vport = None
+        self.Region = None
+        self.Protocol = None
+        self.Zone = None
+        self.NumericalVpcId = None
+        self.LoadBalancerType = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.ListenerId = params.get("ListenerId")
+        self.ListenerName = params.get("ListenerName")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.Region = params.get("Region")
+        self.Protocol = params.get("Protocol")
+        self.Zone = params.get("Zone")
+        self.NumericalVpcId = params.get("NumericalVpcId")
+        self.LoadBalancerType = params.get("LoadBalancerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

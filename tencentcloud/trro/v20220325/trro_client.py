@@ -72,6 +72,29 @@ class TrroClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BoundLicenses(self, request):
+        """为推流设备绑定license，优先绑定到期时间最近的，到期时间相同优先绑定月包
+
+        :param request: Request instance for BoundLicenses.
+        :type request: :class:`tencentcloud.trro.v20220325.models.BoundLicensesRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.BoundLicensesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BoundLicenses", params, headers=headers)
+            response = json.loads(body)
+            model = models.BoundLicensesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDevice(self, request):
         """用于创建设备
 
@@ -302,6 +325,29 @@ class TrroClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRecentSessionList(self, request):
+        """获取最新设备会话列表
+
+        :param request: Request instance for DescribeRecentSessionList.
+        :type request: :class:`tencentcloud.trro.v20220325.models.DescribeRecentSessionListRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.DescribeRecentSessionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecentSessionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecentSessionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSessionStatistics(self, request):
         """获取会话统计值
 
@@ -339,6 +385,98 @@ class TrroClient(AbstractClient):
             body = self.call("DescribeSessionStatisticsByInterval", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSessionStatisticsByIntervalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetDeviceLicense(self, request):
+        """获取设备已经绑定的可用授权数量
+
+        :param request: Request instance for GetDeviceLicense.
+        :type request: :class:`tencentcloud.trro.v20220325.models.GetDeviceLicenseRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.GetDeviceLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDeviceLicense", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDeviceLicenseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetDevices(self, request):
+        """查询用户设备的授权绑定情况
+
+        :param request: Request instance for GetDevices.
+        :type request: :class:`tencentcloud.trro.v20220325.models.GetDevicesRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.GetDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDevices", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetLicenseStat(self, request):
+        """统计license类型数量
+
+        :param request: Request instance for GetLicenseStat.
+        :type request: :class:`tencentcloud.trro.v20220325.models.GetLicenseStatRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.GetLicenseStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLicenseStat", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLicenseStatResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetLicenses(self, request):
+        """按授权查看license列表
+
+        :param request: Request instance for GetLicenses.
+        :type request: :class:`tencentcloud.trro.v20220325.models.GetLicensesRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.GetLicensesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLicenses", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLicensesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

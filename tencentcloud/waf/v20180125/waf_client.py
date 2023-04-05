@@ -118,6 +118,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateHost(self, request):
+        """clb-waf中添加防护的域名
+
+        :param request: Request instance for CreateHost.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateHostRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAccessExport(self, request):
         """本接口用于删除访问日志导出
 

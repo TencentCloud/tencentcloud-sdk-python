@@ -630,6 +630,52 @@ class DescribeWorkspaceEnvListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWorkspaceIsReadyRequest(AbstractModel):
+    """DescribeWorkspaceIsReady请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpaceKey: 工作空间 spaceKey
+        :type SpaceKey: str
+        """
+        self.SpaceKey = None
+
+
+    def _deserialize(self, params):
+        self.SpaceKey = params.get("SpaceKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkspaceIsReadyResponse(AbstractModel):
+    """DescribeWorkspaceIsReady返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 工作空间是否就绪
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWorkspaceNameExistRequest(AbstractModel):
     """DescribeWorkspaceNameExist请求参数结构体
 
@@ -669,13 +715,20 @@ class DescribeWorkspaceNameExistResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Data: 工作空间信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.cloudstudio.v20210524.models.WorkspaceInfoDTO`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Data = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = WorkspaceInfoDTO()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
 
