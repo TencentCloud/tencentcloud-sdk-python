@@ -123,6 +123,8 @@ class BatchModelAccTask(AbstractModel):
         :type ModelName: str
         :param ModelSignature: SavedModel保存时配置的签名
         :type ModelSignature: str
+        :param FrameworkVersion: 加速引擎对应的框架版本
+        :type FrameworkVersion: str
         """
         self.ModelId = None
         self.ModelVersion = None
@@ -133,6 +135,7 @@ class BatchModelAccTask(AbstractModel):
         self.ModelInputPath = None
         self.ModelName = None
         self.ModelSignature = None
+        self.FrameworkVersion = None
 
 
     def _deserialize(self, params):
@@ -147,6 +150,7 @@ class BatchModelAccTask(AbstractModel):
             self.ModelInputPath._deserialize(params.get("ModelInputPath"))
         self.ModelName = params.get("ModelName")
         self.ModelSignature = params.get("ModelSignature")
+        self.FrameworkVersion = params.get("FrameworkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4338,11 +4342,11 @@ class DescribeTrainingModelsRequest(AbstractModel):
         r"""
         :param Filters: 过滤器
 Filter.Name: 枚举值:
-    keyword (模型名称)
-    TrainingModelId (模型ID)
-    ModelVersionType (模型版本类型) 其值Filter.Values支持: NORMAL(通用) ACCELERATE (加速)
-    TrainingModelSource (模型来源)  其值Filter.Values支持： JOB/COS
-    ModelFormat（模型格式）其值Filter.Values支持：
+keyword (模型名称)
+TrainingModelId (模型ID)
+ModelVersionType (模型版本类型) 其值Filter.Values支持: NORMAL(通用) ACCELERATE (加速)
+TrainingModelSource (模型来源) 其值Filter.Values支持： JOB/COS
+ModelFormat（模型格式）其值Filter.Values支持：
 PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE
 Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
 每次请求的Filters的上限为10，Filter.Values的上限为100
@@ -4358,6 +4362,8 @@ Filter.Fuzzy取值：true/false，是否支持模糊匹配
         :type Limit: int
         :param TagFilters: 标签过滤
         :type TagFilters: list of TagFilter
+        :param WithModelVersions: 是否同时返回模型版本列表
+        :type WithModelVersions: bool
         """
         self.Filters = None
         self.OrderField = None
@@ -4365,6 +4371,7 @@ Filter.Fuzzy取值：true/false，是否支持模糊匹配
         self.Offset = None
         self.Limit = None
         self.TagFilters = None
+        self.WithModelVersions = None
 
 
     def _deserialize(self, params):
@@ -4384,6 +4391,7 @@ Filter.Fuzzy取值：true/false，是否支持模糊匹配
                 obj = TagFilter()
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
+        self.WithModelVersions = params.get("WithModelVersions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4666,16 +4674,21 @@ class EngineVersion(AbstractModel):
         :param IsSupportIntEightQuantization: 是否支持int8量化
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportIntEightQuantization: bool
+        :param FrameworkVersion: 框架版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameworkVersion: str
         """
         self.Version = None
         self.Image = None
         self.IsSupportIntEightQuantization = None
+        self.FrameworkVersion = None
 
 
     def _deserialize(self, params):
         self.Version = params.get("Version")
         self.Image = params.get("Image")
         self.IsSupportIntEightQuantization = params.get("IsSupportIntEightQuantization")
+        self.FrameworkVersion = params.get("FrameworkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5627,6 +5640,9 @@ class ModelAccelerateTask(AbstractModel):
         :param QATModel: 是否是QAT模型
 注意：此字段可能返回 null，表示取不到有效值。
         :type QATModel: bool
+        :param FrameworkVersion: 加速引擎对应的框架版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameworkVersion: str
         """
         self.ModelAccTaskId = None
         self.ModelAccTaskName = None
@@ -5656,6 +5672,7 @@ class ModelAccelerateTask(AbstractModel):
         self.IsSaved = None
         self.ModelSignature = None
         self.QATModel = None
+        self.FrameworkVersion = None
 
 
     def _deserialize(self, params):
@@ -5703,6 +5720,7 @@ class ModelAccelerateTask(AbstractModel):
         self.IsSaved = params.get("IsSaved")
         self.ModelSignature = params.get("ModelSignature")
         self.QATModel = params.get("QATModel")
+        self.FrameworkVersion = params.get("FrameworkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6211,6 +6229,9 @@ class Pod(AbstractModel):
         :param Containers: 容器列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Containers: :class:`tencentcloud.tione.v20211111.models.Container`
+        :param ContainerInfos: 容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerInfos: list of Container
         """
         self.Name = None
         self.Uid = None
@@ -6219,6 +6240,7 @@ class Pod(AbstractModel):
         self.IP = None
         self.CreateTime = None
         self.Containers = None
+        self.ContainerInfos = None
 
 
     def _deserialize(self, params):
@@ -6231,6 +6253,12 @@ class Pod(AbstractModel):
         if params.get("Containers") is not None:
             self.Containers = Container()
             self.Containers._deserialize(params.get("Containers"))
+        if params.get("ContainerInfos") is not None:
+            self.ContainerInfos = []
+            for item in params.get("ContainerInfos"):
+                obj = Container()
+                obj._deserialize(item)
+                self.ContainerInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6577,6 +6605,8 @@ class RestartModelAccelerateTaskRequest(AbstractModel):
         :type Tags: list of Tag
         :param ModelSignature: SavedModel保存时配置的签名
         :type ModelSignature: str
+        :param FrameworkVersion: 加速引擎对应的框架版本
+        :type FrameworkVersion: str
         """
         self.ModelAccTaskId = None
         self.ModelAccTaskName = None
@@ -6597,6 +6627,7 @@ class RestartModelAccelerateTaskRequest(AbstractModel):
         self.AccEngineVersion = None
         self.Tags = None
         self.ModelSignature = None
+        self.FrameworkVersion = None
 
 
     def _deserialize(self, params):
@@ -6635,6 +6666,7 @@ class RestartModelAccelerateTaskRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.ModelSignature = params.get("ModelSignature")
+        self.FrameworkVersion = params.get("FrameworkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7296,6 +7328,9 @@ HYBRID_PAID:
         :param Pods: Pod列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pods: :class:`tencentcloud.tione.v20211111.models.Pod`
+        :param PodInfos: Pod列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodInfos: list of Pod
         """
         self.Replicas = None
         self.ImageInfo = None
@@ -7316,6 +7351,7 @@ HYBRID_PAID:
         self.OldHybridBillingPrepaidReplicas = None
         self.ModelHotUpdateEnable = None
         self.Pods = None
+        self.PodInfos = None
 
 
     def _deserialize(self, params):
@@ -7359,6 +7395,12 @@ HYBRID_PAID:
         if params.get("Pods") is not None:
             self.Pods = Pod()
             self.Pods._deserialize(params.get("Pods"))
+        if params.get("PodInfos") is not None:
+            self.PodInfos = []
+            for item in params.get("PodInfos"):
+                obj = Pod()
+                obj._deserialize(item)
+                self.PodInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8146,11 +8188,15 @@ class TrainingModelDTO(AbstractModel):
         :param CreateTime: 模型创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param TrainingModelVersions: 模型版本列表。默认不返回，仅在指定请求参数开启时返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainingModelVersions: list of TrainingModelVersionDTO
         """
         self.TrainingModelId = None
         self.TrainingModelName = None
         self.Tags = None
         self.CreateTime = None
+        self.TrainingModelVersions = None
 
 
     def _deserialize(self, params):
@@ -8163,6 +8209,12 @@ class TrainingModelDTO(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.CreateTime = params.get("CreateTime")
+        if params.get("TrainingModelVersions") is not None:
+            self.TrainingModelVersions = []
+            for item in params.get("TrainingModelVersions"):
+                obj = TrainingModelVersionDTO()
+                obj._deserialize(item)
+                self.TrainingModelVersions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -880,6 +880,52 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAlarmIncidentNodes(self, request):
+        """获取告警点所在事件的所有节点信息
+
+        :param request: Request instance for DescribeAlarmIncidentNodes.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmIncidentNodesRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmIncidentNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarmIncidentNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmIncidentNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAlarmVertexId(self, request):
+        """查询告警点id列表
+
+        :param request: Request instance for DescribeAlarmVertexId.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmVertexIdRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAlarmVertexIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarmVertexId", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmVertexIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAssetAppList(self, request):
         """查询应用列表
 
@@ -2628,6 +2674,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEventByTable(self, request):
+        """根据事件表名和id查询告警事件详情
+
+        :param request: Request instance for DescribeEventByTable.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeEventByTableRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeEventByTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventByTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventByTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExpertServiceList(self, request):
         """专家服务-安全管家列表
 
@@ -3410,6 +3479,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrivilegeEventInfo(self, request):
+        """本地提权信息详情
+
+        :param request: Request instance for DescribePrivilegeEventInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeEventInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribePrivilegeEventInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrivilegeEventInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrivilegeEventInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePrivilegeEvents(self, request):
         """获取本地提权事件列表
 
@@ -3594,6 +3686,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReverseShellEventInfo(self, request):
+        """反弹shell信息详情
+
+        :param request: Request instance for DescribeReverseShellEventInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellEventInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeReverseShellEventInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReverseShellEventInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReverseShellEventInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeReverseShellEvents(self, request):
         """获取反弹Shell列表
 
@@ -3631,6 +3746,29 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeReverseShellRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReverseShellRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRiskDnsEventInfo(self, request):
+        """查询恶意请求事件详情
+
+        :param request: Request instance for DescribeRiskDnsEventInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsEventInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeRiskDnsEventInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskDnsEventInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskDnsEventInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4183,6 +4321,29 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeVersionStatistics", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVersionStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVertexDetail(self, request):
+        """获取指定点属性信息
+
+        :param request: Request instance for DescribeVertexDetail.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVertexDetailRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVertexDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVertexDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVertexDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

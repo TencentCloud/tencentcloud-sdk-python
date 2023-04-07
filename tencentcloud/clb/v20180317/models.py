@@ -4764,6 +4764,9 @@ class IdleLoadBalancer(AbstractModel):
         :type Status: int
         :param Forward: 负载均衡类型标识，1：负载均衡，0：传统型负载均衡。
         :type Forward: int
+        :param Domain: 负载均衡域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -4772,6 +4775,7 @@ class IdleLoadBalancer(AbstractModel):
         self.IdleReason = None
         self.Status = None
         self.Forward = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -4782,6 +4786,7 @@ class IdleLoadBalancer(AbstractModel):
         self.IdleReason = params.get("IdleReason")
         self.Status = params.get("Status")
         self.Forward = params.get("Forward")
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

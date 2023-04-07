@@ -1179,9 +1179,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
         :type CaptchaAppId: int
         :param AppSecretKey: 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
         :type AppSecretKey: str
-        :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
+        :param BusinessId: 预留字段
         :type BusinessId: int
-        :param SceneId: 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
+        :param SceneId: 预留字段
         :type SceneId: int
         :param MacAddress: mac 地址或设备唯一标识
         :type MacAddress: str
@@ -1251,6 +1251,11 @@ EvilLevel=100 请求有恶意
         :param GetCaptchaTime: 前端获取验证码时间，时间戳格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type GetCaptchaTime: int
+        :param EvilBitmap: 拦截类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvilBitmap: int
+        :param SubmitCaptchaTime: 提交验证码时间
+        :type SubmitCaptchaTime: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1258,6 +1263,8 @@ EvilLevel=100 请求有恶意
         self.CaptchaMsg = None
         self.EvilLevel = None
         self.GetCaptchaTime = None
+        self.EvilBitmap = None
+        self.SubmitCaptchaTime = None
         self.RequestId = None
 
 
@@ -1266,6 +1273,8 @@ EvilLevel=100 请求有恶意
         self.CaptchaMsg = params.get("CaptchaMsg")
         self.EvilLevel = params.get("EvilLevel")
         self.GetCaptchaTime = params.get("GetCaptchaTime")
+        self.EvilBitmap = params.get("EvilBitmap")
+        self.SubmitCaptchaTime = params.get("SubmitCaptchaTime")
         self.RequestId = params.get("RequestId")
 
 

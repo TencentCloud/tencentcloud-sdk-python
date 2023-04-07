@@ -1493,7 +1493,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+        :param InstanceIds: 实例ID列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
         :type InstanceIds: list of str
         :param InstanceType: 实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>2：临时实例。</li><li>3：只读实例。</li><li>-1：正式实例、只读、灾备实例。</li></ul>
         :type InstanceType: int
@@ -1501,9 +1501,13 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ClusterType: int
         :param Status: 实例状态，取值范围如下所示：<ul><li>0：待初始化。</li><li>1：流程执行中。</li><li>2：实例有效。</li><li>-2：已隔离（包年包月实例）。</li><li>-3：已隔离（按量计费实例）。</li></ul>
         :type Status: list of int
-        :param VpcId: 私有网络的ID，基础网络则不传该参数。
+        :param VpcId: 私有网络的 ID。
+- 基础网络则无需配置该参数。
+- 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表中，单击私有网络名称，在**私有网络**页面获取其 ID。
         :type VpcId: str
-        :param SubnetId: 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId。
+        :param SubnetId: 私有网络的子网ID。
+- 基础网络则无需配置该参数。
+- 请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表中，单击私有网络名称，在**私有网络**页面获取其子网 ID。
         :type SubnetId: str
         :param PayMode: 付费类型，取值范围如下：<ul><li>0：查询按量计费实例。</li><li>1：查询包年包月实例。</li><li>-1：查询按量计费与包年包月实例。</li></ul>
         :type PayMode: int
@@ -1511,15 +1515,17 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认值为0。
         :type Offset: int
-        :param OrderBy: 返回结果集排序的字段，目前支持："ProjectId"、"InstanceName"、"CreateTime"，默认为升序排序。
+        :param OrderBy: 配置返回结果排序依据的字段。目前支持依据"ProjectId"、"InstanceName"、"CreateTime"排序。
         :type OrderBy: str
-        :param OrderByType: 返回结果集排序方式，目前支持："ASC"或者"DESC"。
+        :param OrderByType: 配置返回结果的排序方式。
+- ASC：升序。
+- DESC：降序。
         :type OrderByType: str
-        :param ProjectIds: 项目 ID。
+        :param ProjectIds: 项目 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在右上角的账户信息下拉菜单中，选择项目管理查询项目。
         :type ProjectIds: list of int non-negative
-        :param SearchKey: 搜索关键词，支持实例ID、实例名称、完整IP。
+        :param SearchKey: 配置查询搜索的关键词。支持配置为实例ID、实例名称或者内网 IP 地址。
         :type SearchKey: str
-        :param Tags: Tag信息。
+        :param Tags: 标签信息，包含标签键与标签值。
         :type Tags: list of TagInfo
         """
         self.InstanceIds = None
@@ -1685,7 +1691,7 @@ class DescribeSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。
+        :param InstanceId: 实例 ID。例如：cmgo-p8vn****。
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -1709,7 +1715,7 @@ class DescribeSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Groups: 实例绑定的安全组
+        :param Groups: 实例绑定的安全组信息。
         :type Groups: list of SecurityGroup
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2852,9 +2858,9 @@ class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例 ID。例如：cmgo-7pje****。
         :type InstanceId: str
-        :param SecurityGroupIds: 目标安全组id
+        :param SecurityGroupIds: 目标安全组 ID。请通过接口[DescribeSecurityGroup](https://cloud.tencent.com/document/product/240/55675)查看具体的安全组 ID。
         :type SecurityGroupIds: list of str
         """
         self.InstanceId = None

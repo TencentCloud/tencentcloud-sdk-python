@@ -6709,7 +6709,7 @@ class CreateImageProcessingTemplateRequest(AbstractModel):
     def __init__(self):
         r"""
         :param Operations: 图片处理操作数组，操作将以其在数组中的顺序执行。
-<li>长度限制：3。</li>
+<li>长度限制：10。</li>
         :type Operations: list of ImageOperation
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -7104,9 +7104,9 @@ class CreateRebuildMediaTemplateRequest(AbstractModel):
         :type Container: str
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Name: 音画质重生模版名称。
+        :param Name: 音画质重生模板名称。
         :type Name: str
-        :param Comment: 模版描述。
+        :param Comment: 模板描述。
         :type Comment: str
         :param RebuildVideoInfo: 音画质重生视频控制控制信息。
         :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
@@ -7174,7 +7174,7 @@ class CreateRebuildMediaTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 音画质重生模版 ID。
+        :param Definition: 音画质重生模板 ID。
         :type Definition: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8634,7 +8634,7 @@ class DeleteRebuildMediaTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 音画质重生模版号。
+        :param Definition: 音画质重生模板号。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -11132,7 +11132,7 @@ class DescribeRebuildMediaTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definitions: 音画质重生模版列表。
+        :param Definitions: 音画质重生模板列表。
         :type Definitions: list of int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -14260,6 +14260,39 @@ class HighlightsConfigureInfoForUpdate(AbstractModel):
         
 
 
+class ImageBlur(AbstractModel):
+    """图片模糊处理。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 图片模糊的操作类型。可选模式有：
+<li>Gaussian : 高斯模糊。</li>
+        :type Type: str
+        :param Radius: 模糊半径，取值范围为1 - 50。当 Type 取值为 Gaussian 时此字段有效。
+        :type Radius: int
+        :param Sigma: 正态分布的标准差，必须大于0。当 Type 取值为 Gaussian 时此字段有效。
+        :type Sigma: int
+        """
+        self.Type = None
+        self.Radius = None
+        self.Sigma = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Radius = params.get("Radius")
+        self.Sigma = params.get("Sigma")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageCenterCut(AbstractModel):
     """图片中心裁剪处理。
 
@@ -14338,10 +14371,13 @@ class ImageOperation(AbstractModel):
         :type Scale: :class:`tencentcloud.vod.v20180717.models.ImageScale`
         :param CenterCut: 图片裁剪处理，仅当 Type 为 CenterCut 时有效。
         :type CenterCut: :class:`tencentcloud.vod.v20180717.models.ImageCenterCut`
+        :param Blur: 图片模糊处理，仅当 Type 为 Blur 时有效。
+        :type Blur: :class:`tencentcloud.vod.v20180717.models.ImageBlur`
         """
         self.Type = None
         self.Scale = None
         self.CenterCut = None
+        self.Blur = None
 
 
     def _deserialize(self, params):
@@ -14352,6 +14388,9 @@ class ImageOperation(AbstractModel):
         if params.get("CenterCut") is not None:
             self.CenterCut = ImageCenterCut()
             self.CenterCut._deserialize(params.get("CenterCut"))
+        if params.get("Blur") is not None:
+            self.Blur = ImageBlur()
+            self.Blur._deserialize(params.get("Blur"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18640,13 +18679,13 @@ class ModifyRebuildMediaTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 音画质重生模版号。
+        :param Definition: 音画质重生模板号。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: str
-        :param Name: 音画质重生模版名称。
+        :param Name: 音画质重生模板名称。
         :type Name: str
-        :param Comment: 音画质重生模版描述。
+        :param Comment: 音画质重生模板描述。
         :type Comment: str
         :param RebuildVideoInfo: 音画质重生视频控制信息。
         :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
@@ -22058,7 +22097,7 @@ class RebuildMediaByTemplateRequest(AbstractModel):
         r"""
         :param FileId: 媒体文件 ID。
         :type FileId: str
-        :param Definition: 音画质重生模版 ID。
+        :param Definition: 音画质重生模板 ID。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: str
@@ -22763,21 +22802,21 @@ class RebuildMediaTaskOutput(AbstractModel):
 
 
 class RebuildMediaTemplate(AbstractModel):
-    """音画质重生模版详情。
+    """音画质重生模板详情。
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: 音画质重生模版号。
+        :param Definition: 音画质重生模板号。
         :type Definition: int
         :param Type: 模板类型，可选值：
 <li>Preset：系统预置模板；</li>
 <li>Custom：用户自定义模板。</li>
         :type Type: str
-        :param Name: 音画质重生模版名称。
+        :param Name: 音画质重生模板名称。
         :type Name: str
-        :param Comment: 音画质重生模版描述。
+        :param Comment: 音画质重生模板描述。
         :type Comment: str
         :param RebuildVideoInfo: 音画质重生视频控制信息。
 注意：此字段可能返回 null，表示取不到有效值。

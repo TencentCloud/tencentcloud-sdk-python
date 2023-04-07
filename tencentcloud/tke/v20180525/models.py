@@ -786,7 +786,7 @@ class Cluster(AbstractModel):
         :param TagSpecification: 标签描述列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: list of TagSpecification
-        :param ClusterStatus: 集群状态 (Running 运行中  Creating 创建中 Idling 闲置中  Abnormal 异常  )
+        :param ClusterStatus: 集群状态 (Trading 集群开通中,Creating 创建中,Running 运行中,Deleting 删除中,Idling 闲置中,Recovering 唤醒中,Scaling 规模调整中,Upgrading 升级中,WaittingForConnect 等待注册,Trading 集群开通中,Isolated 欠费隔离中,Pause 集群升级暂停,NodeUpgrading 节点升级中,RuntimeUpgrading 节点运行时升级中,MasterScaling Master扩缩容中,ClusterLevelUpgrading 调整规格中,ResourceIsolate 隔离中,ResourceIsolated 已隔离,ResourceReverse 冲正中,Abnormal 异常)
         :type ClusterStatus: str
         :param Property: 集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))
 注意：此字段可能返回 null，表示取不到有效值。
@@ -823,6 +823,9 @@ class Cluster(AbstractModel):
         :param RuntimeVersion: 运行时版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeVersion: str
+        :param ClusterEtcdNodeNum: 集群当前etcd数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterEtcdNodeNum: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -847,6 +850,7 @@ class Cluster(AbstractModel):
         self.AutoUpgradeClusterLevel = None
         self.QGPUShareEnable = None
         self.RuntimeVersion = None
+        self.ClusterEtcdNodeNum = None
 
 
     def _deserialize(self, params):
@@ -880,6 +884,7 @@ class Cluster(AbstractModel):
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         self.QGPUShareEnable = params.get("QGPUShareEnable")
         self.RuntimeVersion = params.get("RuntimeVersion")
+        self.ClusterEtcdNodeNum = params.get("ClusterEtcdNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1578,6 +1583,10 @@ class ClusterNetworkSettings(AbstractModel):
         :param Ipv6ServiceCIDR: 用于分配service的IP range，由系统自动分配
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6ServiceCIDR: str
+        :param CiliumMode: 集群Cilium Mode配置
+- clusterIP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CiliumMode: str
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -1592,6 +1601,7 @@ class ClusterNetworkSettings(AbstractModel):
         self.IgnoreServiceCIDRConflict = None
         self.IsDualStack = None
         self.Ipv6ServiceCIDR = None
+        self.CiliumMode = None
 
 
     def _deserialize(self, params):
@@ -1608,6 +1618,7 @@ class ClusterNetworkSettings(AbstractModel):
         self.IgnoreServiceCIDRConflict = params.get("IgnoreServiceCIDRConflict")
         self.IsDualStack = params.get("IsDualStack")
         self.Ipv6ServiceCIDR = params.get("Ipv6ServiceCIDR")
+        self.CiliumMode = params.get("CiliumMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
