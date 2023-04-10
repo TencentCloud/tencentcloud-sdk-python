@@ -2604,6 +2604,77 @@ class GetRoomMessageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetRoomsRequest(AbstractModel):
+    """GetRooms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 低代码平台的SdkAppId。
+
+        :type SdkAppId: int
+        :param StartTime: 开始时间。默认以当前时间减去半小时作为开始时间。
+        :type StartTime: int
+        :param EndTime: 结束时间。默认以当前时间加上半小时作为结束时间。
+        :type EndTime: int
+        :param Page: 分页查询当前页数，从1开始递增
+        :type Page: int
+        :param Limit: 默认是10条
+        :type Limit: int
+        """
+        self.SdkAppId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Page = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRoomsResponse(AbstractModel):
+    """GetRooms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param Rooms: 房间列表
+        :type Rooms: list of RoomItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Rooms = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Rooms") is not None:
+            self.Rooms = []
+            for item in params.get("Rooms"):
+                obj = RoomItem()
+                obj._deserialize(item)
+                self.Rooms.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetWatermarkRequest(AbstractModel):
     """GetWatermark请求参数结构体
 
@@ -3460,6 +3531,83 @@ class RoomInfo(AbstractModel):
         self.AudienceType = params.get("AudienceType")
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoomItem(AbstractModel):
+    """房间列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param RoomId: 房间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomId: int
+        :param Status: 房间状态。0 未开始 ；1进行中  ；2 已结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        :param RealStartTime: 实际开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealStartTime: int
+        :param RealEndTime: 实际结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealEndTime: int
+        :param Resolution: 分辨率。1 标清
+2 高清
+3 全高清
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resolution: int
+        :param MaxRTCMember: 最大允许连麦人数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRTCMember: int
+        :param ReplayUrl: 房间录制地址。已废弃，使用新字段 RecordUrl
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplayUrl: str
+        :param RecordUrl: 录制地址（协议为https)。仅在房间结束后存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordUrl: str
+        """
+        self.Name = None
+        self.RoomId = None
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+        self.RealStartTime = None
+        self.RealEndTime = None
+        self.Resolution = None
+        self.MaxRTCMember = None
+        self.ReplayUrl = None
+        self.RecordUrl = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.RoomId = params.get("RoomId")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.RealStartTime = params.get("RealStartTime")
+        self.RealEndTime = params.get("RealEndTime")
+        self.Resolution = params.get("Resolution")
+        self.MaxRTCMember = params.get("MaxRTCMember")
+        self.ReplayUrl = params.get("ReplayUrl")
+        self.RecordUrl = params.get("RecordUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

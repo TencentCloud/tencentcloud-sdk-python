@@ -50,7 +50,7 @@ class MongodbClient(AbstractClient):
 
 
     def CreateAccountUser(self, request):
-        """本接口(CreateAccountUser)用于创建mongodb实例账号。
+        """本接口（CreateAccountUser）用于自定义实例访问账号。
 
         :param request: Request instance for CreateAccountUser.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateAccountUserRequest`
@@ -165,7 +165,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeAccountUsers(self, request):
-        """本接口(DescribeAccountUsers)用于获取当前实例的全部账号。
+        """本接口（DescribeAccountUsers）用于获取当前实例的全部账号。
 
         :param request: Request instance for DescribeAccountUsers.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAccountUsersRequest`
@@ -234,7 +234,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeClientConnections(self, request):
-        """本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。
+        """本接口（DescribeClientConnections）用于查询实例客户端连接信息，包括连接 IP 和连接数量。
 
         :param request: Request instance for DescribeClientConnections.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeClientConnectionsRequest`

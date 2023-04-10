@@ -256,6 +256,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDBDiagReportTasks(self, request):
+        """根据任务id删除健康报告生成任务
+
+        :param request: Request instance for DeleteDBDiagReportTasks.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DeleteDBDiagReportTasksRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DeleteDBDiagReportTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDBDiagReportTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDBDiagReportTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSecurityAuditLogExportTasks(self, request):
         """删除安全审计日志导出任务。
 

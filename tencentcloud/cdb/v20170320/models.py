@@ -13052,9 +13052,9 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type InstanceRole: str
         :param DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。
         :type DeviceType: str
-        :param Cpu: 升级后的实例cpu核数， 如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
+        :param Cpu: 升级后的实例cpu核数，如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
         :type Cpu: int
-        :param FastUpgrade: 是否极速变配。0-普通升级，1-极速变配,，2 极速优先。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
+        :param FastUpgrade: 是否极速变配。0-普通升级，1-极速变配，2 极速优先。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
         :type FastUpgrade: int
         :param MaxDelayTime: 延迟阈值。取值范围1~10，默认值为10。
         :type MaxDelayTime: int

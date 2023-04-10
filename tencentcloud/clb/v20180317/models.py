@@ -1490,6 +1490,8 @@ class CreateListenerRequest(AbstractModel):
         :type MaxConn: int
         :param MaxCps: 监听器最大新增连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
         :type MaxCps: int
+        :param IdleConnectTimeout: 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~2000。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
+        :type IdleConnectTimeout: int
         """
         self.LoadBalancerId = None
         self.Ports = None
@@ -1508,6 +1510,7 @@ class CreateListenerRequest(AbstractModel):
         self.MultiCertInfo = None
         self.MaxConn = None
         self.MaxCps = None
+        self.IdleConnectTimeout = None
 
 
     def _deserialize(self, params):
@@ -1534,6 +1537,7 @@ class CreateListenerRequest(AbstractModel):
             self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
         self.MaxConn = params.get("MaxConn")
         self.MaxCps = params.get("MaxCps")
+        self.IdleConnectTimeout = params.get("IdleConnectTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5043,6 +5047,9 @@ class Listener(AbstractModel):
         :param MaxCps: 监听器最大新增连接数，-1表示监听器维度不限速。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxCps: int
+        :param IdleConnectTimeout: 空闲连接超时时间，仅支持TCP监听器。默认值:900；共享型实例和独占型实例取值范围：300～900，性能容量型实例取值范围:300～1980。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdleConnectTimeout: int
         """
         self.ListenerId = None
         self.Protocol = None
@@ -5066,6 +5073,7 @@ class Listener(AbstractModel):
         self.TargetGroupList = None
         self.MaxConn = None
         self.MaxCps = None
+        self.IdleConnectTimeout = None
 
 
     def _deserialize(self, params):
@@ -5107,6 +5115,7 @@ class Listener(AbstractModel):
                 self.TargetGroupList.append(obj)
         self.MaxConn = params.get("MaxConn")
         self.MaxCps = params.get("MaxCps")
+        self.IdleConnectTimeout = params.get("IdleConnectTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6314,6 +6323,8 @@ class ModifyListenerRequest(AbstractModel):
         :type MaxConn: int
         :param MaxCps: 监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。
         :type MaxCps: int
+        :param IdleConnectTimeout: 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~2000。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
+        :type IdleConnectTimeout: int
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -6330,6 +6341,7 @@ class ModifyListenerRequest(AbstractModel):
         self.MultiCertInfo = None
         self.MaxConn = None
         self.MaxCps = None
+        self.IdleConnectTimeout = None
 
 
     def _deserialize(self, params):
@@ -6354,6 +6366,7 @@ class ModifyListenerRequest(AbstractModel):
             self.MultiCertInfo._deserialize(params.get("MultiCertInfo"))
         self.MaxConn = params.get("MaxConn")
         self.MaxCps = params.get("MaxCps")
+        self.IdleConnectTimeout = params.get("IdleConnectTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

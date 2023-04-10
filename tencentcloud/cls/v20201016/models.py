@@ -2027,6 +2027,11 @@ class CreateTopicRequest(AbstractModel):
         :type StorageType: str
         :param Period: 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600天。取值为3640时代表永久保存
         :type Period: int
+        :param Describes: 日志主题描述
+        :type Describes: str
+        :param HotPeriod: 0：关闭日志沉降。
+非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
+        :type HotPeriod: int
         """
         self.LogsetId = None
         self.TopicName = None
@@ -2036,6 +2041,8 @@ class CreateTopicRequest(AbstractModel):
         self.MaxSplitPartitions = None
         self.StorageType = None
         self.Period = None
+        self.Describes = None
+        self.HotPeriod = None
 
 
     def _deserialize(self, params):
@@ -2052,6 +2059,8 @@ class CreateTopicRequest(AbstractModel):
         self.MaxSplitPartitions = params.get("MaxSplitPartitions")
         self.StorageType = params.get("StorageType")
         self.Period = params.get("Period")
+        self.Describes = params.get("Describes")
+        self.HotPeriod = params.get("HotPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5859,6 +5868,11 @@ class ModifyTopicRequest(AbstractModel):
         :type MaxSplitPartitions: int
         :param Period: 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
         :type Period: int
+        :param Describes: 日志主题描述
+        :type Describes: str
+        :param HotPeriod: 0：关闭日志沉降。
+非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
+        :type HotPeriod: int
         """
         self.TopicId = None
         self.TopicName = None
@@ -5867,6 +5881,8 @@ class ModifyTopicRequest(AbstractModel):
         self.AutoSplit = None
         self.MaxSplitPartitions = None
         self.Period = None
+        self.Describes = None
+        self.HotPeriod = None
 
 
     def _deserialize(self, params):
@@ -5882,6 +5898,8 @@ class ModifyTopicRequest(AbstractModel):
         self.AutoSplit = params.get("AutoSplit")
         self.MaxSplitPartitions = params.get("MaxSplitPartitions")
         self.Period = params.get("Period")
+        self.Describes = params.get("Describes")
+        self.HotPeriod = params.get("HotPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

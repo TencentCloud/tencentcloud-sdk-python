@@ -4512,10 +4512,14 @@ class DescribeOverviewL7DataRequest(AbstractModel):
         :param EndTime: 结束时间。
         :type EndTime: str
         :param MetricNames: 查询的指标，取值有：
-<li>l7Flow_outFlux: 访问流量；</li>
+<li>l7Flow_outFlux: Edegone响应流量；</li>
+<li>l7Flow_inFlux: Edgeone请求流量；</li>
+<li>l7Flow_outBandwidth: Edegone响应带宽；</li>
+<li>l7Flow_inBandwidth: Edegone请求带宽；</li>
+<li>l7Flow_hit_outFlux: 缓存命中流量；</li>
 <li>l7Flow_request: 访问请求数；</li>
-<li>l7Flow_outBandwidth: 访问带宽；</li>
-<li>l7Flow_hit_outFlux: 缓存命中流量。</li>
+<li>l7Flow_flux: 访问请求上行+下行流量；</li>
+<li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
         :type MetricNames: list of str
         :param ZoneIds: 站点集合。
 若不填写，默认选择全部站点，且最多只能查询近30天的数据；若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
@@ -5219,9 +5223,13 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
         :param EndTime: 结束时间。
         :type EndTime: str
         :param MetricNames: 指标列表，取值有:
-<li>l7Flow_outFlux: 访问流量；</li>
+<li>l7Flow_outFlux: Edgeone响应流量；</li>
+<li>l7Flow_inFlux: Edgeone请求流量；</li>
+<li>l7Flow_outBandwidth: Edgeone响应带宽；</li>
+<li>l7Flow_inBandwidth：Edgeone请求带宽；</li>
 <li>l7Flow_request: 访问请求数；</li>
-<li>l7Flow_outBandwidth: 访问带宽。</li>
+<li>l7Flow_flux: 访问请求上行+下行流量；</li>
+<li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
         :type MetricNames: list of str
         :param ZoneIds: 站点集合。
 若不填写，默认选择全部站点，且最多只能查询近30天的数据；若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
@@ -5672,7 +5680,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
         :type MetricName: str
         :param ZoneIds: 站点id集合，不填默认选择全部站点。
         :type ZoneIds: list of str
-        :param Limit: 查询前多少个数据，不填默认默认为10， 表示查询前top 10的数据。
+        :param Limit: 查询前多少个数据，最大值为1000，不填默认默认为10， 表示查询前top 10的数据。
         :type Limit: int
         :param Filters: 过滤条件，详细的过滤条件如下：
 <li>domain<br>   按照【<strong>子域名</strong>】进行过滤，子域名形如： test.example.com。<br>   类型：String<br>   必选：否</li>

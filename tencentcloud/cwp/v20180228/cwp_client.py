@@ -2766,6 +2766,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFileTamperEvents(self, request):
+        """核心文件监控事件列表
+
+        :param request: Request instance for DescribeFileTamperEvents.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperEventsRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeFileTamperEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFileTamperEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFileTamperEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGeneralStat(self, request):
         """获取主机相关统计
 

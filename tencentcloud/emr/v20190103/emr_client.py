@@ -580,6 +580,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StartStopServiceOrMonitor(self, request):
+        """用于启动或停止监控或服务
+
+        :param request: Request instance for StartStopServiceOrMonitor.
+        :type request: :class:`tencentcloud.emr.v20190103.models.StartStopServiceOrMonitorRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.StartStopServiceOrMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartStopServiceOrMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartStopServiceOrMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SyncPodState(self, request):
         """EMR同步TKE中POD状态
 
@@ -594,6 +617,29 @@ class EmrClient(AbstractClient):
             body = self.call("SyncPodState", params, headers=headers)
             response = json.loads(body)
             model = models.SyncPodStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateClusterNodes(self, request):
+        """销毁集群节点
+
+        :param request: Request instance for TerminateClusterNodes.
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateClusterNodesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateClusterNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateClusterNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateClusterNodesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

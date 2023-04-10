@@ -657,6 +657,60 @@ class CreateSqlFilterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDBDiagReportTasksRequest(AbstractModel):
+    """DeleteDBDiagReportTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestIds: 需要删除的任务id列表
+        :type AsyncRequestIds: list of int
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL， "mongodb" - 云数据库 CynosDB for MySQL，
+默认值为"mysql"。
+        :type Product: str
+        """
+        self.AsyncRequestIds = None
+        self.InstanceId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestIds = params.get("AsyncRequestIds")
+        self.InstanceId = params.get("InstanceId")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDBDiagReportTasksResponse(AbstractModel):
+    """DeleteDBDiagReportTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 任务删除状态, 0-删除成功
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
     """DeleteSecurityAuditLogExportTasks请求参数结构体
 

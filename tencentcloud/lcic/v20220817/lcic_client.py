@@ -854,6 +854,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRooms(self, request):
+        """获取房间列表
+
+        :param request: Request instance for GetRooms.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.GetRoomsRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.GetRoomsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRooms", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRoomsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetWatermark(self, request):
         """获取水印设置
 

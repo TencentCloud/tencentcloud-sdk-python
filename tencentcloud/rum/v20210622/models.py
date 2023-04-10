@@ -3516,12 +3516,16 @@ class DescribeReleaseFileSignRequest(AbstractModel):
         r"""
         :param Timeout: 超时时间，不填默认是 5 分钟
         :type Timeout: int
+        :param FileType: bucket类型，不填默认web，2:app
+        :type FileType: int
         """
         self.Timeout = None
+        self.FileType = None
 
 
     def _deserialize(self, params):
         self.Timeout = params.get("Timeout")
+        self.FileType = params.get("FileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

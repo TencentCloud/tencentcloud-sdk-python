@@ -3308,12 +3308,17 @@ class DatahubTopicResp(AbstractModel):
         r"""
         :param TopicName: Topic名称
         :type TopicName: str
+        :param TopicId: TopicId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
         """
         self.TopicName = None
+        self.TopicId = None
 
 
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
+        self.TopicId = params.get("TopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -764,6 +764,36 @@ POSTPAID_BY_HOUR 按量计费，默认方式。
         
 
 
+class ComponentBasicRestartInfo(AbstractModel):
+    """操作的进程范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ComponentName: 进程名，必填，如NameNode
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentName: str
+        :param IpList: 操作的IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpList: list of str
+        """
+        self.ComponentName = None
+        self.IpList = None
+
+
+    def _deserialize(self, params):
+        self.ComponentName = params.get("ComponentName")
+        self.IpList = params.get("IpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Configuration(AbstractModel):
     """自定义配置参数
 
@@ -4256,6 +4286,36 @@ class NodeResourceSpec(AbstractModel):
         
 
 
+class OpScope(AbstractModel):
+    """操作范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceInfoList: 操作范围，要操作的服务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceInfoList: list of ServiceBasicRestartInfo
+        """
+        self.ServiceInfoList = None
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceInfoList") is not None:
+            self.ServiceInfoList = []
+            for item in params.get("ServiceInfoList"):
+                obj = ServiceBasicRestartInfo()
+                obj._deserialize(item)
+                self.ServiceInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutterResource(AbstractModel):
     """资源详情
 
@@ -6019,6 +6079,39 @@ class SearchItem(AbstractModel):
         
 
 
+class ServiceBasicRestartInfo(AbstractModel):
+    """操作的服务范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceName: 服务名，必填，如HDFS
+        :type ServiceName: str
+        :param ComponentInfoList: 如果没传，则表示所有进程
+        :type ComponentInfoList: list of ComponentBasicRestartInfo
+        """
+        self.ServiceName = None
+        self.ComponentInfoList = None
+
+
+    def _deserialize(self, params):
+        self.ServiceName = params.get("ServiceName")
+        if params.get("ComponentInfoList") is not None:
+            self.ComponentInfoList = []
+            for item in params.get("ComponentInfoList"):
+                obj = ComponentBasicRestartInfo()
+                obj._deserialize(item)
+                self.ComponentInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ShortNodeInfo(AbstractModel):
     """节点信息
 
@@ -6075,6 +6168,62 @@ class SoftDependInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StartStopServiceOrMonitorRequest(AbstractModel):
+    """StartStopServiceOrMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群ID
+        :type InstanceId: str
+        :param OpType: 操作类型，当前支持
+<li>StartService：启动服务</li>
+<li>StopService：停止服务</li>
+<li>StartMonitor：退出维护</li>
+<li>StopMonitor：进入维护</li>
+
+        :type OpType: str
+        :param OpScope: 操作范围
+        :type OpScope: :class:`tencentcloud.emr.v20190103.models.OpScope`
+        """
+        self.InstanceId = None
+        self.OpType = None
+        self.OpScope = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.OpType = params.get("OpType")
+        if params.get("OpScope") is not None:
+            self.OpScope = OpScope()
+            self.OpScope._deserialize(params.get("OpScope"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStopServiceOrMonitorResponse(AbstractModel):
+    """StartStopServiceOrMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Step(AbstractModel):
@@ -6216,6 +6365,73 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TerminateClusterNodesRequest(AbstractModel):
+    """TerminateClusterNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param CvmInstanceIds: 销毁资源列表
+        :type CvmInstanceIds: list of str
+        :param NodeFlag: 销毁节点类型取值范围：
+  <li>MASTER</li>
+  <li>TASK</li>
+  <li>CORE</li>
+  <li>ROUTER</li>
+        :type NodeFlag: str
+        :param GraceDownFlag: 优雅缩容开关
+  <li>true:开启</li>
+  <li>false:不开启</li>
+        :type GraceDownFlag: bool
+        :param GraceDownTime: 优雅缩容等待时间,时间范围60到1800  单位秒
+        :type GraceDownTime: int
+        """
+        self.InstanceId = None
+        self.CvmInstanceIds = None
+        self.NodeFlag = None
+        self.GraceDownFlag = None
+        self.GraceDownTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.CvmInstanceIds = params.get("CvmInstanceIds")
+        self.NodeFlag = params.get("NodeFlag")
+        self.GraceDownFlag = params.get("GraceDownFlag")
+        self.GraceDownTime = params.get("GraceDownTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateClusterNodesResponse(AbstractModel):
+    """TerminateClusterNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 缩容流程ID。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class TerminateInstanceRequest(AbstractModel):
