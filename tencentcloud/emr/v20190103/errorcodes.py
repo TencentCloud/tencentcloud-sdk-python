@@ -23,6 +23,12 @@ FAILEDOPERATION_CHECKIFSUPPORTPODSTRETCH = 'FailedOperation.CheckIfSupportPodStr
 # 重复的订单，请检查emr控制台。
 FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = 'FailedOperation.DuplicateOrderNotAllowed'
 
+# 获取cam角色失败。
+FAILEDOPERATION_GETCAMROLEFAILED = 'FailedOperation.GetCamRoleFailed'
+
+# 调用cam服务失败。
+FAILEDOPERATION_GETCAMSERVERFAILED = 'FailedOperation.GetCamServerFailed'
+
 # 操作失败，不支持pod。
 FAILEDOPERATION_NOTSUPPORTPOD = 'FailedOperation.NotSupportPod'
 
@@ -199,6 +205,9 @@ INVALIDPARAMETER_INVALIDMETATYPE = 'InvalidParameter.InvalidMetaType'
 
 # 变配规格无效。
 INVALIDPARAMETER_INVALIDMODIFYSPEC = 'InvalidParameter.InvalidModifySpec'
+
+# 不合法的节点类型。
+INVALIDPARAMETER_INVALIDNODEFLAG = 'InvalidParameter.InvalidNodeFlag'
 
 # 无效的NodeType。
 INVALIDPARAMETER_INVALIDNODETYPE = 'InvalidParameter.InvalidNodeType'

@@ -2318,6 +2318,104 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSlowLogsRequest(AbstractModel):
+    """DescribeSlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
+        :type Product: str
+        :param InstanceId: 实例id。
+        :type InstanceId: str
+        :param Md5: sql模版的md5值
+        :type Md5: str
+        :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
+        :type StartTime: str
+        :param EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :type EndTime: str
+        :param Offset: 分页参数
+        :type Offset: int
+        :param Limit: 分页参数
+        :type Limit: int
+        :param DB: 数据库列表
+        :type DB: list of str
+        :param Key: 关键字
+        :type Key: list of str
+        :param User: 用户
+        :type User: list of str
+        :param Ip: ip
+        :type Ip: list of str
+        :param Time: 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
+        :type Time: list of int
+        """
+        self.Product = None
+        self.InstanceId = None
+        self.Md5 = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.DB = None
+        self.Key = None
+        self.User = None
+        self.Ip = None
+        self.Time = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        self.Md5 = params.get("Md5")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DB = params.get("DB")
+        self.Key = params.get("Key")
+        self.User = params.get("User")
+        self.Ip = params.get("Ip")
+        self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSlowLogsResponse(AbstractModel):
+    """DescribeSlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的记录总数。
+        :type TotalCount: int
+        :param Rows: 慢日志明细
+        :type Rows: list of SlowLogInfoItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = SlowLogInfoItem()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSqlFiltersRequest(AbstractModel):
     """DescribeSqlFilters请求参数结构体
 
@@ -4299,6 +4397,67 @@ class SlowLogHost(AbstractModel):
         self.UserHost = params.get("UserHost")
         self.Ratio = params.get("Ratio")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogInfoItem(AbstractModel):
+    """慢日志详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Timestamp: 慢日志开始时间
+        :type Timestamp: str
+        :param SqlText: sql语句
+        :type SqlText: str
+        :param Database: 数据库
+        :type Database: str
+        :param UserName: User来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param UserHost: IP来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserHost: str
+        :param QueryTime: 执行时间,单位秒
+        :type QueryTime: int
+        :param LockTime: 锁时间,单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockTime: int
+        :param RowsExamined: 扫描行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowsExamined: int
+        :param RowsSent: 返回行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowsSent: int
+        """
+        self.Timestamp = None
+        self.SqlText = None
+        self.Database = None
+        self.UserName = None
+        self.UserHost = None
+        self.QueryTime = None
+        self.LockTime = None
+        self.RowsExamined = None
+        self.RowsSent = None
+
+
+    def _deserialize(self, params):
+        self.Timestamp = params.get("Timestamp")
+        self.SqlText = params.get("SqlText")
+        self.Database = params.get("Database")
+        self.UserName = params.get("UserName")
+        self.UserHost = params.get("UserHost")
+        self.QueryTime = params.get("QueryTime")
+        self.LockTime = params.get("LockTime")
+        self.RowsExamined = params.get("RowsExamined")
+        self.RowsSent = params.get("RowsSent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

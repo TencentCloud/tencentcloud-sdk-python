@@ -837,6 +837,9 @@ class CreateRecordBatchRecord(AbstractModel):
         :param MX: 记录的MX权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type MX: int
+        :param Weight: 记录的权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
         """
         self.SubDomain = None
         self.RecordType = None
@@ -848,6 +851,7 @@ class CreateRecordBatchRecord(AbstractModel):
         self.ErrMsg = None
         self.Id = None
         self.MX = None
+        self.Weight = None
 
 
     def _deserialize(self, params):
@@ -861,6 +865,7 @@ class CreateRecordBatchRecord(AbstractModel):
         self.ErrMsg = params.get("ErrMsg")
         self.Id = params.get("Id")
         self.MX = params.get("MX")
+        self.Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

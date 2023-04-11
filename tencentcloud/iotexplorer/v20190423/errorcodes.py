@@ -431,6 +431,9 @@ UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = 'UnauthorizedOperation.NoPe
 # 产品ACL错误。
 UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = 'UnauthorizedOperation.NoPermissionToStudioProduct'
 
+# 您的帐号未实名认证，请登录腾讯云进行实名认证
+UNAUTHORIZEDOPERATION_NOVERIFIED = 'UnauthorizedOperation.NoVerified'
+
 # 没有权限。
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
 
@@ -526,3 +529,6 @@ UNSUPPORTEDOPERATION_VIDEOACCOUNTNOTEXIST = 'UnsupportedOperation.VideoAccountNo
 
 # Video平台license数量不足。
 UNSUPPORTEDOPERATION_VIDEOINSUFFICIENTLICENSES = 'UnsupportedOperation.VideoInsufficientLicenses'
+
+# Video平台产品不存在。
+UNSUPPORTEDOPERATION_VIDEOPRODUCTNOTEXIST = 'UnsupportedOperation.VideoProductNotExist'

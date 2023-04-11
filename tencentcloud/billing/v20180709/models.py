@@ -162,6 +162,9 @@ class BillDetail(AbstractModel):
         :type RegionId: str
         :param ProjectId: 项目ID:资源所属项目ID
         :type ProjectId: int
+        :param PriceInfo: 价格属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceInfo: list of str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -187,6 +190,7 @@ class BillDetail(AbstractModel):
         self.ActionType = None
         self.RegionId = None
         self.ProjectId = None
+        self.PriceInfo = None
 
 
     def _deserialize(self, params):
@@ -224,6 +228,7 @@ class BillDetail(AbstractModel):
         self.ActionType = params.get("ActionType")
         self.RegionId = params.get("RegionId")
         self.ProjectId = params.get("ProjectId")
+        self.PriceInfo = params.get("PriceInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

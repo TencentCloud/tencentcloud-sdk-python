@@ -808,6 +808,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSlowLogs(self, request):
+        """获取指定时间内某个sql模版的慢日志明细
+
+        :param request: Request instance for DescribeSlowLogs.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSlowLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSlowLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSqlFilters(self, request):
         """查询实例SQL限流任务列表。
 

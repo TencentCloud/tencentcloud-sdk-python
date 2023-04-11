@@ -309,6 +309,64 @@ class CreateOfflineRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePPTCheckTaskRequest(AbstractModel):
+    """CreatePPTCheckTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 客户的SdkAppId
+        :type SdkAppId: int
+        :param Url: 经过URL编码后的PPT文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pptx，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pptx。为了提高URL解析的成功率，请对URL进行编码。
+        :type Url: str
+        :param AutoHandleUnsupportedElement: 是否对不支持元素开启自动处理的功能。默认不开启。
+
+在开启自动处理的情况下，会自动进行如下处理：
+1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
+2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
+3. 已损坏音视频：移除PPT上对损坏音视频的引用
+        :type AutoHandleUnsupportedElement: bool
+        """
+        self.SdkAppId = None
+        self.Url = None
+        self.AutoHandleUnsupportedElement = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Url = params.get("Url")
+        self.AutoHandleUnsupportedElement = params.get("AutoHandleUnsupportedElement")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePPTCheckTaskResponse(AbstractModel):
+    """CreatePPTCheckTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 检测任务的唯一标识Id，用于查询该任务的进度以及检测结果
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSnapshotTaskRequest(AbstractModel):
     """CreateSnapshotTask请求参数结构体
 
@@ -1174,6 +1232,131 @@ class DescribeOnlineRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePPTCheckCallbackRequest(AbstractModel):
+    """DescribePPTCheckCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用的SdkAppId
+        :type SdkAppId: int
+        """
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePPTCheckCallbackResponse(AbstractModel):
+    """DescribePPTCheckCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Callback: 回调地址
+        :type Callback: str
+        :param CallbackKey: 回调鉴权密钥
+        :type CallbackKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Callback = None
+        self.CallbackKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Callback = params.get("Callback")
+        self.CallbackKey = params.get("CallbackKey")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePPTCheckRequest(AbstractModel):
+    """DescribePPTCheck请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 客户的SdkAppId
+        :type SdkAppId: int
+        :param TaskId: 任务的唯一标识Id
+        :type TaskId: str
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePPTCheckResponse(AbstractModel):
+    """DescribePPTCheck返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务的唯一标识Id
+        :type TaskId: str
+        :param IsOK: PPT文件是否正常
+        :type IsOK: bool
+        :param ResultUrl: 修复后的PPT URL，只有创建任务时参数AutoHandleUnsupportedElement=true，才返回此参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultUrl: str
+        :param Slides: 错误PPT页面列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Slides: list of PPTErrSlide
+        :param Status: 任务的当前状态 - QUEUED: 正在排队等待 - PROCESSING: 执行中 - FINISHED: 执行完成	
+        :type Status: str
+        :param Progress: 当前进度,取值范围为0~100
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.IsOK = None
+        self.ResultUrl = None
+        self.Slides = None
+        self.Status = None
+        self.Progress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.IsOK = params.get("IsOK")
+        self.ResultUrl = params.get("ResultUrl")
+        if params.get("Slides") is not None:
+            self.Slides = []
+            for item in params.get("Slides"):
+                obj = PPTErrSlide()
+                obj._deserialize(item)
+                self.Slides.append(obj)
+        self.Status = params.get("Status")
+        self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePostpaidUsageRequest(AbstractModel):
     """DescribePostpaidUsage请求参数结构体
 
@@ -1395,6 +1578,78 @@ class DescribeRoomListResponse(AbstractModel):
                 obj = RoomListItem()
                 obj._deserialize(item)
                 self.RoomList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRunningTasksRequest(AbstractModel):
+    """DescribeRunningTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppID: 应用的SdkAppID
+        :type SdkAppID: int
+        :param TaskType: 指定需要获取的任务类型。
+有效取值如下：
+- TranscodeH5: 动态转码任务，文档转HTML5页面
+- TranscodeJPG: 静态转码任务，文档转图片
+- WhiteboardPush: 白板推流任务
+- OnlineRecord: 实时录制任务
+        :type TaskType: str
+        :param Offset: 分页获取时的任务偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 每次获取任务列表时最大获取任务数，默认值为100。
+有效取值范围：[1, 500]
+        :type Limit: int
+        """
+        self.SdkAppID = None
+        self.TaskType = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppID = params.get("SdkAppID")
+        self.TaskType = params.get("TaskType")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRunningTasksResponse(AbstractModel):
+    """DescribeRunningTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 当前正在执行中的任务总数
+        :type Total: int
+        :param Tasks: 任务信息列表
+        :type Tasks: list of RunningTaskItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = RunningTaskItem()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2134,6 +2389,55 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWarningCallbackRequest(AbstractModel):
+    """DescribeWarningCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用的SdkAppId
+        :type SdkAppId: int
+        """
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWarningCallbackResponse(AbstractModel):
+    """DescribeWarningCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Callback: 告警事件回调地址，如果未设置回调地址，该字段为空字符串
+        :type Callback: str
+        :param CallbackKey: 告警回调鉴权密钥
+        :type CallbackKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Callback = None
+        self.CallbackKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Callback = params.get("Callback")
+        self.CallbackKey = params.get("CallbackKey")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWhiteboardApplicationConfigRequest(AbstractModel):
     """DescribeWhiteboardApplicationConfig请求参数结构体
 
@@ -2814,6 +3118,76 @@ class OmittedDuration(AbstractModel):
         
 
 
+class PPTErr(AbstractModel):
+    """PPT错误元素
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 元素名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Type: 0: 不支持的墨迹类型，1: 不支持自动翻页，2: 存在已损坏音视频，3: 存在不可访问资源，4: 只读文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param Detail: 错误详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: str
+        """
+        self.Name = None
+        self.Type = None
+        self.Detail = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.Detail = params.get("Detail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PPTErrSlide(AbstractModel):
+    """PPT错误页面列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Page: 异常元素存在的页面，由页面类型+页码组成，页码类型包括：幻灯片、幻灯片母版、幻灯片布局等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: str
+        :param Errs: 错误元素列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Errs: list of PPTErr
+        """
+        self.Page = None
+        self.Errs = None
+
+
+    def _deserialize(self, params):
+        self.Page = params.get("Page")
+        if params.get("Errs") is not None:
+            self.Errs = []
+            for item in params.get("Errs"):
+                obj = PPTErr()
+                obj._deserialize(item)
+                self.Errs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PauseOnlineRecordRequest(AbstractModel):
     """PauseOnlineRecord请求参数结构体
 
@@ -3172,6 +3546,75 @@ class RoomUsageDataItem(AbstractModel):
         
 
 
+class RunningTaskItem(AbstractModel):
+    """正在运行的任务列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppID: 应用SdkAppID
+        :type SdkAppID: int
+        :param TaskID: 任务ID
+        :type TaskID: str
+        :param TaskType: 任务类型
+- TranscodeH5: 动态转码任务，文档转HTML5页面
+- TranscodeJPG: 静态转码任务，文档转图片
+- WhiteboardPush: 白板推流任务
+- OnlineRecord: 实时录制任务
+        :type TaskType: str
+        :param CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param CancelTime: 任务取消时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CancelTime: str
+        :param Status: 任务状态
+- QUEUED: 任务正在排队等待执行中
+- PROCESSING: 任务正在执行中 
+- FINISHED: 任务已完成
+        :type Status: str
+        :param Progress: 任务当前进度
+        :type Progress: int
+        :param FileURL: 转码任务中转码文件的原始URL
+此参数只有任务类型为TranscodeH5、TranscodeJPG类型时才会有有效值。其他任务类型为空字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileURL: str
+        :param RoomID: 房间号
+
+当任务类型为TranscodeH5、TranscodeJPG时，房间号为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomID: int
+        """
+        self.SdkAppID = None
+        self.TaskID = None
+        self.TaskType = None
+        self.CreateTime = None
+        self.CancelTime = None
+        self.Status = None
+        self.Progress = None
+        self.FileURL = None
+        self.RoomID = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppID = params.get("SdkAppID")
+        self.TaskID = params.get("TaskID")
+        self.TaskType = params.get("TaskType")
+        self.CreateTime = params.get("CreateTime")
+        self.CancelTime = params.get("CancelTime")
+        self.Status = params.get("Status")
+        self.Progress = params.get("Progress")
+        self.FileURL = params.get("FileURL")
+        self.RoomID = params.get("RoomID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SetOfflineRecordCallbackRequest(AbstractModel):
     """SetOfflineRecordCallback请求参数结构体
 
@@ -3292,6 +3735,96 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
 
 class SetOnlineRecordCallbackResponse(AbstractModel):
     """SetOnlineRecordCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetPPTCheckCallbackKeyRequest(AbstractModel):
+    """SetPPTCheckCallbackKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用的SdkAppId
+        :type SdkAppId: int
+        :param CallbackKey: 设置回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257	
+        :type CallbackKey: str
+        """
+        self.SdkAppId = None
+        self.CallbackKey = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.CallbackKey = params.get("CallbackKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetPPTCheckCallbackKeyResponse(AbstractModel):
+    """SetPPTCheckCallbackKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetPPTCheckCallbackRequest(AbstractModel):
+    """SetPPTCheckCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 客户的SdkAppId	
+        :type SdkAppId: int
+        :param Callback: 进度回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。 回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260	
+        :type Callback: str
+        """
+        self.SdkAppId = None
+        self.Callback = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Callback = params.get("Callback")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetPPTCheckCallbackResponse(AbstractModel):
+    """SetPPTCheckCallback返回参数结构体
 
     """
 
@@ -3473,6 +4006,56 @@ class SetVideoGenerationTaskCallbackRequest(AbstractModel):
 
 class SetVideoGenerationTaskCallbackResponse(AbstractModel):
     """SetVideoGenerationTaskCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SetWarningCallbackRequest(AbstractModel):
+    """SetWarningCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 客户的SdkAppId
+        :type SdkAppId: int
+        :param Callback: 告警回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。
+回调数据格式请参考文档：
+        :type Callback: str
+        :param CallbackKey: 设置告警回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+        :type CallbackKey: str
+        """
+        self.SdkAppId = None
+        self.Callback = None
+        self.CallbackKey = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Callback = params.get("Callback")
+        self.CallbackKey = params.get("CallbackKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetWarningCallbackResponse(AbstractModel):
+    """SetWarningCallback返回参数结构体
 
     """
 

@@ -12349,7 +12349,7 @@ class PolicyTag(AbstractModel):
 
 
 class ProductSimple(AbstractModel):
-    """云监控支持的产品简要信息
+    """云产品监控支持的产品简要信息
 
     """
 
@@ -12699,7 +12699,7 @@ class PrometheusAlertRule(AbstractModel):
 
 
 class PrometheusClusterAgentBasic(AbstractModel):
-    """与云监控融合托管prometheus实例，关联集群基础信息
+    """与腾讯云可观测平台融合托管 Prometheus 实例，关联集群基础信息
 
     """
 
@@ -14674,7 +14674,7 @@ class Toleration(AbstractModel):
 
 
 class URLNotice(AbstractModel):
-    """云监控告警通知模板 - 回调通知详情
+    """告警通知模板 - 回调通知详情
 
     """
 
@@ -15903,7 +15903,7 @@ class UpgradeGrafanaInstanceResponse(AbstractModel):
 
 
 class UserNotice(AbstractModel):
-    """云监控告警通知模板 - 用户通知详情
+    """告警通知模板 - 用户通知详情
 
     """
 

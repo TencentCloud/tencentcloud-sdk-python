@@ -13062,6 +13062,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type CrossCluster: int
         :param ZoneId: 主节点可用区，该值仅在跨区迁移时生效。仅支持同地域下的可用区进行迁移。
         :type ZoneId: str
+        :param RoTransType: 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
+        :type RoTransType: str
         """
         self.InstanceId = None
         self.Memory = None
@@ -13079,6 +13081,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.MaxDelayTime = None
         self.CrossCluster = None
         self.ZoneId = None
+        self.RoTransType = None
 
 
     def _deserialize(self, params):
@@ -13098,6 +13101,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.MaxDelayTime = params.get("MaxDelayTime")
         self.CrossCluster = params.get("CrossCluster")
         self.ZoneId = params.get("ZoneId")
+        self.RoTransType = params.get("RoTransType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

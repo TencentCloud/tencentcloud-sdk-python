@@ -513,7 +513,7 @@ class CwpClient(AbstractClient):
 
 
     def DeleteMachine(self, request):
-        """本接口（DeleteMachine）用于卸载云镜客户端。
+        """本接口（DeleteMachine）用于卸载主机安全客户端。
 
         :param request: Request instance for DeleteMachine.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteMachineRequest`

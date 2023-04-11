@@ -1163,6 +1163,10 @@ class CreateDataEngineRequest(AbstractModel):
         :type ImageVersionName: str
         :param MainClusterName: 主集群名称
         :type MainClusterName: str
+        :param ElasticSwitch: spark jar 包年包月集群是否开启弹性
+        :type ElasticSwitch: bool
+        :param ElasticLimit: spark jar 包年包月集群弹性上限
+        :type ElasticLimit: int
         """
         self.EngineType = None
         self.DataEngineName = None
@@ -1191,6 +1195,8 @@ class CreateDataEngineRequest(AbstractModel):
         self.DataEngineConfigPairs = None
         self.ImageVersionName = None
         self.MainClusterName = None
+        self.ElasticSwitch = None
+        self.ElasticLimit = None
 
 
     def _deserialize(self, params):
@@ -1233,6 +1239,8 @@ class CreateDataEngineRequest(AbstractModel):
                 self.DataEngineConfigPairs.append(obj)
         self.ImageVersionName = params.get("ImageVersionName")
         self.MainClusterName = params.get("MainClusterName")
+        self.ElasticSwitch = params.get("ElasticSwitch")
+        self.ElasticLimit = params.get("ElasticLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -35,6 +35,9 @@ INTERNALERROR = 'InternalError'
 # 后台处理出错。
 INTERNALERROR_BACKENDERROR = 'InternalError.BackendError'
 
+# 配置已被锁定，请解除配置锁定之后在重试。
+INTERNALERROR_CONFIGLOCKED = 'InternalError.ConfigLocked'
+
 # 数据库错误。
 INTERNALERROR_DBERROR = 'InternalError.DBError'
 

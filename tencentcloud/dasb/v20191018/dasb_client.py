@@ -716,6 +716,52 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLoginEvent(self, request):
+        """查询登录日志
+
+        :param request: Request instance for DescribeLoginEvent.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeLoginEventRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeLoginEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLoginEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLoginEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOperationEvent(self, request):
+        """查询操作日志
+
+        :param request: Request instance for DescribeOperationEvent.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeOperationEventRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeOperationEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOperationEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOperationEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeResources(self, request):
         """查询用户购买的堡垒机服务信息，包括资源ID、授权点数、VPC、过期时间等。
 
@@ -983,6 +1029,167 @@ class DasbClient(AbstractClient):
             body = self.call("ResetUser", params, headers=headers)
             response = json.loads(body)
             model = models.ResetUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchAuditLog(self, request):
+        """搜索审计日志
+
+        :param request: Request instance for SearchAuditLog.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.SearchAuditLogRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.SearchAuditLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchAuditLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchAuditLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchCommand(self, request):
+        """命令执行检索
+
+        :param request: Request instance for SearchCommand.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.SearchCommandRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.SearchCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchCommand", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchCommandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchCommandBySid(self, request):
+        """根据会话Id搜索Command
+
+        :param request: Request instance for SearchCommandBySid.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.SearchCommandBySidRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.SearchCommandBySidResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchCommandBySid", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchCommandBySidResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchFile(self, request):
+        """文件传输检索
+
+        :param request: Request instance for SearchFile.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.SearchFileRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.SearchFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchFileBySid(self, request):
+        """搜索文件传输会话下文件操作列表
+
+        :param request: Request instance for SearchFileBySid.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.SearchFileBySidRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.SearchFileBySidResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchFileBySid", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchFileBySidResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchSession(self, request):
+        """搜索会话
+
+        :param request: Request instance for SearchSession.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.SearchSessionRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.SearchSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchSession", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchSessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SearchSessionCommand(self, request):
+        """命令检索
+
+        :param request: Request instance for SearchSessionCommand.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.SearchSessionCommandRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.SearchSessionCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchSessionCommand", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchSessionCommandResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -871,6 +871,10 @@ video 纯视频
 0 不自动连麦（需要手动申请上麦，默认值）
 1 自动连麦
         :type AutoMic: int
+        :param TurnOffMic: 释放音视频权限后是否自动取消连麦。可以有以下取值：
+0 自动取消连麦（默认值）
+1 保持连麦状态
+        :type TurnOffMic: int
         :param AudioQuality: 高音质模式。可以有以下取值：
 0 不开启高音质（默认值）
 1 开启高音质
@@ -882,6 +886,10 @@ video 纯视频
         :type DisableRecord: int
         :param Assistants: 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
         :type Assistants: list of str
+        :param RTCAudienceNumber: rtc人数。
+        :type RTCAudienceNumber: int
+        :param AudienceType: 观看类型。0未知，1互动，2cdn或直播。 目前仅支持互动类型
+        :type AudienceType: int
         :param RecordLayout: 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
         :param GroupId: 房间绑定的群组ID,非空时限制组成员进入
@@ -896,9 +904,12 @@ video 纯视频
         self.SubType = None
         self.TeacherId = None
         self.AutoMic = None
+        self.TurnOffMic = None
         self.AudioQuality = None
         self.DisableRecord = None
         self.Assistants = None
+        self.RTCAudienceNumber = None
+        self.AudienceType = None
         self.RecordLayout = None
         self.GroupId = None
 
@@ -913,9 +924,12 @@ video 纯视频
         self.SubType = params.get("SubType")
         self.TeacherId = params.get("TeacherId")
         self.AutoMic = params.get("AutoMic")
+        self.TurnOffMic = params.get("TurnOffMic")
         self.AudioQuality = params.get("AudioQuality")
         self.DisableRecord = params.get("DisableRecord")
         self.Assistants = params.get("Assistants")
+        self.RTCAudienceNumber = params.get("RTCAudienceNumber")
+        self.AudienceType = params.get("AudienceType")
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())

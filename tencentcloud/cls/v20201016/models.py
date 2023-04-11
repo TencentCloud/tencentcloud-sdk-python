@@ -4066,6 +4066,31 @@ class DescribeTopicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DynamicIndex(AbstractModel):
+    """动态更新索引配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 动态索引配置开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: bool
+        """
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExcludePathInfo(AbstractModel):
     """黑名单path信息
 
@@ -6224,10 +6249,14 @@ class RuleInfo(AbstractModel):
         :param Tag: 元字段索引配置，如果为空时代表未开启元字段索引
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: :class:`tencentcloud.cls.v20201016.models.RuleTagInfo`
+        :param DynamicIndex: 动态索引配置，如果为空时代表未开启动态段索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DynamicIndex: :class:`tencentcloud.cls.v20201016.models.DynamicIndex`
         """
         self.FullText = None
         self.KeyValue = None
         self.Tag = None
+        self.DynamicIndex = None
 
 
     def _deserialize(self, params):
@@ -6240,6 +6269,9 @@ class RuleInfo(AbstractModel):
         if params.get("Tag") is not None:
             self.Tag = RuleTagInfo()
             self.Tag._deserialize(params.get("Tag"))
+        if params.get("DynamicIndex") is not None:
+            self.DynamicIndex = DynamicIndex()
+            self.DynamicIndex._deserialize(params.get("DynamicIndex"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6360,7 +6392,7 @@ class SearchLogRequest(AbstractModel):
         :type SamplingRate: float
         :param SyntaxRule: 检索语法规则，默认值为0。
 0：Lucene语法，1：CQL语法。
-详细说明参见https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
         :type SyntaxRule: int
         """
         self.From = None
@@ -6428,6 +6460,9 @@ class SearchLogResponse(AbstractModel):
 当UseNewAnalysis为true时生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of Column
+        :param SamplingRate: 本次统计分析使用的采样率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SamplingRate: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6439,6 +6474,7 @@ class SearchLogResponse(AbstractModel):
         self.AnalysisResults = None
         self.AnalysisRecords = None
         self.Columns = None
+        self.SamplingRate = None
         self.RequestId = None
 
 
@@ -6466,6 +6502,7 @@ class SearchLogResponse(AbstractModel):
                 obj = Column()
                 obj._deserialize(item)
                 self.Columns.append(obj)
+        self.SamplingRate = params.get("SamplingRate")
         self.RequestId = params.get("RequestId")
 
 

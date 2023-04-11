@@ -95,6 +95,29 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePPTCheckTask(self, request):
+        """检测PPT文件，识别PPT中包含的动态转码任务（Transcode）不支持的元素
+
+        :param request: Request instance for CreatePPTCheckTask.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.CreatePPTCheckTaskRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.CreatePPTCheckTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePPTCheckTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePPTCheckTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSnapshotTask(self, request):
         """创建白板板书生成任务, 在任务结束后，如果提供了回调地址，将通过回调地址通知板书生成结果
 
@@ -371,6 +394,52 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePPTCheck(self, request):
+        """查询PPT检测任务的执行进度或结果
+
+        :param request: Request instance for DescribePPTCheck.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribePPTCheckRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribePPTCheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePPTCheck", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePPTCheckResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePPTCheckCallback(self, request):
+        """查询PPT检测任务回调地址
+
+        :param request: Request instance for DescribePPTCheckCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribePPTCheckCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribePPTCheckCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePPTCheckCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePPTCheckCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePostpaidUsage(self, request):
         """查询用户后付费用量
 
@@ -454,6 +523,29 @@ class TiwClient(AbstractClient):
             body = self.call("DescribeRoomList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRoomListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRunningTasks(self, request):
+        """根据指定的任务类型，获取当前正在执行中的任务列表。只能查询最近3天内创建的任务。
+
+        :param request: Request instance for DescribeRunningTasks.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeRunningTasksRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeRunningTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRunningTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRunningTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -734,6 +826,29 @@ class TiwClient(AbstractClient):
             body = self.call("DescribeVideoGenerationTaskCallback", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVideoGenerationTaskCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWarningCallback(self, request):
+        """查询告警回调地址。此功能需要申请白名单使用。
+
+        :param request: Request instance for DescribeWarningCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeWarningCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeWarningCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWarningCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWarningCallbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1065,6 +1180,52 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SetPPTCheckCallback(self, request):
+        """设置PPT检测任务回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
+
+        :param request: Request instance for SetPPTCheckCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetPPTCheckCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetPPTCheckCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetPPTCheckCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetPPTCheckCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetPPTCheckCallbackKey(self, request):
+        """设置PPT检测任务回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+
+        :param request: Request instance for SetPPTCheckCallbackKey.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetPPTCheckCallbackKeyRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetPPTCheckCallbackKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetPPTCheckCallbackKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetPPTCheckCallbackKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetTranscodeCallback(self, request):
         """设置文档转码回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
 
@@ -1148,6 +1309,29 @@ class TiwClient(AbstractClient):
             body = self.call("SetVideoGenerationTaskCallbackKey", params, headers=headers)
             response = json.loads(body)
             model = models.SetVideoGenerationTaskCallbackKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetWarningCallback(self, request):
+        """设置告警回调地址。此功能需要申请白名单使用。
+
+        :param request: Request instance for SetWarningCallback.
+        :type request: :class:`tencentcloud.tiw.v20190919.models.SetWarningCallbackRequest`
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetWarningCallbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetWarningCallback", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetWarningCallbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

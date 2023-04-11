@@ -4157,7 +4157,7 @@ SYNCING-同步中
 IMPORTING-导入中
 IMPORTFAILED-导入失败
         :type ImageState: str
-        :param Platform: 镜像来源平台
+        :param Platform: 镜像来源平台，包括如TencentOS、 CentOS、 Windows、 Ubuntu、 Debian、Fedora等。
         :type Platform: str
         :param ImageCreator: 镜像创建者
         :type ImageCreator: str
@@ -9263,7 +9263,7 @@ class SystemDisk(AbstractModel):
 
 
 class Tag(AbstractModel):
-    """标签键值对
+    """标签键值对，可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
 
     """
 

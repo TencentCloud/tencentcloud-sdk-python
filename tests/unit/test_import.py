@@ -1269,6 +1269,11 @@ def test_import_vpc():
     from tencentcloud.vpc.v20170312 import models
 
 
+def test_import_vrs():
+    from tencentcloud.vrs.v20200824 import vrs_client
+    from tencentcloud.vrs.v20200824 import models
+
+
 def test_import_waf():
     from tencentcloud.waf.v20180125 import waf_client
     from tencentcloud.waf.v20180125 import models

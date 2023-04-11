@@ -4110,7 +4110,7 @@ class BashEvent(AbstractModel):
         r"""
         :param Id: 数据ID
         :type Id: int
-        :param Uuid: 云镜ID
+        :param Uuid: 主机安全ID
         :type Uuid: str
         :param Quuid: 主机ID
         :type Quuid: str
@@ -4212,7 +4212,7 @@ class BashEventNew(AbstractModel):
         r"""
         :param Id: 数据ID
         :type Id: int
-        :param Uuid: 云镜ID
+        :param Uuid: 主机安全ID
         :type Uuid: str
         :param Quuid: 主机ID
         :type Quuid: str
@@ -4326,7 +4326,7 @@ class BashEventsInfoNew(AbstractModel):
         r"""
         :param Id: 数据ID
         :type Id: int
-        :param Uuid: 云镜ID
+        :param Uuid: 主机安全ID
         :type Uuid: str
         :param Quuid: 主机ID
         :type Quuid: str
@@ -4552,7 +4552,7 @@ class BruteAttackInfo(AbstractModel):
         r"""
         :param Id: 唯一Id
         :type Id: int
-        :param Uuid: 云镜客户端唯一标识UUID
+        :param Uuid: 主机安全客户端唯一标识UUID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uuid: str
         :param MachineIp: 主机ip
@@ -5921,7 +5921,7 @@ class DeleteMachineRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uuid: 云镜客户端Uuid。
+        :param Uuid: 主机安全客户端Uuid。
         :type Uuid: str
         """
         self.Uuid = None
@@ -13769,7 +13769,7 @@ class DescribeMachineInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uuid: 云镜客户端唯一Uuid。
+        :param Uuid: 主机安全客户端唯一Uuid。
         :type Uuid: str
         :param Quuid: Quuid , Uuid 必填一项
         :type Quuid: str
@@ -13799,7 +13799,7 @@ class DescribeMachineInfoResponse(AbstractModel):
         r"""
         :param MachineIp: 机器ip。
         :type MachineIp: str
-        :param ProtectDays: 受云镜保护天数。
+        :param ProtectDays: 受主机安全保护天数。
         :type ProtectDays: int
         :param MachineOs: 操作系统。
         :type MachineOs: str
@@ -13815,7 +13815,7 @@ class DescribeMachineInfoResponse(AbstractModel):
         :type MachineWanIp: str
         :param Quuid: CVM或BM主机唯一Uuid。
         :type Quuid: str
-        :param Uuid: 云镜客户端唯一Uuid。
+        :param Uuid: 主机安全客户端唯一Uuid。
         :type Uuid: str
         :param IsProVersion: 是否开通专业版。
 <li>true：是</li>
@@ -13846,7 +13846,7 @@ class DescribeMachineInfoResponse(AbstractModel):
         :type ProVersionDeadline: str
         :param HasAssetScan: 是否有资产扫描记录，0无，1有
         :type HasAssetScan: int
-        :param ProtectType: 防护版本 BASIC_VERSION 基础版, PRO_VERSION 专业版 Flagship 旗舰版.
+        :param ProtectType: 防护版本：BASIC_VERSION 基础版，PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
         :type ProtectType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17147,7 +17147,7 @@ class DescribeUsualLoginPlacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uuid: 云镜客户端UUID
+        :param Uuid: 主机安全客户端UUID
         :type Uuid: str
         """
         self.Uuid = None
@@ -20667,7 +20667,7 @@ class HistoryAccount(AbstractModel):
         r"""
         :param Id: 唯一ID。
         :type Id: int
-        :param Uuid: 云镜客户端唯一Uuid。
+        :param Uuid: 主机安全客户端唯一Uuid。
         :type Uuid: str
         :param MachineIp: 主机内网IP。
         :type MachineIp: str
