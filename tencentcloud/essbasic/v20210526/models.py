@@ -5584,6 +5584,9 @@ class TemplateInfo(AbstractModel):
         :param TemplateVersion: 模板版本，全数字字符。默认为空，初始版本为yyyyMMdd001。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateVersion: str
+        :param Available: 模板可用状态，取值：1启用（默认），2停用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Available: int
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -5601,6 +5604,7 @@ class TemplateInfo(AbstractModel):
         self.ChannelTemplateName = None
         self.ChannelAutoSave = None
         self.TemplateVersion = None
+        self.Available = None
 
 
     def _deserialize(self, params):
@@ -5635,6 +5639,7 @@ class TemplateInfo(AbstractModel):
         self.ChannelTemplateName = params.get("ChannelTemplateName")
         self.ChannelAutoSave = params.get("ChannelAutoSave")
         self.TemplateVersion = params.get("TemplateVersion")
+        self.Available = params.get("Available")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

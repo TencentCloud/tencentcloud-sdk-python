@@ -2405,6 +2405,8 @@ class DescribeScanStatsRequest(AbstractModel):
         :type ProductId: str
         :param BatchId: 批次ID
         :type BatchId: str
+        :param Code: 安心码
+        :type Code: str
         """
         self.CorpId = None
         self.PageSize = None
@@ -2412,6 +2414,7 @@ class DescribeScanStatsRequest(AbstractModel):
         self.MerchantId = None
         self.ProductId = None
         self.BatchId = None
+        self.Code = None
 
 
     def _deserialize(self, params):
@@ -2421,6 +2424,7 @@ class DescribeScanStatsRequest(AbstractModel):
         self.MerchantId = params.get("MerchantId")
         self.ProductId = params.get("ProductId")
         self.BatchId = params.get("BatchId")
+        self.Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

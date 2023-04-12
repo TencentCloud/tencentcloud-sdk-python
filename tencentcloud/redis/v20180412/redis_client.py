@@ -234,7 +234,7 @@ class RedisClient(AbstractClient):
 
 
     def CloneInstances(self, request):
-        """本接口（CloneInstances）可基于当前实例的备份文件克隆一个完整的新实例。
+        """本接口（CloneInstances）用于基于当前实例的备份文件克隆一个完整的新实例。
 
         :param request: Request instance for CloneInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.CloneInstancesRequest`
@@ -500,6 +500,29 @@ class RedisClient(AbstractClient):
             body = self.call("DescribeBackupUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBandwidthRange(self, request):
+        """本接口（DescribeBandwidthRange）用于查询实例带宽信息。
+
+        :param request: Request instance for DescribeBandwidthRange.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBandwidthRangeRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeBandwidthRangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBandwidthRange", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBandwidthRangeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1834,6 +1857,29 @@ class RedisClient(AbstractClient):
             body = self.call("ReleaseWanAddress", params, headers=headers)
             response = json.loads(body)
             model = models.ReleaseWanAddressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RemoveReplicationInstance(self, request):
+        """移除复制组成员
+
+        :param request: Request instance for RemoveReplicationInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveReplicationInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveReplicationInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

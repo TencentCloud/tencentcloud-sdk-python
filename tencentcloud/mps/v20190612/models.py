@@ -5501,7 +5501,7 @@ class CreateInputSRTSettings(AbstractModel):
         r"""
         :param Mode: SRT模式，可选[LISTENER|CALLER]，默认为LISTENER。
         :type Mode: str
-        :param StreamId: 流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。
+        :param StreamId: 流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。具体格式可以参考：https://github.com/Haivision/srt/blob/master/docs/features/access-control.md#standard-keys。
         :type StreamId: str
         :param Latency: 延迟，默认0，单位ms，范围为[0, 3000]。
         :type Latency: int

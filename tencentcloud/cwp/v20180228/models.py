@@ -11604,32 +11604,40 @@ class DescribeBashEventsRequest(AbstractModel):
         r"""
         :param Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
+        :param Filters: 过滤条件。
+<li>HostName - String - 是否必填：否 - 主机名</li>
+<li>Hostip - String - 是否必填：否 - 主机内网IP</li>
+<li>RuleCategory - Int - 是否必填：否 - 策略类型,全部或者单选(0:系统 1:用户)</li>
+<li>RuleName - String - 是否必填：否 - 策略名称</li>
+<li>RuleLevel - Int - 是否必填：否 - 威胁等级,可以多选</li>
+<li>Status - Int - 是否必填：否 - 处理状态,可多选(0:待处理 1:已处理 2:已加白  3:已忽略 4:已删除 5:已拦截)</li>
+<li>DetectBy - Int - 是否必填：否 - 数据来源,可多选(0:bash日志 1:实时监控)</li>
+<li>StartTime - String - 是否必填：否 - 开始时间</li>
+<li>EndTime - String - 是否必填：否 - 结束时间</li>
+        :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Filters: 过滤条件。
-<li>Keywords - String - 是否必填：否 - 关键词(主机内网IP)</li>
-        :type Filters: list of Filter
         :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
         :type Order: str
         :param By: 排序字段：CreateTime-发生时间。ModifyTime-处理时间
         :type By: str
         """
         self.Limit = None
-        self.Offset = None
         self.Filters = None
+        self.Offset = None
         self.Order = None
         self.By = None
 
 
     def _deserialize(self, params):
         self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Offset = params.get("Offset")
         self.Order = params.get("Order")
         self.By = params.get("By")
         memeber_set = set(params.keys())
@@ -11756,7 +11764,7 @@ class DescribeBruteAttackListRequest(AbstractModel):
         :type Offset: int
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-<li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+<li>Uuid - String - 是否必填：否 - 主机安全唯一Uuid</li>
 <li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 <li>Status - String - 是否必填：否 - 状态筛选：失败：FAILED 成功：SUCCESS</li>
 <li>UserName - String - 是否必填：否 - UserName筛选</li>
@@ -12808,7 +12816,7 @@ class DescribeHostLoginListRequest(AbstractModel):
         :type Offset: int
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-<li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+<li>Uuid - String - 是否必填：否 - 主机安全唯一Uuid</li>
 <li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 <li>UserName - String - 是否必填：否 - 用户名筛选</li>
 <li>LoginTimeBegin - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li>
@@ -14980,7 +14988,7 @@ class DescribeProVersionStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uuid: 云镜客户端UUID、填写"all"表示所有主机。
+        :param Uuid: 主机安全客户端UUID、填写"all"表示所有主机。
         :type Uuid: str
         """
         self.Uuid = None
@@ -21187,11 +21195,11 @@ class LicenseBindDetail(AbstractModel):
         :type MachineIp: str
         :param Quuid: 云服务器UUID
         :type Quuid: str
-        :param Uuid: 云镜客户端UUID
+        :param Uuid: 主机安全客户端UUID
         :type Uuid: str
         :param Tags: 标签信息
         :type Tags: list of str
-        :param AgentStatus: 云镜客户端状态,OFFLINE 离线,ONLINE 在线,UNINSTALL 未安装
+        :param AgentStatus: 主机安全客户端状态,OFFLINE 离线,ONLINE 在线,UNINSTALL 未安装
         :type AgentStatus: str
         :param IsUnBind: 是否允许解绑,false 不允许解绑
         :type IsUnBind: bool
@@ -23308,7 +23316,7 @@ class PrivilegeEscalationProcess(AbstractModel):
         r"""
         :param Id: 数据ID
         :type Id: int
-        :param Uuid: 云镜ID
+        :param Uuid: 主机安全ID
         :type Uuid: str
         :param Quuid: 主机ID
         :type Quuid: str
@@ -24160,7 +24168,7 @@ class ReverseShell(AbstractModel):
         r"""
         :param Id: ID 主键
         :type Id: int
-        :param Uuid: 云镜UUID
+        :param Uuid: 主机安全UUID
         :type Uuid: str
         :param Quuid: 主机ID
         :type Quuid: str
@@ -25125,7 +25133,7 @@ class SecurityDynamic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Uuid: 云镜客户端UUID。
+        :param Uuid: 主机安全客户端UUID。
         :type Uuid: str
         :param EventTime: 安全事件发生时间。
         :type EventTime: str
@@ -26052,7 +26060,7 @@ class UsualPlace(AbstractModel):
         r"""
         :param Id: ID。
         :type Id: int
-        :param Uuid: 云镜客户端唯一标识UUID。
+        :param Uuid: 主机安全客户端唯一标识UUID。
         :type Uuid: str
         :param CountryId: 国家 ID。
         :type CountryId: int

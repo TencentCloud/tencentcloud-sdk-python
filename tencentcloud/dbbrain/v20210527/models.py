@@ -2335,9 +2335,9 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
         :type EndTime: str
-        :param Offset: 分页参数
+        :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 分页参数
+        :param Limit: 查询数目，默认为20，最大为100。
         :type Limit: int
         :param DB: 数据库列表
         :type DB: list of str

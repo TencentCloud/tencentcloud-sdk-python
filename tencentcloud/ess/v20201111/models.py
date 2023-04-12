@@ -5401,6 +5401,8 @@ class TemplateInfo(AbstractModel):
         :type CreatedOn: int
         :param Promoter: 发起人角色信息
         :type Promoter: :class:`tencentcloud.ess.v20201111.models.Recipient`
+        :param Available: 模板可用状态，取值：0未知，但默认会被转成启用；1启用（默认），2停用
+        :type Available: int
         :param OrganizationId: 模板创建组织id
         :type OrganizationId: str
         :param PreviewUrl: 模板预览链接
@@ -5427,6 +5429,7 @@ class TemplateInfo(AbstractModel):
         self.Creator = None
         self.CreatedOn = None
         self.Promoter = None
+        self.Available = None
         self.OrganizationId = None
         self.PreviewUrl = None
         self.TemplateVersion = None
@@ -5470,6 +5473,7 @@ class TemplateInfo(AbstractModel):
         if params.get("Promoter") is not None:
             self.Promoter = Recipient()
             self.Promoter._deserialize(params.get("Promoter"))
+        self.Available = params.get("Available")
         self.OrganizationId = params.get("OrganizationId")
         self.PreviewUrl = params.get("PreviewUrl")
         self.TemplateVersion = params.get("TemplateVersion")

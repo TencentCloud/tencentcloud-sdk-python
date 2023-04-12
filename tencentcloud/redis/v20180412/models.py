@@ -660,9 +660,11 @@ class CloneInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 当前实例ID。
+        :param InstanceId: 指定待克隆的源实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param GoodsNum: 单次克隆实例的数量。包年包月每次购买最大数量为100。按量计费每次购买最大数量为30，每个地域购买数量取值范围为[1,100]。
+        :param GoodsNum: 单次克隆实例的数量。
+- 包年包月每次购买最大数量为100。
+- 按量计费每次购买最大数量为30。
         :type GoodsNum: int
         :param ZoneId: 克隆实例所属的可用区ID。当前所支持的可用区 ID，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106) 。
         :type ZoneId: int
@@ -676,27 +678,29 @@ class CloneInstancesRequest(AbstractModel):
         :type BackupId: str
         :param NoAuth: 配置克隆实例是否支持免密访问。开启 SSL 与外网均不支持免密访问。<ul><li>true：免密实例，</li><li>false：非免密实例。默认为非免密实例。</li></ul>
         :type NoAuth: bool
-        :param VpcId: 私有网络ID。如果未配置该参数，默认选择基础网络。
+        :param VpcId: 配置克隆实例的私有网络ID。如果未配置该参数，默认选择基础网络。
         :type VpcId: str
-        :param SubnetId: 私有网络所属子网。基础网络时该参数无需配置。
+        :param SubnetId: 配置克隆实例所属私有网络的子网。基础网络时该参数无需配置。
         :type SubnetId: str
         :param InstanceName: 克隆实例的名称。<br>仅支持长度小于60的中文、英文或者数字，短划线"-"、下划线"_"。</br>
         :type InstanceName: str
         :param Password: 克隆实例的访问密码。<ul><li>当输入参数<b>NoAuth</b>为<b>true</b>时，可不设置该参数。</li><li>当实例为Redis2.8、4.0和5.0时，其密码格式为：8-30个字符，至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的2种，不能以"/"开头；</li><li>当实例为CKV 3.2时，其密码格式为：8-30个字符，必须包含字母和数字，且不包含其他字符。</li></ul>
         :type Password: str
-        :param AutoRenew: 自动续费标识。<ul><li>0：默认状态（手动续费）。</li><li>1：自动续费。</li><li>2：不自动续费，到期自动隔离。</li></ul>
+        :param AutoRenew: 自动续费标识。<ul><li>0：默认状态，手动续费。</li><li>1：自动续费。</li><li>2：不自动续费，到期自动隔离。</li></ul>
         :type AutoRenew: int
         :param VPort: 用户自定义的端口，默认为6379，取值范围[1024,65535]。
         :type VPort: int
         :param NodeSet: 实例的节点信息。<ul><li>目前支持配置节点的类型（主节点或者副本节点），及其节点的可用区信息。具体信息，请参见[RedisNodeInfo](https://cloud.tencent.com/document/product/239/20022#RedisNodeInfo)。</li><li>单可用区部署可不配置该参数。</li></ul>
         :type NodeSet: list of RedisNodeInfo
-        :param ProjectId: 项目 ID。登录控制台，可在右上角的<b>账号中心</b> > <b>项目管理</b>中查找项目ID。
+        :param ProjectId: 项目 ID。登录[Redis 控制台](https://console.cloud.tencent.com/redis#/)，可在右上角的<b>账号中心</b> > <b>项目管理</b>中查找项目ID。
         :type ProjectId: int
         :param ResourceTags: 克隆实例需绑定的标签。
         :type ResourceTags: list of ResourceTag
-        :param TemplateId: 克隆实例需要应用的参数模板ID,请登录 Redis 控制台，在<b>参数模板</b>页面获取。若不配置该参数，则应用默认的参数模板。
+        :param TemplateId: 指定克隆实例相关的参数模板 ID。
+- 若不配置该参数，则系统会依据所选择的兼容版本及架构，自动适配对应的默认模板。
+- 请通过[DescribeParamTemplates](https://cloud.tencent.com/document/product/239/58750)接口，查询实例的参数模板列表，获取模板 ID 编号。
         :type TemplateId: str
-        :param AlarmPolicyList: 指定克隆实例的告警策略 ID。请登录控制台，在<b>云监控</b> > <b>告警配置</b> > <b>告警策略</b>页面获取策略 ID 信息。
+        :param AlarmPolicyList: 指定克隆实例的告警策略 ID。请登录[腾讯云可观测平台控制台](https://console.cloud.tencent.com/monitor/alarm2/policy)，在 <b>告警管理</b> > <b>策略管理</b>页面获取策略 ID 信息。
         :type AlarmPolicyList: list of str
         """
         self.InstanceId = None
@@ -1599,6 +1603,63 @@ class DescribeBackupUrlResponse(AbstractModel):
                 obj = BackupDownloadInfo()
                 obj._deserialize(item)
                 self.BackupInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBandwidthRangeRequest(AbstractModel):
+    """DescribeBandwidthRange请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBandwidthRangeResponse(AbstractModel):
+    """DescribeBandwidthRange返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BaseBandwidth: 标准带宽。指购买实例时，系统为每个节点分配的带宽。
+        :type BaseBandwidth: int
+        :param AddBandwidth: 指实例的附加带宽。标准带宽不满足需求的情况下，用户可自行增加的带宽。<ul><li>开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数 * Max ([只读副本数量, 1])，标准架构的分片数 = 1。</li><li>没有开启副本只读时，实例总带宽 = 附加带宽 * 分片数 + 标准带宽 * 分片数，标准架构的分片数 = 1。</li></ul>
+        :type AddBandwidth: int
+        :param MinAddBandwidth: 附加带宽设置下限。
+        :type MinAddBandwidth: int
+        :param MaxAddBandwidth: 附加带宽设置上限。
+        :type MaxAddBandwidth: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BaseBandwidth = None
+        self.AddBandwidth = None
+        self.MinAddBandwidth = None
+        self.MaxAddBandwidth = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BaseBandwidth = params.get("BaseBandwidth")
+        self.AddBandwidth = params.get("AddBandwidth")
+        self.MinAddBandwidth = params.get("MinAddBandwidth")
+        self.MaxAddBandwidth = params.get("MaxAddBandwidth")
         self.RequestId = params.get("RequestId")
 
 
@@ -5061,7 +5122,7 @@ class InstanceSet(AbstractModel):
         :type Createtime: str
         :param Size: 实例容量大小，单位：MB。
         :type Size: float
-        :param SizeUsed: 该字段已废弃。可使用云监控 API 接口 [GetMonitorData](https://cloud.tencent.com/document/product/248/31014) 获取实例已使用的内容容量。
+        :param SizeUsed: 该字段已废弃。请使用腾讯云可观测平台API 接口 [GetMonitorData](https://cloud.tencent.com/document/product/248/31014) 获取实例已使用的内存容量。
         :type SizeUsed: float
         :param Type: 实例类型：<ul><li>1：Redis2.8内存版（集群架构）。</li><li>2：Redis2.8内存版（标准架构）。</li><li>3：CKV 3.2内存版(标准架构)。</li><li>4：CKV 3.2内存版(集群架构)。</li><li>5：Redis2.8内存版（单机）。</li></li><li>6：Redis4.0内存版（标准架构）。</li></li><li>7：Redis4.0内存版（集群架构）。</li></li><li>8：Redis5.0内存版（标准架构）。</li></li><li>9：Redis5.0内存版（集群架构）。</li></ul>
         :type Type: int
@@ -5650,7 +5711,7 @@ class ModfiyInstancePasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID。
+        :param InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
         :param OldPassword: 实例旧密码。
         :type OldPassword: str
@@ -7059,6 +7120,59 @@ class ReleaseWanAddressResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.WanStatus = params.get("WanStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class RemoveReplicationInstanceRequest(AbstractModel):
+    """RemoveReplicationInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 复制组ID
+        :type GroupId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param SyncType: 数据同步类型，true:需要数据强同步,false:不需要强同步，仅限删除主实例
+        :type SyncType: bool
+        """
+        self.GroupId = None
+        self.InstanceId = None
+        self.SyncType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.InstanceId = params.get("InstanceId")
+        self.SyncType = params.get("SyncType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveReplicationInstanceResponse(AbstractModel):
+    """RemoveReplicationInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 

@@ -122,7 +122,7 @@ FAILEDOPERATION_NOPERMISSION = 'FailedOperation.NoPermission'
 # 操作不允许。
 FAILEDOPERATION_NOTALLOW = 'FailedOperation.NotAllow'
 
-# 请求正在处理中，请稍候再试。
+# 请求正在处理中，请稍后再试。
 FAILEDOPERATION_PROCESSING = 'FailedOperation.Processing'
 
 # 查询资源标签失败。
@@ -305,7 +305,7 @@ RESOURCESSOLDOUT = 'ResourcesSoldOut'
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
-# 资源不属于当前登陆用户主账号，无权限访问。
+# 资源不属于当前登录用户主账号，无权限访问。
 UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
 
 # 未知参数错误。
