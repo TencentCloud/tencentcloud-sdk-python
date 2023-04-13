@@ -194,6 +194,115 @@ class ApplyStatus(AbstractModel):
         
 
 
+class BackupExpireRuleInfo(AbstractModel):
+    """备份保留策略详情
+    集群策略： ClueterId=集群Id， TableGroupId=-1,  TableName="-1"
+    集群+表格组策略： ClueterId=集群Id， TableGroupId=表格组Id,  TableName="-1"
+    集群+表格组+表格策略： ClueterId=集群Id， TableGroupId=表格组Id,  TableName="表格名"
+
+    FileTag=0 txh引擎文件， =1 ulog流水文件， 当要设置为=1时， 这两项不可变 TableGroupId=-1和TableName="-1"
+    ExpireDay为大于等于1，小于999的整形数字
+    OperType=0 代表动作为新增， =1 代表动作为删除， =2 代表动作为修改， 其中0和2可以混用，后端实现兼容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableGroupId: 所属表格组ID
+        :type TableGroupId: str
+        :param TableName: 表名称
+        :type TableName: str
+        :param FileTag: 文件标签，见上面描述
+        :type FileTag: int
+        :param ExpireDay: 淘汰天数，见上面描述
+        :type ExpireDay: int
+        :param OperType: 操作类型，见上面描述
+        :type OperType: int
+        """
+        self.TableGroupId = None
+        self.TableName = None
+        self.FileTag = None
+        self.ExpireDay = None
+        self.OperType = None
+
+
+    def _deserialize(self, params):
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.FileTag = params.get("FileTag")
+        self.ExpireDay = params.get("ExpireDay")
+        self.OperType = params.get("OperType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupRecords(AbstractModel):
+    """备份记录
+    作为出参时，每个字段都会填充
+    作为入参时， 原封不动将每个字段填回结构体， 注意只有FIleTag=OSDATA才可以调用此接口
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 表格组ID
+        :type ZoneId: int
+        :param TableName: 表名称
+        :type TableName: str
+        :param BackupType: 备份源
+        :type BackupType: str
+        :param FileTag: 文件标签：TCAPLUS_FULL或OSDATA
+        :type FileTag: str
+        :param ShardCount: 分片数量
+        :type ShardCount: int
+        :param BackupBatchTime: 备份批次日期
+        :type BackupBatchTime: str
+        :param BackupFileSize: 备份文件汇总大小
+        :type BackupFileSize: int
+        :param BackupSuccRate: 备份成功率
+        :type BackupSuccRate: str
+        :param BackupExpireTime: 备份文件过期时间
+        :type BackupExpireTime: str
+        :param AppId: 业务ID
+        :type AppId: int
+        """
+        self.ZoneId = None
+        self.TableName = None
+        self.BackupType = None
+        self.FileTag = None
+        self.ShardCount = None
+        self.BackupBatchTime = None
+        self.BackupFileSize = None
+        self.BackupSuccRate = None
+        self.BackupExpireTime = None
+        self.AppId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.TableName = params.get("TableName")
+        self.BackupType = params.get("BackupType")
+        self.FileTag = params.get("FileTag")
+        self.ShardCount = params.get("ShardCount")
+        self.BackupBatchTime = params.get("BackupBatchTime")
+        self.BackupFileSize = params.get("BackupFileSize")
+        self.BackupSuccRate = params.get("BackupSuccRate")
+        self.BackupExpireTime = params.get("BackupExpireTime")
+        self.AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClearTablesRequest(AbstractModel):
     """ClearTables请求参数结构体
 
@@ -937,6 +1046,61 @@ class CreateTablesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBackupRecordsRequest(AbstractModel):
+    """DeleteBackupRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 待删除备份记录的所在集群ID
+        :type ClusterId: str
+        :param BackupRecords: 待删除备份记录的详情
+        :type BackupRecords: list of BackupRecords
+        """
+        self.ClusterId = None
+        self.BackupRecords = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("BackupRecords") is not None:
+            self.BackupRecords = []
+            for item in params.get("BackupRecords"):
+                obj = BackupRecords()
+                obj._deserialize(item)
+                self.BackupRecords.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupRecordsResponse(AbstractModel):
+    """DeleteBackupRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClusterRequest(AbstractModel):
     """DeleteCluster请求参数结构体
 
@@ -1424,6 +1588,76 @@ class DescribeApplicationsResponse(AbstractModel):
                 obj = Application()
                 obj._deserialize(item)
                 self.Applications.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupRecordsRequest(AbstractModel):
+    """DescribeBackupRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID，用于获取指定集群的单据
+        :type ClusterId: str
+        :param Limit: 分页
+        :type Limit: int
+        :param Offset: 分页
+        :type Offset: int
+        :param TableGroupId: 表格组id，用于过滤
+        :type TableGroupId: str
+        :param TableName: 表格名，用于过滤
+        :type TableName: str
+        """
+        self.ClusterId = None
+        self.Limit = None
+        self.Offset = None
+        self.TableGroupId = None
+        self.TableName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupRecordsResponse(AbstractModel):
+    """DescribeBackupRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupRecords: 备份记录详情
+        :type BackupRecords: list of BackupRecords
+        :param TotalCount: 返回记录条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BackupRecords = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BackupRecords") is not None:
+            self.BackupRecords = []
+            for item in params.get("BackupRecords"):
+                obj = BackupRecords()
+                obj._deserialize(item)
+                self.BackupRecords.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -4228,6 +4462,61 @@ class ServerMachineInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetBackupExpireRuleRequest(AbstractModel):
+    """SetBackupExpireRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 表所属集群实例ID
+        :type ClusterId: str
+        :param BackupExpireRules: 淘汰策略数组
+        :type BackupExpireRules: list of BackupExpireRuleInfo
+        """
+        self.ClusterId = None
+        self.BackupExpireRules = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("BackupExpireRules") is not None:
+            self.BackupExpireRules = []
+            for item in params.get("BackupExpireRules"):
+                obj = BackupExpireRuleInfo()
+                obj._deserialize(item)
+                self.BackupExpireRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetBackupExpireRuleResponse(AbstractModel):
+    """SetBackupExpireRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class SetTableDataFlowRequest(AbstractModel):

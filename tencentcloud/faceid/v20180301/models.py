@@ -1127,6 +1127,12 @@ class DetectInfoText(AbstractModel):
         :param NFCBillingCounts: nfc重复计费计数
 注意：此字段可能返回 null，表示取不到有效值。
         :type NFCBillingCounts: int
+        :param PassNo: 港澳台居住证通行证号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassNo: str
+        :param VisaNum: 港澳台居住证签发次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VisaNum: str
         """
         self.ErrCode = None
         self.ErrMsg = None
@@ -1154,6 +1160,8 @@ class DetectInfoText(AbstractModel):
         self.LivenessMode = None
         self.NFCRequestIds = None
         self.NFCBillingCounts = None
+        self.PassNo = None
+        self.VisaNum = None
 
 
     def _deserialize(self, params):
@@ -1188,6 +1196,8 @@ class DetectInfoText(AbstractModel):
         self.LivenessMode = params.get("LivenessMode")
         self.NFCRequestIds = params.get("NFCRequestIds")
         self.NFCBillingCounts = params.get("NFCBillingCounts")
+        self.PassNo = params.get("PassNo")
+        self.VisaNum = params.get("VisaNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

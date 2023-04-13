@@ -35,7 +35,7 @@ FAILEDOPERATION_FILEFORMATERROR = 'FailedOperation.FileFormatError'
 # 文档打开失败，请检查提交转码的文档是否加密或有其他格式问题。
 FAILEDOPERATION_FILEOPENFAIL = 'FailedOperation.FileOpenFail'
 
-# 转码后上传结果失败，请稍候重试。
+# 转码后上传结果失败，请稍后重试。
 FAILEDOPERATION_FILEUPLOADFAIL = 'FailedOperation.FileUploadFail'
 
 # 获取临时密钥失败。
@@ -44,7 +44,7 @@ FAILEDOPERATION_GETCREDENTIALFAIL = 'FailedOperation.GetCredentialFail'
 # 转码预处理失败，具体请参考错误描述或联系客服人员。
 FAILEDOPERATION_PREPROCESS = 'FailedOperation.Preprocess'
 
-# 预处理服务出现内部错误，请稍候重试或联系客户人员。
+# 预处理服务出现内部错误，请稍后重试或联系客户人员。
 FAILEDOPERATION_PREPROCESSSERVERERROR = 'FailedOperation.PreprocessServerError'
 
 # 录制失败，具体请参考错误描述。
@@ -53,7 +53,7 @@ FAILEDOPERATION_RECORD = 'FailedOperation.Record'
 # 转码失败，具体请参考错误描述或联系客服人员。
 FAILEDOPERATION_TRANSCODE = 'FailedOperation.Transcode'
 
-# 转码服务出现内部错误，请稍候重试或联系客户人员。
+# 转码服务出现内部错误，请稍后重试或联系客户人员。
 FAILEDOPERATION_TRANSCODESERVERERROR = 'FailedOperation.TranscodeServerError'
 
 # 白板推流失败，具体请参考错误描述。

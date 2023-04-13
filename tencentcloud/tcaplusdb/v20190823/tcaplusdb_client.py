@@ -187,6 +187,29 @@ class TcaplusdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteBackupRecords(self, request):
+        """删除手工备份
+
+        :param request: Request instance for DeleteBackupRecords.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteBackupRecordsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DeleteBackupRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBackupRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBackupRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteCluster(self, request):
         """删除TcaplusDB集群，必须在集群所属所有资源（包括表格组，表）都已经释放的情况下才会成功。
 
@@ -362,6 +385,33 @@ class TcaplusdbClient(AbstractClient):
             body = self.call("DescribeApplications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupRecords(self, request):
+        """查询备份记录
+
+        查询集群级别时， 将TableGroupId设置为"-1", 将TableName设置为"-1"
+        查询集群+表格组级别时， 将TableName设置为"-1"
+        查询集群+表格组+表格级别时， 都不能设置为“-1”
+
+        :param request: Request instance for DescribeBackupRecords.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeBackupRecordsRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.DescribeBackupRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupRecordsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1075,6 +1125,29 @@ class TcaplusdbClient(AbstractClient):
             body = self.call("RollbackTables", params, headers=headers)
             response = json.loads(body)
             model = models.RollbackTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetBackupExpireRule(self, request):
+        """新增、删除、修改备份过期策略， ClusterId必须为具体的集群Id（appid）
+
+        :param request: Request instance for SetBackupExpireRule.
+        :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.SetBackupExpireRuleRequest`
+        :rtype: :class:`tencentcloud.tcaplusdb.v20190823.models.SetBackupExpireRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetBackupExpireRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetBackupExpireRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
