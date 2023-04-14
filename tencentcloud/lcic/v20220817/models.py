@@ -150,13 +150,13 @@ class AppCustomContent(AbstractModel):
         r"""
         :param Scene: 场景参数，一个应用下可以设置多个不同场景。
         :type Scene: str
-        :param LogoUrl: logo地址。
+        :param LogoUrl: logo地址，用于上课时展示的课堂或平台图标，支持开发商自定义业务品牌展示。
         :type LogoUrl: str
-        :param HomeUrl: 主页地址，可设置用于跳转。
+        :param HomeUrl: HomeUrl：主页地址，用于上课结束后课堂跳转，支持跳转到自己的业务系统。如果配置为空则下课后关闭课堂页面。
         :type HomeUrl: str
-        :param JsUrl: 自定义的js。
+        :param JsUrl: JsUrl ：自定义js。针对应用用于开发上自定义课堂界面、模块功能、监控操作，支持数据请求与响应处理。
         :type JsUrl: str
-        :param CssUrl: 自定义的css。
+        :param CssUrl: Css : 自定义的css。针对应用用于支持课堂界面的、模块的UI渲染修改、皮肤配色修改、功能模块的隐藏和展示。
         :type CssUrl: str
         """
         self.Scene = None

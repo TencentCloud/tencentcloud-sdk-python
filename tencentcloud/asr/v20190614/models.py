@@ -977,7 +977,13 @@ class Model(AbstractModel):
         :type ModelType: str
         :param ServiceType: 服务类型
         :type ServiceType: str
-        :param ModelState: 模型状态，-1下线状态，1上线状态, 0训练中, -2 训练失败
+        :param ModelState: 模型状态：
+-2：模型训练失败；
+-1：已下线；
+0：训练中；
+1：已上线；
+3：上线中；
+4：下线中；
         :type ModelState: int
         :param AtUpdated: 最后更新时间
         :type AtUpdated: str

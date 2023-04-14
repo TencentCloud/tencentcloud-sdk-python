@@ -4031,7 +4031,7 @@ class SetWarningCallbackRequest(AbstractModel):
         :param SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
         :param Callback: 告警回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。
-回调数据格式请参考文档：
+回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/90112
         :type Callback: str
         :param CallbackKey: 设置告警回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
         :type CallbackKey: str

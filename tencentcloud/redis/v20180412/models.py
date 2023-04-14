@@ -6604,7 +6604,8 @@ class ParamTemplateInfo(AbstractModel):
 - 7：Redis 4.0内存版（集群架构）。
 - 8：Redis 5.0内存版（标准架构）。
 - 9：Redis 5.0内存版（集群架构）。
-
+- 15：Redis 6.2内存版（标准架构）。
+- 16：Redis 6.2内存版（集群架构）。
         :type ProductType: int
         """
         self.TemplateId = None
@@ -6695,31 +6696,47 @@ class ProductConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 产品类型，2 – Redis2.8内存版(标准架构)，3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版(单机版)，6 – Redis4.0内存版(标准架构)，7 – Redis4.0内存版(集群架构)，8 – Redis5.0内存版(标准架构)，9 – Redis5.0内存版(集群架构)，10 – Redis4.0混合存储版Tendis
+        :param Type: 产品类型。
+- 2：Redis 2.8内存版（标准架构）。
+- 3：CKV 3.2内存版（标准架构）。
+- 4：CKV 3.2内存版（集群架构）。
+- 5：Redis 2.8内存版（单机）。
+- 6：Redis 4.0内存版（标准架构）。
+- 7：Redis 4.0内存版（集群架构）。
+- 8：Redis 5.0内存版（标准架构）。
+- 9：Redis 5.0内存版（集群架构）。
+- 15：Redis 6.2内存版（标准架构）。
+- 16：Redis 6.2内存版（集群架构）。
         :type Type: int
-        :param TypeName: 产品名称，Redis主从版，CKV主从版，CKV集群版，Redis单机版，Redis集群版，混合存储版Tendis
+        :param TypeName: 产品名称。包括：Redis 主从版、CKV 主从版、CKV 集群版、Redis 单机版、Redis 集群版。
         :type TypeName: str
-        :param MinBuyNum: 购买时的最小数量
+        :param MinBuyNum: 购买时的最小数量。
         :type MinBuyNum: int
-        :param MaxBuyNum: 购买时的最大数量
+        :param MaxBuyNum: 购买时的最大数量。
         :type MaxBuyNum: int
-        :param Saleout: 产品是否售罄
+        :param Saleout: 产品是否售罄。
+- true：售罄。
+- false：未售罄。
         :type Saleout: bool
-        :param Engine: 产品引擎，腾讯云CKV或者社区版Redis
+        :param Engine: 产品引擎。包括：腾讯云 CKV与社区版 Redis。
         :type Engine: str
-        :param Version: 兼容版本，Redis-2.8，Redis-3.2，Redis-4.0
+        :param Version: 兼容版本。包括：Redis-2.8、Redis-3.2、Redis-4.0、Redis-5.0、Redis-6.2。
         :type Version: str
-        :param TotalSize: 规格总大小，单位G
+        :param TotalSize: 规格总大小，单位GB。
         :type TotalSize: list of str
-        :param ShardSize: 每个分片大小，单位G
+        :param ShardSize: 每个分片大小，单位GB。
         :type ShardSize: list of str
-        :param ReplicaNum: 副本数量
+        :param ReplicaNum: 副本数量。
         :type ReplicaNum: list of str
-        :param ShardNum: 分片数量
+        :param ShardNum: 分片数量。
         :type ShardNum: list of str
-        :param PayMode: 支持的计费模式，1-包年包月，0-按量计费
+        :param PayMode: 支持的计费模式。
+- 1：包年包月。
+- 0：按量计费。
         :type PayMode: str
-        :param EnableRepicaReadOnly: 是否支持副本只读
+        :param EnableRepicaReadOnly: 是否支持副本只读。
+- true：支持副本只读。
+- false：不支持。
         :type EnableRepicaReadOnly: bool
         """
         self.Type = None

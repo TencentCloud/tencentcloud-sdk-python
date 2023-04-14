@@ -2032,6 +2032,8 @@ class CreateTopicRequest(AbstractModel):
         :param HotPeriod: 0：关闭日志沉降。
 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
         :type HotPeriod: int
+        :param IsWebTracking: webtracking开关； false: 关闭 true： 开启
+        :type IsWebTracking: bool
         """
         self.LogsetId = None
         self.TopicName = None
@@ -2043,6 +2045,7 @@ class CreateTopicRequest(AbstractModel):
         self.Period = None
         self.Describes = None
         self.HotPeriod = None
+        self.IsWebTracking = None
 
 
     def _deserialize(self, params):
@@ -2061,6 +2064,7 @@ class CreateTopicRequest(AbstractModel):
         self.Period = params.get("Period")
         self.Describes = params.get("Describes")
         self.HotPeriod = params.get("HotPeriod")
+        self.IsWebTracking = params.get("IsWebTracking")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5898,6 +5902,8 @@ class ModifyTopicRequest(AbstractModel):
         :param HotPeriod: 0：关闭日志沉降。
 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
         :type HotPeriod: int
+        :param IsWebTracking: webtracking开关； false: 关闭 true: 开启
+        :type IsWebTracking: bool
         """
         self.TopicId = None
         self.TopicName = None
@@ -5908,6 +5914,7 @@ class ModifyTopicRequest(AbstractModel):
         self.Period = None
         self.Describes = None
         self.HotPeriod = None
+        self.IsWebTracking = None
 
 
     def _deserialize(self, params):
@@ -5925,6 +5932,7 @@ class ModifyTopicRequest(AbstractModel):
         self.Period = params.get("Period")
         self.Describes = params.get("Describes")
         self.HotPeriod = params.get("HotPeriod")
+        self.IsWebTracking = params.get("IsWebTracking")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

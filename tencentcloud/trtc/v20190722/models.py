@@ -1573,13 +1573,17 @@ class DescribeTrtcRoomUsageResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Data: 房间维度用量数据，csv文件格式。
+        :type Data: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Data = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 
