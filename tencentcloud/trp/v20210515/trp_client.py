@@ -809,6 +809,29 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTraceDataById(self, request):
+        """查询溯源ID查溯源信息，通常溯源信息跟生产批次绑定，即一个批次的所有溯源信息都是一样的
+
+        :param request: Request instance for DescribeTraceDataById.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTraceDataByIdRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeTraceDataByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTraceDataById", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTraceDataByIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTraceDataList(self, request):
         """查询溯源信息，通常溯源信息跟生产批次绑定，即一个批次的所有溯源信息都是一样的
 

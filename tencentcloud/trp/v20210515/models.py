@@ -2629,6 +2629,57 @@ class DescribeTraceCodesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTraceDataByIdRequest(AbstractModel):
+    """DescribeTraceDataById请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 溯源ID
+        :type Id: str
+        :param CorpId: 企业ID
+        :type CorpId: int
+        """
+        self.Id = None
+        self.CorpId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTraceDataByIdResponse(AbstractModel):
+    """DescribeTraceDataById返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TraceData: 无
+        :type TraceData: :class:`tencentcloud.trp.v20210515.models.TraceData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TraceData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TraceData") is not None:
+            self.TraceData = TraceData()
+            self.TraceData._deserialize(params.get("TraceData"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTraceDataListRequest(AbstractModel):
     """DescribeTraceDataList请求参数结构体
 

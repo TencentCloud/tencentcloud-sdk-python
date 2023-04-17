@@ -1307,7 +1307,7 @@ class CreateFlowRemindsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RemindFlowRecords: 签署连接过期时间字符串：年月日-时分秒
+        :param RemindFlowRecords: 催办合同详情列表
         :type RemindFlowRecords: list of RemindFlowRecords
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4117,13 +4117,18 @@ class FlowDetailInfo(AbstractModel):
         :param FlowType: 合同(流程)的类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowType: str
-        :param FlowStatus: 合同(流程)的状态
-1：未签署
-2：部分签署
-3：已退回
-4：完成签署
-5：已过期
-6：已取消
+        :param FlowStatus: 流程状态
+- 0 还没有发起
+- 1 未签署
+- 2 部分签署
+- 3 已退回
+- 4 完成签署
+- 5 已过期
+- 6 已取消
+- 7 还没有预发起
+- 8 等待填写
+- 9 部分填写
+- 10 拒填
         :type FlowStatus: int
         :param FlowMessage: 合同(流程)的信息
 注意：此字段可能返回 null，表示取不到有效值。

@@ -284,6 +284,15 @@ INVALIDPARAMETERVALUE_UNAVAILABLEZONE = 'InvalidParameterValue.UnavailableZone'
 # ZoneId和Region不匹配。
 INVALIDPARAMETERVALUE_ZONEIDREGIONNOTMATCH = 'InvalidParameterValue.ZoneIdRegionNotMatch'
 
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
+
+# 操作被拒绝。
+OPERATIONDENIED = 'OperationDenied'
+
+# 资源被占用。
+RESOURCEINUSE = 'ResourceInUse'
+
 # 文件系统数量达到上限。
 RESOURCEINSUFFICIENT_FILESYSTEMLIMITEXCEEDED = 'ResourceInsufficient.FileSystemLimitExceeded'
 
