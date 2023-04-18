@@ -379,6 +379,98 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAppDimensionMetrics(self, request):
+        """用于查询 app 监控多维分析数据
+
+        :param request: Request instance for DescribeAppDimensionMetrics.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeAppDimensionMetricsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeAppDimensionMetricsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppDimensionMetrics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppDimensionMetricsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAppMetricsData(self, request):
+        """获取 app 监控指标数据
+
+        :param request: Request instance for DescribeAppMetricsData.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeAppMetricsDataRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeAppMetricsDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppMetricsData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppMetricsDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAppSingleCaseDetailList(self, request):
+        """查询 app 监控个例样本详情列表
+
+        :param request: Request instance for DescribeAppSingleCaseDetailList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeAppSingleCaseDetailListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeAppSingleCaseDetailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppSingleCaseDetailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppSingleCaseDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAppSingleCaseList(self, request):
+        """查询 app 监控个例聚合列表
+
+        :param request: Request instance for DescribeAppSingleCaseList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeAppSingleCaseListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeAppSingleCaseListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppSingleCaseList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppSingleCaseListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeData(self, request):
         """转发monitor查询
 

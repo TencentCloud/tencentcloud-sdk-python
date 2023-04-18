@@ -579,6 +579,52 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePeakPoints(self, request):
+        """查询业务和攻击概要趋势
+
+        :param request: Request instance for DescribePeakPoints.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribePeakPointsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribePeakPointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePeakPoints", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePeakPointsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePeakValue(self, request):
+        """获取业务和攻击概览峰值
+
+        :param request: Request instance for DescribePeakValue.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribePeakValueRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribePeakValueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePeakValue", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePeakValueResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePolicyStatus(self, request):
         """获取防护状态以及生效的实例id
 

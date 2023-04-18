@@ -2348,6 +2348,168 @@ class DescribeIpHitItemsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePeakPointsRequest(AbstractModel):
+    """DescribePeakPoints请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FromTime: 查询起始时间
+        :type FromTime: str
+        :param ToTime: 查询终止时间
+        :type ToTime: str
+        :param Domain: 查询的域名，如果查询所有域名数据，该参数不填写
+        :type Domain: str
+        :param Edition: 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+        :type Edition: str
+        :param InstanceID: WAF实例ID，不传则不过滤
+        :type InstanceID: str
+        :param MetricName: 六个值可选：
+access-峰值qps趋势图
+botAccess- bot峰值qps趋势图
+down-下行峰值带宽趋势图
+up-上行峰值带宽趋势图
+attack-Web攻击总数趋势图
+cc-CC攻击总数趋势图
+        :type MetricName: str
+        """
+        self.FromTime = None
+        self.ToTime = None
+        self.Domain = None
+        self.Edition = None
+        self.InstanceID = None
+        self.MetricName = None
+
+
+    def _deserialize(self, params):
+        self.FromTime = params.get("FromTime")
+        self.ToTime = params.get("ToTime")
+        self.Domain = params.get("Domain")
+        self.Edition = params.get("Edition")
+        self.InstanceID = params.get("InstanceID")
+        self.MetricName = params.get("MetricName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePeakPointsResponse(AbstractModel):
+    """DescribePeakPoints返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Points: 数据点
+        :type Points: list of PeakPointsItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Points = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Points") is not None:
+            self.Points = []
+            for item in params.get("Points"):
+                obj = PeakPointsItem()
+                obj._deserialize(item)
+                self.Points.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePeakValueRequest(AbstractModel):
+    """DescribePeakValue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FromTime: 查询起始时间
+        :type FromTime: str
+        :param ToTime: 查询结束时间
+        :type ToTime: str
+        :param Domain: 需要查询的域名，当前用户所有域名可以不传
+        :type Domain: str
+        :param Edition: 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+        :type Edition: str
+        :param InstanceID: WAF实例ID，不传则不过滤
+        :type InstanceID: str
+        :param MetricName: 五个值可选：
+access-峰值qps
+down-下行峰值带宽
+up-上行峰值带宽
+attack-Web攻击总数
+cc-CC攻击总数趋势图
+        :type MetricName: str
+        """
+        self.FromTime = None
+        self.ToTime = None
+        self.Domain = None
+        self.Edition = None
+        self.InstanceID = None
+        self.MetricName = None
+
+
+    def _deserialize(self, params):
+        self.FromTime = params.get("FromTime")
+        self.ToTime = params.get("ToTime")
+        self.Domain = params.get("Domain")
+        self.Edition = params.get("Edition")
+        self.InstanceID = params.get("InstanceID")
+        self.MetricName = params.get("MetricName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePeakValueResponse(AbstractModel):
+    """DescribePeakValue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Access: QPS峰值
+        :type Access: int
+        :param Up: 上行带宽峰值，单位B
+        :type Up: int
+        :param Down: 下行带宽峰值，单位B
+        :type Down: int
+        :param Attack: Web攻击总数
+        :type Attack: int
+        :param Cc: CC攻击总数
+        :type Cc: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Access = None
+        self.Up = None
+        self.Down = None
+        self.Attack = None
+        self.Cc = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Access = params.get("Access")
+        self.Up = params.get("Up")
+        self.Down = params.get("Down")
+        self.Attack = params.get("Attack")
+        self.Cc = params.get("Cc")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePolicyStatusRequest(AbstractModel):
     """DescribePolicyStatus请求参数结构体
 
@@ -4127,6 +4289,55 @@ class ModifyWafThreatenIntelligenceResponse(AbstractModel):
             self.WafThreatenIntelligenceDetails = WafThreatenIntelligenceDetails()
             self.WafThreatenIntelligenceDetails._deserialize(params.get("WafThreatenIntelligenceDetails"))
         self.RequestId = params.get("RequestId")
+
+
+class PeakPointsItem(AbstractModel):
+    """PeakPoints数组项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 秒级别时间戳
+        :type Time: int
+        :param Access: QPS
+        :type Access: int
+        :param Up: 上行带宽峰值，单位B
+        :type Up: int
+        :param Down: 下行带宽峰值，单位B
+        :type Down: int
+        :param Attack: Web攻击次数
+        :type Attack: int
+        :param Cc: CC攻击次数
+        :type Cc: int
+        :param BotAccess: Bot qps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotAccess: int
+        """
+        self.Time = None
+        self.Access = None
+        self.Up = None
+        self.Down = None
+        self.Attack = None
+        self.Cc = None
+        self.BotAccess = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Access = params.get("Access")
+        self.Up = params.get("Up")
+        self.Down = params.get("Down")
+        self.Attack = params.get("Attack")
+        self.Cc = params.get("Cc")
+        self.BotAccess = params.get("BotAccess")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PortInfo(AbstractModel):

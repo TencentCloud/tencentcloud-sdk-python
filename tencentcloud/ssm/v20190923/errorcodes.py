@@ -62,6 +62,9 @@ OPERATIONDENIED_AUTOROTATEDRESOURCE = 'OperationDenied.AutoRotatedResource'
 # 角色不存在。
 OPERATIONDENIED_ROLENOTEXIST = 'OperationDenied.RoleNotExist'
 
+# 被操作密钥与账号不匹配。
+OPERATIONDENIED_UINNOTMATCH = 'OperationDenied.UinNotMatch'
+
 # 请求的次数超过了频率限制。
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 

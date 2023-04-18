@@ -83,6 +83,9 @@ FAILEDOPERATION_RPCFAIL = 'FailedOperation.RpcFail'
 # 任务不存在。
 FAILEDOPERATION_TASKNOTEXIST = 'FailedOperation.TaskNotExist'
 
+# 未知错误。
+FAILEDOPERATION_UNKNOWN = 'FailedOperation.Unknown'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

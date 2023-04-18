@@ -26,6 +26,29 @@ class TrpClient(AbstractClient):
     _service = 'trp'
 
 
+    def AuthorizedTransfer(self, request):
+        """接收客户侧的用户已授权的号码。
+
+        :param request: Request instance for AuthorizedTransfer.
+        :type request: :class:`tencentcloud.trp.v20210515.models.AuthorizedTransferRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.AuthorizedTransferResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AuthorizedTransfer", params, headers=headers)
+            response = json.loads(body)
+            model = models.AuthorizedTransferResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCodeBatch(self, request):
         """新增批次
 
@@ -855,6 +878,29 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EffectFeedback(self, request):
+        """接收客户反馈的各环节数据
+
+        :param request: Request instance for EffectFeedback.
+        :type request: :class:`tencentcloud.trp.v20210515.models.EffectFeedbackRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.EffectFeedbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EffectFeedback", params, headers=headers)
+            response = json.loads(body)
+            model = models.EffectFeedbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCodeBatch(self, request):
         """修改批次
 
@@ -1054,6 +1100,29 @@ class TrpClient(AbstractClient):
             body = self.call("ModifyTraceDataRanks", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTraceDataRanksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReportBatchCallbackStatus(self, request):
+        """接收离线筛选包回执，用于效果统计和分析。
+
+        :param request: Request instance for ReportBatchCallbackStatus.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ReportBatchCallbackStatusRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ReportBatchCallbackStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReportBatchCallbackStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReportBatchCallbackStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

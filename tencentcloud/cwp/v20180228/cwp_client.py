@@ -4009,7 +4009,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSearchExportList(self, request):
-        """导出ES查询文档列表
+        """旧版日志下载接口下线
+
+        导出ES查询文档列表
 
         :param request: Request instance for DescribeSearchExportList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSearchExportListRequest`

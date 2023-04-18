@@ -324,6 +324,61 @@ class AutoSignConfig(AbstractModel):
         
 
 
+class BindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
+    """BindEmployeeUserIdWithClientOpenId请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param UserId: 电子签系统员工UserId
+        :type UserId: str
+        :param OpenId: 客户系统OpenId
+        :type OpenId: str
+        """
+        self.Operator = None
+        self.UserId = None
+        self.OpenId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.UserId = params.get("UserId")
+        self.OpenId = params.get("OpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindEmployeeUserIdWithClientOpenIdResponse(AbstractModel):
+    """BindEmployeeUserIdWithClientOpenId返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 绑定是否成功，1表示成功，0表示失败
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class CallbackInfo(AbstractModel):
     """应用回调信息
 
@@ -5490,6 +5545,61 @@ class TemplateInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
+    """UnbindEmployeeUserIdWithClientOpenId请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param UserId: 电子签系统员工UserId
+        :type UserId: str
+        :param OpenId: 客户系统OpenId
+        :type OpenId: str
+        """
+        self.Operator = None
+        self.UserId = None
+        self.OpenId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.UserId = params.get("UserId")
+        self.OpenId = params.get("OpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindEmployeeUserIdWithClientOpenIdResponse(AbstractModel):
+    """UnbindEmployeeUserIdWithClientOpenId返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 解绑是否成功，1表示成功，0表示失败
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateIntegrationEmployeesRequest(AbstractModel):

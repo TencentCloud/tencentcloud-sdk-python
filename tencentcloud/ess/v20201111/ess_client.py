@@ -26,6 +26,29 @@ class EssClient(AbstractClient):
     _service = 'ess'
 
 
+    def BindEmployeeUserIdWithClientOpenId(self, request):
+        """将电子签系统员工userId与客户系统员工openId进行绑定
+
+        :param request: Request instance for BindEmployeeUserIdWithClientOpenId.
+        :type request: :class:`tencentcloud.ess.v20201111.models.BindEmployeeUserIdWithClientOpenIdRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.BindEmployeeUserIdWithClientOpenIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindEmployeeUserIdWithClientOpenId", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindEmployeeUserIdWithClientOpenIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelFlow(self, request):
         """用于撤销签署流程
         适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
@@ -982,6 +1005,29 @@ class EssClient(AbstractClient):
             body = self.call("StartFlow", params, headers=headers)
             response = json.loads(body)
             model = models.StartFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindEmployeeUserIdWithClientOpenId(self, request):
+        """将存在绑定关系的电子签系统员工userId与客户系统员工openId进行解绑
+
+        :param request: Request instance for UnbindEmployeeUserIdWithClientOpenId.
+        :type request: :class:`tencentcloud.ess.v20201111.models.UnbindEmployeeUserIdWithClientOpenIdRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UnbindEmployeeUserIdWithClientOpenIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindEmployeeUserIdWithClientOpenId", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindEmployeeUserIdWithClientOpenIdResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

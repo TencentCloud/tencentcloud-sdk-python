@@ -18,6 +18,55 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AuthorizedTransferRequest(AbstractModel):
+    """AuthorizedTransfer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessSecurityData: 业务加密入参。
+        :type BusinessSecurityData: :class:`tencentcloud.trp.v20210515.models.InputEncryptData`
+        """
+        self.BusinessSecurityData = None
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self.BusinessSecurityData = InputEncryptData()
+            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizedTransferResponse(AbstractModel):
+    """AuthorizedTransfer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 业务出参。
+        :type Data: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = OutputAuthorizedTransfer()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class ChainData(AbstractModel):
     """上链数据
 
@@ -2758,10 +2807,102 @@ class DescribeTraceDataListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EffectFeedbackRequest(AbstractModel):
+    """EffectFeedback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessSecurityData: 业务加密入参。
+        :type BusinessSecurityData: :class:`tencentcloud.trp.v20210515.models.InputEncryptData`
+        """
+        self.BusinessSecurityData = None
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self.BusinessSecurityData = InputEncryptData()
+            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EffectFeedbackResponse(AbstractModel):
+    """EffectFeedback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 业务出参。
+        :type Data: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = OutputAuthorizedTransfer()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class Ext(AbstractModel):
     """预留字段
 
     """
+
+
+class InputEncryptData(AbstractModel):
+    """业务加密入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EncryptMethod: 加密方式，0：AES加密；
+
+        :type EncryptMethod: int
+        :param EncryptMode: 加密算法中的块处理模式，1：CBC模式； 目前只支持CBC模式
+        :type EncryptMode: int
+        :param PaddingType: 填充模式，0：ZeroPadding；1：PKCS5Padding；2：
+PKCS7Padding。
+        :type PaddingType: int
+        :param EncryptData: 加密数据，将AuthorizedData结构体数组（数组最大长度不超过20）序列化成JSON字符串，对得到的字符串加密并填充到该字段。
+        :type EncryptData: str
+        :param IsAuthorized: 用户是否授权，本接口取值：1，已授权。
+
+        :type IsAuthorized: int
+        """
+        self.EncryptMethod = None
+        self.EncryptMode = None
+        self.PaddingType = None
+        self.EncryptData = None
+        self.IsAuthorized = None
+
+
+    def _deserialize(self, params):
+        self.EncryptMethod = params.get("EncryptMethod")
+        self.EncryptMode = params.get("EncryptMode")
+        self.PaddingType = params.get("PaddingType")
+        self.EncryptData = params.get("EncryptData")
+        self.IsAuthorized = params.get("IsAuthorized")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Job(AbstractModel):
@@ -3468,6 +3609,41 @@ class ModifyTraceDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OutputAuthorizedTransfer(AbstractModel):
+    """业务出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 推送状态，0表示成功。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param Message: 错误码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Value: 错误信息描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Code = None
+        self.Message = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PackSpec(AbstractModel):
     """层级码配置
 
@@ -3716,6 +3892,55 @@ class Quota(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReportBatchCallbackStatusRequest(AbstractModel):
+    """ReportBatchCallbackStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessSecurityData: 业务加密入参。
+        :type BusinessSecurityData: :class:`tencentcloud.trp.v20210515.models.InputEncryptData`
+        """
+        self.BusinessSecurityData = None
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self.BusinessSecurityData = InputEncryptData()
+            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportBatchCallbackStatusResponse(AbstractModel):
+    """ReportBatchCallbackStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 业务出参。
+        :type Data: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = OutputAuthorizedTransfer()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
 
 
 class ScanLog(AbstractModel):
