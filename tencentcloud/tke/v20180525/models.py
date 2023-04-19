@@ -17416,6 +17416,56 @@ class UninstallLogAgentResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateClusterKubeconfigRequest(AbstractModel):
+    """UpdateClusterKubeconfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param SubAccounts: 子账户Uin列表，传空默认为调用此接口的SubUin
+        :type SubAccounts: list of str
+        """
+        self.ClusterId = None
+        self.SubAccounts = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SubAccounts = params.get("SubAccounts")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateClusterKubeconfigResponse(AbstractModel):
+    """UpdateClusterKubeconfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpdatedSubAccounts: 已更新的子账户Uin列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedSubAccounts: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UpdatedSubAccounts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UpdatedSubAccounts = params.get("UpdatedSubAccounts")
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateClusterVersionRequest(AbstractModel):
     """UpdateClusterVersion请求参数结构体
 

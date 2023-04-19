@@ -833,7 +833,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyAccessPeriod(self, request):
-        """本接口用于修改访问日志保存期限
+        """本接口用于修改访问日志保存期限及大字段是否存储
 
         :param request: Request instance for ModifyAccessPeriod.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAccessPeriodRequest`

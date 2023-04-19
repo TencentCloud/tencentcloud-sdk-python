@@ -12503,6 +12503,7 @@ class DescribeFileTamperEventsRequest(AbstractModel):
 <li>ModifyTime - String - 是否必填：否 - 最近发生时间</li>
 <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
 <li>RuleCategory- string - 是否必填：否 - 规则类别 0 系统规则 1 自定义规则</li>
+<li>FileAction- string - 是否必填：否 - 威胁行为 read 读取文件 write 写文件</li>
         :type Filters: list of Filters
         :param Offset: 偏移量，默认为0。
         :type Offset: int
@@ -20455,6 +20456,11 @@ class FileTamperEvent(AbstractModel):
         :param MachineExtraInfo:  主机额外信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param FileAction: 文件威胁行为
+<li>read 读取文件</li>
+<li>write 修改文件</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileAction: str
         """
         self.HostName = None
         self.HostIp = None
@@ -20493,6 +20499,7 @@ class FileTamperEvent(AbstractModel):
         self.Level = None
         self.ExeName = None
         self.MachineExtraInfo = None
+        self.FileAction = None
 
 
     def _deserialize(self, params):
@@ -20535,6 +20542,7 @@ class FileTamperEvent(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self.MachineExtraInfo = MachineExtraInfo()
             self.MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self.FileAction = params.get("FileAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

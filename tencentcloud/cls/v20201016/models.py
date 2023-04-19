@@ -349,6 +349,132 @@ class AlarmTargetInfo(AbstractModel):
         
 
 
+class AlertHistoryNotice(AbstractModel):
+    """告警通知渠道组详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 通知渠道组名称
+        :type Name: str
+        :param AlarmNoticeId: 通知渠道组ID
+        :type AlarmNoticeId: str
+        """
+        self.Name = None
+        self.AlarmNoticeId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.AlarmNoticeId = params.get("AlarmNoticeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlertHistoryRecord(AbstractModel):
+    """告警历史详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordId: 告警历史ID
+        :type RecordId: str
+        :param AlarmId: 告警策略ID
+        :type AlarmId: str
+        :param AlarmName: 告警策略名称
+        :type AlarmName: str
+        :param TopicId: 监控对象ID
+        :type TopicId: str
+        :param TopicName: 监控对象名称
+        :type TopicName: str
+        :param Region: 监控对象所属地域
+        :type Region: str
+        :param Trigger: 触发条件
+        :type Trigger: str
+        :param TriggerCount: 持续周期，持续满足触发条件TriggerCount个周期后，再进行告警
+        :type TriggerCount: int
+        :param AlarmPeriod: 告警通知发送频率，单位为分钟
+        :type AlarmPeriod: int
+        :param Notices: 通知渠道组
+        :type Notices: list of AlertHistoryNotice
+        :param Duration: 告警持续时间，单位为分钟
+        :type Duration: int
+        :param Status: 告警状态，0代表未恢复，1代表已恢复，2代表已失效
+        :type Status: int
+        :param CreateTime: 告警发生时间，毫秒级Unix时间戳
+        :type CreateTime: int
+        :param GroupTriggerCondition: 告警分组触发时对应的分组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupTriggerCondition: list of GroupTriggerConditionInfo
+        :param AlarmLevel: 告警级别，0代表警告(Warn)，1代表提醒(Info)，2代表紧急 (Critical)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
+        :param MonitorObjectType: 监控对象类型。
+0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorObjectType: int
+        """
+        self.RecordId = None
+        self.AlarmId = None
+        self.AlarmName = None
+        self.TopicId = None
+        self.TopicName = None
+        self.Region = None
+        self.Trigger = None
+        self.TriggerCount = None
+        self.AlarmPeriod = None
+        self.Notices = None
+        self.Duration = None
+        self.Status = None
+        self.CreateTime = None
+        self.GroupTriggerCondition = None
+        self.AlarmLevel = None
+        self.MonitorObjectType = None
+
+
+    def _deserialize(self, params):
+        self.RecordId = params.get("RecordId")
+        self.AlarmId = params.get("AlarmId")
+        self.AlarmName = params.get("AlarmName")
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        self.Region = params.get("Region")
+        self.Trigger = params.get("Trigger")
+        self.TriggerCount = params.get("TriggerCount")
+        self.AlarmPeriod = params.get("AlarmPeriod")
+        if params.get("Notices") is not None:
+            self.Notices = []
+            for item in params.get("Notices"):
+                obj = AlertHistoryNotice()
+                obj._deserialize(item)
+                self.Notices.append(obj)
+        self.Duration = params.get("Duration")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("GroupTriggerCondition") is not None:
+            self.GroupTriggerCondition = []
+            for item in params.get("GroupTriggerCondition"):
+                obj = GroupTriggerConditionInfo()
+                obj._deserialize(item)
+                self.GroupTriggerCondition.append(obj)
+        self.AlarmLevel = params.get("AlarmLevel")
+        self.MonitorObjectType = params.get("MonitorObjectType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnalysisDimensional(AbstractModel):
     """多维分析的分析维度
 
@@ -2864,6 +2990,86 @@ class DescribeAlarmsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAlertRecordHistoryRequest(AbstractModel):
+    """DescribeAlertRecordHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param From: 查询时间范围启始时间，毫秒级unix时间戳
+        :type From: int
+        :param To: 查询时间范围结束时间，毫秒级unix时间戳
+        :type To: int
+        :param Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param Limit: 分页单页限制数目，最大值100。
+        :type Limit: int
+        :param Filters: - alertId：按照告警策略ID进行过滤。类型：String 必选：否
+- topicId：按照监控对象ID进行过滤。类型：String 必选：否
+- status：按照告警状态进行过滤。类型：String 必选：否，0代表未恢复，1代表已恢复，2代表已失效
+- alarmLevel：按照告警等级进行过滤。类型：String 必选：否，0代表警告，1代表提醒，2代表紧急
+
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :type Filters: list of Filter
+        """
+        self.From = None
+        self.To = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.From = params.get("From")
+        self.To = params.get("To")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlertRecordHistoryResponse(AbstractModel):
+    """DescribeAlertRecordHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 告警历史总数
+        :type TotalCount: int
+        :param Records: 告警历史详情
+        :type Records: list of AlertHistoryRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Records = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = AlertHistoryRecord()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeConfigExtrasRequest(AbstractModel):
     """DescribeConfigExtras请求参数结构体
 
@@ -4510,6 +4716,34 @@ class GetAlarmLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Columns.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class GroupTriggerConditionInfo(AbstractModel):
+    """分组触发条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 分组触发字段名称
+        :type Key: str
+        :param Value: 分组触发字段值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class HistogramInfo(AbstractModel):

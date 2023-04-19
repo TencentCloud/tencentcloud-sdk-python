@@ -303,7 +303,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """本接口(CreateInstances)用于创建redis实例。
+        """本接口（CreateInstances）用于创建 Redis 实例。
 
         :param request: Request instance for CreateInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstancesRequest`

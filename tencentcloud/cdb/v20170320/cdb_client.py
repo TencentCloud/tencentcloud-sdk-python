@@ -1039,7 +1039,9 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCDBProxy(self, request):
-        """查询数据库代理（待下线，替换接口QueryCDBProxy）
+        """接口已经废弃，请使用+DescribeCdbProxyInfo+进行替换。
+
+        查询数据库代理（待下线，替换接口QueryCDBProxy）
 
         :param request: Request instance for DescribeCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCDBProxyRequest`
@@ -1640,7 +1642,9 @@ class CdbClient(AbstractClient):
 
 
     def DescribeProxyConnectionPoolConf(self, request):
-        """获取数据库代理连接池相关规格配置
+        """当前接口已经废弃，请使用+DescribeCdbProxyInfo+替代。
+
+        获取数据库代理连接池相关规格配置
 
         :param request: Request instance for DescribeProxyConnectionPoolConf.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyConnectionPoolConfRequest`
@@ -2336,7 +2340,9 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCDBProxyConnectionPool(self, request):
-        """请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
+        """当前接口已经废弃，请使用+AdjustCdbProxyAddress+进行替代。
+
+        请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
 
         :param request: Request instance for ModifyCDBProxyConnectionPool.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyConnectionPoolRequest`
@@ -2359,7 +2365,9 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCDBProxyDesc(self, request):
-        """修改数据库代理描述
+        """当前接口已经废弃，请使用+ModifyCdbProxyAddressDesc+进行替代。
+
+        修改数据库代理描述
 
         :param request: Request instance for ModifyCDBProxyDesc.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyDescRequest`
@@ -2382,7 +2390,9 @@ class CdbClient(AbstractClient):
 
 
     def ModifyCDBProxyVipVPort(self, request):
-        """修改数据库代理VIP或端口
+        """当前接口已经废弃，请使用+ModifyCdbProxyAddressVipAndVPort+进行替代。
+
+        修改数据库代理VIP或端口
 
         :param request: Request instance for ModifyCDBProxyVipVPort.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyVipVPortRequest`
@@ -2835,7 +2845,9 @@ class CdbClient(AbstractClient):
 
 
     def QueryCDBProxy(self, request):
-        """查询代理详情
+        """当前接口已经废弃，请使用+DescribeCdbProxyInfo+进行替代。
+
+        查询代理详情
 
         :param request: Request instance for QueryCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.QueryCDBProxyRequest`

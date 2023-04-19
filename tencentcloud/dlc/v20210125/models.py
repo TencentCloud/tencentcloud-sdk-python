@@ -1922,6 +1922,8 @@ class CreateSparkAppRequest(AbstractModel):
         :type SparkImageVersion: str
         :param AppExecutorMaxNumbers: 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
         :type AppExecutorMaxNumbers: int
+        :param SessionId: 关联dlc查询脚本id
+        :type SessionId: str
         """
         self.AppName = None
         self.AppType = None
@@ -1949,6 +1951,7 @@ class CreateSparkAppRequest(AbstractModel):
         self.SparkImage = None
         self.SparkImageVersion = None
         self.AppExecutorMaxNumbers = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
@@ -1978,6 +1981,7 @@ class CreateSparkAppRequest(AbstractModel):
         self.SparkImage = params.get("SparkImage")
         self.SparkImageVersion = params.get("SparkImageVersion")
         self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
+        self.SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3050,6 +3054,12 @@ class DataEngineInfo(AbstractModel):
         :param StartStandbyCluster: 是否开启备集群
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartStandbyCluster: bool
+        :param ElasticSwitch: spark jar 包年包月集群是否开启弹性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticSwitch: bool
+        :param ElasticLimit: spark jar 包年包月集群弹性上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticLimit: int
         """
         self.DataEngineName = None
         self.EngineType = None
@@ -3088,6 +3098,8 @@ class DataEngineInfo(AbstractModel):
         self.ChildImageVersionId = None
         self.ImageVersionName = None
         self.StartStandbyCluster = None
+        self.ElasticSwitch = None
+        self.ElasticLimit = None
 
 
     def _deserialize(self, params):
@@ -3140,6 +3152,8 @@ class DataEngineInfo(AbstractModel):
         self.ChildImageVersionId = params.get("ChildImageVersionId")
         self.ImageVersionName = params.get("ImageVersionName")
         self.StartStandbyCluster = params.get("StartStandbyCluster")
+        self.ElasticSwitch = params.get("ElasticSwitch")
+        self.ElasticLimit = params.get("ElasticLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4458,14 +4472,18 @@ class DescribeNotebookSessionStatementRequest(AbstractModel):
         :type SessionId: str
         :param StatementId: Session Statement唯一标识
         :type StatementId: str
+        :param TaskId: 任务唯一标识
+        :type TaskId: str
         """
         self.SessionId = None
         self.StatementId = None
+        self.TaskId = None
 
 
     def _deserialize(self, params):
         self.SessionId = params.get("SessionId")
         self.StatementId = params.get("StatementId")
+        self.TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4928,13 +4946,13 @@ class DescribeSparkAppJobsRequest(AbstractModel):
         :type Sorting: str
         :param Filters: 按照该参数过滤,支持spark-job-name
         :type Filters: list of Filter
-        :param StartTime: 更新时间起始点
+        :param StartTime: 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
         :type StartTime: str
-        :param EndTime: 更新时间截止点
+        :param EndTime: 更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
         :type EndTime: str
-        :param Offset: 查询列表偏移量
+        :param Offset: 查询列表偏移量, 默认值0
         :type Offset: int
-        :param Limit: 查询列表限制数量
+        :param Limit: 查询列表限制数量, 默认值100
         :type Limit: int
         """
         self.SortBy = None
@@ -6095,11 +6113,15 @@ class JobLogResult(AbstractModel):
         :param LogJson: 日志内容，json字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogJson: str
+        :param PkgLogId: 日志ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgLogId: str
         """
         self.Time = None
         self.TopicId = None
         self.TopicName = None
         self.LogJson = None
+        self.PkgLogId = None
 
 
     def _deserialize(self, params):
@@ -6107,6 +6129,7 @@ class JobLogResult(AbstractModel):
         self.TopicId = params.get("TopicId")
         self.TopicName = params.get("TopicName")
         self.LogJson = params.get("LogJson")
+        self.PkgLogId = params.get("PkgLogId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6167,6 +6190,8 @@ class ListTaskJobLogDetailRequest(AbstractModel):
         :type Asc: bool
         :param Filters: 预览日志的通用过滤条件
         :type Filters: list of Filter
+        :param BatchId: SparkSQL任务唯一ID
+        :type BatchId: str
         """
         self.TaskId = None
         self.StartTime = None
@@ -6175,6 +6200,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
         self.Context = None
         self.Asc = None
         self.Filters = None
+        self.BatchId = None
 
 
     def _deserialize(self, params):
@@ -6190,6 +6216,7 @@ class ListTaskJobLogDetailRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.BatchId = params.get("BatchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6215,12 +6242,16 @@ class ListTaskJobLogDetailResponse(AbstractModel):
         :param Results: 日志详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of JobLogResult
+        :param LogUrl: 日志url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Context = None
         self.ListOver = None
         self.Results = None
+        self.LogUrl = None
         self.RequestId = None
 
 
@@ -6233,6 +6264,7 @@ class ListTaskJobLogDetailResponse(AbstractModel):
                 obj = JobLogResult()
                 obj._deserialize(item)
                 self.Results.append(obj)
+        self.LogUrl = params.get("LogUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -6442,6 +6474,8 @@ class ModifySparkAppRequest(AbstractModel):
         :type SparkImageVersion: str
         :param AppExecutorMaxNumbers: 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
         :type AppExecutorMaxNumbers: int
+        :param SessionId: 关联dlc查询脚本
+        :type SessionId: str
         """
         self.AppName = None
         self.AppType = None
@@ -6470,6 +6504,7 @@ class ModifySparkAppRequest(AbstractModel):
         self.SparkImage = None
         self.SparkImageVersion = None
         self.AppExecutorMaxNumbers = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
@@ -6500,6 +6535,7 @@ class ModifySparkAppRequest(AbstractModel):
         self.SparkImage = params.get("SparkImage")
         self.SparkImageVersion = params.get("SparkImageVersion")
         self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
+        self.SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7450,6 +7486,9 @@ class SparkJobInfo(AbstractModel):
         :param SparkImageVersion: 镜像版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkImageVersion: str
+        :param SessionId: 查询脚本关联id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
         """
         self.JobId = None
         self.JobName = None
@@ -7487,6 +7526,7 @@ class SparkJobInfo(AbstractModel):
         self.DataEngineStatus = None
         self.JobExecutorMaxNumbers = None
         self.SparkImageVersion = None
+        self.SessionId = None
 
 
     def _deserialize(self, params):
@@ -7528,6 +7568,7 @@ class SparkJobInfo(AbstractModel):
         self.DataEngineStatus = params.get("DataEngineStatus")
         self.JobExecutorMaxNumbers = params.get("JobExecutorMaxNumbers")
         self.SparkImageVersion = params.get("SparkImageVersion")
+        self.SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

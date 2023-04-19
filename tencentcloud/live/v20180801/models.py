@@ -525,6 +525,9 @@ class CallBackTemplateInfo(AbstractModel):
         :param PushExceptionNotifyUrl: 推流异常回调 URL。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PushExceptionNotifyUrl: str
+        :param AudioAuditNotifyUrl: 音频审核回调 URL。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioAuditNotifyUrl: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -537,6 +540,7 @@ class CallBackTemplateInfo(AbstractModel):
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
         self.PushExceptionNotifyUrl = None
+        self.AudioAuditNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -551,6 +555,7 @@ class CallBackTemplateInfo(AbstractModel):
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
         self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
+        self.AudioAuditNotifyUrl = params.get("AudioAuditNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8604,6 +8609,15 @@ class LivePackageInfo(AbstractModel):
 4: 已耗尽。
 5: 已退款
         :type Status: int
+        :param WillRenew: 是否自动续购。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WillRenew: int
+        :param RenewalResult: 续购状态。
+1 ：续购成功。
+0 ：尚未续购。
+<0  : 续购失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewalResult: int
         """
         self.Id = None
         self.Total = None
@@ -8613,6 +8627,8 @@ class LivePackageInfo(AbstractModel):
         self.ExpireTime = None
         self.Type = None
         self.Status = None
+        self.WillRenew = None
+        self.RenewalResult = None
 
 
     def _deserialize(self, params):
@@ -8624,6 +8640,8 @@ class LivePackageInfo(AbstractModel):
         self.ExpireTime = params.get("ExpireTime")
         self.Type = params.get("Type")
         self.Status = params.get("Status")
+        self.WillRenew = params.get("WillRenew")
+        self.RenewalResult = params.get("RenewalResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

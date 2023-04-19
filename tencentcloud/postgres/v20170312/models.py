@@ -183,6 +183,46 @@ class AnalysisItems(AbstractModel):
         
 
 
+class BackupDownloadRestriction(AbstractModel):
+    """备份下载限制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RestrictionType: 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+        :type RestrictionType: str
+        :param VpcRestrictionEffect: vpc限制效力，ALLOW 允许；DENY 拒绝。
+        :type VpcRestrictionEffect: str
+        :param VpcIdSet: 允许或拒绝下载备份文件的vpcId列表。
+        :type VpcIdSet: list of str
+        :param IpRestrictionEffect: ip限制效力，ALLOW 允许；DENY 拒绝。
+        :type IpRestrictionEffect: str
+        :param IpSet: 允许或拒绝下载备份文件的ip列表。
+        :type IpSet: list of str
+        """
+        self.RestrictionType = None
+        self.VpcRestrictionEffect = None
+        self.VpcIdSet = None
+        self.IpRestrictionEffect = None
+        self.IpSet = None
+
+
+    def _deserialize(self, params):
+        self.RestrictionType = params.get("RestrictionType")
+        self.VpcRestrictionEffect = params.get("VpcRestrictionEffect")
+        self.VpcIdSet = params.get("VpcIdSet")
+        self.IpRestrictionEffect = params.get("IpRestrictionEffect")
+        self.IpSet = params.get("IpSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupPlan(AbstractModel):
     """备份计划
 
@@ -2285,11 +2325,14 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
         :type BackupId: str
         :param URLExpireTime: 链接的有效时间，默认为12小时。
         :type URLExpireTime: int
+        :param BackupDownloadRestriction: 备份下载限制
+        :type BackupDownloadRestriction: :class:`tencentcloud.postgres.v20170312.models.BackupDownloadRestriction`
         """
         self.DBInstanceId = None
         self.BackupType = None
         self.BackupId = None
         self.URLExpireTime = None
+        self.BackupDownloadRestriction = None
 
 
     def _deserialize(self, params):
@@ -2297,6 +2340,9 @@ class DescribeBackupDownloadURLRequest(AbstractModel):
         self.BackupType = params.get("BackupType")
         self.BackupId = params.get("BackupId")
         self.URLExpireTime = params.get("URLExpireTime")
+        if params.get("BackupDownloadRestriction") is not None:
+            self.BackupDownloadRestriction = BackupDownloadRestriction()
+            self.BackupDownloadRestriction._deserialize(params.get("BackupDownloadRestriction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

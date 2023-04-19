@@ -146,16 +146,31 @@ GZJGZY: 公证机构执业证。
         :type CertificateType: str
         :param ImgUrl: 证件照片地址。
         :type ImgUrl: str
+        :param RegistrantCertificateCode: 联系人证件号码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistrantCertificateCode: str
+        :param RegistrantCertificateType: 联系人证件类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistrantCertificateType: str
+        :param RegistrantImgUrl: 联系人证件照片地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistrantImgUrl: str
         """
         self.CertificateCode = None
         self.CertificateType = None
         self.ImgUrl = None
+        self.RegistrantCertificateCode = None
+        self.RegistrantCertificateType = None
+        self.RegistrantImgUrl = None
 
 
     def _deserialize(self, params):
         self.CertificateCode = params.get("CertificateCode")
         self.CertificateType = params.get("CertificateType")
         self.ImgUrl = params.get("ImgUrl")
+        self.RegistrantCertificateCode = params.get("RegistrantCertificateCode")
+        self.RegistrantCertificateType = params.get("RegistrantCertificateType")
+        self.RegistrantImgUrl = params.get("RegistrantImgUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

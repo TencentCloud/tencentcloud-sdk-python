@@ -331,7 +331,7 @@ class BindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+        :param Operator: 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param UserId: 电子签系统员工UserId
         :type UserId: str
@@ -964,7 +964,7 @@ class CreateDocumentRequest(AbstractModel):
         :type FlowId: str
         :param TemplateId: 用户上传的模板ID
         :type TemplateId: str
-        :param FileNames: 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起
+        :param FileNames: 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
         :type FileNames: list of str
         :param FormFields: 内容控件信息数组
         :type FormFields: list of FormField
@@ -2324,11 +2324,17 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type AutoSignConfig: :class:`tencentcloud.ess.v20201111.models.AutoSignConfig`
         :param UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
         :type UrlType: str
+        :param NotifyType: 通知类型，默认不填为不通知开通方，填写 SMS 为短息通知。
+        :type NotifyType: str
+        :param NotifyAddress: 若上方填写为 SMS，则此处为手机号
+        :type NotifyAddress: str
         """
         self.Operator = None
         self.SceneKey = None
         self.AutoSignConfig = None
         self.UrlType = None
+        self.NotifyType = None
+        self.NotifyAddress = None
 
 
     def _deserialize(self, params):
@@ -2340,6 +2346,8 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
             self.AutoSignConfig = AutoSignConfig()
             self.AutoSignConfig._deserialize(params.get("AutoSignConfig"))
         self.UrlType = params.get("UrlType")
+        self.NotifyType = params.get("NotifyType")
+        self.NotifyAddress = params.get("NotifyAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2401,7 +2409,7 @@ class DeleteIntegrationEmployeesRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param Employees: 待移除员工的信息，userId和openId二选一，必填一个
         :type Employees: list of Staff
-        :param Agent: 代理信息
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
@@ -2943,8 +2951,6 @@ class DescribeFlowTemplatesRequest(AbstractModel):
         r"""
         :param Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Organization: 企业组织相关信息，一般不用填
-        :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
         :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param Offset: 查询偏移位置，默认0
@@ -2961,30 +2967,29 @@ ApplicationId为空，查询所有应用下的模板列表
         :param IsChannel: 默认为false，查询SaaS模板库列表；
 为true，查询第三方应用集成平台企业模板库管理列表
         :type IsChannel: bool
-        :param GenerateSource: 暂未开放
-        :type GenerateSource: int
         :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
         :type ContentType: int
+        :param Organization: 暂未开放
+        :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
+        :param GenerateSource: 暂未开放
+        :type GenerateSource: int
         """
         self.Operator = None
-        self.Organization = None
         self.Agent = None
         self.Offset = None
         self.Limit = None
         self.Filters = None
         self.ApplicationId = None
         self.IsChannel = None
-        self.GenerateSource = None
         self.ContentType = None
+        self.Organization = None
+        self.GenerateSource = None
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
-        if params.get("Organization") is not None:
-            self.Organization = OrganizationInfo()
-            self.Organization._deserialize(params.get("Organization"))
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
@@ -2998,8 +3003,11 @@ ApplicationId为空，查询所有应用下的模板列表
                 self.Filters.append(obj)
         self.ApplicationId = params.get("ApplicationId")
         self.IsChannel = params.get("IsChannel")
-        self.GenerateSource = params.get("GenerateSource")
         self.ContentType = params.get("ContentType")
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        self.GenerateSource = params.get("GenerateSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3280,7 +3288,7 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
         :type Name: str
         :param Status: 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
         :type Status: int
-        :param Export: 是否到处当前成员企业数据
+        :param Export: 是否导出当前成员企业数据
         :type Export: bool
         :param Id: 成员企业id
         :type Id: str
@@ -4492,7 +4500,7 @@ class GroupOrganization(AbstractModel):
         :param UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
-        :param Status: 成员企业状态
+        :param Status: 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param IsMainOrganization: 是否为集团主企业
@@ -4766,15 +4774,15 @@ class OrganizationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OrganizationId: 机构在平台的编号
+        :param OrganizationId: 机构在平台的编号，内部字段，暂未开放
         :type OrganizationId: str
-        :param Channel: 用户渠道
+        :param Channel: 用户渠道，内部字段，暂未开放
         :type Channel: str
-        :param OrganizationOpenId: 用户在渠道的机构编号
+        :param OrganizationOpenId: 用户在渠道的机构编号，内部字段，暂未开放
         :type OrganizationOpenId: str
-        :param ClientIp: 用户真实的IP
+        :param ClientIp: 用户真实的IP，内部字段，暂未开放
         :type ClientIp: str
-        :param ProxyIp: 机构的代理IP
+        :param ProxyIp: 机构的代理IP，内部字段，暂未开放
         :type ProxyIp: str
         """
         self.OrganizationId = None
@@ -4806,9 +4814,9 @@ class PdfVerifyResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VerifyResult: 验签结果
+        :param VerifyResult: 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
         :type VerifyResult: int
-        :param SignPlatform: 签署平台
+        :param SignPlatform: 签署平台，如果文件是在腾讯电子签平台签署，则返回腾讯电子签，如果文件不在腾讯电子签平台签署，则返回其他平台。
         :type SignPlatform: str
         :param SignerName: 签署人名称
         :type SignerName: str
@@ -4880,7 +4888,7 @@ class Recipient(AbstractModel):
         r"""
         :param RecipientId: 签署参与者ID
         :type RecipientId: str
-        :param RecipientType: 参与者类型（ENTERPRISE/INDIVIDUAL）
+        :param RecipientType: 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
         :type RecipientType: str
         :param Description: 描述信息
         :type Description: str
@@ -4900,7 +4908,7 @@ class Recipient(AbstractModel):
         :type Mobile: str
         :param UserId: 关联的用户ID
         :type UserId: str
-        :param DeliveryMethod: 发送方式（EMAIL/MOBILE）
+        :param DeliveryMethod: 发送方式。默认为EMAIL。EMAIL-邮件；MOBILE-手机短信；WECHAT-微信通知
         :type DeliveryMethod: str
         :param RecipientExtra: 附属信息
         :type RecipientExtra: str
@@ -5461,7 +5469,7 @@ class TemplateInfo(AbstractModel):
         :type CreatedOn: int
         :param Promoter: 发起人角色信息
         :type Promoter: :class:`tencentcloud.ess.v20201111.models.Recipient`
-        :param Available: 模板可用状态，取值：0未知，但默认会被转成启用；1启用（默认），2停用
+        :param Available: 模板可用状态，取值：1启用（默认），2停用
         :type Available: int
         :param OrganizationId: 模板创建组织id
         :type OrganizationId: str
@@ -5554,7 +5562,7 @@ class UnbindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+        :param Operator: 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param UserId: 电子签系统员工UserId
         :type UserId: str
@@ -5611,29 +5619,29 @@ class UpdateIntegrationEmployeesRequest(AbstractModel):
         r"""
         :param Operator: 操作人信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 代理信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param Employees: 员工信息
         :type Employees: list of Staff
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
-        self.Agent = None
         self.Employees = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
-        if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
         if params.get("Employees") is not None:
             self.Employees = []
             for item in params.get("Employees"):
                 obj = Staff()
                 obj._deserialize(item)
                 self.Employees.append(obj)
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5801,13 +5809,13 @@ class UserInfo(AbstractModel):
         r"""
         :param UserId: 用户在平台的编号
         :type UserId: str
-        :param Channel: 用户的来源渠道
+        :param Channel: 用户的来源渠道，一般不用传，特定场景根据接口说明传值
         :type Channel: str
-        :param OpenId: 用户在渠道的编号
+        :param OpenId: 用户在渠道的编号，一般不用传，特定场景根据接口说明传值
         :type OpenId: str
-        :param ClientIp: 用户真实IP
+        :param ClientIp: 用户真实IP，内部字段，暂未开放
         :type ClientIp: str
-        :param ProxyIp: 用户代理IP
+        :param ProxyIp: 用户代理IP，内部字段，暂未开放
         :type ProxyIp: str
         """
         self.UserId = None

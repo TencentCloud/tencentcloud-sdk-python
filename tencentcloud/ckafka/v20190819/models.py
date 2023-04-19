@@ -10709,6 +10709,57 @@ class Region(AbstractModel):
         
 
 
+class RenewCkafkaInstanceRequest(AbstractModel):
+    """RenewCkafkaInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param TimeSpan: 续费时长, 默认为1, 单位是月
+        :type TimeSpan: int
+        """
+        self.InstanceId = None
+        self.TimeSpan = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.TimeSpan = params.get("TimeSpan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewCkafkaInstanceResponse(AbstractModel):
+    """RenewCkafkaInstance接口出参bigDealIds
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BigDealId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealId: str
+        :param DealName: 子订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
+        """
+        self.BigDealId = None
+        self.DealName = None
+
+
+    def _deserialize(self, params):
+        self.BigDealId = params.get("BigDealId")
+        self.DealName = params.get("DealName")
+
+
 class ReplaceParam(AbstractModel):
     """数据处理——Value处理参数——替换参数
 

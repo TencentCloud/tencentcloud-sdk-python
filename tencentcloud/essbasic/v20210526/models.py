@@ -4857,7 +4857,7 @@ class Recipient(AbstractModel):
         r"""
         :param RecipientId: 签署人唯一标识
         :type RecipientId: str
-        :param RecipientType: 签署方类型：ENTERPRISE-企业INDIVIDUAL-自然人
+        :param RecipientType: 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
         :type RecipientType: str
         :param Description: 描述
         :type Description: str

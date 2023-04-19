@@ -417,6 +417,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConfigWithDetailResp(self, request):
+        """创建配置项，返回详细信息
+
+        :param request: Request instance for CreateConfigWithDetailResp.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateConfigWithDetailRespRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateConfigWithDetailRespResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConfigWithDetailResp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConfigWithDetailRespResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateContainGroup(self, request):
         """（已废弃，请使用 CreateGroup 和 DeployContainerGroup 创建和部署容器部署组）创建容器部署组
 
@@ -454,6 +477,29 @@ class TsfClient(AbstractClient):
             body = self.call("CreateFileConfig", params, headers=headers)
             response = json.loads(body)
             model = models.CreateFileConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateFileConfigWithDetailResp(self, request):
+        """创建文件配置项，返回详细信息
+
+        :param request: Request instance for CreateFileConfigWithDetailResp.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateFileConfigWithDetailRespRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateFileConfigWithDetailRespResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFileConfigWithDetailResp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFileConfigWithDetailRespResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

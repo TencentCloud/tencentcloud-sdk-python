@@ -1729,6 +1729,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RenewCkafkaInstance(self, request):
+        """续费Ckafka实例, 目前只支持国内站包年包月实例续费
+
+        :param request: Request instance for RenewCkafkaInstance.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.RenewCkafkaInstanceRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.RenewCkafkaInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewCkafkaInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewCkafkaInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SendMessage(self, request):
         """通过HTTP接入层发送消息
 

@@ -4166,6 +4166,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateClusterKubeconfig(self, request):
+        """对集群的Kubeconfig信息进行更新
+
+        :param request: Request instance for UpdateClusterKubeconfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpdateClusterKubeconfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpdateClusterKubeconfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateClusterKubeconfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateClusterKubeconfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateClusterVersion(self, request):
         """升级集群 Master 组件到指定版本
 

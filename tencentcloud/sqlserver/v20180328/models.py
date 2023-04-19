@@ -3690,6 +3690,79 @@ class DescribeDBInstanceInterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBInstancesAttributeRequest(AbstractModel):
+    """DescribeDBInstancesAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstancesAttributeResponse(AbstractModel):
+    """DescribeDBInstancesAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param RegularBackupEnable: 定期备份状态 enable-开启，disable-关闭
+        :type RegularBackupEnable: str
+        :param RegularBackupSaveDays: 定期备份保留天数 [90 - 3650]天
+        :type RegularBackupSaveDays: int
+        :param RegularBackupStrategy: 定期备份策略 years-每年，quarters-每季度，months-每月
+        :type RegularBackupStrategy: str
+        :param RegularBackupCounts: 定期备份保留个数
+        :type RegularBackupCounts: int
+        :param RegularBackupStartTime: 定期备份开始日期，格式-YYYY-MM-DD 默认当前日期
+        :type RegularBackupStartTime: str
+        :param BlockedThreshold: 阻塞进程阈值，单位毫秒
+        :type BlockedThreshold: int
+        :param EventSaveDays: 慢SQL、阻塞、死锁扩展事件文件保留时长
+        :type EventSaveDays: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RegularBackupEnable = None
+        self.RegularBackupSaveDays = None
+        self.RegularBackupStrategy = None
+        self.RegularBackupCounts = None
+        self.RegularBackupStartTime = None
+        self.BlockedThreshold = None
+        self.EventSaveDays = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RegularBackupEnable = params.get("RegularBackupEnable")
+        self.RegularBackupSaveDays = params.get("RegularBackupSaveDays")
+        self.RegularBackupStrategy = params.get("RegularBackupStrategy")
+        self.RegularBackupCounts = params.get("RegularBackupCounts")
+        self.RegularBackupStartTime = params.get("RegularBackupStartTime")
+        self.BlockedThreshold = params.get("BlockedThreshold")
+        self.EventSaveDays = params.get("EventSaveDays")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBInstancesRequest(AbstractModel):
     """DescribeDBInstances请求参数结构体
 
@@ -5343,6 +5416,80 @@ class DescribeUploadIncrementalInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeXEventsRequest(AbstractModel):
+    """DescribeXEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param EventType: 事件类型，slow-慢SQL事件，blocked-阻塞事件，deadlock-死锁事件
+        :type EventType: str
+        :param StartTime: 扩展文件生成开始时间
+        :type StartTime: str
+        :param EndTime: 扩展文件生成结束时间
+        :type EndTime: str
+        :param Offset: 分页返回，页编号，默认值为第0页
+        :type Offset: int
+        :param Limit: 分页返回，每页返回的数目，取值为1~100，默认值为20
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.EventType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.EventType = params.get("EventType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeXEventsResponse(AbstractModel):
+    """DescribeXEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Events: 扩展事件列表
+        :type Events: list of Events
+        :param TotalCount: 扩展事件总数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Events = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = Events()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones请求参数结构体
 
@@ -5422,6 +5569,90 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class EventConfig(AbstractModel):
+    """设置实例扩展事件阈值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventType: 事件类型，slow-设置慢SQL阈值，blocked-设置阻塞、死锁阈值
+        :type EventType: str
+        :param Threshold: 阈值，单位毫秒。0表示关闭，大于0表示开启
+        :type Threshold: int
+        """
+        self.EventType = None
+        self.Threshold = None
+
+
+    def _deserialize(self, params):
+        self.EventType = params.get("EventType")
+        self.Threshold = params.get("Threshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Events(AbstractModel):
+    """实例扩展事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: ID
+        :type Id: int
+        :param FileName: 扩展事件文件名称
+        :type FileName: str
+        :param Size: 扩展事件文件大小
+        :type Size: int
+        :param EventType: 事件类型，slow-慢SQL事件，blocked-阻塞事件，deadlock-死锁事件
+        :type EventType: str
+        :param Status: 事件记录状态，1-成功，2-失败
+        :type Status: int
+        :param StartTime: 扩展文件生成开始时间
+        :type StartTime: str
+        :param EndTime: 扩展文件生成开始时间
+        :type EndTime: str
+        :param InternalAddr: 内网下载地址
+        :type InternalAddr: str
+        :param ExternalAddr: 外网下载地址
+        :type ExternalAddr: str
+        """
+        self.Id = None
+        self.FileName = None
+        self.Size = None
+        self.EventType = None
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+        self.InternalAddr = None
+        self.ExternalAddr = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.FileName = params.get("FileName")
+        self.Size = params.get("Size")
+        self.EventType = params.get("EventType")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.InternalAddr = params.get("InternalAddr")
+        self.ExternalAddr = params.get("ExternalAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FileAction(AbstractModel):
@@ -8963,6 +9194,56 @@ class StartIncrementalMigrationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class StartInstanceXEventRequest(AbstractModel):
+    """StartInstanceXEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param EventConfig: 开启、关闭扩展事件
+        :type EventConfig: list of EventConfig
+        """
+        self.InstanceId = None
+        self.EventConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("EventConfig") is not None:
+            self.EventConfig = []
+            for item in params.get("EventConfig"):
+                obj = EventConfig()
+                obj._deserialize(item)
+                self.EventConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartInstanceXEventResponse(AbstractModel):
+    """StartInstanceXEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
