@@ -1983,7 +1983,7 @@ HONGKONG_MACAO_AND_TAIWAN 中国台湾
         :type IdCardType: str
         :param Mobile: 手机号码
         :type Mobile: str
-        :param EnableAutoSign: 是否需开通自动签
+        :param EnableAutoSign: 是否开通自动签，该功能需联系运营工作人员开通后使用
         :type EnableAutoSign: bool
         """
         self.UserName = None

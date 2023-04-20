@@ -301,6 +301,10 @@ class TextToVoiceRequest(AbstractModel):
         :type EnableSubtitle: bool
         :param SegmentRate: 断句敏感阈值，默认值为：0，取值范围：[0,1,2]。该值越大越不容易断句，模型会更倾向于仅按照标点符号断句。此参数建议不要随意调整，可能会影响合成效果。
         :type SegmentRate: int
+        :param EmotionCategory: 控制合成音频的情感，仅支持情绪音色使用。取值: peaceful、exciting、thrill、neutral、sad、angry、cute、fear、poetry、happy、regretful、exciting_strong、aojiao、sajiao、story、raido、call、jieshuo等等；
+        :type EmotionCategory: str
+        :param EmotionIntensity: 控制合成音频情感程度，取值范围为[50,200],默认为100，不填写为默认值；只有EmotionCategory不为空时生效；
+        :type EmotionIntensity: int
         """
         self.Text = None
         self.SessionId = None
@@ -314,6 +318,8 @@ class TextToVoiceRequest(AbstractModel):
         self.Codec = None
         self.EnableSubtitle = None
         self.SegmentRate = None
+        self.EmotionCategory = None
+        self.EmotionIntensity = None
 
 
     def _deserialize(self, params):
@@ -329,6 +335,8 @@ class TextToVoiceRequest(AbstractModel):
         self.Codec = params.get("Codec")
         self.EnableSubtitle = params.get("EnableSubtitle")
         self.SegmentRate = params.get("SegmentRate")
+        self.EmotionCategory = params.get("EmotionCategory")
+        self.EmotionIntensity = params.get("EmotionIntensity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

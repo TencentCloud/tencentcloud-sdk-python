@@ -326,7 +326,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterRelease(self, request):
-        """在应用市场中给集群创建应用
+        """集群创建应用
 
         :param request: Request instance for CreateClusterRelease.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterReleaseRequest`

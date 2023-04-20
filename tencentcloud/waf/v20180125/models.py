@@ -455,6 +455,83 @@ class AddCustomRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddCustomWhiteRuleRequest(AbstractModel):
+    """AddCustomWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 规则名称
+        :type Name: str
+        :param SortId: 优先级
+        :type SortId: str
+        :param ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param Strategies: 策略详情
+        :type Strategies: list of Strategy
+        :param Domain: 需要添加策略的域名
+        :type Domain: str
+        :param Bypass: 放行的详情
+        :type Bypass: str
+        """
+        self.Name = None
+        self.SortId = None
+        self.ExpireTime = None
+        self.Strategies = None
+        self.Domain = None
+        self.Bypass = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.SortId = params.get("SortId")
+        self.ExpireTime = params.get("ExpireTime")
+        if params.get("Strategies") is not None:
+            self.Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self.Strategies.append(obj)
+        self.Domain = params.get("Domain")
+        self.Bypass = params.get("Bypass")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCustomWhiteRuleResponse(AbstractModel):
+    """AddCustomWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param RuleId: 添加成功的规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = ResponseCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
 class AddDomainWhiteRuleRequest(AbstractModel):
     """AddDomainWhiteRule请求参数结构体
 
@@ -1172,6 +1249,57 @@ class DeleteAttackDownloadRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCustomWhiteRuleRequest(AbstractModel):
+    """DeleteCustomWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 删除的域名
+        :type Domain: str
+        :param RuleId: 删除的规则ID
+        :type RuleId: int
+        """
+        self.Domain = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomWhiteRuleResponse(AbstractModel):
+    """DeleteCustomWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = ResponseCode()
+            self.Success._deserialize(params.get("Success"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4118,6 +4246,82 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCustomWhiteRuleRequest(AbstractModel):
+    """ModifyCustomWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 编辑的域名
+        :type Domain: str
+        :param RuleId: 编辑的规则ID
+        :type RuleId: int
+        :param RuleName: 编辑的规则名称
+        :type RuleName: str
+        :param Bypass: 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
+        :type Bypass: str
+        :param SortId: 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
+        :type SortId: int
+        :param ExpireTime: 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
+        :type ExpireTime: int
+        :param Strategies: 匹配条件数组
+        :type Strategies: list of Strategy
+        """
+        self.Domain = None
+        self.RuleId = None
+        self.RuleName = None
+        self.Bypass = None
+        self.SortId = None
+        self.ExpireTime = None
+        self.Strategies = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.Bypass = params.get("Bypass")
+        self.SortId = params.get("SortId")
+        self.ExpireTime = params.get("ExpireTime")
+        if params.get("Strategies") is not None:
+            self.Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self.Strategies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomWhiteRuleResponse(AbstractModel):
+    """ModifyCustomWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = ResponseCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDomainWhiteRuleRequest(AbstractModel):
     """ModifyDomainWhiteRule请求参数结构体
 
@@ -4977,7 +5181,7 @@ class UpsertIpAccessControlRequest(AbstractModel):
         :type Items: list of str
         :param Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
         :type Edition: str
-        :param SourceType: 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，佛祖饿为空
+        :param SourceType: 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，否则为空
         :type SourceType: str
         """
         self.Domain = None

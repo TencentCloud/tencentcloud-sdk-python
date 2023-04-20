@@ -646,16 +646,25 @@ class CreateBlueprintRequest(AbstractModel):
         :type Description: str
         :param InstanceId: 需要制作镜像的实例ID。
         :type InstanceId: str
+        :param ForcePowerOff: 是否执行强制关机以制作镜像。
+取值范围：
+True：表示关机之后制作镜像
+False：表示开机状态制作镜像
+默认取值：True
+开机状态制作镜像，可能导致部分数据未备份，影响数据安全。
+        :type ForcePowerOff: bool
         """
         self.BlueprintName = None
         self.Description = None
         self.InstanceId = None
+        self.ForcePowerOff = None
 
 
     def _deserialize(self, params):
         self.BlueprintName = params.get("BlueprintName")
         self.Description = params.get("Description")
         self.InstanceId = params.get("InstanceId")
+        self.ForcePowerOff = params.get("ForcePowerOff")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5481,7 +5490,7 @@ class ModifyInstancesBundleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为30。
+        :param InstanceIds: 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为15。
         :type InstanceIds: list of str
         :param BundleId: 待变更的套餐Id。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
         :type BundleId: str

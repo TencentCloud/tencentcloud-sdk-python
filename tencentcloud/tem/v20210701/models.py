@@ -4905,6 +4905,8 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
         :type BetaBatchNum: int
         :param MinAvailable: 发布过程中保障的最小可用实例数
         :type MinAvailable: int
+        :param Force: 是否强制发布
+        :type Force: bool
         """
         self.ApplicationId = None
         self.EnvironmentId = None
@@ -4916,6 +4918,7 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
         self.BatchInterval = None
         self.BetaBatchNum = None
         self.MinAvailable = None
+        self.Force = None
 
 
     def _deserialize(self, params):
@@ -4929,6 +4932,7 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
         self.BatchInterval = params.get("BatchInterval")
         self.BetaBatchNum = params.get("BetaBatchNum")
         self.MinAvailable = params.get("MinAvailable")
+        self.Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

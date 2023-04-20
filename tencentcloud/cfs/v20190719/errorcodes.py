@@ -317,6 +317,9 @@ RESOURCEINSUFFICIENT_TAGLIMITEXCEEDED = 'ResourceInsufficient.TagLimitExceeded'
 # 标签限额不足。
 RESOURCEINSUFFICIENT_TAGQUOTASEXCEEDED = 'ResourceInsufficient.TagQuotasExceeded'
 
+# Turbo类型特殊容量文件系统数量限制
+RESOURCEINSUFFICIENT_TURBOSPECIALCAPACITYFILESYSTEMCOUNTLIMIT = 'ResourceInsufficient.TurboSpecialCapacityFileSystemCountLimit'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

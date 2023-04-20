@@ -1554,6 +1554,52 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecognizePhilippinesSssIDOCR(self, request):
+        """菲律宾SSSID识别
+
+        :param request: Request instance for RecognizePhilippinesSssIDOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesSssIDOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesSssIDOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizePhilippinesSssIDOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizePhilippinesSssIDOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizePhilippinesTinIDOCR(self, request):
+        """菲律宾TinID识别
+
+        :param request: Request instance for RecognizePhilippinesTinIDOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesTinIDOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesTinIDOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizePhilippinesTinIDOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizePhilippinesTinIDOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RecognizePhilippinesVoteIDOCR(self, request):
         """本接口支持菲律宾VoteID识别，识别字段包括姓名、姓氏、出生日期、婚姻状况、国籍、地址、地区、菲律宾VoteID的VIN等。
 

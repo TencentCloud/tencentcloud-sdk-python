@@ -32,13 +32,13 @@ class TrtcClient(AbstractClient):
 
         您可以通过此接口实现如下目标：
         * 指定订阅流参数（RecordParams）来指定需要录制的主播的黑名单或者白名单。
-        * 指定第三方存储的参数（StorageParams）来指定上传到您希望的云存储，目前仅支持云点播存储（CloudVod）
+        * 指定第三方存储的参数（StorageParams）来指定上传到您希望的云存储，目前支持云点播VOD和对象存储COS
         * 指定混流模式下的音视频转码详细参数（MixTranscodeParams），包括视频分辨率、视频码率、视频帧率、以及声音质量等
         * 指定混流模式各路画面的位置和布局或者也可以指定自动模板的方式来配置。
 
         关键名词：
-        * 单流录制：分别录制房间的订阅UserId的音频和视频。录制服务会实时将录制文件上传至云点播存储。
-        * 合流录制：将房间内订阅UserId的音视频混录成一个音视频文件，并将录制文件上传至云点播存储（录制结束后可前往云点播控制台查看录制文件：https://console.cloud.tencent.com/vod/media）。
+        * 单流录制：分别录制房间的订阅UserId的音频和视频，录制服务会实时将录制文件上传至您指定的云存储。
+        * 合流录制：将房间内订阅UserId的音视频混录成一个视频文件，并将录制文件上传至您指定的云存储。（录制结束后可前往云点播控制台https://console.cloud.tencent.com/vod/media 或 对象存储COS控制台https://console.cloud.tencent.com/cos/bucket查看文件）。
 
         :param request: Request instance for CreateCloudRecording.
         :type request: :class:`tencentcloud.trtc.v20190722.models.CreateCloudRecordingRequest`

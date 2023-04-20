@@ -49,6 +49,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddCustomWhiteRule(self, request):
+        """增加精准白名单规则
+
+        :param request: Request instance for AddCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCustomWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddDomainWhiteRule(self, request):
         """增加域名规则白名单
 
@@ -178,6 +201,29 @@ class WafClient(AbstractClient):
             body = self.call("DeleteAttackDownloadRecord", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAttackDownloadRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCustomWhiteRule(self, request):
+        """删除精准白名单规则
+
+        :param request: Request instance for DeleteCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -892,6 +938,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyCustomRuleStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCustomRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCustomWhiteRule(self, request):
+        """编辑精准白名单
+
+        :param request: Request instance for ModifyCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCustomWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

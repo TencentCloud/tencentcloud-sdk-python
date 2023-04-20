@@ -68,7 +68,7 @@ class AddGroupMemberResponse(AbstractModel):
 
 
 class AnswerInfo(AbstractModel):
-    """房间问答问题详情
+    """房间问答答案详情
 
     """
 
@@ -3567,7 +3567,7 @@ class ModifyUserProfileResponse(AbstractModel):
 
 
 class QuestionInfo(AbstractModel):
-    """房间问答答案详情
+    """房间问答问题详情
 
     """
 

@@ -126,15 +126,23 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
         :type TaskId: str
         :param Status: 任务状态 0(初始化中), 1(运行中), 2(已完成), 3(任务失败)
         :type Status: int
+        :param FinishedFileNumber: 已完成的文件数量
+        :type FinishedFileNumber: int
+        :param FinishedCapacity: 已完成的数据量
+        :type FinishedCapacity: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskId = None
         self.Status = None
+        self.FinishedFileNumber = None
+        self.FinishedCapacity = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.Status = params.get("Status")
+        self.FinishedFileNumber = params.get("FinishedFileNumber")
+        self.FinishedCapacity = params.get("FinishedCapacity")
         self.RequestId = params.get("RequestId")
