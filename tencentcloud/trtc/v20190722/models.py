@@ -372,7 +372,7 @@ class CreatePictureRequest(AbstractModel):
         r"""
         :param SdkAppId: 应用id
         :type SdkAppId: int
-        :param Content: 图片内容经base64编码后的string格式
+        :param Content: 图片内容经base64编码后的string格式,最大长度为2M
         :type Content: str
         :param Suffix: 图片后缀名
         :type Suffix: str

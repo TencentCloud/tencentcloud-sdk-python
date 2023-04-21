@@ -1553,6 +1553,52 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePulsarProInstanceDetail(self, request):
+        """获取Pulsar专业版集群实例信息
+
+        :param request: Request instance for DescribePulsarProInstanceDetail.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstanceDetailRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstanceDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePulsarProInstanceDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePulsarProInstanceDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePulsarProInstances(self, request):
+        """查询用户已购的Pulsar专业版实例列表
+
+        :param request: Request instance for DescribePulsarProInstances.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstancesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePulsarProInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePulsarProInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRabbitMQNodeList(self, request):
         """RabbitMQ专享版查询节点列表
 

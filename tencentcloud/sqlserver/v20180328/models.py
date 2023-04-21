@@ -2039,6 +2039,12 @@ class DBInstance(AbstractModel):
         :param SlaveZones: 备可用区信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZones: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
+        :param Architecture: 架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Architecture: str
+        :param Style: 类型标识，EXCLUSIVE-独享型，SHARED-共享型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Style: str
         """
         self.InstanceId = None
         self.Name = None
@@ -2092,6 +2098,8 @@ class DBInstance(AbstractModel):
         self.TimeZone = None
         self.IsDrZone = None
         self.SlaveZones = None
+        self.Architecture = None
+        self.Style = None
 
 
     def _deserialize(self, params):
@@ -2154,6 +2162,8 @@ class DBInstance(AbstractModel):
         if params.get("SlaveZones") is not None:
             self.SlaveZones = SlaveZones()
             self.SlaveZones._deserialize(params.get("SlaveZones"))
+        self.Architecture = params.get("Architecture")
+        self.Style = params.get("Style")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8665,13 +8675,19 @@ class RestoreInstanceRequest(AbstractModel):
         :type TargetInstanceId: str
         :param RenameRestore: 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。
         :type RenameRestore: list of RenameRestoreDatabase
-        :param GroupId: 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
+        :param Type: 回档类型，0-覆盖方式；1-重命名方式，默认1
+        :type Type: int
+        :param DBList: 需要覆盖回档的数据库，只有覆盖回档时必填
+        :type DBList: list of str
+        :param GroupId: 备份任务组ID，在单库备份文件模式下
         :type GroupId: str
         """
         self.InstanceId = None
         self.BackupId = None
         self.TargetInstanceId = None
         self.RenameRestore = None
+        self.Type = None
+        self.DBList = None
         self.GroupId = None
 
 
@@ -8685,6 +8701,8 @@ class RestoreInstanceRequest(AbstractModel):
                 obj = RenameRestoreDatabase()
                 obj._deserialize(item)
                 self.RenameRestore.append(obj)
+        self.Type = params.get("Type")
+        self.DBList = params.get("DBList")
         self.GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -8727,10 +8745,10 @@ class RollbackInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param Type: 回档类型，0-回档的数据库覆盖原库；1-回档的数据库以重命名的形式生成，不覆盖原库
         :type Type: int
-        :param DBs: 需要回档的数据库
-        :type DBs: list of str
         :param Time: 回档目标时间点
         :type Time: str
+        :param DBs: 需要回档的数据库
+        :type DBs: list of str
         :param TargetInstanceId: 备份恢复到的同一个APPID下的实例ID，不填则恢复到原实例ID
         :type TargetInstanceId: str
         :param RenameRestore: 按照ReNameRestoreDatabase中的库进行重命名，仅在Type = 1重命名回档方式有效；不填则按照默认方式命名库，DBs参数确定要恢复的库
@@ -8738,8 +8756,8 @@ class RollbackInstanceRequest(AbstractModel):
         """
         self.InstanceId = None
         self.Type = None
-        self.DBs = None
         self.Time = None
+        self.DBs = None
         self.TargetInstanceId = None
         self.RenameRestore = None
 
@@ -8747,8 +8765,8 @@ class RollbackInstanceRequest(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Type = params.get("Type")
-        self.DBs = params.get("DBs")
         self.Time = params.get("Time")
+        self.DBs = params.get("DBs")
         self.TargetInstanceId = params.get("TargetInstanceId")
         if params.get("RenameRestore") is not None:
             self.RenameRestore = []

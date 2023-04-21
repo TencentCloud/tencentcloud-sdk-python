@@ -164,6 +164,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BatchDescribeDocument(self, request):
+        """批量获取文档详情
+
+        :param request: Request instance for BatchDescribeDocument.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.BatchDescribeDocumentRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.BatchDescribeDocumentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDescribeDocument", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDescribeDocumentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BatchRegister(self, request):
         """如果批量注册的用户已存在，则会被覆盖。一次最多注册1000个用户。默认请求频率限制：10次/秒
 
@@ -602,7 +625,9 @@ class LcicClient(AbstractClient):
 
 
     def DescribeDocuments(self, request):
-        """批量获取文档信息
+        """有新接口替换
+
+        批量获取文档信息（已废弃，替代接口BatchDescribeDocument）
 
         :param request: Request instance for DescribeDocuments.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDocumentsRequest`
@@ -1177,7 +1202,7 @@ class LcicClient(AbstractClient):
 
 
     def StartRoom(self, request):
-        """开始房间的直播
+        """开始房间的直播。 说明：开始房间接口调用之前需要有用户进入课堂初始化课堂信息。
 
         :param request: Request instance for StartRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.StartRoomRequest`

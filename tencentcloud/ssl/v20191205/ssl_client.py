@@ -302,6 +302,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCompanies(self, request):
+        """查询公司列表
+
+        :param request: Request instance for DescribeCompanies.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCompaniesRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCompaniesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCompanies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCompaniesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDeployedResources(self, request):
         """证书查询关联资源
 

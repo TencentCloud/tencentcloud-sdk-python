@@ -447,6 +447,64 @@ class AutoscalingAdded(AbstractModel):
         
 
 
+class BackupStorageLocation(AbstractModel):
+    """仓储仓库信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 备份仓库名称	
+        :type Name: str
+        :param StorageRegion: 存储仓库所属地域，比如COS广州(ap-guangzhou)	
+        :type StorageRegion: str
+        :param Provider: 存储服务提供方，默认腾讯云	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Provider: str
+        :param Bucket: 对象存储桶名称，如果是COS必须是tke-backup-前缀开头	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        :param Path: 对象存储桶路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param State: 存储仓库状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param Message: 详细状态信息	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param LastValidationTime: 最后一次检查时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastValidationTime: str
+        """
+        self.Name = None
+        self.StorageRegion = None
+        self.Provider = None
+        self.Bucket = None
+        self.Path = None
+        self.State = None
+        self.Message = None
+        self.LastValidationTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.StorageRegion = params.get("StorageRegion")
+        self.Provider = params.get("Provider")
+        self.Bucket = params.get("Bucket")
+        self.Path = params.get("Path")
+        self.State = params.get("State")
+        self.Message = params.get("Message")
+        self.LastValidationTime = params.get("LastValidationTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CUDNN(AbstractModel):
     """cuDNN的版本信息
 
@@ -1978,6 +2036,63 @@ class ControllerStatus(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateBackupStorageLocationRequest(AbstractModel):
+    """CreateBackupStorageLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageRegion: 存储仓库所属地域，比如COS广州(ap-guangzhou)
+        :type StorageRegion: str
+        :param Bucket: 对象存储桶名称，如果是COS必须是tke-backup前缀开头
+        :type Bucket: str
+        :param Name: 备份仓库名称
+        :type Name: str
+        :param Provider: 存储服务提供方，默认腾讯云
+        :type Provider: str
+        :param Path: 对象存储桶路径
+        :type Path: str
+        """
+        self.StorageRegion = None
+        self.Bucket = None
+        self.Name = None
+        self.Provider = None
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        self.StorageRegion = params.get("StorageRegion")
+        self.Bucket = params.get("Bucket")
+        self.Name = params.get("Name")
+        self.Provider = params.get("Provider")
+        self.Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackupStorageLocationResponse(AbstractModel):
+    """CreateBackupStorageLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateClusterEndpointRequest(AbstractModel):
@@ -4017,6 +4132,47 @@ class DataDisk(AbstractModel):
         
 
 
+class DeleteBackupStorageLocationRequest(AbstractModel):
+    """DeleteBackupStorageLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 备份仓库名称
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupStorageLocationResponse(AbstractModel):
+    """DeleteBackupStorageLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteClusterAsGroupsRequest(AbstractModel):
     """DeleteClusterAsGroups请求参数结构体
 
@@ -5358,6 +5514,57 @@ class DescribeAvailableTKEEdgeVersionResponse(AbstractModel):
         self.Versions = params.get("Versions")
         self.EdgeVersionLatest = params.get("EdgeVersionLatest")
         self.EdgeVersionCurrent = params.get("EdgeVersionCurrent")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupStorageLocationsRequest(AbstractModel):
+    """DescribeBackupStorageLocations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Names: 多个备份仓库名称，如果不填写，默认返回当前地域所有存储仓库名称
+        :type Names: list of str
+        """
+        self.Names = None
+
+
+    def _deserialize(self, params):
+        self.Names = params.get("Names")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupStorageLocationsResponse(AbstractModel):
+    """DescribeBackupStorageLocations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupStorageLocationSet: 详细备份仓库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupStorageLocationSet: list of BackupStorageLocation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BackupStorageLocationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BackupStorageLocationSet") is not None:
+            self.BackupStorageLocationSet = []
+            for item in params.get("BackupStorageLocationSet"):
+                obj = BackupStorageLocation()
+                obj._deserialize(item)
+                self.BackupStorageLocationSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -10484,6 +10691,9 @@ class EdgeCluster(AbstractModel):
         :param ChargeType: 集群付费模式，支持POSTPAID_BY_HOUR或者PREPAID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeType: str
+        :param EdgeVersion: 边缘集群组件的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EdgeVersion: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -10500,6 +10710,7 @@ class EdgeCluster(AbstractModel):
         self.Level = None
         self.AutoUpgradeClusterLevel = None
         self.ChargeType = None
+        self.EdgeVersion = None
 
 
     def _deserialize(self, params):
@@ -10520,6 +10731,7 @@ class EdgeCluster(AbstractModel):
         self.Level = params.get("Level")
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         self.ChargeType = params.get("ChargeType")
+        self.EdgeVersion = params.get("EdgeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11168,12 +11380,15 @@ class EnableVpcCniNetworkTypeRequest(AbstractModel):
         :type Subnets: list of str
         :param ExpiredSeconds: 在固定IP模式下，Pod销毁后退还IP的时间，传参必须大于300；不传默认IP永不销毁。
         :type ExpiredSeconds: int
+        :param SkipAddingNonMasqueradeCIDRs: 是否同步添加 vpc 网段到 ip-masq-agent-config 的 NonMasqueradeCIDRs 字段，默认 false 会同步添加
+        :type SkipAddingNonMasqueradeCIDRs: bool
         """
         self.ClusterId = None
         self.VpcCniType = None
         self.EnableStaticIp = None
         self.Subnets = None
         self.ExpiredSeconds = None
+        self.SkipAddingNonMasqueradeCIDRs = None
 
 
     def _deserialize(self, params):
@@ -11182,6 +11397,7 @@ class EnableVpcCniNetworkTypeRequest(AbstractModel):
         self.EnableStaticIp = params.get("EnableStaticIp")
         self.Subnets = params.get("Subnets")
         self.ExpiredSeconds = params.get("ExpiredSeconds")
+        self.SkipAddingNonMasqueradeCIDRs = params.get("SkipAddingNonMasqueradeCIDRs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -210,6 +210,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateBackupStorageLocation(self, request):
+        """创建备份仓库，指定了存储仓库类型（如COS）、COS桶地区、名称等信息，当前最多允许创建100个仓库， 注意此接口当前是全局接口，多个地域的TKE集群如果要备份到相同的备份仓库中，不需要重复创建备份仓库
+
+        :param request: Request instance for CreateBackupStorageLocation.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateBackupStorageLocationRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateBackupStorageLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBackupStorageLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBackupStorageLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCluster(self, request):
         """创建集群
 
@@ -799,6 +822,29 @@ class TkeClient(AbstractClient):
             body = self.call("CreateTKEEdgeCluster", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTKEEdgeClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteBackupStorageLocation(self, request):
+        """删除备份仓库
+
+        :param request: Request instance for DeleteBackupStorageLocation.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteBackupStorageLocationRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteBackupStorageLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBackupStorageLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBackupStorageLocationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1443,6 +1489,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeAvailableTKEEdgeVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAvailableTKEEdgeVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupStorageLocations(self, request):
+        """查询备份仓库信息
+
+        :param request: Request instance for DescribeBackupStorageLocations.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeBackupStorageLocationsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeBackupStorageLocationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupStorageLocations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupStorageLocationsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

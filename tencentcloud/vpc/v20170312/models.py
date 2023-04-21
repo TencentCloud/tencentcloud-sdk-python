@@ -359,6 +359,12 @@ class Address(AbstractModel):
         :param TagSet: 弹性公网IP关联的标签列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
+        :param DeadlineDate: 到期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadlineDate: str
+        :param InstanceType: EIP绑定的实例类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
         """
         self.AddressId = None
         self.AddressName = None
@@ -379,6 +385,8 @@ class Address(AbstractModel):
         self.Bandwidth = None
         self.InternetChargeType = None
         self.TagSet = None
+        self.DeadlineDate = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -408,6 +416,8 @@ class Address(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.DeadlineDate = params.get("DeadlineDate")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

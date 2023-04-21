@@ -1497,6 +1497,68 @@ class DescribeCertificatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCompaniesRequest(AbstractModel):
+    """DescribeCompanies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 分页偏移量
+        :type Offset: int
+        :param Limit: 分页每页限制数
+        :type Limit: int
+        :param CompanyId: 公司ID
+        :type CompanyId: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.CompanyId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CompanyId = params.get("CompanyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCompaniesResponse(AbstractModel):
+    """DescribeCompanies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Companies: 公司列表
+        :type Companies: list of CompanyInfo
+        :param TotalCount: 公司总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Companies = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Companies") is not None:
+            self.Companies = []
+            for item in params.get("Companies"):
+                obj = CompanyInfo()
+                obj._deserialize(item)
+                self.Companies.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeployedResourcesRequest(AbstractModel):
     """DescribeDeployedResources请求参数结构体
 

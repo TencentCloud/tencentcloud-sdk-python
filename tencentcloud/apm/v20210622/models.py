@@ -264,6 +264,12 @@ class ApmInstanceDetail(AbstractModel):
         :param TotalCount: 该实例已上报的总应用数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
+        :param LogSet: CLS日志集 | ES集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSet: str
+        :param MetricDuration: Metric数据保存时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricDuration: int
         """
         self.AmountOfUsedStorage = None
         self.Name = None
@@ -289,6 +295,8 @@ class ApmInstanceDetail(AbstractModel):
         self.LogTopicID = None
         self.ClientCount = None
         self.TotalCount = None
+        self.LogSet = None
+        self.MetricDuration = None
 
 
     def _deserialize(self, params):
@@ -321,6 +329,8 @@ class ApmInstanceDetail(AbstractModel):
         self.LogTopicID = params.get("LogTopicID")
         self.ClientCount = params.get("ClientCount")
         self.TotalCount = params.get("TotalCount")
+        self.LogSet = params.get("LogSet")
+        self.MetricDuration = params.get("MetricDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

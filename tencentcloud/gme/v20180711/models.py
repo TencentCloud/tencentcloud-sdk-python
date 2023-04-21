@@ -443,15 +443,19 @@ class CreateAppRequest(AbstractModel):
         :param ProjectId: 腾讯云项目ID，默认为0，表示默认项目
         :type ProjectId: int
         :param EngineList: 需要支持的引擎列表，默认全选。
+取值：android/ios/unity/cocos/unreal/windows
         :type EngineList: list of str
         :param RegionList: 服务区域列表，默认全选。
+取值：mainland-大陆地区，hmt-港澳台，sea-东南亚，na-北美，eu-欧洲，jpkr-日韩亚太，sa-南美，oc-澳洲，me-中东
         :type RegionList: list of str
         :param RealtimeSpeechConf: 实时语音服务配置数据
         :type RealtimeSpeechConf: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
-        :param VoiceMessageConf: 语音消息及转文本服务配置数据
+        :param VoiceMessageConf: 语音消息服务配置数据
         :type VoiceMessageConf: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
         :param VoiceFilterConf: 语音分析服务配置数据
         :type VoiceFilterConf: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
+        :param AsrConf: 语音转文本配置数据
+        :type AsrConf: :class:`tencentcloud.gme.v20180711.models.AsrConf`
         :param Tags: 需要添加的标签列表
         :type Tags: list of Tag
         """
@@ -462,6 +466,7 @@ class CreateAppRequest(AbstractModel):
         self.RealtimeSpeechConf = None
         self.VoiceMessageConf = None
         self.VoiceFilterConf = None
+        self.AsrConf = None
         self.Tags = None
 
 
@@ -479,6 +484,9 @@ class CreateAppRequest(AbstractModel):
         if params.get("VoiceFilterConf") is not None:
             self.VoiceFilterConf = VoiceFilterConf()
             self.VoiceFilterConf._deserialize(params.get("VoiceFilterConf"))
+        if params.get("AsrConf") is not None:
+            self.AsrConf = AsrConf()
+            self.AsrConf._deserialize(params.get("AsrConf"))
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):

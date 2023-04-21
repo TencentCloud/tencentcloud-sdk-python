@@ -71,6 +71,112 @@ class AddUserContactResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AuditLogFile(AbstractModel):
+    """审计日志文件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 审计日志文件生成异步任务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRequestId: int
+        :param FileName: 审计日志文件名称。
+        :type FileName: str
+        :param CreateTime: 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Status: 文件状态值。可能返回的值为：
+"creating" - 生成中;
+"failed" - 创建失败;
+"success" - 已生成;
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param FileSize: 文件大小，单位为 KB。
+        :type FileSize: float
+        :param DownloadUrl: 审计日志下载地址。
+        :type DownloadUrl: str
+        :param ErrMsg: 错误信息。
+        :type ErrMsg: str
+        :param Progress: 文件生成进度。
+        :type Progress: float
+        :param FinishTime: 文件生成成功时间。
+        :type FinishTime: str
+        """
+        self.AsyncRequestId = None
+        self.FileName = None
+        self.CreateTime = None
+        self.Status = None
+        self.FileSize = None
+        self.DownloadUrl = None
+        self.ErrMsg = None
+        self.Progress = None
+        self.FinishTime = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.FileName = params.get("FileName")
+        self.CreateTime = params.get("CreateTime")
+        self.Status = params.get("Status")
+        self.FileSize = params.get("FileSize")
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.ErrMsg = params.get("ErrMsg")
+        self.Progress = params.get("Progress")
+        self.FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFilter(AbstractModel):
+    """过滤条件。可按设置的过滤条件过滤日志。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Host: 客户端地址。
+        :type Host: list of str
+        :param DBName: 数据库名称。
+        :type DBName: list of str
+        :param User: 用户名。
+        :type User: list of str
+        :param SentRows: 返回行数。表示筛选返回行数大于该值的审计日志。
+        :type SentRows: int
+        :param AffectRows: 影响行数。表示筛选影响行数大于该值的审计日志。
+        :type AffectRows: int
+        :param ExecTime: 执行时间。单位为：µs。表示筛选执行时间大于该值的审计日志。
+        :type ExecTime: int
+        """
+        self.Host = None
+        self.DBName = None
+        self.User = None
+        self.SentRows = None
+        self.AffectRows = None
+        self.ExecTime = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        self.DBName = params.get("DBName")
+        self.User = params.get("User")
+        self.SentRows = params.get("SentRows")
+        self.AffectRows = params.get("AffectRows")
+        self.ExecTime = params.get("ExecTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelKillTaskRequest(AbstractModel):
     """CancelKillTask请求参数结构体
 
@@ -150,6 +256,73 @@ class ContactItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAuditLogFileRequest(AbstractModel):
+    """CreateAuditLogFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :type Product: str
+        :param NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"
+        :type NodeRequestType: str
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param StartTime: 开始时间，如“2019-09-10 12:13:14”。	
+        :type StartTime: str
+        :param EndTime: 截止时间，如“2019-09-11 10:13:14”。
+        :type EndTime: str
+        :param Filter: 过滤条件。可按设置的过滤条件过滤日志。
+        :type Filter: :class:`tencentcloud.dbbrain.v20210527.models.AuditLogFilter`
+        """
+        self.Product = None
+        self.NodeRequestType = None
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Filter = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.NodeRequestType = params.get("NodeRequestType")
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("Filter") is not None:
+            self.Filter = AuditLogFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditLogFileResponse(AbstractModel):
+    """CreateAuditLogFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 审计日志文件下载的任务ID
+        :type AsyncRequestId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateDBDiagReportTaskRequest(AbstractModel):
@@ -657,6 +830,59 @@ class CreateSqlFilterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteAuditLogFileRequest(AbstractModel):
+    """DeleteAuditLogFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :type Product: str
+        :param NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"	
+        :type NodeRequestType: str
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param AsyncRequestId: 审计日志文件生成异步任务ID。
+        :type AsyncRequestId: int
+        """
+        self.Product = None
+        self.NodeRequestType = None
+        self.InstanceId = None
+        self.AsyncRequestId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.NodeRequestType = params.get("NodeRequestType")
+        self.InstanceId = params.get("InstanceId")
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditLogFileResponse(AbstractModel):
+    """DeleteAuditLogFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDBDiagReportTasksRequest(AbstractModel):
     """DeleteDBDiagReportTasks请求参数结构体
 
@@ -924,6 +1150,78 @@ class DescribeAllUserGroupResponse(AbstractModel):
                 obj = GroupItem()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogFilesRequest(AbstractModel):
+    """DescribeAuditLogFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Product: 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+        :type Product: str
+        :param NodeRequestType: 与Product保持一致。如："dcdb" ,"mariadb"
+        :type NodeRequestType: str
+        :param InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 查询数目，默认为20，最大为100。
+        :type Limit: int
+        """
+        self.Product = None
+        self.NodeRequestType = None
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.NodeRequestType = params.get("NodeRequestType")
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogFilesResponse(AbstractModel):
+    """DescribeAuditLogFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的审计日志文件个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Items: 审计日志文件详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditLogFile
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = AuditLogFile()
+                obj._deserialize(item)
+                self.Items.append(obj)
         self.RequestId = params.get("RequestId")
 
 

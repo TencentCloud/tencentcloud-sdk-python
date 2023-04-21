@@ -466,6 +466,85 @@ class BatchDeleteRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BatchDescribeDocumentRequest(AbstractModel):
+    """BatchDescribeDocument请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 低代码互动课堂的SdkAppId。
+        :type SdkAppId: int
+        :param Page: 分页查询当前页数，从1开始递增
+        :type Page: int
+        :param Limit: 每页数据量，最大1000
+        :type Limit: int
+        :param Permission: 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
+        :type Permission: list of int non-negative
+        :param Owner: 课件所有者的user_id，不填默认获取SdkAppId下所有课件
+        :type Owner: str
+        :param Keyword: 课件名称搜索词
+        :type Keyword: str
+        :param DocumentId: 课件id列表，从列表中查询，忽略错误的id
+        :type DocumentId: list of str
+        """
+        self.SdkAppId = None
+        self.Page = None
+        self.Limit = None
+        self.Permission = None
+        self.Owner = None
+        self.Keyword = None
+        self.DocumentId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Page = params.get("Page")
+        self.Limit = params.get("Limit")
+        self.Permission = params.get("Permission")
+        self.Owner = params.get("Owner")
+        self.Keyword = params.get("Keyword")
+        self.DocumentId = params.get("DocumentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDescribeDocumentResponse(AbstractModel):
+    """BatchDescribeDocument返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 符合查询条件文档总数
+        :type Total: int
+        :param Documents: 文档信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Documents: list of DocumentInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Documents = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Documents") is not None:
+            self.Documents = []
+            for item in params.get("Documents"):
+                obj = DocumentInfo()
+                obj._deserialize(item)
+                self.Documents.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class BatchRegisterRequest(AbstractModel):
     """BatchRegister请求参数结构体
 

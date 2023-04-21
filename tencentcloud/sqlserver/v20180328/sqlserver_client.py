@@ -2261,7 +2261,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RestoreInstance(self, request):
-        """本接口（RestoreInstance）用于根据备份文件恢复实例。
+        """本接口（RestoreInstance）用于按照备份集回档数据库。
 
         :param request: Request instance for RestoreInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RestoreInstanceRequest`
@@ -2284,7 +2284,7 @@ class SqlserverClient(AbstractClient):
 
 
     def RollbackInstance(self, request):
-        """本接口（RollbackInstance）用于回档实例
+        """本接口（RollbackInstance）用于按照时间点回档实例
 
         :param request: Request instance for RollbackInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.RollbackInstanceRequest`
