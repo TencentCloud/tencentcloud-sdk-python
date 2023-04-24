@@ -2310,6 +2310,53 @@ class DescribeAvailableRecoveryTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupDownloadRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadRestriction请求参数结构体
+
+    """
+
+
+class DescribeBackupDownloadRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RestrictionType: 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+        :type RestrictionType: str
+        :param VpcRestrictionEffect: vpc限制效力，ALLOW 允许；DENY 拒绝。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcRestrictionEffect: str
+        :param VpcIdSet: 允许或拒绝下载备份文件的vpcId列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcIdSet: list of str
+        :param IpRestrictionEffect: ip限制效力，ALLOW 允许；DENY 拒绝。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpRestrictionEffect: str
+        :param IpSet: 允许或拒绝下载备份文件的ip列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RestrictionType = None
+        self.VpcRestrictionEffect = None
+        self.VpcIdSet = None
+        self.IpRestrictionEffect = None
+        self.IpSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RestrictionType = params.get("RestrictionType")
+        self.VpcRestrictionEffect = params.get("VpcRestrictionEffect")
+        self.VpcIdSet = params.get("VpcIdSet")
+        self.IpRestrictionEffect = params.get("IpRestrictionEffect")
+        self.IpSet = params.get("IpSet")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupDownloadURLRequest(AbstractModel):
     """DescribeBackupDownloadURL请求参数结构体
 
@@ -5082,6 +5129,63 @@ class ModifyAccountRemarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyBackupDownloadRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RestrictionType: 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+        :type RestrictionType: str
+        :param VpcRestrictionEffect: vpc限制效力，ALLOW 允许；DENY 拒绝。
+        :type VpcRestrictionEffect: str
+        :param VpcIdSet: 允许或拒绝下载备份文件的vpcId列表。
+        :type VpcIdSet: list of str
+        :param IpRestrictionEffect: ip限制效力，ALLOW 允许；DENY 拒绝。
+        :type IpRestrictionEffect: str
+        :param IpSet: 允许或拒绝下载备份文件的ip列表。
+        :type IpSet: list of str
+        """
+        self.RestrictionType = None
+        self.VpcRestrictionEffect = None
+        self.VpcIdSet = None
+        self.IpRestrictionEffect = None
+        self.IpSet = None
+
+
+    def _deserialize(self, params):
+        self.RestrictionType = params.get("RestrictionType")
+        self.VpcRestrictionEffect = params.get("VpcRestrictionEffect")
+        self.VpcIdSet = params.get("VpcIdSet")
+        self.IpRestrictionEffect = params.get("IpRestrictionEffect")
+        self.IpSet = params.get("IpSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyBackupPlanRequest(AbstractModel):
     """ModifyBackupPlan请求参数结构体
 
@@ -5185,6 +5289,67 @@ class ModifyBaseBackupExpireTimeResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceChargeTypeRequest(AbstractModel):
+    """ModifyDBInstanceChargeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如postgres-6fego161
+        :type DBInstanceId: str
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。
+        :type InstanceChargeType: str
+        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+        :type Period: int
+        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费。
+        :type AutoRenewFlag: int
+        :param AutoVoucher: 是否自动使用代金券,1是,0否，默认不使用
+        :type AutoVoucher: int
+        """
+        self.DBInstanceId = None
+        self.InstanceChargeType = None
+        self.Period = None
+        self.AutoRenewFlag = None
+        self.AutoVoucher = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.Period = params.get("Period")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceChargeTypeResponse(AbstractModel):
+    """ModifyDBInstanceChargeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: 订单名
+        :type DealName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 

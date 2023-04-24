@@ -7245,12 +7245,15 @@ class SmartStructuralOCRV2Request(AbstractModel):
 若客户只想返回姓名、性别两个字段的识别结果，则输入
 ItemNames=["姓名","性别"]
         :type ItemNames: list of str
+        :param ReturnFullText: 是否开启全文字段识别
+        :type ReturnFullText: bool
         """
         self.ImageUrl = None
         self.ImageBase64 = None
         self.IsPdf = None
         self.PdfPageNumber = None
         self.ItemNames = None
+        self.ReturnFullText = None
 
 
     def _deserialize(self, params):
@@ -7259,6 +7262,7 @@ ItemNames=["姓名","性别"]
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
         self.ItemNames = params.get("ItemNames")
+        self.ReturnFullText = params.get("ReturnFullText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7280,11 +7284,14 @@ class SmartStructuralOCRV2Response(AbstractModel):
         :type Angle: float
         :param StructuralList: 配置结构化文本信息
         :type StructuralList: list of GroupInfo
+        :param WordList: 还原文本信息
+        :type WordList: list of WordItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Angle = None
         self.StructuralList = None
+        self.WordList = None
         self.RequestId = None
 
 
@@ -7296,6 +7303,12 @@ class SmartStructuralOCRV2Response(AbstractModel):
                 obj = GroupInfo()
                 obj._deserialize(item)
                 self.StructuralList.append(obj)
+        if params.get("WordList") is not None:
+            self.WordList = []
+            for item in params.get("WordList"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self.WordList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -10552,6 +10565,36 @@ class WordCoordPoint(AbstractModel):
                 obj = Coord()
                 obj._deserialize(item)
                 self.WordCoordinate.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WordItem(AbstractModel):
+    """还原文本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DetectedText: 文本块内容
+        :type DetectedText: str
+        :param Coord: 四点坐标
+        :type Coord: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        """
+        self.DetectedText = None
+        self.Coord = None
+
+
+    def _deserialize(self, params):
+        self.DetectedText = params.get("DetectedText")
+        if params.get("Coord") is not None:
+            self.Coord = Polygon()
+            self.Coord._deserialize(params.get("Coord"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

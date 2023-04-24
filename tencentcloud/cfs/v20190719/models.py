@@ -2550,6 +2550,59 @@ class PGroupRuleInfo(AbstractModel):
         
 
 
+class ScaleUpFileSystemRequest(AbstractModel):
+    """ScaleUpFileSystem请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemId: 文件系统Id
+        :type FileSystemId: str
+        :param TargetCapacity: 扩容的目标容量
+        :type TargetCapacity: int
+        """
+        self.FileSystemId = None
+        self.TargetCapacity = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.TargetCapacity = params.get("TargetCapacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleUpFileSystemResponse(AbstractModel):
+    """ScaleUpFileSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemId: 文件系统Id
+        :type FileSystemId: str
+        :param TargetCapacity: 扩容的目标容量
+        :type TargetCapacity: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileSystemId = None
+        self.TargetCapacity = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.TargetCapacity = params.get("TargetCapacity")
+        self.RequestId = params.get("RequestId")
+
+
 class SetUserQuotaRequest(AbstractModel):
     """SetUserQuota请求参数结构体
 

@@ -1311,16 +1311,20 @@ class DescribeCallInMetricsRequest(AbstractModel):
         :type EnabledSkillGroup: bool
         :param EnabledNumber: 是否返回线路维度信息，默认“否”
         :type EnabledNumber: bool
+        :param GroupIdList: 筛选技能组列表
+        :type GroupIdList: list of int
         """
         self.SdkAppId = None
         self.EnabledSkillGroup = None
         self.EnabledNumber = None
+        self.GroupIdList = None
 
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.EnabledSkillGroup = params.get("EnabledSkillGroup")
         self.EnabledNumber = params.get("EnabledNumber")
+        self.GroupIdList = params.get("GroupIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2097,14 +2101,22 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
         :type SdkAppId: int
         :param StaffList: 筛选坐席列表，默认不传返回全部坐席信息
         :type StaffList: list of str
+        :param GroupIdList: 筛选技能组ID列表
+        :type GroupIdList: list of int
+        :param StatusList: 筛选坐席状态列表
+        :type StatusList: list of str
         """
         self.SdkAppId = None
         self.StaffList = None
+        self.GroupIdList = None
+        self.StatusList = None
 
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.StaffList = params.get("StaffList")
+        self.GroupIdList = params.get("GroupIdList")
+        self.StatusList = params.get("StatusList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -187,6 +187,29 @@ class KeewidbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeConnectionConfig(self, request):
+        """本接口（DescribeConnectionConfig）用于查询实例连接配置，包括出流量和入流量带宽、最大连接数限制。
+
+        :param request: Request instance for DescribeConnectionConfig.
+        :type request: :class:`tencentcloud.keewidb.v20220308.models.DescribeConnectionConfigRequest`
+        :rtype: :class:`tencentcloud.keewidb.v20220308.models.DescribeConnectionConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConnectionConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConnectionConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBSecurityGroups(self, request):
         """本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
 

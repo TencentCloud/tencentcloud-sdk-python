@@ -10647,6 +10647,8 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         :type RouteType: str
         :param RouteId: 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略
         :type RouteId: int
+        :param RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :type RouteTableId: str
         """
         self.DestinationCidrBlock = None
         self.GatewayType = None
@@ -10656,6 +10658,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.Enabled = None
         self.RouteType = None
         self.RouteId = None
+        self.RouteTableId = None
 
 
     def _deserialize(self, params):
@@ -10667,6 +10670,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         self.Enabled = params.get("Enabled")
         self.RouteType = params.get("RouteType")
         self.RouteId = params.get("RouteId")
+        self.RouteTableId = params.get("RouteTableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

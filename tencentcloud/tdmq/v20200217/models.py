@@ -7491,6 +7491,68 @@ class ModifyRocketMQGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRocketMQInstanceSpecRequest(AbstractModel):
+    """ModifyRocketMQInstanceSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 专享实例ID
+        :type InstanceId: str
+        :param Specification: 实例规格，
+rocket-vip-basic-1 基础型
+rocket-vip-basic-2 标准型
+rocket-vip-basic-3 高阶Ⅰ型
+rocket-vip-basic-4 高阶Ⅱ型
+        :type Specification: str
+        :param NodeCount: 节点数量
+        :type NodeCount: int
+        :param StorageSize: 存储空间，GB为单位
+        :type StorageSize: int
+        """
+        self.InstanceId = None
+        self.Specification = None
+        self.NodeCount = None
+        self.StorageSize = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Specification = params.get("Specification")
+        self.NodeCount = params.get("NodeCount")
+        self.StorageSize = params.get("StorageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRocketMQInstanceSpecResponse(AbstractModel):
+    """ModifyRocketMQInstanceSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OrderId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRocketMQNamespaceRequest(AbstractModel):
     """ModifyRocketMQNamespace请求参数结构体
 

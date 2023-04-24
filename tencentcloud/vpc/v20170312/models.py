@@ -2332,6 +2332,35 @@ class CcnRegionBandwidthLimitInfo(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param SourceRegion: 源地域，例如：ap-shanghai
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceRegion: str
+        :param DestinationRegion: 目的地域， 例如：ap-shanghai
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestinationRegion: str
+        :param BandwidthLimit: 出带宽上限，单位：Mbps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthLimit: int
+        """
+        self.SourceRegion = None
+        self.DestinationRegion = None
+        self.BandwidthLimit = None
+
+
+    def _deserialize(self, params):
+        self.SourceRegion = params.get("SourceRegion")
+        self.DestinationRegion = params.get("DestinationRegion")
+        self.BandwidthLimit = params.get("BandwidthLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CcnRoute(AbstractModel):
     """CCN路由策略对象
@@ -5235,7 +5264,7 @@ class CreateVpnConnectionRequest(AbstractModel):
         r"""
         :param VpnGatewayId: VPN网关实例ID。
         :type VpnGatewayId: str
-        :param CustomerGatewayId: 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+        :param CustomerGatewayId: 对端网关ID。例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/product/215/17516)接口查询对端网关。
         :type CustomerGatewayId: str
         :param VpnConnectionName: 通道名称，可任意命名，但不得超过60个字符。
         :type VpnConnectionName: str
@@ -5252,11 +5281,11 @@ CCN VPN 形的通道 可以不传VPCID
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
-        :param EnableHealthCheck: 是否支持隧道内健康检查
+        :param EnableHealthCheck: 是否支持隧道内健康检查，默认为False。
         :type EnableHealthCheck: bool
-        :param HealthCheckLocalIp: 健康检查本端地址
+        :param HealthCheckLocalIp: 健康检查本端地址，默认值为随机在169.254.128.0/17分配一个IP。
         :type HealthCheckLocalIp: str
-        :param HealthCheckRemoteIp: 健康检查对端地址
+        :param HealthCheckRemoteIp: 健康检查对端地址，默认值为随机在169.254.128.0/17分配一个IP。
         :type HealthCheckRemoteIp: str
         :param RouteType: 通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
         :type RouteType: str
@@ -6183,7 +6212,7 @@ class DeleteCustomerGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomerGatewayId: 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+        :param CustomerGatewayId: 对端网关ID，例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/api/215/17516)接口查询对端网关。
         :type CustomerGatewayId: str
         """
         self.CustomerGatewayId = None
@@ -16724,7 +16753,7 @@ class ModifyCustomerGatewayAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CustomerGatewayId: 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+        :param CustomerGatewayId: 对端网关ID，例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/api/215/17516)接口查询对端网关。
         :type CustomerGatewayId: str
         :param CustomerGatewayName: 对端网关名称，可任意命名，但不得超过60个字符。
         :type CustomerGatewayName: str
@@ -18432,17 +18461,17 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type VpnConnectionName: str
         :param PreShareKey: 预共享密钥。
         :type PreShareKey: str
-        :param SecurityPolicyDatabases: SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+        :param SecurityPolicyDatabases: SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
         :type SecurityPolicyDatabases: list of SecurityPolicyDatabase
         :param IKEOptionsSpecification: IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         :param IPSECOptionsSpecification: IPSec配置，腾讯云提供IPSec安全会话设置。
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
-        :param EnableHealthCheck: 是否启用通道健康检查
+        :param EnableHealthCheck: 是否启用通道健康检查，默认为False。
         :type EnableHealthCheck: bool
-        :param HealthCheckLocalIp: 本端通道探测ip
+        :param HealthCheckLocalIp: 本端通道探测IP。
         :type HealthCheckLocalIp: str
-        :param HealthCheckRemoteIp: 对端通道探测ip
+        :param HealthCheckRemoteIp: 对端通道探测IP。
         :type HealthCheckRemoteIp: str
         :param NegotiationType: 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
         :type NegotiationType: str
@@ -18452,6 +18481,8 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         :type DpdTimeout: str
         :param DpdAction: DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
         :type DpdAction: str
+        :param CustomerGatewayId: 对端网关ID，4.0及以上网关下的通道支持更新。
+        :type CustomerGatewayId: str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -18466,6 +18497,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self.DpdEnable = None
         self.DpdTimeout = None
         self.DpdAction = None
+        self.CustomerGatewayId = None
 
 
     def _deserialize(self, params):
@@ -18491,6 +18523,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
         self.DpdEnable = params.get("DpdEnable")
         self.DpdTimeout = params.get("DpdTimeout")
         self.DpdAction = params.get("DpdAction")
+        self.CustomerGatewayId = params.get("CustomerGatewayId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

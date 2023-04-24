@@ -1097,10 +1097,20 @@ class CreateTraceCodesRequest(AbstractModel):
         :type CorpId: int
         :param Codes: 码
         :type Codes: list of CodeItem
+        :param CodeType: 码绑定激活策略，默认  0
+0: 传什么码就激活什么码
+1: 层级码 + 层级子码
+        :type CodeType: int
+        :param CheckType: 错误检查类型，默认 0
+0: 没有新导入码时正常返回
+1: 没有新导入码时报错，并返回没有导入成功的原因
+        :type CheckType: int
         """
         self.BatchId = None
         self.CorpId = None
         self.Codes = None
+        self.CodeType = None
+        self.CheckType = None
 
 
     def _deserialize(self, params):
@@ -1112,6 +1122,8 @@ class CreateTraceCodesRequest(AbstractModel):
                 obj = CodeItem()
                 obj._deserialize(item)
                 self.Codes.append(obj)
+        self.CodeType = params.get("CodeType")
+        self.CheckType = params.get("CheckType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3508,12 +3520,16 @@ class ModifyTraceDataRequest(AbstractModel):
         :type TraceItems: list of TraceItem
         :param PhaseName: 溯源阶段名称
         :type PhaseName: str
+        :param PhaseData: 环节数据
+        :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
+        :param Status: 溯源状态 0: 无效, 1: 有效
+        :type Status: int
+        :param Rank: 排序
+        :type Rank: int
         :param Type: [无效] 类型
         :type Type: int
         :param Code: [无效] 溯源码
         :type Code: str
-        :param Rank: [无效] 排序
-        :type Rank: int
         :param Phase: [无效] 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
         :type Phase: int
         :param TraceTime: [无效] 溯源时间
@@ -3528,19 +3544,17 @@ class ModifyTraceDataRequest(AbstractModel):
         :type ChainData: :class:`tencentcloud.trp.v20210515.models.ChainData`
         :param CorpId: 企业ID
         :type CorpId: int
-        :param Status: 溯源状态 0: 无效, 1: 有效
-        :type Status: int
-        :param PhaseData: 环节数据
-        :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         """
         self.TraceId = None
         self.BatchId = None
         self.TaskId = None
         self.TraceItems = None
         self.PhaseName = None
+        self.PhaseData = None
+        self.Status = None
+        self.Rank = None
         self.Type = None
         self.Code = None
-        self.Rank = None
         self.Phase = None
         self.TraceTime = None
         self.CreateTime = None
@@ -3548,8 +3562,6 @@ class ModifyTraceDataRequest(AbstractModel):
         self.ChainTime = None
         self.ChainData = None
         self.CorpId = None
-        self.Status = None
-        self.PhaseData = None
 
 
     def _deserialize(self, params):
@@ -3563,9 +3575,13 @@ class ModifyTraceDataRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TraceItems.append(obj)
         self.PhaseName = params.get("PhaseName")
+        if params.get("PhaseData") is not None:
+            self.PhaseData = PhaseData()
+            self.PhaseData._deserialize(params.get("PhaseData"))
+        self.Status = params.get("Status")
+        self.Rank = params.get("Rank")
         self.Type = params.get("Type")
         self.Code = params.get("Code")
-        self.Rank = params.get("Rank")
         self.Phase = params.get("Phase")
         self.TraceTime = params.get("TraceTime")
         self.CreateTime = params.get("CreateTime")
@@ -3575,10 +3591,6 @@ class ModifyTraceDataRequest(AbstractModel):
             self.ChainData = ChainData()
             self.ChainData._deserialize(params.get("ChainData"))
         self.CorpId = params.get("CorpId")
-        self.Status = params.get("Status")
-        if params.get("PhaseData") is not None:
-            self.PhaseData = PhaseData()
-            self.PhaseData._deserialize(params.get("PhaseData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4187,31 +4199,24 @@ class TraceData(AbstractModel):
     def __init__(self):
         r"""
         :param TraceId: 溯源ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TraceId: str
         :param CorpId: 企业ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
         :param Type: 码类型 0: 批次, 1: 码, 2: 生产任务
-注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param Code: 码值，跟码类型一一对应
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param Rank: 排序，在Phase相同情况下，值越小排名靠前
-注意：此字段可能返回 null，表示取不到有效值。
         :type Rank: int
         :param Phase: 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
-注意：此字段可能返回 null，表示取不到有效值。
         :type Phase: int
         :param PhaseName: 溯源环节名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type PhaseName: str
         :param TraceTime: 溯源时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceTime: str
         :param TraceItems: 无
-注意：此字段可能返回 null，表示取不到有效值。
         :type TraceItems: list of TraceItem
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4229,7 +4234,6 @@ class TraceData(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         :param Status: 溯源阶段状态 0: 无效, 1: 有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         """
         self.TraceId = None
@@ -4284,45 +4288,46 @@ class TraceData(AbstractModel):
 
 
 class TraceItem(AbstractModel):
-    """溯源数据项
-    Type的枚举值
+    """溯源数据项 Type 的枚举值
+
     text:文本类型, longtext:长文本类型, banner:单图片类型, image:多图片类型, video:视频类型, mp:小程序类型
+
     具体组合如下
-    Type: "text" 文本类型, 对应值 Value: "文本字符串"
-    Type: "longtext" 长文本类型, 对应值 Value: "长文本字符串, 支持换行\n"
-    Type: "banner" 单图片类型, 对应图片地址 Value: "https://sample.cdn.com/xxx.jpg"
-    Type: "image" 多图片类型, 对应图片地址 Values: ["https://sample.cdn.com/1.jpg", "https://sample.cdn.com/2.jpg"]
-    Type: "video" 视频类型, 对应视频地址 Value: "https://sample.cdn.com/xxx.mp4"
-    Type: "mp" 小程序类型, 对应配置 Values: ["WXAPPID", "WXAPP_PATH", "跳转说明"]
+    - Type: "text" 文本类型, 对应值 Value: "文本字符串"
+    - Type: "longtext" 长文本类型, 对应值 Value: "长文本字符串, 支持换行\n"
+    - Type: "banner" 单图片类型, 对应图片地址 Value: "https://sample.cdn.com/xxx.jpg"
+    - Type: "image" 多图片类型, 对应图片地址 Values: ["https://sample.cdn.com/1.jpg", "https://sample.cdn.com/2.jpg"]
+    - Type: "video" 视频类型, 对应视频地址 Value: "https://sample.cdn.com/xxx.mp4"
+    - Type: "mp" 小程序类型, 对应配置 Values: ["WXAPPID", "WXAPP_PATH", "跳转说明"]
 
     """
 
     def __init__(self):
         r"""
         :param Name: 字段名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Value: 字段值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
-        :param Type: 类型 text:文本类型, longtext:长文本类型, banner:单图片类型, image:多图片类型, video:视频类型, mp:小程序类型
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Type: 字段类型
+text:文本类型, 
+longtext:长文本类型, banner:单图片类型, image:多图片类型,
+video:视频类型,
+mp:小程序类型
         :type Type: str
         :param ReadOnly: 只读
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnly: bool
         :param Hidden: 扫码展示
-注意：此字段可能返回 null，表示取不到有效值。
         :type Hidden: bool
         :param Values: 多个值
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
         :param Key: 类型标识
-注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param Ext: 扩展字段
-注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: str
+        :param Attrs: 额外属性
+        :type Attrs: list of TraceItem
+        :param List: 子页面，只读
+        :type List: list of TraceData
         """
         self.Name = None
         self.Value = None
@@ -4332,6 +4337,8 @@ class TraceItem(AbstractModel):
         self.Values = None
         self.Key = None
         self.Ext = None
+        self.Attrs = None
+        self.List = None
 
 
     def _deserialize(self, params):
@@ -4343,6 +4350,18 @@ class TraceItem(AbstractModel):
         self.Values = params.get("Values")
         self.Key = params.get("Key")
         self.Ext = params.get("Ext")
+        if params.get("Attrs") is not None:
+            self.Attrs = []
+            for item in params.get("Attrs"):
+                obj = TraceItem()
+                obj._deserialize(item)
+                self.Attrs.append(obj)
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = TraceData()
+                obj._deserialize(item)
+                self.List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

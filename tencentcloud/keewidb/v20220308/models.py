@@ -552,6 +552,59 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeConnectionConfigRequest(AbstractModel):
+    """DescribeConnectionConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，如：kee-6ubh****。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConnectionConfigResponse(AbstractModel):
+    """DescribeConnectionConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InNetLimit: 单分片入流量带宽限制，单位：MB。
+        :type InNetLimit: int
+        :param OutNetLimit: 单分片出流量带宽限制，单位：MB。
+        :type OutNetLimit: int
+        :param ClientLimit: 单分片连接数限制。
+        :type ClientLimit: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InNetLimit = None
+        self.OutNetLimit = None
+        self.ClientLimit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InNetLimit = params.get("InNetLimit")
+        self.OutNetLimit = params.get("OutNetLimit")
+        self.ClientLimit = params.get("ClientLimit")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSecurityGroupsRequest(AbstractModel):
     """DescribeDBSecurityGroups请求参数结构体
 

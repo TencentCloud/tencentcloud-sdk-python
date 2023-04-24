@@ -3279,8 +3279,9 @@ class ListTriggersRequest(AbstractModel):
         :type OrderBy: str
         :param Order: 以升序还是降序的方式返回结果，可选值 ASC 和 DESC，默认DESC
         :type Order: str
-        :param Filters: * Qualifier:
-函数版本，别名
+        :param Filters: * Qualifier: 函数版本，别名
+* TriggerName: 函数触发器名称
+* Description: 函数触发器描述
         :type Filters: list of Filter
         """
         self.FunctionName = None
@@ -4588,6 +4589,9 @@ class TriggerInfo(AbstractModel):
         :type BindStatus: str
         :param TriggerAttribute: 触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
         :type TriggerAttribute: str
+        :param Description: 客户自定义触发器描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self.Enable = None
         self.Qualifier = None
@@ -4601,6 +4605,7 @@ class TriggerInfo(AbstractModel):
         self.ResourceId = None
         self.BindStatus = None
         self.TriggerAttribute = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -4616,6 +4621,7 @@ class TriggerInfo(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.BindStatus = params.get("BindStatus")
         self.TriggerAttribute = params.get("TriggerAttribute")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

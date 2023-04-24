@@ -2898,37 +2898,26 @@ class DescribeAlarmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> name
+        :param Filters: name
+- 按照【告警策略名称】进行过滤。
+- 类型：String
+- 必选：否
 
-按照【告警策略名称】进行过滤。
-类型：String
+alarmId
+- 按照【告警策略ID】进行过滤。
+- 类型：String
+- 必选：否
 
-必选：否
+topicId
+- 按照【监控对象的日志主题ID】进行过滤。
+- 类型：String
+- 必选：否
 
-<br><li> alarmId
-
-按照【告警策略ID】进行过滤。
-类型：String
-
-必选：否
-
-<br><li> topicId
-
-按照【监控对象的日志主题ID】进行过滤。
-
-类型：String
-
-必选：否
-
-<br><li> enable
-
-按照【启用状态】进行过滤。
-
-类型：String
-
-备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
-
-必选：否
+enable
+- 按照【启用状态】进行过滤。
+- 类型：String
+- 备注：enable参数值范围: 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False。 其它值将返回参数错误信息.
+- 必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
@@ -3196,27 +3185,20 @@ class DescribeConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> configName
+        :param Filters: configName
+- 按照【采集配置名称】进行模糊匹配过滤。
+- 类型：String
+- 必选：否
 
-按照【采集配置名称】进行模糊匹配过滤。
-类型：String
+configId
+- 按照【采集配置ID】进行过滤。
+- 类型：String
+- 必选：否
 
-必选：否
-
-<br><li> configId
-
-按照【采集配置ID】进行过滤。
-类型：String
-
-必选：否
-
-<br><li> topicId
-
-按照【日志主题】进行过滤。
-
-类型：String
-
-必选：否
+topicId
+- 按照【日志主题】进行过滤。
+- 类型：String
+- 必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
@@ -3701,35 +3683,25 @@ class DescribeLogsetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> logsetName
+        :param Filters: logsetName
+- 按照【日志集名称】进行过滤。
+- 类型：String
+- 必选：否
 
-按照【日志集名称】进行过滤。
-类型：String
+logsetId
+- 按照【日志集ID】进行过滤。
+- 类型：String
+- 必选：否
 
-必选：否
+tagKey
+- 按照【标签键】进行过滤。
+- 类型：String
+- 必选：否
 
-<br><li> logsetId
-
-按照【日志集ID】进行过滤。
-类型：String
-
-必选：否
-
-<br><li> tagKey
-
-按照【标签键】进行过滤。
-
-类型：String
-
-必选：否
-
-<br><li> tag:tagKey
-
-按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。
-类型：String
-
-必选：否
-
+tag:tagKey
+- 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。
+- 类型：String
+- 必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
@@ -3849,35 +3821,25 @@ class DescribeMachineGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> machineGroupName
+        :param Filters: machineGroupName
+- 按照【机器组名称】进行过滤。
+- 类型：String
+- 必选：否
 
-按照【机器组名称】进行过滤。
-类型：String
+machineGroupId
+- 按照【机器组ID】进行过滤。
+- 类型：String
+- 必选：否
 
-必选：否
+tagKey
+- 按照【标签键】进行过滤。
+- 类型：String
+- 必选：否
 
-<br><li> machineGroupId
-
-按照【机器组ID】进行过滤。
-类型：String
-
-必选：否
-
-<br><li> tagKey
-
-按照【标签键】进行过滤。
-
-类型：String
-
-必选：否
-
-<br><li> tag:tagKey
-
-按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。
-类型：String
-
-必选：否
-
+tag:tagKey
+- 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。
+- 类型：String
+- 必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
@@ -4126,27 +4088,9 @@ class DescribeShippersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> shipperName
-
-按照【投递规则名称】进行过滤。
-类型：String
-
-必选：否
-
-<br><li> shipperId
-
-按照【投递规则ID】进行过滤。
-类型：String
-
-必选：否
-
-<br><li> topicId
-
-按照【日志主题】进行过滤。
-
-类型：String
-
-必选：否
+        :param Filters: - shipperName：按照【投递规则名称】进行过滤。类型：String。必选：否
+- shipperId：按照【投递规则ID】进行过滤。类型：String。必选：否
+- topicId：按照【日志主题】进行过滤。类型：String。必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter

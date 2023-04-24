@@ -5832,13 +5832,14 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID。
+        :param InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+
         :type InstanceId: str
         :param WeekDays: 设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
         :type WeekDays: list of str
         :param TimePeriod: 备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
         :type TimePeriod: str
-        :param AutoBackupType: 自动备份类型： 1 “定时回档”。
+        :param AutoBackupType: 自动备份类型。目前仅能配置为：1 ，指定时备份。
         :type AutoBackupType: int
         """
         self.InstanceId = None
@@ -5868,11 +5869,11 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AutoBackupType: 自动备份类型： 1 “定时回档”
+        :param AutoBackupType: 自动备份类型。目前仅能配置为：1 ，指定时备份。
         :type AutoBackupType: int
         :param WeekDays: 自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
         :type WeekDays: list of str
-        :param TimePeriod: 自动备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
+        :param TimePeriod: 自动定时备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
         :type TimePeriod: str
         :param BackupStorageDays: 全量备份文件保存天数,单位：天。
         :type BackupStorageDays: int

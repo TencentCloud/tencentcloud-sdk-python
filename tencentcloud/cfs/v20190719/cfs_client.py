@@ -697,6 +697,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ScaleUpFileSystem(self, request):
+        """该接口用于对turbo 文件系统扩容使用
+
+        :param request: Request instance for ScaleUpFileSystem.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.ScaleUpFileSystemRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.ScaleUpFileSystemResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleUpFileSystem", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleUpFileSystemResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetUserQuota(self, request):
         """设置文件系统配额，提供UID/GID的配额设置的接口
 

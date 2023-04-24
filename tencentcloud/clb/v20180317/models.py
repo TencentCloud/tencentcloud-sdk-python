@@ -6414,6 +6414,8 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type SnatPro: bool
         :param DeleteProtect: 是否开启删除保护
         :type DeleteProtect: bool
+        :param ModifyClassicDomain: 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换。修改后mycloud.com域名将失效。
+        :type ModifyClassicDomain: bool
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -6422,6 +6424,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self.LoadBalancerPassToTarget = None
         self.SnatPro = None
         self.DeleteProtect = None
+        self.ModifyClassicDomain = None
 
 
     def _deserialize(self, params):
@@ -6436,6 +6439,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self.SnatPro = params.get("SnatPro")
         self.DeleteProtect = params.get("DeleteProtect")
+        self.ModifyClassicDomain = params.get("ModifyClassicDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2203,6 +2203,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyRocketMQInstanceSpec(self, request):
+        """本API用于修改RocketMQ专享实例配置，可以支持实例规格、节点数和存储的升配和实例规格的降配。本API发起订单并成功支付后进入实例配置变更的流程，可通过DescribeRocketMQVipInstances查询实例是否已变更完成。
+
+        :param request: Request instance for ModifyRocketMQInstanceSpec.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceSpecRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRocketMQInstanceSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRocketMQInstanceSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyRocketMQNamespace(self, request):
         """更新RocketMQ命名空间
 

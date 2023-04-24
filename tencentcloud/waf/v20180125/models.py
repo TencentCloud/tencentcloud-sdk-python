@@ -373,7 +373,7 @@ class AddCustomRuleRequest(AbstractModel):
         :type Name: str
         :param SortId: 优先级
         :type SortId: str
-        :param ExpireTime: 过期时间
+        :param ExpireTime: 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
         :type ExpireTime: str
         :param Strategies: 策略详情
         :type Strategies: list of Strategy
@@ -1727,6 +1727,8 @@ class DescribeAttackOverviewResponse(AbstractModel):
         :type CCCount: int
         :param BotCount: Bot攻击总数
         :type BotCount: int
+        :param ApiAssetsCount: api资产总数
+        :type ApiAssetsCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1735,6 +1737,7 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self.ACLCount = None
         self.CCCount = None
         self.BotCount = None
+        self.ApiAssetsCount = None
         self.RequestId = None
 
 
@@ -1744,6 +1747,7 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self.ACLCount = params.get("ACLCount")
         self.CCCount = params.get("CCCount")
         self.BotCount = params.get("BotCount")
+        self.ApiAssetsCount = params.get("ApiAssetsCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -1865,6 +1869,9 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         :type Status: str
         :param Strategies: 策略详情
         :type Strategies: list of Strategy
+        :param EventId: 事件id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: str
         """
         self.ActionType = None
         self.Bypass = None
@@ -1876,6 +1883,7 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         self.SortId = None
         self.Status = None
         self.Strategies = None
+        self.EventId = None
 
 
     def _deserialize(self, params):
@@ -1894,6 +1902,7 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
                 obj = Strategy()
                 obj._deserialize(item)
                 self.Strategies.append(obj)
+        self.EventId = params.get("EventId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3444,7 +3453,7 @@ class ExportAccessInfo(AbstractModel):
 
 
 class FiltersItemNew(AbstractModel):
-    """实例入参过滤器
+    """过滤数组
 
     """
 
@@ -3673,7 +3682,7 @@ class InstanceInfo(AbstractModel):
         r"""
         :param InstanceId: id
         :type InstanceId: str
-        :param InstanceName: name
+        :param InstanceName: Name
         :type InstanceName: str
         :param ResourceIds: 资源id
         :type ResourceIds: str
@@ -3727,6 +3736,20 @@ class InstanceInfo(AbstractModel):
         :param MaxBandwidth: 带宽峰值
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxBandwidth: int
+        :param APISecurity: api安全是否购买
+        :type APISecurity: int
+        :param QpsStandard: 购买的qps规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QpsStandard: int
+        :param BandwidthStandard: 购买的带宽规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthStandard: int
+        :param Status: 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param SandboxQps: 实例沙箱值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SandboxQps: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3753,6 +3776,11 @@ class InstanceInfo(AbstractModel):
         self.ElasticBilling = None
         self.AttackLogPost = None
         self.MaxBandwidth = None
+        self.APISecurity = None
+        self.QpsStandard = None
+        self.BandwidthStandard = None
+        self.Status = None
+        self.SandboxQps = None
 
 
     def _deserialize(self, params):
@@ -3791,6 +3819,11 @@ class InstanceInfo(AbstractModel):
         self.ElasticBilling = params.get("ElasticBilling")
         self.AttackLogPost = params.get("AttackLogPost")
         self.MaxBandwidth = params.get("MaxBandwidth")
+        self.APISecurity = params.get("APISecurity")
+        self.QpsStandard = params.get("QpsStandard")
+        self.BandwidthStandard = params.get("BandwidthStandard")
+        self.Status = params.get("Status")
+        self.SandboxQps = params.get("SandboxQps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5087,12 +5120,16 @@ class Strategy(AbstractModel):
     def __init__(self):
         r"""
         :param Field: 匹配字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type Field: str
         :param CompareFunc: 逻辑符号
+注意：此字段可能返回 null，表示取不到有效值。
         :type CompareFunc: str
         :param Content: 匹配内容
+注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param Arg: 匹配参数
+注意：此字段可能返回 null，表示取不到有效值。
         :type Arg: str
         """
         self.Field = None

@@ -4598,16 +4598,25 @@ class AsrFullTextConfigureInfo(AbstractModel):
 <li>srt：生成 SRT 字幕文件。</li>
 <font color='red'>注意：此字段已废弃，建议使用 SubtitleFormats。</font>
         :type SubtitleFormat: str
+        :param SrcLanguage: 媒体源语言，取值范围：
+<li>zh：中文普通话；</li>
+<li>en：英语；</li>
+<li>ja：日语；</li>
+<li>zh-ca：粤语。</li>
+<font color=red>注意：</font> 填空字符串，或者不填该参数，则自动识别（效果较难保证，推荐填写原始媒体对应的语言，以提高识别的准确率）。
+        :type SrcLanguage: str
         """
         self.Switch = None
         self.SubtitleFormats = None
         self.SubtitleFormat = None
+        self.SrcLanguage = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.SubtitleFormats = params.get("SubtitleFormats")
         self.SubtitleFormat = params.get("SubtitleFormat")
+        self.SrcLanguage = params.get("SrcLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4635,10 +4644,17 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 <li>srt：生成 SRT 字幕文件。</li>
 <font color='red'>注意：此字段已废弃，建议使用 SubtitleFormatsOperation。</font>
         :type SubtitleFormat: str
+        :param SrcLanguage: 媒体源语言，取值范围：
+<li>zh：中文普通话；</li>
+<li>en：英语；</li>
+<li>ja：日语；</li>
+<li>zh-ca：粤语。</li>
+        :type SrcLanguage: str
         """
         self.Switch = None
         self.SubtitleFormatsOperation = None
         self.SubtitleFormat = None
+        self.SrcLanguage = None
 
 
     def _deserialize(self, params):
@@ -4647,6 +4663,7 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
             self.SubtitleFormatsOperation = SubtitleFormatsOperation()
             self.SubtitleFormatsOperation._deserialize(params.get("SubtitleFormatsOperation"))
         self.SubtitleFormat = params.get("SubtitleFormat")
+        self.SrcLanguage = params.get("SrcLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -537,6 +537,12 @@ class AuditLogFilter(AbstractModel):
         :type IoWaitTimeSection: str
         :param TransactionLivingTimeSection: 事务持续时间，格式为M-N，例如：10-200
         :type TransactionLivingTimeSection: str
+        :param ThreadId: 线程ID
+        :type ThreadId: list of str
+        :param SentRows: 返回行数。表示筛选返回行数大于该值的审计日志。
+        :type SentRows: int
+        :param ErrCode: mysql错误码
+        :type ErrCode: list of int
         """
         self.Host = None
         self.User = None
@@ -555,6 +561,9 @@ class AuditLogFilter(AbstractModel):
         self.LockWaitTimeSection = None
         self.IoWaitTimeSection = None
         self.TransactionLivingTimeSection = None
+        self.ThreadId = None
+        self.SentRows = None
+        self.ErrCode = None
 
 
     def _deserialize(self, params):
@@ -575,6 +584,9 @@ class AuditLogFilter(AbstractModel):
         self.LockWaitTimeSection = params.get("LockWaitTimeSection")
         self.IoWaitTimeSection = params.get("IoWaitTimeSection")
         self.TransactionLivingTimeSection = params.get("TransactionLivingTimeSection")
+        self.ThreadId = params.get("ThreadId")
+        self.SentRows = params.get("SentRows")
+        self.ErrCode = params.get("ErrCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -693,6 +705,36 @@ class AuditRule(AbstractModel):
                 obj._deserialize(item)
                 self.RuleFilters.append(obj)
         self.AuditAll = params.get("AuditAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditRuleFilters(AbstractModel):
+    """审计规则的过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleFilters: 单条审计规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleFilters: list of RuleFilters
+        """
+        self.RuleFilters = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleFilters") is not None:
+            self.RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self.RuleFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2296,7 +2338,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type MasterInstanceId: str
         :param InstanceRole: 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
         :type InstanceRole: str
-        :param MasterRegion: 主实例的可用区信息，购买灾备、RO实例时必填。
+        :param MasterRegion: 主实例地域信息，购买灾备、RO实例时，该字段必填。
         :type MasterRegion: str
         :param Port: 自定义端口，端口支持范围：[ 1024-65535 ] 。
         :type Port: int
@@ -10156,6 +10198,7 @@ class OpenAuditServiceRequest(AbstractModel):
         :param LogExpireDay: 审计日志保存时长。支持值包括：
 7 - 一周
 30 - 一个月；
+90 - 三个月；
 180 - 六个月；
 365 - 一年；
 1095 - 三年；
@@ -10164,21 +10207,30 @@ class OpenAuditServiceRequest(AbstractModel):
         :param HighLogExpireDay: 高频审计日志保存时长。支持值包括：
 7 - 一周
 30 - 一个月；
-180 - 六个月；
-365 - 一年；
-1095 - 三年；
-1825 - 五年；
         :type HighLogExpireDay: int
+        :param AuditRuleFilters: 审计规则。同RuleTemplateIds都不填是全审计。
+        :type AuditRuleFilters: list of AuditRuleFilters
+        :param RuleTemplateIds: 规则模版ID。同AuditRuleFilters都不填是全审计。
+        :type RuleTemplateIds: list of str
         """
         self.InstanceId = None
         self.LogExpireDay = None
         self.HighLogExpireDay = None
+        self.AuditRuleFilters = None
+        self.RuleTemplateIds = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.LogExpireDay = params.get("LogExpireDay")
         self.HighLogExpireDay = params.get("HighLogExpireDay")
+        if params.get("AuditRuleFilters") is not None:
+            self.AuditRuleFilters = []
+            for item in params.get("AuditRuleFilters"):
+                obj = AuditRuleFilters()
+                obj._deserialize(item)
+                self.AuditRuleFilters.append(obj)
+        self.RuleTemplateIds = params.get("RuleTemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11870,6 +11922,38 @@ class Rule(AbstractModel):
     def _deserialize(self, params):
         self.LessThan = params.get("LessThan")
         self.Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleFilters(AbstractModel):
+    """审计规则的规则过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 审计规则过滤条件的参数名称。可选值：host – 客户端 IP；user – 数据库账户；dbName – 数据库名称；sqlType-SQL类型；sql-sql语句；affectRows -影响行数；sentRows-返回行数；checkRows-扫描行数；execTime-执行时间。
+        :type Type: str
+        :param Compare: 审计规则过滤条件的匹配类型。可选值：INC – 包含；EXC – 不包含；EQS – 等于；NEQ – 不等于；REG-正则；GT-大于；LT-小于。
+        :type Compare: str
+        :param Value: 审计规则过滤条件的匹配值。sqlType条件的Value需在一下选择"alter", "changeuser", "create", "delete", "drop", "execute", "insert", "login", "logout", "other", "replace", "select", "set", "update"。
+        :type Value: list of str
+        """
+        self.Type = None
+        self.Compare = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Compare = params.get("Compare")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
