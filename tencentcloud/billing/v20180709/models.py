@@ -43,6 +43,9 @@ class ActionSummaryOverviewItem(AbstractModel):
         :type BillMonth: str
         :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
         :type TotalCost: str
+        :param TransferPayAmount: 分成金金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
         """
         self.ActionType = None
         self.ActionTypeName = None
@@ -53,6 +56,7 @@ class ActionSummaryOverviewItem(AbstractModel):
         self.VoucherPayAmount = None
         self.BillMonth = None
         self.TotalCost = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -65,6 +69,7 @@ class ActionSummaryOverviewItem(AbstractModel):
         self.VoucherPayAmount = params.get("VoucherPayAmount")
         self.BillMonth = params.get("BillMonth")
         self.TotalCost = params.get("TotalCost")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

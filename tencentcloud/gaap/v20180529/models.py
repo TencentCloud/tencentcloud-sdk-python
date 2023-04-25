@@ -8288,6 +8288,9 @@ class RegionDetail(AbstractModel):
 第7个bit，支持接入段Qos加速。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureBitmap: int
+        :param SupportFeature: 接入区域支持的能力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportFeature: :class:`tencentcloud.gaap.v20180529.models.SupportFeature`
         """
         self.RegionId = None
         self.RegionName = None
@@ -8295,6 +8298,7 @@ class RegionDetail(AbstractModel):
         self.RegionAreaName = None
         self.IDCType = None
         self.FeatureBitmap = None
+        self.SupportFeature = None
 
 
     def _deserialize(self, params):
@@ -8304,6 +8308,9 @@ class RegionDetail(AbstractModel):
         self.RegionAreaName = params.get("RegionAreaName")
         self.IDCType = params.get("IDCType")
         self.FeatureBitmap = params.get("FeatureBitmap")
+        if params.get("SupportFeature") is not None:
+            self.SupportFeature = SupportFeature()
+            self.SupportFeature._deserialize(params.get("SupportFeature"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8738,6 +8745,30 @@ class StatisticsDataInfo(AbstractModel):
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SupportFeature(AbstractModel):
+    """加速区域支持的能力，包括支持的网络类型等等。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkType: 接入区域支持的网络类型列表，normal表示支持常规BGP，cn2表示精品BGP，triple表示三网，secure_eip表示定制安全eip。
+        :type NetworkType: list of str
+        """
+        self.NetworkType = None
+
+
+    def _deserialize(self, params):
+        self.NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

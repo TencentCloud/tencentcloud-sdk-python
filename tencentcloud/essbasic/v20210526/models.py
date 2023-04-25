@@ -2495,6 +2495,9 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         :type RelativeLocation: str
         :param KeywordIndexes: 关键字索引，可选参数，如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。示例[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
         :type KeywordIndexes: list of int
+        :param Placeholder: 填写提示的内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Placeholder: str
         """
         self.ComponentId = None
         self.ComponentType = None
@@ -2520,6 +2523,7 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         self.KeywordPage = None
         self.RelativeLocation = None
         self.KeywordIndexes = None
+        self.Placeholder = None
 
 
     def _deserialize(self, params):
@@ -2547,6 +2551,7 @@ SIGN_PAGING_SEAL - 可以指定印章ID
         self.KeywordPage = params.get("KeywordPage")
         self.RelativeLocation = params.get("RelativeLocation")
         self.KeywordIndexes = params.get("KeywordIndexes")
+        self.Placeholder = params.get("Placeholder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

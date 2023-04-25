@@ -49,6 +49,52 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AdjustCdbProxy(self, request):
+        """调整数据库代理配置
+
+        :param request: Request instance for AdjustCdbProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AdjustCdbProxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.AdjustCdbProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AdjustCdbProxyAddress(self, request):
+        """调整数据库代理地址配置
+
+        :param request: Request instance for AdjustCdbProxyAddress.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyAddressRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AdjustCdbProxyAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AdjustCdbProxyAddress", params, headers=headers)
+            response = json.loads(body)
+            model = models.AdjustCdbProxyAddressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AnalyzeAuditLogs(self, request):
         """在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
 
@@ -132,6 +178,29 @@ class CdbClient(AbstractClient):
             body = self.call("CloseCDBProxy", params, headers=headers)
             response = json.loads(body)
             model = models.CloseCDBProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CloseCdbProxyAddress(self, request):
+        """请求关闭数据库代理地址
+
+        :param request: Request instance for CloseCdbProxyAddress.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CloseCdbProxyAddressRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CloseCdbProxyAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseCdbProxyAddress", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseCdbProxyAddressResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -270,6 +339,52 @@ class CdbClient(AbstractClient):
             body = self.call("CreateBackup", params, headers=headers)
             response = json.loads(body)
             model = models.CreateBackupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCdbProxy(self, request):
+        """主实例创建数据库代理
+
+        :param request: Request instance for CreateCdbProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCdbProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateCdbProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCdbProxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCdbProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCdbProxyAddress(self, request):
+        """数据库代理增加代理地址
+
+        :param request: Request instance for CreateCdbProxyAddress.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateCdbProxyAddressRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateCdbProxyAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCdbProxyAddress", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCdbProxyAddressResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1063,6 +1178,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCdbProxyInfo(self, request):
+        """查询数据库代理详情信息
+
+        :param request: Request instance for DescribeCdbProxyInfo.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCdbProxyInfoRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCdbProxyInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCdbProxyInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCdbProxyInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCdbZoneConfig(self, request):
         """本接口(DescribeCdbZoneConfig)用于查询云数据库各地域可售卖的规格配置。
 
@@ -1680,6 +1818,29 @@ class CdbClient(AbstractClient):
             body = self.call("DescribeProxyCustomConf", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProxyCustomConfResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProxySupportParam(self, request):
+        """查询实例支持代理版本和参数
+
+        :param request: Request instance for DescribeProxySupportParam.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxySupportParamRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeProxySupportParamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProxySupportParam", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProxySupportParamResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2405,6 +2566,75 @@ class CdbClient(AbstractClient):
             body = self.call("ModifyCDBProxyVipVPort", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCDBProxyVipVPortResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCdbProxyAddressDesc(self, request):
+        """修改代理地址描述信息
+
+        :param request: Request instance for ModifyCdbProxyAddressDesc.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyAddressDescRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyAddressDescResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCdbProxyAddressDesc", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCdbProxyAddressDescResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCdbProxyAddressVipAndVPort(self, request):
+        """修改数据库代理地址VPC信息
+
+        :param request: Request instance for ModifyCdbProxyAddressVipAndVPort.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyAddressVipAndVPortRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyAddressVipAndVPortResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCdbProxyAddressVipAndVPort", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCdbProxyAddressVipAndVPortResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCdbProxyParam(self, request):
+        """配置数据库代理参数
+
+        :param request: Request instance for ModifyCdbProxyParam.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyParamRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCdbProxyParamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCdbProxyParam", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCdbProxyParamResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

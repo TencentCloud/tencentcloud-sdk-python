@@ -47,6 +47,9 @@ FAILEDOPERATION_CERTIFICATEEXISTS = 'FailedOperation.CertificateExists'
 # 已替换证书，无法进行托管。
 FAILEDOPERATION_CERTIFICATEHASRENEWED = 'FailedOperation.CertificateHasRenewed'
 
+# 当前证书不允许使用一键更新的功能。
+FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = 'FailedOperation.CertificateHostDeployCanNotAllow'
+
 # 证书资源托管数量超过限制。
 FAILEDOPERATION_CERTIFICATEHOSTINGTYPENUMBERLIMIT = 'FailedOperation.CertificateHostingTypeNumberLimit'
 

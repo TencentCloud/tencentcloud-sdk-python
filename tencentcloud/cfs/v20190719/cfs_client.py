@@ -697,6 +697,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyFileSystemAutoScaleUpRule(self, request):
+        """用来设置文件系统扩容策略
+
+        :param request: Request instance for ModifyFileSystemAutoScaleUpRule.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.ModifyFileSystemAutoScaleUpRuleRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.ModifyFileSystemAutoScaleUpRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFileSystemAutoScaleUpRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFileSystemAutoScaleUpRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ScaleUpFileSystem(self, request):
         """该接口用于对turbo 文件系统扩容使用
 

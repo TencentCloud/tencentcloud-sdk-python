@@ -6084,6 +6084,9 @@ class ProjectEntryEx(AbstractModel):
         :param DeviceCount: 设备注册总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceCount: int
+        :param EnableOpenState: 是否开通物联使能
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableOpenState: int
         """
         self.ProjectId = None
         self.ProjectName = None
@@ -6096,6 +6099,7 @@ class ProjectEntryEx(AbstractModel):
         self.InstanceId = None
         self.ApplicationCount = None
         self.DeviceCount = None
+        self.EnableOpenState = None
 
 
     def _deserialize(self, params):
@@ -6110,6 +6114,7 @@ class ProjectEntryEx(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.ApplicationCount = params.get("ApplicationCount")
         self.DeviceCount = params.get("DeviceCount")
+        self.EnableOpenState = params.get("EnableOpenState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

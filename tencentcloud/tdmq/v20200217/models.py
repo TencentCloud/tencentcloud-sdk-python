@@ -8654,6 +8654,9 @@ class RabbitMQVipInstance(AbstractModel):
         :param ExceptionInformation: 集群异常。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptionInformation: str
+        :param ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+为了和计费区分开，额外开启一个状态位，用于显示。
+        :type ClusterStatus: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -8670,6 +8673,7 @@ class RabbitMQVipInstance(AbstractModel):
         self.Remark = None
         self.SpecName = None
         self.ExceptionInformation = None
+        self.ClusterStatus = None
 
 
     def _deserialize(self, params):
@@ -8688,6 +8692,7 @@ class RabbitMQVipInstance(AbstractModel):
         self.Remark = params.get("Remark")
         self.SpecName = params.get("SpecName")
         self.ExceptionInformation = params.get("ExceptionInformation")
+        self.ClusterStatus = params.get("ClusterStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9134,6 +9139,12 @@ class RocketMQClusterInfo(AbstractModel):
         :param HttpVpcEndpoint: HTTP协议VPC接入地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpVpcEndpoint: str
+        :param InternalEndpoint: TCP内部接入地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalEndpoint: str
+        :param HttpInternalEndpoint: HTTP协议内部接入地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpInternalEndpoint: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -9150,6 +9161,8 @@ class RocketMQClusterInfo(AbstractModel):
         self.IsolateTime = None
         self.HttpPublicEndpoint = None
         self.HttpVpcEndpoint = None
+        self.InternalEndpoint = None
+        self.HttpInternalEndpoint = None
 
 
     def _deserialize(self, params):
@@ -9173,6 +9186,8 @@ class RocketMQClusterInfo(AbstractModel):
         self.IsolateTime = params.get("IsolateTime")
         self.HttpPublicEndpoint = params.get("HttpPublicEndpoint")
         self.HttpVpcEndpoint = params.get("HttpVpcEndpoint")
+        self.InternalEndpoint = params.get("InternalEndpoint")
+        self.HttpInternalEndpoint = params.get("HttpInternalEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9391,7 +9406,7 @@ class RocketMQNamespace(AbstractModel):
         r"""
         :param NamespaceId: 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
         :type NamespaceId: str
-        :param Ttl: 未消费消息的保留时间，以毫秒单位，范围60秒到15天
+        :param Ttl: 已废弃，未消费消息的保留时间，以毫秒单位，范围60秒到15天
         :type Ttl: int
         :param RetentionTime: 消息持久化后保留的时间，以毫秒单位
         :type RetentionTime: int
@@ -9404,6 +9419,9 @@ class RocketMQNamespace(AbstractModel):
         :param VpcEndpoint: VPC接入点地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcEndpoint: str
+        :param InternalEndpoint: 内部接入点地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalEndpoint: str
         """
         self.NamespaceId = None
         self.Ttl = None
@@ -9411,6 +9429,7 @@ class RocketMQNamespace(AbstractModel):
         self.Remark = None
         self.PublicEndpoint = None
         self.VpcEndpoint = None
+        self.InternalEndpoint = None
 
 
     def _deserialize(self, params):
@@ -9420,6 +9439,7 @@ class RocketMQNamespace(AbstractModel):
         self.Remark = params.get("Remark")
         self.PublicEndpoint = params.get("PublicEndpoint")
         self.VpcEndpoint = params.get("VpcEndpoint")
+        self.InternalEndpoint = params.get("InternalEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9543,6 +9563,15 @@ class RocketMQVipInstance(AbstractModel):
         :type Remark: str
         :param SpecName: 实例配置ID
         :type SpecName: str
+        :param MaxRetention: 最大可设置消息保留时间，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRetention: int
+        :param MinRetention: 最小可设置消息保留时间，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinRetention: int
+        :param Retention: 实例消息保留时间，小时为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Retention: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -9558,6 +9587,9 @@ class RocketMQVipInstance(AbstractModel):
         self.PayMode = None
         self.Remark = None
         self.SpecName = None
+        self.MaxRetention = None
+        self.MinRetention = None
+        self.Retention = None
 
 
     def _deserialize(self, params):
@@ -9575,6 +9607,9 @@ class RocketMQVipInstance(AbstractModel):
         self.PayMode = params.get("PayMode")
         self.Remark = params.get("Remark")
         self.SpecName = params.get("SpecName")
+        self.MaxRetention = params.get("MaxRetention")
+        self.MinRetention = params.get("MinRetention")
+        self.Retention = params.get("Retention")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

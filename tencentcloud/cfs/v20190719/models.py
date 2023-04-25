@@ -2374,6 +2374,76 @@ class MigrationTaskInfo(AbstractModel):
         
 
 
+class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
+    """ModifyFileSystemAutoScaleUpRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param ScaleUpThreshold: 扩容阈值，范围[10-90]
+        :type ScaleUpThreshold: int
+        :param TargetThreshold: 扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
+        :type TargetThreshold: int
+        :param Status: 规则状态0:关闭，1 开启
+
+        :type Status: int
+        """
+        self.FileSystemId = None
+        self.ScaleUpThreshold = None
+        self.TargetThreshold = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.ScaleUpThreshold = params.get("ScaleUpThreshold")
+        self.TargetThreshold = params.get("TargetThreshold")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
+    """ModifyFileSystemAutoScaleUpRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param Status: 规则状态0:关闭，1 开启
+        :type Status: int
+        :param ScaleUpThreshold: 扩容阈值,范围[10-90]
+        :type ScaleUpThreshold: int
+        :param TargetThreshold: 扩容后达到阈值,范围[10-90]
+        :type TargetThreshold: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileSystemId = None
+        self.Status = None
+        self.ScaleUpThreshold = None
+        self.TargetThreshold = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileSystemId = params.get("FileSystemId")
+        self.Status = params.get("Status")
+        self.ScaleUpThreshold = params.get("ScaleUpThreshold")
+        self.TargetThreshold = params.get("TargetThreshold")
+        self.RequestId = params.get("RequestId")
+
+
 class MountInfo(AbstractModel):
     """挂载点信息
 

@@ -212,6 +212,169 @@ class Address(AbstractModel):
         
 
 
+class AdjustCdbProxyAddressRequest(AbstractModel):
+    """AdjustCdbProxyAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: 代理组ID
+        :type ProxyGroupId: str
+        :param WeightMode: 权重分配模式，
+系统自动分配："system"， 自定义："custom"
+        :type WeightMode: str
+        :param IsKickOut: 是否开启延迟剔除，取值："true" | "false"
+        :type IsKickOut: bool
+        :param MinCount: 最小保留数量，最小取值：0
+        :type MinCount: int
+        :param MaxDelay: 延迟剔除阈值，最小取值：0
+        :type MaxDelay: int
+        :param FailOver: 是否开启故障转移，取值："true" | "false"
+        :type FailOver: bool
+        :param AutoAddRo: 是否自动添加RO，取值："true" | "false"
+        :type AutoAddRo: bool
+        :param ReadOnly: 是否是只读，取值："true" | "false"
+        :type ReadOnly: bool
+        :param ProxyAddressId: 代理组地址ID
+        :type ProxyAddressId: str
+        :param TransSplit: 是否开启事务分离，取值："true" | "false"
+        :type TransSplit: bool
+        :param ConnectionPool: 是否开启连接池
+        :type ConnectionPool: bool
+        :param ProxyAllocation: 读写权重分配。如果 WeightMode 传的是 system ，则传入的权重不生效，由系统分配默认权重。
+        :type ProxyAllocation: list of ProxyAllocation
+        """
+        self.ProxyGroupId = None
+        self.WeightMode = None
+        self.IsKickOut = None
+        self.MinCount = None
+        self.MaxDelay = None
+        self.FailOver = None
+        self.AutoAddRo = None
+        self.ReadOnly = None
+        self.ProxyAddressId = None
+        self.TransSplit = None
+        self.ConnectionPool = None
+        self.ProxyAllocation = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.WeightMode = params.get("WeightMode")
+        self.IsKickOut = params.get("IsKickOut")
+        self.MinCount = params.get("MinCount")
+        self.MaxDelay = params.get("MaxDelay")
+        self.FailOver = params.get("FailOver")
+        self.AutoAddRo = params.get("AutoAddRo")
+        self.ReadOnly = params.get("ReadOnly")
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        self.TransSplit = params.get("TransSplit")
+        self.ConnectionPool = params.get("ConnectionPool")
+        if params.get("ProxyAllocation") is not None:
+            self.ProxyAllocation = []
+            for item in params.get("ProxyAllocation"):
+                obj = ProxyAllocation()
+                obj._deserialize(item)
+                self.ProxyAllocation.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdjustCdbProxyAddressResponse(AbstractModel):
+    """AdjustCdbProxyAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 异步任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class AdjustCdbProxyRequest(AbstractModel):
+    """AdjustCdbProxy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ProxyGroupId: 代理组ID
+        :type ProxyGroupId: str
+        :param ProxyNodeCustom: 节点规格配置
+        :type ProxyNodeCustom: list of ProxyNodeCustom
+        :param ReloadBalance: 重新负载均衡：auto(自动),manual(手动)
+        :type ReloadBalance: str
+        :param UpgradeTime: 升级切换时间：nowTime(升级完成时),timeWindow(维护时间内)
+        :type UpgradeTime: str
+        """
+        self.InstanceId = None
+        self.ProxyGroupId = None
+        self.ProxyNodeCustom = None
+        self.ReloadBalance = None
+        self.UpgradeTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        if params.get("ProxyNodeCustom") is not None:
+            self.ProxyNodeCustom = []
+            for item in params.get("ProxyNodeCustom"):
+                obj = ProxyNodeCustom()
+                obj._deserialize(item)
+                self.ProxyNodeCustom.append(obj)
+        self.ReloadBalance = params.get("ReloadBalance")
+        self.UpgradeTime = params.get("UpgradeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdjustCdbProxyResponse(AbstractModel):
+    """AdjustCdbProxy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 异步任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class AggregationCondition(AbstractModel):
     """审计日志聚合条件
 
@@ -1615,6 +1778,51 @@ class CloseCDBProxyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloseCdbProxyAddressRequest(AbstractModel):
+    """CloseCdbProxyAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: 代理组ID
+        :type ProxyGroupId: str
+        :param ProxyAddressId: 代理组地址ID
+        :type ProxyAddressId: str
+        """
+        self.ProxyGroupId = None
+        self.ProxyAddressId = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseCdbProxyAddressResponse(AbstractModel):
+    """CloseCdbProxyAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CloseWanServiceRequest(AbstractModel):
     """CloseWanService请求参数结构体
 
@@ -2113,6 +2321,197 @@ class CreateBackupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.BackupId = params.get("BackupId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCdbProxyAddressRequest(AbstractModel):
+    """CreateCdbProxyAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: 代理组ID
+        :type ProxyGroupId: str
+        :param WeightMode: 权重分配模式，
+系统自动分配："system"， 自定义："custom"
+        :type WeightMode: str
+        :param IsKickOut: 是否开启延迟剔除，取值："true" | "false"
+        :type IsKickOut: bool
+        :param MinCount: 最小保留数量，最小取值：0
+        :type MinCount: int
+        :param MaxDelay: 延迟剔除阈值，最小取值：0
+        :type MaxDelay: int
+        :param FailOver: 是否开启故障转移，取值："true" | "false"
+        :type FailOver: bool
+        :param AutoAddRo: 是否自动添加RO，取值："true" | "false"
+        :type AutoAddRo: bool
+        :param ReadOnly: 是否是只读，取值："true" | "false"
+        :type ReadOnly: bool
+        :param TransSplit: 是否开启事务分离，取值："true" | "false"
+        :type TransSplit: bool
+        :param ProxyAllocation: 读写权重分配
+        :type ProxyAllocation: list of ProxyAllocation
+        :param UniqVpcId: 私有网络ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: 私有子网ID
+        :type UniqSubnetId: str
+        :param ConnectionPool: 是否开启连接池
+        :type ConnectionPool: bool
+        :param Desc: 描述
+        :type Desc: str
+        :param Vip: IP地址
+        :type Vip: str
+        :param VPort: 端口
+        :type VPort: int
+        :param SecurityGroup: 安全组
+        :type SecurityGroup: list of str
+        """
+        self.ProxyGroupId = None
+        self.WeightMode = None
+        self.IsKickOut = None
+        self.MinCount = None
+        self.MaxDelay = None
+        self.FailOver = None
+        self.AutoAddRo = None
+        self.ReadOnly = None
+        self.TransSplit = None
+        self.ProxyAllocation = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.ConnectionPool = None
+        self.Desc = None
+        self.Vip = None
+        self.VPort = None
+        self.SecurityGroup = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.WeightMode = params.get("WeightMode")
+        self.IsKickOut = params.get("IsKickOut")
+        self.MinCount = params.get("MinCount")
+        self.MaxDelay = params.get("MaxDelay")
+        self.FailOver = params.get("FailOver")
+        self.AutoAddRo = params.get("AutoAddRo")
+        self.ReadOnly = params.get("ReadOnly")
+        self.TransSplit = params.get("TransSplit")
+        if params.get("ProxyAllocation") is not None:
+            self.ProxyAllocation = []
+            for item in params.get("ProxyAllocation"):
+                obj = ProxyAllocation()
+                obj._deserialize(item)
+                self.ProxyAllocation.append(obj)
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.ConnectionPool = params.get("ConnectionPool")
+        self.Desc = params.get("Desc")
+        self.Vip = params.get("Vip")
+        self.VPort = params.get("VPort")
+        self.SecurityGroup = params.get("SecurityGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCdbProxyAddressResponse(AbstractModel):
+    """CreateCdbProxyAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 异步任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCdbProxyRequest(AbstractModel):
+    """CreateCdbProxy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param UniqVpcId: 私有网络ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: 私有子网ID
+        :type UniqSubnetId: str
+        :param ProxyNodeCustom: 节点规格配置
+        :type ProxyNodeCustom: list of ProxyNodeCustom
+        :param SecurityGroup: 安全组
+        :type SecurityGroup: list of str
+        :param Desc: 描述
+        :type Desc: str
+        :param ConnectionPoolLimit: 连接池阈值
+        :type ConnectionPoolLimit: int
+        """
+        self.InstanceId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.ProxyNodeCustom = None
+        self.SecurityGroup = None
+        self.Desc = None
+        self.ConnectionPoolLimit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        if params.get("ProxyNodeCustom") is not None:
+            self.ProxyNodeCustom = []
+            for item in params.get("ProxyNodeCustom"):
+                obj = ProxyNodeCustom()
+                obj._deserialize(item)
+                self.ProxyNodeCustom.append(obj)
+        self.SecurityGroup = params.get("SecurityGroup")
+        self.Desc = params.get("Desc")
+        self.ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCdbProxyResponse(AbstractModel):
+    """CreateCdbProxy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 异步任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4749,6 +5148,66 @@ class DescribeCDBProxyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCdbProxyInfoRequest(AbstractModel):
+    """DescribeCdbProxyInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ProxyGroupId: 代理组ID
+        :type ProxyGroupId: str
+        """
+        self.InstanceId = None
+        self.ProxyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCdbProxyInfoResponse(AbstractModel):
+    """DescribeCdbProxyInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 代理组数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param ProxyInfos: 代理组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyInfos: list of ProxyGroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.ProxyInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("ProxyInfos") is not None:
+            self.ProxyInfos = []
+            for item in params.get("ProxyInfos"):
+                obj = ProxyGroupInfo()
+                obj._deserialize(item)
+                self.ProxyInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCdbZoneConfigRequest(AbstractModel):
     """DescribeCdbZoneConfig请求参数结构体
 
@@ -6607,6 +7066,87 @@ class DescribeProxyCustomConfResponse(AbstractModel):
         if params.get("WeightRule") is not None:
             self.WeightRule = Rule()
             self.WeightRule._deserialize(params.get("WeightRule"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProxySupportParamRequest(AbstractModel):
+    """DescribeProxySupportParam请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProxySupportParamResponse(AbstractModel):
+    """DescribeProxySupportParam返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyVersion: 支持最大代理版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyVersion: str
+        :param SupportPool: 是否支持连接池
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportPool: bool
+        :param PoolMin: 连接池最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoolMin: int
+        :param PoolMax: 连接池最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoolMax: int
+        :param SupportTransSplit: 是否支持事务拆分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportTransSplit: bool
+        :param SupportPoolMinVersion: 支持连接池的最小代理版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportPoolMinVersion: str
+        :param SupportTransSplitMinVersion: 支持事务拆分的最小代理版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportTransSplitMinVersion: str
+        :param SupportReadOnly: 是否支持设置只读
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportReadOnly: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProxyVersion = None
+        self.SupportPool = None
+        self.PoolMin = None
+        self.PoolMax = None
+        self.SupportTransSplit = None
+        self.SupportPoolMinVersion = None
+        self.SupportTransSplitMinVersion = None
+        self.SupportReadOnly = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProxyVersion = params.get("ProxyVersion")
+        self.SupportPool = params.get("SupportPool")
+        self.PoolMin = params.get("PoolMin")
+        self.PoolMax = params.get("PoolMax")
+        self.SupportTransSplit = params.get("SupportTransSplit")
+        self.SupportPoolMinVersion = params.get("SupportPoolMinVersion")
+        self.SupportTransSplitMinVersion = params.get("SupportTransSplitMinVersion")
+        self.SupportReadOnly = params.get("SupportReadOnly")
         self.RequestId = params.get("RequestId")
 
 
@@ -9422,6 +9962,169 @@ class ModifyCDBProxyVipVPortResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCdbProxyAddressDescRequest(AbstractModel):
+    """ModifyCdbProxyAddressDesc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: 代理组ID
+        :type ProxyGroupId: str
+        :param ProxyAddressId: 代理组地址ID
+        :type ProxyAddressId: str
+        :param Desc: 描述
+        :type Desc: str
+        """
+        self.ProxyGroupId = None
+        self.ProxyAddressId = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCdbProxyAddressDescResponse(AbstractModel):
+    """ModifyCdbProxyAddressDesc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCdbProxyAddressVipAndVPortRequest(AbstractModel):
+    """ModifyCdbProxyAddressVipAndVPort请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: 代理组ID
+        :type ProxyGroupId: str
+        :param ProxyAddressId: 代理组地址ID
+        :type ProxyAddressId: str
+        :param UniqVpcId: 私有网络ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: 私有子网ID
+        :type UniqSubnetId: str
+        :param Vip: IP地址
+        :type Vip: str
+        :param VPort: 端口
+        :type VPort: int
+        :param ReleaseDuration: 旧IP地址回收时间
+        :type ReleaseDuration: int
+        """
+        self.ProxyGroupId = None
+        self.ProxyAddressId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.Vip = None
+        self.VPort = None
+        self.ReleaseDuration = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Vip = params.get("Vip")
+        self.VPort = params.get("VPort")
+        self.ReleaseDuration = params.get("ReleaseDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCdbProxyAddressVipAndVPortResponse(AbstractModel):
+    """ModifyCdbProxyAddressVipAndVPort返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCdbProxyParamRequest(AbstractModel):
+    """ModifyCdbProxyParam请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ProxyGroupId: 代理组ID
+        :type ProxyGroupId: str
+        :param ConnectionPoolLimit: 连接池阈值
+        :type ConnectionPoolLimit: int
+        """
+        self.InstanceId = None
+        self.ProxyGroupId = None
+        self.ConnectionPoolLimit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCdbProxyParamResponse(AbstractModel):
+    """ModifyCdbProxyParam返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName请求参数结构体
 
@@ -10679,6 +11382,144 @@ class PoolConf(AbstractModel):
         
 
 
+class ProxyAddress(AbstractModel):
+    """数据库代理地址信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyAddressId: 代理组地址ID
+        :type ProxyAddressId: str
+        :param UniqVpcId: 私有网络ID
+        :type UniqVpcId: str
+        :param UniqSubnetId: 私有子网ID
+        :type UniqSubnetId: str
+        :param Vip: IP地址
+        :type Vip: str
+        :param VPort: 端口
+        :type VPort: int
+        :param WeightMode: 权重分配模式；
+系统自动分配："system"， 自定义："custom"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeightMode: str
+        :param IsKickOut: 是否开启延迟剔除，取值："true" | "false"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsKickOut: bool
+        :param MinCount: 最小保留数量，最小取值：0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinCount: int
+        :param MaxDelay: 延迟剔除阈值，最小取值：0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDelay: int
+        :param AutoAddRo: 是否自动添加RO，取值："true" | "false"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoAddRo: bool
+        :param ReadOnly: 是否是只读，取值："true" | "false"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadOnly: bool
+        :param TransSplit: 是否开启事务分离
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransSplit: bool
+        :param FailOver: 是否开启故障转移
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailOver: bool
+        :param ConnectionPool: 是否开启连接池
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionPool: bool
+        :param Desc: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param ProxyAllocation: 实例读权重分配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyAllocation: list of ProxyAllocation
+        """
+        self.ProxyAddressId = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.Vip = None
+        self.VPort = None
+        self.WeightMode = None
+        self.IsKickOut = None
+        self.MinCount = None
+        self.MaxDelay = None
+        self.AutoAddRo = None
+        self.ReadOnly = None
+        self.TransSplit = None
+        self.FailOver = None
+        self.ConnectionPool = None
+        self.Desc = None
+        self.ProxyAllocation = None
+
+
+    def _deserialize(self, params):
+        self.ProxyAddressId = params.get("ProxyAddressId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.Vip = params.get("Vip")
+        self.VPort = params.get("VPort")
+        self.WeightMode = params.get("WeightMode")
+        self.IsKickOut = params.get("IsKickOut")
+        self.MinCount = params.get("MinCount")
+        self.MaxDelay = params.get("MaxDelay")
+        self.AutoAddRo = params.get("AutoAddRo")
+        self.ReadOnly = params.get("ReadOnly")
+        self.TransSplit = params.get("TransSplit")
+        self.FailOver = params.get("FailOver")
+        self.ConnectionPool = params.get("ConnectionPool")
+        self.Desc = params.get("Desc")
+        if params.get("ProxyAllocation") is not None:
+            self.ProxyAllocation = []
+            for item in params.get("ProxyAllocation"):
+                obj = ProxyAllocation()
+                obj._deserialize(item)
+                self.ProxyAllocation.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyAllocation(AbstractModel):
+    """代理节点权重分布
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 代理节点所属地域
+        :type Region: str
+        :param Zone: 代理节点所属可用区
+        :type Zone: str
+        :param ProxyInstance: 代理实例分布
+        :type ProxyInstance: list of ProxyInst
+        """
+        self.Region = None
+        self.Zone = None
+        self.ProxyInstance = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        if params.get("ProxyInstance") is not None:
+            self.ProxyInstance = []
+            for item in params.get("ProxyInstance"):
+                obj = ProxyInst()
+                obj._deserialize(item)
+                self.ProxyInstance.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProxyGroup(AbstractModel):
     """数据代理组信息
 
@@ -10740,6 +11581,85 @@ class ProxyGroup(AbstractModel):
         
 
 
+class ProxyGroupInfo(AbstractModel):
+    """代理组详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyGroupId: 代理组ID
+        :type ProxyGroupId: str
+        :param ProxyVersion: 代理版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyVersion: str
+        :param SupportUpgradeProxyVersion: 代理支持升级版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportUpgradeProxyVersion: str
+        :param Status: 代理状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param TaskStatus: 代理任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: str
+        :param ProxyNode: 代理组节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyNode: list of ProxyNode
+        :param ProxyAddress: 代理组地址信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyAddress: list of ProxyAddress
+        :param ConnectionPoolLimit: 连接池阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionPoolLimit: int
+        :param SupportCreateProxyAddress: 支持创建地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportCreateProxyAddress: bool
+        :param SupportUpgradeProxyMysqlVersion: 支持升级代理版本所需的cdb版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportUpgradeProxyMysqlVersion: str
+        """
+        self.ProxyGroupId = None
+        self.ProxyVersion = None
+        self.SupportUpgradeProxyVersion = None
+        self.Status = None
+        self.TaskStatus = None
+        self.ProxyNode = None
+        self.ProxyAddress = None
+        self.ConnectionPoolLimit = None
+        self.SupportCreateProxyAddress = None
+        self.SupportUpgradeProxyMysqlVersion = None
+
+
+    def _deserialize(self, params):
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        self.ProxyVersion = params.get("ProxyVersion")
+        self.SupportUpgradeProxyVersion = params.get("SupportUpgradeProxyVersion")
+        self.Status = params.get("Status")
+        self.TaskStatus = params.get("TaskStatus")
+        if params.get("ProxyNode") is not None:
+            self.ProxyNode = []
+            for item in params.get("ProxyNode"):
+                obj = ProxyNode()
+                obj._deserialize(item)
+                self.ProxyNode.append(obj)
+        if params.get("ProxyAddress") is not None:
+            self.ProxyAddress = []
+            for item in params.get("ProxyAddress"):
+                obj = ProxyAddress()
+                obj._deserialize(item)
+                self.ProxyAddress.append(obj)
+        self.ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        self.SupportCreateProxyAddress = params.get("SupportCreateProxyAddress")
+        self.SupportUpgradeProxyMysqlVersion = params.get("SupportUpgradeProxyMysqlVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProxyGroups(AbstractModel):
     """数据代理组信息
 
@@ -10792,6 +11712,156 @@ class ProxyGroups(AbstractModel):
         if params.get("RWInstInfo") is not None:
             self.RWInstInfo = RWInfos()
             self.RWInstInfo._deserialize(params.get("RWInstInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyInst(AbstractModel):
+    """代理实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param InstanceType: 实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param Status: 实例状态，可能的返回值：0-创建中；1-运行中；4-隔离中；5-已隔离
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Weight: 只读权重,如果权重为系统自动分配，改值不生效，只代表是否启用该实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param Region: 实例所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Zone: 实例所属可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceType = None
+        self.Status = None
+        self.Weight = None
+        self.Region = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceType = params.get("InstanceType")
+        self.Status = params.get("Status")
+        self.Weight = params.get("Weight")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyNode(AbstractModel):
+    """代理节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxyId: 代理节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyId: str
+        :param Cpu: CPU核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param Mem: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mem: int
+        :param Status: 节点状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Zone: 代理节点可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param Region: 代理节点地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Connection: 连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Connection: int
+        """
+        self.ProxyId = None
+        self.Cpu = None
+        self.Mem = None
+        self.Status = None
+        self.Zone = None
+        self.Region = None
+        self.Connection = None
+
+
+    def _deserialize(self, params):
+        self.ProxyId = params.get("ProxyId")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
+        self.Status = params.get("Status")
+        self.Zone = params.get("Zone")
+        self.Region = params.get("Region")
+        self.Connection = params.get("Connection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyNodeCustom(AbstractModel):
+    """节点规格配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeCount: 节点个数
+        :type NodeCount: int
+        :param Cpu: CPU核数
+        :type Cpu: int
+        :param Mem: 内存大小
+        :type Mem: int
+        :param Region: 地域
+        :type Region: str
+        :param Zone: 可用区
+        :type Zone: str
+        """
+        self.NodeCount = None
+        self.Cpu = None
+        self.Mem = None
+        self.Region = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.NodeCount = params.get("NodeCount")
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

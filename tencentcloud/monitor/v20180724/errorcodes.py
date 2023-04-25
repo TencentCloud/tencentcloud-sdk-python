@@ -125,6 +125,9 @@ FAILEDOPERATION_DIVISIONBYZERO = 'FailedOperation.DivisionByZero'
 # 后端服务超时
 FAILEDOPERATION_DOHTTPTRANSFERFAILED = 'FailedOperation.DoHTTPTransferFailed'
 
+# DoTRPCTransferFailed
+FAILEDOPERATION_DOTRPCTRANSFERFAILED = 'FailedOperation.DoTRPCTransferFailed'
+
 # 查询分析数据失败。
 FAILEDOPERATION_DRUIDQUERYFAILED = 'FailedOperation.DruidQueryFailed'
 

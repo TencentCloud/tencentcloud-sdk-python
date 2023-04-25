@@ -65,11 +65,11 @@ lo（老挝语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（�
         :type DocumentType: str
         :param SourceType: 数据来源，0：url，1：直接传文件编码后数据
         :type SourceType: int
-        :param Url: 需要翻译文件url
+        :param Url: 需要翻译文件url，文件需小于100MB。
         :type Url: str
         :param BasicDocumentType: 原始文档类型
         :type BasicDocumentType: str
-        :param CallbackUrl: 回调url
+        :param CallbackUrl: 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中。
         :type CallbackUrl: str
         :param Data: 文件数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据要小于5MB。
         :type Data: str
@@ -615,7 +615,7 @@ hi：印地语
         :type Target: str
         :param ProjectId: 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
         :type ProjectId: int
-        :param SourceTextList: 待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于2000字符。
+        :param SourceTextList: 待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于6000字符。
         :type SourceTextList: list of str
         """
         self.Source = None
@@ -645,7 +645,7 @@ class TextTranslateBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 源语言，详见入参Target
+        :param Source: 源语言，详见入参Source
         :type Source: str
         :param Target: 目标语言，详见入参Target
         :type Target: str
@@ -674,7 +674,7 @@ class TextTranslateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于2000字符。
+        :param SourceText: 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于6000字符。
         :type SourceText: str
         :param Source: 源语言，支持：
 auto：自动识别（识别为一种语言）
