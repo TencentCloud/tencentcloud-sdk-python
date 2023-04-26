@@ -6740,6 +6740,9 @@ class RecordPlanItem(AbstractModel):
         :param Devices: 绑定的设备列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Devices: list of DeviceItem
+        :param RecordStorageTime: 录像存储天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordStorageTime: int
         """
         self.PlanId = None
         self.Name = None
@@ -6747,6 +6750,7 @@ class RecordPlanItem(AbstractModel):
         self.TimeTemplateName = None
         self.EventId = None
         self.Devices = None
+        self.RecordStorageTime = None
 
 
     def _deserialize(self, params):
@@ -6761,6 +6765,7 @@ class RecordPlanItem(AbstractModel):
                 obj = DeviceItem()
                 obj._deserialize(item)
                 self.Devices.append(obj)
+        self.RecordStorageTime = params.get("RecordStorageTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

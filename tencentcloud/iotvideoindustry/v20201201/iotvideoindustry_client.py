@@ -1004,7 +1004,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeDeviceList(self, request):
-        """本接口(DescribeDevicesList) 用于获取设备列表，支持模糊搜索
+        """本接口(DescribeDeviceList) 用于获取设备列表，支持模糊搜索
 
         :param request: Request instance for DescribeDeviceList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceListRequest`

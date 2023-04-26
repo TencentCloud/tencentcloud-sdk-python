@@ -873,6 +873,7 @@ class CreateSnapshotResponse(AbstractModel):
     def __init__(self):
         r"""
         :param SnapshotId: 新创建的快照ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2000,6 +2001,9 @@ class Disk(AbstractModel):
         :param ErrorPrompt: 云硬盘最后一次操作错误提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPrompt: str
+        :param BurstPerformance: 云盘是否开启性能突发
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BurstPerformance: bool
         """
         self.DeleteWithInstance = None
         self.RenewFlag = None
@@ -2042,6 +2046,7 @@ class Disk(AbstractModel):
         self.InstanceType = None
         self.LastAttachInsId = None
         self.ErrorPrompt = None
+        self.BurstPerformance = None
 
 
     def _deserialize(self, params):
@@ -2093,6 +2098,7 @@ class Disk(AbstractModel):
         self.InstanceType = params.get("InstanceType")
         self.LastAttachInsId = params.get("LastAttachInsId")
         self.ErrorPrompt = params.get("ErrorPrompt")
+        self.BurstPerformance = params.get("BurstPerformance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

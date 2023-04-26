@@ -15003,6 +15003,55 @@ class GatewayQos(AbstractModel):
         
 
 
+class GenerateVpnConnectionDefaultHealthCheckIpRequest(AbstractModel):
+    """GenerateVpnConnectionDefaultHealthCheckIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpnGatewayId: VPN网关id， 例如：vpngw-1w9tue3d
+        :type VpnGatewayId: str
+        """
+        self.VpnGatewayId = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateVpnConnectionDefaultHealthCheckIpResponse(AbstractModel):
+    """GenerateVpnConnectionDefaultHealthCheckIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HealthCheckLocalIp: VPN通道健康检查本端ip
+        :type HealthCheckLocalIp: str
+        :param HealthCheckRemoteIp: VPN通道健康检查对端ip
+        :type HealthCheckRemoteIp: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HealthCheckLocalIp = None
+        self.HealthCheckRemoteIp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
+        self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
+        self.RequestId = params.get("RequestId")
+
+
 class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
     """GetCcnRegionBandwidthLimits请求参数结构体
 

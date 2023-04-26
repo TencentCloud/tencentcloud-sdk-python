@@ -3247,14 +3247,18 @@ class DomainAliasInfo(AbstractModel):
         :type Id: int
         :param DomainAlias: 域名别名
         :type DomainAlias: str
+        :param Status: 别名状态：1-DNS不正确；2-正常；3-封禁。
+        :type Status: int
         """
         self.Id = None
         self.DomainAlias = None
+        self.Status = None
 
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.DomainAlias = params.get("DomainAlias")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5451,16 +5455,25 @@ class RollbackSnapshotRequest(AbstractModel):
         :type SnapshotId: str
         :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
         :type DomainId: int
+        :param RecordList: 指定需要回滚的记录
+        :type RecordList: list of SnapshotRecord
         """
         self.Domain = None
         self.SnapshotId = None
         self.DomainId = None
+        self.RecordList = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
         self.SnapshotId = params.get("SnapshotId")
         self.DomainId = params.get("DomainId")
+        if params.get("RecordList") is not None:
+            self.RecordList = []
+            for item in params.get("RecordList"):
+                obj = SnapshotRecord()
+                obj._deserialize(item)
+                self.RecordList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5629,6 +5642,12 @@ class SnapshotRecord(AbstractModel):
         :param MX: MX优先级
 注意：此字段可能返回 null，表示取不到有效值。
         :type MX: str
+        :param Weight: 权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: str
+        :param Reason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
         """
         self.SubDomain = None
         self.RecordType = None
@@ -5637,6 +5656,8 @@ class SnapshotRecord(AbstractModel):
         self.TTL = None
         self.RecordId = None
         self.MX = None
+        self.Weight = None
+        self.Reason = None
 
 
     def _deserialize(self, params):
@@ -5647,6 +5668,8 @@ class SnapshotRecord(AbstractModel):
         self.TTL = params.get("TTL")
         self.RecordId = params.get("RecordId")
         self.MX = params.get("MX")
+        self.Weight = params.get("Weight")
+        self.Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

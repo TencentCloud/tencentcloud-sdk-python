@@ -18,6 +18,32 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccelerateMainland(AbstractModel):
+    """中国大陆加速优化配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 是否开启中国大陆加速优化配置，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccelerateType(AbstractModel):
     """加速类型
 
@@ -1422,7 +1448,7 @@ class CacheKey(AbstractModel):
 <li>off：不忽略。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCase: str
-        :param QueryString: CacheKey中包含请求参数。
+        :param QueryString: CacheKey 中包含请求参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueryString: :class:`tencentcloud.teo.v20220901.models.QueryString`
         """
@@ -1533,7 +1559,7 @@ class ClientIpCountry(AbstractModel):
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
-        :param HeaderName: 存放客户端IP所属地域信息的请求头名称，当Switch=on时有效。
+        :param HeaderName: 存放客户端 IP 所属地域信息的请求头名称，当 Switch=on 时有效。
 为空则使用默认值：EO-Client-IPCountry。
         :type HeaderName: str
         """
@@ -1564,7 +1590,7 @@ class ClientIpHeader(AbstractModel):
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
-        :param HeaderName: 回源时，存放客户端IP的请求头名称。
+        :param HeaderName: 回源时，存放客户端 IP 的请求头名称。
 为空则使用默认值：X-Forwarded-IP。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderName: str
@@ -1904,10 +1930,10 @@ class CreateApplicationProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点ID。
+        :param ZoneId: 站点 ID。
         :type ZoneId: str
-        :param ProxyName: 当ProxyType=hostname时，表示域名或子域名；
-当ProxyType=instance时，表示代理名称。
+        :param ProxyName: 当 ProxyType=hostname 时，表示域名或子域名；
+当 ProxyType=instance 时，表示代理名称。
         :type ProxyName: str
         :param PlatType: 调度模式，取值有：
 <li>ip：表示Anycast IP调度；</li>
@@ -1928,12 +1954,14 @@ class CreateApplicationProxyRequest(AbstractModel):
         :param SessionPersistTime: 会话保持时间，取值范围：30-3600，单位：秒。
 不填写使用默认值600。
         :type SessionPersistTime: int
-        :param Ipv6: Ipv6访问配置。
-不填写表示关闭Ipv6访问。
+        :param Ipv6: Ipv6 访问配置。
+不填写表示关闭 Ipv6 访问。
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
         :param ApplicationProxyRules: 规则详细信息。
 不填写则不创建规则。
         :type ApplicationProxyRules: list of ApplicationProxyRule
+        :param AccelerateMainland: 中国大陆加速优化配置。不填写表示关闭中国大陆加速优化。
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
         """
         self.ZoneId = None
         self.ProxyName = None
@@ -1944,6 +1972,7 @@ class CreateApplicationProxyRequest(AbstractModel):
         self.SessionPersistTime = None
         self.Ipv6 = None
         self.ApplicationProxyRules = None
+        self.AccelerateMainland = None
 
 
     def _deserialize(self, params):
@@ -1963,6 +1992,9 @@ class CreateApplicationProxyRequest(AbstractModel):
                 obj = ApplicationProxyRule()
                 obj._deserialize(item)
                 self.ApplicationProxyRules.append(obj)
+        if params.get("AccelerateMainland") is not None:
+            self.AccelerateMainland = AccelerateMainland()
+            self.AccelerateMainland._deserialize(params.get("AccelerateMainland"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2525,6 +2557,57 @@ class CreateRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSecurityIPGroupRequest(AbstractModel):
+    """CreateSecurityIPGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 Id。
+        :type ZoneId: str
+        :param IPGroup: IP 组信息。
+        :type IPGroup: :class:`tencentcloud.teo.v20220901.models.IPGroup`
+        """
+        self.ZoneId = None
+        self.IPGroup = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        if params.get("IPGroup") is not None:
+            self.IPGroup = IPGroup()
+            self.IPGroup._deserialize(params.get("IPGroup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityIPGroupResponse(AbstractModel):
+    """CreateSecurityIPGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: IP 组 Id。
+        :type GroupId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3121,6 +3204,51 @@ class DeleteRulesRequest(AbstractModel):
 
 class DeleteRulesResponse(AbstractModel):
     """DeleteRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSecurityIPGroupRequest(AbstractModel):
+    """DeleteSecurityIPGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 Id。
+        :type ZoneId: str
+        :param GroupId: IP 组 Id。
+        :type GroupId: int
+        """
+        self.ZoneId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityIPGroupResponse(AbstractModel):
+    """DeleteSecurityIPGroup返回参数结构体
 
     """
 
@@ -7505,7 +7633,7 @@ class Grpc(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 是否开启Grpc配置，取值有：
+        :param Switch: 是否开启 Grpc 配置，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
@@ -7563,7 +7691,7 @@ class Hsts(AbstractModel):
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
-        :param MaxAge: MaxAge数值。单位为秒，最大值为1天。
+        :param MaxAge: MaxAge 数值。单位为秒，最大值为1天。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxAge: int
         :param IncludeSubDomains: 是否包含子域名，取值有：
@@ -7614,7 +7742,7 @@ class Https(AbstractModel):
 <li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcspStapling: str
-        :param TlsVersion: Tls版本设置，取值有：
+        :param TlsVersion: Tls 版本设置，取值有：
 <li>TLSv1：TLSv1版本；</li>
 <li>TLSV1.1：TLSv1.1版本；</li>
 <li>TLSV1.2：TLSv1.2版本；</li>
@@ -7663,6 +7791,38 @@ class Https(AbstractModel):
                 self.CertInfo.append(obj)
         self.ApplyType = params.get("ApplyType")
         self.CipherSuite = params.get("CipherSuite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPGroup(AbstractModel):
+    """IP 网段组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 组 Id，创建时填 0 即可。
+        :type GroupId: int
+        :param Name: 组名称。
+        :type Name: str
+        :param Content: IP 组内容，可以填入 IP 及 IP 掩码。
+        :type Content: list of str
+        """
+        self.GroupId = None
+        self.Name = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.Name = params.get("Name")
+        self.Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8023,7 +8183,7 @@ class Ipv6(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: Ipv6访问功能配置，取值有：
+        :param Switch: Ipv6 访问功能配置，取值有：
 <li>on：开启Ipv6访问功能；</li>
 <li>off：关闭Ipv6访问功能。</li>
         :type Switch: str
@@ -8430,12 +8590,12 @@ class ModifyApplicationProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点ID。
+        :param ZoneId: 站点 ID。
         :type ZoneId: str
-        :param ProxyId: 代理ID。
+        :param ProxyId: 代理 ID。
         :type ProxyId: str
-        :param ProxyName: 当ProxyType=hostname时，表示域名或子域名；
-当ProxyType=instance时，表示代理名称。
+        :param ProxyName: 当 ProxyType=hostname 时，表示域名或子域名；
+当 ProxyType=instance 时，表示代理名称。
         :type ProxyName: str
         :param SessionPersistTime: 会话保持时间，取值范围：30-3600，单位：秒。
 不填写保持原有配置。
@@ -8444,8 +8604,10 @@ class ModifyApplicationProxyRequest(AbstractModel):
 <li>hostname：表示子域名模式；</li>
 <li>instance：表示实例模式。</li>不填写保持原有配置。
         :type ProxyType: str
-        :param Ipv6: Ipv6访问配置，不填写保持原有配置。
+        :param Ipv6: Ipv6 访问配置，不填写保持原有配置。
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
+        :param AccelerateMainland: 中国大陆加速优化配置。 不填写表示保持原有配置。
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
         """
         self.ZoneId = None
         self.ProxyId = None
@@ -8453,6 +8615,7 @@ class ModifyApplicationProxyRequest(AbstractModel):
         self.SessionPersistTime = None
         self.ProxyType = None
         self.Ipv6 = None
+        self.AccelerateMainland = None
 
 
     def _deserialize(self, params):
@@ -8464,6 +8627,9 @@ class ModifyApplicationProxyRequest(AbstractModel):
         if params.get("Ipv6") is not None:
             self.Ipv6 = Ipv6()
             self.Ipv6._deserialize(params.get("Ipv6"))
+        if params.get("AccelerateMainland") is not None:
+            self.AccelerateMainland = AccelerateMainland()
+            self.AccelerateMainland._deserialize(params.get("AccelerateMainland"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8996,6 +9162,60 @@ class ModifyRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySecurityIPGroupRequest(AbstractModel):
+    """ModifySecurityIPGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 Id。
+        :type ZoneId: str
+        :param IPGroup: IP 组配置。
+        :type IPGroup: :class:`tencentcloud.teo.v20220901.models.IPGroup`
+        :param Mode: 操作类型，取值有：
+<li> append: 向 IPGroup 中追加 Content 参数中内容；</li>
+<li> remove: 从 IPGroup 中删除 Content 参数中内容；</li>
+<li> update: 全量替换 IPGroup 内容，并可修改 IPGroup 名称。 </li>
+        :type Mode: str
+        """
+        self.ZoneId = None
+        self.IPGroup = None
+        self.Mode = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        if params.get("IPGroup") is not None:
+            self.IPGroup = IPGroup()
+            self.IPGroup._deserialize(params.get("IPGroup"))
+        self.Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityIPGroupResponse(AbstractModel):
+    """ModifySecurityIPGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySecurityPolicyRequest(AbstractModel):
     """ModifySecurityPolicy请求参数结构体
 
@@ -9206,7 +9426,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 待变更的站点ID。
+        :param ZoneId: 待变更的站点 ID。
         :type ZoneId: str
         :param CacheConfig: 缓存过期时间配置。
 不填写表示保持原有配置。
@@ -9220,22 +9440,22 @@ class ModifyZoneSettingRequest(AbstractModel):
         :param OfflineCache: 离线缓存配置。
 不填写表示保持原有配置。
         :type OfflineCache: :class:`tencentcloud.teo.v20220901.models.OfflineCache`
-        :param Quic: Quic访问配置。
+        :param Quic: Quic 访问配置。
 不填写表示保持原有配置。
         :type Quic: :class:`tencentcloud.teo.v20220901.models.Quic`
-        :param PostMaxSize: Post请求传输配置。
+        :param PostMaxSize: Post 请求传输配置。
 不填写表示保持原有配置。
         :type PostMaxSize: :class:`tencentcloud.teo.v20220901.models.PostMaxSize`
         :param Compression: 智能压缩配置。
 不填写表示保持原有配置。
         :type Compression: :class:`tencentcloud.teo.v20220901.models.Compression`
-        :param UpstreamHttp2: Http2回源配置。
+        :param UpstreamHttp2: Http2 回源配置。
 不填写表示保持原有配置。
         :type UpstreamHttp2: :class:`tencentcloud.teo.v20220901.models.UpstreamHttp2`
-        :param ForceRedirect: 访问协议强制Https跳转配置。
+        :param ForceRedirect: 访问协议强制 Https 跳转配置。
 不填写表示保持原有配置。
         :type ForceRedirect: :class:`tencentcloud.teo.v20220901.models.ForceRedirect`
-        :param Https: Https加速配置。
+        :param Https: Https 加速配置。
 不填写表示保持原有配置。
         :type Https: :class:`tencentcloud.teo.v20220901.models.Https`
         :param Origin: 源站配置。
@@ -9244,24 +9464,27 @@ class ModifyZoneSettingRequest(AbstractModel):
         :param SmartRouting: 智能加速配置。
 不填写表示保持原有配置。
         :type SmartRouting: :class:`tencentcloud.teo.v20220901.models.SmartRouting`
-        :param WebSocket: WebSocket配置。
+        :param WebSocket: WebSocket 配置。
 不填写表示保持原有配置。
         :type WebSocket: :class:`tencentcloud.teo.v20220901.models.WebSocket`
-        :param ClientIpHeader: 客户端IP回源请求头配置。
+        :param ClientIpHeader: 客户端 IP 回源请求头配置。
 不填写表示保持原有配置。
         :type ClientIpHeader: :class:`tencentcloud.teo.v20220901.models.ClientIpHeader`
         :param CachePrefresh: 缓存预刷新配置。
 不填写表示保持原有配置。
         :type CachePrefresh: :class:`tencentcloud.teo.v20220901.models.CachePrefresh`
-        :param Ipv6: Ipv6访问配置。
+        :param Ipv6: Ipv6 访问配置。
 不填写表示保持原有配置。
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
-        :param ClientIpCountry: 回源时是否携带客户端IP所属地域信息的配置。
+        :param ClientIpCountry: 回源时是否携带客户端 IP 所属地域信息的配置。
 不填写表示保持原有配置。
         :type ClientIpCountry: :class:`tencentcloud.teo.v20220901.models.ClientIpCountry`
-        :param Grpc: Grpc协议支持配置。
+        :param Grpc: Grpc 协议支持配置。
 不填写表示保持原有配置。
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
+        :param ImageOptimize: 图片优化配置。
+不填写表示关闭。
+        :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
         """
         self.ZoneId = None
         self.CacheConfig = None
@@ -9282,6 +9505,7 @@ class ModifyZoneSettingRequest(AbstractModel):
         self.Ipv6 = None
         self.ClientIpCountry = None
         self.Grpc = None
+        self.ImageOptimize = None
 
 
     def _deserialize(self, params):
@@ -9340,6 +9564,9 @@ class ModifyZoneSettingRequest(AbstractModel):
         if params.get("Grpc") is not None:
             self.Grpc = Grpc()
             self.Grpc._deserialize(params.get("Grpc"))
+        if params.get("ImageOptimize") is not None:
+            self.ImageOptimize = ImageOptimize()
+            self.ImageOptimize._deserialize(params.get("ImageOptimize"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9556,7 +9783,7 @@ class Origin(AbstractModel):
 <li>https：强制 https 回源。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullProtocol: str
-        :param CosPrivateAccess: 源站为腾讯云COS时，是否为私有访问bucket，取值有：
+        :param CosPrivateAccess: 源站为腾讯云 COS 时，是否为私有访问 bucket，取值有：
 <li>on：私有访问；</li>
 <li>off：公共访问。</li>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10010,7 +10237,7 @@ class PostMaxSize(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 是否开启POST请求上传文件限制，平台默认为限制为32MB，取值有：
+        :param Switch: 是否开启 POST 请求上传文件限制，平台默认为限制为32MB，取值有：
 <li>on：开启限制；</li>
 <li>off：关闭限制。</li>
         :type Switch: str
@@ -10149,7 +10376,7 @@ class Quic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 是否开启Quic配置，取值有：
+        :param Switch: 是否开启 Quic 配置，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
@@ -12751,7 +12978,7 @@ class UpstreamHttp2(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: http2回源配置开关，取值有：
+        :param Switch: http2 回源配置开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str

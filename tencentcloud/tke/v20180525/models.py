@@ -3921,6 +3921,8 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         :type EdgeVersion: str
         :param RegistryPrefix: 边缘组件镜像仓库前缀
         :type RegistryPrefix: str
+        :param TagSpecification: 集群绑定的云标签
+        :type TagSpecification: :class:`tencentcloud.tke.v20180525.models.TagSpecification`
         """
         self.K8SVersion = None
         self.VpcId = None
@@ -3936,6 +3938,7 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self.ChargeType = None
         self.EdgeVersion = None
         self.RegistryPrefix = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -3957,6 +3960,9 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self.ChargeType = params.get("ChargeType")
         self.EdgeVersion = params.get("EdgeVersion")
         self.RegistryPrefix = params.get("RegistryPrefix")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = TagSpecification()
+            self.TagSpecification._deserialize(params.get("TagSpecification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9771,6 +9777,8 @@ class DescribeTKEEdgeClusterCredentialResponse(AbstractModel):
         :type Health: str
         :param GridDaemon: 是否部署GridDaemon以支持headless service
         :type GridDaemon: str
+        :param UnitCluster: 公网访问kins集群
+        :type UnitCluster: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9782,6 +9790,7 @@ class DescribeTKEEdgeClusterCredentialResponse(AbstractModel):
         self.HealthRegion = None
         self.Health = None
         self.GridDaemon = None
+        self.UnitCluster = None
         self.RequestId = None
 
 
@@ -9805,6 +9814,7 @@ class DescribeTKEEdgeClusterCredentialResponse(AbstractModel):
         self.HealthRegion = params.get("HealthRegion")
         self.Health = params.get("Health")
         self.GridDaemon = params.get("GridDaemon")
+        self.UnitCluster = params.get("UnitCluster")
         self.RequestId = params.get("RequestId")
 
 

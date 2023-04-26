@@ -68,6 +68,42 @@ class AutoSummarizationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BasicParticiple(AbstractModel):
+    """基础粒度分词和词性标注的结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Word: 基础词。
+        :type Word: str
+        :param BeginOffset: 基础词在NormalText中的起始位置。
+        :type BeginOffset: int
+        :param Length: 基础词的长度。
+        :type Length: int
+        :param Pos: 词性。
+        :type Pos: str
+        """
+        self.Word = None
+        self.BeginOffset = None
+        self.Length = None
+        self.Pos = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.BeginOffset = params.get("BeginOffset")
+        self.Length = params.get("Length")
+        self.Pos = params.get("Pos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CCIToken(AbstractModel):
     """文本纠错结果
 
@@ -208,6 +244,101 @@ class ClassificationResult(AbstractModel):
         self.FourthClassProbability = params.get("FourthClassProbability")
         self.FifthClassName = params.get("FifthClassName")
         self.FifthClassProbability = params.get("FifthClassProbability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompoundParticiple(AbstractModel):
+    """复合粒度分词和词性标注的结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Word: 基础词。
+        :type Word: str
+        :param BeginOffset: 基础词在NormalText中的起始位置。
+        :type BeginOffset: int
+        :param Length: 基础词的长度。
+        :type Length: int
+        :param Pos: 词性。
+        :type Pos: str
+        """
+        self.Word = None
+        self.BeginOffset = None
+        self.Length = None
+        self.Pos = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.BeginOffset = params.get("BeginOffset")
+        self.Length = params.get("Length")
+        self.Pos = params.get("Pos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CorrectionItem(AbstractModel):
+    """纠错结果列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Order: 纠错句子的序号。
+        :type Order: int
+        :param BeginOffset: 错误的起始位置，从0开始。
+        :type BeginOffset: int
+        :param Len: 错误内容长度。
+        :type Len: int
+        :param Word: 错误内容。
+        :type Word: str
+        :param CorrectWord: 纠错结果，当为删除类错误时，结果为null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorrectWord: list of str
+        :param CorrectionType: 纠错类型。0：替换；1：插入；2：删除。
+        :type CorrectionType: int
+        :param Confidence: 纠错信息置信度。0：error；1：warning；error的置信度更高。（仅供参考）
+        :type Confidence: int
+        :param DescriptionZh: 纠错信息中文描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DescriptionZh: str
+        :param DescriptionEn: 纠错信息英文描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DescriptionEn: str
+        """
+        self.Order = None
+        self.BeginOffset = None
+        self.Len = None
+        self.Word = None
+        self.CorrectWord = None
+        self.CorrectionType = None
+        self.Confidence = None
+        self.DescriptionZh = None
+        self.DescriptionEn = None
+
+
+    def _deserialize(self, params):
+        self.Order = params.get("Order")
+        self.BeginOffset = params.get("BeginOffset")
+        self.Len = params.get("Len")
+        self.Word = params.get("Word")
+        self.CorrectWord = params.get("CorrectWord")
+        self.CorrectionType = params.get("CorrectionType")
+        self.Confidence = params.get("Confidence")
+        self.DescriptionZh = params.get("DescriptionZh")
+        self.DescriptionEn = params.get("DescriptionEn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -730,6 +861,183 @@ class DpToken(AbstractModel):
         
 
 
+class Embellish(AbstractModel):
+    """文本润色结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 润色后的文本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param EmbellishType: 润色类型。类型列表
+expansion：扩写
+rewriting：改写
+translation_m2a：从现代文改写为古文
+translation_a2m：从古文改写为现代文
+
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmbellishType: str
+        """
+        self.Text = None
+        self.EmbellishType = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.EmbellishType = params.get("EmbellishType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Entity(AbstractModel):
+    """实体识别结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Word: 基础词。
+        :type Word: str
+        :param BeginOffset: 基础词在NormalText中的起始位置。
+        :type BeginOffset: int
+        :param Length: 基础词的长度。
+        :type Length: int
+        :param Type: 实体类型的标准名字。
+        :type Type: str
+        :param Name: 类型名字的自然语言表达。（中文或英文）
+        :type Name: str
+        """
+        self.Word = None
+        self.BeginOffset = None
+        self.Length = None
+        self.Type = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Word = params.get("Word")
+        self.BeginOffset = params.get("BeginOffset")
+        self.Length = params.get("Length")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EvaluateSentenceSimilarityRequest(AbstractModel):
+    """EvaluateSentenceSimilarity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SentencePairList: 待分析的句子对数组。句子对应不超过5对，支持中英文文本，原句子与目标句子均应不超过500字符。
+        :type SentencePairList: list of SentencePair
+        """
+        self.SentencePairList = None
+
+
+    def _deserialize(self, params):
+        if params.get("SentencePairList") is not None:
+            self.SentencePairList = []
+            for item in params.get("SentencePairList"):
+                obj = SentencePair()
+                obj._deserialize(item)
+                self.SentencePairList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EvaluateSentenceSimilarityResponse(AbstractModel):
+    """EvaluateSentenceSimilarity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScoreList: 每个句子对的相似度分值。
+        :type ScoreList: list of float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScoreList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ScoreList = params.get("ScoreList")
+        self.RequestId = params.get("RequestId")
+
+
+class EvaluateWordSimilarityRequest(AbstractModel):
+    """EvaluateWordSimilarity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceWord: 计算相似度的源词。（仅支持UTF-8格式，不超过10字符）
+
+        :type SourceWord: str
+        :param TargetWord: 计算相似度的目标词。（仅支持UTF-8格式，不超过10字符）
+
+        :type TargetWord: str
+        """
+        self.SourceWord = None
+        self.TargetWord = None
+
+
+    def _deserialize(self, params):
+        self.SourceWord = params.get("SourceWord")
+        self.TargetWord = params.get("TargetWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EvaluateWordSimilarityResponse(AbstractModel):
+    """EvaluateWordSimilarity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Similarity: 词相似度分值。
+        :type Similarity: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Similarity = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Similarity = params.get("Similarity")
+        self.RequestId = params.get("RequestId")
+
+
 class GenerateCoupletRequest(AbstractModel):
     """GenerateCouplet请求参数结构体
 
@@ -784,6 +1092,68 @@ class GenerateCoupletResponse(AbstractModel):
         self.TopScroll = params.get("TopScroll")
         self.Content = params.get("Content")
         self.RandomCause = params.get("RandomCause")
+        self.RequestId = params.get("RequestId")
+
+
+class GenerateKeywordSentenceRequest(AbstractModel):
+    """GenerateKeywordSentence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WordList: 生成句子的关键词，关键词个数需不超过4个，中文关键词长度应不超过10字符，英文关键词长度不超过3个单词。关键词中不可包含标点符号。
+        :type WordList: list of str
+        :param Number: 返回生成句子的个数。数量需>=1且<=5。
+（注意实际结果可能小于指定个数）
+        :type Number: int
+        :param Domain: 指定生成句子的领域，支持领域列表
+general：通用领域，支持中英文
+academic：学术领域，仅支持英文
+默认为general（通用领域）。
+        :type Domain: str
+        """
+        self.WordList = None
+        self.Number = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.WordList = params.get("WordList")
+        self.Number = params.get("Number")
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateKeywordSentenceResponse(AbstractModel):
+    """GenerateKeywordSentence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeywordSentenceList: 生成的句子列表。
+        :type KeywordSentenceList: list of KeywordSentence
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KeywordSentenceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KeywordSentenceList") is not None:
+            self.KeywordSentenceList = []
+            for item in params.get("KeywordSentenceList"):
+                obj = KeywordSentence()
+                obj._deserialize(item)
+                self.KeywordSentenceList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -863,6 +1233,30 @@ class Keyword(AbstractModel):
     def _deserialize(self, params):
         self.Score = params.get("Score")
         self.Word = params.get("Word")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeywordSentence(AbstractModel):
+    """通过关键词生成的句子信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TargetText: 通过关键词生成的句子。
+        :type TargetText: str
+        """
+        self.TargetText = None
+
+
+    def _deserialize(self, params):
+        self.TargetText = params.get("TargetText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1037,6 +1431,80 @@ class NerToken(AbstractModel):
         
 
 
+class ParseWordsRequest(AbstractModel):
+    """ParseWords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 待分析的文本（支持中英文文本，不超过500字符）
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParseWordsResponse(AbstractModel):
+    """ParseWords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NormalText: 输入文本正则化的结果。（包括对英文文本中的开头和实体进行大写等）
+        :type NormalText: str
+        :param BasicParticiples: 基础粒度分词和词性标注的结果。（词性表请参见附录）
+
+        :type BasicParticiples: list of BasicParticiple
+        :param CompoundParticiples: 复合粒度分词和词性标注的结果。（词性表请参见附录）
+        :type CompoundParticiples: list of CompoundParticiple
+        :param Entities: 实体识别结果。（实体类型数据请参见附录）
+
+        :type Entities: list of Entity
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NormalText = None
+        self.BasicParticiples = None
+        self.CompoundParticiples = None
+        self.Entities = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NormalText = params.get("NormalText")
+        if params.get("BasicParticiples") is not None:
+            self.BasicParticiples = []
+            for item in params.get("BasicParticiples"):
+                obj = BasicParticiple()
+                obj._deserialize(item)
+                self.BasicParticiples.append(obj)
+        if params.get("CompoundParticiples") is not None:
+            self.CompoundParticiples = []
+            for item in params.get("CompoundParticiples"):
+                obj = CompoundParticiple()
+                obj._deserialize(item)
+                self.CompoundParticiples.append(obj)
+        if params.get("Entities") is not None:
+            self.Entities = []
+            for item in params.get("Entities"):
+                obj = Entity()
+                obj._deserialize(item)
+                self.Entities.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class PosToken(AbstractModel):
     """分词&词性标注结果
 
@@ -1071,6 +1539,55 @@ class PosToken(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RetrieveSimilarWordsRequest(AbstractModel):
+    """RetrieveSimilarWords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 输入的词语。（仅支持UTF-8格式，不超过10字符）
+        :type Text: str
+        :param Number: 召回的相似词个数，取值范围为1-20。
+        :type Number: int
+        """
+        self.Text = None
+        self.Number = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.Number = params.get("Number")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetrieveSimilarWordsResponse(AbstractModel):
+    """RetrieveSimilarWords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WordList: 召回的相似词数组。
+        :type WordList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WordList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WordList = params.get("WordList")
+        self.RequestId = params.get("RequestId")
 
 
 class SearchResult(AbstractModel):
@@ -1169,6 +1686,57 @@ class SearchWordItemsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SentenceCorrectionRequest(AbstractModel):
+    """SentenceCorrection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TextList: 待纠错的句子列表。可以以数组方式在一次请求中填写多个待纠错的句子。文本统一使用utf-8格式编码，每个中文句子的长度不超过150字符，每个英文句子的长度不超过100个单词，且数组长度需小于150，即句子总数需少于150句。
+        :type TextList: list of str
+        """
+        self.TextList = None
+
+
+    def _deserialize(self, params):
+        self.TextList = params.get("TextList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SentenceCorrectionResponse(AbstractModel):
+    """SentenceCorrection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CorrectionList: 纠错结果列表。
+（注意仅展示错误句子的纠错结果，若句子无错则不展示，若全部待纠错句子都被认为无错，则可能返回数组为空）
+        :type CorrectionList: list of CorrectionItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CorrectionList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CorrectionList") is not None:
+            self.CorrectionList = []
+            for item in params.get("CorrectionList"):
+                obj = CorrectionItem()
+                obj._deserialize(item)
+                self.CorrectionList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class SentenceEmbeddingRequest(AbstractModel):
     """SentenceEmbedding请求参数结构体
 
@@ -1216,6 +1784,35 @@ class SentenceEmbeddingResponse(AbstractModel):
         self.Vector = params.get("Vector")
         self.Dimension = params.get("Dimension")
         self.RequestId = params.get("RequestId")
+
+
+class SentencePair(AbstractModel):
+    """待分析的句子对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceText: 需要与目标句子计算相似度的源句子。（仅支持UTF-8格式，不超过500字符）
+        :type SourceText: str
+        :param TargetText: 目标句子。（仅支持UTF-8格式，不超过500字符）
+
+        :type TargetText: str
+        """
+        self.SourceText = None
+        self.TargetText = None
+
+
+    def _deserialize(self, params):
+        self.SourceText = params.get("SourceText")
+        self.TargetText = params.get("TargetText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SentimentAnalysisRequest(AbstractModel):
@@ -1536,6 +2133,77 @@ class TextCorrectionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TextEmbellishRequest(AbstractModel):
+    """TextEmbellish请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 待润色的文本。中文文本长度需<=50字符；英文文本长度需<=30个单词。
+        :type Text: str
+        :param SourceLang: 待润色文本的语言类型，支持语言列表
+zh：中文
+en：英文
+        :type SourceLang: str
+        :param Number: 返回润色结果的个数。数量需>=1且<=5。
+（注意实际结果可能小于指定个数）
+        :type Number: int
+        :param Style: 控制润色类型，类型列表
+both：同时返回改写和扩写
+expansion：扩写
+rewriting：改写
+m2a：从现代文改写为古文
+a2m：从古文改写为现代文
+默认为both。
+        :type Style: str
+        """
+        self.Text = None
+        self.SourceLang = None
+        self.Number = None
+        self.Style = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.SourceLang = params.get("SourceLang")
+        self.Number = params.get("Number")
+        self.Style = params.get("Style")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextEmbellishResponse(AbstractModel):
+    """TextEmbellish返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EmbellishList: 润色结果列表。
+        :type EmbellishList: list of Embellish
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EmbellishList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EmbellishList") is not None:
+            self.EmbellishList = []
+            for item in params.get("EmbellishList"):
+                obj = Embellish()
+                obj._deserialize(item)
+                self.EmbellishList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class TextSimilarityProRequest(AbstractModel):
     """TextSimilarityPro请求参数结构体
 
@@ -1641,6 +2309,83 @@ class TextSimilarityResponse(AbstractModel):
                 obj = Similarity()
                 obj._deserialize(item)
                 self.Similarity.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class TextWritingRequest(AbstractModel):
+    """TextWriting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 待续写的句子，文本统一使用utf-8格式编码，长度不超过200字符。
+        :type Text: str
+        :param SourceLang: 待续写文本的语言类型，支持语言列表
+zh：中文
+en：英文
+        :type SourceLang: str
+        :param Number: 返回续写结果的个数。数量需>=1且<=5。
+（注意实际结果可能小于指定个数）
+        :type Number: int
+        :param Domain: 指定续写领域，支持领域列表
+general：通用领域，支持中英文补全
+academic：学术领域，仅支持英文补全
+默认为general（通用领域）。
+        :type Domain: str
+        :param Style: 指定续写风格，支持风格列表
+science_fiction：科幻
+military_history：军事
+xuanhuan_wuxia：武侠
+urban_officialdom：职场
+默认为xuanhuan_wuxia（武侠）。
+        :type Style: str
+        """
+        self.Text = None
+        self.SourceLang = None
+        self.Number = None
+        self.Domain = None
+        self.Style = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.SourceLang = params.get("SourceLang")
+        self.Number = params.get("Number")
+        self.Domain = params.get("Domain")
+        self.Style = params.get("Style")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextWritingResponse(AbstractModel):
+    """TextWriting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WritingList: 续写结果列表。
+        :type WritingList: list of Writing
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WritingList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WritingList") is not None:
+            self.WritingList = []
+            for item in params.get("WritingList"):
+                obj = Writing()
+                obj._deserialize(item)
+                self.WritingList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1821,3 +2566,31 @@ class WordSimilarityResponse(AbstractModel):
     def _deserialize(self, params):
         self.Similarity = params.get("Similarity")
         self.RequestId = params.get("RequestId")
+
+
+class Writing(AbstractModel):
+    """文本续写结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TargetText: 续写的文本。
+        :type TargetText: str
+        :param PrefixText: 续写的前缀。
+        :type PrefixText: str
+        """
+        self.TargetText = None
+        self.PrefixText = None
+
+
+    def _deserialize(self, params):
+        self.TargetText = params.get("TargetText")
+        self.PrefixText = params.get("PrefixText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

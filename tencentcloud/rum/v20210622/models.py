@@ -345,6 +345,8 @@ class CreateTawInstanceRequest(AbstractModel):
         :type ResourcePackageType: int
         :param ResourcePackageNum: 预付费资源包数量(仅预付费需要)
         :type ResourcePackageNum: int
+        :param InstanceType: 实例类型 1:原web相关类型 2:app端类型
+        :type InstanceType: int
         """
         self.AreaId = None
         self.ChargeType = None
@@ -357,6 +359,7 @@ class CreateTawInstanceRequest(AbstractModel):
         self.BuyingChannel = None
         self.ResourcePackageType = None
         self.ResourcePackageNum = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -376,6 +379,7 @@ class CreateTawInstanceRequest(AbstractModel):
         self.BuyingChannel = params.get("BuyingChannel")
         self.ResourcePackageType = params.get("ResourcePackageType")
         self.ResourcePackageNum = params.get("ResourcePackageNum")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5131,6 +5135,9 @@ class RumInstanceInfo(AbstractModel):
         :type InstanceName: str
         :param CreatedAt: 创建时间
         :type CreatedAt: str
+        :param InstanceType: 实例类型 1:原web相关类型 2:app端类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: int
         """
         self.InstanceStatus = None
         self.AreaId = None
@@ -5144,6 +5151,7 @@ class RumInstanceInfo(AbstractModel):
         self.DataRetentionDays = None
         self.InstanceName = None
         self.CreatedAt = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -5164,6 +5172,7 @@ class RumInstanceInfo(AbstractModel):
         self.DataRetentionDays = params.get("DataRetentionDays")
         self.InstanceName = params.get("InstanceName")
         self.CreatedAt = params.get("CreatedAt")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

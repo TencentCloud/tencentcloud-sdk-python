@@ -6849,15 +6849,13 @@ class RedisBackupSet(AbstractModel):
         r"""
         :param StartTime: 备份开始时间。
         :type StartTime: str
-        :param BackupId: 备份ID。
+        :param BackupId: 备份任务ID。
         :type BackupId: str
         :param BackupType: 备份类型。
-
-- 1：用户发起的手动备份。
-- 0：凌晨系统发起的备份。
+- 1：凌晨系统发起的备份。
+- 0：用户发起的手动备份。
         :type BackupType: str
         :param Status: 备份状态。 
-
 - 1：备份被其它流程锁定。
 - 2：备份正常，没有被任何流程锁定。
 - -1：备份已过期。
@@ -6867,7 +6865,6 @@ class RedisBackupSet(AbstractModel):
         :param Remark: 备份的备注信息。
         :type Remark: str
         :param Locked: 备份是否被锁定。
-
 - 0：未被锁定。
 - 1：已被锁定。
         :type Locked: int

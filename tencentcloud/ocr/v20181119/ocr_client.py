@@ -1555,7 +1555,7 @@ class OcrClient(AbstractClient):
 
 
     def RecognizePhilippinesSssIDOCR(self, request):
-        """菲律宾SSSID识别
+        """菲律宾SSSID/UMID识别
 
         :param request: Request instance for RecognizePhilippinesSssIDOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesSssIDOCRRequest`
