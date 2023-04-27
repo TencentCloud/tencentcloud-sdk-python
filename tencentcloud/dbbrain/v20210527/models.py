@@ -894,8 +894,7 @@ class DeleteDBDiagReportTasksRequest(AbstractModel):
         :type AsyncRequestIds: list of int
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL， "mongodb" - 云数据库 CynosDB for MySQL，
-默认值为"mysql"。
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
         self.AsyncRequestIds = None

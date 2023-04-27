@@ -3478,6 +3478,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUnitRulesV2(self, request):
+        """查询单元化规则列表V2
+
+        :param request: Request instance for DescribeUnitRulesV2.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeUnitRulesV2Request`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeUnitRulesV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUnitRulesV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUnitRulesV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUploadInfo(self, request):
         """TSF会将软件包上传到腾讯云对象存储（COS）。调用此接口获取上传信息，如目标地域，桶，包Id，存储路径，鉴权信息等，之后请使用COS API（或SDK）进行上传。
         COS相关文档请查阅：https://cloud.tencent.com/document/product/436

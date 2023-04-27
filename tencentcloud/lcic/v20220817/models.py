@@ -973,6 +973,8 @@ video 纯视频
         :type RecordLayout: int
         :param GroupId: 房间绑定的群组ID,非空时限制组成员进入
         :type GroupId: str
+        :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关
+        :type EnableDirectControl: int
         """
         self.Name = None
         self.StartTime = None
@@ -991,6 +993,7 @@ video 纯视频
         self.AudienceType = None
         self.RecordLayout = None
         self.GroupId = None
+        self.EnableDirectControl = None
 
 
     def _deserialize(self, params):
@@ -1011,6 +1014,7 @@ video 纯视频
         self.AudienceType = params.get("AudienceType")
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2213,6 +2217,8 @@ video 纯视频
         :param GroupId: 房间绑定的群组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
+        :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关
+        :type EnableDirectControl: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2231,6 +2237,7 @@ video 纯视频
         self.RecordUrl = None
         self.Status = None
         self.GroupId = None
+        self.EnableDirectControl = None
         self.RequestId = None
 
 
@@ -2250,6 +2257,7 @@ video 纯视频
         self.RecordUrl = params.get("RecordUrl")
         self.Status = params.get("Status")
         self.GroupId = params.get("GroupId")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         self.RequestId = params.get("RequestId")
 
 
@@ -3538,6 +3546,8 @@ coteaching 双师
         :type Assistants: list of str
         :param GroupId: 房间绑定的群组ID
         :type GroupId: str
+        :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关
+        :type EnableDirectControl: int
         """
         self.RoomId = None
         self.SdkAppId = None
@@ -3553,6 +3563,7 @@ coteaching 双师
         self.DisableRecord = None
         self.Assistants = None
         self.GroupId = None
+        self.EnableDirectControl = None
 
 
     def _deserialize(self, params):
@@ -3570,6 +3581,7 @@ coteaching 双师
         self.DisableRecord = params.get("DisableRecord")
         self.Assistants = params.get("Assistants")
         self.GroupId = params.get("GroupId")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3791,6 +3803,8 @@ class RoomInfo(AbstractModel):
         :type RecordLayout: int
         :param GroupId: 房间绑定的群组ID
         :type GroupId: str
+        :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关
+        :type EnableDirectControl: int
         """
         self.Name = None
         self.StartTime = None
@@ -3808,6 +3822,7 @@ class RoomInfo(AbstractModel):
         self.AudienceType = None
         self.RecordLayout = None
         self.GroupId = None
+        self.EnableDirectControl = None
 
 
     def _deserialize(self, params):
@@ -3827,6 +3842,7 @@ class RoomInfo(AbstractModel):
         self.AudienceType = params.get("AudienceType")
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3878,6 +3894,12 @@ class RoomItem(AbstractModel):
         :param RecordUrl: 录制地址（协议为https)。仅在房间结束后存在。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordUrl: str
+        :param MaxMicNumber: 最高房间内人数（包括老师），0表示不限制，默认为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxMicNumber: int
+        :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableDirectControl: int
         """
         self.Name = None
         self.RoomId = None
@@ -3890,6 +3912,8 @@ class RoomItem(AbstractModel):
         self.MaxRTCMember = None
         self.ReplayUrl = None
         self.RecordUrl = None
+        self.MaxMicNumber = None
+        self.EnableDirectControl = None
 
 
     def _deserialize(self, params):
@@ -3904,6 +3928,8 @@ class RoomItem(AbstractModel):
         self.MaxRTCMember = params.get("MaxRTCMember")
         self.ReplayUrl = params.get("ReplayUrl")
         self.RecordUrl = params.get("RecordUrl")
+        self.MaxMicNumber = params.get("MaxMicNumber")
+        self.EnableDirectControl = params.get("EnableDirectControl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

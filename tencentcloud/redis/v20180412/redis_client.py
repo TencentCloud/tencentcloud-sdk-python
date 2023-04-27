@@ -1499,7 +1499,7 @@ class RedisClient(AbstractClient):
 
 
     def KillMasterGroup(self, request):
-        """模拟故障
+        """本接口（KillMasterGroup）模拟故障。
 
         :param request: Request instance for KillMasterGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.KillMasterGroupRequest`

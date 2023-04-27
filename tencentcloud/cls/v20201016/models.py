@@ -1981,6 +1981,8 @@ class CreateMachineGroupRequest(AbstractModel):
         :type UpdateEndTime: str
         :param ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
         :type ServiceLogging: bool
+        :param MetaTags: 机器组元数据信息列表
+        :type MetaTags: list of MetaTagInfo
         """
         self.GroupName = None
         self.MachineGroupType = None
@@ -1989,6 +1991,7 @@ class CreateMachineGroupRequest(AbstractModel):
         self.UpdateStartTime = None
         self.UpdateEndTime = None
         self.ServiceLogging = None
+        self.MetaTags = None
 
 
     def _deserialize(self, params):
@@ -2006,6 +2009,12 @@ class CreateMachineGroupRequest(AbstractModel):
         self.UpdateStartTime = params.get("UpdateStartTime")
         self.UpdateEndTime = params.get("UpdateEndTime")
         self.ServiceLogging = params.get("ServiceLogging")
+        if params.get("MetaTags") is not None:
+            self.MetaTags = []
+            for item in params.get("MetaTags"):
+                obj = MetaTagInfo()
+                obj._deserialize(item)
+                self.MetaTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4402,6 +4411,13 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议
 该字段适用于：创建采集规则配置、修改采集规则配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParseProtocol: str
+        :param MetadataType: 元数据类型，0: 不使用元数据信息，1:使用机器组元数据，2:使用用户自定义元数据，3:使用采集配置路径，
+        :type MetadataType: int
+        :param PathRegex: 采集配置路径正则表达式，MetadataType为1时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathRegex: str
+        :param MetaTags: 用户自定义元数据信息，MetadataType为2时必填
+        :type MetaTags: list of MetaTagInfo
         """
         self.TimeKey = None
         self.TimeFormat = None
@@ -4418,6 +4434,9 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议
         self.Protocol = None
         self.Address = None
         self.ParseProtocol = None
+        self.MetadataType = None
+        self.PathRegex = None
+        self.MetaTags = None
 
 
     def _deserialize(self, params):
@@ -4441,6 +4460,14 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议
         self.Protocol = params.get("Protocol")
         self.Address = params.get("Address")
         self.ParseProtocol = params.get("ParseProtocol")
+        self.MetadataType = params.get("MetadataType")
+        self.PathRegex = params.get("PathRegex")
+        if params.get("MetaTags") is not None:
+            self.MetaTags = []
+            for item in params.get("MetaTags"):
+                obj = MetaTagInfo()
+                obj._deserialize(item)
+                self.MetaTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5113,6 +5140,8 @@ class MachineGroupInfo(AbstractModel):
         :param ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceLogging: bool
+        :param MetaTags: 机器组元数据信息列表
+        :type MetaTags: list of MetaTagInfo
         """
         self.GroupId = None
         self.GroupName = None
@@ -5123,6 +5152,7 @@ class MachineGroupInfo(AbstractModel):
         self.UpdateStartTime = None
         self.UpdateEndTime = None
         self.ServiceLogging = None
+        self.MetaTags = None
 
 
     def _deserialize(self, params):
@@ -5142,6 +5172,12 @@ class MachineGroupInfo(AbstractModel):
         self.UpdateStartTime = params.get("UpdateStartTime")
         self.UpdateEndTime = params.get("UpdateEndTime")
         self.ServiceLogging = params.get("ServiceLogging")
+        if params.get("MetaTags") is not None:
+            self.MetaTags = []
+            for item in params.get("MetaTags"):
+                obj = MetaTagInfo()
+                obj._deserialize(item)
+                self.MetaTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5283,6 +5319,34 @@ class MergePartitionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Partitions.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class MetaTagInfo(AbstractModel):
+    """元数据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 元数据key
+        :type Key: str
+        :param Value: 元数据value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyAlarmNoticeRequest(AbstractModel):
@@ -5907,6 +5971,8 @@ class ModifyMachineGroupRequest(AbstractModel):
         :type UpdateEndTime: str
         :param ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
         :type ServiceLogging: bool
+        :param MetaTags: 机器组元数据信息列表
+        :type MetaTags: list of MetaTagInfo
         """
         self.GroupId = None
         self.GroupName = None
@@ -5916,6 +5982,7 @@ class ModifyMachineGroupRequest(AbstractModel):
         self.UpdateStartTime = None
         self.UpdateEndTime = None
         self.ServiceLogging = None
+        self.MetaTags = None
 
 
     def _deserialize(self, params):
@@ -5934,6 +6001,12 @@ class ModifyMachineGroupRequest(AbstractModel):
         self.UpdateStartTime = params.get("UpdateStartTime")
         self.UpdateEndTime = params.get("UpdateEndTime")
         self.ServiceLogging = params.get("ServiceLogging")
+        if params.get("MetaTags") is not None:
+            self.MetaTags = []
+            for item in params.get("MetaTags"):
+                obj = MetaTagInfo()
+                obj._deserialize(item)
+                self.MetaTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

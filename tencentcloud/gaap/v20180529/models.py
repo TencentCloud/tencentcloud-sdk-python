@@ -2766,6 +2766,29 @@ class DescribeAccessRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAuthSignatureRequest(AbstractModel):
+    """DescribeAuthSignature请求参数结构体
+
+    """
+
+
+class DescribeAuthSignatureResponse(AbstractModel):
+    """DescribeAuthSignature返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBlackHeaderRequest(AbstractModel):
     """DescribeBlackHeader请求参数结构体
 

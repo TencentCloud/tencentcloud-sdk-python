@@ -1449,6 +1449,15 @@ class SecretMetadata(AbstractModel):
         :param TargetUin: 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetUin: int
+        :param RotationFrequency: 轮转的频率，以天作为单位，在轮转开启状态下生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RotationFrequency: int
+        :param ResourceID: 云产品凭据对应的云产品实例 ID 号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceID: str
+        :param RotationBeginTime: 用户指定的轮转开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RotationBeginTime: str
         """
         self.SecretName = None
         self.Description = None
@@ -1466,6 +1475,9 @@ class SecretMetadata(AbstractModel):
         self.ProjectID = None
         self.AssociatedInstanceIDs = None
         self.TargetUin = None
+        self.RotationFrequency = None
+        self.ResourceID = None
+        self.RotationBeginTime = None
 
 
     def _deserialize(self, params):
@@ -1485,6 +1497,9 @@ class SecretMetadata(AbstractModel):
         self.ProjectID = params.get("ProjectID")
         self.AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
         self.TargetUin = params.get("TargetUin")
+        self.RotationFrequency = params.get("RotationFrequency")
+        self.ResourceID = params.get("ResourceID")
+        self.RotationBeginTime = params.get("RotationBeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

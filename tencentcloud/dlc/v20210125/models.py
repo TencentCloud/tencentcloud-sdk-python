@@ -7489,6 +7489,12 @@ class SparkJobInfo(AbstractModel):
         :param SessionId: 查询脚本关联id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionId: str
+        :param DataEngineClusterType: spark_emr_livy
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineClusterType: str
+        :param DataEngineImageVersion: Spark 3.2-EMR
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineImageVersion: str
         """
         self.JobId = None
         self.JobName = None
@@ -7527,6 +7533,8 @@ class SparkJobInfo(AbstractModel):
         self.JobExecutorMaxNumbers = None
         self.SparkImageVersion = None
         self.SessionId = None
+        self.DataEngineClusterType = None
+        self.DataEngineImageVersion = None
 
 
     def _deserialize(self, params):
@@ -7569,6 +7577,8 @@ class SparkJobInfo(AbstractModel):
         self.JobExecutorMaxNumbers = params.get("JobExecutorMaxNumbers")
         self.SparkImageVersion = params.get("SparkImageVersion")
         self.SessionId = params.get("SessionId")
+        self.DataEngineClusterType = params.get("DataEngineClusterType")
+        self.DataEngineImageVersion = params.get("DataEngineImageVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

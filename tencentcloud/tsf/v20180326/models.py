@@ -12414,6 +12414,70 @@ class DescribeUnitRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUnitRulesV2Request(AbstractModel):
+    """DescribeUnitRulesV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
+        :param SearchWord: 根据规则名或备注内容模糊查询
+        :type SearchWord: str
+        :param Status: 启用状态, disabled: 未发布， enabled: 发布
+        :type Status: str
+        :param Offset: 翻页查询偏移量
+        :type Offset: int
+        :param Limit: 翻页查询每页记录数
+        :type Limit: int
+        """
+        self.GatewayInstanceId = None
+        self.SearchWord = None
+        self.Status = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+        self.SearchWord = params.get("SearchWord")
+        self.Status = params.get("Status")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUnitRulesV2Response(AbstractModel):
+    """DescribeUnitRulesV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 分页列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageUnitRuleV2`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageUnitRuleV2()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUploadInfoRequest(AbstractModel):
     """DescribeUploadInfo请求参数结构体
 
@@ -21657,6 +21721,41 @@ class TsfPageUnitRule(AbstractModel):
         :param TotalCount: 记录总数
         :type TotalCount: int
         :param Content: 记录实体列表
+        :type Content: list of UnitRule
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = UnitRule()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TsfPageUnitRuleV2(AbstractModel):
+    """单元化规则翻页对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 记录总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 记录实体列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of UnitRule
         """
         self.TotalCount = None

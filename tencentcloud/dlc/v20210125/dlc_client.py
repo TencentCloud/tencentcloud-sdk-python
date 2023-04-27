@@ -1361,7 +1361,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppJobs(self, request):
-        """获取spark应用列表
+        """获取spark应用列表。
 
         :param request: Request instance for DescribeSparkAppJobs.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobsRequest`

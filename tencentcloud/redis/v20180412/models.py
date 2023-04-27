@@ -4666,31 +4666,38 @@ class InstanceClusterNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 节点名称
+        :param Name: 节点名称。
         :type Name: str
-        :param RunId: 实例运行时节点Id
+        :param RunId: 实例运行时节点 ID。
         :type RunId: str
-        :param Role: 集群角色：0-master；1-slave
+        :param Role: 集群角色。
+- 0：master。
+- 1：slave。
         :type Role: int
-        :param Status: 节点状态：0-readwrite, 1-read, 2-backup
+        :param Status: 节点状态。
+- 0：readwrite,。
+- 1：read。
+- 2：backup。
         :type Status: int
-        :param Connected: 服务状态：0-down；1-on
+        :param Connected: 服务状态。
+0-down。
+1-on
         :type Connected: int
-        :param CreateTime: 节点创建时间
+        :param CreateTime: 节点创建时间。
         :type CreateTime: str
-        :param DownTime: 节点下线时间
+        :param DownTime: 节点下线时间。
         :type DownTime: str
-        :param Slots: 节点slot分布
+        :param Slots: 节点 Slot 分布区间。
         :type Slots: str
-        :param Keys: 节点key分布
+        :param Keys: 节点 Key分布。
         :type Keys: int
-        :param Qps: 节点qps
+        :param Qps: 节点 QPS。分片节点每秒执行次数。单位：次/秒。
         :type Qps: int
-        :param QpsSlope: 节点qps倾斜度
+        :param QpsSlope: 节点 QPS 倾斜度。
         :type QpsSlope: float
-        :param Storage: 节点存储
+        :param Storage: 节点存储。
         :type Storage: int
-        :param StorageSlope: 节点存储倾斜度
+        :param StorageSlope: 节点存储倾斜度。
         :type StorageSlope: float
         """
         self.Name = None
@@ -4963,9 +4970,9 @@ class InstanceNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Id
+        :param Id: 实例 ID。
         :type Id: int
-        :param InstanceClusterNode: 节点详细信息
+        :param InstanceClusterNode: 节点详细信息。
         :type InstanceClusterNode: list of InstanceClusterNode
         """
         self.Id = None
@@ -5472,9 +5479,9 @@ class InstanceTagInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TagKey: 标签键
+        :param TagKey: 标签键。
         :type TagKey: str
-        :param TagValue: 标签值
+        :param TagValue: 标签值。
         :type TagValue: str
         """
         self.TagKey = None
@@ -5664,17 +5671,14 @@ class KillMasterGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param Password: 1.长度8-30位,推荐使用12位以上的密码
-2.不能以"/"开头
-3.至少包含两项
-    a.小写字母a-z
-    b.大写字母A-Z
-    c.数字0-9
-    d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+        :param Password: 该参数用于配置指定实例的访问密码。若为免密认证，该参数则无需配置。密码复杂度要求如下所示。
+- 长度8-30位,推荐使用12位以上的密码
+- 不能以"/"开头
+- 至少包含小写字母a-z、大写字母A-Z、数字0-9及其 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
         :type Password: str
-        :param ShardIds: 单AZ实例节点信息
+        :param ShardIds: 分片集群的分片 ID。
         :type ShardIds: list of int
         """
         self.InstanceId = None
@@ -5702,7 +5706,7 @@ class KillMasterGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步任务ID
+        :param TaskId: 异步任务ID。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

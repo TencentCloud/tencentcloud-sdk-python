@@ -1663,7 +1663,7 @@ class DescribeAccountQuotaResponse(AbstractModel):
     def __init__(self):
         r"""
         :param AppId: 用户appid
-        :type AppId: str
+        :type AppId: int
         :param AccountQuotaOverview: 配额数据
         :type AccountQuotaOverview: :class:`tencentcloud.cvm.v20170312.models.AccountQuotaOverview`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

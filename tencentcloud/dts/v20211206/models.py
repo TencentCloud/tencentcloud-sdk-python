@@ -1016,9 +1016,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SrcDatabaseType: 源实例数据库类型，mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb
+        :param SrcDatabaseType: 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
         :type SrcDatabaseType: str
-        :param DstDatabaseType: 目标实例数据库类型，mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb
+        :param DstDatabaseType: 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
         :type DstDatabaseType: str
         :param SrcRegion: 源实例地域，如：ap-guangzhou
         :type SrcRegion: str

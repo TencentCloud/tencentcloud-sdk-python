@@ -4179,7 +4179,11 @@ class ModifyEnterpriseSecurityDispatchStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 状态，0：立即下发，1：停止下发
+        :param Status: 0：打开立即下发开关；
+
+1：关闭立即下发开关；
+
+2：关闭立即下发开关下，触发开始下发
         :type Status: int
         """
         self.Status = None
