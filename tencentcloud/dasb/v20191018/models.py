@@ -548,11 +548,55 @@ class Command(AbstractModel):
         :type TimeOffset: int
         :param Action: 命令执行情况，1--允许，2--拒绝，3--确认
         :type Action: int
+        :param Sid: 会话id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sid: str
+        :param UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Account: 设备account
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Account: str
+        :param InstanceId: 设备ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param FromIp: source ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromIp: str
+        :param SessTime: 该命令所属会话的会话开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessTime: str
+        :param ConfirmTime: 复核时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfirmTime: str
+        :param UserDepartmentId: 用户部门id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDepartmentId: str
+        :param UserDepartmentName: 用户部门name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDepartmentName: str
+        :param DeviceDepartmentId: 设备部门id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceDepartmentId: str
+        :param DeviceDepartmentName: 设备部门name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceDepartmentName: str
         """
         self.Cmd = None
         self.Time = None
         self.TimeOffset = None
         self.Action = None
+        self.Sid = None
+        self.UserName = None
+        self.Account = None
+        self.InstanceId = None
+        self.FromIp = None
+        self.SessTime = None
+        self.ConfirmTime = None
+        self.UserDepartmentId = None
+        self.UserDepartmentName = None
+        self.DeviceDepartmentId = None
+        self.DeviceDepartmentName = None
 
 
     def _deserialize(self, params):
@@ -560,6 +604,17 @@ class Command(AbstractModel):
         self.Time = params.get("Time")
         self.TimeOffset = params.get("TimeOffset")
         self.Action = params.get("Action")
+        self.Sid = params.get("Sid")
+        self.UserName = params.get("UserName")
+        self.Account = params.get("Account")
+        self.InstanceId = params.get("InstanceId")
+        self.FromIp = params.get("FromIp")
+        self.SessTime = params.get("SessTime")
+        self.ConfirmTime = params.get("ConfirmTime")
+        self.UserDepartmentId = params.get("UserDepartmentId")
+        self.UserDepartmentName = params.get("UserDepartmentName")
+        self.DeviceDepartmentId = params.get("DeviceDepartmentId")
+        self.DeviceDepartmentName = params.get("DeviceDepartmentName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -764,14 +819,20 @@ class CreateCmdTemplateRequest(AbstractModel):
         :type Name: str
         :param CmdList: 命令列表，\n分隔，最大长度32768字节
         :type CmdList: str
+        :param Encoding: 标识cmdlist字段前端是否为base64加密传值.
+0:表示非base64加密
+1:表示是base64加密
+        :type Encoding: int
         """
         self.Name = None
         self.CmdList = None
+        self.Encoding = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.CmdList = params.get("CmdList")
+        self.Encoding = params.get("Encoding")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3586,6 +3647,9 @@ class SearchCommandBySidRequest(AbstractModel):
         :type Sid: str
         :param Cmd: 命令，可模糊搜索
         :type Cmd: str
+        :param Encoding: Cmd字段是前端传值是否进行base64.
+0:否，1：是
+        :type Encoding: int
         :param Offset: 偏移量
         :type Offset: int
         :param Limit: 每页容量，默认20，最大200
@@ -3595,6 +3659,7 @@ class SearchCommandBySidRequest(AbstractModel):
         """
         self.Sid = None
         self.Cmd = None
+        self.Encoding = None
         self.Offset = None
         self.Limit = None
         self.AuditAction = None
@@ -3603,6 +3668,7 @@ class SearchCommandBySidRequest(AbstractModel):
     def _deserialize(self, params):
         self.Sid = params.get("Sid")
         self.Cmd = params.get("Cmd")
+        self.Encoding = params.get("Encoding")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.AuditAction = params.get("AuditAction")
@@ -3670,6 +3736,9 @@ class SearchCommandRequest(AbstractModel):
         :type PrivateIp: str
         :param Cmd: 执行的命令
         :type Cmd: str
+        :param Encoding: Cmd字段是前端传值是否进行base64.
+0:否，1：是
+        :type Encoding: int
         :param AuditAction: 根据拦截状态进行过滤：1 - 已执行，2 - 被阻断
         :type AuditAction: list of int non-negative
         :param Limit: 每页容量，默认20，最大200
@@ -3686,6 +3755,7 @@ class SearchCommandRequest(AbstractModel):
         self.PublicIp = None
         self.PrivateIp = None
         self.Cmd = None
+        self.Encoding = None
         self.AuditAction = None
         self.Limit = None
         self.Offset = None
@@ -3701,6 +3771,7 @@ class SearchCommandRequest(AbstractModel):
         self.PublicIp = params.get("PublicIp")
         self.PrivateIp = params.get("PrivateIp")
         self.Cmd = params.get("Cmd")
+        self.Encoding = params.get("Encoding")
         self.AuditAction = params.get("AuditAction")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
@@ -3772,6 +3843,30 @@ class SearchCommandResult(AbstractModel):
         :type Sid: str
         :param TimeOffset: 命令执行时间相对于所属会话开始时间的偏移量，单位ms
         :type TimeOffset: int
+        :param Account: 账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Account: str
+        :param FromIp: source ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromIp: str
+        :param SessTime: 该命令所属会话的会话开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessTime: str
+        :param ConfirmTime: 复核时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfirmTime: str
+        :param UserDepartmentId: 部门id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDepartmentId: str
+        :param UserDepartmentName: 用户部门名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDepartmentName: str
+        :param DeviceDepartmentId: 设备部门id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceDepartmentId: str
+        :param DeviceDepartmentName: 设备部门名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceDepartmentName: str
         """
         self.Time = None
         self.UserName = None
@@ -3784,6 +3879,14 @@ class SearchCommandResult(AbstractModel):
         self.Action = None
         self.Sid = None
         self.TimeOffset = None
+        self.Account = None
+        self.FromIp = None
+        self.SessTime = None
+        self.ConfirmTime = None
+        self.UserDepartmentId = None
+        self.UserDepartmentName = None
+        self.DeviceDepartmentId = None
+        self.DeviceDepartmentName = None
 
 
     def _deserialize(self, params):
@@ -3798,6 +3901,14 @@ class SearchCommandResult(AbstractModel):
         self.Action = params.get("Action")
         self.Sid = params.get("Sid")
         self.TimeOffset = params.get("TimeOffset")
+        self.Account = params.get("Account")
+        self.FromIp = params.get("FromIp")
+        self.SessTime = params.get("SessTime")
+        self.ConfirmTime = params.get("ConfirmTime")
+        self.UserDepartmentId = params.get("UserDepartmentId")
+        self.UserDepartmentName = params.get("UserDepartmentName")
+        self.DeviceDepartmentId = params.get("DeviceDepartmentId")
+        self.DeviceDepartmentName = params.get("DeviceDepartmentName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4151,6 +4262,9 @@ class SearchSessionCommandRequest(AbstractModel):
         :type Offset: int
         :param Limit: 默认值为20，最大200
         :type Limit: int
+        :param Encoding: Cmd字段前端是否做base64加密
+0：否，1：是
+        :type Encoding: int
         :param EndTime: 结束时间
         :type EndTime: str
         """
@@ -4158,6 +4272,7 @@ class SearchSessionCommandRequest(AbstractModel):
         self.StartTime = None
         self.Offset = None
         self.Limit = None
+        self.Encoding = None
         self.EndTime = None
 
 
@@ -4166,6 +4281,7 @@ class SearchSessionCommandRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Encoding = params.get("Encoding")
         self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -13390,8 +13390,9 @@ class Zone(AbstractModel):
         :param IsFake: 是否伪站点，取值有：
 <li> 0：非伪站点；</li>
 <li> 1：伪站点。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type IsFake: int
+        :param LockStatus: 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作。</li>
+        :type LockStatus: str
         """
         self.ZoneId = None
         self.ZoneName = None
@@ -13412,6 +13413,7 @@ class Zone(AbstractModel):
         self.ActiveStatus = None
         self.AliasZoneName = None
         self.IsFake = None
+        self.LockStatus = None
 
 
     def _deserialize(self, params):
@@ -13451,6 +13453,7 @@ class Zone(AbstractModel):
         self.ActiveStatus = params.get("ActiveStatus")
         self.AliasZoneName = params.get("AliasZoneName")
         self.IsFake = params.get("IsFake")
+        self.LockStatus = params.get("LockStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

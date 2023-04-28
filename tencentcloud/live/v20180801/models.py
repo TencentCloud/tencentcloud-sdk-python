@@ -1233,7 +1233,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         :param SnapshotNotifyUrl: 截图回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type SnapshotNotifyUrl: str
-        :param PornCensorshipNotifyUrl: 鉴黄回调 URL，
+        :param PornCensorshipNotifyUrl: 鉴黄回调 URL ，
 相关协议文档：[事件消息通知](/document/product/267/32741)。
         :type PornCensorshipNotifyUrl: str
         :param CallbackKey: 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
@@ -1243,6 +1243,8 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         :type StreamMixNotifyUrl: str
         :param PushExceptionNotifyUrl: 推流异常回调 URL。
         :type PushExceptionNotifyUrl: str
+        :param AudioAuditNotifyUrl: 音频审核回调 URL。
+        :type AudioAuditNotifyUrl: str
         """
         self.TemplateName = None
         self.Description = None
@@ -1254,6 +1256,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self.CallbackKey = None
         self.StreamMixNotifyUrl = None
         self.PushExceptionNotifyUrl = None
+        self.AudioAuditNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -1267,6 +1270,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self.CallbackKey = params.get("CallbackKey")
         self.StreamMixNotifyUrl = params.get("StreamMixNotifyUrl")
         self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
+        self.AudioAuditNotifyUrl = params.get("AudioAuditNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

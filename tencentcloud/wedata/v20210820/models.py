@@ -139,6 +139,9 @@ class AlarmIndicatorInfo(AbstractModel):
         :param Operator: 实时任务告警需要的参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: int
+        :param AlarmIndicatorUnit: 告警指标阈值单位：ms(毫秒)、s(秒)、min(分钟)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmIndicatorUnit: str
         """
         self.Id = None
         self.AlarmIndicator = None
@@ -146,6 +149,7 @@ class AlarmIndicatorInfo(AbstractModel):
         self.TriggerType = None
         self.EstimatedTime = None
         self.Operator = None
+        self.AlarmIndicatorUnit = None
 
 
     def _deserialize(self, params):
@@ -155,6 +159,7 @@ class AlarmIndicatorInfo(AbstractModel):
         self.TriggerType = params.get("TriggerType")
         self.EstimatedTime = params.get("EstimatedTime")
         self.Operator = params.get("Operator")
+        self.AlarmIndicatorUnit = params.get("AlarmIndicatorUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3503,6 +3508,9 @@ class DataSourceInfo(AbstractModel):
         :param BizParamsString: BizParams json字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizParamsString: str
+        :param ModifiedTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: int
         """
         self.DatabaseName = None
         self.Description = None
@@ -3533,6 +3541,7 @@ class DataSourceInfo(AbstractModel):
         self.CreateTime = None
         self.ParamsString = None
         self.BizParamsString = None
+        self.ModifiedTime = None
 
 
     def _deserialize(self, params):
@@ -3565,6 +3574,7 @@ class DataSourceInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ParamsString = params.get("ParamsString")
         self.BizParamsString = params.get("BizParamsString")
+        self.ModifiedTime = params.get("ModifiedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5102,13 +5112,22 @@ class DescribeDatabaseInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Filters: 过滤参数
+        :type Filters: list of Filter
         :param ConnectionType: 如果是hive这里写rpc，如果是其他类型不传
         :type ConnectionType: str
         """
+        self.Filters = None
         self.ConnectionType = None
 
 
     def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         self.ConnectionType = params.get("ConnectionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -7145,6 +7164,109 @@ class DescribeOfflineTaskTokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOperateTasksRequest(AbstractModel):
+    """DescribeOperateTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param FolderIdList: 文件夹id，多个文件夹以逗号分隔
+        :type FolderIdList: str
+        :param WorkFlowIdList: 工作流id，多个工作流id之间以英文字符逗号分隔
+        :type WorkFlowIdList: str
+        :param WorkFlowNameList: 工作流名称，多个工作流名称之间以英文字符逗号分隔
+        :type WorkFlowNameList: str
+        :param TaskNameList: 任务名称，多个任务名称之间以英文字符逗号分隔
+        :type TaskNameList: str
+        :param TaskIdList: 任务id，多个任务id之间以英文字符逗号分隔
+        :type TaskIdList: str
+        :param PageNumber: 页号
+        :type PageNumber: str
+        :param PageSize: 分页大小
+        :type PageSize: str
+        :param SortItem: 排序字段，支持字段为FirstSubmitTime和FirstRunTime，标识最近提交和首次执行事件
+        :type SortItem: str
+        :param SortType: 排序类型。两种取值 DESC、ASC
+        :type SortType: str
+        :param InChargeList: 责任人，多个责任人之间以英文字符逗号分隔
+        :type InChargeList: str
+        :param TaskTypeIdList: 任务类型Id字符串，多个任务类型id之间以英文字符逗号分隔
+        :type TaskTypeIdList: str
+        :param StatusList: 任务状态字符串，多个任务状态之间以英文字符逗号分隔
+        :type StatusList: str
+        :param TaskCycleUnitList: 任务周期类型字符串，多个任务周期之间以英文字符逗号分隔
+        :type TaskCycleUnitList: str
+        :param ProductNameList: 任务所属产品类型
+        :type ProductNameList: str
+        """
+        self.ProjectId = None
+        self.FolderIdList = None
+        self.WorkFlowIdList = None
+        self.WorkFlowNameList = None
+        self.TaskNameList = None
+        self.TaskIdList = None
+        self.PageNumber = None
+        self.PageSize = None
+        self.SortItem = None
+        self.SortType = None
+        self.InChargeList = None
+        self.TaskTypeIdList = None
+        self.StatusList = None
+        self.TaskCycleUnitList = None
+        self.ProductNameList = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.FolderIdList = params.get("FolderIdList")
+        self.WorkFlowIdList = params.get("WorkFlowIdList")
+        self.WorkFlowNameList = params.get("WorkFlowNameList")
+        self.TaskNameList = params.get("TaskNameList")
+        self.TaskIdList = params.get("TaskIdList")
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        self.SortItem = params.get("SortItem")
+        self.SortType = params.get("SortType")
+        self.InChargeList = params.get("InChargeList")
+        self.TaskTypeIdList = params.get("TaskTypeIdList")
+        self.StatusList = params.get("StatusList")
+        self.TaskCycleUnitList = params.get("TaskCycleUnitList")
+        self.ProductNameList = params.get("ProductNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOperateTasksResponse(AbstractModel):
+    """DescribeOperateTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 任务列表信息
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.TaskInfoPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = TaskInfoPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOrganizationalFunctionsRequest(AbstractModel):
     """DescribeOrganizationalFunctions请求参数结构体
 
@@ -7521,18 +7643,26 @@ class DescribeRealTimeTaskMetricOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 无
+        :param TaskId: 要查看的实时任务的任务Id
         :type TaskId: str
         :param ProjectId: 无
         :type ProjectId: str
+        :param StartTime: 开始时间
+        :type StartTime: int
+        :param EndTime: 结束时间
+        :type EndTime: int
         """
         self.TaskId = None
         self.ProjectId = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.ProjectId = params.get("ProjectId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11300,6 +11430,8 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         :type AddPositionDeletes: int
         :param AddDeleteFiles: 增加的delete file数量阈值
         :type AddDeleteFiles: int
+        :param TargetDatasourceId: 下游节点数据源ID
+        :type TargetDatasourceId: str
         """
         self.ProjectId = None
         self.SinkDatabase = None
@@ -11321,6 +11453,7 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         self.AddEqualityDeletes = None
         self.AddPositionDeletes = None
         self.AddDeleteFiles = None
+        self.TargetDatasourceId = None
 
 
     def _deserialize(self, params):
@@ -11359,6 +11492,7 @@ class GenHiveTableDDLSqlRequest(AbstractModel):
         self.AddEqualityDeletes = params.get("AddEqualityDeletes")
         self.AddPositionDeletes = params.get("AddPositionDeletes")
         self.AddDeleteFiles = params.get("AddDeleteFiles")
+        self.TargetDatasourceId = params.get("TargetDatasourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19359,6 +19493,47 @@ class TaskInfoDataPage(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskInfoPage(AbstractModel):
+    """任务分页查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 页号
+        :type PageNumber: int
+        :param PageSize: 页大小
+        :type PageSize: int
+        :param Items: 工作流列表信息
+        :type Items: list of TaskCanvasInfo
+        :param TotalPage: 总页数
+        :type TotalPage: int
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.Items = None
+        self.TotalPage = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = TaskCanvasInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.TotalPage = params.get("TotalPage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

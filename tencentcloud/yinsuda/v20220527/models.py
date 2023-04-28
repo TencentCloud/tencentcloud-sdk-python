@@ -372,6 +372,10 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
 <li>Play：可播；</li>
 <li>Sing：可唱。</li>
         :type RightFilters: list of str
+        :param MaterialFilters: 物料过滤，取值有：
+<li>Lyrics：含有歌词；</li>
+<li>Midi：含有音高线。</li>
+        :type MaterialFilters: list of str
         """
         self.AppName = None
         self.UserId = None
@@ -379,6 +383,7 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
         self.ScrollToken = None
         self.Limit = None
         self.RightFilters = None
+        self.MaterialFilters = None
 
 
     def _deserialize(self, params):
@@ -388,6 +393,7 @@ class DescribeKTVMusicsByTagRequest(AbstractModel):
         self.ScrollToken = params.get("ScrollToken")
         self.Limit = params.get("Limit")
         self.RightFilters = params.get("RightFilters")
+        self.MaterialFilters = params.get("MaterialFilters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -451,6 +457,10 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
         :param PlayScene: 播放场景。默认为Chat
 <li>Live：直播</li><li>Chat：语聊</li>
         :type PlayScene: str
+        :param MaterialFilters: 物料过滤，取值有：
+<li>Lyrics：含有歌词；</li>
+<li>Midi：含有音高线。</li>
+        :type MaterialFilters: list of str
         """
         self.AppName = None
         self.UserId = None
@@ -459,6 +469,7 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
         self.Limit = None
         self.RightFilters = None
         self.PlayScene = None
+        self.MaterialFilters = None
 
 
     def _deserialize(self, params):
@@ -469,6 +480,7 @@ class DescribeKTVPlaylistDetailRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.RightFilters = params.get("RightFilters")
         self.PlayScene = params.get("PlayScene")
+        self.MaterialFilters = params.get("MaterialFilters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1690,6 +1702,10 @@ class SearchKTVMusicsRequest(AbstractModel):
         :param PlayScene: 播放场景。默认为Chat
 <li>Live：直播</li><li>Chat：语聊</li>
         :type PlayScene: str
+        :param MaterialFilters: 物料过滤，取值有：
+<li>Lyrics：含有歌词；</li>
+<li>Midi：含有音高线。</li>
+        :type MaterialFilters: list of str
         """
         self.AppName = None
         self.UserId = None
@@ -1698,6 +1714,7 @@ class SearchKTVMusicsRequest(AbstractModel):
         self.Limit = None
         self.RightFilters = None
         self.PlayScene = None
+        self.MaterialFilters = None
 
 
     def _deserialize(self, params):
@@ -1708,6 +1725,7 @@ class SearchKTVMusicsRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.RightFilters = params.get("RightFilters")
         self.PlayScene = params.get("PlayScene")
+        self.MaterialFilters = params.get("MaterialFilters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

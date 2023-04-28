@@ -112,6 +112,8 @@ class CreateBPBrandRequest(AbstractModel):
         :type BrandName: str
         :param CompanyName: 企业名称
         :type CompanyName: str
+        :param BrandLogo: 品牌logo
+        :type BrandLogo: str
         :param Phone: 联系电话
         :type Phone: str
         :param License: 营业执照
@@ -137,6 +139,7 @@ class CreateBPBrandRequest(AbstractModel):
         """
         self.BrandName = None
         self.CompanyName = None
+        self.BrandLogo = None
         self.Phone = None
         self.License = None
         self.Authorization = None
@@ -153,6 +156,7 @@ class CreateBPBrandRequest(AbstractModel):
     def _deserialize(self, params):
         self.BrandName = params.get("BrandName")
         self.CompanyName = params.get("CompanyName")
+        self.BrandLogo = params.get("BrandLogo")
         self.Phone = params.get("Phone")
         self.License = params.get("License")
         self.Authorization = params.get("Authorization")
@@ -895,6 +899,9 @@ class FakeURLData(AbstractModel):
         :param Snapshot: 网址截图
 注意：此字段可能返回 null，表示取不到有效值。
         :type Snapshot: str
+        :param AccountStatus: 账户资源状态：0-不可用 1-可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountStatus: int
         """
         self.FakeURLId = None
         self.BrandName = None
@@ -917,6 +924,7 @@ class FakeURLData(AbstractModel):
         self.InsertTime = None
         self.CertificationStatus = None
         self.Snapshot = None
+        self.AccountStatus = None
 
 
     def _deserialize(self, params):
@@ -941,6 +949,7 @@ class FakeURLData(AbstractModel):
         self.InsertTime = params.get("InsertTime")
         self.CertificationStatus = params.get("CertificationStatus")
         self.Snapshot = params.get("Snapshot")
+        self.AccountStatus = params.get("AccountStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2334,7 +2334,7 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type AutoSignConfig: :class:`tencentcloud.ess.v20201111.models.AutoSignConfig`
         :param UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
         :type UrlType: str
-        :param NotifyType: 通知类型，默认不填为不通知开通方，填写 SMS 为短息通知。
+        :param NotifyType: 通知类型，默认不填为不通知开通方，填写 SMS 为短信通知。
         :type NotifyType: str
         :param NotifyAddress: 若上方填写为 SMS，则此处为手机号
         :type NotifyAddress: str
@@ -2747,7 +2747,8 @@ class DescribeFileUrlsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileUrls: URL信息
+        :param FileUrls: 文件URL信息；
+链接不是永久链接，有效期5分钟后链接失效。
         :type FileUrls: list of FileUrl
         :param TotalCount: URL数量
         :type TotalCount: int
@@ -4114,9 +4115,9 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type VerifyChannel: list of str
         :param NotifyType: 是否发送短信，sms--短信通知，none--不通知，默认为sms；发起方=签署方时不发送短信
         :type NotifyType: str
-        :param IsFullText: 签署前置条件：是否需要阅读全文，默认为不需要
+        :param IsFullText: 合同强制需要阅读全文，无需传此参数
         :type IsFullText: bool
-        :param PreReadTime: 签署前置条件：阅读时长限制，单位秒，默认为不需要
+        :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
         :param UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
         :type UserId: str

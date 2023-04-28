@@ -16051,6 +16051,9 @@ FAILED:已失败
         :param FailReason: 失败原因。当Status为FAILED时，改字段为失败的原因。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailReason: str
+        :param FundingAccountSubType: 资金账户字类型: WECHATPAY_ACCOUNT 微信零钱, BANK_ACCOUNT 银行卡
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FundingAccountSubType: str
         """
         self.IncomeType = None
         self.AmountBeforeTax = None
@@ -16071,6 +16074,7 @@ FAILED:已失败
         self.AdditionalTaxSum = None
         self.AdditionalTaxItem = None
         self.FailReason = None
+        self.FundingAccountSubType = None
 
 
     def _deserialize(self, params):
@@ -16093,6 +16097,7 @@ FAILED:已失败
         self.AdditionalTaxSum = params.get("AdditionalTaxSum")
         self.AdditionalTaxItem = params.get("AdditionalTaxItem")
         self.FailReason = params.get("FailReason")
+        self.FundingAccountSubType = params.get("FundingAccountSubType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

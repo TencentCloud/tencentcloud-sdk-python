@@ -1965,9 +1965,9 @@ class QueueConfig(AbstractModel):
         r"""
         :param QueueName: 队列名称。
         :type QueueName: str
-        :param MinSize: 队列中弹性节点数量最小值。取值范围0～200。
+        :param MinSize: 队列中弹性节点数量最小值。默认值：0。取值范围：0～200。
         :type MinSize: int
-        :param MaxSize: 队列中弹性节点数量最大值。取值范围0～200。
+        :param MaxSize: 队列中弹性节点数量最大值。默认值：10。取值范围：0～200。
         :type MaxSize: int
         :param EnableAutoExpansion: 是否开启自动扩容。
         :type EnableAutoExpansion: bool

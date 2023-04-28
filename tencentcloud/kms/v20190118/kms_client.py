@@ -993,6 +993,98 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PostQuantumCryptoDecrypt(self, request):
+        """本接口使用后量子密码算法密钥，解密密文，并得到明文数据。
+
+        :param request: Request instance for PostQuantumCryptoDecrypt.
+        :type request: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoDecryptRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoDecryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PostQuantumCryptoDecrypt", params, headers=headers)
+            response = json.loads(body)
+            model = models.PostQuantumCryptoDecryptResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PostQuantumCryptoEncrypt(self, request):
+        """本接口使用后量子密码算法密钥，可加密最多为4KB任意数据，可用于加密数据库密码，RSA Key，或其它较小的敏感信息。对于应用的数据加密，使用GenerateDataKey生成的DataKey进行本地数据的加解密操作。
+
+        :param request: Request instance for PostQuantumCryptoEncrypt.
+        :type request: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoEncryptRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoEncryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PostQuantumCryptoEncrypt", params, headers=headers)
+            response = json.loads(body)
+            model = models.PostQuantumCryptoEncryptResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PostQuantumCryptoSign(self, request):
+        """使用后量子密码算法签名验签密钥进行签名。
+
+        :param request: Request instance for PostQuantumCryptoSign.
+        :type request: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoSignRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PostQuantumCryptoSign", params, headers=headers)
+            response = json.loads(body)
+            model = models.PostQuantumCryptoSignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PostQuantumCryptoVerify(self, request):
+        """使用后量子密码算法密钥对签名进行验证。
+
+        :param request: Request instance for PostQuantumCryptoVerify.
+        :type request: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoVerifyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.PostQuantumCryptoVerifyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PostQuantumCryptoVerify", params, headers=headers)
+            response = json.loads(body)
+            model = models.PostQuantumCryptoVerifyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReEncrypt(self, request):
         """使用指定CMK对密文重新加密。
 

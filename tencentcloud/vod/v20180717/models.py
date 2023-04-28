@@ -10392,12 +10392,16 @@ class DescribeFileAttributesTaskOutput(AbstractModel):
         r"""
         :param Md5: 媒体文件的 Md5 值。
         :type Md5: str
+        :param Sha1: 媒体文件的 Sha1 值。
+        :type Sha1: str
         """
         self.Md5 = None
+        self.Sha1 = None
 
 
     def _deserialize(self, params):
         self.Md5 = params.get("Md5")
+        self.Sha1 = params.get("Sha1")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14414,8 +14418,9 @@ class ImageOperation(AbstractModel):
     def __init__(self):
         r"""
         :param Type: 图片处理类型。可选类型有：
-<li>Scale : 图片缩略处理。</li>
-<li>CenterCut : 图片裁剪处理。</li>
+<li>Scale : 图片缩略处理；</li>
+<li>CenterCut : 图片裁剪处理；</li>
+<li>Blur : 图片模糊处理。</li>
         :type Type: str
         :param Scale: 图片缩略处理，仅当 Type 为 Scale 时有效。
         :type Scale: :class:`tencentcloud.vod.v20180717.models.ImageScale`

@@ -878,6 +878,9 @@ class BotPkg(AbstractModel):
         :param Type: 子产品code
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
+        :param RenewFlag: 续费标志	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
         """
         self.ResourceIds = None
         self.Status = None
@@ -887,6 +890,7 @@ class BotPkg(AbstractModel):
         self.InquireNum = None
         self.UsedNum = None
         self.Type = None
+        self.RenewFlag = None
 
 
     def _deserialize(self, params):
@@ -898,6 +902,7 @@ class BotPkg(AbstractModel):
         self.InquireNum = params.get("InquireNum")
         self.UsedNum = params.get("UsedNum")
         self.Type = params.get("Type")
+        self.RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -924,12 +929,16 @@ class BotQPS(AbstractModel):
         :type Region: str
         :param MaxBotQPS: 使用qps的最大值
         :type MaxBotQPS: int
+        :param RenewFlag: 续费标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
         """
         self.ResourceIds = None
         self.ValidTime = None
         self.Count = None
         self.Region = None
         self.MaxBotQPS = None
+        self.RenewFlag = None
 
 
     def _deserialize(self, params):
@@ -938,6 +947,7 @@ class BotQPS(AbstractModel):
         self.Count = params.get("Count")
         self.Region = params.get("Region")
         self.MaxBotQPS = params.get("MaxBotQPS")
+        self.RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3512,6 +3522,9 @@ class FraudPkg(AbstractModel):
         :param UsedNum: 使用数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsedNum: int
+        :param RenewFlag: 续费标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
         """
         self.ResourceIds = None
         self.Status = None
@@ -3520,6 +3533,7 @@ class FraudPkg(AbstractModel):
         self.EndTime = None
         self.InquireNum = None
         self.UsedNum = None
+        self.RenewFlag = None
 
 
     def _deserialize(self, params):
@@ -3530,6 +3544,7 @@ class FraudPkg(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.InquireNum = params.get("InquireNum")
         self.UsedNum = params.get("UsedNum")
+        self.RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5371,28 +5386,28 @@ class WafRuleLimit(AbstractModel):
 
 
 class WafThreatenIntelligenceDetails(AbstractModel):
-    """Waf 威胁情报封禁模块配置详情
+    """当前WAF威胁情报封禁模块详情
 
     """
 
     def __init__(self):
         r"""
-        :param DefenseStatus: 封禁模组启用状态
-        :type DefenseStatus: int
         :param Tags: 封禁属性标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
+        :param DefenseStatus: 封禁模组启用状态
+        :type DefenseStatus: int
         :param LastUpdateTime: 最后更新时间
         :type LastUpdateTime: str
         """
-        self.DefenseStatus = None
         self.Tags = None
+        self.DefenseStatus = None
         self.LastUpdateTime = None
 
 
     def _deserialize(self, params):
-        self.DefenseStatus = params.get("DefenseStatus")
         self.Tags = params.get("Tags")
+        self.DefenseStatus = params.get("DefenseStatus")
         self.LastUpdateTime = params.get("LastUpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -2205,6 +2205,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOperateTasks(self, request):
+        """任务运维列表组合条件查询
+
+        :param request: Request instance for DescribeOperateTasks.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeOperateTasksRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeOperateTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOperateTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOperateTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOrganizationalFunctions(self, request):
         """查询全量函数
 

@@ -523,6 +523,9 @@ class BlockIgnoreRule(AbstractModel):
         :param Country: 国家
 注意：此字段可能返回 null，表示取不到有效值。
         :type Country: str
+        :param Comment: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
         """
         self.Domain = None
         self.Ioc = None
@@ -539,6 +542,7 @@ class BlockIgnoreRule(AbstractModel):
         self.UniqueId = None
         self.MatchTimes = None
         self.Country = None
+        self.Comment = None
 
 
     def _deserialize(self, params):
@@ -557,6 +561,7 @@ class BlockIgnoreRule(AbstractModel):
         self.UniqueId = params.get("UniqueId")
         self.MatchTimes = params.get("MatchTimes")
         self.Country = params.get("Country")
+        self.Comment = params.get("Comment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1937,9 +1942,9 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
         :type Direction: str
         :param RuleType: 规则类型：1封禁，2放通
         :type RuleType: int
-        :param Order: 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
+        :param Order: 排序类型：desc降序，asc正序
         :type Order: str
-        :param By: 排序类型：desc降序，asc正序
+        :param By: 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
         :type By: str
         :param SearchValue: 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
         :type SearchValue: str
