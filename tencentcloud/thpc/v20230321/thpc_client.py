@@ -355,6 +355,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyInitNodeScripts(self, request):
+        """本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+
+        :param request: Request instance for ModifyInitNodeScripts.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.ModifyInitNodeScriptsRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.ModifyInitNodeScriptsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInitNodeScripts", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInitNodeScriptsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SetAutoScalingConfiguration(self, request):
         """本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
 

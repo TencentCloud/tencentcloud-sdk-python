@@ -233,6 +233,29 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ApplyFlexWechatPreAuth(self, request):
+        """微工卡开通预核身接口
+
+        :param request: Request instance for ApplyFlexWechatPreAuth.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ApplyFlexWechatPreAuthRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ApplyFlexWechatPreAuthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyFlexWechatPreAuth", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApplyFlexWechatPreAuthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyOpenBankOrderDetailReceipt(self, request):
         """云企付-申请单笔交易回单
 
@@ -3132,6 +3155,29 @@ class CpdpClient(AbstractClient):
             body = self.call("QueryFlexSettlementOrderList", params, headers=headers)
             response = json.loads(body)
             model = models.QueryFlexSettlementOrderListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexWechatAuthResult(self, request):
+        """查询微工卡核身结果
+
+        :param request: Request instance for QueryFlexWechatAuthResult.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexWechatAuthResultRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexWechatAuthResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexWechatAuthResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryFlexWechatAuthResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

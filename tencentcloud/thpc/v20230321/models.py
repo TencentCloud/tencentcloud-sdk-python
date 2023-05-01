@@ -625,6 +625,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type Tags: list of Tag
         :param AutoScalingType: 弹性伸缩类型。默认值：THPC_AS<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
         :type AutoScalingType: str
+        :param InitNodeScripts: 节点初始化脚本信息列表。
+        :type InitNodeScripts: list of NodeScript
         """
         self.Placement = None
         self.ManagerNode = None
@@ -645,6 +647,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.LoginNodeCount = None
         self.Tags = None
         self.AutoScalingType = None
+        self.InitNodeScripts = None
 
 
     def _deserialize(self, params):
@@ -686,6 +689,12 @@ false（默认）：发送正常请求，通过检查后直接创建实例
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.AutoScalingType = params.get("AutoScalingType")
+        if params.get("InitNodeScripts") is not None:
+            self.InitNodeScripts = []
+            for item in params.get("InitNodeScripts"):
+                obj = NodeScript()
+                obj._deserialize(item)
+                self.InitNodeScripts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1837,6 +1846,56 @@ class ManagerNodeOverview(AbstractModel):
         
 
 
+class ModifyInitNodeScriptsRequest(AbstractModel):
+    """ModifyInitNodeScripts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param InitNodeScripts: 节点初始化脚本信息列表。
+        :type InitNodeScripts: list of NodeScript
+        """
+        self.ClusterId = None
+        self.InitNodeScripts = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("InitNodeScripts") is not None:
+            self.InitNodeScripts = []
+            for item in params.get("InitNodeScripts"):
+                obj = NodeScript()
+                obj._deserialize(item)
+                self.InitNodeScripts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInitNodeScriptsResponse(AbstractModel):
+    """ModifyInitNodeScripts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class NodeActivity(AbstractModel):
     """节点活动信息。
 
@@ -1931,6 +1990,37 @@ class NodeOverview(AbstractModel):
         
 
 
+class NodeScript(AbstractModel):
+    """描述节点执行脚本信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScriptPath: 节点执行脚本获取地址。
+目前仅支持cos地址。地址最大长度：255。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptPath: str
+        :param Timeout: 脚本执行超时时间（包含拉取脚本的时间）。单位秒，默认值：30。取值范围：10～1200。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        """
+        self.ScriptPath = None
+        self.Timeout = None
+
+
+    def _deserialize(self, params):
+        self.ScriptPath = params.get("ScriptPath")
+        self.Timeout = params.get("Timeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Placement(AbstractModel):
     """描述了实例的抽象位置
 
@@ -1983,6 +2073,8 @@ class QueueConfig(AbstractModel):
         :type InternetAccessible: :class:`tencentcloud.thpc.v20230321.models.InternetAccessible`
         :param ExpansionNodeConfigs: 扩容节点配置信息。
         :type ExpansionNodeConfigs: list of ExpansionNodeConfig
+        :param DesiredIdleNodeCapacity: 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
+        :type DesiredIdleNodeCapacity: int
         """
         self.QueueName = None
         self.MinSize = None
@@ -1994,6 +2086,7 @@ class QueueConfig(AbstractModel):
         self.DataDisks = None
         self.InternetAccessible = None
         self.ExpansionNodeConfigs = None
+        self.DesiredIdleNodeCapacity = None
 
 
     def _deserialize(self, params):
@@ -2021,6 +2114,7 @@ class QueueConfig(AbstractModel):
                 obj = ExpansionNodeConfig()
                 obj._deserialize(item)
                 self.ExpansionNodeConfigs.append(obj)
+        self.DesiredIdleNodeCapacity = params.get("DesiredIdleNodeCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2049,6 +2143,9 @@ class QueueConfigOverview(AbstractModel):
         :type EnableAutoShrink: bool
         :param ExpansionNodeConfigs: 扩容节点配置信息。
         :type ExpansionNodeConfigs: list of ExpansionNodeConfigOverview
+        :param DesiredIdleNodeCapacity: 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DesiredIdleNodeCapacity: int
         """
         self.QueueName = None
         self.MinSize = None
@@ -2056,6 +2153,7 @@ class QueueConfigOverview(AbstractModel):
         self.EnableAutoExpansion = None
         self.EnableAutoShrink = None
         self.ExpansionNodeConfigs = None
+        self.DesiredIdleNodeCapacity = None
 
 
     def _deserialize(self, params):
@@ -2070,6 +2168,7 @@ class QueueConfigOverview(AbstractModel):
                 obj = ExpansionNodeConfigOverview()
                 obj._deserialize(item)
                 self.ExpansionNodeConfigs.append(obj)
+        self.DesiredIdleNodeCapacity = params.get("DesiredIdleNodeCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

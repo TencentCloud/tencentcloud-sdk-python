@@ -947,7 +947,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceShards(self, request):
-        """获取集群版实例分片信息
+        """本接口（DescribeInstanceShards）用于获取集群架构实例的分片信息。
 
         :param request: Request instance for DescribeInstanceShards.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceShardsRequest`
@@ -993,7 +993,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """查询Redis实例列表
+        """本接口（DescribeInstances）用于查询Redis实例列表。
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstancesRequest`

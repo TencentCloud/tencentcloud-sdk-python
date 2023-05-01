@@ -1075,10 +1075,13 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
         :type SecondaryPrivateIpAddressCount: int
+        :param QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+        :type QosLevel: str
         """
         self.NetworkInterfaceId = None
         self.PrivateIpAddresses = None
         self.SecondaryPrivateIpAddressCount = None
+        self.QosLevel = None
 
 
     def _deserialize(self, params):
@@ -1090,6 +1093,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PrivateIpAddresses.append(obj)
         self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self.QosLevel = params.get("QosLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2942,6 +2946,8 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
         :type SecondaryPrivateIpAddressCount: int
+        :param QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+        :type QosLevel: str
         :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
         :type SecurityGroupIds: list of str
         :param NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
@@ -2957,6 +2963,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self.InstanceId = None
         self.PrivateIpAddresses = None
         self.SecondaryPrivateIpAddressCount = None
+        self.QosLevel = None
         self.SecurityGroupIds = None
         self.NetworkInterfaceDescription = None
         self.Tags = None
@@ -2975,6 +2982,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.PrivateIpAddresses.append(obj)
         self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self.QosLevel = params.get("QosLevel")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
         if params.get("Tags") is not None:
@@ -4260,6 +4268,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceDescription: str
         :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
         :type SecondaryPrivateIpAddressCount: int
+        :param QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+        :type QosLevel: str
         :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
         :type SecurityGroupIds: list of str
         :param PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
@@ -4274,6 +4284,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self.SubnetId = None
         self.NetworkInterfaceDescription = None
         self.SecondaryPrivateIpAddressCount = None
+        self.QosLevel = None
         self.SecurityGroupIds = None
         self.PrivateIpAddresses = None
         self.Tags = None
@@ -4286,6 +4297,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
         self.SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        self.QosLevel = params.get("QosLevel")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("PrivateIpAddresses") is not None:
             self.PrivateIpAddresses = []
@@ -19716,6 +19728,8 @@ MIGRATING：迁移中
 DELETING：删除中
 AVAILABLE：可用的
         :type State: str
+        :param QosLevel: IP服务质量等级，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+        :type QosLevel: str
         """
         self.PrivateIpAddress = None
         self.Primary = None
@@ -19724,6 +19738,7 @@ AVAILABLE：可用的
         self.Description = None
         self.IsWanIpBlocked = None
         self.State = None
+        self.QosLevel = None
 
 
     def _deserialize(self, params):
@@ -19734,6 +19749,7 @@ AVAILABLE：可用的
         self.Description = params.get("Description")
         self.IsWanIpBlocked = params.get("IsWanIpBlocked")
         self.State = params.get("State")
+        self.QosLevel = params.get("QosLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
