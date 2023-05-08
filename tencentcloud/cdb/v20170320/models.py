@@ -11312,6 +11312,9 @@ class ParameterDetail(AbstractModel):
         :type MaxFunc: str
         :param MinFunc: 参数是公式类型时，该字段有效，表示公式类型最小值
         :type MinFunc: str
+        :param IsNotSupportEdit: 参数是否不支持修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNotSupportEdit: bool
         """
         self.Name = None
         self.ParamType = None
@@ -11324,6 +11327,7 @@ class ParameterDetail(AbstractModel):
         self.EnumValue = None
         self.MaxFunc = None
         self.MinFunc = None
+        self.IsNotSupportEdit = None
 
 
     def _deserialize(self, params):
@@ -11338,6 +11342,7 @@ class ParameterDetail(AbstractModel):
         self.EnumValue = params.get("EnumValue")
         self.MaxFunc = params.get("MaxFunc")
         self.MinFunc = params.get("MinFunc")
+        self.IsNotSupportEdit = params.get("IsNotSupportEdit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

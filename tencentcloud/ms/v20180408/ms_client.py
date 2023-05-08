@@ -95,31 +95,6 @@ class MsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateScanInstances(self, request):
-        """由于该产品是线上免费使用产品，无企业版用户，升级迭代成本高及人力安排等原因，安全测评产品不再接入新用户，故下线。
-
-        用户通过该接口批量提交应用进行应用扫描，扫描后需通过DescribeScanResults接口查询扫描结果
-
-        :param request: Request instance for CreateScanInstances.
-        :type request: :class:`tencentcloud.ms.v20180408.models.CreateScanInstancesRequest`
-        :rtype: :class:`tencentcloud.ms.v20180408.models.CreateScanInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateScanInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateScanInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateShieldInstance(self, request):
         """用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 
@@ -157,31 +132,6 @@ class MsClient(AbstractClient):
             body = self.call("CreateShieldPlanInstance", params, headers=headers)
             response = json.loads(body)
             model = models.CreateShieldPlanInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteScanInstances(self, request):
-        """由于该产品是线上免费使用产品，无企业版用户，升级迭代成本高及人力安排等原因，安全测评产品不再接入新用户，故下线。
-
-        删除一个或者多个app扫描信息
-
-        :param request: Request instance for DeleteScanInstances.
-        :type request: :class:`tencentcloud.ms.v20180408.models.DeleteScanInstancesRequest`
-        :rtype: :class:`tencentcloud.ms.v20180408.models.DeleteScanInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteScanInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteScanInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -251,57 +201,6 @@ class MsClient(AbstractClient):
             body = self.call("DescribeResourceInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeResourceInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeScanInstances(self, request):
-        """由于该产品是线上免费使用产品，无企业版用户，升级迭代成本高及人力安排等原因，安全测评产品不再接入新用户，故下线。
-
-        本接口用于查看app列表。
-        可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
-
-        :param request: Request instance for DescribeScanInstances.
-        :type request: :class:`tencentcloud.ms.v20180408.models.DescribeScanInstancesRequest`
-        :rtype: :class:`tencentcloud.ms.v20180408.models.DescribeScanInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeScanInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeScanInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeScanResults(self, request):
-        """由于该产品是线上免费使用产品，无企业版用户，升级迭代成本高及人力安排等原因，安全测评产品不再接入新用户，故下线。
-
-        用户通过CreateScanInstances接口提交应用进行风险批量扫描后，用此接口批量获取风险详细信息,包含漏洞信息，广告信息，插件信息和病毒信息
-
-        :param request: Request instance for DescribeScanResults.
-        :type request: :class:`tencentcloud.ms.v20180408.models.DescribeScanResultsRequest`
-        :rtype: :class:`tencentcloud.ms.v20180408.models.DescribeScanResultsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeScanResults", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeScanResultsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

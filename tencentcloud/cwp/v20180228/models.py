@@ -13469,6 +13469,8 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         :type AutoRepurchaseSwitch: bool
         :param AutoRepurchaseRenewSwitch: 自动加购订单是否自动续费 ,true 开启, false 关闭
         :type AutoRepurchaseRenewSwitch: bool
+        :param DestroyOrderNum: 已销毁订单数
+        :type DestroyOrderNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -13489,6 +13491,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self.AvailableLHLicenseCnt = None
         self.AutoRepurchaseSwitch = None
         self.AutoRepurchaseRenewSwitch = None
+        self.DestroyOrderNum = None
         self.RequestId = None
 
 
@@ -13510,6 +13513,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self.AvailableLHLicenseCnt = params.get("AvailableLHLicenseCnt")
         self.AutoRepurchaseSwitch = params.get("AutoRepurchaseSwitch")
         self.AutoRepurchaseRenewSwitch = params.get("AutoRepurchaseRenewSwitch")
+        self.DestroyOrderNum = params.get("DestroyOrderNum")
         self.RequestId = params.get("RequestId")
 
 
@@ -21474,6 +21478,8 @@ class LoginWhiteCombinedInfo(AbstractModel):
         :type ModifyTime: str
         :param Uuid: 服务器Uuid
         :type Uuid: str
+        :param Locations: 登陆地
+        :type Locations: str
         """
         self.Places = None
         self.UserName = None
@@ -21489,6 +21495,7 @@ class LoginWhiteCombinedInfo(AbstractModel):
         self.CreateTime = None
         self.ModifyTime = None
         self.Uuid = None
+        self.Locations = None
 
 
     def _deserialize(self, params):
@@ -21511,6 +21518,7 @@ class LoginWhiteCombinedInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
         self.Uuid = params.get("Uuid")
+        self.Locations = params.get("Locations")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -23656,6 +23664,18 @@ class ProtectDirInfo(AbstractModel):
         :type ProtectException: int
         :param AutoRestoreSwitchStatus: 自动恢复开关 (Filters 过滤Quuid 时 返回) 默认0
         :type AutoRestoreSwitchStatus: int
+        :param FirstProtectTime: 首次开启防护时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstProtectTime: str
+        :param LatestProtectTime: 最近开启防护时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestProtectTime: str
+        :param ProtectFileType: 防护文件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectFileType: str
+        :param ProtectFilesCount: 防护文件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectFilesCount: int
         """
         self.DirName = None
         self.DirPath = None
@@ -23666,6 +23686,10 @@ class ProtectDirInfo(AbstractModel):
         self.ProtectStatus = None
         self.ProtectException = None
         self.AutoRestoreSwitchStatus = None
+        self.FirstProtectTime = None
+        self.LatestProtectTime = None
+        self.ProtectFileType = None
+        self.ProtectFilesCount = None
 
 
     def _deserialize(self, params):
@@ -23678,6 +23702,10 @@ class ProtectDirInfo(AbstractModel):
         self.ProtectStatus = params.get("ProtectStatus")
         self.ProtectException = params.get("ProtectException")
         self.AutoRestoreSwitchStatus = params.get("AutoRestoreSwitchStatus")
+        self.FirstProtectTime = params.get("FirstProtectTime")
+        self.LatestProtectTime = params.get("LatestProtectTime")
+        self.ProtectFileType = params.get("ProtectFileType")
+        self.ProtectFilesCount = params.get("ProtectFilesCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -23794,6 +23822,9 @@ class ProtectEventLists(AbstractModel):
         :param MachineExtraInfo: 主机额外信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param Quuid: 机器实例uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quuid: str
         """
         self.HostName = None
         self.HostIp = None
@@ -23805,6 +23836,7 @@ class ProtectEventLists(AbstractModel):
         self.Id = None
         self.FileType = None
         self.MachineExtraInfo = None
+        self.Quuid = None
 
 
     def _deserialize(self, params):
@@ -23820,6 +23852,7 @@ class ProtectEventLists(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self.MachineExtraInfo = MachineExtraInfo()
             self.MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

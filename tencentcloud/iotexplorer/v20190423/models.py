@@ -3390,14 +3390,24 @@ class DeviceUser(AbstractModel):
         :type UserId: str
         :param Role: 用户角色 1所有者，0：其他分享者
         :type Role: int
+        :param FamilyId: 家庭ID，所有者带该参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FamilyId: str
+        :param FamilyName: 家庭名称，所有者带该参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FamilyName: str
         """
         self.UserId = None
         self.Role = None
+        self.FamilyId = None
+        self.FamilyName = None
 
 
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
         self.Role = params.get("Role")
+        self.FamilyId = params.get("FamilyId")
+        self.FamilyName = params.get("FamilyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

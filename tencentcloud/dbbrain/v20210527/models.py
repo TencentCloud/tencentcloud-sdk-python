@@ -998,16 +998,20 @@ class DeleteSqlFiltersRequest(AbstractModel):
         :type SessionToken: str
         :param FilterIds: 限流任务ID列表。
         :type FilterIds: list of int
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.SessionToken = None
         self.FilterIds = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.SessionToken = params.get("SessionToken")
         self.FilterIds = params.get("FilterIds")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2730,12 +2734,15 @@ class DescribeSqlFiltersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.FilterIds = None
         self.Statuses = None
         self.Offset = None
         self.Limit = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -2744,6 +2751,7 @@ class DescribeSqlFiltersRequest(AbstractModel):
         self.Statuses = params.get("Statuses")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3776,12 +3784,15 @@ class KillMySqlThreadsRequest(AbstractModel):
         :type SqlExecId: str
         :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
         :type Product: str
+        :param RecordHistory: 默认是ture, 记录下kill的记录，为了加快kill，可设置为false。
+        :type RecordHistory: bool
         """
         self.InstanceId = None
         self.Stage = None
         self.Threads = None
         self.SqlExecId = None
         self.Product = None
+        self.RecordHistory = None
 
 
     def _deserialize(self, params):
@@ -3790,6 +3801,7 @@ class KillMySqlThreadsRequest(AbstractModel):
         self.Threads = params.get("Threads")
         self.SqlExecId = params.get("SqlExecId")
         self.Product = params.get("Product")
+        self.RecordHistory = params.get("RecordHistory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

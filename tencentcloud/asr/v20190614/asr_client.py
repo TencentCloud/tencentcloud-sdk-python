@@ -374,6 +374,29 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetModelInfo(self, request):
+        """通过自学习模型id获取自学习模型详细信息
+
+        :param request: Request instance for GetModelInfo.
+        :type request: :class:`tencentcloud.asr.v20190614.models.GetModelInfoRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.GetModelInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetModelInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetModelInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCustomization(self, request):
         """用户通过该接口可以更新自学习模型，如模型名称、模型类型、模型语料。
 

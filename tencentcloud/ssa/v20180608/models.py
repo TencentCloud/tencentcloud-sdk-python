@@ -83,6 +83,36 @@ class AlertDetail(AbstractModel):
         
 
 
+class AlertListAggregations(AbstractModel):
+    """空Aggregations结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlertListData(AbstractModel):
     """告警列表响应数据
 
@@ -96,9 +126,13 @@ class AlertListData(AbstractModel):
         :param AlertList: 返回列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlertList: list of AlertType
+        :param Aggregations: 聚合参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Aggregations: :class:`tencentcloud.ssa.v20180608.models.AlertListAggregations`
         """
         self.Total = None
         self.AlertList = None
+        self.Aggregations = None
 
 
     def _deserialize(self, params):
@@ -109,6 +143,9 @@ class AlertListData(AbstractModel):
                 obj = AlertType()
                 obj._deserialize(item)
                 self.AlertList.append(obj)
+        if params.get("Aggregations") is not None:
+            self.Aggregations = AlertListAggregations()
+            self.Aggregations._deserialize(params.get("Aggregations"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -200,6 +237,27 @@ class AlertType(AbstractModel):
         :param VictimAssetSub: 资产子网
 注意：此字段可能返回 null，表示取不到有效值。
         :type VictimAssetSub: str
+        :param VictimAssetVpc: 资产vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VictimAssetVpc: str
+        :param Timestamp: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: str
+        :param AssetGroupName: 资产组名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetGroupName: list of str
+        :param AssetProjectName: 资产项目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetProjectName: str
+        :param VictimAssetContent: 失陷资产内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VictimAssetContent: list of str
+        :param WrongReportStatus: 错误报告状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WrongReportStatus: int
+        :param WrongReportConditionId: 错误报告Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WrongReportConditionId: int
         """
         self.AlertTime = None
         self.AlertId = None
@@ -226,6 +284,13 @@ class AlertType(AbstractModel):
         self.AssetPublicIp = None
         self.AttackTactic = None
         self.VictimAssetSub = None
+        self.VictimAssetVpc = None
+        self.Timestamp = None
+        self.AssetGroupName = None
+        self.AssetProjectName = None
+        self.VictimAssetContent = None
+        self.WrongReportStatus = None
+        self.WrongReportConditionId = None
 
 
     def _deserialize(self, params):
@@ -259,6 +324,13 @@ class AlertType(AbstractModel):
         self.AssetPublicIp = params.get("AssetPublicIp")
         self.AttackTactic = params.get("AttackTactic")
         self.VictimAssetSub = params.get("VictimAssetSub")
+        self.VictimAssetVpc = params.get("VictimAssetVpc")
+        self.Timestamp = params.get("Timestamp")
+        self.AssetGroupName = params.get("AssetGroupName")
+        self.AssetProjectName = params.get("AssetProjectName")
+        self.VictimAssetContent = params.get("VictimAssetContent")
+        self.WrongReportStatus = params.get("WrongReportStatus")
+        self.WrongReportConditionId = params.get("WrongReportConditionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -561,6 +633,24 @@ class AssetDetail(AbstractModel):
         :param AssetVulNum: 漏洞数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetVulNum: int
+        :param AssetEventNum: 资产事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetEventNum: int
+        :param AssetCspmRiskNum: cspm风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetCspmRiskNum: int
+        :param SsaAssetDeleteTime: 资产删除时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaAssetDeleteTime: str
+        :param ChargeType: 费用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: str
+        :param AssetRegionName: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetRegionName: str
+        :param AssetVpcid: vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetVpcid: str
         """
         self.AssetType = None
         self.Name = None
@@ -607,6 +697,12 @@ class AssetDetail(AbstractModel):
         self.RDPRisk = None
         self.EventRisk = None
         self.AssetVulNum = None
+        self.AssetEventNum = None
+        self.AssetCspmRiskNum = None
+        self.SsaAssetDeleteTime = None
+        self.ChargeType = None
+        self.AssetRegionName = None
+        self.AssetVpcid = None
 
 
     def _deserialize(self, params):
@@ -660,6 +756,12 @@ class AssetDetail(AbstractModel):
         self.RDPRisk = params.get("RDPRisk")
         self.EventRisk = params.get("EventRisk")
         self.AssetVulNum = params.get("AssetVulNum")
+        self.AssetEventNum = params.get("AssetEventNum")
+        self.AssetCspmRiskNum = params.get("AssetCspmRiskNum")
+        self.SsaAssetDeleteTime = params.get("SsaAssetDeleteTime")
+        self.ChargeType = params.get("ChargeType")
+        self.AssetRegionName = params.get("AssetRegionName")
+        self.AssetVpcid = params.get("AssetVpcid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1080,6 +1182,84 @@ class ConcernInfo(AbstractModel):
         :param StatisticsCount: 最近数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatisticsCount: int
+        :param IpCountry: IP国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpCountry: str
+        :param IpProvince: IP省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpProvince: str
+        :param Result: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param Confidence: 置信度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Confidence: int
+        :param IpIsp: 服务商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpIsp: str
+        :param IpInfrastructure: 是否基础设施
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpInfrastructure: str
+        :param ThreatType: 威胁类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThreatType: list of str
+        :param Groups: 威胁团伙
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of str
+        :param Status: 状态威胁情报接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param Tags: 恶意标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param VictimAssetType: 资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VictimAssetType: str
+        :param VictimAssetName: 资产名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VictimAssetName: str
+        :param DomainRegistrant: 注册者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainRegistrant: str
+        :param DomainRegisteredInstitution: 注册机构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainRegisteredInstitution: str
+        :param DomainRegistrationTime: 注册时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainRegistrationTime: str
+        :param FileName: 文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param FileMd5: MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileMd5: str
+        :param VirusName: 病毒名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirusName: str
+        :param FilePath: 文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilePath: str
+        :param FileSize: 文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: str
+        :param ProcName: 进程名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcName: str
+        :param Pid: 进程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pid: str
+        :param ProcPath: 进程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcPath: str
+        :param ProcUser: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcUser: str
+        :param DefendedCount: 已防御
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefendedCount: int
+        :param DetectedCount: 仅检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectedCount: int
         :param SearchData: 可疑关注点字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type SearchData: str
@@ -1100,6 +1280,32 @@ class ConcernInfo(AbstractModel):
         self.EntityType = None
         self.Concern = None
         self.StatisticsCount = None
+        self.IpCountry = None
+        self.IpProvince = None
+        self.Result = None
+        self.Confidence = None
+        self.IpIsp = None
+        self.IpInfrastructure = None
+        self.ThreatType = None
+        self.Groups = None
+        self.Status = None
+        self.Tags = None
+        self.VictimAssetType = None
+        self.VictimAssetName = None
+        self.DomainRegistrant = None
+        self.DomainRegisteredInstitution = None
+        self.DomainRegistrationTime = None
+        self.FileName = None
+        self.FileMd5 = None
+        self.VirusName = None
+        self.FilePath = None
+        self.FileSize = None
+        self.ProcName = None
+        self.Pid = None
+        self.ProcPath = None
+        self.ProcUser = None
+        self.DefendedCount = None
+        self.DetectedCount = None
         self.SearchData = None
         self.IpCountryIso = None
         self.IpProvinceIso = None
@@ -1112,6 +1318,32 @@ class ConcernInfo(AbstractModel):
         self.EntityType = params.get("EntityType")
         self.Concern = params.get("Concern")
         self.StatisticsCount = params.get("StatisticsCount")
+        self.IpCountry = params.get("IpCountry")
+        self.IpProvince = params.get("IpProvince")
+        self.Result = params.get("Result")
+        self.Confidence = params.get("Confidence")
+        self.IpIsp = params.get("IpIsp")
+        self.IpInfrastructure = params.get("IpInfrastructure")
+        self.ThreatType = params.get("ThreatType")
+        self.Groups = params.get("Groups")
+        self.Status = params.get("Status")
+        self.Tags = params.get("Tags")
+        self.VictimAssetType = params.get("VictimAssetType")
+        self.VictimAssetName = params.get("VictimAssetName")
+        self.DomainRegistrant = params.get("DomainRegistrant")
+        self.DomainRegisteredInstitution = params.get("DomainRegisteredInstitution")
+        self.DomainRegistrationTime = params.get("DomainRegistrationTime")
+        self.FileName = params.get("FileName")
+        self.FileMd5 = params.get("FileMd5")
+        self.VirusName = params.get("VirusName")
+        self.FilePath = params.get("FilePath")
+        self.FileSize = params.get("FileSize")
+        self.ProcName = params.get("ProcName")
+        self.Pid = params.get("Pid")
+        self.ProcPath = params.get("ProcPath")
+        self.ProcUser = params.get("ProcUser")
+        self.DefendedCount = params.get("DefendedCount")
+        self.DetectedCount = params.get("DetectedCount")
         self.SearchData = params.get("SearchData")
         self.IpCountryIso = params.get("IpCountryIso")
         self.IpProvinceIso = params.get("IpProvinceIso")
@@ -3255,6 +3487,12 @@ class MappingResult(AbstractModel):
         :param SecurityStatus: 安全防护状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityStatus: list of SecurityStatus
+        :param DisposalRecommendation: 处置建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisposalRecommendation: int
+        :param MappingType: 测绘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MappingType: str
         """
         self.AssetName = None
         self.AssetIp = None
@@ -3274,6 +3512,8 @@ class MappingResult(AbstractModel):
         self.MappingStatus = None
         self.Region = None
         self.SecurityStatus = None
+        self.DisposalRecommendation = None
+        self.MappingType = None
 
 
     def _deserialize(self, params):
@@ -3300,6 +3540,8 @@ class MappingResult(AbstractModel):
                 obj = SecurityStatus()
                 obj._deserialize(item)
                 self.SecurityStatus.append(obj)
+        self.DisposalRecommendation = params.get("DisposalRecommendation")
+        self.MappingType = params.get("MappingType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4052,7 +4294,7 @@ class Tag(AbstractModel):
         r"""
         :param Fid: 数据库标识
         :type Fid: int
-        :param Fname: 标签名称
+        :param Fname: 标签名称字段
         :type Fname: str
         """
         self.Fid = None

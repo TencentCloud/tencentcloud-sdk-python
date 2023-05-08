@@ -262,7 +262,9 @@ class EcdnClient(AbstractClient):
 
 
     def DescribePurgeQuota(self, request):
-        """查询刷新接口的用量配额。
+        """ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+
+        查询刷新接口的用量配额。
 
         >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41956"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 

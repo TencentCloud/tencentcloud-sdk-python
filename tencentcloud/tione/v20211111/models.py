@@ -1447,7 +1447,8 @@ class CreateTrainingTaskRequest(AbstractModel):
         r"""
         :param Name: 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
         :type Name: str
-        :param ChargeType: 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
+        :param ChargeType: 计费模式，eg：PREPAID 包年包月（资源组）;
+POSTPAID_BY_HOUR 按量计费
         :type ChargeType: str
         :param ResourceConfigInfos: 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
         :type ResourceConfigInfos: list of ResourceConfigInfo
@@ -1796,6 +1797,9 @@ class DataConfig(AbstractModel):
         :param HDFSSource: 来自HDFS的数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type HDFSSource: :class:`tencentcloud.tione.v20211111.models.HDFSConfig`
+        :param GooseFSSource: 配饰GooseFS的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GooseFSSource: :class:`tencentcloud.tione.v20211111.models.GooseFS`
         """
         self.MappingPath = None
         self.DataSourceType = None
@@ -1803,6 +1807,7 @@ class DataConfig(AbstractModel):
         self.COSSource = None
         self.CFSSource = None
         self.HDFSSource = None
+        self.GooseFSSource = None
 
 
     def _deserialize(self, params):
@@ -1820,6 +1825,9 @@ class DataConfig(AbstractModel):
         if params.get("HDFSSource") is not None:
             self.HDFSSource = HDFSConfig()
             self.HDFSSource._deserialize(params.get("HDFSSource"))
+        if params.get("GooseFSSource") is not None:
+            self.GooseFSSource = GooseFS()
+            self.GooseFSSource._deserialize(params.get("GooseFSSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4948,6 +4956,31 @@ class FrameworkVersion(AbstractModel):
         
 
 
+class GooseFS(AbstractModel):
+    """配置GooseFS参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: goosefs实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GpuDetail(AbstractModel):
     """gpu 详情
 
@@ -6344,6 +6377,31 @@ class PushTrainingMetricsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RDMAConfig(AbstractModel):
+    """RDMA配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enable: 是否开启RDMA
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        """
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceConfigInfo(AbstractModel):
     """资源配置
 
@@ -6401,6 +6459,9 @@ TI.GN7.20XLARGE320.POST: 80C32
 40C160G T4*2 
 80C32
         :type InstanceTypeAlias: str
+        :param RDMAConfig: RDMA配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RDMAConfig: :class:`tencentcloud.tione.v20211111.models.RDMAConfig`
         """
         self.Role = None
         self.Cpu = None
@@ -6410,6 +6471,7 @@ TI.GN7.20XLARGE320.POST: 80C32
         self.InstanceType = None
         self.InstanceNum = None
         self.InstanceTypeAlias = None
+        self.RDMAConfig = None
 
 
     def _deserialize(self, params):
@@ -6421,6 +6483,9 @@ TI.GN7.20XLARGE320.POST: 80C32
         self.InstanceType = params.get("InstanceType")
         self.InstanceNum = params.get("InstanceNum")
         self.InstanceTypeAlias = params.get("InstanceTypeAlias")
+        if params.get("RDMAConfig") is not None:
+            self.RDMAConfig = RDMAConfig()
+            self.RDMAConfig._deserialize(params.get("RDMAConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

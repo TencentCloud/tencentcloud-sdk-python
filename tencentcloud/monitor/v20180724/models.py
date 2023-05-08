@@ -10639,6 +10639,12 @@ class Metric(AbstractModel):
         :param ProductId: 集成中心产品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: int
+        :param Operators: 匹配运算符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operators: list of Operator
+        :param Periods: 指标触发
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Periods: list of int
         """
         self.Namespace = None
         self.MetricName = None
@@ -10651,6 +10657,8 @@ class Metric(AbstractModel):
         self.IsAdvanced = None
         self.IsOpen = None
         self.ProductId = None
+        self.Operators = None
+        self.Periods = None
 
 
     def _deserialize(self, params):
@@ -10667,6 +10675,13 @@ class Metric(AbstractModel):
         self.IsAdvanced = params.get("IsAdvanced")
         self.IsOpen = params.get("IsOpen")
         self.ProductId = params.get("ProductId")
+        if params.get("Operators") is not None:
+            self.Operators = []
+            for item in params.get("Operators"):
+                obj = Operator()
+                obj._deserialize(item)
+                self.Operators.append(obj)
+        self.Periods = params.get("Periods")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

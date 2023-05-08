@@ -23,7 +23,7 @@ FAILEDOPERATION_LOCKTIMEOUT = 'FailedOperation.LockTimeout'
 # 处理超时。
 FAILEDOPERATION_PROCESSTIMEOUT = 'FailedOperation.ProcessTimeout'
 
-# 请降低访问频率。
+# 该UserId请求正在处理中，请稍后再试。
 FAILEDOPERATION_SLOWDOWN = 'FailedOperation.SlowDown'
 
 # 内部错误。

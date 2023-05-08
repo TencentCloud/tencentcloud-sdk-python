@@ -4387,7 +4387,7 @@ class ModifyDomainWhiteRuleRequest(AbstractModel):
         :type Url: str
         :param Function: 规则匹配方法
         :type Function: str
-        :param Status: 规则的开关状态
+        :param Status: 规则的开关状态，0表示关闭开关，1表示打开开关
         :type Status: int
         """
         self.Domain = None

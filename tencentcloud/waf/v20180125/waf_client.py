@@ -236,7 +236,6 @@ class WafClient(AbstractClient):
     def DeleteDomainWhiteRules(self, request):
         """删除域名规则白名单
 
-
         :param request: Request instance for DeleteDomainWhiteRules.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteDomainWhiteRulesRequest`
         :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteDomainWhiteRulesResponse`

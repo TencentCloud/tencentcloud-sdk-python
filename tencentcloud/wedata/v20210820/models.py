@@ -5145,13 +5145,22 @@ class DescribeDatabaseInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DatabaseInfo: 数据库列表
+        :type DatabaseInfo: list of DatabaseInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.DatabaseInfo = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("DatabaseInfo") is not None:
+            self.DatabaseInfo = []
+            for item in params.get("DatabaseInfo"):
+                obj = DatabaseInfo()
+                obj._deserialize(item)
+                self.DatabaseInfo.append(obj)
         self.RequestId = params.get("RequestId")
 
 

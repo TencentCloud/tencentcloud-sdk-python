@@ -13533,6 +13533,9 @@ class ZoneSetting(AbstractModel):
         :param ImageOptimize: 图片优化相关配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
+        :param AccelerateMainland: 中国大陆加速优化配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
         """
         self.ZoneName = None
         self.Area = None
@@ -13555,6 +13558,7 @@ class ZoneSetting(AbstractModel):
         self.ClientIpCountry = None
         self.Grpc = None
         self.ImageOptimize = None
+        self.AccelerateMainland = None
 
 
     def _deserialize(self, params):
@@ -13617,6 +13621,9 @@ class ZoneSetting(AbstractModel):
         if params.get("ImageOptimize") is not None:
             self.ImageOptimize = ImageOptimize()
             self.ImageOptimize._deserialize(params.get("ImageOptimize"))
+        if params.get("AccelerateMainland") is not None:
+            self.AccelerateMainland = AccelerateMainland()
+            self.AccelerateMainland._deserialize(params.get("AccelerateMainland"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

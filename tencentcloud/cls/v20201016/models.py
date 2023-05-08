@@ -6804,6 +6804,26 @@ class ShipperInfo(AbstractModel):
         :param FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilenameMode: int
+        :param StartTime: 投递数据范围的开始时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param EndTime: 投递数据范围的结束时间点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        :param Progress: 历史数据投递的进度（仅当用户选择的数据内中历史数据时才有效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: float
+        :param RemainTime: 历史数据全部投递完成剩余的时间（仅当用户选择的数据中有历史数据时才有效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainTime: int
+        :param HistoryStatus: 历史任务状态：
+0：实时任务
+1：任务准备中
+2：任务运行中
+3：任务运行异常
+4：任务运行结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HistoryStatus: int
         """
         self.ShipperId = None
         self.TopicId = None
@@ -6819,6 +6839,11 @@ class ShipperInfo(AbstractModel):
         self.Content = None
         self.CreateTime = None
         self.FilenameMode = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Progress = None
+        self.RemainTime = None
+        self.HistoryStatus = None
 
 
     def _deserialize(self, params):
@@ -6845,6 +6870,11 @@ class ShipperInfo(AbstractModel):
             self.Content._deserialize(params.get("Content"))
         self.CreateTime = params.get("CreateTime")
         self.FilenameMode = params.get("FilenameMode")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Progress = params.get("Progress")
+        self.RemainTime = params.get("RemainTime")
+        self.HistoryStatus = params.get("HistoryStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

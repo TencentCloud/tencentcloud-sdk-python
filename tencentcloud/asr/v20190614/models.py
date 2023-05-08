@@ -932,6 +932,53 @@ class GetCustomizationListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetModelInfoRequest(AbstractModel):
+    """GetModelInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelId: 模型id
+        :type ModelId: str
+        """
+        self.ModelId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetModelInfoResponse(AbstractModel):
+    """GetModelInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 模型信息
+        :type Data: :class:`tencentcloud.asr.v20190614.models.Model`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = Model()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class HotWord(AbstractModel):
     """热词的词和权重
 

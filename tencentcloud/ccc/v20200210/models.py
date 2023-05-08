@@ -3365,6 +3365,9 @@ class ServeParticipant(AbstractModel):
         :param TransferFrom: 转接来源坐席信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransferFrom: str
+        :param TransferFromType: 转接来源参与者类型，取值与 Type 一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferFromType: str
         :param TransferTo: 转接去向坐席信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransferTo: str
@@ -3401,6 +3404,7 @@ class ServeParticipant(AbstractModel):
         self.RecordId = None
         self.Type = None
         self.TransferFrom = None
+        self.TransferFromType = None
         self.TransferTo = None
         self.TransferToType = None
         self.SkillGroupId = None
@@ -3421,6 +3425,7 @@ class ServeParticipant(AbstractModel):
         self.RecordId = params.get("RecordId")
         self.Type = params.get("Type")
         self.TransferFrom = params.get("TransferFrom")
+        self.TransferFromType = params.get("TransferFromType")
         self.TransferTo = params.get("TransferTo")
         self.TransferToType = params.get("TransferToType")
         self.SkillGroupId = params.get("SkillGroupId")

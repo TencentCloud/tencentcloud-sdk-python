@@ -8865,6 +8865,9 @@ global：全球
 2：用完续订
 3：到期或用完续订
         :type ExtensionMode: int
+        :param AutoExtension: HTTPS请求包是否自动续订
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoExtension: bool
         """
         self.Id = None
         self.Type = None
@@ -8884,6 +8887,7 @@ global：全球
         self.ContractExtension = None
         self.ExtensionAvailable = None
         self.ExtensionMode = None
+        self.AutoExtension = None
 
 
     def _deserialize(self, params):
@@ -8905,6 +8909,7 @@ global：全球
         self.ContractExtension = params.get("ContractExtension")
         self.ExtensionAvailable = params.get("ExtensionAvailable")
         self.ExtensionMode = params.get("ExtensionMode")
+        self.AutoExtension = params.get("AutoExtension")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
