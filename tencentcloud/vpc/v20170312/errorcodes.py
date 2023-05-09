@@ -470,6 +470,9 @@ LIMITEXCEEDED_CHANGEADDRESSQUOTA = 'LimitExceeded.ChangeAddressQuota'
 # VPC分配网段数量达到上限。
 LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
 
+# 当前实例关联的云联网数量达到上限。
+LIMITEXCEEDED_CURRENTINSTANCEATTACHEDCCNINSTANCES = 'LimitExceeded.CurrentInstanceAttachedCcnInstances'
+
 # 租户每天申请的弹性IP超过上限。
 LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAllocateAddressQuotaLimitExceeded'
 

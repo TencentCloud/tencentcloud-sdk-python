@@ -165,7 +165,7 @@ class RedisClient(AbstractClient):
 
 
     def ChangeReplicaToMaster(self, request):
-        """该接口仅支持多AZ实例副本组提主和单AZ副本提主
+        """本接口（ChangeReplicaToMaster）适用于实例副本组提主或副本提主。
 
         :param request: Request instance for ChangeReplicaToMaster.
         :type request: :class:`tencentcloud.redis.v20180412.models.ChangeReplicaToMasterRequest`
@@ -1269,7 +1269,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeTaskList(self, request):
-        """查询任务列表信息
+        """本接口（DescribeTaskList）用于查询指定实例的任务列表信息。
 
         :param request: Request instance for DescribeTaskList.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTaskListRequest`

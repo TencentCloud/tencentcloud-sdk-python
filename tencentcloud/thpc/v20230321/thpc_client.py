@@ -309,6 +309,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInitNodeScripts(self, request):
+        """本接口 (DescribeInitNodeScripts) 用于查询节点初始化脚本列表。
+
+        :param request: Request instance for DescribeInitNodeScripts.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeInitNodeScriptsRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.DescribeInitNodeScriptsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInitNodeScripts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInitNodeScriptsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNodes(self, request):
         """本接口 (DescribeNodes) 用于查询指定集群节点概览信息列表。
 

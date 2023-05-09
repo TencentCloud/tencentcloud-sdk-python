@@ -579,7 +579,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeDeveloper(self, request):
-        """服务商信息获取
+        """开发商信息获取
 
         :param request: Request instance for DescribeDeveloper.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeDeveloperRequest`

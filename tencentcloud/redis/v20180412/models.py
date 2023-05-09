@@ -517,9 +517,10 @@ class ChangeReplicaToMasterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例Id
+        :param InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+
         :type InstanceId: str
-        :param GroupId: 副本组Id，多AZ实例必填
+        :param GroupId: 副本节点组 ID，请通过接口[DescribeInstanceZoneInfo](https://cloud.tencent.com/document/product/239/50312)获取多 AZ备节点组的 ID 信息。单 AZ，则无需配置该参数。
         :type GroupId: int
         """
         self.InstanceId = None
@@ -545,7 +546,7 @@ class ChangeReplicaToMasterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步任务ID
+        :param TaskId: 异步任务ID。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3076,7 +3077,17 @@ class DescribeInstancesRequest(AbstractModel):
         :type AutoRenew: list of int
         :param BillingMode: 计费模式。<ul><li>postpaid：按量计费。</li><li>prepaid：包年包月。</li></ul>
         :type BillingMode: str
-        :param Type: 实例类型。<ul><li>1：Redis 老集群版。</li><li>2：Redis 2.8 主从版。</li><li>3：CKV 主从版。</li><li>4：CKV 集群版。</li><li>5：Redis 2.8 单机版。</li><li>6：Redis 4.0主从版。</li><li>7：Redis 4.0 集群版。</li><li>8：Redis 5.0 主从版。</li><li>9：Redis 5.0 集群版。</li></ul>
+        :param Type: 实例类型。
+- 2：Redis 2.8内存版（标准架构）。
+- 3：CKV 3.2内存版（标准架构）。
+- 4：CKV 3.2内存版（集群架构）。
+- 5：Redis 2.8内存版（单机）。
+- 6：Redis 4.0内存版（标准架构）。
+- 7：Redis 4.0内存版（集群架构）。
+- 8：Redis 5.0内存版（标准架构）。
+- 9：Redis 5.0内存版（集群架构）。
+- 15：Redis 6.2内存版（标准架构）。
+- 16：Redis 6.2内存版（集群架构）。
         :type Type: int
         :param SearchKeys: 设置搜索关键字数组，可根据实例ID、实例名称、完整IP地址查询实例。
         :type SearchKeys: list of str
@@ -3897,29 +3908,52 @@ class DescribeTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例Id
+        :param InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param InstanceName: 实例名称
+        :param InstanceName: 实例名称。
         :type InstanceName: str
-        :param Limit: 分页大小,默认20，上限不大于100
+        :param Limit: 每页输出的任务列表大小。默认为 20，最多输出100条。
         :type Limit: int
-        :param Offset: 偏移量，取Limit整数倍（自动向下取整）
+        :param Offset: 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
         :type Offset: int
-        :param ProjectIds: 项目Id
+        :param ProjectIds: 项目 ID。登录 [Redis 控制台](https://console.cloud.tencent.com/redis)，在右上角的账号信息下拉菜单中，选择**项目管理**，即可获取对应的项目 ID。
         :type ProjectIds: list of int
-        :param TaskTypes: 任务类型
+        :param TaskTypes: 任务类型。
+- FLOW_CREATE：创建实例。
+- FLOW_MODIFYCONNECTIONCONFIG：调整带宽连接数。
+- FLOW_MODIFYINSTANCEPASSWORDFREE：免密变更流程。
+- FLOW_CLEARNETWORK：VPC退还中。
+- FLOW_SETPWD：设置访问密码。
+- FLOW_EXPORSHR：扩缩容流程。
+- FLOW_UpgradeArch：实例架构升级流程。
+- FLOW_MODIFYINSTANCEPARAMS：修改实例参数。
+- FLOW_MODIFYINSTACEREADONLY：只读变更流程。
+- FLOW_CLOSE：关闭实例。
+- FLOW_DELETE：删除实例。
+- FLOW_OPEN_WAN：开启外网。
+- FLOW_CLEAN：清空实例。      
+- FLOW_MODIFYINSTANCEACCOUNT：修改实例账号。
+- FLOW_ENABLEINSTANCE_REPLICATE：开启副本只读。
+- FLOW_DISABLEINSTANCE_REPLICATE: 关闭副本只读。
+- FLOW_SWITCHINSTANCEVIP：交换实例 VIP。
+- FLOW_CHANGE_REPLICA_TO_MSTER：副本节点升主节点。
+- FLOW_BACKUPINSTANCE：备份实例。
         :type TaskTypes: list of str
-        :param BeginTime: 起始时间
+        :param BeginTime: 任务执行的起始时间。格式如：2021-12-30 00:00:00。
         :type BeginTime: str
-        :param EndTime: 终止时间
+        :param EndTime: 任务运行的终止时间。格式如：2021-12-30 20:59:35
         :type EndTime: str
-        :param TaskStatus: 任务状态
+        :param TaskStatus: 该参数为内部使用，请忽略。
         :type TaskStatus: list of int
-        :param Result: 任务状态
+        :param Result: 任务执行状态。
+- 0：任务初始化。
+- 1：执行中。
+- 2：完成。
+- 4：失败。
         :type Result: list of int
-        :param OperatorUin: 操作者Uin，该字段已废弃，使用OperateUin代替
+        :param OperatorUin: 该字段已废弃，使用OperateUin代替，请忽略。
         :type OperatorUin: list of int
-        :param OperateUin: 操作者Uin
+        :param OperateUin: 操作者账号 ID，UIN。
         :type OperateUin: list of str
         """
         self.InstanceId = None
@@ -3965,9 +3999,9 @@ class DescribeTaskListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 任务总数
+        :param TotalCount: 任务总数。
         :type TotalCount: int
-        :param Tasks: 任务详细信息
+        :param Tasks: 任务详细信息。
         :type Tasks: list of TaskInfoDetail
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7887,31 +7921,55 @@ class TaskInfoDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务Id
+        :param TaskId: 任务 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: int
-        :param StartTime: 开始时间
+        :param StartTime: 任务开始时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param TaskType: 任务类型
+        :param TaskType: 任务类型。
+- FLOW_CREATE：创建实例。
+- FLOW_MODIFYCONNECTIONCONFIG：调整带宽连接数。
+- FLOW_MODIFYINSTANCEPASSWORDFREE：免密变更流程。
+- FLOW_CLEARNETWORK：VPC退还中。
+- FLOW_SETPWD：设置访问密码。
+- FLOW_EXPORSHR：扩缩容流程。
+- FLOW_UpgradeArch：实例架构升级流程。
+- FLOW_MODIFYINSTANCEPARAMS：修改实例参数。
+- FLOW_MODIFYINSTACEREADONLY：只读变更流程。
+- FLOW_CLOSE：关闭实例。
+- FLOW_DELETE：删除实例。
+- FLOW_OPEN_WAN：开启外网。
+- FLOW_CLEAN：清空实例。      
+- FLOW_MODIFYINSTANCEACCOUNT：修改实例账号。
+- FLOW_ENABLEINSTANCE_REPLICATE：开启副本只读。
+- FLOW_DISABLEINSTANCE_REPLICATE: 关闭副本只读。
+- FLOW_SWITCHINSTANCEVIP：交换实例 VIP。
+- FLOW_CHANGE_REPLICA_TO_MSTER：副本节点升主节点。
+- FLOW_BACKUPINSTANCE：备份实例。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
-        :param InstanceName: 实例名称
+        :param InstanceName: 实例名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param ProjectId: 项目Id
+        :param ProjectId: 项目 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
-        :param Progress: 任务进度
+        :param Progress: 任务进度。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: float
-        :param EndTime: 结束时间
+        :param EndTime: 任务执行结束时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param Result: 任务状态
+        :param Result: 任务执行状态。
+
+0：任务初始化。
+1：执行中。
+2：完成。
+4：失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
         """

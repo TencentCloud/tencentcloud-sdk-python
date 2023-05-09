@@ -967,13 +967,15 @@ video 纯视频
         :type Assistants: list of str
         :param RTCAudienceNumber: rtc人数。
         :type RTCAudienceNumber: int
-        :param AudienceType: 观看类型。0未知，1互动，2cdn或直播。 目前仅支持互动类型
+        :param AudienceType: 观看类型，互动直播（默认）。
         :type AudienceType: int
         :param RecordLayout: 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
         :param GroupId: 房间绑定的群组ID,非空时限制组成员进入
         :type GroupId: str
-        :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关
+        :param EnableDirectControl: 是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
+0 不允许直接控制（需同意，默认值）
+1 允许直接控制（无需同意）
         :type EnableDirectControl: int
         """
         self.Name = None
@@ -1605,7 +1607,7 @@ class DescribeDeveloperResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeveloperId: 服务商ID
+        :param DeveloperId: 开发商ID
         :type DeveloperId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

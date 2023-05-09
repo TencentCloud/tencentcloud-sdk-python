@@ -1165,6 +1165,57 @@ class DescribeClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInitNodeScriptsRequest(AbstractModel):
+    """DescribeInitNodeScripts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInitNodeScriptsResponse(AbstractModel):
+    """DescribeInitNodeScripts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InitNodeScriptSet: 节点初始化脚本列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitNodeScriptSet: list of NodeScript
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InitNodeScriptSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InitNodeScriptSet") is not None:
+            self.InitNodeScriptSet = []
+            for item in params.get("InitNodeScriptSet"):
+                obj = NodeScript()
+                obj._deserialize(item)
+                self.InitNodeScriptSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNodesRequest(AbstractModel):
     """DescribeNodes请求参数结构体
 

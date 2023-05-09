@@ -75,7 +75,7 @@ class BatchSendEmailRequest(AbstractModel):
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         :param TimedParam: 定时发送任务的必要参数
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
-        :param Unsubscribe: 退订选项 1: 加入退订链接 0: 不加入退订链接
+        :param Unsubscribe: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语
         :type Unsubscribe: str
         :param ADLocation: 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
         :type ADLocation: int

@@ -2646,7 +2646,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type Key: list of str
         :param User: 用户
         :type User: list of str
-        :param Ip: ip
+        :param Ip: IP
         :type Ip: list of str
         :param Time: 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
         :type Time: list of int

@@ -6598,16 +6598,20 @@ class DescribeAlarmIncidentNodesRequest(AbstractModel):
         :type AlarmVid: str
         :param AlarmTime: 告警时间
         :type AlarmTime: int
+        :param TableId: 告警来源表ID
+        :type TableId: int
         """
         self.Uuid = None
         self.AlarmVid = None
         self.AlarmTime = None
+        self.TableId = None
 
 
     def _deserialize(self, params):
         self.Uuid = params.get("Uuid")
         self.AlarmVid = params.get("AlarmVid")
         self.AlarmTime = params.get("AlarmTime")
+        self.TableId = params.get("TableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

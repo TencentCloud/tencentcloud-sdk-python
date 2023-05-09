@@ -2105,6 +2105,76 @@ class CreateEnvironmentRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRabbitMQUserRequest(AbstractModel):
+    """CreateRabbitMQUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param User: 用户名，登录时使用
+        :type User: str
+        :param Password: 密码，登录时使用
+        :type Password: str
+        :param Description: 描述
+        :type Description: str
+        :param Tags: 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
+management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+        :type Tags: list of str
+        :param MaxConnections: 该用户的最大连接数，不填写则不限制
+        :type MaxConnections: int
+        :param MaxChannels: 该用户的最大channel数，不填写则不限制
+        :type MaxChannels: int
+        """
+        self.InstanceId = None
+        self.User = None
+        self.Password = None
+        self.Description = None
+        self.Tags = None
+        self.MaxConnections = None
+        self.MaxChannels = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        self.Password = params.get("Password")
+        self.Description = params.get("Description")
+        self.Tags = params.get("Tags")
+        self.MaxConnections = params.get("MaxConnections")
+        self.MaxChannels = params.get("MaxChannels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRabbitMQUserResponse(AbstractModel):
+    """CreateRabbitMQUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param User: 用户名，登录时使用
+        :type User: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.User = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.User = params.get("User")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRabbitMQVipInstanceRequest(AbstractModel):
     """CreateRabbitMQVipInstance请求参数结构体
 
@@ -2189,6 +2259,63 @@ class CreateRabbitMQVipInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.TranId = params.get("TranId")
         self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRabbitMQVirtualHostRequest(AbstractModel):
+    """CreateRabbitMQVirtualHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param VirtualHost: vhost名
+        :type VirtualHost: str
+        :param Description: 描述
+        :type Description: str
+        :param TraceFlag: 消息轨迹开关,true打开,false关闭,默认关闭
+        :type TraceFlag: bool
+        """
+        self.InstanceId = None
+        self.VirtualHost = None
+        self.Description = None
+        self.TraceFlag = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VirtualHost = params.get("VirtualHost")
+        self.Description = params.get("Description")
+        self.TraceFlag = params.get("TraceFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRabbitMQVirtualHostResponse(AbstractModel):
+    """CreateRabbitMQVirtualHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VirtualHost: vhost名
+        :type VirtualHost: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VirtualHost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VirtualHost = params.get("VirtualHost")
         self.RequestId = params.get("RequestId")
 
 

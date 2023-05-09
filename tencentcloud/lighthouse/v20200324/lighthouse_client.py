@@ -202,6 +202,29 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDisks(self, request):
+        """本接口(CreateDisks)用于创建一个或多个云硬盘。
+
+        :param request: Request instance for CreateDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.CreateDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateFirewallRules(self, request):
         """本接口（CreateFirewallRules）用于在实例上添加防火墙规则。
 

@@ -553,6 +553,9 @@ class ObjectDetail(AbstractModel):
         :type Location: :class:`tencentcloud.ims.v20201229.models.Location`
         :param SubLabel: 该参数用于返回命中的实体二级标签。
         :type SubLabel: str
+        :param ObjectId: 该参数用于返回命中的人脸id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectId: str
         """
         self.Id = None
         self.Name = None
@@ -560,6 +563,7 @@ class ObjectDetail(AbstractModel):
         self.Score = None
         self.Location = None
         self.SubLabel = None
+        self.ObjectId = None
 
 
     def _deserialize(self, params):
@@ -571,6 +575,7 @@ class ObjectDetail(AbstractModel):
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
         self.SubLabel = params.get("SubLabel")
+        self.ObjectId = params.get("ObjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

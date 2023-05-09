@@ -878,7 +878,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSlowLogs(self, request):
-        """获取指定时间内某个sql模版的慢日志明细
+        """获取指定时间内某个sql模板的慢日志明细
 
         :param request: Request instance for DescribeSlowLogs.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSlowLogsRequest`

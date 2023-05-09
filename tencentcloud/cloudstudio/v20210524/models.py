@@ -199,14 +199,18 @@ class CreateWorkspaceByTemplateRequest(AbstractModel):
         :type CloudStudioSessionTeam: str
         :param TemplateId: 模板ID
         :type TemplateId: int
+        :param Name: 工作空间名称
+        :type Name: str
         """
         self.CloudStudioSessionTeam = None
         self.TemplateId = None
+        self.Name = None
 
 
     def _deserialize(self, params):
         self.CloudStudioSessionTeam = params.get("CloudStudioSessionTeam")
         self.TemplateId = params.get("TemplateId")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1598,14 +1602,19 @@ class WorkspaceInfo(AbstractModel):
         :param SpaceKey: 工作空间标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceKey: str
+        :param Name: 工作空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
         """
         self.WorkspaceId = None
         self.SpaceKey = None
+        self.Name = None
 
 
     def _deserialize(self, params):
         self.WorkspaceId = params.get("WorkspaceId")
         self.SpaceKey = params.get("SpaceKey")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

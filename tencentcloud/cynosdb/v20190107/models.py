@@ -6244,6 +6244,9 @@ class NetAddr(AbstractModel):
         :param WanStatus: 外网状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type WanStatus: str
+        :param InstanceGroupId: 实例组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceGroupId: str
         """
         self.Vip = None
         self.Vport = None
@@ -6255,6 +6258,7 @@ class NetAddr(AbstractModel):
         self.Description = None
         self.WanIP = None
         self.WanStatus = None
+        self.InstanceGroupId = None
 
 
     def _deserialize(self, params):
@@ -6268,6 +6272,7 @@ class NetAddr(AbstractModel):
         self.Description = params.get("Description")
         self.WanIP = params.get("WanIP")
         self.WanStatus = params.get("WanStatus")
+        self.InstanceGroupId = params.get("InstanceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
