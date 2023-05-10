@@ -18,6 +18,261 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CVMOption(AbstractModel):
+    """云服务器配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 云服务器可用区。
+        :type Zone: str
+        :param InstanceType: 云服务器实例规格。
+        :type InstanceType: str
+        """
+        self.Zone = None
+        self.InstanceType = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterOption(AbstractModel):
+    """计算集群配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 计算集群可用区。
+        :type Zone: str
+        :param Type: 计算集群类型，取值范围：
+- KUBERNETES
+        :type Type: str
+        """
+        self.Zone = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEnvironmentRequest(AbstractModel):
+    """CreateEnvironment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 环境名称。
+        :type Name: str
+        :param Config: 环境配置信息。
+        :type Config: :class:`tencentcloud.omics.v20221128.models.EnvironmentConfig`
+        :param Description: 环境描述。
+        :type Description: str
+        """
+        self.Name = None
+        self.Config = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Config") is not None:
+            self.Config = EnvironmentConfig()
+            self.Config._deserialize(params.get("Config"))
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEnvironmentResponse(AbstractModel):
+    """CreateEnvironment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境ID。
+        :type EnvironmentId: str
+        :param WorkflowUuid: 工作流UUID。
+        :type WorkflowUuid: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EnvironmentId = None
+        self.WorkflowUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.WorkflowUuid = params.get("WorkflowUuid")
+        self.RequestId = params.get("RequestId")
+
+
+class DatabaseOption(AbstractModel):
+    """数据库配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 数据库可用区。
+        :type Zone: str
+        """
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEnvironmentRequest(AbstractModel):
+    """DeleteEnvironment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境ID。
+        :type EnvironmentId: str
+        """
+        self.EnvironmentId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEnvironmentResponse(AbstractModel):
+    """DeleteEnvironment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkflowUuid: 工作流UUID。
+        :type WorkflowUuid: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WorkflowUuid = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WorkflowUuid = params.get("WorkflowUuid")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnvironmentsRequest(AbstractModel):
+    """DescribeEnvironments请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param Filters: 过滤器，支持过滤字段：
+- EnvironmentId：环境ID
+- Name：名称
+- Status：环境状态
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvironmentsResponse(AbstractModel):
+    """DescribeEnvironments返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的数量。
+        :type TotalCount: int
+        :param Environments: 环境详情列表。
+        :type Environments: list of Environment
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Environments = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Environments") is not None:
+            self.Environments = []
+            for item in params.get("Environments"):
+                obj = Environment()
+                obj._deserialize(item)
+                self.Environments.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRunGroupsRequest(AbstractModel):
     """DescribeRunGroups请求参数结构体
 
@@ -165,6 +420,132 @@ class DescribeRunsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Runs.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class Environment(AbstractModel):
+    """组学平台环境详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境ID。
+        :type EnvironmentId: str
+        :param Name: 环境名称。
+        :type Name: str
+        :param Description: 环境描述信息。
+        :type Description: str
+        :param Region: 环境地域。
+        :type Region: str
+        :param Type: 环境类型，取值范围：
+- KUBERNETES：Kubernetes容器集群
+- HPC：HPC高性能计算集群
+        :type Type: str
+        :param Status: 环境状态，取值范围：
+- INITIALIZING：创建中
+- INITIALIZATION_ERROR：创建失败
+- RUNNING：运行中
+- ERROR：异常
+- DELETING：正在删除
+- DELETE_ERROR：删除失败
+        :type Status: str
+        :param Available: 环境是否可用。环境需要可用才能投递计算任务。
+        :type Available: bool
+        :param Message: 环境信息。
+        :type Message: str
+        :param ResourceIds: 云资源ID。
+        :type ResourceIds: :class:`tencentcloud.omics.v20221128.models.ResourceIds`
+        :param LastWorkflowUuid: 上个工作流UUID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastWorkflowUuid: str
+        :param CreationTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: str
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.Description = None
+        self.Region = None
+        self.Type = None
+        self.Status = None
+        self.Available = None
+        self.Message = None
+        self.ResourceIds = None
+        self.LastWorkflowUuid = None
+        self.CreationTime = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.Region = params.get("Region")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.Available = params.get("Available")
+        self.Message = params.get("Message")
+        if params.get("ResourceIds") is not None:
+            self.ResourceIds = ResourceIds()
+            self.ResourceIds._deserialize(params.get("ResourceIds"))
+        self.LastWorkflowUuid = params.get("LastWorkflowUuid")
+        self.CreationTime = params.get("CreationTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvironmentConfig(AbstractModel):
+    """环境配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VPCOption: 私有网络配置。
+        :type VPCOption: :class:`tencentcloud.omics.v20221128.models.VPCOption`
+        :param ClusterOption: 计算集群配置。
+        :type ClusterOption: :class:`tencentcloud.omics.v20221128.models.ClusterOption`
+        :param DatabaseOption: 数据库配置。
+        :type DatabaseOption: :class:`tencentcloud.omics.v20221128.models.DatabaseOption`
+        :param StorageOption: 存储配置。
+        :type StorageOption: :class:`tencentcloud.omics.v20221128.models.StorageOption`
+        :param CVMOption: 云服务器配置。
+        :type CVMOption: :class:`tencentcloud.omics.v20221128.models.CVMOption`
+        """
+        self.VPCOption = None
+        self.ClusterOption = None
+        self.DatabaseOption = None
+        self.StorageOption = None
+        self.CVMOption = None
+
+
+    def _deserialize(self, params):
+        if params.get("VPCOption") is not None:
+            self.VPCOption = VPCOption()
+            self.VPCOption._deserialize(params.get("VPCOption"))
+        if params.get("ClusterOption") is not None:
+            self.ClusterOption = ClusterOption()
+            self.ClusterOption._deserialize(params.get("ClusterOption"))
+        if params.get("DatabaseOption") is not None:
+            self.DatabaseOption = DatabaseOption()
+            self.DatabaseOption._deserialize(params.get("DatabaseOption"))
+        if params.get("StorageOption") is not None:
+            self.StorageOption = StorageOption()
+            self.StorageOption._deserialize(params.get("StorageOption"))
+        if params.get("CVMOption") is not None:
+            self.CVMOption = CVMOption()
+            self.CVMOption._deserialize(params.get("CVMOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ExecutionTime(AbstractModel):
@@ -402,6 +783,70 @@ class ImportTableFileResponse(AbstractModel):
     def _deserialize(self, params):
         self.TableId = params.get("TableId")
         self.RequestId = params.get("RequestId")
+
+
+class ResourceIds(AbstractModel):
+    """云资源ID。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VPCId: 私有网络ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VPCId: str
+        :param SubnetId: 子网ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param SecurityGroupId: 安全组ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupId: str
+        :param TDSQLCId: TDSQL-C Mysql版数据库ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TDSQLCId: str
+        :param CFSId: 文件存储ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CFSId: str
+        :param CFSStorageType: 文件存储类型：取值范围：
+- SD：通用标准型
+- HP：通用性能型
+- TB：turbo标准型
+- TP：turbo性能型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CFSStorageType: str
+        :param CVMId: 云服务器ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVMId: str
+        :param EKSId: 弹性容器集群ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EKSId: str
+        """
+        self.VPCId = None
+        self.SubnetId = None
+        self.SecurityGroupId = None
+        self.TDSQLCId = None
+        self.CFSId = None
+        self.CFSStorageType = None
+        self.CVMId = None
+        self.EKSId = None
+
+
+    def _deserialize(self, params):
+        self.VPCId = params.get("VPCId")
+        self.SubnetId = params.get("SubnetId")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.TDSQLCId = params.get("TDSQLCId")
+        self.CFSId = params.get("CFSId")
+        self.CFSStorageType = params.get("CFSStorageType")
+        self.CVMId = params.get("CVMId")
+        self.EKSId = params.get("EKSId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Run(AbstractModel):
@@ -857,6 +1302,76 @@ class RunStatusCount(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageOption(AbstractModel):
+    """文件存储配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageType: 文件存储类型，取值范围：
+- SD：通用标准型
+- HP：通用性能型
+- TB：turbo标准型
+- TP：turbo性能型
+        :type StorageType: str
+        :param Zone: 文件存储可用区。
+        :type Zone: str
+        :param Capacity: 文件系统容量，turbo系列必填，单位为GiB。 
+- turbo标准型起售40TiB，即40960GiB；扩容步长20TiB，即20480 GiB。
+- turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。
+        :type Capacity: int
+        """
+        self.StorageType = None
+        self.Zone = None
+        self.Capacity = None
+
+
+    def _deserialize(self, params):
+        self.StorageType = params.get("StorageType")
+        self.Zone = params.get("Zone")
+        self.Capacity = params.get("Capacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VPCOption(AbstractModel):
+    """私有网络配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubnetZone: 子网可用区。
+        :type SubnetZone: str
+        :param VPCCIDRBlock: 私有网络CIDR。
+        :type VPCCIDRBlock: str
+        :param SubnetCIDRBlock: 子网CIDR。
+        :type SubnetCIDRBlock: str
+        """
+        self.SubnetZone = None
+        self.VPCCIDRBlock = None
+        self.SubnetCIDRBlock = None
+
+
+    def _deserialize(self, params):
+        self.SubnetZone = params.get("SubnetZone")
+        self.VPCCIDRBlock = params.get("VPCCIDRBlock")
+        self.SubnetCIDRBlock = params.get("SubnetCIDRBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

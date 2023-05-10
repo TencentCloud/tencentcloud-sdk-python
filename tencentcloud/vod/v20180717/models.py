@@ -14206,6 +14206,10 @@ class HeadTailTemplate(AbstractModel):
 <li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 默认值：stretch 。
         :type FillType: str
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
         """
         self.Definition = None
         self.Name = None
@@ -14213,6 +14217,8 @@ class HeadTailTemplate(AbstractModel):
         self.HeadCandidateSet = None
         self.TailCandidateSet = None
         self.FillType = None
+        self.CreateTime = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
@@ -14222,6 +14228,8 @@ class HeadTailTemplate(AbstractModel):
         self.HeadCandidateSet = params.get("HeadCandidateSet")
         self.TailCandidateSet = params.get("TailCandidateSet")
         self.FillType = params.get("FillType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16481,6 +16489,10 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         :type Input: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingTaskInput`
         :param Output: 对视频转自适应码流任务的输出。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingInfoItem`
+        :param BeginProcessTime: 转自适应码流任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 转自适应码流任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -16489,6 +16501,8 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         self.Progress = None
         self.Input = None
         self.Output = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -16503,6 +16517,8 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AdaptiveDynamicStreamingInfoItem()
             self.Output._deserialize(params.get("Output"))
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16534,6 +16550,10 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsItem`
         :param Progress: 转动图任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 转动图任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 转动图任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -16542,6 +16562,8 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -16556,6 +16578,8 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
             self.Output = MediaAnimatedGraphicsItem()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16586,6 +16610,10 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskOutput`
         :param Progress: 对视频截图做封面任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 截图做封面任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 截图做封面任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -16594,6 +16622,8 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -16608,6 +16638,8 @@ class MediaProcessTaskCoverBySnapshotResult(AbstractModel):
             self.Output = CoverBySnapshotTaskOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16639,6 +16671,10 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteItem`
         :param Progress: 对视频截雪碧图任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 截雪碧图任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 截雪碧图任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -16647,6 +16683,8 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -16661,6 +16699,8 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
             self.Output = MediaImageSpriteItem()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16855,6 +16895,10 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotItem`
         :param Progress: 对视频做采样截图任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 采样截图任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 采样截图任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -16863,6 +16907,8 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -16877,6 +16923,8 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
             self.Output = MediaSampleSnapshotItem()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16908,6 +16956,10 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetItem`
         :param Progress: 对视频按指定时间点截图任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 时间点截图任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 时间点截图任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -16916,6 +16968,8 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -16930,6 +16984,8 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
             self.Output = MediaSnapshotByTimeOffsetItem()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

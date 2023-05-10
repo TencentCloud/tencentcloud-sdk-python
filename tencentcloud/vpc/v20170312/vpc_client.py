@@ -1953,7 +1953,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteFlowLog(self, request):
-        """本接口（DeleteFlowLog）用于删除流日志
+        """本接口（DeleteFlowLog）用于删除流日志。
 
         :param request: Request instance for DeleteFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteFlowLogRequest`
@@ -3167,7 +3167,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeFlowLog(self, request):
-        """本接口（DescribeFlowLog）用于查询流日志实例信息
+        """本接口（DescribeFlowLog）用于查询流日志实例信息。
 
         :param request: Request instance for DescribeFlowLog.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeFlowLogRequest`
@@ -5719,7 +5719,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyFlowLogAttribute(self, request):
-        """本接口（ModifyFlowLogAttribute）用于修改流日志属性
+        """本接口（ModifyFlowLogAttribute）用于修改流日志属性。
 
         :param request: Request instance for ModifyFlowLogAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyFlowLogAttributeRequest`

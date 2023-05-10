@@ -26,6 +26,75 @@ class OmicsClient(AbstractClient):
     _service = 'omics'
 
 
+    def CreateEnvironment(self, request):
+        """创建组学平台计算环境。
+
+        :param request: Request instance for CreateEnvironment.
+        :type request: :class:`tencentcloud.omics.v20221128.models.CreateEnvironmentRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.CreateEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEnvironment", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEnvironmentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteEnvironment(self, request):
+        """删除环境。
+
+        :param request: Request instance for DeleteEnvironment.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DeleteEnvironmentRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DeleteEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEnvironment", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteEnvironmentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEnvironments(self, request):
+        """查询环境列表。
+
+        :param request: Request instance for DescribeEnvironments.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeEnvironmentsRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeEnvironmentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvironments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnvironmentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRunGroups(self, request):
         """查询任务批次列表。
 

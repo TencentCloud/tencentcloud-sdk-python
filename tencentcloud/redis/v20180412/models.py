@@ -2641,11 +2641,11 @@ class DescribeInstanceNodeInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
         :type InstanceId: str
-        :param Limit: 列表大小
+        :param Limit: 列表大小。每页输出的节点信息大小。默认为 20，最多输出1000条。该字段已不再使用，请忽略。
         :type Limit: int
-        :param Offset: 偏移量
+        :param Offset: 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。该字段已不再使用，请忽略。
         :type Offset: int
         """
         self.InstanceId = None
@@ -2673,19 +2673,19 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyCount: proxy节点数量
+        :param ProxyCount: Proxy节点数量。
         :type ProxyCount: int
-        :param Proxy: proxy节点信息
+        :param Proxy: Proxy节点信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Proxy: list of ProxyNodes
-        :param RedisCount: redis节点数量
+        :param RedisCount: Redis节点数量。
         :type RedisCount: int
-        :param Redis: redis节点信息
+        :param Redis: Redis节点信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Redis: list of RedisNodes
-        :param TendisCount: tendis节点数量
+        :param TendisCount: 该参数不再使用，请忽略。
         :type TendisCount: int
-        :param Tendis: tendis节点信息
+        :param Tendis: 该参数不再使用，请忽略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tendis: list of TendisNodes
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7143,13 +7143,13 @@ class RedisNodes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NodeId: 节点ID
+        :param NodeId: 节点 ID。
         :type NodeId: str
-        :param NodeRole: 节点角色
+        :param NodeRole: 节点角色。
         :type NodeRole: str
-        :param ClusterId: 分片ID
+        :param ClusterId: 分片 ID。
         :type ClusterId: int
-        :param ZoneId: 可用区ID
+        :param ZoneId: 可用区 ID。
         :type ZoneId: int
         """
         self.NodeId = None

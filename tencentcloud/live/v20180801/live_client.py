@@ -2115,6 +2115,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveXP2PDetailInfoList(self, request):
+        """P2P流数据查询接口，用来获取流量、卡播和起播信息。
+
+        :param request: Request instance for DescribeLiveXP2PDetailInfoList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveXP2PDetailInfoListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveXP2PDetailInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveXP2PDetailInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveXP2PDetailInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLogDownloadList(self, request):
         """批量获取日志URL。
 

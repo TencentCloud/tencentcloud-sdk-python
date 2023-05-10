@@ -6392,7 +6392,7 @@ class DeleteFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowLogId: 流日志唯一ID
+        :param FlowLogId: 流日志唯一ID。
         :type FlowLogId: str
         :param VpcId: 私用网络ID或者统一ID，建议使用统一ID，删除云联网流日志时，可不填，其他流日志类型必填。
         :type VpcId: str
@@ -9223,9 +9223,9 @@ class DescribeFlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID。
         :type VpcId: str
-        :param FlowLogId: 流日志唯一ID
+        :param FlowLogId: 流日志唯一ID。
         :type FlowLogId: str
         """
         self.VpcId = None
@@ -9251,7 +9251,7 @@ class DescribeFlowLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowLog: 流日志信息
+        :param FlowLog: 流日志信息。
         :type FlowLog: list of FlowLog
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14773,7 +14773,7 @@ class Filter(AbstractModel):
         r"""
         :param Name: 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
         :type Name: str
-        :param Values: 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        :param Values: 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。当值类型为布尔类型时，可直接取值为字符串"TRUE"或 "FALSE"。
         :type Values: list of str
         """
         self.Name = None
@@ -16957,13 +16957,13 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowLogId: 流日志唯一ID
+        :param FlowLogId: 流日志唯一ID。
         :type FlowLogId: str
         :param VpcId: 私用网络ID或者统一ID，建议使用统一ID，修改云联网流日志属性时可不填，其他流日志类型必填。
         :type VpcId: str
-        :param FlowLogName: 流日志实例名字
+        :param FlowLogName: 流日志实例名字。
         :type FlowLogName: str
-        :param FlowLogDescription: 流日志实例描述
+        :param FlowLogDescription: 流日志实例描述。
         :type FlowLogDescription: str
         """
         self.FlowLogId = None

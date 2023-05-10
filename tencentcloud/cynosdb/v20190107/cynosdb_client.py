@@ -1544,6 +1544,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def OpenReadOnlyInstanceExclusiveAccess(self, request):
+        """开通只读实例独有访问接入组
+
+        :param request: Request instance for OpenReadOnlyInstanceExclusiveAccess.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenReadOnlyInstanceExclusiveAccessRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenReadOnlyInstanceExclusiveAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenReadOnlyInstanceExclusiveAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenReadOnlyInstanceExclusiveAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PauseServerless(self, request):
         """暂停serverless集群
 

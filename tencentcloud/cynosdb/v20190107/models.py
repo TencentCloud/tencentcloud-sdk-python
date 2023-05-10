@@ -6558,6 +6558,71 @@ class OpenAuditServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OpenReadOnlyInstanceExclusiveAccessRequest(AbstractModel):
+    """OpenReadOnlyInstanceExclusiveAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param InstanceId: 需要开通独有访问的只读实例ID
+        :type InstanceId: str
+        :param VpcId: 指定的vpc ID
+        :type VpcId: str
+        :param SubnetId: 指定的子网ID
+        :type SubnetId: str
+        :param Port: 端口
+        :type Port: int
+        :param SecurityGroupIds: 安全组
+        :type SecurityGroupIds: list of str
+        """
+        self.ClusterId = None
+        self.InstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Port = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceId = params.get("InstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Port = params.get("Port")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenReadOnlyInstanceExclusiveAccessResponse(AbstractModel):
+    """OpenReadOnlyInstanceExclusiveAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 开通流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ParamInfo(AbstractModel):
     """参数信息
 

@@ -855,7 +855,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceNodeInfo(self, request):
-        """查询实例节点信息
+        """本接口（DescribeInstanceNodeInfo）用于查询实例节点信息。
 
         :param request: Request instance for DescribeInstanceNodeInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceNodeInfoRequest`

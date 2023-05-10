@@ -2074,6 +2074,10 @@ class CreateShipperRequest(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         :param FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
         :type FilenameMode: int
+        :param StartTime: 投递数据范围的开始时间点，不能超出日志主题的生命周期起点。如果用户不填写，默认为用户新建投递任务的时间。
+        :type StartTime: int
+        :param EndTime: 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
+        :type EndTime: int
         """
         self.TopicId = None
         self.Bucket = None
@@ -2086,6 +2090,8 @@ class CreateShipperRequest(AbstractModel):
         self.Compress = None
         self.Content = None
         self.FilenameMode = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
@@ -2109,6 +2115,8 @@ class CreateShipperRequest(AbstractModel):
             self.Content = ContentInfo()
             self.Content._deserialize(params.get("Content"))
         self.FilenameMode = params.get("FilenameMode")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

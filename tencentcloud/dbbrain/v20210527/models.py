@@ -2630,7 +2630,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         :type Product: str
         :param InstanceId: 实例id。
         :type InstanceId: str
-        :param Md5: sql模版的md5值
+        :param Md5: sql模板的md5值
         :type Md5: str
         :param StartTime: 开始时间，如“2019-09-10 12:13:14”。
         :type StartTime: str

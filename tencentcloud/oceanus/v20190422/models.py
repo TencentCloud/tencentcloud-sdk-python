@@ -345,11 +345,108 @@ class CopyJobItem(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param SourceId: 需要复制的作业serial id
+        :type SourceId: str
+        :param TargetClusterId: 目标集群的cluster serial id
+        :type TargetClusterId: str
+        :param SourceName: 需要复制的作业名称
+        :type SourceName: str
+        :param TargetName: 新作业的名称
+        :type TargetName: str
+        :param TargetFolderId: 新作业的目录id
+        :type TargetFolderId: str
+        :param JobType: 源作业类型
+        :type JobType: int
+        """
+        self.SourceId = None
+        self.TargetClusterId = None
+        self.SourceName = None
+        self.TargetName = None
+        self.TargetFolderId = None
+        self.JobType = None
+
+
+    def _deserialize(self, params):
+        self.SourceId = params.get("SourceId")
+        self.TargetClusterId = params.get("TargetClusterId")
+        self.SourceName = params.get("SourceName")
+        self.TargetName = params.get("TargetName")
+        self.TargetFolderId = params.get("TargetFolderId")
+        self.JobType = params.get("JobType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CopyJobResult(AbstractModel):
     """复制作业单条明细结果
 
     """
+
+    def __init__(self):
+        r"""
+        :param JobId: 原作业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: str
+        :param JobName: 原作业名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobName: str
+        :param TargetJobName: 新作业名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetJobName: str
+        :param TargetJobId: 新作业id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetJobId: str
+        :param Message: 失败时候的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Result: 0 成功  -1 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        :param ClusterName: 目标集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param ClusterId: 目标集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param JobType: 作业类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobType: int
+        """
+        self.JobId = None
+        self.JobName = None
+        self.TargetJobName = None
+        self.TargetJobId = None
+        self.Message = None
+        self.Result = None
+        self.ClusterName = None
+        self.ClusterId = None
+        self.JobType = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.JobName = params.get("JobName")
+        self.TargetJobName = params.get("TargetJobName")
+        self.TargetJobId = params.get("TargetJobId")
+        self.Message = params.get("Message")
+        self.Result = params.get("Result")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterId = params.get("ClusterId")
+        self.JobType = params.get("JobType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CopyJobsRequest(AbstractModel):

@@ -10704,6 +10704,9 @@ class EdgeCluster(AbstractModel):
         :param EdgeVersion: 边缘集群组件的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type EdgeVersion: str
+        :param TagSpecification: 集群绑定的云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSpecification: :class:`tencentcloud.tke.v20180525.models.TagSpecification`
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -10721,6 +10724,7 @@ class EdgeCluster(AbstractModel):
         self.AutoUpgradeClusterLevel = None
         self.ChargeType = None
         self.EdgeVersion = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -10742,6 +10746,9 @@ class EdgeCluster(AbstractModel):
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         self.ChargeType = params.get("ChargeType")
         self.EdgeVersion = params.get("EdgeVersion")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = TagSpecification()
+            self.TagSpecification._deserialize(params.get("TagSpecification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
