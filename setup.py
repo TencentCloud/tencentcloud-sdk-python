@@ -12,7 +12,7 @@ ROOT = os.path.dirname(__file__)
 
 setup(
     name='tencentcloud-sdk-python',
-    install_requires=["requests>=2.27.0"],
+    install_requires=["requests>=2.27.0,<=2.28.0"],
     version=tencentcloud.__version__,
     description='Tencent Cloud SDK for Python',
     long_description=open('README.rst').read(),
