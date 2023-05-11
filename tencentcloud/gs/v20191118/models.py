@@ -27,7 +27,7 @@ class CreateSessionRequest(AbstractModel):
         r"""
         :param UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
         :type UserId: str
-        :param GameId: 游戏ID
+        :param GameId: 【已废弃】只在TrylockWorker时生效
         :type GameId: str
         :param GameRegion: 【已废弃】只在TrylockWorker时生效
         :type GameRegion: str

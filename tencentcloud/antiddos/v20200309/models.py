@@ -6860,7 +6860,7 @@ class L4RuleSource(AbstractModel):
         r"""
         :param Source: 回源IP或域名
         :type Source: str
-        :param Weight: 权重值，取值[0,100]
+        :param Weight: 权重值，取值[0,100]，暂不支持
         :type Weight: int
         :param Port: 8000
 注意：此字段可能返回 null，表示取不到有效值。

@@ -21092,6 +21092,7 @@ EIP：云服务器的公网IP；
 LOCAL_GATEWAY：本地网关。
         :type GatewayType: str
         :param GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
+特殊说明：GatewayType为NORMAL_CVM时，GatewayId填写实例的内网IP。
         :type GatewayId: str
         :param RouteId: 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略。
 该字段在删除时必填，其他字段无需填写。

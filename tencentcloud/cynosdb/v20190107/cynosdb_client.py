@@ -785,6 +785,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceErrorLogs(self, request):
+        """查询实例错误日志列表
+
+        :param request: Request instance for DescribeInstanceErrorLogs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceErrorLogsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceErrorLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceErrorLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceErrorLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceSlowQueries(self, request):
         """此接口（DescribeInstanceSlowQueries）用于查询实例慢查询日志。
 
@@ -1029,6 +1052,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DisassociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DisassociateSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ExportInstanceErrorLogs(self, request):
+        """此接口（ExportInstanceErrorLogs）用于导出实例错误日志。
+
+        :param request: Request instance for ExportInstanceErrorLogs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ExportInstanceErrorLogsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ExportInstanceErrorLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportInstanceErrorLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportInstanceErrorLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

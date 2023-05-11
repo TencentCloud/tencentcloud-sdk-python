@@ -6398,6 +6398,8 @@ class DescribeTopicsRequest(AbstractModel):
         r"""
         :param EnvironmentId: 环境（命名空间）名称。
         :type EnvironmentId: str
+        :param ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         :param TopicName: 主题名模糊匹配。
         :type TopicName: str
         :param Offset: 起始下标，不填默认为0。
@@ -6410,8 +6412,6 @@ class DescribeTopicsRequest(AbstractModel):
 2：持久非分区主题类型；
 3：持久分区主题类型；
         :type TopicType: int
-        :param ClusterId: Pulsar 集群的ID
-        :type ClusterId: str
         :param Filters: * TopicName
 按照主题名字查询，精确查询。
 类型：String
@@ -6423,22 +6423,22 @@ class DescribeTopicsRequest(AbstractModel):
         :type TopicCreator: int
         """
         self.EnvironmentId = None
+        self.ClusterId = None
         self.TopicName = None
         self.Offset = None
         self.Limit = None
         self.TopicType = None
-        self.ClusterId = None
         self.Filters = None
         self.TopicCreator = None
 
 
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
+        self.ClusterId = params.get("ClusterId")
         self.TopicName = params.get("TopicName")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.TopicType = params.get("TopicType")
-        self.ClusterId = params.get("ClusterId")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):

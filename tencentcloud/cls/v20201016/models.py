@@ -4798,14 +4798,19 @@ class JsonInfo(AbstractModel):
         :param MetaFields: 元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaFields: list of str
+        :param JsonType: 投递Json格式，0：字符串方式投递；1:以结构化方式投递
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JsonType: int
         """
         self.EnableTag = None
         self.MetaFields = None
+        self.JsonType = None
 
 
     def _deserialize(self, params):
         self.EnableTag = params.get("EnableTag")
         self.MetaFields = params.get("MetaFields")
+        self.JsonType = params.get("JsonType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

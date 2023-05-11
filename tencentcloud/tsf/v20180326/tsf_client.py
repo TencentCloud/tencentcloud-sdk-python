@@ -1061,6 +1061,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteGatewayApi(self, request):
+        """批量删除API
+
+        :param request: Request instance for DeleteGatewayApi.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DeleteGatewayApiRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeleteGatewayApiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGatewayApi", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGatewayApiResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteGroup(self, request):
         """删除容器部署组
 

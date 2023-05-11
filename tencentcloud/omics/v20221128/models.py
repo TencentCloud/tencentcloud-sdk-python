@@ -1264,16 +1264,26 @@ class RunOption(AbstractModel):
         :type UseCallCache: bool
         :param UseErrorOnHold: 是否使用错误挂起功能。
         :type UseErrorOnHold: bool
+        :param FinalWorkflowOutputsDir: 输出归档COS路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinalWorkflowOutputsDir: str
+        :param UseRelativeOutputPaths: 是否使用相对目录归档输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseRelativeOutputPaths: bool
         """
         self.FailureMode = None
         self.UseCallCache = None
         self.UseErrorOnHold = None
+        self.FinalWorkflowOutputsDir = None
+        self.UseRelativeOutputPaths = None
 
 
     def _deserialize(self, params):
         self.FailureMode = params.get("FailureMode")
         self.UseCallCache = params.get("UseCallCache")
         self.UseErrorOnHold = params.get("UseErrorOnHold")
+        self.FinalWorkflowOutputsDir = params.get("FinalWorkflowOutputsDir")
+        self.UseRelativeOutputPaths = params.get("UseRelativeOutputPaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

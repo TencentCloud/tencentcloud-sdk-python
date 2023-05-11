@@ -807,6 +807,7 @@ class CreateDisksResponse(AbstractModel):
     def __init__(self):
         r"""
         :param DiskIdSet: 创建的云硬盘ID列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DiskIdSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2985,7 +2986,7 @@ class ModifyDisksChargeTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
+        :param DiskIds: 一个或多个待操作的云硬盘ID。每次请求批量云硬盘上限为100。
         :type DiskIds: list of str
         :param DiskChargePrepaid: 设置为预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
@@ -3134,22 +3135,22 @@ class ModifySnapshotsSharePermissionRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SnapshotIds: 快照ID, 可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
+        :type SnapshotIds: list of str
         :param AccountIds: 接收分享快照的账号Id列表，array型参数的格式可以参考[API简介](https://cloud.tencent.com/document/api/213/568)。帐号ID不同于QQ号，查询用户帐号ID请查看[帐号信息](https://console.cloud.tencent.com/developer)中的帐号ID栏。
         :type AccountIds: list of str
         :param Permission: 操作，包括 SHARE，CANCEL。其中SHARE代表分享操作，CANCEL代表取消分享操作。
         :type Permission: str
-        :param SnapshotIds: 快照ID, 可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
-        :type SnapshotIds: list of str
         """
+        self.SnapshotIds = None
         self.AccountIds = None
         self.Permission = None
-        self.SnapshotIds = None
 
 
     def _deserialize(self, params):
+        self.SnapshotIds = params.get("SnapshotIds")
         self.AccountIds = params.get("AccountIds")
         self.Permission = params.get("Permission")
-        self.SnapshotIds = params.get("SnapshotIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3411,7 +3412,7 @@ class RenewDiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的续费时长。<br>在云盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云盘会按对齐到实例续费后的到期时间来续费。
+        :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云硬盘的续费时长。<br>在云硬盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云硬盘会按对齐到实例续费后的到期时间来续费。
         :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
         :param DiskId: 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
         :type DiskId: str

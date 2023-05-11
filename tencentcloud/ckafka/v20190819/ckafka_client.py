@@ -1245,6 +1245,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTaskStatus(self, request):
+        """查询任务状态
+
+        :param request: Request instance for DescribeTaskStatus.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTaskStatusRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopic(self, request):
         """接口请求域名：https://ckafka.tencentcloudapi.com
         本接口（DescribeTopic）用于在用户获取消息队列 CKafka 实例的主题列表

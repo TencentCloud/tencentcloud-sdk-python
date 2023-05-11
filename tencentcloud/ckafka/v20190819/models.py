@@ -5793,6 +5793,53 @@ class DescribeRouteResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTaskStatusRequest(AbstractModel):
+    """DescribeTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务唯一标记
+        :type FlowId: int
+        """
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskStatusResponse(AbstractModel):
+    """DescribeTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.TaskStatusResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TaskStatusResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopicAttributesRequest(AbstractModel):
     """DescribeTopicAttributes请求参数结构体
 
@@ -11426,6 +11473,38 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskStatusResponse(AbstractModel):
+    """任务状态返回对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 任务状态:
+0 成功
+1 失败
+2 进行中
+        :type Status: int
+        :param Output: 输出信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: str
+        """
+        self.Status = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Output = params.get("Output")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

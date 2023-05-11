@@ -5605,6 +5605,55 @@ class DeleteFileConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteGatewayApiRequest(AbstractModel):
+    """DeleteGatewayApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 分组ID
+        :type GroupId: str
+        :param ApiList: Api ID 数组
+        :type ApiList: list of str
+        """
+        self.GroupId = None
+        self.ApiList = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.ApiList = params.get("ApiList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGatewayApiResponse(AbstractModel):
+    """DeleteGatewayApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteGroupRequest(AbstractModel):
     """DeleteGroup请求参数结构体
 

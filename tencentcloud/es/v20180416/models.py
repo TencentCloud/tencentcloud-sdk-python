@@ -2532,11 +2532,14 @@ class InstanceLog(AbstractModel):
         :type Ip: str
         :param Message: 日志内容
         :type Message: str
+        :param NodeID: 集群节点ID
+        :type NodeID: str
         """
         self.Time = None
         self.Level = None
         self.Ip = None
         self.Message = None
+        self.NodeID = None
 
 
     def _deserialize(self, params):
@@ -2544,6 +2547,7 @@ class InstanceLog(AbstractModel):
         self.Level = params.get("Level")
         self.Ip = params.get("Ip")
         self.Message = params.get("Message")
+        self.NodeID = params.get("NodeID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2648,6 +2652,8 @@ class KibanaView(AbstractModel):
         :type CpuUsage: float
         :param Zone: 可用区
         :type Zone: str
+        :param NodeId: ts-0noqayxu-az6-hot-03222010-0
+        :type NodeId: str
         """
         self.Ip = None
         self.DiskSize = None
@@ -2657,6 +2663,7 @@ class KibanaView(AbstractModel):
         self.CpuNum = None
         self.CpuUsage = None
         self.Zone = None
+        self.NodeId = None
 
 
     def _deserialize(self, params):
@@ -2668,6 +2675,7 @@ class KibanaView(AbstractModel):
         self.CpuNum = params.get("CpuNum")
         self.CpuUsage = params.get("CpuUsage")
         self.Zone = params.get("Zone")
+        self.NodeId = params.get("NodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
