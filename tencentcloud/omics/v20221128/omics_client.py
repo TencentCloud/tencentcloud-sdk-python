@@ -141,6 +141,52 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTables(self, request):
+        """查询表格。
+
+        :param request: Request instance for DescribeTables.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeTablesRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTablesRows(self, request):
+        """查询表格行数据。
+
+        :param request: Request instance for DescribeTablesRows.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeTablesRowsRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeTablesRowsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTablesRows", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTablesRowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetRunCalls(self, request):
         """查询作业详情。
 
@@ -201,6 +247,29 @@ class OmicsClient(AbstractClient):
             body = self.call("ImportTableFile", params, headers=headers)
             response = json.loads(body)
             model = models.ImportTableFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RetryRuns(self, request):
+        """重试任务。
+
+        :param request: Request instance for RetryRuns.
+        :type request: :class:`tencentcloud.omics.v20221128.models.RetryRunsRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.RetryRunsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RetryRuns", params, headers=headers)
+            response = json.loads(body)
+            model = models.RetryRunsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

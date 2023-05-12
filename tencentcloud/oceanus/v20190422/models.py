@@ -210,6 +210,9 @@ class Cluster(AbstractModel):
         :param IsNeedManageNode: 前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNeedManageNode: int
+        :param ClusterSessions: session集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterSessions: list of ClusterSession
         """
         self.ClusterId = None
         self.Name = None
@@ -246,6 +249,7 @@ class Cluster(AbstractModel):
         self.RunningCu = None
         self.PayMode = None
         self.IsNeedManageNode = None
+        self.ClusterSessions = None
 
 
     def _deserialize(self, params):
@@ -301,6 +305,12 @@ class Cluster(AbstractModel):
         self.RunningCu = params.get("RunningCu")
         self.PayMode = params.get("PayMode")
         self.IsNeedManageNode = params.get("IsNeedManageNode")
+        if params.get("ClusterSessions") is not None:
+            self.ClusterSessions = []
+            for item in params.get("ClusterSessions"):
+                obj = ClusterSession()
+                obj._deserialize(item)
+                self.ClusterSessions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -308,6 +318,12 @@ class Cluster(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ClusterSession(AbstractModel):
+    """session集群信息
+
+    """
 
 
 class ClusterVersion(AbstractModel):

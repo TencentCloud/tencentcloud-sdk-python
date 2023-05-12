@@ -12157,12 +12157,15 @@ class DescribeEmergencyVulListRequest(AbstractModel):
         :type Order: str
         :param By: 排序字段 PublishDate  LastScanTime HostCount
         :type By: str
+        :param HotspotAttack: 是否热点漏洞
+        :type HotspotAttack: bool
         """
         self.Limit = None
         self.Offset = None
         self.Filters = None
         self.Order = None
         self.By = None
+        self.HotspotAttack = None
 
 
     def _deserialize(self, params):
@@ -12176,6 +12179,7 @@ class DescribeEmergencyVulListRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Order = params.get("Order")
         self.By = params.get("By")
+        self.HotspotAttack = params.get("HotspotAttack")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18499,6 +18503,15 @@ class EmergencyVul(AbstractModel):
         :param DefenseAttackCount: 已防御的攻击次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefenseAttackCount: int
+        :param Method: 检测规则 0 - 版本比对, 1 - POC验证
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: int
+        :param AttackLevel: 攻击热度级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackLevel: int
+        :param DefenseState: 是否有漏洞主机开启漏洞防御
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenseState: bool
         """
         self.VulId = None
         self.Level = None
@@ -18514,6 +18527,9 @@ class EmergencyVul(AbstractModel):
         self.HostCount = None
         self.IsSupportDefense = None
         self.DefenseAttackCount = None
+        self.Method = None
+        self.AttackLevel = None
+        self.DefenseState = None
 
 
     def _deserialize(self, params):
@@ -18531,6 +18547,9 @@ class EmergencyVul(AbstractModel):
         self.HostCount = params.get("HostCount")
         self.IsSupportDefense = params.get("IsSupportDefense")
         self.DefenseAttackCount = params.get("DefenseAttackCount")
+        self.Method = params.get("Method")
+        self.AttackLevel = params.get("AttackLevel")
+        self.DefenseState = params.get("DefenseState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

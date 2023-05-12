@@ -1338,6 +1338,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTopicFlowRanking(self, request):
+        """获取Topic流量排行，消费者流量排行
+
+        :param request: Request instance for DescribeTopicFlowRanking.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicFlowRankingRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeTopicFlowRankingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopicFlowRanking", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopicFlowRankingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopicProduceConnection(self, request):
         """查询topic 生产端连接信息
 

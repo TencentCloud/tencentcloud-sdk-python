@@ -1099,7 +1099,6 @@ class BotExtendAction(AbstractModel):
         r"""
         :param Action: 处置动作，取值有：
 <li>monitor：观察；</li>
-<li>trans：放行；</li>
 <li>alg：JavaScript挑战；</li>
 <li>captcha：托管挑战；</li>
 <li>random：随机，按照ExtendActions分配处置动作和比例；</li>
@@ -1249,6 +1248,7 @@ class BotUserRule(AbstractModel):
 <li>trans：放行；</li>
 <li>alg：JavaScript挑战；</li>
 <li>captcha：托管挑战；</li>
+<li>random：随机处置；</li>
 <li>silence：静默；</li>
 <li>shortdelay：短时响应；</li>
 <li>longdelay：长时响应。</li>
@@ -3312,7 +3312,7 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 加速域名所属站点ID。不填写该参数默认返回所有站点下的加速域名。
+        :param ZoneId: 加速域名所属站点ID。
         :type ZoneId: str
         :param Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
 <li>domain-name<br>   按照【<strong>加速域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否

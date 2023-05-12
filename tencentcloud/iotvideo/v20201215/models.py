@@ -4086,6 +4086,9 @@ class DeviceInfo(AbstractModel):
         :type EnableState: int
         :param ExpireTime: 设备过期时间
         :type ExpireTime: int
+        :param LogLevel: 设备的sdk日志等级，0：关闭，1：错误，2：告警，3：信息，4：调试
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogLevel: int
         """
         self.DeviceName = None
         self.Online = None
@@ -4093,6 +4096,7 @@ class DeviceInfo(AbstractModel):
         self.DevicePsk = None
         self.EnableState = None
         self.ExpireTime = None
+        self.LogLevel = None
 
 
     def _deserialize(self, params):
@@ -4102,6 +4106,7 @@ class DeviceInfo(AbstractModel):
         self.DevicePsk = params.get("DevicePsk")
         self.EnableState = params.get("EnableState")
         self.ExpireTime = params.get("ExpireTime")
+        self.LogLevel = params.get("LogLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

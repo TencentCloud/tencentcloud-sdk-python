@@ -122,6 +122,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateChannelSubOrganizationModifyQrCode(self, request):
+        """生成子客编辑企业信息二维码
+
+        :param request: Request instance for CreateChannelSubOrganizationModifyQrCode.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateChannelSubOrganizationModifyQrCodeRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateChannelSubOrganizationModifyQrCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateChannelSubOrganizationModifyQrCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateChannelSubOrganizationModifyQrCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateConvertTaskApi(self, request):
         """上传了word、excel文件后，通过该接口发起文件转换任务，将word、excel文件转换为pdf文件。
 

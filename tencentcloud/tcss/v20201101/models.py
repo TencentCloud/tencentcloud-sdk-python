@@ -25089,6 +25089,9 @@ class NetworkAuditRecord(AbstractModel):
         :type AppId: int
         :param Uin: 操作人uin
         :type Uin: str
+        :param PolicyId: 策略id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -25099,6 +25102,7 @@ class NetworkAuditRecord(AbstractModel):
         self.OperationTime = None
         self.AppId = None
         self.Uin = None
+        self.PolicyId = None
 
 
     def _deserialize(self, params):
@@ -25111,6 +25115,7 @@ class NetworkAuditRecord(AbstractModel):
         self.OperationTime = params.get("OperationTime")
         self.AppId = params.get("AppId")
         self.Uin = params.get("Uin")
+        self.PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

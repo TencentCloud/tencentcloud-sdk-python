@@ -890,6 +890,61 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateChannelSubOrganizationModifyQrCodeRequest(AbstractModel):
+    """CreateChannelSubOrganizationModifyQrCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param ApplicationId: 应用编号
+        :type ApplicationId: str
+        """
+        self.Operator = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateChannelSubOrganizationModifyQrCodeResponse(AbstractModel):
+    """CreateChannelSubOrganizationModifyQrCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QrCodeUrl: 二维码下载链接
+        :type QrCodeUrl: str
+        :param ExpiredTime: 二维码失效时间 unix 时间戳 精确到秒
+        :type ExpiredTime: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QrCodeUrl = None
+        self.ExpiredTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.QrCodeUrl = params.get("QrCodeUrl")
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateConvertTaskApiRequest(AbstractModel):
     """CreateConvertTaskApi请求参数结构体
 

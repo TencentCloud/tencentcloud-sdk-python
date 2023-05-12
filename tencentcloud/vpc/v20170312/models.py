@@ -21429,12 +21429,21 @@ class SecurityGroupLimitSet(AbstractModel):
         :type SecurityGroupInstanceLimit: int
         :param InstanceSecurityGroupLimit: 实例关联安全组数
         :type InstanceSecurityGroupLimit: int
+        :param SecurityGroupExtendedPolicyLimit: 安全组展开后的规则数限制
+        :type SecurityGroupExtendedPolicyLimit: int
+        :param SecurityGroupReferedCvmAndEniLimit: 被引用的安全组关联CVM、ENI的实例配额
+        :type SecurityGroupReferedCvmAndEniLimit: int
+        :param SecurityGroupReferedSvcLimit: 被引用的安全组关联数据库、LB等服务实例配额
+        :type SecurityGroupReferedSvcLimit: int
         """
         self.SecurityGroupLimit = None
         self.SecurityGroupPolicyLimit = None
         self.ReferedSecurityGroupLimit = None
         self.SecurityGroupInstanceLimit = None
         self.InstanceSecurityGroupLimit = None
+        self.SecurityGroupExtendedPolicyLimit = None
+        self.SecurityGroupReferedCvmAndEniLimit = None
+        self.SecurityGroupReferedSvcLimit = None
 
 
     def _deserialize(self, params):
@@ -21443,6 +21452,9 @@ class SecurityGroupLimitSet(AbstractModel):
         self.ReferedSecurityGroupLimit = params.get("ReferedSecurityGroupLimit")
         self.SecurityGroupInstanceLimit = params.get("SecurityGroupInstanceLimit")
         self.InstanceSecurityGroupLimit = params.get("InstanceSecurityGroupLimit")
+        self.SecurityGroupExtendedPolicyLimit = params.get("SecurityGroupExtendedPolicyLimit")
+        self.SecurityGroupReferedCvmAndEniLimit = params.get("SecurityGroupReferedCvmAndEniLimit")
+        self.SecurityGroupReferedSvcLimit = params.get("SecurityGroupReferedSvcLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21468,7 +21480,7 @@ class SecurityGroupPolicy(AbstractModel):
         :type Port: str
         :param ServiceTemplate: 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
         :type ServiceTemplate: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
-        :param CidrBlock: 网段或IP(互斥)。
+        :param CidrBlock: 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。
         :type CidrBlock: str
         :param Ipv6CidrBlock: 网段或IPv6(互斥)。
         :type Ipv6CidrBlock: str
@@ -21529,10 +21541,13 @@ class SecurityGroupPolicySet(AbstractModel):
     def __init__(self):
         r"""
         :param Version: 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param Egress: 出站规则。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Egress: list of SecurityGroupPolicy
         :param Ingress: 入站规则。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Ingress: list of SecurityGroupPolicy
         """
         self.Version = None

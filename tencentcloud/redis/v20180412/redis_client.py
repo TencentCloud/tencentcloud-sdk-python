@@ -556,7 +556,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeDBSecurityGroups(self, request):
-        """本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
+        """本接口（DescribeDBSecurityGroups）用于查询实例的安全组详情。
 
         :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeDBSecurityGroupsRequest`
@@ -579,7 +579,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceAccount(self, request):
-        """查看实例子账号信息
+        """本接口（DescribeInstanceAccount）用于查看实例子账号信息。
 
         :param request: Request instance for DescribeInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceAccountRequest`
@@ -901,7 +901,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceParams(self, request):
-        """查询实例参数列表
+        """本接口（DescribeInstanceParams）用于查询实例参数列表。
 
         :param request: Request instance for DescribeInstanceParams.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceParamsRequest`
@@ -924,7 +924,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceSecurityGroup(self, request):
-        """查询实例安全组信息
+        """本接口（DescribeInstanceSecurityGroup）用于查询实例安全组信息。
 
         :param request: Request instance for DescribeInstanceSecurityGroup.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSecurityGroupRequest`
@@ -970,7 +970,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceZoneInfo(self, request):
-        """查询Redis节点详细信息
+        """本接口（DescribeInstanceZoneInfo）用于查询 Redis 节点详细信息。
 
         :param request: Request instance for DescribeInstanceZoneInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceZoneInfoRequest`
@@ -1522,7 +1522,7 @@ class RedisClient(AbstractClient):
 
 
     def ManualBackupInstance(self, request):
-        """手动备份Redis实例
+        """本接口（ManualBackupInstance）用于手动备份Redis实例。
 
         :param request: Request instance for ManualBackupInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.ManualBackupInstanceRequest`

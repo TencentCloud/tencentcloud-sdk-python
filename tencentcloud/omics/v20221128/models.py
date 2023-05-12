@@ -422,6 +422,156 @@ class DescribeRunsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTablesRequest(AbstractModel):
+    """DescribeTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID。
+        :type ProjectId: str
+        :param Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤器，支持过滤字段：
+- Name：表格名称
+- TableId：表格ID
+        :type Filters: list of Filter
+        """
+        self.ProjectId = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTablesResponse(AbstractModel):
+    """DescribeTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 结果总数。
+        :type TotalCount: int
+        :param Tables: 表格列表。
+        :type Tables: list of Table
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Tables = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Tables") is not None:
+            self.Tables = []
+            for item in params.get("Tables"):
+                obj = Table()
+                obj._deserialize(item)
+                self.Tables.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTablesRowsRequest(AbstractModel):
+    """DescribeTablesRows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID。
+        :type ProjectId: str
+        :param TableId: 表格ID。
+        :type TableId: str
+        :param Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Filters: 过滤器，支持过滤字段：
+- Tr：表格数据，支持模糊查询
+- TableRowUuid：表格行UUID
+        :type Filters: list of Filter
+        """
+        self.ProjectId = None
+        self.TableId = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.TableId = params.get("TableId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTablesRowsResponse(AbstractModel):
+    """DescribeTablesRows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 结果总数。
+        :type TotalCount: int
+        :param Rows: 表格行列表。
+        :type Rows: list of TableRow
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Rows = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = TableRow()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Environment(AbstractModel):
     """组学平台环境详情。
 
@@ -847,6 +997,51 @@ class ResourceIds(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RetryRunsRequest(AbstractModel):
+    """RetryRuns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 关联项目ID。
+        :type ProjectId: str
+        :param RunUuids: 任务UUID。
+        :type RunUuids: list of str
+        """
+        self.ProjectId = None
+        self.RunUuids = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.RunUuids = params.get("RunUuids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetryRunsResponse(AbstractModel):
+    """RetryRuns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Run(AbstractModel):
@@ -1350,6 +1545,126 @@ class StorageOption(AbstractModel):
         self.StorageType = params.get("StorageType")
         self.Zone = params.get("Zone")
         self.Capacity = params.get("Capacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Table(AbstractModel):
+    """表格。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableId: 表格ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param ProjectId: 关联项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param Name: 表格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Description: 表格描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Columns: 表格列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of TableColumn
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param Creator: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        """
+        self.TableId = None
+        self.ProjectId = None
+        self.Name = None
+        self.Description = None
+        self.Columns = None
+        self.CreateTime = None
+        self.Creator = None
+
+
+    def _deserialize(self, params):
+        self.TableId = params.get("TableId")
+        self.ProjectId = params.get("ProjectId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = TableColumn()
+                obj._deserialize(item)
+                self.Columns.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.Creator = params.get("Creator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableColumn(AbstractModel):
+    """表格列。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Header: 列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Header: str
+        :param DataType: 列数据类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataType: str
+        """
+        self.Header = None
+        self.DataType = None
+
+
+    def _deserialize(self, params):
+        self.Header = params.get("Header")
+        self.DataType = params.get("DataType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableRow(AbstractModel):
+    """表格行。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableRowUuid: 表格行UUID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableRowUuid: str
+        :param Content: 表格行内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of str
+        """
+        self.TableRowUuid = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TableRowUuid = params.get("TableRowUuid")
+        self.Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

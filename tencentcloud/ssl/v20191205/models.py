@@ -595,6 +595,12 @@ class CompanyInfo(AbstractModel):
         :type CompanyAddress: str
         :param CompanyPhone: 公司电话
         :type CompanyPhone: str
+        :param IdType: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdType: str
+        :param IdNumber: ID号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdNumber: str
         """
         self.CompanyName = None
         self.CompanyId = None
@@ -603,6 +609,8 @@ class CompanyInfo(AbstractModel):
         self.CompanyCity = None
         self.CompanyAddress = None
         self.CompanyPhone = None
+        self.IdType = None
+        self.IdNumber = None
 
 
     def _deserialize(self, params):
@@ -613,6 +621,8 @@ class CompanyInfo(AbstractModel):
         self.CompanyCity = params.get("CompanyCity")
         self.CompanyAddress = params.get("CompanyAddress")
         self.CompanyPhone = params.get("CompanyPhone")
+        self.IdType = params.get("IdType")
+        self.IdNumber = params.get("IdNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1308,6 +1318,15 @@ class DescribeCertificateResponse(AbstractModel):
         :param Tags: 标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
+        :param CAEncryptAlgorithms: CA证书的所有加密方式	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CAEncryptAlgorithms: list of str
+        :param CACommonNames: CA证书的所有通用名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CACommonNames: list of str
+        :param CAEndTimes: CA证书所有的到期时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CAEndTimes: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1343,6 +1362,9 @@ class DescribeCertificateResponse(AbstractModel):
         self.SubmittedData = None
         self.Deployable = None
         self.Tags = None
+        self.CAEncryptAlgorithms = None
+        self.CACommonNames = None
+        self.CAEndTimes = None
         self.RequestId = None
 
 
@@ -1390,6 +1412,9 @@ class DescribeCertificateResponse(AbstractModel):
                 obj = Tags()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.CAEncryptAlgorithms = params.get("CAEncryptAlgorithms")
+        self.CACommonNames = params.get("CACommonNames")
+        self.CAEndTimes = params.get("CAEndTimes")
         self.RequestId = params.get("RequestId")
 
 

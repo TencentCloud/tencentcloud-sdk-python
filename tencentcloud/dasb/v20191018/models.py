@@ -665,6 +665,8 @@ class CreateAclRequest(AbstractModel):
         :type AccountSet: list of str
         :param CmdTemplateIdSet: 关联的高危命令模板ID
         :type CmdTemplateIdSet: list of int non-negative
+        :param ACTemplateIdSet: 关联高危DB模版ID
+        :type ACTemplateIdSet: list of str
         :param AllowDiskFileUp: 是否开启rdp磁盘映射文件上传
         :type AllowDiskFileUp: bool
         :param AllowDiskFileDown: 是否开启rdp磁盘映射文件下载
@@ -701,6 +703,7 @@ class CreateAclRequest(AbstractModel):
         self.DeviceGroupIdSet = None
         self.AccountSet = None
         self.CmdTemplateIdSet = None
+        self.ACTemplateIdSet = None
         self.AllowDiskFileUp = None
         self.AllowDiskFileDown = None
         self.AllowShellFileUp = None
@@ -729,6 +732,7 @@ class CreateAclRequest(AbstractModel):
         self.DeviceGroupIdSet = params.get("DeviceGroupIdSet")
         self.AccountSet = params.get("AccountSet")
         self.CmdTemplateIdSet = params.get("CmdTemplateIdSet")
+        self.ACTemplateIdSet = params.get("ACTemplateIdSet")
         self.AllowDiskFileUp = params.get("AllowDiskFileUp")
         self.AllowDiskFileDown = params.get("AllowDiskFileDown")
         self.AllowShellFileUp = params.get("AllowShellFileUp")
@@ -2981,6 +2985,8 @@ class ModifyAclRequest(AbstractModel):
         :type AccountSet: list of str
         :param CmdTemplateIdSet: 关联的高危命令模板ID
         :type CmdTemplateIdSet: list of int non-negative
+        :param ACTemplateIdSet: 关联高危DB模版ID
+        :type ACTemplateIdSet: list of str
         :param AllowDiskFileUp: 是否开启 RDP 磁盘映射文件上传
         :type AllowDiskFileUp: bool
         :param AllowDiskFileDown: 是否开启 RDP 磁盘映射文件下载
@@ -3018,6 +3024,7 @@ class ModifyAclRequest(AbstractModel):
         self.DeviceGroupIdSet = None
         self.AccountSet = None
         self.CmdTemplateIdSet = None
+        self.ACTemplateIdSet = None
         self.AllowDiskFileUp = None
         self.AllowDiskFileDown = None
         self.AllowShellFileUp = None
@@ -3047,6 +3054,7 @@ class ModifyAclRequest(AbstractModel):
         self.DeviceGroupIdSet = params.get("DeviceGroupIdSet")
         self.AccountSet = params.get("AccountSet")
         self.CmdTemplateIdSet = params.get("CmdTemplateIdSet")
+        self.ACTemplateIdSet = params.get("ACTemplateIdSet")
         self.AllowDiskFileUp = params.get("AllowDiskFileUp")
         self.AllowDiskFileDown = params.get("AllowDiskFileDown")
         self.AllowShellFileUp = params.get("AllowShellFileUp")

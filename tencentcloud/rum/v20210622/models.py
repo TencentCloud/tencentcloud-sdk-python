@@ -5226,6 +5226,9 @@ class RumProject(AbstractModel):
         :param ProjectStatus: 项目状态(1 创建中，2 运行中，3 异常，4 重启中，5 停止中，6 已停止， 7 销毁中，8 已销毁)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectStatus: int
+        :param AccessPoint: 日志接入点，用户忽略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessPoint: str
         """
         self.Name = None
         self.Creator = None
@@ -5243,6 +5246,7 @@ class RumProject(AbstractModel):
         self.Desc = None
         self.IsStar = None
         self.ProjectStatus = None
+        self.AccessPoint = None
 
 
     def _deserialize(self, params):
@@ -5262,6 +5266,7 @@ class RumProject(AbstractModel):
         self.Desc = params.get("Desc")
         self.IsStar = params.get("IsStar")
         self.ProjectStatus = params.get("ProjectStatus")
+        self.AccessPoint = params.get("AccessPoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

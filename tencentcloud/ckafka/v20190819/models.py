@@ -1452,6 +1452,34 @@ class ConsumerGroupResponse(AbstractModel):
         
 
 
+class ConsumerGroupSpeed(AbstractModel):
+    """消费者组消费速度排行
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConsumerGroupName: 消费者组名称
+        :type ConsumerGroupName: str
+        :param Speed: 消费速度 Count/Minute
+        :type Speed: int
+        """
+        self.ConsumerGroupName = None
+        self.Speed = None
+
+
+    def _deserialize(self, params):
+        self.ConsumerGroupName = params.get("ConsumerGroupName")
+        self.Speed = params.get("Speed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsumerGroupTopic(AbstractModel):
     """消费组主题对象
 
@@ -5950,6 +5978,65 @@ class DescribeTopicDetailResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = TopicDetailResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTopicFlowRankingRequest(AbstractModel):
+    """DescribeTopicFlowRanking请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param RankingType: 排行类别(PRO-Topic生产流量/CON-Topic消费流量)
+        :type RankingType: str
+        :param BeginDate: 排行起始日期
+        :type BeginDate: str
+        :param EndDate: 排行结束日期
+        :type EndDate: str
+        """
+        self.InstanceId = None
+        self.RankingType = None
+        self.BeginDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RankingType = params.get("RankingType")
+        self.BeginDate = params.get("BeginDate")
+        self.EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicFlowRankingResponse(AbstractModel):
+    """DescribeTopicFlowRanking返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 流量排行
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicFlowRankingResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TopicFlowRankingResult()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -11803,6 +11890,98 @@ class TopicDetailResponse(AbstractModel):
         
 
 
+class TopicFlowRanking(AbstractModel):
+    """topic 流量排行
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 主题Id
+        :type TopicId: str
+        :param TopicName: 主题名称
+        :type TopicName: str
+        :param PartitionNum: 分区数
+        :type PartitionNum: int
+        :param ReplicaNum: 副本数
+        :type ReplicaNum: int
+        :param TopicTraffic: Topic 流量
+        :type TopicTraffic: str
+        :param MessageHeap: Topic 消息堆积
+        :type MessageHeap: int
+        """
+        self.TopicId = None
+        self.TopicName = None
+        self.PartitionNum = None
+        self.ReplicaNum = None
+        self.TopicTraffic = None
+        self.MessageHeap = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        self.PartitionNum = params.get("PartitionNum")
+        self.ReplicaNum = params.get("ReplicaNum")
+        self.TopicTraffic = params.get("TopicTraffic")
+        self.MessageHeap = params.get("MessageHeap")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicFlowRankingResult(AbstractModel):
+    """topic 生产消息数据，消费者数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicFlow: Topic 流量数组
+        :type TopicFlow: list of TopicFlowRanking
+        :param ConsumeSpeed: 消费者组消费速度排行速度
+        :type ConsumeSpeed: list of ConsumerGroupSpeed
+        :param TopicMessageHeap: Topic 消息堆积/占用磁盘排行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicMessageHeap: list of TopicMessageHeapRanking
+        """
+        self.TopicFlow = None
+        self.ConsumeSpeed = None
+        self.TopicMessageHeap = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopicFlow") is not None:
+            self.TopicFlow = []
+            for item in params.get("TopicFlow"):
+                obj = TopicFlowRanking()
+                obj._deserialize(item)
+                self.TopicFlow.append(obj)
+        if params.get("ConsumeSpeed") is not None:
+            self.ConsumeSpeed = []
+            for item in params.get("ConsumeSpeed"):
+                obj = ConsumerGroupSpeed()
+                obj._deserialize(item)
+                self.ConsumeSpeed.append(obj)
+        if params.get("TopicMessageHeap") is not None:
+            self.TopicMessageHeap = []
+            for item in params.get("TopicMessageHeap"):
+                obj = TopicMessageHeapRanking()
+                obj._deserialize(item)
+                self.TopicMessageHeap.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TopicInSyncReplicaInfo(AbstractModel):
     """topic副本及详细信息
 
@@ -11883,6 +12062,56 @@ class TopicInSyncReplicaResult(AbstractModel):
                 obj._deserialize(item)
                 self.TopicInSyncReplicaList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicMessageHeapRanking(AbstractModel):
+    """topic消息堆积、占用磁盘排行
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param TopicName: 主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param PartitionNum: 分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionNum: int
+        :param ReplicaNum: 副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicaNum: int
+        :param TopicTraffic: Topic 流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicTraffic: str
+        :param MessageHeap: topic消息堆积/占用磁盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageHeap: int
+        """
+        self.TopicId = None
+        self.TopicName = None
+        self.PartitionNum = None
+        self.ReplicaNum = None
+        self.TopicTraffic = None
+        self.MessageHeap = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        self.PartitionNum = params.get("PartitionNum")
+        self.ReplicaNum = params.get("ReplicaNum")
+        self.TopicTraffic = params.get("TopicTraffic")
+        self.MessageHeap = params.get("MessageHeap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

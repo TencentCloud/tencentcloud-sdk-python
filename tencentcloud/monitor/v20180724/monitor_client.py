@@ -1345,6 +1345,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterAgentCreatingProgress(self, request):
+        """获取prom实例中集群详细的关联状态
+
+        :param request: Request instance for DescribeClusterAgentCreatingProgress.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeClusterAgentCreatingProgressRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeClusterAgentCreatingProgressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterAgentCreatingProgress", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterAgentCreatingProgressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeConditionsTemplateList(self, request):
         """获取条件模板列表
 

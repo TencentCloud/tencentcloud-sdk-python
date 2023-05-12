@@ -50,7 +50,10 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillDetail(self, request):
-        """查询账单明细数据
+        """查询账单明细数据。
+        注意事项：
+        1.在请求接口时，由于网络不稳定或其它异常，可能会导致请求失败。如果您遇到这种情况，我们建议您在接口请求失败时，手动发起重试操作，这样可以更好地确保您的接口请求能够成功执行。
+        2.对于账单明细数据量级很大（例如每月账单明细量级超过20w）的客户，通过 API 调用账单数据效率较低，建议您开通账单数据存储功能，通过存储桶中获取账单文件进行分析。[账单存储至COS桶](https://cloud.tencent.com/document/product/555/61275)
 
         :param request: Request instance for DescribeBillDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillDetailRequest`
