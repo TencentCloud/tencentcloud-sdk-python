@@ -368,12 +368,16 @@ class ListRuntimesMCRequest(AbstractModel):
         r"""
         :param RuntimeClass: 环境运行类型：0:运行时类型、1:api类型
         :type RuntimeClass: int
+        :param PlanType: 计划类型：0-pro 1-lite
+        :type PlanType: int
         """
         self.RuntimeClass = None
+        self.PlanType = None
 
 
     def _deserialize(self, params):
         self.RuntimeClass = params.get("RuntimeClass")
+        self.PlanType = params.get("PlanType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

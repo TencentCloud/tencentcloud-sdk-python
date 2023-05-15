@@ -3723,6 +3723,9 @@ class DatasourceBaseInfo(AbstractModel):
         :param ClusterId: 数据源所属的集群id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
+        :param Version: 数据源版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
         """
         self.DatabaseNames = None
         self.Description = None
@@ -3732,6 +3735,7 @@ class DatasourceBaseInfo(AbstractModel):
         self.Region = None
         self.Type = None
         self.ClusterId = None
+        self.Version = None
 
 
     def _deserialize(self, params):
@@ -3743,6 +3747,7 @@ class DatasourceBaseInfo(AbstractModel):
         self.Region = params.get("Region")
         self.Type = params.get("Type")
         self.ClusterId = params.get("ClusterId")
+        self.Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

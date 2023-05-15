@@ -17755,6 +17755,11 @@ class DescribeVulListRequest(AbstractModel):
 <li>VulCategory- string - 是否必填：否 - 漏洞类别 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞</li>
 <li>IsSupportDefense - int- 是否必填：否 - 是否支持防御 0:不支持 1:支持</li>
 <li>Labels- string- 是否必填：否 - 标签搜索</li>
+<li>IsSupportAutoFix- string- 是否必填：否 - 是否支持自动修复 0:不支持 1:支持</li>
+<li>CvssScore- string- 是否必填：否 - CvssScore大于多少</li>
+<li>AttackLevel- string- 是否必填：否 - 攻击热度大于多少</li>
+
+
         :type Filters: list of Filters
         :param By: 可选排序字段 Level，LastTime，HostCount
         :type By: str
@@ -26653,6 +26658,15 @@ class VulInfoList(AbstractModel):
         :param VulCategory: 漏洞类别 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulCategory: int
+        :param AttackLevel: 攻击热度级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackLevel: int
+        :param FixNoNeedRestart: 漏洞修复后是否需要重启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixNoNeedRestart: bool
+        :param Method: 检测方式0 - 版本比对, 1 - POC验证
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: int
         """
         self.Ids = None
         self.Name = None
@@ -26677,6 +26691,9 @@ class VulInfoList(AbstractModel):
         self.DefenseAttackCount = None
         self.FirstAppearTime = None
         self.VulCategory = None
+        self.AttackLevel = None
+        self.FixNoNeedRestart = None
+        self.Method = None
 
 
     def _deserialize(self, params):
@@ -26703,6 +26720,9 @@ class VulInfoList(AbstractModel):
         self.DefenseAttackCount = params.get("DefenseAttackCount")
         self.FirstAppearTime = params.get("FirstAppearTime")
         self.VulCategory = params.get("VulCategory")
+        self.AttackLevel = params.get("AttackLevel")
+        self.FixNoNeedRestart = params.get("FixNoNeedRestart")
+        self.Method = params.get("Method")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

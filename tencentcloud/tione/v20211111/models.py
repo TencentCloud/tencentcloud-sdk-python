@@ -179,10 +179,10 @@ class BatchTaskDetail(AbstractModel):
         :type Region: str
         :param ChargeType: 计费模式
         :type ChargeType: str
-        :param ResourceGroupId: 预付费专用资源组id
+        :param ResourceGroupId: 包年包月资源组id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupId: str
-        :param ResourceGroupName: 预付费专用资源组名称
+        :param ResourceGroupName: 包年包月资源组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupName: str
         :param ResourceConfigInfo: 资源配置
@@ -250,6 +250,9 @@ class BatchTaskDetail(AbstractModel):
         :param PodList: 运行中的Pod的名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type PodList: list of str
+        :param ModelInferenceCodeInfo: 模型推理代码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelInferenceCodeInfo: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         """
         self.BatchTaskId = None
         self.BatchTaskName = None
@@ -283,6 +286,7 @@ class BatchTaskDetail(AbstractModel):
         self.FailureReason = None
         self.BillingInfo = None
         self.PodList = None
+        self.ModelInferenceCodeInfo = None
 
 
     def _deserialize(self, params):
@@ -343,6 +347,9 @@ class BatchTaskDetail(AbstractModel):
         self.FailureReason = params.get("FailureReason")
         self.BillingInfo = params.get("BillingInfo")
         self.PodList = params.get("PodList")
+        if params.get("ModelInferenceCodeInfo") is not None:
+            self.ModelInferenceCodeInfo = CosPathInfo()
+            self.ModelInferenceCodeInfo._deserialize(params.get("ModelInferenceCodeInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -415,7 +422,7 @@ class BatchTaskSetItem(AbstractModel):
         :type ChargeType: str
         :param ChargeStatus: 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
         :type ChargeStatus: str
-        :param ResourceGroupId: 预付费专用资源组
+        :param ResourceGroupId: 包年包月资源组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupId: str
         :param ResourceConfigInfo: 资源配置
@@ -441,12 +448,12 @@ class BatchTaskSetItem(AbstractModel):
         :type UpdateTime: str
         :param Outputs: 输出
         :type Outputs: list of DataConfig
-        :param ResourceGroupName: 预付费专用资源组名称
+        :param ResourceGroupName: 包年包月资源组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupName: str
         :param FailureReason: 失败原因
         :type FailureReason: str
-        :param BillingInfo: 计费金额信息，eg：2.00元/小时 (for后付费)
+        :param BillingInfo: 计费金额信息，eg：2.00元/小时 (for 按量计费)
         :type BillingInfo: str
         """
         self.BatchTaskId = None
@@ -758,7 +765,7 @@ class CreateBatchTaskRequest(AbstractModel):
         r"""
         :param BatchTaskName: 跑批任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
         :type BatchTaskName: str
-        :param ChargeType: 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
+        :param ChargeType: 计费模式，eg：PREPAID 包年包月；POSTPAID_BY_HOUR 按量计费
         :type ChargeType: str
         :param ResourceConfigInfo: 资源配置
         :type ResourceConfigInfo: :class:`tencentcloud.tione.v20211111.models.ResourceConfigInfo`
@@ -770,7 +777,7 @@ class CreateBatchTaskRequest(AbstractModel):
         :type JobType: int
         :param CronInfo: 任务周期描述
         :type CronInfo: :class:`tencentcloud.tione.v20211111.models.CronInfo`
-        :param ResourceGroupId: 预付费专用资源组
+        :param ResourceGroupId: 包年包月资源组ID
         :type ResourceGroupId: str
         :param Tags: 标签配置
         :type Tags: list of Tag
@@ -2765,7 +2772,7 @@ class DescribeBatchTasksRequest(AbstractModel):
 Name（名称）：task1
 Id（task ID）：train-23091792777383936
 Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
-ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+ChargeType（计费类型）：PREPAID 包年包月 / POSTPAID_BY_HOUR 按量计费
 CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
         :type Filters: list of Filter
         :param TagFilters: 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]

@@ -754,6 +754,8 @@ class CreateTriggerRequest(AbstractModel):
         :type Enable: str
         :param CustomArgument: 用户自定义参数，仅支持timer触发器
         :type CustomArgument: str
+        :param Description: 触发器描述
+        :type Description: str
         """
         self.FunctionName = None
         self.TriggerName = None
@@ -763,6 +765,7 @@ class CreateTriggerRequest(AbstractModel):
         self.Qualifier = None
         self.Enable = None
         self.CustomArgument = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -774,6 +777,7 @@ class CreateTriggerRequest(AbstractModel):
         self.Qualifier = params.get("Qualifier")
         self.Enable = params.get("Enable")
         self.CustomArgument = params.get("CustomArgument")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4411,6 +4415,8 @@ class Trigger(AbstractModel):
         :type TriggerAttribute: str
         :param Qualifier: 触发器绑定的别名或版本
         :type Qualifier: str
+        :param Description: 触发器描述
+        :type Description: str
         """
         self.ModTime = None
         self.Type = None
@@ -4424,6 +4430,7 @@ class Trigger(AbstractModel):
         self.BindStatus = None
         self.TriggerAttribute = None
         self.Qualifier = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -4439,6 +4446,7 @@ class Trigger(AbstractModel):
         self.BindStatus = params.get("BindStatus")
         self.TriggerAttribute = params.get("TriggerAttribute")
         self.Qualifier = params.get("Qualifier")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

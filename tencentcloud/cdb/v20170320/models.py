@@ -7323,12 +7323,20 @@ class DescribeRollbackRangeTimeRequest(AbstractModel):
         r"""
         :param InstanceIds: 实例 ID 列表，单个实例 ID 的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceIds: list of str
+        :param IsRemoteZone: 克隆实例与源实例是否在同一可用区，是:"false"，否:"true"
+        :type IsRemoteZone: str
+        :param BackupRegion: 克隆实例与源实例不在同一地域时需填写克隆实例所在地域，例："ap-guangzhou"
+        :type BackupRegion: str
         """
         self.InstanceIds = None
+        self.IsRemoteZone = None
+        self.BackupRegion = None
 
 
     def _deserialize(self, params):
         self.InstanceIds = params.get("InstanceIds")
+        self.IsRemoteZone = params.get("IsRemoteZone")
+        self.BackupRegion = params.get("BackupRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

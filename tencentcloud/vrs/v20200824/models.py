@@ -31,7 +31,7 @@ class CreateVRSTaskRequest(AbstractModel):
         :type VoiceName: str
         :param SampleRate: 音频采样率：
 
-16000：16k（默认）
+16000：16k
         :type SampleRate: int
         :param VoiceGender: 音色性别:
 
@@ -41,7 +41,7 @@ class CreateVRSTaskRequest(AbstractModel):
         :type VoiceGender: int
         :param VoiceLanguage: 语言类型：
 
-1-中文（默认）
+1-中文
         :type VoiceLanguage: int
         :param Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
         :type Codec: str
@@ -228,7 +228,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
         r"""
         :param TextId: 标注文本信息 ID
         :type TextId: str
-        :param AudioData: 语音数据 要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。
+        :param AudioData: 语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
         :type AudioData: str
         :param Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
         :type Codec: str

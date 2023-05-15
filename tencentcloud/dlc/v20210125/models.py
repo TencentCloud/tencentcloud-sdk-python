@@ -3230,6 +3230,30 @@ class DataGovernPolicy(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param RuleType: 治理规则类型，Customize: 自定义；Intelligence: 智能治理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param GovernEngine: 治理引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GovernEngine: str
+        """
+        self.RuleType = None
+        self.GovernEngine = None
+
+
+    def _deserialize(self, params):
+        self.RuleType = params.get("RuleType")
+        self.GovernEngine = params.get("GovernEngine")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DatabaseInfo(AbstractModel):
     """数据库对象
@@ -6033,11 +6057,14 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
         :type Partitions: list of TPartition
         :param Properties: 表属性信息
         :type Properties: list of Property
+        :param UpsertKeys: V2 upsert表 upsert键
+        :type UpsertKeys: list of str
         """
         self.TableBaseInfo = None
         self.Columns = None
         self.Partitions = None
         self.Properties = None
+        self.UpsertKeys = None
 
 
     def _deserialize(self, params):
@@ -6062,6 +6089,7 @@ class GenerateCreateMangedTableSqlRequest(AbstractModel):
                 obj = Property()
                 obj._deserialize(item)
                 self.Properties.append(obj)
+        self.UpsertKeys = params.get("UpsertKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7930,6 +7958,9 @@ class TableBaseInfo(AbstractModel):
         :param GovernPolicy: 数据治理配置项
 注意：此字段可能返回 null，表示取不到有效值。
         :type GovernPolicy: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
+        :param DbGovernPolicyIsDisable: 库数据治理是否关闭，关闭：true，开启：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbGovernPolicyIsDisable: str
         """
         self.DatabaseName = None
         self.TableName = None
@@ -7940,6 +7971,7 @@ class TableBaseInfo(AbstractModel):
         self.UserAlias = None
         self.UserSubUin = None
         self.GovernPolicy = None
+        self.DbGovernPolicyIsDisable = None
 
 
     def _deserialize(self, params):
@@ -7954,6 +7986,7 @@ class TableBaseInfo(AbstractModel):
         if params.get("GovernPolicy") is not None:
             self.GovernPolicy = DataGovernPolicy()
             self.GovernPolicy._deserialize(params.get("GovernPolicy"))
+        self.DbGovernPolicyIsDisable = params.get("DbGovernPolicyIsDisable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
