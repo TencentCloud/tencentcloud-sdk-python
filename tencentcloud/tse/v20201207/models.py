@@ -1097,6 +1097,9 @@ class EnvInfo(AbstractModel):
         :type EnvDesc: str
         :param ClientBandWidth: 客户端带宽
         :type ClientBandWidth: int
+        :param EnableConfigIntranet: 客户端内网开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableConfigIntranet: bool
         """
         self.EnvName = None
         self.VpcInfos = None
@@ -1112,6 +1115,7 @@ class EnvInfo(AbstractModel):
         self.AliasEnvName = None
         self.EnvDesc = None
         self.ClientBandWidth = None
+        self.EnableConfigIntranet = None
 
 
     def _deserialize(self, params):
@@ -1134,6 +1138,7 @@ class EnvInfo(AbstractModel):
         self.AliasEnvName = params.get("AliasEnvName")
         self.EnvDesc = params.get("EnvDesc")
         self.ClientBandWidth = params.get("ClientBandWidth")
+        self.EnableConfigIntranet = params.get("EnableConfigIntranet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

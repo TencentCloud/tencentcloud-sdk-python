@@ -21296,16 +21296,27 @@ class LicenseBindTaskDetail(AbstractModel):
         :type ErrMsg: str
         :param Status: 0 执行中, 1 成功,2失败
         :type Status: int
+        :param FixMessage: 修复建议
+        :type FixMessage: str
+        :param MachineExtraInfo: 机器额外信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         """
         self.Quuid = None
         self.ErrMsg = None
         self.Status = None
+        self.FixMessage = None
+        self.MachineExtraInfo = None
 
 
     def _deserialize(self, params):
         self.Quuid = params.get("Quuid")
         self.ErrMsg = params.get("ErrMsg")
         self.Status = params.get("Status")
+        self.FixMessage = params.get("FixMessage")
+        if params.get("MachineExtraInfo") is not None:
+            self.MachineExtraInfo = MachineExtraInfo()
+            self.MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

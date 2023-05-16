@@ -56,6 +56,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 内容包含非法信息（如色情，恐暴，政治等）。
 INVALIDPARAMETER_CONTENT = 'InvalidParameter.Content'
 
+# css/js地址无法访问
+INVALIDPARAMETER_CSSORJS = 'InvalidParameter.CssOrJs'
+
 # 结束时间不能早于开始时间。
 INVALIDPARAMETER_ENDTIME = 'InvalidParameter.EndTime'
 

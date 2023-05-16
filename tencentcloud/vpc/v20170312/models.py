@@ -11997,6 +11997,78 @@ class DescribeTrafficPackagesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUsedIpAddressRequest(AbstractModel):
+    """DescribeUsedIpAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param SubnetId: 子网实例ID。
+        :type SubnetId: str
+        :param IpAddresses: 查询是否占用的ip列表
+        :type IpAddresses: list of str
+        :param Offset: 偏移量。
+        :type Offset: int
+        :param Limit: 请求对象个数。
+        :type Limit: int
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.IpAddresses = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.IpAddresses = params.get("IpAddresses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUsedIpAddressResponse(AbstractModel):
+    """DescribeUsedIpAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IpAddressStates: 占用ip地址的资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpAddressStates: list of IpAddressStates
+        :param TotalCount: 返回占用资源的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IpAddressStates = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IpAddressStates") is not None:
+            self.IpAddressStates = []
+            for item in params.get("IpAddressStates"):
+                obj = IpAddressStates()
+                obj._deserialize(item)
+                self.IpAddressStates.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpcEndPointRequest(AbstractModel):
     """DescribeVpcEndPoint请求参数结构体
 
@@ -15805,6 +15877,46 @@ class Ip6Translator(AbstractModel):
                 obj = Ip6Rule()
                 obj._deserialize(item)
                 self.IP6RuleSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpAddressStates(AbstractModel):
+    """占用ip的资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC实例ID。
+        :type VpcId: str
+        :param SubnetId: 子网实例ID。
+        :type SubnetId: str
+        :param IpAddress: IP地址。
+        :type IpAddress: str
+        :param ResourceType: 资源类型
+        :type ResourceType: str
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.IpAddress = None
+        self.ResourceType = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.IpAddress = params.get("IpAddress")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19680,7 +19792,7 @@ class Price(AbstractModel):
         r"""
         :param InstancePrice: 实例价格。
         :type InstancePrice: :class:`tencentcloud.vpc.v20170312.models.ItemPrice`
-        :param BandwidthPrice: 网络价格。
+        :param BandwidthPrice: 带宽价格。
         :type BandwidthPrice: :class:`tencentcloud.vpc.v20170312.models.ItemPrice`
         """
         self.InstancePrice = None

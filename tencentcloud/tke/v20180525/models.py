@@ -6039,6 +6039,84 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterInspectionResultsOverviewRequest(AbstractModel):
+    """DescribeClusterInspectionResultsOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterIds: Array of String	目标集群列表，为空查询用户所有集群
+
+        :type ClusterIds: list of str
+        :param GroupBy: 聚合字段信息，概览结果按照 GroupBy 信息聚合后返回，可选参数：
+catalogue.first：按一级分类聚合
+catalogue.second：按二级分类聚合
+        :type GroupBy: list of str
+        """
+        self.ClusterIds = None
+        self.GroupBy = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        self.GroupBy = params.get("GroupBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterInspectionResultsOverviewResponse(AbstractModel):
+    """DescribeClusterInspectionResultsOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Statistics: 诊断结果统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Statistics: list of KubeJarvisStateStatistic
+        :param Diagnostics: 诊断结果概览
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Diagnostics: list of KubeJarvisStateDiagnosticOverview
+        :param InspectionOverview: 集群诊断结果概览
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InspectionOverview: list of KubeJarvisStateInspectionOverview
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Statistics = None
+        self.Diagnostics = None
+        self.InspectionOverview = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Statistics") is not None:
+            self.Statistics = []
+            for item in params.get("Statistics"):
+                obj = KubeJarvisStateStatistic()
+                obj._deserialize(item)
+                self.Statistics.append(obj)
+        if params.get("Diagnostics") is not None:
+            self.Diagnostics = []
+            for item in params.get("Diagnostics"):
+                obj = KubeJarvisStateDiagnosticOverview()
+                obj._deserialize(item)
+                self.Diagnostics.append(obj)
+        if params.get("InspectionOverview") is not None:
+            self.InspectionOverview = []
+            for item in params.get("InspectionOverview"):
+                obj = KubeJarvisStateInspectionOverview()
+                obj._deserialize(item)
+                self.InspectionOverview.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterInstancesRequest(AbstractModel):
     """DescribeClusterInstances请求参数结构体
 
@@ -12990,6 +13068,418 @@ pending 还未开始
         
 
 
+class KubeJarvisStateCatalogue(AbstractModel):
+    """集群巡检诊断的默认目录类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CatalogueLevel: 目录级别，支持参数：
+first：一级目录
+second：二级目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogueLevel: str
+        :param CatalogueName: 目录名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogueName: str
+        """
+        self.CatalogueLevel = None
+        self.CatalogueName = None
+
+
+    def _deserialize(self, params):
+        self.CatalogueLevel = params.get("CatalogueLevel")
+        self.CatalogueName = params.get("CatalogueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KubeJarvisStateDiagnostic(AbstractModel):
+    """集群巡检诊断结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 诊断开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 诊断结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param Catalogues: 诊断目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Catalogues: list of KubeJarvisStateCatalogue
+        :param Type: 诊断类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Name: 诊断名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Desc: 诊断描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param Results: 诊断结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of KubeJarvisStateResultsItem
+        :param Statistics: 诊断结果统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Statistics: list of KubeJarvisStateStatistic
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Catalogues = None
+        self.Type = None
+        self.Name = None
+        self.Desc = None
+        self.Results = None
+        self.Statistics = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("Catalogues") is not None:
+            self.Catalogues = []
+            for item in params.get("Catalogues"):
+                obj = KubeJarvisStateCatalogue()
+                obj._deserialize(item)
+                self.Catalogues.append(obj)
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Desc = params.get("Desc")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = KubeJarvisStateResultsItem()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        if params.get("Statistics") is not None:
+            self.Statistics = []
+            for item in params.get("Statistics"):
+                obj = KubeJarvisStateStatistic()
+                obj._deserialize(item)
+                self.Statistics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KubeJarvisStateDiagnosticOverview(AbstractModel):
+    """集群巡检诊断概览
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Catalogues: 诊断目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Catalogues: list of KubeJarvisStateCatalogue
+        :param Statistics: 诊断结果统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Statistics: list of KubeJarvisStateStatistic
+        """
+        self.Catalogues = None
+        self.Statistics = None
+
+
+    def _deserialize(self, params):
+        if params.get("Catalogues") is not None:
+            self.Catalogues = []
+            for item in params.get("Catalogues"):
+                obj = KubeJarvisStateCatalogue()
+                obj._deserialize(item)
+                self.Catalogues.append(obj)
+        if params.get("Statistics") is not None:
+            self.Statistics = []
+            for item in params.get("Statistics"):
+                obj = KubeJarvisStateStatistic()
+                obj._deserialize(item)
+                self.Statistics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KubeJarvisStateInspectionOverview(AbstractModel):
+    """集群巡检检查结果概览
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param Statistics: 诊断结果统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Statistics: list of KubeJarvisStateStatistic
+        :param Diagnostics: 诊断结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Diagnostics: list of KubeJarvisStateDiagnosticOverview
+        """
+        self.ClusterId = None
+        self.Statistics = None
+        self.Diagnostics = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Statistics") is not None:
+            self.Statistics = []
+            for item in params.get("Statistics"):
+                obj = KubeJarvisStateStatistic()
+                obj._deserialize(item)
+                self.Statistics.append(obj)
+        if params.get("Diagnostics") is not None:
+            self.Diagnostics = []
+            for item in params.get("Diagnostics"):
+                obj = KubeJarvisStateDiagnosticOverview()
+                obj._deserialize(item)
+                self.Diagnostics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KubeJarvisStateInspectionResult(AbstractModel):
+    """集群巡检检查结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param StartTime: 诊断开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 诊断结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param Statistics: 诊断结果统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Statistics: list of KubeJarvisStateStatistic
+        :param Diagnostics: 诊断结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Diagnostics: list of KubeJarvisStateDiagnostic
+        :param Error: 查询巡检报告相关报错
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
+        """
+        self.ClusterId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Statistics = None
+        self.Diagnostics = None
+        self.Error = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("Statistics") is not None:
+            self.Statistics = []
+            for item in params.get("Statistics"):
+                obj = KubeJarvisStateStatistic()
+                obj._deserialize(item)
+                self.Statistics.append(obj)
+        if params.get("Diagnostics") is not None:
+            self.Diagnostics = []
+            for item in params.get("Diagnostics"):
+                obj = KubeJarvisStateDiagnostic()
+                obj._deserialize(item)
+                self.Diagnostics.append(obj)
+        self.Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KubeJarvisStateInspectionResultsItem(AbstractModel):
+    """集群巡检结果历史列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 巡检结果名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Statistics: 诊断结果统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Statistics: list of KubeJarvisStateStatistic
+        """
+        self.Name = None
+        self.Statistics = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Statistics") is not None:
+            self.Statistics = []
+            for item in params.get("Statistics"):
+                obj = KubeJarvisStateStatistic()
+                obj._deserialize(item)
+                self.Statistics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KubeJarvisStateResultObjInfo(AbstractModel):
+    """集群巡检诊断对象信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PropertyName: 对象属性名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PropertyName: str
+        :param PropertyValue: 对象属性值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PropertyValue: str
+        """
+        self.PropertyName = None
+        self.PropertyValue = None
+
+
+    def _deserialize(self, params):
+        self.PropertyName = params.get("PropertyName")
+        self.PropertyValue = params.get("PropertyValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KubeJarvisStateResultsItem(AbstractModel):
+    """集群巡检诊断结果详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Level: 诊断结果级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
+        :param ObjName: 诊断对象名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjName: str
+        :param ObjInfo: 诊断对象信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjInfo: list of KubeJarvisStateResultObjInfo
+        :param Title: 诊断项标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param Desc: 诊断项描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param Proposal: 诊断建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Proposal: str
+        :param ProposalDocUrl: 诊断建议文档链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProposalDocUrl: str
+        :param ProposalDocName: 诊断建议文档名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProposalDocName: str
+        """
+        self.Level = None
+        self.ObjName = None
+        self.ObjInfo = None
+        self.Title = None
+        self.Desc = None
+        self.Proposal = None
+        self.ProposalDocUrl = None
+        self.ProposalDocName = None
+
+
+    def _deserialize(self, params):
+        self.Level = params.get("Level")
+        self.ObjName = params.get("ObjName")
+        if params.get("ObjInfo") is not None:
+            self.ObjInfo = []
+            for item in params.get("ObjInfo"):
+                obj = KubeJarvisStateResultObjInfo()
+                obj._deserialize(item)
+                self.ObjInfo.append(obj)
+        self.Title = params.get("Title")
+        self.Desc = params.get("Desc")
+        self.Proposal = params.get("Proposal")
+        self.ProposalDocUrl = params.get("ProposalDocUrl")
+        self.ProposalDocName = params.get("ProposalDocName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KubeJarvisStateStatistic(AbstractModel):
+    """集群巡检统计结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HealthyLevel: 诊断结果的健康水平
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthyLevel: str
+        :param Count: 诊断结果的统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.HealthyLevel = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.HealthyLevel = params.get("HealthyLevel")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Label(AbstractModel):
     """k8s中标签，一般以数组的方式存在
 
@@ -13016,6 +13506,126 @@ class Label(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListClusterInspectionResultsItemsRequest(AbstractModel):
+    """ListClusterInspectionResultsItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 目标集群ID
+        :type ClusterId: str
+        :param StartTime: 查询历史结果的开始时间，Unix时间戳
+        :type StartTime: str
+        :param EndTime: 查询历史结果的结束时间，默认当前距离开始时间3天，Unix时间戳
+        :type EndTime: str
+        """
+        self.ClusterId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListClusterInspectionResultsItemsResponse(AbstractModel):
+    """ListClusterInspectionResultsItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InspectionResultsItems: 巡检结果历史列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InspectionResultsItems: list of KubeJarvisStateInspectionResultsItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InspectionResultsItems = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InspectionResultsItems") is not None:
+            self.InspectionResultsItems = []
+            for item in params.get("InspectionResultsItems"):
+                obj = KubeJarvisStateInspectionResultsItem()
+                obj._deserialize(item)
+                self.InspectionResultsItems.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListClusterInspectionResultsRequest(AbstractModel):
+    """ListClusterInspectionResults请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterIds: 目标集群列表，为空查询用户所有集群
+
+        :type ClusterIds: list of str
+        :param Hide: 隐藏的字段信息，为了减少无效的字段返回，隐藏字段不会在返回值中返回。可选值：results
+
+        :type Hide: list of str
+        :param Name: 指定查询结果的报告名称，默认查询最新的每个集群只查询最新的一条
+        :type Name: str
+        """
+        self.ClusterIds = None
+        self.Hide = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        self.Hide = params.get("Hide")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListClusterInspectionResultsResponse(AbstractModel):
+    """ListClusterInspectionResults返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InspectionResults: 集群诊断结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InspectionResults: list of KubeJarvisStateInspectionResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InspectionResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InspectionResults") is not None:
+            self.InspectionResults = []
+            for item in params.get("InspectionResults"):
+                obj = KubeJarvisStateInspectionResult()
+                obj._deserialize(item)
+                self.InspectionResults.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class LivenessOrReadinessProbe(AbstractModel):

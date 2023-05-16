@@ -1783,6 +1783,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRocketMQMsg(self, request):
+        """rocketmq消息详情
+
+        :param request: Request instance for DescribeRocketMQMsg.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQMsg", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQMsgResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRocketMQNamespaces(self, request):
         """获取RocketMQ命名空间列表
 

@@ -5966,6 +5966,102 @@ class DescribeRocketMQGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQMsgRequest(AbstractModel):
+    """DescribeRocketMQMsg请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param EnvironmentId: 命名空间
+        :type EnvironmentId: str
+        :param TopicName: 主题，查询死信时传groupId
+        :type TopicName: str
+        :param MsgId: 消息id
+        :type MsgId: str
+        :param PulsarMsgId: pulsar消息id
+        :type PulsarMsgId: str
+        :param QueryDlqMsg: 查询死信时该值为true，只对Rocketmq有效
+        :type QueryDlqMsg: bool
+        """
+        self.ClusterId = None
+        self.EnvironmentId = None
+        self.TopicName = None
+        self.MsgId = None
+        self.PulsarMsgId = None
+        self.QueryDlqMsg = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.TopicName = params.get("TopicName")
+        self.MsgId = params.get("MsgId")
+        self.PulsarMsgId = params.get("PulsarMsgId")
+        self.QueryDlqMsg = params.get("QueryDlqMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQMsgResponse(AbstractModel):
+    """DescribeRocketMQMsg返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Body: 消息体
+        :type Body: str
+        :param Properties: 详情参数
+        :type Properties: str
+        :param ProduceTime: 生产时间
+        :type ProduceTime: str
+        :param MsgId: 消息id
+        :type MsgId: str
+        :param ProducerAddr: 生产者地址
+        :type ProducerAddr: str
+        :param MessageTracks: 消费组消费情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageTracks: list of RocketMQMessageTrack
+        :param ShowTopicName: 详情页展示的topic名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShowTopicName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Body = None
+        self.Properties = None
+        self.ProduceTime = None
+        self.MsgId = None
+        self.ProducerAddr = None
+        self.MessageTracks = None
+        self.ShowTopicName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Body = params.get("Body")
+        self.Properties = params.get("Properties")
+        self.ProduceTime = params.get("ProduceTime")
+        self.MsgId = params.get("MsgId")
+        self.ProducerAddr = params.get("ProducerAddr")
+        if params.get("MessageTracks") is not None:
+            self.MessageTracks = []
+            for item in params.get("MessageTracks"):
+                obj = RocketMQMessageTrack()
+                obj._deserialize(item)
+                self.MessageTracks.append(obj)
+        self.ShowTopicName = params.get("ShowTopicName")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQNamespacesRequest(AbstractModel):
     """DescribeRocketMQNamespaces请求参数结构体
 
@@ -9515,6 +9611,43 @@ class RocketMQInstanceConfig(AbstractModel):
                 obj._deserialize(item)
                 self.TopicDistribution.append(obj)
         self.MaxQueuesPerTopic = params.get("MaxQueuesPerTopic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQMessageTrack(AbstractModel):
+    """Rocketmq消息消费track信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Group: 消费者组
+        :type Group: str
+        :param ConsumeStatus: 消费状态
+        :type ConsumeStatus: str
+        :param TrackType: 消息track类型
+        :type TrackType: str
+        :param ExceptionDesc: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceptionDesc: str
+        """
+        self.Group = None
+        self.ConsumeStatus = None
+        self.TrackType = None
+        self.ExceptionDesc = None
+
+
+    def _deserialize(self, params):
+        self.Group = params.get("Group")
+        self.ConsumeStatus = params.get("ConsumeStatus")
+        self.TrackType = params.get("TrackType")
+        self.ExceptionDesc = params.get("ExceptionDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

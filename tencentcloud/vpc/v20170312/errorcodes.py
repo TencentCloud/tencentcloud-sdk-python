@@ -644,6 +644,9 @@ UNSUPPORTEDOPERATION_CIDRUNSUPPORTEDCLASSICLINK = 'UnsupportedOperation.CIDRUnSu
 # 实例已关联CCN。
 UNSUPPORTEDOPERATION_CCNATTACHED = 'UnsupportedOperation.CcnAttached'
 
+# 云联网实例不支持跨账号关联。
+UNSUPPORTEDOPERATION_CCNCROSSACCOUNT = 'UnsupportedOperation.CcnCrossAccount'
+
 # 当前云联网有流日志，不支持删除。
 UNSUPPORTEDOPERATION_CCNHASFLOWLOG = 'UnsupportedOperation.CcnHasFlowLog'
 
@@ -790,6 +793,9 @@ UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOper
 
 # NAT网关的公网IP不存在。
 UNSUPPORTEDOPERATION_NATGATEWAYEIPNOTEXISTS = 'UnsupportedOperation.NatGatewayEipNotExists'
+
+# NAT网关存在未解绑的IP。
+UNSUPPORTEDOPERATION_NATGATEWAYHADEIPUNASSOCIATE = 'UnsupportedOperation.NatGatewayHadEipUnassociate'
 
 # SNAT/DNAT转换规则所指定的内网IP已绑定了其他的规则，无法重复绑定。
 UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = 'UnsupportedOperation.NatGatewayRulePipExists'

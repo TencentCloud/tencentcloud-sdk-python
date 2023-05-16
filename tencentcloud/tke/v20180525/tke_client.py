@@ -1705,6 +1705,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterInspectionResultsOverview(self, request):
+        """查询用户单个Region下的所有集群巡检结果概览信息
+
+        :param request: Request instance for DescribeClusterInspectionResultsOverview.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInspectionResultsOverviewRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterInspectionResultsOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterInspectionResultsOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterInspectionResultsOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterInstances(self, request):
         """查询集群下节点实例信息
 
@@ -3559,6 +3582,52 @@ class TkeClient(AbstractClient):
             body = self.call("InstallLogAgent", params, headers=headers)
             response = json.loads(body)
             model = models.InstallLogAgentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListClusterInspectionResults(self, request):
+        """查询指定集群的巡检结果信息
+
+        :param request: Request instance for ListClusterInspectionResults.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ListClusterInspectionResultsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ListClusterInspectionResultsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListClusterInspectionResults", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListClusterInspectionResultsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListClusterInspectionResultsItems(self, request):
+        """查询集群巡检结果历史列表
+
+        :param request: Request instance for ListClusterInspectionResultsItems.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ListClusterInspectionResultsItemsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ListClusterInspectionResultsItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListClusterInspectionResultsItems", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListClusterInspectionResultsItemsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

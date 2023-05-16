@@ -1254,7 +1254,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateRoutes(self, request):
-        """本接口(CreateRoutes)用于创建路由策略。
+        """本接口（CreateRoutes）用于创建路由策略。
         * 向指定路由表批量新增路由策略。
 
         :param request: Request instance for CreateRoutes.
@@ -4107,6 +4107,30 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeTrafficPackages", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTrafficPackagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUsedIpAddress(self, request):
+        """本接口(DescribeUsedIpAddress)用于查询Subnet或者Vpc内的ip的使用情况，
+        如被ip被占用，返回占用ip的资源类别与id；如未被占用，返回空值
+
+        :param request: Request instance for DescribeUsedIpAddress.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeUsedIpAddressRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeUsedIpAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsedIpAddress", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUsedIpAddressResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -665,7 +665,7 @@ class CreateAclRequest(AbstractModel):
         :type AccountSet: list of str
         :param CmdTemplateIdSet: 关联的高危命令模板ID
         :type CmdTemplateIdSet: list of int non-negative
-        :param ACTemplateIdSet: 关联高危DB模版ID
+        :param ACTemplateIdSet: 关联高危DB模板ID
         :type ACTemplateIdSet: list of str
         :param AllowDiskFileUp: 是否开启rdp磁盘映射文件上传
         :type AllowDiskFileUp: bool
@@ -2985,7 +2985,7 @@ class ModifyAclRequest(AbstractModel):
         :type AccountSet: list of str
         :param CmdTemplateIdSet: 关联的高危命令模板ID
         :type CmdTemplateIdSet: list of int non-negative
-        :param ACTemplateIdSet: 关联高危DB模版ID
+        :param ACTemplateIdSet: 关联高危DB模板ID
         :type ACTemplateIdSet: list of str
         :param AllowDiskFileUp: 是否开启 RDP 磁盘映射文件上传
         :type AllowDiskFileUp: bool

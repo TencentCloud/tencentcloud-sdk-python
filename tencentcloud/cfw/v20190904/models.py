@@ -5815,6 +5815,21 @@ class SecurityGroupListData(AbstractModel):
         :type Direction: int
         :param ProtocolPortType: 是否使用端口协议模板，0：否，1：是
         :type ProtocolPortType: int
+        :param Uuid: Uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param AssetGroupNameIn: 资产分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetGroupNameIn: str
+        :param AssetGroupNameOut: 资产分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetGroupNameOut: str
+        :param ParameterName: 模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParameterName: str
         """
         self.OrderIndex = None
         self.SourceId = None
@@ -5839,6 +5854,11 @@ class SecurityGroupListData(AbstractModel):
         self.BothWayInfo = None
         self.Direction = None
         self.ProtocolPortType = None
+        self.Uuid = None
+        self.Region = None
+        self.AssetGroupNameIn = None
+        self.AssetGroupNameOut = None
+        self.ParameterName = None
 
 
     def _deserialize(self, params):
@@ -5870,6 +5890,11 @@ class SecurityGroupListData(AbstractModel):
                 self.BothWayInfo.append(obj)
         self.Direction = params.get("Direction")
         self.ProtocolPortType = params.get("ProtocolPortType")
+        self.Uuid = params.get("Uuid")
+        self.Region = params.get("Region")
+        self.AssetGroupNameIn = params.get("AssetGroupNameIn")
+        self.AssetGroupNameOut = params.get("AssetGroupNameOut")
+        self.ParameterName = params.get("ParameterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

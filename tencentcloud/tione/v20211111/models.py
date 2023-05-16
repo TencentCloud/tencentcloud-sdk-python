@@ -179,7 +179,7 @@ class BatchTaskDetail(AbstractModel):
         :type Region: str
         :param ChargeType: 计费模式
         :type ChargeType: str
-        :param ResourceGroupId: 包年包月资源组id
+        :param ResourceGroupId: 包年包月资源组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupId: str
         :param ResourceGroupName: 包年包月资源组名称
@@ -244,7 +244,7 @@ class BatchTaskDetail(AbstractModel):
         :param FailureReason: 失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailureReason: str
-        :param BillingInfo: 计费金额信息，eg：2.00元/小时 (for后付费)
+        :param BillingInfo: 计费金额信息，eg：2.00元/小时 (for 按量计费)
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingInfo: str
         :param PodList: 运行中的Pod的名字
@@ -5157,6 +5157,9 @@ class HyperParameter(AbstractModel):
         :param MinBlockSizeTf: FROZEN_GRAPH、SAVED_MODEL格式在进行优化时切分子图的最小算子数目，一般无需进行改动，默认为10
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinBlockSizeTf: str
+        :param PipelineArgs: Stable Diffusion 模型优化参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PipelineArgs: str
         """
         self.MaxNNZ = None
         self.SlotNum = None
@@ -5165,6 +5168,7 @@ class HyperParameter(AbstractModel):
         self.EnableDistributed = None
         self.MinBlockSizePt = None
         self.MinBlockSizeTf = None
+        self.PipelineArgs = None
 
 
     def _deserialize(self, params):
@@ -5175,6 +5179,7 @@ class HyperParameter(AbstractModel):
         self.EnableDistributed = params.get("EnableDistributed")
         self.MinBlockSizePt = params.get("MinBlockSizePt")
         self.MinBlockSizeTf = params.get("MinBlockSizeTf")
+        self.PipelineArgs = params.get("PipelineArgs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
