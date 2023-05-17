@@ -41,7 +41,7 @@ class CreateSessionRequest(AbstractModel):
         :type ImageUrl: str
         :param SetNo: 【已废弃】
         :type SetNo: int
-        :param Bitrate: 单位Mbps，固定码率建议值，有一定浮动范围，后端不动态调整(MaxBitrate和MinBitrate将无效)
+        :param Bitrate: 【已废弃】
         :type Bitrate: int
         :param MaxBitrate: 单位Mbps，动态调整最大码率建议值，会按实际情况调整
         :type MaxBitrate: int

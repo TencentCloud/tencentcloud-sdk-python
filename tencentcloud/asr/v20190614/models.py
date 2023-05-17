@@ -1268,7 +1268,7 @@ class SentenceRecognitionRequest(AbstractModel):
 • 16k_zh-PY：中英粤;
 • 16k_zh_medical：中文医疗；
 • 16k_en：英语；
-• 16k_ca：粤语；
+• 16k_yue：粤语；
 • 16k_ja：日语；
 • 16k_ko：韩语；
 • 16k_vi：越南语；
@@ -1282,7 +1282,7 @@ class SentenceRecognitionRequest(AbstractModel):
         :type EngSerViceType: str
         :param SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。
         :type SourceType: int
-        :param VoiceFormat: 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
+        :param VoiceFormat: 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac、amr。
         :type VoiceFormat: str
         :param ProjectId: 腾讯云项目 ID，废弃参数，填写0即可。
         :type ProjectId: int

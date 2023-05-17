@@ -282,15 +282,25 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
         r"""
         :param Status: 状态值，0：添加成功，非0：添加失败
         :type Status: int
+        :param Rules: 规则uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of SecurityGroupSimplifyRule
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
+        self.Rules = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = SecurityGroupSimplifyRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -624,12 +634,10 @@ class CommonFilter(AbstractModel):
         r"""
         :param Name: 检索的键值
         :type Name: str
-        :param Values: 检索的值
+        :param Values: 检索的值，各检索值间为OR关系
         :type Values: list of str
-        :param OperatorType: 枚举类型，代表name与values之间的匹配关系
+        :param OperatorType: 枚举类型，代表Name与Values之间的匹配关系
 enum FilterOperatorType {
-    //INVALID
-    FILTER_OPERATOR_TYPE_INVALID = 0;
     //等于
     FILTER_OPERATOR_TYPE_EQUAL = 1;
     //大于
@@ -642,18 +650,10 @@ enum FilterOperatorType {
     FILTER_OPERATOR_TYPE_LESS_EQ = 5;
     //不等于
     FILTER_OPERATOR_TYPE_NO_EQ = 6;
-    //in，数组中包含
-    FILTER_OPERATOR_TYPE_IN = 7;
     //not in
     FILTER_OPERATOR_TYPE_NOT_IN = 8;
     //模糊匹配
     FILTER_OPERATOR_TYPE_FUZZINESS = 9;
-    //存在
-    FILTER_OPERATOR_TYPE_EXIST = 10;
-    //不存在
-    FILTER_OPERATOR_TYPE_NOT_EXIST = 11;
-    //正则
-    FILTER_OPERATOR_TYPE_REGULAR = 12;
 }
         :type OperatorType: int
         """
@@ -2238,6 +2238,8 @@ true为启用，false为不启用
         :type Protocol: str
         :param ServiceTemplateId: 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
         :type ServiceTemplateId: str
+        :param RuleUuid: 规则的uuid
+        :type RuleUuid: int
         """
         self.PageNo = None
         self.PageSize = None
@@ -2249,6 +2251,7 @@ true为启用，false为不启用
         self.Port = None
         self.Protocol = None
         self.ServiceTemplateId = None
+        self.RuleUuid = None
 
 
     def _deserialize(self, params):
@@ -2262,6 +2265,7 @@ true为启用，false为不启用
         self.Port = params.get("Port")
         self.Protocol = params.get("Protocol")
         self.ServiceTemplateId = params.get("ServiceTemplateId")
+        self.RuleUuid = params.get("RuleUuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6010,6 +6014,68 @@ drop：拒绝
         self.ServiceTemplateId = params.get("ServiceTemplateId")
         self.Id = params.get("Id")
         self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityGroupSimplifyRule(AbstractModel):
+    """安全组规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceContent: 访问源示例：
+net：IP/CIDR(192.168.0.2)
+template：参数模板(ipm-dyodhpby)
+instance：资产实例(ins-123456)
+resourcegroup：资产分组(/全部分组/分组1/子分组1)
+tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+region：地域(ap-gaungzhou)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceContent: str
+        :param DestContent: 访问目的示例：
+net：IP/CIDR(192.168.0.2)
+template：参数模板(ipm-dyodhpby)
+instance：资产实例(ins-123456)
+resourcegroup：资产分组(/全部分组/分组1/子分组1)
+tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+region：地域(ap-gaungzhou)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestContent: str
+        :param Protocol: 协议；TCP/UDP/ICMP/ANY
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param RuleUuid: 规则对应的唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleUuid: int
+        :param Sequence: 规则序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sequence: int
+        """
+        self.SourceContent = None
+        self.DestContent = None
+        self.Protocol = None
+        self.Description = None
+        self.RuleUuid = None
+        self.Sequence = None
+
+
+    def _deserialize(self, params):
+        self.SourceContent = params.get("SourceContent")
+        self.DestContent = params.get("DestContent")
+        self.Protocol = params.get("Protocol")
+        self.Description = params.get("Description")
+        self.RuleUuid = params.get("RuleUuid")
+        self.Sequence = params.get("Sequence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

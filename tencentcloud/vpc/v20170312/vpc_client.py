@@ -2424,6 +2424,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteTrafficPackages(self, request):
+        """删除共享带宽包（仅非活动状态的流量包可删除）。
+
+        :param request: Request instance for DeleteTrafficPackages.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteTrafficPackagesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteTrafficPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTrafficPackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTrafficPackagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteVpc(self, request):
         """本接口（DeleteVpc）用于删除私有网络。
         * 删除前请确保 VPC 内已经没有相关资源，例如云服务器、云数据库、NoSQL、VPN网关、专线网关、负载均衡、对等连接、与之互通的基础网络设备等。
@@ -3990,6 +4013,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeSnapshotPolicies", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSnapshotPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSubnetResourceDashboard(self, request):
+        """本接口(DescribeSubnetResourceDashboard)用于查看Subnet资源信息。
+
+        :param request: Request instance for DescribeSubnetResourceDashboard.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeSubnetResourceDashboardRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeSubnetResourceDashboardResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubnetResourceDashboard", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubnetResourceDashboardResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -272,6 +272,10 @@ class AlarmTarget(AbstractModel):
         :type EndTimeOffset: int
         :param LogsetId: 日志集ID。
         :type LogsetId: str
+        :param SyntaxRule: 检索语法规则，默认值为0。
+0：Lucene语法，1：CQL语法。
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+        :type SyntaxRule: int
         """
         self.TopicId = None
         self.Query = None
@@ -279,6 +283,7 @@ class AlarmTarget(AbstractModel):
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.LogsetId = None
+        self.SyntaxRule = None
 
 
     def _deserialize(self, params):
@@ -288,6 +293,7 @@ class AlarmTarget(AbstractModel):
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
         self.LogsetId = params.get("LogsetId")
+        self.SyntaxRule = params.get("SyntaxRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

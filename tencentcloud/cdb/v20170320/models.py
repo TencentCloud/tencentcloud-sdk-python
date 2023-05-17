@@ -4547,6 +4547,55 @@ class DescribeBackupDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBackupDecryptionKeyRequest(AbstractModel):
+    """DescribeBackupDecryptionKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param BackupId: 实例的备份ID，可通过DescribeBackups接口查询备份的ID。
+        :type BackupId: int
+        """
+        self.InstanceId = None
+        self.BackupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.BackupId = params.get("BackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDecryptionKeyResponse(AbstractModel):
+    """DescribeBackupDecryptionKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DecryptionKey: 备份文件解密密钥。
+        :type DecryptionKey: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DecryptionKey = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DecryptionKey = params.get("DecryptionKey")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBackupDownloadRestrictionRequest(AbstractModel):
     """DescribeBackupDownloadRestriction请求参数结构体
 
@@ -11240,12 +11289,16 @@ class ParamTemplateInfo(AbstractModel):
         :type EngineVersion: str
         :param TemplateType: 参数模板类型
         :type TemplateType: str
+        :param EngineType: 参数模板引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineType: str
         """
         self.TemplateId = None
         self.Name = None
         self.Description = None
         self.EngineVersion = None
         self.TemplateType = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -11254,6 +11307,7 @@ class ParamTemplateInfo(AbstractModel):
         self.Description = params.get("Description")
         self.EngineVersion = params.get("EngineVersion")
         self.TemplateType = params.get("TemplateType")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

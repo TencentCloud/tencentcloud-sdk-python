@@ -215,7 +215,7 @@ class DescribeTaskListRequest(AbstractModel):
         :type TaskTitle: str
         :param TaskTag: 标签键
         :type TaskTag: list of str
-        :param TaskStatus: 状态
+        :param TaskStatus: 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
         :type TaskStatus: int
         :param TaskStartTime: 开始时间，固定格式%Y-%m-%d %H:%M:%S
         :type TaskStartTime: str

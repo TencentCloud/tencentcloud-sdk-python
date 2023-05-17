@@ -1208,12 +1208,16 @@ class CreateUserSAMLConfigRequest(AbstractModel):
         r"""
         :param SAMLMetadataDocument: SAML元数据文档，需要base64 encode
         :type SAMLMetadataDocument: str
+        :param AuxiliaryDomain: 辅助域名
+        :type AuxiliaryDomain: str
         """
         self.SAMLMetadataDocument = None
+        self.AuxiliaryDomain = None
 
 
     def _deserialize(self, params):
         self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        self.AuxiliaryDomain = params.get("AuxiliaryDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2136,17 +2140,21 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
         :type SAMLMetadata: str
         :param Status: 状态：0:未设置，1:已开启，2:已禁用
         :type Status: int
+        :param AuxiliaryDomain: 辅助域名
+        :type AuxiliaryDomain: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SAMLMetadata = None
         self.Status = None
+        self.AuxiliaryDomain = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.SAMLMetadata = params.get("SAMLMetadata")
         self.Status = params.get("Status")
+        self.AuxiliaryDomain = params.get("AuxiliaryDomain")
         self.RequestId = params.get("RequestId")
 
 
@@ -5829,14 +5837,18 @@ class UpdateUserSAMLConfigRequest(AbstractModel):
         :type Operate: str
         :param SAMLMetadataDocument: 元数据文档，需要base64 encode，仅当Operate为updateSAML时需要此参数
         :type SAMLMetadataDocument: str
+        :param AuxiliaryDomain: 辅助域名
+        :type AuxiliaryDomain: str
         """
         self.Operate = None
         self.SAMLMetadataDocument = None
+        self.AuxiliaryDomain = None
 
 
     def _deserialize(self, params):
         self.Operate = params.get("Operate")
         self.SAMLMetadataDocument = params.get("SAMLMetadataDocument")
+        self.AuxiliaryDomain = params.get("AuxiliaryDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

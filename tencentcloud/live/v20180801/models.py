@@ -297,7 +297,9 @@ class BandwidthInfo(AbstractModel):
     def __init__(self):
         r"""
         :param Time: 返回格式：
-yyyy-mm-dd HH:MM:SS
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 根据粒度会有不同程度的缩减。
         :type Time: str
         :param Bandwidth: 带宽。
@@ -424,13 +426,20 @@ class BillDataInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: 时间点，格式: yyyy-mm-dd HH:MM:SS。
+        :param Time: 时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type Time: str
         :param Bandwidth: 带宽，单位是 Mbps。
         :type Bandwidth: float
         :param Flux: 流量，单位是 MB。
         :type Flux: float
-        :param PeakTime: 峰值时间点，格式: yyyy-mm-dd HH:MM:SS，原始数据为5分钟粒度，如果查询小时和天粒度数据，则返回对应粒度内的带宽峰值时间点。
+        :param PeakTime: 峰值时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+原始数据为5分钟粒度，如果查询小时和天粒度数据，则返回对应粒度内的带宽峰值时间点。
         :type PeakTime: str
         """
         self.Time = None
@@ -662,7 +671,10 @@ class CdnPlayStatData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: 时间点，格式: yyyy-mm-dd HH:MM:SS。
+        :param Time: 时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type Time: str
         :param Bandwidth: 带宽，单位: Mbps。
         :type Bandwidth: float
@@ -3574,9 +3586,14 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param StartTime: 起始时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :type StartTime: str
-        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。支持最近3年的数据查询
+        :param EndTime: 结束时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+起始和结束时间跨度不支持超过31天。支持最近3年的数据查询
         :type EndTime: str
         :param PlayDomains: 直播播放域名，若不填，表示总体数据。
         :type PlayDomains: list of str
@@ -3639,11 +3656,15 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PeakBandwidthTime: 峰值带宽所在时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param PeakBandwidthTime: 峰值带宽所在时间点，接口返回支持两种时间格式(与接口请求传递的时间格式一致)：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :type PeakBandwidthTime: str
         :param PeakBandwidth: 峰值带宽，单位是Mbps。
         :type PeakBandwidth: float
-        :param P95PeakBandwidthTime: 95峰值带宽所在时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param P95PeakBandwidthTime: 95峰值带宽所在时间点，接口返回支持两种时间格式(与接口请求传递的时间格式一致)：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :type P95PeakBandwidthTime: str
         :param P95PeakBandwidth: 95峰值带宽，单位是Mbps。
         :type P95PeakBandwidth: float
@@ -3783,10 +3804,14 @@ class DescribeConcurrentRecordStreamNumRequest(AbstractModel):
         :param LiveType: 直播类型，SlowLive：慢直播。
 NormalLive：普通直播。
         :type LiveType: str
-        :param StartTime: 起始时间，格式：yyyy-mm-dd HH:MM:SS。
+        :param StartTime: 起始时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 可以查询最近180天的数据。
         :type StartTime: str
-        :param EndTime: 结束时间，格式：yyyy-mm-dd HH:MM:SS。
+        :param EndTime: 结束时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 时间跨度最大支持31天。
         :type EndTime: str
         :param MainlandOrOversea: 如果为空，查询所有地区数据；如果为“Mainland”，查询国内数据；如果为“Oversea”，则查询国外数据。
@@ -3849,9 +3874,14 @@ class DescribeDeliverBandwidthListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 起始时间，格式为%Y-%m-%d %H:%M:%S。
+        :param StartTime: 起始时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :type StartTime: str
-        :param EndTime: 结束时间，格式为%Y-%m-%d %H:%M:%S，支持最近三个月的数据查询，时间跨度最大是1个月。
+        :param EndTime: 结束时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+支持最近三个月的数据查询，时间跨度最大是1个月。
         :type EndTime: str
         """
         self.StartTime = None
@@ -6049,11 +6079,14 @@ class DescribeLiveTranscodeTotalInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间，北京时间。
-格式：yyyy-mm-dd HH:MM:SS。
+        :param StartTime: 结束时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :type StartTime: str
-        :param EndTime: 结束时间，北京时间。
-格式：yyyy-mm-dd HH:MM:SS。
+        :param EndTime: 结束时间，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
         :param PushDomains: 推流域名列表，若不填，表示查询所有域名总体数据。
 指定域名时返回1小时粒度数据。
@@ -7019,9 +7052,14 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: utc起始时间，格式为yyyy-mm-ddTHH:MM:SSZ
+        :param StartTime: 起始时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :type StartTime: str
-        :param EndTime: utc结束时间，格式为yyyy-mm-ddTHH:MM:SSZ，支持查询最近1年数据。
+        :param EndTime: 结束时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+支持查询最近1年的数据。
         :type EndTime: str
         :param Zone: 地域信息，可选值包括Mainland，Oversea，前者是查询中国大陆范围内的数据，后者是除中国大陆范围之外的数据，若不传该参数，则查询所有地区的数据。
         :type Zone: str
@@ -7702,9 +7740,14 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param StartTime: 起始时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :type StartTime: str
-        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。支持最近31天的数据查询
+        :param EndTime: 结束时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+起始和结束时间跨度不支持超过31天。支持最近31天的数据查询
         :type EndTime: str
         :param Domains: 直播域名，若不填，表示总体数据。
         :type Domains: list of str
@@ -12042,8 +12085,10 @@ class TranscodeTotalInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Time: 时间点，北京时间，
-示例：2019-03-01 00:00:00。
+        :param Time: 时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type Time: str
         :param Duration: 转码时长，单位：分钟。
         :type Duration: int

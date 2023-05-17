@@ -374,6 +374,43 @@ class CallInSkillGroupMetrics(AbstractModel):
         
 
 
+class CalleeAttribute(AbstractModel):
+    """被叫属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Callee: 被叫号码
+        :type Callee: str
+        :param UUI: 随路数据
+        :type UUI: str
+        :param Variables: 参数
+        :type Variables: list of Variable
+        """
+        self.Callee = None
+        self.UUI = None
+        self.Variables = None
+
+
+    def _deserialize(self, params):
+        self.Callee = params.get("Callee")
+        self.UUI = params.get("UUI")
+        if params.get("Variables") is not None:
+            self.Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self.Variables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CarrierPrivilegeNumberApplicant(AbstractModel):
     """运营商白名单号码申请单
 
@@ -454,6 +491,10 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type Tries: int
         :param Variables: 自定义变量（仅高级版支持）
         :type Variables: list of Variable
+        :param UUI: UUI
+        :type UUI: str
+        :param CalleeAttributes: 被叫属性
+        :type CalleeAttributes: list of CalleeAttribute
         """
         self.SdkAppId = None
         self.NotBefore = None
@@ -465,6 +506,8 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self.NotAfter = None
         self.Tries = None
         self.Variables = None
+        self.UUI = None
+        self.CalleeAttributes = None
 
 
     def _deserialize(self, params):
@@ -483,6 +526,13 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
                 obj = Variable()
                 obj._deserialize(item)
                 self.Variables.append(obj)
+        self.UUI = params.get("UUI")
+        if params.get("CalleeAttributes") is not None:
+            self.CalleeAttributes = []
+            for item in params.get("CalleeAttributes"):
+                obj = CalleeAttribute()
+                obj._deserialize(item)
+                self.CalleeAttributes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

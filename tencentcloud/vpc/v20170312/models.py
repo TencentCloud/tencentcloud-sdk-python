@@ -7269,6 +7269,47 @@ class DeleteTemplateMemberResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteTrafficPackagesRequest(AbstractModel):
+    """DeleteTrafficPackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TrafficPackageIds: 待删除的流量包唯一ID数组
+        :type TrafficPackageIds: list of str
+        """
+        self.TrafficPackageIds = None
+
+
+    def _deserialize(self, params):
+        self.TrafficPackageIds = params.get("TrafficPackageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTrafficPackagesResponse(AbstractModel):
+    """DeleteTrafficPackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteVpcEndPointRequest(AbstractModel):
     """DeleteVpcEndPoint请求参数结构体
 
@@ -11684,6 +11725,56 @@ class DescribeSnapshotPoliciesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SnapshotPolicySet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSubnetResourceDashboardRequest(AbstractModel):
+    """DescribeSubnetResourceDashboard请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubnetIds: Subnet实例ID，例如：subnet-f1xjkw1b。
+        :type SubnetIds: list of str
+        """
+        self.SubnetIds = None
+
+
+    def _deserialize(self, params):
+        self.SubnetIds = params.get("SubnetIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubnetResourceDashboardResponse(AbstractModel):
+    """DescribeSubnetResourceDashboard返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceStatisticsSet: 资源统计结果。
+        :type ResourceStatisticsSet: list of ResourceStatistics
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResourceStatisticsSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceStatisticsSet") is not None:
+            self.ResourceStatisticsSet = []
+            for item in params.get("ResourceStatisticsSet"):
+                obj = ResourceStatistics()
+                obj._deserialize(item)
+                self.ResourceStatisticsSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -21084,6 +21175,79 @@ class ResourceDashboard(AbstractModel):
         self.CynosDBMySQL = params.get("CynosDBMySQL")
         self.Subnet = params.get("Subnet")
         self.RouteTable = params.get("RouteTable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceStatistics(AbstractModel):
+    """资源统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: Vpc实例ID，例如：vpc-f1xjkw1b。
+        :type VpcId: str
+        :param SubnetId: 子网实例ID，例如：subnet-bthucmmy。
+        :type SubnetId: str
+        :param Ip: 当前已使用的IP总数。
+        :type Ip: int
+        :param ResourceStatisticsItemSet: 资源统计信息。
+        :type ResourceStatisticsItemSet: list of ResourceStatisticsItem
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.Ip = None
+        self.ResourceStatisticsItemSet = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Ip = params.get("Ip")
+        if params.get("ResourceStatisticsItemSet") is not None:
+            self.ResourceStatisticsItemSet = []
+            for item in params.get("ResourceStatisticsItemSet"):
+                obj = ResourceStatisticsItem()
+                obj._deserialize(item)
+                self.ResourceStatisticsItemSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceStatisticsItem(AbstractModel):
+    """资源统计项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceType: 资源类型。比如，CVM，ENI等。
+        :type ResourceType: str
+        :param ResourceName: 资源名称。
+        :type ResourceName: str
+        :param ResourceCount: 资源个数。
+        :type ResourceCount: int
+        """
+        self.ResourceType = None
+        self.ResourceName = None
+        self.ResourceCount = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceName = params.get("ResourceName")
+        self.ResourceCount = params.get("ResourceCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

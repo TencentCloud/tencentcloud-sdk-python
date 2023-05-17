@@ -967,6 +967,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBackupDecryptionKey(self, request):
+        """本接口(DescribeBackupDecryptionKey)用于查询备份文件解密密钥。
+
+        :param request: Request instance for DescribeBackupDecryptionKey.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDecryptionKeyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupDecryptionKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupDecryptionKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupDecryptionKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBackupDownloadRestriction(self, request):
         """该接口用户查询当前地域用户设置的默认备份下载来源限制。
 

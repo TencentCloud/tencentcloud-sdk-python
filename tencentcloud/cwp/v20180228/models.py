@@ -13609,6 +13609,77 @@ class DescribeLicenseListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLogStorageConfigRequest(AbstractModel):
+    """DescribeLogStorageConfig请求参数结构体
+
+    """
+
+
+class DescribeLogStorageConfigResponse(AbstractModel):
+    """DescribeLogStorageConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 存储类型，string数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: list of str
+        :param Period: 日志存储天数，3640表示不限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
+        :param PeriodModifyCount: 本月Period的修改次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodModifyCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Type = None
+        self.Period = None
+        self.PeriodModifyCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Period = params.get("Period")
+        self.PeriodModifyCount = params.get("PeriodModifyCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogStorageRecordRequest(AbstractModel):
+    """DescribeLogStorageRecord请求参数结构体
+
+    """
+
+
+class DescribeLogStorageRecordResponse(AbstractModel):
+    """DescribeLogStorageRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Records: 存储量记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of LogStorageRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Records = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = LogStorageRecord()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLogStorageStatisticRequest(AbstractModel):
     """DescribeLogStorageStatistic请求参数结构体
 
@@ -21481,6 +21552,41 @@ class LicenseUnBindRsp(AbstractModel):
         
 
 
+class LogStorageRecord(AbstractModel):
+    """日志存储量记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Month: 年月份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Month: str
+        :param UsedSize: 存储量，字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedSize: int
+        :param InquireSize: 总量，字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InquireSize: int
+        """
+        self.Month = None
+        self.UsedSize = None
+        self.InquireSize = None
+
+
+    def _deserialize(self, params):
+        self.Month = params.get("Month")
+        self.UsedSize = params.get("UsedSize")
+        self.InquireSize = params.get("InquireSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LoginWhiteCombinedInfo(AbstractModel):
     """异地登录合并后白名单
 
@@ -22810,6 +22916,55 @@ class ModifyLicenseUnBindsResponse(AbstractModel):
                 obj = LicenseUnBindRsp()
                 obj._deserialize(item)
                 self.ErrMsg.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLogStorageConfigRequest(AbstractModel):
+    """ModifyLogStorageConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsModifyPeriod: 是否修改有效期
+        :type IsModifyPeriod: bool
+        :param Type: 存储类型，string数组
+        :type Type: list of str
+        :param Period: 日志存储天数，3640表示不限
+        :type Period: int
+        """
+        self.IsModifyPeriod = None
+        self.Type = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.IsModifyPeriod = params.get("IsModifyPeriod")
+        self.Type = params.get("Type")
+        self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLogStorageConfigResponse(AbstractModel):
+    """ModifyLogStorageConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

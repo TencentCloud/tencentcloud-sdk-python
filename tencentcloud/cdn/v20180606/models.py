@@ -961,7 +961,9 @@ class AdvancedCCRules(AbstractModel):
         :param Configure: 七层限频具体配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Configure: list of ScdnSevenLayerRules
-        :param Switch: 是否开启改规则 on 开启，off关闭
+        :param Switch: 自定义cc规则配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -10881,6 +10883,7 @@ class Origin(AbstractModel):
 domain：域名类型
 domainv6：域名解析V6类型
 cos：对象存储源站
+third_party: 第三方存储源站
 ip：IP 列表作为源站
 ipv6：源站列表为一个单独的 IPv6 地址
 ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
@@ -10946,7 +10949,12 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
         :param AdvanceHttps: HTTPS回源高级配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvanceHttps: :class:`tencentcloud.cdn.v20180606.models.AdvanceHttps`
-        :param OriginCompany: 对象存储回源厂商
+        :param OriginCompany: 对象存储回源厂商，当源站类型为第三方存储源站(third_party)时必填，可选值包括以下:
+aws_s3: AWS S3
+ali_oss: 阿里云 OSS
+hw_obs: 华为 OBS
+qiniu_kodo: 七牛云 kodo
+others: 其它厂商对象存储,仅支持兼容以AWS签名算法的对象存储，如腾讯云金融专区COS
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginCompany: str
         """
@@ -11975,13 +11983,19 @@ class QueryStringKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on | off CacheKey是否由QueryString组成
+        :param Switch: CacheKey是否由QueryString组成配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param Reorder: 是否重新排序
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reorder: str
-        :param Action: includeAll | excludeAll | includeCustom | excludeCustom 使用/排除部分url参数
+        :param Action: 使用/排除部分url参数，取值有：
+includeAll：包含所有
+excludeAll：排除所有
+includeCustom：自定义包含
+excludeCustom：自定义排除
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         :param Value: 使用/排除的url参数数组，';' 分割
@@ -13037,7 +13051,9 @@ index：首页
         :param FrequencyLimit: 限频阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrequencyLimit: int
-        :param PunishmentSwitch: IP 惩罚开关，可选on|off
+        :param PunishmentSwitch: IP 惩罚配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type PunishmentSwitch: str
         :param PunishmentTime: IP 惩罚时长
@@ -13087,7 +13103,9 @@ class ScdnConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on | off
+        :param Switch: scdn cc配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param Rules: 自定义 cc 防护规则
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13141,7 +13159,9 @@ class ScdnDdosConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on|off
+        :param Switch: Scdn ddos配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         """
         self.Switch = None
@@ -13678,7 +13698,9 @@ class ScdnWafConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on|off
+        :param Switch: Scdn waf配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param Mode: intercept|observe，默认intercept
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13686,7 +13708,9 @@ class ScdnWafConfig(AbstractModel):
         :param ErrorPage: 重定向的错误页面
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        :param WebShellSwitch: webshell拦截开关，on|off，默认off
+        :param WebShellSwitch: webshell拦截配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebShellSwitch: str
         :param Rules: 类型拦截规则
@@ -13695,7 +13719,9 @@ class ScdnWafConfig(AbstractModel):
         :param Level: waf规则等级，可取100|200|300
 注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
-        :param SubRuleSwitch: waf子规则开关
+        :param SubRuleSwitch: waf子规则配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubRuleSwitch: list of WafSubRuleStatus
         """
@@ -13772,7 +13798,9 @@ class SchemeKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on | off 是否使用scheme作为cache key的一部分
+        :param Switch: scheme作为cache key配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -13876,7 +13904,9 @@ class SecurityConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on|off
+        :param Switch: scdn 安全配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         """
         self.Switch = None
@@ -13900,7 +13930,7 @@ class Seo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: SEO 配置开关
+        :param Switch: SEO 搜索引擎优化配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -13989,14 +14019,16 @@ class ServerCert(AbstractModel):
 
 class ShareCname(AbstractModel):
     """ShareCname配置
+    ShareCname 为内测功能,如需使用,请联系腾讯云工程师开白.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: ShareCname 配置开关, 开关为off时，域名使用默认CNAME，若需要使用共享CNAME，将开关置为on.
+        :param Switch: ShareCname 配置开关, 取值有：
+on：开启，使用共享CNAME
+off：关闭，使用默认CNAME
 
-* ShareCname 为内测功能,如需使用,请联系腾讯云工程师开白.
         :type Switch: str
         :param Cname: 设置共享CNAME.
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14308,7 +14340,9 @@ class StatisticItem(AbstractModel):
         :param AlertPercentage: 触发提醒阈值百分比
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlertPercentage: int
-        :param AlertSwitch: 提醒开关 on/off
+        :param AlertSwitch: 累计用量封顶告警配置，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlertSwitch: str
         :param Metric: 指标类型，流量flux或带宽bandwidth
@@ -14317,7 +14351,9 @@ class StatisticItem(AbstractModel):
         :param Cycle: 检测周期，单位分钟，60或1440
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cycle: int
-        :param Switch: 是否开启该选项，on/off
+        :param Switch: 累计用量封顶配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -14358,7 +14394,7 @@ class StatusCodeCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 状态码缓存过期配置开关
+        :param Switch: 状态码缓存过期配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14779,7 +14815,9 @@ class TpgAdapter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关，"on/off"
+        :param Switch: 图片优化-TpgAdapter配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -15475,7 +15513,7 @@ class UrlRedirect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 访问URL重写配置开关
+        :param Switch: 访问URL重写配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -15553,7 +15591,9 @@ class UserAgentFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关，on或off
+        :param Switch: UserAgent黑白名单配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param FilterRules: UA黑白名单生效规则列表
@@ -15683,7 +15723,7 @@ class VideoSeek(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 视频拖拽开关
+        :param Switch: 视频拖拽配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -15758,7 +15798,9 @@ class WafSubRuleStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 子规则状态，on|off
+        :param Switch: Waf子规则开关状态配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param SubIds: 规则id列表
         :type SubIds: list of int
@@ -15781,14 +15823,16 @@ class WafSubRuleStatus(AbstractModel):
 
 class WebSocket(AbstractModel):
     """WebSocket配置
+    WebSocket 为ECDN产品功能，如需使用请通过ECDN域名配置.
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
+        :param Switch: WebSocket 超时配置开关，取值有：
+on：开启，可以调整超时时间
+off：关闭，平台仍支持WebSocket连接，此时超时时间默认为15秒
 
-* WebSocket 为ECDN产品功能，如需使用请通过ECDN域名配置.
         :type Switch: str
         :param Timeout: 设置超时时间，单位为秒，最大超时时间300秒。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15817,7 +15861,9 @@ class WebpAdapter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关，"on/off"
+        :param Switch: 图片优化-WebpAdapter配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """

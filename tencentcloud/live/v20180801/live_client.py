@@ -2539,7 +2539,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeUploadStreamNums(self, request):
-        """直播上行路数查询
+        """直播上行路数查询。
 
         :param request: Request instance for DescribeUploadStreamNums.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeUploadStreamNumsRequest`

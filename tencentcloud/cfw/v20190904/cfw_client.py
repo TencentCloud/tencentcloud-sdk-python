@@ -73,7 +73,7 @@ class CfwClient(AbstractClient):
 
 
     def AddNatAcRule(self, request):
-        """添加nat访问控制规则
+        """添加nat访问控制规则(地域必填)
 
         :param request: Request instance for AddNatAcRule.
         :type request: :class:`tencentcloud.cfw.v20190904.models.AddNatAcRuleRequest`

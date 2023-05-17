@@ -3111,6 +3111,52 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLogStorageConfig(self, request):
+        """获取日志存储配置
+
+        :param request: Request instance for DescribeLogStorageConfig.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageConfigRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogStorageConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogStorageConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLogStorageRecord(self, request):
+        """获取日志存储量记录
+
+        :param request: Request instance for DescribeLogStorageRecord.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageRecordRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeLogStorageRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogStorageRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogStorageRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLogStorageStatistic(self, request):
         """获取日志检索容量使用统计
 
@@ -5726,6 +5772,29 @@ class CwpClient(AbstractClient):
             body = self.call("ModifyLicenseUnBinds", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLicenseUnBindsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLogStorageConfig(self, request):
+        """修改日志存储配置
+
+        :param request: Request instance for ModifyLogStorageConfig.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyLogStorageConfigRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyLogStorageConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLogStorageConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLogStorageConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
