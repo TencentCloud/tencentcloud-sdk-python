@@ -831,6 +831,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUnitNamespaces(self, request):
+        """批量创建单元化命名空间
+
+        :param request: Request instance for CreateUnitNamespaces.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateUnitNamespacesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateUnitNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUnitNamespaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUnitNamespacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUnitRule(self, request):
         """创建单元化规则
 

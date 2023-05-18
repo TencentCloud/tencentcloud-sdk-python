@@ -808,6 +808,8 @@ class ApplicationProxy(AbstractModel):
         :type UpdateTime: str
         :param ApplicationProxyRules: 规则列表。
         :type ApplicationProxyRules: list of ApplicationProxyRule
+        :param AccelerateMainland: 中国大陆加速优化配置。
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
         """
         self.ZoneId = None
         self.ZoneName = None
@@ -826,6 +828,7 @@ class ApplicationProxy(AbstractModel):
         self.Ipv6 = None
         self.UpdateTime = None
         self.ApplicationProxyRules = None
+        self.AccelerateMainland = None
 
 
     def _deserialize(self, params):
@@ -853,6 +856,9 @@ class ApplicationProxy(AbstractModel):
                 obj = ApplicationProxyRule()
                 obj._deserialize(item)
                 self.ApplicationProxyRules.append(obj)
+        if params.get("AccelerateMainland") is not None:
+            self.AccelerateMainland = AccelerateMainland()
+            self.AccelerateMainland._deserialize(params.get("AccelerateMainland"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

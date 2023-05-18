@@ -1411,7 +1411,7 @@ class AiQualityControlTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 视频质检模板 ID 。
+        :param Definition: 视频质检模板 ID 。暂时可以直接使用 预设模板ID 10，后面控制台支持用户配置自定义模板。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         :param ChannelExtPara: 渠道扩展参数json序列化字符串。

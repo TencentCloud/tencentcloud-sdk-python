@@ -5073,6 +5073,61 @@ class CreateTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUnitNamespacesRequest(AbstractModel):
+    """CreateUnitNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayInstanceId: 网关实体ID
+        :type GatewayInstanceId: str
+        :param UnitNamespaceList: 单元化命名空间对象列表
+        :type UnitNamespaceList: list of UnitNamespace
+        """
+        self.GatewayInstanceId = None
+        self.UnitNamespaceList = None
+
+
+    def _deserialize(self, params):
+        self.GatewayInstanceId = params.get("GatewayInstanceId")
+        if params.get("UnitNamespaceList") is not None:
+            self.UnitNamespaceList = []
+            for item in params.get("UnitNamespaceList"):
+                obj = UnitNamespace()
+                obj._deserialize(item)
+                self.UnitNamespaceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUnitNamespacesResponse(AbstractModel):
+    """CreateUnitNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUnitRuleRequest(AbstractModel):
     """CreateUnitRule请求参数结构体
 

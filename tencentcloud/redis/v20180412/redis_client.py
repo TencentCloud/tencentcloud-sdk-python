@@ -441,7 +441,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeAutoBackupConfig(self, request):
-        """获取备份配置
+        """本接口（DescribeAutoBackupConfig）用于获取自动备份配置规则。
 
         :param request: Request instance for DescribeAutoBackupConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeAutoBackupConfigRequest`

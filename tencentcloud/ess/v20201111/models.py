@@ -1227,6 +1227,8 @@ MobileCheck：手机号验证
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
         :type CcNotifyType: int
+        :param AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :type AutoSignScene: str
         """
         self.Operator = None
         self.FlowName = None
@@ -1247,6 +1249,7 @@ MobileCheck：手机号验证
         self.SignBeanTag = None
         self.Agent = None
         self.CcNotifyType = None
+        self.AutoSignScene = None
 
 
     def _deserialize(self, params):
@@ -1288,6 +1291,7 @@ MobileCheck：手机号验证
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
         self.CcNotifyType = params.get("CcNotifyType")
+        self.AutoSignScene = params.get("AutoSignScene")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1491,6 +1495,8 @@ false：有序签
         :param CcInfos: 被抄送人的信息列表。
 注: 此功能为白名单功能，若有需要，请联系电子签客服开白使用。
         :type CcInfos: list of CcInfo
+        :param AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :type AutoSignScene: str
         """
         self.Operator = None
         self.FlowName = None
@@ -1507,6 +1513,7 @@ false：有序签
         self.CallbackUrl = None
         self.Agent = None
         self.CcInfos = None
+        self.AutoSignScene = None
 
 
     def _deserialize(self, params):
@@ -1539,6 +1546,7 @@ false：有序签
                 obj = CcInfo()
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
+        self.AutoSignScene = params.get("AutoSignScene")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

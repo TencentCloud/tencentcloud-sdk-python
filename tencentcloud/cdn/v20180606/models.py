@@ -1807,7 +1807,9 @@ class BotCookie(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on|off
+        :param Switch: Bot cookie策略配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param RuleType: 规则类型，当前只有all
         :type RuleType: str
@@ -1853,7 +1855,9 @@ class BotJavaScript(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on|off
+        :param Switch: Bot js策略配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param RuleType: 规则类型，当前只有file
         :type RuleType: str
@@ -9122,7 +9126,7 @@ class IpFreqLimit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: IP 限频配置开关
+        :param Switch: IP 限频配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -9195,13 +9199,15 @@ offline：下线状态
 
 
 class Ipv6(AbstractModel):
-    """Ipv6启用配置，不可更改
+    """Ipv6源站启用配置，不可更改
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 域名是否开启ipv6功能，on或off。
+        :param Switch: 域名开启源站ipv6配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -9226,7 +9232,9 @@ class Ipv6Access(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 域名是否开启ipv6访问功能，on或off。
+        :param Switch: 域名开启ipv6访问配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -10666,7 +10674,7 @@ class MaxAge(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 浏览器缓存配置开关
+        :param Switch: 浏览器缓存配置开关，取值有：
 on：开启
 off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10843,7 +10851,9 @@ class OfflineCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on | off, 离线缓存是否开启
+        :param Switch: 离线缓存配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         """
         self.Switch = None
@@ -11015,7 +11025,10 @@ class OriginAuthentication(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 鉴权开关，on或off
+        :param Switch: 回源鉴权高级配置开关，取值有：
+on：开启
+off：关闭
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param TypeA: 鉴权类型A配置
@@ -11072,7 +11085,9 @@ class OriginCombine(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on|off 是否开启合并回源
+        :param Switch: 合并回源配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         """
         self.Switch = None
@@ -11120,7 +11135,7 @@ class OriginPullOptimization(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 跨国回源优化配置开关
+        :param Switch: 跨国回源优化配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -11183,7 +11198,9 @@ class OssPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关， on/off。
+        :param Switch: oss回源鉴权配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param AccessKey: 访问ID。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11227,7 +11244,9 @@ class OthersPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关， on/off。
+        :param Switch: 其他厂商对象存储回源鉴权配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param AccessKey: 访问ID。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11950,7 +11969,9 @@ class QnPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关 on/off
+        :param Switch: 七牛元对象存储回源鉴权配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param AccessKey: 访问 ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12029,7 +12050,9 @@ class Quic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 是否启动Quic配置
+        :param Switch: Quic功能配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         """
         self.Switch = None
@@ -12089,7 +12112,7 @@ class RangeOriginPull(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 分片回源配置开关
+        :param Switch: 分片回源配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -12125,7 +12148,9 @@ class RangeOriginPullRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 分片回源配置开关
+        :param Switch: 分片回源配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param RuleType: 规则类型：
 file：指定文件后缀生效
@@ -12165,7 +12190,9 @@ class RedirectConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 配置开关
+        :param Switch: 自定义回源302 follow请求host配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param FollowRedirectHost: 主源站follow302请求时带的自定义的host头部
         :type FollowRedirectHost: str
@@ -12197,7 +12224,7 @@ class Referer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: referer 黑白名单配置开关
+        :param Switch: referer 黑白名单配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -12315,9 +12342,9 @@ class RemoteAuthentication(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 远程鉴权开关；
-on : 开启;
-off: 关闭；
+        :param Switch: 远程鉴权配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param RemoteAuthenticationRules: 远程鉴权规则配置
@@ -12464,7 +12491,7 @@ class RequestHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 自定义请求头配置开关
+        :param Switch: 自定义请求头配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -12611,7 +12638,7 @@ class ResponseHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 自定义响应头开关
+        :param Switch: 自定义响应头配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -12647,7 +12674,7 @@ class ResponseHeaderCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 源站头部缓存开关
+        :param Switch: 源站头部缓存配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -12793,7 +12820,7 @@ class RuleEngine(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 规则引擎配置开关
+        :param Switch: 规则引擎配置开关，取值有：
 on：开启
 off：关闭
         :type Switch: str
@@ -12859,7 +12886,9 @@ class ScdnAclConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 是否开启，on | off
+        :param Switch: SCDN访问控制配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param ScriptData: 新版本请使用AdvancedScriptData
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12990,7 +13019,9 @@ class ScdnBotConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on|off
+        :param Switch: Scdn bot配置开关，取值有：
+on：开启
+off：关闭
         :type Switch: str
         :param BotCookie: Bot cookie策略
 注意：此字段可能返回 null，表示取不到有效值。

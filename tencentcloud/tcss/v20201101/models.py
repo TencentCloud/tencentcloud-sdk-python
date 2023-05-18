@@ -14368,6 +14368,9 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         :param Id: 自动以扫描镜像Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: list of int non-negative
+        :param Latest: 是否扫描最新版本镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Latest: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -14378,6 +14381,7 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         self.All = None
         self.Images = None
         self.Id = None
+        self.Latest = None
         self.RequestId = None
 
 
@@ -14394,6 +14398,7 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Images.append(obj)
         self.Id = params.get("Id")
+        self.Latest = params.get("Latest")
         self.RequestId = params.get("RequestId")
 
 
@@ -28145,6 +28150,8 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         :type All: bool
         :param Id: 扫描镜像Id
         :type Id: list of int non-negative
+        :param Latest: 是否扫描最新版本
+        :type Latest: bool
         """
         self.ScanPeriod = None
         self.Enable = None
@@ -28153,6 +28160,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         self.Images = None
         self.All = None
         self.Id = None
+        self.Latest = None
 
 
     def _deserialize(self, params):
@@ -28168,6 +28176,7 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
                 self.Images.append(obj)
         self.All = params.get("All")
         self.Id = params.get("Id")
+        self.Latest = params.get("Latest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

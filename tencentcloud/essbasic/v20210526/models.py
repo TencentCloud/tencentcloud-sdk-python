@@ -752,7 +752,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type FlowDescription: str
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
-        :param CustomerData: 业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :param CustomerData: 业务信息，最大长度1000个字符。
         :type CustomerData: str
         :param NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
         :type NeedSignReview: bool
@@ -769,6 +769,8 @@ MobileCheck：手机号验证
         :type CcInfos: list of CcInfo
         :param CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
         :type CcNotifyType: int
+        :param AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :type AutoSignScene: str
         """
         self.Agent = None
         self.FlowName = None
@@ -788,6 +790,7 @@ MobileCheck：手机号验证
         self.Operator = None
         self.CcInfos = None
         self.CcNotifyType = None
+        self.AutoSignScene = None
 
 
     def _deserialize(self, params):
@@ -828,6 +831,7 @@ MobileCheck：手机号验证
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
         self.CcNotifyType = params.get("CcNotifyType")
+        self.AutoSignScene = params.get("AutoSignScene")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4202,7 +4206,7 @@ class FlowInfo(AbstractModel):
         :type FlowType: str
         :param FlowDescription: 合同描述，最大长度1000个字符
         :type FlowDescription: str
-        :param CustomerData:  第三方应用平台的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :param CustomerData:  第三方应用平台的业务信息，最大长度1000个字符。
         :type CustomerData: str
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
@@ -4215,6 +4219,8 @@ class FlowInfo(AbstractModel):
         :type NeedSignReview: bool
         :param CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
         :type CcNotifyType: int
+        :param AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :type AutoSignScene: str
         """
         self.FlowName = None
         self.Deadline = None
@@ -4229,6 +4235,7 @@ class FlowInfo(AbstractModel):
         self.CcInfos = None
         self.NeedSignReview = None
         self.CcNotifyType = None
+        self.AutoSignScene = None
 
 
     def _deserialize(self, params):
@@ -4260,6 +4267,7 @@ class FlowInfo(AbstractModel):
                 self.CcInfos.append(obj)
         self.NeedSignReview = params.get("NeedSignReview")
         self.CcNotifyType = params.get("CcNotifyType")
+        self.AutoSignScene = params.get("AutoSignScene")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

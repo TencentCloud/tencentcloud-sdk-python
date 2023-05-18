@@ -146,6 +146,9 @@ GZJGZY: 公证机构执业证。
         :type CertificateType: str
         :param ImgUrl: 证件照片地址。
         :type ImgUrl: str
+        :param OriginImgUrl: 原始照片地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginImgUrl: str
         :param RegistrantCertificateCode: 联系人证件号码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegistrantCertificateCode: str
@@ -159,6 +162,7 @@ GZJGZY: 公证机构执业证。
         self.CertificateCode = None
         self.CertificateType = None
         self.ImgUrl = None
+        self.OriginImgUrl = None
         self.RegistrantCertificateCode = None
         self.RegistrantCertificateType = None
         self.RegistrantImgUrl = None
@@ -168,6 +172,7 @@ GZJGZY: 公证机构执业证。
         self.CertificateCode = params.get("CertificateCode")
         self.CertificateType = params.get("CertificateType")
         self.ImgUrl = params.get("ImgUrl")
+        self.OriginImgUrl = params.get("OriginImgUrl")
         self.RegistrantCertificateCode = params.get("RegistrantCertificateCode")
         self.RegistrantCertificateType = params.get("RegistrantCertificateType")
         self.RegistrantImgUrl = params.get("RegistrantImgUrl")

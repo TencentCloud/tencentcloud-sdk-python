@@ -136,6 +136,8 @@ class CreateBPBrandRequest(AbstractModel):
         :type ProtectOfficialAccounts: list of str
         :param ProtectMiniPrograms: 保护小程序
         :type ProtectMiniPrograms: list of str
+        :param APISource: 请求来源：0-反钓鱼 2-反假冒
+        :type APISource: int
         """
         self.BrandName = None
         self.CompanyName = None
@@ -151,6 +153,7 @@ class CreateBPBrandRequest(AbstractModel):
         self.ProtectAPPs = None
         self.ProtectOfficialAccounts = None
         self.ProtectMiniPrograms = None
+        self.APISource = None
 
 
     def _deserialize(self, params):
@@ -168,6 +171,7 @@ class CreateBPBrandRequest(AbstractModel):
         self.ProtectAPPs = params.get("ProtectAPPs")
         self.ProtectOfficialAccounts = params.get("ProtectOfficialAccounts")
         self.ProtectMiniPrograms = params.get("ProtectMiniPrograms")
+        self.APISource = params.get("APISource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

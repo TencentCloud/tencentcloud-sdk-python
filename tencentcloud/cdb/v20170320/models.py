@@ -6840,6 +6840,9 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type Description: str
         :param TemplateType: 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
         :type TemplateType: str
+        :param EngineType: 参数模板引擎。支持值包括："InnoDB"，"RocksDB"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6850,6 +6853,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         self.Items = None
         self.Description = None
         self.TemplateType = None
+        self.EngineType = None
         self.RequestId = None
 
 
@@ -6866,6 +6870,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
                 self.Items.append(obj)
         self.Description = params.get("Description")
         self.TemplateType = params.get("TemplateType")
+        self.EngineType = params.get("EngineType")
         self.RequestId = params.get("RequestId")
 
 

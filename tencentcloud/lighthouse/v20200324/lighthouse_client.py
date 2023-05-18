@@ -1184,7 +1184,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DetachCcn(self, request):
-        """本接口 (AttachCcn) 用于解除与云联网的关联。
+        """本接口 (DetachCcn) 用于解除与云联网的关联。
 
         :param request: Request instance for DetachCcn.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DetachCcnRequest`
