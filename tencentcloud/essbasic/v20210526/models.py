@@ -2012,7 +2012,8 @@ ProcessTimeout - 转换文件超时
         :type TaskMessage: str
         :param ResourceId: 资源Id，也是FileId，用于文件发起使用
         :type ResourceId: str
-        :param PreviewUrl: 预览文件Url，有效期30分钟
+        :param PreviewUrl: 预览文件Url，有效期30分钟 
+当前字段返回为空，发起的时候，将ResourceId 放入发起即可
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

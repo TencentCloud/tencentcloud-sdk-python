@@ -18,6 +18,47 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApiGatewayInstanceDetail(AbstractModel):
+    """apiGateway实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: 实例ID
+        :type ServiceId: str
+        :param ServiceName: 实例名称
+        :type ServiceName: str
+        :param Domain: 域名
+        :type Domain: str
+        :param CertId: 证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        :param Protocol: 使用协议
+        :type Protocol: str
+        """
+        self.ServiceId = None
+        self.ServiceName = None
+        self.Domain = None
+        self.CertId = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.ServiceName = params.get("ServiceName")
+        self.Domain = params.get("Domain")
+        self.CertId = params.get("CertId")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyCertificateRequest(AbstractModel):
     """ApplyCertificate请求参数结构体
 
@@ -160,6 +201,38 @@ class CancelCertificateOrderResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CdnInstanceDetail(AbstractModel):
+    """CDN实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param CertId: 已部署证书ID
+        :type CertId: str
+        :param Status: 域名状态
+        :type Status: str
+        """
+        self.Domain = None
+        self.CertId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.CertId = params.get("CertId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CertHostingInfo(AbstractModel):
     """云资源配置详情
 
@@ -190,6 +263,34 @@ class CertHostingInfo(AbstractModel):
         self.RenewCertId = params.get("RenewCertId")
         self.ResourceType = params.get("ResourceType")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Certificate(AbstractModel):
+    """CLB证书详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertId: 证书ID
+        :type CertId: str
+        :param DnsNames: 证书绑定的域名
+        :type DnsNames: list of str
+        """
+        self.CertId = None
+        self.DnsNames = None
+
+
+    def _deserialize(self, params):
+        self.CertId = params.get("CertId")
+        self.DnsNames = params.get("DnsNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -525,6 +626,146 @@ class CheckCertificateChainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ClbInstanceDetail(AbstractModel):
+    """clb实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: CLB实例ID
+        :type LoadBalancerId: str
+        :param LoadBalancerName: CLB实例名称
+        :type LoadBalancerName: str
+        :param Listeners: CLB监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Listeners: list of ClbListener
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.Listeners = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        if params.get("Listeners") is not None:
+            self.Listeners = []
+            for item in params.get("Listeners"):
+                obj = ClbListener()
+                obj._deserialize(item)
+                self.Listeners.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClbListener(AbstractModel):
+    """CLB实例监听器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
+        :param ListenerName: 监听器名称
+        :type ListenerName: str
+        :param SniSwitch: 是否开启SNI，1为开启，0为关闭
+        :type SniSwitch: int
+        :param Protocol: 监听器协议类型， HTTPS|TCP_SSL
+        :type Protocol: str
+        :param Certificate: 监听器绑定的证书数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Certificate: :class:`tencentcloud.ssl.v20191205.models.Certificate`
+        :param Rules: 监听器规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of ClbListenerRule
+        :param NoMatchDomains: 不匹配域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoMatchDomains: list of str
+        """
+        self.ListenerId = None
+        self.ListenerName = None
+        self.SniSwitch = None
+        self.Protocol = None
+        self.Certificate = None
+        self.Rules = None
+        self.NoMatchDomains = None
+
+
+    def _deserialize(self, params):
+        self.ListenerId = params.get("ListenerId")
+        self.ListenerName = params.get("ListenerName")
+        self.SniSwitch = params.get("SniSwitch")
+        self.Protocol = params.get("Protocol")
+        if params.get("Certificate") is not None:
+            self.Certificate = Certificate()
+            self.Certificate._deserialize(params.get("Certificate"))
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = ClbListenerRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.NoMatchDomains = params.get("NoMatchDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClbListenerRule(AbstractModel):
+    """CLB监听器规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocationId: 规则ID
+        :type LocationId: str
+        :param Domain: 规则绑定的域名
+        :type Domain: str
+        :param IsMatch: 规则是否匹配待绑定证书的域名
+        :type IsMatch: bool
+        :param Certificate: 规则已绑定的证书数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Certificate: :class:`tencentcloud.ssl.v20191205.models.Certificate`
+        :param NoMatchDomains: 不匹配域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoMatchDomains: list of str
+        """
+        self.LocationId = None
+        self.Domain = None
+        self.IsMatch = None
+        self.Certificate = None
+        self.NoMatchDomains = None
+
+
+    def _deserialize(self, params):
+        self.LocationId = params.get("LocationId")
+        self.Domain = params.get("Domain")
+        self.IsMatch = params.get("IsMatch")
+        if params.get("Certificate") is not None:
+            self.Certificate = Certificate()
+            self.Certificate._deserialize(params.get("Certificate"))
+        self.NoMatchDomains = params.get("NoMatchDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommitCertificateInformationRequest(AbstractModel):
     """CommitCertificateInformation请求参数结构体
 
@@ -677,6 +918,50 @@ class CompleteCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CosInstanceDetail(AbstractModel):
+    """COS实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param CertId: 已绑定的证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        :param Status: ENABLED: 域名上线状态
+DISABLED:域名下线状态
+        :type Status: str
+        :param Bucket: 存储桶名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        :param Region: 存储桶地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        """
+        self.Domain = None
+        self.CertId = None
+        self.Status = None
+        self.Bucket = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.CertId = params.get("CertId")
+        self.Status = params.get("Status")
+        self.Bucket = params.get("Bucket")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCertificateRequest(AbstractModel):
     """CreateCertificate请求参数结构体
 
@@ -732,6 +1017,47 @@ class CreateCertificateResponse(AbstractModel):
         self.CertificateIds = params.get("CertificateIds")
         self.DealIds = params.get("DealIds")
         self.RequestId = params.get("RequestId")
+
+
+class DdosInstanceDetail(AbstractModel):
+    """ddos复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Protocol: 协议类型
+        :type Protocol: str
+        :param CertId: 证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        :param VirtualPort: 转发端口
+        :type VirtualPort: str
+        """
+        self.Domain = None
+        self.InstanceId = None
+        self.Protocol = None
+        self.CertId = None
+        self.VirtualPort = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.InstanceId = params.get("InstanceId")
+        self.Protocol = params.get("Protocol")
+        self.CertId = params.get("CertId")
+        self.VirtualPort = params.get("VirtualPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteCertificateRequest(AbstractModel):
@@ -822,6 +1148,310 @@ class DeleteManagerResponse(AbstractModel):
     def _deserialize(self, params):
         self.ManagerId = params.get("ManagerId")
         self.RequestId = params.get("RequestId")
+
+
+class DeployCertificateInstanceRequest(AbstractModel):
+    """DeployCertificateInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param InstanceIdList: 需要部署实例列表
+        :type InstanceIdList: list of str
+        :param ResourceType: 部署的云资源类型
+        :type ResourceType: str
+        :param Status: 部署云资源状态：
+云直播：
+-1：域名未关联证书。
+1： 域名https已开启。
+0： 域名https已关闭。
+        :type Status: int
+        """
+        self.CertificateId = None
+        self.InstanceIdList = None
+        self.ResourceType = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.InstanceIdList = params.get("InstanceIdList")
+        self.ResourceType = params.get("ResourceType")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployCertificateInstanceResponse(AbstractModel):
+    """DeployCertificateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 云资源部署任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployRecordId: int
+        :param DeployStatus: 部署状态，1表示部署成功，0表示部署失败
+        :type DeployStatus: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeployRecordId = None
+        self.DeployStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        self.DeployStatus = params.get("DeployStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class DeployCertificateRecordRetryRequest(AbstractModel):
+    """DeployCertificateRecordRetry请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 待重试部署记录ID
+        :type DeployRecordId: int
+        :param DeployRecordDetailId: 待重试部署记录详情ID
+        :type DeployRecordDetailId: int
+        """
+        self.DeployRecordId = None
+        self.DeployRecordDetailId = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        self.DeployRecordDetailId = params.get("DeployRecordDetailId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployCertificateRecordRetryResponse(AbstractModel):
+    """DeployCertificateRecordRetry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeployCertificateRecordRollbackRequest(AbstractModel):
+    """DeployCertificateRecordRollback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 待重试部署记录ID
+        :type DeployRecordId: int
+        """
+        self.DeployRecordId = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployCertificateRecordRollbackResponse(AbstractModel):
+    """DeployCertificateRecordRollback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 回滚部署记录ID
+        :type DeployRecordId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeployRecordId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeployRecordDetail(AbstractModel):
+    """部署记录详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 部署记录详情ID
+        :type Id: int
+        :param CertId: 部署证书ID
+        :type CertId: str
+        :param OldCertId: 原绑定证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldCertId: str
+        :param InstanceId: 部署实例ID
+        :type InstanceId: str
+        :param InstanceName: 部署实例名称
+        :type InstanceName: str
+        :param ListenerId: 部署监听器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param Domains: 部署域名列表
+        :type Domains: list of str
+        :param Protocol: 部署监听器协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Status: 部署状态
+        :type Status: int
+        :param ErrorMsg: 部署错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param CreateTime: 部署记录详情创建时间
+        :type CreateTime: str
+        :param UpdateTime: 部署记录详情最后一次更新时间
+        :type UpdateTime: str
+        :param ListenerName: 部署监听器名称
+        :type ListenerName: str
+        :param SniSwitch: 是否开启SNI
+        :type SniSwitch: int
+        :param Bucket: COS存储桶名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        :param Namespace: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param SecretName: secret名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretName: str
+        :param Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        """
+        self.Id = None
+        self.CertId = None
+        self.OldCertId = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.ListenerId = None
+        self.Domains = None
+        self.Protocol = None
+        self.Status = None
+        self.ErrorMsg = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.ListenerName = None
+        self.SniSwitch = None
+        self.Bucket = None
+        self.Namespace = None
+        self.SecretName = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.CertId = params.get("CertId")
+        self.OldCertId = params.get("OldCertId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.ListenerId = params.get("ListenerId")
+        self.Domains = params.get("Domains")
+        self.Protocol = params.get("Protocol")
+        self.Status = params.get("Status")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ListenerName = params.get("ListenerName")
+        self.SniSwitch = params.get("SniSwitch")
+        self.Bucket = params.get("Bucket")
+        self.Namespace = params.get("Namespace")
+        self.SecretName = params.get("SecretName")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployRecordInfo(AbstractModel):
+    """部署记录信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 部署记录ID
+        :type Id: int
+        :param CertId: 部署证书ID
+        :type CertId: str
+        :param ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param Region: 部署地域
+        :type Region: str
+        :param Status: 部署状态
+        :type Status: int
+        :param CreateTime: 部署时间
+        :type CreateTime: str
+        :param UpdateTime: 最近一次更新时间
+        :type UpdateTime: str
+        """
+        self.Id = None
+        self.CertId = None
+        self.ResourceType = None
+        self.Region = None
+        self.Status = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.CertId = params.get("CertId")
+        self.ResourceType = params.get("ResourceType")
+        self.Region = params.get("Region")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeployedResources(AbstractModel):
@@ -1638,6 +2268,1168 @@ class DescribeDeployedResourcesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeHostApiGatewayInstanceListRequest(AbstractModel):
+    """DescribeHostApiGatewayInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :type Filters: list of Filter
+        :param OldCertificateId: 已部署的证书ID
+        :type OldCertificateId: str
+        """
+        self.CertificateId = None
+        self.ResourceType = None
+        self.IsCache = None
+        self.Filters = None
+        self.OldCertificateId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ResourceType = params.get("ResourceType")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
+    """DescribeHostApiGatewayInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: apiGateway实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of ApiGatewayInstanceDetail
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = ApiGatewayInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostCdnInstanceListRequest(AbstractModel):
+    """DescribeHostCdnInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :type Filters: list of Filter
+        :param OldCertificateId: 原证书ID
+        :type OldCertificateId: str
+        :param Offset: 分页偏移量，从0开始。	
+        :type Offset: int
+        :param Limit: 每页数量，默认10。	
+        :type Limit: int
+        """
+        self.CertificateId = None
+        self.ResourceType = None
+        self.IsCache = None
+        self.Filters = None
+        self.OldCertificateId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ResourceType = params.get("ResourceType")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OldCertificateId = params.get("OldCertificateId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostCdnInstanceListResponse(AbstractModel):
+    """DescribeHostCdnInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: CDN实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of CdnInstanceDetail
+        :param TotalCount: CDN域名总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = CdnInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostClbInstanceListRequest(AbstractModel):
+    """DescribeHostClbInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param Offset: 分页偏移量，从0开始。
+        :type Offset: int
+        :param Limit: 每页数量，默认10。
+        :type Limit: int
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :type Filters: list of Filter
+        :param AsyncCache: 是否异步缓存
+        :type AsyncCache: int
+        :param OldCertificateId: 原证书ID
+        :type OldCertificateId: str
+        """
+        self.CertificateId = None
+        self.Offset = None
+        self.Limit = None
+        self.IsCache = None
+        self.Filters = None
+        self.AsyncCache = None
+        self.OldCertificateId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.AsyncCache = params.get("AsyncCache")
+        self.OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostClbInstanceListResponse(AbstractModel):
+    """DescribeHostClbInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param InstanceList: CLB实例监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of ClbInstanceDetail
+        :param AsyncTotalNum: 异步刷新总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncTotalNum: int
+        :param AsyncOffset: 异步刷新当前执行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncOffset: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceList = None
+        self.AsyncTotalNum = None
+        self.AsyncOffset = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = ClbInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.AsyncTotalNum = params.get("AsyncTotalNum")
+        self.AsyncOffset = params.get("AsyncOffset")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostCosInstanceListRequest(AbstractModel):
+    """DescribeHostCosInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param ResourceType: 部署资源类型 cos
+        :type ResourceType: str
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表
+        :type Filters: list of Filter
+        """
+        self.CertificateId = None
+        self.ResourceType = None
+        self.IsCache = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ResourceType = params.get("ResourceType")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostCosInstanceListResponse(AbstractModel):
+    """DescribeHostCosInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: COS实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of CosInstanceDetail
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param AsyncTotalNum: 异步刷新总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncTotalNum: int
+        :param AsyncOffset: 异步刷新当前执行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncOffset: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.TotalCount = None
+        self.AsyncTotalNum = None
+        self.AsyncOffset = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = CosInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.AsyncTotalNum = params.get("AsyncTotalNum")
+        self.AsyncOffset = params.get("AsyncOffset")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostDdosInstanceListRequest(AbstractModel):
+    """DescribeHostDdosInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :type Filters: list of Filter
+        :param OldCertificateId: 已部署的证书ID
+        :type OldCertificateId: str
+        """
+        self.CertificateId = None
+        self.ResourceType = None
+        self.IsCache = None
+        self.Filters = None
+        self.OldCertificateId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ResourceType = params.get("ResourceType")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostDdosInstanceListResponse(AbstractModel):
+    """DescribeHostDdosInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: DDOS实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of DdosInstanceDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = DdosInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostDeployRecordDetailRequest(AbstractModel):
+    """DescribeHostDeployRecordDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 待部署的证书ID
+        :type DeployRecordId: str
+        :param Offset: 分页偏移量，从0开始。
+        :type Offset: int
+        :param Limit: 每页数量，默认10。
+        :type Limit: int
+        """
+        self.DeployRecordId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostDeployRecordDetailResponse(AbstractModel):
+    """DescribeHostDeployRecordDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param DeployRecordDetailList: 证书部署记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployRecordDetailList: list of DeployRecordDetail
+        :param SuccessTotalCount: 成功总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessTotalCount: int
+        :param FailedTotalCount: 失败总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedTotalCount: int
+        :param RunningTotalCount: 部署中总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningTotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DeployRecordDetailList = None
+        self.SuccessTotalCount = None
+        self.FailedTotalCount = None
+        self.RunningTotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DeployRecordDetailList") is not None:
+            self.DeployRecordDetailList = []
+            for item in params.get("DeployRecordDetailList"):
+                obj = DeployRecordDetail()
+                obj._deserialize(item)
+                self.DeployRecordDetailList.append(obj)
+        self.SuccessTotalCount = params.get("SuccessTotalCount")
+        self.FailedTotalCount = params.get("FailedTotalCount")
+        self.RunningTotalCount = params.get("RunningTotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostDeployRecordRequest(AbstractModel):
+    """DescribeHostDeployRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param Offset: 分页偏移量，从0开始。
+        :type Offset: int
+        :param Limit: 每页数量，默认10。
+        :type Limit: int
+        :param ResourceType: 资源类型
+        :type ResourceType: str
+        """
+        self.CertificateId = None
+        self.Offset = None
+        self.Limit = None
+        self.ResourceType = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostDeployRecordResponse(AbstractModel):
+    """DescribeHostDeployRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param DeployRecordList: 证书部署记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployRecordList: list of DeployRecordInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DeployRecordList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DeployRecordList") is not None:
+            self.DeployRecordList = []
+            for item in params.get("DeployRecordList"):
+                obj = DeployRecordInfo()
+                obj._deserialize(item)
+                self.DeployRecordList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostLighthouseInstanceListRequest(AbstractModel):
+    """DescribeHostLighthouseInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param ResourceType: 部署资源类型 lighthouse
+        :type ResourceType: str
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表
+        :type Filters: list of Filter
+        """
+        self.CertificateId = None
+        self.ResourceType = None
+        self.IsCache = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ResourceType = params.get("ResourceType")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostLighthouseInstanceListResponse(AbstractModel):
+    """DescribeHostLighthouseInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: Lighthouse实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of LighthouseInstanceDetail
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = LighthouseInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostLiveInstanceListRequest(AbstractModel):
+    """DescribeHostLiveInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :type Filters: list of Filter
+        :param OldCertificateId: 已部署的证书ID
+        :type OldCertificateId: str
+        """
+        self.CertificateId = None
+        self.ResourceType = None
+        self.IsCache = None
+        self.Filters = None
+        self.OldCertificateId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ResourceType = params.get("ResourceType")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostLiveInstanceListResponse(AbstractModel):
+    """DescribeHostLiveInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: live实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of LiveInstanceDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = LiveInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostTeoInstanceListRequest(AbstractModel):
+    """DescribeHostTeoInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :type Filters: list of Filter
+        :param OldCertificateId: 已部署的证书ID
+        :type OldCertificateId: str
+        """
+        self.CertificateId = None
+        self.ResourceType = None
+        self.IsCache = None
+        self.Filters = None
+        self.OldCertificateId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ResourceType = params.get("ResourceType")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostTeoInstanceListResponse(AbstractModel):
+    """DescribeHostTeoInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: teo实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of TeoInstanceDetail
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TeoInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostTkeInstanceListRequest(AbstractModel):
+    """DescribeHostTkeInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param Offset: 分页偏移量，从0开始。
+        :type Offset: int
+        :param Limit: 每页数量，默认10。
+        :type Limit: int
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :type Filters: list of Filter
+        :param AsyncCache: 是否异步缓存
+        :type AsyncCache: int
+        :param OldCertificateId: 原证书ID
+        :type OldCertificateId: str
+        """
+        self.CertificateId = None
+        self.Offset = None
+        self.Limit = None
+        self.IsCache = None
+        self.Filters = None
+        self.AsyncCache = None
+        self.OldCertificateId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.AsyncCache = params.get("AsyncCache")
+        self.OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostTkeInstanceListResponse(AbstractModel):
+    """DescribeHostTkeInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param InstanceList: CLB实例监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of TkeInstanceDetail
+        :param AsyncTotalNum: 异步刷新总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncTotalNum: int
+        :param AsyncOffset: 异步刷新当前执行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncOffset: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceList = None
+        self.AsyncTotalNum = None
+        self.AsyncOffset = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TkeInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.AsyncTotalNum = params.get("AsyncTotalNum")
+        self.AsyncOffset = params.get("AsyncOffset")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostUpdateRecordDetailRequest(AbstractModel):
+    """DescribeHostUpdateRecordDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 待部署的证书ID
+        :type DeployRecordId: str
+        """
+        self.DeployRecordId = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostUpdateRecordDetailResponse(AbstractModel):
+    """DescribeHostUpdateRecordDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RecordDetailList: 证书部署记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordDetailList: list of UpdateRecordDetails
+        :param SuccessTotalCount: 成功总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessTotalCount: int
+        :param FailedTotalCount: 失败总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedTotalCount: int
+        :param RunningTotalCount: 部署中总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningTotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RecordDetailList = None
+        self.SuccessTotalCount = None
+        self.FailedTotalCount = None
+        self.RunningTotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RecordDetailList") is not None:
+            self.RecordDetailList = []
+            for item in params.get("RecordDetailList"):
+                obj = UpdateRecordDetails()
+                obj._deserialize(item)
+                self.RecordDetailList.append(obj)
+        self.SuccessTotalCount = params.get("SuccessTotalCount")
+        self.FailedTotalCount = params.get("FailedTotalCount")
+        self.RunningTotalCount = params.get("RunningTotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostUpdateRecordRequest(AbstractModel):
+    """DescribeHostUpdateRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 分页偏移量，从0开始。
+        :type Offset: int
+        :param Limit: 每页数量，默认10。
+        :type Limit: int
+        :param CertificateId: 新证书ID
+        :type CertificateId: str
+        :param OldCertificateId: 原证书ID
+        :type OldCertificateId: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.CertificateId = None
+        self.OldCertificateId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.CertificateId = params.get("CertificateId")
+        self.OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostUpdateRecordResponse(AbstractModel):
+    """DescribeHostUpdateRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param DeployRecordList: 证书部署记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployRecordList: list of UpdateRecordInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DeployRecordList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DeployRecordList") is not None:
+            self.DeployRecordList = []
+            for item in params.get("DeployRecordList"):
+                obj = UpdateRecordInfo()
+                obj._deserialize(item)
+                self.DeployRecordList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostVodInstanceListRequest(AbstractModel):
+    """DescribeHostVodInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param ResourceType: 部署资源类型 vod
+        :type ResourceType: str
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表
+        :type Filters: list of Filter
+        :param OldCertificateId: 已部署的证书ID
+        :type OldCertificateId: str
+        """
+        self.CertificateId = None
+        self.ResourceType = None
+        self.IsCache = None
+        self.Filters = None
+        self.OldCertificateId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ResourceType = params.get("ResourceType")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostVodInstanceListResponse(AbstractModel):
+    """DescribeHostVodInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: Vod实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of VodInstanceDetail
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = VodInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeHostWafInstanceListRequest(AbstractModel):
+    """DescribeHostWafInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 待部署的证书ID
+        :type CertificateId: str
+        :param ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param IsCache: 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+        :type IsCache: int
+        :param Filters: 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+        :type Filters: list of Filter
+        :param OldCertificateId: 已部署的证书ID
+        :type OldCertificateId: str
+        """
+        self.CertificateId = None
+        self.ResourceType = None
+        self.IsCache = None
+        self.Filters = None
+        self.OldCertificateId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.ResourceType = params.get("ResourceType")
+        self.IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostWafInstanceListResponse(AbstractModel):
+    """DescribeHostWafInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceList: WAF实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of LiveInstanceDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = LiveInstanceDetail()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeManagerDetailRequest(AbstractModel):
     """DescribeManagerDetail请求参数结构体
 
@@ -2095,6 +3887,34 @@ class DvAuths(AbstractModel):
         
 
 
+class Filter(AbstractModel):
+    """过滤参数列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FilterKey: 过滤参数key
+        :type FilterKey: str
+        :param FilterValue: 过滤参数值
+        :type FilterValue: str
+        """
+        self.FilterKey = None
+        self.FilterValue = None
+
+
+    def _deserialize(self, params):
+        self.FilterKey = params.get("FilterKey")
+        self.FilterValue = params.get("FilterValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostCertificateRequest(AbstractModel):
     """HostCertificate请求参数结构体
 
@@ -2144,6 +3964,77 @@ class HostCertificateResponse(AbstractModel):
             self.CertHostingInfo = CertHostingInfo()
             self.CertHostingInfo._deserialize(params.get("CertHostingInfo"))
         self.RequestId = params.get("RequestId")
+
+
+class LighthouseInstanceDetail(AbstractModel):
+    """Lighthouse实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param IP: IP地址
+        :type IP: list of str
+        :param Domain: 可选择域名
+        :type Domain: list of str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.IP = None
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.IP = params.get("IP")
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveInstanceDetail(AbstractModel):
+    """live实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param CertId: 已绑定的证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        :param Status: -1：域名未关联证书。
+1： 域名https已开启。
+0： 域名https已关闭。
+        :type Status: int
+        """
+        self.Domain = None
+        self.CertId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.CertId = params.get("CertId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ManagerInfo(AbstractModel):
@@ -2707,6 +4598,34 @@ class ReplaceCertificateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResourceTypeRegions(AbstractModel):
+    """云资源地域列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceType: 云资源类型
+        :type ResourceType: str
+        :param Regions: 地域列表
+        :type Regions: list of str
+        """
+        self.ResourceType = None
+        self.Regions = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        self.Regions = params.get("Regions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RevokeCertificateRequest(AbstractModel):
     """RevokeCertificate请求参数结构体
 
@@ -3200,6 +5119,523 @@ class Tags(AbstractModel):
         
 
 
+class TeoInstanceDetail(AbstractModel):
+    """teo实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Host: 域名
+        :type Host: str
+        :param CertId: 证书ID
+        :type CertId: str
+        """
+        self.Host = None
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        self.CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeIngressDetail(AbstractModel):
+    """tke ingress实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IngressName: ingress名称
+        :type IngressName: str
+        :param TlsDomains: tls域名列表
+        :type TlsDomains: list of str
+        :param Domains: ingress域名列表
+        :type Domains: list of str
+        """
+        self.IngressName = None
+        self.TlsDomains = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.IngressName = params.get("IngressName")
+        self.TlsDomains = params.get("TlsDomains")
+        self.Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeInstanceDetail(AbstractModel):
+    """tke实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param NamespaceList: 集群命名空间列表
+        :type NamespaceList: list of TkeNameSpaceDetail
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+        self.NamespaceList = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        if params.get("NamespaceList") is not None:
+            self.NamespaceList = []
+            for item in params.get("NamespaceList"):
+                obj = TkeNameSpaceDetail()
+                obj._deserialize(item)
+                self.NamespaceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeNameSpaceDetail(AbstractModel):
+    """tke namespace详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: namespace名称
+        :type Name: str
+        :param SecretList: secret列表
+        :type SecretList: list of TkeSecretDetail
+        """
+        self.Name = None
+        self.SecretList = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("SecretList") is not None:
+            self.SecretList = []
+            for item in params.get("SecretList"):
+                obj = TkeSecretDetail()
+                obj._deserialize(item)
+                self.SecretList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeSecretDetail(AbstractModel):
+    """tke secret详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: secret名称
+        :type Name: str
+        :param CertId: 证书ID
+        :type CertId: str
+        :param IngressList: ingress列表
+        :type IngressList: list of TkeIngressDetail
+        :param NoMatchDomains: 和新证书不匹配的域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoMatchDomains: list of str
+        """
+        self.Name = None
+        self.CertId = None
+        self.IngressList = None
+        self.NoMatchDomains = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CertId = params.get("CertId")
+        if params.get("IngressList") is not None:
+            self.IngressList = []
+            for item in params.get("IngressList"):
+                obj = TkeIngressDetail()
+                obj._deserialize(item)
+                self.IngressList.append(obj)
+        self.NoMatchDomains = params.get("NoMatchDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCertificateInstanceRequest(AbstractModel):
+    """UpdateCertificateInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 一键更新新证书ID
+        :type CertificateId: str
+        :param OldCertificateId: 一键更新原证书ID
+        :type OldCertificateId: str
+        :param ResourceTypes: 需要部署的资源类型
+        :type ResourceTypes: list of str
+        :param Regions: 需要部署的地域列表（废弃）
+        :type Regions: list of str
+        :param ResourceTypesRegions: 云资源需要部署的地域列表
+        :type ResourceTypesRegions: list of ResourceTypeRegions
+        """
+        self.CertificateId = None
+        self.OldCertificateId = None
+        self.ResourceTypes = None
+        self.Regions = None
+        self.ResourceTypesRegions = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.OldCertificateId = params.get("OldCertificateId")
+        self.ResourceTypes = params.get("ResourceTypes")
+        self.Regions = params.get("Regions")
+        if params.get("ResourceTypesRegions") is not None:
+            self.ResourceTypesRegions = []
+            for item in params.get("ResourceTypesRegions"):
+                obj = ResourceTypeRegions()
+                obj._deserialize(item)
+                self.ResourceTypesRegions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCertificateInstanceResponse(AbstractModel):
+    """UpdateCertificateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 云资源部署任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployRecordId: int
+        :param DeployStatus: 部署状态，1表示部署成功，0表示部署失败
+        :type DeployStatus: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeployRecordId = None
+        self.DeployStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        self.DeployStatus = params.get("DeployStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateCertificateRecordRetryRequest(AbstractModel):
+    """UpdateCertificateRecordRetry请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 待重试部署记录ID
+        :type DeployRecordId: int
+        :param DeployRecordDetailId: 待重试部署记录详情ID
+        :type DeployRecordDetailId: int
+        """
+        self.DeployRecordId = None
+        self.DeployRecordDetailId = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        self.DeployRecordDetailId = params.get("DeployRecordDetailId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCertificateRecordRetryResponse(AbstractModel):
+    """UpdateCertificateRecordRetry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateCertificateRecordRollbackRequest(AbstractModel):
+    """UpdateCertificateRecordRollback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 待重试部署记录ID
+        :type DeployRecordId: int
+        """
+        self.DeployRecordId = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCertificateRecordRollbackResponse(AbstractModel):
+    """UpdateCertificateRecordRollback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeployRecordId: 回滚部署记录ID
+        :type DeployRecordId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeployRecordId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeployRecordId = params.get("DeployRecordId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateRecordDetail(AbstractModel):
+    """更新记录详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 详情记录id
+        :type Id: int
+        :param CertId: 新证书ID
+        :type CertId: str
+        :param OldCertId: 旧证书ID
+        :type OldCertId: str
+        :param Domains: 部署域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domains: list of str
+        :param ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param Region: 部署地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Status: 部署状态
+        :type Status: int
+        :param ErrorMsg: 部署错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param CreateTime: 部署时间
+        :type CreateTime: str
+        :param UpdateTime: 最后一次更新时间
+        :type UpdateTime: str
+        :param InstanceId: 部署实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 部署实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param ListenerId: 部署监听器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param ListenerName: 部署监听器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerName: str
+        :param Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param SniSwitch: 是否开启SNI
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SniSwitch: int
+        :param Bucket: bucket名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        """
+        self.Id = None
+        self.CertId = None
+        self.OldCertId = None
+        self.Domains = None
+        self.ResourceType = None
+        self.Region = None
+        self.Status = None
+        self.ErrorMsg = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.ListenerId = None
+        self.ListenerName = None
+        self.Protocol = None
+        self.SniSwitch = None
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.CertId = params.get("CertId")
+        self.OldCertId = params.get("OldCertId")
+        self.Domains = params.get("Domains")
+        self.ResourceType = params.get("ResourceType")
+        self.Region = params.get("Region")
+        self.Status = params.get("Status")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.ListenerId = params.get("ListenerId")
+        self.ListenerName = params.get("ListenerName")
+        self.Protocol = params.get("Protocol")
+        self.SniSwitch = params.get("SniSwitch")
+        self.Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRecordDetails(AbstractModel):
+    """更新记录详情列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceType: 部署资源类型
+        :type ResourceType: str
+        :param List: 部署资源详情列表
+        :type List: list of UpdateRecordDetail
+        """
+        self.ResourceType = None
+        self.List = None
+
+
+    def _deserialize(self, params):
+        self.ResourceType = params.get("ResourceType")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = UpdateRecordDetail()
+                obj._deserialize(item)
+                self.List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRecordInfo(AbstractModel):
+    """部署记录信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 记录ID
+        :type Id: int
+        :param CertId: 新证书ID
+        :type CertId: str
+        :param OldCertId: 原证书ID
+        :type OldCertId: str
+        :param ResourceTypes: 部署资源类型列表
+        :type ResourceTypes: list of str
+        :param Regions: 部署地域列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regions: list of str
+        :param Status: 部署状态
+        :type Status: int
+        :param CreateTime: 部署时间
+        :type CreateTime: str
+        :param UpdateTime: 最后一次更新时间
+        :type UpdateTime: str
+        """
+        self.Id = None
+        self.CertId = None
+        self.OldCertId = None
+        self.ResourceTypes = None
+        self.Regions = None
+        self.Status = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.CertId = params.get("CertId")
+        self.OldCertId = params.get("OldCertId")
+        self.ResourceTypes = params.get("ResourceTypes")
+        self.Regions = params.get("Regions")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UploadCertificateRequest(AbstractModel):
     """UploadCertificate请求参数结构体
 
@@ -3423,3 +5859,31 @@ class VerifyManagerResponse(AbstractModel):
     def _deserialize(self, params):
         self.ManagerId = params.get("ManagerId")
         self.RequestId = params.get("RequestId")
+
+
+class VodInstanceDetail(AbstractModel):
+    """Vod实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param CertId: 证书ID
+        :type CertId: str
+        """
+        self.Domain = None
+        self.CertId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

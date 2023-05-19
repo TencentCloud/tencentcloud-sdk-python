@@ -621,6 +621,10 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`
         :param Progress: 智能分类任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 智能分类任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 智能分类任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -629,6 +633,8 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -643,6 +649,8 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
             self.Output = AiAnalysisTaskClassificationOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -736,6 +744,10 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
         :param Progress: 智能封面任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 智能封面任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 智能封面任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -744,6 +756,8 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -758,6 +772,8 @@ class AiAnalysisTaskCoverResult(AbstractModel):
             self.Output = AiAnalysisTaskCoverOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -851,6 +867,10 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`
         :param Progress: 智能按帧标签任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 智能按帧标签任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 智能按帧标签任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -859,6 +879,8 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -873,6 +895,8 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
             self.Output = AiAnalysisTaskFrameTagOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -966,6 +990,10 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`
         :param Progress: 智能精彩片段任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 智能精彩片段任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 智能精彩片段任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -974,6 +1002,8 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -988,6 +1018,8 @@ class AiAnalysisTaskHighlightResult(AbstractModel):
             self.Output = AiAnalysisTaskHighlightOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1105,6 +1137,10 @@ class AiAnalysisTaskTagResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`
         :param Progress: 智能标签任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 智能标签任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 智能标签任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1113,6 +1149,8 @@ class AiAnalysisTaskTagResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -1127,6 +1165,8 @@ class AiAnalysisTaskTagResult(AbstractModel):
             self.Output = AiAnalysisTaskTagOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1379,8 +1419,12 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         :param Output: 语音全文识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultOutput`
-        :param Progress: 任务进度，取值范围 [0-100] 。
+        :param Progress: 语音全文识别任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 语音全文识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 语音全文识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1389,6 +1433,8 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -1403,6 +1449,8 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
             self.Output = AiRecognitionTaskAsrFullTextResultOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1575,6 +1623,10 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
         :param Progress: 语音关键词识别任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 语音关键词识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 语音关键词识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1583,6 +1635,8 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -1597,6 +1651,8 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
             self.Output = AiRecognitionTaskAsrWordsResultOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1755,6 +1811,10 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`
         :param Progress: 人脸识别任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 人脸识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 人脸识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1763,6 +1823,8 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -1777,6 +1839,8 @@ class AiRecognitionTaskFaceResult(AbstractModel):
             self.Output = AiRecognitionTaskFaceResultOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1949,6 +2013,10 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`
         :param Progress: 视频片头片尾识别任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 视频片头片尾识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 视频片头片尾识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1957,6 +2025,8 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -1971,6 +2041,8 @@ class AiRecognitionTaskHeadTailResult(AbstractModel):
             self.Output = AiRecognitionTaskHeadTailResultOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2086,6 +2158,10 @@ class AiRecognitionTaskObjectResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`
         :param Progress: 物体识别任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 物体识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 物体识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2094,6 +2170,8 @@ class AiRecognitionTaskObjectResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -2108,6 +2186,8 @@ class AiRecognitionTaskObjectResult(AbstractModel):
             self.Output = AiRecognitionTaskObjectResultOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2270,6 +2350,10 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`
         :param Progress: 文本全文识别任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 文本全文识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 文本全文识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2278,6 +2362,8 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -2292,6 +2378,8 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
             self.Output = AiRecognitionTaskOcrFullTextResultOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2454,6 +2542,10 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
         :param Progress: 文本关键词识别任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 文本关键词识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 文本关键词识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2462,6 +2554,8 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -2476,6 +2570,8 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
             self.Output = AiRecognitionTaskOcrWordsResultOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2639,6 +2735,10 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`
         :param Progress: 视频拆条任务进度，取值范围 [0-100] 。
         :type Progress: int
+        :param BeginProcessTime: 视频拆条任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 视频拆条任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -2647,6 +2747,8 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
         self.Input = None
         self.Output = None
         self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
 
 
     def _deserialize(self, params):
@@ -2661,6 +2763,8 @@ class AiRecognitionTaskSegmentResult(AbstractModel):
             self.Output = AiRecognitionTaskSegmentResultOutput()
             self.Output._deserialize(params.get("Output"))
         self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3452,6 +3556,8 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :param Output: 音视频审核 Ocr 文字涉及令人不适宜信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`
+        :param Progress: 音视频审核 Ocr 文字涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -3459,6 +3565,7 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -3472,6 +3579,7 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiReviewPoliticalOcrTaskOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13634,12 +13742,16 @@ class ExtractTraceWatermarkTaskInput(AbstractModel):
         r"""
         :param Url: 需要提取水印的媒体 URL。
         :type Url: str
+        :param FileId: 媒体文件 ID。Url 对应的原始媒体文件 ID。
+        :type FileId: str
         """
         self.Url = None
+        self.FileId = None
 
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
+        self.FileId = params.get("FileId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

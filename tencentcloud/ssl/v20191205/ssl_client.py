@@ -210,6 +210,75 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeployCertificateInstance(self, request):
+        """证书部署到云资源实例列表
+
+        :param request: Request instance for DeployCertificateInstance.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DeployCertificateInstanceRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DeployCertificateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployCertificateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployCertificateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeployCertificateRecordRetry(self, request):
+        """云资源部署重试部署记录
+
+        :param request: Request instance for DeployCertificateRecordRetry.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DeployCertificateRecordRetryRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DeployCertificateRecordRetryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployCertificateRecordRetry", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployCertificateRecordRetryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeployCertificateRecordRollback(self, request):
+        """云资源部署一键回滚
+
+        :param request: Request instance for DeployCertificateRecordRollback.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DeployCertificateRecordRollbackRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DeployCertificateRecordRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployCertificateRecordRollback", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployCertificateRecordRollbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCertificate(self, request):
         """本接口（DescribeCertificate）用于获取证书信息。
 
@@ -339,6 +408,351 @@ class SslClient(AbstractClient):
             body = self.call("DescribeDeployedResources", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDeployedResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostApiGatewayInstanceList(self, request):
+        """查询证书apiGateway云资源部署实例列表
+
+        :param request: Request instance for DescribeHostApiGatewayInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostApiGatewayInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostApiGatewayInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostApiGatewayInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostApiGatewayInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostCdnInstanceList(self, request):
+        """查询证书cdn云资源部署实例列表
+
+        :param request: Request instance for DescribeHostCdnInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostCdnInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostCdnInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostCdnInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostCdnInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostClbInstanceList(self, request):
+        """查询证书clb云资源部署实例列表
+
+        :param request: Request instance for DescribeHostClbInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostClbInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostClbInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostClbInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostClbInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostCosInstanceList(self, request):
+        """查询证书cos云资源部署实例列表
+
+        :param request: Request instance for DescribeHostCosInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostCosInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostCosInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostCosInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostCosInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostDdosInstanceList(self, request):
+        """查询证书ddos云资源部署实例列表
+
+        :param request: Request instance for DescribeHostDdosInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostDdosInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostDdosInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostDdosInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostDdosInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostDeployRecord(self, request):
+        """查询证书云资源部署记录列表
+
+        :param request: Request instance for DescribeHostDeployRecord.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostDeployRecordRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostDeployRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostDeployRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostDeployRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostDeployRecordDetail(self, request):
+        """查询证书云资源部署记录详情列表
+
+        :param request: Request instance for DescribeHostDeployRecordDetail.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostDeployRecordDetailRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostDeployRecordDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostDeployRecordDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostDeployRecordDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostLighthouseInstanceList(self, request):
+        """查询证书Lighthouse云资源部署实例列表
+
+        :param request: Request instance for DescribeHostLighthouseInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostLighthouseInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostLighthouseInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostLighthouseInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostLighthouseInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostLiveInstanceList(self, request):
+        """查询证书live云资源部署实例列表
+
+        :param request: Request instance for DescribeHostLiveInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostLiveInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostLiveInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostLiveInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostLiveInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostTeoInstanceList(self, request):
+        """查询证书EdgeOne云资源部署实例列表
+
+        :param request: Request instance for DescribeHostTeoInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostTeoInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostTeoInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostTeoInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostTeoInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostTkeInstanceList(self, request):
+        """查询证书tke云资源部署实例列表
+
+        :param request: Request instance for DescribeHostTkeInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostTkeInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostTkeInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostTkeInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostTkeInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostUpdateRecord(self, request):
+        """查询证书云资源更新记录列表
+
+        :param request: Request instance for DescribeHostUpdateRecord.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostUpdateRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostUpdateRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostUpdateRecordDetail(self, request):
+        """查询证书云资源更新记录详情列表
+
+        :param request: Request instance for DescribeHostUpdateRecordDetail.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordDetailRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostUpdateRecordDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostUpdateRecordDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostVodInstanceList(self, request):
+        """查询证书Vod云资源部署实例列表
+
+        :param request: Request instance for DescribeHostVodInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostVodInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostVodInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostVodInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostVodInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeHostWafInstanceList(self, request):
+        """查询证书waf云资源部署实例列表
+
+        :param request: Request instance for DescribeHostWafInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostWafInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostWafInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostWafInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostWafInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -615,6 +1029,75 @@ class SslClient(AbstractClient):
             body = self.call("SubmitCertificateInformation", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitCertificateInformationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateCertificateInstance(self, request):
+        """一键更新旧证书资源
+
+        :param request: Request instance for UpdateCertificateInstance.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateInstanceRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCertificateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCertificateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateCertificateRecordRetry(self, request):
+        """云资源更新重试部署记录
+
+        :param request: Request instance for UpdateCertificateRecordRetry.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRetryRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRetryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCertificateRecordRetry", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCertificateRecordRetryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateCertificateRecordRollback(self, request):
+        """云资源更新一键回滚
+
+        :param request: Request instance for UpdateCertificateRecordRollback.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRollbackRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCertificateRecordRollback", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCertificateRecordRollbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

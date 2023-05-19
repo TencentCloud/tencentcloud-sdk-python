@@ -5551,16 +5551,20 @@ class CreateVpnGatewaySslClientRequest(AbstractModel):
         r"""
         :param SslVpnServerId: SSL-VPN-SERVER 实例ID。
         :type SslVpnServerId: str
-        :param SslVpnClientName: name
+        :param SslVpnClientName: SSL-VPN-CLIENT实例Name。不可和SslVpnClientNames同时使用。
         :type SslVpnClientName: str
+        :param SslVpnClientNames: SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。
+        :type SslVpnClientNames: list of str
         """
         self.SslVpnServerId = None
         self.SslVpnClientName = None
+        self.SslVpnClientNames = None
 
 
     def _deserialize(self, params):
         self.SslVpnServerId = params.get("SslVpnServerId")
         self.SslVpnClientName = params.get("SslVpnClientName")
+        self.SslVpnClientNames = params.get("SslVpnClientNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7616,14 +7620,18 @@ class DeleteVpnGatewaySslClientRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。不可和SslVpnClientIds同时使用。
         :type SslVpnClientId: str
+        :param SslVpnClientIds: SSL-VPN-CLIENT 实例ID列表。批量删除时使用。不可和SslVpnClientId同时使用。
+        :type SslVpnClientIds: list of str
         """
         self.SslVpnClientId = None
+        self.SslVpnClientIds = None
 
 
     def _deserialize(self, params):
         self.SslVpnClientId = params.get("SslVpnClientId")
+        self.SslVpnClientIds = params.get("SslVpnClientIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13986,14 +13994,18 @@ class DisableVpnGatewaySslClientCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。不可和SslVpnClientIds同时使用。
         :type SslVpnClientId: str
+        :param SslVpnClientIds: SSL-VPN-CLIENT 实例ID列表。批量禁用时使用。不可和SslVpnClientId同时使用。
+        :type SslVpnClientIds: list of str
         """
         self.SslVpnClientId = None
+        self.SslVpnClientIds = None
 
 
     def _deserialize(self, params):
         self.SslVpnClientId = params.get("SslVpnClientId")
+        self.SslVpnClientIds = params.get("SslVpnClientIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14409,22 +14421,26 @@ class DownloadVpnGatewaySslClientCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。不可以和SslVpnClientIds同时使用。
         :type SslVpnClientId: str
-        :param SamlToken: SAML-TOKEN
+        :param SamlToken: SAML Token（SAML令牌）。
         :type SamlToken: str
-        :param IsVpnPortal: VPN门户网站使用。默认Flase
+        :param IsVpnPortal: VPN门户网站使用。默认False
         :type IsVpnPortal: bool
+        :param SslVpnClientIds: SSL-VPN-CLIENT 实例ID列表。批量下载时使用。不可以和SslVpnClientId同时使用。
+        :type SslVpnClientIds: list of str
         """
         self.SslVpnClientId = None
         self.SamlToken = None
         self.IsVpnPortal = None
+        self.SslVpnClientIds = None
 
 
     def _deserialize(self, params):
         self.SslVpnClientId = params.get("SslVpnClientId")
         self.SamlToken = params.get("SamlToken")
         self.IsVpnPortal = params.get("IsVpnPortal")
+        self.SslVpnClientIds = params.get("SslVpnClientIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14441,11 +14457,11 @@ class DownloadVpnGatewaySslClientCertResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SslClientConfigsSet: 无
+        :param SslClientConfigsSet: SSL-VPN 客户端配置。
         :type SslClientConfigsSet: str
-        :param SslClientConfig: SSL-VPN client配置
+        :param SslClientConfig: SSL-VPN 客户端配置。
         :type SslClientConfig: list of SslClientConfig
-        :param Authenticated: 是否鉴权成功 只有传入SamlToken 才生效
+        :param Authenticated: 是否鉴权成功 只有传入SamlToken 才生效，1为成功，0为失败。
         :type Authenticated: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14745,14 +14761,18 @@ class EnableVpnGatewaySslClientCertRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。不可和SslVpnClientIds同时使用。
         :type SslVpnClientId: str
+        :param SslVpnClientIds: SSL-VPN-CLIENT 实例ID列表。批量启用时使用。不可和SslVpnClientId同时使用。
+        :type SslVpnClientIds: list of str
         """
         self.SslVpnClientId = None
+        self.SslVpnClientIds = None
 
 
     def _deserialize(self, params):
         self.SslVpnClientId = params.get("SslVpnClientId")
+        self.SslVpnClientIds = params.get("SslVpnClientIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19931,7 +19951,7 @@ MIGRATING：迁移中
 DELETING：删除中
 AVAILABLE：可用的
         :type State: str
-        :param QosLevel: IP服务质量等级，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+        :param QosLevel: IP服务质量等级，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
         :type QosLevel: str
         """
         self.PrivateIpAddress = None
@@ -22356,11 +22376,14 @@ class SslClientConfig(AbstractModel):
         :type SslVpnKey: str
         :param SslVpnCert: 客户端证书
         :type SslVpnCert: str
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。
+        :type SslVpnClientId: str
         """
         self.SslVpnClientConfiguration = None
         self.SslVpnRootCert = None
         self.SslVpnKey = None
         self.SslVpnCert = None
+        self.SslVpnClientId = None
 
 
     def _deserialize(self, params):
@@ -22368,6 +22391,7 @@ class SslClientConfig(AbstractModel):
         self.SslVpnRootCert = params.get("SslVpnRootCert")
         self.SslVpnKey = params.get("SslVpnKey")
         self.SslVpnCert = params.get("SslVpnCert")
+        self.SslVpnClientId = params.get("SslVpnClientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

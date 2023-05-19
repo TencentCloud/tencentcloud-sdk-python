@@ -9890,6 +9890,9 @@ class TextVehicleBack(AbstractModel):
         :param TotalQuasiMass: 准牵引总质量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalQuasiMass: str
+        :param SubPageCode: 副页编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubPageCode: str
         """
         self.PlateNo = None
         self.FileNo = None
@@ -9901,6 +9904,7 @@ class TextVehicleBack(AbstractModel):
         self.Marks = None
         self.Record = None
         self.TotalQuasiMass = None
+        self.SubPageCode = None
 
 
     def _deserialize(self, params):
@@ -9914,6 +9918,7 @@ class TextVehicleBack(AbstractModel):
         self.Marks = params.get("Marks")
         self.Record = params.get("Record")
         self.TotalQuasiMass = params.get("TotalQuasiMass")
+        self.SubPageCode = params.get("SubPageCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -601,6 +601,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLogs(self, request):
+        """日志审计日志查询
+
+        :param request: Request instance for DescribeLogs.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeLogsRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNatAcRule(self, request):
         """查询NAT访问控制列表
 

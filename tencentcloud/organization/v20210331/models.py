@@ -991,19 +991,22 @@ class ListOrganizationIdentityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量。
+        :param Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
         :type Offset: int
-        :param Limit: 限制数目。最大50
+        :param Limit: 限制数目。取值范围：1~50。默认值：10。
         :type Limit: int
         :param SearchKey: 名称搜索关键字。
         :type SearchKey: str
         :param IdentityId: 身份ID搜索。
         :type IdentityId: int
+        :param IdentityType: 身份类型。取值范围 1-预设, 2-自定义
+        :type IdentityType: int
         """
         self.Offset = None
         self.Limit = None
         self.SearchKey = None
         self.IdentityId = None
+        self.IdentityType = None
 
 
     def _deserialize(self, params):
@@ -1011,6 +1014,7 @@ class ListOrganizationIdentityRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.SearchKey = params.get("SearchKey")
         self.IdentityId = params.get("IdentityId")
+        self.IdentityType = params.get("IdentityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

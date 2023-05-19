@@ -2611,7 +2611,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteVpnGatewaySslClient(self, request):
-        """删除SSL-VPN-CLIENT
+        """本接口（DeleteVpnGatewaySslClient）用于删除SSL-VPN-CLIENT。
 
         :param request: Request instance for DeleteVpnGatewaySslClient.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewaySslClientRequest`
@@ -5012,7 +5012,7 @@ class VpcClient(AbstractClient):
 
 
     def DownloadVpnGatewaySslClientCert(self, request):
-        """下载SSL-VPN-CLIENT 客户端证书
+        """本接口（DownloadVpnGatewaySslClientCert）用于下载SSL-VPN-CLIENT 客户端证书。
 
         :param request: Request instance for DownloadVpnGatewaySslClientCert.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DownloadVpnGatewaySslClientCertRequest`
@@ -5175,7 +5175,7 @@ class VpcClient(AbstractClient):
 
 
     def EnableVpnGatewaySslClientCert(self, request):
-        """启用SSL-VPN-CLIENT 证书
+        """本接口（EnableVpnGatewaySslClientCert）用于启用SSL-VPN-CLIENT 证书。
 
         :param request: Request instance for EnableVpnGatewaySslClientCert.
         :type request: :class:`tencentcloud.vpc.v20170312.models.EnableVpnGatewaySslClientCertRequest`

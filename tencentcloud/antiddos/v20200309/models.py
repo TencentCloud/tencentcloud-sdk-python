@@ -818,12 +818,16 @@ class BoundIpInfo(AbstractModel):
         :type DeviceType: str
         :param IspCode: 运营商，绑定操作为必填项，解绑操作可不填。0：电信；1：联通；2：移动；5：BGP
         :type IspCode: int
+        :param Domain: 域名化资产对应的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
         """
         self.Ip = None
         self.BizType = None
         self.InstanceId = None
         self.DeviceType = None
         self.IspCode = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -832,6 +836,7 @@ class BoundIpInfo(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.DeviceType = params.get("DeviceType")
         self.IspCode = params.get("IspCode")
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1493,12 +1498,15 @@ class CreateBoundIPRequest(AbstractModel):
         :type UnBoundDevList: list of BoundIpInfo
         :param CopyPolicy: 已弃用，不填
         :type CopyPolicy: str
+        :param FilterRegion: 如果该资源实例为域名化资产则，该参数必填
+        :type FilterRegion: str
         """
         self.Business = None
         self.Id = None
         self.BoundDevList = None
         self.UnBoundDevList = None
         self.CopyPolicy = None
+        self.FilterRegion = None
 
 
     def _deserialize(self, params):
@@ -1517,6 +1525,7 @@ class CreateBoundIPRequest(AbstractModel):
                 obj._deserialize(item)
                 self.UnBoundDevList.append(obj)
         self.CopyPolicy = params.get("CopyPolicy")
+        self.FilterRegion = params.get("FilterRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3454,12 +3463,20 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
         r"""
         :param IpList: IP 资源列表
         :type IpList: list of str
+        :param IdList: 域名化资源传id
+        :type IdList: list of str
+        :param FilterRegion: 地域名称
+        :type FilterRegion: int
         """
         self.IpList = None
+        self.IdList = None
+        self.FilterRegion = None
 
 
     def _deserialize(self, params):
         self.IpList = params.get("IpList")
+        self.IdList = params.get("IdList")
+        self.FilterRegion = params.get("FilterRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3481,10 +3498,14 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
 2 - 正常状态
 3 - 攻击状态
         :type Data: list of KeyValue
+        :param CLBData: 域名化资产的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLBData: list of KeyValue
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Data = None
+        self.CLBData = None
         self.RequestId = None
 
 
@@ -3495,6 +3516,12 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
                 obj = KeyValue()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        if params.get("CLBData") is not None:
+            self.CLBData = []
+            for item in params.get("CLBData"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.CLBData.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5870,6 +5897,8 @@ class DescribeNewL7RulesRequest(AbstractModel):
         :type ProtocolList: list of str
         :param Cname: 高防IP实例的Cname
         :type Cname: str
+        :param Export: 默认为false，当为true时，将不对各个规则做策略检查，直接导出所有规则
+        :type Export: bool
         """
         self.Business = None
         self.StatusList = None
@@ -5879,6 +5908,7 @@ class DescribeNewL7RulesRequest(AbstractModel):
         self.Offset = None
         self.ProtocolList = None
         self.Cname = None
+        self.Export = None
 
 
     def _deserialize(self, params):
@@ -5890,6 +5920,7 @@ class DescribeNewL7RulesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.ProtocolList = params.get("ProtocolList")
         self.Cname = params.get("Cname")
+        self.Export = params.get("Export")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

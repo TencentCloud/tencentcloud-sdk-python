@@ -366,6 +366,9 @@ class CVMAssetVO(AbstractModel):
         :param Os: os全称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Os: str
+        :param RiskExposure: 风险服务暴露
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskExposure: int
         """
         self.AssetId = None
         self.AssetName = None
@@ -415,6 +418,7 @@ class CVMAssetVO(AbstractModel):
         self.Tag = None
         self.MemberId = None
         self.Os = None
+        self.RiskExposure = None
 
 
     def _deserialize(self, params):
@@ -471,6 +475,7 @@ class CVMAssetVO(AbstractModel):
                 self.Tag.append(obj)
         self.MemberId = params.get("MemberId")
         self.Os = params.get("Os")
+        self.RiskExposure = params.get("RiskExposure")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -806,6 +811,9 @@ class DescribeCVMAssetsResponse(AbstractModel):
         :param ZoneList: 可用区列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneList: list of FilterDataObject
+        :param OsList: os列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsList: list of FilterDataObject
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -819,6 +827,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
         self.IpTypeList = None
         self.AppIdList = None
         self.ZoneList = None
+        self.OsList = None
         self.RequestId = None
 
 
@@ -878,6 +887,12 @@ class DescribeCVMAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self.ZoneList.append(obj)
+        if params.get("OsList") is not None:
+            self.OsList = []
+            for item in params.get("OsList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self.OsList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1275,9 +1290,9 @@ class Filter(AbstractModel):
         :type Limit: int
         :param Offset: 查询偏移位置
         :type Offset: int
-        :param Order: 需排序的字段
+        :param Order: 排序采用升序还是降序 升:asc 降 desc
         :type Order: str
-        :param By: 排序采用升序还是降序 升:asc 降 desc
+        :param By: 需排序的字段
         :type By: str
         :param Filters: 过滤的列及内容
         :type Filters: list of WhereFilter
