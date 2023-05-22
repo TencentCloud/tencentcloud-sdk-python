@@ -8828,6 +8828,8 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :type CallbackKey: str
         :param PushExceptionNotifyUrl: 推流异常回调 URL。
         :type PushExceptionNotifyUrl: str
+        :param AudioAuditNotifyUrl: 音频审核回调 URL。
+        :type AudioAuditNotifyUrl: str
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -8839,6 +8841,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self.PornCensorshipNotifyUrl = None
         self.CallbackKey = None
         self.PushExceptionNotifyUrl = None
+        self.AudioAuditNotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -8852,6 +8855,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self.PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self.CallbackKey = params.get("CallbackKey")
         self.PushExceptionNotifyUrl = params.get("PushExceptionNotifyUrl")
+        self.AudioAuditNotifyUrl = params.get("AudioAuditNotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

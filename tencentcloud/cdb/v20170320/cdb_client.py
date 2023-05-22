@@ -1084,33 +1084,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBackupTables(self, request):
-        """该接口已废弃，需要下线
-
-        本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名 (已废弃)。
-        旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
-        新版本支持(CreateBackup)创建逻辑备份的时候，直接发起指定库表备份，用户直接下载该备份文件即可。
-
-        :param request: Request instance for DescribeBackupTables.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupTablesRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeBackupTablesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBackupTables", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBackupTablesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeBackups(self, request):
         """本接口(DescribeBackups)用于查询云数据库实例的备份数据。
 

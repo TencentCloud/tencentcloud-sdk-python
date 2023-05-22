@@ -3723,13 +3723,13 @@ class Objects(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: 迁移对象类型 Partial(部分对象)，默认为Partial
+        :param Mode: 迁移对象类型 Partial(部分对象)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         :param Databases: 同步对象，当 Mode 为 Partial 时，不为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Databases: list of Database
-        :param AdvancedObjects: 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即Options.InitType字段值为Structure或Full
+        :param AdvancedObjects: 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
         :param OnlineDDL: OnlineDDL类型，冗余字段不做配置用途
@@ -4671,7 +4671,7 @@ class StepInfo(AbstractModel):
         :param Warnings: 警告信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Warnings: list of StepTip
-        :param Progress: 当前步骤进度，范围为[0-100]
+        :param Progress: 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
         """
@@ -5457,7 +5457,7 @@ class View(AbstractModel):
         :param ViewName: view名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ViewName: str
-        :param NewViewName: 新view名
+        :param NewViewName: 预留字段、目前暂时不支持view的重命名
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewViewName: str
         """

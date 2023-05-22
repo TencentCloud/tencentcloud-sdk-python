@@ -22110,6 +22110,15 @@ class UnitRuleItem(AbstractModel):
         :param UnitRuleTagList: 规则标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitRuleTagList: list of UnitRuleTag
+        :param ItemIndex: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemIndex: int
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param UpdatedTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
         """
         self.Relationship = None
         self.DestNamespaceId = None
@@ -22120,6 +22129,9 @@ class UnitRuleItem(AbstractModel):
         self.Priority = None
         self.Description = None
         self.UnitRuleTagList = None
+        self.ItemIndex = None
+        self.CreatedTime = None
+        self.UpdatedTime = None
 
 
     def _deserialize(self, params):
@@ -22137,6 +22149,9 @@ class UnitRuleItem(AbstractModel):
                 obj = UnitRuleTag()
                 obj._deserialize(item)
                 self.UnitRuleTagList.append(obj)
+        self.ItemIndex = params.get("ItemIndex")
+        self.CreatedTime = params.get("CreatedTime")
+        self.UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

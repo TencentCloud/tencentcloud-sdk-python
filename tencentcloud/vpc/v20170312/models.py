@@ -1075,7 +1075,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
         :type SecondaryPrivateIpAddressCount: int
-        :param QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+        :param QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
         :type QosLevel: str
         """
         self.NetworkInterfaceId = None
@@ -2946,7 +2946,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
         :type SecondaryPrivateIpAddressCount: int
-        :param QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+        :param QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
         :type QosLevel: str
         :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
         :type SecurityGroupIds: list of str
@@ -4268,7 +4268,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceDescription: str
         :param SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
         :type SecondaryPrivateIpAddressCount: int
-        :param QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+        :param QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
         :type QosLevel: str
         :param SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。
         :type SecurityGroupIds: list of str
@@ -18024,7 +18024,7 @@ class ModifyNetworkInterfaceQosRequest(AbstractModel):
         r"""
         :param NetworkInterfaceIds: 弹性网卡ID，支持批量修改。
         :type NetworkInterfaceIds: list of str
-        :param QosLevel: 服务质量，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+        :param QosLevel: 服务质量，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
         :type QosLevel: str
         :param DirectSendMaxPort: DirectSend端口范围最大值。
         :type DirectSendMaxPort: int

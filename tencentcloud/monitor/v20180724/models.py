@@ -1364,13 +1364,13 @@ class Condition(AbstractModel):
 
 
 class ConditionsTemp(AbstractModel):
-    """告警条件模版
+    """告警条件模板
 
     """
 
     def __init__(self):
         r"""
-        :param TemplateName: 模版名称
+        :param TemplateName: 模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
         :param Condition: 指标触发条件
@@ -4313,6 +4313,8 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :type NoticeIds: list of str
         :param Tags: 模板根据标签过滤
         :type Tags: list of Tag
+        :param OnCallFormIDs: 值班列表
+        :type OnCallFormIDs: list of str
         """
         self.Module = None
         self.PageNumber = None
@@ -4325,6 +4327,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self.GroupIds = None
         self.NoticeIds = None
         self.Tags = None
+        self.OnCallFormIDs = None
 
 
     def _deserialize(self, params):
@@ -4344,6 +4347,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.OnCallFormIDs = params.get("OnCallFormIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4424,7 +4428,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :param ProjectIds: 策略所属项目的id数组，可在此页面查看
 [项目管理](https://console.cloud.tencent.com/project)
         :type ProjectIds: list of int
-        :param NoticeIds: 通知模版的id列表，可查询通知模版列表获取。
+        :param NoticeIds: 通知模板的id列表，可查询通知模板列表获取。
 可使用 [查询通知模板列表](https://cloud.tencent.com/document/product/248/51280) 接口查询。
         :type NoticeIds: list of str
         :param RuleTypes: 根据触发条件筛选 不传展示全部策略 STATIC=展示静态阈值策略 DYNAMIC=展示动态阈值策略
@@ -4441,12 +4445,16 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type TriggerTasks: list of AlarmPolicyTriggerTask
         :param OneClickPolicyType: 根据一键告警策略筛选 不传展示全部策略 ONECLICK=展示一键告警策略 NOT_ONECLICK=展示非一键告警策略
         :type OneClickPolicyType: list of str
-        :param NotBindAll: 根据全部对象过滤，1代表需要过滤掉全部对象，0则无需过滤
+        :param NotBindAll: 返回结果过滤掉绑定全部对象的策略，1代表需要过滤，0则无需过滤
         :type NotBindAll: int
-        :param NotInstanceGroup: 根据实例对象过滤，1代表需要过滤掉有实例对象，0则无需过滤
+        :param NotInstanceGroup: 返回结果过滤掉关联实例为实例分组的策略，1代表需要过滤，0则无需过滤
         :type NotInstanceGroup: int
         :param Tags: 策略根据标签过滤
         :type Tags: list of Tag
+        :param PromInsId: prom实例id，自定义指标策略时会用到
+        :type PromInsId: str
+        :param ReceiverOnCallFormIDs: 根据排班表搜索
+        :type ReceiverOnCallFormIDs: list of str
         """
         self.Module = None
         self.PageNumber = None
@@ -4472,6 +4480,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.NotBindAll = None
         self.NotInstanceGroup = None
         self.Tags = None
+        self.PromInsId = None
+        self.ReceiverOnCallFormIDs = None
 
 
     def _deserialize(self, params):
@@ -4509,6 +4519,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.PromInsId = params.get("PromInsId")
+        self.ReceiverOnCallFormIDs = params.get("ReceiverOnCallFormIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15986,6 +15998,9 @@ class UserNotice(AbstractModel):
         :param Weekday: 通知周期 1-7表示周一到周日
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weekday: list of int
+        :param OnCallFormIDs: 值班表id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnCallFormIDs: list of str
         """
         self.ReceiverType = None
         self.StartTime = None
@@ -16000,6 +16015,7 @@ class UserNotice(AbstractModel):
         self.NeedPhoneArriveNotice = None
         self.PhoneCallType = None
         self.Weekday = None
+        self.OnCallFormIDs = None
 
 
     def _deserialize(self, params):
@@ -16016,6 +16032,7 @@ class UserNotice(AbstractModel):
         self.NeedPhoneArriveNotice = params.get("NeedPhoneArriveNotice")
         self.PhoneCallType = params.get("PhoneCallType")
         self.Weekday = params.get("Weekday")
+        self.OnCallFormIDs = params.get("OnCallFormIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

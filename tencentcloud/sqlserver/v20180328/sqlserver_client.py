@@ -279,6 +279,52 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCloudDBInstances(self, request):
+        """本接口（CreateCloudDBInstances）用于创建高可用实例(虚拟机版本)。
+
+        :param request: Request instance for CreateCloudDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudDBInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCloudReadOnlyDBInstances(self, request):
+        """本接口（CreateCloudReadOnlyDBInstances）用于添加只读副本实例(虚拟机版本)。
+
+        :param request: Request instance for CreateCloudReadOnlyDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudReadOnlyDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudReadOnlyDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudReadOnlyDBInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudReadOnlyDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDB(self, request):
         """本接口（CreateDB）用于创建数据库。
 

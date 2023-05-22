@@ -303,10 +303,10 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowSignUrl(self, request):
-        """创建签署链接，请联系客户经理申请使用
-        该接口用于发起合同后，生成C端签署人的签署链接，点击跳转小程序完成签署
-        注意：该接口目前签署人类型仅支持个人签署方（PERSON）
-        注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件
+        """创建个人H5签署链接，请联系客户经理申请使用<br/>
+        该接口用于发起合同后，生成C端签署人的签署链接<br/>
+        注意：该接口目前签署人类型仅支持个人签署方（PERSON）<br/>
+        注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
 
         :param request: Request instance for ChannelCreateFlowSignUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowSignUrlRequest`
@@ -692,7 +692,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateFlowsByTemplates(self, request):
-        """接口（CreateFlowsByTemplates）用于使用多个模板批量创建签署流程。当前可批量发起合同（签署流程）数量最大为20个。
+        """接口（CreateFlowsByTemplates）用于使用模板批量创建签署流程。当前可批量发起合同（签署流程）数量为1-20个。
         如若在模板中配置了动态表格, 上传的附件必须为A4大小
         合同发起人必须在电子签已经进行实名。
 

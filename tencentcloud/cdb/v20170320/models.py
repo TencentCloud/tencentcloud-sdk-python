@@ -4831,80 +4831,6 @@ class DescribeBackupSummariesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeBackupTablesRequest(AbstractModel):
-    """DescribeBackupTables请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
-        :type InstanceId: str
-        :param StartTime: 开始时间，格式为：2017-07-12 10:29:20。
-        :type StartTime: str
-        :param DatabaseName: 指定的数据库名。
-        :type DatabaseName: str
-        :param SearchTable: 要查询的数据表名前缀。
-        :type SearchTable: str
-        :param Offset: 分页偏移。
-        :type Offset: int
-        :param Limit: 分页大小，最小值为1，最大值为2000。
-        :type Limit: int
-        """
-        self.InstanceId = None
-        self.StartTime = None
-        self.DatabaseName = None
-        self.SearchTable = None
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.StartTime = params.get("StartTime")
-        self.DatabaseName = params.get("DatabaseName")
-        self.SearchTable = params.get("SearchTable")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeBackupTablesResponse(AbstractModel):
-    """DescribeBackupTables返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: 返回的数据个数。
-        :type TotalCount: int
-        :param Items: 符合条件的数据表数组。
-        :type Items: list of TableName
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Items") is not None:
-            self.Items = []
-            for item in params.get("Items"):
-                obj = TableName()
-                obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeBackupsRequest(AbstractModel):
     """DescribeBackups请求参数结构体
 
@@ -13839,30 +13765,6 @@ class SwitchForUpgradeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
-
-
-class TableName(AbstractModel):
-    """表名
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TableName: 表名
-        :type TableName: str
-        """
-        self.TableName = None
-
-
-    def _deserialize(self, params):
-        self.TableName = params.get("TableName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class TablePrivilege(AbstractModel):

@@ -2060,7 +2060,7 @@ HONGKONG_AND_MACAO 中国香港
 FOREIGN_ID_CARD 境外身份
 HONGKONG_MACAO_AND_TAIWAN 中国台湾
         :type IdCardType: str
-        :param Mobile: 手机号码
+        :param Mobile: 手机号码；当需要开通自动签时，该参数必传
         :type Mobile: str
         :param EnableAutoSign: 是否开通自动签，该功能需联系运营工作人员开通后使用
         :type EnableAutoSign: bool
@@ -3625,17 +3625,25 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IsOpen: 是否开通
+        :param IsOpen: 是否已开通自动签
         :type IsOpen: bool
+        :param LicenseFrom: 自动签许可生效时间。当且仅当已开通自动签时有值。
+        :type LicenseFrom: int
+        :param LicenseTo: 自动签许可到期时间。当且仅当已开通自动签时有值。
+        :type LicenseTo: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.IsOpen = None
+        self.LicenseFrom = None
+        self.LicenseTo = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.IsOpen = params.get("IsOpen")
+        self.LicenseFrom = params.get("LicenseFrom")
+        self.LicenseTo = params.get("LicenseTo")
         self.RequestId = params.get("RequestId")
 
 
