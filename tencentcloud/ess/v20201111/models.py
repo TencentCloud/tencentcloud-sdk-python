@@ -656,6 +656,7 @@ HANDWRITE – 手写签名
 BORDERLESS_ESIGN – 自动生成无边框腾讯体
 OCR_ESIGN -- AI智能识别手写签名
 ESIGN -- 个人印章类型
+SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
 如：{“ComponentTypeLimit”: [“BORDERLESS_ESIGN”]}
 
 ComponentType为SIGN_DATE时，支持以下参数：
@@ -3275,7 +3276,7 @@ class DescribeIntegrationRolesRequest(AbstractModel):
         :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param Filters: 查询的关键字段:
-Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
 Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
         :type Filters: list of Filter
@@ -4683,7 +4684,7 @@ class IntegrateRole(AbstractModel):
         :param RoleName: 角色名
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleName: str
-        :param RoleStatus: 角色类型：1-系统角色，2-自定义角色
+        :param RoleStatus: 角色状态，1-启用，2-禁用
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleStatus: int
         :param IsGroupRole: 是否是集团角色

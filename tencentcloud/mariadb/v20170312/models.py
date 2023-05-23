@@ -6128,6 +6128,73 @@ class UpgradeDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpgradeDedicatedDBInstanceRequest(AbstractModel):
+    """UpgradeDedicatedDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例获得。
+        :type InstanceId: str
+        :param Memory: 内存大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
+ 查询实例规格获得。
+        :type Memory: int
+        :param Storage: 存储空间大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
+ 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
+        :type Storage: int
+        :param SwitchAutoRetry: 错过切换时间窗口时，是否自动重试一次，0-否，1-是
+        :type SwitchAutoRetry: int
+        :param SwitchStartTime: 切换时间窗口开始时间
+        :type SwitchStartTime: str
+        :param SwitchEndTime: 切换时间窗口结束时间
+        :type SwitchEndTime: str
+        """
+        self.InstanceId = None
+        self.Memory = None
+        self.Storage = None
+        self.SwitchAutoRetry = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.SwitchAutoRetry = params.get("SwitchAutoRetry")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeDedicatedDBInstanceResponse(AbstractModel):
+    """UpgradeDedicatedDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步流程Id
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ViewPrivileges(AbstractModel):
     """视图权限信息
 

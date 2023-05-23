@@ -248,6 +248,9 @@ INVALIDPARAMETER_INVALIDVERIFYCHANNEL = 'InvalidParameter.InvalidVerifyChannel'
 # 验证码不正确。
 INVALIDPARAMETER_INVALIDVERIFYCODE = 'InvalidParameter.InvalidVerifyCode'
 
+# Limit参数超出最大限制
+INVALIDPARAMETER_LIMIT = 'InvalidParameter.Limit'
+
 # 缺少必填控件的值。
 INVALIDPARAMETER_MISSINGREQUIREDCOMPONENTVALUE = 'InvalidParameter.MissingRequiredComponentValue'
 

@@ -21926,6 +21926,8 @@ class HostInfo(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagInfo
+        :param ClusterID: 集群id
+        :type ClusterID: str
         """
         self.HostID = None
         self.HostIP = None
@@ -21944,6 +21946,7 @@ class HostInfo(AbstractModel):
         self.RegionID = None
         self.Project = None
         self.Tags = None
+        self.ClusterID = None
 
 
     def _deserialize(self, params):
@@ -21971,6 +21974,7 @@ class HostInfo(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.ClusterID = params.get("ClusterID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -211,6 +211,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDedicatedClusterDCDBInstance(self, request):
+        """创建独享集群DCDB实例
+
+        :param request: Request instance for CreateDedicatedClusterDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateDedicatedClusterDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.CreateDedicatedClusterDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDedicatedClusterDCDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDedicatedClusterDCDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateHourDCDBInstance(self, request):
         """创建DCDB后付费实例
 
@@ -318,6 +341,29 @@ class DcdbClient(AbstractClient):
             body = self.call("DescribeBackupFiles", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBEncryptAttributes(self, request):
+        """本接口(DescribeDBEncryptAttributes)用于查询实例数据加密状态。
+
+        :param request: Request instance for DescribeDBEncryptAttributes.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBEncryptAttributesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -858,7 +904,9 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeSqlLogs(self, request):
-        """本接口（DescribeSqlLogs）用于获取实例SQL日志。
+        """已废弃接口
+
+        本接口（DescribeSqlLogs）用于获取实例SQL日志。
 
         :param request: Request instance for DescribeSqlLogs.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeSqlLogsRequest`
@@ -1528,6 +1576,29 @@ class DcdbClient(AbstractClient):
             body = self.call("UpgradeDCDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.UpgradeDCDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeDedicatedDCDBInstance(self, request):
+        """本接口（UpgradeDedicatedDCDBInstance）用于升级独享DCDB实例
+
+        :param request: Request instance for UpgradeDedicatedDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeDedicatedDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.UpgradeDedicatedDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDedicatedDCDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDedicatedDCDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

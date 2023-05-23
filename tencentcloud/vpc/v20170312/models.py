@@ -11606,7 +11606,7 @@ class DescribeSnapshotFilesRequest(AbstractModel):
         :type EndDate: str
         :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Limit: 返回数量，默认为20，最大为200。
+        :param Limit: 返回数量，默认为20，最大为100。
         :type Limit: int
         """
         self.BusinessType = None
@@ -12250,7 +12250,7 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: 过滤条件。
+        :param Filters: 过滤条件。不支持同时传入参数 EndPointServiceIds and Filters。
 <li> service-id - String - （过滤条件）终端节点服务唯一ID。</li>
 <li>service-name - String - （过滤条件）终端节点实例名称。</li>
 <li>service-instance-id - String - （过滤条件）后端服务的唯一ID，比如lb-xxx。</li>
@@ -12260,7 +12260,7 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
         :type Offset: int
         :param Limit: 单页返回数量，默认为20，最大值为100。
         :type Limit: int
-        :param EndPointServiceIds: 终端节点服务ID。
+        :param EndPointServiceIds: 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
         :type EndPointServiceIds: list of str
         """
         self.Filters = None

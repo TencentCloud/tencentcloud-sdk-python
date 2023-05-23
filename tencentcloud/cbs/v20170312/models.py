@@ -743,6 +743,8 @@ class CreateDisksRequest(AbstractModel):
         :type AutoMountConfiguration: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
         :param DiskBackupQuota: 指定云硬盘备份点配额。
         :type DiskBackupQuota: int
+        :param BurstPerformance: 创建云盘时是否开启性能突发
+        :type BurstPerformance: bool
         """
         self.Placement = None
         self.DiskChargeType = None
@@ -760,6 +762,7 @@ class CreateDisksRequest(AbstractModel):
         self.DeleteSnapshot = None
         self.AutoMountConfiguration = None
         self.DiskBackupQuota = None
+        self.BurstPerformance = None
 
 
     def _deserialize(self, params):
@@ -790,6 +793,7 @@ class CreateDisksRequest(AbstractModel):
             self.AutoMountConfiguration = AutoMountConfiguration()
             self.AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
         self.DiskBackupQuota = params.get("DiskBackupQuota")
+        self.BurstPerformance = params.get("BurstPerformance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2847,6 +2851,8 @@ class ModifyDiskAttributesRequest(AbstractModel):
         :type DeleteWithInstance: bool
         :param DiskType: 变更云盘类型时，可传入该参数，表示变更的目标类型，取值范围：<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。<br>当前不支持批量变更类型，即传入DiskType时，DiskIds仅支持传入一块云盘；<br>变更云盘类型时不支持同时变更其他属性。
         :type DiskType: str
+        :param BurstPerformanceOperation: 开启/关闭云盘性能突发功能
+        :type BurstPerformanceOperation: str
         """
         self.DiskIds = None
         self.DiskName = None
@@ -2854,6 +2860,7 @@ class ModifyDiskAttributesRequest(AbstractModel):
         self.ProjectId = None
         self.DeleteWithInstance = None
         self.DiskType = None
+        self.BurstPerformanceOperation = None
 
 
     def _deserialize(self, params):
@@ -2863,6 +2870,7 @@ class ModifyDiskAttributesRequest(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.DiskType = params.get("DiskType")
+        self.BurstPerformanceOperation = params.get("BurstPerformanceOperation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

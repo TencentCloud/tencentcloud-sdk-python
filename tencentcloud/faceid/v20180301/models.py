@@ -1775,6 +1775,8 @@ class GetEidTokenConfig(AbstractModel):
         :type IntentionQuestions: list of IntentionQuestion
         :param IntentionRecognition: 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
         :type IntentionRecognition: bool
+        :param IsSupportHMTResidentPermitOCR: 是否支持港澳台居住证识别
+        :type IsSupportHMTResidentPermitOCR: bool
         """
         self.InputType = None
         self.UseIntentionVerify = None
@@ -1782,6 +1784,7 @@ class GetEidTokenConfig(AbstractModel):
         self.IntentionVerifyText = None
         self.IntentionQuestions = None
         self.IntentionRecognition = None
+        self.IsSupportHMTResidentPermitOCR = None
 
 
     def _deserialize(self, params):
@@ -1796,6 +1799,7 @@ class GetEidTokenConfig(AbstractModel):
                 obj._deserialize(item)
                 self.IntentionQuestions.append(obj)
         self.IntentionRecognition = params.get("IntentionRecognition")
+        self.IsSupportHMTResidentPermitOCR = params.get("IsSupportHMTResidentPermitOCR")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -951,7 +951,9 @@ class AdvancedCCRules(AbstractModel):
         :param FrequencyLimit: 限频阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrequencyLimit: int
-        :param PunishmentSwitch: IP 惩罚开关，可选on|off
+        :param PunishmentSwitch: IP 惩罚配置开关，取值有：
+on：开启
+off：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type PunishmentSwitch: str
         :param PunishmentTime: IP 惩罚时长
@@ -7835,7 +7837,7 @@ class DomainFilter(AbstractModel):
 - status：域名状态，online，offline或processing。
 - serviceType：业务类型，web，download，media，hybrid或dynamic。
 - projectId：项目ID。
-- domainType：主源站类型，cname表示自有源，cos表示cos接入，third_party表示第三方对象存储。
+- domainType：主源站类型，cname表示自有源，cos表示cos接入，third_party表示第三方对象存储，igtm表示IGTM多活源。
 - fullUrlCache：全路径缓存，on或off。
 - https：是否配置https，on，off或processing。
 - originPullProtocol：回源协议类型，支持http，follow或https。
@@ -8825,7 +8827,7 @@ class HttpsBilling(AbstractModel):
     def __init__(self):
         r"""
         :param Switch: HTTPS服务配置开关，取值有：
-on：开启，缺省时默认开启【会产生计费】
+on：开启，缺省时默认开启，会产生计费
 off：关闭，拦截https请求
 
         :type Switch: str
@@ -10920,6 +10922,7 @@ domain：域名类型
 domainv6：域名解析V6类型
 cos：对象存储源站
 third_party: 第三方存储源站
+igtm: IGTM多活源
 ip：IP 列表作为源站
 ipv6：源站列表为一个单独的 IPv6 地址
 ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
@@ -11648,9 +11651,10 @@ class PostSize(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 是调整POST请求限制，平台默认为32MB。
-关闭：off，
-开启：on。
+        :param Switch: POST请求上传文件流式传输最大限制配置开关，取值有：
+on：开启，平台默认为32MB
+off：关闭
+
         :type Switch: str
         :param MaxSize: 最大限制，取值在1MB和200MB之间。
         :type MaxSize: int

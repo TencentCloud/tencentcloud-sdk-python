@@ -1650,3 +1650,26 @@ class MariadbClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeDedicatedDBInstance(self, request):
+        """本接口(UpgradeDedicatedDBInstance)用于扩容独享云数据库实例。
+
+        :param request: Request instance for UpgradeDedicatedDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.UpgradeDedicatedDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.UpgradeDedicatedDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDedicatedDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDedicatedDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

@@ -86,6 +86,9 @@ INTERNALERROR_FAILACCESSDATABASE = 'InternalError.FailAccessDatabase'
 # 访问Redis失败。
 INTERNALERROR_FAILACCESSREDIS = 'InternalError.FailAccessRedis'
 
+# 请求标签接口出错
+INTERNALERROR_TAGREQUESTERROR = 'InternalError.TagRequestError'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
