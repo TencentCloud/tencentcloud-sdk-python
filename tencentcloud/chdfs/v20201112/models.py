@@ -1369,6 +1369,10 @@ class LifeCycleRule(AbstractModel):
         :type Status: int
         :param CreateTime: 创建时间
         :type CreateTime: str
+        :param Summary: 生命周期规则当前路径具体存储量
+        :type Summary: :class:`tencentcloud.chdfs.v20201112.models.Summary`
+        :param LastSummaryTime: Summary更新时间
+        :type LastSummaryTime: str
         """
         self.LifeCycleRuleId = None
         self.LifeCycleRuleName = None
@@ -1376,6 +1380,8 @@ class LifeCycleRule(AbstractModel):
         self.Transitions = None
         self.Status = None
         self.CreateTime = None
+        self.Summary = None
+        self.LastSummaryTime = None
 
 
     def _deserialize(self, params):
@@ -1390,6 +1396,10 @@ class LifeCycleRule(AbstractModel):
                 self.Transitions.append(obj)
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
+        if params.get("Summary") is not None:
+            self.Summary = Summary()
+            self.Summary._deserialize(params.get("Summary"))
+        self.LastSummaryTime = params.get("LastSummaryTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1788,6 +1798,56 @@ class RestoreTask(AbstractModel):
         self.Days = params.get("Days")
         self.Status = params.get("Status")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Summary(AbstractModel):
+    """生命周期规则当前路径具体存储量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CapacityUsed: 总存储量（单位byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CapacityUsed: int
+        :param StandardCapacityUsed: 标准存储量（单位byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandardCapacityUsed: int
+        :param DegradeCapacityUsed: 低频存储量（单位byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DegradeCapacityUsed: int
+        :param ArchiveCapacityUsed: 归档存储量（单位byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArchiveCapacityUsed: int
+        :param DeepArchiveCapacityUsed: 深度归档存储量（单位byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeepArchiveCapacityUsed: int
+        :param IntelligentCapacityUsed: 智能分层存储量（单位byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntelligentCapacityUsed: int
+        """
+        self.CapacityUsed = None
+        self.StandardCapacityUsed = None
+        self.DegradeCapacityUsed = None
+        self.ArchiveCapacityUsed = None
+        self.DeepArchiveCapacityUsed = None
+        self.IntelligentCapacityUsed = None
+
+
+    def _deserialize(self, params):
+        self.CapacityUsed = params.get("CapacityUsed")
+        self.StandardCapacityUsed = params.get("StandardCapacityUsed")
+        self.DegradeCapacityUsed = params.get("DegradeCapacityUsed")
+        self.ArchiveCapacityUsed = params.get("ArchiveCapacityUsed")
+        self.DeepArchiveCapacityUsed = params.get("DeepArchiveCapacityUsed")
+        self.IntelligentCapacityUsed = params.get("IntelligentCapacityUsed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

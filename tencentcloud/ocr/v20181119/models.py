@@ -1349,10 +1349,13 @@ class CreateAIFormTaskRequest(AbstractModel):
         :type FirstNotes: str
         :param SecondNotes: 备注信息2
         :type SecondNotes: str
+        :param FileType: 文件类型
+        :type FileType: int
         """
         self.FileList = None
         self.FirstNotes = None
         self.SecondNotes = None
+        self.FileType = None
 
 
     def _deserialize(self, params):
@@ -1364,6 +1367,7 @@ class CreateAIFormTaskRequest(AbstractModel):
                 self.FileList.append(obj)
         self.FirstNotes = params.get("FirstNotes")
         self.SecondNotes = params.get("SecondNotes")
+        self.FileType = params.get("FileType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6523,11 +6527,13 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str

@@ -292,16 +292,26 @@ class OutputRecognizeTargetAudienceValue(AbstractModel):
         :param Score: 返回分值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: float
+        :param ModelType: 模型类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelType: int
+        :param Uid: 入参Uid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uid: str
         """
         self.ModelId = None
         self.IsFound = None
         self.Score = None
+        self.ModelType = None
+        self.Uid = None
 
 
     def _deserialize(self, params):
         self.ModelId = params.get("ModelId")
         self.IsFound = params.get("IsFound")
         self.Score = params.get("Score")
+        self.ModelType = params.get("ModelType")
+        self.Uid = params.get("Uid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

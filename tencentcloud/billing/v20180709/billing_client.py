@@ -122,7 +122,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillSummaryByPayMode(self, request):
-        """获取按付费模式汇总费用分布
+        """获取按计费模式汇总费用分布
 
         :param request: Request instance for DescribeBillSummaryByPayMode.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryByPayModeRequest`

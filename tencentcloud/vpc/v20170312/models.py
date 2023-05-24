@@ -5606,29 +5606,29 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpnGatewayId: VPN实例ID
+        :param VpnGatewayId: VPN网关实例ID。
         :type VpnGatewayId: str
-        :param SslVpnServerName: SSL_VPN_SERVER 实例名
+        :param SslVpnServerName: SSL-VPN-SERVER 实例名称，长度不超过60个字节。
         :type SslVpnServerName: str
-        :param LocalAddress: 本端地址网段
+        :param LocalAddress: 云端地址（CIDR）列表。
         :type LocalAddress: list of str
-        :param RemoteAddress: 客户端地址网段
+        :param RemoteAddress: 客户端地址网段。
         :type RemoteAddress: str
-        :param SslVpnProtocol: SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+        :param SslVpnProtocol: SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。
         :type SslVpnProtocol: str
-        :param SslVpnPort: SSL VPN服务端监听协议端口。默认1194。
+        :param SslVpnPort: SSL VPN服务端监听协议端口，默认1194。
         :type SslVpnPort: int
-        :param IntegrityAlgorithm: 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+        :param IntegrityAlgorithm: 认证算法。可选 'SHA1', 'MD5', 'NONE'，默认NONE。
         :type IntegrityAlgorithm: str
-        :param EncryptAlgorithm: 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+        :param EncryptAlgorithm: 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
         :type EncryptAlgorithm: str
-        :param Compress: 是否支持压缩。当前仅支持不支持压缩。默认False
+        :param Compress: 是否支持压缩。当前仅支持不支持压缩，默认False。
         :type Compress: bool
-        :param SsoEnabled: 是否开启SSO认证
+        :param SsoEnabled: 是否开启SSO认证。默认为False
         :type SsoEnabled: bool
-        :param AccessPolicyEnabled: 是否开启策略访问控制
+        :param AccessPolicyEnabled: 是否开启策略访问控制。默认为False
         :type AccessPolicyEnabled: bool
-        :param SamlData: SAML-DATA
+        :param SamlData: SAML-DATA，开启SSO时传。
         :type SamlData: str
         """
         self.VpnGatewayId = None
@@ -5674,9 +5674,9 @@ class CreateVpnGatewaySslServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 创建SSL-VPN server 异步任务ID
+        :param TaskId: 创建SSL-VPN server 异步任务ID。
         :type TaskId: int
-        :param SslVpnServerId: SSL-VPN server 唯一ID
+        :param SslVpnServerId: SSL-VPN-SERVER 唯一ID。
         :type SslVpnServerId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8877,7 +8877,7 @@ class DescribeCrossBorderFlowMonitorRequest(AbstractModel):
         :type CcnId: str
         :param CcnUin: 云联网所属账号。
         :type CcnUin: str
-        :param Period: 时间粒度。
+        :param Period: 时间粒度。单位为:秒，如60为60s的时间粒度
         :type Period: int
         :param StartTime: 开始时间。
         :type StartTime: str

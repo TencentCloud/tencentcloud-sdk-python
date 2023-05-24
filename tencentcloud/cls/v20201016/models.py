@@ -1769,13 +1769,18 @@ class CreateCosRechargeResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Id: cos_recharge记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Id = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Id = params.get("Id")
         self.RequestId = params.get("RequestId")
 
 

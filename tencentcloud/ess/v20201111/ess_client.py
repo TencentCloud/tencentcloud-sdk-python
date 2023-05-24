@@ -353,6 +353,7 @@ class EssClient(AbstractClient):
         该接口用于发起合同后，生成C端签署人的签署链接 <br/>
         注意：该接口目前签署人类型仅支持个人签署方（PERSON） <br/>
         注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
+        注意：该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入。微信小程序请使用小程序跳转或半屏弹窗的方式<br/>
 
         :param request: Request instance for CreateFlowSignUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowSignUrlRequest`

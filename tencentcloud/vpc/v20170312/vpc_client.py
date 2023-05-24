@@ -1716,7 +1716,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpnGatewaySslServer(self, request):
-        """创建 Server端
+        """本接口（CreateVpnGatewaySslServer）用于创建SSL-VPN Server端。
 
         :param request: Request instance for CreateVpnGatewaySslServer.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewaySslServerRequest`

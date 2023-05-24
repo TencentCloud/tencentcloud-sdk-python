@@ -1866,12 +1866,15 @@ class CommitRuleGroupTaskRequest(AbstractModel):
         :type ExecConfig: :class:`tencentcloud.wedata.v20210820.models.RuleExecConfig`
         :param ProjectId: 项目ID
         :type ProjectId: str
+        :param EngineType: 该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        :type EngineType: str
         """
         self.RuleGroupId = None
         self.TriggerType = None
         self.ExecRuleConfig = None
         self.ExecConfig = None
         self.ProjectId = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -1887,6 +1890,7 @@ class CommitRuleGroupTaskRequest(AbstractModel):
             self.ExecConfig = RuleExecConfig()
             self.ExecConfig._deserialize(params.get("ExecConfig"))
         self.ProjectId = params.get("ProjectId")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2965,6 +2969,8 @@ class CreateRuleRequest(AbstractModel):
         :type FieldConfig: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
         :param TargetObjectValue: 目标字段名称  CITY
         :type TargetObjectValue: str
+        :param SourceEngineTypes: 该规则支持的执行引擎列表
+        :type SourceEngineTypes: list of int non-negative
         """
         self.ProjectId = None
         self.RuleGroupId = None
@@ -2989,6 +2995,7 @@ class CreateRuleRequest(AbstractModel):
         self.RelConditionExpr = None
         self.FieldConfig = None
         self.TargetObjectValue = None
+        self.SourceEngineTypes = None
 
 
     def _deserialize(self, params):
@@ -3019,6 +3026,7 @@ class CreateRuleRequest(AbstractModel):
             self.FieldConfig = RuleFieldConfig()
             self.FieldConfig._deserialize(params.get("FieldConfig"))
         self.TargetObjectValue = params.get("TargetObjectValue")
+        self.SourceEngineTypes = params.get("SourceEngineTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9296,14 +9304,18 @@ class DescribeRulesRequest(AbstractModel):
         :type ProjectId: str
         :param RuleGroupId: 规则组id
         :type RuleGroupId: int
+        :param EngineType: 该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        :type EngineType: str
         """
         self.ProjectId = None
         self.RuleGroupId = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.RuleGroupId = params.get("RuleGroupId")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13333,6 +13345,8 @@ MONTH_CYCLE:M
         :type DatasourceId: str
         :param TableId: 数据表Id
         :type TableId: str
+        :param ExecEngineType: 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+        :type ExecEngineType: str
         """
         self.RuleGroupId = None
         self.MonitorType = None
@@ -13350,6 +13364,7 @@ MONTH_CYCLE:M
         self.DatabaseId = None
         self.DatasourceId = None
         self.TableId = None
+        self.ExecEngineType = None
 
 
     def _deserialize(self, params):
@@ -13374,6 +13389,7 @@ MONTH_CYCLE:M
         self.DatabaseId = params.get("DatabaseId")
         self.DatasourceId = params.get("DatasourceId")
         self.TableId = params.get("TableId")
+        self.ExecEngineType = params.get("ExecEngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13770,6 +13786,8 @@ class ModifyRuleRequest(AbstractModel):
         :type FieldConfig: :class:`tencentcloud.wedata.v20210820.models.RuleFieldConfig`
         :param TargetObjectValue: 目标字段名称  CITY
         :type TargetObjectValue: str
+        :param SourceEngineTypes: 该规则适配的执行引擎
+        :type SourceEngineTypes: list of int non-negative
         """
         self.ProjectId = None
         self.RuleId = None
@@ -13793,6 +13811,7 @@ class ModifyRuleRequest(AbstractModel):
         self.RelConditionExpr = None
         self.FieldConfig = None
         self.TargetObjectValue = None
+        self.SourceEngineTypes = None
 
 
     def _deserialize(self, params):
@@ -13822,6 +13841,7 @@ class ModifyRuleRequest(AbstractModel):
             self.FieldConfig = RuleFieldConfig()
             self.FieldConfig._deserialize(params.get("FieldConfig"))
         self.TargetObjectValue = params.get("TargetObjectValue")
+        self.SourceEngineTypes = params.get("SourceEngineTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15917,6 +15937,9 @@ class Rule(AbstractModel):
         :param TargetObjectValue: 目标字段名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetObjectValue: str
+        :param SourceEngineTypes: 源端对应的引擎类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceEngineTypes: list of int non-negative
         """
         self.RuleId = None
         self.RuleGroupId = None
@@ -15952,6 +15975,7 @@ class Rule(AbstractModel):
         self.TargetObjectDataType = None
         self.TargetObjectDataTypeName = None
         self.TargetObjectValue = None
+        self.SourceEngineTypes = None
 
 
     def _deserialize(self, params):
@@ -15993,6 +16017,7 @@ class Rule(AbstractModel):
         self.TargetObjectDataType = params.get("TargetObjectDataType")
         self.TargetObjectDataTypeName = params.get("TargetObjectDataTypeName")
         self.TargetObjectValue = params.get("TargetObjectValue")
+        self.SourceEngineTypes = params.get("SourceEngineTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16116,14 +16141,19 @@ class RuleExecConfig(AbstractModel):
         :param ExecutorGroupId: 执行资源组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupId: str
+        :param EngineType: 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineType: str
         """
         self.QueueName = None
         self.ExecutorGroupId = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
         self.QueueName = params.get("QueueName")
         self.ExecutorGroupId = params.get("ExecutorGroupId")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16740,6 +16770,9 @@ class RuleGroupExecResult(AbstractModel):
         :param ExecDetail: 执行详情，调度计划或者关联生产任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecDetail: str
+        :param EngineType: 实际执行引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineType: str
         """
         self.RuleGroupExecId = None
         self.RuleGroupId = None
@@ -16755,6 +16788,7 @@ class RuleGroupExecResult(AbstractModel):
         self.DatasourceId = None
         self.Permission = None
         self.ExecDetail = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -16772,6 +16806,7 @@ class RuleGroupExecResult(AbstractModel):
         self.DatasourceId = params.get("DatasourceId")
         self.Permission = params.get("Permission")
         self.ExecDetail = params.get("ExecDetail")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16859,6 +16894,12 @@ class RuleGroupExecStrategy(AbstractModel):
         :param TaskAction: 时间指定
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAction: str
+        :param ExecEngineType: 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecEngineType: str
+        :param ExecPlan: 执行计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecPlan: str
         """
         self.RuleGroupId = None
         self.MonitorType = None
@@ -16872,6 +16913,8 @@ class RuleGroupExecStrategy(AbstractModel):
         self.DelayTime = None
         self.CycleStep = None
         self.TaskAction = None
+        self.ExecEngineType = None
+        self.ExecPlan = None
 
 
     def _deserialize(self, params):
@@ -16892,6 +16935,8 @@ class RuleGroupExecStrategy(AbstractModel):
         self.DelayTime = params.get("DelayTime")
         self.CycleStep = params.get("CycleStep")
         self.TaskAction = params.get("TaskAction")
+        self.ExecEngineType = params.get("ExecEngineType")
+        self.ExecPlan = params.get("ExecPlan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

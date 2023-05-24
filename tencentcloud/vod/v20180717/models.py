@@ -13295,16 +13295,22 @@ class EditMediaVideoStream(AbstractModel):
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
         :type Height: int
+        :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
+当取值为0，将自动为视频设置帧率。
+默认值为 0。
+        :type Fps: int
         """
         self.ResolutionAdaptive = None
         self.Width = None
         self.Height = None
+        self.Fps = None
 
 
     def _deserialize(self, params):
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
