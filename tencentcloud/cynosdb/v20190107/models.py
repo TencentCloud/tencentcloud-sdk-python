@@ -887,6 +887,96 @@ class CloseAuditServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CloseClusterPasswordComplexityRequest(AbstractModel):
+    """CloseClusterPasswordComplexity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterIds: 集群ID数组
+        :type ClusterIds: list of str
+        """
+        self.ClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseClusterPasswordComplexityResponse(AbstractModel):
+    """CloseClusterPasswordComplexity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CloseWanRequest(AbstractModel):
+    """CloseWan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceGrpId: 实例组id
+        :type InstanceGrpId: str
+        """
+        self.InstanceGrpId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceGrpId = params.get("InstanceGrpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseWanResponse(AbstractModel):
+    """CloseWan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ClusterInstanceDetail(AbstractModel):
     """集群实例信息
 
@@ -993,6 +1083,55 @@ class ClusterParamModifyLog(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CopyClusterPasswordComplexityRequest(AbstractModel):
+    """CopyClusterPasswordComplexity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterIds: 复制集群ID数组
+        :type ClusterIds: list of str
+        :param SourceClusterId: 集群id
+        :type SourceClusterId: str
+        """
+        self.ClusterIds = None
+        self.SourceClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        self.SourceClusterId = params.get("SourceClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyClusterPasswordComplexityResponse(AbstractModel):
+    """CopyClusterPasswordComplexity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateAccountsRequest(AbstractModel):
@@ -1237,6 +1376,72 @@ class CreateBackupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateClusterDatabaseRequest(AbstractModel):
+    """CreateClusterDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param DbName: 数据库名
+        :type DbName: str
+        :param CharacterSet: 字符集类型
+        :type CharacterSet: str
+        :param CollateRule: 排序规则
+        :type CollateRule: str
+        :param UserHostPrivileges: 授权用户主机权限
+        :type UserHostPrivileges: list of UserHostPrivilege
+        :param Description: 备注
+        :type Description: str
+        """
+        self.ClusterId = None
+        self.DbName = None
+        self.CharacterSet = None
+        self.CollateRule = None
+        self.UserHostPrivileges = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.DbName = params.get("DbName")
+        self.CharacterSet = params.get("CharacterSet")
+        self.CollateRule = params.get("CollateRule")
+        if params.get("UserHostPrivileges") is not None:
+            self.UserHostPrivileges = []
+            for item in params.get("UserHostPrivileges"):
+                obj = UserHostPrivilege()
+                obj._deserialize(item)
+                self.UserHostPrivileges.append(obj)
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterDatabaseResponse(AbstractModel):
+    """CreateClusterDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1499,6 +1704,76 @@ class CreateClustersResponse(AbstractModel):
         self.ResourceIds = params.get("ResourceIds")
         self.ClusterIds = params.get("ClusterIds")
         self.BigDealIds = params.get("BigDealIds")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateParamTemplateRequest(AbstractModel):
+    """CreateParamTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateName: 模版名称
+        :type TemplateName: str
+        :param EngineVersion: mysql版本号
+        :type EngineVersion: str
+        :param TemplateDescription: 模版描述
+        :type TemplateDescription: str
+        :param TemplateId: 可选参数，需要复制的模版ID
+        :type TemplateId: int
+        :param DbMode: 数据库类型，可选值：NORMAL（默认值），SERVERLESS
+        :type DbMode: str
+        :param ParamList: 参数列表
+        :type ParamList: list of ParamItem
+        """
+        self.TemplateName = None
+        self.EngineVersion = None
+        self.TemplateDescription = None
+        self.TemplateId = None
+        self.DbMode = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.EngineVersion = params.get("EngineVersion")
+        self.TemplateDescription = params.get("TemplateDescription")
+        self.TemplateId = params.get("TemplateId")
+        self.DbMode = params.get("DbMode")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = ParamItem()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateParamTemplateResponse(AbstractModel):
+    """CreateParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模版ID
+        :type TemplateId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2619,6 +2894,87 @@ class DatabaseTables(AbstractModel):
         
 
 
+class DbInfo(AbstractModel):
+    """数据库详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DbName: 数据库名称
+        :type DbName: str
+        :param CharacterSet: 字符集类型
+        :type CharacterSet: str
+        :param Status: 数据库状态
+        :type Status: str
+        :param CollateRule: 拍讯规则
+        :type CollateRule: str
+        :param Description: 数据库备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param UserHostPrivileges: 用户权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserHostPrivileges: list of UserHostPrivilege
+        :param DbId: 数据库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbId: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param AppId: 用户appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param Uin: 用户Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param ClusterId: 集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        """
+        self.DbName = None
+        self.CharacterSet = None
+        self.Status = None
+        self.CollateRule = None
+        self.Description = None
+        self.UserHostPrivileges = None
+        self.DbId = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.AppId = None
+        self.Uin = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.DbName = params.get("DbName")
+        self.CharacterSet = params.get("CharacterSet")
+        self.Status = params.get("Status")
+        self.CollateRule = params.get("CollateRule")
+        self.Description = params.get("Description")
+        if params.get("UserHostPrivileges") is not None:
+            self.UserHostPrivileges = []
+            for item in params.get("UserHostPrivileges"):
+                obj = UserHostPrivilege()
+                obj._deserialize(item)
+                self.UserHostPrivileges.append(obj)
+        self.DbId = params.get("DbId")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.AppId = params.get("AppId")
+        self.Uin = params.get("Uin")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DbTable(AbstractModel):
     """数据库表
 
@@ -2645,6 +3001,56 @@ class DbTable(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteAccountsRequest(AbstractModel):
+    """DeleteAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Accounts: 账号数组，包含account和host
+        :type Accounts: list of InputAccount
+        """
+        self.ClusterId = None
+        self.Accounts = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = InputAccount()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountsResponse(AbstractModel):
+    """DeleteAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteAuditLogFileRequest(AbstractModel):
@@ -2782,6 +3188,92 @@ class DeleteBackupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteClusterDatabaseRequest(AbstractModel):
+    """DeleteClusterDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param DbNames: 数据库名
+        :type DbNames: list of str
+        """
+        self.ClusterId = None
+        self.DbNames = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.DbNames = params.get("DbNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterDatabaseResponse(AbstractModel):
+    """DeleteClusterDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteParamTemplateRequest(AbstractModel):
+    """DeleteParamTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模版ID
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteParamTemplateResponse(AbstractModel):
+    """DeleteParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAccountAllGrantPrivilegesRequest(AbstractModel):
     """DescribeAccountAllGrantPrivileges请求参数结构体
 
@@ -2856,6 +3348,71 @@ class DescribeAccountAllGrantPrivilegesResponse(AbstractModel):
                 obj = TablePrivileges()
                 obj._deserialize(item)
                 self.TablePrivileges.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAccountPrivilegesRequest(AbstractModel):
+    """DescribeAccountPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param AccountName: 账户名
+        :type AccountName: str
+        :param Host: 主机
+        :type Host: str
+        :param Db: 数据库名，为*时，忽略Type/TableName, 表示修改用户全局权限；
+        :type Db: str
+        :param Type: 指定数据库下的对象类型，可选"table"，"*"
+        :type Type: str
+        :param TableName: 当Type="table"时，用来指定表名
+        :type TableName: str
+        """
+        self.ClusterId = None
+        self.AccountName = None
+        self.Host = None
+        self.Db = None
+        self.Type = None
+        self.TableName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.AccountName = params.get("AccountName")
+        self.Host = params.get("Host")
+        self.Db = params.get("Db")
+        self.Type = params.get("Type")
+        self.TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountPrivilegesResponse(AbstractModel):
+    """DescribeAccountPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Privileges: 权限列表，示例值为：["select","update","delete","create","drop","references","index","alter","show_db","create_tmp_table","lock_tables","execute","create_view","show_view","create_routine","alter_routine","event","trigger"]
+        :type Privileges: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Privileges = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Privileges = params.get("Privileges")
         self.RequestId = params.get("RequestId")
 
 
@@ -3592,6 +4149,73 @@ class DescribeBinlogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterDetailDatabasesRequest(AbstractModel):
+    """DescribeClusterDetailDatabases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        :param Limit: 返回数量，默认20,最大100
+        :type Limit: int
+        :param DbName: 数据库名称
+        :type DbName: str
+        """
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+        self.DbName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterDetailDatabasesResponse(AbstractModel):
+    """DescribeClusterDetailDatabases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DbInfos: 数据库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbInfos: list of DbInfo
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DbInfos = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DbInfos") is not None:
+            self.DbInfos = []
+            for item in params.get("DbInfos"):
+                obj = DbInfo()
+                obj._deserialize(item)
+                self.DbInfos.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterDetailRequest(AbstractModel):
     """DescribeClusterDetail请求参数结构体
 
@@ -3824,6 +4448,89 @@ class DescribeClusterParamsResponse(AbstractModel):
                 obj = ParamInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterPasswordComplexityRequest(AbstractModel):
+    """DescribeClusterPasswordComplexity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterPasswordComplexityResponse(AbstractModel):
+    """DescribeClusterPasswordComplexity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ValidatePasswordDictionary: 数据字典参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidatePasswordDictionary: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
+        :param ValidatePasswordLength: 密码长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidatePasswordLength: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
+        :param ValidatePasswordMixedCaseCount: 大小写敏感字符个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidatePasswordMixedCaseCount: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
+        :param ValidatePasswordNumberCount: 数字个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidatePasswordNumberCount: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
+        :param ValidatePasswordPolicy: 密码等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidatePasswordPolicy: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
+        :param ValidatePasswordSpecialCharCount: 特殊字符个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidatePasswordSpecialCharCount: :class:`tencentcloud.cynosdb.v20190107.models.ParamInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ValidatePasswordDictionary = None
+        self.ValidatePasswordLength = None
+        self.ValidatePasswordMixedCaseCount = None
+        self.ValidatePasswordNumberCount = None
+        self.ValidatePasswordPolicy = None
+        self.ValidatePasswordSpecialCharCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ValidatePasswordDictionary") is not None:
+            self.ValidatePasswordDictionary = ParamInfo()
+            self.ValidatePasswordDictionary._deserialize(params.get("ValidatePasswordDictionary"))
+        if params.get("ValidatePasswordLength") is not None:
+            self.ValidatePasswordLength = ParamInfo()
+            self.ValidatePasswordLength._deserialize(params.get("ValidatePasswordLength"))
+        if params.get("ValidatePasswordMixedCaseCount") is not None:
+            self.ValidatePasswordMixedCaseCount = ParamInfo()
+            self.ValidatePasswordMixedCaseCount._deserialize(params.get("ValidatePasswordMixedCaseCount"))
+        if params.get("ValidatePasswordNumberCount") is not None:
+            self.ValidatePasswordNumberCount = ParamInfo()
+            self.ValidatePasswordNumberCount._deserialize(params.get("ValidatePasswordNumberCount"))
+        if params.get("ValidatePasswordPolicy") is not None:
+            self.ValidatePasswordPolicy = ParamInfo()
+            self.ValidatePasswordPolicy._deserialize(params.get("ValidatePasswordPolicy"))
+        if params.get("ValidatePasswordSpecialCharCount") is not None:
+            self.ValidatePasswordSpecialCharCount = ParamInfo()
+            self.ValidatePasswordSpecialCharCount._deserialize(params.get("ValidatePasswordSpecialCharCount"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4140,6 +4847,64 @@ class DescribeInstanceErrorLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstanceParamsRequest(AbstractModel):
+    """DescribeInstanceParams请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param InstanceIds: 实例ID，支持批量查询
+        :type InstanceIds: list of str
+        :param ParamKeyword: 参数名搜索条件，支持模糊匹配
+        :type ParamKeyword: str
+        """
+        self.ClusterId = None
+        self.InstanceIds = None
+        self.ParamKeyword = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.ParamKeyword = params.get("ParamKeyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceParamsResponse(AbstractModel):
+    """DescribeInstanceParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 实例参数列表
+        :type Items: list of InstanceParamItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = InstanceParamItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceSlowQueriesRequest(AbstractModel):
     """DescribeInstanceSlowQueries请求参数结构体
 
@@ -4433,6 +5198,80 @@ class DescribeMaintainPeriodResponse(AbstractModel):
         self.MaintainWeekDays = params.get("MaintainWeekDays")
         self.MaintainStartTime = params.get("MaintainStartTime")
         self.MaintainDuration = params.get("MaintainDuration")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeParamTemplateDetailRequest(AbstractModel):
+    """DescribeParamTemplateDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模版ID
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeParamTemplateDetailResponse(AbstractModel):
+    """DescribeParamTemplateDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 参数模版ID
+        :type TemplateId: int
+        :param TemplateName: 参数模版名称
+        :type TemplateName: str
+        :param TemplateDescription: 参数模版描述
+        :type TemplateDescription: str
+        :param EngineVersion: 引擎版本
+        :type EngineVersion: str
+        :param TotalCount: 参数总条数
+        :type TotalCount: int
+        :param Items: 参数列表
+        :type Items: list of ParamDetail
+        :param DbMode: 数据库类型，可选值：NORMAL，SERVERLESS
+        :type DbMode: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.TemplateDescription = None
+        self.EngineVersion = None
+        self.TotalCount = None
+        self.Items = None
+        self.DbMode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.TemplateDescription = params.get("TemplateDescription")
+        self.EngineVersion = params.get("EngineVersion")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamDetail()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.DbMode = params.get("DbMode")
         self.RequestId = params.get("RequestId")
 
 
@@ -5478,6 +6317,39 @@ class InstanceNetInfo(AbstractModel):
         
 
 
+class InstanceParamItem(AbstractModel):
+    """实例参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ParamsItems: 实例参数列表
+        :type ParamsItems: list of ParamItemDetail
+        """
+        self.InstanceId = None
+        self.ParamsItems = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("ParamsItems") is not None:
+            self.ParamsItems = []
+            for item in params.get("ParamsItems"):
+                obj = ParamItemDetail()
+                obj._deserialize(item)
+                self.ParamsItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceSpec(AbstractModel):
     """实例可售卖规格详细信息，创建实例时Cpu/Memory确定实例规格，存储可选大小为[MinStorageSize,MaxStorageSize]
 
@@ -5664,6 +6536,110 @@ class ModifiableInfo(AbstractModel):
     """
 
 
+class ModifyAccountDescriptionRequest(AbstractModel):
+    """ModifyAccountDescription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountName: 数据库账号名
+        :type AccountName: str
+        :param Description: 数据库账号描述信息
+        :type Description: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param Host: 主机，默认为"%"
+        :type Host: str
+        """
+        self.AccountName = None
+        self.Description = None
+        self.ClusterId = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.AccountName = params.get("AccountName")
+        self.Description = params.get("Description")
+        self.ClusterId = params.get("ClusterId")
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountDescriptionResponse(AbstractModel):
+    """ModifyAccountDescription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAccountHostRequest(AbstractModel):
+    """ModifyAccountHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param NewHost: 新主机
+        :type NewHost: str
+        :param Account: 账号信息
+        :type Account: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        """
+        self.ClusterId = None
+        self.NewHost = None
+        self.Account = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NewHost = params.get("NewHost")
+        if params.get("Account") is not None:
+            self.Account = InputAccount()
+            self.Account._deserialize(params.get("Account"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountHostResponse(AbstractModel):
+    """ModifyAccountHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyAccountParamsRequest(AbstractModel):
     """ModifyAccountParams请求参数结构体
 
@@ -5705,6 +6681,75 @@ class ModifyAccountParamsRequest(AbstractModel):
 
 class ModifyAccountParamsResponse(AbstractModel):
     """ModifyAccountParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyAccountPrivilegesRequest(AbstractModel):
+    """ModifyAccountPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Account: 账号信息
+        :type Account: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
+        :param GlobalPrivileges: 全局权限数组
+        :type GlobalPrivileges: list of str
+        :param DatabasePrivileges: 数据库权限数组
+        :type DatabasePrivileges: list of DatabasePrivileges
+        :param TablePrivileges: 表权限数组
+        :type TablePrivileges: list of TablePrivileges
+        """
+        self.ClusterId = None
+        self.Account = None
+        self.GlobalPrivileges = None
+        self.DatabasePrivileges = None
+        self.TablePrivileges = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Account") is not None:
+            self.Account = InputAccount()
+            self.Account._deserialize(params.get("Account"))
+        self.GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self.DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivileges()
+                obj._deserialize(item)
+                self.DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self.TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivileges()
+                obj._deserialize(item)
+                self.TablePrivileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountPrivilegesResponse(AbstractModel):
+    """ModifyAccountPrivileges返回参数结构体
 
     """
 
@@ -5954,6 +6999,118 @@ class ModifyBackupNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyBinlogSaveDaysRequest(AbstractModel):
+    """ModifyBinlogSaveDays请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param BinlogSaveDays: Binlog保留天数
+        :type BinlogSaveDays: int
+        """
+        self.ClusterId = None
+        self.BinlogSaveDays = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.BinlogSaveDays = params.get("BinlogSaveDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBinlogSaveDaysResponse(AbstractModel):
+    """ModifyBinlogSaveDays返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyClusterDatabaseRequest(AbstractModel):
+    """ModifyClusterDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param DbName: 数据库名
+        :type DbName: str
+        :param NewUserHostPrivileges: 新授权用户主机权限
+        :type NewUserHostPrivileges: list of UserHostPrivilege
+        :param Description: 备注
+        :type Description: str
+        :param OldUserHostPrivileges: 历史授权用户主机权限
+        :type OldUserHostPrivileges: list of UserHostPrivilege
+        """
+        self.ClusterId = None
+        self.DbName = None
+        self.NewUserHostPrivileges = None
+        self.Description = None
+        self.OldUserHostPrivileges = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.DbName = params.get("DbName")
+        if params.get("NewUserHostPrivileges") is not None:
+            self.NewUserHostPrivileges = []
+            for item in params.get("NewUserHostPrivileges"):
+                obj = UserHostPrivilege()
+                obj._deserialize(item)
+                self.NewUserHostPrivileges.append(obj)
+        self.Description = params.get("Description")
+        if params.get("OldUserHostPrivileges") is not None:
+            self.OldUserHostPrivileges = []
+            for item in params.get("OldUserHostPrivileges"):
+                obj = UserHostPrivilege()
+                obj._deserialize(item)
+                self.OldUserHostPrivileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterDatabaseResponse(AbstractModel):
+    """ModifyClusterDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterNameRequest(AbstractModel):
     """ModifyClusterName请求参数结构体
 
@@ -6054,6 +7211,75 @@ class ModifyClusterParamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyClusterPasswordComplexityRequest(AbstractModel):
+    """ModifyClusterPasswordComplexity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param ValidatePasswordLength: 密码长度
+        :type ValidatePasswordLength: int
+        :param ValidatePasswordMixedCaseCount: 大小写字符个数
+        :type ValidatePasswordMixedCaseCount: int
+        :param ValidatePasswordSpecialCharCount: 特殊字符个数
+        :type ValidatePasswordSpecialCharCount: int
+        :param ValidatePasswordNumberCount: 数字个数
+        :type ValidatePasswordNumberCount: int
+        :param ValidatePasswordPolicy: 密码强度（"MEDIUM", "STRONG"）
+        :type ValidatePasswordPolicy: str
+        :param ValidatePasswordDictionary: 数据字典
+        :type ValidatePasswordDictionary: list of str
+        """
+        self.ClusterId = None
+        self.ValidatePasswordLength = None
+        self.ValidatePasswordMixedCaseCount = None
+        self.ValidatePasswordSpecialCharCount = None
+        self.ValidatePasswordNumberCount = None
+        self.ValidatePasswordPolicy = None
+        self.ValidatePasswordDictionary = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ValidatePasswordLength = params.get("ValidatePasswordLength")
+        self.ValidatePasswordMixedCaseCount = params.get("ValidatePasswordMixedCaseCount")
+        self.ValidatePasswordSpecialCharCount = params.get("ValidatePasswordSpecialCharCount")
+        self.ValidatePasswordNumberCount = params.get("ValidatePasswordNumberCount")
+        self.ValidatePasswordPolicy = params.get("ValidatePasswordPolicy")
+        self.ValidatePasswordDictionary = params.get("ValidatePasswordDictionary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterPasswordComplexityResponse(AbstractModel):
+    """ModifyClusterPasswordComplexity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -6272,6 +7498,77 @@ class ModifyInstanceNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceParamRequest(AbstractModel):
+    """ModifyInstanceParam请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param InstanceIds: 实例ID
+        :type InstanceIds: list of str
+        :param ClusterParamList: 集群参数列表
+        :type ClusterParamList: list of ModifyParamItem
+        :param InstanceParamList: 实例参数列表
+        :type InstanceParamList: list of ModifyParamItem
+        :param IsInMaintainPeriod: yes：在运维时间窗内修改，no：立即执行（默认值）
+        :type IsInMaintainPeriod: str
+        """
+        self.ClusterId = None
+        self.InstanceIds = None
+        self.ClusterParamList = None
+        self.InstanceParamList = None
+        self.IsInMaintainPeriod = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("ClusterParamList") is not None:
+            self.ClusterParamList = []
+            for item in params.get("ClusterParamList"):
+                obj = ModifyParamItem()
+                obj._deserialize(item)
+                self.ClusterParamList.append(obj)
+        if params.get("InstanceParamList") is not None:
+            self.InstanceParamList = []
+            for item in params.get("InstanceParamList"):
+                obj = ModifyParamItem()
+                obj._deserialize(item)
+                self.InstanceParamList.append(obj)
+        self.IsInMaintainPeriod = params.get("IsInMaintainPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceParamResponse(AbstractModel):
+    """ModifyInstanceParam返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyMaintainPeriodConfigRequest(AbstractModel):
     """ModifyMaintainPeriodConfig请求参数结构体
 
@@ -6356,6 +7653,64 @@ class ModifyParamItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyParamTemplateRequest(AbstractModel):
+    """ModifyParamTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模版ID
+        :type TemplateId: int
+        :param TemplateName: 模版名
+        :type TemplateName: str
+        :param TemplateDescription: 模版描述
+        :type TemplateDescription: str
+        :param ParamList: 参数列表
+        :type ParamList: list of ModifyParamItem
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.TemplateDescription = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.TemplateDescription = params.get("TemplateDescription")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = ModifyParamItem()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyParamTemplateResponse(AbstractModel):
+    """ModifyParamTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyVipVportRequest(AbstractModel):
@@ -6803,6 +8158,75 @@ class OpenAuditServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OpenClusterPasswordComplexityRequest(AbstractModel):
+    """OpenClusterPasswordComplexity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param ValidatePasswordLength: 密码长度
+        :type ValidatePasswordLength: int
+        :param ValidatePasswordMixedCaseCount: 大小写字符个数
+        :type ValidatePasswordMixedCaseCount: int
+        :param ValidatePasswordSpecialCharCount: 特殊字符个数
+        :type ValidatePasswordSpecialCharCount: int
+        :param ValidatePasswordNumberCount: 数字个数
+        :type ValidatePasswordNumberCount: int
+        :param ValidatePasswordPolicy: 密码强度（"MEDIUM", "STRONG"）
+        :type ValidatePasswordPolicy: str
+        :param ValidatePasswordDictionary: 数据字典
+        :type ValidatePasswordDictionary: list of str
+        """
+        self.ClusterId = None
+        self.ValidatePasswordLength = None
+        self.ValidatePasswordMixedCaseCount = None
+        self.ValidatePasswordSpecialCharCount = None
+        self.ValidatePasswordNumberCount = None
+        self.ValidatePasswordPolicy = None
+        self.ValidatePasswordDictionary = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ValidatePasswordLength = params.get("ValidatePasswordLength")
+        self.ValidatePasswordMixedCaseCount = params.get("ValidatePasswordMixedCaseCount")
+        self.ValidatePasswordSpecialCharCount = params.get("ValidatePasswordSpecialCharCount")
+        self.ValidatePasswordNumberCount = params.get("ValidatePasswordNumberCount")
+        self.ValidatePasswordPolicy = params.get("ValidatePasswordPolicy")
+        self.ValidatePasswordDictionary = params.get("ValidatePasswordDictionary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenClusterPasswordComplexityResponse(AbstractModel):
+    """OpenClusterPasswordComplexity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class OpenReadOnlyInstanceExclusiveAccessRequest(AbstractModel):
     """OpenReadOnlyInstanceExclusiveAccess请求参数结构体
 
@@ -6866,6 +8290,141 @@ class OpenReadOnlyInstanceExclusiveAccessResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class OpenWanRequest(AbstractModel):
+    """OpenWan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceGrpId: 实例组id
+        :type InstanceGrpId: str
+        """
+        self.InstanceGrpId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceGrpId = params.get("InstanceGrpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenWanResponse(AbstractModel):
+    """OpenWan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ParamDetail(AbstractModel):
+    """实例参数详细描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param ParamType: 参数类型：integer，enum，float，string，func
+        :type ParamType: str
+        :param SupportFunc: true-支持"func"，false-不支持公式
+        :type SupportFunc: bool
+        :param Default: 默认值
+        :type Default: str
+        :param Description: 参数描述
+        :type Description: str
+        :param CurrentValue: 参数当前值
+        :type CurrentValue: str
+        :param NeedReboot: 修改参数后，是否需要重启数据库以使参数生效。0-不需要重启，1-需要重启。
+        :type NeedReboot: int
+        :param Max: 参数容许的最大值
+        :type Max: str
+        :param Min: 参数容许的最小值
+        :type Min: str
+        :param EnumValue: 参数的可选枚举值。如果为非枚举值，则为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnumValue: list of str
+        :param IsGlobal: 1：全局参数，0：非全局参数
+        :type IsGlobal: int
+        :param MatchType: 匹配类型，multiVal
+        :type MatchType: str
+        :param MatchValue: 匹配目标值，当multiVal时，各个key用，分割
+        :type MatchValue: str
+        :param IsFunc: true-为公式，false-非公式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFunc: bool
+        :param Func: 参数设置为公式时，Func返回设置的公式内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Func: str
+        :param ModifiableInfo: 参数是否可修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiableInfo: :class:`tencentcloud.cynosdb.v20190107.models.ModifiableInfo`
+        """
+        self.ParamName = None
+        self.ParamType = None
+        self.SupportFunc = None
+        self.Default = None
+        self.Description = None
+        self.CurrentValue = None
+        self.NeedReboot = None
+        self.Max = None
+        self.Min = None
+        self.EnumValue = None
+        self.IsGlobal = None
+        self.MatchType = None
+        self.MatchValue = None
+        self.IsFunc = None
+        self.Func = None
+        self.ModifiableInfo = None
+
+
+    def _deserialize(self, params):
+        self.ParamName = params.get("ParamName")
+        self.ParamType = params.get("ParamType")
+        self.SupportFunc = params.get("SupportFunc")
+        self.Default = params.get("Default")
+        self.Description = params.get("Description")
+        self.CurrentValue = params.get("CurrentValue")
+        self.NeedReboot = params.get("NeedReboot")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.EnumValue = params.get("EnumValue")
+        self.IsGlobal = params.get("IsGlobal")
+        self.MatchType = params.get("MatchType")
+        self.MatchValue = params.get("MatchValue")
+        self.IsFunc = params.get("IsFunc")
+        self.Func = params.get("Func")
+        if params.get("ModifiableInfo") is not None:
+            self.ModifiableInfo = ModifiableInfo()
+            self.ModifiableInfo._deserialize(params.get("ModifiableInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ParamInfo(AbstractModel):
@@ -6978,6 +8537,76 @@ class ParamItem(AbstractModel):
         self.ParamName = params.get("ParamName")
         self.CurrentValue = params.get("CurrentValue")
         self.OldValue = params.get("OldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamItemDetail(AbstractModel):
+    """实例参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: 当前值
+        :type CurrentValue: str
+        :param Default: 默认值
+        :type Default: str
+        :param EnumValue: 参数的可选枚举值。如果为非枚举值，则为空
+        :type EnumValue: list of str
+        :param IsGlobal: 1：全局参数，0：非全局参数
+        :type IsGlobal: int
+        :param Max: 最大值
+        :type Max: str
+        :param Min: 最小值
+        :type Min: str
+        :param NeedReboot: 修改参数后，是否需要重启数据库以使参数生效。0-不需要重启，1-需要重启。
+        :type NeedReboot: int
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param ParamType: 参数类型：integer，enum，float，string，func
+        :type ParamType: str
+        :param Description: 参数描述
+        :type Description: str
+        :param IsFunc: 类型是否为公式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFunc: bool
+        :param Func: 参数配置公式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Func: str
+        """
+        self.CurrentValue = None
+        self.Default = None
+        self.EnumValue = None
+        self.IsGlobal = None
+        self.Max = None
+        self.Min = None
+        self.NeedReboot = None
+        self.ParamName = None
+        self.ParamType = None
+        self.Description = None
+        self.IsFunc = None
+        self.Func = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.Default = params.get("Default")
+        self.EnumValue = params.get("EnumValue")
+        self.IsGlobal = params.get("IsGlobal")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.NeedReboot = params.get("NeedReboot")
+        self.ParamName = params.get("ParamName")
+        self.ParamType = params.get("ParamType")
+        self.Description = params.get("Description")
+        self.IsFunc = params.get("IsFunc")
+        self.Func = params.get("Func")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8408,6 +10037,59 @@ class TradePrice(AbstractModel):
         
 
 
+class UpgradeClusterVersionRequest(AbstractModel):
+    """UpgradeClusterVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param CynosVersion: 内核版本
+        :type CynosVersion: str
+        :param UpgradeType: 升级时间类型，可选：upgradeImmediate,upgradeInMaintain
+        :type UpgradeType: str
+        """
+        self.ClusterId = None
+        self.CynosVersion = None
+        self.UpgradeType = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.CynosVersion = params.get("CynosVersion")
+        self.UpgradeType = params.get("UpgradeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeClusterVersionResponse(AbstractModel):
+    """UpgradeClusterVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步任务id
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class UpgradeInstanceRequest(AbstractModel):
     """UpgradeInstance请求参数结构体
 
@@ -8493,6 +10175,40 @@ class UpgradeInstanceResponse(AbstractModel):
         self.BigDealIds = params.get("BigDealIds")
         self.DealNames = params.get("DealNames")
         self.RequestId = params.get("RequestId")
+
+
+class UserHostPrivilege(AbstractModel):
+    """用户主机权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DbUserName: 授权用户
+        :type DbUserName: str
+        :param DbHost: 客户端ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbHost: str
+        :param DbPrivilege: 用户权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbPrivilege: str
+        """
+        self.DbUserName = None
+        self.DbHost = None
+        self.DbPrivilege = None
+
+
+    def _deserialize(self, params):
+        self.DbUserName = params.get("DbUserName")
+        self.DbHost = params.get("DbHost")
+        self.DbPrivilege = params.get("DbPrivilege")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ZoneStockInfo(AbstractModel):

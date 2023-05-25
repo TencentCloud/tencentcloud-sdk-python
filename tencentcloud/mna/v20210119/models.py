@@ -957,11 +957,11 @@ class GetFlowStatisticResponse(AbstractModel):
         r"""
         :param NetDetails: 流量详细信息
         :type NetDetails: list of NetDetails
-        :param MaxValue: 查找时间段流量使用最大值（单位：bit）
+        :param MaxValue: 查找时间段流量使用最大值（单位：byte）
         :type MaxValue: float
-        :param AvgValue: 查找时间段流量使用平均值（单位：bit）
+        :param AvgValue: 查找时间段流量使用平均值（单位：byte）
         :type AvgValue: float
-        :param TotalValue: 查找时间段流量使用总量（单位：bit）
+        :param TotalValue: 查找时间段流量使用总量（单位：byte）
         :type TotalValue: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

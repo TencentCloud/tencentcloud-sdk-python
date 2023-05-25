@@ -7427,11 +7427,14 @@ class RecognizeTableAccurateOCRRequest(AbstractModel):
         r"""
         :param ImageBase64: 图片/PDF的 Base64 值。
 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+图片支持的像素范围：需介于20-10000px之间。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片/PDF的 Url 地址。
 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+图片支持的像素范围：需介于20-10000px之间。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定
+性可能受一定影响。
         :type ImageUrl: str
         :param PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :type PdfPageNumber: int
@@ -11380,6 +11383,20 @@ class VatInvoiceItem(AbstractModel):
         :type TaxAmount: str
         :param TaxClassifyCode: 税收分类编码
         :type TaxClassifyCode: str
+        :param VehicleType: 运输工具类型
+        :type VehicleType: str
+        :param VehicleBrand: 运输工具牌号
+        :type VehicleBrand: str
+        :param DeparturePlace: 起始地
+        :type DeparturePlace: str
+        :param ArrivalPlace: 到达地
+        :type ArrivalPlace: str
+        :param TransportItemsName: 运输货物名称
+        :type TransportItemsName: str
+        :param ConstructionPlace: 建筑服务发生地
+        :type ConstructionPlace: str
+        :param ConstructionName: 建筑项目名称
+        :type ConstructionName: str
         """
         self.LineNo = None
         self.Name = None
@@ -11391,6 +11408,13 @@ class VatInvoiceItem(AbstractModel):
         self.TaxRate = None
         self.TaxAmount = None
         self.TaxClassifyCode = None
+        self.VehicleType = None
+        self.VehicleBrand = None
+        self.DeparturePlace = None
+        self.ArrivalPlace = None
+        self.TransportItemsName = None
+        self.ConstructionPlace = None
+        self.ConstructionName = None
 
 
     def _deserialize(self, params):
@@ -11404,6 +11428,13 @@ class VatInvoiceItem(AbstractModel):
         self.TaxRate = params.get("TaxRate")
         self.TaxAmount = params.get("TaxAmount")
         self.TaxClassifyCode = params.get("TaxClassifyCode")
+        self.VehicleType = params.get("VehicleType")
+        self.VehicleBrand = params.get("VehicleBrand")
+        self.DeparturePlace = params.get("DeparturePlace")
+        self.ArrivalPlace = params.get("ArrivalPlace")
+        self.TransportItemsName = params.get("TransportItemsName")
+        self.ConstructionPlace = params.get("ConstructionPlace")
+        self.ConstructionName = params.get("ConstructionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11491,11 +11522,13 @@ class VatInvoiceOCRRequest(AbstractModel):
         :param ImageBase64: 图片/PDF的 Base64 值。
 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 支持的图片/PDF大小：所下载文件经Base64编码后不超过 7M。文件下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
 输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片/PDF的 Url 地址。
 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 7M。文件下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str

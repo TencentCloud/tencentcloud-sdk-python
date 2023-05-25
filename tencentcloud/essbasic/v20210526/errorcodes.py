@@ -197,6 +197,9 @@ INVALIDPARAMETER_IMAGE = 'InvalidParameter.Image'
 # Id不存在或者符合规范。
 INVALIDPARAMETER_INVALIDID = 'InvalidParameter.InvalidId'
 
+# 参数Limit不正确
+INVALIDPARAMETER_LIMIT = 'InvalidParameter.Limit'
+
 # 印章名称长度超出。
 INVALIDPARAMETER_LIMITSEALNAME = 'InvalidParameter.LimitSealName'
 
@@ -214,6 +217,9 @@ INVALIDPARAMETER_NAME = 'InvalidParameter.Name'
 
 # 不支持的手机号。
 INVALIDPARAMETER_NONSUPPORTMOBILE = 'InvalidParameter.NonsupportMobile'
+
+# 参数Offset不正确
+INVALIDPARAMETER_OFFSET = 'InvalidParameter.Offset'
 
 # OpenId不合法。
 INVALIDPARAMETER_OPENID = 'InvalidParameter.OpenId'

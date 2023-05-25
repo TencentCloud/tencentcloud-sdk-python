@@ -1336,6 +1336,7 @@ class Function(AbstractModel):
         :param AddTime: 创建时间
         :type AddTime: str
         :param Runtime: 运行时
+注意：此字段可能返回 null，表示取不到有效值。
         :type Runtime: str
         :param FunctionName: 函数名称
         :type FunctionName: str
@@ -1982,6 +1983,7 @@ class GetFunctionResponse(AbstractModel):
         :param MemorySize: 函数的最大可用内存
         :type MemorySize: int
         :param Runtime: 函数的运行环境
+注意：此字段可能返回 null，表示取不到有效值。
         :type Runtime: str
         :param FunctionName: 函数的名称
         :type FunctionName: str
@@ -3847,6 +3849,7 @@ class PublishVersionResponse(AbstractModel):
         :param Timeout: 函数的超时时间
         :type Timeout: int
         :param Runtime: 函数的运行环境
+注意：此字段可能返回 null，表示取不到有效值。
         :type Runtime: str
         :param Namespace: 函数的命名空间
         :type Namespace: str

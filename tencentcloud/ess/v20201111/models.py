@@ -930,7 +930,7 @@ class CreateChannelSubOrganizationModifyQrCodeResponse(AbstractModel):
         r"""
         :param QrCodeUrl: 二维码下载链接
         :type QrCodeUrl: str
-        :param ExpiredTime: 二维码失效时间 unix 时间戳 精确到秒
+        :param ExpiredTime: 二维码失效时间 UNIX 时间戳 精确到秒
         :type ExpiredTime: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2408,6 +2408,8 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         :type NotifyType: str
         :param NotifyAddress: 若上方填写为 SMS，则此处为手机号
         :type NotifyAddress: str
+        :param ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
+        :type ExpiredTime: int
         """
         self.Operator = None
         self.SceneKey = None
@@ -2415,6 +2417,7 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         self.UrlType = None
         self.NotifyType = None
         self.NotifyAddress = None
+        self.ExpiredTime = None
 
 
     def _deserialize(self, params):
@@ -2428,6 +2431,7 @@ E_PRESCRIPTION_AUTO_SIGN 电子处方
         self.UrlType = params.get("UrlType")
         self.NotifyType = params.get("NotifyType")
         self.NotifyAddress = params.get("NotifyAddress")
+        self.ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

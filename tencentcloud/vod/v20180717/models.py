@@ -7395,12 +7395,18 @@ class CreateRoundPlayRequest(AbstractModel):
         :type Name: str
         :param Desc: 轮播播单描述信息，长度限制：256 个字符。
         :type Desc: str
+        :param PlayBackMode: 播放模式，可选值：
+<li>Loop：循环播放播单；</li>
+<li>Linear：单次播放，播单播放完停止播放。</li>
+默认值：Loop。
+        :type PlayBackMode: str
         """
         self.StartTime = None
         self.RoundPlaylist = None
         self.SubAppId = None
         self.Name = None
         self.Desc = None
+        self.PlayBackMode = None
 
 
     def _deserialize(self, params):
@@ -7414,6 +7420,7 @@ class CreateRoundPlayRequest(AbstractModel):
         self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Desc = params.get("Desc")
+        self.PlayBackMode = params.get("PlayBackMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19081,6 +19088,14 @@ class ModifyRoundPlayRequest(AbstractModel):
         :type Name: str
         :param Desc: 轮播播单描述信息，长度限制：256 个字符。
         :type Desc: str
+        :param Status: 播放状态，可选值：
+<li>Disabled：结束播放，结束后轮播任务不能再次启动。</li>
+
+        :type Status: str
+        :param PlayBackMode: 播放模式，可选值：
+<li>Loop：循环播放播单；</li>
+<li>Linear：单次播放，播单播放完停止播放。</li>
+        :type PlayBackMode: str
         """
         self.RoundPlayId = None
         self.SubAppId = None
@@ -19088,6 +19103,8 @@ class ModifyRoundPlayRequest(AbstractModel):
         self.RoundPlaylist = None
         self.Name = None
         self.Desc = None
+        self.Status = None
+        self.PlayBackMode = None
 
 
     def _deserialize(self, params):
@@ -19102,6 +19119,8 @@ class ModifyRoundPlayRequest(AbstractModel):
                 self.RoundPlaylist.append(obj)
         self.Name = params.get("Name")
         self.Desc = params.get("Desc")
+        self.Status = params.get("Status")
+        self.PlayBackMode = params.get("PlayBackMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -24643,12 +24662,27 @@ class RoundPlayInfo(AbstractModel):
         :type Name: str
         :param Desc: 轮播播单描述信息，长度限制：256 个字符。
         :type Desc: str
+        :param Status: 播放状态，可选值：
+<li>Enabled：启动状态；</li>
+<li>Disabled：停止状态。</li>
+默认值：Enabled。
+        :type Status: str
+        :param PlayBackMode: 播放模式，可选值：
+<li>Loop：循环播放播单；</li>
+<li>Linear：单次播放，播单播放完停止播放。</li>
+默认值：Loop。
+        :type PlayBackMode: str
+        :param Url: 轮播播放地址。
+        :type Url: str
         """
         self.RoundPlayId = None
         self.StartTime = None
         self.RoundPlaylist = None
         self.Name = None
         self.Desc = None
+        self.Status = None
+        self.PlayBackMode = None
+        self.Url = None
 
 
     def _deserialize(self, params):
@@ -24662,6 +24696,9 @@ class RoundPlayInfo(AbstractModel):
                 self.RoundPlaylist.append(obj)
         self.Name = params.get("Name")
         self.Desc = params.get("Desc")
+        self.Status = params.get("Status")
+        self.PlayBackMode = params.get("PlayBackMode")
+        self.Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

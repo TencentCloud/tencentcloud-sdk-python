@@ -199,6 +199,8 @@ class BaseFlowInfo(AbstractModel):
         :type UserData: str
         :param CcInfos: 抄送人信息
         :type CcInfos: list of CcInfo
+        :param NeedCreateReview: 是否需要发起前审核，当指定NeedCreateReview=true，则发起后，需要使用接口：ChannelCreateFlowSignReview，来完成发起前审核，审核通过后，可以继续查看，签署合同
+        :type NeedCreateReview: bool
         """
         self.FlowName = None
         self.FlowType = None
@@ -210,6 +212,7 @@ class BaseFlowInfo(AbstractModel):
         self.NeedSignReview = None
         self.UserData = None
         self.CcInfos = None
+        self.NeedCreateReview = None
 
 
     def _deserialize(self, params):
@@ -233,6 +236,7 @@ class BaseFlowInfo(AbstractModel):
                 obj = CcInfo()
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
+        self.NeedCreateReview = params.get("NeedCreateReview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1866,18 +1870,18 @@ class ChannelDescribeRolesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 查询数量，最大200
         :type Limit: str
-        :param Operator: 操作人信息
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param Filters: 查询的关键字段:
-Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
         :type Filters: list of Filter
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self.Agent = None
         self.Offset = None
         self.Limit = None
-        self.Operator = None
         self.Filters = None
+        self.Operator = None
 
 
     def _deserialize(self, params):
@@ -1886,15 +1890,15 @@ Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
             self.Agent._deserialize(params.get("Agent"))
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3960,6 +3964,8 @@ RELIEVED 解除
         :type FlowApproverInfos: list of FlowApproverDetail
         :param CcInfos: 合同(流程)关注方信息列表
         :type CcInfos: list of FlowApproverDetail
+        :param NeedCreateReview: 是否需要发起前审批，当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程
+        :type NeedCreateReview: bool
         """
         self.FlowId = None
         self.FlowName = None
@@ -3971,6 +3977,7 @@ RELIEVED 解除
         self.CustomData = None
         self.FlowApproverInfos = None
         self.CcInfos = None
+        self.NeedCreateReview = None
 
 
     def _deserialize(self, params):
@@ -3994,6 +4001,7 @@ RELIEVED 解除
                 obj = FlowApproverDetail()
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
+        self.NeedCreateReview = params.get("NeedCreateReview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
