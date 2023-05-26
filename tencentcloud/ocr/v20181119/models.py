@@ -620,6 +620,10 @@ OCR_WARNING_TYPE_NOT_MATCH 非营业执照
 WARN_COPY_CARD 黑白复印件告警
 注：告警信息可以同时存在多个
         :type RecognizeWarnMsg: list of str
+        :param IsDuplication: 是否为副本。1为是，-1为不是。
+        :type IsDuplication: int
+        :param RegistrationDate: 登记日期
+        :type RegistrationDate: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -635,6 +639,8 @@ WARN_COPY_CARD 黑白复印件告警
         self.SetDate = None
         self.RecognizeWarnCode = None
         self.RecognizeWarnMsg = None
+        self.IsDuplication = None
+        self.RegistrationDate = None
         self.RequestId = None
 
 
@@ -651,6 +657,8 @@ WARN_COPY_CARD 黑白复印件告警
         self.SetDate = params.get("SetDate")
         self.RecognizeWarnCode = params.get("RecognizeWarnCode")
         self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
+        self.IsDuplication = params.get("IsDuplication")
+        self.RegistrationDate = params.get("RegistrationDate")
         self.RequestId = params.get("RequestId")
 
 

@@ -85,12 +85,16 @@ class AccessPolicy(AbstractModel):
         :type UserGroupIds: list of str
         :param UpdateTime: 更新时间
         :type UpdateTime: str
+        :param Remark: Remark
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         """
         self.TargetCidr = None
         self.VpnGatewayIdSslAccessPolicyId = None
         self.ForAllClient = None
         self.UserGroupIds = None
         self.UpdateTime = None
+        self.Remark = None
 
 
     def _deserialize(self, params):
@@ -99,6 +103,7 @@ class AccessPolicy(AbstractModel):
         self.ForAllClient = params.get("ForAllClient")
         self.UserGroupIds = params.get("UserGroupIds")
         self.UpdateTime = params.get("UpdateTime")
+        self.Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13119,18 +13124,18 @@ class DescribeVpnGatewaySslServersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 偏移量
+        :param Offset: 偏移量。
         :type Offset: int
-        :param Limit: 请求对象个数
+        :param Limit: 请求对象个数。
         :type Limit: int
         :param SslVpnServerIds: SSL-VPN-SERVER实例ID。形如：vpngwSslServer-12345678。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
         :type SslVpnServerIds: list of str
         :param Filters: 过滤条件，参数不支持同时指定SslVpnServerIds和Filters。
-<li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
-<li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
+<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+<li>vpn-gateway-id - String - （过滤条件）VPN实例ID，形如：vpngw-5aluhh9t。</li>
 <li>vpn-gateway-name - String - （过滤条件）VPN实例名称。</li>
 <li>ssl-vpn-server-name - String - （过滤条件）SSL-VPN-SERVER实例名称。</li>
-<li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
+<li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID，形如：vpns-xxx。</li>
         :type Filters: list of FilterObject
         :param IsVpnPortal: vpn门户使用。 默认Flase
         :type IsVpnPortal: bool

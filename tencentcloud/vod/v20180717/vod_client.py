@@ -298,6 +298,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEnhanceMediaTemplate(self, request):
+        """创建音画质重生模板。
+
+        :param request: Request instance for CreateEnhanceMediaTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateEnhanceMediaTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateEnhanceMediaTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEnhanceMediaTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEnhanceMediaTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateHeadTailTemplate(self, request):
         """创建片头片尾模板。
 
@@ -829,6 +852,29 @@ class VodClient(AbstractClient):
             body = self.call("DeleteContentReviewTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteContentReviewTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteEnhanceMediaTemplate(self, request):
+        """删除音画质重生模板。
+
+        :param request: Request instance for DeleteEnhanceMediaTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteEnhanceMediaTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteEnhanceMediaTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEnhanceMediaTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteEnhanceMediaTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1578,6 +1624,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeDrmKeyProviderInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDrmKeyProviderInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEnhanceMediaTemplates(self, request):
+        """获取音画质重生模板列表。
+
+        :param request: Request instance for DescribeEnhanceMediaTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeEnhanceMediaTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeEnhanceMediaTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnhanceMediaTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnhanceMediaTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2382,6 +2451,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def EnhanceMediaByTemplate(self, request):
+        """使用模板发起音画质重生。
+
+        :param request: Request instance for EnhanceMediaByTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaByTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaByTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnhanceMediaByTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnhanceMediaByTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExecuteFunction(self, request):
         """本接口仅用于定制开发的特殊场景，除非云点播客服人员主动告知您需要使用本接口，其它情况请勿调用。
 
@@ -2676,6 +2768,29 @@ class VodClient(AbstractClient):
             body = self.call("ModifyDefaultStorageRegion", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDefaultStorageRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyEnhanceMediaTemplate(self, request):
+        """修改音画质重生模板。
+
+        :param request: Request instance for ModifyEnhanceMediaTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyEnhanceMediaTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyEnhanceMediaTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEnhanceMediaTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyEnhanceMediaTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

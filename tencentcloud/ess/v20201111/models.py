@@ -4142,6 +4142,9 @@ class FlowBrief(AbstractModel):
         :param Creator:  合同发起人userId
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creator: str
+        :param Deadline: 合同过期时间，时间戳，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deadline: int
         """
         self.FlowId = None
         self.FlowName = None
@@ -4151,6 +4154,7 @@ class FlowBrief(AbstractModel):
         self.CreatedOn = None
         self.FlowMessage = None
         self.Creator = None
+        self.Deadline = None
 
 
     def _deserialize(self, params):
@@ -4162,6 +4166,7 @@ class FlowBrief(AbstractModel):
         self.CreatedOn = params.get("CreatedOn")
         self.FlowMessage = params.get("FlowMessage")
         self.Creator = params.get("Creator")
+        self.Deadline = params.get("Deadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

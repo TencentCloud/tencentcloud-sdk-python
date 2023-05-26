@@ -4542,7 +4542,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeVpnGatewaySslServers(self, request):
-        """查询SSL-VPN SERVER 列表信息
+        """本接口（DescribeVpnGatewaySslServers）用于查询SSL-VPN SERVER 列表信息。
 
         :param request: Request instance for DescribeVpnGatewaySslServers.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaySslServersRequest`

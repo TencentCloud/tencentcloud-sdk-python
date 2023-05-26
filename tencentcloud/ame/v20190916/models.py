@@ -3573,6 +3573,11 @@ class TRTCJoinRoomInput(AbstractModel):
 <li>anchor：主播</li>
 <li>audience：观众</li>
         :type Role: str
+        :param RoomIdType: TRTC房间号的类型：
+<li>Integer：数字类型</li>
+<li> String：字符串类型</li>
+默认为：Integer 。
+        :type RoomIdType: str
         """
         self.Sign = None
         self.RoomId = None
@@ -3580,6 +3585,7 @@ class TRTCJoinRoomInput(AbstractModel):
         self.UserId = None
         self.PrivateMapKey = None
         self.Role = None
+        self.RoomIdType = None
 
 
     def _deserialize(self, params):
@@ -3589,6 +3595,7 @@ class TRTCJoinRoomInput(AbstractModel):
         self.UserId = params.get("UserId")
         self.PrivateMapKey = params.get("PrivateMapKey")
         self.Role = params.get("Role")
+        self.RoomIdType = params.get("RoomIdType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -6756,6 +6756,101 @@ class CreateContentReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEnhanceMediaTemplateRequest(AbstractModel):
+    """CreateEnhanceMediaTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Container: 输出文件封装格式，可选值：mp4、flv、hls。
+        :type Container: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Name: 音画质重生模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param RebuildVideoInfo: 音画质重生视频控制控制信息。
+        :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
+        :param RebuildAudioInfo: 音画质重生音频控制控制信息。
+        :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
+        :param TargetVideoInfo: 输出目标视频控制信息。
+        :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
+        :param TargetAudioInfo: 输出目标音频控制信息。
+        :type TargetAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值 0。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值 0。
+        :type RemoveAudio: int
+        """
+        self.Container = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+        self.RebuildVideoInfo = None
+        self.RebuildAudioInfo = None
+        self.TargetVideoInfo = None
+        self.TargetAudioInfo = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+
+
+    def _deserialize(self, params):
+        self.Container = params.get("Container")
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("RebuildVideoInfo") is not None:
+            self.RebuildVideoInfo = RebuildVideoInfo()
+            self.RebuildVideoInfo._deserialize(params.get("RebuildVideoInfo"))
+        if params.get("RebuildAudioInfo") is not None:
+            self.RebuildAudioInfo = RebuildAudioInfo()
+            self.RebuildAudioInfo._deserialize(params.get("RebuildAudioInfo"))
+        if params.get("TargetVideoInfo") is not None:
+            self.TargetVideoInfo = RebuildMediaTargetVideoStream()
+            self.TargetVideoInfo._deserialize(params.get("TargetVideoInfo"))
+        if params.get("TargetAudioInfo") is not None:
+            self.TargetAudioInfo = RebuildMediaTargetAudioStream()
+            self.TargetAudioInfo._deserialize(params.get("TargetAudioInfo"))
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEnhanceMediaTemplateResponse(AbstractModel):
+    """CreateEnhanceMediaTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 音画质重生模板 ID。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateHeadTailTemplateRequest(AbstractModel):
     """CreateHeadTailTemplate请求参数结构体
 
@@ -8465,6 +8560,51 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
 class DeleteContentReviewTemplateResponse(AbstractModel):
     """DeleteContentReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteEnhanceMediaTemplateRequest(AbstractModel):
+    """DeleteEnhanceMediaTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 音画质重生模板号。
+        :type Definition: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEnhanceMediaTemplateResponse(AbstractModel):
+    """DeleteEnhanceMediaTemplate返回参数结构体
 
     """
 
@@ -10263,6 +10403,78 @@ class DescribeDrmKeyProviderInfoResponse(AbstractModel):
         if params.get("SDMCInfo") is not None:
             self.SDMCInfo = SDMCDrmKeyProviderInfo()
             self.SDMCInfo._deserialize(params.get("SDMCInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnhanceMediaTemplatesRequest(AbstractModel):
+    """DescribeEnhanceMediaTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Definitions: 音画质重生模板列表。长度限制：100。
+        :type Definitions: list of int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        """
+        self.SubAppId = None
+        self.Definitions = None
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.Definitions = params.get("Definitions")
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnhanceMediaTemplatesResponse(AbstractModel):
+    """DescribeEnhanceMediaTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param RebuildMediaTemplateSet: 音画质重生模板详情列表。
+        :type RebuildMediaTemplateSet: list of RebuildMediaTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RebuildMediaTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RebuildMediaTemplateSet") is not None:
+            self.RebuildMediaTemplateSet = []
+            for item in params.get("RebuildMediaTemplateSet"):
+                obj = RebuildMediaTemplate()
+                obj._deserialize(item)
+                self.RebuildMediaTemplateSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -13349,6 +13561,89 @@ class EmptyTrackItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EnhanceMediaByTemplateRequest(AbstractModel):
+    """EnhanceMediaByTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param Definition: 音画质重生模板 ID。
+        :type Definition: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param StartTimeOffset: 起始偏移时间，单位：秒，不填表示从视频开始截取。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 结束偏移时间，单位：秒，不填表示截取到视频末尾。
+        :type EndTimeOffset: float
+        :param OutputConfig: 音画质重生后的文件配置。
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.RebuildMediaOutputConfig`
+        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
+        """
+        self.FileId = None
+        self.Definition = None
+        self.SubAppId = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.OutputConfig = None
+        self.SessionId = None
+        self.SessionContext = None
+        self.TasksPriority = None
+        self.ExtInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("OutputConfig") is not None:
+            self.OutputConfig = RebuildMediaOutputConfig()
+            self.OutputConfig._deserialize(params.get("OutputConfig"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        self.TasksPriority = params.get("TasksPriority")
+        self.ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceMediaByTemplateResponse(AbstractModel):
+    """EnhanceMediaByTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class EventContent(AbstractModel):
@@ -18382,6 +18677,101 @@ class ModifyDefaultStorageRegionRequest(AbstractModel):
 
 class ModifyDefaultStorageRegionResponse(AbstractModel):
     """ModifyDefaultStorageRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyEnhanceMediaTemplateRequest(AbstractModel):
+    """ModifyEnhanceMediaTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 音画质重生模板号。
+        :type Definition: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Name: 音画质重生模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param RebuildVideoInfo: 音画质重生视频控制控制信息。
+        :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
+        :param RebuildAudioInfo: 音画质重生音频控制控制信息。
+        :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
+        :param TargetVideoInfo: 输出目标视频控制信息。
+        :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
+        :param TargetAudioInfo: 输出目标音频控制信息。
+        :type TargetAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
+        :param Container: 输出文件封装格式，可选值：mp4、flv、hls。
+        :type Container: str
+        :param RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值 0。
+        :type RemoveVideo: int
+        :param RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留</li>
+<li>1：去除</li>
+默认值 0。
+        :type RemoveAudio: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+        self.RebuildVideoInfo = None
+        self.RebuildAudioInfo = None
+        self.TargetVideoInfo = None
+        self.TargetAudioInfo = None
+        self.Container = None
+        self.RemoveVideo = None
+        self.RemoveAudio = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        if params.get("RebuildVideoInfo") is not None:
+            self.RebuildVideoInfo = RebuildVideoInfo()
+            self.RebuildVideoInfo._deserialize(params.get("RebuildVideoInfo"))
+        if params.get("RebuildAudioInfo") is not None:
+            self.RebuildAudioInfo = RebuildAudioInfo()
+            self.RebuildAudioInfo._deserialize(params.get("RebuildAudioInfo"))
+        if params.get("TargetVideoInfo") is not None:
+            self.TargetVideoInfo = RebuildMediaTargetVideoStream()
+            self.TargetVideoInfo._deserialize(params.get("TargetVideoInfo"))
+        if params.get("TargetAudioInfo") is not None:
+            self.TargetAudioInfo = RebuildMediaTargetAudioStream()
+            self.TargetAudioInfo._deserialize(params.get("TargetAudioInfo"))
+        self.Container = params.get("Container")
+        self.RemoveVideo = params.get("RemoveVideo")
+        self.RemoveAudio = params.get("RemoveAudio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEnhanceMediaTemplateResponse(AbstractModel):
+    """ModifyEnhanceMediaTemplate返回参数结构体
 
     """
 

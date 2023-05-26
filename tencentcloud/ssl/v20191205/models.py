@@ -5130,14 +5130,23 @@ class TeoInstanceDetail(AbstractModel):
         :type Host: str
         :param CertId: 证书ID
         :type CertId: str
+        :param ZoneId: 区域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: str
+        :param Status: 域名状态
+        :type Status: str
         """
         self.Host = None
         self.CertId = None
+        self.ZoneId = None
+        self.Status = None
 
 
     def _deserialize(self, params):
         self.Host = params.get("Host")
         self.CertId = params.get("CertId")
+        self.ZoneId = params.get("ZoneId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

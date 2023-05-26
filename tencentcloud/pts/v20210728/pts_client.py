@@ -602,7 +602,7 @@ class PtsClient(AbstractClient):
 
 
     def DescribeNormalLogs(self, request):
-        """压测过程日志日志包括引擎输出日志及用户输出日志
+        """压测过程日志包括引擎输出日志及用户输出日志
 
         :param request: Request instance for DescribeNormalLogs.
         :type request: :class:`tencentcloud.pts.v20210728.models.DescribeNormalLogsRequest`

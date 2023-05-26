@@ -211,7 +211,7 @@ class IotvideoClient(AbstractClient):
 
 
     def CheckForwardAuth(self, request):
-        """判断是否开启的转发的权限
+        """判断是否开启转发的权限
 
         :param request: Request instance for CheckForwardAuth.
         :type request: :class:`tencentcloud.iotvideo.v20211125.models.CheckForwardAuthRequest`
