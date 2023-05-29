@@ -744,6 +744,8 @@ class CreateJobRequest(AbstractModel):
         :type FlinkVersion: str
         :param WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
+        :param Tags: 作业标签
+        :type Tags: list of Tag
         """
         self.Name = None
         self.JobType = None
@@ -754,6 +756,7 @@ class CreateJobRequest(AbstractModel):
         self.FolderId = None
         self.FlinkVersion = None
         self.WorkSpaceId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -766,6 +769,12 @@ class CreateJobRequest(AbstractModel):
         self.FolderId = params.get("FolderId")
         self.FlinkVersion = params.get("FlinkVersion")
         self.WorkSpaceId = params.get("WorkSpaceId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2192,6 +2201,9 @@ class JobV1(AbstractModel):
         :param WorkSpaceName: 工作空间名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkSpaceName: str
+        :param Tags: 作业标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.JobId = None
         self.Region = None
@@ -2224,6 +2236,7 @@ class JobV1(AbstractModel):
         self.FlinkVersion = None
         self.WorkSpaceId = None
         self.WorkSpaceName = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2258,6 +2271,12 @@ class JobV1(AbstractModel):
         self.FlinkVersion = params.get("FlinkVersion")
         self.WorkSpaceId = params.get("WorkSpaceId")
         self.WorkSpaceName = params.get("WorkSpaceName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3100,6 +3119,9 @@ class TreeResourceItem(AbstractModel):
         :param FolderId: 目录ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
+        :param RefJobStatusCountSet: 分状态统计关联作业数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefJobStatusCountSet: list of RefJobStatusCountItem
         """
         self.ResourceId = None
         self.Name = None
@@ -3107,6 +3129,7 @@ class TreeResourceItem(AbstractModel):
         self.Remark = None
         self.FileName = None
         self.FolderId = None
+        self.RefJobStatusCountSet = None
 
 
     def _deserialize(self, params):
@@ -3116,6 +3139,12 @@ class TreeResourceItem(AbstractModel):
         self.Remark = params.get("Remark")
         self.FileName = params.get("FileName")
         self.FolderId = params.get("FolderId")
+        if params.get("RefJobStatusCountSet") is not None:
+            self.RefJobStatusCountSet = []
+            for item in params.get("RefJobStatusCountSet"):
+                obj = RefJobStatusCountItem()
+                obj._deserialize(item)
+                self.RefJobStatusCountSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -256,6 +256,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelSparkSessionBatchSQL(self, request):
+        """本接口（CancelSparkSessionBatchSQL）用于取消Spark SQL批任务。
+
+        :param request: Request instance for CancelSparkSessionBatchSQL.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CancelSparkSessionBatchSQLRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CancelSparkSessionBatchSQLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelSparkSessionBatchSQL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelSparkSessionBatchSQLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelTask(self, request):
         """本接口（CancelTask），用于取消任务执行
 
@@ -615,6 +638,29 @@ class DlcClient(AbstractClient):
             body = self.call("CreateSparkAppTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSparkAppTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSparkSessionBatchSQL(self, request):
+        """本接口（CreateSparkSessionBatchSQL）用于提交Spark SQL批任务。
+
+        :param request: Request instance for CreateSparkSessionBatchSQL.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkSessionBatchSQLRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateSparkSessionBatchSQLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSparkSessionBatchSQL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSparkSessionBatchSQLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1397,6 +1443,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeSparkAppTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSparkAppTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSparkSessionBatchSqlLog(self, request):
+        """本接口（DescribeSparkSessionBatchSqlLog）用于获取SparkSQL批任务日志
+
+        :param request: Request instance for DescribeSparkSessionBatchSqlLog.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSqlLogRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSqlLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSparkSessionBatchSqlLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSparkSessionBatchSqlLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

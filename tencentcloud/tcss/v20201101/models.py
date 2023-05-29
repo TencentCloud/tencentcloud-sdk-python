@@ -25486,6 +25486,9 @@ class NetworkClusterInfoItem(AbstractModel):
         :param NetworkPolicyPluginError: 集群网络插件错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkPolicyPluginError: str
+        :param ClusterNetworkSettings: 容器网络插件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterNetworkSettings: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -25499,6 +25502,7 @@ class NetworkClusterInfoItem(AbstractModel):
         self.EnableRuleCount = None
         self.NetworkPolicyPluginStatus = None
         self.NetworkPolicyPluginError = None
+        self.ClusterNetworkSettings = None
 
 
     def _deserialize(self, params):
@@ -25514,6 +25518,7 @@ class NetworkClusterInfoItem(AbstractModel):
         self.EnableRuleCount = params.get("EnableRuleCount")
         self.NetworkPolicyPluginStatus = params.get("NetworkPolicyPluginStatus")
         self.NetworkPolicyPluginError = params.get("NetworkPolicyPluginError")
+        self.ClusterNetworkSettings = params.get("ClusterNetworkSettings")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

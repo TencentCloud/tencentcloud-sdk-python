@@ -1023,12 +1023,18 @@ SIGN_REJECT:拒签(流程结束)
         :type ReviewMessage: str
         :param RecipientId: 签署节点审核时需要指定
         :type RecipientId: str
+        :param OperateType: 操作类型，默认：SignReview；SignReview:签署审核，CreateReview：发起审核
+注：接口通过该字段区分操作类型
+该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
+若想使用发起审核，请指定该字段为：CreateReview
+        :type OperateType: str
         """
         self.Agent = None
         self.FlowId = None
         self.ReviewType = None
         self.ReviewMessage = None
         self.RecipientId = None
+        self.OperateType = None
 
 
     def _deserialize(self, params):
@@ -1039,6 +1045,7 @@ SIGN_REJECT:拒签(流程结束)
         self.ReviewType = params.get("ReviewType")
         self.ReviewMessage = params.get("ReviewMessage")
         self.RecipientId = params.get("RecipientId")
+        self.OperateType = params.get("OperateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1264,7 +1271,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowOption: 合同流程配置信息
         :type FlowOption: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowOption`
-        :param FlowId: 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+        :param FlowId: 通过flowid快速获得之前成功通过页面发起的合同生成链接
         :type FlowId: str
         :param NeedPreview: 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
         :type NeedPreview: bool
@@ -1569,7 +1576,7 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
         r"""
         :param Agent: 代理信息
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param RoleId: 角色Id
+        :param RoleId: 角色Id（非超管或法人角色Id）
         :type RoleId: str
         :param UserIds: 用户列表
         :type UserIds: list of str

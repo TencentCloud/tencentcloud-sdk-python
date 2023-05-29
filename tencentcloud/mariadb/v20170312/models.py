@@ -561,7 +561,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         :param AutoRenewFlag: 自动续费标志，1:自动续费，2:不自动续费
         :type AutoRenewFlag: int
-        :param Ipv6Flag: 是否支持IPv6
+        :param Ipv6Flag: 是否支持IPv6，0:不支持，1:支持
         :type Ipv6Flag: int
         :param ResourceTags: 标签键值对数组
         :type ResourceTags: list of ResourceTag
@@ -845,7 +845,7 @@ class CreateHourDBInstanceRequest(AbstractModel):
         :type InstanceName: str
         :param SecurityGroupIds: 安全组ID，不传表示不绑定安全组
         :type SecurityGroupIds: list of str
-        :param Ipv6Flag: 是否支持IPv6
+        :param Ipv6Flag: 是否支持IPv6，0:不支持，1:支持
         :type Ipv6Flag: int
         :param ResourceTags: 标签键值对数组
         :type ResourceTags: list of ResourceTag
@@ -857,7 +857,7 @@ class CreateHourDBInstanceRequest(AbstractModel):
 character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），
 innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化，默认为强同步可退化）。
         :type InitParams: list of DBParamValue
-        :param RollbackInstanceId: 回档源实例ID
+        :param RollbackInstanceId: 回档源实例ID，例如“2021-11-22 00:00:00”
         :type RollbackInstanceId: str
         :param RollbackTime: 回档时间
         :type RollbackTime: str
@@ -1025,6 +1025,8 @@ class DBAccount(AbstractModel):
         :type DelayThresh: int
         :param SlaveConst: 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
         :type SlaveConst: int
+        :param MaxUserConnections: 用户最大连接数，0代表无限制
+        :type MaxUserConnections: int
         """
         self.UserName = None
         self.Host = None
@@ -1034,6 +1036,7 @@ class DBAccount(AbstractModel):
         self.ReadOnly = None
         self.DelayThresh = None
         self.SlaveConst = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -1045,6 +1048,7 @@ class DBAccount(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
         self.DelayThresh = params.get("DelayThresh")
         self.SlaveConst = params.get("SlaveConst")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2269,6 +2273,8 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         :param RsAccessStrategy: VPC就近访问
 注意：此字段可能返回 null，表示取不到有效值。
         :type RsAccessStrategy: int
+        :param ReservedNetResources: 尚未回收的网络资源
+        :type ReservedNetResources: list of ReservedNetResource
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2327,6 +2333,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self.ReplicaStatus = None
         self.ExclusterType = None
         self.RsAccessStrategy = None
+        self.ReservedNetResources = None
         self.RequestId = None
 
 
@@ -2400,6 +2407,12 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
             self.ReplicaStatus._deserialize(params.get("ReplicaStatus"))
         self.ExclusterType = params.get("ExclusterType")
         self.RsAccessStrategy = params.get("RsAccessStrategy")
+        if params.get("ReservedNetResources") is not None:
+            self.ReservedNetResources = []
+            for item in params.get("ReservedNetResources"):
+                obj = ReservedNetResource()
+                obj._deserialize(item)
+                self.ReservedNetResources.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5527,6 +5540,46 @@ class RenewDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
+
+
+class ReservedNetResource(AbstractModel):
+    """保留的网络资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: 私有网络
+        :type VpcId: str
+        :param SubnetId: 子网
+        :type SubnetId: str
+        :param Vip: VpcId,SubnetId下保留的内网ip
+        :type Vip: str
+        :param Vports: Vip下的端口
+        :type Vports: list of int
+        :param RecycleTime: vip的回收时间
+        :type RecycleTime: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+        self.Vports = None
+        self.RecycleTime = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        self.Vports = params.get("Vports")
+        self.RecycleTime = params.get("RecycleTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResetAccountPasswordRequest(AbstractModel):

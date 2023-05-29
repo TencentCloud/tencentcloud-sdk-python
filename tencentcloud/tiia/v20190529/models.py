@@ -453,7 +453,7 @@ class CreateGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 图库ID，不可重复，仅支持字母、数字和下划线。
+        :param GroupId: 图库ID，不可重复，仅支持字母、数字和下划线。图库数量单个用户上限为30。
         :type GroupId: str
         :param GroupName: 图库名称描述。
         :type GroupName: str

@@ -2554,7 +2554,7 @@ class MonitorClient(AbstractClient):
 
 
     def ModifyAlarmPolicyNotice(self, request):
-        """告警修改告警策略绑定的告警通知模板
+        """修改告警策略绑定的告警通知模板
 
         :param request: Request instance for ModifyAlarmPolicyNotice.
         :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmPolicyNoticeRequest`

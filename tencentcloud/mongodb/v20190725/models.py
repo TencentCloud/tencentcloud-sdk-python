@@ -504,13 +504,11 @@ class CreateDBInstanceHourRequest(AbstractModel):
 - REPLSET：副本集。
 - SHARD：分片集群。
         :type ClusterType: str
-        :param VpcId: 私有网络ID，如果不设置该参数，则默认选择基础网络。
+        :param VpcId: 私有网络ID。如果不设置该参数，则默认选择基础网络。
         :type VpcId: str
         :param SubnetId: 私有网络下的子网 ID，如果配置参数 VpcId，则 SubnetId必须配置。
         :type SubnetId: str
-        :param Password: 实例密码。
-- 不设置该参数，则默认密码格式为：实例ID+@+主账户uin。例如：实例 ID 为cmgo-higv73ed，UIN 为100000001，则默认密码为：cmgo-higv73ed@100000001。 
-- 自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
+        :param Password: 实例密码。自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
         :type Password: str
         :param ProjectId: 项目ID。若不设置该参数，则为默认项目。
         :type ProjectId: int

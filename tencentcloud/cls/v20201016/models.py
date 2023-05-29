@@ -3647,12 +3647,17 @@ class DescribeLogHistogramRequest(AbstractModel):
         :type TopicId: str
         :param Interval: 时间间隔: 单位ms  限制性条件：(To-From) / interval <= 200
         :type Interval: int
+        :param SyntaxRule: 检索语法规则，默认值为0。
+0：Lucene语法，1：CQL语法。
+详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+        :type SyntaxRule: int
         """
         self.From = None
         self.To = None
         self.Query = None
         self.TopicId = None
         self.Interval = None
+        self.SyntaxRule = None
 
 
     def _deserialize(self, params):
@@ -3661,6 +3666,7 @@ class DescribeLogHistogramRequest(AbstractModel):
         self.Query = params.get("Query")
         self.TopicId = params.get("TopicId")
         self.Interval = params.get("Interval")
+        self.SyntaxRule = params.get("SyntaxRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
