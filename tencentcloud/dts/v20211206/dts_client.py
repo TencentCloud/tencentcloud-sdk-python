@@ -214,6 +214,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateModifyCheckSyncJob(self, request):
+        """在修改同步任务的配置后、通过该接口校验当前任务是否支持修改对象操作
+
+        :param request: Request instance for CreateModifyCheckSyncJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.CreateModifyCheckSyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CreateModifyCheckSyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateModifyCheckSyncJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateModifyCheckSyncJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSyncJob(self, request):
         """创建一个同步任务
 
@@ -414,6 +437,29 @@ class DtsClient(AbstractClient):
             body = self.call("DescribeMigrationJobs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMigrationJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeModifyCheckSyncJobResult(self, request):
+        """在创建修改对象的校验任务后、通过该接口查看校验任务的结果
+
+        :param request: Request instance for DescribeModifyCheckSyncJobResult.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeModifyCheckSyncJobResultRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeModifyCheckSyncJobResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModifyCheckSyncJobResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModifyCheckSyncJobResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -644,6 +690,30 @@ class DtsClient(AbstractClient):
             body = self.call("ModifyMigrationJob", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMigrationJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySyncJobConfig(self, request):
+        """该接口支持在同步任务启动后修改任务的配置
+        修改同步配置的完整流程：修改同步任务配置->创建修改同步任务配置的校验任务->查询修改配置的校验任务的结果->启动修改配置任务
+
+        :param request: Request instance for ModifySyncJobConfig.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifySyncJobConfigRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifySyncJobConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySyncJobConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySyncJobConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -897,6 +967,29 @@ class DtsClient(AbstractClient):
             body = self.call("StartMigrateJob", params, headers=headers)
             response = json.loads(body)
             model = models.StartMigrateJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartModifySyncJob(self, request):
+        """在查询修改对象的校验任务的结果中的status为success后、通过该接口开始修改配置流程
+
+        :param request: Request instance for StartModifySyncJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.StartModifySyncJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.StartModifySyncJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartModifySyncJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartModifySyncJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

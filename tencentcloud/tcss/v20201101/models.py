@@ -3869,14 +3869,34 @@ class ComponentsInfo(AbstractModel):
         :param Version: 组件版本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
+        :param FixedVersion: 可修复版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixedVersion: str
+        :param Path: 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Name: 组件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
         """
         self.Component = None
         self.Version = None
+        self.FixedVersion = None
+        self.Path = None
+        self.Type = None
+        self.Name = None
 
 
     def _deserialize(self, params):
         self.Component = params.get("Component")
         self.Version = params.get("Version")
+        self.FixedVersion = params.get("FixedVersion")
+        self.Path = params.get("Path")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -4774,6 +4774,8 @@ class PostAttackDownloadTaskRequest(AbstractModel):
         :type TaskName: str
         :param Sort: 默认为desc，可以取值desc和asc
         :type Sort: str
+        :param Count: 下载的日志条数
+        :type Count: int
         """
         self.Domain = None
         self.StartTime = None
@@ -4781,6 +4783,7 @@ class PostAttackDownloadTaskRequest(AbstractModel):
         self.QueryString = None
         self.TaskName = None
         self.Sort = None
+        self.Count = None
 
 
     def _deserialize(self, params):
@@ -4790,6 +4793,7 @@ class PostAttackDownloadTaskRequest(AbstractModel):
         self.QueryString = params.get("QueryString")
         self.TaskName = params.get("TaskName")
         self.Sort = params.get("Sort")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4837,12 +4841,15 @@ class QPSPackageNew(AbstractModel):
         :type Count: int
         :param Region: 套餐购买地域，clb-waf暂时没有用到
         :type Region: str
+        :param BillingItem: 计费项
+        :type BillingItem: str
         """
         self.ResourceIds = None
         self.ValidTime = None
         self.RenewFlag = None
         self.Count = None
         self.Region = None
+        self.BillingItem = None
 
 
     def _deserialize(self, params):
@@ -4851,6 +4858,7 @@ class QPSPackageNew(AbstractModel):
         self.RenewFlag = params.get("RenewFlag")
         self.Count = params.get("Count")
         self.Region = params.get("Region")
+        self.BillingItem = params.get("BillingItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4939,7 +4947,7 @@ class SearchAccessLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题
+        :param TopicId: 客户要查询的日志主题ID，每个客户都有对应的一个主题，新版本此字段填空字符串
         :type TopicId: str
         :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
         :type From: int
@@ -4949,10 +4957,13 @@ class SearchAccessLogRequest(AbstractModel):
         :type Query: str
         :param Limit: 单次查询返回的日志条数，最大值为100
         :type Limit: int
-        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+        :param Context: 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。
+新版本此字段填空填
         :type Context: str
         :param Sort: 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
         :type Sort: str
+        :param Page: 第几页，从0开始。新版本接口字段
+        :type Page: int
         """
         self.TopicId = None
         self.From = None
@@ -4961,6 +4972,7 @@ class SearchAccessLogRequest(AbstractModel):
         self.Limit = None
         self.Context = None
         self.Sort = None
+        self.Page = None
 
 
     def _deserialize(self, params):
@@ -4971,6 +4983,7 @@ class SearchAccessLogRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Context = params.get("Context")
         self.Sort = params.get("Sort")
+        self.Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5058,6 +5071,8 @@ class SearchAttackLogRequest(AbstractModel):
         :type Count: int
         :param Sort: 默认为desc，可以取值desc和asc
         :type Sort: str
+        :param Page: 第几页，从0开始
+        :type Page: int
         """
         self.Domain = None
         self.StartTime = None
@@ -5066,6 +5081,7 @@ class SearchAttackLogRequest(AbstractModel):
         self.QueryString = None
         self.Count = None
         self.Sort = None
+        self.Page = None
 
 
     def _deserialize(self, params):
@@ -5076,6 +5092,7 @@ class SearchAttackLogRequest(AbstractModel):
         self.QueryString = params.get("QueryString")
         self.Count = params.get("Count")
         self.Sort = params.get("Sort")
+        self.Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

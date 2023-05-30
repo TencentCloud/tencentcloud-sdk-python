@@ -775,12 +775,16 @@ class CommitCertificateInformationRequest(AbstractModel):
         r"""
         :param CertificateId: 证书 ID。
         :type CertificateId: str
+        :param VerifyType: 域名验证方式
+        :type VerifyType: str
         """
         self.CertificateId = None
+        self.VerifyType = None
 
 
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
+        self.VerifyType = params.get("VerifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

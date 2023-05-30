@@ -550,6 +550,36 @@ class CFSConfig(AbstractModel):
         
 
 
+class CFSTurbo(AbstractModel):
+    """配置CFSTurbo参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: CFSTurbo实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param Path: CFSTurbo路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        """
+        self.Id = None
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Container(AbstractModel):
     """容器信息
 
@@ -1804,9 +1834,12 @@ class DataConfig(AbstractModel):
         :param HDFSSource: 来自HDFS的数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type HDFSSource: :class:`tencentcloud.tione.v20211111.models.HDFSConfig`
-        :param GooseFSSource: 配饰GooseFS的数据
+        :param GooseFSSource: 配置GooseFS的数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type GooseFSSource: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        :param CFSTurboSource: 配置TurboFS的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CFSTurboSource: :class:`tencentcloud.tione.v20211111.models.CFSTurbo`
         """
         self.MappingPath = None
         self.DataSourceType = None
@@ -1815,6 +1848,7 @@ class DataConfig(AbstractModel):
         self.CFSSource = None
         self.HDFSSource = None
         self.GooseFSSource = None
+        self.CFSTurboSource = None
 
 
     def _deserialize(self, params):
@@ -1835,6 +1869,9 @@ class DataConfig(AbstractModel):
         if params.get("GooseFSSource") is not None:
             self.GooseFSSource = GooseFS()
             self.GooseFSSource._deserialize(params.get("GooseFSSource"))
+        if params.get("CFSTurboSource") is not None:
+            self.CFSTurboSource = CFSTurbo()
+            self.CFSTurboSource._deserialize(params.get("CFSTurboSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6602,10 +6639,8 @@ Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能�
         :param RealGpu: 创建或更新时无需填写，仅展示需要关注
 后付费非整卡实例对应的实际的Gpu卡资源, 表示gpu资源对应实际的gpu卡个数.
 RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealGpu: int
         :param RealGpuDetailSet: 创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RealGpuDetailSet: list of GpuDetail
         """
         self.Cpu = None

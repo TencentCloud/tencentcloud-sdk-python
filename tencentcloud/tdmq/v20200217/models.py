@@ -8330,6 +8330,9 @@ class PulsarProClusterInfo(AbstractModel):
         :type NodeDistribution: list of InstanceNodeDistribution
         :param MaxStorage: 最大储存容量，单位：MB
         :type MaxStorage: int
+        :param CanEditRoute: 是否可以修改路由
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanEditRoute: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -8339,6 +8342,7 @@ class PulsarProClusterInfo(AbstractModel):
         self.Version = None
         self.NodeDistribution = None
         self.MaxStorage = None
+        self.CanEditRoute = None
 
 
     def _deserialize(self, params):
@@ -8355,6 +8359,7 @@ class PulsarProClusterInfo(AbstractModel):
                 obj._deserialize(item)
                 self.NodeDistribution.append(obj)
         self.MaxStorage = params.get("MaxStorage")
+        self.CanEditRoute = params.get("CanEditRoute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

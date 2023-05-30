@@ -1088,6 +1088,47 @@ class CreateMigrationServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateModifyCheckSyncJobRequest(AbstractModel):
+    """CreateModifyCheckSyncJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 同步任务id
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModifyCheckSyncJobResponse(AbstractModel):
+    """CreateModifyCheckSyncJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSyncJobRequest(AbstractModel):
     """CreateSyncJob请求参数结构体
 
@@ -2419,6 +2460,76 @@ class DescribeMigrationJobsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeModifyCheckSyncJobResultRequest(AbstractModel):
+    """DescribeModifyCheckSyncJobResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 同步任务id
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
+    """DescribeModifyCheckSyncJobResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
+        :type Status: str
+        :param StepCount: 校验的步骤总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepCount: int
+        :param StepCur: 当前所在步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepCur: int
+        :param Progress: 总体进度，范围为[0,100]	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        :param StepInfos: 步骤详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepInfos: list of StepInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.StepCount = None
+        self.StepCur = None
+        self.Progress = None
+        self.StepInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.StepCount = params.get("StepCount")
+        self.StepCur = params.get("StepCur")
+        self.Progress = params.get("Progress")
+        if params.get("StepInfos") is not None:
+            self.StepInfos = []
+            for item in params.get("StepInfos"):
+                obj = StepInfo()
+                obj._deserialize(item)
+                self.StepInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSyncJobsRequest(AbstractModel):
     """DescribeSyncJobs请求参数结构体
 
@@ -2758,6 +2869,53 @@ class DifferenceItem(AbstractModel):
         self.UpperBoundary = params.get("UpperBoundary")
         self.CostTime = params.get("CostTime")
         self.FinishedAt = params.get("FinishedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DynamicOptions(AbstractModel):
+    """数据同步中的选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpTypes: 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)，PartialDDL(自定义,和DdlOptions一起起作用 )；必填、dts会用该值覆盖原有的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpTypes: list of str
+        :param DdlOptions: DDL同步选项，具体描述要同步那些DDL; 当OpTypes取值PartialDDL时、字段不能为空；必填、dts会用该值覆盖原有的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DdlOptions: list of DdlOption
+        :param ConflictHandleType: 冲突处理选项，ReportError(报错)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖); 目前目标端为kafka的链路不支持修改该配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConflictHandleType: str
+        :param ConflictHandleOption: 冲突处理的详细选项，如条件覆盖中的条件行和条件操作；不能部分更新该选项的内部字段；有更新时、需要全量更新该字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConflictHandleOption: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
+        """
+        self.OpTypes = None
+        self.DdlOptions = None
+        self.ConflictHandleType = None
+        self.ConflictHandleOption = None
+
+
+    def _deserialize(self, params):
+        self.OpTypes = params.get("OpTypes")
+        if params.get("DdlOptions") is not None:
+            self.DdlOptions = []
+            for item in params.get("DdlOptions"):
+                obj = DdlOption()
+                obj._deserialize(item)
+                self.DdlOptions.append(obj)
+        self.ConflictHandleType = params.get("ConflictHandleType")
+        if params.get("ConflictHandleOption") is not None:
+            self.ConflictHandleOption = ConflictHandleOption()
+            self.ConflictHandleOption._deserialize(params.get("ConflictHandleOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3716,6 +3874,59 @@ class ModifyMigrationJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySyncJobConfigRequest(AbstractModel):
+    """ModifySyncJobConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 同步任务id
+        :type JobId: str
+        :param DynamicObjects: 修改后的同步对象
+        :type DynamicObjects: :class:`tencentcloud.dts.v20211206.models.Objects`
+        :param DynamicOptions: 修改后的同步任务选项
+        :type DynamicOptions: :class:`tencentcloud.dts.v20211206.models.DynamicOptions`
+        """
+        self.JobId = None
+        self.DynamicObjects = None
+        self.DynamicOptions = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        if params.get("DynamicObjects") is not None:
+            self.DynamicObjects = Objects()
+            self.DynamicObjects._deserialize(params.get("DynamicObjects"))
+        if params.get("DynamicOptions") is not None:
+            self.DynamicOptions = DynamicOptions()
+            self.DynamicOptions._deserialize(params.get("DynamicOptions"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySyncJobConfigResponse(AbstractModel):
+    """ModifySyncJobConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Objects(AbstractModel):
     """同步的数据库对对象描述
 
@@ -4512,6 +4723,47 @@ class StartMigrateJobRequest(AbstractModel):
 
 class StartMigrateJobResponse(AbstractModel):
     """StartMigrateJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StartModifySyncJobRequest(AbstractModel):
+    """StartModifySyncJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 同步任务id
+        :type JobId: str
+        """
+        self.JobId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartModifySyncJobResponse(AbstractModel):
+    """StartModifySyncJob返回参数结构体
 
     """
 

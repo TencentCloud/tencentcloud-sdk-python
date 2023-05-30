@@ -430,6 +430,8 @@ class ClusterOverview(AbstractModel):
         :type LoginNodeSet: list of LoginNodeOverview
         :param LoginNodeCount: 登录节点数量。
         :type LoginNodeCount: int
+        :param AutoScalingType: 弹性伸缩类型。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
+        :type AutoScalingType: str
         :param VpcId: 集群所属私有网络ID。
         :type VpcId: str
         """
@@ -445,6 +447,7 @@ class ClusterOverview(AbstractModel):
         self.ManagerNodeSet = None
         self.LoginNodeSet = None
         self.LoginNodeCount = None
+        self.AutoScalingType = None
         self.VpcId = None
 
 
@@ -478,6 +481,7 @@ class ClusterOverview(AbstractModel):
                 obj._deserialize(item)
                 self.LoginNodeSet.append(obj)
         self.LoginNodeCount = params.get("LoginNodeCount")
+        self.AutoScalingType = params.get("AutoScalingType")
         self.VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -9997,6 +9997,56 @@ class DescribeWorkflowsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DiagnoseResult(AbstractModel):
+    """诊断结果项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Category: 诊断出的异常类别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
+        :param Type: 诊断出的具体异常类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Timestamp: 诊断出异常开始的PTS时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: float
+        :param Description: 诊断出的异常描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param DateTime: 诊断到异常的北京时间，采用 ISO 日期格式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DateTime: str
+        :param SeverityLevel: 诊断出的异常级别。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SeverityLevel: str
+        """
+        self.Category = None
+        self.Type = None
+        self.Timestamp = None
+        self.Description = None
+        self.DateTime = None
+        self.SeverityLevel = None
+
+
+    def _deserialize(self, params):
+        self.Category = params.get("Category")
+        self.Type = params.get("Type")
+        self.Timestamp = params.get("Timestamp")
+        self.Description = params.get("Description")
+        self.DateTime = params.get("DateTime")
+        self.SeverityLevel = params.get("SeverityLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisableScheduleRequest(AbstractModel):
     """DisableSchedule请求参数结构体
 
@@ -11818,6 +11868,112 @@ class InputAddress(AbstractModel):
         
 
 
+class LiveStreamAiAnalysisResultInfo(AbstractModel):
+    """直播流分析结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResultSet: 直播分析子任务结果，暂时只支持直播拆条。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultSet: list of LiveStreamAiAnalysisResultItem
+        """
+        self.ResultSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self.ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = LiveStreamAiAnalysisResultItem()
+                obj._deserialize(item)
+                self.ResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamAiAnalysisResultItem(AbstractModel):
+    """直播流 AI 分析结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 结果的类型，取值范围：
+<li>SegmentRecognition：拆条。</li>
+        :type Type: str
+        :param SegmentResultSet: 拆条结果，当 Type 为
+SegmentRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentResultSet: list of SegmentRecognitionItem
+        """
+        self.Type = None
+        self.SegmentResultSet = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("SegmentResultSet") is not None:
+            self.SegmentResultSet = []
+            for item in params.get("SegmentResultSet"):
+                obj = SegmentRecognitionItem()
+                obj._deserialize(item)
+                self.SegmentResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamAiQualityControlResultInfo(AbstractModel):
+    """直播流质检结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QualityControlResults: 质检结果列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityControlResults: list of QualityControlResult
+        :param DiagnoseResults: 格式诊断结果列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnoseResults: list of DiagnoseResult
+        """
+        self.QualityControlResults = None
+        self.DiagnoseResults = None
+
+
+    def _deserialize(self, params):
+        if params.get("QualityControlResults") is not None:
+            self.QualityControlResults = []
+            for item in params.get("QualityControlResults"):
+                obj = QualityControlResult()
+                obj._deserialize(item)
+                self.QualityControlResults.append(obj)
+        if params.get("DiagnoseResults") is not None:
+            self.DiagnoseResults = []
+            for item in params.get("DiagnoseResults"):
+                obj = DiagnoseResult()
+                obj._deserialize(item)
+                self.DiagnoseResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveStreamAiRecognitionResultInfo(AbstractModel):
     """直播流 AI 识别结果
 
@@ -12266,11 +12422,23 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
         :type EndPtsTime: float
         :param Confidence: 识别片段置信度。取值：0~100。
         :type Confidence: float
+        :param StartTime: 识别开始UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 识别结束UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param SteadyState: 稳态标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SteadyState: bool
         """
         self.Text = None
         self.StartPtsTime = None
         self.EndPtsTime = None
         self.Confidence = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SteadyState = None
 
 
     def _deserialize(self, params):
@@ -12278,6 +12446,9 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
         self.StartPtsTime = params.get("StartPtsTime")
         self.EndPtsTime = params.get("EndPtsTime")
         self.Confidence = params.get("Confidence")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SteadyState = params.get("SteadyState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12587,12 +12758,24 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
         :type Confidence: float
         :param Trans: 翻译文本。
         :type Trans: str
+        :param StartTime: 翻译开始UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 翻译结束UTC时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param SteadyState: 稳态标记。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SteadyState: bool
         """
         self.Text = None
         self.StartPtsTime = None
         self.EndPtsTime = None
         self.Confidence = None
         self.Trans = None
+        self.StartTime = None
+        self.EndTime = None
+        self.SteadyState = None
 
 
     def _deserialize(self, params):
@@ -12601,6 +12784,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
         self.EndPtsTime = params.get("EndPtsTime")
         self.Confidence = params.get("Confidence")
         self.Trans = params.get("Trans")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SteadyState = params.get("SteadyState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15946,6 +16132,12 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         :param AiRecognitionResultInfo: 内容识别结果，当 NotificationType 为 AiRecognitionResult 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRecognitionResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`
+        :param AiAnalysisResultInfo: 内容分析结果，当 NotificationType 为 AiAnalysisResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiAnalysisResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiAnalysisResultInfo`
+        :param AiQualityControlResultInfo: 媒体质检结果，当 NotificationType 为 AiQualityControlResult 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiQualityControlResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiQualityControlResultInfo`
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
@@ -15958,6 +16150,8 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         self.ProcessEofInfo = None
         self.AiReviewResultInfo = None
         self.AiRecognitionResultInfo = None
+        self.AiAnalysisResultInfo = None
+        self.AiQualityControlResultInfo = None
         self.SessionId = None
         self.SessionContext = None
         self.RequestId = None
@@ -15975,6 +16169,12 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
         if params.get("AiRecognitionResultInfo") is not None:
             self.AiRecognitionResultInfo = LiveStreamAiRecognitionResultInfo()
             self.AiRecognitionResultInfo._deserialize(params.get("AiRecognitionResultInfo"))
+        if params.get("AiAnalysisResultInfo") is not None:
+            self.AiAnalysisResultInfo = LiveStreamAiAnalysisResultInfo()
+            self.AiAnalysisResultInfo._deserialize(params.get("AiAnalysisResultInfo"))
+        if params.get("AiQualityControlResultInfo") is not None:
+            self.AiQualityControlResultInfo = LiveStreamAiQualityControlResultInfo()
+            self.AiQualityControlResultInfo._deserialize(params.get("AiQualityControlResultInfo"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         self.RequestId = params.get("RequestId")
@@ -18379,6 +18579,43 @@ class ScratchRepairConfig(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SegmentRecognitionItem(AbstractModel):
+    """智能拆条片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: 置信度。
+        :type Confidence: float
+        :param StartTimeOffset: 片段起始时间偏移。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 片段结束时间偏移。
+        :type EndTimeOffset: float
+        :param SegmentUrl: 拆条片段URL。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentUrl: str
+        """
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.SegmentUrl = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.SegmentUrl = params.get("SegmentUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

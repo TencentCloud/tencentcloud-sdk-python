@@ -1048,6 +1048,12 @@ class DetectInfoText(AbstractModel):
         :param IdCard: 本次验证使用的身份证号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdCard: str
+        :param UseIDType: 用户认证时使用的证件号码类型：
+0：二代身份证的证件号码
+1：港澳台居住证的证件号码
+2：其他（核验使用的证件号码非合法身份号码）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseIDType: int
         :param Name: 本次验证使用的姓名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
@@ -1137,6 +1143,7 @@ class DetectInfoText(AbstractModel):
         self.ErrCode = None
         self.ErrMsg = None
         self.IdCard = None
+        self.UseIDType = None
         self.Name = None
         self.OcrNation = None
         self.OcrAddress = None
@@ -1168,6 +1175,7 @@ class DetectInfoText(AbstractModel):
         self.ErrCode = params.get("ErrCode")
         self.ErrMsg = params.get("ErrMsg")
         self.IdCard = params.get("IdCard")
+        self.UseIDType = params.get("UseIDType")
         self.Name = params.get("Name")
         self.OcrNation = params.get("OcrNation")
         self.OcrAddress = params.get("OcrAddress")

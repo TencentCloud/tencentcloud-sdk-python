@@ -178,6 +178,10 @@ URL中禁止包含的字符：
         :type Width: int
         :param Height: 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
         :type Height: int
+        :param BackgroundWidth: 背景水印宽度。默认宽度1920。
+        :type BackgroundWidth: int
+        :param BackgroundHeight: 背景水印高度。默认高度1080。
+        :type BackgroundHeight: int
         """
         self.PictureUrl = None
         self.WatermarkName = None
@@ -185,6 +189,8 @@ URL中禁止包含的字符：
         self.YPosition = None
         self.Width = None
         self.Height = None
+        self.BackgroundWidth = None
+        self.BackgroundHeight = None
 
 
     def _deserialize(self, params):
@@ -194,6 +200,8 @@ URL中禁止包含的字符：
         self.YPosition = params.get("YPosition")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.BackgroundWidth = params.get("BackgroundWidth")
+        self.BackgroundHeight = params.get("BackgroundHeight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12207,6 +12215,10 @@ URL中禁止包含的字符：
         :type Width: int
         :param Height: 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
         :type Height: int
+        :param BackgroundWidth: 背景水印宽度。默认宽度1920。
+        :type BackgroundWidth: int
+        :param BackgroundHeight: 背景水印高度。默认高度1080。
+        :type BackgroundHeight: int
         """
         self.WatermarkId = None
         self.PictureUrl = None
@@ -12215,6 +12227,8 @@ URL中禁止包含的字符：
         self.WatermarkName = None
         self.Width = None
         self.Height = None
+        self.BackgroundWidth = None
+        self.BackgroundHeight = None
 
 
     def _deserialize(self, params):
@@ -12225,6 +12239,8 @@ URL中禁止包含的字符：
         self.WatermarkName = params.get("WatermarkName")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.BackgroundWidth = params.get("BackgroundWidth")
+        self.BackgroundHeight = params.get("BackgroundHeight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12277,6 +12293,10 @@ class WatermarkInfo(AbstractModel):
         :type Width: int
         :param Height: 水印高。
         :type Height: int
+        :param BackgroundWidth: 背景水印宽。
+        :type BackgroundWidth: int
+        :param BackgroundHeight: 背景水印高。
+        :type BackgroundHeight: int
         """
         self.WatermarkId = None
         self.PictureUrl = None
@@ -12287,6 +12307,8 @@ class WatermarkInfo(AbstractModel):
         self.CreateTime = None
         self.Width = None
         self.Height = None
+        self.BackgroundWidth = None
+        self.BackgroundHeight = None
 
 
     def _deserialize(self, params):
@@ -12299,6 +12321,8 @@ class WatermarkInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        self.BackgroundWidth = params.get("BackgroundWidth")
+        self.BackgroundHeight = params.get("BackgroundHeight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
