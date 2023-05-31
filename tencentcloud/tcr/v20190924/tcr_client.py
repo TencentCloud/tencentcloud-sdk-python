@@ -1022,6 +1022,8 @@ class TcrClient(AbstractClient):
     def DeleteSecurityPolicy(self, request):
         """删除实例公网访问白名单策略
 
+        注意：当PolicyIndex和CidrBlock同时存在时，CidrBlock优先级更高
+
         :param request: Request instance for DeleteSecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteSecurityPolicyRequest`
         :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteSecurityPolicyResponse`

@@ -2423,16 +2423,20 @@ class DeleteSecurityPolicyRequest(AbstractModel):
         :type PolicyIndex: int
         :param PolicyVersion: 白名单版本
         :type PolicyVersion: str
+        :param CidrBlock: 网段或IP(互斥)
+        :type CidrBlock: str
         """
         self.RegistryId = None
         self.PolicyIndex = None
         self.PolicyVersion = None
+        self.CidrBlock = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
         self.PolicyIndex = params.get("PolicyIndex")
         self.PolicyVersion = params.get("PolicyVersion")
+        self.CidrBlock = params.get("CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

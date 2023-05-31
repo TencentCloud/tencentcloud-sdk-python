@@ -7223,6 +7223,16 @@ class DescribeOperateTasksRequest(AbstractModel):
         :type TaskCycleUnitList: str
         :param ProductNameList: 任务所属产品类型
         :type ProductNameList: str
+        :param SourceServiceId: 数据源id或（仅针对离线同步任务）来源数据源id
+        :type SourceServiceId: str
+        :param SourceServiceType: 数据源类型或（仅针对离线同步任务）来源数据源类型
+        :type SourceServiceType: str
+        :param TargetServiceId: （仅针对离线同步任务）目标数据源id
+        :type TargetServiceId: str
+        :param TargetServiceType: （仅针对离线同步任务）目标数据源类型
+        :type TargetServiceType: str
+        :param AlarmType: 告警类型，多个类型以逗号分隔
+        :type AlarmType: str
         """
         self.ProjectId = None
         self.FolderIdList = None
@@ -7239,6 +7249,11 @@ class DescribeOperateTasksRequest(AbstractModel):
         self.StatusList = None
         self.TaskCycleUnitList = None
         self.ProductNameList = None
+        self.SourceServiceId = None
+        self.SourceServiceType = None
+        self.TargetServiceId = None
+        self.TargetServiceType = None
+        self.AlarmType = None
 
 
     def _deserialize(self, params):
@@ -7257,6 +7272,11 @@ class DescribeOperateTasksRequest(AbstractModel):
         self.StatusList = params.get("StatusList")
         self.TaskCycleUnitList = params.get("TaskCycleUnitList")
         self.ProductNameList = params.get("ProductNameList")
+        self.SourceServiceId = params.get("SourceServiceId")
+        self.SourceServiceType = params.get("SourceServiceType")
+        self.TargetServiceId = params.get("TargetServiceId")
+        self.TargetServiceType = params.get("TargetServiceType")
+        self.AlarmType = params.get("AlarmType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19120,6 +19140,33 @@ class TaskCanvasInfo(AbstractModel):
         :param DelayTime: 延迟时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type DelayTime: int
+        :param ExecutionStartTime: 执行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionStartTime: str
+        :param ExecutionEndTime: 执行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionEndTime: str
+        :param Layer: 层级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Layer: str
+        :param SourceServiceId: 来源数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServiceId: str
+        :param SourceServiceType: 来源数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServiceType: str
+        :param TargetServiceId: 目标数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceId: str
+        :param TargetServiceType: 目标数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceType: str
+        :param AlarmType: 任务告警类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmType: str
+        :param CreateTime: 任务创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self.TaskId = None
         self.TaskName = None
@@ -19143,6 +19190,15 @@ class TaskCanvasInfo(AbstractModel):
         self.VirtualFlag = None
         self.TaskAction = None
         self.DelayTime = None
+        self.ExecutionStartTime = None
+        self.ExecutionEndTime = None
+        self.Layer = None
+        self.SourceServiceId = None
+        self.SourceServiceType = None
+        self.TargetServiceId = None
+        self.TargetServiceType = None
+        self.AlarmType = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -19168,6 +19224,15 @@ class TaskCanvasInfo(AbstractModel):
         self.VirtualFlag = params.get("VirtualFlag")
         self.TaskAction = params.get("TaskAction")
         self.DelayTime = params.get("DelayTime")
+        self.ExecutionStartTime = params.get("ExecutionStartTime")
+        self.ExecutionEndTime = params.get("ExecutionEndTime")
+        self.Layer = params.get("Layer")
+        self.SourceServiceId = params.get("SourceServiceId")
+        self.SourceServiceType = params.get("SourceServiceType")
+        self.TargetServiceId = params.get("TargetServiceId")
+        self.TargetServiceType = params.get("TargetServiceType")
+        self.AlarmType = params.get("AlarmType")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19576,11 +19641,17 @@ class TaskInfoPage(AbstractModel):
         :type Items: list of TaskCanvasInfo
         :param TotalPage: 总页数
         :type TotalPage: int
+        :param PageCount: 页数
+        :type PageCount: int
+        :param TotalCount: 总条数
+        :type TotalCount: int
         """
         self.PageNumber = None
         self.PageSize = None
         self.Items = None
         self.TotalPage = None
+        self.PageCount = None
+        self.TotalCount = None
 
 
     def _deserialize(self, params):
@@ -19593,6 +19664,8 @@ class TaskInfoPage(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.TotalPage = params.get("TotalPage")
+        self.PageCount = params.get("PageCount")
+        self.TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3894,7 +3894,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSaveOrUpdateWarnings(self, request):
-        """更新或者插入用户告警设置(该接口废弃,请调用 ModifyWarningSetting )
+        """下线
+
+        更新或者插入用户告警设置(该接口废弃,请调用 ModifyWarningSetting )
 
         :param request: Request instance for DescribeSaveOrUpdateWarnings.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSaveOrUpdateWarningsRequest`

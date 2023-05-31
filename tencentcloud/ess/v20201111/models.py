@@ -97,32 +97,32 @@ class ApproverInfo(AbstractModel):
 3：企业静默签署
 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
         :type ApproverType: int
-        :param ApproverName: 本环节需要操作人的名字
+        :param ApproverName: 签署人的姓名
         :type ApproverName: str
-        :param ApproverMobile: 本环节需要操作人的手机号
+        :param ApproverMobile: 签署人的手机号，11位数字
         :type ApproverMobile: str
-        :param SignComponents: 本环节操作人签署控件配置
+        :param SignComponents: 签署人的签署控件列表
         :type SignComponents: list of Component
-        :param OrganizationName: 如果是企业,则为企业的名字
+        :param OrganizationName: 如果签署方是企业签署方，则为企业名
         :type OrganizationName: str
-        :param ApproverIdCardNumber: 身份证号
+        :param ApproverIdCardNumber: 签署人的身份证号
         :type ApproverIdCardNumber: str
-        :param ApproverIdCardType: 证件类型 
+        :param ApproverIdCardType: 签署人的身份证件类型 
 ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type ApproverIdCardType: str
-        :param NotifyType: sms--短信，none--不通知
+        :param NotifyType: 签署通知类型：sms--短信，none--不通知
         :type NotifyType: str
-        :param ApproverRole: 1--收款人、2--开具人、3--见证人
+        :param ApproverRole: 签署人角色类型：1--收款人、2--开具人、3--见证人
         :type ApproverRole: int
-        :param VerifyChannel: 签署意愿确认渠道,WEIXINAPP:人脸识别
+        :param VerifyChannel: 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
         :type VerifyChannel: list of str
         :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
         :param UserId: 签署人userId，传此字段则不用传姓名、手机号
         :type UserId: str
-        :param ApproverSource: 签署人用户来源,企微侧用户请传入：WEWORKAPP
+        :param ApproverSource: 签署人用户来源，企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
         :param CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
         :type CustomApproverTag: str
@@ -227,11 +227,11 @@ class ApproverRestriction(AbstractModel):
         r"""
         :param Name: 指定签署人名字
         :type Name: str
-        :param Mobile: 指定签署人手机号
+        :param Mobile: 指定签署人手机号，11位数字
         :type Mobile: str
-        :param IdCardType: 指定签署人证件类型
+        :param IdCardType: 指定签署人证件类型，ID_CARD-身份证
         :type IdCardType: str
-        :param IdCardNumber: 指定签署人证件号码
+        :param IdCardNumber: 指定签署人证件号码，字母大写
         :type IdCardNumber: str
         """
         self.Name = None
@@ -261,7 +261,7 @@ class AuthorizedUser(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserId: 用户id
+        :param UserId: 电子签系统中的用户id
         :type UserId: str
         """
         self.UserId = None
@@ -287,13 +287,13 @@ class AutoSignConfig(AbstractModel):
         r"""
         :param UserInfo: 自动签开通个人用户的三要素
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
-        :param CallbackUrl: 回调链接
+        :param CallbackUrl: 接受自动签开启的回调地址。需要保证post返回200
         :type CallbackUrl: str
-        :param CertInfoCallback: 是否回调证书信息
+        :param CertInfoCallback: 是否回调证书信息，默认false-不需要
         :type CertInfoCallback: bool
-        :param UserDefineSeal: 是否支持用户自定义签名印章
+        :param UserDefineSeal: 是否支持用户自定义签名印章，默认false-不需要
         :type UserDefineSeal: bool
-        :param SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64
+        :param SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64，默认false-不需要
         :type SealImgCallback: bool
         :param VerifyChannels: 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
         :type VerifyChannels: list of str
@@ -560,7 +560,7 @@ class CcInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mobile: 被抄送人手机号
+        :param Mobile: 被抄送人手机号，11位数字
         :type Mobile: str
         :param Name: 被抄送人姓名
         :type Name: str
@@ -600,7 +600,7 @@ class Component(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentType: 如果是Component控件类型，则可选的字段为：
+        :param ComponentType: 如果是Component填写控件类型，则可选的字段为：
 TEXT - 普通文本控件，输入文本字符串；
 MULTI_LINE_TEXT - 多行文本控件，输入文本字符串；
 CHECK_BOX - 勾选框控件，若选中填写ComponentValue 填写 true或者 false 字符串；
@@ -611,7 +611,7 @@ SELECTOR - 选择器控件，ComponentValue填写选择的字符串内容；
 DATE - 日期控件；默认是格式化为xxxx年xx月xx日字符串；
 DISTRICT - 省市区行政区控件，ComponentValue填写省市区行政区字符串内容；
 
-如果是SignComponent控件类型，则可选的字段为
+如果是SignComponent签署控件类型，则可选的字段为
 SIGN_SEAL - 签署印章控件；
 SIGN_DATE - 签署日期控件；
 SIGN_SIGNATURE - 用户签名控件；
@@ -622,7 +622,7 @@ SIGN_LEGAL_PERSON_SEAL - 企业法定代表人控件。
 
 表单域的控件不能作为印章和签名控件
         :type ComponentType: str
-        :param FileIndex: 控件所属文件的序号（模板中的resourceId排列序号，取值为：0-N）
+        :param FileIndex: 控件所属文件的序号（取值为：0-N）。目前单文件的情况下，值是0
         :type FileIndex: int
         :param ComponentHeight: 参数控件高度，单位pt
         :type ComponentHeight: float
@@ -634,9 +634,9 @@ SIGN_LEGAL_PERSON_SEAL - 企业法定代表人控件。
         :type ComponentPosX: float
         :param ComponentPosY: 参数控件Y位置，单位pt
         :type ComponentPosY: float
-        :param ComponentId: GenerateMode==KEYWORD 指定关键字
+        :param ComponentId: 查询时返回控件唯一Id。使用文件发起合同时用于GenerateMode==KEYWORD 指定关键字
         :type ComponentId: str
-        :param ComponentName: GenerateMode==FIELD 指定表单域名称
+        :param ComponentName: 查询时返回控件名。使用文件发起合同时用于GenerateMode==FIELD 指定表单域名称
         :type ComponentName: str
         :param ComponentRequired: 是否必选，默认为false
         :type ComponentRequired: bool
@@ -669,7 +669,7 @@ ComponentType为SIGN_DATE时，支持以下参数：
 特别地，如果extra中Format字段为空或无法被识别，则extra参数会被当作默认值处理（Font，FontSize，Gaps和FontAlign都不会起效）
 参数样例：    "ComponentExtra": "{\"Format\":“yyyy m d”,\"FontSize\":12,\"Gaps\":\"2,2\", \"FontAlign\":\"Right\"}",
         :type ComponentExtra: str
-        :param IsFormType: 是否是表单域类型，默认不存在
+        :param IsFormType: 是否是表单域类型，默认不false-不是
         :type IsFormType: bool
         :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
 TEXT - 文本内容
@@ -754,13 +754,13 @@ KEYWORD 关键字，使用ComponentId指定关键字
         :type GenerateMode: str
         :param ComponentDateFontSize: 日期签署控件的字号，默认为 12
         :type ComponentDateFontSize: int
-        :param ChannelComponentId: 平台模板控件 id 标识
+        :param ChannelComponentId: 第三方应用集成平台模板控件 id 标识
         :type ChannelComponentId: str
         :param OffsetX: 指定关键字时横坐标偏移量，单位pt
         :type OffsetX: float
         :param OffsetY: 指定关键字时纵坐标偏移量，单位pt
         :type OffsetY: float
-        :param ChannelComponentSource: //子客控件来源。0-平台指定；1-用户自定义
+        :param ChannelComponentSource: 第三方应用集成中子客企业控件来源。0-平台指定；1-用户自定义
         :type ChannelComponentSource: int
         :param KeywordOrder: 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
@@ -2044,14 +2044,14 @@ class CreatePreparedPersonalEsignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: 个人用户名称
+        :param UserName: 个人用户姓名
         :type UserName: str
         :param IdCardNumber: 身份证件号码
         :type IdCardNumber: str
-        :param SealImage: 印章图片的base64
-        :type SealImage: str
         :param SealName: 印章名称
         :type SealName: str
+        :param SealImage: 印章图片的base64，最大不超过 8M
+        :type SealImage: str
         :param Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param IdCardType: 身份证件类型:
@@ -2061,32 +2061,52 @@ HONGKONG_AND_MACAO 中国香港
 FOREIGN_ID_CARD 境外身份
 HONGKONG_MACAO_AND_TAIWAN 中国台湾
         :type IdCardType: str
+        :param SealImageCompress: 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+        :type SealImageCompress: bool
         :param Mobile: 手机号码；当需要开通自动签时，该参数必传
         :type Mobile: str
         :param EnableAutoSign: 是否开通自动签，该功能需联系运营工作人员开通后使用
         :type EnableAutoSign: bool
+        :param SealColor: 印章颜色（参数ProcessSeal=true时生效）
+默认值：BLACK黑色
+取值: 
+BLACK 黑色,
+RED 红色,
+BLUE 蓝色。
+        :type SealColor: str
+        :param ProcessSeal: 是否处理印章
+默认不做印章处理。
+取值：false：不做任何处理；
+true：做透明化处理和颜色增强。
+        :type ProcessSeal: bool
         """
         self.UserName = None
         self.IdCardNumber = None
-        self.SealImage = None
         self.SealName = None
+        self.SealImage = None
         self.Operator = None
         self.IdCardType = None
+        self.SealImageCompress = None
         self.Mobile = None
         self.EnableAutoSign = None
+        self.SealColor = None
+        self.ProcessSeal = None
 
 
     def _deserialize(self, params):
         self.UserName = params.get("UserName")
         self.IdCardNumber = params.get("IdCardNumber")
-        self.SealImage = params.get("SealImage")
         self.SealName = params.get("SealName")
+        self.SealImage = params.get("SealImage")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
         self.IdCardType = params.get("IdCardType")
+        self.SealImageCompress = params.get("SealImageCompress")
         self.Mobile = params.get("Mobile")
         self.EnableAutoSign = params.get("EnableAutoSign")
+        self.SealColor = params.get("SealColor")
+        self.ProcessSeal = params.get("ProcessSeal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3817,7 +3837,7 @@ class FailedUpdateStaffData(AbstractModel):
         :type Reason: str
         :param UserId: 用户Id
         :type UserId: str
-        :param OpenId: 用户OpenId
+        :param OpenId: 员工在第三方平台的openId
         :type OpenId: str
         """
         self.DisplayName = None
@@ -3843,7 +3863,7 @@ class FailedUpdateStaffData(AbstractModel):
 
 
 class FileInfo(AbstractModel):
-    """二期接口返回的模板中文件的信息结构
+    """模板中文件的信息结构
 
     """
 
@@ -5586,6 +5606,11 @@ class TemplateInfo(AbstractModel):
         :type CreatedOn: int
         :param Promoter: 发起人角色信息
         :type Promoter: :class:`tencentcloud.ess.v20201111.models.Recipient`
+        :param TemplateType: 模板类型
+取值：
+1  静默签,
+3  普通模板
+        :type TemplateType: int
         :param Available: 模板可用状态，取值：1启用（默认），2停用
         :type Available: int
         :param OrganizationId: 模板创建组织id
@@ -5614,6 +5639,7 @@ class TemplateInfo(AbstractModel):
         self.Creator = None
         self.CreatedOn = None
         self.Promoter = None
+        self.TemplateType = None
         self.Available = None
         self.OrganizationId = None
         self.PreviewUrl = None
@@ -5658,6 +5684,7 @@ class TemplateInfo(AbstractModel):
         if params.get("Promoter") is not None:
             self.Promoter = Recipient()
             self.Promoter._deserialize(params.get("Promoter"))
+        self.TemplateType = params.get("TemplateType")
         self.Available = params.get("Available")
         self.OrganizationId = params.get("OrganizationId")
         self.PreviewUrl = params.get("PreviewUrl")

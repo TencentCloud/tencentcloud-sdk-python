@@ -801,7 +801,7 @@ class CreateSDKLoginTokenRequest(AbstractModel):
         r"""
         :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
-        :param SeatUserId: 坐席账号。
+        :param SeatUserId: 座席账号。
         :type SeatUserId: str
         """
         self.SdkAppId = None
@@ -2466,7 +2466,7 @@ class DisableCCCPhoneNumberResponse(AbstractModel):
 
 
 class ErrStaffItem(AbstractModel):
-    """批量添加客服时，返回出错客服的像个信息
+    """批量添加客服时，返回出错客服的信息
 
     """
 
@@ -2903,13 +2903,13 @@ class ModifyStaffRequest(AbstractModel):
         r"""
         :param SdkAppId: 应用ID
         :type SdkAppId: int
-        :param Email: 坐席账户
+        :param Email: 座席账户
         :type Email: str
-        :param Name: 坐席名称
+        :param Name: 座席名称
         :type Name: str
-        :param Phone: 坐席手机号（带0086前缀,示例：008618011111111）
+        :param Phone: 座席手机号（带0086前缀,示例：008618011111111）
         :type Phone: str
-        :param Nick: 坐席昵称
+        :param Nick: 座席昵称
         :type Nick: str
         :param SkillGroupIds: 绑定技能组ID列表
         :type SkillGroupIds: list of int

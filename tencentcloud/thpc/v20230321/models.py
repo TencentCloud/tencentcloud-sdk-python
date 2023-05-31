@@ -117,6 +117,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
         :param NodeType: 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。<li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。
         :type NodeType: str
+        :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :type ProjectId: int
         """
         self.Placement = None
         self.ClusterId = None
@@ -137,6 +139,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.NodeRole = None
         self.DryRun = None
         self.NodeType = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -176,6 +179,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.NodeRole = params.get("NodeRole")
         self.DryRun = params.get("DryRun")
         self.NodeType = params.get("NodeType")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -516,6 +520,8 @@ class ComputeNode(AbstractModel):
 不指定节点显示名称则默认显示‘未命名’。
 最多支持60个字符。
         :type InstanceName: str
+        :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :type ProjectId: int
         """
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
@@ -524,6 +530,7 @@ class ComputeNode(AbstractModel):
         self.DataDisks = None
         self.InternetAccessible = None
         self.InstanceName = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -545,6 +552,7 @@ class ComputeNode(AbstractModel):
             self.InternetAccessible = InternetAccessible()
             self.InternetAccessible._deserialize(params.get("InternetAccessible"))
         self.InstanceName = params.get("InstanceName")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1371,12 +1379,15 @@ class ExpansionNodeConfig(AbstractModel):
         :type InstanceType: str
         :param VirtualPrivateCloud: 私有网络相关信息配置。
         :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20230321.models.VirtualPrivateCloud`
+        :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :type ProjectId: int
         """
         self.Placement = None
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
         self.InstanceType = None
         self.VirtualPrivateCloud = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -1391,6 +1402,7 @@ class ExpansionNodeConfig(AbstractModel):
         if params.get("VirtualPrivateCloud") is not None:
             self.VirtualPrivateCloud = VirtualPrivateCloud()
             self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1726,6 +1738,8 @@ class LoginNode(AbstractModel):
 不指定节点显示名称则默认显示‘未命名’。
 最多支持60个字符。
         :type InstanceName: str
+        :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :type ProjectId: int
         """
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
@@ -1734,6 +1748,7 @@ class LoginNode(AbstractModel):
         self.DataDisks = None
         self.InternetAccessible = None
         self.InstanceName = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -1755,6 +1770,7 @@ class LoginNode(AbstractModel):
             self.InternetAccessible = InternetAccessible()
             self.InternetAccessible._deserialize(params.get("InternetAccessible"))
         self.InstanceName = params.get("InstanceName")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1838,6 +1854,8 @@ class ManagerNode(AbstractModel):
 购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li>
 最多支持60个字符（包含模式串）。
         :type InstanceName: str
+        :param ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+        :type ProjectId: int
         """
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
@@ -1846,6 +1864,7 @@ class ManagerNode(AbstractModel):
         self.DataDisks = None
         self.InternetAccessible = None
         self.InstanceName = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -1867,6 +1886,7 @@ class ManagerNode(AbstractModel):
             self.InternetAccessible = InternetAccessible()
             self.InternetAccessible._deserialize(params.get("InternetAccessible"))
         self.InstanceName = params.get("InstanceName")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

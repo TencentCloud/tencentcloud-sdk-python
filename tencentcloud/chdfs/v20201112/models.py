@@ -1814,22 +1814,22 @@ class Summary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CapacityUsed: 总存储量（单位byte）
+        :param CapacityUsed: 已使用容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :type CapacityUsed: int
-        :param StandardCapacityUsed: 标准存储量（单位byte）
+        :param StandardCapacityUsed: 已使用COS标准存储容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :type StandardCapacityUsed: int
-        :param DegradeCapacityUsed: 低频存储量（单位byte）
+        :param DegradeCapacityUsed: 已使用COS低频存储容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DegradeCapacityUsed: int
-        :param ArchiveCapacityUsed: 归档存储量（单位byte）
+        :param ArchiveCapacityUsed: 已使用COS归档存储容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ArchiveCapacityUsed: int
-        :param DeepArchiveCapacityUsed: 深度归档存储量（单位byte）
+        :param DeepArchiveCapacityUsed: 已使用COS深度归档存储容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeepArchiveCapacityUsed: int
-        :param IntelligentCapacityUsed: 智能分层存储量（单位byte）
+        :param IntelligentCapacityUsed: 已使用COS智能分层存储容量（byte）
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntelligentCapacityUsed: int
         """

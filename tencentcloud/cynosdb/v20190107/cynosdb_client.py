@@ -118,6 +118,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindClusterResourcePackages(self, request):
+        """为集群绑定资源包
+
+        :param request: Request instance for BindClusterResourcePackages.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.BindClusterResourcePackagesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BindClusterResourcePackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindClusterResourcePackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindClusterResourcePackagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseAuditService(self, request):
         """TDSQL-C for MySQL实例关闭审计服务
 
@@ -362,6 +385,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("CreateParamTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateResourcePackage(self, request):
+        """新购资源包
+
+        :param request: Request instance for CreateResourcePackage.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateResourcePackageRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateResourcePackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateResourcePackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateResourcePackageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1245,6 +1291,75 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourcePackageDetail(self, request):
+        """查询资源包使用详情
+
+        :param request: Request instance for DescribeResourcePackageDetail.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageDetailRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePackageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePackageDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResourcePackageList(self, request):
+        """查询资源包列表
+
+        :param request: Request instance for DescribeResourcePackageList.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageListRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePackageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePackageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResourcePackageSaleSpec(self, request):
+        """查询资源包规格
+
+        :param request: Request instance for DescribeResourcePackageSaleSpec.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageSaleSpecRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageSaleSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePackageSaleSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePackageSaleSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeResourcesByDealName(self, request):
         """根据计费订单id查询资源列表
 
@@ -1981,6 +2096,52 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyResourcePackageClusters(self, request):
+        """给资源包绑定集群
+
+        :param request: Request instance for ModifyResourcePackageClusters.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageClustersRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourcePackageClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourcePackageClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyResourcePackageName(self, request):
+        """修改资源包名称
+
+        :param request: Request instance for ModifyResourcePackageName.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageNameRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourcePackageName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourcePackageNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyVipVport(self, request):
         """修改实例组ip，端口
 
@@ -2156,6 +2317,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("PauseServerless", params, headers=headers)
             response = json.loads(body)
             model = models.PauseServerlessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RefundResourcePackage(self, request):
+        """退款资源包
+
+        :param request: Request instance for RefundResourcePackage.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RefundResourcePackageRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RefundResourcePackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefundResourcePackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.RefundResourcePackageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2432,6 +2616,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("SwitchProxyVpc", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchProxyVpcResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindClusterResourcePackages(self, request):
+        """cynos解绑资源包
+
+        :param request: Request instance for UnbindClusterResourcePackages.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.UnbindClusterResourcePackagesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UnbindClusterResourcePackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindClusterResourcePackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindClusterResourcePackagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

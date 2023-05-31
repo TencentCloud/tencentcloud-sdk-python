@@ -1856,6 +1856,12 @@ class AssetSystemPackageInfo(AbstractModel):
         :type FirstTime: str
         :param IsNew: 是否新增[0:否|1:是]
         :type IsNew: int
+        :param MachineExtraInfo: 附加信息
+        :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param Quuid: 主机Id
+        :type Quuid: str
+        :param Uuid: Agent Id
+        :type Uuid: str
         """
         self.Name = None
         self.Desc = None
@@ -1868,6 +1874,9 @@ class AssetSystemPackageInfo(AbstractModel):
         self.UpdateTime = None
         self.FirstTime = None
         self.IsNew = None
+        self.MachineExtraInfo = None
+        self.Quuid = None
+        self.Uuid = None
 
 
     def _deserialize(self, params):
@@ -1882,6 +1891,11 @@ class AssetSystemPackageInfo(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.FirstTime = params.get("FirstTime")
         self.IsNew = params.get("IsNew")
+        if params.get("MachineExtraInfo") is not None:
+            self.MachineExtraInfo = MachineExtraInfo()
+            self.MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

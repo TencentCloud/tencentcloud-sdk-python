@@ -364,6 +364,9 @@ class PublicMaterialInfos(AbstractModel):
         :type MaterialFaceList: list of MaterialFaces
         :param MaterialName: 素材名
         :type MaterialName: str
+        :param AuditResult: 审核原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuditResult: str
         """
         self.MaterialId = None
         self.MaterialStatus = None
@@ -371,6 +374,7 @@ class PublicMaterialInfos(AbstractModel):
         self.UpdateTime = None
         self.MaterialFaceList = None
         self.MaterialName = None
+        self.AuditResult = None
 
 
     def _deserialize(self, params):
@@ -385,6 +389,7 @@ class PublicMaterialInfos(AbstractModel):
                 obj._deserialize(item)
                 self.MaterialFaceList.append(obj)
         self.MaterialName = params.get("MaterialName")
+        self.AuditResult = params.get("AuditResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

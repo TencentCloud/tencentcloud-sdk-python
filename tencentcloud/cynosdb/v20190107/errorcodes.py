@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 批量查询失败。
 FAILEDOPERATION_BATCHGETINSTANCEERROR = 'FailedOperation.BatchGetInstanceError'
 
+# 绑定资源包失败
+FAILEDOPERATION_BINDSOURCEPACKAGEERROR = 'FailedOperation.BindSourcePackageError'
+
 # 获取权限失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 FAILEDOPERATION_CAMCHECKRESOURCEERROR = 'FailedOperation.CamCheckResourceError'
 
@@ -28,6 +31,9 @@ FAILEDOPERATION_CAMSIGANDAUTHERROR = 'FailedOperation.CamSigAndAuthError'
 
 # 创建并支付订单失败。
 FAILEDOPERATION_CREATEORDER = 'FailedOperation.CreateOrder'
+
+# 创建资源包失败
+FAILEDOPERATION_CREATESOURCEPACKAGEERROR = 'FailedOperation.CreateSourcePackageError'
 
 # 数据库访问失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 FAILEDOPERATION_DATABASEACCESSERROR = 'FailedOperation.DatabaseAccessError'
@@ -53,11 +59,23 @@ FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
 # 操作失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 FAILEDOPERATION_OPERATIONFAILEDERROR = 'FailedOperation.OperationFailedError'
 
+# 查询资源包消耗明细失败
+FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = 'FailedOperation.QuerySourcePackageDetailError'
+
+# 查询资源包失败
+FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = 'FailedOperation.QuerySourcePackageError'
+
 # 规格信息查询失败。
 FAILEDOPERATION_QUERYSPECBYSPECCODEERROR = 'FailedOperation.QuerySpecBySpecCodeError'
 
+# 资源包退款失败
+FAILEDOPERATION_REFUNDSOURCEPACKAGEERROR = 'FailedOperation.RefundSourcePackageError'
+
 # 创建并支付订单失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 FAILEDOPERATION_TRADECREATEORDERERROR = 'FailedOperation.TradeCreateOrderError'
+
+# 解绑资源包失败
+FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = 'FailedOperation.UnBindSourcePackageError'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -241,6 +259,9 @@ OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = 'OperationDenied.ServerlessInst
 
 # 任务冲突检查不通过。
 OPERATIONDENIED_TASKCONFLICTERROR = 'OperationDenied.TaskConflictError'
+
+# 不支持该类型规格售卖
+OPERATIONDENIED_UNSUPPORTSALESPECERROR = 'OperationDenied.UnSupportSaleSpecError'
 
 # 用户未进行实名认证，请先进行实名认证才可购买。
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'
