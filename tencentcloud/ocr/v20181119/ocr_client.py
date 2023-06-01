@@ -1751,6 +1751,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecognizePhilippinesUMIDOCR(self, request):
+        """菲律宾UMID识别
+
+        :param request: Request instance for RecognizePhilippinesUMIDOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesUMIDOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesUMIDOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizePhilippinesUMIDOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizePhilippinesUMIDOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RecognizePhilippinesVoteIDOCR(self, request):
         """本接口支持菲律宾VoteID识别，识别字段包括姓名、姓氏、出生日期、婚姻状况、国籍、地址、地区、菲律宾VoteID的VIN等。
 
@@ -1829,6 +1852,8 @@ class OcrClient(AbstractClient):
     def RecognizeThaiIDCardOCR(self, request):
         """本接口支持泰国身份证识别，识别字段包括泰文姓名、英文姓名、地址、出生日期、身份证号码、首次领用日期、签发日期等字段。
         本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
+
+        默认接口请求频率限制：10次/秒
 
         :param request: Request instance for RecognizeThaiIDCardOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeThaiIDCardOCRRequest`

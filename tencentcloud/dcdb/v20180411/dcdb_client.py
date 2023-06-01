@@ -1182,6 +1182,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyAccountConfig(self, request):
+        """修改账号的一些配置，比如 max_user_connections
+
+        :param request: Request instance for ModifyAccountConfig.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountConfigRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.ModifyAccountConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccountConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccountConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAccountDescription(self, request):
         """本接口（ModifyAccountDescription）用于修改云数据库账号备注。
         注意：相同用户名，不同Host是不同的账号。

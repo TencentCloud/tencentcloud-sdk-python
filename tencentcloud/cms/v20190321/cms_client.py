@@ -26,22 +26,20 @@ class CmsClient(AbstractClient):
     _service = 'cms'
 
 
-    def CreateFileSample(self, request):
-        """本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
-        <br>
-        通过该接口可以将图片新增到样本库。
+    def CreateKeywordsSamples(self, request):
+        """创建关键词接口
 
-        :param request: Request instance for CreateFileSample.
-        :type request: :class:`tencentcloud.cms.v20190321.models.CreateFileSampleRequest`
-        :rtype: :class:`tencentcloud.cms.v20190321.models.CreateFileSampleResponse`
+        :param request: Request instance for CreateKeywordsSamples.
+        :type request: :class:`tencentcloud.cms.v20190321.models.CreateKeywordsSamplesRequest`
+        :rtype: :class:`tencentcloud.cms.v20190321.models.CreateKeywordsSamplesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateFileSample", params, headers=headers)
+            body = self.call("CreateKeywordsSamples", params, headers=headers)
             response = json.loads(body)
-            model = models.CreateFileSampleResponse()
+            model = models.CreateKeywordsSamplesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -51,22 +49,20 @@ class CmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateTextSample(self, request):
-        """本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
-        <br>
-        通过该接口可以将文本新增到样本库。
+    def DeleteLibSamples(self, request):
+        """删除关键词接口
 
-        :param request: Request instance for CreateTextSample.
-        :type request: :class:`tencentcloud.cms.v20190321.models.CreateTextSampleRequest`
-        :rtype: :class:`tencentcloud.cms.v20190321.models.CreateTextSampleResponse`
+        :param request: Request instance for DeleteLibSamples.
+        :type request: :class:`tencentcloud.cms.v20190321.models.DeleteLibSamplesRequest`
+        :rtype: :class:`tencentcloud.cms.v20190321.models.DeleteLibSamplesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateTextSample", params, headers=headers)
+            body = self.call("DeleteLibSamples", params, headers=headers)
             response = json.loads(body)
-            model = models.CreateTextSampleResponse()
+            model = models.DeleteLibSamplesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -76,22 +72,20 @@ class CmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteFileSample(self, request):
-        """本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
-        <br>
-        删除图片样本库，支持批量删除，一次提交不超过20个。
+    def DescribeKeywordsLibs(self, request):
+        """获取用户词库列表
 
-        :param request: Request instance for DeleteFileSample.
-        :type request: :class:`tencentcloud.cms.v20190321.models.DeleteFileSampleRequest`
-        :rtype: :class:`tencentcloud.cms.v20190321.models.DeleteFileSampleResponse`
+        :param request: Request instance for DescribeKeywordsLibs.
+        :type request: :class:`tencentcloud.cms.v20190321.models.DescribeKeywordsLibsRequest`
+        :rtype: :class:`tencentcloud.cms.v20190321.models.DescribeKeywordsLibsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteFileSample", params, headers=headers)
+            body = self.call("DescribeKeywordsLibs", params, headers=headers)
             response = json.loads(body)
-            model = models.DeleteFileSampleResponse()
+            model = models.DescribeKeywordsLibsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -101,72 +95,20 @@ class CmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteTextSample(self, request):
-        """本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
-        <br>
-        删除文本样本库，暂时只支持单个删除。
+    def DescribeLibSamples(self, request):
+        """获取关键词接口
 
-        :param request: Request instance for DeleteTextSample.
-        :type request: :class:`tencentcloud.cms.v20190321.models.DeleteTextSampleRequest`
-        :rtype: :class:`tencentcloud.cms.v20190321.models.DeleteTextSampleResponse`
+        :param request: Request instance for DescribeLibSamples.
+        :type request: :class:`tencentcloud.cms.v20190321.models.DescribeLibSamplesRequest`
+        :rtype: :class:`tencentcloud.cms.v20190321.models.DescribeLibSamplesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteTextSample", params, headers=headers)
+            body = self.call("DescribeLibSamples", params, headers=headers)
             response = json.loads(body)
-            model = models.DeleteTextSampleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeFileSample(self, request):
-        """本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
-        <br>
-        查询图片样本库，支持批量查询。
-
-        :param request: Request instance for DescribeFileSample.
-        :type request: :class:`tencentcloud.cms.v20190321.models.DescribeFileSampleRequest`
-        :rtype: :class:`tencentcloud.cms.v20190321.models.DescribeFileSampleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeFileSample", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeFileSampleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeTextSample(self, request):
-        """本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
-        <br>
-        支持批量查询文本样本库。
-
-        :param request: Request instance for DescribeTextSample.
-        :type request: :class:`tencentcloud.cms.v20190321.models.DescribeTextSampleRequest`
-        :rtype: :class:`tencentcloud.cms.v20190321.models.DescribeTextSampleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTextSample", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTextSampleResponse()
+            model = models.DescribeLibSamplesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -190,29 +132,6 @@ class CmsClient(AbstractClient):
             body = self.call("ImageModeration", params, headers=headers)
             response = json.loads(body)
             model = models.ImageModerationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ManualReview(self, request):
-        """人工审核对外接口
-
-        :param request: Request instance for ManualReview.
-        :type request: :class:`tencentcloud.cms.v20190321.models.ManualReviewRequest`
-        :rtype: :class:`tencentcloud.cms.v20190321.models.ManualReviewResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ManualReview", params, headers=headers)
-            response = json.loads(body)
-            model = models.ManualReviewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

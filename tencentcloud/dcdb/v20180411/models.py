@@ -403,6 +403,34 @@ class ColumnPrivilege(AbstractModel):
         
 
 
+class ConfigValue(AbstractModel):
+    """配置信息。包含配置项Config，配置值Value
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Config: 配置项的名称，支持填写max_user_connections
+        :type Config: str
+        :param Value: 配置值
+        :type Value: str
+        """
+        self.Config = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Config = params.get("Config")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConstraintRange(AbstractModel):
     """约束类型值的范围
 
@@ -4618,6 +4646,64 @@ class LogFileInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAccountConfigRequest(AbstractModel):
+    """ModifyAccountConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，格式如：tdsqlshard-kpkvq5oj，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param UserName: 账号的名称
+        :type UserName: str
+        :param Host: 账号的域名
+        :type Host: str
+        :param Configs: 配置列表，每一个元素是Config和Value的组合
+        :type Configs: list of ConfigValue
+        """
+        self.InstanceId = None
+        self.UserName = None
+        self.Host = None
+        self.Configs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserName = params.get("UserName")
+        self.Host = params.get("Host")
+        if params.get("Configs") is not None:
+            self.Configs = []
+            for item in params.get("Configs"):
+                obj = ConfigValue()
+                obj._deserialize(item)
+                self.Configs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountConfigResponse(AbstractModel):
+    """ModifyAccountConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyAccountDescriptionRequest(AbstractModel):

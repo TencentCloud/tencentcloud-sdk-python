@@ -7316,6 +7316,103 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecognizePhilippinesUMIDOCRRequest(AbstractModel):
+    """RecognizePhilippinesUMIDOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param ReturnHeadImage: 是否返回人像照片。
+        :type ReturnHeadImage: bool
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.ReturnHeadImage = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ReturnHeadImage = params.get("ReturnHeadImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
+    """RecognizePhilippinesUMIDOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Surname: 姓
+        :type Surname: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param MiddleName: 中间名
+        :type MiddleName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param GivenName: 名
+        :type GivenName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Address: 地址
+        :type Address: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Birthday: 生日
+        :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param CRN: crn码
+        :type CRN: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param Sex: 性别
+        :type Sex: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param HeadPortrait: 人像照片Base64后的结果
+        :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Surname = None
+        self.MiddleName = None
+        self.GivenName = None
+        self.Address = None
+        self.Birthday = None
+        self.CRN = None
+        self.Sex = None
+        self.HeadPortrait = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Surname") is not None:
+            self.Surname = TextDetectionResult()
+            self.Surname._deserialize(params.get("Surname"))
+        if params.get("MiddleName") is not None:
+            self.MiddleName = TextDetectionResult()
+            self.MiddleName._deserialize(params.get("MiddleName"))
+        if params.get("GivenName") is not None:
+            self.GivenName = TextDetectionResult()
+            self.GivenName._deserialize(params.get("GivenName"))
+        if params.get("Address") is not None:
+            self.Address = TextDetectionResult()
+            self.Address._deserialize(params.get("Address"))
+        if params.get("Birthday") is not None:
+            self.Birthday = TextDetectionResult()
+            self.Birthday._deserialize(params.get("Birthday"))
+        if params.get("CRN") is not None:
+            self.CRN = TextDetectionResult()
+            self.CRN._deserialize(params.get("CRN"))
+        if params.get("Sex") is not None:
+            self.Sex = TextDetectionResult()
+            self.Sex._deserialize(params.get("Sex"))
+        if params.get("HeadPortrait") is not None:
+            self.HeadPortrait = TextDetectionResult()
+            self.HeadPortrait._deserialize(params.get("HeadPortrait"))
+        self.RequestId = params.get("RequestId")
+
+
 class RecognizePhilippinesVoteIDOCRRequest(AbstractModel):
     """RecognizePhilippinesVoteIDOCR请求参数结构体
 

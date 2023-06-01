@@ -1344,14 +1344,31 @@ class DeleteUserManagerUserListRequest(AbstractModel):
         :type InstanceId: str
         :param UserNameList: 集群用户名列表
         :type UserNameList: list of str
+        :param TkeClusterId: tke/eks集群id，容器集群传
+        :type TkeClusterId: str
+        :param DisplayStrategy: 默认空，容器版传"native"
+        :type DisplayStrategy: str
+        :param UserGroupList: 用户组
+        :type UserGroupList: list of UserAndGroup
         """
         self.InstanceId = None
         self.UserNameList = None
+        self.TkeClusterId = None
+        self.DisplayStrategy = None
+        self.UserGroupList = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.UserNameList = params.get("UserNameList")
+        self.TkeClusterId = params.get("TkeClusterId")
+        self.DisplayStrategy = params.get("DisplayStrategy")
+        if params.get("UserGroupList") is not None:
+            self.UserGroupList = []
+            for item in params.get("UserGroupList"):
+                obj = UserAndGroup()
+                obj._deserialize(item)
+                self.UserGroupList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6601,6 +6618,36 @@ class UpdateInstanceSettings(AbstractModel):
         self.CPUCores = params.get("CPUCores")
         self.ResourceId = params.get("ResourceId")
         self.InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserAndGroup(AbstractModel):
+    """容器集群用户组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param UserGroup: 用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserGroup: str
+        """
+        self.UserName = None
+        self.UserGroup = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.UserGroup = params.get("UserGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

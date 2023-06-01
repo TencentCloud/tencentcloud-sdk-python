@@ -4979,16 +4979,24 @@ class DescribeBinlogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小，默认值为20，最小值为1，最大值为100。
         :type Limit: int
+        :param MinStartTime: binlog开始时间，筛选大于等于此值，时间格式：2016-03-17 02:10:37
+        :type MinStartTime: str
+        :param MaxStartTime: binlog开始时间，筛选小于等于此值，时间格式：2016-03-17 02:10:37
+        :type MaxStartTime: str
         """
         self.InstanceId = None
         self.Offset = None
         self.Limit = None
+        self.MinStartTime = None
+        self.MaxStartTime = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.MinStartTime = params.get("MinStartTime")
+        self.MaxStartTime = params.get("MaxStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
