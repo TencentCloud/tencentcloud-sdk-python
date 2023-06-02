@@ -966,6 +966,124 @@ DISABLED:域名下线状态
         
 
 
+class CreateCertificateByPackageRequest(AbstractModel):
+    """CreateCertificateByPackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductPid: 证书产品PID。
+        :type ProductPid: int
+        :param PackageIds: 要消耗的权益包ID。
+        :type PackageIds: list of str
+        :param DomainCount: 证书域名数量。
+        :type DomainCount: str
+        :param Period: 多年期证书年限。
+        :type Period: int
+        :param OldCertificateId: 要续费的原证书ID（续费时填写）。
+        :type OldCertificateId: str
+        :param RenewGenCsrMethod: 续费时CSR生成方式（original、upload、online）。
+        :type RenewGenCsrMethod: str
+        :param RenewCsr: 续费时选择上传CSR时填写CSR。
+        :type RenewCsr: str
+        :param RenewAlgorithmType: 续费证书CSR的算法类型。
+        :type RenewAlgorithmType: str
+        :param RenewAlgorithmParam: 续费证书CSR的算法参数。
+        :type RenewAlgorithmParam: str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param Tags: 标签。
+        :type Tags: list of Tags
+        :param RenewKeyPass: 续费证书的私钥密码。
+        :type RenewKeyPass: str
+        :param DomainNames: 批量购买证书时预填写的域名。
+        :type DomainNames: str
+        :param CertificateCount: 批量购买证书数量。
+        :type CertificateCount: int
+        :param ManagerId: 预填写的管理人ID。
+        :type ManagerId: int
+        :param CompanyId: 预填写的公司ID。
+        :type CompanyId: int
+        :param VerifyType: 验证方式
+        :type VerifyType: str
+        """
+        self.ProductPid = None
+        self.PackageIds = None
+        self.DomainCount = None
+        self.Period = None
+        self.OldCertificateId = None
+        self.RenewGenCsrMethod = None
+        self.RenewCsr = None
+        self.RenewAlgorithmType = None
+        self.RenewAlgorithmParam = None
+        self.ProjectId = None
+        self.Tags = None
+        self.RenewKeyPass = None
+        self.DomainNames = None
+        self.CertificateCount = None
+        self.ManagerId = None
+        self.CompanyId = None
+        self.VerifyType = None
+
+
+    def _deserialize(self, params):
+        self.ProductPid = params.get("ProductPid")
+        self.PackageIds = params.get("PackageIds")
+        self.DomainCount = params.get("DomainCount")
+        self.Period = params.get("Period")
+        self.OldCertificateId = params.get("OldCertificateId")
+        self.RenewGenCsrMethod = params.get("RenewGenCsrMethod")
+        self.RenewCsr = params.get("RenewCsr")
+        self.RenewAlgorithmType = params.get("RenewAlgorithmType")
+        self.RenewAlgorithmParam = params.get("RenewAlgorithmParam")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RenewKeyPass = params.get("RenewKeyPass")
+        self.DomainNames = params.get("DomainNames")
+        self.CertificateCount = params.get("CertificateCount")
+        self.ManagerId = params.get("ManagerId")
+        self.CompanyId = params.get("CompanyId")
+        self.VerifyType = params.get("VerifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCertificateByPackageResponse(AbstractModel):
+    """CreateCertificateByPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CertificateId: 证书ID。
+        :type CertificateId: str
+        :param CertificateIds: 批量购买证书时返回多个证书ID。
+        :type CertificateIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CertificateId = None
+        self.CertificateIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CertificateId = params.get("CertificateId")
+        self.CertificateIds = params.get("CertificateIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCertificateRequest(AbstractModel):
     """CreateCertificate请求参数结构体
 

@@ -375,7 +375,9 @@ class PartnersClient(AbstractClient):
 
 
     def DescribeClientBalance(self, request):
-        """【该接口将逐步下线，请切换使用升级版本DescribeClientBalanceNew】为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额.
+        """已提供新接口并推进切换，白名单禁用控制访问观察后无反馈，可以下线
+
+        【该接口将逐步下线，请切换使用升级版本DescribeClientBalanceNew】为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额.
 
         :param request: Request instance for DescribeClientBalance.
         :type request: :class:`tencentcloud.partners.v20180321.models.DescribeClientBalanceRequest`

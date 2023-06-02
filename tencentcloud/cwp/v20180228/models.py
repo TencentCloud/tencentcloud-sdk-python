@@ -2404,7 +2404,6 @@ class AssetWebFrameBaseInfo(AbstractModel):
         :param MachineName: 主机名称
         :type MachineName: str
         :param UpdateTime: 数据更新时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param FirstTime: 首次采集时间
         :type FirstTime: str
@@ -2413,6 +2412,8 @@ class AssetWebFrameBaseInfo(AbstractModel):
         :param MachineExtraInfo:  附加信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param Path: 应用路径
+        :type Path: str
         """
         self.MachineIp = None
         self.MachineWanIp = None
@@ -2430,6 +2431,7 @@ class AssetWebFrameBaseInfo(AbstractModel):
         self.FirstTime = None
         self.IsNew = None
         self.MachineExtraInfo = None
+        self.Path = None
 
 
     def _deserialize(self, params):
@@ -2456,6 +2458,7 @@ class AssetWebFrameBaseInfo(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self.MachineExtraInfo = MachineExtraInfo()
             self.MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self.Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -6193,6 +6193,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVulRegistryImageList(self, request):
+        """查询漏洞影响的仓库镜像列表
+
+        :param request: Request instance for DescribeVulRegistryImageList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulRegistryImageListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulRegistryImageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulRegistryImageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulRegistryImageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVulScanAuthorizedImageSummary(self, request):
         """统计漏洞扫描页已授权和未扫描镜像数
 

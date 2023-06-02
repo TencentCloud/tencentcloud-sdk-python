@@ -1598,7 +1598,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type MasterZoneId: str
         :param ZoneId: 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
         :type ZoneId: str
-        :param InternetAccessible: 仅适用于公网负载均衡。负载均衡的网络计费模式。
+        :param InternetAccessible: 仅对内网属性的性能容量型实例和公网属性的所有实例生效。
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param VipIsp: 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。如果指定运营商，则网络计费式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。
         :type VipIsp: str
@@ -1613,7 +1613,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param SlaType: 创建性能容量型实例。
 <ul><li>若需要创建性能容量型实例，则此参数必填，且取值为：SLA，表示创建按量计费模式下的默认规格的性能容量型实例。
-<ul><li>当您开通了普通规格的性能容量型时，SLA对应超强型1规格。普通规格的性能容量型正在内测中，请提交 [内测申请](https://cloud.tencent.com/apply/p/hf45esx99lf)。</li>
+<ul><li>默认为普通规格的性能容量型实例，SLA对应超强型1规格。
 <li>当您开通了超大型规格的性能容量型时，SLA对应超强型4规格。超大型规格的性能容量型正在内测中，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category)。</li></ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>
         :type SlaType: str
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -1631,6 +1631,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type EipAddressId: str
         :param LoadBalancerPassToTarget: Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
         :type LoadBalancerPassToTarget: bool
+        :param DynamicVip: 创建域名化负载均衡。
+        :type DynamicVip: bool
         """
         self.LoadBalancerType = None
         self.Forward = None
@@ -1656,6 +1658,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.SlaveZoneId = None
         self.EipAddressId = None
         self.LoadBalancerPassToTarget = None
+        self.DynamicVip = None
 
 
     def _deserialize(self, params):
@@ -1697,6 +1700,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.SlaveZoneId = params.get("SlaveZoneId")
         self.EipAddressId = params.get("EipAddressId")
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self.DynamicVip = params.get("DynamicVip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4814,7 +4818,7 @@ BANDWIDTH_PACKAGE 按带宽包计费;
         :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps，仅对公网属性的共享型、性能容量型和独占型 CLB 实例、以及内网属性的性能容量型 CLB 实例生效。
 - 对于公网属性的共享型和独占型 CLB 实例，最大出带宽的范围为1Mbps-2048Mbps。
 - 对于公网属性和内网属性的性能容量型 CLB实例
-  - 当您开通了普通规格的性能容量型时，最大出带宽的范围为1Mbps-10240Mbps。普通规格的性能容量型正在内测中，请提交 [内测申请](https://cloud.tencent.com/apply/p/hf45esx99lf)。
+  - 默认为普通规格的性能容量型实例，SLA对应超强型1规格，最大出带宽的范围为1Mbps-10240Mbps。
   - 当您开通了超大型规格的性能容量型时，最大出带宽的范围为1Mbps-61440Mbps。超大型规格的性能容量型正在内测中，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
@@ -7301,10 +7305,14 @@ class Resource(AbstractModel):
         :param AvailabilitySet: 可用资源。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvailabilitySet: list of ResourceAvailability
+        :param TypeSet: 运营商类型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeSet: list of TypeInfo
         """
         self.Type = None
         self.Isp = None
         self.AvailabilitySet = None
+        self.TypeSet = None
 
 
     def _deserialize(self, params):
@@ -7316,6 +7324,12 @@ class Resource(AbstractModel):
                 obj = ResourceAvailability()
                 obj._deserialize(item)
                 self.AvailabilitySet.append(obj)
+        if params.get("TypeSet") is not None:
+            self.TypeSet = []
+            for item in params.get("TypeSet"):
+                obj = TypeInfo()
+                obj._deserialize(item)
+                self.TypeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8124,6 +8138,36 @@ class SnatIp(AbstractModel):
         
 
 
+class SpecAvailability(AbstractModel):
+    """规格可用性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpecType: 规格类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecType: str
+        :param Availability: 规格可用性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Availability: str
+        """
+        self.SpecType = None
+        self.Availability = None
+
+
+    def _deserialize(self, params):
+        self.SpecType = params.get("SpecType")
+        self.Availability = params.get("Availability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TagInfo(AbstractModel):
     """负载均衡的标签信息
 
@@ -8459,6 +8503,41 @@ class TargetRegionInfo(AbstractModel):
     def _deserialize(self, params):
         self.Region = params.get("Region")
         self.VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TypeInfo(AbstractModel):
+    """运营商类型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 运营商类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param SpecAvailabilitySet: 规格可用性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecAvailabilitySet: list of SpecAvailability
+        """
+        self.Type = None
+        self.SpecAvailabilitySet = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("SpecAvailabilitySet") is not None:
+            self.SpecAvailabilitySet = []
+            for item in params.get("SpecAvailabilitySet"):
+                obj = SpecAvailability()
+                obj._deserialize(item)
+                self.SpecAvailabilitySet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

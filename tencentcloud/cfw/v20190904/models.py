@@ -417,6 +417,12 @@ class AssociatedInstanceInfo(AbstractModel):
         :param SecurityGroupCount: 关联安全组数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupCount: int
+        :param SecurityGroupRuleCount: 关联安全组规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupRuleCount: int
+        :param CdbId: 关联数据库代理Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdbId: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -426,6 +432,8 @@ class AssociatedInstanceInfo(AbstractModel):
         self.PublicIp = None
         self.Ip = None
         self.SecurityGroupCount = None
+        self.SecurityGroupRuleCount = None
+        self.CdbId = None
 
 
     def _deserialize(self, params):
@@ -437,6 +445,8 @@ class AssociatedInstanceInfo(AbstractModel):
         self.PublicIp = params.get("PublicIp")
         self.Ip = params.get("Ip")
         self.SecurityGroupCount = params.get("SecurityGroupCount")
+        self.SecurityGroupRuleCount = params.get("SecurityGroupRuleCount")
+        self.CdbId = params.get("CdbId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3751,6 +3761,9 @@ class InstanceInfo(AbstractModel):
         :param ResourcePath: [a,b]
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourcePath: list of str
+        :param Server: 扫描结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Server: list of str
         """
         self.AppId = None
         self.Region = None
@@ -3766,6 +3779,7 @@ class InstanceInfo(AbstractModel):
         self.LeakNum = None
         self.InsSource = None
         self.ResourcePath = None
+        self.Server = None
 
 
     def _deserialize(self, params):
@@ -3783,6 +3797,7 @@ class InstanceInfo(AbstractModel):
         self.LeakNum = params.get("LeakNum")
         self.InsSource = params.get("InsSource")
         self.ResourcePath = params.get("ResourcePath")
+        self.Server = params.get("Server")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
