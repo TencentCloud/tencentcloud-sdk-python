@@ -15831,52 +15831,6 @@ class DescribeRiskDnsListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeSaveOrUpdateWarningsRequest(AbstractModel):
-    """DescribeSaveOrUpdateWarnings请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param WarningObjects: 告警设置的修改内容
-        :type WarningObjects: list of WarningObject
-        """
-        self.WarningObjects = None
-
-
-    def _deserialize(self, params):
-        if params.get("WarningObjects") is not None:
-            self.WarningObjects = []
-            for item in params.get("WarningObjects"):
-                obj = WarningObject()
-                obj._deserialize(item)
-                self.WarningObjects.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeSaveOrUpdateWarningsResponse(AbstractModel):
-    """DescribeSaveOrUpdateWarnings返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeScanMalwareScheduleRequest(AbstractModel):
     """DescribeScanMalwareSchedule请求参数结构体
 
@@ -17915,6 +17869,97 @@ class DescribeVulListResponse(AbstractModel):
                 self.VulInfoList.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.FollowVulCount = params.get("FollowVulCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVulStoreListRequest(AbstractModel):
+    """DescribeVulStoreList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 
+<li>VulName- string - 是否必填：否 - 漏洞名称</li>
+<li>CveId- string - 是否必填：否 - cveid</li>
+<li>VulCategory- string - 是否必填：否 - 漏洞分类  1 Web-CMS漏洞 ,2 应用漏洞 ,4 Linux软件漏洞,5 Windows系统漏洞</li>
+<li>Method- string - 是否必填：否 - 检测方法 0版本对比,1 poc检测 </li>
+<li>SupportDefense- string - 是否必填：否 - 是否支持防御 0不支持,1支持</li>
+<li>FixSwitch- string - 是否必填：否 - 是否支持自动修复 0不支持,1支持</li>
+
+        :type Filters: list of Filter
+        :param Limit: 限制条数,默认10,最大100
+        :type Limit: int
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Order: 排序方式: [ASC:升序|DESC:降序]
+        :type Order: str
+        :param By: 可选排序列: [PublishDate]
+        :type By: str
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Order = None
+        self.By = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulStoreListResponse(AbstractModel):
+    """DescribeVulStoreList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 漏洞信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of VulStoreListInfo
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Remaining: 今日剩余搜索此时
+        :type Remaining: int
+        :param FreeSearchTimes: 免费搜索次数
+        :type FreeSearchTimes: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.List = None
+        self.TotalCount = None
+        self.Remaining = None
+        self.FreeSearchTimes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = VulStoreListInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.Remaining = params.get("Remaining")
+        self.FreeSearchTimes = params.get("FreeSearchTimes")
         self.RequestId = params.get("RequestId")
 
 
@@ -26962,6 +27007,68 @@ class VulLevelInfo(AbstractModel):
     def _deserialize(self, params):
         self.VulLevel = params.get("VulLevel")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulStoreListInfo(AbstractModel):
+    """漏洞仓库列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VulId: 漏洞ID
+        :type VulId: int
+        :param Level: 漏洞级别
+        :type Level: int
+        :param Name: 漏洞名称
+        :type Name: str
+        :param CveId: cve编号
+        :type CveId: str
+        :param VulCategory: 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞 0= 应急漏洞
+        :type VulCategory: int
+        :param PublishDate: 发布时间
+        :type PublishDate: str
+        :param Method: 漏洞检测方法 0 - 版本比对, 1 - POC验证
+        :type Method: int
+        :param AttackLevel: 漏洞攻击热度
+        :type AttackLevel: int
+        :param FixSwitch: 漏洞是否支持自动修复
+0-windows/linux均关闭; 1-windows/linux均打开; 2-仅linux; 3-仅windows
+        :type FixSwitch: int
+        :param SupportDefense: 漏洞是否支持防御
+0:不支持 1:支持
+        :type SupportDefense: int
+        """
+        self.VulId = None
+        self.Level = None
+        self.Name = None
+        self.CveId = None
+        self.VulCategory = None
+        self.PublishDate = None
+        self.Method = None
+        self.AttackLevel = None
+        self.FixSwitch = None
+        self.SupportDefense = None
+
+
+    def _deserialize(self, params):
+        self.VulId = params.get("VulId")
+        self.Level = params.get("Level")
+        self.Name = params.get("Name")
+        self.CveId = params.get("CveId")
+        self.VulCategory = params.get("VulCategory")
+        self.PublishDate = params.get("PublishDate")
+        self.Method = params.get("Method")
+        self.AttackLevel = params.get("AttackLevel")
+        self.FixSwitch = params.get("FixSwitch")
+        self.SupportDefense = params.get("SupportDefense")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

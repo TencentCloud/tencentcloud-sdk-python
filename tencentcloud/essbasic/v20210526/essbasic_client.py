@@ -180,7 +180,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateEmbedWebUrl(self, request):
-        """本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
+        """本接口（ChannelCreateEmbedWebUrl）用于创建常规模块嵌入web的链接
         本接口支持创建：创建印章，创建模板，修改模板，预览模板，预览合同流程的web链接
         进入web连接后与当前控制台操作保持一致
 
@@ -304,7 +304,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowSignUrl(self, request):
-        """创建个人H5签署链接，请联系客户经理申请使用<br/>
+        """创建个人签署H5签署链接，请联系客户经理申请使用<br/>
         该接口用于发起合同后，生成C端签署人的签署链接<br/>
         注意：该接口目前签署人类型仅支持个人签署方（PERSON）<br/>
         注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>

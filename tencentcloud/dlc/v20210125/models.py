@@ -1208,6 +1208,8 @@ class CreateDataEngineRequest(AbstractModel):
         :type ElasticSwitch: bool
         :param ElasticLimit: spark jar 包年包月集群弹性上限
         :type ElasticLimit: int
+        :param SessionResourceTemplate: spark作业集群session资源配置模板
+        :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
         self.EngineType = None
         self.DataEngineName = None
@@ -1238,6 +1240,7 @@ class CreateDataEngineRequest(AbstractModel):
         self.MainClusterName = None
         self.ElasticSwitch = None
         self.ElasticLimit = None
+        self.SessionResourceTemplate = None
 
 
     def _deserialize(self, params):
@@ -1282,6 +1285,9 @@ class CreateDataEngineRequest(AbstractModel):
         self.MainClusterName = params.get("MainClusterName")
         self.ElasticSwitch = params.get("ElasticSwitch")
         self.ElasticLimit = params.get("ElasticLimit")
+        if params.get("SessionResourceTemplate") is not None:
+            self.SessionResourceTemplate = SessionResourceTemplate()
+            self.SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1965,6 +1971,8 @@ class CreateSparkAppRequest(AbstractModel):
         :type AppExecutorMaxNumbers: int
         :param SessionId: 关联dlc查询脚本id
         :type SessionId: str
+        :param IsInherit: 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+        :type IsInherit: int
         """
         self.AppName = None
         self.AppType = None
@@ -1993,6 +2001,7 @@ class CreateSparkAppRequest(AbstractModel):
         self.SparkImageVersion = None
         self.AppExecutorMaxNumbers = None
         self.SessionId = None
+        self.IsInherit = None
 
 
     def _deserialize(self, params):
@@ -2023,6 +2032,7 @@ class CreateSparkAppRequest(AbstractModel):
         self.SparkImageVersion = params.get("SparkImageVersion")
         self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         self.SessionId = params.get("SessionId")
+        self.IsInherit = params.get("IsInherit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3187,6 +3197,24 @@ class DataEngineInfo(AbstractModel):
         :param ElasticLimit: spark jar 包年包月集群弹性上限
 注意：此字段可能返回 null，表示取不到有效值。
         :type ElasticLimit: int
+        :param DefaultHouse: 是否为默认引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultHouse: bool
+        :param MaxConcurrency: 单个集群任务最大并发数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxConcurrency: int
+        :param TolerableQueueTime: 任务排队上限时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TolerableQueueTime: int
+        :param UserAppId: 用户appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAppId: int
+        :param UserUin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserUin: str
+        :param SessionResourceTemplate: SessionResourceTemplate
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
         self.DataEngineName = None
         self.EngineType = None
@@ -3227,6 +3255,12 @@ class DataEngineInfo(AbstractModel):
         self.StartStandbyCluster = None
         self.ElasticSwitch = None
         self.ElasticLimit = None
+        self.DefaultHouse = None
+        self.MaxConcurrency = None
+        self.TolerableQueueTime = None
+        self.UserAppId = None
+        self.UserUin = None
+        self.SessionResourceTemplate = None
 
 
     def _deserialize(self, params):
@@ -3281,6 +3315,14 @@ class DataEngineInfo(AbstractModel):
         self.StartStandbyCluster = params.get("StartStandbyCluster")
         self.ElasticSwitch = params.get("ElasticSwitch")
         self.ElasticLimit = params.get("ElasticLimit")
+        self.DefaultHouse = params.get("DefaultHouse")
+        self.MaxConcurrency = params.get("MaxConcurrency")
+        self.TolerableQueueTime = params.get("TolerableQueueTime")
+        self.UserAppId = params.get("UserAppId")
+        self.UserUin = params.get("UserUin")
+        if params.get("SessionResourceTemplate") is not None:
+            self.SessionResourceTemplate = SessionResourceTemplate()
+            self.SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3459,7 +3501,7 @@ class DatabaseResponseInfo(AbstractModel):
         :param GovernPolicy: 数据治理配置项
 注意：此字段可能返回 null，表示取不到有效值。
         :type GovernPolicy: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
-        :param DatabaseId: 数据库ID
+        :param DatabaseId: 数据库ID（无效字段）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseId: str
         """
@@ -6686,6 +6728,8 @@ class ModifySparkAppRequest(AbstractModel):
         :type AppExecutorMaxNumbers: int
         :param SessionId: 关联dlc查询脚本
         :type SessionId: str
+        :param IsInherit: 任务资源配置是否继承集群配置模板：0（默认）不继承、1：继承
+        :type IsInherit: int
         """
         self.AppName = None
         self.AppType = None
@@ -6715,6 +6759,7 @@ class ModifySparkAppRequest(AbstractModel):
         self.SparkImageVersion = None
         self.AppExecutorMaxNumbers = None
         self.SessionId = None
+        self.IsInherit = None
 
 
     def _deserialize(self, params):
@@ -6746,6 +6791,7 @@ class ModifySparkAppRequest(AbstractModel):
         self.SparkImageVersion = params.get("SparkImageVersion")
         self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         self.SessionId = params.get("SessionId")
+        self.IsInherit = params.get("IsInherit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7605,6 +7651,46 @@ class Script(AbstractModel):
         
 
 
+class SessionResourceTemplate(AbstractModel):
+    """Spark批作业集群Session资源配置模板；
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DriverSize: driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DriverSize: str
+        :param ExecutorSize: executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorSize: str
+        :param ExecutorNums: 指定executor数量，最小值为1，最大值小于集群规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorNums: int
+        :param ExecutorMaxNumbers: 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorMaxNumbers: int
+        """
+        self.DriverSize = None
+        self.ExecutorSize = None
+        self.ExecutorNums = None
+        self.ExecutorMaxNumbers = None
+
+
+    def _deserialize(self, params):
+        self.DriverSize = params.get("DriverSize")
+        self.ExecutorSize = params.get("ExecutorSize")
+        self.ExecutorNums = params.get("ExecutorNums")
+        self.ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SparkJobInfo(AbstractModel):
     """spark作业详情。
 
@@ -7705,6 +7791,9 @@ class SparkJobInfo(AbstractModel):
         :param DataEngineImageVersion: Spark 3.2-EMR
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineImageVersion: str
+        :param IsInherit: 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInherit: int
         """
         self.JobId = None
         self.JobName = None
@@ -7745,6 +7834,7 @@ class SparkJobInfo(AbstractModel):
         self.SessionId = None
         self.DataEngineClusterType = None
         self.DataEngineImageVersion = None
+        self.IsInherit = None
 
 
     def _deserialize(self, params):
@@ -7789,6 +7879,7 @@ class SparkJobInfo(AbstractModel):
         self.SessionId = params.get("SessionId")
         self.DataEngineClusterType = params.get("DataEngineClusterType")
         self.DataEngineImageVersion = params.get("DataEngineImageVersion")
+        self.IsInherit = params.get("IsInherit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8353,6 +8444,9 @@ class TableResponseInfo(AbstractModel):
         :param RecordCount: 数据表行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordCount: int
+        :param MapMaterializedViewName: xxxx
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MapMaterializedViewName: str
         """
         self.TableBaseInfo = None
         self.Columns = None
@@ -8364,6 +8458,7 @@ class TableResponseInfo(AbstractModel):
         self.InputFormat = None
         self.StorageSize = None
         self.RecordCount = None
+        self.MapMaterializedViewName = None
 
 
     def _deserialize(self, params):
@@ -8394,6 +8489,7 @@ class TableResponseInfo(AbstractModel):
         self.InputFormat = params.get("InputFormat")
         self.StorageSize = params.get("StorageSize")
         self.RecordCount = params.get("RecordCount")
+        self.MapMaterializedViewName = params.get("MapMaterializedViewName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8553,6 +8649,21 @@ class TaskResponseInfo(AbstractModel):
         :param CmdArgs: spark app job执行task的程序入口参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CmdArgs: str
+        :param ImageVersion: 集群镜像大版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageVersion: str
+        :param DriverSize: driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DriverSize: str
+        :param ExecutorSize: executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorSize: str
+        :param ExecutorNums: 指定executor数量，最小值为1，最大值小于集群规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorNums: int
+        :param ExecutorMaxNumbers: 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorMaxNumbers: int
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -8586,6 +8697,11 @@ class TaskResponseInfo(AbstractModel):
         self.UiUrl = None
         self.TotalTime = None
         self.CmdArgs = None
+        self.ImageVersion = None
+        self.DriverSize = None
+        self.ExecutorSize = None
+        self.ExecutorNums = None
+        self.ExecutorMaxNumbers = None
 
 
     def _deserialize(self, params):
@@ -8621,6 +8737,11 @@ class TaskResponseInfo(AbstractModel):
         self.UiUrl = params.get("UiUrl")
         self.TotalTime = params.get("TotalTime")
         self.CmdArgs = params.get("CmdArgs")
+        self.ImageVersion = params.get("ImageVersion")
+        self.DriverSize = params.get("DriverSize")
+        self.ExecutorSize = params.get("ExecutorSize")
+        self.ExecutorNums = params.get("ExecutorNums")
+        self.ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

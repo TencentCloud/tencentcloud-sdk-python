@@ -194,9 +194,10 @@ class EssClient(AbstractClient):
 
 
     def CreateFlow(self, request):
-        """通过模板创建签署流程
-        适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
-        注：该接口是通过模板生成合同流程的前置接口，先创建一个不包含签署文件的流程。配合“创建电子文档”接口和“发起流程”接口使用。
+        """通过模板创建签署流程<br/>
+        适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。<br/>
+        注：该接口是通过模板生成合同流程的前置接口，先创建一个不包含签署文件的流程。<br/>
+        配合“创建电子文档”接口和“发起流程”接口使用。<br/>
 
         :param request: Request instance for CreateFlow.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowRequest`
@@ -246,10 +247,10 @@ class EssClient(AbstractClient):
 
 
     def CreateFlowByFiles(self, request):
-        """此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建待签署的合同流程。
-        适用场景1：适用非制式的合同文件签署。一般开发者自己有完整的签署文件，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。
-        适用场景2：可通过该接口传入制式合同文件，同时在指定位置添加签署控件。可以起到接口创建临时模板的效果。如果是标准的制式文件，建议使用模板功能生成模板ID进行合同流程的生成。
-        注意事项：该接口需要依赖“多文件上传”接口生成pdf资源编号（FileIds）进行使用。
+        """此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建待签署的合同流程。<br/>
+        适用场景1：适用非制式的合同文件签署。一般开发者自己有完整的签署文件，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。<br/>
+        适用场景2：可通过该接口传入制式合同文件，同时在指定位置添加签署控件。可以起到接口创建临时模板的效果。如果是标准的制式文件，建议使用模板功能生成模板ID进行合同流程的生成。<br/>
+        注意事项：该接口需要依赖“多文件上传”接口生成pdf资源编号（FileIds）进行使用。<br/>
 
         :param request: Request instance for CreateFlowByFiles.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowByFilesRequest`
@@ -672,7 +673,7 @@ class EssClient(AbstractClient):
 
 
     def DescribeFileUrls(self, request):
-        """查询文件下载URL
+        """查询文件下载URL。
         适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
 
         :param request: Request instance for DescribeFileUrls.
@@ -768,7 +769,8 @@ class EssClient(AbstractClient):
 
 
     def DescribeFlowTemplates(self, request):
-        """当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。该接口常用来配合“创建电子文档”接口作为前置的接口使用。
+        """当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。<br/>
+        该接口常用来配合“创建电子文档”接口作为前置的接口使用。<br/>
 
         :param request: Request instance for DescribeFlowTemplates.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFlowTemplatesRequest`
@@ -976,7 +978,8 @@ class EssClient(AbstractClient):
 
 
     def GetTaskResultApi(self, request):
-        """通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。大文件转换所需的时间可能会比较长。
+        """通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。<br/>
+        大文件转换所需的时间可能会比较长。
 
         :param request: Request instance for GetTaskResultApi.
         :type request: :class:`tencentcloud.ess.v20201111.models.GetTaskResultApiRequest`
@@ -1095,10 +1098,13 @@ class EssClient(AbstractClient):
 
 
     def UploadFiles(self, request):
-        """此接口（UploadFiles）用于文件上传。
-        适用场景：用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。
-        其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。
-        调用时需要设置Domain/接口请求域名为 file.ess.tencent.cn，并设置参数Version/版本号为2020-12-22
+        """此接口（UploadFiles）用于文件上传。<br/>
+        适用场景：用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。<br/>
+
+        其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。<br/>
+        调用时需要设置Domain/接口请求域名为 file.ess.tencent.cn,代码示例：<br/>
+        HttpProfile httpProfile = new HttpProfile();<br/>
+        httpProfile.setEndpoint("file.test.ess.tencent.cn");<br/>
 
         :param request: Request instance for UploadFiles.
         :type request: :class:`tencentcloud.ess.v20201111.models.UploadFilesRequest`

@@ -295,6 +295,9 @@ class TextResetResponse(AbstractModel):
         :param ResultType: 结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultType: str
+        :param ResponseText: 机器人对话的应答文本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseText: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -306,6 +309,7 @@ class TextResetResponse(AbstractModel):
         self.ResponseMessage = None
         self.SessionAttributes = None
         self.ResultType = None
+        self.ResponseText = None
         self.RequestId = None
 
 
@@ -325,4 +329,5 @@ class TextResetResponse(AbstractModel):
             self.ResponseMessage._deserialize(params.get("ResponseMessage"))
         self.SessionAttributes = params.get("SessionAttributes")
         self.ResultType = params.get("ResultType")
+        self.ResponseText = params.get("ResponseText")
         self.RequestId = params.get("RequestId")

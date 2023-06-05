@@ -912,13 +912,21 @@ class CreateDedicatedClusterDCDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param InstanceIds: 分配资源ID数组
+        :type InstanceIds: list of str
+        :param FlowId: 流程ID
+        :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.InstanceIds = None
+        self.FlowId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 

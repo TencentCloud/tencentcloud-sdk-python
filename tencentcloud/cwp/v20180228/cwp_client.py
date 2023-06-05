@@ -3893,31 +3893,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSaveOrUpdateWarnings(self, request):
-        """下线
-
-        更新或者插入用户告警设置(该接口废弃,请调用 ModifyWarningSetting )
-
-        :param request: Request instance for DescribeSaveOrUpdateWarnings.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSaveOrUpdateWarningsRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeSaveOrUpdateWarningsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSaveOrUpdateWarnings", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSaveOrUpdateWarningsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeScanMalwareSchedule(self, request):
         """查询木马扫描进度
 
@@ -4578,6 +4553,29 @@ class CwpClient(AbstractClient):
             body = self.call("DescribeVulList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVulListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVulStoreList(self, request):
+        """获取漏洞库列表
+
+        :param request: Request instance for DescribeVulStoreList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeVulStoreListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeVulStoreListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulStoreList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulStoreListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
