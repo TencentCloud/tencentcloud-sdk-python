@@ -1507,6 +1507,10 @@ class SendEmailRequest(AbstractModel):
         :type Subject: str
         :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
         :type ReplyToAddresses: str
+        :param Cc: 抄送人邮箱地址，最多支持抄送20人。
+        :type Cc: list of str
+        :param Bcc: 密送人邮箱地址，最多支持抄送20人。
+        :type Bcc: list of str
         :param Template: 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
         :param Simple: 已废弃
@@ -1522,6 +1526,8 @@ class SendEmailRequest(AbstractModel):
         self.Destination = None
         self.Subject = None
         self.ReplyToAddresses = None
+        self.Cc = None
+        self.Bcc = None
         self.Template = None
         self.Simple = None
         self.Attachments = None
@@ -1534,6 +1540,8 @@ class SendEmailRequest(AbstractModel):
         self.Destination = params.get("Destination")
         self.Subject = params.get("Subject")
         self.ReplyToAddresses = params.get("ReplyToAddresses")
+        self.Cc = params.get("Cc")
+        self.Bcc = params.get("Bcc")
         if params.get("Template") is not None:
             self.Template = Template()
             self.Template._deserialize(params.get("Template"))

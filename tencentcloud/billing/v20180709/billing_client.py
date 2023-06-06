@@ -121,6 +121,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBillSummary(self, request):
+        """该接口支持通过传参，按照产品、项目、地域、计费模式和标签五个维度获取账单费用明细。
+
+        :param request: Request instance for DescribeBillSummary.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBillSummaryByPayMode(self, request):
         """获取按计费模式汇总费用分布
 

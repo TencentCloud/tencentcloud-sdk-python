@@ -71,6 +71,40 @@ class CreateBotResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Group(AbstractModel):
+    """Group是消息组的具体定义，当前包含ContentType、Url、Content三个字段。其中，具体的ContentType字段定义，参考互联网MIME类型标准。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContentType: 消息类型参考互联网MIME类型标准，当前仅支持"text/plain"。	
+        :type ContentType: str
+        :param Url: 返回内容以链接形式提供。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param Content: 普通文本。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self.ContentType = None
+        self.Url = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.ContentType = params.get("ContentType")
+        self.Url = params.get("Url")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetRequest(AbstractModel):
     """Reset请求参数结构体
 
@@ -173,6 +207,33 @@ class ResetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResponseMessage(AbstractModel):
+    """从TBP-RTS服务v1.3版本起，机器人以消息组列表的形式响应，消息组列表GroupList包含多组消息，用户根据需要对部分或全部消息组进行组合使用。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupList: 消息组列表。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupList: :class:`tencentcloud.tbp.v20190311.models.Group`
+        """
+        self.GroupList = None
+
+
+    def _deserialize(self, params):
+        if params.get("GroupList") is not None:
+            self.GroupList = Group()
+            self.GroupList._deserialize(params.get("GroupList"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SlotInfo(AbstractModel):
     """槽位信息
 
@@ -271,6 +332,12 @@ class TextProcessResponse(AbstractModel):
         :param ResponseText: 机器人对话的应答文本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseText: str
+        :param ResponseMessage: 机器人应答。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseMessage: :class:`tencentcloud.tbp.v20190311.models.ResponseMessage`
+        :param ResultType: 结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -281,6 +348,8 @@ class TextProcessResponse(AbstractModel):
         self.InputText = None
         self.SessionAttributes = None
         self.ResponseText = None
+        self.ResponseMessage = None
+        self.ResultType = None
         self.RequestId = None
 
 
@@ -297,6 +366,10 @@ class TextProcessResponse(AbstractModel):
         self.InputText = params.get("InputText")
         self.SessionAttributes = params.get("SessionAttributes")
         self.ResponseText = params.get("ResponseText")
+        if params.get("ResponseMessage") is not None:
+            self.ResponseMessage = ResponseMessage()
+            self.ResponseMessage._deserialize(params.get("ResponseMessage"))
+        self.ResultType = params.get("ResultType")
         self.RequestId = params.get("RequestId")
 
 

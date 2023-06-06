@@ -5100,6 +5100,10 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         :type Limit: int
         :param Offset: 查询偏移量
         :type Offset: int
+        :param Bundle: 过滤的 bundle
+        :type Bundle: str
+        :param OwnerBroker: bundle 所属的 broker ip 地址，支持模糊查询
+        :type OwnerBroker: str
         """
         self.ClusterName = None
         self.TenantId = None
@@ -5107,6 +5111,8 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         self.NeedMetrics = None
         self.Limit = None
         self.Offset = None
+        self.Bundle = None
+        self.OwnerBroker = None
 
 
     def _deserialize(self, params):
@@ -5116,6 +5122,8 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         self.NeedMetrics = params.get("NeedMetrics")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Bundle = params.get("Bundle")
+        self.OwnerBroker = params.get("OwnerBroker")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

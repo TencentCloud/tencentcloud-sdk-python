@@ -89,6 +89,9 @@ INVALIDPARAMETER_ILLEGALVPCINFO = 'InvalidParameter.IllegalVpcInfo'
 # MX 必须为5-50之间且为5的倍数。
 INVALIDPARAMETER_INVALIDMX = 'InvalidParameter.InvalidMX'
 
+# 该记录类型不支持 MX 优先级设置
+INVALIDPARAMETER_MXNOTSUPPORTED = 'InvalidParameter.MXNotSupported'
+
 # AAAA记录负载均衡数量超过50。
 INVALIDPARAMETER_RECORDAAAACOUNTEXCEED = 'InvalidParameter.RecordAAAACountExceed'
 

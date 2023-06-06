@@ -432,6 +432,7 @@ class ApiIdStatus(AbstractModel):
         :param ApiId: API唯一ID。
         :type ApiId: str
         :param ApiDesc: API描述
+注意：此字段可能返回 null，表示取不到有效值。
         :type ApiDesc: str
         :param Path: API PATH。
         :type Path: str
@@ -606,7 +607,7 @@ class ApiInfo(AbstractModel):
         :type ServiceConfig: :class:`tencentcloud.apigateway.v20180808.models.ServiceConfig`
         :param ServiceParameters: API的后端服务参数。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceParameters: list of ServiceParameter
+        :type ServiceParameters: list of DescribeApiResultServiceParametersInfo
         :param ConstantParameters: 常量参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConstantParameters: list of ConstantParameter
@@ -783,7 +784,7 @@ class ApiInfo(AbstractModel):
         if params.get("ServiceParameters") is not None:
             self.ServiceParameters = []
             for item in params.get("ServiceParameters"):
-                obj = ServiceParameter()
+                obj = DescribeApiResultServiceParametersInfo()
                 obj._deserialize(item)
                 self.ServiceParameters.append(obj)
         if params.get("ConstantParameters") is not None:
@@ -1110,39 +1111,6 @@ class ApiUsagePlanSet(AbstractModel):
                 obj = ApiUsagePlan()
                 obj._deserialize(item)
                 self.ApiUsagePlanList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ApisStatus(AbstractModel):
-    """描述api列表状态
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: 符合条件的 API 接口数量。
-        :type TotalCount: int
-        :param ApiIdStatusSet: API 接口列表。
-        :type ApiIdStatusSet: list of DesApisStatus
-        """
-        self.TotalCount = None
-        self.ApiIdStatusSet = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("ApiIdStatusSet") is not None:
-            self.ApiIdStatusSet = []
-            for item in params.get("ApiIdStatusSet"):
-                obj = DesApisStatus()
-                obj._deserialize(item)
-                self.ApiIdStatusSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1800,18 +1768,13 @@ class BindSubDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 绑定操作是否成功。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.Result = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -1868,12 +1831,16 @@ class ConstantParameter(AbstractModel):
     def __init__(self):
         r"""
         :param Name: 常量参数名称。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param Desc: 常量参数描述。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
         :param Position: 常量参数位置。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Position: str
         :param DefaultValue: 常量参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultValue: str
         """
         self.Name = None
@@ -2399,7 +2366,7 @@ class CreateApiResponse(AbstractModel):
         r"""
         :param Result: api信息
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: :class:`tencentcloud.apigateway.v20180808.models.CreateApiRsp`
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.CreateApiResultInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2409,9 +2376,49 @@ class CreateApiResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = CreateApiRsp()
+            self.Result = CreateApiResultInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class CreateApiResultInfo(AbstractModel):
+    """创建api返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApiId: api id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiId: str
+        :param Path: 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Method: 请求方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        """
+        self.ApiId = None
+        self.Path = None
+        self.Method = None
+        self.CreatedTime = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+        self.CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateApiRsp(AbstractModel):
@@ -4245,6 +4252,56 @@ class DescribeApiResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApiResultServiceParametersInfo(AbstractModel):
+    """ServiceParameter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: API的后端服务参数名称。只有ServiceType是HTTP才会用到此参数。前后端参数名称可不同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Position: API 的后端服务参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。前后端参数位置可配置不同。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: str
+        :param RelevantRequestParameterPosition: API 的后端服务参数对应的前端参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantRequestParameterPosition: str
+        :param RelevantRequestParameterName: API 的后端服务参数对应的前端参数名称。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantRequestParameterName: str
+        :param DefaultValue: API 的后端服务参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        :param RelevantRequestParameterDesc: API 的后端服务参数备注。只有 ServiceType 是 HTTP 才会用到此参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelevantRequestParameterDesc: str
+        """
+        self.Name = None
+        self.Position = None
+        self.RelevantRequestParameterPosition = None
+        self.RelevantRequestParameterName = None
+        self.DefaultValue = None
+        self.RelevantRequestParameterDesc = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Position = params.get("Position")
+        self.RelevantRequestParameterPosition = params.get("RelevantRequestParameterPosition")
+        self.RelevantRequestParameterName = params.get("RelevantRequestParameterName")
+        self.DefaultValue = params.get("DefaultValue")
+        self.RelevantRequestParameterDesc = params.get("RelevantRequestParameterDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeApiUsagePlanRequest(AbstractModel):
     """DescribeApiUsagePlan请求参数结构体
 
@@ -4350,7 +4407,7 @@ class DescribeApisStatusResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: API 详情列表。
-        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ApisStatus`
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DescribeApisStatusResultInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4360,9 +4417,33 @@ class DescribeApisStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = ApisStatus()
+            self.Result = DescribeApisStatusResultInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class DescribeApisStatusResultInfo(AbstractModel):
+    """描述api列表状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的 API 接口数量。
+        :type TotalCount: int
+        """
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeExclusiveInstanceDetailRequest(AbstractModel):
@@ -4457,7 +4538,7 @@ class DescribeExclusiveInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 独享实例列表查询结果
-        :type Result: :class:`tencentcloud.apigateway.v20180808.models.InstanceInfo`
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstancesResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4467,9 +4548,15 @@ class DescribeExclusiveInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = InstanceInfo()
+            self.Result = DescribeExclusiveInstancesResult()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class DescribeExclusiveInstancesResult(AbstractModel):
+    """数据结构
+
+    """
 
 
 class DescribeExclusiveInstancesStatusRequest(AbstractModel):
@@ -5496,6 +5583,36 @@ class DescribeServiceReleaseVersionResponse(AbstractModel):
             self.Result = ServiceReleaseVersion()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class DescribeServiceReleaseVersionResultVersionListInfo(AbstractModel):
+    """服务发布列表详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VersionName: 版本号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param VersionDesc: 版本描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionDesc: str
+        """
+        self.VersionName = None
+        self.VersionDesc = None
+
+
+    def _deserialize(self, params):
+        self.VersionName = params.get("VersionName")
+        self.VersionDesc = params.get("VersionDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeServiceRequest(AbstractModel):
@@ -6617,19 +6734,14 @@ class EnvironmentStrategy(AbstractModel):
         :type EnvironmentName: str
         :param Quota: 限流值
         :type Quota: int
-        :param MaxQuota: 限流最大值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxQuota: int
         """
         self.EnvironmentName = None
         self.Quota = None
-        self.MaxQuota = None
 
 
     def _deserialize(self, params):
         self.EnvironmentName = params.get("EnvironmentName")
         self.Quota = params.get("Quota")
-        self.MaxQuota = params.get("MaxQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6778,12 +6890,16 @@ class HealthCheckConf(AbstractModel):
     def __init__(self):
         r"""
         :param IsHealthCheck: 是否开启健康检查。
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsHealthCheck: bool
         :param RequestVolumeThreshold: 健康检查阈值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type RequestVolumeThreshold: int
         :param SleepWindowInMilliseconds: 窗口大小。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SleepWindowInMilliseconds: int
         :param ErrorThresholdPercentage: 阈值百分比。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorThresholdPercentage: int
         """
         self.IsHealthCheck = None
@@ -8451,7 +8567,7 @@ class ModifyUpstreamResponse(AbstractModel):
         r"""
         :param Result: 返回修改后的后端通道信息
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UpstreamInfo`
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.ModifyUpstreamResultInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8461,9 +8577,96 @@ class ModifyUpstreamResponse(AbstractModel):
 
     def _deserialize(self, params):
         if params.get("Result") is not None:
-            self.Result = UpstreamInfo()
+            self.Result = ModifyUpstreamResultInfo()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class ModifyUpstreamResultInfo(AbstractModel):
+    """后端通道详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: 后端通道唯一ID
+        :type UpstreamId: str
+        :param UpstreamName: 后端通道名字
+        :type UpstreamName: str
+        :param UpstreamDescription: 后端通道描述
+        :type UpstreamDescription: str
+        :param Scheme: 后端协议，取值范围：HTTP, HTTPS
+        :type Scheme: str
+        :param Algorithm: 负载均衡算法，取值范围：ROUND_ROBIN
+        :type Algorithm: str
+        :param UniqVpcId: VPC唯一ID
+        :type UniqVpcId: str
+        :param Retries: 请求重试次数
+        :type Retries: int
+        :param Nodes: 后端节点
+        :type Nodes: list of UpstreamNode
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param HealthChecker: 健康检查配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
+        :param UpstreamType: 后端的类型，取值范围：IP_PORT, K8S
+        :type UpstreamType: str
+        :param K8sServices: K8S容器服务配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type K8sServices: list of K8sService
+        :param UpstreamHost: 网关转发给后端的Host请求头
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamHost: str
+        """
+        self.UpstreamId = None
+        self.UpstreamName = None
+        self.UpstreamDescription = None
+        self.Scheme = None
+        self.Algorithm = None
+        self.UniqVpcId = None
+        self.Retries = None
+        self.Nodes = None
+        self.CreatedTime = None
+        self.HealthChecker = None
+        self.UpstreamType = None
+        self.K8sServices = None
+        self.UpstreamHost = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
+        self.UpstreamName = params.get("UpstreamName")
+        self.UpstreamDescription = params.get("UpstreamDescription")
+        self.Scheme = params.get("Scheme")
+        self.Algorithm = params.get("Algorithm")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Retries = params.get("Retries")
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = UpstreamNode()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
+        self.CreatedTime = params.get("CreatedTime")
+        if params.get("HealthChecker") is not None:
+            self.HealthChecker = UpstreamHealthChecker()
+            self.HealthChecker._deserialize(params.get("HealthChecker"))
+        self.UpstreamType = params.get("UpstreamType")
+        if params.get("K8sServices") is not None:
+            self.K8sServices = []
+            for item in params.get("K8sServices"):
+                obj = K8sService()
+                obj._deserialize(item)
+                self.K8sServices.append(obj)
+        self.UpstreamHost = params.get("UpstreamHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyUsagePlanRequest(AbstractModel):
@@ -9511,7 +9714,7 @@ class ServiceReleaseVersion(AbstractModel):
         :type TotalCount: int
         :param VersionList: 发布版本列表。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type VersionList: list of ServiceReleaseHistoryInfo
+        :type VersionList: list of DescribeServiceReleaseVersionResultVersionListInfo
         """
         self.TotalCount = None
         self.VersionList = None
@@ -9522,7 +9725,7 @@ class ServiceReleaseVersion(AbstractModel):
         if params.get("VersionList") is not None:
             self.VersionList = []
             for item in params.get("VersionList"):
-                obj = ServiceReleaseHistoryInfo()
+                obj = DescribeServiceReleaseVersionResultVersionListInfo()
                 obj._deserialize(item)
                 self.VersionList.append(obj)
         memeber_set = set(params.keys())
@@ -10502,6 +10705,7 @@ class UsagePlan(AbstractModel):
         :param UsagePlanName: 使用计划名称。
         :type UsagePlanName: str
         :param UsagePlanDesc: 使用计划描述。
+注意：此字段可能返回 null，表示取不到有效值。
         :type UsagePlanDesc: str
         :param MaxRequestNumPreSec: 使用计划qps，-1表示没有限制。
         :type MaxRequestNumPreSec: int
@@ -10767,18 +10971,12 @@ class UsagePlanInfo(AbstractModel):
         :param UsagePlanDesc: 使用计划描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsagePlanDesc: str
-        :param InitQuota: 初始化调用次数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InitQuota: int
         :param MaxRequestNumPreSec: 每秒请求限制数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRequestNumPreSec: int
         :param MaxRequestNum: 最大调用次数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRequestNum: int
-        :param IsHide: 是否隐藏。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsHide: int
         :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
@@ -10801,10 +10999,8 @@ class UsagePlanInfo(AbstractModel):
         self.UsagePlanId = None
         self.UsagePlanName = None
         self.UsagePlanDesc = None
-        self.InitQuota = None
         self.MaxRequestNumPreSec = None
         self.MaxRequestNum = None
-        self.IsHide = None
         self.CreatedTime = None
         self.ModifiedTime = None
         self.BindSecretIdTotalCount = None
@@ -10817,10 +11013,8 @@ class UsagePlanInfo(AbstractModel):
         self.UsagePlanId = params.get("UsagePlanId")
         self.UsagePlanName = params.get("UsagePlanName")
         self.UsagePlanDesc = params.get("UsagePlanDesc")
-        self.InitQuota = params.get("InitQuota")
         self.MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
         self.MaxRequestNum = params.get("MaxRequestNum")
-        self.IsHide = params.get("IsHide")
         self.CreatedTime = params.get("CreatedTime")
         self.ModifiedTime = params.get("ModifiedTime")
         self.BindSecretIdTotalCount = params.get("BindSecretIdTotalCount")

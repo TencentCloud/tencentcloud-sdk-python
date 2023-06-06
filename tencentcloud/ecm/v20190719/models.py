@@ -5702,16 +5702,25 @@ class DiskInfo(AbstractModel):
         :type DiskId: str
         :param DiskSize: 磁盘大小（GB）
         :type DiskSize: int
+        :param DeleteWithInstance: 是否随实例删除。
+        :type DeleteWithInstance: bool
+        :param SnapshotId: 快照ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotId: str
         """
         self.DiskType = None
         self.DiskId = None
         self.DiskSize = None
+        self.DeleteWithInstance = None
+        self.SnapshotId = None
 
 
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.DiskId = params.get("DiskId")
         self.DiskSize = params.get("DiskSize")
+        self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.SnapshotId = params.get("SnapshotId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8856,6 +8865,8 @@ DELETEFAILED：删除失败。
         :type SystemDisk: :class:`tencentcloud.ecm.v20190719.models.SystemDisk`
         :param DataDisks: 数据盘信息。
         :type DataDisks: list of DataDisk
+        :param DisableWanIp: 是否禁止外网ip
+        :type DisableWanIp: int
         """
         self.ModuleId = None
         self.ModuleName = None
@@ -8873,6 +8884,7 @@ DELETEFAILED：删除失败。
         self.UserData = None
         self.SystemDisk = None
         self.DataDisks = None
+        self.DisableWanIp = None
 
 
     def _deserialize(self, params):
@@ -8908,6 +8920,7 @@ DELETEFAILED：删除失败。
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisks.append(obj)
+        self.DisableWanIp = params.get("DisableWanIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9328,6 +9341,8 @@ class Node(AbstractModel):
         :type ISPSet: list of ISP
         :param ISPNum: 运营商数量。
         :type ISPNum: int
+        :param LBSupported: 节点是否支持LB
+        :type LBSupported: bool
         """
         self.ZoneInfo = None
         self.Country = None
@@ -9337,6 +9352,7 @@ class Node(AbstractModel):
         self.RegionInfo = None
         self.ISPSet = None
         self.ISPNum = None
+        self.LBSupported = None
 
 
     def _deserialize(self, params):
@@ -9365,6 +9381,7 @@ class Node(AbstractModel):
                 obj._deserialize(item)
                 self.ISPSet.append(obj)
         self.ISPNum = params.get("ISPNum")
+        self.LBSupported = params.get("LBSupported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

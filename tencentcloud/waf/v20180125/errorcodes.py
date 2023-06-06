@@ -23,6 +23,9 @@ DRYRUNOPERATION = 'DryRunOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 调用CLS日志服务API失败
+FAILEDOPERATION_CLSDBOPERATIONFAILED = 'FailedOperation.CLSDBOperationFailed'
+
 # CLS内部错误。
 FAILEDOPERATION_CLSINTERNALERROR = 'FailedOperation.CLSInternalError'
 
@@ -52,6 +55,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
+
+# SpecificationErr
+LIMITEXCEEDED_SPECIFICATIONERR = 'LimitExceeded.SpecificationErr'
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'

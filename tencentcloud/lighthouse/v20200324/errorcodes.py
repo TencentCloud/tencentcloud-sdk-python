@@ -209,6 +209,9 @@ INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = 'InvalidParameterValue.BlueprintIdM
 # 套餐和镜像不匹配。
 INVALIDPARAMETERVALUE_BUNDLEANDBLUEPRINTNOTMATCH = 'InvalidParameterValue.BundleAndBlueprintNotMatch'
 
+# 所选套餐不支持镜像的操作系统平台类型。
+INVALIDPARAMETERVALUE_BUNDLENOTSUPPORTBLUEPRINTPLATFORM = 'InvalidParameterValue.BundleNotSupportBlueprintPlatform'
+
 # 云联网实例ID格式非法。
 INVALIDPARAMETERVALUE_CCNIDMALFORMED = 'InvalidParameterValue.CcnIdMalformed'
 

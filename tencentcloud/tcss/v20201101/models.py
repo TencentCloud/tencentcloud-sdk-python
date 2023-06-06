@@ -809,7 +809,7 @@ class AccessControlRuleInfo(AbstractModel):
         r"""
         :param IsEnable: 开关,true:开启，false:禁用
         :type IsEnable: bool
-        :param ImageIds: 生效惊现id，空数组代表全部镜像
+        :param ImageIds: 生效镜像id，空数组代表全部镜像
         :type ImageIds: list of str
         :param ChildRules: 用户策略的子策略数组
         :type ChildRules: list of AccessControlChildRuleInfo

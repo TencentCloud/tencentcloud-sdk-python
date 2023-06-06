@@ -35,6 +35,9 @@ INTERNALERROR_ECDNCONFIGERROR = 'InternalError.EcdnConfigError'
 # 内部数据错误，请联系腾讯云工程师进一步排查。
 INTERNALERROR_ECDNDBERROR = 'InternalError.EcdnDbError'
 
+# 系统内部错误，请联系客户人员解决或稍后重试。
+INTERNALERROR_ECDNQUERYSYSTEMERROR = 'InternalError.EcdnQuerySystemError'
+
 # 系统错误，请联系腾讯云工程师进一步排查。
 INTERNALERROR_ECDNSYSTEMERROR = 'InternalError.EcdnSystemError'
 

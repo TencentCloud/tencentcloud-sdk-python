@@ -653,6 +653,60 @@ class BillTransactionInfo(AbstractModel):
         
 
 
+class BusinessSummaryInfo(AbstractModel):
+    """产品汇总信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessCode: 产品编码
+        :type BusinessCode: str
+        :param BusinessCodeName: 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        :type BusinessCodeName: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: str
+        :param RealTotalCost: 优惠后总价
+        :type RealTotalCost: str
+        :param CashPayAmount: 现金账户支出：通过现金账户支付的金额
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送账户支出：使用赠送金支付的金额
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        :type VoucherPayAmount: str
+        :param TransferPayAmount: 分成金账户支出：通过分成金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
+        """
+        self.BusinessCode = None
+        self.BusinessCodeName = None
+        self.TotalCost = None
+        self.RealTotalCost = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.TransferPayAmount = None
+
+
+    def _deserialize(self, params):
+        self.BusinessCode = params.get("BusinessCode")
+        self.BusinessCodeName = params.get("BusinessCodeName")
+        self.TotalCost = params.get("TotalCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BusinessSummaryOverviewItem(AbstractModel):
     """按产品汇总产品详情
 
@@ -982,11 +1036,27 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         :type RealTotalCost: str
         :param Trend: 费用趋势
         :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
+        :param CashPayAmount: 现金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: 代金券
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherPayAmount: str
+        :param TransferPayAmount: 分成金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
         """
         self.BusinessCode = None
         self.BusinessCodeName = None
         self.RealTotalCost = None
         self.Trend = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -996,6 +1066,10 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         if params.get("Trend") is not None:
             self.Trend = ConsumptionSummaryTrend()
             self.Trend._deserialize(params.get("Trend"))
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1022,12 +1096,28 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
         :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         :param Business: 产品消耗详情
         :type Business: list of ConsumptionBusinessSummaryDataItem
+        :param CashPayAmount: 现金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: 代金券
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherPayAmount: str
+        :param TransferPayAmount: 分成金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
         """
         self.ProjectId = None
         self.ProjectName = None
         self.RealTotalCost = None
         self.Trend = None
         self.Business = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -1043,6 +1133,10 @@ class ConsumptionProjectSummaryDataItem(AbstractModel):
                 obj = ConsumptionBusinessSummaryDataItem()
                 obj._deserialize(item)
                 self.Business.append(obj)
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1188,6 +1282,33 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         :type BusinessCodeName: str
         :param ConsumptionTypeName: 消耗类型
         :type ConsumptionTypeName: str
+        :param RealCost: 折前价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealCost: str
+        :param FeeBeginTime: 费用起始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeBeginTime: str
+        :param FeeEndTime: 费用结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeEndTime: str
+        :param DayDiff: 天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DayDiff: str
+        :param DailyTotalCost: 每日消耗
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DailyTotalCost: str
+        :param OrderId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param VoucherPayAmount: 代金券
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherPayAmount: str
+        :param IncentivePayAmount: 赠送金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncentivePayAmount: str
+        :param TransferPayAmount: 分成金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -1202,6 +1323,15 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self.BusinessCode = None
         self.BusinessCodeName = None
         self.ConsumptionTypeName = None
+        self.RealCost = None
+        self.FeeBeginTime = None
+        self.FeeEndTime = None
+        self.DayDiff = None
+        self.DailyTotalCost = None
+        self.OrderId = None
+        self.VoucherPayAmount = None
+        self.IncentivePayAmount = None
+        self.TransferPayAmount = None
 
 
     def _deserialize(self, params):
@@ -1218,6 +1348,15 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self.BusinessCode = params.get("BusinessCode")
         self.BusinessCodeName = params.get("BusinessCodeName")
         self.ConsumptionTypeName = params.get("ConsumptionTypeName")
+        self.RealCost = params.get("RealCost")
+        self.FeeBeginTime = params.get("FeeBeginTime")
+        self.FeeEndTime = params.get("FeeEndTime")
+        self.DayDiff = params.get("DayDiff")
+        self.DailyTotalCost = params.get("DailyTotalCost")
+        self.OrderId = params.get("OrderId")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2458,6 +2597,68 @@ Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBillSummaryRequest(AbstractModel):
+    """DescribeBillSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Month: 账单月份，格式为2023-04
+        :type Month: str
+        :param GroupType: 账单维度类型，枚举值如下：business、project、region、payMode、tag
+        :type GroupType: str
+        :param TagKey: 标签键，GroupType=tag获取标签维度账单时传
+        :type TagKey: list of str
+        """
+        self.Month = None
+        self.GroupType = None
+        self.TagKey = None
+
+
+    def _deserialize(self, params):
+        self.Month = params.get("Month")
+        self.GroupType = params.get("GroupType")
+        self.TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillSummaryResponse(AbstractModel):
+    """DescribeBillSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        :type Ready: int
+        :param SummaryDetail: 账单多维度汇总消费详情
+        :type SummaryDetail: list of SummaryDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ready = None
+        self.SummaryDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ready = params.get("Ready")
+        if params.get("SummaryDetail") is not None:
+            self.SummaryDetail = []
+            for item in params.get("SummaryDetail"):
+                obj = SummaryDetail()
+                obj._deserialize(item)
+                self.SummaryDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCostDetailRequest(AbstractModel):
     """DescribeCostDetail请求参数结构体
 
@@ -2558,9 +2759,9 @@ class DescribeCostSummaryByProductRequest(AbstractModel):
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type EndTime: str
-        :param Limit: 每次获取数据量
+        :param Limit: 每次获取数据量，最大值为100
         :type Limit: int
-        :param Offset: 偏移量
+        :param Offset: 偏移量,默认从0开始
         :type Offset: int
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
@@ -2644,9 +2845,9 @@ class DescribeCostSummaryByProjectRequest(AbstractModel):
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type EndTime: str
-        :param Limit: 每次获取数据量
+        :param Limit: 每次获取数据量，最大值为100
         :type Limit: int
-        :param Offset: 偏移量
+        :param Offset: 偏移量,默认从0开始
         :type Offset: int
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
@@ -2728,9 +2929,9 @@ class DescribeCostSummaryByRegionRequest(AbstractModel):
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type EndTime: str
-        :param Limit: 每次获取数据量
+        :param Limit: 每次获取数据量，最大值为100
         :type Limit: int
-        :param Offset: 偏移量
+        :param Offset: 偏移量,默认从0开始
         :type Offset: int
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
@@ -2813,9 +3014,9 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
         :type BeginTime: str
         :param EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
         :type EndTime: str
-        :param Limit: 每次获取数据量
+        :param Limit: 每次获取数据量，最大值为100
         :type Limit: int
-        :param Offset: 偏移量
+        :param Offset: 偏移量,默认从0开始
         :type Offset: int
         :param PayerUin: 查询账单数据的用户UIN
         :type PayerUin: str
@@ -3709,6 +3910,71 @@ class RegionSummaryOverviewItem(AbstractModel):
         self.TransferPayAmount = params.get("TransferPayAmount")
         self.BillMonth = params.get("BillMonth")
         self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SummaryDetail(AbstractModel):
+    """账单多维度汇总消费详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupKey: 账单维度编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupKey: str
+        :param GroupValue: 账单维度值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupValue: str
+        :param TotalCost: 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+        :type TotalCost: str
+        :param RealTotalCost: 优惠后总价
+        :type RealTotalCost: str
+        :param CashPayAmount: 现金账户支出：通过现金账户支付的金额
+        :type CashPayAmount: str
+        :param IncentivePayAmount: 赠送账户支出：使用赠送金支付的金额
+        :type IncentivePayAmount: str
+        :param VoucherPayAmount: 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        :type VoucherPayAmount: str
+        :param TransferPayAmount: 分成金账户支出：通过分成金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
+        :param Business: 产品汇总信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: list of BusinessSummaryInfo
+        """
+        self.GroupKey = None
+        self.GroupValue = None
+        self.TotalCost = None
+        self.RealTotalCost = None
+        self.CashPayAmount = None
+        self.IncentivePayAmount = None
+        self.VoucherPayAmount = None
+        self.TransferPayAmount = None
+        self.Business = None
+
+
+    def _deserialize(self, params):
+        self.GroupKey = params.get("GroupKey")
+        self.GroupValue = params.get("GroupValue")
+        self.TotalCost = params.get("TotalCost")
+        self.RealTotalCost = params.get("RealTotalCost")
+        self.CashPayAmount = params.get("CashPayAmount")
+        self.IncentivePayAmount = params.get("IncentivePayAmount")
+        self.VoucherPayAmount = params.get("VoucherPayAmount")
+        self.TransferPayAmount = params.get("TransferPayAmount")
+        if params.get("Business") is not None:
+            self.Business = []
+            for item in params.get("Business"):
+                obj = BusinessSummaryInfo()
+                obj._deserialize(item)
+                self.Business.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
