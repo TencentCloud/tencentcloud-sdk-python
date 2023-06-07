@@ -2924,6 +2924,84 @@ class ContainerGroupDetail(AbstractModel):
         
 
 
+class ContainerGroupOther(AbstractModel):
+    """部署组列表-其它字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceNum: 实例总数
+        :type InstanceNum: int
+        :param CurrentNum: 已启动实例总数
+        :type CurrentNum: int
+        :param LbIp: 负载均衡ip
+        :type LbIp: str
+        :param ClusterIp: Service ip
+        :type ClusterIp: str
+        :param Status: 服务状态，请参考后面的的状态定义
+        :type Status: str
+        :param Message: 服务状态，请参考后面的的状态定义
+        :type Message: str
+        :param Envs: 环境变量
+        :type Envs: list of Env
+        :param NodePort: Service NodePort
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePort: int
+        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param HealthCheckSettings: 健康检查相关字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckSettings: list of HealthCheckSetting
+        :param IsNotEqualServiceConfig: 服务配置信息是否匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNotEqualServiceConfig: bool
+        """
+        self.InstanceNum = None
+        self.CurrentNum = None
+        self.LbIp = None
+        self.ClusterIp = None
+        self.Status = None
+        self.Message = None
+        self.Envs = None
+        self.NodePort = None
+        self.SubnetId = None
+        self.HealthCheckSettings = None
+        self.IsNotEqualServiceConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceNum = params.get("InstanceNum")
+        self.CurrentNum = params.get("CurrentNum")
+        self.LbIp = params.get("LbIp")
+        self.ClusterIp = params.get("ClusterIp")
+        self.Status = params.get("Status")
+        self.Message = params.get("Message")
+        if params.get("Envs") is not None:
+            self.Envs = []
+            for item in params.get("Envs"):
+                obj = Env()
+                obj._deserialize(item)
+                self.Envs.append(obj)
+        self.NodePort = params.get("NodePort")
+        self.SubnetId = params.get("SubnetId")
+        if params.get("HealthCheckSettings") is not None:
+            self.HealthCheckSettings = []
+            for item in params.get("HealthCheckSettings"):
+                obj = HealthCheckSetting()
+                obj._deserialize(item)
+                self.HealthCheckSettings.append(obj)
+        self.IsNotEqualServiceConfig = params.get("IsNotEqualServiceConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContinueRunFailedTaskBatchRequest(AbstractModel):
     """ContinueRunFailedTaskBatch请求参数结构体
 
@@ -8273,6 +8351,53 @@ class DescribeContainerEventsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = TsfPageContainerEvent()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeContainerGroupAttributeRequest(AbstractModel):
+    """DescribeContainerGroupAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContainerGroupAttributeResponse(AbstractModel):
+    """DescribeContainerGroupAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 部署组列表-其它字段
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupOther`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ContainerGroupOther()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 

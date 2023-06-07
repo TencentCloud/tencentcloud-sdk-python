@@ -290,6 +290,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateStreamLinkInput(self, request):
+        """创建媒体传输的输入配置。
+
+        :param request: Request instance for CreateStreamLinkInput.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkInputRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkInputResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamLinkInput", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamLinkInputResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateStreamLinkOutputInfo(self, request):
         """创建媒体传输流的输出信息。
 

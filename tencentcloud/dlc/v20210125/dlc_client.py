@@ -1889,6 +1889,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifySparkAppBatch(self, request):
+        """本接口（ModifySparkAppBatch）用于批量修改Spark作业参数配置
+
+        :param request: Request instance for ModifySparkAppBatch.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppBatchRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySparkAppBatch", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySparkAppBatchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyUser(self, request):
         """修改用户信息
 

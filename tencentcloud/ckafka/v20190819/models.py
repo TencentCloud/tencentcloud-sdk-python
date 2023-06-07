@@ -2345,11 +2345,11 @@ class CreateInstancePreRequest(AbstractModel):
         :type KafkaVersion: str
         :param SpecificationsType: 实例类型: [标准版实例]填写 standard(默认), [专业版实例]填写 profession
         :type SpecificationsType: str
-        :param DiskSize: 磁盘大小,专业版不填写默认最小磁盘,填写后根据磁盘带宽分区数弹性计算
+        :param DiskSize: 磁盘大小，专业版不填写默认最小磁盘，如果跟控制台规格配比不相符，则无法创建成功
         :type DiskSize: int
-        :param BandWidth: 带宽,专业版不填写默认最小带宽,填写后根据磁盘带宽分区数弹性计算
+        :param BandWidth: 带宽，专业版不填写默认最小带宽，如果跟控制台规格配比不相符，则无法创建成功
         :type BandWidth: int
-        :param Partition: 分区大小,专业版不填写默认最小分区数,填写后根据磁盘带宽分区数弹性计算
+        :param Partition: 分区大小，专业版不填写默认最小分区数，如果跟控制台规格配比不相符，则无法创建成功
         :type Partition: int
         :param Tags: 标签
         :type Tags: list of Tag
@@ -5783,12 +5783,16 @@ class DescribeRouteRequest(AbstractModel):
         r"""
         :param InstanceId: 实例唯一id
         :type InstanceId: str
+        :param RouteId: 路由id
+        :type RouteId: int
         """
         self.InstanceId = None
+        self.RouteId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.RouteId = params.get("RouteId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

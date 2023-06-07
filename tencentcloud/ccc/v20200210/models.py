@@ -3164,7 +3164,7 @@ class PackageBuyInfo(AbstractModel):
         :type CapacityRemain: int
         :param BuyTime: 购买时间戳
         :type BuyTime: int
-        :param EndTime: 截至时间戳
+        :param EndTime: 截止时间戳
         :type EndTime: int
         """
         self.PackageId = None
@@ -3206,7 +3206,7 @@ class PhoneNumBuyInfo(AbstractModel):
         :type CallType: int
         :param BuyTime: 购买时间戳
         :type BuyTime: int
-        :param EndTime: 截至时间戳
+        :param EndTime: 截止时间戳
         :type EndTime: int
         :param State: 号码状态，1正常|2欠费停用|4管理员停用|5违规停用
         :type State: int

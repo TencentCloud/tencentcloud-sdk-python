@@ -2662,6 +2662,34 @@ class ClusterCreateComponentItem(AbstractModel):
         
 
 
+class ClusterCustomParameters(AbstractModel):
+    """集群自定义参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 参数名
+        :type Name: str
+        :param Values: 参数值
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterInfoItem(AbstractModel):
     """集群资产返回的结构体
 
@@ -8635,12 +8663,15 @@ class DescribeAgentDaemonSetCmdRequest(AbstractModel):
         :type VpcId: str
         :param ExpireDate: 命令有效期，非腾讯云时必填
         :type ExpireDate: str
+        :param ClusterCustomParameters: 集群自定义参数
+        :type ClusterCustomParameters: list of ClusterCustomParameters
         """
         self.IsCloud = None
         self.NetType = None
         self.RegionCode = None
         self.VpcId = None
         self.ExpireDate = None
+        self.ClusterCustomParameters = None
 
 
     def _deserialize(self, params):
@@ -8649,6 +8680,12 @@ class DescribeAgentDaemonSetCmdRequest(AbstractModel):
         self.RegionCode = params.get("RegionCode")
         self.VpcId = params.get("VpcId")
         self.ExpireDate = params.get("ExpireDate")
+        if params.get("ClusterCustomParameters") is not None:
+            self.ClusterCustomParameters = []
+            for item in params.get("ClusterCustomParameters"):
+                obj = ClusterCustomParameters()
+                obj._deserialize(item)
+                self.ClusterCustomParameters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

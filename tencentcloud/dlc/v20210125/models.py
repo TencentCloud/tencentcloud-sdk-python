@@ -6665,6 +6665,71 @@ class ModifyGovernEventRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySparkAppBatchRequest(AbstractModel):
+    """ModifySparkAppBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SparkAppId: 需要批量修改的Spark作业任务ID列表
+        :type SparkAppId: list of str
+        :param DataEngine: 引擎ID
+        :type DataEngine: str
+        :param AppDriverSize: driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        :type AppDriverSize: str
+        :param AppExecutorSize: executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        :type AppExecutorSize: str
+        :param AppExecutorNums: 指定executor数量，最小值为1，最大值小于集群规格
+        :type AppExecutorNums: int
+        :param AppExecutorMaxNumbers: 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+        :type AppExecutorMaxNumbers: int
+        :param IsInherit: 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+        :type IsInherit: int
+        """
+        self.SparkAppId = None
+        self.DataEngine = None
+        self.AppDriverSize = None
+        self.AppExecutorSize = None
+        self.AppExecutorNums = None
+        self.AppExecutorMaxNumbers = None
+        self.IsInherit = None
+
+
+    def _deserialize(self, params):
+        self.SparkAppId = params.get("SparkAppId")
+        self.DataEngine = params.get("DataEngine")
+        self.AppDriverSize = params.get("AppDriverSize")
+        self.AppExecutorSize = params.get("AppExecutorSize")
+        self.AppExecutorNums = params.get("AppExecutorNums")
+        self.AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
+        self.IsInherit = params.get("IsInherit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySparkAppBatchResponse(AbstractModel):
+    """ModifySparkAppBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySparkAppRequest(AbstractModel):
     """ModifySparkApp请求参数结构体
 

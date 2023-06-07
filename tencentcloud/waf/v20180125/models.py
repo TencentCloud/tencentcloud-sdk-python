@@ -4875,7 +4875,7 @@ class ResponseCode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 如果成功则返回Success，失败则返回yunapi定义的错误码
+        :param Code: 如果成功则返回Success，失败则返回云api定义的错误码
         :type Code: str
         :param Message: 如果成功则返回Success，失败则返回WAF定义的二级错误码
         :type Message: str

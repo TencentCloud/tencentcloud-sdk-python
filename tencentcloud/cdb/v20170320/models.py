@@ -2759,7 +2759,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
         :param AutoRenewFlag: 购买按量计费实例该字段无意义。
         :type AutoRenewFlag: int
-        :param InstanceName: 实例名称。一次购买多个实例命名会用后缀数字区分，例instnaceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
+        :param InstanceName: 实例名称。一次购买多个实例命名会用后缀数字区分，例instanceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
         :type InstanceName: str
         :param ResourceTags: 实例标签信息。
         :type ResourceTags: list of TagInfo
@@ -2771,7 +2771,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeviceType: str
         :param ParamTemplateId: 参数模板id。
         :type ParamTemplateId: int
-        :param AlarmPolicyList: 告警策略id数组。云监控DescribeAlarmPolicy接口返回的OriginId。
+        :param AlarmPolicyList: 告警策略id数组。腾讯云可观测平台DescribeAlarmPolicy接口返回的OriginId。
         :type AlarmPolicyList: list of int
         :param InstanceNodes: 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
         :type InstanceNodes: int
@@ -7169,7 +7169,7 @@ class DescribeRemoteBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ExpireDays: 异地备份保留天时间，单位为天
+        :param ExpireDays: 异地备份保留时间，单位为天
         :type ExpireDays: int
         :param RemoteBackupSave: 异地数据备份开关，off - 关闭异地备份，on-开启异地备份
         :type RemoteBackupSave: str
@@ -8403,6 +8403,8 @@ class Inbound(AbstractModel):
         :type IpProtocol: str
         :param Dir: 规则限定的方向，进站规则为 INPUT
         :type Dir: str
+        :param AddressModule: 地址模块
+        :type AddressModule: str
         :param Desc: 规则描述
         :type Desc: str
         """
@@ -8411,6 +8413,7 @@ class Inbound(AbstractModel):
         self.PortRange = None
         self.IpProtocol = None
         self.Dir = None
+        self.AddressModule = None
         self.Desc = None
 
 
@@ -8420,6 +8423,7 @@ class Inbound(AbstractModel):
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
         self.Dir = params.get("Dir")
+        self.AddressModule = params.get("AddressModule")
         self.Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -11112,6 +11116,8 @@ class Outbound(AbstractModel):
         :type IpProtocol: str
         :param Dir: 规则限定的方向，进站规则为 OUTPUT
         :type Dir: str
+        :param AddressModule: 地址模块
+        :type AddressModule: str
         :param Desc: 规则描述
         :type Desc: str
         """
@@ -11120,6 +11126,7 @@ class Outbound(AbstractModel):
         self.PortRange = None
         self.IpProtocol = None
         self.Dir = None
+        self.AddressModule = None
         self.Desc = None
 
 
@@ -11129,6 +11136,7 @@ class Outbound(AbstractModel):
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
         self.Dir = params.get("Dir")
+        self.AddressModule = params.get("AddressModule")
         self.Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -13018,7 +13026,7 @@ class RuleFilters(AbstractModel):
         :type Type: str
         :param Compare: 审计规则过滤条件的匹配类型。可选值：INC – 包含；EXC – 不包含；EQS – 等于；NEQ – 不等于；REG-正则；GT-大于；LT-小于。
         :type Compare: str
-        :param Value: 审计规则过滤条件的匹配值。sqlType条件的Value需在一下选择"alter", "changeuser", "create", "delete", "drop", "execute", "insert", "login", "logout", "other", "replace", "select", "set", "update"。
+        :param Value: 审计规则过滤条件的匹配值。sqlType条件的Value需在以下选择"alter", "changeuser", "create", "delete", "drop", "execute", "insert", "login", "logout", "other", "replace", "select", "set", "update"。
         :type Value: list of str
         """
         self.Type = None
@@ -14109,7 +14117,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
         :type InstanceId: str
         :param EngineVersion: 主实例数据库引擎版本，支持值包括：5.6 和 5.7。
         :type EngineVersion: str
-        :param WaitSwitch: 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
+        :param WaitSwitch: 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
         :type WaitSwitch: int
         :param UpgradeSubversion: 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。
         :type UpgradeSubversion: int
@@ -14180,7 +14188,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type SlaveZone: str
         :param EngineVersion: 主实例数据库引擎版本，支持值包括：5.5、5.6 和 5.7。
         :type EngineVersion: str
-        :param WaitSwitch: 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
+        :param WaitSwitch: 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
         :type WaitSwitch: int
         :param BackupZone: 备库 2 的可用区信息，默认为空，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。
         :type BackupZone: str

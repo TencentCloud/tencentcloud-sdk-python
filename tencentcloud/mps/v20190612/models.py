@@ -6248,6 +6248,62 @@ class CreateStreamLinkFlowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateStreamLinkInputRequest(AbstractModel):
+    """CreateStreamLinkInput请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 媒体传输流ID。
+        :type FlowId: str
+        :param InputGroup: 流的输入组。
+        :type InputGroup: list of CreateInput
+        """
+        self.FlowId = None
+        self.InputGroup = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("InputGroup") is not None:
+            self.InputGroup = []
+            for item in params.get("InputGroup"):
+                obj = CreateInput()
+                obj._deserialize(item)
+                self.InputGroup.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamLinkInputResponse(AbstractModel):
+    """CreateStreamLinkInput返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 创建的Flow信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeFlow`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeFlow()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateStreamLinkOutputInfoRequest(AbstractModel):
     """CreateStreamLinkOutputInfo请求参数结构体
 
@@ -16878,6 +16934,8 @@ class ProcessLiveStreamRequest(AbstractModel):
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param AiAnalysisTask: 视频内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param AiQualityControlTask: 视频内容质检类型任务参数。
+        :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
@@ -16890,6 +16948,7 @@ class ProcessLiveStreamRequest(AbstractModel):
         self.AiContentReviewTask = None
         self.AiRecognitionTask = None
         self.AiAnalysisTask = None
+        self.AiQualityControlTask = None
         self.SessionId = None
         self.SessionContext = None
 
@@ -16912,6 +16971,9 @@ class ProcessLiveStreamRequest(AbstractModel):
         if params.get("AiAnalysisTask") is not None:
             self.AiAnalysisTask = AiAnalysisTaskInput()
             self.AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiQualityControlTask") is not None:
+            self.AiQualityControlTask = AiQualityControlTaskInput()
+            self.AiQualityControlTask._deserialize(params.get("AiQualityControlTask"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())

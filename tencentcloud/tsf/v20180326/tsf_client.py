@@ -1982,6 +1982,29 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeContainerGroupAttribute(self, request):
+        """获取部署组其他字段-用于前端并发调用
+
+        :param request: Request instance for DescribeContainerGroupAttribute.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupAttributeRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContainerGroupAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContainerGroupAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeContainerGroupDeployInfo(self, request):
         """获取部署组详情
 

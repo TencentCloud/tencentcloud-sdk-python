@@ -5158,16 +5158,22 @@ class ReleasedApprover(AbstractModel):
         :type Mobile: str
         :param RelievedApproverReceiptId: 要替换的参与人在原合同参与人列表中的签署人编号,通过DescribeFlowInfo 接口获取（即FlowDetailInfos. FlowApproverInfos 结构中的ReceiptId ）
         :type RelievedApproverReceiptId: str
+        :param ApproverType: 指定签署人类型，目前仅支持
+ORGANIZATION-企业
+ENTERPRISESERVER-企业静默签
+        :type ApproverType: str
         """
         self.Name = None
         self.Mobile = None
         self.RelievedApproverReceiptId = None
+        self.ApproverType = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Mobile = params.get("Mobile")
         self.RelievedApproverReceiptId = params.get("RelievedApproverReceiptId")
+        self.ApproverType = params.get("ApproverType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
