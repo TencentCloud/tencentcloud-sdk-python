@@ -1120,6 +1120,12 @@ class ApiUsagePlanSet(AbstractModel):
         
 
 
+class ApigatewayTags(AbstractModel):
+    """key-value
+
+    """
+
+
 class AttachPluginRequest(AbstractModel):
     """AttachPlugin请求参数结构体
 
@@ -4422,6 +4428,126 @@ class DescribeApisStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApisStatusResultApiIdStatusSetInfo(AbstractModel):
+    """api状态详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: 服务唯一ID。
+        :type ServiceId: str
+        :param ApiId: API唯一ID。
+        :type ApiId: str
+        :param ApiDesc: 用户自定义的 API 接口描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiDesc: str
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param ApiName: API 接口的名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
+        :param VpcId: VPCID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: int
+        :param UniqVpcId: VPC唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param ApiType: API类型。取值为NORMAL（普通API）和TSF（微服务API）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiType: str
+        :param Protocol: API协议。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param IsDebugAfterCharge: 是否买后调试。（云市场预留字段）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDebugAfterCharge: bool
+        :param AuthType: API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、EIAM。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: str
+        :param ApiBusinessType: OAUTH API的类型。当AuthType 为 OAUTH时该字段有效， 取值为NORMAL（业务API）和 OAUTH（授权API）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiBusinessType: str
+        :param AuthRelationApiId: 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthRelationApiId: str
+        :param OauthConfig: OAUTH 配置信息。当AuthType是OAUTH时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OauthConfig: :class:`tencentcloud.apigateway.v20180808.models.OauthConfig`
+        :param RelationBuniessApiIds: 授权API关联的业务API列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelationBuniessApiIds: list of str
+        :param Tags: API关联的标签信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ApigatewayTags
+        :param Path: API 的路径，如 /path。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Method: API 的请求方法，如 GET。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        """
+        self.ServiceId = None
+        self.ApiId = None
+        self.ApiDesc = None
+        self.CreatedTime = None
+        self.ModifiedTime = None
+        self.ApiName = None
+        self.VpcId = None
+        self.UniqVpcId = None
+        self.ApiType = None
+        self.Protocol = None
+        self.IsDebugAfterCharge = None
+        self.AuthType = None
+        self.ApiBusinessType = None
+        self.AuthRelationApiId = None
+        self.OauthConfig = None
+        self.RelationBuniessApiIds = None
+        self.Tags = None
+        self.Path = None
+        self.Method = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.ApiId = params.get("ApiId")
+        self.ApiDesc = params.get("ApiDesc")
+        self.CreatedTime = params.get("CreatedTime")
+        self.ModifiedTime = params.get("ModifiedTime")
+        self.ApiName = params.get("ApiName")
+        self.VpcId = params.get("VpcId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.ApiType = params.get("ApiType")
+        self.Protocol = params.get("Protocol")
+        self.IsDebugAfterCharge = params.get("IsDebugAfterCharge")
+        self.AuthType = params.get("AuthType")
+        self.ApiBusinessType = params.get("ApiBusinessType")
+        self.AuthRelationApiId = params.get("AuthRelationApiId")
+        if params.get("OauthConfig") is not None:
+            self.OauthConfig = OauthConfig()
+            self.OauthConfig._deserialize(params.get("OauthConfig"))
+        self.RelationBuniessApiIds = params.get("RelationBuniessApiIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = ApigatewayTags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeApisStatusResultInfo(AbstractModel):
     """描述api列表状态
 
@@ -4431,12 +4557,21 @@ class DescribeApisStatusResultInfo(AbstractModel):
         r"""
         :param TotalCount: 符合条件的 API 接口数量。
         :type TotalCount: int
+        :param ApiIdStatusSet: API 接口列表。
+        :type ApiIdStatusSet: list of DescribeApisStatusResultApiIdStatusSetInfo
         """
         self.TotalCount = None
+        self.ApiIdStatusSet = None
 
 
     def _deserialize(self, params):
         self.TotalCount = params.get("TotalCount")
+        if params.get("ApiIdStatusSet") is not None:
+            self.ApiIdStatusSet = []
+            for item in params.get("ApiIdStatusSet"):
+                obj = DescribeApisStatusResultApiIdStatusSetInfo()
+                obj._deserialize(item)
+                self.ApiIdStatusSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

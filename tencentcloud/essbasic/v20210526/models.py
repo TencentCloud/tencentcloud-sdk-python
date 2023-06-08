@@ -1446,6 +1446,7 @@ class ChannelCreateSealPolicyRequest(AbstractModel):
         :param SealId: 指定印章ID
         :type SealId: str
         :param UserIds: 指定待授权的用户ID数组,电子签的用户ID
+可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权。
         :type UserIds: list of str
         :param Operator: 操作人（用户）信息，不用传
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -1487,7 +1488,8 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserIds: 最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的
+        :param UserIds: 最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的。
+请求参数填写OpenId时，返回授权成功的 Openid。
         :type UserIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1640,6 +1642,7 @@ class ChannelDeleteSealPoliciesRequest(AbstractModel):
         :param SealId: 指定印章ID
         :type SealId: str
         :param UserIds: 指定用户ID数组，电子签系统用户ID
+可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权取消。
         :type UserIds: list of str
         :param Organization: 组织机构信息，不用传
         :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
@@ -4583,7 +4586,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :param Agent: 应用相关信息。 此接口Agent.AppId必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param OperateType: 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
         :type OperateType: str

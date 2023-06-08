@@ -376,6 +376,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateIntegrationDepartment(self, request):
+        """通过此接口，创建企业的部门，支持绑定客户系统部门ID。
+
+        :param request: Request instance for CreateIntegrationDepartment.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateIntegrationDepartmentRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateIntegrationDepartmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIntegrationDepartment", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIntegrationDepartmentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateIntegrationEmployees(self, request):
         """创建员工,如需在此接口提醒员工实名，入参Employees的OpenId不传
 
@@ -603,6 +626,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteIntegrationDepartment(self, request):
+        """通过此接口，删除企业的部门。
+
+        :param request: Request instance for DeleteIntegrationDepartment.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DeleteIntegrationDepartmentRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DeleteIntegrationDepartmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteIntegrationDepartment", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteIntegrationDepartmentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteIntegrationEmployees(self, request):
         """移除员工
 
@@ -783,6 +829,29 @@ class EssClient(AbstractClient):
             body = self.call("DescribeFlowTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFlowTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIntegrationDepartments(self, request):
+        """通过此接口，查询企业的部门，支持查询单个部门节点或单个部门节点及一级子节点部门列表。
+
+        :param request: Request instance for DescribeIntegrationDepartments.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeIntegrationDepartmentsRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeIntegrationDepartmentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIntegrationDepartments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIntegrationDepartmentsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1017,6 +1086,29 @@ class EssClient(AbstractClient):
             body = self.call("ModifyApplicationCallbackInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyApplicationCallbackInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyIntegrationDepartment(self, request):
+        """通过此接口，更新企业的部门信息，支持更新部门名、客户系统部门ID、部门序列号。
+
+        :param request: Request instance for ModifyIntegrationDepartment.
+        :type request: :class:`tencentcloud.ess.v20201111.models.ModifyIntegrationDepartmentRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ModifyIntegrationDepartmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIntegrationDepartment", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIntegrationDepartmentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1727,6 +1727,73 @@ class CreateFlowSignUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateIntegrationDepartmentRequest(AbstractModel):
+    """CreateIntegrationDepartment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param DeptName: 部门名称，不超过50个字符
+        :type DeptName: str
+        :param ParentDeptId: 电子签父部门ID，与ParentDeptOpenId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+        :type ParentDeptId: str
+        :param ParentDeptOpenId: 第三方平台中父部门ID,与ParentDeptId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+        :type ParentDeptOpenId: str
+        :param DeptOpenId: 客户系统部门ID，不超过64个字符
+        :type DeptOpenId: str
+        :param OrderNo: 排序号,1~30000范围内
+        :type OrderNo: int
+        """
+        self.Operator = None
+        self.DeptName = None
+        self.ParentDeptId = None
+        self.ParentDeptOpenId = None
+        self.DeptOpenId = None
+        self.OrderNo = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.DeptName = params.get("DeptName")
+        self.ParentDeptId = params.get("ParentDeptId")
+        self.ParentDeptOpenId = params.get("ParentDeptOpenId")
+        self.DeptOpenId = params.get("DeptOpenId")
+        self.OrderNo = params.get("OrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIntegrationDepartmentResponse(AbstractModel):
+    """CreateIntegrationDepartment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeptId: 电子签部门ID
+        :type DeptId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeptId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DeptId = params.get("DeptId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateIntegrationEmployeesRequest(AbstractModel):
     """CreateIntegrationEmployees请求参数结构体
 
@@ -2518,6 +2585,57 @@ class CreateUserAutoSignEnableUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteIntegrationDepartmentRequest(AbstractModel):
+    """DeleteIntegrationDepartment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param DeptId: 电子签中的部门id
+        :type DeptId: str
+        :param ReceiveDeptId: 交接部门ID。待删除部门中的合同、印章和模版数据，交接至该部门ID下，未填写交接至公司根部门。
+        :type ReceiveDeptId: str
+        """
+        self.Operator = None
+        self.DeptId = None
+        self.ReceiveDeptId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.DeptId = params.get("DeptId")
+        self.ReceiveDeptId = params.get("ReceiveDeptId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIntegrationDepartmentResponse(AbstractModel):
+    """DeleteIntegrationDepartment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteIntegrationEmployeesRequest(AbstractModel):
     """DeleteIntegrationEmployees请求参数结构体
 
@@ -3165,6 +3283,70 @@ class DescribeFlowTemplatesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Templates.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIntegrationDepartmentsRequest(AbstractModel):
+    """DescribeIntegrationDepartments请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param QueryType: 查询类型 0-查询单个部门节点 1-单个部门节点及一级子节点部门列表
+        :type QueryType: int
+        :param DeptId: 部门ID,与DeptOpenId二选一,优先DeptId,都为空时获取根节点数据
+        :type DeptId: str
+        :param DeptOpenId: 客户系统部门ID,与DeptId二选一,优先DeptId,都为空时获取根节点数据
+        :type DeptOpenId: str
+        """
+        self.Operator = None
+        self.QueryType = None
+        self.DeptId = None
+        self.DeptOpenId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.QueryType = params.get("QueryType")
+        self.DeptId = params.get("DeptId")
+        self.DeptOpenId = params.get("DeptOpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIntegrationDepartmentsResponse(AbstractModel):
+    """DescribeIntegrationDepartments返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Departments: 部门列表
+        :type Departments: list of IntegrationDepartment
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Departments = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Departments") is not None:
+            self.Departments = []
+            for item in params.get("Departments"):
+                obj = IntegrationDepartment()
+                obj._deserialize(item)
+                self.Departments.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4778,6 +4960,51 @@ class IntegrateRole(AbstractModel):
         
 
 
+class IntegrationDepartment(AbstractModel):
+    """部门信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeptId: 部门ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeptId: str
+        :param DeptName: 部门名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeptName: str
+        :param ParentDeptId: 父部门ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentDeptId: str
+        :param DeptOpenId: 客户系统部门ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeptOpenId: str
+        :param OrderNo: 序列号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderNo: int
+        """
+        self.DeptId = None
+        self.DeptName = None
+        self.ParentDeptId = None
+        self.DeptOpenId = None
+        self.OrderNo = None
+
+
+    def _deserialize(self, params):
+        self.DeptId = params.get("DeptId")
+        self.DeptName = params.get("DeptName")
+        self.ParentDeptId = params.get("ParentDeptId")
+        self.DeptOpenId = params.get("DeptOpenId")
+        self.OrderNo = params.get("OrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IntegrationMainOrganizationUser(AbstractModel):
     """主企业员工账号信息
 
@@ -4851,6 +5078,69 @@ class ModifyApplicationCallbackInfoRequest(AbstractModel):
 
 class ModifyApplicationCallbackInfoResponse(AbstractModel):
     """ModifyApplicationCallbackInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyIntegrationDepartmentRequest(AbstractModel):
+    """ModifyIntegrationDepartment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param DeptId: 电子签部门ID
+        :type DeptId: str
+        :param ParentDeptId: 电子签父部门ID
+        :type ParentDeptId: str
+        :param DeptName: 部门名称，不超过50个字符
+        :type DeptName: str
+        :param DeptOpenId: 客户系统部门ID，不超过64个字符
+        :type DeptOpenId: str
+        :param OrderNo: 排序号,1~30000范围内
+        :type OrderNo: int
+        """
+        self.Operator = None
+        self.DeptId = None
+        self.ParentDeptId = None
+        self.DeptName = None
+        self.DeptOpenId = None
+        self.OrderNo = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.DeptId = params.get("DeptId")
+        self.ParentDeptId = params.get("ParentDeptId")
+        self.DeptName = params.get("DeptName")
+        self.DeptOpenId = params.get("DeptOpenId")
+        self.OrderNo = params.get("OrderNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIntegrationDepartmentResponse(AbstractModel):
+    """ModifyIntegrationDepartment返回参数结构体
 
     """
 
