@@ -4271,6 +4271,10 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
         :param JumpUrl: 签署完前端跳转的url，暂未使用
         :type JumpUrl: str
+        :param SignId: 签署ID
+- 发起流程时系统自动补充
+- 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
+        :type SignId: str
         """
         self.ApproverType = None
         self.OrganizationName = None
@@ -4290,6 +4294,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.RegisterInfo = None
         self.ApproverOption = None
         self.JumpUrl = None
+        self.SignId = None
 
 
     def _deserialize(self, params):
@@ -4315,6 +4320,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
             self.ApproverOption = ApproverOption()
             self.ApproverOption._deserialize(params.get("ApproverOption"))
         self.JumpUrl = params.get("JumpUrl")
+        self.SignId = params.get("SignId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

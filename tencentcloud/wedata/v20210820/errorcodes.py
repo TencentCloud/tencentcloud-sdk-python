@@ -44,6 +44,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # ClientIp未被授权。
 INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = 'InvalidParameter.ClientIpNotAuthorized'
 
+# 数据引擎实例不存在。
+INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = 'InvalidParameter.DataEngineInstanceNotExists'
+
 # 名称重复。
 INVALIDPARAMETER_DUPLICATENAME = 'InvalidParameter.DuplicateName'
 

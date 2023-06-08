@@ -4518,17 +4518,23 @@ class DescribeTrainingTaskPodsResponse(AbstractModel):
         :type PodNames: list of str
         :param TotalCount: 数量
         :type TotalCount: int
+        :param PodInfoList: pod详细信息
+        :type PodInfoList: :class:`tencentcloud.tione.v20211111.models.PodInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.PodNames = None
         self.TotalCount = None
+        self.PodInfoList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.PodNames = params.get("PodNames")
         self.TotalCount = params.get("TotalCount")
+        if params.get("PodInfoList") is not None:
+            self.PodInfoList = PodInfo()
+            self.PodInfoList._deserialize(params.get("PodInfoList"))
         self.RequestId = params.get("RequestId")
 
 
@@ -6341,6 +6347,36 @@ class Pod(AbstractModel):
                 obj = Container()
                 obj._deserialize(item)
                 self.ContainerInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodInfo(AbstractModel):
+    """任务建模Pod信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: pod名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param IP: pod的IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IP: str
+        """
+        self.Name = None
+        self.IP = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.IP = params.get("IP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

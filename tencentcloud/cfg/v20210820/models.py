@@ -901,6 +901,14 @@ class TaskGroup(AbstractModel):
         :type TaskGroupInstanceList: list of str
         :param TaskGroupMode: 执行模式。1 --- 顺序执行，2 --- 阶段执行
         :type TaskGroupMode: int
+        :param TaskGroupDiscardInstanceList: 不参演的实例列表
+        :type TaskGroupDiscardInstanceList: list of str
+        :param TaskGroupSelectedInstanceList: 参演实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskGroupSelectedInstanceList: list of str
+        :param TaskGroupInstancesExecuteRule: 机器选取规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskGroupInstancesExecuteRule: list of TaskGroupInstancesExecuteRules
         """
         self.TaskGroupId = None
         self.TaskGroupTitle = None
@@ -912,6 +920,9 @@ class TaskGroup(AbstractModel):
         self.TaskGroupActions = None
         self.TaskGroupInstanceList = None
         self.TaskGroupMode = None
+        self.TaskGroupDiscardInstanceList = None
+        self.TaskGroupSelectedInstanceList = None
+        self.TaskGroupInstancesExecuteRule = None
 
 
     def _deserialize(self, params):
@@ -930,6 +941,14 @@ class TaskGroup(AbstractModel):
                 self.TaskGroupActions.append(obj)
         self.TaskGroupInstanceList = params.get("TaskGroupInstanceList")
         self.TaskGroupMode = params.get("TaskGroupMode")
+        self.TaskGroupDiscardInstanceList = params.get("TaskGroupDiscardInstanceList")
+        self.TaskGroupSelectedInstanceList = params.get("TaskGroupSelectedInstanceList")
+        if params.get("TaskGroupInstancesExecuteRule") is not None:
+            self.TaskGroupInstancesExecuteRule = []
+            for item in params.get("TaskGroupInstancesExecuteRule"):
+                obj = TaskGroupInstancesExecuteRules()
+                obj._deserialize(item)
+                self.TaskGroupInstancesExecuteRule.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1193,6 +1212,41 @@ class TaskGroupInstance(AbstractModel):
         self.TaskGroupInstanceEndTime = params.get("TaskGroupInstanceEndTime")
         self.TaskGroupInstanceIsRedo = params.get("TaskGroupInstanceIsRedo")
         self.TaskGroupInstanceExecuteTime = params.get("TaskGroupInstanceExecuteTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskGroupInstancesExecuteRules(AbstractModel):
+    """机器选取规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskGroupInstancesExecuteMode: 实例选取模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskGroupInstancesExecuteMode: int
+        :param TaskGroupInstancesExecutePercent: 按比例选取模式下选取比例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskGroupInstancesExecutePercent: int
+        :param TaskGroupInstancesExecuteNum: 按数量选取模式下选取数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskGroupInstancesExecuteNum: int
+        """
+        self.TaskGroupInstancesExecuteMode = None
+        self.TaskGroupInstancesExecutePercent = None
+        self.TaskGroupInstancesExecuteNum = None
+
+
+    def _deserialize(self, params):
+        self.TaskGroupInstancesExecuteMode = params.get("TaskGroupInstancesExecuteMode")
+        self.TaskGroupInstancesExecutePercent = params.get("TaskGroupInstancesExecutePercent")
+        self.TaskGroupInstancesExecuteNum = params.get("TaskGroupInstancesExecuteNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

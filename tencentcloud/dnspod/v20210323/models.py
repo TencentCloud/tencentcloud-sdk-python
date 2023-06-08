@@ -1803,6 +1803,131 @@ class DescribeDomainAnalyticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainFilterListRequest(AbstractModel):
+    """DescribeDomainFilterList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 根据域名分组类型获取域名。可取值为 ALL，MINE，SHARE，RECENT。
+ALL：全部
+MINE：我的域名
+SHARE：共享给我的域名
+RECENT：最近操作过的域名
+        :type Type: str
+        :param Offset: 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为 0。
+        :type Offset: int
+        :param Limit: 要获取的域名数量, 比如获取 20 个, 则为 20。默认值为 5000。如果账户中的域名数量超过了 5000, 将会强制分页并且只返回前 5000 条, 这时需要通过 Offset 和 Limit 参数去获取其它域名。
+        :type Limit: int
+        :param GroupId: 根据域名分组 id 获取域名，可通过 DescribeDomain 或 DescribeDomainList 接口 GroupId 字段获取。
+        :type GroupId: list of int
+        :param Keyword: 根据关键字获取域名。
+        :type Keyword: str
+        :param SortField: 排序字段。可取值为 NAME，STATUS，RECORDS，GRADE，UPDATED_ON。
+NAME：域名名称
+STATUS：域名状态
+RECORDS：记录数量
+GRADE：套餐等级
+UPDATED_ON：更新时间
+        :type SortField: str
+        :param SortType: 排序类型，升序：ASC，降序：DESC。
+        :type SortType: str
+        :param Status: 根据域名状态获取域名。可取值为 ENABLE，LOCK，PAUSE，SPAM。
+ENABLE：正常
+LOCK：锁定
+PAUSE：暂停
+SPAM：封禁
+        :type Status: list of str
+        :param Package: 根据套餐获取域名，可通过 DescribeDomain 或 DescribeDomainList 接口 Grade 字段获取。
+        :type Package: list of str
+        :param Remark: 根据备注信息获取域名。
+        :type Remark: str
+        :param UpdatedAtBegin: 要获取域名的更新时间起始时间点，如 '2021-05-01 03:00:00'。
+        :type UpdatedAtBegin: str
+        :param UpdatedAtEnd: 要获取域名的更新时间终止时间点，如 '2021-05-10 20:00:00'。
+        :type UpdatedAtEnd: str
+        :param RecordCountBegin: 要获取域名的记录数查询区间起点。
+        :type RecordCountBegin: int
+        :param RecordCountEnd: 要获取域名的记录数查询区间终点。
+        :type RecordCountEnd: int
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        """
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+        self.GroupId = None
+        self.Keyword = None
+        self.SortField = None
+        self.SortType = None
+        self.Status = None
+        self.Package = None
+        self.Remark = None
+        self.UpdatedAtBegin = None
+        self.UpdatedAtEnd = None
+        self.RecordCountBegin = None
+        self.RecordCountEnd = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.GroupId = params.get("GroupId")
+        self.Keyword = params.get("Keyword")
+        self.SortField = params.get("SortField")
+        self.SortType = params.get("SortType")
+        self.Status = params.get("Status")
+        self.Package = params.get("Package")
+        self.Remark = params.get("Remark")
+        self.UpdatedAtBegin = params.get("UpdatedAtBegin")
+        self.UpdatedAtEnd = params.get("UpdatedAtEnd")
+        self.RecordCountBegin = params.get("RecordCountBegin")
+        self.RecordCountEnd = params.get("RecordCountEnd")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainFilterListResponse(AbstractModel):
+    """DescribeDomainFilterList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainCountInfo: 列表页统计信息
+        :type DomainCountInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainCountInfo`
+        :param DomainList: 域名列表
+        :type DomainList: list of DomainListItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainCountInfo = None
+        self.DomainList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainCountInfo") is not None:
+            self.DomainCountInfo = DomainCountInfo()
+            self.DomainCountInfo._deserialize(params.get("DomainCountInfo"))
+        if params.get("DomainList") is not None:
+            self.DomainList = []
+            for item in params.get("DomainList"):
+                obj = DomainListItem()
+                obj._deserialize(item)
+                self.DomainList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainGroupListRequest(AbstractModel):
     """DescribeDomainGroupList请求参数结构体
 

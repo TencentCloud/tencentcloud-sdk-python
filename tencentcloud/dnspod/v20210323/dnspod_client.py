@@ -532,6 +532,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDomainFilterList(self, request):
+        """获取域名筛选列表
+
+        :param request: Request instance for DescribeDomainFilterList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainFilterListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainFilterListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainFilterList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainFilterListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDomainGroupList(self, request):
         """获取域名分组列表
 

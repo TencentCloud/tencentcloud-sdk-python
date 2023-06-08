@@ -4090,7 +4090,7 @@ NONEXTHOP：无下一跳；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
         :type NextHopDestination: str
         :param NetDetectDescription: 网络探测描述。
@@ -10763,6 +10763,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li>
 <li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。“AG”-服务质量为云铜，“AU”-服务质量为云银。</li>
 <li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li>
+<li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: int
@@ -17772,7 +17773,7 @@ NONEXTHOP：无下一跳；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
         :type NextHopDestination: str
         :param NetDetectDescription: 网络探测描述。
@@ -19294,7 +19295,7 @@ NONEXTHOP：无下一跳；
 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
         :type NextHopDestination: str
         :param NextHopName: 下一跳网关名称。

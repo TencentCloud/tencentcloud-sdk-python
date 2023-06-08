@@ -4494,9 +4494,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
 如果提供了此参数，白板推流服务会优先使用此参数指定的SdkAppId作为白板推流的目标TRTC应用，否则使用公共参数中的SdkAppId作为白板推流的目标TRTC应用。
         :type TRTCAuthParam: :class:`tencentcloud.tiw.v20190919.models.AuthParam`
-        :param TRTCEnterRoomMode: 内测参数，需要提前申请白名单进行体验。
-
-指定白板推流时推流用户进TRTC房间的进房模式。默认为 TRTCAppSceneVideoCall
+        :param TRTCEnterRoomMode: 指定白板推流时推流用户进TRTC房间的进房模式。默认为 TRTCAppSceneVideoCall
 
 TRTCAppSceneVideoCall - 视频通话场景，即绝大多数时间都是两人或两人以上视频通话的场景，内部编码器和网络协议优化侧重流畅性，降低通话延迟和卡顿率。
 TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶尔有多人视频互动的场景，内部编码器和网络协议优化侧重性能和兼容性，性能和清晰度表现更佳。

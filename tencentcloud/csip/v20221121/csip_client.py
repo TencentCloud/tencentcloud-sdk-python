@@ -49,6 +49,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDomainAndIp(self, request):
+        """创建域名、ip相关信息
+
+        :param request: Request instance for CreateDomainAndIp.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDomainAndIpRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDomainAndIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDomainAndIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDomainAndIpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCVMAssetInfo(self, request):
         """cvm详情
 

@@ -2953,7 +2953,7 @@ class ContainerGroupOther(AbstractModel):
         :type SubnetId: str
         :param HealthCheckSettings: 健康检查相关字段
 注意：此字段可能返回 null，表示取不到有效值。
-        :type HealthCheckSettings: list of HealthCheckSetting
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
         :param IsNotEqualServiceConfig: 服务配置信息是否匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNotEqualServiceConfig: bool
@@ -2987,11 +2987,8 @@ class ContainerGroupOther(AbstractModel):
         self.NodePort = params.get("NodePort")
         self.SubnetId = params.get("SubnetId")
         if params.get("HealthCheckSettings") is not None:
-            self.HealthCheckSettings = []
-            for item in params.get("HealthCheckSettings"):
-                obj = HealthCheckSetting()
-                obj._deserialize(item)
-                self.HealthCheckSettings.append(obj)
+            self.HealthCheckSettings = HealthCheckSettings()
+            self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
         self.IsNotEqualServiceConfig = params.get("IsNotEqualServiceConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

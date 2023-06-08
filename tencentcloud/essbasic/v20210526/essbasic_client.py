@@ -929,6 +929,7 @@ class EssbasicClient(AbstractClient):
     def GetDownloadFlowUrl(self, request):
         """此接口（GetDownloadFlowUrl）用于创建电子签批量下载地址，让合作企业进入控制台直接下载，支持客户合同（流程）按照自定义文件夹形式 分类下载。
         当前接口限制最多合同（流程）50个.
+        返回的链接只能使用一次
 
         :param request: Request instance for GetDownloadFlowUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.GetDownloadFlowUrlRequest`

@@ -485,6 +485,51 @@ class CVMAssetVO(AbstractModel):
         
 
 
+class CreateDomainAndIpRequest(AbstractModel):
+    """CreateDomainAndIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: -
+        :type Content: list of str
+        """
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDomainAndIpResponse(AbstractModel):
+    """CreateDomainAndIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 返回创建成功的数量
+        :type Data: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class DBAssetVO(AbstractModel):
     """db资产输出字段
 

@@ -2571,6 +2571,7 @@ class TdmqClient(AbstractClient):
 
     def SendMessages(self, request):
         """发送单条消息
+        不支持持久topic
 
         :param request: Request instance for SendMessages.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SendMessagesRequest`

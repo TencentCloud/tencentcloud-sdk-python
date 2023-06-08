@@ -18220,6 +18220,173 @@ class SchemaDetail(AbstractModel):
         
 
 
+class ScriptInfoResponse(AbstractModel):
+    """开发空间-脚本相关响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param FileName: 脚本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param FileExtensionType: 文件扩展名类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileExtensionType: str
+        :param Type: 文件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Md5Value: md5值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5Value: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Size: 文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: float
+        :param LocalPath: 本地路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalPath: str
+        :param RemotePath: 远程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemotePath: str
+        :param OwnerName: 用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerName: str
+        :param Owner: 用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
+        :param PathDepth: 路径深度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathDepth: int
+        :param ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param ExtraInfo: 附加信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: str
+        :param LocalTempPath: 本地临时文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalTempPath: str
+        :param ZipPath: 本地压缩文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZipPath: str
+        :param Bucket: cos桶名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        :param Region: cos地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        """
+        self.ResourceId = None
+        self.FileName = None
+        self.FileExtensionType = None
+        self.Type = None
+        self.Md5Value = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Size = None
+        self.LocalPath = None
+        self.RemotePath = None
+        self.OwnerName = None
+        self.Owner = None
+        self.PathDepth = None
+        self.ProjectId = None
+        self.ExtraInfo = None
+        self.LocalTempPath = None
+        self.ZipPath = None
+        self.Bucket = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.FileName = params.get("FileName")
+        self.FileExtensionType = params.get("FileExtensionType")
+        self.Type = params.get("Type")
+        self.Md5Value = params.get("Md5Value")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Size = params.get("Size")
+        self.LocalPath = params.get("LocalPath")
+        self.RemotePath = params.get("RemotePath")
+        self.OwnerName = params.get("OwnerName")
+        self.Owner = params.get("Owner")
+        self.PathDepth = params.get("PathDepth")
+        self.ProjectId = params.get("ProjectId")
+        self.ExtraInfo = params.get("ExtraInfo")
+        self.LocalTempPath = params.get("LocalTempPath")
+        self.ZipPath = params.get("ZipPath")
+        self.Bucket = params.get("Bucket")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScriptRequestInfo(AbstractModel):
+    """开发空间-上传脚本请求
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FilePath: 脚本路径
+        :type FilePath: str
+        :param ProjectId: 项目id
+        :type ProjectId: str
+        :param Version: 脚本版本
+        :type Version: str
+        :param Operation: 操作类型
+        :type Operation: str
+        :param ExtraInfo: 额外信息
+        :type ExtraInfo: str
+        :param BucketName: 桶名称
+        :type BucketName: str
+        :param Region: 所属地区
+        :type Region: str
+        :param FileExtensionType: 文件扩展类型
+        :type FileExtensionType: str
+        """
+        self.FilePath = None
+        self.ProjectId = None
+        self.Version = None
+        self.Operation = None
+        self.ExtraInfo = None
+        self.BucketName = None
+        self.Region = None
+        self.FileExtensionType = None
+
+
+    def _deserialize(self, params):
+        self.FilePath = params.get("FilePath")
+        self.ProjectId = params.get("ProjectId")
+        self.Version = params.get("Version")
+        self.Operation = params.get("Operation")
+        self.ExtraInfo = params.get("ExtraInfo")
+        self.BucketName = params.get("BucketName")
+        self.Region = params.get("Region")
+        self.FileExtensionType = params.get("FileExtensionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchCondition(AbstractModel):
     """查询实例条件
 
@@ -20800,6 +20967,56 @@ class UpdateInLongAgentResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UploadContentRequest(AbstractModel):
+    """UploadContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScriptRequestInfo: 脚本上传信息
+        :type ScriptRequestInfo: :class:`tencentcloud.wedata.v20210820.models.ScriptRequestInfo`
+        """
+        self.ScriptRequestInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScriptRequestInfo") is not None:
+            self.ScriptRequestInfo = ScriptRequestInfo()
+            self.ScriptRequestInfo._deserialize(params.get("ScriptRequestInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadContentResponse(AbstractModel):
+    """UploadContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScriptInfo: 脚本信息响应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptInfo: :class:`tencentcloud.wedata.v20210820.models.ScriptInfoResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScriptInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScriptInfo") is not None:
+            self.ScriptInfo = ScriptInfoResponse()
+            self.ScriptInfo._deserialize(params.get("ScriptInfo"))
         self.RequestId = params.get("RequestId")
 
 
