@@ -279,6 +279,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstancesNew(self, request):
+        """获取实例列表，供外部sdk使用
+
+        :param request: Request instance for DescribeInstancesNew.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstancesNewRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstancesNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSpec(self, request):
         """购买页拉取集群的数据节点和zookeeper节点的规格列表
 

@@ -561,6 +561,60 @@ class CancelMultiFlowSignQRCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CancelUserAutoSignEnableUrlRequest(AbstractModel):
+    """CancelUserAutoSignEnableUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作人信息，UseId必填	
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param SceneKey: 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :type SceneKey: str
+        :param UserInfo: 指定撤销链接的用户指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
+
+        :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
+        """
+        self.Operator = None
+        self.SceneKey = None
+        self.UserInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.SceneKey = params.get("SceneKey")
+        if params.get("UserInfo") is not None:
+            self.UserInfo = UserThreeFactor()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelUserAutoSignEnableUrlResponse(AbstractModel):
+    """CancelUserAutoSignEnableUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CcInfo(AbstractModel):
     """抄送信息
 
@@ -961,7 +1015,7 @@ class CreateConvertTaskApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 资源类型 取值范围doc,docx,html,xls,xlsx之一
+        :param ResourceType: 资源类型 支持doc,docx,html,xls,xlsx,jpg,jpeg,png,bmp文件类型
         :type ResourceType: str
         :param ResourceName: 资源名称，长度限制为256字符
         :type ResourceName: str

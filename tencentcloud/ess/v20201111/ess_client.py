@@ -97,6 +97,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelUserAutoSignEnableUrl(self, request):
+        """此接口（CancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+
+        :param request: Request instance for CancelUserAutoSignEnableUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CancelUserAutoSignEnableUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CancelUserAutoSignEnableUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelUserAutoSignEnableUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelUserAutoSignEnableUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateBatchCancelFlowUrl(self, request):
         """注：此接口将会废弃，请使用撤销单个签署流程（CancelFlow）接口。
         指定需要批量撤回的签署流程Id，获取批量撤销链接。
@@ -146,7 +169,7 @@ class EssClient(AbstractClient):
 
 
     def CreateConvertTaskApi(self, request):
-        """上传了word、excel文件后，通过该接口发起文件转换任务，将word、excel文件转换为pdf文件。
+        """上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
 
         :param request: Request instance for CreateConvertTaskApi.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateConvertTaskApiRequest`

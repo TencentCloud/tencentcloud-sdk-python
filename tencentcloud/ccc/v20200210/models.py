@@ -3602,7 +3602,7 @@ class StaffBuyInfo(AbstractModel):
         :type Num: int
         :param BuyTime: 购买时间戳
         :type BuyTime: int
-        :param EndTime: 截至时间戳
+        :param EndTime: 截止时间戳
         :type EndTime: int
         """
         self.Num = None

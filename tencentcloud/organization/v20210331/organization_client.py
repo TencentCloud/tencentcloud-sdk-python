@@ -26,6 +26,29 @@ class OrganizationClient(AbstractClient):
     _service = 'organization'
 
 
+    def AddOrganizationMemberEmail(self, request):
+        """添加组织成员邮箱
+
+        :param request: Request instance for AddOrganizationMemberEmail.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AddOrganizationMemberEmailRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AddOrganizationMemberEmailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddOrganizationMemberEmail", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddOrganizationMemberEmailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddOrganizationNode(self, request):
         """添加企业组织节点
 
@@ -279,6 +302,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOrganizationMemberEmailBind(self, request):
+        """查询成员邮箱绑定详细信息
+
+        :param request: Request instance for DescribeOrganizationMemberEmailBind.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMemberEmailBindRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMemberEmailBindResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationMemberEmailBind", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationMemberEmailBindResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOrganizationMemberPolicies(self, request):
         """获取组织成员的授权策略列表
 
@@ -385,6 +431,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("MoveOrganizationNodeMembers", params, headers=headers)
             response = json.loads(body)
             model = models.MoveOrganizationNodeMembersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateOrganizationMemberEmailBind(self, request):
+        """修改绑定成员邮箱
+
+        :param request: Request instance for UpdateOrganizationMemberEmailBind.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMemberEmailBindRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMemberEmailBindResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOrganizationMemberEmailBind", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOrganizationMemberEmailBindResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

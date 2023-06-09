@@ -2072,7 +2072,7 @@ class SubscribeInfo(AbstractModel):
 
 
 class SubscribeObject(AbstractModel):
-    """数据数据订阅的对象
+    """数据订阅的对象
 
     """
 

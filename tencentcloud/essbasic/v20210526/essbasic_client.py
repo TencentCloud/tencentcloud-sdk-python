@@ -436,7 +436,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateUserRoles(self, request):
-        """绑定员工角色
+        """通过此接口，绑定员工角色，支持以电子签userId、客户系统userId两种方式调用。
 
         :param request: Request instance for ChannelCreateUserRoles.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateUserRolesRequest`
@@ -459,7 +459,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDeleteRoleUsers(self, request):
-        """删除员工绑定角色
+        """通过此接口，删除员工绑定的角色，支持以电子签userId、客户系统userId两种方式调用。
 
         :param request: Request instance for ChannelDeleteRoleUsers.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDeleteRoleUsersRequest`

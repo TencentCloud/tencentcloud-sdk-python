@@ -3626,6 +3626,27 @@ class DomainInfo(AbstractModel):
         :param OwnerNick: 域名所有者的账户昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerNick: str
+        :param IsGracePeriod: 是否在付费套餐宽限期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsGracePeriod: str
+        :param VipBuffered: 是否在付费套餐缓冲期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipBuffered: str
+        :param VipStartAt: VIP套餐有效期开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipStartAt: str
+        :param VipEndAt: VIP套餐有效期结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipEndAt: str
+        :param VipAutoRenew: VIP套餐自动续费标识。可能的值为：default-默认；no-不自动续费；yes-自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipAutoRenew: str
+        :param VipResourceId: VIP套餐资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipResourceId: str
+        :param IsSubDomain: 是否是子域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSubDomain: bool
         """
         self.DomainId = None
         self.Status = None
@@ -3650,6 +3671,13 @@ class DomainInfo(AbstractModel):
         self.ActualNsList = None
         self.RecordCount = None
         self.OwnerNick = None
+        self.IsGracePeriod = None
+        self.VipBuffered = None
+        self.VipStartAt = None
+        self.VipEndAt = None
+        self.VipAutoRenew = None
+        self.VipResourceId = None
+        self.IsSubDomain = None
 
 
     def _deserialize(self, params):
@@ -3676,6 +3704,13 @@ class DomainInfo(AbstractModel):
         self.ActualNsList = params.get("ActualNsList")
         self.RecordCount = params.get("RecordCount")
         self.OwnerNick = params.get("OwnerNick")
+        self.IsGracePeriod = params.get("IsGracePeriod")
+        self.VipBuffered = params.get("VipBuffered")
+        self.VipStartAt = params.get("VipStartAt")
+        self.VipEndAt = params.get("VipEndAt")
+        self.VipAutoRenew = params.get("VipAutoRenew")
+        self.VipResourceId = params.get("VipResourceId")
+        self.IsSubDomain = params.get("IsSubDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

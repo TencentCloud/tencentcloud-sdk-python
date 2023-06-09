@@ -1164,7 +1164,7 @@ class MariadbClient(AbstractClient):
         **注意**
         - 系统保留库："mysql"，只开放["SELECT"]权限
         - 只读账号授予读写权限会报错
-        - 不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组
+        - 不传权限参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组
 
         :param request: Request instance for ModifyAccountPrivileges.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.ModifyAccountPrivilegesRequest`

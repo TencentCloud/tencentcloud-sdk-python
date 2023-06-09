@@ -1512,16 +1512,19 @@ class ChannelCreateUserRolesRequest(AbstractModel):
         r"""
         :param Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param UserIds: 绑定角色的员工id列表，电子签的UserId
-        :type UserIds: list of str
         :param RoleIds: 绑定角色的角色id列表
         :type RoleIds: list of str
+        :param UserIds: 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
+        :type UserIds: list of str
+        :param OpenIds: 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+        :type OpenIds: list of str
         :param Operator: 操作者信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self.Agent = None
-        self.UserIds = None
         self.RoleIds = None
+        self.UserIds = None
+        self.OpenIds = None
         self.Operator = None
 
 
@@ -1529,8 +1532,9 @@ class ChannelCreateUserRolesRequest(AbstractModel):
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
-        self.UserIds = params.get("UserIds")
         self.RoleIds = params.get("RoleIds")
+        self.UserIds = params.get("UserIds")
+        self.OpenIds = params.get("OpenIds")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
@@ -1580,15 +1584,18 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param RoleId: 角色Id（非超管或法人角色Id）
         :type RoleId: str
-        :param UserIds: 用户列表，电子签系统的UserId
+        :param UserIds: 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
         :type UserIds: list of str
         :param Operator: 操作人信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param OpenIds: 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+        :type OpenIds: list of str
         """
         self.Agent = None
         self.RoleId = None
         self.UserIds = None
         self.Operator = None
+        self.OpenIds = None
 
 
     def _deserialize(self, params):
@@ -1600,6 +1607,7 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.OpenIds = params.get("OpenIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

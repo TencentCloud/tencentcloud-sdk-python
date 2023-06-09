@@ -1567,6 +1567,8 @@ class ClusterLevelChangeRecord(AbstractModel):
         :type NewLevel: str
         :param TriggerType: 变配触发类型：manual 手动,auto 自动
         :type TriggerType: str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
         :param StartedAt: 开始时间
         :type StartedAt: str
         :param EndedAt: 结束时间
@@ -1579,6 +1581,7 @@ class ClusterLevelChangeRecord(AbstractModel):
         self.OldLevel = None
         self.NewLevel = None
         self.TriggerType = None
+        self.CreatedAt = None
         self.StartedAt = None
         self.EndedAt = None
 
@@ -1591,6 +1594,7 @@ class ClusterLevelChangeRecord(AbstractModel):
         self.OldLevel = params.get("OldLevel")
         self.NewLevel = params.get("NewLevel")
         self.TriggerType = params.get("TriggerType")
+        self.CreatedAt = params.get("CreatedAt")
         self.StartedAt = params.get("StartedAt")
         self.EndedAt = params.get("EndedAt")
         memeber_set = set(params.keys())

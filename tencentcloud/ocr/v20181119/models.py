@@ -566,14 +566,18 @@ class BizLicenseOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param EnableCopyWarn: 是否返回黑白复印件告警码，默认为false
+        :type EnableCopyWarn: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.EnableCopyWarn = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.EnableCopyWarn = params.get("EnableCopyWarn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -611,14 +615,10 @@ class BizLicenseOCRResponse(AbstractModel):
         :param SetDate: 成立日期
         :type SetDate: str
         :param RecognizeWarnCode: Code 告警码列表和释义：
--20001 非营业执照
 -9102 黑白复印件告警
-注：告警码可以同时存在多个
         :type RecognizeWarnCode: list of int
         :param RecognizeWarnMsg: 告警码说明：
-OCR_WARNING_TYPE_NOT_MATCH 非营业执照
 WARN_COPY_CARD 黑白复印件告警
-注：告警信息可以同时存在多个
         :type RecognizeWarnMsg: list of str
         :param IsDuplication: 是否为副本。1为是，-1为不是。
         :type IsDuplication: int

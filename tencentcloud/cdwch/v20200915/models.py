@@ -988,6 +988,81 @@ class DescribeInstanceStateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstancesNewRequest(AbstractModel):
+    """DescribeInstancesNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SearchInstanceId: 搜索的集群id名称
+        :type SearchInstanceId: str
+        :param SearchInstanceName: 搜索的集群name
+        :type SearchInstanceName: str
+        :param Offset: 分页参数，第一页为0，第二页为10
+        :type Offset: int
+        :param Limit: 分页参数，分页步长，默认为10
+        :type Limit: int
+        :param SearchTags: 搜索标签列表
+        :type SearchTags: list of SearchTags
+        """
+        self.SearchInstanceId = None
+        self.SearchInstanceName = None
+        self.Offset = None
+        self.Limit = None
+        self.SearchTags = None
+
+
+    def _deserialize(self, params):
+        self.SearchInstanceId = params.get("SearchInstanceId")
+        self.SearchInstanceName = params.get("SearchInstanceName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("SearchTags") is not None:
+            self.SearchTags = []
+            for item in params.get("SearchTags"):
+                obj = SearchTags()
+                obj._deserialize(item)
+                self.SearchTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesNewResponse(AbstractModel):
+    """DescribeInstancesNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 实例总数
+        :type TotalCount: int
+        :param InstancesList: 实例数组
+        :type InstancesList: list of InstanceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstancesList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstancesList") is not None:
+            self.InstancesList = []
+            for item in params.get("InstancesList"):
+                obj = InstanceInfo()
+                obj._deserialize(item)
+                self.InstancesList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSpecRequest(AbstractModel):
     """DescribeSpec请求参数结构体
 
@@ -2248,6 +2323,38 @@ class ScheduleStrategy(AbstractModel):
         self.WeekDays = params.get("WeekDays")
         self.ExecuteHour = params.get("ExecuteHour")
         self.ScheduleId = params.get("ScheduleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchTags(AbstractModel):
+    """列表页搜索的标记列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签的键
+        :type TagKey: str
+        :param TagValue: 标签的值
+        :type TagValue: str
+        :param AllValue: 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
+        :type AllValue: int
+        """
+        self.TagKey = None
+        self.TagValue = None
+        self.AllValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        self.AllValue = params.get("AllValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

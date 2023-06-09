@@ -1392,6 +1392,12 @@ on：开启
 off：关闭
 开启时必须且只配置一种模式，其余模式需要设置为 null
         :type Switch: str
+        :param AuthAlgorithm: 鉴权算法，取值有：
+md5：按MD5算法取hash值
+sha256：按SHA-256算法取hash值
+默认为 md5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthAlgorithm: str
         :param TypeA: 时间戳防盗链模式 A 配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type TypeA: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeA`
@@ -1406,6 +1412,7 @@ off：关闭
         :type TypeD: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeD`
         """
         self.Switch = None
+        self.AuthAlgorithm = None
         self.TypeA = None
         self.TypeB = None
         self.TypeC = None
@@ -1414,6 +1421,7 @@ off：关闭
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        self.AuthAlgorithm = params.get("AuthAlgorithm")
         if params.get("TypeA") is not None:
             self.TypeA = AuthenticationTypeA()
             self.TypeA._deserialize(params.get("TypeA"))

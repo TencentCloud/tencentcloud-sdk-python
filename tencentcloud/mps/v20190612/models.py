@@ -4164,14 +4164,18 @@ class AsrFullTextConfigureInfo(AbstractModel):
         :param SubtitleFormat: 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
 <li>vtt：生成 WebVTT 字幕文件。</li>
         :type SubtitleFormat: str
+        :param SourceLanguage: 视频源语言。
+        :type SourceLanguage: str
         """
         self.Switch = None
         self.SubtitleFormat = None
+        self.SourceLanguage = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.SubtitleFormat = params.get("SubtitleFormat")
+        self.SourceLanguage = params.get("SourceLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4195,14 +4199,18 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
         :param SubtitleFormat: 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
 <li>vtt：生成 WebVTT 字幕文件。</li>
         :type SubtitleFormat: str
+        :param SourceLanguage: 视频源语言。
+        :type SourceLanguage: str
         """
         self.Switch = None
         self.SubtitleFormat = None
+        self.SourceLanguage = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.SubtitleFormat = params.get("SubtitleFormat")
+        self.SourceLanguage = params.get("SourceLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4903,6 +4911,8 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
         :param AsrWordsConfigure: 语音关键词识别控制参数。
         :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
+        :param TranslateConfigure: 语音翻译控制参数。
+        :type TranslateConfigure: :class:`tencentcloud.mps.v20190612.models.TranslateConfigureInfo`
         """
         self.Name = None
         self.Comment = None
@@ -4911,6 +4921,7 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         self.OcrWordsConfigure = None
         self.AsrFullTextConfigure = None
         self.AsrWordsConfigure = None
+        self.TranslateConfigure = None
 
 
     def _deserialize(self, params):
@@ -4931,6 +4942,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         if params.get("AsrWordsConfigure") is not None:
             self.AsrWordsConfigure = AsrWordsConfigureInfo()
             self.AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("TranslateConfigure") is not None:
+            self.TranslateConfigure = TranslateConfigureInfo()
+            self.TranslateConfigure._deserialize(params.get("TranslateConfigure"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9763,7 +9777,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 <li>Video：视频格式，可以同时包含视频流和音频流的封装格式板；</li>
 <li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
         :type ContainerType: str
-        :param TEHDType: 极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
+        :param TEHDType: （建议使用TranscodeType代替）极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
 <li>Common：普通转码模板；</li>
 <li>TEHD：极速高清模板。</li>
         :type TEHDType: str
@@ -9773,9 +9787,12 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         :type Limit: int
         :param TranscodeType: 模板类型（替换旧版本 TEHDType），可选值：
 <li>Common：普通转码模板；</li>
-<li>TEHD：极速高清模板。</li>
+<li>TEHD：视频极速高清，老的类型（建议使用 TEHD-100） 。</li>
+<li>TEHD-100：视频极速高清</li>
+<li>TEHD-200：音频极速高清</li>
 <li>Enhance：音视频增强模板。</li>
 默认空，不限制类型。
+
         :type TranscodeType: str
         """
         self.Definitions = None
@@ -14511,6 +14528,8 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfoForUpdate`
         :param AsrWordsConfigure: 语音关键词识别控制参数。
         :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfoForUpdate`
+        :param TranslateConfigure: 语音翻译控制参数。
+        :type TranslateConfigure: :class:`tencentcloud.mps.v20190612.models.TranslateConfigureInfoForUpdate`
         """
         self.Definition = None
         self.Name = None
@@ -14520,6 +14539,7 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         self.OcrWordsConfigure = None
         self.AsrFullTextConfigure = None
         self.AsrWordsConfigure = None
+        self.TranslateConfigure = None
 
 
     def _deserialize(self, params):
@@ -14541,6 +14561,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         if params.get("AsrWordsConfigure") is not None:
             self.AsrWordsConfigure = AsrWordsConfigureInfoForUpdate()
             self.AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("TranslateConfigure") is not None:
+            self.TranslateConfigure = TranslateConfigureInfoForUpdate()
+            self.TranslateConfigure._deserialize(params.get("TranslateConfigure"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19917,6 +19940,74 @@ class TranscodeTemplate(AbstractModel):
         if params.get("EnhanceConfig") is not None:
             self.EnhanceConfig = EnhanceConfig()
             self.EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslateConfigureInfo(AbstractModel):
+    """语音翻译任务控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 语音翻译任务开关，可选值：
+<li>ON：开启智能语音翻译任务；</li>
+<li>OFF：关闭智能语音翻译任务。</li>
+        :type Switch: str
+        :param SourceLanguage: 视频源语言。
+        :type SourceLanguage: str
+        :param DestinationLanguage: 翻译目标语言。
+        :type DestinationLanguage: str
+        """
+        self.Switch = None
+        self.SourceLanguage = None
+        self.DestinationLanguage = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.SourceLanguage = params.get("SourceLanguage")
+        self.DestinationLanguage = params.get("DestinationLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslateConfigureInfoForUpdate(AbstractModel):
+    """语音翻译任务控制参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 语音翻译任务开关，可选值：
+<li>ON：开启智能语音翻译任务；</li>
+<li>OFF：关闭智能语音翻译任务。</li>
+        :type Switch: str
+        :param SourceLanguage: 视频源语言。
+        :type SourceLanguage: str
+        :param DestinationLanguage: 翻译目标语言。
+        :type DestinationLanguage: str
+        """
+        self.Switch = None
+        self.SourceLanguage = None
+        self.DestinationLanguage = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.SourceLanguage = params.get("SourceLanguage")
+        self.DestinationLanguage = params.get("DestinationLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

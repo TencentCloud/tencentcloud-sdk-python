@@ -2326,6 +2326,9 @@ pausing
         :param ResourcePackages: 集群绑定的资源包信息	
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourcePackages: list of ResourcePackage
+        :param RenewFlag: 自动续费标识，1为自动续费，0为到期不续
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -2374,6 +2377,7 @@ pausing
         self.IsOpenPasswordComplexity = None
         self.NetworkStatus = None
         self.ResourcePackages = None
+        self.RenewFlag = None
 
 
     def _deserialize(self, params):
@@ -2451,6 +2455,7 @@ pausing
                 obj = ResourcePackage()
                 obj._deserialize(item)
                 self.ResourcePackages.append(obj)
+        self.RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5403,7 +5408,7 @@ class DescribeParamTemplateDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 参数模版ID
+        :param TemplateId: 参数模板ID
         :type TemplateId: int
         """
         self.TemplateId = None
@@ -5427,11 +5432,11 @@ class DescribeParamTemplateDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 参数模版ID
+        :param TemplateId: 参数模板ID
         :type TemplateId: int
-        :param TemplateName: 参数模版名称
+        :param TemplateName: 参数模板名称
         :type TemplateName: str
-        :param TemplateDescription: 参数模版描述
+        :param TemplateDescription: 参数模板描述
         :type TemplateDescription: str
         :param EngineVersion: 引擎版本
         :type EngineVersion: str

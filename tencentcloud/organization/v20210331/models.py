@@ -18,6 +18,59 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddOrganizationMemberEmailRequest(AbstractModel):
+    """AddOrganizationMemberEmail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 成员Uin
+        :type MemberUin: int
+        :param Email: 邮箱地址
+        :type Email: str
+        :param CountryCode: 国际区号
+        :type CountryCode: str
+        :param Phone: 手机号
+        :type Phone: str
+        """
+        self.MemberUin = None
+        self.Email = None
+        self.CountryCode = None
+        self.Phone = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        self.Email = params.get("Email")
+        self.CountryCode = params.get("CountryCode")
+        self.Phone = params.get("Phone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddOrganizationMemberEmailResponse(AbstractModel):
+    """AddOrganizationMemberEmail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AddOrganizationNodeRequest(AbstractModel):
     """AddOrganizationNode请求参数结构体
 
@@ -621,6 +674,92 @@ class DescribeOrganizationMemberAuthIdentitiesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationMemberEmailBindRequest(AbstractModel):
+    """DescribeOrganizationMemberEmailBind请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 成员Uin
+        :type MemberUin: int
+        """
+        self.MemberUin = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationMemberEmailBindResponse(AbstractModel):
+    """DescribeOrganizationMemberEmailBind返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BindId: 绑定ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindId: int
+        :param ApplyTime: 申请时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyTime: str
+        :param Email: 邮箱地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param Phone: 手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param BindStatus: 绑定状态    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindStatus: str
+        :param BindTime: 绑定时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindTime: str
+        :param Description: 失败说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param PhoneBind: 安全手机绑定状态  未绑定：0，已绑定：1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneBind: int
+        :param CountryCode: 国际区号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CountryCode: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BindId = None
+        self.ApplyTime = None
+        self.Email = None
+        self.Phone = None
+        self.BindStatus = None
+        self.BindTime = None
+        self.Description = None
+        self.PhoneBind = None
+        self.CountryCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BindId = params.get("BindId")
+        self.ApplyTime = params.get("ApplyTime")
+        self.Email = params.get("Email")
+        self.Phone = params.get("Phone")
+        self.BindStatus = params.get("BindStatus")
+        self.BindTime = params.get("BindTime")
+        self.Description = params.get("Description")
+        self.PhoneBind = params.get("PhoneBind")
+        self.CountryCode = params.get("CountryCode")
         self.RequestId = params.get("RequestId")
 
 
@@ -1587,6 +1726,63 @@ class OrgPermission(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateOrganizationMemberEmailBindRequest(AbstractModel):
+    """UpdateOrganizationMemberEmailBind请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 成员Uin
+        :type MemberUin: int
+        :param BindId: 绑定ID
+        :type BindId: int
+        :param Email: 邮箱
+        :type Email: str
+        :param CountryCode: 国际区号
+        :type CountryCode: str
+        :param Phone: 手机号
+        :type Phone: str
+        """
+        self.MemberUin = None
+        self.BindId = None
+        self.Email = None
+        self.CountryCode = None
+        self.Phone = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        self.BindId = params.get("BindId")
+        self.Email = params.get("Email")
+        self.CountryCode = params.get("CountryCode")
+        self.Phone = params.get("Phone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOrganizationMemberEmailBindResponse(AbstractModel):
+    """UpdateOrganizationMemberEmailBind返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateOrganizationNodeRequest(AbstractModel):

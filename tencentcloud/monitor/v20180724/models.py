@@ -1043,6 +1043,10 @@ class BindingPolicyTagRequest(AbstractModel):
         :type InstanceGroupId: int
         :param BatchTag: 批量绑定标签
         :type BatchTag: list of PolicyTag
+        :param EbEventFlag: 是否同步eb
+        :type EbEventFlag: int
+        :param EbSubject: 事件配置的告警
+        :type EbSubject: str
         """
         self.Module = None
         self.PolicyId = None
@@ -1051,6 +1055,8 @@ class BindingPolicyTagRequest(AbstractModel):
         self.Tag = None
         self.InstanceGroupId = None
         self.BatchTag = None
+        self.EbEventFlag = None
+        self.EbSubject = None
 
 
     def _deserialize(self, params):
@@ -1068,6 +1074,8 @@ class BindingPolicyTagRequest(AbstractModel):
                 obj = PolicyTag()
                 obj._deserialize(item)
                 self.BatchTag.append(obj)
+        self.EbEventFlag = params.get("EbEventFlag")
+        self.EbSubject = params.get("EbSubject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

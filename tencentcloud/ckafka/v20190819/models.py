@@ -2337,19 +2337,29 @@ class CreateInstancePreData(AbstractModel):
         :param DealNames: 订单号列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealNames: list of str
-        :param InstanceId: 实例Id
+        :param InstanceId: 实例Id，当购买多个实例时，默认返回购买的第一个实例 id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param DealNameInstanceIdMapping: 订单和购买实例对应映射列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNameInstanceIdMapping: list of DealInstanceDTO
         """
         self.FlowId = None
         self.DealNames = None
         self.InstanceId = None
+        self.DealNameInstanceIdMapping = None
 
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.DealNames = params.get("DealNames")
         self.InstanceId = params.get("InstanceId")
+        if params.get("DealNameInstanceIdMapping") is not None:
+            self.DealNameInstanceIdMapping = []
+            for item in params.get("DealNameInstanceIdMapping"):
+                obj = DealInstanceDTO()
+                obj._deserialize(item)
+                self.DealNameInstanceIdMapping.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2403,6 +2413,8 @@ class CreateInstancePreRequest(AbstractModel):
         :type MultiZoneFlag: bool
         :param ZoneIds: 可用区列表，购买多可用区实例时为必填项
         :type ZoneIds: list of int
+        :param PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1。默认值为 0
+        :type PublicNetworkMonthly: int
         """
         self.InstanceName = None
         self.ZoneId = None
@@ -2422,6 +2434,7 @@ class CreateInstancePreRequest(AbstractModel):
         self.DiskType = None
         self.MultiZoneFlag = None
         self.ZoneIds = None
+        self.PublicNetworkMonthly = None
 
 
     def _deserialize(self, params):
@@ -2448,6 +2461,7 @@ class CreateInstancePreRequest(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.MultiZoneFlag = params.get("MultiZoneFlag")
         self.ZoneIds = params.get("ZoneIds")
+        self.PublicNetworkMonthly = params.get("PublicNetworkMonthly")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2458,7 +2472,7 @@ class CreateInstancePreRequest(AbstractModel):
 
 
 class CreateInstancePreResp(AbstractModel):
-    """创建预付费实例返回结构
+    """预付费实例相关接口返回结构
 
     """
 
@@ -2471,7 +2485,7 @@ class CreateInstancePreResp(AbstractModel):
         :param Data: 操作型返回的Data数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreData`
-        :param DeleteRouteTimestamp: 删除是时间
+        :param DeleteRouteTimestamp: 删除时间。目前该参数字段已废弃，将会在未来被删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteRouteTimestamp: str
         """
@@ -3425,6 +3439,36 @@ class DateParam(AbstractModel):
         self.Format = params.get("Format")
         self.TargetType = params.get("TargetType")
         self.TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DealInstanceDTO(AbstractModel):
+    """预付费/后付费接口中，订单和 CKafka 实例映射数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: 订单流水
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
+        :param InstanceIdList: 订单流水对应购买的 CKafka 实例 id 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIdList: list of str
+        """
+        self.DealName = None
+        self.InstanceIdList = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.InstanceIdList = params.get("InstanceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
