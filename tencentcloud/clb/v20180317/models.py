@@ -8253,23 +8253,23 @@ class TargetGroupAssociation(AbstractModel):
         r"""
         :param LoadBalancerId: 负载均衡ID
         :type LoadBalancerId: str
-        :param ListenerId: 监听器ID
-        :type ListenerId: str
         :param TargetGroupId: 目标组ID
         :type TargetGroupId: str
+        :param ListenerId: 监听器ID
+        :type ListenerId: str
         :param LocationId: 转发规则ID
         :type LocationId: str
         """
         self.LoadBalancerId = None
-        self.ListenerId = None
         self.TargetGroupId = None
+        self.ListenerId = None
         self.LocationId = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerId = params.get("LoadBalancerId")
-        self.ListenerId = params.get("ListenerId")
         self.TargetGroupId = params.get("TargetGroupId")
+        self.ListenerId = params.get("ListenerId")
         self.LocationId = params.get("LocationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

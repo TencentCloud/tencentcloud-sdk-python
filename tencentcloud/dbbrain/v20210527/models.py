@@ -2600,11 +2600,17 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
         :type TotalCount: int
         :param Items: 各来源地址的慢日志占比详情列表。
         :type Items: list of SlowLogHost
+        :param UserNameItems: 各来源用户名的慢日志占比详情列表。
+        :type UserNameItems: list of SlowLogUser
+        :param UserTotalCount: 来源用户数目。
+        :type UserTotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TotalCount = None
         self.Items = None
+        self.UserNameItems = None
+        self.UserTotalCount = None
         self.RequestId = None
 
 
@@ -2616,6 +2622,13 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
                 obj = SlowLogHost()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        if params.get("UserNameItems") is not None:
+            self.UserNameItems = []
+            for item in params.get("UserNameItems"):
+                obj = SlowLogUser()
+                obj._deserialize(item)
+                self.UserNameItems.append(obj)
+        self.UserTotalCount = params.get("UserTotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -3645,14 +3658,20 @@ class InstanceInfo(AbstractModel):
         :type AuditPolicyStatus: str
         :param AuditRunningStatus: 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
         :type AuditRunningStatus: str
-        :param InternalVip: 内网vip
+        :param InternalVip: 内网vip。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternalVip: str
-        :param InternalVport: 内网port
+        :param InternalVport: 内网port。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternalVport: int
-        :param CreateTime: 创建时间
+        :param CreateTime: 创建时间。
         :type CreateTime: str
+        :param ClusterId: 所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterName: 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3685,6 +3704,8 @@ class InstanceInfo(AbstractModel):
         self.InternalVip = None
         self.InternalVport = None
         self.CreateTime = None
+        self.ClusterId = None
+        self.ClusterName = None
 
 
     def _deserialize(self, params):
@@ -3721,6 +3742,8 @@ class InstanceInfo(AbstractModel):
         self.InternalVip = params.get("InternalVip")
         self.InternalVport = params.get("InternalVport")
         self.CreateTime = params.get("CreateTime")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4261,6 +4284,10 @@ class RedisKeySpaceData(AbstractModel):
         :type ItemCount: int
         :param MaxElementSize: 最大元素长度。
         :type MaxElementSize: int
+        :param AveElementSize: 平均元素长度。
+        :type AveElementSize: int
+        :param ShardId: 所属分片序号。
+        :type ShardId: str
         """
         self.Key = None
         self.Type = None
@@ -4269,6 +4296,8 @@ class RedisKeySpaceData(AbstractModel):
         self.Length = None
         self.ItemCount = None
         self.MaxElementSize = None
+        self.AveElementSize = None
+        self.ShardId = None
 
 
     def _deserialize(self, params):
@@ -4279,6 +4308,8 @@ class RedisKeySpaceData(AbstractModel):
         self.Length = params.get("Length")
         self.ItemCount = params.get("ItemCount")
         self.MaxElementSize = params.get("MaxElementSize")
+        self.AveElementSize = params.get("AveElementSize")
+        self.ShardId = params.get("ShardId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4887,6 +4918,38 @@ class SlowLogTopSqlItem(AbstractModel):
         self.LockTimeAvg = params.get("LockTimeAvg")
         self.RowsExaminedAvg = params.get("RowsExaminedAvg")
         self.Md5 = params.get("Md5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogUser(AbstractModel):
+    """慢日志来源用户详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: 来源用户名。
+        :type UserName: str
+        :param Ratio: 该来源用户名的慢日志数目占总数目的比例，单位%。
+        :type Ratio: float
+        :param Count: 该来源用户名的慢日志数目。
+        :type Count: int
+        """
+        self.UserName = None
+        self.Ratio = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.Ratio = params.get("Ratio")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

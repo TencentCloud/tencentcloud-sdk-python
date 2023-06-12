@@ -2198,6 +2198,33 @@ class DescribeDefenseSwitchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEnterpriseSGRuleProgressRequest(AbstractModel):
+    """DescribeEnterpriseSGRuleProgress请求参数结构体
+
+    """
+
+
+class DescribeEnterpriseSGRuleProgressResponse(AbstractModel):
+    """DescribeEnterpriseSGRuleProgress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Progress: 0-100，代表下发进度百分比
+        :type Progress: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Progress = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Progress = params.get("Progress")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnterpriseSecurityGroupRuleRequest(AbstractModel):
     """DescribeEnterpriseSecurityGroupRule请求参数结构体
 

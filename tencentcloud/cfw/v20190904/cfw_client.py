@@ -532,6 +532,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEnterpriseSGRuleProgress(self, request):
+        """查询新版安全组下发进度
+
+        :param request: Request instance for DescribeEnterpriseSGRuleProgress.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSGRuleProgressRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeEnterpriseSGRuleProgressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnterpriseSGRuleProgress", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnterpriseSGRuleProgressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEnterpriseSecurityGroupRule(self, request):
         """查询新企业安全组规则
 

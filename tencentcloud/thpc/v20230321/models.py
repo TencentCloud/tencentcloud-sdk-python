@@ -2157,6 +2157,8 @@ class QueueConfig(AbstractModel):
 当作业负载需要扩容节点数量大于此值，当前扩容轮次按照ScaleOutRatio配置的比例进行扩容。当作业负载需要扩容节点数量小于此值，当前扩容轮次扩容当前作业负载所需数量的节点。
 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
         :type ScaleOutNodeThreshold: int
+        :param MaxNodesPerCycle: 每轮扩容最大节点个数。默认值：100。取值范围：1～100。
+        :type MaxNodesPerCycle: int
         """
         self.QueueName = None
         self.MinSize = None
@@ -2171,6 +2173,7 @@ class QueueConfig(AbstractModel):
         self.DesiredIdleNodeCapacity = None
         self.ScaleOutRatio = None
         self.ScaleOutNodeThreshold = None
+        self.MaxNodesPerCycle = None
 
 
     def _deserialize(self, params):
@@ -2201,6 +2204,7 @@ class QueueConfig(AbstractModel):
         self.DesiredIdleNodeCapacity = params.get("DesiredIdleNodeCapacity")
         self.ScaleOutRatio = params.get("ScaleOutRatio")
         self.ScaleOutNodeThreshold = params.get("ScaleOutNodeThreshold")
+        self.MaxNodesPerCycle = params.get("MaxNodesPerCycle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2241,6 +2245,9 @@ class QueueConfigOverview(AbstractModel):
 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleOutNodeThreshold: int
+        :param MaxNodesPerCycle: 每轮扩容最大节点个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxNodesPerCycle: int
         """
         self.QueueName = None
         self.MinSize = None
@@ -2251,6 +2258,7 @@ class QueueConfigOverview(AbstractModel):
         self.DesiredIdleNodeCapacity = None
         self.ScaleOutRatio = None
         self.ScaleOutNodeThreshold = None
+        self.MaxNodesPerCycle = None
 
 
     def _deserialize(self, params):
@@ -2268,6 +2276,7 @@ class QueueConfigOverview(AbstractModel):
         self.DesiredIdleNodeCapacity = params.get("DesiredIdleNodeCapacity")
         self.ScaleOutRatio = params.get("ScaleOutRatio")
         self.ScaleOutNodeThreshold = params.get("ScaleOutNodeThreshold")
+        self.MaxNodesPerCycle = params.get("MaxNodesPerCycle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

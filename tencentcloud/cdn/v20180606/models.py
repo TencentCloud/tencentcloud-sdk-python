@@ -10921,10 +10921,11 @@ class Origin(AbstractModel):
     def __init__(self):
         r"""
         :param Origins: 主源站列表
-修改源站时，需要同时填充对应的 OriginType
+<font color=red>修改源站时，需要同时填充对应的 OriginType</font>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Origins: list of str
         :param OriginType: 主源站类型
+<font color=red>当源站列表 Origins 不为空时必填</font>
 入参支持以下几种类型：
 domain：域名类型
 domainv6：域名解析V6类型
@@ -10951,8 +10952,9 @@ ftp：历史 FTP 托管源源站，现已不维护
 IPv6 功能目前尚未全量，需要先申请试用
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginType: str
-        :param ServerName: 当源站类型为cos或者第三方存储加速时,ServerName字段必填
-回主源站时 Host 头部，不填充则默认为加速域名
+        :param ServerName: 回主源站时 Host 头部
+<font color=red>当源站类型为cos或者第三方存储加速时,ServerName字段必填</font>
+不填充则默认为加速域名
 若接入的是泛域名，则回源 Host 默认为访问时的子域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: str
@@ -10967,13 +10969,14 @@ https：强制 https 回源，https 回源时仅支持源站 443 端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullProtocol: str
         :param BackupOrigins: 备源站列表
-修改备源站时，需要同时填充对应的 BackupOriginType
+<font color=red>修改备源站时，需要同时填充对应的 BackupOriginType</font>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupOrigins: list of str
-        :param BackupOriginType: 备源站类型，支持以下类型：
+        :param BackupOriginType: 备源站类型
+<font color=red>备源站列表BackupOrigins 不为空时必填</font>
+支持以下类型：
 domain：域名类型
 ip：IP 列表作为源站
-修改 BackupOrigins 时需要同时填充对应的 BackupOriginType
 以下备源源站类型尚未全量支持，需要申请试用：
 ipv6_domain: 源站列表为多个 IPv6 地址以及域名
 ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
@@ -10999,7 +11002,9 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
         :param AdvanceHttps: HTTPS回源高级配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvanceHttps: :class:`tencentcloud.cdn.v20180606.models.AdvanceHttps`
-        :param OriginCompany: 对象存储回源厂商，当源站类型为第三方存储源站(third_party)时必填，可选值包括以下:
+        :param OriginCompany: 对象存储回源厂商
+<font color=red>当源站类型为第三方存储源站(third_party)时必填</font>
+可选值包括以下:
 aws_s3: AWS S3
 ali_oss: 阿里云 OSS
 hw_obs: 华为 OBS

@@ -4497,6 +4497,141 @@ class AwsSQS(AbstractModel):
         
 
 
+class BatchDeleteStreamLinkFlowRequest(AbstractModel):
+    """BatchDeleteStreamLinkFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: EventId。
+        :type EventId: str
+        :param FlowIds: Event关联的流Id数组，如果不传默认删除Event下面的所有媒体传输流。
+        :type FlowIds: list of str
+        """
+        self.EventId = None
+        self.FlowIds = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.FlowIds = params.get("FlowIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDeleteStreamLinkFlowResponse(AbstractModel):
+    """BatchDeleteStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class BatchStartStreamLinkFlowRequest(AbstractModel):
+    """BatchStartStreamLinkFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: EventId。
+        :type EventId: str
+        :param FlowIds: Event关联的流Id数组，如果不传默认启动Event下面的所有媒体传输流。
+        :type FlowIds: list of str
+        """
+        self.EventId = None
+        self.FlowIds = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.FlowIds = params.get("FlowIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchStartStreamLinkFlowResponse(AbstractModel):
+    """BatchStartStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class BatchStopStreamLinkFlowRequest(AbstractModel):
+    """BatchStopStreamLinkFlow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: EventId。
+        :type EventId: str
+        :param FlowIds: 流Id，如果不传默认停止Event下所有的媒体传输流。
+        :type FlowIds: list of str
+        """
+        self.EventId = None
+        self.FlowIds = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.FlowIds = params.get("FlowIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchStopStreamLinkFlowResponse(AbstractModel):
+    """BatchStopStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ClassificationConfigureInfo(AbstractModel):
     """智能分类任务控制参数
 
@@ -6198,6 +6333,57 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateStreamLinkEventRequest(AbstractModel):
+    """CreateStreamLinkEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventName: 事件名称。
+        :type EventName: str
+        :param Description: 事件描述。
+        :type Description: str
+        """
+        self.EventName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.EventName = params.get("EventName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamLinkEventResponse(AbstractModel):
+    """CreateStreamLinkEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 创建的Event信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeEvent`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeEvent()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateStreamLinkFlowRequest(AbstractModel):
     """CreateStreamLinkFlow请求参数结构体
 
@@ -7127,6 +7313,47 @@ class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteStreamLinkEventRequest(AbstractModel):
+    """DeleteStreamLinkEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: 媒体传输事件Id，删除前需要保证该Event关联的所有Flow都已经删除。
+        :type EventId: str
+        """
+        self.EventId = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamLinkEventResponse(AbstractModel):
+    """DeleteStreamLinkEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteStreamLinkFlowRequest(AbstractModel):
     """DeleteStreamLinkFlow请求参数结构体
 
@@ -7717,6 +7944,58 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEvent(AbstractModel):
+    """查询Event的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventName: Event的名称。
+        :type EventName: str
+        :param EventId: Event的Id，唯一标识一个event。
+        :type EventId: str
+        :param CreateTime: Event创建时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+        :type CreateTime: str
+        :param Description: Event的描述。
+        :type Description: str
+        :param Status: Event的状态信息
+0：未运行
+1：运行中
+        :type Status: int
+        :param AttachedFlowGroup: Event关联的Flow列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachedFlowGroup: list of DescribeFlowId
+        """
+        self.EventName = None
+        self.EventId = None
+        self.CreateTime = None
+        self.Description = None
+        self.Status = None
+        self.AttachedFlowGroup = None
+
+
+    def _deserialize(self, params):
+        self.EventName = params.get("EventName")
+        self.EventId = params.get("EventId")
+        self.CreateTime = params.get("CreateTime")
+        self.Description = params.get("Description")
+        self.Status = params.get("Status")
+        if params.get("AttachedFlowGroup") is not None:
+            self.AttachedFlowGroup = []
+            for item in params.get("AttachedFlowGroup"):
+                obj = DescribeFlowId()
+                obj._deserialize(item)
+                self.AttachedFlowGroup.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeFlow(AbstractModel):
     """查询Flow的配置信息。
 
@@ -7770,6 +8049,34 @@ class DescribeFlow(AbstractModel):
                 obj._deserialize(item)
                 self.OutputGroup.append(obj)
         self.EventId = params.get("EventId")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlowId(AbstractModel):
+    """Event管理的Flow列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: FlowId，唯一标识一个flow。
+        :type FlowId: str
+        :param Region: flow所在的区域名称。
+        :type Region: str
+        """
+        self.FlowId = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -9040,6 +9347,185 @@ class DescribeStreamLinkActivateStateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkEventAttachedFlowsRequest(AbstractModel):
+    """DescribeStreamLinkEventAttachedFlows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: EventId。
+        :type EventId: str
+        :param PageNum: 当前页数，默认1。
+        :type PageNum: int
+        :param PageSize: 每页大小，默认10。
+        :type PageSize: int
+        """
+        self.EventId = None
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkEventAttachedFlowsResponse(AbstractModel):
+    """DescribeStreamLinkEventAttachedFlows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: 流的配置信息列表。
+        :type Infos: list of DescribeFlow
+        :param TotalNum: 总数量。
+        :type TotalNum: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.TotalNum = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = DescribeFlow()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.TotalNum = params.get("TotalNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkEventRequest(AbstractModel):
+    """DescribeStreamLinkEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: 媒体传输事件ID。
+        :type EventId: str
+        """
+        self.EventId = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkEventResponse(AbstractModel):
+    """DescribeStreamLinkEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 媒体传输事件的配置信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeEvent`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Info = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DescribeEvent()
+            self.Info._deserialize(params.get("Info"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStreamLinkEventsRequest(AbstractModel):
+    """DescribeStreamLinkEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNum: 当前页数，默认1。
+        :type PageNum: int
+        :param PageSize: 每页大小，默认10。
+        :type PageSize: int
+        """
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamLinkEventsResponse(AbstractModel):
+    """DescribeStreamLinkEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: 媒体传输事件的配置信息列表。
+        :type Infos: list of DescribeEvent
+        :param PageNum: 当前页数。
+        :type PageNum: int
+        :param PageSize: 每页大小。
+        :type PageSize: int
+        :param TotalNum: 总数量。
+        :type TotalNum: int
+        :param TotalPage: 总页数。
+        :type TotalPage: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.PageNum = None
+        self.PageSize = None
+        self.TotalNum = None
+        self.TotalPage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = DescribeEvent()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.TotalNum = params.get("TotalNum")
+        self.TotalPage = params.get("TotalPage")
         self.RequestId = params.get("RequestId")
 
 
@@ -15419,6 +15905,55 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
 class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
     """ModifySnapshotByTimeOffsetTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyStreamLinkEventRequest(AbstractModel):
+    """ModifyStreamLinkEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: 媒体传输事件Event Id。
+        :type EventId: str
+        :param EventName: 需要修改的事件名称。
+        :type EventName: str
+        :param Description: Event的描述信息。
+        :type Description: str
+        """
+        self.EventId = None
+        self.EventName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.EventName = params.get("EventName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamLinkEventResponse(AbstractModel):
+    """ModifyStreamLinkEvent返回参数结构体
 
     """
 

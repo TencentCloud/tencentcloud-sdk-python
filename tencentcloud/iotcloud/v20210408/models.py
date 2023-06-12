@@ -4044,12 +4044,20 @@ class ProductMetadata(AbstractModel):
         r"""
         :param CreationDate: 产品创建时间
         :type CreationDate: int
+        :param CreateUserId: 创建者 Uin
+        :type CreateUserId: int
+        :param UserId: 账号 Uin
+        :type UserId: int
         """
         self.CreationDate = None
+        self.CreateUserId = None
+        self.UserId = None
 
 
     def _deserialize(self, params):
         self.CreationDate = params.get("CreationDate")
+        self.CreateUserId = params.get("CreateUserId")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4089,7 +4097,7 @@ class ProductProperties(AbstractModel):
         :type ProductKey: str
         :param RegisterType: 动态注册类型 0-关闭, 1-预定义设备名 2-动态定义设备名
         :type RegisterType: int
-        :param ProductSecret: 动态注册产品秘钥
+        :param ProductSecret: 动态注册产品密钥
         :type ProductSecret: str
         :param RegisterLimit: RegisterType为2时，设备动态创建的限制数量
         :type RegisterLimit: int
@@ -4099,6 +4107,10 @@ class ProductProperties(AbstractModel):
         :type PrivateCAName: str
         :param OriginUserId: 划归的产品，展示为源用户ID，其余为空
         :type OriginUserId: int
+        :param DeviceLimit: 设备限制
+        :type DeviceLimit: int
+        :param ForbiddenStatus: 产品禁用状态
+        :type ForbiddenStatus: int
         """
         self.ProductDescription = None
         self.EncryptionType = None
@@ -4116,6 +4128,8 @@ class ProductProperties(AbstractModel):
         self.OriginProductId = None
         self.PrivateCAName = None
         self.OriginUserId = None
+        self.DeviceLimit = None
+        self.ForbiddenStatus = None
 
 
     def _deserialize(self, params):
@@ -4135,6 +4149,8 @@ class ProductProperties(AbstractModel):
         self.OriginProductId = params.get("OriginProductId")
         self.PrivateCAName = params.get("PrivateCAName")
         self.OriginUserId = params.get("OriginUserId")
+        self.DeviceLimit = params.get("DeviceLimit")
+        self.ForbiddenStatus = params.get("ForbiddenStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

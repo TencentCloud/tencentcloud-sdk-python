@@ -649,9 +649,9 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
         :type ResourcePrefix: str
         :param ResourceRegion: 资源地域
         :type ResourceRegion: str
-        :param ResourceIds: 资源唯一标识
+        :param ResourceIds: 资源唯一标识ID的列表，列表容量不超过20
         :type ResourceIds: list of str
-        :param TagKeys: 资源标签键
+        :param TagKeys: 资源标签键列表，列表容量不超过20
         :type TagKeys: list of str
         :param Limit: 每页大小，默认为 400
         :type Limit: int

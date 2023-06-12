@@ -2487,6 +2487,8 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页数量，默认10。	
         :type Limit: int
+        :param AsyncCache: 是否异步
+        :type AsyncCache: int
         """
         self.CertificateId = None
         self.ResourceType = None
@@ -2495,6 +2497,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
         self.OldCertificateId = None
         self.Offset = None
         self.Limit = None
+        self.AsyncCache = None
 
 
     def _deserialize(self, params):
@@ -2510,6 +2513,7 @@ class DescribeHostCdnInstanceListRequest(AbstractModel):
         self.OldCertificateId = params.get("OldCertificateId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.AsyncCache = params.get("AsyncCache")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2532,11 +2536,23 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
         :param TotalCount: CDN域名总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
+        :param AsyncTotalNum: 异步刷新总数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncTotalNum: int
+        :param AsyncOffset: 异步刷新当前执行数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncOffset: int
+        :param AsyncCacheTime: 当前缓存读取时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncCacheTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceList = None
         self.TotalCount = None
+        self.AsyncTotalNum = None
+        self.AsyncOffset = None
+        self.AsyncCacheTime = None
         self.RequestId = None
 
 
@@ -2548,6 +2564,9 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.AsyncTotalNum = params.get("AsyncTotalNum")
+        self.AsyncOffset = params.get("AsyncOffset")
+        self.AsyncCacheTime = params.get("AsyncCacheTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -2623,6 +2642,9 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
         :param AsyncOffset: 异步刷新当前执行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
+        :param AsyncCacheTime: 当前缓存读取时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncCacheTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2630,6 +2652,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
         self.InstanceList = None
         self.AsyncTotalNum = None
         self.AsyncOffset = None
+        self.AsyncCacheTime = None
         self.RequestId = None
 
 
@@ -2643,6 +2666,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
                 self.InstanceList.append(obj)
         self.AsyncTotalNum = params.get("AsyncTotalNum")
         self.AsyncOffset = params.get("AsyncOffset")
+        self.AsyncCacheTime = params.get("AsyncCacheTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -2706,6 +2730,9 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
         :param AsyncOffset: 异步刷新当前执行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
+        :param AsyncCacheTime: 当前缓存读取时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncCacheTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2713,6 +2740,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
         self.TotalCount = None
         self.AsyncTotalNum = None
         self.AsyncOffset = None
+        self.AsyncCacheTime = None
         self.RequestId = None
 
 
@@ -2726,6 +2754,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
         self.TotalCount = params.get("TotalCount")
         self.AsyncTotalNum = params.get("AsyncTotalNum")
         self.AsyncOffset = params.get("AsyncOffset")
+        self.AsyncCacheTime = params.get("AsyncCacheTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -3241,6 +3270,9 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
         :param AsyncOffset: 异步刷新当前执行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncOffset: int
+        :param AsyncCacheTime: 当前缓存读取时间	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncCacheTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3248,6 +3280,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
         self.InstanceList = None
         self.AsyncTotalNum = None
         self.AsyncOffset = None
+        self.AsyncCacheTime = None
         self.RequestId = None
 
 
@@ -3261,6 +3294,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
                 self.InstanceList.append(obj)
         self.AsyncTotalNum = params.get("AsyncTotalNum")
         self.AsyncOffset = params.get("AsyncOffset")
+        self.AsyncCacheTime = params.get("AsyncCacheTime")
         self.RequestId = params.get("RequestId")
 
 

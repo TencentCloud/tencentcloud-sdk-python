@@ -157,7 +157,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateConvertTaskApi(self, request):
-        """上传了word、excel文件后，通过该接口发起文件转换任务，将word、excel文件转换为pdf文件。
+        """上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
 
         :param request: Request instance for ChannelCreateConvertTaskApi.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateConvertTaskApiRequest`

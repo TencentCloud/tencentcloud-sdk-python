@@ -26,6 +26,75 @@ class MpsClient(AbstractClient):
     _service = 'mps'
 
 
+    def BatchDeleteStreamLinkFlow(self, request):
+        """批量删除媒体传输流。
+
+        :param request: Request instance for BatchDeleteStreamLinkFlow.
+        :type request: :class:`tencentcloud.mps.v20190612.models.BatchDeleteStreamLinkFlowRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BatchDeleteStreamLinkFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDeleteStreamLinkFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDeleteStreamLinkFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchStartStreamLinkFlow(self, request):
+        """批量启动媒体传输流。
+
+        :param request: Request instance for BatchStartStreamLinkFlow.
+        :type request: :class:`tencentcloud.mps.v20190612.models.BatchStartStreamLinkFlowRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BatchStartStreamLinkFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchStartStreamLinkFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchStartStreamLinkFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BatchStopStreamLinkFlow(self, request):
+        """批量停止媒体传输流。
+
+        :param request: Request instance for BatchStopStreamLinkFlow.
+        :type request: :class:`tencentcloud.mps.v20190612.models.BatchStopStreamLinkFlowRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BatchStopStreamLinkFlowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchStopStreamLinkFlow", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchStopStreamLinkFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAIAnalysisTemplate(self, request):
         """创建用户自定义内容分析模板，数量上限：50。
 
@@ -258,6 +327,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreateSnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSnapshotByTimeOffsetTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateStreamLinkEvent(self, request):
+        """创建媒体传输的事件Event。
+
+        :param request: Request instance for CreateStreamLinkEvent.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkEventRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateStreamLinkEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamLinkEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamLinkEventResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -662,6 +754,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeleteSnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSnapshotByTimeOffsetTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteStreamLinkEvent(self, request):
+        """删除媒体传输的事件配置。
+
+        :param request: Request instance for DeleteStreamLinkEvent.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamLinkEventRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamLinkEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamLinkEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamLinkEventResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1076,6 +1191,75 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeStreamLinkActivateState", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeStreamLinkActivateStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamLinkEvent(self, request):
+        """查询媒体传输事件的配置信息。
+
+        :param request: Request instance for DescribeStreamLinkEvent.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkEventRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamLinkEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamLinkEventAttachedFlows(self, request):
+        """查询媒体传输事件关联的所有媒体输入流的配置信息。
+
+        :param request: Request instance for DescribeStreamLinkEventAttachedFlows.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkEventAttachedFlowsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkEventAttachedFlowsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkEventAttachedFlows", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamLinkEventAttachedFlowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStreamLinkEvents(self, request):
+        """批量查询媒体传输事件的配置信息。
+
+        :param request: Request instance for DescribeStreamLinkEvents.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkEventsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamLinkEventsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1797,6 +1981,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifySnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySnapshotByTimeOffsetTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyStreamLinkEvent(self, request):
+        """修改媒体传输的事件配置信息。
+
+        :param request: Request instance for ModifyStreamLinkEvent.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamLinkEventRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyStreamLinkEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamLinkEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamLinkEventResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
