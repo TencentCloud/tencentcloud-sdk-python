@@ -1587,6 +1587,8 @@ class CreateConfigRequest(AbstractModel):
         :type ExcludePaths: list of ExcludePathInfo
         :param UserDefineRule: 用户自定义采集规则，Json格式序列化的字符串
         :type UserDefineRule: str
+        :param AdvancedConfig: 高级采集配置
+        :type AdvancedConfig: str
         """
         self.Name = None
         self.Output = None
@@ -1595,6 +1597,7 @@ class CreateConfigRequest(AbstractModel):
         self.ExtractRule = None
         self.ExcludePaths = None
         self.UserDefineRule = None
+        self.AdvancedConfig = None
 
 
     def _deserialize(self, params):
@@ -1612,6 +1615,7 @@ class CreateConfigRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ExcludePaths.append(obj)
         self.UserDefineRule = params.get("UserDefineRule")
+        self.AdvancedConfig = params.get("AdvancedConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

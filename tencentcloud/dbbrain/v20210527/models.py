@@ -770,8 +770,6 @@ class CreateSqlFilterRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-        :type SessionToken: str
         :param SqlType: SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
         :type SqlType: str
         :param FilterKey: 关键字，用于筛选SQL语句，多个关键字用英文逗号分隔，逗号不能作为关键词，多个关键词之间的关系为“逻辑与”。
@@ -780,25 +778,27 @@ class CreateSqlFilterRequest(AbstractModel):
         :type MaxConcurrency: int
         :param Duration: 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
         :type Duration: int
+        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :type SessionToken: str
         :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
         self.InstanceId = None
-        self.SessionToken = None
         self.SqlType = None
         self.FilterKey = None
         self.MaxConcurrency = None
         self.Duration = None
+        self.SessionToken = None
         self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.SessionToken = params.get("SessionToken")
         self.SqlType = params.get("SqlType")
         self.FilterKey = params.get("FilterKey")
         self.MaxConcurrency = params.get("MaxConcurrency")
         self.Duration = params.get("Duration")
+        self.SessionToken = params.get("SessionToken")
         self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -994,23 +994,23 @@ class DeleteSqlFiltersRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-        :type SessionToken: str
         :param FilterIds: 限流任务ID列表。
         :type FilterIds: list of int
+        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :type SessionToken: str
         :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
         self.InstanceId = None
-        self.SessionToken = None
         self.FilterIds = None
+        self.SessionToken = None
         self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.SessionToken = params.get("SessionToken")
         self.FilterIds = params.get("FilterIds")
+        self.SessionToken = params.get("SessionToken")
         self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3964,27 +3964,27 @@ class ModifySqlFiltersRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-        :type SessionToken: str
         :param FilterIds: SQL限流任务ID列表。
         :type FilterIds: list of int
         :param Status: 限流任务状态，取值支持TERMINATED - 终止。
         :type Status: str
+        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :type SessionToken: str
         :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         """
         self.InstanceId = None
-        self.SessionToken = None
         self.FilterIds = None
         self.Status = None
+        self.SessionToken = None
         self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.SessionToken = params.get("SessionToken")
         self.FilterIds = params.get("FilterIds")
         self.Status = params.get("Status")
+        self.SessionToken = params.get("SessionToken")
         self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

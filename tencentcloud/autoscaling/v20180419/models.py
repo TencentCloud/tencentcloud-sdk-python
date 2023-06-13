@@ -173,16 +173,22 @@ class Advice(AbstractModel):
         :type Detail: str
         :param Solution: 建议解决方案。
         :type Solution: str
+        :param Level: 伸缩建议警告级别。取值范围：<br>
+<li>WARNING：警告级别<br>
+<li>CRITICAL：严重级别<br>
+        :type Level: str
         """
         self.Problem = None
         self.Detail = None
         self.Solution = None
+        self.Level = None
 
 
     def _deserialize(self, params):
         self.Problem = params.get("Problem")
         self.Detail = params.get("Detail")
         self.Solution = params.get("Solution")
+        self.Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

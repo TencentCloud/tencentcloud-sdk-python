@@ -3845,6 +3845,7 @@ FailedOperation.UnKnowError：表示识别失败；
 13：过路过桥费发票
 15：非税发票
 16：全电发票
+17：医疗发票
         :type Type: int
         :param Polygon: 旋转后的图片四点坐标。
         :type Polygon: :class:`tencentcloud.ocr.v20181119.models.Polygon`
@@ -4633,6 +4634,62 @@ class MainlandPermitOCRResponse(AbstractModel):
         self.Type = params.get("Type")
         self.Profile = params.get("Profile")
         self.RequestId = params.get("RequestId")
+
+
+class MedicalInvoice(AbstractModel):
+    """医疗票据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Title: 发票名称
+        :type Title: str
+        :param Code: 发票代码
+        :type Code: str
+        :param Number: 发票号码
+        :type Number: str
+        :param Total: 价税合计（小写）
+        :type Total: str
+        :param TotalCn: 价税合计（大写）
+        :type TotalCn: str
+        :param Date: 开票日期
+        :type Date: str
+        :param CheckCode: 校验码
+        :type CheckCode: str
+        :param Place: 发票属地
+        :type Place: str
+        :param Reviewer: 复核人
+        :type Reviewer: str
+        """
+        self.Title = None
+        self.Code = None
+        self.Number = None
+        self.Total = None
+        self.TotalCn = None
+        self.Date = None
+        self.CheckCode = None
+        self.Place = None
+        self.Reviewer = None
+
+
+    def _deserialize(self, params):
+        self.Title = params.get("Title")
+        self.Code = params.get("Code")
+        self.Number = params.get("Number")
+        self.Total = params.get("Total")
+        self.TotalCn = params.get("TotalCn")
+        self.Date = params.get("Date")
+        self.CheckCode = params.get("CheckCode")
+        self.Place = params.get("Place")
+        self.Reviewer = params.get("Reviewer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MedicalInvoiceInfo(AbstractModel):
@@ -6535,17 +6592,18 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
         :param ImageBase64: 图片的 Base64 值。
 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-支持的图片像素：需介于20-10000px之间。
+支持的图片像素：单边介于20-10000px之间。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
         :param ImageUrl: 图片的 Url 地址。
 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-支持的图片像素：需介于20-10000px之间。
+支持的图片像素：单边介于20-10000px之间。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
-        :param Types: 需要识别的票据类型列表，为空或不填表示识别全部类型。
+        :param Types: 需要识别的票据类型列表，为空或不填表示识别全部类型。当传入单个类型时，图片均采用该票类型进行处理。
+暂不支持多个参数进行局部控制。
 0：出租车发票
 1：定额发票
 2：火车票
@@ -6559,11 +6617,8 @@ class RecognizeGeneralInvoiceRequest(AbstractModel):
 13：过路过桥费发票
 15：非税发票
 16：全电发票
+17：医疗发票
 -1：其他发票
-
-默认为空，识别所有类型发票。
-当传入单个类型时，图片均采用该票类型进行处理。
-暂不支持多个参数进行局部控制。
         :type Types: list of int
         :param EnableOther: 是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
         :type EnableOther: bool
@@ -8594,6 +8649,12 @@ class SingleInvoiceItem(AbstractModel):
         :param TrainTicket: 火车票
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrainTicket: :class:`tencentcloud.ocr.v20181119.models.TrainTicket`
+        :param MedicalOutpatientInvoice: 医疗门诊收费票据（电子）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MedicalOutpatientInvoice: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
+        :param MedicalHospitalizedInvoice: 医疗住院收费票据（电子）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MedicalHospitalizedInvoice: :class:`tencentcloud.ocr.v20181119.models.MedicalInvoice`
         """
         self.VatSpecialInvoice = None
         self.VatCommonInvoice = None
@@ -8617,6 +8678,8 @@ class SingleInvoiceItem(AbstractModel):
         self.NonTaxIncomeGeneralBill = None
         self.NonTaxIncomeElectronicBill = None
         self.TrainTicket = None
+        self.MedicalOutpatientInvoice = None
+        self.MedicalHospitalizedInvoice = None
 
 
     def _deserialize(self, params):
@@ -8686,6 +8749,12 @@ class SingleInvoiceItem(AbstractModel):
         if params.get("TrainTicket") is not None:
             self.TrainTicket = TrainTicket()
             self.TrainTicket._deserialize(params.get("TrainTicket"))
+        if params.get("MedicalOutpatientInvoice") is not None:
+            self.MedicalOutpatientInvoice = MedicalInvoice()
+            self.MedicalOutpatientInvoice._deserialize(params.get("MedicalOutpatientInvoice"))
+        if params.get("MedicalHospitalizedInvoice") is not None:
+            self.MedicalHospitalizedInvoice = MedicalInvoice()
+            self.MedicalHospitalizedInvoice._deserialize(params.get("MedicalHospitalizedInvoice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11365,6 +11434,12 @@ class VatInvoiceInfo(AbstractModel):
         :type CodeConfirm: str
         :param Receiptor: 收款人
         :type Receiptor: str
+        :param ElectronicFullMark: 是否有全电纸质票（0：没有，1：有）
+        :type ElectronicFullMark: int
+        :param ElectronicFullNumber: 全电号码
+        :type ElectronicFullNumber: str
+        :param FormName: 发票联名
+        :type FormName: str
         """
         self.CheckCode = None
         self.FormType = None
@@ -11405,6 +11480,9 @@ class VatInvoiceInfo(AbstractModel):
         self.VatInvoiceItemInfos = None
         self.CodeConfirm = None
         self.Receiptor = None
+        self.ElectronicFullMark = None
+        self.ElectronicFullNumber = None
+        self.FormName = None
 
 
     def _deserialize(self, params):
@@ -11452,6 +11530,9 @@ class VatInvoiceInfo(AbstractModel):
                 self.VatInvoiceItemInfos.append(obj)
         self.CodeConfirm = params.get("CodeConfirm")
         self.Receiptor = params.get("Receiptor")
+        self.ElectronicFullMark = params.get("ElectronicFullMark")
+        self.ElectronicFullNumber = params.get("ElectronicFullNumber")
+        self.FormName = params.get("FormName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -80,9 +80,9 @@ class ApplyCertificateRequest(AbstractModel):
         :type ContactPhone: str
         :param ValidityPeriod: 有效期，默认12个月，目前仅支持12个月。
         :type ValidityPeriod: str
-        :param CsrEncryptAlgo: 加密算法，仅支持 RSA。
+        :param CsrEncryptAlgo: 加密算法，支持 RSA及ECC。
         :type CsrEncryptAlgo: str
-        :param CsrKeyParameter: 密钥对参数，仅支持2048。
+        :param CsrKeyParameter: 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1
         :type CsrKeyParameter: str
         :param CsrKeyPassword: CSR 的加密密码。
         :type CsrKeyPassword: str
@@ -3307,12 +3307,20 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
         r"""
         :param DeployRecordId: 待部署的证书ID
         :type DeployRecordId: str
+        :param Limit: 每页数量，默认10。
+        :type Limit: str
+        :param Offset: 分页偏移量，从0开始。
+        :type Offset: str
         """
         self.DeployRecordId = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.DeployRecordId = params.get("DeployRecordId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5653,21 +5661,30 @@ class UpdateRecordDetail(AbstractModel):
         :param InstanceName: 部署实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
-        :param ListenerId: 部署监听器ID
+        :param ListenerId: 部署监听器ID（CLB专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerId: str
-        :param ListenerName: 部署监听器名称
+        :param ListenerName: 部署监听器名称（CLB专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ListenerName: str
         :param Protocol: 协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
-        :param SniSwitch: 是否开启SNI
+        :param SniSwitch: 是否开启SNI（CLB专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SniSwitch: int
-        :param Bucket: bucket名称
+        :param Bucket: bucket名称（COS专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bucket: str
+        :param Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param Namespace: 命名空间（TKE专用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param SecretName: secret名称（TKE专用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretName: str
         """
         self.Id = None
         self.CertId = None
@@ -5686,6 +5703,9 @@ class UpdateRecordDetail(AbstractModel):
         self.Protocol = None
         self.SniSwitch = None
         self.Bucket = None
+        self.Port = None
+        self.Namespace = None
+        self.SecretName = None
 
 
     def _deserialize(self, params):
@@ -5706,6 +5726,9 @@ class UpdateRecordDetail(AbstractModel):
         self.Protocol = params.get("Protocol")
         self.SniSwitch = params.get("SniSwitch")
         self.Bucket = params.get("Bucket")
+        self.Port = params.get("Port")
+        self.Namespace = params.get("Namespace")
+        self.SecretName = params.get("SecretName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5726,9 +5749,12 @@ class UpdateRecordDetails(AbstractModel):
         :type ResourceType: str
         :param List: 部署资源详情列表
         :type List: list of UpdateRecordDetail
+        :param TotalCount: 该部署资源总数
+        :type TotalCount: int
         """
         self.ResourceType = None
         self.List = None
+        self.TotalCount = None
 
 
     def _deserialize(self, params):
@@ -5739,6 +5765,7 @@ class UpdateRecordDetails(AbstractModel):
                 obj = UpdateRecordDetail()
                 obj._deserialize(item)
                 self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

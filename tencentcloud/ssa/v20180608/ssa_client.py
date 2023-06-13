@@ -256,6 +256,29 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDomainList(self, request):
+        """域名列表信息啊
+
+        :param request: Request instance for DescribeDomainList.
+        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeDomainListRequest`
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeDomainListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEventDetail(self, request):
         """获取安全事件详情
 

@@ -3918,7 +3918,7 @@ class FlowApproverUrlInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SignUrl: 签署链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+        :param SignUrl: 签署短链接，不支持小程序嵌入，只支持移动端浏览器打开。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
         :type SignUrl: str
         :param ApproverType: 签署人类型 PERSON-个人
         :type ApproverType: str
@@ -3926,7 +3926,7 @@ class FlowApproverUrlInfo(AbstractModel):
         :type Name: str
         :param Mobile: 签署人手机号
         :type Mobile: str
-        :param LongUrl: 签署长链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+        :param LongUrl: 签署长链接，支持小程序嵌入。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LongUrl: str
         """

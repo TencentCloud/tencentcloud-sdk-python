@@ -2449,6 +2449,109 @@ class DescribeConfigListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainListRequest(AbstractModel):
+    """DescribeDomainList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: -
+        :type Offset: int
+        :param Limit: -
+        :type Limit: int
+        :param AssetBasicType: -
+        :type AssetBasicType: int
+        :param Filter: -
+        :type Filter: list of QueryFilterV3
+        :param Order: -
+        :type Order: str
+        :param By: -
+        :type By: str
+        :param Field: -
+        :type Field: list of str
+        :param TimeRange: -
+        :type TimeRange: int
+        :param Logic: -
+        :type Logic: int
+        :param GroupByField: -
+        :type GroupByField: str
+        :param Task: -
+        :type Task: str
+        :param RequestFrom: -
+        :type RequestFrom: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.AssetBasicType = None
+        self.Filter = None
+        self.Order = None
+        self.By = None
+        self.Field = None
+        self.TimeRange = None
+        self.Logic = None
+        self.GroupByField = None
+        self.Task = None
+        self.RequestFrom = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.AssetBasicType = params.get("AssetBasicType")
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = QueryFilterV3()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
+        self.Field = params.get("Field")
+        self.TimeRange = params.get("TimeRange")
+        self.Logic = params.get("Logic")
+        self.GroupByField = params.get("GroupByField")
+        self.Task = params.get("Task")
+        self.RequestFrom = params.get("RequestFrom")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainListResponse(AbstractModel):
+    """DescribeDomainList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 无
+        :type Total: int
+        :param DomainInfoCollection: 无
+        :type DomainInfoCollection: list of DomainInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.DomainInfoCollection = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("DomainInfoCollection") is not None:
+            self.DomainInfoCollection = []
+            for item in params.get("DomainInfoCollection"):
+                obj = DomainInfo()
+                obj._deserialize(item)
+                self.DomainInfoCollection.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEventDetailRequest(AbstractModel):
     """DescribeEventDetail请求参数结构体
 
@@ -3327,6 +3430,90 @@ class DescribeVulListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DomainInfo(AbstractModel):
+    """域名列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param ResolveAddr: 解析地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResolveAddr: list of str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: list of str
+        :param AssetType: 资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: list of str
+        :param RiskVulCount: 漏洞风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskVulCount: int
+        :param SensitiveCount: 敏感内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SensitiveCount: int
+        :param HorseLinkCount: 挂马暗链
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HorseLinkCount: int
+        :param WebModifyCount: 网页篡改
+        :type WebModifyCount: int
+        :param ScanTime: 上次扫描时间
+        :type ScanTime: str
+        :param DiscoverTime: 最近发现时间
+        :type DiscoverTime: str
+        :param ScanTaskCount: 扫描次数
+        :type ScanTaskCount: int
+        :param PortRisk: 端口
+        :type PortRisk: int
+        :param WeekPwdCount: 弱口令
+        :type WeekPwdCount: int
+        :param AssetLocation: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetLocation: str
+        """
+        self.Domain = None
+        self.ResolveAddr = None
+        self.Region = None
+        self.AssetType = None
+        self.RiskVulCount = None
+        self.SensitiveCount = None
+        self.HorseLinkCount = None
+        self.WebModifyCount = None
+        self.ScanTime = None
+        self.DiscoverTime = None
+        self.ScanTaskCount = None
+        self.PortRisk = None
+        self.WeekPwdCount = None
+        self.AssetLocation = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.ResolveAddr = params.get("ResolveAddr")
+        self.Region = params.get("Region")
+        self.AssetType = params.get("AssetType")
+        self.RiskVulCount = params.get("RiskVulCount")
+        self.SensitiveCount = params.get("SensitiveCount")
+        self.HorseLinkCount = params.get("HorseLinkCount")
+        self.WebModifyCount = params.get("WebModifyCount")
+        self.ScanTime = params.get("ScanTime")
+        self.DiscoverTime = params.get("DiscoverTime")
+        self.ScanTaskCount = params.get("ScanTaskCount")
+        self.PortRisk = params.get("PortRisk")
+        self.WeekPwdCount = params.get("WeekPwdCount")
+        self.AssetLocation = params.get("AssetLocation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
 
@@ -3607,6 +3794,49 @@ class QueryFilter(AbstractModel):
         self.FilterKey = params.get("FilterKey")
         self.FilterOperatorType = params.get("FilterOperatorType")
         self.FilterValue = params.get("FilterValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFilterV3(AbstractModel):
+    """过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.ssa.v20180608.models.QueryFilter`
+        :param HasSub: 有无子条件
+        :type HasSub: bool
+        :param SubFilters: 查询条件
+        :type SubFilters: list of QueryFilter
+        :param Logic: 逻辑操作(只支持32位)
+        :type Logic: int
+        """
+        self.Filter = None
+        self.HasSub = None
+        self.SubFilters = None
+        self.Logic = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self.Filter = QueryFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        self.HasSub = params.get("HasSub")
+        if params.get("SubFilters") is not None:
+            self.SubFilters = []
+            for item in params.get("SubFilters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self.SubFilters.append(obj)
+        self.Logic = params.get("Logic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

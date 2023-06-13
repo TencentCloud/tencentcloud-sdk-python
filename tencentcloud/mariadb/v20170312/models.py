@@ -2275,6 +2275,8 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         :type RsAccessStrategy: int
         :param ReservedNetResources: 尚未回收的网络资源
         :type ReservedNetResources: list of ReservedNetResource
+        :param IsPhysicalReplicationSupported: 是否支持物理复制
+        :type IsPhysicalReplicationSupported: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2334,6 +2336,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self.ExclusterType = None
         self.RsAccessStrategy = None
         self.ReservedNetResources = None
+        self.IsPhysicalReplicationSupported = None
         self.RequestId = None
 
 
@@ -2413,6 +2416,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
                 obj = ReservedNetResource()
                 obj._deserialize(item)
                 self.ReservedNetResources.append(obj)
+        self.IsPhysicalReplicationSupported = params.get("IsPhysicalReplicationSupported")
         self.RequestId = params.get("RequestId")
 
 

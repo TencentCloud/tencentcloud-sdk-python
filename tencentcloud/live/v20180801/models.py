@@ -1359,7 +1359,7 @@ SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
         :param StartTime: 开始时间。
 使用 UTC 格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+注意：北京时间值为 UTC 时间值 + 8 小时。
         :type StartTime: str
         :param EndTime: 结束时间，注意：
 1. 结束时间必须大于开始时间；
@@ -1367,7 +1367,7 @@ SourceType 为点播（PullVodPushLive）可以填多个，上限30个。
 3. 结束时间 和 开始时间 间隔必须小于七天。
 使用 UTC 格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+注意：北京时间值为 UTC 时间值 + 8 小时。
         :type EndTime: str
         :param Operator: 任务操作人备注。
         :type Operator: str
@@ -1437,6 +1437,8 @@ PullVodPushLive -点播。
 1 - 启用。
 注意：启用本地模式后，会将源列表中的 MP4 文件进行本地下载，优先使用本地已下载文件进行推流，提高点播源推流稳定性。使用本地下载文件推流时，会产生增值费用。
         :type VodLocalMode: int
+        :param RecordTemplateId: 录制模板 ID。
+        :type RecordTemplateId: str
         """
         self.SourceType = None
         self.SourceUrls = None
@@ -1458,6 +1460,7 @@ PullVodPushLive -点播。
         self.BackupSourceUrl = None
         self.WatermarkList = None
         self.VodLocalMode = None
+        self.RecordTemplateId = None
 
 
     def _deserialize(self, params):
@@ -1486,6 +1489,7 @@ PullVodPushLive -点播。
                 obj._deserialize(item)
                 self.WatermarkList.append(obj)
         self.VodLocalMode = params.get("VodLocalMode")
+        self.RecordTemplateId = params.get("RecordTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -9361,7 +9361,7 @@ class DescribeStreamLinkEventAttachedFlowsRequest(AbstractModel):
         :type EventId: str
         :param PageNum: 当前页数，默认1。
         :type PageNum: int
-        :param PageSize: 每页大小，默认10。
+        :param PageSize: 每页大小，默认1000。
         :type PageSize: int
         """
         self.EventId = None

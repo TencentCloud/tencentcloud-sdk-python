@@ -3297,6 +3297,96 @@ class DeleteEnvironmentsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRabbitMQUserRequest(AbstractModel):
+    """DeleteRabbitMQUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param User: 用户名，登录时使用
+        :type User: str
+        """
+        self.InstanceId = None
+        self.User = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRabbitMQUserResponse(AbstractModel):
+    """DeleteRabbitMQUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRabbitMQVirtualHostRequest(AbstractModel):
+    """DeleteRabbitMQVirtualHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param VirtualHost: vhost名
+        :type VirtualHost: str
+        """
+        self.InstanceId = None
+        self.VirtualHost = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VirtualHost = params.get("VirtualHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRabbitMQVirtualHostResponse(AbstractModel):
+    """DeleteRabbitMQVirtualHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteRocketMQClusterRequest(AbstractModel):
     """DeleteRocketMQCluster请求参数结构体
 
@@ -5592,6 +5682,80 @@ class DescribeRabbitMQNodeListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRabbitMQUserRequest(AbstractModel):
+    """DescribeRabbitMQUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param SearchUser: 用户名检索，支持前缀匹配，后缀匹配
+        :type SearchUser: str
+        :param Offset: 分页Offset
+        :type Offset: int
+        :param Limit: 分页Limit
+        :type Limit: int
+        :param User: 用户名，精确查询
+        :type User: str
+        :param Tags: 用户标签，根据标签过滤列表
+        :type Tags: list of str
+        """
+        self.InstanceId = None
+        self.SearchUser = None
+        self.Offset = None
+        self.Limit = None
+        self.User = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SearchUser = params.get("SearchUser")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.User = params.get("User")
+        self.Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQUserResponse(AbstractModel):
+    """DescribeRabbitMQUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 返回的User数量
+        :type TotalCount: int
+        :param RabbitMQUserList: 当前已创建的RabbitMQ用户列表
+        :type RabbitMQUserList: list of RabbitMQUser
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RabbitMQUserList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RabbitMQUserList") is not None:
+            self.RabbitMQUserList = []
+            for item in params.get("RabbitMQUserList"):
+                obj = RabbitMQUser()
+                obj._deserialize(item)
+                self.RabbitMQUserList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRabbitMQVipInstanceRequest(AbstractModel):
     """DescribeRabbitMQVipInstance请求参数结构体
 
@@ -5741,6 +5905,141 @@ class DescribeRabbitMQVipInstancesResponse(AbstractModel):
                 obj = RabbitMQVipInstance()
                 obj._deserialize(item)
                 self.Instances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRabbitMQVirtualHostListRequest(AbstractModel):
+    """DescribeRabbitMQVirtualHostList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 不适用，默认参数
+        :type InstanceId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 一页限制
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQVirtualHostListResponse(AbstractModel):
+    """DescribeRabbitMQVirtualHostList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 集群列表数量
+        :type TotalCount: int
+        :param VirtualHostList: 集群列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualHostList: list of RabbitMQPrivateVirtualHost
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VirtualHostList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VirtualHostList") is not None:
+            self.VirtualHostList = []
+            for item in params.get("VirtualHostList"):
+                obj = RabbitMQPrivateVirtualHost()
+                obj._deserialize(item)
+                self.VirtualHostList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRabbitMQVirtualHostRequest(AbstractModel):
+    """DescribeRabbitMQVirtualHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param VirtualHost: vhost名,不传则查询全部
+        :type VirtualHost: str
+        :param Offset: 分页Offset
+        :type Offset: int
+        :param Limit: 分页Limit
+        :type Limit: int
+        :param Filters: search-virtual-host：vhost名称模糊查询，之前前缀和后缀匹配
+        :type Filters: :class:`tencentcloud.tdmq.v20200217.models.Filter`
+        """
+        self.InstanceId = None
+        self.VirtualHost = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VirtualHost = params.get("VirtualHost")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = Filter()
+            self.Filters._deserialize(params.get("Filters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQVirtualHostResponse(AbstractModel):
+    """DescribeRabbitMQVirtualHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 返回vhost数量
+        :type TotalCount: int
+        :param VirtualHostList: vhost详情列表
+        :type VirtualHostList: list of RabbitMQVirtualHostInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.VirtualHostList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("VirtualHostList") is not None:
+            self.VirtualHostList = []
+            for item in params.get("VirtualHostList"):
+                obj = RabbitMQVirtualHostInfo()
+                obj._deserialize(item)
+                self.VirtualHostList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7567,6 +7866,71 @@ class ModifyEnvironmentRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRabbitMQUserRequest(AbstractModel):
+    """ModifyRabbitMQUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param User: 用户名，登录时使用
+        :type User: str
+        :param Password: 密码，登录时使用
+        :type Password: str
+        :param Description: 描述，不传则不修改
+        :type Description: str
+        :param Tags: 用户标签，用于决定改用户访问RabbitMQ Management的权限范围，不传则不修改
+        :type Tags: list of str
+        :param MaxConnections: 该用户的最大连接数，不传则不修改
+        :type MaxConnections: int
+        :param MaxChannels: 该用户的最大channel数，不传则不修改
+        :type MaxChannels: int
+        """
+        self.InstanceId = None
+        self.User = None
+        self.Password = None
+        self.Description = None
+        self.Tags = None
+        self.MaxConnections = None
+        self.MaxChannels = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        self.Password = params.get("Password")
+        self.Description = params.get("Description")
+        self.Tags = params.get("Tags")
+        self.MaxConnections = params.get("MaxConnections")
+        self.MaxChannels = params.get("MaxChannels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRabbitMQUserResponse(AbstractModel):
+    """ModifyRabbitMQUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRabbitMQVipInstanceRequest(AbstractModel):
     """ModifyRabbitMQVipInstance请求参数结构体
 
@@ -7618,6 +7982,59 @@ class ModifyRabbitMQVipInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRabbitMQVirtualHostRequest(AbstractModel):
+    """ModifyRabbitMQVirtualHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param VirtualHost: vhost名
+        :type VirtualHost: str
+        :param Description: 描述
+        :type Description: str
+        :param TraceFlag: 消息轨迹开关,true打开,false关闭
+        :type TraceFlag: bool
+        """
+        self.InstanceId = None
+        self.VirtualHost = None
+        self.Description = None
+        self.TraceFlag = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VirtualHost = params.get("VirtualHost")
+        self.Description = params.get("Description")
+        self.TraceFlag = params.get("TraceFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRabbitMQVirtualHostResponse(AbstractModel):
+    """ModifyRabbitMQVirtualHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -8863,6 +9280,90 @@ class RabbitMQPrivateNode(AbstractModel):
         
 
 
+class RabbitMQPrivateVirtualHost(AbstractModel):
+    """RabbitMQ专享版虚拟机
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VirtualHostName: 虚拟主机的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualHostName: str
+        :param Description: 虚拟主机的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.VirtualHostName = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.VirtualHostName = params.get("VirtualHostName")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQUser(AbstractModel):
+    """RabbitMQ用户实体详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param User: 用户名，登录时使用
+        :type User: str
+        :param Password: 密码，登录时使用
+        :type Password: str
+        :param Description: 用户描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Tags: 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param CreateTime: 用户创建时间
+        :type CreateTime: str
+        :param ModifyTime: 用户最后修改时间
+        :type ModifyTime: str
+        :param Type: 用户类型，System：系统创建，User：用户创建
+        :type Type: str
+        """
+        self.InstanceId = None
+        self.User = None
+        self.Password = None
+        self.Description = None
+        self.Tags = None
+        self.CreateTime = None
+        self.ModifyTime = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        self.Password = params.get("Password")
+        self.Description = params.get("Description")
+        self.Tags = params.get("Tags")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RabbitMQVipInstance(AbstractModel):
     """RabbitMQ专享实例信息
 
@@ -8942,6 +9443,101 @@ class RabbitMQVipInstance(AbstractModel):
         self.SpecName = params.get("SpecName")
         self.ExceptionInformation = params.get("ExceptionInformation")
         self.ClusterStatus = params.get("ClusterStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQVirtualHostInfo(AbstractModel):
+    """RabbitMQ的vhost详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例Id
+        :type InstanceId: str
+        :param VirtualHost: vhost名
+        :type VirtualHost: str
+        :param Description: vhost描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Tags: vhost标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param VirtualHostStatistics: vhost概览统计信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualHostStatistics: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQVirtualHostStatistics`
+        """
+        self.InstanceId = None
+        self.VirtualHost = None
+        self.Description = None
+        self.Tags = None
+        self.CreateTime = None
+        self.ModifyTime = None
+        self.VirtualHostStatistics = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VirtualHost = params.get("VirtualHost")
+        self.Description = params.get("Description")
+        self.Tags = params.get("Tags")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        if params.get("VirtualHostStatistics") is not None:
+            self.VirtualHostStatistics = RabbitMQVirtualHostStatistics()
+            self.VirtualHostStatistics._deserialize(params.get("VirtualHostStatistics"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQVirtualHostStatistics(AbstractModel):
+    """vhost概览统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentQueues: 当前vhost的queue数量
+        :type CurrentQueues: int
+        :param CurrentExchanges: 当前vhost的exchange数量
+        :type CurrentExchanges: int
+        :param CurrentConnections: 当前vhost的连接数量
+        :type CurrentConnections: int
+        :param CurrentChannels: 当前vhost的channel数量
+        :type CurrentChannels: int
+        :param CurrentUsers: 当前vhost的用户数量
+        :type CurrentUsers: int
+        """
+        self.CurrentQueues = None
+        self.CurrentExchanges = None
+        self.CurrentConnections = None
+        self.CurrentChannels = None
+        self.CurrentUsers = None
+
+
+    def _deserialize(self, params):
+        self.CurrentQueues = params.get("CurrentQueues")
+        self.CurrentExchanges = params.get("CurrentExchanges")
+        self.CurrentConnections = params.get("CurrentConnections")
+        self.CurrentChannels = params.get("CurrentChannels")
+        self.CurrentUsers = params.get("CurrentUsers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
