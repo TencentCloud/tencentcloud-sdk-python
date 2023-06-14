@@ -545,6 +545,231 @@ class DescribeOrganizationAuthNodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOrganizationFinancialByMemberRequest(AbstractModel):
+    """DescribeOrganizationFinancialByMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Month: 查询开始月份。格式：yyyy-mm，例如：2021-01。
+        :type Month: str
+        :param Limit: 限制数目。取值范围：1~50，默认值：10	
+        :type Limit: int
+        :param Offset: 偏移量。取值是limit的整数倍，默认值 : 0
+        :type Offset: int
+        :param EndMonth: 查询结束月份。格式：yyyy-mm，例如：2021-01,默认值为查询开始月份。
+        :type EndMonth: str
+        :param MemberUins: 查询成员列表。 最大100个
+        :type MemberUins: list of int
+        :param ProductCodes: 查询产品列表。 最大100个
+        :type ProductCodes: list of str
+        """
+        self.Month = None
+        self.Limit = None
+        self.Offset = None
+        self.EndMonth = None
+        self.MemberUins = None
+        self.ProductCodes = None
+
+
+    def _deserialize(self, params):
+        self.Month = params.get("Month")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.EndMonth = params.get("EndMonth")
+        self.MemberUins = params.get("MemberUins")
+        self.ProductCodes = params.get("ProductCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationFinancialByMemberResponse(AbstractModel):
+    """DescribeOrganizationFinancialByMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCost: 当月总消耗。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: float
+        :param Items: 成员消耗详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrgMemberFinancial
+        :param Total: 总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCost = None
+        self.Items = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCost = params.get("TotalCost")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrgMemberFinancial()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationFinancialByMonthRequest(AbstractModel):
+    """DescribeOrganizationFinancialByMonth请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 查询月数。取值范围：1~6，默认值：6
+        :type Limit: int
+        :param EndMonth: 查询结束月份。格式：yyyy-mm，例如：2021-01
+        :type EndMonth: str
+        :param MemberUins: 查询成员列表。 最大100个
+        :type MemberUins: list of int
+        :param ProductCodes: 查询产品列表。 最大100个
+        :type ProductCodes: list of str
+        """
+        self.Limit = None
+        self.EndMonth = None
+        self.MemberUins = None
+        self.ProductCodes = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.EndMonth = params.get("EndMonth")
+        self.MemberUins = params.get("MemberUins")
+        self.ProductCodes = params.get("ProductCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationFinancialByMonthResponse(AbstractModel):
+    """DescribeOrganizationFinancialByMonth返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 产品消耗详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrgFinancialByMonth
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrgFinancialByMonth()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationFinancialByProductRequest(AbstractModel):
+    """DescribeOrganizationFinancialByProduct请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Month: 查询开始月份。格式：yyyy-mm，例如：2021-01
+        :type Month: str
+        :param Limit: 限制数目。取值范围：1~50，默认值：10	
+        :type Limit: int
+        :param Offset: 偏移量。取值是limit的整数倍，默认值 : 0
+        :type Offset: int
+        :param EndMonth: 查询结束月份。格式：yyyy-mm，例如：2021-01,默认值为查询开始月份
+        :type EndMonth: str
+        :param MemberUins: 查询成员列表。 最大100个
+        :type MemberUins: list of int
+        :param ProductCodes: 查询产品列表。 最大100个
+        :type ProductCodes: list of str
+        """
+        self.Month = None
+        self.Limit = None
+        self.Offset = None
+        self.EndMonth = None
+        self.MemberUins = None
+        self.ProductCodes = None
+
+
+    def _deserialize(self, params):
+        self.Month = params.get("Month")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.EndMonth = params.get("EndMonth")
+        self.MemberUins = params.get("MemberUins")
+        self.ProductCodes = params.get("ProductCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationFinancialByProductResponse(AbstractModel):
+    """DescribeOrganizationFinancialByProduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCost: 当月总消耗。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: float
+        :param Items: 产品消耗详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OrgProductFinancial
+        :param Total: 总数目。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCost = None
+        self.Items = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCost = params.get("TotalCost")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrgProductFinancial()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOrganizationMemberAuthAccountsRequest(AbstractModel):
     """DescribeOrganizationMemberAuthAccounts请求参数结构体
 
@@ -1300,6 +1525,46 @@ class MoveOrganizationNodeMembersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class OrgFinancialByMonth(AbstractModel):
+    """按月获取组织财务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 记录ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param Month: 月份，格式：yyyy-mm，示例：2021-01。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Month: str
+        :param TotalCost: 消耗金额，单元：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: float
+        :param GrowthRate: 比上月增长率%。正数增长，负数下降，空值无法统计。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrowthRate: str
+        """
+        self.Id = None
+        self.Month = None
+        self.TotalCost = None
+        self.GrowthRate = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Month = params.get("Month")
+        self.TotalCost = params.get("TotalCost")
+        self.GrowthRate = params.get("GrowthRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrgIdentity(AbstractModel):
     """组织身份
 
@@ -1590,6 +1855,46 @@ class OrgMemberAuthIdentity(AbstractModel):
         
 
 
+class OrgMemberFinancial(AbstractModel):
+    """组织成员财务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 成员Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberUin: int
+        :param MemberName: 成员名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberName: str
+        :param TotalCost: 消耗金额，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: float
+        :param Ratio: 占比%。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ratio: str
+        """
+        self.MemberUin = None
+        self.MemberName = None
+        self.TotalCost = None
+        self.Ratio = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        self.MemberName = params.get("MemberName")
+        self.TotalCost = params.get("TotalCost")
+        self.Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrgMemberPolicy(AbstractModel):
     """组织成员被授权的策略
 
@@ -1719,6 +2024,46 @@ class OrgPermission(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrgProductFinancial(AbstractModel):
+    """组织产品财务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductName: 产品Code。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param ProductCode: 产品名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param TotalCost: 产品消耗，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: float
+        :param Ratio: 占比%。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ratio: str
+        """
+        self.ProductName = None
+        self.ProductCode = None
+        self.TotalCost = None
+        self.Ratio = None
+
+
+    def _deserialize(self, params):
+        self.ProductName = params.get("ProductName")
+        self.ProductCode = params.get("ProductCode")
+        self.TotalCost = params.get("TotalCost")
+        self.Ratio = params.get("Ratio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

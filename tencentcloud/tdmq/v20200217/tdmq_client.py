@@ -2155,31 +2155,6 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyAMQPVHost(self, request):
-        """产品下线了，对应的接口也要下线。
-
-        更新Vhost
-
-        :param request: Request instance for ModifyAMQPVHost.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPVHostRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyAMQPVHostResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyAMQPVHost", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyAMQPVHostResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyCluster(self, request):
         """更新集群信息
 

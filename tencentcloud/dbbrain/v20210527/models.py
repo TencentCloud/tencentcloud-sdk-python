@@ -2564,7 +2564,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
         :type EndTime: str
         :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
-        :param Md5: SOL模板的MD5值
+        :param Md5: SQL模板的MD5值
         :type Md5: str
         """
         self.InstanceId = None
@@ -4862,7 +4862,7 @@ class SlowLogTopSqlItem(AbstractModel):
         :type LockTimeAvg: float
         :param RowsExaminedAvg: 平均扫描行数
         :type RowsExaminedAvg: float
-        :param Md5: SOL模板的MD5值
+        :param Md5: SQL模板的MD5值
         :type Md5: str
         """
         self.LockTime = None

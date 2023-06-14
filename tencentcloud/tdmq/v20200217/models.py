@@ -7405,59 +7405,6 @@ class ModifyAMQPQueueResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyAMQPVHostRequest(AbstractModel):
-    """ModifyAMQPVHost请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ClusterId: 集群ID
-        :type ClusterId: str
-        :param VHostId: vhost名称，3-64个字符，只能包含字母、数字、“-”及“_”
-        :type VHostId: str
-        :param MsgTtl: 未消费消息的保留时间，以毫秒为单位，60秒-15天
-        :type MsgTtl: int
-        :param Remark: 说明，最大128个字符
-        :type Remark: str
-        """
-        self.ClusterId = None
-        self.VHostId = None
-        self.MsgTtl = None
-        self.Remark = None
-
-
-    def _deserialize(self, params):
-        self.ClusterId = params.get("ClusterId")
-        self.VHostId = params.get("VHostId")
-        self.MsgTtl = params.get("MsgTtl")
-        self.Remark = params.get("Remark")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyAMQPVHostResponse(AbstractModel):
-    """ModifyAMQPVHost返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyClusterRequest(AbstractModel):
     """ModifyCluster请求参数结构体
 

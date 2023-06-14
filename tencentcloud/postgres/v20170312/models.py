@@ -965,6 +965,8 @@ defaultLocale：排序区域规则，可选参数，在初始化后不可修改�
 serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下：
 "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。
         :type DBEngineConfig: str
+        :param SyncMode: 主从同步方式，取值： 1)Semi-sync：半同步 2)Async：异步 默认为Async
+        :type SyncMode: str
         """
         self.SpecCode = None
         self.Storage = None
@@ -995,6 +997,7 @@ serverCollationName：排序规则名称，可选参数，在初始化后不可�
         self.KMSRegion = None
         self.DBEngine = None
         self.DBEngineConfig = None
+        self.SyncMode = None
 
 
     def _deserialize(self, params):
@@ -1037,6 +1040,7 @@ serverCollationName：排序规则名称，可选参数，在初始化后不可�
         self.KMSRegion = params.get("KMSRegion")
         self.DBEngine = params.get("DBEngine")
         self.DBEngineConfig = params.get("DBEngineConfig")
+        self.SyncMode = params.get("SyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

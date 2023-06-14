@@ -257,7 +257,7 @@ class SsaClient(AbstractClient):
 
 
     def DescribeDomainList(self, request):
-        """域名列表信息啊
+        """域名列表信息
 
         :param request: Request instance for DescribeDomainList.
         :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeDomainListRequest`

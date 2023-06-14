@@ -2543,12 +2543,16 @@ class ServiceStatus(AbstractModel):
         :param RealTimeAsr: 语音转文本服务开关状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealTimeAsr: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
+        :param TextTranslate: 文本翻译服务开关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextTranslate: :class:`tencentcloud.gme.v20180711.models.StatusInfo`
         """
         self.RealTimeSpeech = None
         self.VoiceMessage = None
         self.Porn = None
         self.Live = None
         self.RealTimeAsr = None
+        self.TextTranslate = None
 
 
     def _deserialize(self, params):
@@ -2567,6 +2571,9 @@ class ServiceStatus(AbstractModel):
         if params.get("RealTimeAsr") is not None:
             self.RealTimeAsr = StatusInfo()
             self.RealTimeAsr._deserialize(params.get("RealTimeAsr"))
+        if params.get("TextTranslate") is not None:
+            self.TextTranslate = StatusInfo()
+            self.TextTranslate._deserialize(params.get("TextTranslate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

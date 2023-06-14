@@ -11099,6 +11099,51 @@ class RefererAuthConfig(AbstractModel):
         
 
 
+class RestartLivePullStreamTaskRequest(AbstractModel):
+    """RestartLivePullStreamTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 Id。
+        :type TaskId: str
+        :param Operator: 操作人备注名称。
+        :type Operator: str
+        """
+        self.TaskId = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartLivePullStreamTaskResponse(AbstractModel):
+    """RestartLivePullStreamTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResumeDelayLiveStreamRequest(AbstractModel):
     """ResumeDelayLiveStream请求参数结构体
 

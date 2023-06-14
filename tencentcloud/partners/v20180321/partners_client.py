@@ -259,56 +259,6 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAgentDealsCache(self, request):
-        """已提供新接口并推动切换，改切口目前白名单限制所有访问，申请下线
-
-        【该接口已下线，请使用升级版本DescribeAgentDealsByCache】代理商拉取缓存的全量客户订单
-
-        :param request: Request instance for DescribeAgentDealsCache.
-        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsCacheRequest`
-        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentDealsCacheResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAgentDealsCache", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAgentDealsCacheResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeAgentPayDeals(self, request):
-        """已提供新接口并推动切换，改切口目前白名单限制所有访问，申请下线
-
-        【该接口已下线，请切换使用升级版本DescribeAgentPayDealsV2】可以查询代理商代付的所有订单
-
-        :param request: Request instance for DescribeAgentPayDeals.
-        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentPayDealsRequest`
-        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentPayDealsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAgentPayDeals", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAgentPayDealsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeAgentPayDealsV2(self, request):
         """可以查询代理商代付的预付费订单
 
@@ -332,31 +282,6 @@ class PartnersClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAgentSelfPayDeals(self, request):
-        """已提供新接口并推动切换，改切口目前白名单限制所有访问，申请下线
-
-        【该接口已下线，请切换使用升级版本DescribeAgentSelfPayDealsV2】可以查询代理商下指定客户的自付订单
-
-        :param request: Request instance for DescribeAgentSelfPayDeals.
-        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeAgentSelfPayDealsRequest`
-        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeAgentSelfPayDealsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAgentSelfPayDeals", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAgentSelfPayDealsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeAgentSelfPayDealsV2(self, request):
         """查询代理商名下指定代客的自付订单（预付费）
 
@@ -371,31 +296,6 @@ class PartnersClient(AbstractClient):
             body = self.call("DescribeAgentSelfPayDealsV2", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAgentSelfPayDealsV2Response()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeClientBalance(self, request):
-        """已提供新接口并推进切换，白名单禁用控制访问观察后无反馈，可以下线
-
-        【该接口将逐步下线，请切换使用升级版本DescribeClientBalanceNew】为合作伙伴提供查询客户余额能力。调用者必须是合作伙伴，只能查询自己名下客户余额.
-
-        :param request: Request instance for DescribeClientBalance.
-        :type request: :class:`tencentcloud.partners.v20180321.models.DescribeClientBalanceRequest`
-        :rtype: :class:`tencentcloud.partners.v20180321.models.DescribeClientBalanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeClientBalance", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeClientBalanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

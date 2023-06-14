@@ -3826,7 +3826,7 @@ class InvoiceItem(AbstractModel):
     def __init__(self):
         r"""
         :param Code: 识别结果。
-OK：表示识别成功；FailedOperation.UnsupportedInvioce：表示不支持识别；
+OK：表示识别成功；FailedOperation.UnsupportedInvoice：表示不支持识别；
 FailedOperation.UnKnowError：表示识别失败；
 其它错误码见各个票据接口的定义。
         :type Code: str
@@ -3855,13 +3855,13 @@ FailedOperation.UnKnowError：表示识别失败；
         :type SingleInvoiceInfos: :class:`tencentcloud.ocr.v20181119.models.SingleInvoiceItem`
         :param Page: 发票处于识别图片或PDF文件中的页教，默认从1开始。
         :type Page: int
-        :param SubType: 发票详细类型，详见下方 SubType 返回值说明
+        :param SubType: 发票详细类型，详见上方 SubType 返回值说明
         :type SubType: str
-        :param TypeDescription: 发票类型描述，详见下方 TypeDescription  返回值说明
+        :param TypeDescription: 发票类型描述，详见上方 TypeDescription  返回值说明
         :type TypeDescription: str
         :param CutImage: 切割单图文件，Base64编码后的切图后的图片文件，开启 EnableCutImage 后进行返回
         :type CutImage: str
-        :param SubTypeDescription: 发票详细类型描述，详见下方 SubType 返回值说明
+        :param SubTypeDescription: 发票详细类型描述，详见上方 SubType 返回值说明
         :type SubTypeDescription: str
         """
         self.Code = None
@@ -7792,9 +7792,9 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type Address: str
         :param Birthday: 出生日期
         :type Birthday: str
-        :param IssueDate: 首次领用日期
+        :param IssueDate: 签发日期
         :type IssueDate: str
-        :param ExpirationDate: 签发日期
+        :param ExpirationDate: 到期日期
         :type ExpirationDate: str
         :param EnLastName: 英文姓名
         :type EnLastName: str

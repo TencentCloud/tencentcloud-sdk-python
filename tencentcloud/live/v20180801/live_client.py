@@ -2982,6 +2982,32 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RestartLivePullStreamTask(self, request):
+        """将正在运行的拉流转推任务进行重启。
+        注意：
+        1. 重启任务会造成推流中断。
+        2. 点播源任务的重启，会根据VodRefreshType决定是续播还是从头开始播。
+
+        :param request: Request instance for RestartLivePullStreamTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.RestartLivePullStreamTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.RestartLivePullStreamTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartLivePullStreamTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartLivePullStreamTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResumeDelayLiveStream(self, request):
         """取消直播流设置的延时配置，恢复实时直播画面。
 

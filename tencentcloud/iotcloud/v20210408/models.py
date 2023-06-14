@@ -2914,6 +2914,9 @@ class DeviceInfo(AbstractModel):
         :param FirmwareUpdateTime: ota最后更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirmwareUpdateTime: int
+        :param CreateUserId: 创建者 Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserId: int
         """
         self.DeviceName = None
         self.Online = None
@@ -2939,6 +2942,7 @@ class DeviceInfo(AbstractModel):
         self.Labels = None
         self.ClientIP = None
         self.FirmwareUpdateTime = None
+        self.CreateUserId = None
 
 
     def _deserialize(self, params):
@@ -2976,6 +2980,7 @@ class DeviceInfo(AbstractModel):
                 self.Labels.append(obj)
         self.ClientIP = params.get("ClientIP")
         self.FirmwareUpdateTime = params.get("FirmwareUpdateTime")
+        self.CreateUserId = params.get("CreateUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3378,6 +3383,12 @@ class FirmwareInfo(AbstractModel):
         :param ProductId: 产品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
+        :param FwType: 固件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwType: str
+        :param CreateUserId: 创建者 Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUserId: int
         """
         self.Version = None
         self.Md5sum = None
@@ -3386,6 +3397,8 @@ class FirmwareInfo(AbstractModel):
         self.Name = None
         self.Description = None
         self.ProductId = None
+        self.FwType = None
+        self.CreateUserId = None
 
 
     def _deserialize(self, params):
@@ -3396,6 +3409,8 @@ class FirmwareInfo(AbstractModel):
         self.Name = params.get("Name")
         self.Description = params.get("Description")
         self.ProductId = params.get("ProductId")
+        self.FwType = params.get("FwType")
+        self.CreateUserId = params.get("CreateUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2456,29 +2456,29 @@ class DescribeDomainListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: -
+        :param Offset: 起始，从0开始(只支持32位)
         :type Offset: int
-        :param Limit: -
+        :param Limit: limit,最大值200(只支持32位)
         :type Limit: int
-        :param AssetBasicType: -
+        :param AssetBasicType: 资产大类，根据此字段时返回不同的子结构,AssetBasicType(只支持32位)
         :type AssetBasicType: int
-        :param Filter: -
+        :param Filter: 过滤条件
         :type Filter: list of QueryFilterV3
-        :param Order: -
+        :param Order: 排序
         :type Order: str
-        :param By: -
+        :param By: 排序字段
         :type By: str
-        :param Field: -
+        :param Field: 导出字段
         :type Field: list of str
-        :param TimeRange: -
+        :param TimeRange: 时间范围(只支持32位)
         :type TimeRange: int
-        :param Logic: -
+        :param Logic: 逻辑字段(只支持32位)
         :type Logic: int
-        :param GroupByField: -
+        :param GroupByField: 聚合字段  
         :type GroupByField: str
         :param Task: -
         :type Task: str
-        :param RequestFrom: -
+        :param RequestFrom: 0:cfw 1:vss 2.soc 3.waf 4.cwp
         :type RequestFrom: int
         """
         self.Offset = None
@@ -3470,9 +3470,46 @@ class DomainInfo(AbstractModel):
         :type PortRisk: int
         :param WeekPwdCount: 弱口令
         :type WeekPwdCount: int
-        :param AssetLocation: -
+        :param AssetLocation: 资产归属
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetLocation: str
+        :param NetworkRisk: 网络风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkRisk: int
+        :param NetworkAttack: 网络攻击
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkAttack: int
+        :param BotVisit: bot访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotVisit: int
+        :param NetworkAccess: 网络访问
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkAccess: int
+        :param CreateTime: 资产创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param WafStatus: waf状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WafStatus: int
+        :param LastScanTime: 最近扫描时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastScanTime: str
+        :param AssetId: 资产id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetId: list of str
+        :param AssetName: 资产名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetName: list of str
+        :param SourceType: 类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: str
+        :param IsNotCore: 是否核心资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNotCore: int
+        :param IsCloud: 是否云外资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCloud: int
         """
         self.Domain = None
         self.ResolveAddr = None
@@ -3488,6 +3525,18 @@ class DomainInfo(AbstractModel):
         self.PortRisk = None
         self.WeekPwdCount = None
         self.AssetLocation = None
+        self.NetworkRisk = None
+        self.NetworkAttack = None
+        self.BotVisit = None
+        self.NetworkAccess = None
+        self.CreateTime = None
+        self.WafStatus = None
+        self.LastScanTime = None
+        self.AssetId = None
+        self.AssetName = None
+        self.SourceType = None
+        self.IsNotCore = None
+        self.IsCloud = None
 
 
     def _deserialize(self, params):
@@ -3505,6 +3554,18 @@ class DomainInfo(AbstractModel):
         self.PortRisk = params.get("PortRisk")
         self.WeekPwdCount = params.get("WeekPwdCount")
         self.AssetLocation = params.get("AssetLocation")
+        self.NetworkRisk = params.get("NetworkRisk")
+        self.NetworkAttack = params.get("NetworkAttack")
+        self.BotVisit = params.get("BotVisit")
+        self.NetworkAccess = params.get("NetworkAccess")
+        self.CreateTime = params.get("CreateTime")
+        self.WafStatus = params.get("WafStatus")
+        self.LastScanTime = params.get("LastScanTime")
+        self.AssetId = params.get("AssetId")
+        self.AssetName = params.get("AssetName")
+        self.SourceType = params.get("SourceType")
+        self.IsNotCore = params.get("IsNotCore")
+        self.IsCloud = params.get("IsCloud")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

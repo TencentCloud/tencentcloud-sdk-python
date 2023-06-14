@@ -95,6 +95,29 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteEndPoint(self, request):
+        """删除终端节点
+
+        :param request: Request instance for DeleteEndPoint.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeleteEndPointRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeleteEndPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEndPoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteEndPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeletePrivateDNSAccount(self, request):
         """删除私有域解析账号
 

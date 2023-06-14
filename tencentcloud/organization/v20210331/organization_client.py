@@ -256,6 +256,75 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOrganizationFinancialByMember(self, request):
+        """以成员维度获取组织财务信息
+
+        :param request: Request instance for DescribeOrganizationFinancialByMember.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationFinancialByMemberRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationFinancialByMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationFinancialByMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationFinancialByMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOrganizationFinancialByMonth(self, request):
+        """以月维度获取组织财务信息趋势
+
+        :param request: Request instance for DescribeOrganizationFinancialByMonth.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationFinancialByMonthRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationFinancialByMonthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationFinancialByMonth", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationFinancialByMonthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOrganizationFinancialByProduct(self, request):
+        """以产品维度获取组织财务信息
+
+        :param request: Request instance for DescribeOrganizationFinancialByProduct.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationFinancialByProductRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationFinancialByProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationFinancialByProduct", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationFinancialByProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOrganizationMemberAuthAccounts(self, request):
         """获取组织成员被绑定授权关系的子账号列表
 

@@ -187,6 +187,9 @@ class GetBpaasApproveDetailResponse(AbstractModel):
         :param ApprovingNodeId: 正在审批的节点id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApprovingNodeId: str
+        :param ModifyTime: 更新时间，时间格式：2021-12-12 10:12:10	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -201,6 +204,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
         self.Status = None
         self.Nodes = None
         self.ApprovingNodeId = None
+        self.ModifyTime = None
         self.RequestId = None
 
 
@@ -226,6 +230,7 @@ class GetBpaasApproveDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Nodes.append(obj)
         self.ApprovingNodeId = params.get("ApprovingNodeId")
+        self.ModifyTime = params.get("ModifyTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -424,6 +429,12 @@ class StatusNode(AbstractModel):
         :param ParallelNodes: 并行节点 3-4
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParallelNodes: str
+        :param RejectedCloudFunctionMsg: scf拒绝时返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RejectedCloudFunctionMsg: str
+        :param PrevNode: 上一个节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrevNode: str
         """
         self.NodeId = None
         self.NodeName = None
@@ -446,6 +457,8 @@ class StatusNode(AbstractModel):
         self.CKafkaRegion = None
         self.ExternalUrl = None
         self.ParallelNodes = None
+        self.RejectedCloudFunctionMsg = None
+        self.PrevNode = None
 
 
     def _deserialize(self, params):
@@ -474,6 +487,8 @@ class StatusNode(AbstractModel):
         self.CKafkaRegion = params.get("CKafkaRegion")
         self.ExternalUrl = params.get("ExternalUrl")
         self.ParallelNodes = params.get("ParallelNodes")
+        self.RejectedCloudFunctionMsg = params.get("RejectedCloudFunctionMsg")
+        self.PrevNode = params.get("PrevNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
