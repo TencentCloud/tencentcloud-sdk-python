@@ -1289,11 +1289,11 @@ class AssociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 专线网关ID。
+        :param VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
         :type VpcId: str
         :param NatGatewayId: NAT网关ID。
         :type NatGatewayId: str
-        :param DirectConnectGatewayId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param DirectConnectGatewayId: 专线网关ID。
         :type DirectConnectGatewayId: str
         """
         self.VpcId = None
@@ -19095,6 +19095,9 @@ class NatGateway(AbstractModel):
         :param RestrictState: NAT网关是否被封禁。“NORMAL”：未被封禁，“RESTRICTED”：已被封禁。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestrictState: str
+        :param NatProductVersion: NAT网关大版本号，传统型=1，标准型=2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NatProductVersion: int
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -19115,6 +19118,7 @@ class NatGateway(AbstractModel):
         self.IsExclusive = None
         self.ExclusiveGatewayBandwidth = None
         self.RestrictState = None
+        self.NatProductVersion = None
 
 
     def _deserialize(self, params):
@@ -19157,6 +19161,7 @@ class NatGateway(AbstractModel):
         self.IsExclusive = params.get("IsExclusive")
         self.ExclusiveGatewayBandwidth = params.get("ExclusiveGatewayBandwidth")
         self.RestrictState = params.get("RestrictState")
+        self.NatProductVersion = params.get("NatProductVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22315,9 +22320,9 @@ class SourceIpTranslationNatRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源ID
+        :param ResourceId: 资源ID，如果ResourceType为USERDEFINED，可以为空
         :type ResourceId: str
-        :param ResourceType: 资源类型，目前包含SUBNET、NETWORKINTERFACE
+        :param ResourceType: 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param PrivateIpAddress: 源IP/网段

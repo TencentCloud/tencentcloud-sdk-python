@@ -927,9 +927,9 @@ class CreateRoomRequest(AbstractModel):
         r"""
         :param Name: 房间名称。
         :type Name: str
-        :param StartTime: 预定的房间开始时间，unix时间戳。
+        :param StartTime: 预定的房间开始时间，unix时间戳（秒）。
         :type StartTime: int
-        :param EndTime: 预定的房间结束时间，unix时间戳。
+        :param EndTime: 预定的房间结束时间，unix时间戳（秒）。
         :type EndTime: int
         :param SdkAppId: 低代码互动课堂的SdkAppId。
         :type SdkAppId: int
@@ -2175,9 +2175,9 @@ class DescribeRoomResponse(AbstractModel):
         r"""
         :param Name: 房间名称。
         :type Name: str
-        :param StartTime: 预定的房间开始时间，unix时间戳。
+        :param StartTime: 预定的房间开始时间，unix时间戳（秒）。
         :type StartTime: int
-        :param EndTime: 预定的房间结束时间，unix时间戳。
+        :param EndTime: 预定的房间结束时间，unix时间戳（秒）。
         :type EndTime: int
         :param TeacherId: 老师的UserId。
         :type TeacherId: str
@@ -3573,9 +3573,9 @@ class ModifyRoomRequest(AbstractModel):
         :type RoomId: int
         :param SdkAppId: 低代码互动课堂的SdkAppId
         :type SdkAppId: int
-        :param StartTime: 预定的房间开始时间，unix时间戳。直播开始后不允许修改。
+        :param StartTime: 预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。
         :type StartTime: int
-        :param EndTime: 预定的房间结束时间，unix时间戳。直播开始后不允许修改。
+        :param EndTime: 预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。
         :type EndTime: int
         :param TeacherId: 老师ID。直播开始后不允许修改。
         :type TeacherId: str

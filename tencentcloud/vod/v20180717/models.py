@@ -252,10 +252,13 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         :type Size: int
         :param DigitalWatermarkType: 数字水印类型。可选值：
 <li>Trace 表示经过溯源水印处理；</li>
+<li>CopyRight 表示经过版权水印处理；</li>
 <li>None 表示没有经过数字水印处理。</li>
         :type DigitalWatermarkType: str
         :param SubStreamSet: 子流信息列表。
         :type SubStreamSet: list of MediaSubStreamInfoItem
+        :param CopyRightWatermarkText: 版权信息。
+        :type CopyRightWatermarkText: str
         """
         self.Definition = None
         self.Package = None
@@ -264,6 +267,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self.Size = None
         self.DigitalWatermarkType = None
         self.SubStreamSet = None
+        self.CopyRightWatermarkText = None
 
 
     def _deserialize(self, params):
@@ -279,6 +283,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
                 obj = MediaSubStreamInfoItem()
                 obj._deserialize(item)
                 self.SubStreamSet.append(obj)
+        self.CopyRightWatermarkText = params.get("CopyRightWatermarkText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -301,12 +306,15 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type WatermarkSet: list of WatermarkInput
         :param TraceWatermark: 溯源水印。
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
+        :param CopyRightWatermark: 版权水印。
+        :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         :param SubtitleSet: 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
         :type SubtitleSet: list of str
         """
         self.Definition = None
         self.WatermarkSet = None
         self.TraceWatermark = None
+        self.CopyRightWatermark = None
         self.SubtitleSet = None
 
 
@@ -321,6 +329,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         if params.get("TraceWatermark") is not None:
             self.TraceWatermark = TraceWatermarkInput()
             self.TraceWatermark._deserialize(params.get("TraceWatermark"))
+        if params.get("CopyRightWatermark") is not None:
+            self.CopyRightWatermark = CopyRightWatermarkInput()
+            self.CopyRightWatermark._deserialize(params.get("CopyRightWatermark"))
         self.SubtitleSet = params.get("SubtitleSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5193,10 +5204,10 @@ class Canvas(AbstractModel):
 <li>White：白色背景</li>
 默认值：Black。
         :type Color: str
-        :param Width: 画布宽度，即输出视频的宽度，取值范围：0~ 4096，单位：px。
+        :param Width: 画布宽度，即输出视频的宽度，取值范围：0~ 3840，单位：px。
 默认值：0，表示和第一个视频轨的第一个视频片段的视频宽度一致。
         :type Width: int
-        :param Height: 画布高度，即输出视频的高度（或长边），取值范围：0~ 4096，单位：px。
+        :param Height: 画布高度，即输出视频的高度（或长边），取值范围：0~ 3840，单位：px。
 默认值：0，表示和第一个视频轨的第一个视频片段的视频高度一致。
         :type Height: int
         """
@@ -6095,6 +6106,30 @@ class ContentReviewTemplateItem(AbstractModel):
         self.ScreenshotInterval = params.get("ScreenshotInterval")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyRightWatermarkInput(AbstractModel):
+    """版权水印参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 版权信息，最大长度为 200 个字符。
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12300,7 +12335,8 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>DescribeFileAttributesTask：获取文件属性任务；</li>
 <li>RebuildMedia：音画质重生任务；</li>
 <li>ReviewAudioVideo：音视频审核任务；</li>
-<li>ExtractTraceWatermark：提取溯源水印任务。</li>
+<li>ExtractTraceWatermark：提取溯源水印任务；</li>
+<li>ExtractCopyRightWatermark：提取版权水印任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -12358,6 +12394,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param ExtractTraceWatermarkTask: 提取溯源水印任务信息，仅当 TaskType 为 ExtractTraceWatermark，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtractTraceWatermarkTask: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
+        :param ExtractCopyRightWatermarkTask: 提取版权水印任务信息，仅当 TaskType 为 ExtractCopyRightWatermark，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractCopyRightWatermarkTask: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTask`
         :param ReviewAudioVideoTask: 音视频审核任务信息，仅当 TaskType 为 ReviewAudioVideo，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
@@ -12390,6 +12429,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.RemoveWatermarkTask = None
         self.RebuildMediaTask = None
         self.ExtractTraceWatermarkTask = None
+        self.ExtractCopyRightWatermarkTask = None
         self.ReviewAudioVideoTask = None
         self.ReduceMediaBitrateTask = None
         self.DescribeFileAttributesTask = None
@@ -12447,6 +12487,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("ExtractTraceWatermarkTask") is not None:
             self.ExtractTraceWatermarkTask = ExtractTraceWatermarkTask()
             self.ExtractTraceWatermarkTask._deserialize(params.get("ExtractTraceWatermarkTask"))
+        if params.get("ExtractCopyRightWatermarkTask") is not None:
+            self.ExtractCopyRightWatermarkTask = ExtractCopyRightWatermarkTask()
+            self.ExtractCopyRightWatermarkTask._deserialize(params.get("ExtractCopyRightWatermarkTask"))
         if params.get("ReviewAudioVideoTask") is not None:
             self.ReviewAudioVideoTask = ReviewAudioVideoTask()
             self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
@@ -13669,6 +13712,7 @@ class EventContent(AbstractModel):
 <li>RebuildMediaComplete：音画质重生完成事件。</li>
 <li>ReviewAudioVideoComplete：音视频审核完成；</li>
 <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
+<li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li>
 <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
@@ -13731,6 +13775,9 @@ class EventContent(AbstractModel):
         :param ExtractTraceWatermarkCompleteEvent: 溯源水印提取完成事件，当事件类型为 ExtractTraceWatermarkComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtractTraceWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
+        :param ExtractCopyRightWatermarkCompleteEvent: 版权水印提取完成事件，当事件类型为 ExtractCopyRightWatermarkComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractCopyRightWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTask`
         :param ReviewAudioVideoCompleteEvent: 音视频审核完成事件，当事件类型为 ReviewAudioVideoComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewAudioVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
@@ -13761,6 +13808,7 @@ class EventContent(AbstractModel):
         self.RestoreMediaCompleteEvent = None
         self.RebuildMediaCompleteEvent = None
         self.ExtractTraceWatermarkCompleteEvent = None
+        self.ExtractCopyRightWatermarkCompleteEvent = None
         self.ReviewAudioVideoCompleteEvent = None
         self.ReduceMediaBitrateCompleteEvent = None
         self.DescribeFileAttributesCompleteEvent = None
@@ -13823,6 +13871,9 @@ class EventContent(AbstractModel):
         if params.get("ExtractTraceWatermarkCompleteEvent") is not None:
             self.ExtractTraceWatermarkCompleteEvent = ExtractTraceWatermarkTask()
             self.ExtractTraceWatermarkCompleteEvent._deserialize(params.get("ExtractTraceWatermarkCompleteEvent"))
+        if params.get("ExtractCopyRightWatermarkCompleteEvent") is not None:
+            self.ExtractCopyRightWatermarkCompleteEvent = ExtractCopyRightWatermarkTask()
+            self.ExtractCopyRightWatermarkCompleteEvent._deserialize(params.get("ExtractCopyRightWatermarkCompleteEvent"))
         if params.get("ReviewAudioVideoCompleteEvent") is not None:
             self.ReviewAudioVideoCompleteEvent = ReviewAudioVideoTask()
             self.ReviewAudioVideoCompleteEvent._deserialize(params.get("ReviewAudioVideoCompleteEvent"))
@@ -13904,6 +13955,121 @@ class ExecuteFunctionResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class ExtractCopyRightWatermarkTask(AbstractModel):
+    """提取版权水印任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param Input: 提取版权水印任务输入信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskInput`
+        :param Output: 提取版权水印任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskOutput`
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.ErrCodeExt = None
+        self.Input = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        if params.get("Input") is not None:
+            self.Input = ExtractCopyRightWatermarkTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = ExtractCopyRightWatermarkTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractCopyRightWatermarkTaskInput(AbstractModel):
+    """提取版权水印任务输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 需要提取水印的媒体 URL。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractCopyRightWatermarkTaskOutput(AbstractModel):
+    """提取版权水印输出信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 版权信息。
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ExtractTraceWatermarkRequest(AbstractModel):
@@ -18005,8 +18171,11 @@ class MediaTranscodeItem(AbstractModel):
         :type AudioStreamSet: list of MediaAudioStreamItem
         :param DigitalWatermarkType: 数字水印类型。可选值：
 <li>Trace 表示经过溯源水印处理；</li>
+<li>CopyRight 表示经过版权水印处理；</li>
 <li>None 表示没有经过数字水印处理。</li>
         :type DigitalWatermarkType: str
+        :param CopyRightWatermarkText: 版权信息。
+        :type CopyRightWatermarkText: str
         """
         self.Url = None
         self.Definition = None
@@ -18020,6 +18189,7 @@ class MediaTranscodeItem(AbstractModel):
         self.VideoStreamSet = None
         self.AudioStreamSet = None
         self.DigitalWatermarkType = None
+        self.CopyRightWatermarkText = None
 
 
     def _deserialize(self, params):
@@ -18045,6 +18215,7 @@ class MediaTranscodeItem(AbstractModel):
                 obj._deserialize(item)
                 self.AudioStreamSet.append(obj)
         self.DigitalWatermarkType = params.get("DigitalWatermarkType")
+        self.CopyRightWatermarkText = params.get("CopyRightWatermarkText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -27718,6 +27889,8 @@ class TranscodeTaskInput(AbstractModel):
         :type WatermarkSet: list of WatermarkInput
         :param TraceWatermark: 溯源水印。
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
+        :param CopyRightWatermark: 版权水印。
+        :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         :param MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput
         :param HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 10 个。
@@ -27736,6 +27909,7 @@ class TranscodeTaskInput(AbstractModel):
         self.Definition = None
         self.WatermarkSet = None
         self.TraceWatermark = None
+        self.CopyRightWatermark = None
         self.MosaicSet = None
         self.HeadTailSet = None
         self.StartTimeOffset = None
@@ -27753,6 +27927,9 @@ class TranscodeTaskInput(AbstractModel):
         if params.get("TraceWatermark") is not None:
             self.TraceWatermark = TraceWatermarkInput()
             self.TraceWatermark._deserialize(params.get("TraceWatermark"))
+        if params.get("CopyRightWatermark") is not None:
+            self.CopyRightWatermark = CopyRightWatermarkInput()
+            self.CopyRightWatermark._deserialize(params.get("CopyRightWatermark"))
         if params.get("MosaicSet") is not None:
             self.MosaicSet = []
             for item in params.get("MosaicSet"):

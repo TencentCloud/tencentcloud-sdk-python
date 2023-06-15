@@ -217,6 +217,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLivePadRule(self, request):
+        """创建直播垫片规则。
+
+        :param request: Request instance for CreateLivePadRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePadRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLivePadRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLivePadRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLivePadRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLivePadTemplate(self, request):
+        """创建直播垫片模板。
+
+        :param request: Request instance for CreateLivePadTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePadTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLivePadTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLivePadTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLivePadTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateLivePullStreamTask(self, request):
         """创建直播拉流任务。支持将外部已有的点播文件，或者直播源拉取过来转推到指定的目标地址。
         注意：
@@ -373,6 +419,29 @@ class LiveClient(AbstractClient):
             body = self.call("CreateLiveSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateLiveSnapshotTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateLiveStreamMonitor(self, request):
+        """该接口用来创建直播流监播任务。
+
+        :param request: Request instance for CreateLiveStreamMonitor.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveStreamMonitorRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveStreamMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLiveStreamMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLiveStreamMonitorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -658,6 +727,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteLivePadRule(self, request):
+        """删除直播垫片规则。
+
+        :param request: Request instance for DeleteLivePadRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLivePadRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLivePadRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLivePadRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLivePadRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLivePadTemplate(self, request):
+        """删除直播垫片模板。
+
+        :param request: Request instance for DeleteLivePadTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLivePadTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLivePadTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLivePadTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLivePadTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteLivePullStreamTask(self, request):
         """删除接口 CreateLivePullStreamTask 创建的拉流任务。
         注意：
@@ -790,6 +905,29 @@ class LiveClient(AbstractClient):
             body = self.call("DeleteLiveSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteLiveSnapshotTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLiveStreamMonitor(self, request):
+        """该接口用来删除直播流监播任务。
+
+        :param request: Request instance for DeleteLiveStreamMonitor.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveStreamMonitorRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveStreamMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLiveStreamMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLiveStreamMonitorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1517,6 +1655,75 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLivePadRules(self, request):
+        """获取直播垫片规则列表。
+
+        :param request: Request instance for DescribeLivePadRules.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePadRulesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePadRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLivePadRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLivePadRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLivePadTemplate(self, request):
+        """获取单个直播垫片模板
+
+        :param request: Request instance for DescribeLivePadTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePadTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePadTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLivePadTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLivePadTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLivePadTemplates(self, request):
+        """获取直播垫片模板。
+
+        :param request: Request instance for DescribeLivePadTemplates.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePadTemplatesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePadTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLivePadTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLivePadTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLivePlayAuthKey(self, request):
         """查询播放鉴权key。
 
@@ -1743,6 +1950,52 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeLiveStreamEventList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLiveStreamEventListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveStreamMonitor(self, request):
+        """该接口用来查询某个特定监播任务的配置。
+
+        :param request: Request instance for DescribeLiveStreamMonitor.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamMonitorRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveStreamMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveStreamMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLiveStreamMonitorList(self, request):
+        """该接口用来查询直播流监播任务配置的列表信息。
+
+        :param request: Request instance for DescribeLiveStreamMonitorList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamMonitorListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamMonitorListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveStreamMonitorList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveStreamMonitorListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2151,6 +2404,29 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeLogDownloadList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLogDownloadListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMonitorReport(self, request):
+        """用来查询监播场次7天内的智能识别、断流、低帧率等信息的汇总报告。
+
+        :param request: Request instance for DescribeMonitorReport.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeMonitorReportRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeMonitorReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMonitorReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMonitorReportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2750,6 +3026,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyLivePadTemplate(self, request):
+        """修改直播垫片模板。
+
+        :param request: Request instance for ModifyLivePadTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePadTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLivePadTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLivePadTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLivePadTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyLivePlayAuthKey(self, request):
         """修改播放鉴权key
 
@@ -2881,6 +3180,29 @@ class LiveClient(AbstractClient):
             body = self.call("ModifyLiveSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLiveSnapshotTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLiveStreamMonitor(self, request):
+        """该接口用来修改直播流监播任务的配置。
+
+        :param request: Request instance for ModifyLiveStreamMonitor.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveStreamMonitorRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveStreamMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLiveStreamMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLiveStreamMonitorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3054,6 +3376,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StartLiveStreamMonitor(self, request):
+        """该接口用来启动直播流监播任务。
+
+        :param request: Request instance for StartLiveStreamMonitor.
+        :type request: :class:`tencentcloud.live.v20180801.models.StartLiveStreamMonitorRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StartLiveStreamMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartLiveStreamMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartLiveStreamMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StopLiveRecord(self, request):
         """说明：录制后的文件存放于点播平台。用户如需使用录制功能，需首先自行开通点播账号并确保账号可用。录制文件存放后，相关费用（含存储以及下行播放流量）按照点播平台计费方式收取，请参考对应文档。
 
@@ -3068,6 +3413,29 @@ class LiveClient(AbstractClient):
             body = self.call("StopLiveRecord", params, headers=headers)
             response = json.loads(body)
             model = models.StopLiveRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopLiveStreamMonitor(self, request):
+        """该接口用来停止直播流监播任务。
+
+        :param request: Request instance for StopLiveStreamMonitor.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopLiveStreamMonitorRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopLiveStreamMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopLiveStreamMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopLiveStreamMonitorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

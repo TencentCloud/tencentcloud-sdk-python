@@ -338,6 +338,8 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
         :type CosTocken: str
         :param CosPrefix: 密钥可访问的文件前缀人。例如：CosPrefix=test/123/666，则该密钥只能操作test/123/666为前缀的文件，例如test/123/666/1.txt
         :type CosPrefix: str
+        :param CosToken: 密钥TOCKEN信息
+        :type CosToken: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -349,6 +351,7 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
         self.CosKey = None
         self.CosTocken = None
         self.CosPrefix = None
+        self.CosToken = None
         self.RequestId = None
 
 
@@ -361,6 +364,7 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
         self.CosKey = params.get("CosKey")
         self.CosTocken = params.get("CosTocken")
         self.CosPrefix = params.get("CosPrefix")
+        self.CosToken = params.get("CosToken")
         self.RequestId = params.get("RequestId")
 
 

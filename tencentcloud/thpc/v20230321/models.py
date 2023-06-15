@@ -269,11 +269,18 @@ class CFSOption(AbstractModel):
         :type Protocol: str
         :param StorageType: 文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
         :type StorageType: str
+        :param MountOption: 文件系统挂载挂载命令参数选项。
+
+- NFS 3.0默认值：vers=3,nolock,proto=tcp,noresvport
+- NFS 4.0默认值：vers=4.0,noresvport
+- TURBO默认值：user_xattr
+        :type MountOption: str
         """
         self.LocalPath = None
         self.RemotePath = None
         self.Protocol = None
         self.StorageType = None
+        self.MountOption = None
 
 
     def _deserialize(self, params):
@@ -281,6 +288,7 @@ class CFSOption(AbstractModel):
         self.RemotePath = params.get("RemotePath")
         self.Protocol = params.get("Protocol")
         self.StorageType = params.get("StorageType")
+        self.MountOption = params.get("MountOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -308,11 +316,14 @@ class CFSOptionOverview(AbstractModel):
         :type Protocol: str
         :param StorageType: 文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
         :type StorageType: str
+        :param MountOption: 文件系统挂载命令参数选项。
+        :type MountOption: str
         """
         self.LocalPath = None
         self.RemotePath = None
         self.Protocol = None
         self.StorageType = None
+        self.MountOption = None
 
 
     def _deserialize(self, params):
@@ -320,6 +331,7 @@ class CFSOptionOverview(AbstractModel):
         self.RemotePath = params.get("RemotePath")
         self.Protocol = params.get("Protocol")
         self.StorageType = params.get("StorageType")
+        self.MountOption = params.get("MountOption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

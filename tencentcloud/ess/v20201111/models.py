@@ -731,6 +731,7 @@ ComponentType为SIGN_DATE时，支持以下参数：
 参数样例：    "ComponentExtra": "{\"Format\":“yyyy m d”,\"FontSize\":12,\"Gaps\":\"2,2\", \"FontAlign\":\"Right\"}",
         :type ComponentExtra: str
         :param IsFormType: 是否是表单域类型，默认不false-不是
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsFormType: bool
         :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
 TEXT - 文本内容
@@ -818,8 +819,10 @@ KEYWORD 关键字，使用ComponentId指定关键字
         :param ChannelComponentId: 第三方应用集成平台模板控件 id 标识
         :type ChannelComponentId: str
         :param OffsetX: 指定关键字时横坐标偏移量，单位pt
+注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetX: float
         :param OffsetY: 指定关键字时纵坐标偏移量，单位pt
+注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetY: float
         :param ChannelComponentSource: 第三方应用集成中子客企业控件来源。0-平台指定；1-用户自定义
         :type ChannelComponentSource: int
@@ -1856,7 +1859,8 @@ class CreateIntegrationEmployeesRequest(AbstractModel):
         r"""
         :param Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Employees: 待创建员工的信息，Mobile和DisplayName必填,OpenId和Email选填，其他字段暂不支持
+        :param Employees: 待创建员工的信息，不超过20个。
+Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
         :type Employees: list of Staff
         :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -3615,7 +3619,7 @@ class DescribeIntegrationRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息
+        :param Operator: 操作人信息，UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param Limit: 返回最大数量，最大为200
         :type Limit: int
@@ -6326,7 +6330,9 @@ class UpdateIntegrationEmployeesRequest(AbstractModel):
         r"""
         :param Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Employees: 员工信息，OpenId和UserId必填一个,Email、DisplayName和Email选填，其他字段暂不支持
+        :param Employees: 员工信息，不超过100个。
+根据UserId或OpenId更新员工，必填一个，优先UserId。
+可更新Mobile、DisplayName、Email和Department.DepartmentId字段，其他字段暂不支持
         :type Employees: list of Staff
         :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`

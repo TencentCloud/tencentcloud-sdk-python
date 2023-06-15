@@ -2366,6 +2366,8 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         :type VPort: int
         :param SecurityGroup: 安全组
         :type SecurityGroup: list of str
+        :param ConnectionPoolType: 连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool为true时生效。
+        :type ConnectionPoolType: str
         """
         self.ProxyGroupId = None
         self.WeightMode = None
@@ -2384,6 +2386,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         self.Vip = None
         self.VPort = None
         self.SecurityGroup = None
+        self.ConnectionPoolType = None
 
 
     def _deserialize(self, params):
@@ -2409,6 +2412,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         self.Vip = params.get("Vip")
         self.VPort = params.get("VPort")
         self.SecurityGroup = params.get("SecurityGroup")
+        self.ConnectionPoolType = params.get("ConnectionPoolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

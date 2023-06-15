@@ -786,7 +786,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceParameters(self, request):
-        """获取实例可修改参数列表
+        """本接口（DescribeDBInstanceAttribute）用于查询实例的参数信息。
 
         :param request: Request instance for DescribeDBInstanceParameters.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBInstanceParametersRequest`

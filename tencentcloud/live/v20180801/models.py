@@ -1321,6 +1321,135 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLivePadRuleRequest(AbstractModel):
+    """CreateLivePadRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param TemplateId: 模板 ID。
+        :type TemplateId: int
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+        :type AppName: str
+        :param StreamName: 流名称。
+注：如果本参数设置为非空字符串，规则将只对此推流起作用。
+        :type StreamName: str
+        """
+        self.DomainName = None
+        self.TemplateId = None
+        self.AppName = None
+        self.StreamName = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.TemplateId = params.get("TemplateId")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLivePadRuleResponse(AbstractModel):
+    """CreateLivePadRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLivePadTemplateRequest(AbstractModel):
+    """CreateLivePadTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateName: 模板名称。
+长度上限：255字节。
+仅支持中文、英文、数字、_、-。
+        :type TemplateName: str
+        :param Url: 垫片内容。
+        :type Url: str
+        :param Description: 描述信息。
+长度上限：1024字节。
+仅支持中文、英文、数字、_、-。
+        :type Description: str
+        :param WaitDuration: 断流等待时间。
+取值范围：0-30000。
+单位：ms。
+        :type WaitDuration: int
+        :param MaxDuration: 最大垫片时长。
+取值范围：0 - 正无穷。
+单位：ms。
+        :type MaxDuration: int
+        :param Type: 垫片内容类型：
+1：图片，2：视频。
+默认值：1。
+        :type Type: int
+        """
+        self.TemplateName = None
+        self.Url = None
+        self.Description = None
+        self.WaitDuration = None
+        self.MaxDuration = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.TemplateName = params.get("TemplateName")
+        self.Url = params.get("Url")
+        self.Description = params.get("Description")
+        self.WaitDuration = params.get("WaitDuration")
+        self.MaxDuration = params.get("MaxDuration")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLivePadTemplateResponse(AbstractModel):
+    """CreateLivePadTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板Id。
+        :type TemplateId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TemplateId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLivePullStreamTaskRequest(AbstractModel):
     """CreateLivePullStreamTask请求参数结构体
 
@@ -1923,6 +2052,106 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateLiveStreamMonitorRequest(AbstractModel):
+    """CreateLiveStreamMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutputInfo: 监播任务的输出信息。
+        :type OutputInfo: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorOutputInfo`
+        :param InputList: 待监播的输入流信息列表。
+        :type InputList: list of LiveStreamMonitorInputInfo
+        :param MonitorName: 监播任务名称。字段长度小于128字节（一个汉字两个字节）。
+        :type MonitorName: str
+        :param NotifyPolicy: 监播事件通知策略。
+不填默认为没有任何通知。
+        :type NotifyPolicy: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorNotifyPolicy`
+        :param AsrLanguage: 智能语音识别语种设置：
+0 关闭 1 中文 2 英文 3 日文 4 韩文。
+        :type AsrLanguage: int
+        :param OcrLanguage: 智能文字识别语种设置：
+0 关闭 1 中、英文。
+        :type OcrLanguage: int
+        :param AiAsrInputIndexList: 智能语音识别的输入列表，若开启语音识别则必填。
+（第1条输入流index为1）
+        :type AiAsrInputIndexList: list of int non-negative
+        :param AiOcrInputIndexList: 智能文字识别的输入列表，若开启文字识别则必填。
+（第1条输入流index为1）
+        :type AiOcrInputIndexList: list of int non-negative
+        :param CheckStreamBroken: 是否开启断流检测。
+        :type CheckStreamBroken: int
+        :param CheckStreamLowFrameRate: 是否开启低帧率检测。
+        :type CheckStreamLowFrameRate: int
+        :param AllowMonitorReport: 是否存储监播事件到监播报告，以及是否允许查询监播报告。
+        :type AllowMonitorReport: int
+        """
+        self.OutputInfo = None
+        self.InputList = None
+        self.MonitorName = None
+        self.NotifyPolicy = None
+        self.AsrLanguage = None
+        self.OcrLanguage = None
+        self.AiAsrInputIndexList = None
+        self.AiOcrInputIndexList = None
+        self.CheckStreamBroken = None
+        self.CheckStreamLowFrameRate = None
+        self.AllowMonitorReport = None
+
+
+    def _deserialize(self, params):
+        if params.get("OutputInfo") is not None:
+            self.OutputInfo = LiveStreamMonitorOutputInfo()
+            self.OutputInfo._deserialize(params.get("OutputInfo"))
+        if params.get("InputList") is not None:
+            self.InputList = []
+            for item in params.get("InputList"):
+                obj = LiveStreamMonitorInputInfo()
+                obj._deserialize(item)
+                self.InputList.append(obj)
+        self.MonitorName = params.get("MonitorName")
+        if params.get("NotifyPolicy") is not None:
+            self.NotifyPolicy = LiveStreamMonitorNotifyPolicy()
+            self.NotifyPolicy._deserialize(params.get("NotifyPolicy"))
+        self.AsrLanguage = params.get("AsrLanguage")
+        self.OcrLanguage = params.get("OcrLanguage")
+        self.AiAsrInputIndexList = params.get("AiAsrInputIndexList")
+        self.AiOcrInputIndexList = params.get("AiOcrInputIndexList")
+        self.CheckStreamBroken = params.get("CheckStreamBroken")
+        self.CheckStreamLowFrameRate = params.get("CheckStreamLowFrameRate")
+        self.AllowMonitorReport = params.get("AllowMonitorReport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveStreamMonitorResponse(AbstractModel):
+    """CreateLiveStreamMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonitorId: 监播任务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MonitorId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MonitorId = params.get("MonitorId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2797,6 +3026,103 @@ class DeleteLiveDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteLivePadRuleRequest(AbstractModel):
+    """DeleteLivePadRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: 推流域名。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+        :type DomainName: str
+        :param AppName: 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+        :type AppName: str
+        :param StreamName: 流名称。
+域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+        :type StreamName: str
+        :param TemplateId: 直播垫片模板id。
+        :type TemplateId: int
+        """
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLivePadRuleResponse(AbstractModel):
+    """DeleteLivePadRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLivePadTemplateRequest(AbstractModel):
+    """DeleteLivePadTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板 ID。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLivePadTemplateResponse(AbstractModel):
+    """DeleteLivePadTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteLivePullStreamTaskRequest(AbstractModel):
     """DeleteLivePullStreamTask请求参数结构体
 
@@ -3057,6 +3383,47 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
 
 class DeleteLiveSnapshotTemplateResponse(AbstractModel):
     """DeleteLiveSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLiveStreamMonitorRequest(AbstractModel):
+    """DeleteLiveStreamMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonitorId: 监播任务ID
+        :type MonitorId: str
+        """
+        self.MonitorId = None
+
+
+    def _deserialize(self, params):
+        self.MonitorId = params.get("MonitorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveStreamMonitorResponse(AbstractModel):
+    """DeleteLiveStreamMonitor返回参数结构体
 
     """
 
@@ -4872,6 +5239,117 @@ class DescribeLivePackageInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLivePadRulesRequest(AbstractModel):
+    """DescribeLivePadRules请求参数结构体
+
+    """
+
+
+class DescribeLivePadRulesResponse(AbstractModel):
+    """DescribeLivePadRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: 规则信息列表。
+        :type Rules: list of RuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLivePadTemplateRequest(AbstractModel):
+    """DescribeLivePadTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板id。
+        :type TemplateId: int
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLivePadTemplateResponse(AbstractModel):
+    """DescribeLivePadTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Template: 直播垫片模板信息。
+        :type Template: :class:`tencentcloud.live.v20180801.models.PadTemplate`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Template = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = PadTemplate()
+            self.Template._deserialize(params.get("Template"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLivePadTemplatesRequest(AbstractModel):
+    """DescribeLivePadTemplates请求参数结构体
+
+    """
+
+
+class DescribeLivePadTemplatesResponse(AbstractModel):
+    """DescribeLivePadTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Templates: 直播垫片模板信息。
+        :type Templates: list of PadTemplate
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Templates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = PadTemplate()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLivePlayAuthKeyRequest(AbstractModel):
     """DescribeLivePlayAuthKey请求参数结构体
 
@@ -5407,6 +5885,114 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
         self.PageSize = params.get("PageSize")
         self.TotalNum = params.get("TotalNum")
         self.TotalPage = params.get("TotalPage")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveStreamMonitorListRequest(AbstractModel):
+    """DescribeLiveStreamMonitorList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Index: 查询列表时的起始偏移。
+        :type Index: int
+        :param Count: 本次查询的记录个数。最小值为1。
+        :type Count: int
+        """
+        self.Index = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Index = params.get("Index")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveStreamMonitorListResponse(AbstractModel):
+    """DescribeLiveStreamMonitorList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalNum: 账号下的直播流监播任务个数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalNum: int
+        :param LiveStreamMonitors: 直播流监播任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveStreamMonitors: list of LiveStreamMonitorInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalNum = None
+        self.LiveStreamMonitors = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalNum = params.get("TotalNum")
+        if params.get("LiveStreamMonitors") is not None:
+            self.LiveStreamMonitors = []
+            for item in params.get("LiveStreamMonitors"):
+                obj = LiveStreamMonitorInfo()
+                obj._deserialize(item)
+                self.LiveStreamMonitors.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLiveStreamMonitorRequest(AbstractModel):
+    """DescribeLiveStreamMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonitorId: 监播任务ID。
+        :type MonitorId: str
+        """
+        self.MonitorId = None
+
+
+    def _deserialize(self, params):
+        self.MonitorId = params.get("MonitorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveStreamMonitorResponse(AbstractModel):
+    """DescribeLiveStreamMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LiveStreamMonitor: 直播监播任务相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveStreamMonitor: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LiveStreamMonitor = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LiveStreamMonitor") is not None:
+            self.LiveStreamMonitor = LiveStreamMonitorInfo()
+            self.LiveStreamMonitor._deserialize(params.get("LiveStreamMonitor"))
         self.RequestId = params.get("RequestId")
 
 
@@ -6413,6 +6999,61 @@ class DescribeLogDownloadListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.LogInfoList.append(obj)
         self.TotalNum = params.get("TotalNum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMonitorReportRequest(AbstractModel):
+    """DescribeMonitorReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonitorId: 监播任务ID。
+        :type MonitorId: str
+        """
+        self.MonitorId = None
+
+
+    def _deserialize(self, params):
+        self.MonitorId = params.get("MonitorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMonitorReportResponse(AbstractModel):
+    """DescribeMonitorReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MPSResult: 媒体处理结果信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MPSResult: :class:`tencentcloud.live.v20180801.models.MPSResult`
+        :param DiagnoseResult: 媒体诊断结果信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnoseResult: :class:`tencentcloud.live.v20180801.models.DiagnoseResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MPSResult = None
+        self.DiagnoseResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MPSResult") is not None:
+            self.MPSResult = MPSResult()
+            self.MPSResult._deserialize(params.get("MPSResult"))
+        if params.get("DiagnoseResult") is not None:
+            self.DiagnoseResult = DiagnoseResult()
+            self.DiagnoseResult._deserialize(params.get("DiagnoseResult"))
         self.RequestId = params.get("RequestId")
 
 
@@ -7933,6 +8574,36 @@ class DescribeVisitTopSumInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DiagnoseResult(AbstractModel):
+    """媒体诊断结果，包含断流信息、低帧率信息等
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StreamBrokenResults: 断流信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamBrokenResults: list of str
+        :param LowFrameRateResults: 低帧率信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LowFrameRateResults: list of str
+        """
+        self.StreamBrokenResults = None
+        self.LowFrameRateResults = None
+
+
+    def _deserialize(self, params):
+        self.StreamBrokenResults = params.get("StreamBrokenResults")
+        self.LowFrameRateResults = params.get("LowFrameRateResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DomainCertInfo(AbstractModel):
     """域名证书信息
 
@@ -8788,6 +9459,254 @@ class LivePackageInfo(AbstractModel):
         
 
 
+class LiveStreamMonitorInfo(AbstractModel):
+    """直播监播任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonitorId: 监播任务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorId: str
+        :param MonitorName: 监播任务名称。128字节以内。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorName: str
+        :param OutputInfo: 监播任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputInfo: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorOutputInfo`
+        :param InputList: 待监播的输入流信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputList: list of LiveStreamMonitorInputInfo
+        :param Status: 监播任务状态。
+0： 代表空闲
+1： 代表监播中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param StartTime: 上一次的启动时间，unix时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param StopTime: 上一次的停止时间，unix时间戳。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StopTime: int
+        :param CreateTime: 监播任务创建时间，unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 监播任务更新时间，unix时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param NotifyPolicy: 监播事件通知策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyPolicy: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorNotifyPolicy`
+        :param AudibleInputIndexList: 输出音频的输入Index列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudibleInputIndexList: list of int non-negative
+        :param AiAsrInputIndexList: 开启智能语音识别的输入Index列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiAsrInputIndexList: list of int non-negative
+        :param CheckStreamBroken: 是否开启断流检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckStreamBroken: int
+        :param CheckStreamLowFrameRate: 是否开启低帧率检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckStreamLowFrameRate: int
+        :param AsrLanguage: 智能语音识别语种：
+0 关闭 1 中文 2 英文 3日文 4 韩文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrLanguage: int
+        :param OcrLanguage: 智能文字识别语种：
+0 关闭 1 中、英文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrLanguage: int
+        :param AiOcrInputIndexList: 开启智能文字识别的输入Index列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiOcrInputIndexList: list of int non-negative
+        :param AllowMonitorReport: 是否存储监播事件到监播报告，以及是否允许查询监播报告
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowMonitorReport: int
+        """
+        self.MonitorId = None
+        self.MonitorName = None
+        self.OutputInfo = None
+        self.InputList = None
+        self.Status = None
+        self.StartTime = None
+        self.StopTime = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.NotifyPolicy = None
+        self.AudibleInputIndexList = None
+        self.AiAsrInputIndexList = None
+        self.CheckStreamBroken = None
+        self.CheckStreamLowFrameRate = None
+        self.AsrLanguage = None
+        self.OcrLanguage = None
+        self.AiOcrInputIndexList = None
+        self.AllowMonitorReport = None
+
+
+    def _deserialize(self, params):
+        self.MonitorId = params.get("MonitorId")
+        self.MonitorName = params.get("MonitorName")
+        if params.get("OutputInfo") is not None:
+            self.OutputInfo = LiveStreamMonitorOutputInfo()
+            self.OutputInfo._deserialize(params.get("OutputInfo"))
+        if params.get("InputList") is not None:
+            self.InputList = []
+            for item in params.get("InputList"):
+                obj = LiveStreamMonitorInputInfo()
+                obj._deserialize(item)
+                self.InputList.append(obj)
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.StopTime = params.get("StopTime")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("NotifyPolicy") is not None:
+            self.NotifyPolicy = LiveStreamMonitorNotifyPolicy()
+            self.NotifyPolicy._deserialize(params.get("NotifyPolicy"))
+        self.AudibleInputIndexList = params.get("AudibleInputIndexList")
+        self.AiAsrInputIndexList = params.get("AiAsrInputIndexList")
+        self.CheckStreamBroken = params.get("CheckStreamBroken")
+        self.CheckStreamLowFrameRate = params.get("CheckStreamLowFrameRate")
+        self.AsrLanguage = params.get("AsrLanguage")
+        self.OcrLanguage = params.get("OcrLanguage")
+        self.AiOcrInputIndexList = params.get("AiOcrInputIndexList")
+        self.AllowMonitorReport = params.get("AllowMonitorReport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamMonitorInputInfo(AbstractModel):
+    """直播监播功能输入流信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputStreamName: 待监播的输入流名称。256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputStreamName: str
+        :param InputDomain: 待监播的输入流推流域名。128字节以内，只允许填处于启用状态的推流域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputDomain: str
+        :param InputApp: 待监播的输入流推流路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputApp: str
+        :param InputUrl: 待监播的输入流推流url。一般场景下，无需该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputUrl: str
+        :param Description: 描述。256字节以内。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self.InputStreamName = None
+        self.InputDomain = None
+        self.InputApp = None
+        self.InputUrl = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.InputStreamName = params.get("InputStreamName")
+        self.InputDomain = params.get("InputDomain")
+        self.InputApp = params.get("InputApp")
+        self.InputUrl = params.get("InputUrl")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamMonitorNotifyPolicy(AbstractModel):
+    """直播流监播通知策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotifyPolicyType: 通知策略类型：范围[0,1]
+0:代表不使用任何通知策略
+1:代表使用全局回调策略，所有事件通知到CallbackUrl。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyPolicyType: int
+        :param CallbackUrl: 回调URL：长度[0,512]
+只支持http和https类型的url。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackUrl: str
+        """
+        self.NotifyPolicyType = None
+        self.CallbackUrl = None
+
+
+    def _deserialize(self, params):
+        self.NotifyPolicyType = params.get("NotifyPolicyType")
+        self.CallbackUrl = params.get("CallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamMonitorOutputInfo(AbstractModel):
+    """直播流监播输出流信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutputStreamWidth: 监播任务输出流宽度像素。范围[1,1920]。建议至少大于100像素。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStreamWidth: int
+        :param OutputStreamHeight: 监播任务输出流长度像素。范围[1,1080]，建议至少大于100像素。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStreamHeight: int
+        :param OutputStreamName: 监播任务输出流名称。
+不填时，系统会自动生成。
+256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStreamName: str
+        :param OutputDomain: 监播任务播放域名。128字节以内，只允许填处于启用状态的播放域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputDomain: str
+        :param OutputApp: 监播任务播放路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputApp: str
+        """
+        self.OutputStreamWidth = None
+        self.OutputStreamHeight = None
+        self.OutputStreamName = None
+        self.OutputDomain = None
+        self.OutputApp = None
+
+
+    def _deserialize(self, params):
+        self.OutputStreamWidth = params.get("OutputStreamWidth")
+        self.OutputStreamHeight = params.get("OutputStreamHeight")
+        self.OutputStreamName = params.get("OutputStreamName")
+        self.OutputDomain = params.get("OutputDomain")
+        self.OutputApp = params.get("OutputApp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogInfo(AbstractModel):
     """日志url信息。
 
@@ -8816,6 +9735,36 @@ class LogInfo(AbstractModel):
         self.LogUrl = params.get("LogUrl")
         self.LogTime = params.get("LogTime")
         self.FileSize = params.get("FileSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSResult(AbstractModel):
+    """媒体处理结果，包含智能语音识别、智能文字识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AiAsrResults: 智能语音识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiAsrResults: list of str
+        :param AiOcrResults: 智能文字识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AiOcrResults: list of str
+        """
+        self.AiAsrResults = None
+        self.AiOcrResults = None
+
+
+    def _deserialize(self, params):
+        self.AiAsrResults = params.get("AiAsrResults")
+        self.AiOcrResults = params.get("AiOcrResults")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9029,6 +9978,79 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
 class ModifyLiveDomainRefererResponse(AbstractModel):
     """ModifyLiveDomainReferer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLivePadTemplateRequest(AbstractModel):
+    """ModifyLivePadTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板id。
+        :type TemplateId: int
+        :param Url: 垫片内容。
+        :type Url: str
+        :param WaitDuration: 断流等待时间。
+取值范围：0-30000。
+单位：ms。
+        :type WaitDuration: int
+        :param MaxDuration: 最大垫片时长。
+取值范围：0 - 正无穷。
+单位：ms。
+        :type MaxDuration: int
+        :param TemplateName: 模板名称。
+长度上限：255字节。
+仅支持中文、英文、数字、_、-。
+        :type TemplateName: str
+        :param Description: 描述信息。
+长度上限：1024字节。
+仅支持中文、英文、数字、_、-。
+        :type Description: str
+        :param Type: 垫片内容类型： 1：图片，2：视频。 默认值：1。
+        :type Type: int
+        """
+        self.TemplateId = None
+        self.Url = None
+        self.WaitDuration = None
+        self.MaxDuration = None
+        self.TemplateName = None
+        self.Description = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.Url = params.get("Url")
+        self.WaitDuration = params.get("WaitDuration")
+        self.MaxDuration = params.get("MaxDuration")
+        self.TemplateName = params.get("TemplateName")
+        self.Description = params.get("Description")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLivePadTemplateResponse(AbstractModel):
+    """ModifyLivePadTemplate返回参数结构体
 
     """
 
@@ -9557,6 +10579,102 @@ class ModifyLiveSnapshotTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLiveStreamMonitorRequest(AbstractModel):
+    """ModifyLiveStreamMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonitorId: 监播任务ID。
+        :type MonitorId: str
+        :param MonitorName: 监播任务的名称。长度128字节以内（一个汉字两个字节）。
+        :type MonitorName: str
+        :param OutputInfo: 监播任务输出信息。
+        :type OutputInfo: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorOutputInfo`
+        :param InputList: 待监播的输入流信息。
+        :type InputList: list of LiveStreamMonitorInputInfo
+        :param NotifyPolicy: 监播事件通知策略。
+        :type NotifyPolicy: :class:`tencentcloud.live.v20180801.models.LiveStreamMonitorNotifyPolicy`
+        :param AsrLanguage: 智能语音识别语种：
+0 关闭 1 中文 2 英文 3 日文 4 韩文。
+        :type AsrLanguage: int
+        :param OcrLanguage: 智能文字识别语种：
+0 关闭 1 中、英文。
+        :type OcrLanguage: int
+        :param AiAsrInputIndexList: 语音识别输入流列表，1代表第一条输入流。
+        :type AiAsrInputIndexList: list of int non-negative
+        :param AiOcrInputIndexList: 文字识别输入流列表，1代表第一条输入流。
+        :type AiOcrInputIndexList: list of int non-negative
+        :param CheckStreamBroken: 是否开启断流检测。
+        :type CheckStreamBroken: int
+        :param CheckStreamLowFrameRate: 是否开启低帧率检测。
+        :type CheckStreamLowFrameRate: int
+        :param AllowMonitorReport: 是否存储监播事件到监播报告，以及是否允许查询监播报告。
+        :type AllowMonitorReport: int
+        """
+        self.MonitorId = None
+        self.MonitorName = None
+        self.OutputInfo = None
+        self.InputList = None
+        self.NotifyPolicy = None
+        self.AsrLanguage = None
+        self.OcrLanguage = None
+        self.AiAsrInputIndexList = None
+        self.AiOcrInputIndexList = None
+        self.CheckStreamBroken = None
+        self.CheckStreamLowFrameRate = None
+        self.AllowMonitorReport = None
+
+
+    def _deserialize(self, params):
+        self.MonitorId = params.get("MonitorId")
+        self.MonitorName = params.get("MonitorName")
+        if params.get("OutputInfo") is not None:
+            self.OutputInfo = LiveStreamMonitorOutputInfo()
+            self.OutputInfo._deserialize(params.get("OutputInfo"))
+        if params.get("InputList") is not None:
+            self.InputList = []
+            for item in params.get("InputList"):
+                obj = LiveStreamMonitorInputInfo()
+                obj._deserialize(item)
+                self.InputList.append(obj)
+        if params.get("NotifyPolicy") is not None:
+            self.NotifyPolicy = LiveStreamMonitorNotifyPolicy()
+            self.NotifyPolicy._deserialize(params.get("NotifyPolicy"))
+        self.AsrLanguage = params.get("AsrLanguage")
+        self.OcrLanguage = params.get("OcrLanguage")
+        self.AiAsrInputIndexList = params.get("AiAsrInputIndexList")
+        self.AiOcrInputIndexList = params.get("AiOcrInputIndexList")
+        self.CheckStreamBroken = params.get("CheckStreamBroken")
+        self.CheckStreamLowFrameRate = params.get("CheckStreamLowFrameRate")
+        self.AllowMonitorReport = params.get("AllowMonitorReport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLiveStreamMonitorResponse(AbstractModel):
+    """ModifyLiveStreamMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLiveTimeShiftTemplateRequest(AbstractModel):
     """ModifyLiveTimeShiftTemplate请求参数结构体
 
@@ -9962,6 +11080,66 @@ class MonitorStreamPlayInfo(AbstractModel):
         self.Bandwidth = params.get("Bandwidth")
         self.Online = params.get("Online")
         self.Request = params.get("Request")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PadTemplate(AbstractModel):
+    """直播垫片模板。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板id。
+        :type TemplateId: int
+        :param TemplateName: 模板名称。
+        :type TemplateName: str
+        :param Url: 垫片内容。
+        :type Url: str
+        :param CreateTime: 模板创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 模板修改时间。
+        :type UpdateTime: str
+        :param Description: 模板描述。
+        :type Description: str
+        :param WaitDuration: 断流等待时间。
+取值范围：0-30000。
+单位：ms。
+        :type WaitDuration: int
+        :param MaxDuration: 最大垫片时长。
+取值范围：0 - 正无穷。
+单位：ms。
+        :type MaxDuration: int
+        :param Type: 垫片内容类型： 1：图片，2：视频。 默认值：1。
+        :type Type: int
+        """
+        self.TemplateId = None
+        self.TemplateName = None
+        self.Url = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Description = None
+        self.WaitDuration = None
+        self.MaxDuration = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        self.TemplateName = params.get("TemplateName")
+        self.Url = params.get("Url")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Description = params.get("Description")
+        self.WaitDuration = params.get("WaitDuration")
+        self.MaxDuration = params.get("MaxDuration")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11412,6 +12590,53 @@ class SnapshotTemplateInfo(AbstractModel):
         
 
 
+class StartLiveStreamMonitorRequest(AbstractModel):
+    """StartLiveStreamMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonitorId: 监播ID。
+        :type MonitorId: str
+        :param AudibleInputIndexList: 监播画面声音InputIndex,支持多个输入声音。
+取值范围 InputIndex必须已经存在。
+不填默认无声音输出。
+        :type AudibleInputIndexList: list of int non-negative
+        """
+        self.MonitorId = None
+        self.AudibleInputIndexList = None
+
+
+    def _deserialize(self, params):
+        self.MonitorId = params.get("MonitorId")
+        self.AudibleInputIndexList = params.get("AudibleInputIndexList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartLiveStreamMonitorResponse(AbstractModel):
+    """StartLiveStreamMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class StopLiveRecordRequest(AbstractModel):
     """StopLiveRecord请求参数结构体
 
@@ -11442,6 +12667,47 @@ class StopLiveRecordRequest(AbstractModel):
 
 class StopLiveRecordResponse(AbstractModel):
     """StopLiveRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopLiveStreamMonitorRequest(AbstractModel):
+    """StopLiveStreamMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MonitorId: 监播ID
+        :type MonitorId: str
+        """
+        self.MonitorId = None
+
+
+    def _deserialize(self, params):
+        self.MonitorId = params.get("MonitorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopLiveStreamMonitorResponse(AbstractModel):
+    """StopLiveStreamMonitor返回参数结构体
 
     """
 
