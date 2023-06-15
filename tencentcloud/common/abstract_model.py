@@ -32,7 +32,7 @@ class AbstractModel(object):
         d = vars(self)
         ret = {}
         for k in d:
-            if k.startswith("_"):
+            if k == "_headers":
                 continue
             if isinstance(d[k], AbstractModel):
                 r = d[k]._serialize(allow_none)
@@ -47,7 +47,7 @@ class AbstractModel(object):
             else:
                 r = d[k].encode("UTF-8") if isinstance(d[k], type(u"")) and sys.version_info[0] == 2 else d[k]
             if allow_none or r is not None:
-                ret[k[0].upper() + k[1:]] = r
+                ret[k[1].upper() + k[2:]] = r
         return ret
 
 
