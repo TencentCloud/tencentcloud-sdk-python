@@ -8127,6 +8127,29 @@ class DescribeEnableVpcCniProgressResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEncryptionStatusRequest(AbstractModel):
+    """DescribeEncryptionStatus请求参数结构体
+
+    """
+
+
+class DescribeEncryptionStatusResponse(AbstractModel):
+    """DescribeEncryptionStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExistedInstancesRequest(AbstractModel):
     """DescribeExistedInstances请求参数结构体
 
@@ -10333,6 +10356,29 @@ class DisableClusterDeletionProtectionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableEncryptionProtectionRequest(AbstractModel):
+    """DisableEncryptionProtection请求参数结构体
+
+    """
+
+
+class DisableEncryptionProtectionResponse(AbstractModel):
+    """DisableEncryptionProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisableEventPersistenceRequest(AbstractModel):
     """DisableEventPersistence请求参数结构体
 
@@ -11394,6 +11440,29 @@ class EnableClusterDeletionProtectionRequest(AbstractModel):
 
 class EnableClusterDeletionProtectionResponse(AbstractModel):
     """EnableClusterDeletionProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableEncryptionProtectionRequest(AbstractModel):
+    """EnableEncryptionProtection请求参数结构体
+
+    """
+
+
+class EnableEncryptionProtectionResponse(AbstractModel):
+    """EnableEncryptionProtection返回参数结构体
 
     """
 

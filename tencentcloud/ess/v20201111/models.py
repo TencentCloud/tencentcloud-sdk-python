@@ -1265,6 +1265,8 @@ class CreateFlowByFilesRequest(AbstractModel):
         :param Deadline: 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
         :type Deadline: int
+        :param RemindedOn: 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
+        :type RemindedOn: int
         :param Unordered: 发送类型：
 true：无序签
 false：有序签
@@ -1305,6 +1307,7 @@ MobileCheck：手机号验证
         self.NeedPreview = None
         self.PreviewType = None
         self.Deadline = None
+        self.RemindedOn = None
         self.Unordered = None
         self.CustomShowMap = None
         self.NeedSignReview = None
@@ -1345,6 +1348,7 @@ MobileCheck：手机号验证
         self.NeedPreview = params.get("NeedPreview")
         self.PreviewType = params.get("PreviewType")
         self.Deadline = params.get("Deadline")
+        self.RemindedOn = params.get("RemindedOn")
         self.Unordered = params.get("Unordered")
         self.CustomShowMap = params.get("CustomShowMap")
         self.NeedSignReview = params.get("NeedSignReview")
@@ -1532,11 +1536,11 @@ class CreateFlowRequest(AbstractModel):
         :type FlowType: str
         :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
         :type ClientToken: str
-        :param RelatedFlowId: 暂未开放
-        :type RelatedFlowId: str
         :param DeadLine: 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
         :type DeadLine: int
+        :param RemindedOn: 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
+        :type RemindedOn: int
         :param UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
         :type UserData: str
         :param FlowDescription: 签署流程描述,最大长度1000个字符
@@ -1553,8 +1557,6 @@ false：有序签
 
 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
         :type NeedSignReview: bool
-        :param CallbackUrl: 暂未开放
-        :type CallbackUrl: str
         :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param CcInfos: 被抄送人的信息列表。
@@ -1562,23 +1564,28 @@ false：有序签
         :type CcInfos: list of CcInfo
         :param AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type AutoSignScene: str
+        :param RelatedFlowId: 暂未开放
+        :type RelatedFlowId: str
+        :param CallbackUrl: 暂未开放
+        :type CallbackUrl: str
         """
         self.Operator = None
         self.FlowName = None
         self.Approvers = None
         self.FlowType = None
         self.ClientToken = None
-        self.RelatedFlowId = None
         self.DeadLine = None
+        self.RemindedOn = None
         self.UserData = None
         self.FlowDescription = None
         self.Unordered = None
         self.CustomShowMap = None
         self.NeedSignReview = None
-        self.CallbackUrl = None
         self.Agent = None
         self.CcInfos = None
         self.AutoSignScene = None
+        self.RelatedFlowId = None
+        self.CallbackUrl = None
 
 
     def _deserialize(self, params):
@@ -1594,14 +1601,13 @@ false：有序签
                 self.Approvers.append(obj)
         self.FlowType = params.get("FlowType")
         self.ClientToken = params.get("ClientToken")
-        self.RelatedFlowId = params.get("RelatedFlowId")
         self.DeadLine = params.get("DeadLine")
+        self.RemindedOn = params.get("RemindedOn")
         self.UserData = params.get("UserData")
         self.FlowDescription = params.get("FlowDescription")
         self.Unordered = params.get("Unordered")
         self.CustomShowMap = params.get("CustomShowMap")
         self.NeedSignReview = params.get("NeedSignReview")
-        self.CallbackUrl = params.get("CallbackUrl")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
@@ -1612,6 +1618,8 @@ false：有序签
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
         self.AutoSignScene = params.get("AutoSignScene")
+        self.RelatedFlowId = params.get("RelatedFlowId")
+        self.CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6273,7 +6281,7 @@ class UnbindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定
+        :param Operator: 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定(参数用法参考示例)
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param UserId: 电子签系统员工UserId
         :type UserId: str

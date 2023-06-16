@@ -2497,6 +2497,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ExtractCopyRightWatermark(self, request):
+        """提取版权水印信息。
+
+        :param request: Request instance for ExtractCopyRightWatermark.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExtractCopyRightWatermark", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExtractCopyRightWatermarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ExtractTraceWatermark(self, request):
         """用于提取溯源水印。
 

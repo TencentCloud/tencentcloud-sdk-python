@@ -2441,6 +2441,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEncryptionStatus(self, request):
+        """查询etcd数据是否进行加密
+
+        :param request: Request instance for DescribeEncryptionStatus.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEncryptionStatusRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEncryptionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEncryptionStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEncryptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeExistedInstances(self, request):
         """查询已经存在的节点，判断是否可以加入集群
 
@@ -3246,6 +3269,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableEncryptionProtection(self, request):
+        """关闭加密信息保护
+
+        :param request: Request instance for DisableEncryptionProtection.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DisableEncryptionProtectionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DisableEncryptionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableEncryptionProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableEncryptionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableEventPersistence(self, request):
         """关闭事件持久化功能
 
@@ -3352,6 +3398,29 @@ class TkeClient(AbstractClient):
             body = self.call("EnableClusterDeletionProtection", params, headers=headers)
             response = json.loads(body)
             model = models.EnableClusterDeletionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableEncryptionProtection(self, request):
+        """开启加密数据保护
+
+        :param request: Request instance for EnableEncryptionProtection.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableEncryptionProtectionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableEncryptionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableEncryptionProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableEncryptionProtectionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

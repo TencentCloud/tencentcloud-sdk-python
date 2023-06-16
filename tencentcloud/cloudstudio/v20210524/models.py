@@ -1938,9 +1938,6 @@ class WorkspaceTemplateInfo(AbstractModel):
         :param PluginFile: xxx
 注意：此字段可能返回 null，表示取不到有效值。
         :type PluginFile: str
-        :param PrebuildFile: xxx
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PrebuildFile: str
         :param Marked: 是否标记
         :type Marked: bool
         :param MarkAt: 标记状态
@@ -1986,7 +1983,6 @@ class WorkspaceTemplateInfo(AbstractModel):
         self.UserVersionControlRefType = None
         self.DevFile = None
         self.PluginFile = None
-        self.PrebuildFile = None
         self.Marked = None
         self.MarkAt = None
         self.CreateDate = None
@@ -2019,7 +2015,6 @@ class WorkspaceTemplateInfo(AbstractModel):
         self.UserVersionControlRefType = params.get("UserVersionControlRefType")
         self.DevFile = params.get("DevFile")
         self.PluginFile = params.get("PluginFile")
-        self.PrebuildFile = params.get("PrebuildFile")
         self.Marked = params.get("Marked")
         self.MarkAt = params.get("MarkAt")
         self.CreateDate = params.get("CreateDate")
