@@ -334,6 +334,11 @@ def test_import_cloudstudio():
     from tencentcloud.cloudstudio.v20210524 import models
 
 
+def test_import_cloudstudio():
+    from tencentcloud.cloudstudio.v20230508 import cloudstudio_client
+    from tencentcloud.cloudstudio.v20230508 import models
+
+
 def test_import_cls():
     from tencentcloud.cls.v20201016 import cls_client
     from tencentcloud.cls.v20201016 import models

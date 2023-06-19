@@ -15735,6 +15735,24 @@ OCCASION:偶然所得
         :param SumSettlementAmount: 累计结算金额
 注意：此字段可能返回 null，表示取不到有效值。
         :type SumSettlementAmount: str
+        :param PaidIncomeTax: 已缴个税
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaidIncomeTax: str
+        :param InPayIncomeTax: 提现中个税
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InPayIncomeTax: str
+        :param PaidValueAddedTax: 已缴增值税
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaidValueAddedTax: str
+        :param InPayValueAddedTax: 提现中增值税
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InPayValueAddedTax: str
+        :param PaidAttachTax: 已缴附加税
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaidAttachTax: str
+        :param InPayAttachTax: 提现中附加税
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InPayAttachTax: str
         """
         self.AccountId = None
         self.IncomeType = None
@@ -15745,6 +15763,12 @@ OCCASION:偶然所得
         self.PaidBalance = None
         self.InPayBalance = None
         self.SumSettlementAmount = None
+        self.PaidIncomeTax = None
+        self.InPayIncomeTax = None
+        self.PaidValueAddedTax = None
+        self.InPayValueAddedTax = None
+        self.PaidAttachTax = None
+        self.InPayAttachTax = None
 
 
     def _deserialize(self, params):
@@ -15757,6 +15781,12 @@ OCCASION:偶然所得
         self.PaidBalance = params.get("PaidBalance")
         self.InPayBalance = params.get("InPayBalance")
         self.SumSettlementAmount = params.get("SumSettlementAmount")
+        self.PaidIncomeTax = params.get("PaidIncomeTax")
+        self.InPayIncomeTax = params.get("InPayIncomeTax")
+        self.PaidValueAddedTax = params.get("PaidValueAddedTax")
+        self.InPayValueAddedTax = params.get("InPayValueAddedTax")
+        self.PaidAttachTax = params.get("PaidAttachTax")
+        self.InPayAttachTax = params.get("InPayAttachTax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -509,6 +509,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeWorkSpaces(self, request):
+        """授权工作空间列表
+
+        :param request: Request instance for DescribeWorkSpaces.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeWorkSpacesRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeWorkSpacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkSpaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkSpacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyJob(self, request):
         """更新作业属性，仅允许以下3种操作，不支持组合操作：
         (1)	更新作业名称

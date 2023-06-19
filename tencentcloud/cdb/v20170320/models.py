@@ -4983,9 +4983,9 @@ class DescribeBinlogsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页大小，默认值为20，最小值为1，最大值为100。
         :type Limit: int
-        :param MinStartTime: binlog开始时间，筛选大于等于此值，时间格式：2016-03-17 02:10:37
+        :param MinStartTime: binlog最早开始时间，时间格式：2016-03-17 02:10:37
         :type MinStartTime: str
-        :param MaxStartTime: binlog开始时间，筛选小于等于此值，时间格式：2016-03-17 02:10:37
+        :param MaxStartTime: binlog最晚开始时间，时间格式：2016-03-17 02:10:37
         :type MaxStartTime: str
         """
         self.InstanceId = None

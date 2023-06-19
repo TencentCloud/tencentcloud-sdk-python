@@ -2628,7 +2628,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeInovcationIndicators(self, request):
-        """查询调用监控指标
+        """废弃
 
         :param request: Request instance for DescribeInovcationIndicators.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInovcationIndicatorsRequest`

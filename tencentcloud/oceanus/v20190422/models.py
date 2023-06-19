@@ -320,6 +320,102 @@ class Cluster(AbstractModel):
         
 
 
+class ClusterGroupSetItem(AbstractModel):
+    """工作空间集群组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: clusterGroup 的 SerialId
+        :type ClusterId: str
+        :param Name: 集群名称
+        :type Name: str
+        :param Region: 地域
+        :type Region: str
+        :param Zone: 区
+        :type Zone: str
+        :param AppId: 账号 APPID
+        :type AppId: int
+        :param OwnerUin: 主账号 UIN
+        :type OwnerUin: str
+        :param CreatorUin: 创建账号 UIN
+        :type CreatorUin: str
+        :param CuNum: CU 数量
+        :type CuNum: int
+        :param CuMem: CU 内存规格
+        :type CuMem: int
+        :param Status: 集群状态, 1 未初始化,，3 初始化中，2 运行中
+        :type Status: int
+        :param StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param CreateTime: 集群创建时间
+        :type CreateTime: str
+        :param UpdateTime: 最后一次操作集群的时间
+        :type UpdateTime: str
+        :param Remark: 描述
+        :type Remark: str
+        :param NetEnvironmentType: 网络
+        :type NetEnvironmentType: int
+        :param FreeCuNum: 空闲 CU
+        :type FreeCuNum: int
+        :param FreeCu: 细粒度资源下的空闲CU
+        :type FreeCu: float
+        :param RunningCu: 运行中CU
+        :type RunningCu: float
+        :param PayMode: 付费模式
+        :type PayMode: int
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.Region = None
+        self.Zone = None
+        self.AppId = None
+        self.OwnerUin = None
+        self.CreatorUin = None
+        self.CuNum = None
+        self.CuMem = None
+        self.Status = None
+        self.StatusDesc = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Remark = None
+        self.NetEnvironmentType = None
+        self.FreeCuNum = None
+        self.FreeCu = None
+        self.RunningCu = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.AppId = params.get("AppId")
+        self.OwnerUin = params.get("OwnerUin")
+        self.CreatorUin = params.get("CreatorUin")
+        self.CuNum = params.get("CuNum")
+        self.CuMem = params.get("CuMem")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Remark = params.get("Remark")
+        self.NetEnvironmentType = params.get("NetEnvironmentType")
+        self.FreeCuNum = params.get("FreeCuNum")
+        self.FreeCu = params.get("FreeCu")
+        self.RunningCu = params.get("RunningCu")
+        self.PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterSession(AbstractModel):
     """session集群信息
 
@@ -1941,6 +2037,78 @@ class DescribeTreeResourcesRsp(AbstractModel):
         
 
 
+class DescribeWorkSpacesRequest(AbstractModel):
+    """DescribeWorkSpaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认 0
+        :type Offset: int
+        :param OrderType: 1 按照创建时间降序排序(默认) 2.按照创建时间升序排序，3. 按照状态降序排序 4. 按照状态升序排序 默认为0
+        :type OrderType: int
+        :param Limit: 请求的集群数量，默认 20
+        :type Limit: int
+        :param Filters: 过滤规则
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.OrderType = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.OrderType = params.get("OrderType")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkSpacesResponse(AbstractModel):
+    """DescribeWorkSpaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkSpaceSetItem: 空间详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkSpaceSetItem: list of WorkSpaceSetItem
+        :param TotalCount: 空间总数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WorkSpaceSetItem = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WorkSpaceSetItem") is not None:
+            self.WorkSpaceSetItem = []
+            for item in params.get("WorkSpaceSetItem"):
+                obj = WorkSpaceSetItem()
+                obj._deserialize(item)
+                self.WorkSpaceSetItem.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """查询作业列表时的过滤器
 
@@ -2756,6 +2924,77 @@ class ResourceRefJobInfo(AbstractModel):
         
 
 
+class RoleAuth(AbstractModel):
+    """角色授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppId: 用户 AppID
+        :type AppId: int
+        :param WorkSpaceSerialId: 工作空间 SerialId
+        :type WorkSpaceSerialId: str
+        :param OwnerUin: 主账号 UIN
+        :type OwnerUin: str
+        :param CreatorUin: 创建者 UIN
+        :type CreatorUin: str
+        :param AuthSubAccountUin: 绑定授权的 UIN
+        :type AuthSubAccountUin: str
+        :param Permission: 对应 role表的id
+        :type Permission: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 最后一次操作时间
+        :type UpdateTime: str
+        :param Status: 2 启用 1 停用
+        :type Status: int
+        :param Id: id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param WorkSpaceId: 工作空间id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkSpaceId: int
+        :param RoleName: 权限名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        """
+        self.AppId = None
+        self.WorkSpaceSerialId = None
+        self.OwnerUin = None
+        self.CreatorUin = None
+        self.AuthSubAccountUin = None
+        self.Permission = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Status = None
+        self.Id = None
+        self.WorkSpaceId = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.WorkSpaceSerialId = params.get("WorkSpaceSerialId")
+        self.OwnerUin = params.get("OwnerUin")
+        self.CreatorUin = params.get("CreatorUin")
+        self.AuthSubAccountUin = params.get("AuthSubAccountUin")
+        self.Permission = params.get("Permission")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Status = params.get("Status")
+        self.Id = params.get("Id")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        self.RoleName = params.get("RoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RunJobDescription(AbstractModel):
     """作业启动详情
 
@@ -3266,6 +3505,97 @@ class WorkSpaceClusterItem(AbstractModel):
         self.Status = params.get("Status")
         self.ProjectId = params.get("ProjectId")
         self.ProjectIdStr = params.get("ProjectIdStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkSpaceSetItem(AbstractModel):
+    """工作空间详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SerialId: 工作空间 SerialId
+        :type SerialId: str
+        :param AppId: 用户 APPID
+        :type AppId: int
+        :param OwnerUin: 主账号 UIN
+        :type OwnerUin: str
+        :param CreatorUin: 创建者 UIN
+        :type CreatorUin: str
+        :param WorkSpaceName: 工作空间名称
+        :type WorkSpaceName: str
+        :param Region: 区域
+        :type Region: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param Status: 1 未初始化 2 可用  -1 已删除
+        :type Status: int
+        :param Description: 工作空间描述
+        :type Description: str
+        :param ClusterGroupSetItem: 工作空间包含集群信息
+        :type ClusterGroupSetItem: list of ClusterGroupSetItem
+        :param RoleAuth: 工作空间角色的信息
+        :type RoleAuth: list of RoleAuth
+        :param RoleAuthCount: 工作空间成员数量
+        :type RoleAuthCount: int
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        :param JobsCount: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobsCount: int
+        """
+        self.SerialId = None
+        self.AppId = None
+        self.OwnerUin = None
+        self.CreatorUin = None
+        self.WorkSpaceName = None
+        self.Region = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Status = None
+        self.Description = None
+        self.ClusterGroupSetItem = None
+        self.RoleAuth = None
+        self.RoleAuthCount = None
+        self.WorkSpaceId = None
+        self.JobsCount = None
+
+
+    def _deserialize(self, params):
+        self.SerialId = params.get("SerialId")
+        self.AppId = params.get("AppId")
+        self.OwnerUin = params.get("OwnerUin")
+        self.CreatorUin = params.get("CreatorUin")
+        self.WorkSpaceName = params.get("WorkSpaceName")
+        self.Region = params.get("Region")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        if params.get("ClusterGroupSetItem") is not None:
+            self.ClusterGroupSetItem = []
+            for item in params.get("ClusterGroupSetItem"):
+                obj = ClusterGroupSetItem()
+                obj._deserialize(item)
+                self.ClusterGroupSetItem.append(obj)
+        if params.get("RoleAuth") is not None:
+            self.RoleAuth = []
+            for item in params.get("RoleAuth"):
+                obj = RoleAuth()
+                obj._deserialize(item)
+                self.RoleAuth.append(obj)
+        self.RoleAuthCount = params.get("RoleAuthCount")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        self.JobsCount = params.get("JobsCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
