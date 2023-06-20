@@ -57,6 +57,8 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         :param IntervalDays: 快照定期间隔天数，1-365 天；该参数与DayOfMonth,DayOfWeek互斥
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntervalDays: int
+        :param CrossRegionsAliveDays: 跨地域复制的快照保留时间
+        :type CrossRegionsAliveDays: int
         """
         self.AutoSnapshotPolicyId = None
         self.PolicyName = None
@@ -73,6 +75,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
         self.FileSystems = None
         self.DayOfMonth = None
         self.IntervalDays = None
+        self.CrossRegionsAliveDays = None
 
 
     def _deserialize(self, params):
@@ -96,6 +99,7 @@ class AutoSnapshotPolicyInfo(AbstractModel):
                 self.FileSystems.append(obj)
         self.DayOfMonth = params.get("DayOfMonth")
         self.IntervalDays = params.get("IntervalDays")
+        self.CrossRegionsAliveDays = params.get("CrossRegionsAliveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

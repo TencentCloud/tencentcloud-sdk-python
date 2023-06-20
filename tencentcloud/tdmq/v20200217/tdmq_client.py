@@ -2752,6 +2752,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SendRocketMQMessage(self, request):
+        """发送RocketMQ消息
+
+        :param request: Request instance for SendRocketMQMessage.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.SendRocketMQMessageRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.SendRocketMQMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendRocketMQMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendRocketMQMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UnbindCmqDeadLetter(self, request):
         """解绑cmq死信队列
 

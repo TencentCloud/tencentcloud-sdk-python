@@ -1810,6 +1810,96 @@ class GetLatesdTransactionListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetLatestTransactionListRequest(AbstractModel):
+    """GetLatestTransactionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Module: 模块名称，固定字段：transaction
+        :type Module: str
+        :param Operation: 操作名称，固定字段：latest_transaction_list
+        :type Operation: str
+        :param GroupId: 组织ID，固定字段：0
+        :type GroupId: int
+        :param ChannelId: 通道ID，固定字段：0
+        :type ChannelId: int
+        :param LatestBlockNumber: 获取的最新交易的区块数量，取值范围1~5
+        :type LatestBlockNumber: int
+        :param GroupName: 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+        :type GroupName: str
+        :param ChannelName: 需要查询的通道名称，可在通道详情或列表中获取
+        :type ChannelName: str
+        :param ClusterId: 区块链网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param Offset: 需要获取的起始交易偏移
+        :type Offset: int
+        :param Limit: 需要获取的交易数量
+        :type Limit: int
+        """
+        self.Module = None
+        self.Operation = None
+        self.GroupId = None
+        self.ChannelId = None
+        self.LatestBlockNumber = None
+        self.GroupName = None
+        self.ChannelName = None
+        self.ClusterId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.Operation = params.get("Operation")
+        self.GroupId = params.get("GroupId")
+        self.ChannelId = params.get("ChannelId")
+        self.LatestBlockNumber = params.get("LatestBlockNumber")
+        self.GroupName = params.get("GroupName")
+        self.ChannelName = params.get("ChannelName")
+        self.ClusterId = params.get("ClusterId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLatestTransactionListResponse(AbstractModel):
+    """GetLatestTransactionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 交易总数量
+        :type TotalCount: int
+        :param TransactionList: 交易列表
+        :type TransactionList: list of TransactionItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TransactionList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TransactionList") is not None:
+            self.TransactionList = []
+            for item in params.get("TransactionList"):
+                obj = TransactionItem()
+                obj._deserialize(item)
+                self.TransactionList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class GetPeerLogForUserRequest(AbstractModel):
     """GetPeerLogForUser请求参数结构体
 

@@ -96,7 +96,9 @@ class TbaasClient(AbstractClient):
 
 
     def DeployDynamicBcosContract(self, request):
-        """动态部署并发布Bcos合约
+        """Bcos区块链引擎已下线，请选用其他区块链引擎
+
+        动态部署并发布Bcos合约
 
         :param request: Request instance for DeployDynamicBcosContract.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicBcosContractRequest`
@@ -142,7 +144,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetBcosBlockByNumber(self, request):
-        """使用块高查询Bcos区块信息
+        """Bcos区块链引擎已下线，请选用其他区块链引擎
+
+        使用块高查询Bcos区块信息
 
         :param request: Request instance for GetBcosBlockByNumber.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockByNumberRequest`
@@ -165,7 +169,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetBcosBlockList(self, request):
-        """Bcos分页查询当前群组下的区块列表
+        """Bcos区块链引擎已下线，请选用其他区块链引擎
+
+        Bcos分页查询当前群组下的区块列表
 
         :param request: Request instance for GetBcosBlockList.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockListRequest`
@@ -188,7 +194,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetBcosTransByHash(self, request):
-        """Bcos根据交易哈希查看交易详细信息
+        """Bcos区块链引擎已下线，请选用其他区块链引擎
+
+        Bcos根据交易哈希查看交易详细信息
 
         :param request: Request instance for GetBcosTransByHash.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransByHashRequest`
@@ -211,7 +219,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetBcosTransList(self, request):
-        """Bcos分页查询当前群组的交易信息列表
+        """Bcos区块链引擎已下线，请选用其他区块链引擎
+
+        Bcos分页查询当前群组的交易信息列表
 
         :param request: Request instance for GetBcosTransList.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransListRequest`
@@ -441,7 +451,7 @@ class TbaasClient(AbstractClient):
 
 
     def GetLatesdTransactionList(self, request):
-        """获取最新交易列表
+        """获取最新交易列表（已废弃）
 
         :param request: Request instance for GetLatesdTransactionList.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetLatesdTransactionListRequest`
@@ -454,6 +464,29 @@ class TbaasClient(AbstractClient):
             body = self.call("GetLatesdTransactionList", params, headers=headers)
             response = json.loads(body)
             model = models.GetLatesdTransactionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetLatestTransactionList(self, request):
+        """获取fabric最新交易列表
+
+        :param request: Request instance for GetLatestTransactionList.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetLatestTransactionListRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetLatestTransactionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLatestTransactionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLatestTransactionListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -556,7 +589,9 @@ class TbaasClient(AbstractClient):
 
 
     def InvokeBcosTrans(self, request):
-        """执行Bcos交易，支持动态部署的合约
+        """Bcos区块链引擎已下线，请选用其他区块链引擎
+
+        执行Bcos交易，支持动态部署的合约
 
         :param request: Request instance for InvokeBcosTrans.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeBcosTransRequest`

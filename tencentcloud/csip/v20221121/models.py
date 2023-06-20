@@ -898,6 +898,90 @@ class CreateDomainAndIpResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRiskCenterScanTaskRequest(AbstractModel):
+    """CreateRiskCenterScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param ScanAssetType: 0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
+        :type ScanAssetType: int
+        :param ScanItem: 扫描项目；port/poc/weakpass/webcontent/configrisk
+        :type ScanItem: list of str
+        :param ScanPlanType: 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
+        :type ScanPlanType: int
+        :param Assets: 扫描资产信息列表
+        :type Assets: list of TaskAssetObject
+        :param ScanPlanContent: 扫描计划详情
+        :type ScanPlanContent: str
+        :param SelfDefiningAssets: ip/域名/url数组
+        :type SelfDefiningAssets: list of str
+        :param TaskAdvanceCFG: 高级配置
+        :type TaskAdvanceCFG: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`
+        :param TaskMode: 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
+        :type TaskMode: int
+        """
+        self.TaskName = None
+        self.ScanAssetType = None
+        self.ScanItem = None
+        self.ScanPlanType = None
+        self.Assets = None
+        self.ScanPlanContent = None
+        self.SelfDefiningAssets = None
+        self.TaskAdvanceCFG = None
+        self.TaskMode = None
+
+
+    def _deserialize(self, params):
+        self.TaskName = params.get("TaskName")
+        self.ScanAssetType = params.get("ScanAssetType")
+        self.ScanItem = params.get("ScanItem")
+        self.ScanPlanType = params.get("ScanPlanType")
+        if params.get("Assets") is not None:
+            self.Assets = []
+            for item in params.get("Assets"):
+                obj = TaskAssetObject()
+                obj._deserialize(item)
+                self.Assets.append(obj)
+        self.ScanPlanContent = params.get("ScanPlanContent")
+        self.SelfDefiningAssets = params.get("SelfDefiningAssets")
+        if params.get("TaskAdvanceCFG") is not None:
+            self.TaskAdvanceCFG = TaskAdvanceCFG()
+            self.TaskAdvanceCFG._deserialize(params.get("TaskAdvanceCFG"))
+        self.TaskMode = params.get("TaskMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRiskCenterScanTaskResponse(AbstractModel):
+    """CreateRiskCenterScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DBAssetVO(AbstractModel):
     """db资产输出字段
 
@@ -2860,6 +2944,185 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskAdvanceCFG(AbstractModel):
+    """任务高级配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VulRisk: 漏洞风险高级配置
+        :type VulRisk: list of TaskCenterVulRiskInputParam
+        :param WeakPwdRisk: 弱口令风险高级配置
+        :type WeakPwdRisk: list of TaskCenterWeakPwdRiskInputParam
+        :param CFGRisk: 配置风险高级配置
+        :type CFGRisk: list of TaskCenterCFGRiskInputParam
+        """
+        self.VulRisk = None
+        self.WeakPwdRisk = None
+        self.CFGRisk = None
+
+
+    def _deserialize(self, params):
+        if params.get("VulRisk") is not None:
+            self.VulRisk = []
+            for item in params.get("VulRisk"):
+                obj = TaskCenterVulRiskInputParam()
+                obj._deserialize(item)
+                self.VulRisk.append(obj)
+        if params.get("WeakPwdRisk") is not None:
+            self.WeakPwdRisk = []
+            for item in params.get("WeakPwdRisk"):
+                obj = TaskCenterWeakPwdRiskInputParam()
+                obj._deserialize(item)
+                self.WeakPwdRisk.append(obj)
+        if params.get("CFGRisk") is not None:
+            self.CFGRisk = []
+            for item in params.get("CFGRisk"):
+                obj = TaskCenterCFGRiskInputParam()
+                obj._deserialize(item)
+                self.CFGRisk.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskAssetObject(AbstractModel):
+    """任务资产项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AssetName: 资产名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetName: str
+        :param InstanceType: 	资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param AssetType: 资产分类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: str
+        :param Asset: ip/域名/资产id，数据库id等
+        :type Asset: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        """
+        self.AssetName = None
+        self.InstanceType = None
+        self.AssetType = None
+        self.Asset = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.AssetName = params.get("AssetName")
+        self.InstanceType = params.get("InstanceType")
+        self.AssetType = params.get("AssetType")
+        self.Asset = params.get("Asset")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskCenterCFGRiskInputParam(AbstractModel):
+    """配置风险高级配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ItemId: 检测项ID
+        :type ItemId: str
+        :param Enable: 是否开启，0-不开启，1-开启
+        :type Enable: int
+        :param ResourceType: 资源类型
+        :type ResourceType: str
+        """
+        self.ItemId = None
+        self.Enable = None
+        self.ResourceType = None
+
+
+    def _deserialize(self, params):
+        self.ItemId = params.get("ItemId")
+        self.Enable = params.get("Enable")
+        self.ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskCenterVulRiskInputParam(AbstractModel):
+    """漏洞风险高级配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RiskId: 风险ID
+        :type RiskId: str
+        :param Enable: 是否开启，0-不开启，1-开启
+        :type Enable: int
+        """
+        self.RiskId = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.RiskId = params.get("RiskId")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskCenterWeakPwdRiskInputParam(AbstractModel):
+    """弱口令风险高级配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CheckItemId: 检测项ID
+        :type CheckItemId: int
+        :param Enable: 是否开启，0-不开启，1-开启
+        :type Enable: int
+        """
+        self.CheckItemId = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.CheckItemId = params.get("CheckItemId")
+        self.Enable = params.get("Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

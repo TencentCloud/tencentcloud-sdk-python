@@ -72,6 +72,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateRiskCenterScanTask(self, request):
+        """创建风险中心扫描任务
+
+        :param request: Request instance for CreateRiskCenterScanTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateRiskCenterScanTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateRiskCenterScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRiskCenterScanTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRiskCenterScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCVMAssetInfo(self, request):
         """cvm详情
 

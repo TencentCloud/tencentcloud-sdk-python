@@ -14,5 +14,8 @@
 # limitations under the License.
 
 
+# 工作空间名称重复
+FAILEDOPERATION_WORKSPACENAMEDUPLICATE = 'FailedOperation.WorkspaceNameDuplicate'
+
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'

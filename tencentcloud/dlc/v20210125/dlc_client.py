@@ -211,7 +211,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelNotebookSessionStatement(self, request):
-        """本接口（CancelNotebookSessionStatement）用于取消session statement
+        """本接口（CancelNotebookSessionStatement）用于取消session中执行的任务
 
         :param request: Request instance for CancelNotebookSessionStatement.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelNotebookSessionStatementRequest`
@@ -234,7 +234,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelNotebookSessionStatementBatch(self, request):
-        """本接口（CancelNotebookSessionStatementBatch）用于按批取消Session statement。
+        """本接口（CancelNotebookSessionStatementBatch）用于批量取消Session 中执行的任务
 
         :param request: Request instance for CancelNotebookSessionStatementBatch.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelNotebookSessionStatementBatchRequest`
@@ -280,7 +280,7 @@ class DlcClient(AbstractClient):
 
 
     def CancelTask(self, request):
-        """本接口（CancelTask），用于取消任务执行
+        """本接口（CancelTask），用于取消任务
 
         :param request: Request instance for CancelTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CancelTaskRequest`
@@ -487,7 +487,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateNotebookSession(self, request):
-        """本接口（CreateNotebookSession）用于创建notebook livy session
+        """本接口（CreateNotebookSession）用于创建交互式session（notebook）
 
         :param request: Request instance for CreateNotebookSession.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionRequest`
@@ -510,7 +510,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateNotebookSessionStatement(self, request):
-        """本接口（CreateNotebookSessionStatement）用于创建session statement
+        """本接口（CreateNotebookSessionStatement）用于在session中执行代码片段
 
         :param request: Request instance for CreateNotebookSessionStatement.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionStatementRequest`
@@ -533,7 +533,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateNotebookSessionStatementSupportBatchSQL(self, request):
-        """本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建Statement批量运行SQL任务。
+        """本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建交互式session并执行SQL任务
 
         :param request: Request instance for CreateNotebookSessionStatementSupportBatchSQL.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateNotebookSessionStatementSupportBatchSQLRequest`
@@ -602,7 +602,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkApp(self, request):
-        """创建spark应用
+        """创建spark作业
 
         :param request: Request instance for CreateSparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppRequest`
@@ -625,7 +625,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkAppTask(self, request):
-        """创建spark任务
+        """启动Spark作业
 
         :param request: Request instance for CreateSparkAppTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppTaskRequest`
@@ -717,7 +717,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """本接口（CreateTask）用于创建sql查询任务。（推荐使用CreateTasks接口）
+        """本接口（CreateTask）用于创建并执行SQL任务。（推荐使用CreateTasks接口）
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTaskRequest`
@@ -740,7 +740,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTasks(self, request):
-        """本接口（CreateTasks），用于批量创建任务
+        """本接口（CreateTasks），用于批量创建并执行SQL任务
 
         :param request: Request instance for CreateTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTasksRequest`
@@ -878,7 +878,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteSparkApp(self, request):
-        """删除spark应用
+        """删除spark作业
 
         :param request: Request instance for DeleteSparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteSparkAppRequest`
@@ -1062,7 +1062,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeDataEngines(self, request):
-        """本接口（DescribeDataEngines）用于获取DataEngines信息列表
+        """本接口（DescribeDataEngines）用于查询DataEngines信息列表
 
         :param request: Request instance for DescribeDataEngines.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesRequest`
@@ -1108,7 +1108,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeEngineUsageInfo(self, request):
-        """本接口根据引擎ID获取数据引擎资源使用情况
+        """本接口根据引擎ID查询数据引擎资源使用情况
 
         :param request: Request instance for DescribeEngineUsageInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeEngineUsageInfoRequest`
@@ -1131,7 +1131,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeForbiddenTablePro(self, request):
-        """本接口（DescribeForbiddenTablePro）用于获取被禁用的表属性列表
+        """本接口（DescribeForbiddenTablePro）用于查询被禁用的表属性列表（新）
 
         :param request: Request instance for DescribeForbiddenTablePro.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeForbiddenTableProRequest`
@@ -1200,7 +1200,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSession(self, request):
-        """本接口（DescribeNotebookSession）用于获取notebook livy session详情信息
+        """本接口（DescribeNotebookSession）用于查询交互式 session详情信息
 
         :param request: Request instance for DescribeNotebookSession.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionRequest`
@@ -1223,7 +1223,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSessionLog(self, request):
-        """本接口（DescribeNotebookSessionLog）用于获取notebook livy session日志
+        """本接口（DescribeNotebookSessionLog）用于查询交互式 session日志
 
         :param request: Request instance for DescribeNotebookSessionLog.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionLogRequest`
@@ -1246,7 +1246,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSessionStatement(self, request):
-        """本接口（DescribeNotebookSessionStatement）用于获取session statement信息
+        """本接口（DescribeNotebookSessionStatement）用于查询session 中执行任务的详情
 
         :param request: Request instance for DescribeNotebookSessionStatement.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementRequest`
@@ -1292,7 +1292,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSessionStatements(self, request):
-        """本接口（DescribeNotebookSessionStatements）用于获取Session Statement列表。
+        """本接口（DescribeNotebookSessionStatements）用于查询Session中执行的任务列表
 
         :param request: Request instance for DescribeNotebookSessionStatements.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionStatementsRequest`
@@ -1315,7 +1315,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeNotebookSessions(self, request):
-        """本接口（DescribeNotebookSessions）用于获取notebook livy session列表
+        """本接口（DescribeNotebookSessions）用于查询交互式 session列表
 
         :param request: Request instance for DescribeNotebookSessions.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeNotebookSessionsRequest`
@@ -1361,7 +1361,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeScripts(self, request):
-        """该接口（DescribeScripts）用于获取所有SQL查询。
+        """该接口（DescribeScripts）用于查询SQL脚本列表
 
         :param request: Request instance for DescribeScripts.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeScriptsRequest`
@@ -1384,7 +1384,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppJob(self, request):
-        """查询具体的spark应用
+        """查询spark作业信息
 
         :param request: Request instance for DescribeSparkAppJob.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobRequest`
@@ -1407,7 +1407,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppJobs(self, request):
-        """获取spark应用列表。
+        """查询spark作业列表
 
         :param request: Request instance for DescribeSparkAppJobs.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobsRequest`
@@ -1430,7 +1430,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppTasks(self, request):
-        """查询spark应用的运行任务实例列表
+        """查询Spark作业的运行任务列表
 
         :param request: Request instance for DescribeSparkAppTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppTasksRequest`
@@ -1798,7 +1798,7 @@ class DlcClient(AbstractClient):
 
 
     def ListTaskJobLogDetail(self, request):
-        """本接口（ListTaskJobLogDetail）用于获取spark-jar日志列表
+        """本接口（ListTaskJobLogDetail）用于获取spark 作业任务日志详情
 
         :param request: Request instance for ListTaskJobLogDetail.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ListTaskJobLogDetailRequest`
@@ -1867,7 +1867,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifySparkApp(self, request):
-        """更新spark应用
+        """更新spark作业
 
         :param request: Request instance for ModifySparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppRequest`
@@ -1982,7 +1982,7 @@ class DlcClient(AbstractClient):
 
 
     def SuspendResumeDataEngine(self, request):
-        """本接口用于控制暂停或恢复数据引擎
+        """本接口用于控制挂起或启动数据引擎
 
         :param request: Request instance for SuspendResumeDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.SuspendResumeDataEngineRequest`

@@ -968,6 +968,81 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         
 
 
+class CommonMetrics(AbstractModel):
+    """任务公共指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CreateTaskTime: 创建任务时长，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTaskTime: float
+        :param ProcessTime: 预处理总时长，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessTime: float
+        :param QueueTime: 排队时长，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueTime: float
+        :param ExecutionTime: 执行时长，单位：ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionTime: float
+        :param IsResultCacheHit: 是否命中结果缓存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsResultCacheHit: bool
+        :param MatchedMVBytes: 匹配物化视图数据量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchedMVBytes: int
+        :param MatchedMVs: 匹配物化视图列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchedMVs: str
+        :param AffectedBytes: 结果数据量，单位：byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectedBytes: str
+        :param AffectedRows: 	结果行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectedRows: int
+        :param ProcessedBytes: 扫描数据量，单位：byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessedBytes: int
+        :param ProcessedRows: 	扫描行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessedRows: int
+        """
+        self.CreateTaskTime = None
+        self.ProcessTime = None
+        self.QueueTime = None
+        self.ExecutionTime = None
+        self.IsResultCacheHit = None
+        self.MatchedMVBytes = None
+        self.MatchedMVs = None
+        self.AffectedBytes = None
+        self.AffectedRows = None
+        self.ProcessedBytes = None
+        self.ProcessedRows = None
+
+
+    def _deserialize(self, params):
+        self.CreateTaskTime = params.get("CreateTaskTime")
+        self.ProcessTime = params.get("ProcessTime")
+        self.QueueTime = params.get("QueueTime")
+        self.ExecutionTime = params.get("ExecutionTime")
+        self.IsResultCacheHit = params.get("IsResultCacheHit")
+        self.MatchedMVBytes = params.get("MatchedMVBytes")
+        self.MatchedMVs = params.get("MatchedMVs")
+        self.AffectedBytes = params.get("AffectedBytes")
+        self.AffectedRows = params.get("AffectedRows")
+        self.ProcessedBytes = params.get("ProcessedBytes")
+        self.ProcessedRows = params.get("ProcessedRows")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDMSDatabaseRequest(AbstractModel):
     """CreateDMSDatabase请求参数结构体
 
@@ -1188,7 +1263,7 @@ class CreateDataEngineRequest(AbstractModel):
         :type CrontabResumeSuspend: int
         :param CrontabResumeSuspendStrategy: 定时启停策略，复杂类型：包含启停时间、挂起集群策略
         :type CrontabResumeSuspendStrategy: :class:`tencentcloud.dlc.v20210125.models.CrontabResumeSuspendStrategy`
-        :param EngineExecType: 引擎执行任务类型，默认为SQL
+        :param EngineExecType: 引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
         :type EngineExecType: str
         :param MaxConcurrency: 单个集群最大并发任务数，默认5
         :type MaxConcurrency: int
@@ -1756,7 +1831,7 @@ class CreateNotebookSessionStatementSupportBatchSQLRequest(AbstractModel):
         :type SessionId: str
         :param Code: 执行的代码
         :type Code: str
-        :param Kind: 类型，当前支持：spark、pyspark、sparkr、sql
+        :param Kind: 类型，当前支持：sql
         :type Kind: str
         :param SaveResult: 是否保存运行结果
         :type SaveResult: bool
@@ -1917,53 +1992,53 @@ class CreateSparkAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: spark应用名
+        :param AppName: spark作业名
         :type AppName: str
-        :param AppType: 1代表spark jar应用，2代表spark streaming应用
+        :param AppType: spark作业类型，1代表spark jar作业，2代表spark streaming作业
         :type AppType: int
-        :param DataEngine: 执行spark作业的数据引擎
+        :param DataEngine: 执行spark作业的数据引擎名称
         :type DataEngine: str
-        :param AppFile: spark应用的执行入口
+        :param AppFile: spark作业程序包文件路径
         :type AppFile: str
-        :param RoleArn: 执行spark作业的角色ID
+        :param RoleArn: 数据访问策略，CAM Role arn
         :type RoleArn: int
-        :param AppDriverSize: spark作业driver资源规格大小, 可取small,medium,large,xlarge
+        :param AppDriverSize: 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :type AppDriverSize: str
-        :param AppExecutorSize: spark作业executor资源规格大小, 可取small,medium,large,xlarge
+        :param AppExecutorSize: 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :type AppExecutorSize: str
         :param AppExecutorNums: spark作业executor个数
         :type AppExecutorNums: int
         :param Eni: 该字段已下线，请使用字段Datasource
         :type Eni: str
-        :param IsLocal: 是否本地上传，可去cos,lakefs
+        :param IsLocal: spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocal: str
-        :param MainClass: spark jar作业时的主类
+        :param MainClass: spark作业主类
         :type MainClass: str
         :param AppConf: spark配置，以换行符分隔
         :type AppConf: str
-        :param IsLocalJars: 是否本地上传，包含cos,lakefs
+        :param IsLocalJars: spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocalJars: str
-        :param AppJars: spark jar作业依赖jars，以逗号分隔
+        :param AppJars: spark 作业依赖jar包（--jars），以逗号分隔
         :type AppJars: str
-        :param IsLocalFiles: 是否本地上传，包含cos,lakefs
+        :param IsLocalFiles: spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocalFiles: str
-        :param AppFiles: spark作业依赖资源，以逗号分隔
+        :param AppFiles: spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
         :type AppFiles: str
-        :param CmdArgs: spark作业命令行参数
+        :param CmdArgs: spark作业程序入参，空格分割
         :type CmdArgs: str
-        :param MaxRetries: 只对spark流任务生效
+        :param MaxRetries: 最大重试次数，只对spark流任务生效
         :type MaxRetries: int
-        :param DataSource: 数据源名
+        :param DataSource: 数据源名称
         :type DataSource: str
-        :param IsLocalPythonFiles: pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :param IsLocalPythonFiles: pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocalPythonFiles: str
-        :param AppPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+        :param AppPythonFiles: pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
         :type AppPythonFiles: str
-        :param IsLocalArchives: archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :param IsLocalArchives: spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocalArchives: str
-        :param AppArchives: archives：依赖资源
+        :param AppArchives: spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
         :type AppArchives: str
-        :param SparkImage: Spark Image 版本
+        :param SparkImage: Spark Image 版本号
         :type SparkImage: str
         :param SparkImageVersion: Spark Image 版本名称
         :type SparkImageVersion: str
@@ -2073,7 +2148,7 @@ class CreateSparkAppTaskRequest(AbstractModel):
         r"""
         :param JobName: spark作业名
         :type JobName: str
-        :param CmdArgs: spark作业的命令行参数，以空格分隔；一般用于周期性调用使用
+        :param CmdArgs: spark作业程序入参，以空格分隔；一般用于周期性调用使用
         :type CmdArgs: str
         """
         self.JobName = None
@@ -3637,7 +3712,7 @@ class DeleteSparkAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: spark应用名
+        :param AppName: spark作业名
         :type AppName: str
         """
         self.AppName = None
@@ -4252,13 +4327,7 @@ class DescribeDataEnginesRequest(AbstractModel):
         r"""
         :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Filters: 滤类型，传参Name应为以下其中一个,
-data-engine-name - String 
-engine-type - String
-state - String 
-mode - String 
-create-time - String 
-message - String
+        :param Filters: 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH）
         :type Filters: list of Filter
         :param SortBy: 排序字段，支持如下字段类型，create-time
         :type SortBy: str
@@ -4272,7 +4341,7 @@ message - String
         :type ExcludePublicEngine: bool
         :param AccessTypes: 参数应该为引擎权限类型，有效类型："USE", "MODIFY", "OPERATE", "MONITOR", "DELETE"
         :type AccessTypes: list of str
-        :param EngineExecType: 引擎执行任务类型，有效值：SQL/BATCH
+        :param EngineExecType: 引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
         :type EngineExecType: str
         :param EngineType: 引擎类型，有效值：spark/presto
         :type EngineType: str
@@ -4365,7 +4434,7 @@ class DescribeDatabasesRequest(AbstractModel):
         :type KeyWord: str
         :param DatasourceConnectionName: 数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为DataLakeCatalog
         :type DatasourceConnectionName: str
-        :param Sort: 排序字段，当前版本仅支持按库名排序
+        :param Sort: 排序字段，CreateTime：创建时间，Name：数据库名称
         :type Sort: str
         :param Asc: 排序类型：false：降序（默认）、true：升序
         :type Asc: bool
@@ -4431,7 +4500,7 @@ class DescribeEngineUsageInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DataEngineId: House Id
+        :param DataEngineId: 数据引擎ID
         :type DataEngineId: str
         """
         self.DataEngineId = None
@@ -4851,9 +4920,9 @@ class DescribeNotebookSessionsRequest(AbstractModel):
         :type SortFields: list of str
         :param Asc: 排序字段：true：升序、false：降序（默认）
         :type Asc: bool
-        :param Limit: 分页字段
+        :param Limit: 分页参数，默认10
         :type Limit: int
-        :param Offset: 分页字段
+        :param Offset: 分页参数，默认0
         :type Offset: int
         """
         self.DataEngineName = None
@@ -5077,7 +5146,7 @@ class DescribeSparkAppJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param JobId: spark作业Id，与JobName同时存在时，JobName无效
+        :param JobId: spark作业Id，与JobName同时存在时，JobName无效，JobId与JobName至少存在一个
         :type JobId: str
         :param JobName: spark作业名
         :type JobName: str
@@ -5137,7 +5206,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
         :type SortBy: str
         :param Sorting: 正序或者倒序，例如：desc
         :type Sorting: str
-        :param Filters: 按照该参数过滤,支持spark-job-name
+        :param Filters: 过滤条件，如下支持的过滤类型，传参Name应为其一:spark-job-name（作业名称），spark-job-id（作业id），spark-app-type（作业类型，1：批任务，2：流任务，4：SQL作业），user-name（创建人），key-word（作业名称或ID关键词模糊搜索）
         :type Filters: list of Filter
         :param StartTime: 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
         :type StartTime: str
@@ -5224,9 +5293,9 @@ class DescribeSparkAppTasksRequest(AbstractModel):
         :type Limit: int
         :param TaskId: 执行实例id
         :type TaskId: str
-        :param StartTime: 更新时间起始点
+        :param StartTime: 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
         :type StartTime: str
-        :param EndTime: 更新时间截止点
+        :param EndTime: 更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
         :type EndTime: str
         :param Filters: 按照该参数过滤,支持task-state
         :type Filters: list of Filter
@@ -5457,11 +5526,11 @@ table-id - String - （过滤条件）table id形如：12342。
         :type Filters: list of Filter
         :param DatasourceConnectionName: 指定查询的数据源名称，默认为DataLakeCatalog
         :type DatasourceConnectionName: str
-        :param StartTime: 起始时间：用于对更新时间的筛选
+        :param StartTime: 起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
         :type StartTime: str
-        :param EndTime: 终止时间：用于对更新时间的筛选
+        :param EndTime: 终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
         :type EndTime: str
-        :param Sort: 排序字段，支持：CreateTime、UpdateTime、StorageSize、RecordCount、Name（不传则默认按name升序）
+        :param Sort: 排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
         :type Sort: str
         :param Asc: 排序字段，false：降序（默认）；true：升序
         :type Asc: bool
@@ -5621,7 +5690,7 @@ task-kind - string （任务类型过滤）
         :type StartTime: str
         :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
         :type EndTime: str
-        :param DataEngineName: 支持计算资源名字筛选
+        :param DataEngineName: 数据引擎名称，用于筛选
         :type DataEngineName: str
         """
         self.Limit = None
@@ -6737,55 +6806,55 @@ class ModifySparkAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AppName: spark应用名
+        :param AppName: spark作业名
         :type AppName: str
-        :param AppType: 1代表spark jar应用，2代表spark streaming应用
+        :param AppType: spark作业类型，1代表spark jar作业，2代表spark streaming作业
         :type AppType: int
-        :param DataEngine: 执行spark作业的数据引擎
+        :param DataEngine: 执行spark作业的数据引擎名称
         :type DataEngine: str
-        :param AppFile: spark应用的执行入口
+        :param AppFile: spark作业程序包文件路径
         :type AppFile: str
-        :param RoleArn: 执行spark作业的角色ID
+        :param RoleArn: 数据访问策略，CAM Role arn
         :type RoleArn: int
-        :param AppDriverSize: spark作业driver资源规格大小, 可取small,medium,large,xlarge
+        :param AppDriverSize: 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :type AppDriverSize: str
-        :param AppExecutorSize: spark作业executor资源规格大小, 可取small,medium,large,xlarge
+        :param AppExecutorSize: 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :type AppExecutorSize: str
         :param AppExecutorNums: spark作业executor个数
         :type AppExecutorNums: int
-        :param SparkAppId: spark应用Id
+        :param SparkAppId: spark作业Id
         :type SparkAppId: str
         :param Eni: 该字段已下线，请使用字段Datasource
         :type Eni: str
-        :param IsLocal: 是否本地上传，可取cos,lakefs
+        :param IsLocal: spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocal: str
-        :param MainClass: spark jar作业时的主类
+        :param MainClass: spark作业主类
         :type MainClass: str
         :param AppConf: spark配置，以换行符分隔
         :type AppConf: str
-        :param IsLocalJars: jar资源依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :param IsLocalJars: spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocalJars: str
-        :param AppJars: spark jar作业依赖jars，以逗号分隔
+        :param AppJars: spark 作业依赖jar包（--jars），以逗号分隔
         :type AppJars: str
-        :param IsLocalFiles: file资源依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :param IsLocalFiles: spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocalFiles: str
-        :param AppFiles: spark作业依赖资源，以逗号分隔
+        :param AppFiles: spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
         :type AppFiles: str
-        :param IsLocalPythonFiles: pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :param IsLocalPythonFiles: pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocalPythonFiles: str
-        :param AppPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+        :param AppPythonFiles: pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
         :type AppPythonFiles: str
-        :param CmdArgs: spark作业命令行参数
+        :param CmdArgs: spark作业程序入参
         :type CmdArgs: str
-        :param MaxRetries: 只对spark流任务生效
+        :param MaxRetries: 最大重试次数，只对spark流任务生效
         :type MaxRetries: int
         :param DataSource: 数据源名
         :type DataSource: str
-        :param IsLocalArchives: archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :param IsLocalArchives: spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
         :type IsLocalArchives: str
-        :param AppArchives: archives：依赖资源
+        :param AppArchives: spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
         :type AppArchives: str
-        :param SparkImage: Spark Image 版本
+        :param SparkImage: Spark Image 版本号
         :type SparkImage: str
         :param SparkImageVersion: Spark Image 版本名称
         :type SparkImageVersion: str
@@ -7556,6 +7625,36 @@ class Policy(AbstractModel):
         
 
 
+class PrestoMonitorMetrics(AbstractModel):
+    """Presto监控指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LocalCacheHitRate: 	Alluxio本地缓存命中率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalCacheHitRate: float
+        :param FragmentCacheHitRate: Fragment缓存命中率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FragmentCacheHitRate: float
+        """
+        self.LocalCacheHitRate = None
+        self.FragmentCacheHitRate = None
+
+
+    def _deserialize(self, params):
+        self.LocalCacheHitRate = params.get("LocalCacheHitRate")
+        self.FragmentCacheHitRate = params.get("FragmentCacheHitRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Property(AbstractModel):
     """数据库和数据表属性信息
 
@@ -7945,6 +8044,36 @@ class SparkJobInfo(AbstractModel):
         self.DataEngineClusterType = params.get("DataEngineClusterType")
         self.DataEngineImageVersion = params.get("DataEngineImageVersion")
         self.IsInherit = params.get("IsInherit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparkMonitorMetrics(AbstractModel):
+    """Spark监控数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShuffleWriteBytesCos: shuffle写溢出到COS数据量，单位：byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShuffleWriteBytesCos: int
+        :param ShuffleWriteBytesTotal: shuffle写数据量，单位：byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShuffleWriteBytesTotal: int
+        """
+        self.ShuffleWriteBytesCos = None
+        self.ShuffleWriteBytesTotal = None
+
+
+    def _deserialize(self, params):
+        self.ShuffleWriteBytesCos = params.get("ShuffleWriteBytesCos")
+        self.ShuffleWriteBytesTotal = params.get("ShuffleWriteBytesTotal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8729,6 +8858,15 @@ class TaskResponseInfo(AbstractModel):
         :param ExecutorMaxNumbers: 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorMaxNumbers: int
+        :param CommonMetrics: 任务公共指标数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommonMetrics: :class:`tencentcloud.dlc.v20210125.models.CommonMetrics`
+        :param SparkMonitorMetrics: spark任务指标数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.SparkMonitorMetrics`
+        :param PrestoMonitorMetrics: presto任务指标数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrestoMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.PrestoMonitorMetrics`
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -8767,6 +8905,9 @@ class TaskResponseInfo(AbstractModel):
         self.ExecutorSize = None
         self.ExecutorNums = None
         self.ExecutorMaxNumbers = None
+        self.CommonMetrics = None
+        self.SparkMonitorMetrics = None
+        self.PrestoMonitorMetrics = None
 
 
     def _deserialize(self, params):
@@ -8807,6 +8948,15 @@ class TaskResponseInfo(AbstractModel):
         self.ExecutorSize = params.get("ExecutorSize")
         self.ExecutorNums = params.get("ExecutorNums")
         self.ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        if params.get("CommonMetrics") is not None:
+            self.CommonMetrics = CommonMetrics()
+            self.CommonMetrics._deserialize(params.get("CommonMetrics"))
+        if params.get("SparkMonitorMetrics") is not None:
+            self.SparkMonitorMetrics = SparkMonitorMetrics()
+            self.SparkMonitorMetrics._deserialize(params.get("SparkMonitorMetrics"))
+        if params.get("PrestoMonitorMetrics") is not None:
+            self.PrestoMonitorMetrics = PrestoMonitorMetrics()
+            self.PrestoMonitorMetrics._deserialize(params.get("PrestoMonitorMetrics"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

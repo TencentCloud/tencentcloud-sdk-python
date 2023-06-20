@@ -10753,6 +10753,76 @@ class SendMsgResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SendRocketMQMessageRequest(AbstractModel):
+    """SendRocketMQMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param NamespaceId: 命名空间
+        :type NamespaceId: str
+        :param TopicName: topic名称
+        :type TopicName: str
+        :param MsgBody: 信息内容
+        :type MsgBody: str
+        :param MsgKey: 消息key信息
+        :type MsgKey: str
+        :param MsgTag: 消息tag信息
+        :type MsgTag: str
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.TopicName = None
+        self.MsgBody = None
+        self.MsgKey = None
+        self.MsgTag = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.TopicName = params.get("TopicName")
+        self.MsgBody = params.get("MsgBody")
+        self.MsgKey = params.get("MsgKey")
+        self.MsgTag = params.get("MsgTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendRocketMQMessageResponse(AbstractModel):
+    """SendRocketMQMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 发送结果
+        :type Result: bool
+        :param MsgId: 消息ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.MsgId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.MsgId = params.get("MsgId")
+        self.RequestId = params.get("RequestId")
+
+
 class Sort(AbstractModel):
     """排序器
 
