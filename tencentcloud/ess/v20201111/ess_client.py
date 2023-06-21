@@ -836,6 +836,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFlowComponents(self, request):
+        """查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息
+
+        :param request: Request instance for DescribeFlowComponents.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFlowComponentsRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeFlowComponentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlowComponents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFlowComponentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFlowEvidenceReport(self, request):
         """查询出证报告，返回报告 URL。
 

@@ -479,6 +479,9 @@ LIMITEXCEEDED_ATTACHEDSNAPSHOTPOLICYEXCEEDED = 'LimitExceeded.AttachedSnapshotPo
 # 带宽包配额超过限制。
 LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = 'LimitExceeded.BandwidthPackageQuota'
 
+# 当前带宽包加入资源上限。
+LIMITEXCEEDED_BANDWIDTHPACKAGERESOURCEQUOTA = 'LimitExceeded.BandwidthPackageResourceQuota'
+
 # 超过更换IP配额。
 LIMITEXCEEDED_CHANGEADDRESSQUOTA = 'LimitExceeded.ChangeAddressQuota'
 

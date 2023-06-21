@@ -750,6 +750,41 @@ class BatchModifyTopicResultDTO(AbstractModel):
         
 
 
+class BrokerTopicData(AbstractModel):
+    """主题占用Broker磁盘大小
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: 主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param TopicId: 主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param DataSize: 主题占用Broker 容量大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSize: int
+        """
+        self.TopicName = None
+        self.TopicId = None
+        self.DataSize = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.TopicId = params.get("TopicId")
+        self.DataSize = params.get("DataSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelAuthorizationTokenRequest(AbstractModel):
     """CancelAuthorizationToken请求参数结构体
 
@@ -6089,11 +6124,14 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
         :type BeginDate: str
         :param EndDate: 排行结束日期
         :type EndDate: str
+        :param BrokerIp: Broker IP 地址
+        :type BrokerIp: str
         """
         self.InstanceId = None
         self.RankingType = None
         self.BeginDate = None
         self.EndDate = None
+        self.BrokerIp = None
 
 
     def _deserialize(self, params):
@@ -6101,6 +6139,7 @@ class DescribeTopicFlowRankingRequest(AbstractModel):
         self.RankingType = params.get("RankingType")
         self.BeginDate = params.get("BeginDate")
         self.EndDate = params.get("EndDate")
+        self.BrokerIp = params.get("BrokerIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12072,10 +12111,18 @@ class TopicFlowRankingResult(AbstractModel):
         :param TopicMessageHeap: Topic 消息堆积/占用磁盘排行
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicMessageHeap: list of TopicMessageHeapRanking
+        :param BrokerIp: Broker Ip 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerIp: list of str
+        :param BrokerTopicData: 单个broker 节点 Topic占用的数据大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerTopicData: list of BrokerTopicData
         """
         self.TopicFlow = None
         self.ConsumeSpeed = None
         self.TopicMessageHeap = None
+        self.BrokerIp = None
+        self.BrokerTopicData = None
 
 
     def _deserialize(self, params):
@@ -12097,6 +12144,13 @@ class TopicFlowRankingResult(AbstractModel):
                 obj = TopicMessageHeapRanking()
                 obj._deserialize(item)
                 self.TopicMessageHeap.append(obj)
+        self.BrokerIp = params.get("BrokerIp")
+        if params.get("BrokerTopicData") is not None:
+            self.BrokerTopicData = []
+            for item in params.get("BrokerTopicData"):
+                obj = BrokerTopicData()
+                obj._deserialize(item)
+                self.BrokerTopicData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

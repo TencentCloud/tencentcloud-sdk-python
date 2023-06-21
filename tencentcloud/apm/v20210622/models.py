@@ -552,11 +552,14 @@ class DescribeApmInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param DemoInstanceFlag: 是否查询官方demo实例
         :type DemoInstanceFlag: int
+        :param AllRegionsFlag: 是否查询全地域实例
+        :type AllRegionsFlag: int
         """
         self.Tags = None
         self.InstanceName = None
         self.InstanceIds = None
         self.DemoInstanceFlag = None
+        self.AllRegionsFlag = None
 
 
     def _deserialize(self, params):
@@ -569,6 +572,7 @@ class DescribeApmInstancesRequest(AbstractModel):
         self.InstanceName = params.get("InstanceName")
         self.InstanceIds = params.get("InstanceIds")
         self.DemoInstanceFlag = params.get("DemoInstanceFlag")
+        self.AllRegionsFlag = params.get("AllRegionsFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

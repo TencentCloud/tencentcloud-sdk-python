@@ -728,7 +728,11 @@ ComponentType为SIGN_DATE时，支持以下参数：
 5 Gaps:： 字符串类型，仅在Format为“yyyy m d”时起作用，格式为用逗号分开的两个整数，例如”2,2”，两个数字分别是日期格式的前后两个空隙中的空格个数
 如果extra参数为空，默认为”yyyy年m月d日”格式的居中日期
 特别地，如果extra中Format字段为空或无法被识别，则extra参数会被当作默认值处理（Font，FontSize，Gaps和FontAlign都不会起效）
-参数样例：    "ComponentExtra": "{\"Format\":“yyyy m d”,\"FontSize\":12,\"Gaps\":\"2,2\", \"FontAlign\":\"Right\"}",
+参数样例：    "ComponentExtra": "{\"Format\":“yyyy m d”,\"FontSize\":12,\"Gaps\":\"2,2\", \"FontAlign\":\"Right\"}"
+
+ComponentType为SIGN_SEAL类型时，支持以下参数：
+1.PageRanges：PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）
+参数样例： "ComponentExtra":"{\"PageRanges\":[\"PageRange\":{\"BeginPage\":1,\"EndPage\":-1}]}"
         :type ComponentExtra: str
         :param IsFormType: 是否是表单域类型，默认不false-不是
 注意：此字段可能返回 null，表示取不到有效值。
@@ -3303,6 +3307,69 @@ class DescribeFlowBriefsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFlowComponentsRequest(AbstractModel):
+    """DescribeFlowComponents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 操作者信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param FlowId: 电子签流程的Id
+        :type FlowId: str
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self.Operator = None
+        self.FlowId = None
+        self.Agent = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.FlowId = params.get("FlowId")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlowComponentsResponse(AbstractModel):
+    """DescribeFlowComponents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecipientComponentInfos: 流程关联的填写控件信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecipientComponentInfos: list of RecipientComponentInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RecipientComponentInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RecipientComponentInfos") is not None:
+            self.RecipientComponentInfos = []
+            for item in params.get("RecipientComponentInfos"):
+                obj = RecipientComponentInfo()
+                obj._deserialize(item)
+                self.RecipientComponentInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlowEvidenceReportRequest(AbstractModel):
     """DescribeFlowEvidenceReport请求参数结构体
 
@@ -4454,6 +4521,56 @@ WEWORKAPP场景下指企业自有应用获取企微明文的userid
         self.RecipientId = params.get("RecipientId")
         self.ApproverSource = params.get("ApproverSource")
         self.CustomUserId = params.get("CustomUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilledComponent(AbstractModel):
+    """文档内的填充控件返回结构体，返回控件的基本信息和填写内容值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ComponentId: 控件Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentId: str
+        :param ComponentName: 控件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentName: str
+        :param ComponentFillStatus: 控件填写状态；0-未填写；1-已填写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentFillStatus: str
+        :param ComponentValue: 控件填写内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentValue: str
+        :param ComponentRecipientId: 控件所属参与方Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentRecipientId: str
+        :param ImageUrl: 图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
+        """
+        self.ComponentId = None
+        self.ComponentName = None
+        self.ComponentFillStatus = None
+        self.ComponentValue = None
+        self.ComponentRecipientId = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ComponentId = params.get("ComponentId")
+        self.ComponentName = params.get("ComponentName")
+        self.ComponentFillStatus = params.get("ComponentFillStatus")
+        self.ComponentValue = params.get("ComponentValue")
+        self.ComponentRecipientId = params.get("ComponentRecipientId")
+        self.ImageUrl = params.get("ImageUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5732,6 +5849,51 @@ class Recipient(AbstractModel):
         self.UserId = params.get("UserId")
         self.DeliveryMethod = params.get("DeliveryMethod")
         self.RecipientExtra = params.get("RecipientExtra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecipientComponentInfo(AbstractModel):
+    """参与方填写控件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecipientId: 参与方Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecipientId: str
+        :param RecipientFillStatus: 参与方填写状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecipientFillStatus: str
+        :param IsPromoter: 是否发起方
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPromoter: bool
+        :param Components: 填写控件内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Components: list of FilledComponent
+        """
+        self.RecipientId = None
+        self.RecipientFillStatus = None
+        self.IsPromoter = None
+        self.Components = None
+
+
+    def _deserialize(self, params):
+        self.RecipientId = params.get("RecipientId")
+        self.RecipientFillStatus = params.get("RecipientFillStatus")
+        self.IsPromoter = params.get("IsPromoter")
+        if params.get("Components") is not None:
+            self.Components = []
+            for item in params.get("Components"):
+                obj = FilledComponent()
+                obj._deserialize(item)
+                self.Components.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

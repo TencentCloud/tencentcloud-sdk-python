@@ -66,7 +66,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
         :param RoleSessionName: 临时会话名称，由用户自定义名称。
 长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@_-。 正则为：[\w+=,.@_-]*
         :type RoleSessionName: str
-        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+        :param DurationSeconds: 指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
         :type DurationSeconds: int
         :param Policy: 策略描述
 注意：
@@ -120,11 +120,11 @@ class AssumeRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Credentials: 临时安全证书
+        :param Credentials: 临时访问凭证
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param ExpiredTime: 证书无效的时间，返回 Unix 时间戳，精确到秒
+        :param ExpiredTime: 临时访问凭证的过期时间，返回 Unix 时间戳，精确到秒
         :type ExpiredTime: int
-        :param Expiration: 证书无效的时间，以 iso8601 格式的 UTC 时间表示
+        :param Expiration: 临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
         :type Expiration: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -159,7 +159,7 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
         :type RoleArn: str
         :param RoleSessionName: 会话名称
         :type RoleSessionName: str
-        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+        :param DurationSeconds: 指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
         :type DurationSeconds: int
         """
         self.SAMLAssertion = None
@@ -193,9 +193,9 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
         r"""
         :param Credentials: 对象里面包含 Token，TmpSecretId，TmpSecretKey 三元组
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param ExpiredTime: 证书无效的时间，返回 Unix 时间戳，精确到秒
+        :param ExpiredTime: 临时访问凭证的过期时间，返回 Unix 时间戳，精确到秒
         :type ExpiredTime: int
-        :param Expiration: 证书无效的时间，以 ISO8601 格式的 UTC 时间表示
+        :param Expiration: 临时访问凭证的过期时间，以 ISO8601 格式的 UTC 时间表示
         :type Expiration: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -230,7 +230,7 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
         :type RoleArn: str
         :param RoleSessionName: 会话名称
         :type RoleSessionName: str
-        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+        :param DurationSeconds: 指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
         :type DurationSeconds: int
         """
         self.ProviderId = None
@@ -262,11 +262,11 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ExpiredTime: 临时密钥过期时间(时间戳)
+        :param ExpiredTime: 临时访问凭证过期时间(时间戳)
         :type ExpiredTime: int
-        :param Expiration: 临时密钥过期时间
+        :param Expiration: 临时访问凭证过期时间
         :type Expiration: str
-        :param Credentials: 临时密钥
+        :param Credentials: 临时访问凭证
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -375,7 +375,7 @@ class GetFederationTokenRequest(AbstractModel):
         r"""
         :param Name: 您可以自定义调用方英文名称，由字母组成。
         :type Name: str
-        :param Policy: 授予该临时证书权限的CAM策略
+        :param Policy: 授予该临时访问凭证权限的CAM策略
 注意：
 1、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 2、策略中不能包含 principal 元素。
@@ -409,11 +409,11 @@ class GetFederationTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Credentials: 临时证书
+        :param Credentials: 临时访问凭证
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param ExpiredTime: 临时证书有效的时间，返回 Unix 时间戳，精确到秒
+        :param ExpiredTime: 临时访问凭证有效的时间，返回 Unix 时间戳，精确到秒
         :type ExpiredTime: int
-        :param Expiration: 证书有效的时间，以 iso8601 格式的 UTC 时间表示
+        :param Expiration: 临时访问凭证有效的时间，以 iso8601 格式的 UTC 时间表示
 注意：此字段可能返回 null，表示取不到有效值。
         :type Expiration: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

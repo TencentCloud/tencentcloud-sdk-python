@@ -2545,6 +2545,56 @@ class DescribeDBSyncModeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBTmpInstancesRequest(AbstractModel):
+    """DescribeDBTmpInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBTmpInstancesResponse(AbstractModel):
+    """DescribeDBTmpInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TmpInstances: 临时实例列表
+        :type TmpInstances: list of TmpInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TmpInstances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TmpInstances") is not None:
+            self.TmpInstances = []
+            for item in params.get("TmpInstances"):
+                obj = TmpInstance()
+                obj._deserialize(item)
+                self.TmpInstances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDCDBInstanceDetailRequest(AbstractModel):
     """DescribeDCDBInstanceDetail请求参数结构体
 
@@ -6626,6 +6676,101 @@ class TerminateDedicatedDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class TmpInstance(AbstractModel):
+    """临时实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppId: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param InstanceRemark: 实例备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceRemark: str
+        :param TempType: 0:非临时实例 ,1:无效临时实例, 2:回档成功的有效临时实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TempType: int
+        :param Status: 实例状态,0:待初始化,1:流程处理中,2:有效状态,-1:已隔离，-2：已下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param InstanceId: 实例 ID，形如：tdsql-ow728lmc。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Vip: 实例虚IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param Vport: 实例虚端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vport: int
+        :param PeriodEndTime: 有效期结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodEndTime: str
+        :param SrcInstanceId: 源实例 ID，形如：tdsql-ow728lmc。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcInstanceId: str
+        :param StatusDesc: 实例状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param Region: 实例所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Zone: 实例所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param Vipv6: 实例虚IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vipv6: str
+        :param Ipv6Flag: 实例IPv6标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6Flag: int
+        """
+        self.AppId = None
+        self.CreateTime = None
+        self.InstanceRemark = None
+        self.TempType = None
+        self.Status = None
+        self.InstanceId = None
+        self.Vip = None
+        self.Vport = None
+        self.PeriodEndTime = None
+        self.SrcInstanceId = None
+        self.StatusDesc = None
+        self.Region = None
+        self.Zone = None
+        self.Vipv6 = None
+        self.Ipv6Flag = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.CreateTime = params.get("CreateTime")
+        self.InstanceRemark = params.get("InstanceRemark")
+        self.TempType = params.get("TempType")
+        self.Status = params.get("Status")
+        self.InstanceId = params.get("InstanceId")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        self.PeriodEndTime = params.get("PeriodEndTime")
+        self.SrcInstanceId = params.get("SrcInstanceId")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.Vipv6 = params.get("Vipv6")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpgradeDCDBInstanceRequest(AbstractModel):

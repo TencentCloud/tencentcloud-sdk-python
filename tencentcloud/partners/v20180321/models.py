@@ -334,6 +334,9 @@ class AgentDealNewElem(AbstractModel):
         :param UpdateTime: 订单更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param ResourceIds: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: list of str
         """
         self.DealId = None
         self.DealName = None
@@ -363,6 +366,7 @@ class AgentDealNewElem(AbstractModel):
         self.ProductInfo = None
         self.PaymentMethod = None
         self.UpdateTime = None
+        self.ResourceIds = None
 
 
     def _deserialize(self, params):
@@ -401,6 +405,7 @@ class AgentDealNewElem(AbstractModel):
                 self.ProductInfo.append(obj)
         self.PaymentMethod = params.get("PaymentMethod")
         self.UpdateTime = params.get("UpdateTime")
+        self.ResourceIds = params.get("ResourceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

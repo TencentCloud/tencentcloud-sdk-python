@@ -27,30 +27,30 @@ class CreateLibraryRequest(AbstractModel):
         r"""
         :param Name: 媒体库名称，最多 50 个字符
         :type Name: str
-        :param BucketName: 存储桶全名，新建后不可更改
+        :param Remark: 备注，最多 250 个字符
+        :type Remark: str
+        :param BucketName: 存储桶全名，新建后不可更改。当前版本不再支持指定存储桶。
         :type BucketName: str
-        :param BucketRegion: 存储桶所在地域，新建后不可更改
+        :param BucketRegion: 存储桶所在地域，新建后不可更改。当前版本不再支持指定存储桶所在地域。
         :type BucketRegion: str
         :param LibraryExtension: 媒体库配置项，部分参数新建后不可更改
         :type LibraryExtension: :class:`tencentcloud.smh.v20210712.models.LibraryExtension`
-        :param Remark: 备注，最多 250 个字符
-        :type Remark: str
         """
         self.Name = None
+        self.Remark = None
         self.BucketName = None
         self.BucketRegion = None
         self.LibraryExtension = None
-        self.Remark = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
         self.BucketName = params.get("BucketName")
         self.BucketRegion = params.get("BucketRegion")
         if params.get("LibraryExtension") is not None:
             self.LibraryExtension = LibraryExtension()
             self.LibraryExtension._deserialize(params.get("LibraryExtension"))
-        self.Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

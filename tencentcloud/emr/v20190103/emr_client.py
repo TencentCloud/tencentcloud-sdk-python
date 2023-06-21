@@ -581,7 +581,7 @@ class EmrClient(AbstractClient):
 
 
     def StartStopServiceOrMonitor(self, request):
-        """用于启动或停止监控或服务
+        """用于启停服务 重启服务等功能
 
         :param request: Request instance for StartStopServiceOrMonitor.
         :type request: :class:`tencentcloud.emr.v20190103.models.StartStopServiceOrMonitorRequest`

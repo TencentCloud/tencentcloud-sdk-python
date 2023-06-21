@@ -5397,6 +5397,53 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLivePullStreamTaskStatusRequest(AbstractModel):
+    """DescribeLivePullStreamTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLivePullStreamTaskStatusResponse(AbstractModel):
+    """DescribeLivePullStreamTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskStatusInfo: 任务状态信息。
+        :type TaskStatusInfo: :class:`tencentcloud.live.v20180801.models.TaskStatusInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskStatusInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaskStatusInfo") is not None:
+            self.TaskStatusInfo = TaskStatusInfo()
+            self.TaskStatusInfo._deserialize(params.get("TaskStatusInfo"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLivePullStreamTasksRequest(AbstractModel):
     """DescribeLivePullStreamTasks请求参数结构体
 
@@ -12937,11 +12984,17 @@ class StreamOnlineInfo(AbstractModel):
         :type AppName: str
         :param DomainName: 推流域名。
         :type DomainName: str
+        :param PushToDelay: 流是否推送到延播。
+0 - 无延播，
+1 - 有延播。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PushToDelay: int
         """
         self.StreamName = None
         self.PublishTimeList = None
         self.AppName = None
         self.DomainName = None
+        self.PushToDelay = None
 
 
     def _deserialize(self, params):
@@ -12954,6 +13007,59 @@ class StreamOnlineInfo(AbstractModel):
                 self.PublishTimeList.append(obj)
         self.AppName = params.get("AppName")
         self.DomainName = params.get("DomainName")
+        self.PushToDelay = params.get("PushToDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskStatusInfo(AbstractModel):
+    """直播拉流任务状态信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileUrl: 当前使用的源 URL。
+        :type FileUrl: str
+        :param LoopedTimes: 点播源任务的轮播次数。
+        :type LoopedTimes: int
+        :param OffsetTime: 点播源的播放偏移，单位：秒。
+        :type OffsetTime: int
+        :param ReportTime: 最新心跳上报时间。UTC时间，例如：
+2022-02-11T10:00:00Z。
+注意：UTC时间与北京时间相差八小时。
+        :type ReportTime: str
+        :param RunStatus: 实际运行状态：
+active - 活跃，
+inactive - 不活跃。
+        :type RunStatus: str
+        :param FileDuration: 点播源的文件时长，单位：秒。
+        :type FileDuration: int
+        :param NextFileUrl: 下一进度点播文件 URL。
+        :type NextFileUrl: str
+        """
+        self.FileUrl = None
+        self.LoopedTimes = None
+        self.OffsetTime = None
+        self.ReportTime = None
+        self.RunStatus = None
+        self.FileDuration = None
+        self.NextFileUrl = None
+
+
+    def _deserialize(self, params):
+        self.FileUrl = params.get("FileUrl")
+        self.LoopedTimes = params.get("LoopedTimes")
+        self.OffsetTime = params.get("OffsetTime")
+        self.ReportTime = params.get("ReportTime")
+        self.RunStatus = params.get("RunStatus")
+        self.FileDuration = params.get("FileDuration")
+        self.NextFileUrl = params.get("NextFileUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

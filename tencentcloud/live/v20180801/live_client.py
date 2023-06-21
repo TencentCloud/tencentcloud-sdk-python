@@ -1747,6 +1747,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLivePullStreamTaskStatus(self, request):
+        """查询直播拉流任务状态信息。
+
+        :param request: Request instance for DescribeLivePullStreamTaskStatus.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLivePullStreamTaskStatusRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLivePullStreamTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLivePullStreamTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLivePullStreamTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLivePullStreamTasks(self, request):
         """查询使用 CreateLivePullStreamTask 接口创建的直播拉流任务。
         排序方式：默认按更新时间 倒序排列。
