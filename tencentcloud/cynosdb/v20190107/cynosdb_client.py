@@ -1406,6 +1406,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProxySpecs(self, request):
+        """查询数据库代理规格
+
+        :param request: Request instance for DescribeProxySpecs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxySpecsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxySpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProxySpecs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProxySpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeResourcePackageDetail(self, request):
         """查询资源包使用详情
 

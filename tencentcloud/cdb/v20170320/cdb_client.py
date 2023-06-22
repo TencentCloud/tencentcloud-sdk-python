@@ -505,6 +505,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDatabase(self, request):
+        """本接口(CreateDatabase)用于在云数据库实例中创建数据库。
+
+        :param request: Request instance for CreateDatabase.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDatabaseRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDeployGroup(self, request):
         """本接口(CreateDeployGroup)用于创建放置实例的置放群组
 

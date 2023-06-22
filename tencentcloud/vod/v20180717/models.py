@@ -192,6 +192,58 @@ class AIRecognitionTemplateItem(AbstractModel):
         
 
 
+class AbnormalLightingConfigureInfo(AbstractModel):
+    """视频画面低光、过曝检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面低光、过曝检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AbnormalLightingConfigureInfoForUpdate(AbstractModel):
+    """视频画面低光、过曝检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面低光、过曝检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccelerateAreaInfo(AbstractModel):
     """域名的地区加速信息
 
@@ -5192,6 +5244,110 @@ class AudioVolumeParam(AbstractModel):
         
 
 
+class BlackWhiteEdgeConfigureInfo(AbstractModel):
+    """视频画面黑边、白边、黑屏、白屏检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面黑边、白边、黑屏、白屏检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlackWhiteEdgeConfigureInfoForUpdate(AbstractModel):
+    """视频画面黑边、白边、黑屏、白屏检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面黑边、白边、黑屏、白屏检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlurConfigureInfo(AbstractModel):
+    """视频画面模糊检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面模糊检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlurConfigureInfoForUpdate(AbstractModel):
+    """视频画面模糊检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面模糊检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Canvas(AbstractModel):
     """画布信息。制作视频时，如果源素材（视频或者图片）不能填满输出的视频窗口，将用设置的画布进行背景绘制。
 
@@ -6244,6 +6400,58 @@ class CoverConfigureInfoForUpdate(AbstractModel):
         :param Switch: 智能封面任务开关，可选值：
 <li>ON：开启智能封面任务；</li>
 <li>OFF：关闭智能封面任务。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CrashScreenConfigureInfo(AbstractModel):
+    """视频画面花屏检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面花屏检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CrashScreenConfigureInfoForUpdate(AbstractModel):
+    """视频画面花屏检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面花屏检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
         :type Switch: str
         """
         self.Switch = None
@@ -7345,6 +7553,123 @@ class CreateProcedureTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateQualityInspectTemplateRequest(AbstractModel):
+    """CreateQualityInspectTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Name: 音画质检测模板名称。
+        :type Name: str
+        :param Comment: 音画质检测模板描述。
+        :type Comment: str
+        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。
+        :type ScreenshotInterval: float
+        :param JitterConfigure: 视频画面抖动重影检测的控制参数。
+        :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
+        :param BlurConfigure: 视频画面模糊检测的控制参数。
+        :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
+        :param AbnormalLightingConfigure: 视频画面低光、过曝检测的控制参数。
+        :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
+        :param CrashScreenConfigure: 视频画面花屏检测的控制参数。
+        :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
+        :param BlackWhiteEdgeConfigure: 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+        :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
+        :param NoiseConfigure: 视频画面噪点检测的控制参数。
+        :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
+        :param MosaicConfigure: 视频画面马赛克检测的控制参数。
+        :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
+        :param QRCodeConfigure: 视频画面二维码检测的控制参数。
+        :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
+        :param QualityEvaluationConfigure: 视频画面质量评价的控制参数。
+        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
+        :param VoiceConfigure: 音频（静音、低音、爆音）检测的控制参数。
+        :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
+        """
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+        self.ScreenshotInterval = None
+        self.JitterConfigure = None
+        self.BlurConfigure = None
+        self.AbnormalLightingConfigure = None
+        self.CrashScreenConfigure = None
+        self.BlackWhiteEdgeConfigure = None
+        self.NoiseConfigure = None
+        self.MosaicConfigure = None
+        self.QRCodeConfigure = None
+        self.QualityEvaluationConfigure = None
+        self.VoiceConfigure = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        if params.get("JitterConfigure") is not None:
+            self.JitterConfigure = JitterConfigureInfo()
+            self.JitterConfigure._deserialize(params.get("JitterConfigure"))
+        if params.get("BlurConfigure") is not None:
+            self.BlurConfigure = BlurConfigureInfo()
+            self.BlurConfigure._deserialize(params.get("BlurConfigure"))
+        if params.get("AbnormalLightingConfigure") is not None:
+            self.AbnormalLightingConfigure = AbnormalLightingConfigureInfo()
+            self.AbnormalLightingConfigure._deserialize(params.get("AbnormalLightingConfigure"))
+        if params.get("CrashScreenConfigure") is not None:
+            self.CrashScreenConfigure = CrashScreenConfigureInfo()
+            self.CrashScreenConfigure._deserialize(params.get("CrashScreenConfigure"))
+        if params.get("BlackWhiteEdgeConfigure") is not None:
+            self.BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigureInfo()
+            self.BlackWhiteEdgeConfigure._deserialize(params.get("BlackWhiteEdgeConfigure"))
+        if params.get("NoiseConfigure") is not None:
+            self.NoiseConfigure = NoiseConfigureInfo()
+            self.NoiseConfigure._deserialize(params.get("NoiseConfigure"))
+        if params.get("MosaicConfigure") is not None:
+            self.MosaicConfigure = MosaicConfigureInfo()
+            self.MosaicConfigure._deserialize(params.get("MosaicConfigure"))
+        if params.get("QRCodeConfigure") is not None:
+            self.QRCodeConfigure = QRCodeConfigureInfo()
+            self.QRCodeConfigure._deserialize(params.get("QRCodeConfigure"))
+        if params.get("QualityEvaluationConfigure") is not None:
+            self.QualityEvaluationConfigure = QualityEvaluationConfigureInfo()
+            self.QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
+        if params.get("VoiceConfigure") is not None:
+            self.VoiceConfigure = VoiceConfigureInfo()
+            self.VoiceConfigure._deserialize(params.get("VoiceConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQualityInspectTemplateResponse(AbstractModel):
+    """CreateQualityInspectTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 音画质检测模板 ID。
+        :type Definition: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Definition = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
         self.RequestId = params.get("RequestId")
 
 
@@ -8919,6 +9244,51 @@ class DeleteProcedureTemplateRequest(AbstractModel):
 
 class DeleteProcedureTemplateResponse(AbstractModel):
     """DeleteProcedureTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteQualityInspectTemplateRequest(AbstractModel):
+    """DeleteQualityInspectTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 音画质检测模板号。
+        :type Definition: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        """
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteQualityInspectTemplateResponse(AbstractModel):
+    """DeleteQualityInspectTemplate返回参数结构体
 
     """
 
@@ -11509,6 +11879,78 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeQualityInspectTemplatesRequest(AbstractModel):
+    """DescribeQualityInspectTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Definitions: 音画质检测模板列表。长度限制：100。
+        :type Definitions: list of int
+        :param Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        """
+        self.SubAppId = None
+        self.Definitions = None
+        self.Type = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        self.Definitions = params.get("Definitions")
+        self.Type = params.get("Type")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQualityInspectTemplatesResponse(AbstractModel):
+    """DescribeQualityInspectTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param QualityInspectTemplateSet: 音画质检测模板详情列表。
+        :type QualityInspectTemplateSet: list of QualityInspectTemplateItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.QualityInspectTemplateSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("QualityInspectTemplateSet") is not None:
+            self.QualityInspectTemplateSet = []
+            for item in params.get("QualityInspectTemplateSet"):
+                obj = QualityInspectTemplateItem()
+                obj._deserialize(item)
+                self.QualityInspectTemplateSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRebuildMediaTemplatesRequest(AbstractModel):
     """DescribeRebuildMediaTemplates请求参数结构体
 
@@ -12336,7 +12778,8 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>RebuildMedia：音画质重生任务；</li>
 <li>ReviewAudioVideo：音视频审核任务；</li>
 <li>ExtractTraceWatermark：提取溯源水印任务；</li>
-<li>ExtractCopyRightWatermark：提取版权水印任务。</li>
+<li>ExtractCopyRightWatermark：提取版权水印任务；</li>
+<li>QualityInspect：音画质检测任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -12406,6 +12849,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param DescribeFileAttributesTask: 获取文件属性任务信息，仅当 TaskType 为 DescribeFileAttributes，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DescribeFileAttributesTask: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
+        :param QualityInspectTask: 音画质检测任务信息，仅当 TaskType 为 QualityInspect 时该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityInspectTask: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12433,6 +12879,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.ReviewAudioVideoTask = None
         self.ReduceMediaBitrateTask = None
         self.DescribeFileAttributesTask = None
+        self.QualityInspectTask = None
         self.RequestId = None
 
 
@@ -12499,6 +12946,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("DescribeFileAttributesTask") is not None:
             self.DescribeFileAttributesTask = DescribeFileAttributesTask()
             self.DescribeFileAttributesTask._deserialize(params.get("DescribeFileAttributesTask"))
+        if params.get("QualityInspectTask") is not None:
+            self.QualityInspectTask = QualityInspectTask()
+            self.QualityInspectTask._deserialize(params.get("QualityInspectTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -13714,6 +14164,7 @@ class EventContent(AbstractModel):
 <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
 <li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li>
 <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
+<li>QualityInspectComplete：音画质检测完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -13787,6 +14238,9 @@ class EventContent(AbstractModel):
         :param DescribeFileAttributesCompleteEvent: 获取文件属性完成事件，当事件类型为 DescribeFileAttributesComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DescribeFileAttributesCompleteEvent: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
+        :param QualityInspectCompleteEvent: 音画质检测完成事件，当事件类型为 QualityInspectComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityInspectCompleteEvent: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -13812,6 +14266,7 @@ class EventContent(AbstractModel):
         self.ReviewAudioVideoCompleteEvent = None
         self.ReduceMediaBitrateCompleteEvent = None
         self.DescribeFileAttributesCompleteEvent = None
+        self.QualityInspectCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -13883,6 +14338,9 @@ class EventContent(AbstractModel):
         if params.get("DescribeFileAttributesCompleteEvent") is not None:
             self.DescribeFileAttributesCompleteEvent = DescribeFileAttributesTask()
             self.DescribeFileAttributesCompleteEvent._deserialize(params.get("DescribeFileAttributesCompleteEvent"))
+        if params.get("QualityInspectCompleteEvent") is not None:
+            self.QualityInspectCompleteEvent = QualityInspectTask()
+            self.QualityInspectCompleteEvent._deserialize(params.get("QualityInspectCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15541,6 +15999,127 @@ class ImageWatermarkTemplate(AbstractModel):
         self.Height = params.get("Height")
         self.RepeatType = params.get("RepeatType")
         self.Transparency = params.get("Transparency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InspectMediaQualityRequest(AbstractModel):
+    """InspectMediaQuality请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :type FileId: str
+        :param Definition: 音画质检测模板 ID。
+        :type Definition: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        :param SessionContext: 来源上下文，用于透传用户请求信息，音画质检测完成回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
+        """
+        self.FileId = None
+        self.Definition = None
+        self.SubAppId = None
+        self.TasksPriority = None
+        self.SessionContext = None
+        self.SessionId = None
+        self.ExtInfo = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        self.TasksPriority = params.get("TasksPriority")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        self.ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InspectMediaQualityResponse(AbstractModel):
+    """InspectMediaQuality返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 音画质检测任务 ID。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class JitterConfigureInfo(AbstractModel):
+    """视频画面抖动重影检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面抖动重影检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JitterConfigureInfoForUpdate(AbstractModel):
+    """视频画面抖动重影检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面抖动重影检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19535,6 +20114,123 @@ class ModifyPersonSampleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyQualityInspectTemplateRequest(AbstractModel):
+    """ModifyQualityInspectTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 模板 ID。
+        :type Definition: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Name: 模板名称，长度限制：64 个字符。
+        :type Name: str
+        :param Comment: 模板描述信息，长度限制：256 个字符。
+        :type Comment: str
+        :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 1。
+        :type ScreenshotInterval: float
+        :param JitterConfigure: 视频画面抖动重影检测的控制参数。
+        :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfoForUpdate`
+        :param BlurConfigure: 视频画面模糊检测的控制参数。
+        :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfoForUpdate`
+        :param AbnormalLightingConfigure: 视频画面低光、过曝检测的控制参数。
+        :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfoForUpdate`
+        :param CrashScreenConfigure: 视频画面花屏检测的控制参数。
+        :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfoForUpdate`
+        :param BlackWhiteEdgeConfigure: 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+        :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfoForUpdate`
+        :param NoiseConfigure: 视频画面噪点检测的控制参数。
+        :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfoForUpdate`
+        :param MosaicConfigure: 视频画面马赛克检测的控制参数。
+        :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfoForUpdate`
+        :param QRCodeConfigure: 视频画面二维码检测的控制参数。
+        :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfoForUpdate`
+        :param QualityEvaluationConfigure: 视频画面质量评价的控制参数。
+        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfoForUpdate`
+        :param VoiceConfigure: 音频（静音、低音、爆音）检测的控制参数。
+        :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfoForUpdate`
+        """
+        self.Definition = None
+        self.SubAppId = None
+        self.Name = None
+        self.Comment = None
+        self.ScreenshotInterval = None
+        self.JitterConfigure = None
+        self.BlurConfigure = None
+        self.AbnormalLightingConfigure = None
+        self.CrashScreenConfigure = None
+        self.BlackWhiteEdgeConfigure = None
+        self.NoiseConfigure = None
+        self.MosaicConfigure = None
+        self.QRCodeConfigure = None
+        self.QualityEvaluationConfigure = None
+        self.VoiceConfigure = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        if params.get("JitterConfigure") is not None:
+            self.JitterConfigure = JitterConfigureInfoForUpdate()
+            self.JitterConfigure._deserialize(params.get("JitterConfigure"))
+        if params.get("BlurConfigure") is not None:
+            self.BlurConfigure = BlurConfigureInfoForUpdate()
+            self.BlurConfigure._deserialize(params.get("BlurConfigure"))
+        if params.get("AbnormalLightingConfigure") is not None:
+            self.AbnormalLightingConfigure = AbnormalLightingConfigureInfoForUpdate()
+            self.AbnormalLightingConfigure._deserialize(params.get("AbnormalLightingConfigure"))
+        if params.get("CrashScreenConfigure") is not None:
+            self.CrashScreenConfigure = CrashScreenConfigureInfoForUpdate()
+            self.CrashScreenConfigure._deserialize(params.get("CrashScreenConfigure"))
+        if params.get("BlackWhiteEdgeConfigure") is not None:
+            self.BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigureInfoForUpdate()
+            self.BlackWhiteEdgeConfigure._deserialize(params.get("BlackWhiteEdgeConfigure"))
+        if params.get("NoiseConfigure") is not None:
+            self.NoiseConfigure = NoiseConfigureInfoForUpdate()
+            self.NoiseConfigure._deserialize(params.get("NoiseConfigure"))
+        if params.get("MosaicConfigure") is not None:
+            self.MosaicConfigure = MosaicConfigureInfoForUpdate()
+            self.MosaicConfigure._deserialize(params.get("MosaicConfigure"))
+        if params.get("QRCodeConfigure") is not None:
+            self.QRCodeConfigure = QRCodeConfigureInfoForUpdate()
+            self.QRCodeConfigure._deserialize(params.get("QRCodeConfigure"))
+        if params.get("QualityEvaluationConfigure") is not None:
+            self.QualityEvaluationConfigure = QualityEvaluationConfigureInfoForUpdate()
+            self.QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
+        if params.get("VoiceConfigure") is not None:
+            self.VoiceConfigure = VoiceConfigureInfoForUpdate()
+            self.VoiceConfigure._deserialize(params.get("VoiceConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyQualityInspectTemplateResponse(AbstractModel):
+    """ModifyQualityInspectTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyRebuildMediaTemplateRequest(AbstractModel):
     """ModifyRebuildMediaTemplate请求参数结构体
 
@@ -20538,6 +21234,58 @@ class ModifyWordSampleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MosaicConfigureInfo(AbstractModel):
+    """视频画面马赛克检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面马赛克检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MosaicConfigureInfoForUpdate(AbstractModel):
+    """视频画面马赛克检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面马赛克检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MosaicInput(AbstractModel):
     """视频处理任务中的马赛克参数类型
 
@@ -20597,6 +21345,58 @@ class MosaicInput(AbstractModel):
         self.Height = params.get("Height")
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoiseConfigureInfo(AbstractModel):
+    """视频画面噪点检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面噪点检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoiseConfigureInfoForUpdate(AbstractModel):
+    """视频画面噪点检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面噪点检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22940,6 +23740,483 @@ class PushUrlCacheResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class QRCodeConfigureInfo(AbstractModel):
+    """视频画面二维码检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面二维码检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QRCodeConfigureInfoForUpdate(AbstractModel):
+    """视频画面二维码检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面二维码检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityEvaluationConfigureInfo(AbstractModel):
+    """视频画面质量评价的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面质量评价检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        :param Score: 视频画面质量评价过滤阈值，结果只返回低于该值的时间段，默认值为 60。
+        :type Score: int
+        """
+        self.Switch = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityEvaluationConfigureInfoForUpdate(AbstractModel):
+    """视频画面质量评价的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 视频画面质量评价开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        :param Score: 视频画面质量评价过滤阈值，结果只返回低于该值的时间段。
+        :type Score: int
+        """
+        self.Switch = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectItem(AbstractModel):
+    """音画质检测异常片段信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: 置信度，取值范围：[0, 100]。
+<font color=red>注意：</font> 仅当 Type 取值为下列之一时，本字段取值有效：
+<li>Mosaic：马赛克；</li>
+<li>QRCode：二维码；</li>
+<li>AppletCode：小程序码；</li>
+<li>BarCode：条形码。</li>
+        :type Confidence: int
+        :param StartTimeOffset: 异常片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 异常片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param AreaCoordSet: 检测出异常的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+<font color=red>注意：</font> 仅当 Type 取值为下列之一时，本字段取值有效：
+<li>BlackWhiteEdge：黑白边；</li>
+<li>Mosaic：马赛克；</li>
+<li>QRCode：二维码；</li>
+<li>AppletCode：小程序码；</li>
+<li>BarCode：条形码。</li>
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectResultItem(AbstractModel):
+    """音画质检测异常结果信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 异常类型，取值范围：
+<li>Jitter：抖动；</li>
+<li>Blur：模糊；</li>
+<li>LowLighting：低光照；</li>
+<li>HighLighting：过曝；</li>
+<li>CrashScreen：花屏；</li>
+<li>BlackWhiteEdge：黑白边；</li>
+<li>SolidColorScreen：纯色屏；</li>
+<li>Noise：噪点；</li>
+<li>Mosaic：马赛克；</li>
+<li>QRCode：二维码；</li>
+<li>AppletCode：小程序码；</li>
+<li>BarCode：条形码；</li>
+<li>LowVoice：低音；</li>
+<li>HighVoice：爆音；</li>
+<li>NoVoice：静音；</li>
+<li>LowEvaluation：无参考打分低于阈值。</li>
+        :type Type: str
+        :param SegmentSet: 异常片段列表。
+<font color=red>注意：</font> 该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
+        :type SegmentSet: list of QualityInspectItem
+        :param SegmentSetFileUrl: 异常片段列表文件 URL。文件 内容 为  JSON，数据结构与 SegmentSet 字段一致。（文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: 异常片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
+        """
+        self.Type = None
+        self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = QualityInspectItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectTask(AbstractModel):
+    """音画质检测任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param Message: 错误信息。
+        :type Message: str
+        :param MetaData: 音画质检测输入音视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param Input: 音画质检测任务输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.QualityInspectTaskInput`
+        :param Output: 音画质检测任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.QualityInspectTaskOutput`
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，音画质检测完成回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCodeExt = None
+        self.Message = None
+        self.MetaData = None
+        self.Input = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Message = params.get("Message")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        if params.get("Input") is not None:
+            self.Input = QualityInspectTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = QualityInspectTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectTaskInput(AbstractModel):
+    """音画质检测任务的输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param Definition: 音画质检测模板 ID。
+        :type Definition: int
+        """
+        self.FileId = None
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectTaskOutput(AbstractModel):
+    """音画质检测任务的输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NoAudio: 媒体文件是否无音频轨，取值范围：
+<li>0：否，即有音频轨；</li>
+<li>1：是，即无音频轨。</li>
+        :type NoAudio: int
+        :param NoVideo: 媒体文件是否无视频轨，取值范围：
+<li>0：否，即有视频轨；</li>
+<li>1：是，即无视频轨。</li>
+        :type NoVideo: int
+        :param QualityEvaluationScore: 视频画面质量评分，取值范围：[0, 100]。
+        :type QualityEvaluationScore: int
+        :param QualityInspectResultSet: 音画质检测出的异常项列表。
+        :type QualityInspectResultSet: list of QualityInspectResultItem
+        """
+        self.NoAudio = None
+        self.NoVideo = None
+        self.QualityEvaluationScore = None
+        self.QualityInspectResultSet = None
+
+
+    def _deserialize(self, params):
+        self.NoAudio = params.get("NoAudio")
+        self.NoVideo = params.get("NoVideo")
+        self.QualityEvaluationScore = params.get("QualityEvaluationScore")
+        if params.get("QualityInspectResultSet") is not None:
+            self.QualityInspectResultSet = []
+            for item in params.get("QualityInspectResultSet"):
+                obj = QualityInspectResultItem()
+                obj._deserialize(item)
+                self.QualityInspectResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectTemplateItem(AbstractModel):
+    """音画质检测模板详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 模板 ID。
+        :type Definition: int
+        :param Type: 模板类型，可选值：
+<li>Preset：系统预置模板；</li>
+<li>Custom：用户自定义模板。</li>
+        :type Type: str
+        :param Name: 模板名称。
+        :type Name: str
+        :param Comment: 模板描述。
+        :type Comment: str
+        :param ScreenshotInterval: 截帧间隔，单位为秒。
+        :type ScreenshotInterval: float
+        :param JitterConfigure: 视频画面抖动重影检测的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
+        :param BlurConfigure: 视频画面模糊检测的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
+        :param AbnormalLightingConfigure: 视频画面低光、过曝检测的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
+        :param CrashScreenConfigure: 视频画面花屏检测的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
+        :param BlackWhiteEdgeConfigure: 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
+        :param NoiseConfigure: 视频画面噪点检测的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
+        :param MosaicConfigure: 视频画面马赛克检测的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
+        :param QRCodeConfigure: 视频画面二维码检测的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
+        :param QualityEvaluationConfigure: 视频画面质量评价的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
+        :param VoiceConfigure: 音频（静音、低音、爆音）检测的控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
+        :param CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type CreateTime: str
+        :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type UpdateTime: str
+        """
+        self.Definition = None
+        self.Type = None
+        self.Name = None
+        self.Comment = None
+        self.ScreenshotInterval = None
+        self.JitterConfigure = None
+        self.BlurConfigure = None
+        self.AbnormalLightingConfigure = None
+        self.CrashScreenConfigure = None
+        self.BlackWhiteEdgeConfigure = None
+        self.NoiseConfigure = None
+        self.MosaicConfigure = None
+        self.QRCodeConfigure = None
+        self.QualityEvaluationConfigure = None
+        self.VoiceConfigure = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        self.Name = params.get("Name")
+        self.Comment = params.get("Comment")
+        self.ScreenshotInterval = params.get("ScreenshotInterval")
+        if params.get("JitterConfigure") is not None:
+            self.JitterConfigure = JitterConfigureInfo()
+            self.JitterConfigure._deserialize(params.get("JitterConfigure"))
+        if params.get("BlurConfigure") is not None:
+            self.BlurConfigure = BlurConfigureInfo()
+            self.BlurConfigure._deserialize(params.get("BlurConfigure"))
+        if params.get("AbnormalLightingConfigure") is not None:
+            self.AbnormalLightingConfigure = AbnormalLightingConfigureInfo()
+            self.AbnormalLightingConfigure._deserialize(params.get("AbnormalLightingConfigure"))
+        if params.get("CrashScreenConfigure") is not None:
+            self.CrashScreenConfigure = CrashScreenConfigureInfo()
+            self.CrashScreenConfigure._deserialize(params.get("CrashScreenConfigure"))
+        if params.get("BlackWhiteEdgeConfigure") is not None:
+            self.BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigureInfo()
+            self.BlackWhiteEdgeConfigure._deserialize(params.get("BlackWhiteEdgeConfigure"))
+        if params.get("NoiseConfigure") is not None:
+            self.NoiseConfigure = NoiseConfigureInfo()
+            self.NoiseConfigure._deserialize(params.get("NoiseConfigure"))
+        if params.get("MosaicConfigure") is not None:
+            self.MosaicConfigure = MosaicConfigureInfo()
+            self.MosaicConfigure._deserialize(params.get("MosaicConfigure"))
+        if params.get("QRCodeConfigure") is not None:
+            self.QRCodeConfigure = QRCodeConfigureInfo()
+            self.QRCodeConfigure._deserialize(params.get("QRCodeConfigure"))
+        if params.get("QualityEvaluationConfigure") is not None:
+            self.QualityEvaluationConfigure = QualityEvaluationConfigureInfo()
+            self.QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
+        if params.get("VoiceConfigure") is not None:
+            self.VoiceConfigure = VoiceConfigureInfo()
+            self.VoiceConfigure._deserialize(params.get("VoiceConfigure"))
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RebuildAudioInfo(AbstractModel):
@@ -28909,6 +30186,58 @@ class VideoTrackItem(AbstractModel):
                 obj = ImageTransform()
                 obj._deserialize(item)
                 self.ImageOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConfigureInfo(AbstractModel):
+    """音频（静音、低音、爆音）检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 音频（静音、低音、爆音）检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConfigureInfoForUpdate(AbstractModel):
+    """音频（静音、低音、爆音）检测的控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 音频（静音、低音、爆音）检测开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

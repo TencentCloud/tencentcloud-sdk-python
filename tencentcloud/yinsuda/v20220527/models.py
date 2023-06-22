@@ -359,6 +359,103 @@ class DescribeKTVMatchMusicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeKTVMusicAccompanySegmentUrlRequest(AbstractModel):
+    """DescribeKTVMusicAccompanySegmentUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param UserId: 用户标识。
+        :type UserId: str
+        :param MusicId: 歌曲 Id 。
+        :type MusicId: str
+        :param PlayScene: 播放场景。默认为Chat
+<li>Live：直播</li><li>Chat：语聊</li>
+        :type PlayScene: str
+        :param RoomId: 房间Id
+        :type RoomId: str
+        """
+        self.AppName = None
+        self.UserId = None
+        self.MusicId = None
+        self.PlayScene = None
+        self.RoomId = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.UserId = params.get("UserId")
+        self.MusicId = params.get("MusicId")
+        self.PlayScene = params.get("PlayScene")
+        self.RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
+    """DescribeKTVMusicAccompanySegmentUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 歌曲状态。
+0：可用
+1：下线
+2：没权限
+3：没伴奏
+当返回2时，其他参数有可能全部为空
+        :type Status: int
+        :param Url: 伴奏链接
+        :type Url: str
+        :param ExtName: 伴奏类型，如mkv，mp3等
+        :type ExtName: str
+        :param SegmentBegin: 高潮开始时间
+        :type SegmentBegin: int
+        :param SegmentEnd: 高潮结束时间
+        :type SegmentEnd: int
+        :param FileSize: 链接文件大小 单位 字节
+        :type FileSize: int
+        :param OtherSegments: 其它片段时间（可用于抢唱）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherSegments: list of KTVOtherSegments
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Url = None
+        self.ExtName = None
+        self.SegmentBegin = None
+        self.SegmentEnd = None
+        self.FileSize = None
+        self.OtherSegments = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Url = params.get("Url")
+        self.ExtName = params.get("ExtName")
+        self.SegmentBegin = params.get("SegmentBegin")
+        self.SegmentEnd = params.get("SegmentEnd")
+        self.FileSize = params.get("FileSize")
+        if params.get("OtherSegments") is not None:
+            self.OtherSegments = []
+            for item in params.get("OtherSegments"):
+                obj = KTVOtherSegments()
+                obj._deserialize(item)
+                self.OtherSegments.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeKTVMusicsByTagRequest(AbstractModel):
     """DescribeKTVMusicsByTag请求参数结构体
 
@@ -1249,6 +1346,36 @@ class KTVMusicDetailInfo(AbstractModel):
         if params.get("BPMInfo") is not None:
             self.BPMInfo = KTVBPMInfo()
             self.BPMInfo._deserialize(params.get("BPMInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVOtherSegments(AbstractModel):
+    """其它片段时间（可用于抢唱）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SegmentBegin: 片段开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentBegin: int
+        :param SegmentEnd: 片段结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentEnd: int
+        """
+        self.SegmentBegin = None
+        self.SegmentEnd = None
+
+
+    def _deserialize(self, params):
+        self.SegmentBegin = params.get("SegmentBegin")
+        self.SegmentEnd = params.get("SegmentEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3128,6 +3128,55 @@ class CreateDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDatabaseRequest(AbstractModel):
+    """CreateDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :type InstanceId: str
+        :param DBName: 数据库名称。
+        :type DBName: str
+        :param CharacterSetName: 字符集，可选值：utf8，gbk，latin1，utf8mb4。
+        :type CharacterSetName: str
+        """
+        self.InstanceId = None
+        self.DBName = None
+        self.CharacterSetName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DBName = params.get("DBName")
+        self.CharacterSetName = params.get("CharacterSetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatabaseResponse(AbstractModel):
+    """CreateDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDeployGroupRequest(AbstractModel):
     """CreateDeployGroup请求参数结构体
 

@@ -6089,6 +6089,38 @@ class DescribeProxyNodesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProxySpecsRequest(AbstractModel):
+    """DescribeProxySpecs请求参数结构体
+
+    """
+
+
+class DescribeProxySpecsResponse(AbstractModel):
+    """DescribeProxySpecs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProxySpecs: 数据库代理规格列表
+        :type ProxySpecs: list of ProxySpec
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProxySpecs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProxySpecs") is not None:
+            self.ProxySpecs = []
+            for item in params.get("ProxySpecs"):
+                obj = ProxySpec()
+                obj._deserialize(item)
+                self.ProxySpecs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourcePackageDetailRequest(AbstractModel):
     """DescribeResourcePackageDetail请求参数结构体
 
@@ -10386,6 +10418,34 @@ class ProxyNodeInfo(AbstractModel):
         self.AppId = params.get("AppId")
         self.Region = params.get("Region")
         self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxySpec(AbstractModel):
+    """数据库代理规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cpu: 数据库代理cpu核数
+        :type Cpu: int
+        :param Mem: 数据库代理内存
+        :type Mem: int
+        """
+        self.Cpu = None
+        self.Mem = None
+
+
+    def _deserialize(self, params):
+        self.Cpu = params.get("Cpu")
+        self.Mem = params.get("Mem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -118,6 +118,29 @@ class YinsudaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeKTVMusicAccompanySegmentUrl(self, request):
+        """获取歌曲伴奏片段链接，可用于抢唱
+
+        :param request: Request instance for DescribeKTVMusicAccompanySegmentUrl.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMusicAccompanySegmentUrlRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMusicAccompanySegmentUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKTVMusicAccompanySegmentUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKTVMusicAccompanySegmentUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeKTVMusicsByTag(self, request):
         """通过标签过滤歌曲列表。
 

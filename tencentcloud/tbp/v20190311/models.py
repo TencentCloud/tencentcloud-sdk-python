@@ -216,15 +216,18 @@ class ResponseMessage(AbstractModel):
         r"""
         :param GroupList: 消息组列表。	
 注意：此字段可能返回 null，表示取不到有效值。
-        :type GroupList: :class:`tencentcloud.tbp.v20190311.models.Group`
+        :type GroupList: list of Group
         """
         self.GroupList = None
 
 
     def _deserialize(self, params):
         if params.get("GroupList") is not None:
-            self.GroupList = Group()
-            self.GroupList._deserialize(params.get("GroupList"))
+            self.GroupList = []
+            for item in params.get("GroupList"):
+                obj = Group()
+                obj._deserialize(item)
+                self.GroupList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -332,12 +335,12 @@ class TextProcessResponse(AbstractModel):
         :param ResponseText: 机器人对话的应答文本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseText: str
-        :param ResponseMessage: 机器人应答。	
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResponseMessage: :class:`tencentcloud.tbp.v20190311.models.ResponseMessage`
         :param ResultType: 结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。	
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultType: str
+        :param ResponseMessage: 机器人应答。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseMessage: :class:`tencentcloud.tbp.v20190311.models.ResponseMessage`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -348,8 +351,8 @@ class TextProcessResponse(AbstractModel):
         self.InputText = None
         self.SessionAttributes = None
         self.ResponseText = None
-        self.ResponseMessage = None
         self.ResultType = None
+        self.ResponseMessage = None
         self.RequestId = None
 
 
@@ -366,10 +369,10 @@ class TextProcessResponse(AbstractModel):
         self.InputText = params.get("InputText")
         self.SessionAttributes = params.get("SessionAttributes")
         self.ResponseText = params.get("ResponseText")
+        self.ResultType = params.get("ResultType")
         if params.get("ResponseMessage") is not None:
             self.ResponseMessage = ResponseMessage()
             self.ResponseMessage._deserialize(params.get("ResponseMessage"))
-        self.ResultType = params.get("ResultType")
         self.RequestId = params.get("RequestId")
 
 
