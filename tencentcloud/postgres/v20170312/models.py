@@ -1146,7 +1146,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeClasses的返回值中的SpecCode字段来获取。
         :type SpecCode: str
         :param Storage: 实例容量大小，单位：GB。
         :type Storage: int
@@ -1162,7 +1162,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type ProjectId: int
         :param DBVersion: 【废弃】不再需要指定，内核版本号与主实例保持一致
         :type DBVersion: str
-        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。如果主实例为后付费，只读实例必须也为后付费。
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。如果主实例为后付费，只读实例必须也为后付费。
         :type InstanceChargeType: str
         :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
         :type AutoVoucher: int

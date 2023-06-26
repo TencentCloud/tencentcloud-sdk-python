@@ -533,14 +533,24 @@ class CFSConfig(AbstractModel):
         :type Id: str
         :param Path: 存储的路径
         :type Path: str
+        :param MountType: cfs的挂载类型，可选值为：STORAGE、SOURCE 分别表示存储拓展模式和数据源模式，默认为 STORAGE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountType: str
+        :param Protocol: 协议 1: NFS, 2: TURBO
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
         """
         self.Id = None
         self.Path = None
+        self.MountType = None
+        self.Protocol = None
 
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Path = params.get("Path")
+        self.MountType = params.get("MountType")
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

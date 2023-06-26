@@ -2178,6 +2178,8 @@ class DBDetail(AbstractModel):
         :type Accounts: list of AccountPrivilege
         :param InternalStatus: 内部状态。ONLINE表示运行中
         :type InternalStatus: str
+        :param Encryption: 是否已开启TDE加密，enable-已加密，disable-未加密
+        :type Encryption: str
         """
         self.Name = None
         self.Charset = None
@@ -2186,6 +2188,7 @@ class DBDetail(AbstractModel):
         self.Status = None
         self.Accounts = None
         self.InternalStatus = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -2201,6 +2204,7 @@ class DBDetail(AbstractModel):
                 obj._deserialize(item)
                 self.Accounts.append(obj)
         self.InternalStatus = params.get("InternalStatus")
+        self.Encryption = params.get("Encryption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4037,6 +4041,8 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         :type BlockedThreshold: int
         :param EventSaveDays: 慢SQL、阻塞、死锁扩展事件文件保留时长
         :type EventSaveDays: int
+        :param TDEConfig: TDE透明数据加密配置
+        :type TDEConfig: :class:`tencentcloud.sqlserver.v20180328.models.TDEConfigAttribute`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4048,6 +4054,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self.RegularBackupStartTime = None
         self.BlockedThreshold = None
         self.EventSaveDays = None
+        self.TDEConfig = None
         self.RequestId = None
 
 
@@ -4060,6 +4067,9 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self.RegularBackupStartTime = params.get("RegularBackupStartTime")
         self.BlockedThreshold = params.get("BlockedThreshold")
         self.EventSaveDays = params.get("EventSaveDays")
+        if params.get("TDEConfig") is not None:
+            self.TDEConfig = TDEConfigAttribute()
+            self.TDEConfig._deserialize(params.get("TDEConfig"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4310,12 +4320,15 @@ class DescribeDBsRequest(AbstractModel):
         :type Name: str
         :param OrderByType: 排序规则（desc-降序，asc-升序），默认desc
         :type OrderByType: str
+        :param Encryption: 是否已开启TDE加密，enable-已加密，disable-未加密
+        :type Encryption: str
         """
         self.InstanceIdSet = None
         self.Limit = None
         self.Offset = None
         self.Name = None
         self.OrderByType = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -4324,6 +4337,7 @@ class DescribeDBsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Name = params.get("Name")
         self.OrderByType = params.get("OrderByType")
+        self.Encryption = params.get("Encryption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9675,6 +9689,39 @@ class StopMigrationResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class TDEConfigAttribute(AbstractModel):
+    """TDE透明数据加密配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Encryption: 是否已开通TDE加密，enable-已开通，disable-未开通
+        :type Encryption: str
+        :param CertificateAttribution: 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，none-表示没有证书
+        :type CertificateAttribution: str
+        :param QuoteUin: 开通TDE加密时引用的其他主账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuoteUin: str
+        """
+        self.Encryption = None
+        self.CertificateAttribution = None
+        self.QuoteUin = None
+
+
+    def _deserialize(self, params):
+        self.Encryption = params.get("Encryption")
+        self.CertificateAttribution = params.get("CertificateAttribution")
+        self.QuoteUin = params.get("QuoteUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TerminateDBInstanceRequest(AbstractModel):

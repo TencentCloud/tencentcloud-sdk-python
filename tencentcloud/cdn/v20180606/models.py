@@ -10825,6 +10825,55 @@ index 时填充 /
         
 
 
+class ModifyDomainConfigRequest(AbstractModel):
+    """ModifyDomainConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Route: 配置路径
+        :type Route: str
+        :param Value: 配置路径值，使用 json 进行序列化，其中固定 update 作为 key
+        :type Value: str
+        """
+        self.Domain = None
+        self.Route = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Route = params.get("Route")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDomainConfigResponse(AbstractModel):
+    """ModifyDomainConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPurgeFetchTaskStatusRequest(AbstractModel):
     """ModifyPurgeFetchTaskStatus请求参数结构体
 

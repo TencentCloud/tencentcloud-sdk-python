@@ -95,31 +95,6 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeployDynamicBcosContract(self, request):
-        """Bcos区块链引擎已下线，请选用其他区块链引擎
-
-        动态部署并发布Bcos合约
-
-        :param request: Request instance for DeployDynamicBcosContract.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicBcosContractRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicBcosContractResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeployDynamicBcosContract", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeployDynamicBcosContractResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DownloadUserCert(self, request):
         """下载用户证书
 
@@ -134,106 +109,6 @@ class TbaasClient(AbstractClient):
             body = self.call("DownloadUserCert", params, headers=headers)
             response = json.loads(body)
             model = models.DownloadUserCertResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetBcosBlockByNumber(self, request):
-        """Bcos区块链引擎已下线，请选用其他区块链引擎
-
-        使用块高查询Bcos区块信息
-
-        :param request: Request instance for GetBcosBlockByNumber.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockByNumberRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockByNumberResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetBcosBlockByNumber", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetBcosBlockByNumberResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetBcosBlockList(self, request):
-        """Bcos区块链引擎已下线，请选用其他区块链引擎
-
-        Bcos分页查询当前群组下的区块列表
-
-        :param request: Request instance for GetBcosBlockList.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockListRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBcosBlockListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetBcosBlockList", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetBcosBlockListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetBcosTransByHash(self, request):
-        """Bcos区块链引擎已下线，请选用其他区块链引擎
-
-        Bcos根据交易哈希查看交易详细信息
-
-        :param request: Request instance for GetBcosTransByHash.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransByHashRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransByHashResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetBcosTransByHash", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetBcosTransByHashResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetBcosTransList(self, request):
-        """Bcos区块链引擎已下线，请选用其他区块链引擎
-
-        Bcos分页查询当前群组的交易信息列表
-
-        :param request: Request instance for GetBcosTransList.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransListRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBcosTransListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetBcosTransList", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetBcosTransListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -579,31 +454,6 @@ class TbaasClient(AbstractClient):
             body = self.call("Invoke", params, headers=headers)
             response = json.loads(body)
             model = models.InvokeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def InvokeBcosTrans(self, request):
-        """Bcos区块链引擎已下线，请选用其他区块链引擎
-
-        执行Bcos交易，支持动态部署的合约
-
-        :param request: Request instance for InvokeBcosTrans.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeBcosTransRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.InvokeBcosTransResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InvokeBcosTrans", params, headers=headers)
-            response = json.loads(body)
-            model = models.InvokeBcosTransResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

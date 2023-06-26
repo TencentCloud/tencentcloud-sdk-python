@@ -6545,6 +6545,61 @@ class DescribeRollbackTimeValidityResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSupportProxyVersionRequest(AbstractModel):
+    """DescribeSupportProxyVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ProxyGroupId: 数据库代理组ID
+        :type ProxyGroupId: str
+        """
+        self.ClusterId = None
+        self.ProxyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSupportProxyVersionResponse(AbstractModel):
+    """DescribeSupportProxyVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SupportProxyVersions: 支持的数据库代理版本集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportProxyVersions: list of str
+        :param CurrentProxyVersion: 当前proxy版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentProxyVersion: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SupportProxyVersions = None
+        self.CurrentProxyVersion = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SupportProxyVersions = params.get("SupportProxyVersions")
+        self.CurrentProxyVersion = params.get("CurrentProxyVersion")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones请求参数结构体
 

@@ -18,6 +18,73 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AttrItem(AbstractModel):
+    """通用属性
+
+    Type 的枚举值
+    text:文本类型, longtext:长文本类型, banner:单图片类型, image:多图片类型, video:视频类型, mp:小程序类型
+
+    具体组合如下
+    - Type: "text" 文本类型, 对应值 Value: "文本字符串"
+    - Type: "longtext" 长文本类型, 对应值 Value: "长文本字符串, 支持换行\n"
+    - Type: "banner" 单图片类型, 对应图片地址 Value: "https://sample.cdn.com/xxx.jpg"
+    - Type: "image" 多图片类型, 对应图片地址 Values: ["https://sample.cdn.com/1.jpg", "https://sample.cdn.com/2.jpg"]
+    - Type: "video" 视频类型, 对应视频地址 Value: "https://sample.cdn.com/xxx.mp4"
+    - Type: "mp" 小程序类型, 对应配置 Values: ["WXAPPID", "WXAPP_PATH", "跳转说明"]
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 字段名称
+        :type Name: str
+        :param Value: 字段值
+        :type Value: str
+        :param Type: 字段类型
+text:文本类型, 
+longtext:长文本类型, banner:单图片类型, image:多图片类型,
+video:视频类型,
+mp:小程序类型
+        :type Type: str
+        :param ReadOnly: 只读
+        :type ReadOnly: bool
+        :param Hidden: 扫码展示
+        :type Hidden: bool
+        :param Values: 多个值
+        :type Values: list of str
+        :param Key: 类型标识
+        :type Key: str
+        :param Ext: 扩展字段
+        :type Ext: str
+        """
+        self.Name = None
+        self.Value = None
+        self.Type = None
+        self.ReadOnly = None
+        self.Hidden = None
+        self.Values = None
+        self.Key = None
+        self.Ext = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        self.Type = params.get("Type")
+        self.ReadOnly = params.get("ReadOnly")
+        self.Hidden = params.get("Hidden")
+        self.Values = params.get("Values")
+        self.Key = params.get("Key")
+        self.Ext = params.get("Ext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthorizedTransferRequest(AbstractModel):
     """AuthorizedTransfer请求参数结构体
 
@@ -160,6 +227,14 @@ class CodeBatch(AbstractModel):
         :param Job: 调度任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type Job: :class:`tencentcloud.trp.v20210515.models.Job`
+        :param ProductionDate: 生产日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductionDate: str
+        :param ValidDate: 有效期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidDate: str
+        :param Attrs: 扩展属性
+        :type Attrs: list of AttrItem
         """
         self.BatchId = None
         self.CorpId = None
@@ -178,6 +253,9 @@ class CodeBatch(AbstractModel):
         self.Ext = None
         self.TplName = None
         self.Job = None
+        self.ProductionDate = None
+        self.ValidDate = None
+        self.Attrs = None
 
 
     def _deserialize(self, params):
@@ -202,6 +280,14 @@ class CodeBatch(AbstractModel):
         if params.get("Job") is not None:
             self.Job = Job()
             self.Job._deserialize(params.get("Job"))
+        self.ProductionDate = params.get("ProductionDate")
+        self.ValidDate = params.get("ValidDate")
+        if params.get("Attrs") is not None:
+            self.Attrs = []
+            for item in params.get("Attrs"):
+                obj = AttrItem()
+                obj._deserialize(item)
+                self.Attrs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -469,6 +555,10 @@ class CreateCodeBatchRequest(AbstractModel):
         :type CloneId: str
         :param BatchCode: 批次编号，业务字段不判断唯一性
         :type BatchCode: str
+        :param ValidDate: 有效期
+        :type ValidDate: str
+        :param ProductionDate: 生产日期
+        :type ProductionDate: str
         """
         self.CorpId = None
         self.MerchantId = None
@@ -479,6 +569,8 @@ class CreateCodeBatchRequest(AbstractModel):
         self.MpTpl = None
         self.CloneId = None
         self.BatchCode = None
+        self.ValidDate = None
+        self.ProductionDate = None
 
 
     def _deserialize(self, params):
@@ -491,6 +583,8 @@ class CreateCodeBatchRequest(AbstractModel):
         self.MpTpl = params.get("MpTpl")
         self.CloneId = params.get("CloneId")
         self.BatchCode = params.get("BatchCode")
+        self.ValidDate = params.get("ValidDate")
+        self.ProductionDate = params.get("ProductionDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2386,18 +2480,30 @@ class DescribeScanLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Code: 码
-        :type Code: str
         :param CorpId: 企业ID
         :type CorpId: int
+        :param PageSize: 分页数量
+        :type PageSize: int
+        :param PageNumber: 当前分页
+        :type PageNumber: int
+        :param Code: 安心码
+        :type Code: str
+        :param Openid: 小程序用户ID
+        :type Openid: str
         """
-        self.Code = None
         self.CorpId = None
+        self.PageSize = None
+        self.PageNumber = None
+        self.Code = None
+        self.Openid = None
 
 
     def _deserialize(self, params):
-        self.Code = params.get("Code")
         self.CorpId = params.get("CorpId")
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        self.Code = params.get("Code")
+        self.Openid = params.get("Openid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2415,7 +2521,6 @@ class DescribeScanLogsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Products: 【弃用】
-注意：此字段可能返回 null，表示取不到有效值。
         :type Products: list of ScanLog
         :param TotalCount: 条数
         :type TotalCount: int
@@ -2604,10 +2709,13 @@ class DescribeTraceCodeByIdResponse(AbstractModel):
         r"""
         :param TraceCode: 无
         :type TraceCode: :class:`tencentcloud.trp.v20210515.models.TraceCode`
+        :param CodePath: 码路径，如level是2，则为 [1级, 2级]
+        :type CodePath: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TraceCode = None
+        self.CodePath = None
         self.RequestId = None
 
 
@@ -2615,6 +2723,7 @@ class DescribeTraceCodeByIdResponse(AbstractModel):
         if params.get("TraceCode") is not None:
             self.TraceCode = TraceCode()
             self.TraceCode._deserialize(params.get("TraceCode"))
+        self.CodePath = params.get("CodePath")
         self.RequestId = params.get("RequestId")
 
 
@@ -3026,6 +3135,10 @@ class ModifyCodeBatchRequest(AbstractModel):
         :type Remark: str
         :param BatchCode: 批次编码，业务字段不判断唯一性
         :type BatchCode: str
+        :param ValidDate: 有效期
+        :type ValidDate: str
+        :param ProductionDate: 生产日期
+        :type ProductionDate: str
         """
         self.BatchId = None
         self.CorpId = None
@@ -3035,6 +3148,8 @@ class ModifyCodeBatchRequest(AbstractModel):
         self.ProductId = None
         self.Remark = None
         self.BatchCode = None
+        self.ValidDate = None
+        self.ProductionDate = None
 
 
     def _deserialize(self, params):
@@ -3046,6 +3161,8 @@ class ModifyCodeBatchRequest(AbstractModel):
         self.ProductId = params.get("ProductId")
         self.Remark = params.get("Remark")
         self.BatchCode = params.get("BatchCode")
+        self.ValidDate = params.get("ValidDate")
+        self.ProductionDate = params.get("ProductionDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3754,16 +3871,16 @@ class Product(AbstractModel):
 
     def __init__(self):
         r"""
+        :param MerchantId: 商户标识码
+        :type MerchantId: str
+        :param Name: 商品名称
+        :type Name: str
         :param ProductId: 商品id
         :type ProductId: str
         :param CorpId: 企业id
         :type CorpId: int
-        :param MerchantId: 商户标识码
-        :type MerchantId: str
         :param ProductCode: 商品编号
         :type ProductCode: str
-        :param Name: 商品名称
-        :type Name: str
         :param Specification: 商品规格
 注意：此字段可能返回 null，表示取不到有效值。
         :type Specification: str
@@ -3783,11 +3900,11 @@ class Product(AbstractModel):
         :param MerchantName: 商户名称
         :type MerchantName: str
         """
+        self.MerchantId = None
+        self.Name = None
         self.ProductId = None
         self.CorpId = None
-        self.MerchantId = None
         self.ProductCode = None
-        self.Name = None
         self.Specification = None
         self.Remark = None
         self.Logo = None
@@ -3798,11 +3915,11 @@ class Product(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.MerchantId = params.get("MerchantId")
+        self.Name = params.get("Name")
         self.ProductId = params.get("ProductId")
         self.CorpId = params.get("CorpId")
-        self.MerchantId = params.get("MerchantId")
         self.ProductCode = params.get("ProductCode")
-        self.Name = params.get("Name")
         self.Specification = params.get("Specification")
         self.Remark = params.get("Remark")
         self.Logo = params.get("Logo")
@@ -3963,7 +4080,6 @@ class ScanLog(AbstractModel):
     def __init__(self):
         r"""
         :param LogId: 行ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type LogId: int
         :param Openid: 微信openid
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4010,6 +4126,14 @@ class ScanLog(AbstractModel):
         :param BatchId: 批次ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
+        :param Type: 扫码类型 0:无效扫码 1: 小程序扫码 2: 商家扫码
+        :type Type: int
+        :param MerchantName: 商户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MerchantName: str
+        :param ProductName: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
         """
         self.LogId = None
         self.Openid = None
@@ -4027,6 +4151,9 @@ class ScanLog(AbstractModel):
         self.Unionid = None
         self.First = None
         self.BatchId = None
+        self.Type = None
+        self.MerchantName = None
+        self.ProductName = None
 
 
     def _deserialize(self, params):
@@ -4046,6 +4173,9 @@ class ScanLog(AbstractModel):
         self.Unionid = params.get("Unionid")
         self.First = params.get("First")
         self.BatchId = params.get("BatchId")
+        self.Type = params.get("Type")
+        self.MerchantName = params.get("MerchantName")
+        self.ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4216,8 +4346,6 @@ class TraceData(AbstractModel):
         :param TraceTime: 溯源时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceTime: str
-        :param TraceItems: 无
-        :type TraceItems: list of TraceItem
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
@@ -4235,6 +4363,8 @@ class TraceData(AbstractModel):
         :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         :param Status: 溯源阶段状态 0: 无效, 1: 有效
         :type Status: int
+        :param TraceItems: 无
+        :type TraceItems: list of TraceItem
         """
         self.TraceId = None
         self.CorpId = None
@@ -4244,13 +4374,13 @@ class TraceData(AbstractModel):
         self.Phase = None
         self.PhaseName = None
         self.TraceTime = None
-        self.TraceItems = None
         self.CreateTime = None
         self.ChainStatus = None
         self.ChainTime = None
         self.ChainData = None
         self.PhaseData = None
         self.Status = None
+        self.TraceItems = None
 
 
     def _deserialize(self, params):
@@ -4262,12 +4392,6 @@ class TraceData(AbstractModel):
         self.Phase = params.get("Phase")
         self.PhaseName = params.get("PhaseName")
         self.TraceTime = params.get("TraceTime")
-        if params.get("TraceItems") is not None:
-            self.TraceItems = []
-            for item in params.get("TraceItems"):
-                obj = TraceItem()
-                obj._deserialize(item)
-                self.TraceItems.append(obj)
         self.CreateTime = params.get("CreateTime")
         self.ChainStatus = params.get("ChainStatus")
         self.ChainTime = params.get("ChainTime")
@@ -4278,6 +4402,12 @@ class TraceData(AbstractModel):
             self.PhaseData = PhaseData()
             self.PhaseData._deserialize(params.get("PhaseData"))
         self.Status = params.get("Status")
+        if params.get("TraceItems") is not None:
+            self.TraceItems = []
+            for item in params.get("TraceItems"):
+                obj = TraceItem()
+                obj._deserialize(item)
+                self.TraceItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4314,12 +4444,12 @@ longtext:长文本类型, banner:单图片类型, image:多图片类型,
 video:视频类型,
 mp:小程序类型
         :type Type: str
+        :param Values: 多个值
+        :type Values: list of str
         :param ReadOnly: 只读
         :type ReadOnly: bool
         :param Hidden: 扫码展示
         :type Hidden: bool
-        :param Values: 多个值
-        :type Values: list of str
         :param Key: 类型标识
         :type Key: str
         :param Ext: 扩展字段
@@ -4332,9 +4462,9 @@ mp:小程序类型
         self.Name = None
         self.Value = None
         self.Type = None
+        self.Values = None
         self.ReadOnly = None
         self.Hidden = None
-        self.Values = None
         self.Key = None
         self.Ext = None
         self.Attrs = None
@@ -4345,9 +4475,9 @@ mp:小程序类型
         self.Name = params.get("Name")
         self.Value = params.get("Value")
         self.Type = params.get("Type")
+        self.Values = params.get("Values")
         self.ReadOnly = params.get("ReadOnly")
         self.Hidden = params.get("Hidden")
-        self.Values = params.get("Values")
         self.Key = params.get("Key")
         self.Ext = params.get("Ext")
         if params.get("Attrs") is not None:

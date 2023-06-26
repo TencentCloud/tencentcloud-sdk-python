@@ -1567,6 +1567,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSupportProxyVersion(self, request):
+        """查询支持的数据库代理版本
+
+        :param request: Request instance for DescribeSupportProxyVersion.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSupportProxyVersionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSupportProxyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSupportProxyVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSupportProxyVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeZones(self, request):
         """本接口(DescribeZones)用于查询可售卖地域可用区信息。
 

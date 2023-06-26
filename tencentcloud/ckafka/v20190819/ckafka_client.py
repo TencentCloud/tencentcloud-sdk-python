@@ -394,6 +394,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePostPaidInstance(self, request):
+        """当前接口用来替代 CreateInstancePost 接口。创建按量计费实例。通常用于 SDK 或云 API 控制台调用接口，创建后付费 CKafka 实例。调用接口与在 CKafka 控制台购买按量付费实例效果相同。
+
+        :param request: Request instance for CreatePostPaidInstance.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreatePostPaidInstanceRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreatePostPaidInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePostPaidInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePostPaidInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRoute(self, request):
         """添加实例路由
 
