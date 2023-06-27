@@ -2310,7 +2310,7 @@ class CreateInstancePostRequest(AbstractModel):
         :type MsgRetentionTime: int
         :param ClusterId: 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
         :type ClusterId: int
-        :param KafkaVersion: 实例版本。目前支持 "0.10.2","1.1.1","2.4.2","2.8.1"
+        :param KafkaVersion: 实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
         :type KafkaVersion: str
         :param SpecificationsType: 实例类型。"standard"：标准版，"profession"：专业版
         :type SpecificationsType: str
@@ -2330,7 +2330,7 @@ class CreateInstancePostRequest(AbstractModel):
         :type ZoneIds: list of int
         :param InstanceNum: 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
         :type InstanceNum: int
-        :param PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1
+        :param PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
         :type PublicNetworkMonthly: int
         """
         self.InstanceName = None
@@ -2500,7 +2500,7 @@ class CreateInstancePreRequest(AbstractModel):
         :param InstanceType: 实例规格说明 专业版实例[所有规格]填写1.
 标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶性2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
         :type InstanceType: int
-        :param VpcId: vpcId，不填默认基础网络
+        :param VpcId: vpcId必填
         :type VpcId: str
         :param SubnetId: 子网id，vpc网络需要传该参数，基础网络可以不传
         :type SubnetId: str
@@ -2510,7 +2510,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type ClusterId: int
         :param RenewFlag: 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
         :type RenewFlag: int
-        :param KafkaVersion: CKafka版本号[0.10.2、1.1.1、2.4.1], 默认是1.1.1
+        :param KafkaVersion: CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
         :type KafkaVersion: str
         :param SpecificationsType: 实例类型: [标准版实例]填写 standard(默认), [专业版实例]填写 profession
         :type SpecificationsType: str
@@ -2528,8 +2528,10 @@ class CreateInstancePreRequest(AbstractModel):
         :type MultiZoneFlag: bool
         :param ZoneIds: 可用区列表，购买多可用区实例时为必填项
         :type ZoneIds: list of int
-        :param PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1。默认值为 0
+        :param PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。默认值为 0。需要保证传入参数为 3 的整数倍
         :type PublicNetworkMonthly: int
+        :param InstanceNum: 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+        :type InstanceNum: int
         """
         self.InstanceName = None
         self.ZoneId = None
@@ -2550,6 +2552,7 @@ class CreateInstancePreRequest(AbstractModel):
         self.MultiZoneFlag = None
         self.ZoneIds = None
         self.PublicNetworkMonthly = None
+        self.InstanceNum = None
 
 
     def _deserialize(self, params):
@@ -2577,6 +2580,7 @@ class CreateInstancePreRequest(AbstractModel):
         self.MultiZoneFlag = params.get("MultiZoneFlag")
         self.ZoneIds = params.get("ZoneIds")
         self.PublicNetworkMonthly = params.get("PublicNetworkMonthly")
+        self.InstanceNum = params.get("InstanceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2723,7 +2727,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type MsgRetentionTime: int
         :param ClusterId: 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
         :type ClusterId: int
-        :param KafkaVersion: 实例版本。目前支持 "0.10.2","1.1.1","2.4.2","2.8.1"
+        :param KafkaVersion: 实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
         :type KafkaVersion: str
         :param SpecificationsType: 实例类型。"standard"：标准版，"profession"：专业版
         :type SpecificationsType: str
@@ -2745,7 +2749,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type ZoneIds: list of int
         :param InstanceNum: 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
         :type InstanceNum: int
-        :param PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1
+        :param PublicNetworkMonthly: 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
         :type PublicNetworkMonthly: int
         """
         self.InstanceName = None

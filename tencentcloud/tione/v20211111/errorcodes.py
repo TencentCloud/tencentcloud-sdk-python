@@ -332,6 +332,9 @@ OPERATIONDENIED_NOTALLOW = 'OperationDenied.NotAllow'
 # 预付费资源组余量不足。
 OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = 'OperationDenied.ResourceGroupInsufficient'
 
+# 子网不合法。
+OPERATIONDENIED_SUBNETILLEGAL = 'OperationDenied.SubnetIllegal'
+
 # 白名单免费配额不足。
 OPERATIONDENIED_WHITELISTQUOTAEXCEED = 'OperationDenied.WhitelistQuotaExceed'
 

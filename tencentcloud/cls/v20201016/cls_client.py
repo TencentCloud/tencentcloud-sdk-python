@@ -625,7 +625,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteShipper(self, request):
-        """删除投递规则
+        """删除投递COS任务
 
         :param request: Request instance for DeleteShipper.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteShipperRequest`

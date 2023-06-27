@@ -992,6 +992,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifySpartaProtection(self, request):
+        """修改域名配置
+
+        :param request: Request instance for ModifySpartaProtection.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifySpartaProtectionRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifySpartaProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySpartaProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySpartaProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyWafAutoDenyRules(self, request):
         """修改ip惩罚规则
 

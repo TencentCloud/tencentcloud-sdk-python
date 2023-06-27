@@ -26,6 +26,29 @@ class NlpClient(AbstractClient):
     _service = 'nlp'
 
 
+    def AnalyzeSentiment(self, request):
+        """情感分析接口能够对带有情感色彩的主观性文本进行分析、处理、归纳和推理，识别出用户的情感倾向，是积极、中性还是消极，并且提供各自概率。
+
+        :param request: Request instance for AnalyzeSentiment.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.AnalyzeSentimentRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.AnalyzeSentimentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AnalyzeSentiment", params, headers=headers)
+            response = json.loads(body)
+            model = models.AnalyzeSentimentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AutoSummarization(self, request):
         """因业务调整该接口将于北京时间2023年8月1日0点下线，届时该产品功能将无法正常使用，为了避免对您的业务造成影响，请您尽快做好相关业务调整。详见：https://cloud.tencent.com/document/product/271/90711
 
@@ -68,6 +91,75 @@ class NlpClient(AbstractClient):
             body = self.call("ChatBot", params, headers=headers)
             response = json.loads(body)
             model = models.ChatBotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ClassifyContent(self, request):
+        """文本分类接口能够对用户输入的文章进行自动分类，将其映射到具体的类目上，用户只需要提供待分类的文本，而无需关注具体实现。该功能定义了一套较为完备的[三级分类体系](https://cloud.tencent.com/document/product/271/94286)，积累了数百万的语料，经过多轮迭代优化打造了较先进的深度学习模型，以保证效果不断提升。
+
+        :param request: Request instance for ClassifyContent.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.ClassifyContentRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.ClassifyContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ClassifyContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ClassifyContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ComposeCouplet(self, request):
+        """对联生成接口根据用户输入的命题关键词，智能生成一副完整的春联，包括上联、下联和横批。该接口利用先进的自然语言处理技术，确保生成的春联既符合传统对仗、对韵、对义的要求，又具有新意和创意，为用户提供独特的春节祝福。
+
+        :param request: Request instance for ComposeCouplet.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.ComposeCoupletRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.ComposeCoupletResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ComposeCouplet", params, headers=headers)
+            response = json.loads(body)
+            model = models.ComposeCoupletResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ComposePoetry(self, request):
+        """诗词生成接口利用现代的自然语言处理和深度学习技术，模仿了古代著名诗人的风格，为用户产生独特的诗词。用户只需输入的命题关键词，接口就能自动生成一首七言律诗或五言律诗。
+
+        :param request: Request instance for ComposePoetry.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.ComposePoetryRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.ComposePoetryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ComposePoetry", params, headers=headers)
+            response = json.loads(body)
+            model = models.ComposePoetryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -52,7 +52,9 @@ class TdidClient(AbstractClient):
 
 
     def CheckChain(self, request):
-        """检查区块链信息
+        """该接口不再使用
+
+        检查区块链信息
 
         :param request: Request instance for CheckChain.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CheckChainRequest`
@@ -75,7 +77,9 @@ class TdidClient(AbstractClient):
 
 
     def CreateCredential(self, request):
-        """创建凭证
+        """该接口不再使用
+
+        创建凭证
 
         :param request: Request instance for CreateCredential.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateCredentialRequest`
@@ -98,7 +102,9 @@ class TdidClient(AbstractClient):
 
 
     def CreateSelectiveCredential(self, request):
-        """创建选择性批露凭证
+        """该接口不再使用
+
+        创建选择性批露凭证
 
         :param request: Request instance for CreateSelectiveCredential.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateSelectiveCredentialRequest`
@@ -121,7 +127,9 @@ class TdidClient(AbstractClient):
 
 
     def CreateTDid(self, request):
-        """创建机构DID
+        """该接口不再使用
+
+        创建机构DID
 
         :param request: Request instance for CreateTDid.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidRequest`
@@ -144,7 +152,9 @@ class TdidClient(AbstractClient):
 
 
     def CreateTDidByPrivateKey(self, request):
-        """新建DID根据私钥生成Tdid
+        """该接口不再使用
+
+        新建DID根据私钥生成Tdid
 
         :param request: Request instance for CreateTDidByPrivateKey.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPrivateKeyRequest`
@@ -167,7 +177,9 @@ class TdidClient(AbstractClient):
 
 
     def CreateTDidByPublicKey(self, request):
-        """新建DID根据公钥生成Tdid
+        """该接口不再使用
+
+         新建DID根据公钥生成Tdid
 
         :param request: Request instance for CreateTDidByPublicKey.
         :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPublicKeyRequest`
@@ -215,7 +227,9 @@ class TdidClient(AbstractClient):
 
 
     def GetAuthorityIssuer(self, request):
-        """获取权威机构信息
+        """该接口不再使用
+
+        获取权威机构信息
 
         :param request: Request instance for GetAuthorityIssuer.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetAuthorityIssuerRequest`
@@ -288,7 +302,9 @@ class TdidClient(AbstractClient):
 
 
     def GetCptInfo(self, request):
-        """凭证模版详情
+        """该接口不再使用
+
+        凭证模版详情
 
         :param request: Request instance for GetCptInfo.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCptInfoRequest`
@@ -336,7 +352,9 @@ class TdidClient(AbstractClient):
 
 
     def GetCredentialStatus(self, request):
-        """获取凭证链上状态信息
+        """该接口不再使用
+
+        获取凭证链上状态信息
 
         :param request: Request instance for GetCredentialStatus.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialStatusRequest`
@@ -358,58 +376,10 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetDidClusterDetail(self, request):
-        """下线已有内测接口，待上线正式版本的接口
-
-        获取DID区块链网络详情
-
-        :param request: Request instance for GetDidClusterDetail.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidClusterDetailRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetDidClusterDetailResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetDidClusterDetail", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetDidClusterDetailResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetDidClusterList(self, request):
-        """下线已有内测接口，待上线正式版本的接口
-
-        获取用户的DID网络列表
-
-        :param request: Request instance for GetDidClusterList.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidClusterListRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetDidClusterListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetDidClusterList", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetDidClusterListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def GetDidDocument(self, request):
-        """查看DID文档
+        """该接口不再使用
+
+        查看DID文档
 
         :param request: Request instance for GetDidDocument.
         :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidDocumentRequest`
@@ -432,7 +402,9 @@ class TdidClient(AbstractClient):
 
 
     def RegisterCpt(self, request):
-        """凭证模版新建
+        """该接口不再使用
+
+        凭证模版新建
 
         :param request: Request instance for RegisterCpt.
         :type request: :class:`tencentcloud.tdid.v20210519.models.RegisterCptRequest`
@@ -455,7 +427,9 @@ class TdidClient(AbstractClient):
 
 
     def SetCredentialStatus(self, request):
-        """设置凭证链上状态
+        """该接口不再使用
+
+        设置凭证链上状态
 
         :param request: Request instance for SetCredentialStatus.
         :type request: :class:`tencentcloud.tdid.v20210519.models.SetCredentialStatusRequest`
@@ -478,7 +452,9 @@ class TdidClient(AbstractClient):
 
 
     def VerifyCredential(self, request):
-        """验证凭证
+        """该接口不再使用
+
+        验证凭证
 
         :param request: Request instance for VerifyCredential.
         :type request: :class:`tencentcloud.tdid.v20210519.models.VerifyCredentialRequest`

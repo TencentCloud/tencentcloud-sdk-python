@@ -73,7 +73,9 @@ class TbaasClient(AbstractClient):
 
 
     def CreateChaincodeAndInstallForUser(self, request):
-        """创建并安装合约
+        """接口已废弃，请通过控制台查询或操作
+
+        创建并安装合约
 
         :param request: Request instance for CreateChaincodeAndInstallForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.CreateChaincodeAndInstallForUserRequest`
@@ -165,7 +167,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetChaincodeCompileLogForUser(self, request):
-        """获取合约编译日志
+        """接口已废弃，请通过控制台查询或操作
+
+        获取合约编译日志
 
         :param request: Request instance for GetChaincodeCompileLogForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeCompileLogForUserRequest`
@@ -188,7 +192,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetChaincodeInitializeResultForUser(self, request):
-        """实例化结果查询
+        """接口已废弃，请通过控制台查询或操作
+
+        实例化结果查询
 
         :param request: Request instance for GetChaincodeInitializeResultForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeInitializeResultForUserRequest`
@@ -211,7 +217,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetChaincodeLogForUser(self, request):
-        """获取合约容器日志
+        """接口已废弃，请通过控制台查询或操作
+
+        获取合约容器日志
 
         :param request: Request instance for GetChaincodeLogForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChaincodeLogForUserRequest`
@@ -234,7 +242,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetChannelListForUser(self, request):
-        """获取通道列表
+        """接口已废弃，请通过控制台查询或操作
+
+        获取通道列表
 
         :param request: Request instance for GetChannelListForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetChannelListForUserRequest`
@@ -257,7 +267,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetClusterListForUser(self, request):
-        """获取该用户的网络列表。网络信息中包含组织信息，但仅包含该用户所在组织的信息。
+        """接口已废弃，请通过控制台查询或操作
+
+        获取该用户的网络列表。网络信息中包含组织信息，但仅包含该用户所在组织的信息。
 
         :param request: Request instance for GetClusterListForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetClusterListForUserRequest`
@@ -372,7 +384,9 @@ class TbaasClient(AbstractClient):
 
 
     def GetPeerLogForUser(self, request):
-        """获取节点日志
+        """接口已废弃，请通过控制台查询或操作
+
+        获取节点日志
 
         :param request: Request instance for GetPeerLogForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.GetPeerLogForUserRequest`
@@ -418,7 +432,9 @@ class TbaasClient(AbstractClient):
 
 
     def InitializeChaincodeForUser(self, request):
-        """实例化合约
+        """接口已废弃，请通过控制台查询或操作
+
+        实例化合约
 
         :param request: Request instance for InitializeChaincodeForUser.
         :type request: :class:`tencentcloud.tbaas.v20180416.models.InitializeChaincodeForUserRequest`

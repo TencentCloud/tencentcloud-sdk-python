@@ -5310,16 +5310,25 @@ class DescribeDimensionScoreRequest(AbstractModel):
         :type ProjectId: str
         :param DatasourceId: 数据来源id
         :type DatasourceId: str
+        :param Filters: 过滤参数
+        :type Filters: list of Filter
         """
         self.StatisticsDate = None
         self.ProjectId = None
         self.DatasourceId = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.StatisticsDate = params.get("StatisticsDate")
         self.ProjectId = params.get("ProjectId")
         self.DatasourceId = params.get("DatasourceId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7569,16 +7578,29 @@ class DescribeQualityScoreRequest(AbstractModel):
         :type ProjectId: str
         :param DatasourceId: 数据来源id
         :type DatasourceId: str
+        :param ScoreType: 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+        :type ScoreType: str
+        :param Filters: 过滤参数
+        :type Filters: list of Filter
         """
         self.StatisticsDate = None
         self.ProjectId = None
         self.DatasourceId = None
+        self.ScoreType = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.StatisticsDate = params.get("StatisticsDate")
         self.ProjectId = params.get("ProjectId")
         self.DatasourceId = params.get("DatasourceId")
+        self.ScoreType = params.get("ScoreType")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7627,11 +7649,17 @@ class DescribeQualityScoreTrendRequest(AbstractModel):
         :type ProjectId: str
         :param DatasourceId: 数据来源id
         :type DatasourceId: str
+        :param ScoreType: 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+        :type ScoreType: str
+        :param Filters: 过滤参数
+        :type Filters: list of Filter
         """
         self.StatisticsStartDate = None
         self.StatisticsEndDate = None
         self.ProjectId = None
         self.DatasourceId = None
+        self.ScoreType = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -7639,6 +7667,13 @@ class DescribeQualityScoreTrendRequest(AbstractModel):
         self.StatisticsEndDate = params.get("StatisticsEndDate")
         self.ProjectId = params.get("ProjectId")
         self.DatasourceId = params.get("DatasourceId")
+        self.ScoreType = params.get("ScoreType")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9641,6 +9676,8 @@ class DescribeTableQualityDetailsRequest(AbstractModel):
         :type OrderFields: list of OrderField
         :param DatasourceId: 数据来源id
         :type DatasourceId: str
+        :param ScoreType: 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+        :type ScoreType: str
         """
         self.StatisticsDate = None
         self.ProjectId = None
@@ -9649,6 +9686,7 @@ class DescribeTableQualityDetailsRequest(AbstractModel):
         self.Filters = None
         self.OrderFields = None
         self.DatasourceId = None
+        self.ScoreType = None
 
 
     def _deserialize(self, params):
@@ -9669,6 +9707,7 @@ class DescribeTableQualityDetailsRequest(AbstractModel):
                 obj._deserialize(item)
                 self.OrderFields.append(obj)
         self.DatasourceId = params.get("DatasourceId")
+        self.ScoreType = params.get("ScoreType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9788,11 +9827,14 @@ class DescribeTableScoreTrendRequest(AbstractModel):
         :type StatisticsEndDate: int
         :param TableId: 表id
         :type TableId: str
+        :param ScoreType: 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+        :type ScoreType: str
         """
         self.ProjectId = None
         self.StatisticsStartDate = None
         self.StatisticsEndDate = None
         self.TableId = None
+        self.ScoreType = None
 
 
     def _deserialize(self, params):
@@ -9800,6 +9842,7 @@ class DescribeTableScoreTrendRequest(AbstractModel):
         self.StatisticsStartDate = params.get("StatisticsStartDate")
         self.StatisticsEndDate = params.get("StatisticsEndDate")
         self.TableId = params.get("TableId")
+        self.ScoreType = params.get("ScoreType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10849,14 +10892,19 @@ class DimensionCount(AbstractModel):
         :param Count: 统计值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
+        :param QualityDim: 维度类型1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityDim: int
         """
         self.DimType = None
         self.Count = None
+        self.QualityDim = None
 
 
     def _deserialize(self, params):
         self.DimType = params.get("DimType")
         self.Count = params.get("Count")
+        self.QualityDim = params.get("QualityDim")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16645,6 +16693,12 @@ class RuleExecResult(AbstractModel):
         :param RelConditionExpr: 源字段与目标字段关联条件on表达式
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelConditionExpr: str
+        :param StartTime: 执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param AlarmLevel: 1/2/3:低/中/高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
         """
         self.RuleExecId = None
         self.RuleGroupExecId = None
@@ -16665,6 +16719,8 @@ class RuleExecResult(AbstractModel):
         self.TargetObjectDataType = None
         self.FieldConfig = None
         self.RelConditionExpr = None
+        self.StartTime = None
+        self.AlarmLevel = None
 
 
     def _deserialize(self, params):
@@ -16691,6 +16747,8 @@ class RuleExecResult(AbstractModel):
             self.FieldConfig = RuleFieldConfig()
             self.FieldConfig._deserialize(params.get("FieldConfig"))
         self.RelConditionExpr = params.get("RelConditionExpr")
+        self.StartTime = params.get("StartTime")
+        self.AlarmLevel = params.get("AlarmLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16734,6 +16792,9 @@ class RuleExecResultDetail(AbstractModel):
         :param TableOwnerUserId: 表负责人userId
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableOwnerUserId: int
+        :param DatasourceType: 2.HIVE 3.DLC
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: int
         """
         self.DatasourceId = None
         self.DatasourceName = None
@@ -16744,6 +16805,7 @@ class RuleExecResultDetail(AbstractModel):
         self.TableName = None
         self.RuleExecResult = None
         self.TableOwnerUserId = None
+        self.DatasourceType = None
 
 
     def _deserialize(self, params):
@@ -16758,6 +16820,7 @@ class RuleExecResultDetail(AbstractModel):
             self.RuleExecResult = RuleExecResult()
             self.RuleExecResult._deserialize(params.get("RuleExecResult"))
         self.TableOwnerUserId = params.get("TableOwnerUserId")
+        self.DatasourceType = params.get("DatasourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16991,6 +17054,9 @@ class RuleGroup(AbstractModel):
         :param TableOwnerUserId: 表负责人UserId
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableOwnerUserId: int
+        :param InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self.RuleGroupId = None
         self.DatasourceId = None
@@ -17009,6 +17075,7 @@ class RuleGroup(AbstractModel):
         self.RuleCount = None
         self.MonitorStatus = None
         self.TableOwnerUserId = None
+        self.InstanceId = None
 
 
     def _deserialize(self, params):
@@ -17033,6 +17100,7 @@ class RuleGroup(AbstractModel):
         self.RuleCount = params.get("RuleCount")
         self.MonitorStatus = params.get("MonitorStatus")
         self.TableOwnerUserId = params.get("TableOwnerUserId")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18656,14 +18724,29 @@ class SourceObject(AbstractModel):
         :param SourceObjectValue: 源字段名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceObjectValue: str
+        :param ObjectDataTypeName: 源字段详细类型，int、string
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectDataTypeName: str
+        :param ObjectValue: 源字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectValue: str
+        :param ObjectType: 对象类型 1.常量  2.离线表级   3.离线字段级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectType: int
         """
         self.SourceObjectDataTypeName = None
         self.SourceObjectValue = None
+        self.ObjectDataTypeName = None
+        self.ObjectValue = None
+        self.ObjectType = None
 
 
     def _deserialize(self, params):
         self.SourceObjectDataTypeName = params.get("SourceObjectDataTypeName")
         self.SourceObjectValue = params.get("SourceObjectValue")
+        self.ObjectDataTypeName = params.get("ObjectDataTypeName")
+        self.ObjectValue = params.get("ObjectValue")
+        self.ObjectType = params.get("ObjectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

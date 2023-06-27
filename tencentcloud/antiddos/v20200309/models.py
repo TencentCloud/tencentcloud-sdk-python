@@ -577,6 +577,9 @@ class BGPInstance(AbstractModel):
         :param ModifyTime: 修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
+        :param BasicPlusFlag: 是否是基础防护加强版 0: 不是 1: 是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasicPlusFlag: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -598,6 +601,7 @@ class BGPInstance(AbstractModel):
         self.ElasticServiceBandwidth = None
         self.GiftServiceBandWidth = None
         self.ModifyTime = None
+        self.BasicPlusFlag = None
 
 
     def _deserialize(self, params):
@@ -641,6 +645,7 @@ class BGPInstance(AbstractModel):
         self.ElasticServiceBandwidth = params.get("ElasticServiceBandwidth")
         self.GiftServiceBandWidth = params.get("GiftServiceBandWidth")
         self.ModifyTime = params.get("ModifyTime")
+        self.BasicPlusFlag = params.get("BasicPlusFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4949,6 +4954,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type ExcludeAdvancedInfo: bool
         :param FilterAssetIpList: 资产IP数组
         :type FilterAssetIpList: list of str
+        :param FilterBasicPlusFlag: 是否包含基础防护增强版 0: 不包含 1: 包含
+        :type FilterBasicPlusFlag: int
         """
         self.Offset = None
         self.Limit = None
@@ -4968,6 +4975,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterConvoy = None
         self.ExcludeAdvancedInfo = None
         self.FilterAssetIpList = None
+        self.FilterBasicPlusFlag = None
 
 
     def _deserialize(self, params):
@@ -4991,6 +4999,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterConvoy = params.get("FilterConvoy")
         self.ExcludeAdvancedInfo = params.get("ExcludeAdvancedInfo")
         self.FilterAssetIpList = params.get("FilterAssetIpList")
+        self.FilterBasicPlusFlag = params.get("FilterBasicPlusFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

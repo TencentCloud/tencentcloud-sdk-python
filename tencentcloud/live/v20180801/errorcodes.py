@@ -542,6 +542,9 @@ RESOURCENOTFOUND_DOMAINNORECORD = 'ResourceNotFound.DomainNoRecord'
 # 域名不存在或不匹配。
 RESOURCENOTFOUND_DOMAINNOTEXIST = 'ResourceNotFound.DomainNotExist'
 
+# 数据为空。
+RESOURCENOTFOUND_EMPTYDATA = 'ResourceNotFound.EmptyData'
+
 # 用户被禁用。
 RESOURCENOTFOUND_FORBIDSERVICE = 'ResourceNotFound.ForbidService'
 

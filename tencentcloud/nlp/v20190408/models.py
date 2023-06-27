@@ -18,6 +18,66 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AnalyzeSentimentRequest(AbstractModel):
+    """AnalyzeSentiment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 待分析的文本（仅支持UTF-8格式，不超过200字）。
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyzeSentimentResponse(AbstractModel):
+    """AnalyzeSentiment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Positive: 正面情感概率。
+        :type Positive: float
+        :param Neutral: 中性情感概率。
+        :type Neutral: float
+        :param Negative: 负面情感概率。
+        :type Negative: float
+        :param Sentiment: 情感分类结果：
+positive：正面情感
+negative：负面情感
+neutral：中性、无情感
+        :type Sentiment: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Positive = None
+        self.Neutral = None
+        self.Negative = None
+        self.Sentiment = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Positive = params.get("Positive")
+        self.Neutral = params.get("Neutral")
+        self.Negative = params.get("Negative")
+        self.Sentiment = params.get("Sentiment")
+        self.RequestId = params.get("RequestId")
+
+
 class AutoSummarizationRequest(AbstractModel):
     """AutoSummarization请求参数结构体
 
@@ -127,6 +187,46 @@ class CCIToken(AbstractModel):
         self.Word = params.get("Word")
         self.BeginOffset = params.get("BeginOffset")
         self.CorrectWord = params.get("CorrectWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Category(AbstractModel):
+    """分类详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 分类id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param Label: 分类英文名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param Name: 分类中文名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Score: 分类置信度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: float
+        """
+        self.Id = None
+        self.Label = None
+        self.Name = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Label = params.get("Label")
+        self.Name = params.get("Name")
+        self.Score = params.get("Score")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -251,6 +351,184 @@ class ClassificationResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ClassifyContentRequest(AbstractModel):
+    """ClassifyContent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Title: 待分类的文章的标题（仅支持UTF-8格式，不超过100字符）。
+        :type Title: str
+        :param Content: 待分类文章的内容, 每个元素对应一个段落。（仅支持UTF-8格式，文章内容长度总和不超过2000字符）
+        :type Content: list of str
+        """
+        self.Title = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Title = params.get("Title")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClassifyContentResponse(AbstractModel):
+    """ClassifyContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FirstClassification: 一级分类。分类详情见附录-三级分类体系表。
+        :type FirstClassification: :class:`tencentcloud.nlp.v20190408.models.Category`
+        :param SecondClassification: 二级分类。分类详情见附录-三级分类体系表。
+        :type SecondClassification: :class:`tencentcloud.nlp.v20190408.models.Category`
+        :param ThirdClassification: 三级分类。分类详情见附录-三级分类体系表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThirdClassification: :class:`tencentcloud.nlp.v20190408.models.Category`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FirstClassification = None
+        self.SecondClassification = None
+        self.ThirdClassification = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FirstClassification") is not None:
+            self.FirstClassification = Category()
+            self.FirstClassification._deserialize(params.get("FirstClassification"))
+        if params.get("SecondClassification") is not None:
+            self.SecondClassification = Category()
+            self.SecondClassification._deserialize(params.get("SecondClassification"))
+        if params.get("ThirdClassification") is not None:
+            self.ThirdClassification = Category()
+            self.ThirdClassification._deserialize(params.get("ThirdClassification"))
+        self.RequestId = params.get("RequestId")
+
+
+class ComposeCoupletRequest(AbstractModel):
+    """ComposeCouplet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
+        :type Text: str
+        :param TargetType: 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
+        :type TargetType: int
+        """
+        self.Text = None
+        self.TargetType = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.TargetType = params.get("TargetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeCoupletResponse(AbstractModel):
+    """ComposeCouplet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopScroll: 横批。
+        :type TopScroll: str
+        :param Content: 上联与下联。
+        :type Content: list of str
+        :param RandomCause: 当对联随机生成时，展示随机生成原因。
+        :type RandomCause: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopScroll = None
+        self.Content = None
+        self.RandomCause = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TopScroll = params.get("TopScroll")
+        self.Content = params.get("Content")
+        self.RandomCause = params.get("RandomCause")
+        self.RequestId = params.get("RequestId")
+
+
+class ComposePoetryRequest(AbstractModel):
+    """ComposePoetry请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 生成诗词的关键词。
+        :type Text: str
+        :param PoetryType: 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
+        :type PoetryType: int
+        :param Genre: 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
+        :type Genre: int
+        """
+        self.Text = None
+        self.PoetryType = None
+        self.Genre = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.PoetryType = params.get("PoetryType")
+        self.Genre = params.get("Genre")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposePoetryResponse(AbstractModel):
+    """ComposePoetry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Title: 诗题，即输入的生成诗词的关键词。
+        :type Title: str
+        :param Content: 诗的内容。
+        :type Content: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Title = None
+        self.Content = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Title = params.get("Title")
+        self.Content = params.get("Content")
+        self.RequestId = params.get("RequestId")
 
 
 class CompoundParticiple(AbstractModel):

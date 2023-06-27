@@ -65,6 +65,9 @@ INTERNALERROR = 'InternalError'
 # 网关错误。
 INTERNALERROR_GATEWAYERROR = 'InternalError.GatewayError'
 
+# 未定义异常。
+INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
