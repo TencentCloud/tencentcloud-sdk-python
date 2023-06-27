@@ -48,7 +48,7 @@ class ClientProfile(object):
 class RegionBreakerProfile(object):
 
     def __init__(self, backup_endpoint="ap-guangzhou.tencentcloudapi.com",
-                 max_fail_num=1,
+                 max_fail_num=5,
                  max_fail_percent=0.75,
                  window_interval=60*5,
                  timeout=60,
