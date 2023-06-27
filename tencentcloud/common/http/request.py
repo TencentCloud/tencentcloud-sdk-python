@@ -56,18 +56,22 @@ class ProxyConnection(object):
 class ApiRequest(object):
     def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False, certification=None):
         self.conn = ProxyConnection(host, timeout=req_timeout, proxy=proxy, certification=certification, is_http=is_http)
-        url = urlparse(host)
-        if not url.hostname:
-            if is_http:
-                host = "http://" + host
-            else:
-                host = "https://" + host
+        self.is_http = is_http
         self.host = host
         self.req_timeout = req_timeout
         self.keep_alive = False
         self.debug = debug
         self.request_size = 0
         self.response_size = 0
+
+    def _handle_host(self, host):
+        url = urlparse(host)
+        if not url.hostname:
+            if self.is_http:
+                return "http://" + host
+            else:
+                return "https://" + host
+        return host
 
     def set_req_timeout(self, req_timeout):
         self.req_timeout = req_timeout
@@ -82,16 +86,17 @@ class ApiRequest(object):
         self.debug = debug
 
     def _request(self, req_inter):
+        url = self._handle_host(req_inter.host)
         if self.keep_alive:
             req_inter.header["Connection"] = "Keep-Alive"
         if self.debug:
             logger.debug("SendRequest %s" % req_inter)
         if req_inter.method == 'GET':
-            req_inter_url = '%s?%s' % (self.host, req_inter.data)
+            req_inter_url = '%s?%s' % (url, req_inter.data)
             return self.conn.request(req_inter.method, req_inter_url,
                               None, req_inter.header)
         elif req_inter.method == 'POST':
-            return self.conn.request(req_inter.method, self.host,
+            return self.conn.request(req_inter.method, url,
                               req_inter.data, req_inter.header)
         else:
             raise TencentCloudSDKException(

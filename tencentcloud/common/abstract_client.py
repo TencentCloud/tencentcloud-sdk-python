@@ -36,8 +36,9 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 from tencentcloud.common.exception import TencentCloudSDKException as SDKError
 from tencentcloud.common.http.request import ApiRequest
 from tencentcloud.common.http.request import RequestInternal
-from tencentcloud.common.profile.client_profile import ClientProfile
+from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.sign import Sign
+from tencentcloud.common.circuit_breaker import CircuitBreaker
 
 warnings.filterwarnings("ignore")
 
@@ -79,6 +80,11 @@ class AbstractClient(object):
                                   certification=self.profile.httpProfile.certification)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
+        self.circuit_breaker = None
+        if not self.profile.disable_region_breaker:
+            if self.profile.region_breaker_profile is None:
+                self.profile.region_breaker_profile = RegionBreakerProfile()
+            self.circuit_breaker = CircuitBreaker(self.profile.region_breaker_profile)
 
     def _fix_params(self, params):
         if not isinstance(params, (dict,)):
@@ -352,6 +358,8 @@ class AbstractClient(object):
                           DeprecationWarning)
 
     def call(self, action, params, options=None, headers=None):
+        if not self.profile.disable_region_breaker:
+            return self.call_with_region_breaker(action, params, options, headers)
         req = RequestInternal(self._get_endpoint(),
                               self.profile.httpProfile.reqMethod,
                               self._requestPath,
@@ -362,6 +370,31 @@ class AbstractClient(object):
         self._check_status(resp_inter)
         data = resp_inter.data
         self._handle_response(data)
+        return data
+
+    def call_with_region_breaker(self, action, params, options=None, headers=None):
+        endpoint = self._get_endpoint()
+        generation, need_break = self.circuit_breaker.before_requests()
+        if need_break:
+            endpoint = self._service + "." + self.profile.region_breaker_profile.backup_endpoint
+        req = RequestInternal(endpoint,
+                              self.profile.httpProfile.reqMethod,
+                              self._requestPath,
+                              header=headers)
+        self._build_req_inter(action, params, req, options)
+        data = '{"Response": {}}'
+        try:
+            resp_inter = self.request.send_request(req)
+            self._check_status(resp_inter)
+            data = resp_inter.data
+            self._handle_response(data)
+            self.circuit_breaker.after_requests(generation, True)
+        except TencentCloudSDKException as e:
+            if "RequestId" in data and e.code != "InternalError":
+                self.circuit_breaker.after_requests(generation, True)
+            else:
+                self.circuit_breaker.after_requests(generation, False)
+
         return data
 
     def call_octet_stream(self, action, headers, body):
