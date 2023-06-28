@@ -414,6 +414,92 @@ class CreateApplicationTriggerPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCustomAccountRequest(AbstractModel):
+    """CreateCustomAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Name: 自定义的账户名
+        :type Name: str
+        :param Permissions: 策略列表
+        :type Permissions: list of Permission
+        :param Description: 自定义的账户描述
+        :type Description: str
+        :param Duration: 有效期(单位：天)，从当前时间开始计算，优先级高于ExpiresAt
+        :type Duration: int
+        :param ExpiresAt: 自定义的账户过期时间（时间戳，单位:毫秒）
+        :type ExpiresAt: int
+        :param Disable: 是否禁用自定义的账户
+        :type Disable: bool
+        """
+        self.RegistryId = None
+        self.Name = None
+        self.Permissions = None
+        self.Description = None
+        self.Duration = None
+        self.ExpiresAt = None
+        self.Disable = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Name = params.get("Name")
+        if params.get("Permissions") is not None:
+            self.Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self.Permissions.append(obj)
+        self.Description = params.get("Description")
+        self.Duration = params.get("Duration")
+        self.ExpiresAt = params.get("ExpiresAt")
+        self.Disable = params.get("Disable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomAccountResponse(AbstractModel):
+    """CreateCustomAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 自定义用户名（会自动加上前缀tcr$）
+        :type Name: str
+        :param Password: 自定义用户密码，仅展示一次，请注意留存
+        :type Password: str
+        :param ExpiresAt: 自定义用户失效时间（时间戳）
+        :type ExpiresAt: int
+        :param CreateTime: 自定义用户创建时间
+        :type CreateTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.Password = None
+        self.ExpiresAt = None
+        self.CreateTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Password = params.get("Password")
+        self.ExpiresAt = params.get("ExpiresAt")
+        self.CreateTime = params.get("CreateTime")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateImageAccelerationServiceRequest(AbstractModel):
     """CreateImageAccelerationService请求参数结构体
 
@@ -1548,6 +1634,66 @@ class CreateWebhookTriggerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CustomAccount(AbstractModel):
+    """自定义账户
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 自定义账户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Disable: 是否禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Disable: bool
+        :param ExpiresAt: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiresAt: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Permissions: 策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permissions: list of Permission
+        """
+        self.Name = None
+        self.Description = None
+        self.Disable = None
+        self.ExpiresAt = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Permissions = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.Disable = params.get("Disable")
+        self.ExpiresAt = params.get("ExpiresAt")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("Permissions") is not None:
+            self.Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self.Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomizedDomainInfo(AbstractModel):
     """自定义域名信息
 
@@ -1610,6 +1756,51 @@ class DeleteApplicationTriggerPersonalRequest(AbstractModel):
 
 class DeleteApplicationTriggerPersonalResponse(AbstractModel):
     """DeleteApplicationTriggerPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCustomAccountRequest(AbstractModel):
+    """DeleteCustomAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id	
+        :type RegistryId: str
+        :param Name: 自定义的账户名
+        :type Name: str
+        """
+        self.RegistryId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomAccountResponse(AbstractModel):
+    """DeleteCustomAccount返回参数结构体
 
     """
 
@@ -2849,6 +3040,86 @@ class DescribeChartDownloadInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.PreSignedDownloadURL = params.get("PreSignedDownloadURL")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomAccountsRequest(AbstractModel):
+    """DescribeCustomAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param All: 列出所有自定义账户
+        :type All: bool
+        :param EmbedPermission: 填充策略
+        :type EmbedPermission: bool
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
+        """
+        self.RegistryId = None
+        self.All = None
+        self.EmbedPermission = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.All = params.get("All")
+        self.EmbedPermission = params.get("EmbedPermission")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomAccountsResponse(AbstractModel):
+    """DescribeCustomAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomAccounts: 自定义账户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomAccounts: list of CustomAccount
+        :param TotalCount: 自定义账户数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CustomAccounts = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomAccounts") is not None:
+            self.CustomAccounts = []
+            for item in params.get("CustomAccounts"):
+                obj = CustomAccount()
+                obj._deserialize(item)
+                self.CustomAccounts.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5657,6 +5928,76 @@ class ModifyApplicationTriggerPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyCustomAccountRequest(AbstractModel):
+    """ModifyCustomAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param Name: 自定义的账户名
+        :type Name: str
+        :param Description: 自定义的账户描述
+        :type Description: str
+        :param Duration: 有效期(单位：天)，从当前时间开始计算，优先级高于ExpiresAt
+        :type Duration: int
+        :param ExpiresAt: 自定义的账户过期时间（时间戳）
+        :type ExpiresAt: int
+        :param Disable: 是否禁用自定义的账户
+        :type Disable: bool
+        :param Permissions: 策略列表
+        :type Permissions: list of Permission
+        """
+        self.RegistryId = None
+        self.Name = None
+        self.Description = None
+        self.Duration = None
+        self.ExpiresAt = None
+        self.Disable = None
+        self.Permissions = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.Duration = params.get("Duration")
+        self.ExpiresAt = params.get("ExpiresAt")
+        self.Disable = params.get("Disable")
+        if params.get("Permissions") is not None:
+            self.Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self.Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomAccountResponse(AbstractModel):
+    """ModifyCustomAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyImmutableTagRulesRequest(AbstractModel):
     """ModifyImmutableTagRules请求参数结构体
 
@@ -6359,6 +6700,36 @@ class PeerReplicationOption(AbstractModel):
         self.PeerRegistryUin = params.get("PeerRegistryUin")
         self.PeerRegistryToken = params.get("PeerRegistryToken")
         self.EnablePeerReplication = params.get("EnablePeerReplication")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Permission(AbstractModel):
+    """策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: 资源路径，目前仅支持Namespace
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Actions: 动作，目前仅支持：tcr:PushRepository、tcr:PullRepository
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Actions: list of str
+        """
+        self.Resource = None
+        self.Actions = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Actions = params.get("Actions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

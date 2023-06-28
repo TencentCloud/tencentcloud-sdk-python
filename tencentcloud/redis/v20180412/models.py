@@ -476,18 +476,27 @@ class ChangeMasterInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 复制组ID
+        :param GroupId: 复制组ID。创建复制组时，系统自动分配的 ID，是复制组的唯一标识。例如：crs-rpl-m3zt****，请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID。
+
         :type GroupId: str
-        :param InstanceId: 实例ID
+        :param InstanceId: 指定待提升为主实例的只读实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+
+
         :type InstanceId: str
+        :param ForceSwitch: 标识是否强制提主。
+- true：强制提主。
+- false：不强制提主。
+        :type ForceSwitch: bool
         """
         self.GroupId = None
         self.InstanceId = None
+        self.ForceSwitch = None
 
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.InstanceId = params.get("InstanceId")
+        self.ForceSwitch = params.get("ForceSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -504,7 +513,7 @@ class ChangeMasterInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 异步流程ID
+        :param TaskId: 异步流程ID。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1201,7 +1210,7 @@ class CreateReplicationGroupRequest(AbstractModel):
         r"""
         :param InstanceId: 指定复制组中的主实例ID。
         :type InstanceId: str
-        :param GroupName: 复制组名称。
+        :param GroupName: 复制组名称。名称只支持长度为2-64个字符的中文、英文、数字、下划线_、分隔符-。
         :type GroupName: str
         :param Remark: 备注信息。
         :type Remark: str
@@ -3649,9 +3658,9 @@ class DescribeReplicationGroupRequest(AbstractModel):
         :type Limit: int
         :param Offset: 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
         :type Offset: int
-        :param GroupId: 复制组ID。
+        :param GroupId: 指定复制组 ID。例如：crs-rpl-m3zt****。请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID。
         :type GroupId: str
-        :param SearchKey: 模糊查询的关键字，可以设置为复制组ID或复制组名称进行模糊查询。
+        :param SearchKey: 模糊查询的关键字，可以设置为复制组ID或复制组名称进行模糊查询。请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID及名称。
         :type SearchKey: str
         """
         self.Limit = None
@@ -3857,7 +3866,7 @@ class DescribeTaskInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 任务ID
+        :param TaskId: 任务 ID。
         :type TaskId: int
         """
         self.TaskId = None
@@ -3881,15 +3890,20 @@ class DescribeTaskInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 任务状态preparing:待执行，running：执行中，succeed：成功，failed：失败，error 执行出错
+        :param Status: 任务状态。
+- preparing：待执行。
+- running：执行中。
+- succeed：成功。
+- failed：失败。
+- error：执行出错。
         :type Status: str
-        :param StartTime: 任务开始时间
+        :param StartTime: 任务开始时间。
         :type StartTime: str
-        :param TaskType: 任务类型
+        :param TaskType: 任务类型。常见的类型包含：新建类型、配置变更、关闭实例、清空实例、重置密码、版本升级、备份实例、改变网络类型、实例可用区迁移、手动提主等。
         :type TaskType: str
-        :param InstanceId: 实例的ID
+        :param InstanceId: 实例的 ID。
         :type InstanceId: str
-        :param TaskMessage: 任务信息，错误时显示错误信息。执行中与成功则为空
+        :param TaskMessage: 任务执行返回的信息，执行错误时显示错误信息。执行中或执行成功则为空。
         :type TaskMessage: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4372,7 +4386,6 @@ class Groups(AbstractModel):
 - 21：印度 
 - 22：美东（弗吉尼亚）
 - 23：泰国 
-- 24：俄罗斯 
 - 25：日本
         :type RegionId: int
         :param GroupId: 复制组 ID。格式如：crs-rpl-deind****。
@@ -5636,7 +5649,7 @@ class Instances(AbstractModel):
         :type RedisShardNum: int
         :param RedisShardSize: 分片内存大小。
         :type RedisShardSize: int
-        :param DiskSize: 实例的磁盘大小
+        :param DiskSize: 实例的磁盘大小。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         :param Engine: 引擎：社区版Redis、腾讯云CKV。

@@ -1728,6 +1728,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDBEncryptAttributes(self, request):
+        """本接口（ModifyDBEncryptAttributes）用于开启、关闭数据库的TDE加密功能。
+
+        :param request: Request instance for ModifyDBEncryptAttributes.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBEncryptAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBInstanceName(self, request):
         """本接口（ModifyDBInstanceName）用于修改实例名字。
 
@@ -1972,6 +1995,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyIncrementalMigration", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyIncrementalMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstanceEncryptAttributes(self, request):
+        """本接口（ModifyInstanceEncryptAttributes）用于开通实例的TDE加密功能。
+
+        :param request: Request instance for ModifyInstanceEncryptAttributes.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyInstanceEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyInstanceEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceEncryptAttributesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

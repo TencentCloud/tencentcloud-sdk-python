@@ -2579,6 +2579,34 @@ class DBRenameRes(AbstractModel):
         
 
 
+class DBTDEEncrypt(AbstractModel):
+    """开启、关闭TDE数据库加密
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBName: 数据库名称
+        :type DBName: str
+        :param Encryption: enable-开启加密，disable-关闭加密
+        :type Encryption: str
+        """
+        self.DBName = None
+        self.Encryption = None
+
+
+    def _deserialize(self, params):
+        self.DBName = params.get("DBName")
+        self.Encryption = params.get("Encryption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabaseTuple(AbstractModel):
     """该数据结构表示具有发布订阅关系的两个数据库。
 
@@ -7102,6 +7130,60 @@ class ModifyBackupStrategyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBEncryptAttributesRequest(AbstractModel):
+    """ModifyDBEncryptAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param DBTDEEncrypt: 开启、关闭数据库TDE加密
+        :type DBTDEEncrypt: list of DBTDEEncrypt
+        """
+        self.InstanceId = None
+        self.DBTDEEncrypt = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("DBTDEEncrypt") is not None:
+            self.DBTDEEncrypt = []
+            for item in params.get("DBTDEEncrypt"):
+                obj = DBTDEEncrypt()
+                obj._deserialize(item)
+                self.DBTDEEncrypt.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBEncryptAttributesResponse(AbstractModel):
+    """ModifyDBEncryptAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName请求参数结构体
 
@@ -7672,6 +7754,59 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.IncrementalMigrationId = params.get("IncrementalMigrationId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstanceEncryptAttributesRequest(AbstractModel):
+    """ModifyInstanceEncryptAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param CertificateAttribution: 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，默认self。
+        :type CertificateAttribution: str
+        :param QuoteUin: 引用的其他主账号ID，当CertificateAttribution 为others时必填。
+        :type QuoteUin: str
+        """
+        self.InstanceId = None
+        self.CertificateAttribution = None
+        self.QuoteUin = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.CertificateAttribution = params.get("CertificateAttribution")
+        self.QuoteUin = params.get("QuoteUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceEncryptAttributesResponse(AbstractModel):
+    """ModifyInstanceEncryptAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 

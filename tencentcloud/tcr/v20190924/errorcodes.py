@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 数据库错误。
+FAILEDOPERATION_DBERROR = 'FailedOperation.DbError'
+
 # 依赖服务异常。
 FAILEDOPERATION_DEPENDENCEERROR = 'FailedOperation.DependenceError'
 

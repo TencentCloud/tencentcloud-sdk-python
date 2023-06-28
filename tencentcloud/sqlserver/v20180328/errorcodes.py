@@ -269,6 +269,9 @@ UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'
 
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
 # 不支持重复操作。
 UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = 'UnsupportedOperation.NotSupportRepeat'
 

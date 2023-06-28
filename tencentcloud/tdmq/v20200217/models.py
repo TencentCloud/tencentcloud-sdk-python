@@ -7998,16 +7998,20 @@ class ModifyRocketMQClusterRequest(AbstractModel):
         :type ClusterName: str
         :param Remark: 说明信息，不超过128个字符
         :type Remark: str
+        :param PublicAccessEnabled: 是否开启HTTP公网访问
+        :type PublicAccessEnabled: bool
         """
         self.ClusterId = None
         self.ClusterName = None
         self.Remark = None
+        self.PublicAccessEnabled = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.ClusterName = params.get("ClusterName")
         self.Remark = params.get("Remark")
+        self.PublicAccessEnabled = params.get("PublicAccessEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8178,12 +8182,15 @@ class ModifyRocketMQNamespaceRequest(AbstractModel):
         :type RetentionTime: int
         :param Remark: 说明，最大128个字符
         :type Remark: str
+        :param PublicAccessEnabled: 是否开启公网访问
+        :type PublicAccessEnabled: bool
         """
         self.ClusterId = None
         self.NamespaceId = None
         self.Ttl = None
         self.RetentionTime = None
         self.Remark = None
+        self.PublicAccessEnabled = None
 
 
     def _deserialize(self, params):
@@ -8192,6 +8199,7 @@ class ModifyRocketMQNamespaceRequest(AbstractModel):
         self.Ttl = params.get("Ttl")
         self.RetentionTime = params.get("RetentionTime")
         self.Remark = params.get("Remark")
+        self.PublicAccessEnabled = params.get("PublicAccessEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2190,6 +2190,8 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :param BusinessCode: 产品名称代码
 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
         :type BusinessCode: str
+        :param PayerUin: 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+        :type PayerUin: str
         """
         self.Offset = None
         self.Limit = None
@@ -2200,6 +2202,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.ResourceId = None
         self.PayMode = None
         self.BusinessCode = None
+        self.PayerUin = None
 
 
     def _deserialize(self, params):
@@ -2212,6 +2215,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self.ResourceId = params.get("ResourceId")
         self.PayMode = params.get("PayMode")
         self.BusinessCode = params.get("BusinessCode")
+        self.PayerUin = params.get("PayerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2291,8 +2295,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: 数据是否准备好，0未准备好，1准备好。
-Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
+        :param Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :type Ready: int
         :param SummaryOverview: 各付费模式花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2364,8 +2367,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: 数据是否准备好，0未准备好，1准备好。
-Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
+        :param Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :type Ready: int
         :param SummaryTotal: 总花费详情
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2435,8 +2437,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: 数据是否准备好，0未准备好，1准备好
-Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
+        :param Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :type Ready: int
         :param SummaryOverview: 各项目花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2499,8 +2500,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: 数据是否准备好，0未准备好，1准备好
-Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
+        :param Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :type Ready: int
         :param SummaryOverview: 各地域花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2571,8 +2571,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ready: 数据是否准备好，0未准备好，1准备好
-Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
+        :param Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
         :type Ready: int
         :param SummaryOverview: 各标签值花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。

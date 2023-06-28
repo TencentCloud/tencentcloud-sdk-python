@@ -752,6 +752,8 @@ class DescribeMetricRecordsRequest(AbstractModel):
         :type PageIndex: int
         :param PageSize: 页长
         :type PageSize: int
+        :param OrFilters: Or过滤条件
+        :type OrFilters: list of Filter
         """
         self.Filters = None
         self.Metrics = None
@@ -765,6 +767,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self.BusinessName = None
         self.PageIndex = None
         self.PageSize = None
+        self.OrFilters = None
 
 
     def _deserialize(self, params):
@@ -792,6 +795,12 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self.BusinessName = params.get("BusinessName")
         self.PageIndex = params.get("PageIndex")
         self.PageSize = params.get("PageSize")
+        if params.get("OrFilters") is not None:
+            self.OrFilters = []
+            for item in params.get("OrFilters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.OrFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

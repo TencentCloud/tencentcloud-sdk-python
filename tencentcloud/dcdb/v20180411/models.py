@@ -804,6 +804,8 @@ class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
         :type DbVersionId: str
         :param SecurityGroupId: 安全组ID
         :type SecurityGroupId: str
+        :param SecurityGroupIds: 安全组ID列表
+        :type SecurityGroupIds: list of str
         :param DcnInstanceId: DCN源实例ID
         :type DcnInstanceId: str
         :param DcnRegion: DCN源实例地域名
@@ -844,6 +846,7 @@ class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
         self.ShardNodeStorage = None
         self.DbVersionId = None
         self.SecurityGroupId = None
+        self.SecurityGroupIds = None
         self.DcnInstanceId = None
         self.DcnRegion = None
         self.InstanceName = None
@@ -875,6 +878,7 @@ class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
         self.ShardNodeStorage = params.get("ShardNodeStorage")
         self.DbVersionId = params.get("DbVersionId")
         self.SecurityGroupId = params.get("SecurityGroupId")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.DcnInstanceId = params.get("DcnInstanceId")
         self.DcnRegion = params.get("DcnRegion")
         self.InstanceName = params.get("InstanceName")
