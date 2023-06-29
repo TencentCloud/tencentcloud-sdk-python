@@ -967,7 +967,7 @@ video 纯视频
         :type Assistants: list of str
         :param RTCAudienceNumber: rtc人数。
         :type RTCAudienceNumber: int
-        :param AudienceType: 观看类型，互动直播（默认）。
+        :param AudienceType: 观看类型。互动观看 （默认）
         :type AudienceType: int
         :param RecordLayout: 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
@@ -977,6 +977,12 @@ video 纯视频
 0 不允许直接控制（需同意，默认值）
 1 允许直接控制（无需同意）
         :type EnableDirectControl: int
+        :param InteractionMode: 开启专注模式。
+0 收看全部角色音视频(默认)
+1 只看老师和助教
+        :type InteractionMode: int
+        :param VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        :type VideoOrientation: int
         """
         self.Name = None
         self.StartTime = None
@@ -996,6 +1002,8 @@ video 纯视频
         self.RecordLayout = None
         self.GroupId = None
         self.EnableDirectControl = None
+        self.InteractionMode = None
+        self.VideoOrientation = None
 
 
     def _deserialize(self, params):
@@ -1017,6 +1025,8 @@ video 纯视频
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
         self.EnableDirectControl = params.get("EnableDirectControl")
+        self.InteractionMode = params.get("InteractionMode")
+        self.VideoOrientation = params.get("VideoOrientation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2221,6 +2231,12 @@ video 纯视频
         :type GroupId: str
         :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关
         :type EnableDirectControl: int
+        :param InteractionMode: 开启专注模式。
+0 收看全部角色音视频(默认)
+1 只看老师和助教
+        :type InteractionMode: int
+        :param VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        :type VideoOrientation: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2240,6 +2256,8 @@ video 纯视频
         self.Status = None
         self.GroupId = None
         self.EnableDirectControl = None
+        self.InteractionMode = None
+        self.VideoOrientation = None
         self.RequestId = None
 
 
@@ -2260,6 +2278,8 @@ video 纯视频
         self.Status = params.get("Status")
         self.GroupId = params.get("GroupId")
         self.EnableDirectControl = params.get("EnableDirectControl")
+        self.InteractionMode = params.get("InteractionMode")
+        self.VideoOrientation = params.get("VideoOrientation")
         self.RequestId = params.get("RequestId")
 
 
@@ -3327,6 +3347,9 @@ class MemberRecord(AbstractModel):
         :param Stage: 用户的上台状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stage: int
+        :param CurrentState: 用户状态。0为未到，1为在线，2为离线，3为被踢，4为永久被踢，5为暂时掉线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentState: int
         """
         self.UserId = None
         self.UserName = None
@@ -3348,6 +3371,7 @@ class MemberRecord(AbstractModel):
         self.GroupId = None
         self.SubGroupId = None
         self.Stage = None
+        self.CurrentState = None
 
 
     def _deserialize(self, params):
@@ -3371,6 +3395,7 @@ class MemberRecord(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.SubGroupId = params.get("SubGroupId")
         self.Stage = params.get("Stage")
+        self.CurrentState = params.get("CurrentState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3603,7 +3628,6 @@ class ModifyRoomRequest(AbstractModel):
         :param SubType: 房间子类型，可以有以下取值：
 videodoc 文档+视频
 video 纯视频
-coteaching 双师
 直播开始后不允许修改。
         :type SubType: str
         :param DisableRecord: 禁止录制。可以有以下取值：
@@ -3613,10 +3637,16 @@ coteaching 双师
         :type DisableRecord: int
         :param Assistants: 助教Id列表。直播开始后不允许修改。
         :type Assistants: list of str
-        :param GroupId: 房间绑定的群组ID
+        :param GroupId: 房间绑定的群组ID。直播开始后不允许修改。
         :type GroupId: str
-        :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关
+        :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。
         :type EnableDirectControl: int
+        :param InteractionMode: 开启专注模式。
+0 收看全部角色音视频(默认)
+1 只看老师和助教
+        :type InteractionMode: int
+        :param VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        :type VideoOrientation: int
         """
         self.RoomId = None
         self.SdkAppId = None
@@ -3633,6 +3663,8 @@ coteaching 双师
         self.Assistants = None
         self.GroupId = None
         self.EnableDirectControl = None
+        self.InteractionMode = None
+        self.VideoOrientation = None
 
 
     def _deserialize(self, params):
@@ -3651,6 +3683,8 @@ coteaching 双师
         self.Assistants = params.get("Assistants")
         self.GroupId = params.get("GroupId")
         self.EnableDirectControl = params.get("EnableDirectControl")
+        self.InteractionMode = params.get("InteractionMode")
+        self.VideoOrientation = params.get("VideoOrientation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3874,6 +3908,10 @@ class RoomInfo(AbstractModel):
         :type GroupId: str
         :param EnableDirectControl: 打开学生麦克风/摄像头的授权开关
         :type EnableDirectControl: int
+        :param InteractionMode: 开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
+        :type InteractionMode: int
+        :param VideoOrientation: 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+        :type VideoOrientation: int
         """
         self.Name = None
         self.StartTime = None
@@ -3892,6 +3930,8 @@ class RoomInfo(AbstractModel):
         self.RecordLayout = None
         self.GroupId = None
         self.EnableDirectControl = None
+        self.InteractionMode = None
+        self.VideoOrientation = None
 
 
     def _deserialize(self, params):
@@ -3912,6 +3952,8 @@ class RoomInfo(AbstractModel):
         self.RecordLayout = params.get("RecordLayout")
         self.GroupId = params.get("GroupId")
         self.EnableDirectControl = params.get("EnableDirectControl")
+        self.InteractionMode = params.get("InteractionMode")
+        self.VideoOrientation = params.get("VideoOrientation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

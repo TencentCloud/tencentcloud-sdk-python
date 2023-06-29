@@ -1136,11 +1136,11 @@ class CreateForwardRuleResponse(AbstractModel):
         :type RoleID: int
         :param QueueRegion: 队列区
         :type QueueRegion: str
-        :param QueueType: 消息队列的类型。 0：CMQ，1：CKafaka
+        :param QueueType: 消息队列的类型。 0：CMQ，1：Ckafka
         :type QueueType: int
-        :param InstanceId: 实例id， 目前只有Ckafaka会用到
+        :param InstanceId: 实例id， 目前只有Ckafka会用到
         :type InstanceId: str
-        :param InstanceName: 实例名称，目前只有Ckafaka会用到
+        :param InstanceName: 实例名称，目前只有Ckafka会用到
         :type InstanceName: str
         :param ErrMsg: 错误消息
         :type ErrMsg: str
@@ -3684,9 +3684,9 @@ class DescribeForwardRuleResponse(AbstractModel):
         :type QueueRegion: str
         :param QueueType: 队列类型，0：CMQ，1：Ckafka
         :type QueueType: int
-        :param InstanceId: 实例id， 目前只有Ckafaka会用到
+        :param InstanceId: 实例id， 目前只有Ckafka会用到
         :type InstanceId: str
-        :param InstanceName: 实例名称，目前只有Ckafaka会用到
+        :param InstanceName: 实例名称，目前只有Ckafka会用到
         :type InstanceName: str
         :param ErrMsg: 错误消息
         :type ErrMsg: str

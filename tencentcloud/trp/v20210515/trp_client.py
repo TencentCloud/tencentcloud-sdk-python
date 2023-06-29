@@ -394,6 +394,29 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAgentCorps(self, request):
+        """查询渠道企业列表
+
+        :param request: Request instance for DescribeAgentCorps.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeAgentCorpsRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeAgentCorpsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentCorps", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAgentCorpsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCodeBatchById(self, request):
         """查询批次信息
 

@@ -982,7 +982,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeExclusiveInstanceDetail(self, request):
-        """本接口（DescribeExclusiveInstanceDetail）用于查询独享实例详情信息。​
+        """本接口（DescribeExclusiveInstanceDetail）用于查询独享实例详情信息。
 
         :param request: Request instance for DescribeExclusiveInstanceDetail.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstanceDetailRequest`

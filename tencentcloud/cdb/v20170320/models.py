@@ -12319,7 +12319,7 @@ class RemoteBackupInfo(AbstractModel):
     def __init__(self):
         r"""
         :param SubBackupId: 异地备份子任务的ID
-        :type SubBackupId: list of int
+        :type SubBackupId: int
         :param Region: 异地备份所在地域
         :type Region: str
         :param Status: 备份任务状态。可能的值有 "SUCCESS": 备份成功， "FAILED": 备份失败， "RUNNING": 备份进行中。

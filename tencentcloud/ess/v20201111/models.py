@@ -136,6 +136,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 合同签署认证方式的优先级 verifyChannel>approverSignTypes
         :type ApproverSignTypes: list of int
+        :param ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
+        :type ApproverNeedSignReview: bool
         """
         self.ApproverType = None
         self.ApproverName = None
@@ -154,6 +156,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.ApproverOption = None
         self.ApproverVerifyTypes = None
         self.ApproverSignTypes = None
+        self.ApproverNeedSignReview = None
 
 
     def _deserialize(self, params):
@@ -181,6 +184,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
             self.ApproverOption._deserialize(params.get("ApproverOption"))
         self.ApproverVerifyTypes = params.get("ApproverVerifyTypes")
         self.ApproverSignTypes = params.get("ApproverSignTypes")
+        self.ApproverNeedSignReview = params.get("ApproverNeedSignReview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -634,11 +638,14 @@ class CcInfo(AbstractModel):
 0--可查看
 1--可查看也可下载
         :type CcPermission: int
+        :param NotifyType: 关注方通知类型：sms--短信，none--不通知
+        :type NotifyType: str
         """
         self.Mobile = None
         self.Name = None
         self.CcType = None
         self.CcPermission = None
+        self.NotifyType = None
 
 
     def _deserialize(self, params):
@@ -646,6 +653,7 @@ class CcInfo(AbstractModel):
         self.Name = params.get("Name")
         self.CcType = params.get("CcType")
         self.CcPermission = params.get("CcPermission")
+        self.NotifyType = params.get("NotifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4872,6 +4880,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
 - 发起流程时系统自动补充
 - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
         :type SignId: str
+        :param ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。
+        :type ApproverNeedSignReview: bool
         """
         self.ApproverType = None
         self.OrganizationName = None
@@ -4892,6 +4902,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.ApproverOption = None
         self.JumpUrl = None
         self.SignId = None
+        self.ApproverNeedSignReview = None
 
 
     def _deserialize(self, params):
@@ -4918,6 +4929,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
             self.ApproverOption._deserialize(params.get("ApproverOption"))
         self.JumpUrl = params.get("JumpUrl")
         self.SignId = params.get("SignId")
+        self.ApproverNeedSignReview = params.get("ApproverNeedSignReview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

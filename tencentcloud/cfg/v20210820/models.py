@@ -360,6 +360,10 @@ class DescribeTemplateListRequest(AbstractModel):
         :type IsUsed: int
         :param Tags: 标签对
         :type Tags: list of TagWithDescribe
+        :param TemplateSource: 经验来源 0-自建 1-专家推荐
+        :type TemplateSource: int
+        :param TemplateIdList: 经验ID
+        :type TemplateIdList: list of int
         """
         self.Limit = None
         self.Offset = None
@@ -367,6 +371,8 @@ class DescribeTemplateListRequest(AbstractModel):
         self.Tag = None
         self.IsUsed = None
         self.Tags = None
+        self.TemplateSource = None
+        self.TemplateIdList = None
 
 
     def _deserialize(self, params):
@@ -381,6 +387,8 @@ class DescribeTemplateListRequest(AbstractModel):
                 obj = TagWithDescribe()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.TemplateSource = params.get("TemplateSource")
+        self.TemplateIdList = params.get("TemplateIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1284,6 +1292,9 @@ class TaskListItem(AbstractModel):
         :param TaskPreCheckSuccess: 环境检查是否通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskPreCheckSuccess: bool
+        :param TaskExpect: 演练是否符合预期 1-符合预期 2-不符合预期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskExpect: int
         """
         self.TaskId = None
         self.TaskTitle = None
@@ -1294,6 +1305,7 @@ class TaskListItem(AbstractModel):
         self.TaskUpdateTime = None
         self.TaskPreCheckStatus = None
         self.TaskPreCheckSuccess = None
+        self.TaskExpect = None
 
 
     def _deserialize(self, params):
@@ -1306,6 +1318,7 @@ class TaskListItem(AbstractModel):
         self.TaskUpdateTime = params.get("TaskUpdateTime")
         self.TaskPreCheckStatus = params.get("TaskPreCheckStatus")
         self.TaskPreCheckSuccess = params.get("TaskPreCheckSuccess")
+        self.TaskExpect = params.get("TaskExpect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1447,6 +1460,9 @@ class Template(AbstractModel):
         :param Tags: 标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagWithDescribe
+        :param TemplateSource: 经验来源 0-自建 1-专家推荐
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateSource: int
         """
         self.TemplateId = None
         self.TemplateTitle = None
@@ -1463,6 +1479,7 @@ class Template(AbstractModel):
         self.TemplateMonitors = None
         self.TemplatePolicy = None
         self.Tags = None
+        self.TemplateSource = None
 
 
     def _deserialize(self, params):
@@ -1498,6 +1515,7 @@ class Template(AbstractModel):
                 obj = TagWithDescribe()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.TemplateSource = params.get("TemplateSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1677,6 +1695,9 @@ class TemplateListItem(AbstractModel):
         :type TemplateUpdateTime: str
         :param TemplateUsedNum: 经验库关联的任务数量
         :type TemplateUsedNum: int
+        :param TemplateSource: 经验库来源 0-自建经验 1-专家推荐
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateSource: int
         """
         self.TemplateId = None
         self.TemplateTitle = None
@@ -1686,6 +1707,7 @@ class TemplateListItem(AbstractModel):
         self.TemplateCreateTime = None
         self.TemplateUpdateTime = None
         self.TemplateUsedNum = None
+        self.TemplateSource = None
 
 
     def _deserialize(self, params):
@@ -1697,6 +1719,7 @@ class TemplateListItem(AbstractModel):
         self.TemplateCreateTime = params.get("TemplateCreateTime")
         self.TemplateUpdateTime = params.get("TemplateUpdateTime")
         self.TemplateUsedNum = params.get("TemplateUsedNum")
+        self.TemplateSource = params.get("TemplateSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

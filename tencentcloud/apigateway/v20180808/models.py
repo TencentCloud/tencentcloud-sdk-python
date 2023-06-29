@@ -656,7 +656,7 @@ class ApiInfo(AbstractModel):
         :param ServiceWebsocketTransportFunctionQualifier: scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceWebsocketTransportFunctionQualifier: str
-        :param MicroServices: API绑定微服务服务列表。
+        :param MicroServices: API绑定微服务列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroServices: list of MicroService
         :param MicroServicesInfo: 微服务信息详情。
@@ -2124,7 +2124,7 @@ class CreateApiRequest(AbstractModel):
         :type ApiBusinessType: str
         :param ServiceMockReturnMessage: API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
         :type ServiceMockReturnMessage: str
-        :param MicroServices: API绑定微服务服务列表。
+        :param MicroServices: API绑定微服务列表。
         :type MicroServices: list of MicroServiceReq
         :param ServiceTsfLoadBalanceConf: 微服务的负载均衡配置。
         :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`
@@ -2656,13 +2656,11 @@ class CreateServiceRequest(AbstractModel):
         :type Protocol: str
         :param ServiceDesc: 用户自定义的服务描述。
         :type ServiceDesc: str
-        :param ExclusiveSetName: 独立集群名称，用于指定创建服务所在的独立集群。
-        :type ExclusiveSetName: str
         :param NetTypes: 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
         :type NetTypes: list of str
         :param IpVersion: IP版本号，支持IPv4和IPv6，默认为IPv4。
         :type IpVersion: str
-        :param SetServerName: 集群名称。保留字段，tsf serverlss类型使用。
+        :param SetServerName: 集群名称。保留字段，tsf serverless类型使用。
         :type SetServerName: str
         :param AppIdType: 用户类型。保留类型，serverless用户使用。
         :type AppIdType: str
@@ -2676,7 +2674,6 @@ class CreateServiceRequest(AbstractModel):
         self.ServiceName = None
         self.Protocol = None
         self.ServiceDesc = None
-        self.ExclusiveSetName = None
         self.NetTypes = None
         self.IpVersion = None
         self.SetServerName = None
@@ -2690,7 +2687,6 @@ class CreateServiceRequest(AbstractModel):
         self.ServiceName = params.get("ServiceName")
         self.Protocol = params.get("Protocol")
         self.ServiceDesc = params.get("ServiceDesc")
-        self.ExclusiveSetName = params.get("ExclusiveSetName")
         self.NetTypes = params.get("NetTypes")
         self.IpVersion = params.get("IpVersion")
         self.SetServerName = params.get("SetServerName")
@@ -5560,9 +5556,6 @@ class DescribeServiceForApiAppResponse(AbstractModel):
         :param ModifiedTime: 服务修改时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifiedTime: str
-        :param ExclusiveSetName: 独立集群名称。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExclusiveSetName: str
         :param NetTypes: 网络类型列表，INNER为内网访问，OUTER为外网访问。
         :type NetTypes: list of str
         :param InternalSubDomain: 内网访问子域名。
@@ -5607,7 +5600,6 @@ class DescribeServiceForApiAppResponse(AbstractModel):
         self.Protocol = None
         self.CreatedTime = None
         self.ModifiedTime = None
-        self.ExclusiveSetName = None
         self.NetTypes = None
         self.InternalSubDomain = None
         self.OuterSubDomain = None
@@ -5632,7 +5624,6 @@ class DescribeServiceForApiAppResponse(AbstractModel):
         self.Protocol = params.get("Protocol")
         self.CreatedTime = params.get("CreatedTime")
         self.ModifiedTime = params.get("ModifiedTime")
-        self.ExclusiveSetName = params.get("ExclusiveSetName")
         self.NetTypes = params.get("NetTypes")
         self.InternalSubDomain = params.get("InternalSubDomain")
         self.OuterSubDomain = params.get("OuterSubDomain")
@@ -5796,8 +5787,6 @@ class DescribeServiceResponse(AbstractModel):
         :type CreatedTime: str
         :param ModifiedTime: 服务修改时间。
         :type ModifiedTime: str
-        :param ExclusiveSetName: 独立集群名称。
-        :type ExclusiveSetName: str
         :param NetTypes: 网络类型列表，INNER为内网访问，OUTER为外网访问。
         :type NetTypes: list of str
         :param InternalSubDomain: 内网访问子域名。
@@ -5855,7 +5844,6 @@ class DescribeServiceResponse(AbstractModel):
         self.Protocol = None
         self.CreatedTime = None
         self.ModifiedTime = None
-        self.ExclusiveSetName = None
         self.NetTypes = None
         self.InternalSubDomain = None
         self.OuterSubDomain = None
@@ -5885,7 +5873,6 @@ class DescribeServiceResponse(AbstractModel):
         self.Protocol = params.get("Protocol")
         self.CreatedTime = params.get("CreatedTime")
         self.ModifiedTime = params.get("ModifiedTime")
-        self.ExclusiveSetName = params.get("ExclusiveSetName")
         self.NetTypes = params.get("NetTypes")
         self.InternalSubDomain = params.get("InternalSubDomain")
         self.OuterSubDomain = params.get("OuterSubDomain")
@@ -6344,7 +6331,7 @@ class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
         r"""
         :param UsagePlanId: 待查询的使用计划唯一 ID。
         :type UsagePlanId: str
-        :param BindType: 定类型，取值为 API、SERVICE，默认值为 SERVICE。
+        :param BindType: 定义类型，取值为 API、SERVICE，默认值为 SERVICE。
         :type BindType: str
         :param Limit: 返回数量，默认为 20，最大值为 100。
         :type Limit: int
@@ -7370,7 +7357,7 @@ class InstanceDetail(AbstractModel):
         :type CreatedTime: str
         :param Zones: 可用区列表
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Zones: str
+        :type Zones: list of str
         """
         self.InstanceId = None
         self.Zone = None
@@ -7991,7 +7978,7 @@ class ModifyApiRequest(AbstractModel):
         :type ApiBusinessType: str
         :param ServiceMockReturnMessage: API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
         :type ServiceMockReturnMessage: str
-        :param MicroServices: API绑定微服务服务列表。
+        :param MicroServices: API绑定微服务列表。
         :type MicroServices: list of MicroServiceReq
         :param ServiceTsfLoadBalanceConf: 微服务的负载均衡配置。
         :type ServiceTsfLoadBalanceConf: :class:`tencentcloud.apigateway.v20180808.models.TsfLoadBalanceConfResp`

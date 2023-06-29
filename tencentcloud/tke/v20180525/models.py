@@ -8327,6 +8327,24 @@ class DescribeEncryptionStatusRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeEncryptionStatusResponse(AbstractModel):
     """DescribeEncryptionStatus返回参数结构体
@@ -8335,13 +8353,21 @@ class DescribeEncryptionStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Status: 加密状态
+        :type Status: str
+        :param ErrorMsg: 加密错误信息
+        :type ErrorMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Status = None
+        self.ErrorMsg = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrorMsg = params.get("ErrorMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -10556,6 +10582,24 @@ class DisableEncryptionProtectionRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DisableEncryptionProtectionResponse(AbstractModel):
     """DisableEncryptionProtection返回参数结构体
@@ -11654,6 +11698,30 @@ class EnableEncryptionProtectionRequest(AbstractModel):
     """EnableEncryptionProtection请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param KMSConfiguration: kms加密配置
+        :type KMSConfiguration: :class:`tencentcloud.tke.v20180525.models.KMSConfiguration`
+        """
+        self.ClusterId = None
+        self.KMSConfiguration = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("KMSConfiguration") is not None:
+            self.KMSConfiguration = KMSConfiguration()
+            self.KMSConfiguration._deserialize(params.get("KMSConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EnableEncryptionProtectionResponse(AbstractModel):
@@ -13387,6 +13455,12 @@ pending 还未开始
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class KMSConfiguration(AbstractModel):
+    """kms加密参数
+
+    """
 
 
 class KubeJarvisStateCatalogue(AbstractModel):
