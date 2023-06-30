@@ -760,16 +760,24 @@ class CreateExtensionRequest(AbstractModel):
         :type ExtensionId: str
         :param ExtensionName: 分机名称
         :type ExtensionName: str
+        :param SkillGroupIds: 绑定的技能组列表
+        :type SkillGroupIds: list of int non-negative
+        :param Relation: 绑定的坐席邮箱
+        :type Relation: str
         """
         self.SdkAppId = None
         self.ExtensionId = None
         self.ExtensionName = None
+        self.SkillGroupIds = None
+        self.Relation = None
 
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.ExtensionId = params.get("ExtensionId")
         self.ExtensionName = params.get("ExtensionName")
+        self.SkillGroupIds = params.get("SkillGroupIds")
+        self.Relation = params.get("Relation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4022,6 +4030,9 @@ class TelCdrInfo(AbstractModel):
         :param VoicemailRecordURL: 通话中语音留言录音URL
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoicemailRecordURL: list of str
+        :param VoicemailAsrURL: 通话中语音留言ASR文本信息地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoicemailAsrURL: list of str
         """
         self.Caller = None
         self.Callee = None
@@ -4056,6 +4067,7 @@ class TelCdrInfo(AbstractModel):
         self.Remark = None
         self.QueuedSkillGroupName = None
         self.VoicemailRecordURL = None
+        self.VoicemailAsrURL = None
 
 
     def _deserialize(self, params):
@@ -4109,6 +4121,7 @@ class TelCdrInfo(AbstractModel):
         self.Remark = params.get("Remark")
         self.QueuedSkillGroupName = params.get("QueuedSkillGroupName")
         self.VoicemailRecordURL = params.get("VoicemailRecordURL")
+        self.VoicemailAsrURL = params.get("VoicemailAsrURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

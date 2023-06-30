@@ -13766,7 +13766,7 @@ class WatermarkInfo(AbstractModel):
 
 
 class XP2PDetailInfo(AbstractModel):
-    """央视P2P流信息。
+    """P2P流信息。
 
     """
 

@@ -394,6 +394,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteGatewayVersion(self, request):
+        """删除网关某版本
+
+        :param request: Request instance for DeleteGatewayVersion.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteGatewayVersionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteGatewayVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGatewayVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGatewayVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteWxGatewayRoute(self, request):
         """删除安全网关路由
 
@@ -500,6 +523,52 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeBaasPackageList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBaasPackageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBillingInfo(self, request):
+        """获取计费相关信息
+
+        :param request: Request instance for DescribeBillingInfo.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeBillingInfoRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeBillingInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillingInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillingInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCbrServerVersion(self, request):
+        """查询服务版本的详情
+
+        :param request: Request instance for DescribeCbrServerVersion.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCbrServerVersionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCbrServerVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCbrServerVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCbrServerVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1199,6 +1268,53 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGatewayVersions(self, request):
+        """查询网关版本信息
+        暂不鉴权
+
+        :param request: Request instance for DescribeGatewayVersions.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeGatewayVersionsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeGatewayVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGatewayVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGatewayVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGraphData(self, request):
+        """根据用户传入的指标, 拉取一段时间内的监控数据。
+
+        :param request: Request instance for DescribeGraphData.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeGraphDataRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeGraphDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGraphData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGraphDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeHostingDomainTask(self, request):
         """查询静态托管域名任务状态
 
@@ -1446,6 +1562,52 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeWxCloudBaseRunSubNets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWxCloudBaseRunSubNetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWxGatewayRoutes(self, request):
+        """查看安全网关路由
+
+        :param request: Request instance for DescribeWxGatewayRoutes.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxGatewayRoutesRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeWxGatewayRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWxGatewayRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWxGatewayRoutesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWxGateways(self, request):
+        """查看安全网关
+
+        :param request: Request instance for DescribeWxGateways.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeWxGatewaysRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeWxGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWxGateways", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWxGatewaysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1731,6 +1893,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyGatewayVersionTraffic(self, request):
+        """设置网关版本的流量比例
+
+        :param request: Request instance for ModifyGatewayVersionTraffic.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyGatewayVersionTrafficRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyGatewayVersionTrafficResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGatewayVersionTraffic", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGatewayVersionTrafficResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReinstateEnv(self, request):
         """针对已隔离的免费环境，可以通过本接口将其恢复访问。
 
@@ -1801,7 +1986,7 @@ class TcbClient(AbstractClient):
 
 
     def SearchClsLog(self, request):
-        """搜索CLS日志，TCB角色秘钥访问
+        """搜索CLS日志，TCB角色密钥访问
 
         :param request: Request instance for SearchClsLog.
         :type request: :class:`tencentcloud.tcb.v20180608.models.SearchClsLogRequest`

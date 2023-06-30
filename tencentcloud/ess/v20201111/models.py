@@ -919,9 +919,13 @@ class CreateBatchCancelFlowUrlRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowIds: 需要执行撤回的签署流程id数组，最多100个
         :type FlowIds: list of str
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
         self.FlowIds = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
@@ -929,6 +933,9 @@ class CreateBatchCancelFlowUrlRequest(AbstractModel):
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
         self.FlowIds = params.get("FlowIds")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1423,9 +1430,13 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowId: 签署流程编号
         :type FlowId: str
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
         self.FlowId = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
@@ -1433,6 +1444,9 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
         self.FlowId = params.get("FlowId")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1486,9 +1500,12 @@ class CreateFlowRemindsRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowIds: 需要执行催办的签署流程id数组，最多100个
         :type FlowIds: list of str
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
         self.FlowIds = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
@@ -1496,6 +1513,9 @@ class CreateFlowRemindsRequest(AbstractModel):
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
         self.FlowIds = params.get("FlowIds")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3389,9 +3409,13 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param ReportId: 出证报告编号
         :type ReportId: str
+        :param Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
         self.ReportId = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
@@ -3399,6 +3423,9 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
         self.ReportId = params.get("ReportId")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

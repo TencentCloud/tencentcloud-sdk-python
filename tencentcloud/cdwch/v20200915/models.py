@@ -115,21 +115,34 @@ class BackupTableContent(AbstractModel):
     def __init__(self):
         r"""
         :param Database: 数据库
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param Table: 表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param TotalBytes: 表总字节数
+注意：此字段可能返回 null，表示取不到有效值。
         :type TotalBytes: int
         :param VCluster: 虚拟cluster
+注意：此字段可能返回 null，表示取不到有效值。
         :type VCluster: str
         :param Ips: 表ip
+注意：此字段可能返回 null，表示取不到有效值。
         :type Ips: str
+        :param ZooPath: zk路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZooPath: str
+        :param Rip: cvm的ip地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rip: str
         """
         self.Database = None
         self.Table = None
         self.TotalBytes = None
         self.VCluster = None
         self.Ips = None
+        self.ZooPath = None
+        self.Rip = None
 
 
     def _deserialize(self, params):
@@ -138,6 +151,8 @@ class BackupTableContent(AbstractModel):
         self.TotalBytes = params.get("TotalBytes")
         self.VCluster = params.get("VCluster")
         self.Ips = params.get("Ips")
+        self.ZooPath = params.get("ZooPath")
+        self.Rip = params.get("Rip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -544,6 +559,9 @@ class DescribeBackUpScheduleResponse(AbstractModel):
         :type BackUpContents: list of BackupTableContent
         :param BackUpStatus: 备份的状态
         :type BackUpStatus: int
+        :param ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -552,6 +570,7 @@ class DescribeBackUpScheduleResponse(AbstractModel):
         self.DataStrategy = None
         self.BackUpContents = None
         self.BackUpStatus = None
+        self.ErrorMsg = None
         self.RequestId = None
 
 
@@ -570,6 +589,7 @@ class DescribeBackUpScheduleResponse(AbstractModel):
                 obj._deserialize(item)
                 self.BackUpContents.append(obj)
         self.BackUpStatus = params.get("BackUpStatus")
+        self.ErrorMsg = params.get("ErrorMsg")
         self.RequestId = params.get("RequestId")
 
 
@@ -1005,12 +1025,15 @@ class DescribeInstancesNewRequest(AbstractModel):
         :type Limit: int
         :param SearchTags: 搜索标签列表
         :type SearchTags: list of SearchTags
+        :param IsSimple: 信息详细与否
+        :type IsSimple: bool
         """
         self.SearchInstanceId = None
         self.SearchInstanceName = None
         self.Offset = None
         self.Limit = None
         self.SearchTags = None
+        self.IsSimple = None
 
 
     def _deserialize(self, params):
@@ -1024,6 +1047,7 @@ class DescribeInstancesNewRequest(AbstractModel):
                 obj = SearchTags()
                 obj._deserialize(item)
                 self.SearchTags.append(obj)
+        self.IsSimple = params.get("IsSimple")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2309,12 +2333,16 @@ class ScheduleStrategy(AbstractModel):
         :type ExecuteHour: int
         :param ScheduleId: 策略id
         :type ScheduleId: int
+        :param NextBackupTime: 下次备份时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextBackupTime: str
         """
         self.CosBucketName = None
         self.RetainDays = None
         self.WeekDays = None
         self.ExecuteHour = None
         self.ScheduleId = None
+        self.NextBackupTime = None
 
 
     def _deserialize(self, params):
@@ -2323,6 +2351,7 @@ class ScheduleStrategy(AbstractModel):
         self.WeekDays = params.get("WeekDays")
         self.ExecuteHour = params.get("ExecuteHour")
         self.ScheduleId = params.get("ScheduleId")
+        self.NextBackupTime = params.get("NextBackupTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

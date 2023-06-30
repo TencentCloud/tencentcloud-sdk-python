@@ -570,6 +570,10 @@ class CreateFunctionRequest(AbstractModel):
         :type AsyncRunEnable: str
         :param TraceEnable: 是否开启事件追踪，TRUE 为开启，FALSE为关闭
         :type TraceEnable: str
+        :param AutoDeployClsTopicIndex: 是否自动创建cls索引，TRUE 为开启，FALSE为关闭
+        :type AutoDeployClsTopicIndex: str
+        :param AutoCreateClsTopic: 是否自动创建cls主题，TRUE 为开启，FALSE为关闭
+        :type AutoCreateClsTopic: str
         :param ProtocolType: HTTP函数支持的访问协议。当前支持WebSockets协议，值为WS
         :type ProtocolType: str
         :param ProtocolParams: HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
@@ -601,6 +605,8 @@ class CreateFunctionRequest(AbstractModel):
         self.Tags = None
         self.AsyncRunEnable = None
         self.TraceEnable = None
+        self.AutoDeployClsTopicIndex = None
+        self.AutoCreateClsTopic = None
         self.ProtocolType = None
         self.ProtocolParams = None
         self.InstanceConcurrencyConfig = None
@@ -653,6 +659,8 @@ class CreateFunctionRequest(AbstractModel):
                 self.Tags.append(obj)
         self.AsyncRunEnable = params.get("AsyncRunEnable")
         self.TraceEnable = params.get("TraceEnable")
+        self.AutoDeployClsTopicIndex = params.get("AutoDeployClsTopicIndex")
+        self.AutoCreateClsTopic = params.get("AutoCreateClsTopic")
         self.ProtocolType = params.get("ProtocolType")
         if params.get("ProtocolParams") is not None:
             self.ProtocolParams = ProtocolParams()

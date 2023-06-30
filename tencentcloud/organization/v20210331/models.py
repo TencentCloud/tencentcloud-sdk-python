@@ -2130,6 +2130,72 @@ class UpdateOrganizationMemberEmailBindResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateOrganizationMemberRequest(AbstractModel):
+    """UpdateOrganizationMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 成员Uin。
+        :type MemberUin: int
+        :param Name: 成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        :type Name: str
+        :param Remark: 备注。最大长度为40个字符
+        :type Remark: str
+        :param PolicyType: 关系策略类型。PolicyType不为空，PermissionIds不能为空。取值：Financial
+        :type PolicyType: str
+        :param PermissionIds: 成员财务权限ID列表。PermissionIds不为空，PolicyType不能为空。
+取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析，如果有值，1、2 默认必须
+        :type PermissionIds: list of int non-negative
+        :param IsAllowQuit: 是否允许成员退出组织。取值：Allow-允许、Denied-不允许
+        :type IsAllowQuit: str
+        :param PayUin: 代付者Uin。成员财务权限有代付费时需要，取值为成员对应主体的主体管理员Uin
+        :type PayUin: str
+        """
+        self.MemberUin = None
+        self.Name = None
+        self.Remark = None
+        self.PolicyType = None
+        self.PermissionIds = None
+        self.IsAllowQuit = None
+        self.PayUin = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        self.PolicyType = params.get("PolicyType")
+        self.PermissionIds = params.get("PermissionIds")
+        self.IsAllowQuit = params.get("IsAllowQuit")
+        self.PayUin = params.get("PayUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOrganizationMemberResponse(AbstractModel):
+    """UpdateOrganizationMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateOrganizationNodeRequest(AbstractModel):
     """UpdateOrganizationNode请求参数结构体
 

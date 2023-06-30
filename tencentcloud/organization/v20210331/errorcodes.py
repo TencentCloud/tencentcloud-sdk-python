@@ -20,6 +20,9 @@ FAILEDOPERATION_ACCOUNTALREADYREGISTER = 'FailedOperation.AccountAlreadyRegister
 # 用户未实名。
 FAILEDOPERATION_AUTHINFOEMPTY = 'FailedOperation.AuthInfoEmpty'
 
+# 企业实名不一样。
+FAILEDOPERATION_AUTHINFONOTSAME = 'FailedOperation.AuthInfoNotSame'
+
 # 用户非企业实名。
 FAILEDOPERATION_AUTHNOTENTERPRISE = 'FailedOperation.AuthNotEnterprise'
 
@@ -28,6 +31,9 @@ FAILEDOPERATION_BINDEMAILLINKEXPIRED = 'FailedOperation.BindEmailLinkExpired'
 
 # 绑定邮箱链接无效。
 FAILEDOPERATION_BINDEMAILLINKINVALID = 'FailedOperation.BindEmailLinkInvalid'
+
+# 成员权限变更记录存在。
+FAILEDOPERATION_CHANGEPERMISSIONRECORDEXIST = 'FailedOperation.ChangePermissionRecordExist'
 
 # 检查手机绑定上限失败。
 FAILEDOPERATION_CHECKACCOUNTPHONEBINDLIMIT = 'FailedOperation.CheckAccountPhoneBindLimit'
@@ -149,6 +155,9 @@ INTERNALERROR = 'InternalError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 成员代付费模式，不允许主动退出组织。
+INVALIDPARAMETER_ALLOWQUITILLEGAL = 'InvalidParameter.AllowQuitIllegal'
+
 # 手机验证码错误。
 INVALIDPARAMETER_CODEERROR = 'InvalidParameter.CodeError'
 
@@ -221,6 +230,9 @@ UNSUPPORTEDOPERATION_ADDDISCOUNTINHERITNOTALLOW = 'UnsupportedOperation.AddDisco
 # 创建的成员不允许删除。
 UNSUPPORTEDOPERATION_CREATEMEMBERNOTALLOWDELETE = 'UnsupportedOperation.CreateMemberNotAllowDelete'
 
+# 不允许删除代付关系。
+UNSUPPORTEDOPERATION_DELETEDELEGATEPAYERNOTALLOW = 'UnsupportedOperation.DeleteDelegatePayerNotAllow'
+
 # 成员或者代付者存在经销商。
 UNSUPPORTEDOPERATION_EXISTEDAGENT = 'UnsupportedOperation.ExistedAgent'
 
@@ -253,6 +265,9 @@ UNSUPPORTEDOPERATION_MEMBERISAGENT = 'UnsupportedOperation.MemberIsAgent'
 
 # 成员没有绑卡。
 UNSUPPORTEDOPERATION_MEMBERNOPAYMENT = 'UnsupportedOperation.MemberNoPayment'
+
+# 成员不支持主动退出。
+UNSUPPORTEDOPERATION_MEMBERNOTALLOWQUIT = 'UnsupportedOperation.MemberNotAllowQuit'
 
 # 存在在途订单。
 UNSUPPORTEDOPERATION_ORDERINPROGRESSEXISTED = 'UnsupportedOperation.OrderInProgressExisted'

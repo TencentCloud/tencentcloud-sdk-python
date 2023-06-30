@@ -449,6 +449,9 @@ UNSUPPORTEDOPERATION_ACCOUNTARREARS = 'UnsupportedOperation.AccountArrears'
 # 密钥已绑定使用计划。
 UNSUPPORTEDOPERATION_ALREADYBINDUSAGEPLAN = 'UnsupportedOperation.AlreadyBindUsagePlan'
 
+# API列表不为空
+UNSUPPORTEDOPERATION_APILISTNOTEMPTY = 'UnsupportedOperation.ApiListNotEmpty'
+
 # 当前插件不支持绑定。
 UNSUPPORTEDOPERATION_ATTACHPLUGIN = 'UnsupportedOperation.AttachPlugin'
 
@@ -457,6 +460,9 @@ UNSUPPORTEDOPERATION_BASICSERVICENOMOREAPI = 'UnsupportedOperation.BasicServiceN
 
 # 日志检索起始时间间隔。
 UNSUPPORTEDOPERATION_CLSSEARCHTIME = 'UnsupportedOperation.ClsSearchTime'
+
+# 存在现网环境
+UNSUPPORTEDOPERATION_EXISTINGONLINEENVIRONMENT = 'UnsupportedOperation.ExistingOnlineEnvironment'
 
 # 协议为HTTP时，不支持强制Https。
 UNSUPPORTEDOPERATION_FORCEHTTPS = 'UnsupportedOperation.ForceHttps'
@@ -500,8 +506,14 @@ UNSUPPORTEDOPERATION_RESOURCEISINUSE = 'UnsupportedOperation.ResourceIsInUse'
 # 资源未关联。
 UNSUPPORTEDOPERATION_RESOURCEUNASSOCIATED = 'UnsupportedOperation.ResourceUnassociated'
 
+# 标签不为空
+UNSUPPORTEDOPERATION_TAGSNOTEMPTY = 'UnsupportedOperation.TagsNotEmpty'
+
 # 当前Uin未在手工密钥白名单列表内。
 UNSUPPORTEDOPERATION_UINNOTINWHITELIST = 'UnsupportedOperation.UinNotInWhiteList'
+
+# Unpack函数错误
+UNSUPPORTEDOPERATION_UNPACKERROR = 'UnsupportedOperation.UnpackError'
 
 # 密钥已绑定使用计划。
 UNSUPPORTEDOPERATION_UNSUPPORTEDBINDAPIKEY = 'UnsupportedOperation.UnsupportedBindApiKey'

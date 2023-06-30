@@ -2026,17 +2026,21 @@ class CreateProxyEndPointResponse(AbstractModel):
         :type FlowId: int
         :param TaskId: 异步任务ID
         :type TaskId: int
+        :param ProxyGroupId: 数据库代理组ID
+        :type ProxyGroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
         self.TaskId = None
+        self.ProxyGroupId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.TaskId = params.get("TaskId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2124,17 +2128,21 @@ class CreateProxyResponse(AbstractModel):
         :type FlowId: int
         :param TaskId: 异步任务ID
         :type TaskId: int
+        :param ProxyGroupId: 数据库代理组ID
+        :type ProxyGroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
         self.TaskId = None
+        self.ProxyGroupId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.TaskId = params.get("TaskId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
         self.RequestId = params.get("RequestId")
 
 

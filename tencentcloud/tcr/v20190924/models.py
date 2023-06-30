@@ -571,55 +571,6 @@ class CreateImageAccelerationServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateImageLifecyclePersonalRequest(AbstractModel):
-    """CreateImageLifecyclePersonal请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RepoName: 仓库名称
-        :type RepoName: str
-        :param Type: keep_last_days:保留最近几天的数据;keep_last_nums:保留最近多少个
-        :type Type: str
-        :param Val: 策略值
-        :type Val: int
-        """
-        self.RepoName = None
-        self.Type = None
-        self.Val = None
-
-
-    def _deserialize(self, params):
-        self.RepoName = params.get("RepoName")
-        self.Type = params.get("Type")
-        self.Val = params.get("Val")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateImageLifecyclePersonalResponse(AbstractModel):
-    """CreateImageLifecyclePersonal返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class CreateImmutableTagRulesRequest(AbstractModel):
     """CreateImmutableTagRules请求参数结构体
 
@@ -1865,47 +1816,6 @@ class DeleteImageLifecycleGlobalPersonalRequest(AbstractModel):
 
 class DeleteImageLifecycleGlobalPersonalResponse(AbstractModel):
     """DeleteImageLifecycleGlobalPersonal返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class DeleteImageLifecyclePersonalRequest(AbstractModel):
-    """DeleteImageLifecyclePersonal请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RepoName: 仓库名称
-        :type RepoName: str
-        """
-        self.RepoName = None
-
-
-    def _deserialize(self, params):
-        self.RepoName = params.get("RepoName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteImageLifecyclePersonalResponse(AbstractModel):
-    """DeleteImageLifecyclePersonal返回参数结构体
 
     """
 

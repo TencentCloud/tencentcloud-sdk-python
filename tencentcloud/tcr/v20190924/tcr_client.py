@@ -187,31 +187,6 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateImageLifecyclePersonal(self, request):
-        """前端与现有逻辑均不再使用，可下线
-
-        用于在个人版中创建清理策略
-
-        :param request: Request instance for CreateImageLifecyclePersonal.
-        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateImageLifecyclePersonalRequest`
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateImageLifecyclePersonalResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateImageLifecyclePersonal", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateImageLifecyclePersonalResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateImmutableTagRules(self, request):
         """创建镜像不可变规则
 
@@ -732,31 +707,6 @@ class TcrClient(AbstractClient):
             body = self.call("DeleteImageLifecycleGlobalPersonal", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteImageLifecycleGlobalPersonalResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeleteImageLifecyclePersonal(self, request):
-        """前端与后端目前现有逻辑均不再使用，可下线
-
-        用于在个人版镜像仓库中删除仓库Tag自动清理策略
-
-        :param request: Request instance for DeleteImageLifecyclePersonal.
-        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImageLifecyclePersonalRequest`
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteImageLifecyclePersonalResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteImageLifecyclePersonal", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteImageLifecyclePersonalResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

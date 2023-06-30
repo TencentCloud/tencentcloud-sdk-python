@@ -3451,14 +3451,19 @@ class ComplianceHostDetailInfo(AbstractModel):
         :param K8SVersion: 主机上的K8S的版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type K8SVersion: str
+        :param ContainerdVersion: 主机上Containerd版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerdVersion: str
         """
         self.DockerVersion = None
         self.K8SVersion = None
+        self.ContainerdVersion = None
 
 
     def _deserialize(self, params):
         self.DockerVersion = params.get("DockerVersion")
         self.K8SVersion = params.get("K8SVersion")
+        self.ContainerdVersion = params.get("ContainerdVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

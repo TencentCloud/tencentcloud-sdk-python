@@ -509,6 +509,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateOrganizationMember(self, request):
+        """更新组织成员信息
+
+        :param request: Request instance for UpdateOrganizationMember.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMemberRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOrganizationMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOrganizationMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateOrganizationMemberEmailBind(self, request):
         """修改绑定成员邮箱
 

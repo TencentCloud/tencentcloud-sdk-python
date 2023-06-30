@@ -13462,6 +13462,28 @@ class KMSConfiguration(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param KeyId: kms id
+        :type KeyId: str
+        :param KmsRegion: kms 地域
+        :type KmsRegion: str
+        """
+        self.KeyId = None
+        self.KmsRegion = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.KmsRegion = params.get("KmsRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class KubeJarvisStateCatalogue(AbstractModel):
     """集群巡检诊断的默认目录类型

@@ -2000,6 +2000,8 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
         :type ReturnCode: int
         :param ReturnMsg: 状态信息，success：查询成功，fail：查询失败
         :type ReturnMsg: str
+        :param SourceList: 安全事件来源下拉框
+        :type SourceList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2007,6 +2009,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
         self.Total = None
         self.ReturnCode = None
         self.ReturnMsg = None
+        self.SourceList = None
         self.RequestId = None
 
 
@@ -2020,6 +2023,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
         self.Total = params.get("Total")
         self.ReturnCode = params.get("ReturnCode")
         self.ReturnMsg = params.get("ReturnMsg")
+        self.SourceList = params.get("SourceList")
         self.RequestId = params.get("RequestId")
 
 
@@ -3791,6 +3795,9 @@ class InstanceInfo(AbstractModel):
         :param Server: 扫描结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Server: list of str
+        :param RegionKey: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionKey: str
         """
         self.AppId = None
         self.Region = None
@@ -3807,6 +3814,7 @@ class InstanceInfo(AbstractModel):
         self.InsSource = None
         self.ResourcePath = None
         self.Server = None
+        self.RegionKey = None
 
 
     def _deserialize(self, params):
@@ -3825,6 +3833,7 @@ class InstanceInfo(AbstractModel):
         self.InsSource = params.get("InsSource")
         self.ResourcePath = params.get("ResourcePath")
         self.Server = params.get("Server")
+        self.RegionKey = params.get("RegionKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
