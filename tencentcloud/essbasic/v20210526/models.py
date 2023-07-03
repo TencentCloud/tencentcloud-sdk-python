@@ -1385,6 +1385,8 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
         :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         :param Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Deadline: 签署流程的签署截止时间。 值为unix时间戳,精确到秒,不传默认为当前时间七天后
+        :type Deadline: int
         """
         self.Agent = None
         self.NeedRelievedFlowId = None
@@ -1393,6 +1395,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
         self.CallbackUrl = None
         self.Organization = None
         self.Operator = None
+        self.Deadline = None
 
 
     def _deserialize(self, params):
@@ -1416,6 +1419,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.Deadline = params.get("Deadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5140,6 +5144,8 @@ class RecipientComponentInfo(AbstractModel):
 class ReleasedApprover(AbstractModel):
     """解除协议的签署人，如不指定，默认使用待解除流程（即原流程）中的签署人。
     注意：不支持更换C端（个人身份类型）签署人，如果原流程中含有C端签署人，默认使用原流程中的该签署人。
+    注意：目前不支持替换C端（个人身份类型）签署人，但是可以指定C端签署人的签署方自定义控件别名，具体见参数ApproverSignRole描述。
+    注意：当指定C端签署人的签署方自定义控件别名不空时，除参数ApproverNumber外，可以只参数ApproverSignRole。
 
     如果需要指定B端（机构身份类型）签署人，其中ReleasedApprover需要传递的参数如下：
     ApproverNumber, OrganizationName, ApproverType必传。
@@ -5175,6 +5181,12 @@ ENTERPRISESERVER-企业静默签
         :param OpenId: 用户侧第三方id，最大长度64个字符
 当签署方为同一第三方应用下的员工时，该字必传
         :type OpenId: str
+        :param ApproverSignComponentType: 签署控件类型，支持自定义企业签署方的签署控件为“印章”或“签名”
+- SIGN_SEAL-默认为印章控件类型
+- SIGN_SIGNATURE-手写签名控件类型
+        :type ApproverSignComponentType: str
+        :param ApproverSignRole: 签署方自定义控件别名，最大长度20个字符
+        :type ApproverSignRole: str
         """
         self.OrganizationName = None
         self.ApproverNumber = None
@@ -5185,6 +5197,8 @@ ENTERPRISESERVER-企业静默签
         self.Mobile = None
         self.OrganizationOpenId = None
         self.OpenId = None
+        self.ApproverSignComponentType = None
+        self.ApproverSignRole = None
 
 
     def _deserialize(self, params):
@@ -5197,6 +5211,8 @@ ENTERPRISESERVER-企业静默签
         self.Mobile = params.get("Mobile")
         self.OrganizationOpenId = params.get("OrganizationOpenId")
         self.OpenId = params.get("OpenId")
+        self.ApproverSignComponentType = params.get("ApproverSignComponentType")
+        self.ApproverSignRole = params.get("ApproverSignRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5918,7 +5934,7 @@ class UploadFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 应用相关信息，若是第三方应用集成调用 appid 和proxyappid 必填
+        :param Agent: 应用相关信息，若是第三方应用集成调用 若是第三方应用集成调用,Agent.AppId 和 Agent.ProxyOrganizationOpenId 必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param BusinessType: 文件对应业务类型
 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
@@ -5965,24 +5981,24 @@ class UploadFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileIds: 文件id数组，有效期一个小时；有效期内此文件id可以反复使用
-        :type FileIds: list of str
         :param TotalCount: 上传成功文件数量
         :type TotalCount: int
+        :param FileIds: 文件id数组，有效期一个小时；有效期内此文件id可以反复使用
+        :type FileIds: list of str
         :param FileUrls: 文件Url
         :type FileUrls: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self.FileIds = None
         self.TotalCount = None
+        self.FileIds = None
         self.FileUrls = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
-        self.FileIds = params.get("FileIds")
         self.TotalCount = params.get("TotalCount")
+        self.FileIds = params.get("FileIds")
         self.FileUrls = params.get("FileUrls")
         self.RequestId = params.get("RequestId")
 

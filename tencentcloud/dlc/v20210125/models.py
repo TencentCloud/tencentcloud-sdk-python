@@ -1239,7 +1239,7 @@ class CreateDataEngineRequest(AbstractModel):
         :type MinClusters: int
         :param MaxClusters: 最大资源
         :type MaxClusters: int
-        :param DefaultDataEngine: 是否为默虚拟集群
+        :param DefaultDataEngine: 是否为默认虚拟集群
         :type DefaultDataEngine: bool
         :param CidrBlock: VPC网段
         :type CidrBlock: str
@@ -1277,7 +1277,7 @@ class CreateDataEngineRequest(AbstractModel):
         :type DataEngineConfigPairs: list of DataEngineConfigPair
         :param ImageVersionName: 集群镜像版本名字。如SuperSQL-P 1.1;SuperSQL-S 3.2等,不传，默认创建最新镜像版本的集群
         :type ImageVersionName: str
-        :param MainClusterName: 主集群名称
+        :param MainClusterName: 主集群名称，创建容灾集群时指定
         :type MainClusterName: str
         :param ElasticSwitch: spark jar 包年包月集群是否开启弹性
         :type ElasticSwitch: bool

@@ -264,6 +264,12 @@ class BillDetailComponent(AbstractModel):
         :type UsedAmount: str
         :param UsedAmountUnit: 组件用量单位：组件用量对应的单位
         :type UsedAmountUnit: str
+        :param RealTotalMeasure: 原始用量/时长：组件被资源包抵扣前的原始用量/时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalMeasure: str
+        :param DeductedMeasure: 抵扣用量/时长（含资源包）：组件被资源包抵扣的用量/时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeductedMeasure: str
         :param TimeSpan: 使用时长：资源使用的时长
         :type TimeSpan: str
         :param TimeUnitName: 时长单位：资源使用时长的单位
@@ -323,6 +329,8 @@ class BillDetailComponent(AbstractModel):
         self.PriceUnit = None
         self.UsedAmount = None
         self.UsedAmountUnit = None
+        self.RealTotalMeasure = None
+        self.DeductedMeasure = None
         self.TimeSpan = None
         self.TimeUnitName = None
         self.Cost = None
@@ -353,6 +361,8 @@ class BillDetailComponent(AbstractModel):
         self.PriceUnit = params.get("PriceUnit")
         self.UsedAmount = params.get("UsedAmount")
         self.UsedAmountUnit = params.get("UsedAmountUnit")
+        self.RealTotalMeasure = params.get("RealTotalMeasure")
+        self.DeductedMeasure = params.get("DeductedMeasure")
         self.TimeSpan = params.get("TimeSpan")
         self.TimeUnitName = params.get("TimeUnitName")
         self.Cost = params.get("Cost")

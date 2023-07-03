@@ -5213,7 +5213,7 @@ class ModifyBackupPlanRequest(AbstractModel):
         :type MinBackupStartTime: str
         :param MaxBackupStartTime: 实例最晚开始备份时间
         :type MaxBackupStartTime: str
-        :param BaseBackupRetentionPeriod: 实例备份保留时长，取值范围为3-7，单位是天
+        :param BaseBackupRetentionPeriod: 实例备份保留时长，取值范围为7-1830，单位是天
         :type BaseBackupRetentionPeriod: int
         :param BackupPeriod: 实例备份周期，按照星期维度，格式为小写星期英文单词
         :type BackupPeriod: list of str

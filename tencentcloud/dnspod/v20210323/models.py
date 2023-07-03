@@ -1343,6 +1343,105 @@ class DeleteDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRecordBatchDetail(AbstractModel):
+    """批量删除记录详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名 ID
+        :type DomainId: int
+        :param Domain: 域名
+        :type Domain: str
+        :param Error: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: str
+        :param Status: 删除状态
+        :type Status: str
+        :param Operation: 操作
+        :type Operation: str
+        :param RecordList: 解析记录列表，json 序列化之后的字符串形式
+        :type RecordList: str
+        """
+        self.DomainId = None
+        self.Domain = None
+        self.Error = None
+        self.Status = None
+        self.Operation = None
+        self.RecordList = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        self.Domain = params.get("Domain")
+        self.Error = params.get("Error")
+        self.Status = params.get("Status")
+        self.Operation = params.get("Operation")
+        self.RecordList = params.get("RecordList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRecordBatchRequest(AbstractModel):
+    """DeleteRecordBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordIdList: 解析记录 ID 数组
+        :type RecordIdList: list of int non-negative
+        """
+        self.RecordIdList = None
+
+
+    def _deserialize(self, params):
+        self.RecordIdList = params.get("RecordIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRecordBatchResponse(AbstractModel):
+    """DeleteRecordBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 批量任务 ID
+        :type JobId: int
+        :param DetailList: 任务详情
+        :type DetailList: list of DeleteRecordBatchDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.JobId = None
+        self.DetailList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        if params.get("DetailList") is not None:
+            self.DetailList = []
+            for item in params.get("DetailList"):
+                obj = DeleteRecordBatchDetail()
+                obj._deserialize(item)
+                self.DetailList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteRecordGroupRequest(AbstractModel):
     """DeleteRecordGroup请求参数结构体
 

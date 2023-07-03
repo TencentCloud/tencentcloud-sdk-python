@@ -371,6 +371,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteRecordBatch(self, request):
+        """批量删除解析记录
+
+        :param request: Request instance for DeleteRecordBatch.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteRecordBatchRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DeleteRecordBatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRecordBatch", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRecordBatchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteRecordGroup(self, request):
         """删除记录分组
 

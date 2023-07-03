@@ -164,6 +164,29 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryArrivalList(self, request):
+        """查询指定时间范围内发生过到店的潜客到店信息
+
+        :param request: Request instance for QueryArrivalList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryArrivalListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryArrivalListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryArrivalList", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryArrivalListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryChannelCodeList(self, request):
         """根据游标拉取渠道活码列表信息
 
@@ -431,6 +454,29 @@ class WavClient(AbstractClient):
             body = self.call("QueryExternalUserMappingInfo", params, headers=headers)
             response = json.loads(body)
             model = models.QueryExternalUserMappingInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFollowList(self, request):
+        """查询指定时间范围内发生过跟进的潜客信息
+
+        :param request: Request instance for QueryFollowList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryFollowListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryFollowListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFollowList", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryFollowListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
