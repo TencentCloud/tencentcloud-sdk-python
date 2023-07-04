@@ -72,6 +72,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckRechargeKafkaServer(self, request):
+        """本接口用于校验Kafka服务集群是否可以正常访问
+
+        :param request: Request instance for CheckRechargeKafkaServer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CheckRechargeKafkaServerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CheckRechargeKafkaServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckRechargeKafkaServer", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckRechargeKafkaServerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseKafkaConsumer(self, request):
         """关闭Kafka协议消费
 
@@ -270,6 +293,29 @@ class ClsClient(AbstractClient):
             body = self.call("CreateIndex", params, headers=headers)
             response = json.loads(body)
             model = models.CreateIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateKafkaRecharge(self, request):
+        """本接口用于创建Kafka数据订阅任务
+
+        :param request: Request instance for CreateKafkaRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateKafkaRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateKafkaRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateKafkaRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateKafkaRechargeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -546,6 +592,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteIndex", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteKafkaRecharge(self, request):
+        """本接口用于删除Kafka数据订阅任务
+
+        :param request: Request instance for DeleteKafkaRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteKafkaRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteKafkaRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteKafkaRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteKafkaRechargeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -891,6 +960,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeIndex", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeKafkaRecharges(self, request):
+        """本接口用于获取Kafka数据订阅任务
+
+        :param request: Request instance for DescribeKafkaRecharges.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaRechargesRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaRechargesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKafkaRecharges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKafkaRechargesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1337,6 +1429,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyKafkaRecharge(self, request):
+        """本接口用于修改Kafka数据订阅任务
+
+        :param request: Request instance for ModifyKafkaRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKafkaRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKafkaRechargeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyLogset(self, request):
         """本接口用于修改日志集信息
 
@@ -1443,6 +1558,29 @@ class ClsClient(AbstractClient):
             body = self.call("OpenKafkaConsumer", params, headers=headers)
             response = json.loads(body)
             model = models.OpenKafkaConsumerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PreviewKafkaRecharge(self, request):
+        """本接口用于预览Kafka数据订阅任务客户日志信息
+
+        :param request: Request instance for PreviewKafkaRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.PreviewKafkaRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.PreviewKafkaRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PreviewKafkaRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.PreviewKafkaRechargeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

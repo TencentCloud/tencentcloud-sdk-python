@@ -32,6 +32,9 @@ FAILEDOPERATION_PERMISSIONDENIED = 'FailedOperation.PermissionDenied'
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
+# 数据库内部错误。
+INTERNALERROR_DBOPERATIONERROR = 'InternalError.DBOperationError'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 

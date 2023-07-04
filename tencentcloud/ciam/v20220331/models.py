@@ -18,6 +18,41 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AppAssociatedUserGroupIds(AbstractModel):
+    """用户组删除时关联的应用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserGroupId: 用户组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserGroupId: str
+        :param ApplicationId: 应用id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        """
+        self.UserGroupId = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+
+
+    def _deserialize(self, params):
+        self.UserGroupId = params.get("UserGroupId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateApiImportUserJobRequest(AbstractModel):
     """CreateApiImportUserJob请求参数结构体
 
@@ -149,6 +184,55 @@ class CreateFileExportUserJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUserGroupRequest(AbstractModel):
+    """CreateUserGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DisplayName: 用户组名称
+        :type DisplayName: str
+        :param UserStoreId: 用户目录ID
+        :type UserStoreId: str
+        :param Description: 用户组描述
+        :type Description: str
+        """
+        self.DisplayName = None
+        self.UserStoreId = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.DisplayName = params.get("DisplayName")
+        self.UserStoreId = params.get("UserStoreId")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserGroupResponse(AbstractModel):
+    """CreateUserGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUserRequest(AbstractModel):
     """CreateUser请求参数结构体
 
@@ -255,6 +339,148 @@ class CreateUserResponse(AbstractModel):
         if params.get("User") is not None:
             self.User = User()
             self.User._deserialize(params.get("User"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateUserStoreRequest(AbstractModel):
+    """CreateUserStore请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserPoolName: 用户池名字
+        :type UserPoolName: str
+        :param UserPoolDesc: 用户池描述
+        :type UserPoolDesc: str
+        :param UserPoolLogo: 用户池logo
+        :type UserPoolLogo: str
+        """
+        self.UserPoolName = None
+        self.UserPoolDesc = None
+        self.UserPoolLogo = None
+
+
+    def _deserialize(self, params):
+        self.UserPoolName = params.get("UserPoolName")
+        self.UserPoolDesc = params.get("UserPoolDesc")
+        self.UserPoolLogo = params.get("UserPoolLogo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserStoreResponse(AbstractModel):
+    """CreateUserStore返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUserGroupsRequest(AbstractModel):
+    """DeleteUserGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserGroupIds: 用户组ID数组
+        :type UserGroupIds: list of str
+        :param UserStoreId: 用户目录ID
+        :type UserStoreId: str
+        """
+        self.UserGroupIds = None
+        self.UserStoreId = None
+
+
+    def _deserialize(self, params):
+        self.UserGroupIds = params.get("UserGroupIds")
+        self.UserStoreId = params.get("UserStoreId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserGroupsResponse(AbstractModel):
+    """DeleteUserGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserGroupDeletedInfo: 删除的用户组关联的应用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserGroupDeletedInfo: :class:`tencentcloud.ciam.v20220331.models.UserGroupDeleteResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserGroupDeletedInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserGroupDeletedInfo") is not None:
+            self.UserGroupDeletedInfo = UserGroupDeleteResp()
+            self.UserGroupDeletedInfo._deserialize(params.get("UserGroupDeletedInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUserStoreRequest(AbstractModel):
+    """DeleteUserStore请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserPoolId: 用户池ID
+        :type UserPoolId: str
+        """
+        self.UserPoolId = None
+
+
+    def _deserialize(self, params):
+        self.UserPoolId = params.get("UserPoolId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserStoreResponse(AbstractModel):
+    """DeleteUserStore返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1062,6 +1288,86 @@ class ListUserByPropertyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListUserGroupsRequest(AbstractModel):
+    """ListUserGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserStoreId: 用户目录ID
+        :type UserStoreId: str
+        :param Pageable: 分页数据
+        :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        :param Filters: Key可选值为condition
+
+<li> **condition** </li>	Values = 查询条件，用户组ID或用户组名称
+        :type Filters: list of Filter
+        """
+        self.UserStoreId = None
+        self.Pageable = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.UserStoreId = params.get("UserStoreId")
+        if params.get("Pageable") is not None:
+            self.Pageable = Pageable()
+            self.Pageable._deserialize(params.get("Pageable"))
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListUserGroupsResponse(AbstractModel):
+    """ListUserGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: 用户组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of UserGroup
+        :param Total: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Pageable: 分页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Content = None
+        self.Total = None
+        self.Pageable = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = UserGroup()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.Total = params.get("Total")
+        if params.get("Pageable") is not None:
+            self.Pageable = Pageable()
+            self.Pageable._deserialize(params.get("Pageable"))
+        self.RequestId = params.get("RequestId")
+
+
 class ListUserRequest(AbstractModel):
     """ListUser请求参数结构体
 
@@ -1144,6 +1450,39 @@ class ListUserResponse(AbstractModel):
                 obj = User()
                 obj._deserialize(item)
                 self.Content.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListUserStoreRequest(AbstractModel):
+    """ListUserStore请求参数结构体
+
+    """
+
+
+class ListUserStoreResponse(AbstractModel):
+    """ListUserStore返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserStoreSet: 用户目录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserStoreSet: list of UserStore
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UserStoreSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserStoreSet") is not None:
+            self.UserStoreSet = []
+            for item in params.get("UserStoreSet"):
+                obj = UserStore()
+                obj._deserialize(item)
+                self.UserStoreSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1561,6 +1900,59 @@ class Sort(AbstractModel):
         
 
 
+class UpdateUserGroupRequest(AbstractModel):
+    """UpdateUserGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserGroupId: 用户组ID
+        :type UserGroupId: str
+        :param DisplayName: 用户组名称
+        :type DisplayName: str
+        :param UserStoreId: 用户目录ID
+        :type UserStoreId: str
+        :param Description: 用户组描述
+        :type Description: str
+        """
+        self.UserGroupId = None
+        self.DisplayName = None
+        self.UserStoreId = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.UserGroupId = params.get("UserGroupId")
+        self.DisplayName = params.get("DisplayName")
+        self.UserStoreId = params.get("UserStoreId")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUserGroupResponse(AbstractModel):
+    """UpdateUserGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateUserRequest(AbstractModel):
     """UpdateUser请求参数结构体
 
@@ -1708,6 +2100,59 @@ class UpdateUserStatusRequest(AbstractModel):
 
 class UpdateUserStatusResponse(AbstractModel):
     """UpdateUserStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateUserStoreRequest(AbstractModel):
+    """UpdateUserStore请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserPoolId: 用户池ID
+        :type UserPoolId: str
+        :param UserPoolName: 用户池名字
+        :type UserPoolName: str
+        :param UserPoolDesc: 用户池描述
+        :type UserPoolDesc: str
+        :param UserPoolLogo: 用户池logo
+        :type UserPoolLogo: str
+        """
+        self.UserPoolId = None
+        self.UserPoolName = None
+        self.UserPoolDesc = None
+        self.UserPoolLogo = None
+
+
+    def _deserialize(self, params):
+        self.UserPoolId = params.get("UserPoolId")
+        self.UserPoolName = params.get("UserPoolName")
+        self.UserPoolDesc = params.get("UserPoolDesc")
+        self.UserPoolLogo = params.get("UserPoolLogo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUserStoreResponse(AbstractModel):
+    """UpdateUserStore返回参数结构体
 
     """
 
@@ -1940,6 +2385,165 @@ class User(AbstractModel):
         self.IndexedAttribute3 = params.get("IndexedAttribute3")
         self.IndexedAttribute4 = params.get("IndexedAttribute4")
         self.IndexedAttribute5 = params.get("IndexedAttribute5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserGroup(AbstractModel):
+    """用户组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserGroupId: 用户组ID
+        :type UserGroupId: str
+        :param DisplayName: 用户组名称
+        :type DisplayName: str
+        :param Description: 用户组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param UserStoreId: 用户目录ID
+        :type UserStoreId: str
+        :param TenantId: 租户ID
+        :type TenantId: str
+        :param CreatedDate: 创建时间
+        :type CreatedDate: int
+        :param LastModifyDate: 最近更新时间
+        :type LastModifyDate: int
+        """
+        self.UserGroupId = None
+        self.DisplayName = None
+        self.Description = None
+        self.UserStoreId = None
+        self.TenantId = None
+        self.CreatedDate = None
+        self.LastModifyDate = None
+
+
+    def _deserialize(self, params):
+        self.UserGroupId = params.get("UserGroupId")
+        self.DisplayName = params.get("DisplayName")
+        self.Description = params.get("Description")
+        self.UserStoreId = params.get("UserStoreId")
+        self.TenantId = params.get("TenantId")
+        self.CreatedDate = params.get("CreatedDate")
+        self.LastModifyDate = params.get("LastModifyDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserGroupDeleteResp(AbstractModel):
+    """删除用户组信息时返回的详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorMessage: 错误详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param AppAssociatedUserGroupIds: 用户组关联的应用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppAssociatedUserGroupIds: list of AppAssociatedUserGroupIds
+        """
+        self.ErrorMessage = None
+        self.AppAssociatedUserGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ErrorMessage = params.get("ErrorMessage")
+        if params.get("AppAssociatedUserGroupIds") is not None:
+            self.AppAssociatedUserGroupIds = []
+            for item in params.get("AppAssociatedUserGroupIds"):
+                obj = AppAssociatedUserGroupIds()
+                obj._deserialize(item)
+                self.AppAssociatedUserGroupIds.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserStore(AbstractModel):
+    """用户池
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TenantId: 租户ID
+        :type TenantId: str
+        :param UserStoreLogo: 用户池logo
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserStoreLogo: str
+        :param UserStoreDesc: 用户池描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserStoreDesc: str
+        :param UserStoreName: 用户池名称
+        :type UserStoreName: str
+        :param UserNum: 用户数量
+        :type UserNum: int
+        :param UserStoreId: 用户池ID
+        :type UserStoreId: str
+        :param AppNum: 应用数量
+        :type AppNum: int
+        :param LastStatus: 上次切换的用户池
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastStatus: bool
+        :param DefaultStatus: 默认用户池
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultStatus: bool
+        :param CreateDate: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateDate: int
+        :param LastStatusTime: 上次切换时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastStatusTime: int
+        :param UserStoreProtocolHost: 用户目录域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserStoreProtocolHost: str
+        """
+        self.TenantId = None
+        self.UserStoreLogo = None
+        self.UserStoreDesc = None
+        self.UserStoreName = None
+        self.UserNum = None
+        self.UserStoreId = None
+        self.AppNum = None
+        self.LastStatus = None
+        self.DefaultStatus = None
+        self.CreateDate = None
+        self.LastStatusTime = None
+        self.UserStoreProtocolHost = None
+
+
+    def _deserialize(self, params):
+        self.TenantId = params.get("TenantId")
+        self.UserStoreLogo = params.get("UserStoreLogo")
+        self.UserStoreDesc = params.get("UserStoreDesc")
+        self.UserStoreName = params.get("UserStoreName")
+        self.UserNum = params.get("UserNum")
+        self.UserStoreId = params.get("UserStoreId")
+        self.AppNum = params.get("AppNum")
+        self.LastStatus = params.get("LastStatus")
+        self.DefaultStatus = params.get("DefaultStatus")
+        self.CreateDate = params.get("CreateDate")
+        self.LastStatusTime = params.get("LastStatusTime")
+        self.UserStoreProtocolHost = params.get("UserStoreProtocolHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

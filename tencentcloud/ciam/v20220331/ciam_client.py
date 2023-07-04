@@ -95,6 +95,98 @@ class CiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUserGroup(self, request):
+        """创建用户组
+
+        :param request: Request instance for CreateUserGroup.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.CreateUserGroupRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.CreateUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateUserStore(self, request):
+        """创建用户目录
+
+        :param request: Request instance for CreateUserStore.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.CreateUserStoreRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.CreateUserStoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserStore", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserStoreResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteUserGroups(self, request):
+        """批量删除用户组
+
+        :param request: Request instance for DeleteUserGroups.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.DeleteUserGroupsRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.DeleteUserGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteUserStore(self, request):
+        """删除用户目录
+
+        :param request: Request instance for DeleteUserStore.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.DeleteUserStoreRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.DeleteUserStoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserStore", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserStoreResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteUsers(self, request):
         """批量删除用户
 
@@ -279,6 +371,52 @@ class CiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListUserGroups(self, request):
+        """查询用户组列表
+
+        :param request: Request instance for ListUserGroups.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.ListUserGroupsRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.ListUserGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListUserGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListUserGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListUserStore(self, request):
+        """查询用户目录列表
+
+        :param request: Request instance for ListUserStore.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.ListUserStoreRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.ListUserStoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListUserStore", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListUserStoreResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResetPassword(self, request):
         """重置用户密码
 
@@ -348,6 +486,29 @@ class CiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateUserGroup(self, request):
+        """更新用户组
+
+        :param request: Request instance for UpdateUserGroup.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.UpdateUserGroupRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.UpdateUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateUserStatus(self, request):
         """更新用户状态
 
@@ -362,6 +523,29 @@ class CiamClient(AbstractClient):
             body = self.call("UpdateUserStatus", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateUserStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateUserStore(self, request):
+        """更新用户目录
+
+        :param request: Request instance for UpdateUserStore.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.UpdateUserStoreRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.UpdateUserStoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateUserStore", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateUserStoreResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

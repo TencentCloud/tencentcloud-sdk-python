@@ -67,7 +67,7 @@ class ApproverOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param HideOneKeySign: 是否隐藏一键签署 false-不隐藏,默认 true-隐藏
+        :param HideOneKeySign: 是否隐藏一键签署 默认false-不隐藏true-隐藏
         :type HideOneKeySign: bool
         """
         self.HideOneKeySign = None

@@ -600,6 +600,70 @@ class CallBackInfo(AbstractModel):
         
 
 
+class CheckRechargeKafkaServerRequest(AbstractModel):
+    """CheckRechargeKafkaServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :type KafkaType: int
+        :param KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+        :type KafkaInstance: str
+        :param ServerAddr: 服务地址
+        :type ServerAddr: str
+        :param IsEncryptionAddr: ServerAddr是否为加密连接
+        :type IsEncryptionAddr: bool
+        :param Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        """
+        self.KafkaType = None
+        self.KafkaInstance = None
+        self.ServerAddr = None
+        self.IsEncryptionAddr = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.KafkaType = params.get("KafkaType")
+        self.KafkaInstance = params.get("KafkaInstance")
+        self.ServerAddr = params.get("ServerAddr")
+        self.IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self.Protocol = KafkaProtocolInfo()
+            self.Protocol._deserialize(params.get("Protocol"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckRechargeKafkaServerResponse(AbstractModel):
+    """CheckRechargeKafkaServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: Kafka集群可访问状态，0：可正常访问 ...
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class Ckafka(AbstractModel):
     """CKafka的描述-需要投递到的kafka信息
 
@@ -1921,6 +1985,95 @@ class CreateIndexResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateKafkaRechargeRequest(AbstractModel):
+    """CreateKafkaRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 导入CLS目标topic ID
+        :type TopicId: str
+        :param Name: Kafka导入配置名称
+        :type Name: str
+        :param KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :type KafkaType: int
+        :param UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        :type UserKafkaTopics: str
+        :param Offset: 导入数据位置，-2:最早（默认），-1：最晚
+        :type Offset: int
+        :param KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+        :type KafkaInstance: str
+        :param ServerAddr: 服务地址，KafkaType为1时必填
+        :type ServerAddr: str
+        :param IsEncryptionAddr: ServerAddr是否为加密连接，KafkaType为1时必填
+        :type IsEncryptionAddr: bool
+        :param Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        :param ConsumerGroupName: 用户Kafka消费组名称
+        :type ConsumerGroupName: str
+        :param LogRechargeRule: 日志导入规则
+        :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
+        self.TopicId = None
+        self.Name = None
+        self.KafkaType = None
+        self.UserKafkaTopics = None
+        self.Offset = None
+        self.KafkaInstance = None
+        self.ServerAddr = None
+        self.IsEncryptionAddr = None
+        self.Protocol = None
+        self.ConsumerGroupName = None
+        self.LogRechargeRule = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.Name = params.get("Name")
+        self.KafkaType = params.get("KafkaType")
+        self.UserKafkaTopics = params.get("UserKafkaTopics")
+        self.Offset = params.get("Offset")
+        self.KafkaInstance = params.get("KafkaInstance")
+        self.ServerAddr = params.get("ServerAddr")
+        self.IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self.Protocol = KafkaProtocolInfo()
+            self.Protocol._deserialize(params.get("Protocol"))
+        self.ConsumerGroupName = params.get("ConsumerGroupName")
+        if params.get("LogRechargeRule") is not None:
+            self.LogRechargeRule = LogRechargeRuleInfo()
+            self.LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKafkaRechargeResponse(AbstractModel):
+    """CreateKafkaRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Kafka导入配置ID
+        :type Id: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateLogsetRequest(AbstractModel):
     """CreateLogset请求参数结构体
 
@@ -2611,6 +2764,51 @@ class DeleteIndexRequest(AbstractModel):
 
 class DeleteIndexResponse(AbstractModel):
     """DeleteIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteKafkaRechargeRequest(AbstractModel):
+    """DeleteKafkaRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Kafka导入配置ID
+        :type Id: str
+        :param TopicId: 导入CLS目标topic ID
+        :type TopicId: str
+        """
+        self.Id = None
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteKafkaRechargeResponse(AbstractModel):
+    """DeleteKafkaRecharge返回参数结构体
 
     """
 
@@ -3556,6 +3754,68 @@ class DescribeIndexResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeKafkaRechargesRequest(AbstractModel):
+    """DescribeKafkaRecharges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 日志主题 ID
+        :type TopicId: str
+        :param Id: 导入配置ID
+        :type Id: str
+        :param Status: 状态   status 1: 运行中, 2: 暂停...
+        :type Status: int
+        """
+        self.TopicId = None
+        self.Id = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.Id = params.get("Id")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKafkaRechargesResponse(AbstractModel):
+    """DescribeKafkaRecharges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Infos: KafkaRechargeInfo 信息列表
+        :type Infos: list of KafkaRechargeInfo
+        :param TotalCount: Kafka导入信息总条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Infos = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self.Infos = []
+            for item in params.get("Infos"):
+                obj = KafkaRechargeInfo()
+                obj._deserialize(item)
+                self.Infos.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLogContextRequest(AbstractModel):
     """DescribeLogContext请求参数结构体
 
@@ -4405,7 +4665,7 @@ class ExtractRuleInfo(AbstractModel):
         :param BeginRegex: 行首匹配规则，只有log_type为multiline_log或fullregex_log时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeginRegex: str
-        :param Keys: 取的每个字段的key名字，为空的key代表丢弃这个字段，只有log_type为delimiter_log时有效，json_log的日志使用json本身的key
+        :param Keys: 取的每个字段的key名字，为空的key代表丢弃这个字段，只有log_type为delimiter_log时有效，json_log的日志使用json本身的key。限制100个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keys: list of str
         :param FilterKeyRegex: 需要过滤日志的key，及其对应的regex
@@ -4841,6 +5101,192 @@ class JsonInfo(AbstractModel):
         
 
 
+class KafkaConsumerContent(AbstractModel):
+    """kafka协议消费内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Format: 消费格式 0:全文；1:json
+        :type Format: int
+        :param EnableTag: 是否投递 TAG 信息
+Format为0时，此字段不需要赋值
+        :type EnableTag: bool
+        :param MetaFields: 元数据信息列表, 可选值为：\_\_SOURCE\_\_、\_\_FILENAME\_\_
+、\_\_TIMESTAMP\_\_、\_\_HOSTNAME\_\_、\_\_PKGID\_\_
+Format为0时，此字段不需要赋值
+        :type MetaFields: list of str
+        :param TagTransaction: tag数据处理方式：
+1:不平铺（默认值）
+2:平铺
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagTransaction: int
+        :param JsonType: 消费数据Json格式：
+1：不转义（默认格式）
+2：转义
+        :type JsonType: int
+        """
+        self.Format = None
+        self.EnableTag = None
+        self.MetaFields = None
+        self.TagTransaction = None
+        self.JsonType = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        self.EnableTag = params.get("EnableTag")
+        self.MetaFields = params.get("MetaFields")
+        self.TagTransaction = params.get("TagTransaction")
+        self.JsonType = params.get("JsonType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KafkaProtocolInfo(AbstractModel):
+    """Kafka访问协议
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Protocol: 协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param Mechanism: 加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mechanism: str
+        :param UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: 用户密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        """
+        self.Protocol = None
+        self.Mechanism = None
+        self.UserName = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.Protocol = params.get("Protocol")
+        self.Mechanism = params.get("Mechanism")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KafkaRechargeInfo(AbstractModel):
+    """Kafka导入配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 主键ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param TopicId: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param Name: Kafka导入任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaType: int
+        :param KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaInstance: str
+        :param ServerAddr: 服务地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerAddr: str
+        :param IsEncryptionAddr: ServerAddr是否为加密连接	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsEncryptionAddr: bool
+        :param Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        :param UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserKafkaTopics: str
+        :param ConsumerGroupName: 用户Kafka消费组名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerGroupName: str
+        :param Status: 状态   status 1: 运行中, 2: 暂停 ...
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Offset: 导入数据位置，-1:最早（默认），-2：最晚，大于等于0: 指定offset
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param LogRechargeRule: 日志导入规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
+        self.Id = None
+        self.TopicId = None
+        self.Name = None
+        self.KafkaType = None
+        self.KafkaInstance = None
+        self.ServerAddr = None
+        self.IsEncryptionAddr = None
+        self.Protocol = None
+        self.UserKafkaTopics = None
+        self.ConsumerGroupName = None
+        self.Status = None
+        self.Offset = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.LogRechargeRule = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TopicId = params.get("TopicId")
+        self.Name = params.get("Name")
+        self.KafkaType = params.get("KafkaType")
+        self.KafkaInstance = params.get("KafkaInstance")
+        self.ServerAddr = params.get("ServerAddr")
+        self.IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self.Protocol = KafkaProtocolInfo()
+            self.Protocol._deserialize(params.get("Protocol"))
+        self.UserKafkaTopics = params.get("UserKafkaTopics")
+        self.ConsumerGroupName = params.get("ConsumerGroupName")
+        self.Status = params.get("Status")
+        self.Offset = params.get("Offset")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("LogRechargeRule") is not None:
+            self.LogRechargeRule = LogRechargeRuleInfo()
+            self.LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KeyRegexInfo(AbstractModel):
     """需要过滤日志的key，及其对应的regex
 
@@ -5080,6 +5526,92 @@ class LogItems(AbstractModel):
                 obj = LogItem()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogRechargeRuleInfo(AbstractModel):
+    """日志导入规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RechargeType: 导入类型，支持json_log：json格式日志，minimalist_log: 单行全文，fullregex_log: 单行完全正则
+        :type RechargeType: str
+        :param EncodingFormat: 解析编码格式，0: UTF-8（默认值），1: GBK
+        :type EncodingFormat: int
+        :param DefaultTimeSwitch: 使用默认时间，true：开启（默认值）， flase：关闭
+        :type DefaultTimeSwitch: bool
+        :param LogRegex: 整条日志匹配规则，只有RechargeType为fullregex_log时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogRegex: str
+        :param UnMatchLogSwitch: 解析失败日志是否上传，true表示上传，false表示不上传
+        :type UnMatchLogSwitch: bool
+        :param UnMatchLogKey: 解析失败日志的键名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnMatchLogKey: str
+        :param UnMatchLogTimeSrc: 解析失败日志时间来源，0: 系统当前时间，1: Kafka消息时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnMatchLogTimeSrc: int
+        :param DefaultTimeSrc: 默认时间来源，0: 系统当前时间，1: Kafka消息时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultTimeSrc: int
+        :param TimeKey: 时间字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeKey: str
+        :param TimeRegex: 时间提取正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeRegex: str
+        :param TimeFormat: 时间字段格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeFormat: str
+        :param TimeZone: 时间字段时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeZone: str
+        :param Metadata: 元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadata: list of str
+        :param Keys: 日志Key列表，RechargeType为full_regex_log时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keys: list of str
+        """
+        self.RechargeType = None
+        self.EncodingFormat = None
+        self.DefaultTimeSwitch = None
+        self.LogRegex = None
+        self.UnMatchLogSwitch = None
+        self.UnMatchLogKey = None
+        self.UnMatchLogTimeSrc = None
+        self.DefaultTimeSrc = None
+        self.TimeKey = None
+        self.TimeRegex = None
+        self.TimeFormat = None
+        self.TimeZone = None
+        self.Metadata = None
+        self.Keys = None
+
+
+    def _deserialize(self, params):
+        self.RechargeType = params.get("RechargeType")
+        self.EncodingFormat = params.get("EncodingFormat")
+        self.DefaultTimeSwitch = params.get("DefaultTimeSwitch")
+        self.LogRegex = params.get("LogRegex")
+        self.UnMatchLogSwitch = params.get("UnMatchLogSwitch")
+        self.UnMatchLogKey = params.get("UnMatchLogKey")
+        self.UnMatchLogTimeSrc = params.get("UnMatchLogTimeSrc")
+        self.DefaultTimeSrc = params.get("DefaultTimeSrc")
+        self.TimeKey = params.get("TimeKey")
+        self.TimeRegex = params.get("TimeRegex")
+        self.TimeFormat = params.get("TimeFormat")
+        self.TimeZone = params.get("TimeZone")
+        self.Metadata = params.get("Metadata")
+        self.Keys = params.get("Keys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5928,6 +6460,95 @@ class ModifyIndexResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyKafkaRechargeRequest(AbstractModel):
+    """ModifyKafkaRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: Kafka导入配置ID
+        :type Id: str
+        :param TopicId: 导入CLS目标topic ID
+        :type TopicId: str
+        :param Name: Kafka导入配置名称
+        :type Name: str
+        :param KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :type KafkaType: int
+        :param KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+        :type KafkaInstance: str
+        :param ServerAddr: 服务地址
+        :type ServerAddr: str
+        :param IsEncryptionAddr: ServerAddr是否为加密连接
+        :type IsEncryptionAddr: bool
+        :param Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        :param UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        :type UserKafkaTopics: str
+        :param ConsumerGroupName: 用户Kafka消费组名称
+        :type ConsumerGroupName: str
+        :param LogRechargeRule: 日志导入规则
+        :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        :param StatusControl: 导入控制，1：暂停，2：继续
+        :type StatusControl: int
+        """
+        self.Id = None
+        self.TopicId = None
+        self.Name = None
+        self.KafkaType = None
+        self.KafkaInstance = None
+        self.ServerAddr = None
+        self.IsEncryptionAddr = None
+        self.Protocol = None
+        self.UserKafkaTopics = None
+        self.ConsumerGroupName = None
+        self.LogRechargeRule = None
+        self.StatusControl = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TopicId = params.get("TopicId")
+        self.Name = params.get("Name")
+        self.KafkaType = params.get("KafkaType")
+        self.KafkaInstance = params.get("KafkaInstance")
+        self.ServerAddr = params.get("ServerAddr")
+        self.IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self.Protocol = KafkaProtocolInfo()
+            self.Protocol._deserialize(params.get("Protocol"))
+        self.UserKafkaTopics = params.get("UserKafkaTopics")
+        self.ConsumerGroupName = params.get("ConsumerGroupName")
+        if params.get("LogRechargeRule") is not None:
+            self.LogRechargeRule = LogRechargeRuleInfo()
+            self.LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        self.StatusControl = params.get("StatusControl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyKafkaRechargeResponse(AbstractModel):
+    """ModifyKafkaRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLogsetRequest(AbstractModel):
     """ModifyLogset请求参数结构体
 
@@ -6364,14 +6985,20 @@ class OpenKafkaConsumerRequest(AbstractModel):
         :type FromTopicId: str
         :param Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
         :type Compression: int
+        :param ConsumerContent: kafka协议消费数据格式
+        :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         """
         self.FromTopicId = None
         self.Compression = None
+        self.ConsumerContent = None
 
 
     def _deserialize(self, params):
         self.FromTopicId = params.get("FromTopicId")
         self.Compression = params.get("Compression")
+        if params.get("ConsumerContent") is not None:
+            self.ConsumerContent = KafkaConsumerContent()
+            self.ConsumerContent._deserialize(params.get("ConsumerContent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6507,6 +7134,96 @@ class PartitionInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PreviewKafkaRechargeRequest(AbstractModel):
+    """PreviewKafkaRecharge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PreviewType: 预览类型，1:源数据预览，2:导出结果预览
+        :type PreviewType: int
+        :param KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :type KafkaType: int
+        :param UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        :type UserKafkaTopics: str
+        :param Offset: 导入数据位置，-2:最早（默认），-1：最晚
+        :type Offset: int
+        :param KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+        :type KafkaInstance: str
+        :param ServerAddr: 服务地址
+        :type ServerAddr: str
+        :param IsEncryptionAddr: ServerAddr是否为加密连接
+        :type IsEncryptionAddr: bool
+        :param Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        :param ConsumerGroupName: 用户Kafka消费组
+        :type ConsumerGroupName: str
+        :param LogRechargeRule: 日志导入规则
+        :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
+        self.PreviewType = None
+        self.KafkaType = None
+        self.UserKafkaTopics = None
+        self.Offset = None
+        self.KafkaInstance = None
+        self.ServerAddr = None
+        self.IsEncryptionAddr = None
+        self.Protocol = None
+        self.ConsumerGroupName = None
+        self.LogRechargeRule = None
+
+
+    def _deserialize(self, params):
+        self.PreviewType = params.get("PreviewType")
+        self.KafkaType = params.get("KafkaType")
+        self.UserKafkaTopics = params.get("UserKafkaTopics")
+        self.Offset = params.get("Offset")
+        self.KafkaInstance = params.get("KafkaInstance")
+        self.ServerAddr = params.get("ServerAddr")
+        self.IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self.Protocol = KafkaProtocolInfo()
+            self.Protocol._deserialize(params.get("Protocol"))
+        self.ConsumerGroupName = params.get("ConsumerGroupName")
+        if params.get("LogRechargeRule") is not None:
+            self.LogRechargeRule = LogRechargeRuleInfo()
+            self.LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PreviewKafkaRechargeResponse(AbstractModel):
+    """PreviewKafkaRecharge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogSample: 日志样例，PreviewType为2时返回
+        :type LogSample: str
+        :param LogData: 日志预览结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogData: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogSample = None
+        self.LogData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LogSample = params.get("LogSample")
+        self.LogData = params.get("LogData")
+        self.RequestId = params.get("RequestId")
 
 
 class RetryShipperTaskRequest(AbstractModel):
